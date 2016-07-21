@@ -1,0 +1,13 @@
+*.pyc
+*.so
+*.o
+<<<<<<< HEAD
+*.a
+=======
+>>>>>>> acc70a901835e02ca17bdf30a4079f62a4edd75d
+#*
+.#*
+Makefile.local
+setup_local.py
+!/build/*.o
+!/build/*.o

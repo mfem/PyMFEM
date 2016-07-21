@@ -1,0 +1,24 @@
+PYTHON   = python2.7
+
+MFEM     = $(HOME)/src/mfem-3.2
+MFEMINCDIR  = $(MFEM)
+MFEMLNKDIR  = $(MFEM)
+
+MFEMSER  = $(HOME)/src/mfem-3.2ser
+MFEMSERINCDIR  = $(MFEMSER)
+MFEMSERLNKDIR  = $(MFEMSER)
+
+# METIS4
+METIS4   = $(HOME)/src/metis-4.0
+METIS4LIBA   = $(HOME)/src/metis-4.0/libmetis.a
+
+# HYPRE
+HYPRE 	 = $(HOME)/src/hypre-2.11.0
+HYPREINCDIR = $(HYPRE)/src/hypre/include
+HYPRELNKDIR = $(HYPRE)/src/hypre/lib
+
+#MPI
+MPICHINCDIR    = /opt/local/include/mpich-mp
+MPICHLNKDIR    = /opt/local/lib/mpich-mp
+MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
+

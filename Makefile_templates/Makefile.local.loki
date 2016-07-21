@@ -1,0 +1,74 @@
+PYTHON=/usr/local/bin/python2.7
+FC=mpif90
+##   Makefile
+##
+##   default variable setting
+##   
+MFEM=$(HOME)/src/mfem-3.2
+MFEMLIB = mfem
+MFEMINCDIR = $(MFEM)
+MFEMLNKDIR = $(MFEM)
+
+## Skip serial version
+MFEMSER=$(HOME)/src/mfem-3.2ser
+MFEMSERLIB = mfem
+MFEMSERINCDIR = $(MFEMSER)
+MFEMSERLNKDIR = $(MFEMSER)
+
+HYPRE=$(HOME)/src/hypre-2.11.0
+HYPREINCDIR = $(HYPRE)/src/hypre/include
+HYPRELNKDIR = $(HYPRE)/src/hypre/lib
+
+METIS4=$(HOME)/src/metis-4.0
+METIS4LIBA   = $(METIS4)/libmetis.a
+
+PORD = $(HOME)/src/MUMPS_5.0.1/PORD/lib
+PORDLIB = pord
+PORDLNKDIR = $(PORD)
+
+SCOTCH = $(HOME)/lib
+SCOTCHLIB = ptscotch
+SCOTCHLNKDIR =  $(SCOTCH)
+#SCOTCHINCDIR =
+
+PARMETIS = $(HOME)/lib
+PARMETISLIB = parmetis
+PARMETISLNKDIR = $(PARMETIS)
+#PARMETISINCLIB = 
+
+#
+LAPACK = /home/shiraiwa/
+LAPACKLNKDIR = $(LAPACK)/lib
+
+#SCALAPACK
+SCALAPACK=/home/shiraiwa/lib
+SCALAPACKLIB = scalapack
+SCALAPACKLNKDIR = $(SCALAPACK)
+
+#BLAS
+BLAS=/home/shiraiwa/lib
+BLASLIB = blas
+BLASDIR = $(BLAS)
+
+#PTHREAD
+PTHREAD=/lib64
+PTHREADLIB = pthread
+
+#MPI
+MPIINCDIR = /usr/local/mvapich2-1.6rc2/include
+MPICHINCDIR  = /usr/local/mvapich2-1.6rc2/include
+MPICHLNKDIR  = /usr/local/mvapich2-1.6rc2/lib
+MPILIB = mpich
+MPICC = mpicc
+MPICXX = mpicxx
+MPIFC = mpifort
+MPIFL = mpifort
+MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
+
+#numpy
+NUMPYINCDIR = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
+
+MUMPS = $(HOME)/src/MUMPS_5.0.1
+MUMPSDIR = $(MUMPS)/lib
+MUMPSINCDIR1 = $(MUMPS)/include
+MUMPSINCDIR2 = $(MUMPS)/src

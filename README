@@ -1,0 +1,119 @@
+'''''
+PyMFEM
+'''''
+
+PyMFEM is a SWIG Wrapper for MFEM, finite element method library
+(http://mfem.org).
+PyMFEM allows to call this c++ library from python, and extend
+the library so that a user can use python object instead of
+passing c++ function pointer.
+
+-- Module structure --
+  <root>/mfem/ser : wrapper for serial MFEM
+             /par : wrapper for parallel MFEM
+             /Makefile_tempates: example template
+
+-- INSTALLATION --
+
+0: 3rd parth libs
+  0-1) mpi4py
+         needed either you use parallel MFEM or MUMPS.
+  0-2) MFEM
+         needless to say!?
+	 serial version and parallel version need to be
+	 compiled at separate directory.
+
+  0-2) HYPRE
+	 Needed if parallel MFEM is used
+
+1:  recompile MFEM with -fPIC option
+    This may not be necessary. (I didn't need it on MacOSX, 
+    I don't know why)     
+
+2: Prepare Makefile.local
+   copy template from Makefile_template/* to repository root.
+   rename it as Makefile.local
+   edit it for your enviroment
+
+   Leaving MFEMSER in Makefile.local  skips building serial version.
+   Leaving MFEM in Makefile.local  skips building parallel version.   
+   
+2-1 (Optional): Build SWIG cxx files
+This is needed only when you edit SWIG interface files.
+   * make cxx
+
+   or
+   
+   * make sercxx (sereal MFEM wrapepr)
+   * make parcxx (parallel MFEM wrapper)
+   * make picxx  (pi modules only)
+	
+3: Compile Extensions
+   * make
+   or 
+   * make ser (sereal MFEM wrapepr)
+   * make par (parallel MFEM wrapper)
+   * make pi  (pi modules only)   
+
+-- Features --
+ PyMFEM realized a couple of features, which does not exists in the
+ original MFEM.
+ Some of them are made to the wrapper simply more python-like.
+ Some of them are better to be integrated to MFEM itself in future.
+ 
+  4-1) mfem::Vector
+     Constructor using pthon list:   v = mfem.Vector([1,2,3])
+     Array element access:  print v[0] or v[0] = 3
+     Assign method:         v.Assign(1) (equivalent to v=1 in c++)
+     Data Access as Numpy:  v.GetDataArray()
+
+  4-2) mfem::Coefficient
+       PyCoefficient is derived from FunctionCoefficient
+       PyCoefficientT is time-dependent version
+       VectorPyCoefficient  is derveid from VectorFunctionCoefficient
+       VectorPyCoefficientT is time-dependent version
+
+       When using these class, inherit one of them and define
+       cls::EvalValue method as follows
+
+       class Jt(mfem.VectorPyCoefficient):
+           def EvalValue(self, x):
+               return [0.,0.,  np.cos(np.abs(x[2]-0.03)/0.03*np.pi/2)]
+       class Sigma(mfem.PyCoefficient):
+           def EvalValue(self, x):
+               return 0.01   // need to return 
+
+       then use it
+
+       Cof_Jt = Jt(3) // VectorPyCoefficient constructor need sdim 
+       dd = mfem.VectorFEBoundaryTangentLFIntegrator(Cof_Jt);
+
+  4-3) mfem::GridFunction
+       GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
+       return numpy array of Vector()
+  
+
+  4-4) mfem::Mesh
+         Wrapper of following methods are customized to
+	 return either python list object or tuple of lists
+	  
+            GetBdrElementVertices(i)
+            GetElementVertices(i)
+            GetElementVEdges(i)
+            GetBdrElementEdges(i)
+            GetFaceEdges(i)
+            GetEdgeVertices(i)
+            GetFaceVertices(i)
+            GetElementFaces(i)
+
+         A new constructor whith takes file name directly
+	 is added
+	    Mesh(const char *mesh_file, int generate_edges, int refine,
+                 bool fix_orientation = True)
+
+         GetVertexArray can be used to obtain Vertex point data
+	 as numpy object
+
+         GetBdrElementFace(i) returns tuple
+         GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
+         GetBdrAttributeArray(int idx) returns array of boundary attribute

@@ -1,0 +1,990 @@
+Apple LLVM version 7.3.0 (clang-703.0.29)
+Target: x86_64-apple-darwin15.4.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -dynamic -arch x86_64 -bundle -macosx_version_min 10.11.0 -undefined error -undefined error -o /Users/shiraiwa/src/PyMFEM/mfem/_mesh.so -L/opt/local/lib -L/opt/local/lib/db48 -L/Users/shiraiwa/src/mfem-3.1/ -L/Users/shiraiwa/src/metis-4.0/ -headerpad_max_install_names build/temp.macosx-10.11-x86_64-2.7/mesh_wrap.o -lmetis -lmfem -lmetis -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.3.0/lib/darwin/libclang_rt.osx.a
+Undefined symbols for architecture x86_64:
+  "_GenerateDiagAndOffd", referenced from:
+      mfem::HypreParMatrix::Threshold(double) in libmfem.a(hypre.o)
+  "_HYPRE_ADSCreate", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSDestroy", referenced from:
+      mfem::HypreADS::~HypreADS() in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetAMGOptions", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetAMSOptions", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetCoordinateVectors", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetCycleType", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetDiscreteCurl", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetDiscreteGradient", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetInterpolations", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetMaxIter", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetPrintLevel", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+      mfem::HypreADS::SetPrintLevel(int) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetSmoothingOptions", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetTol", referenced from:
+      mfem::HypreADS::HypreADS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_ADSSetup", referenced from:
+      mfem::HypreADS::SetupFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_ADSSolve", referenced from:
+      mfem::HypreADS::SolveFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_AMECreate", referenced from:
+      mfem::HypreAME::HypreAME(int) in libmfem.a(hypre.o)
+      mfem::HypreAME::HypreAME(int) in libmfem.a(hypre.o)
+  "_HYPRE_AMEDestroy", referenced from:
+      mfem::HypreAME::~HypreAME() in libmfem.a(hypre.o)
+  "_HYPRE_AMEGetEigenvalues", referenced from:
+      mfem::HypreAME::GetEigenvalues(mfem::Array<double>&) in libmfem.a(hypre.o)
+  "_HYPRE_AMEGetEigenvectors", referenced from:
+      mfem::HypreAME::createDummyVectors() in libmfem.a(hypre.o)
+  "_HYPRE_AMESetAMSSolver", referenced from:
+      mfem::HypreAME::SetOperator(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_AMESetBlockSize", referenced from:
+      mfem::HypreAME::SetNumModes(int) in libmfem.a(hypre.o)
+  "_HYPRE_AMESetMassMatrix", referenced from:
+      mfem::HypreAME::SetMassMatrix(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_AMESetMaxIter", referenced from:
+      mfem::HypreAME::SetMaxIter(int) in libmfem.a(hypre.o)
+  "_HYPRE_AMESetPrintLevel", referenced from:
+      mfem::HypreAME::HypreAME(int) in libmfem.a(hypre.o)
+      mfem::HypreAME::HypreAME(int) in libmfem.a(hypre.o)
+      mfem::HypreAME::SetPrintLevel(int) in libmfem.a(hypre.o)
+  "_HYPRE_AMESetTol", referenced from:
+      mfem::HypreAME::SetTol(double) in libmfem.a(hypre.o)
+  "_HYPRE_AMESetup", referenced from:
+      mfem::HypreAME::SetOperator(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_AMESolve", referenced from:
+      mfem::HypreAME::Solve() in libmfem.a(hypre.o)
+  "_HYPRE_AMSCreate", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSDestroy", referenced from:
+      mfem::HypreAMS::~HypreAMS() in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetAlphaAMGOptions", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetBetaAMGOptions", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetCoordinateVectors", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetCycleType", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetDimension", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetDiscreteGradient", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetInterpolations", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetMaxIter", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetPrintLevel", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+      mfem::HypreAMS::SetPrintLevel(int) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetSmoothingOptions", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetTol", referenced from:
+      mfem::HypreAMS::HypreAMS(mfem::HypreParMatrix&, mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_AMSSetup", referenced from:
+      mfem::HypreAMS::SetupFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_AMSSolve", referenced from:
+      mfem::HypreAMS::SolveFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_AssumedPartitionCheck", referenced from:
+      mfem::ParFiniteElementSpace::GetParallelConformingInterpolation() in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::GenerateGlobalOffsets() in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::GetGlobalTDofNumber(int) in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::GetMyTDofOffset() const in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::GetGlobalScalarTDofNumber(int) in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::GetMyDofOffset() const in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::ExchangeFaceNbrData() in libmfem.a(pfespace.o)
+      ...
+  "_HYPRE_BoomerAMGCreate", referenced from:
+      mfem::HypreBoomerAMG::HypreBoomerAMG() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::HypreBoomerAMG(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGDestroy", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::~HypreBoomerAMG() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGGetCoarsenType", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGGetCycleRelaxType", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGGetNumFunctions", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGGetPMaxElmts", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGGetPrintLevel", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGGetStrongThreshold", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetAggNumLevels", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetSystemsOptions(int) in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetCoarsenType", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetCycleRelaxType", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetInterpRefine", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetInterpType", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetInterpVecQMax", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetInterpVecVariant", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetInterpVectors", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetMaxIter", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetMaxLevels", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetNodal", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetNodalDiag", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetNumFunctions", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetSystemsOptions(int) in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetNumSweeps", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetPMaxElmts", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetPrintLevel", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::L2ZZErrorEstimator(mfem::BilinearFormIntegrator&, mfem::ParGridFunction&, mfem::ParFiniteElementSpace&, mfem::ParFiniteElementSpace&, mfem::Vector&, int, double, int) in libmfem.a(pgridfunc.o)
+  "_HYPRE_BoomerAMGSetRelaxType", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetSmoothInterpVectors", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetStrongThreshold", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetSystemsOptions(int) in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::SetElasticityOptions(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetTol", referenced from:
+      mfem::HypreBoomerAMG::SetDefaultOptions() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSetup", referenced from:
+      mfem::HypreBoomerAMG::SetupFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_BoomerAMGSolve", referenced from:
+      mfem::HypreBoomerAMG::SolveFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_GMRESGetPrintLevel", referenced from:
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_HYPRE_GMRESSetKDim", referenced from:
+      mfem::HypreGMRES::SetKDim(int) in libmfem.a(hypre.o)
+  "_HYPRE_GMRESSetLogging", referenced from:
+      mfem::HypreGMRES::SetLogging(int) in libmfem.a(hypre.o)
+  "_HYPRE_GMRESSetMaxIter", referenced from:
+      mfem::HypreGMRES::SetMaxIter(int) in libmfem.a(hypre.o)
+  "_HYPRE_GMRESSetPrintLevel", referenced from:
+      mfem::HypreGMRES::SetPrintLevel(int) in libmfem.a(hypre.o)
+  "_HYPRE_GMRESSetTol", referenced from:
+      mfem::HypreGMRES::SetTol(double) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGCreate", referenced from:
+      mfem::HypreLOBPCG::HypreLOBPCG(int) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGDestroy", referenced from:
+      mfem::HypreLOBPCG::~HypreLOBPCG() in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSetMaxIter", referenced from:
+      mfem::HypreLOBPCG::SetMaxIter(int) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSetPrecond", referenced from:
+      mfem::HypreLOBPCG::SetPreconditioner(mfem::Solver&) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSetPrecondUsageMode", referenced from:
+      mfem::HypreLOBPCG::SetPrecondUsageMode(int) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSetPrintLevel", referenced from:
+      mfem::HypreLOBPCG::SetPrintLevel(int) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSetTol", referenced from:
+      mfem::HypreLOBPCG::SetTol(double) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSetup", referenced from:
+      mfem::HypreLOBPCG::SetOperator(mfem::Operator&) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSetupB", referenced from:
+      mfem::HypreLOBPCG::SetMassMatrix(mfem::Operator&) in libmfem.a(hypre.o)
+  "_HYPRE_LOBPCGSolve", referenced from:
+      mfem::HypreLOBPCG::Solve() in libmfem.a(hypre.o)
+  "_HYPRE_PCGGetPrintLevel", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_HYPRE_PCGSetLogging", referenced from:
+      mfem::HyprePCG::SetLogging(int) in libmfem.a(hypre.o)
+  "_HYPRE_PCGSetMaxIter", referenced from:
+      mfem::HyprePCG::SetMaxIter(int) in libmfem.a(hypre.o)
+  "_HYPRE_PCGSetRecomputeResidualP", referenced from:
+      mfem::HyprePCG::SetResidualConvergenceOptions(int, double) in libmfem.a(hypre.o)
+  "_HYPRE_PCGSetResidualTol", referenced from:
+      mfem::HyprePCG::SetResidualConvergenceOptions(int, double) in libmfem.a(hypre.o)
+  "_HYPRE_PCGSetTol", referenced from:
+      mfem::HyprePCG::SetTol(double) in libmfem.a(hypre.o)
+  "_HYPRE_PCGSetTwoNorm", referenced from:
+      mfem::HyprePCG::SetResidualConvergenceOptions(int, double) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRDiagScale", referenced from:
+      mfem::HypreSmoother::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESCreate", referenced from:
+      mfem::HypreGMRES::HypreGMRES(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESDestroy", referenced from:
+      mfem::HypreGMRES::~HypreGMRES() in libmfem.a(hypre.o)
+      mfem::HypreGMRES::~HypreGMRES() in libmfem.a(hypre.o)
+      mfem::HypreGMRES::~HypreGMRES() in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESGetFinalRelativeResidualNorm", referenced from:
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESGetNumIterations", referenced from:
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESSetKDim", referenced from:
+      mfem::HypreGMRES::HypreGMRES(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESSetMaxIter", referenced from:
+      mfem::HypreGMRES::HypreGMRES(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESSetPrecond", referenced from:
+      mfem::HypreGMRES::SetPreconditioner(mfem::HypreSolver&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESSetTol", referenced from:
+      mfem::HypreGMRES::HypreGMRES(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESSetup", referenced from:
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::SetupFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRGMRESSolve", referenced from:
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::SolveFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRMatrixGetComm", referenced from:
+      mfem::HyprePCG::HyprePCG(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+      mfem::HyprePCG::HyprePCG(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::HypreGMRES(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGCreate", referenced from:
+      mfem::HyprePCG::HyprePCG(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+      mfem::HyprePCG::HyprePCG(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGDestroy", referenced from:
+      mfem::HyprePCG::~HyprePCG() in libmfem.a(hypre.o)
+      mfem::HyprePCG::~HyprePCG() in libmfem.a(hypre.o)
+      mfem::HyprePCG::~HyprePCG() in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGGetFinalRelativeResidualNorm", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGGetNumIterations", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGSetPrecond", referenced from:
+      mfem::HyprePCG::SetPreconditioner(mfem::HypreSolver&) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGSetPrintLevel", referenced from:
+      mfem::HyprePCG::SetPrintLevel(int) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGSetup", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HyprePCG::SetupFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRPCGSolve", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HyprePCG::SolveFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRSetupInterpreter", referenced from:
+      mfem::HypreLOBPCG::HypreLOBPCG(int) in libmfem.a(hypre.o)
+  "_HYPRE_ParCSRSetupMatvec", referenced from:
+      mfem::HypreLOBPCG::HypreLOBPCG(int) in libmfem.a(hypre.o)
+  "_HYPRE_ParVectorDestroy", referenced from:
+      mfem::HypreBoomerAMG::RecomputeRBMs() in libmfem.a(hypre.o)
+      mfem::HypreBoomerAMG::~HypreBoomerAMG() in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsCreate", referenced from:
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsDestroy", referenced from:
+      mfem::HypreParaSails::~HypreParaSails() in libmfem.a(hypre.o)
+      mfem::HypreParaSails::~HypreParaSails() in libmfem.a(hypre.o)
+      mfem::HypreParaSails::~HypreParaSails() in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSetFilter", referenced from:
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSetLoadbal", referenced from:
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSetLogging", referenced from:
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSetParams", referenced from:
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSetReuse", referenced from:
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSetSym", referenced from:
+      mfem::HypreParaSails::HypreParaSails(mfem::HypreParMatrix&) in libmfem.a(hypre.o)
+      mfem::HypreParaSails::SetSymmetry(int) in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSetup", referenced from:
+      mfem::HypreParaSails::SetupFcn() const in libmfem.a(hypre.o)
+  "_HYPRE_ParaSailsSolve", referenced from:
+      mfem::HypreParaSails::SolveFcn() const in libmfem.a(hypre.o)
+  "_METIS_PartGraphVKway", referenced from:
+      mfem::Mesh::GeneratePartitioning(int, int) in libmfem.a(mesh.o)
+  "_MPI_Abort", referenced from:
+      mfem::mfem_error(char const*) in libmfem.a(error.o)
+  "_MPI_Allgather", referenced from:
+      mfem::ParFiniteElementSpace::GenerateGlobalOffsets() in libmfem.a(pfespace.o)
+      mfem::HypreLOBPCG::SetOperator(mfem::Operator&) in libmfem.a(hypre.o)
+  "_MPI_Allreduce", referenced from:
+      mfem::ComputeGlobalLpNorm(double, mfem::Coefficient&, mfem::ParMesh&, mfem::IntegrationRule const**) in libmfem.a(coefficient.o)
+      mfem::ComputeGlobalLpNorm(double, mfem::VectorCoefficient&, mfem::ParMesh&, mfem::IntegrationRule const**) in libmfem.a(coefficient.o)
+      mfem::IterativeSolver::Dot(mfem::Vector const&, mfem::Vector const&) const in libmfem.a(solvers.o)
+      mfem::SLISolver::Mult(mfem::Vector const&, mfem::Vector&) const in libmfem.a(solvers.o)
+      mfem::CGSolver::Mult(mfem::Vector const&, mfem::Vector&) const in libmfem.a(solvers.o)
+      mfem::GMRESSolver::Mult(mfem::Vector const&, mfem::Vector&) const in libmfem.a(solvers.o)
+      mfem::FGMRESSolver::Mult(mfem::Vector const&, mfem::Vector&) const in libmfem.a(solvers.o)
+      ...
+  "_MPI_Bcast", referenced from:
+      mfem::ParFiniteElementSpace::GenerateGlobalOffsets() in libmfem.a(pfespace.o)
+  "_MPI_Comm_rank", referenced from:
+      mfem::ParNURBSExtension::SetActive(int*, mfem::Array<bool> const&) in libmfem.a(nurbs.o)
+      mfem::ParNURBSExtension::BuildGroups(int*, mfem::Table const&) in libmfem.a(nurbs.o)
+      mfem::GroupTopology::Create(mfem::ListOfIntegerSets&, int) in libmfem.a(communication.o)
+      mfem::IterativeSolver::SetPrintLevel(int) in libmfem.a(solvers.o)
+      mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh*, mfem::FiniteElementCollection const*, int, int) in libmfem.a(pfespace.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int, int*, int*, double*, int*, int*) in libmfem.a(hypre.o)
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      ...
+  "_MPI_Comm_size", referenced from:
+      mfem::GroupTopology::ProcToLProc() in libmfem.a(communication.o)
+      mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh*, mfem::FiniteElementCollection const*, int, int) in libmfem.a(pfespace.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int, int*, int*, double*, int*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::CopyRowStarts() in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::CopyColStarts() in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::LeftDiagMult(mfem::SparseMatrix const&, int*) const in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::Threshold(double) in libmfem.a(hypre.o)
+      ...
+  "_MPI_Get_count", referenced from:
+      mfem::GroupTopology::Create(mfem::ListOfIntegerSets&, int) in libmfem.a(communication.o)
+      mfem::ParFiniteElementSpace::GetParallelConformingInterpolation() in libmfem.a(pfespace.o)
+      void mfem::VarMessage<135>::RecvAll<std::__1::map<int, mfem::NeighborDofMessage, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborDofMessage> > > >(std::__1::map<int, mfem::NeighborDofMessage, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborDofMessage> > >&, int) in libmfem.a(pfespace.o)
+      void mfem::VarMessage<312>::RecvAll<std::__1::map<int, mfem::NeighborRowRequest, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborRowRequest> > > >(std::__1::map<int, mfem::NeighborRowRequest, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborRowRequest> > >&, int) in libmfem.a(pfespace.o)
+      mfem::ParNCMesh::Refine(mfem::Array<mfem::Refinement> const&) in libmfem.a(pncmesh.o)
+  "_MPI_Iprobe", referenced from:
+      mfem::ParFiniteElementSpace::GetParallelConformingInterpolation() in libmfem.a(pfespace.o)
+  "_MPI_Irecv", referenced from:
+      void mfem::GroupCommunicator::Bcast<int>(int*) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Reduce<int>(int*, void (*)(mfem::GroupCommunicator::OpData<int>)) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Bcast<double>(double*) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Reduce<double>(double*, void (*)(mfem::GroupCommunicator::OpData<double>)) in libmfem.a(communication.o)
+      mfem::ParFiniteElementSpace::GenerateGlobalOffsets() in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::ExchangeFaceNbrData() in libmfem.a(pfespace.o)
+      mfem::ParMesh::ExchangeFaceNbrData() in libmfem.a(pmesh.o)
+      ...
+  "_MPI_Isend", referenced from:
+      mfem::GroupTopology::Create(mfem::ListOfIntegerSets&, int) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Bcast<int>(int*) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Reduce<int>(int*, void (*)(mfem::GroupCommunicator::OpData<int>)) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Bcast<double>(double*) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Reduce<double>(double*, void (*)(mfem::GroupCommunicator::OpData<double>)) in libmfem.a(communication.o)
+      mfem::ParFiniteElementSpace::GetParallelConformingInterpolation() in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::GenerateGlobalOffsets() in libmfem.a(pfespace.o)
+      ...
+  "_MPI_Probe", referenced from:
+      mfem::ParFiniteElementSpace::GetParallelConformingInterpolation() in libmfem.a(pfespace.o)
+      void mfem::VarMessage<135>::RecvAll<std::__1::map<int, mfem::NeighborDofMessage, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborDofMessage> > > >(std::__1::map<int, mfem::NeighborDofMessage, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborDofMessage> > >&, int) in libmfem.a(pfespace.o)
+      void mfem::VarMessage<312>::RecvAll<std::__1::map<int, mfem::NeighborRowRequest, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborRowRequest> > > >(std::__1::map<int, mfem::NeighborRowRequest, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborRowRequest> > >&, int) in libmfem.a(pfespace.o)
+      mfem::ParNCMesh::Refine(mfem::Array<mfem::Refinement> const&) in libmfem.a(pncmesh.o)
+  "_MPI_Recv", referenced from:
+      mfem::GroupTopology::Create(mfem::ListOfIntegerSets&, int) in libmfem.a(communication.o)
+      mfem::ParFiniteElementSpace::GetParallelConformingInterpolation() in libmfem.a(pfespace.o)
+      void mfem::VarMessage<135>::RecvAll<std::__1::map<int, mfem::NeighborDofMessage, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborDofMessage> > > >(std::__1::map<int, mfem::NeighborDofMessage, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborDofMessage> > >&, int) in libmfem.a(pfespace.o)
+      void mfem::VarMessage<312>::RecvAll<std::__1::map<int, mfem::NeighborRowRequest, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborRowRequest> > > >(std::__1::map<int, mfem::NeighborRowRequest, std::__1::less<int>, std::__1::allocator<std::__1::pair<int const, mfem::NeighborRowRequest> > >&, int) in libmfem.a(pfespace.o)
+      mfem::ParNCMesh::Refine(mfem::Array<mfem::Refinement> const&) in libmfem.a(pncmesh.o)
+      mfem::ParMesh::LocalRefinement(mfem::Array<int> const&, int) in libmfem.a(pmesh.o)
+      mfem::ParMesh::PrintAsOne(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) in libmfem.a(pmesh.o)
+      ...
+  "_MPI_Reduce", referenced from:
+      mfem::ParMesh::PrintAsOne(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) in libmfem.a(pmesh.o)
+      mfem::ParMesh::PrintAsOneXG(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) in libmfem.a(pmesh.o)
+      mfem::ParMesh::PrintInfo(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) in libmfem.a(pmesh.o)
+  "_MPI_Scan", referenced from:
+      mfem::ParFiniteElementSpace::GenerateGlobalOffsets() in libmfem.a(pfespace.o)
+      mfem::HypreLOBPCG::SetOperator(mfem::Operator&) in libmfem.a(hypre.o)
+  "_MPI_Send", referenced from:
+      mfem::ParMesh::PrintAsOne(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) in libmfem.a(pmesh.o)
+      mfem::ParMesh::PrintAsOneXG(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) in libmfem.a(pmesh.o)
+      mfem::ParGridFunction::SaveAsOne(std::__1::basic_ostream<char, std::__1::char_traits<char> >&) in libmfem.a(pgridfunc.o)
+  "_MPI_Wait", referenced from:
+      mfem::ParFiniteElementSpace::GetParallelConformingInterpolation() in libmfem.a(pfespace.o)
+      mfem::ParNCMesh::Refine(mfem::Array<mfem::Refinement> const&) in libmfem.a(pncmesh.o)
+  "_MPI_Waitall", referenced from:
+      mfem::GroupTopology::Create(mfem::ListOfIntegerSets&, int) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Bcast<int>(int*) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Reduce<int>(int*, void (*)(mfem::GroupCommunicator::OpData<int>)) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Bcast<double>(double*) in libmfem.a(communication.o)
+      void mfem::GroupCommunicator::Reduce<double>(double*, void (*)(mfem::GroupCommunicator::OpData<double>)) in libmfem.a(communication.o)
+      mfem::ParFiniteElementSpace::GenerateGlobalOffsets() in libmfem.a(pfespace.o)
+      mfem::ParFiniteElementSpace::ExchangeFaceNbrData() in libmfem.a(pfespace.o)
+      ...
+  "_MPI_Waitany", referenced from:
+      mfem::ParMesh::ExchangeFaceNbrData() in libmfem.a(pmesh.o)
+  "_PyArg_ParseTuple", referenced from:
+      _wrap_Mesh_attributes_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_bdr_attributes_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_NURBSext_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_NURBSext_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ncmesh_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ncmesh_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_NewElement(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyArg_UnpackTuple", referenced from:
+      SwigPyObject_own(_object*, _object*) in mesh_wrap.o
+  "_PyBool_FromLong", referenced from:
+      _wrap_Mesh_FaceIsInterior(_object*, _object*) in mesh_wrap.o
+      SwigPyObject_richcompare(SwigPyObject*, SwigPyObject*, int) in mesh_wrap.o
+      SwigPyObject_own(_object*, _object*) in mesh_wrap.o
+  "_PyBool_Type", referenced from:
+      _wrap_Mesh_FinalizeTriMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeQuadMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeTetMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeHexMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ReorderElements(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_Load(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_CheckElementOrientation(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyCFunction_Type", referenced from:
+      SWIG_Python_ConvertFunctionPtr(_object*, void**, swig_type_info*) in mesh_wrap.o
+  "_PyCObject_AsVoidPtr", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyCObject_Type", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyCapsule_GetPointer", referenced from:
+      SWIG_Python_DestroyModule(_object*) in mesh_wrap.o
+  "_PyCapsule_Import", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyCapsule_New", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyClass_Type", referenced from:
+      SwigPyClientData_New(_object*) in mesh_wrap.o
+  "_PyDict_GetItem", referenced from:
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+  "_PyDict_New", referenced from:
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+  "_PyDict_SetItem", referenced from:
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+  "_PyDict_SetItemString", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyErr_Clear", referenced from:
+      _init_mesh in mesh_wrap.o
+      _wrap_Mesh_NewElement(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTri(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTriangle(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddQuad(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTet(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHex(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyErr_Fetch", referenced from:
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+  "_PyErr_Format", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyErr_Occurred", referenced from:
+      _init_mesh in mesh_wrap.o
+      _wrap_Mesh_NewElement(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTri(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTriangle(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddQuad(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTet(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHex(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyErr_Print", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyErr_Restore", referenced from:
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+  "_PyErr_SetString", referenced from:
+      _init_mesh in mesh_wrap.o
+      _wrap_Mesh_attributes_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_bdr_attributes_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_NURBSext_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_NURBSext_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ncmesh_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ncmesh_get(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyErr_WriteUnraisable", referenced from:
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+  "_PyExc_AttributeError", referenced from:
+      _init_mesh in mesh_wrap.o
+      l_switch.table in mesh_wrap.o
+  "_PyExc_IOError", referenced from:
+      l_switch.table in mesh_wrap.o
+  "_PyExc_ImportError", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyExc_IndexError", referenced from:
+      l_switch.table in mesh_wrap.o
+  "_PyExc_MemoryError", referenced from:
+      l_switch.table in mesh_wrap.o
+  "_PyExc_NotImplementedError", referenced from:
+      _wrap_Mesh_AddTri(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTriangle(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddQuad(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTet(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHex(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHexAsTets(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddBdrSegment(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyExc_OverflowError", referenced from:
+      l_switch.table in mesh_wrap.o
+  "_PyExc_RuntimeError", referenced from:
+      _init_mesh in mesh_wrap.o
+      _wrap_Mesh_attributes_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_bdr_attributes_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_NURBSext_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_NURBSext_get(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ncmesh_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ncmesh_get(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyExc_SyntaxError", referenced from:
+      l_switch.table in mesh_wrap.o
+  "_PyExc_SystemError", referenced from:
+      l_switch.table in mesh_wrap.o
+  "_PyExc_TypeError", referenced from:
+      _wrap_Mesh_FinalizeTriMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeQuadMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeTetMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeHexMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ReorderElements(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_Load(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_CheckElementOrientation(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyExc_ValueError", referenced from:
+      _wrap_Mesh_ReorderElements(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_Load(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetElementVertices(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetBdrElementVertices(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetElementEdges(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetBdrElementEdges(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetFaceEdges(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyExc_ZeroDivisionError", referenced from:
+      l_switch.table in mesh_wrap.o
+  "_PyFloat_AsDouble", referenced from:
+      SWIG_AsVal_double(_object*, double*) in mesh_wrap.o
+  "_PyFloat_FromDouble", referenced from:
+      _wrap_Mesh_GetElementSize(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetElementVolume(_object*, _object*) in mesh_wrap.o
+  "_PyFloat_Type", referenced from:
+      _wrap_Mesh_RefineAtVertex(_object*, _object*) in mesh_wrap.o
+      _wrap_new_Mesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Extrude1D(_object*, _object*) in mesh_wrap.o
+      SWIG_AsVal_double(_object*, double*) in mesh_wrap.o
+  "_PyImport_ImportModule", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyInstance_NewRaw", referenced from:
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+  "_PyInstance_Type", referenced from:
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+  "_PyInt_AsLong", referenced from:
+      _wrap_Mesh_NewElement(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTri(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTriangle(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddQuad(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTet(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHex(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHexAsTets(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyInt_FromLong", referenced from:
+      _init_mesh in mesh_wrap.o
+      _wrap_Mesh_MeshGenerator(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetNV(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetNE(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetNBE(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetNEdges(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_GetNFaces(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyLong_AsDouble", referenced from:
+      _wrap_Mesh_RefineAtVertex(_object*, _object*) in mesh_wrap.o
+      _wrap_new_Mesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Extrude1D(_object*, _object*) in mesh_wrap.o
+      SWIG_AsVal_double(_object*, double*) in mesh_wrap.o
+  "_PyLong_AsLong", referenced from:
+      _wrap_Mesh_NewElement(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTri(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTriangle(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddQuad(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTet(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHex(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHexAsTets(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyLong_FromVoidPtr", referenced from:
+      SwigPyObject_long(SwigPyObject*) in mesh_wrap.o
+      SwigPyObject_format(char const*, SwigPyObject*) in mesh_wrap.o
+  "_PyModule_AddObject", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyModule_GetDict", referenced from:
+      _init_mesh in mesh_wrap.o
+  "_PyObject_Call", referenced from:
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+  "_PyObject_CallFunctionObjArgs", referenced from:
+      SWIG_Python_ConvertPtrAndOwn(_object*, void**, swig_type_info*, int, int*) in mesh_wrap.o
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+  "_PyObject_Free", referenced from:
+      _init_mesh in mesh_wrap.o
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+      SwigPyPacked_dealloc(_object*) in mesh_wrap.o
+  "_PyObject_GenericGetAttr", referenced from:
+      SwigPyObject_TypeOnce()::tmp in mesh_wrap.o
+      SwigPyPacked_TypeOnce()::tmp in mesh_wrap.o
+  "_PyObject_GetAttr", referenced from:
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+  "_PyObject_GetAttrString", referenced from:
+      _init_mesh in mesh_wrap.o
+      SwigPyClientData_New(_object*) in mesh_wrap.o
+  "_PyObject_Init", referenced from:
+      _init_mesh in mesh_wrap.o
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+  "_PyObject_IsTrue", referenced from:
+      _wrap_Mesh_FinalizeTriMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeQuadMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeTetMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_FinalizeHexMesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ReorderElements(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_Load(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_CheckElementOrientation(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyObject_Malloc", referenced from:
+      _init_mesh in mesh_wrap.o
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+  "_PyObject_Size", referenced from:
+      _wrap_Mesh_AddTri(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTriangle(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddQuad(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTet(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHex(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddHexAsTets(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddBdrSegment(_object*, _object*) in mesh_wrap.o
+      ...
+  "_PyString_AsString", referenced from:
+      SWIG_AsCharPtrAndSize(_object*, char**, unsigned long*, int*) in mesh_wrap.o
+  "_PyString_AsStringAndSize", referenced from:
+      SWIG_AsCharPtrAndSize(_object*, char**, unsigned long*, int*) in mesh_wrap.o
+  "_PyString_ConcatAndDel", referenced from:
+      SwigPyObject_repr(SwigPyObject*) in mesh_wrap.o
+  "_PyString_Format", referenced from:
+      SwigPyObject_format(char const*, SwigPyObject*) in mesh_wrap.o
+  "_PyString_FromFormat", referenced from:
+      SwigPyObject_repr(SwigPyObject*) in mesh_wrap.o
+      SwigPyPacked_repr(SwigPyPacked*) in mesh_wrap.o
+      SwigPyPacked_str(SwigPyPacked*) in mesh_wrap.o
+  "_PyString_FromString", referenced from:
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+      SwigPyObject_format(char const*, SwigPyObject*) in mesh_wrap.o
+      SWIG_Python_DestroyModule(_object*) in mesh_wrap.o
+      SwigPyPacked_str(SwigPyPacked*) in mesh_wrap.o
+  "_PyTuple_New", referenced from:
+      SwigPyObject_format(char const*, SwigPyObject*) in mesh_wrap.o
+      SwigPyClientData_New(_object*) in mesh_wrap.o
+  "_PyTuple_SetItem", referenced from:
+      SwigPyObject_format(char const*, SwigPyObject*) in mesh_wrap.o
+      SwigPyClientData_New(_object*) in mesh_wrap.o
+  "_PyType_IsSubtype", referenced from:
+      _wrap_Mesh_RefineAtVertex(_object*, _object*) in mesh_wrap.o
+      _wrap_new_Mesh(_object*, _object*) in mesh_wrap.o
+      _wrap_Extrude1D(_object*, _object*) in mesh_wrap.o
+      SWIG_AsVal_double(_object*, double*) in mesh_wrap.o
+  "_PyType_Ready", referenced from:
+      _init_mesh in mesh_wrap.o
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+      SwigPyObject_dealloc(_object*) in mesh_wrap.o
+      SwigPyObject_append(_object*, _object*) in mesh_wrap.o
+      SwigPyPacked_dealloc(_object*) in mesh_wrap.o
+  "_Py_BuildValue", referenced from:
+      _wrap_Mesh_GetBdrElementFace(_object*, _object*) in mesh_wrap.o
+  "_Py_InitModule4_64", referenced from:
+      _init_mesh in mesh_wrap.o
+  "__PyInstance_Lookup", referenced from:
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+  "__PyObject_GetDictPtr", referenced from:
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+  "__PyObject_New", referenced from:
+      SWIG_Python_NewPointerObj(_object*, void*, swig_type_info*, int) in mesh_wrap.o
+  "__PyWeakref_CallableProxyType", referenced from:
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+  "__PyWeakref_ProxyType", referenced from:
+      SWIG_Python_GetSwigThis(_object*) in mesh_wrap.o
+  "__Py_NoneStruct", referenced from:
+      _init_mesh in mesh_wrap.o
+      _wrap_Mesh_NURBSext_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_ncmesh_set(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddVertex(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTri(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddTriangle(_object*, _object*) in mesh_wrap.o
+      _wrap_Mesh_AddQuad(_object*, _object*) in mesh_wrap.o
+      ...
+  "__Py_NotImplementedStruct", referenced from:
+      SwigPyObject_richcompare(SwigPyObject*, SwigPyObject*, int) in mesh_wrap.o
+  "_hypre_BeginTiming", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_BinarySearch", referenced from:
+      mfem::internal::hypre_CSRMatrixEliminateAXB(hypre_CSRMatrix*, int, int*, hypre_Vector*, hypre_Vector*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_CSRMatrixEliminateOffdColsAXB(hypre_CSRMatrix*, int, int*, double*, hypre_Vector*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixEliminateAXB(hypre_ParCSRMatrix_struct*, int, int*, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_CSRMatrixElimCreate(hypre_CSRMatrix*, hypre_CSRMatrix*, int, int*, int, int*, int*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_CSRMatrixEliminateRowsCols(hypre_CSRMatrix*, hypre_CSRMatrix*, int, int*, int, int*, int, int*) in libmfem.a(hypre_parcsr.o)
+  "_hypre_BoomerAMGBuildCoarseOperator", referenced from:
+      mfem::RAP(mfem::HypreParMatrix*, mfem::HypreParMatrix*) in libmfem.a(hypre.o)
+      mfem::RAP(mfem::HypreParMatrix*, mfem::HypreParMatrix*, mfem::HypreParMatrix*) in libmfem.a(hypre.o)
+  "_hypre_BoomerAMGGetInterpType", referenced from:
+      mfem::HypreBoomerAMG::ResetAMGPrecond() in libmfem.a(hypre.o)
+  "_hypre_CAlloc", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::CopyRowStarts() in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::CopyColStarts() in libmfem.a(hypre.o)
+      mfem::HypreSmoother::SetOperator(mfem::Operator const&) in libmfem.a(hypre.o)
+      mfem::internal::hypre_ParCSRMatrixEliminateAXB(hypre_ParCSRMatrix_struct*, int, int*, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre_parcsr.o)
+      ...
+  "_hypre_CSRMatrixCreate", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::internal::hypre_CSRMatrixSplit(hypre_CSRMatrix*, int, int, int*, int*, hypre_CSRMatrix**) in libmfem.a(hypre_parcsr.o)
+  "_hypre_CSRMatrixDeleteZeros", referenced from:
+      mfem::HypreParMatrix::Threshold(double) in libmfem.a(hypre.o)
+  "_hypre_CSRMatrixDestroy", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::Threshold(double) in libmfem.a(hypre.o)
+  "_hypre_CSRMatrixReorder", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      ...
+  "_hypre_CSRMatrixSetDataOwner", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      ...
+  "_hypre_CSRMatrixSetRownnz", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      ...
+  "_hypre_CSRMatrixToParCSRMatrix", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+  "_hypre_ClearTiming", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_EndTiming", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_FinalizeTiming", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_Free", referenced from:
+      mfem::HypreSmoother::SetOperator(mfem::Operator const&) in libmfem.a(hypre.o)
+      mfem::HypreSmoother::~HypreSmoother() in libmfem.a(hypre.o)
+      mfem::HypreAME::~HypreAME() in libmfem.a(hypre.o)
+      mfem::internal::hypre_ParCSRMatrixEliminateAXB(hypre_ParCSRMatrix_struct*, int, int*, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixEliminateAAe(hypre_ParCSRMatrix_struct*, hypre_ParCSRMatrix_struct**, int, int*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_CSRMatrixSplit(hypre_CSRMatrix*, int, int, int*, int*, hypre_CSRMatrix**) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixSplit(hypre_ParCSRMatrix_struct*, int, int, hypre_ParCSRMatrix_struct**, int, int) in libmfem.a(hypre_parcsr.o)
+      ...
+  "_hypre_InitializeTiming", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_MAlloc", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int, int*, int*, double*, int*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::LeftDiagMult(mfem::SparseMatrix const&, int*) const in libmfem.a(hypre.o)
+      mfem::internal::hypre_CSRMatrixElimCreate(hypre_CSRMatrix*, hypre_CSRMatrix*, int, int*, int, int*, int*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_CSRMatrixSplit(hypre_CSRMatrix*, int, int, int*, int*, hypre_CSRMatrix**) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixSplit(hypre_ParCSRMatrix_struct*, int, int, hypre_ParCSRMatrix_struct**, int, int) in libmfem.a(hypre_parcsr.o)
+  "_hypre_MPI_Comm_rank", referenced from:
+      mfem::internal::hypre_ParCSRCommHandleCreate_bool(int, hypre_ParCSRCommPkg*, int*, int*) in libmfem.a(hypre_parcsr.o)
+  "_hypre_MPI_Comm_size", referenced from:
+      mfem::internal::hypre_ParCSRMatrixSplit(hypre_ParCSRMatrix_struct*, int, int, hypre_ParCSRMatrix_struct**, int, int) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRCommHandleCreate_bool(int, hypre_ParCSRCommPkg*, int*, int*) in libmfem.a(hypre_parcsr.o)
+  "_hypre_MPI_Irecv", referenced from:
+      mfem::internal::hypre_ParCSRCommHandleCreate_bool(int, hypre_ParCSRCommPkg*, int*, int*) in libmfem.a(hypre_parcsr.o)
+  "_hypre_MPI_Isend", referenced from:
+      mfem::internal::hypre_ParCSRCommHandleCreate_bool(int, hypre_ParCSRCommPkg*, int*, int*) in libmfem.a(hypre_parcsr.o)
+  "_hypre_MatvecCommPkgCreate", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      ...
+  "_hypre_MergeDiagAndOffd", referenced from:
+      mfem::HypreParMatrix::Threshold(double) in libmfem.a(hypre.o)
+  "_hypre_ParCSRCommHandleCreate", referenced from:
+      mfem::internal::hypre_ParCSRMatrixEliminateAXB(hypre_ParCSRMatrix_struct*, int, int*, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixEliminateAAe(hypre_ParCSRMatrix_struct*, hypre_ParCSRMatrix_struct**, int, int*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixSplit(hypre_ParCSRMatrix_struct*, int, int, hypre_ParCSRMatrix_struct**, int, int) in libmfem.a(hypre_parcsr.o)
+  "_hypre_ParCSRCommHandleDestroy", referenced from:
+      mfem::internal::hypre_ParCSRMatrixEliminateAXB(hypre_ParCSRMatrix_struct*, int, int*, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixEliminateAAe(hypre_ParCSRMatrix_struct*, hypre_ParCSRMatrix_struct**, int, int*) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixSplit(hypre_ParCSRMatrix_struct*, int, int, hypre_ParCSRMatrix_struct**, int, int) in libmfem.a(hypre_parcsr.o)
+      mfem::internal::hypre_ParCSRMatrixBooleanMatvec(hypre_ParCSRMatrix_struct*, int, int*, int, int*) in libmfem.a(hypre_parcsr.o)
+  "_hypre_ParCSRComputeL1Norms", referenced from:
+      mfem::HypreSmoother::SetOperator(mfem::Operator const&) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixCreate", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int, int*, int*, double*, int*, int*) in libmfem.a(hypre.o)
+      ...
+  "_hypre_ParCSRMatrixDestroy", referenced from:
+      mfem::HypreParMatrix::Destroy() in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::Threshold(double) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixGetLocalRange", referenced from:
+      mfem::HypreParMatrix::Threshold(double) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixInitialize", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int, int*, int*, double*, int*, int*) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixMatvec", referenced from:
+      mfem::HypreParMatrix::Mult(mfem::HypreParVector&, mfem::HypreParVector&, double, double) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::Mult(double, mfem::Vector const&, double, mfem::Vector&) const in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::Mult(hypre_ParVector_struct*, hypre_ParVector_struct*, double, double) in libmfem.a(hypre.o)
+      mfem::ParCSRRelax_Taubin(hypre_ParCSRMatrix_struct*, hypre_ParVector_struct*, double, double, int, double, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre.o)
+      mfem::ParCSRRelax_FIR(hypre_ParCSRMatrix_struct*, hypre_ParVector_struct*, double, int, double*, hypre_ParVector_struct*, hypre_ParVector_struct*, hypre_ParVector_struct*, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixMatvecT", referenced from:
+      mfem::HypreParMatrix::MultTranspose(double, mfem::Vector const&, double, mfem::Vector&) const in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::MultTranspose(mfem::HypreParVector&, mfem::HypreParVector&, double, double) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixPrintIJ", referenced from:
+      mfem::HypreParMatrix::Print(char const*, int, int) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixReadIJ", referenced from:
+      mfem::HypreParMatrix::Read(int, char const*) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixSetColStartsOwner", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::LeftDiagMult(mfem::SparseMatrix const&, int*) const in libmfem.a(hypre.o)
+      ...
+  "_hypre_ParCSRMatrixSetDataOwner", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+  "_hypre_ParCSRMatrixSetNumNonzeros", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int, int*, int*, double*, int*, int*) in libmfem.a(hypre.o)
+      ...
+  "_hypre_ParCSRMatrixSetRowStartsOwner", referenced from:
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::SparseMatrix*, mfem::SparseMatrix*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, double*, int*, int*, double*, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, mfem::Table*) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::HypreParMatrix(int, int, int, int*, int*, int*, int*, int*, int*, int*, int) in libmfem.a(hypre.o)
+      mfem::HypreParMatrix::LeftDiagMult(mfem::SparseMatrix const&, int*) const in libmfem.a(hypre.o)
+      ...
+  "_hypre_ParCSRMatrixTranspose", referenced from:
+      mfem::HypreParMatrix::Transpose() in libmfem.a(hypre.o)
+  "_hypre_ParCSRMaxEigEstimateCG", referenced from:
+      mfem::HypreSmoother::SetOperator(mfem::Operator const&) in libmfem.a(hypre.o)
+  "_hypre_ParCSRRelax", referenced from:
+      mfem::HypreSmoother::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_ParMatmul", referenced from:
+      mfem::ParMult(mfem::HypreParMatrix*, mfem::HypreParMatrix*) in libmfem.a(hypre.o)
+  "_hypre_ParVectorCopy", referenced from:
+      mfem::ParCSRRelax_Taubin(hypre_ParCSRMatrix_struct*, hypre_ParVector_struct*, double, double, int, double, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre.o)
+      mfem::ParCSRRelax_FIR(hypre_ParCSRMatrix_struct*, hypre_ParVector_struct*, double, int, double*, hypre_ParVector_struct*, hypre_ParVector_struct*, hypre_ParVector_struct*, hypre_ParVector_struct*, hypre_ParVector_struct*) in libmfem.a(hypre.o)
+  "_hypre_ParVectorCreate", referenced from:
+      mfem::HypreParVector::HypreParVector(int, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(int, int, double*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::HypreParVector const&) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_hypre_ParVectorDestroy", referenced from:
+      mfem::HypreParVector::~HypreParVector() in libmfem.a(hypre.o)
+      mfem::HypreParVector::~HypreParVector() in libmfem.a(hypre.o)
+      mfem::HypreParVector::~HypreParVector() in libmfem.a(hypre.o)
+  "_hypre_ParVectorInDomainOf", referenced from:
+      mfem::HypreParVector::HypreParVector(mfem::HypreParMatrix&, int) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::HypreParMatrix&, int) in libmfem.a(hypre.o)
+      mfem::HypreSmoother::SetOperator(mfem::Operator const&) in libmfem.a(hypre.o)
+      mfem::HypreSmoother::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_ParVectorInRangeOf", referenced from:
+      mfem::HypreParVector::HypreParVector(mfem::HypreParMatrix&, int) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::HypreParMatrix&, int) in libmfem.a(hypre.o)
+  "_hypre_ParVectorInitialize", referenced from:
+      mfem::HypreParVector::HypreParVector(int, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(int, int, double*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::HypreParVector const&) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_hypre_ParVectorInnerProd", referenced from:
+      mfem::InnerProduct(mfem::HypreParVector*, mfem::HypreParVector*) in libmfem.a(hypre.o)
+      mfem::InnerProduct(mfem::HypreParVector&, mfem::HypreParVector&) in libmfem.a(hypre.o)
+  "_hypre_ParVectorPrint", referenced from:
+      mfem::HypreParVector::Print(char const*) const in libmfem.a(hypre.o)
+  "_hypre_ParVectorSetConstantValues", referenced from:
+      mfem::HypreParVector::operator=(double) in libmfem.a(hypre.o)
+      mfem::HypreSmoother::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreSolver::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_ParVectorSetDataOwner", referenced from:
+      mfem::HypreParVector::HypreParVector(int, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(int, int, double*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::HypreParVector const&) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_hypre_ParVectorSetPartitioningOwner", referenced from:
+      mfem::HypreParVector::HypreParVector(int, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(int, int, double*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::HypreParVector const&) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+  "_hypre_ParVectorSetRandomValues", referenced from:
+      mfem::HypreParVector::Randomize(int) in libmfem.a(hypre.o)
+  "_hypre_ParVectorToVectorAll", referenced from:
+      mfem::HypreParVector::GlobalVector() const in libmfem.a(hypre.o)
+  "_hypre_PrintTiming", referenced from:
+      mfem::HyprePCG::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+      mfem::HypreGMRES::Mult(mfem::HypreParVector const&, mfem::HypreParVector&) const in libmfem.a(hypre.o)
+  "_hypre_SeqVectorDestroy", referenced from:
+      mfem::HypreParVector::GlobalVector() const in libmfem.a(hypre.o)
+  "_hypre_SeqVectorSetDataOwner", referenced from:
+      mfem::HypreParVector::HypreParVector(int, int, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(int, int, double*, int*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::HypreParVector const&) in libmfem.a(hypre.o)
+      mfem::HypreParVector::HypreParVector(mfem::ParFiniteElementSpace*) in libmfem.a(hypre.o)
+      mfem::HypreParVector::GlobalVector() const in libmfem.a(hypre.o)
+  "_hypre_error_handler", referenced from:
+      mfem::internal::hypre_ParCSRMatrixSplit(hypre_ParCSRMatrix_struct*, int, int, hypre_ParCSRMatrix_struct**, int, int) in libmfem.a(hypre_parcsr.o)
+  "_mv_MultiVectorCreateFromSampleVector", referenced from:
+      mfem::HypreLOBPCG::HypreMultiVector::HypreMultiVector(int, mfem::HypreParVector&, mv_InterfaceInterpreter&) in libmfem.a(hypre.o)
+  "_mv_MultiVectorDestroy", referenced from:
+      mfem::HypreLOBPCG::HypreMultiVector::~HypreMultiVector() in libmfem.a(hypre.o)
+      mfem::HypreLOBPCG::HypreMultiVector::~HypreMultiVector() in libmfem.a(hypre.o)
+      mfem::HypreLOBPCG::~HypreLOBPCG() in libmfem.a(hypre.o)
+  "_mv_MultiVectorGetData", referenced from:
+      mfem::HypreLOBPCG::HypreMultiVector::HypreMultiVector(int, mfem::HypreParVector&, mv_InterfaceInterpreter&) in libmfem.a(hypre.o)
+      mfem::HypreLOBPCG::HypreMultiVector::StealVectors() in libmfem.a(hypre.o)
+  "_mv_MultiVectorSetRandom", referenced from:
+      mfem::HypreLOBPCG::HypreMultiVector::Randomize(int) in libmfem.a(hypre.o)
+      mfem::HypreLOBPCG::Solve() in libmfem.a(hypre.o)
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
