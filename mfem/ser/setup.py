@@ -22,7 +22,7 @@ modules= [
           "mesh", "fespace", "array",
           "fe_coll", "coefficient",
           "linearform", "vector", "lininteg",
-          "gridfunc", "bilinearform",
+          "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
           "solvers",
           "sparsesmoothers",

@@ -150,7 +150,13 @@ class BilinearForm(matrix.Matrix):
         return _bilinearform.BilinearForm_SCFESpace(self)
 
     def EnableHybridization(self, constr_space, constr_integ, ess_tdof_list):
-        return _bilinearform.BilinearForm_EnableHybridization(self, constr_space, constr_integ, ess_tdof_list)
+        val = _bilinearform.BilinearForm_EnableHybridization(self, constr_space, constr_integ, ess_tdof_list)
+
+        constr_integ.thisown = 0
+
+
+        return val
+
 
     def UsePrecomputedSparsity(self, ps=1):
         return _bilinearform.BilinearForm_UsePrecomputedSparsity(self, ps)

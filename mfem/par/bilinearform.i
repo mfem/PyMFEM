@@ -73,6 +73,9 @@ namespace mfem {
     if not hasattr(self, "_spmat"): self._spmat = []
     self._spmat.append(val)
     val.thisown=0 
+   %}
+%pythonappend BilinearForm::EnableHybridization %{
+    constr_integ.thisown = 0
    %} 
 } 
 
