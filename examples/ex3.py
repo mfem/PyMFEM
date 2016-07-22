@@ -13,6 +13,7 @@ from numpy import sin, array
 freq = 1.0
 kappa = np.pi*freq
 
+static_cond = False
 order = 1
 meshfile = expanduser(join(path, 'data', 'beam-tet.mesh'))
 
@@ -71,9 +72,6 @@ if mesh.bdr_attributes.Size():
 #    given by the function f_exact and phi_i are the basis functions in the
 #    finite element fespace.
 
-#from mfem.examples.ex3 import f_exact_cb, set_dim, set_freq
-#set_freq(1)
-#set_dim(3)
 b = mfem.LinearForm(fespace);
 f = f_exact()
 dd = mfem.VectorFEDomainLFIntegrator(f);
@@ -106,7 +104,7 @@ a.AddDomainIntegrator(mfem.VectorFEMassIntegrator(sigma));
 #       conditions, applying conforming constraints for non-conforming AMR,
 #       static condensation, etc.
 
-static_cond = False
+
 if (static_cond):  a.EnableStaticCondensation()
 a.Assemble();
 
