@@ -6064,11 +6064,7 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofsToVDofs(PyObject *self, PyObje
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
-            _v = 0;
-          }
+          _v = PyInt_Check(argv[2]) ? 1 : 0;
         }
         if (_v) {
           return _wrap_FiniteElementSpace_DofsToVDofs__SWIG_0(self, args);
@@ -6118,11 +6114,7 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofsToVDofs(PyObject *self, PyObje
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
+            _v = PyInt_Check(argv[3]) ? 1 : 0;
           }
           if (_v) {
             return _wrap_FiniteElementSpace_DofsToVDofs__SWIG_2(self, args);
@@ -6303,11 +6295,7 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofToVDof(PyObject *self, PyObject
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
+            _v = PyInt_Check(argv[3]) ? 1 : 0;
           }
           if (_v) {
             return _wrap_FiniteElementSpace_DofToVDof__SWIG_0(self, args);

@@ -33,6 +33,12 @@ import_array();
 %import "eltrans.i"
 %import "lininteg.i"
 
+// default number is -1, which conflict with error code of PyArray_PyIntAsInt...
+%typemap(typecheck) (int ndofs = -1) {
+   $1 = PyInt_Check($input) ? 1 : 0;
+}
+
+
 //VDoF accesser
 %feature("shadow") mfem::FiniteElementSpace::GetBdrElementVDofs %{
 def GetBdrElementVDofs(self, i):

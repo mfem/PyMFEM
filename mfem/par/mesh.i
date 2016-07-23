@@ -49,6 +49,83 @@ import_array();
     $1 = 0;
   }
 }
+%typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
+  if (PyFloat_Check($input)){
+    $1 = 1;
+  } else {
+    $1 = 0;
+  }
+}
+// this prevent automatic conversion from int to double so
+// that it select collect overloaded method....
+%typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
+  if (PyFloat_Check($input)){
+    $1 = 1;
+  } else {
+    $1 = 0;
+  }
+}
+// this typemap masks the case when Element::type is given. This
+// case is treated by giving element type as string
+%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) (int nx, int ny, int nz, mfem::Element::Type type, int generate_edges = 0) {
+  // always fail
+    $1 = 0;
+}
+// this typemap masks the case when Element::type is given. This
+// case is treated by giving element type as string
+%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) (int nx, int ny, mfem::Element::Type type, int generate_edges = 0) {
+    // always fail
+    $1 = 0;
+}
+
+// to give vertex array as list
+%typemap(in) (const double *){
+  int i;
+  if (!PyList_Check($input)) {
+    PyErr_SetString(PyExc_ValueError, "Expecting a list");
+    return NULL;
+  }
+  int l = PyList_Size($input);
+  $1 = (double *) malloc((l)*sizeof(double));
+  for (i = 0; i < l; i++) {
+    PyObject *s = PyList_GetItem($input,i);
+    if (PyInt_Check(s)) {
+        $1[i] = (double)PyFloat_AsDouble(s);
+    } else if (PyFloat_Check(s)) {
+        $1[i] = (double)PyFloat_AsDouble(s);
+    } else {
+        free($1);      
+        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+        return NULL;
+    }
+  }
+}
+%typemap(typecheck) (const double *) {
+   $1 = PyList_Check($input) ? 1 : 0;
+}
+// to give index array as list
+%typemap(in) (const int *vi){
+  int i;
+  if (!PyList_Check($input)) {
+    PyErr_SetString(PyExc_ValueError, "Expecting a list");
+    return NULL;
+  }
+  int l = PyList_Size($input);
+  $1 = (int *) malloc((l)*sizeof(int));
+  for (i = 0; i < l; i++) {
+    PyObject *s = PyList_GetItem($input,i);
+    if (!PyInt_Check(s)) {
+        free($1);
+        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+        return NULL;
+    }
+    $1[i] = (int)PyInt_AsLong(s);
+  }
+}
+%typemap(typecheck) (const int *vi) {
+   $1 = PyList_Check($input) ? 1 : 0;
+}
+
 
 %feature("shadow") mfem::Mesh::GetBdrElementVertices %{
 def GetBdrElementVertices(self, i):
@@ -168,6 +245,80 @@ namespace mfem{
         }
 	mesh = new mfem::Mesh(imesh, generate_edges, refine, fix_orientation);
 	return mesh;
+   }
+   Mesh(int nx, int ny, int nz, const char *type, int generate_edges = 0,
+        double sx = 1.0, double sy = 1.0, double sz = 1.0){
+     mfem::Mesh *mesh;     
+     if (std::strcmp(type, "POINT")) {
+	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::POINT,
+			       generate_edges, sx, sy, sz);
+     }
+     else if (std::strcmp(type, "SEGMENT")) {
+	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::SEGMENT,
+			       generate_edges, sx, sy, sz);
+	 
+     }
+     else if (std::strcmp(type, "TRIANGLE")) {
+	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TRIANGLE,
+			       generate_edges, sx, sy, sz);
+	 
+     }
+     else if (std::strcmp(type, "QUADRILATERAL")) {
+	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::QUADRILATERAL,
+			       generate_edges, sx, sy, sz);
+	 
+     }	 
+     else if (std::strcmp(type, "TETRAHEDRON")) {
+	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::TETRAHEDRON,
+			       generate_edges, sx, sy, sz);
+	 
+     }	 
+     else if (std::strcmp(type, "HEXAHEDRON")) {
+	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::HEXAHEDRON,
+			       generate_edges, sx, sy, sz);
+	 
+     }	 
+     else {
+         return NULL;
+     }
+     return mesh;       
+   }
+   Mesh(int nx, int ny,  const char *type, int generate_edges = 0,
+        double sx = 1.0, double sy = 1.0){
+     mfem::Mesh *mesh;     
+     if (std::strcmp(type, "POINT")) {
+	 mesh = new mfem::Mesh(nx, ny, mfem::Element::POINT,
+			       generate_edges, sx, sy);
+     }
+     else if (std::strcmp(type, "SEGMENT")) {
+	 mesh = new mfem::Mesh(nx, ny, mfem::Element::SEGMENT,
+			       generate_edges, sx, sy);
+	 
+     }
+     else if (std::strcmp(type, "TRIANGLE")) {
+	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TRIANGLE,
+			       generate_edges, sx, sy);
+	 
+     }
+     else if (std::strcmp(type, "QUADRILATERAL")) {
+	 mesh = new mfem::Mesh(nx, ny, mfem::Element::QUADRILATERAL,
+			       generate_edges, sx, sy);
+	 
+     }	 
+     else if (std::strcmp(type, "TETRAHEDRON")) {
+	 mesh = new mfem::Mesh(nx, ny, mfem::Element::TETRAHEDRON,
+			       generate_edges, sx, sy);
+	 
+     }	 
+     else if (std::strcmp(type, "HEXAHEDRON")) {
+	 mesh = new mfem::Mesh(nx, ny,  mfem::Element::HEXAHEDRON,
+			       generate_edges, sx, sy);
+	 
+     }	 
+     else {
+         return NULL;
+     }
+     return mesh;       
    }
    void PrintToFile(const char *mesh_file, const int precision) const
    {

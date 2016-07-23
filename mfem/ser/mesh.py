@@ -200,13 +200,6 @@ class Mesh(_object):
     def ReorderElements(self, ordering, reorder_vertices=True):
         return _mesh.Mesh_ReorderElements(self, ordering, reorder_vertices)
 
-    def __init__(self, *args):
-        this = _mesh.new_Mesh(*args)
-        try:
-            self.this.append(this)
-        except Exception:
-            self.this = this
-
     def Load(self, input, generate_edges=0, refine=1, fix_orientation=True):
         return _mesh.Mesh_Load(self, input, generate_edges, refine, fix_orientation)
 
@@ -582,6 +575,13 @@ class Mesh(_object):
         return _mesh.Mesh_PrintInfo(self, *args)
     __swig_destroy__ = _mesh.delete_Mesh
     __del__ = lambda self: None
+
+    def __init__(self, *args):
+        this = _mesh.new_Mesh(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
 
     def PrintToFile(self, mesh_file, precision):
         return _mesh.Mesh_PrintToFile(self, mesh_file, precision)

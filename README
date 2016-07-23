@@ -104,11 +104,23 @@ This is needed only when you edit SWIG interface files.
             GetFaceVertices(i)
             GetElementFaces(i)
 
-         A new constructor whith takes file name directly
-	 is added
+         Additional constructors:
+	    # this one takes file name as string
 	    Mesh(const char *mesh_file, int generate_edges, int refine,
                  bool fix_orientation = True)
-
+		 
+	    # this one takes element type as string
+            Mesh(int nx, int ny, int nz, const char *type, int generate_edges = 0,
+              double sx = 1.0, double sy = 1.0, double sz = 1.0)
+            Mesh(int nx, int ny, const char *type, int generate_edges = 0,
+              double sx = 1.0, double sy = 1.0)
+	      
+	    (note) an issue is Element::Type (c++ enum) is treated as int in
+	    python, and therefore, the wrapper can not disingish it from the
+	    following constructor.
+              Mesh(int _Dim, int NVert, int NElem, int NBdrElem = 0,
+    	           int _spaceDim= -1)
+         
          GetVertexArray can be used to obtain Vertex point data
 	 as numpy object
 
