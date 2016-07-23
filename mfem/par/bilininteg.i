@@ -31,7 +31,13 @@ import_array();
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
-namespace mfem { 
+namespace mfem {
+%pythonprepend InverseIntegrator::InverseIntegrator %{
+    if own_integ == 1:  integ.thisown = 0
+%}
+%pythonprepend SumIntegrator::AddIntegrator %{
+    integ.thisown = 0
+%}
 %pythonappend CurlCurlIntegrator::CurlCurlIntegrator %{
     self._coeff = args[0]
 %}

@@ -127,3 +127,9 @@ This is needed only when you edit SWIG interface files.
          GetBdrElementFace(i) returns tuple
          GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
          GetBdrAttributeArray(int idx) returns array of boundary attribute
+
+  4-5) Sparsemat
+         RAP has two different implementations. One accept three references.
+	 The other accept a pointer as a third argument, instead.
+	 These two are not distinguishable from python. So, RAP_P and
+	 RAP_R are added. P indicates the third argment is pointer.

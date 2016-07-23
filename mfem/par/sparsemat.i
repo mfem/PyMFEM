@@ -22,6 +22,23 @@ import_array();
     val.thisown = self.thisown
 %}
 
+// RAP_P, RAP_R replaces RAP, since RAP has two definition one accept
+// pointer and the other accept reference. From Python, two
+// can not be distingished..
+%inline %{
+  mfem::SparseMatrix *RAP_P (const mfem::SparseMatrix &A,
+			     const mfem::SparseMatrix &R,
+                             mfem::SparseMatrix *ORAP){
+    return RAP(A, R, ORAP);
+  }    
+    
+  mfem::SparseMatrix *RAP_R(const mfem::SparseMatrix &Rt,
+			    const mfem::SparseMatrix &A,
+                            const mfem::SparseMatrix &P){
+    return RAP(Rt, A, P);
+  }
+%}
+
 %include "linalg/sparsemat.hpp"
 
 %extend mfem::SparseMatrix {

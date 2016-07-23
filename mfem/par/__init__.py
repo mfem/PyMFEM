@@ -1,10 +1,10 @@
 from mpi4py import MPI
+from  operators import *
 from  blockoperator import *
 from  blockvector import *
 from  blockmatrix import *
 from  coefficient import *
 from  lininteg import *
-
 from  mesh import *
 from  fe_coll import *
 from  array import *

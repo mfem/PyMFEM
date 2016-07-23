@@ -224,6 +224,10 @@ class InverseIntegrator(BilinearFormIntegrator):
     __repr__ = _swig_repr
 
     def __init__(self, integ, own_integ=1):
+
+        if own_integ == 1:  integ.thisown = 0
+
+
         this = _bilininteg.new_InverseIntegrator(integ, own_integ)
         try:
             self.this.append(this)
@@ -256,7 +260,12 @@ class SumIntegrator(BilinearFormIntegrator):
             self.this = this
 
     def AddIntegrator(self, integ):
+
+        integ.thisown = 0
+
+
         return _bilininteg.SumIntegrator_AddIntegrator(self, integ)
+
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         return _bilininteg.SumIntegrator_AssembleElementMatrix(self, el, Trans, elmat)

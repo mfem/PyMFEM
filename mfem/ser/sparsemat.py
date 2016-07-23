@@ -95,6 +95,14 @@ import vector
 import operators
 import matrix
 import densemat
+
+def RAP_P(A, R, ORAP):
+    return _sparsemat.RAP_P(A, R, ORAP)
+RAP_P = _sparsemat.RAP_P
+
+def RAP_R(Rt, A, P):
+    return _sparsemat.RAP_R(Rt, A, P)
+RAP_R = _sparsemat.RAP_R
 class RowNode(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, RowNode, name, value)

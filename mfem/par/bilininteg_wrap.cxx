@@ -7896,8 +7896,11 @@ SWIGINTERN PyObject *_wrap_new_ConvectionIntegrator(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_ConvectionIntegrator__SWIG_0(self, args);
@@ -8114,8 +8117,11 @@ SWIGINTERN PyObject *_wrap_new_GroupConvectionIntegrator(PyObject *self, PyObjec
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_GroupConvectionIntegrator__SWIG_0(self, args);
@@ -11474,13 +11480,19 @@ SWIGINTERN PyObject *_wrap_new_ElasticityIntegrator(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyFloat_Check(argv[2])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_ElasticityIntegrator__SWIG_1(self, args);
@@ -11728,13 +11740,19 @@ SWIGINTERN PyObject *_wrap_new_DGTraceIntegrator(PyObject *self, PyObject *args)
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyFloat_Check(argv[2])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_DGTraceIntegrator__SWIG_0(self, args);
@@ -11753,13 +11771,19 @@ SWIGINTERN PyObject *_wrap_new_DGTraceIntegrator(PyObject *self, PyObject *args)
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyFloat_Check(argv[2])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_new_DGTraceIntegrator__SWIG_1(self, args);
@@ -12314,13 +12338,19 @@ SWIGINTERN PyObject *_wrap_new_DGDiffusionIntegrator(PyObject *self, PyObject *a
   if (argc == 2) {
     int _v;
     {
-      int res = SWIG_AsVal_double(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyFloat_Check(argv[0])){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_DGDiffusionIntegrator__SWIG_0(self, args);
@@ -12334,13 +12364,19 @@ SWIGINTERN PyObject *_wrap_new_DGDiffusionIntegrator(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyFloat_Check(argv[2])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_DGDiffusionIntegrator__SWIG_1(self, args);
@@ -12355,13 +12391,19 @@ SWIGINTERN PyObject *_wrap_new_DGDiffusionIntegrator(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyFloat_Check(argv[2])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_DGDiffusionIntegrator__SWIG_2(self, args);
