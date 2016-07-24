@@ -13,7 +13,7 @@ from numpy import sin, cos, exp
 
 elem_type = 1
 ref_levels = 2
-amr = 1
+amr = 0
 order = 2
 always_snap = False
 

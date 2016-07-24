@@ -24,7 +24,7 @@ modules= [
           "linearform", "vector", "lininteg",
           "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
-          "solvers",
+          "solvers", "estimators", "mesh_operators",
           "sparsesmoothers",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
           "nonlininteg", "nonlinearform", ]

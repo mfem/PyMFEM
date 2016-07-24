@@ -128,8 +128,21 @@ This is needed only when you edit SWIG interface files.
          GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
          GetBdrAttributeArray(int idx) returns array of boundary attribute
 
-  4-5) Sparsemat
+  4-5) sparsemat
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.
 	 These two are not distinguishable from python. So, RAP_P and
 	 RAP_R are added. P indicates the third argment is pointer.
+	 
+  4-6) estimators
+        ZienkiewiczZhuEstimator constructor has two versions. flux_fes
+	can be passed as pointer or reference. In python class, you
+	need to pass 5th argument if you want to pass flux_fes as
+	reference. By default,  own_flux_fes is  False, so a user
+	can skip passing this keyword when passing by reference
+	
+	pass by reference 
+          ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = False)	  
+        pass by pointer
+          ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = True)	  
+

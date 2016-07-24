@@ -57,18 +57,11 @@ import_array();
     $1 = 0;
   }
 }
-// this typemap masks the case when Element::type is given. This
-// case is treated by giving element type as string
-%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) (int nx, int ny, int nz, mfem::Element::Type type, int generate_edges = 0) {
-  // always fail
-    $1 = 0;
-}
-// this typemap masks the case when Element::type is given. This
-// case is treated by giving element type as string
-%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) (int nx, int ny, mfem::Element::Type type, int generate_edges = 0) {
-    // always fail
-    $1 = 0;
-}
+// ignore these constructors, since in python element::type is given by 
+// string (see extend section below)
+%ignore mfem::Mesh(int nx, int ny, int nz, Element::Type type, int generate_edges = 0, double sx = 1.0, double sy = 1.0, double sz = 1.0);
+%ignore mfem::Mesh(int nx, int ny, Element::Type type, int generate_edges = 0,
+		   double sx = 1.0, double sy = 1.0);
 
 // to give vertex array as list
 %typemap(in) (const double *){
@@ -200,34 +193,7 @@ def GetElementFaces(self, i):
 %ignore MesquiteSmooth;
 %include "mesh/mesh.hpp"
 %mutable;
- /*
 
-   
-class Mesh {
- public:
-   %immutable;  
-   Array<int> attributes;
-   %immutable;     
-   Array<int> bdr_attributes;
-
- public:
-   Mesh(std::istream &input, int generate_edges = 0, int refine = 1,
-        bool fix_orientation = true);
-   int Dimension();
-   int SpaceDimension();
-   void UniformRefinement();
-   virtual void ReorientTetMesh();
-
-   inline int MeshGenerator();
-   inline int GetNV();
-   inline int GetNE();
-   inline int GetNBE();
-   inline int GetNEdges();
-   inline int GetNFaces();
-  
-   ~Mesh();
-};
- */
 namespace mfem{
 %extend Mesh{
    Mesh(const char *mesh_file, int generate_edges, int refine,

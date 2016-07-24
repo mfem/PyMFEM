@@ -65,18 +65,12 @@ import_array();
     $1 = 0;
   }
 }
-// this typemap masks the case when Element::type is given. This
-// case is treated by giving element type as string
-%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) (int nx, int ny, int nz, mfem::Element::Type type, int generate_edges = 0) {
-  // always fail
-    $1 = 0;
-}
-// this typemap masks the case when Element::type is given. This
-// case is treated by giving element type as string
-%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) (int nx, int ny, mfem::Element::Type type, int generate_edges = 0) {
-    // always fail
-    $1 = 0;
-}
+
+// ignore these constructors, since in python element::type is given by 
+// string (see extend section below)
+%ignore mfem::Mesh(int nx, int ny, int nz, Element::Type type, int generate_edges = 0, double sx = 1.0, double sy = 1.0, double sz = 1.0);
+%ignore mfem::Mesh(int nx, int ny, Element::Type type, int generate_edges = 0,
+		   double sx = 1.0, double sy = 1.0);
 
 // to give vertex array as list
 %typemap(in) (const double *){
@@ -201,36 +195,7 @@ def GetElementFaces(self, i):
 %ignore MesquiteSmooth;
 %include "mesh/mesh.hpp"
 %mutable;
-/*
-%inline %{
-#ifdef MFEM_USE_MPI
-// auxiliary function for qsort
-static int mfem_less(const void *x, const void *y)
-{
-   if (*(int*)x < *(int*)y)
-   {
-      return 1;
-   }
-   if (*(int*)x > *(int*)y)
-   {
-      return -1;
-   }
-   return 0;
-}
-// METIS 4 prototypes
-typedef int idxtype;
-extern "C" {  
-   void METIS_PartGraphRecursive(int*, idxtype*, idxtype*, idxtype*, idxtype*,
-                                 int*, int*, int*, int*, int*, idxtype*);
-   void METIS_PartGraphKway(int*, idxtype*, idxtype*, idxtype*, idxtype*,
-                            int*, int*, int*, int*, int*, idxtype*);
-   void METIS_PartGraphVKway(int*, idxtype*, idxtype*, idxtype*, idxtype*,
-                             int*, int*, int*, int*, int*, idxtype*);
-}
-#endif
 
- %}
-*/
 namespace mfem{
 %extend Mesh{
    Mesh(const char *mesh_file, int generate_edges, int refine,

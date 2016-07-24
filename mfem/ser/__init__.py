@@ -16,6 +16,8 @@ from  mesh import *
 from  intrules import *
 from  fe import *
 from  bilinearform import *
+from  estimators import *
+from  mesh_operators import *
 from  sparsemat import *
 from  densemat import *
 from  solvers import *
