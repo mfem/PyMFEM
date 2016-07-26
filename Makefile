@@ -5,6 +5,9 @@
 MAKE=$(shell which make)
 PYTHON=$(shell which python)
 
+WHOLE_ARCHIVE = --whole_archive
+NO_WHOLE_ARCHIVE = ,--no_whole_archive
+
 SWIG=$(shell which swig)
 SWIGFLAG = -Wall -c++ -python
 

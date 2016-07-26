@@ -1,4 +1,12 @@
 from mpi4py import MPI
+
+
+## libmfem.a is linked only with _array.so
+## this make sure that symbols are resovled
+import sys, ctypes
+rtld_now = sys.getdlopenflags()
+sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
+
 from  array import *
 from  operators import *
 from  blockoperator import *
@@ -35,3 +43,4 @@ from  pbilinearform import *
 from  pgridfunc import *
 from  hypre import *
 
+sys.setdlopenflags(rtld_now)

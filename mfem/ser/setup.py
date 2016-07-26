@@ -32,7 +32,7 @@ modules= ["array",
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
 
-extra_link_args =  ['-Wl,'+whole_archive+','+mfemserlnkdir+'/libmfem.a']
+extra_link_args =  ['-Wl,'+whole_archive+','+mfemserlnkdir+'/libmfem.a'+no_whole_archive]
 include_dirs = [mfemserincdir, numpyincdir]
 library_dirs = [mfemserlnkdir]
 libraries    = [mfemserlib]

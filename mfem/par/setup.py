@@ -44,7 +44,7 @@ sources = {name: [name + "_wrap.cxx"] for name in modules}
 
 proxy_names = {name: '_'+name for name in modules}
 
-extra_link_args0 =  ['-Wl,'+whole_archive+','+mfemlnkdir+'/libmfem.a']
+extra_link_args0 =  ['-Wl,'+whole_archive+','+mfemlnkdir+'/libmfem.a'+no_whole_archive]
 extra_link_args =  [metis4liba]
 include_dirs = [mfemincdir, numpyincdir, mpi4pyincdir,
                 mpichincdir, hypreincdir]

@@ -1,3 +1,10 @@
+import sys, ctypes
+
+## libmfem.a is linked only with _array.so
+## this make sure that symbols are resovled
+rtld_now = sys.getdlopenflags()
+sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
+
 from  array import *
 from  operators import *
 from  blockoperator import *
@@ -30,4 +37,6 @@ from  table import *
 from  element import *
 from  nonlininteg import *
 from  nonlinearform import *
+
+sys.setdlopenflags(rtld_now)
 

@@ -1,6 +1,7 @@
 PYTHON   = python2.7
 
 WHOLE_ARCHIVE = -all_load
+NO_WHOLE_ARCHIVE = 
 
 MFEM     = $(HOME)/src/mfem-3.2
 MFEMINCDIR  = $(MFEM)
