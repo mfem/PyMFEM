@@ -1324,6 +1324,9 @@ class Local_FECollection(FiniteElementCollection):
 Local_FECollection_swigregister = _fe_coll.Local_FECollection_swigregister
 Local_FECollection_swigregister(Local_FECollection)
 
+
+DG_FECollection = L2_FECollection
+
 # This file is compatible with both classic and new-style classes.
 
 

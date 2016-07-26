@@ -1,4 +1,5 @@
 from mpi4py import MPI
+from  array import *
 from  operators import *
 from  blockoperator import *
 from  blockvector import *
@@ -7,7 +8,6 @@ from  coefficient import *
 from  lininteg import *
 from  mesh import *
 from  fe_coll import *
-from  array import *
 from  vector import *
 from  fespace import *
 from  linearform import *

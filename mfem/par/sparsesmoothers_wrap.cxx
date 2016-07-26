@@ -3009,21 +3009,23 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_char swig_types[0]
 #define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[1]
 #define SWIGTYPE_p_mfem__DSmoother swig_types[2]
-#define SWIGTYPE_p_mfem__GSSmoother swig_types[3]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[4]
-#define SWIGTYPE_p_mfem__Matrix swig_types[5]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[6]
-#define SWIGTYPE_p_mfem__Operator swig_types[7]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[8]
-#define SWIGTYPE_p_mfem__Solver swig_types[9]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[10]
-#define SWIGTYPE_p_mfem__SparseSmoother swig_types[11]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[12]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[13]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[14]
-#define SWIGTYPE_p_mfem__Vector swig_types[15]
-static swig_type_info *swig_types[17];
-static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[3]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[4]
+#define SWIGTYPE_p_mfem__GSSmoother swig_types[5]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[6]
+#define SWIGTYPE_p_mfem__Matrix swig_types[7]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[8]
+#define SWIGTYPE_p_mfem__Operator swig_types[9]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[10]
+#define SWIGTYPE_p_mfem__Solver swig_types[11]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[12]
+#define SWIGTYPE_p_mfem__SparseSmoother swig_types[13]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[14]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[15]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[16]
+#define SWIGTYPE_p_mfem__Vector swig_types[17]
+static swig_type_info *swig_types[19];
+static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4194,47 +4196,59 @@ static void *_p_mfem__DSmootherTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(ne
 static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
 }
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
+}
 static void *_p_mfem__GSSmootherTo_p_mfem__SparseSmoother(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::SparseSmoother *)  ((mfem::GSSmoother *) x));
 }
 static void *_p_mfem__DSmootherTo_p_mfem__SparseSmoother(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::SparseSmoother *)  ((mfem::DSmoother *) x));
 }
-static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
-}
-static void *_p_mfem__SparseSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::SparseSmoother *) x));
-}
-static void *_p_mfem__GSSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *)(mfem::SparseSmoother *) ((mfem::GSSmoother *) x));
-}
-static void *_p_mfem__DSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *)(mfem::SparseSmoother *) ((mfem::DSmoother *) x));
-}
-static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
-}
-static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
-}
-static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
-}
-static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
-}
-static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
-}
-static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
 }
 static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::MatrixInverse *) x));
 }
+static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
+}
+static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
+}
+static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
+}
 static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
+}
+static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
+}
+static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
+}
+static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
+}
+static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
+}
+static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
+}
+static void *_p_mfem__GSSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *)(mfem::SparseSmoother *) ((mfem::GSSmoother *) x));
+}
+static void *_p_mfem__SparseSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *) ((mfem::SparseSmoother *) x));
+}
+static void *_p_mfem__DSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::MatrixInverse *)(mfem::SparseSmoother *) ((mfem::DSmoother *) x));
 }
 static void *_p_mfem__SparseSmootherTo_p_mfem__MatrixInverse(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::MatrixInverse *)  ((mfem::SparseSmoother *) x));
@@ -4245,18 +4259,23 @@ static void *_p_mfem__GSSmootherTo_p_mfem__MatrixInverse(void *x, int *SWIGUNUSE
 static void *_p_mfem__DSmootherTo_p_mfem__MatrixInverse(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::MatrixInverse *) (mfem::SparseSmoother *) ((mfem::DSmoother *) x));
 }
+static void *_p_mfem__DenseMatrixInverseTo_p_mfem__MatrixInverse(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixInverse *)  ((mfem::DenseMatrixInverse *) x));
+}
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DSmoother = {"_p_mfem__DSmoother", "mfem::DSmoother *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GSSmoother = {"_p_mfem__GSSmoother", "mfem::GSSmoother *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", "mfem::MatrixInverse *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseSmoother = {"_p_mfem__SparseSmoother", "mfem::SparseSmoother *", 0, 0, (void*)0, 0};
@@ -4266,6 +4285,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__DSmoother,
+  &_swigt__p_mfem__DenseMatrix,
+  &_swigt__p_mfem__DenseMatrixInverse,
   &_swigt__p_mfem__GSSmoother,
   &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__Matrix,
@@ -4284,16 +4305,18 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DSmoother[] = {  {&_swigt__p_mfem__DSmoother, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GSSmoother[] = {  {&_swigt__p_mfem__GSSmoother, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__MatrixInverse, 0, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__MatrixInverse, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseSmoother[] = {  {&_swigt__p_mfem__SparseSmoother, 0, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__SparseSmoother, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__SparseSmoother, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
@@ -4302,6 +4325,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__DSmoother,
+  _swigc__p_mfem__DenseMatrix,
+  _swigc__p_mfem__DenseMatrixInverse,
   _swigc__p_mfem__GSSmoother,
   _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__Matrix,

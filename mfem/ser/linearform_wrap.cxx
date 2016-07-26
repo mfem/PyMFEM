@@ -3595,7 +3595,8 @@ namespace swig {
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "numpy/arrayobject.h"      
+#include "numpy/arrayobject.h"
+#include "pyoperator.hpp"         
 
 
 

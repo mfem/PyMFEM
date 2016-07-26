@@ -90,10 +90,19 @@ except AttributeError:
     _newclass = 0
 
 
-import matrix
+try:
+    import weakref
+    weakref_proxy = weakref.proxy
+except Exception:
+    weakref_proxy = lambda x: x
+
+
 import vector
 import array
 import operators
+import sparsemat
+import matrix
+import densemat
 class SparseSmoother(matrix.MatrixInverse):
     __swig_setmethods__ = {}
     for _s in [matrix.MatrixInverse]:

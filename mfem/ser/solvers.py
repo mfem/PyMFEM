@@ -90,9 +90,19 @@ except AttributeError:
     _newclass = 0
 
 
-import operators
+try:
+    import weakref
+    weakref_proxy = weakref.proxy
+except Exception:
+    weakref_proxy = lambda x: x
+
+
 import vector
 import array
+import operators
+import matrix
+import sparsemat
+import densemat
 class IterativeSolver(operators.Solver):
     __swig_setmethods__ = {}
     for _s in [operators.Solver]:

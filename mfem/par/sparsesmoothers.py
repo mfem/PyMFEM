@@ -90,10 +90,12 @@ except AttributeError:
     _newclass = 0
 
 
-import matrix
 import vector
 import array
 import operators
+import sparsemat
+import matrix
+import densemat
 class SparseSmoother(matrix.MatrixInverse):
     __swig_setmethods__ = {}
     for _s in [matrix.MatrixInverse]:

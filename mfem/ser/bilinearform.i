@@ -1,7 +1,8 @@
 %module(directors="1")  bilinearform
 %{
 #include "fem/bilinearform.hpp"
-#include "numpy/arrayobject.h"      
+#include "numpy/arrayobject.h"
+#include "pyoperator.hpp"         
 %}
 
 %init %{

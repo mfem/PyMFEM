@@ -2,7 +2,8 @@
 
 %{
 #include "linalg/blockoperator.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "pyoperator.hpp"   
 %}
 // initialization required to return numpy array from SWIG
 %init %{

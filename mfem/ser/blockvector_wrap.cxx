@@ -3118,7 +3118,7 @@ namespace swig {
 
 
 #include "linalg/blockvector.hpp"
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 
 
 SWIGINTERN int

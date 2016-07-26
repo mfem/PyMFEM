@@ -1,3 +1,4 @@
+from  array import *
 from  operators import *
 from  blockoperator import *
 from  blockvector import *
@@ -6,7 +7,6 @@ from  coefficient import *
 from  lininteg import *
 from  mesh import *
 from  fe_coll import *
-from  array import *
 from  vector import *
 from  fespace import *
 from  linearform import *
@@ -15,6 +15,7 @@ from  gridfunc import *
 from  mesh import *
 from  intrules import *
 from  fe import *
+from  ode import *
 from  bilinearform import *
 from  estimators import *
 from  mesh_operators import *

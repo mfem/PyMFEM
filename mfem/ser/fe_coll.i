@@ -32,5 +32,12 @@ import_array();
 %import "eltrans.i"
 %import "lininteg.i"
 
+ //%inline %{
+ //  typedef mfem::L2_FECollection mfem::DG_FECollection;
+ // %}
 
 %include "fem/fe_coll.hpp"
+%pythoncode %{
+  DG_FECollection = L2_FECollection
+%}   
+

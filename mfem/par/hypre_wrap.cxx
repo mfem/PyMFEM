@@ -4909,8 +4909,11 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Assign(PyObject *self, PyObject *args)
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_HypreParVector_Assign__SWIG_0(self, args);
@@ -8616,8 +8619,11 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_HypreParMatrix_Mult__SWIG_1(self, args);
@@ -8639,8 +8645,11 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_HypreParMatrix_Mult__SWIG_4(self, args);
@@ -8662,13 +8671,19 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
+              if (PyFloat_Check(argv[4])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
             }
             if (_v) {
               return _wrap_HypreParMatrix_Mult__SWIG_3(self, args);
@@ -8693,13 +8708,19 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
+              if (PyFloat_Check(argv[4])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
             }
             if (_v) {
               return _wrap_HypreParMatrix_Mult__SWIG_0(self, args);
@@ -8716,16 +8737,22 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             void *vptr = 0;
@@ -8876,8 +8903,11 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose(PyObject *self, PyObject
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_HypreParMatrix_MultTranspose__SWIG_1(self, args);
@@ -8901,13 +8931,19 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose(PyObject *self, PyObject
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
+              if (PyFloat_Check(argv[4])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
             }
             if (_v) {
               return _wrap_HypreParMatrix_MultTranspose__SWIG_0(self, args);
@@ -8924,16 +8960,22 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose(PyObject *self, PyObject
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             void *vptr = 0;
@@ -9412,8 +9454,11 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Threshold(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_HypreParMatrix_Threshold__SWIG_0(self, args);
@@ -10780,8 +10825,11 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother(PyObject *self, PyObject *args) {
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_new_HypreSmoother__SWIG_4(self, args);
@@ -10813,13 +10861,19 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother(PyObject *self, PyObject *args) {
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
+              if (PyFloat_Check(argv[4])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
             }
             if (_v) {
               return _wrap_new_HypreSmoother__SWIG_3(self, args);
@@ -10852,13 +10906,19 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother(PyObject *self, PyObject *args) {
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
+              if (PyFloat_Check(argv[4])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
             }
             if (_v) {
               {
@@ -10900,13 +10960,19 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother(PyObject *self, PyObject *args) {
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
+              if (PyFloat_Check(argv[4])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
             }
             if (_v) {
               {
@@ -10918,8 +10984,11 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother(PyObject *self, PyObject *args) {
               }
               if (_v) {
                 {
-                  int res = SWIG_AsVal_double(argv[6], NULL);
-                  _v = SWIG_CheckState(res);
+                  if (PyFloat_Check(argv[6])){
+                    _v = 1;
+                  } else {
+                    _v = 0;
+                  }
                 }
                 if (_v) {
                   return _wrap_new_HypreSmoother__SWIG_1(self, args);
@@ -12398,8 +12467,11 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetResidualConvergenceOptions(PyObject *self
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyFloat_Check(argv[2])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_HyprePCG_SetResidualConvergenceOptions__SWIG_0(self, args);

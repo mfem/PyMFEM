@@ -32,6 +32,9 @@ import_array();
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
 namespace mfem {
+%pythonprepend TransposeIntegrator::TransposeIntegrator %{
+    if _own_bfi == 1:  _bfi.thisown = 0
+%}
 %pythonprepend InverseIntegrator::InverseIntegrator %{
     if own_integ == 1:  integ.thisown = 0
 %}

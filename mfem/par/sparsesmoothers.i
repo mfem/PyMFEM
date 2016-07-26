@@ -2,9 +2,10 @@
 %{
 #include "linalg/sparsesmoothers.hpp"
 %}
-%import "linalg/vector.hpp"
-%import "linalg/operator.hpp"
-%import "linalg/sparsemat.hpp"
+
+%import "vector.i"
+%import "operators.i"
+%import "sparsemat.i"
 %import "matrix.i"
 
 %include "linalg/sparsesmoothers.hpp" 

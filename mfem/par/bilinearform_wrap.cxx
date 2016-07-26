@@ -4765,8 +4765,11 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMult(PyObject *self, PyObject *args) 
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_BilinearForm_AddMult__SWIG_0(self, args);
@@ -8217,8 +8220,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_MixedBilinearForm_AddMult__SWIG_0(self, args);
@@ -8394,8 +8400,11 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose(PyObject *self, Py
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_MixedBilinearForm_AddMultTranspose__SWIG_0(self, args);

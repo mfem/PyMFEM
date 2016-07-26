@@ -16,15 +16,15 @@ from  setup_local import *
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= [
+modules= ["array",
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table", "fe",
-          "mesh", "fespace", "array",
+          "mesh", "fespace", 
           "fe_coll", "coefficient",
           "linearform", "vector", "lininteg",
           "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
-          "solvers", "estimators", "mesh_operators",
+          "solvers", "estimators", "mesh_operators", "ode",
           "sparsesmoothers",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
           "nonlininteg", "nonlinearform", ]
@@ -32,18 +32,26 @@ modules= [
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
 
-extra_link_args =  []
+extra_link_args =  ['-Wl,'+whole_archive+','+mfemserlnkdir+'/libmfem.a']
 include_dirs = [mfemserincdir, numpyincdir]
 library_dirs = [mfemserlnkdir]
 libraries    = [mfemserlib]
 
-ext_modules = [Extension(proxy_names[name],
-                        sources=sources[name],
+
+ext_modules = [Extension(proxy_names[modules[0]],
+                        sources=sources[modules[0]],
                         extra_link_args = extra_link_args,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                        libraries = libraries)
-              for name in modules]
+                         libraries = [])]
+
+ext_modules.extend([Extension(proxy_names[name],
+                        sources=sources[name],
+                        extra_link_args = [],
+                        include_dirs = include_dirs,
+                        library_dirs = library_dirs,
+                        libraries = [])
+               for name in modules[1:]])
 
 
 setup (name = 'mfem',

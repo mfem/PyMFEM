@@ -90,6 +90,13 @@ except AttributeError:
     _newclass = 0
 
 
+try:
+    import weakref
+    weakref_proxy = weakref.proxy
+except Exception:
+    weakref_proxy = lambda x: x
+
+
 import array
 import vector
 import densemat

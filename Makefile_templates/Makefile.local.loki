@@ -1,5 +1,9 @@
 PYTHON=/usr/local/bin/python2.7
+
 FC=mpif90
+
+WHOLE_ARCHIVE = --whole-archive
+
 ##   Makefile
 ##
 ##   default variable setting

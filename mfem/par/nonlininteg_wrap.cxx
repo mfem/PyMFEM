@@ -4748,13 +4748,19 @@ SWIGINTERN PyObject *_wrap_new_NeoHookeanModel(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      int res = SWIG_AsVal_double(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyFloat_Check(argv[0])){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_NeoHookeanModel__SWIG_1(self, args);
@@ -4783,18 +4789,27 @@ SWIGINTERN PyObject *_wrap_new_NeoHookeanModel(PyObject *self, PyObject *args) {
   if (argc == 3) {
     int _v;
     {
-      int res = SWIG_AsVal_double(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyFloat_Check(argv[0])){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyFloat_Check(argv[2])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_NeoHookeanModel__SWIG_0(self, args);

@@ -4645,8 +4645,11 @@ SWIGINTERN PyObject *_wrap_ParBilinearForm_TrueAddMult(PyObject *self, PyObject 
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_ParBilinearForm_TrueAddMult__SWIG_0(self, args);
@@ -5471,8 +5474,11 @@ SWIGINTERN PyObject *_wrap_ParMixedBilinearForm_TrueAddMult(PyObject *self, PyOb
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_ParMixedBilinearForm_TrueAddMult__SWIG_0(self, args);

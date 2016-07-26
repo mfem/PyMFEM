@@ -21,9 +21,11 @@ from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["blockvector", "blockoperator", "blockmatrix",
+modules= [
+          "array",
+          "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
-          "fe", "mesh", "fespace", "array",
+          "fe", "mesh", "fespace", 
           "fe_coll", "coefficient",
           "linearform", "vector", "lininteg",
           "gridfunc", "bilinearform",
@@ -42,19 +44,35 @@ sources = {name: [name + "_wrap.cxx"] for name in modules}
 
 proxy_names = {name: '_'+name for name in modules}
 
+extra_link_args0 =  ['-Wl,'+whole_archive+','+mfemlnkdir+'/libmfem.a']
 extra_link_args =  [metis4liba]
 include_dirs = [mfemincdir, numpyincdir, mpi4pyincdir,
                 mpichincdir, hypreincdir]
 library_dirs = [mfemlnkdir, hyprelnkdir]
-libraries    = [mfemlib, hyprelib]
+libraries    = [hyprelib]
 
-ext_modules = [Extension(proxy_names[name],
+ext_modules = [Extension(proxy_names[modules[0]],
+                        sources=sources[modules[0]],
+                        extra_link_args = extra_link_args + extra_link_args0,
+                        include_dirs = include_dirs,
+                        library_dirs = library_dirs,
+                         libraries = libraries)]
+
+ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],
                         extra_link_args = extra_link_args,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                        libraries = libraries)
-              for name in modules]
+                              libraries = libraries)
+               for name in modules[1:]])
+
+#ext_modules = [Extension(proxy_names[name],
+#                        sources=sources[name],
+#                        extra_link_args = extra_link_args,
+#                        include_dirs = include_dirs,
+#                        library_dirs = library_dirs,
+#                        libraries = libraries)
+#              for name in modules]
 
 
 setup (name = 'mfem',

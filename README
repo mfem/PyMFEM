@@ -145,4 +145,15 @@ This is needed only when you edit SWIG interface files.
           ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = False)	  
         pass by pointer
           ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = True)	  
-
+  (below is not yet implement in parallel version)
+  4-7) operator
+        PyTimeDependentOperatorBase and PyOperatorBase is added to
+	allow for implementing those operator in python. A user
+	can inherit these class and overwrite Mult in python. See
+	ex9.py for example.
+	
+  4-8) ode
+        Step usins reference passing for t and dt. To get the result
+	from this method, use
+	   t, dt = ode_solver.Step(u, t, dt)
+	   

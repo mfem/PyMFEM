@@ -1,10 +1,30 @@
 %module sparsesmoothers
 %{
 #include "linalg/sparsesmoothers.hpp"
+#include "pyoperator.hpp"           
 %}
-%import "linalg/vector.hpp"
-%import "linalg/operator.hpp"
-%import "linalg/sparsemat.hpp"
+%import "vector.i"
+%import "operators.i"
+%import "sparsemat.i"
 %import "matrix.i"
 
-%include "linalg/sparsesmoothers.hpp" 
+%include "linalg/sparsesmoothers.hpp"
+
+ // this should not be necessary.
+ // dynamic_cast at DSO boundary issue...
+/*
+%extend mfem::SparseSmoother{
+  //  void mfem::SparseSmoother::SetOperator(const SparseMatrix &a) {
+  void SetOperator(mfem::SparseMatrix &a) {  
+    std::cout << "this is called\n";
+    std::cout << std::to_string(a.Height()) << "\n";
+    mfem::SparseMatrix *b = new mfem::SparseMatrix(a);
+    $self->SetOperator(*b);
+  }
+};
+*/
+
+
+
+
+  

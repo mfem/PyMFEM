@@ -168,6 +168,10 @@ class TransposeIntegrator(BilinearFormIntegrator):
     __repr__ = _swig_repr
 
     def __init__(self, _bfi, _own_bfi=1):
+
+        if _own_bfi == 1:  _bfi.thisown = 0
+
+
         this = _bilininteg.new_TransposeIntegrator(_bfi, _own_bfi)
         try:
             self.this.append(this)

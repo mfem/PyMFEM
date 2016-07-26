@@ -6829,8 +6829,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_GridFunction_ImposeBounds__SWIG_2(self, args);
@@ -6887,13 +6890,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[3])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
+              if (PyFloat_Check(argv[4])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
             }
             if (_v) {
               return _wrap_GridFunction_ImposeBounds__SWIG_1(self, args);
@@ -9786,8 +9795,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -9806,8 +9818,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -9826,8 +9841,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -9851,8 +9869,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -9876,8 +9897,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -9906,8 +9930,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -9936,8 +9963,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -10425,8 +10455,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_Assign(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_GridFunction_Assign__SWIG_0(self, args);
@@ -11260,8 +11293,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_isub(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyFloat_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_GridFunction_isub__SWIG_1(self, args);

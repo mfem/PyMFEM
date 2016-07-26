@@ -2,6 +2,7 @@
 %{
 #include "fem/nonlininteg.hpp"
 #include "fem/nonlinearform.hpp"
+#include "pyoperator.hpp"     
 %}
 /*
 %init %{
