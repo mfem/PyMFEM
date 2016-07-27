@@ -1,6 +1,7 @@
 %module sparsesmoothers
 %{
 #include "linalg/sparsesmoothers.hpp"
+#include "pyoperator.hpp"               
 %}
 
 %import "vector.i"

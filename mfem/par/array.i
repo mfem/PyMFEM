@@ -3,7 +3,7 @@
 %{
 #include "general/array.hpp"
 #include <iostream>
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 %}
 
 %init %{

@@ -19,7 +19,6 @@ from  fespace import *
 from  linearform import *
 from  bilininteg import *
 from  gridfunc import *
-from  mesh import *
 from  intrules import *
 from  fe import *
 from  ode import *

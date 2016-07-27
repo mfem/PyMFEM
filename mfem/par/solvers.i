@@ -4,7 +4,8 @@
 #include "linalg/matrix.hpp"
 #include "linalg/sparsemat.hpp"
 #include "linalg/solvers.hpp"
-#define MFEM_USE_MPI    
+#define MFEM_USE_MPI
+#include "pyoperator.hpp"               
 %}
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);

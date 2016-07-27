@@ -1,7 +1,8 @@
 %module nonlininteg
 %{
 #include "fem/nonlininteg.hpp"
-#include "pycoefficient.hpp"  
+#include "pycoefficient.hpp"
+#include "pyoperator.hpp"               
 %}
 /*
 %init %{

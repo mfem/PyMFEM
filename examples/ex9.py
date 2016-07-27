@@ -4,9 +4,6 @@
       refinement loop. 
       See c++ version in the MFEM library for more detail 
 '''
-import sys, ctypes
-sys.setdlopenflags(sys.getdlopenflags()|ctypes.RTLD_GLOBAL)
-
 from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray
@@ -163,13 +160,12 @@ u.SaveToFile('ex9-init.gf', 8)
 class FE_Evolution(mfem.PyTimeDependentOperator):
     def __init__(self, M, K, b):
         mfem.PyTimeDependentOperator.__init__(self, M.Size())        
-#        self.solver = mfem.CGSolver()
-#        self.solver.SetOperator(M)
+
         self.K = K        
         self.M = M
         self.b = b
         self.z = mfem.Vector(M.Size())
-        self.zp = np.zeros(M.Size()))
+
         self.M_prec = mfem.DSmoother()        
         self.M_solver = mfem.CGSolver()
         self.M_solver.SetPreconditioner(self.M_prec)        

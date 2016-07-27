@@ -20,6 +20,7 @@ import_array();
 %import pmesh.i
 %import linearform.i
 
+
 %typemap(in) const mfem::IntegrationRule *irs[]{
   if (PyList_Check($input)) {
     int size = PyList_Size($input);
@@ -42,6 +43,8 @@ import_array();
 %typemap(typecheck) const mfem::IntegrationRule *irs[]{
    $1 = PyList_Check($input) ? 1 : 0;
 }
+
+%rename(Assign) mfem::ParGridFunction::operator=;
 
 #define MFEM_USE_MPI  
 %include "fem/pgridfunc.hpp"

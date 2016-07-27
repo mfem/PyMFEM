@@ -565,8 +565,14 @@ class Mesh(_object):
     def GetElementVolume(self, i):
         return _mesh.Mesh_GetElementVolume(self, i)
 
-    def GetBoundingBox(self, min, max, ref=2):
-        return _mesh.Mesh_GetBoundingBox(self, min, max, ref)
+    def GetBoundingBox(self, ref = 2):
+        from  .vector import Vector
+        min = Vector()
+        max = Vector()      
+        _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
+        return min.GetDataArray().copy(), max.GetDataArray().copy()
+
+
 
     def PrintCharacteristics(self, *args):
         return _mesh.Mesh_PrintCharacteristics(self, *args)

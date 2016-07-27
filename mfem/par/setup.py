@@ -30,7 +30,7 @@ modules= [
           "linearform", "vector", "lininteg",
           "gridfunc", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
-          "solvers",
+          "solvers", "estimators", "mesh_operators", "ode",
           "sparsesmoothers",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
           "nonlininteg", "nonlinearform", 

@@ -3123,7 +3123,7 @@ namespace swig {
 
 #include "general/array.hpp"
 #include <iostream>
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
 
 
 #include <limits.h>

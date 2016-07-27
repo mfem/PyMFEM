@@ -90,6 +90,13 @@ except AttributeError:
     _newclass = 0
 
 
+try:
+    import weakref
+    weakref_proxy = weakref.proxy
+except Exception:
+    weakref_proxy = lambda x: x
+
+
 import vector
 import array
 class Operator(_object):
@@ -97,10 +104,18 @@ class Operator(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, Operator, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Operator, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        if self.__class__ == Operator:
+            _self = None
+        else:
+            _self = self
+        this = _operators.new_Operator(_self, *args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
 
     def Height(self):
         return _operators.Operator_Height(self)
@@ -127,6 +142,10 @@ class Operator(_object):
         return _operators.Operator_PrintMatlab(self, out, n, m)
     __swig_destroy__ = _operators.delete_Operator
     __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_Operator(self)
+        return weakref_proxy(self)
 Operator_swigregister = _operators.Operator_swigregister
 Operator_swigregister(Operator)
 
@@ -139,10 +158,18 @@ class TimeDependentOperator(Operator):
     for _s in [Operator]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, TimeDependentOperator, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        if self.__class__ == TimeDependentOperator:
+            _self = None
+        else:
+            _self = self
+        this = _operators.new_TimeDependentOperator(_self, *args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
 
     def GetTime(self):
         return _operators.TimeDependentOperator_GetTime(self)
@@ -154,6 +181,10 @@ class TimeDependentOperator(Operator):
         return _operators.TimeDependentOperator_ImplicitSolve(self, dt, x, k)
     __swig_destroy__ = _operators.delete_TimeDependentOperator
     __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_TimeDependentOperator(self)
+        return weakref_proxy(self)
 TimeDependentOperator_swigregister = _operators.TimeDependentOperator_swigregister
 TimeDependentOperator_swigregister(TimeDependentOperator)
 
@@ -290,6 +321,96 @@ class TripleProductOperator(Operator):
     __del__ = lambda self: None
 TripleProductOperator_swigregister = _operators.TripleProductOperator_swigregister
 TripleProductOperator_swigregister(TripleProductOperator)
+
+class PyOperatorBase(Operator):
+    __swig_setmethods__ = {}
+    for _s in [Operator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PyOperatorBase, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Operator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, PyOperatorBase, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        if self.__class__ == PyOperatorBase:
+            _self = None
+        else:
+            _self = self
+        this = _operators.new_PyOperatorBase(_self, *args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def Mult(self, x, y):
+        return _operators.PyOperatorBase_Mult(self, x, y)
+
+    def _EvalMult(self, arg0):
+        return _operators.PyOperatorBase__EvalMult(self, arg0)
+    __swig_destroy__ = _operators.delete_PyOperatorBase
+    __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_PyOperatorBase(self)
+        return weakref_proxy(self)
+PyOperatorBase_swigregister = _operators.PyOperatorBase_swigregister
+PyOperatorBase_swigregister(PyOperatorBase)
+
+class PyTimeDependentOperatorBase(TimeDependentOperator):
+    __swig_setmethods__ = {}
+    for _s in [TimeDependentOperator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PyTimeDependentOperatorBase, name, value)
+    __swig_getmethods__ = {}
+    for _s in [TimeDependentOperator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, PyTimeDependentOperatorBase, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        if self.__class__ == PyTimeDependentOperatorBase:
+            _self = None
+        else:
+            _self = self
+        this = _operators.new_PyTimeDependentOperatorBase(_self, *args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def Mult(self, x, y):
+        return _operators.PyTimeDependentOperatorBase_Mult(self, x, y)
+
+    def _EvalMult(self, arg0):
+        return _operators.PyTimeDependentOperatorBase__EvalMult(self, arg0)
+    __swig_destroy__ = _operators.delete_PyTimeDependentOperatorBase
+    __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_PyTimeDependentOperatorBase(self)
+        return weakref_proxy(self)
+PyTimeDependentOperatorBase_swigregister = _operators.PyTimeDependentOperatorBase_swigregister
+PyTimeDependentOperatorBase_swigregister(PyTimeDependentOperatorBase)
+
+
+class PyOperator(PyOperatorBase):
+   def __init__(self, *args):
+       PyOperatorBase.__init__(self, *args)
+   def _EvalMult(self, x):
+       return self.EvalMult(x.GetDataArray())
+   def EvalMult(self, x):
+       raise NotImplementedError('you must specify this method')
+
+class PyTimeDependentOperator(PyTimeDependentOperatorBase):
+   def __init__(self, *args):  
+       PyTimeDependentOperatorBase.__init__(self, *args)
+   def _EvalMult(self, x):
+       return self.EvalMult(x.GetDataArray())
+   def EvalMult(self, x):
+       raise NotImplementedError('you must specify this method')
+
 
 # This file is compatible with both classic and new-style classes.
 

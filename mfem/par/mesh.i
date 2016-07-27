@@ -189,6 +189,15 @@ def GetElementFaces(self, i):
     return ia.ToList(), ib.ToList()
 %}
 
+%feature("shadow") mfem::Mesh::GetBoundingBox %{
+def GetBoundingBox(self, ref = 2):
+    from  .vector import Vector
+    min = Vector()
+    max = Vector()      
+    _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
+    return min.GetDataArray().copy(), max.GetDataArray().copy()
+%}
+
 
 %immutable attributes;
 %immutable bdr_attributes;

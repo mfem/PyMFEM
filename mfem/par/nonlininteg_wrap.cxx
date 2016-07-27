@@ -3671,7 +3671,8 @@ namespace swig {
 
 
 #include "fem/nonlininteg.hpp"
-#include "pycoefficient.hpp"  
+#include "pycoefficient.hpp"
+#include "pyoperator.hpp"               
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
