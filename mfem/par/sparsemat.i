@@ -39,7 +39,7 @@ import_array();
     return RAP(Rt, A, P);
   }
 %}
-
+%rename(add_sparse) mfem::Add;
 %include "linalg/sparsemat.hpp"
 
 %extend mfem::SparseMatrix {

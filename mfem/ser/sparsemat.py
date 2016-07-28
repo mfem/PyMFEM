@@ -467,9 +467,9 @@ def Mult_AtDA(A, D, OAtDA=None):
     return _sparsemat.Mult_AtDA(A, D, OAtDA)
 Mult_AtDA = _sparsemat.Mult_AtDA
 
-def Add(*args):
-    return _sparsemat.Add(*args)
-Add = _sparsemat.Add
+def add_sparse(*args):
+    return _sparsemat.add_sparse(*args)
+add_sparse = _sparsemat.add_sparse
 # This file is compatible with both classic and new-style classes.
 
 

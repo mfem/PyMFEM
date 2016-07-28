@@ -10058,7 +10058,7 @@ SWIGINTERN PyObject *DenseMatrix_swigregister(PyObject *SWIGUNUSEDPARM(self), Py
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_Add__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_dense__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -10077,34 +10077,34 @@ SWIGINTERN PyObject *_wrap_Add__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:Add",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:add_dense",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Add" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "add_dense" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_dense" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Add" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "add_dense" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_dense" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Add" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "add_dense" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Add" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "add_dense" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
   }
   if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_dense" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
@@ -10127,7 +10127,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Add__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_dense__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -10150,39 +10150,39 @@ SWIGINTERN PyObject *_wrap_Add__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:Add",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:add_dense",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   ecode1 = SWIG_AsVal_double(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Add" "', argument " "1"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "add_dense" "', argument " "1"" of type '" "double""'");
   } 
   arg1 = static_cast< double >(val1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Add" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "add_dense" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_dense" "', argument " "2"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Add" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "add_dense" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Add" "', argument " "4"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "add_dense" "', argument " "4"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "4"" of type '" "mfem::DenseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_dense" "', argument " "4"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "Add" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "add_dense" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_dense" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
@@ -10205,7 +10205,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_dense(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[6] = {
     0
@@ -10234,7 +10234,7 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_Add__SWIG_0(self, args);
+            return _wrap_add_dense__SWIG_0(self, args);
           }
         }
       }
@@ -10262,7 +10262,7 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
             int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_Add__SWIG_1(self, args);
+              return _wrap_add_dense__SWIG_1(self, args);
             }
           }
         }
@@ -10271,7 +10271,7 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Add'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'add_dense'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Add(mfem::DenseMatrix const &,mfem::DenseMatrix const &,double,mfem::DenseMatrix &)\n"
     "    mfem::Add(double,mfem::DenseMatrix const &,double,mfem::DenseMatrix const &,mfem::DenseMatrix &)\n");
@@ -14498,7 +14498,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"DenseMatrix___setitem__", _wrap_DenseMatrix___setitem__, METH_VARARGS, NULL},
 	 { (char *)"DenseMatrix_GetDataArray", _wrap_DenseMatrix_GetDataArray, METH_VARARGS, NULL},
 	 { (char *)"DenseMatrix_swigregister", DenseMatrix_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Add", _wrap_Add, METH_VARARGS, NULL},
+	 { (char *)"add_dense", _wrap_add_dense, METH_VARARGS, NULL},
 	 { (char *)"Mult", _wrap_Mult, METH_VARARGS, NULL},
 	 { (char *)"AddMult", _wrap_AddMult, METH_VARARGS, NULL},
 	 { (char *)"CalcAdjugate", _wrap_CalcAdjugate, METH_VARARGS, NULL},

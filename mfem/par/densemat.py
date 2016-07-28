@@ -361,9 +361,9 @@ DenseMatrix_swigregister = _densemat.DenseMatrix_swigregister
 DenseMatrix_swigregister(DenseMatrix)
 
 
-def Add(*args):
-    return _densemat.Add(*args)
-Add = _densemat.Add
+def add_dense(*args):
+    return _densemat.add_dense(*args)
+add_dense = _densemat.add_dense
 
 def Mult(b, c, a):
     return _densemat.Mult(b, c, a)

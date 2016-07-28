@@ -112,6 +112,26 @@ import_array();
    $1 = PyList_Check($input) ? 1 : 0;
 }
 
+// SwapNodes
+%typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){
+int res2 = 0;
+res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
+if (!SWIG_IsOK(res2)){
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
+ }
+ $1 = &Pnodes;
+ } 
+%typemap(in) int &own_nodes_ (int own_nodes){
+  own_nodes = (int)PyInt_AsLong($input);
+  $1 = &own_nodes;
+} 
+%typemap(argout) (mfem::GridFunction *&nodes){
+  %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
+ }   
+%typemap(argout) int &own_nodes_{
+  %append_output(PyLong_FromLong((long)*$1));  
+}
+
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int nonconforming = -1) {
@@ -195,7 +215,6 @@ def GetBoundingBox(self, ref = 2):
     _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
     return min.GetDataArray().copy(), max.GetDataArray().copy()
 %}
-
 
 %immutable attributes;
 %immutable bdr_attributes;

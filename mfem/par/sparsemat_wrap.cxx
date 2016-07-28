@@ -13440,7 +13440,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Add__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_sparse__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
   mfem::SparseMatrix *arg2 = 0 ;
@@ -13452,21 +13452,21 @@ SWIGINTERN PyObject *_wrap_Add__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject * obj1 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:Add",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:add_sparse",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Add" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "add_sparse" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_sparse" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Add" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "add_sparse" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_sparse" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
   {
@@ -13489,7 +13489,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Add__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_sparse__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
   mfem::SparseMatrix *arg2 = 0 ;
@@ -13509,31 +13509,31 @@ SWIGINTERN PyObject *_wrap_Add__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject * obj3 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:Add",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:add_sparse",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   ecode1 = SWIG_AsVal_double(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Add" "', argument " "1"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "add_sparse" "', argument " "1"" of type '" "double""'");
   } 
   arg1 = static_cast< double >(val1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Add" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "add_sparse" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_sparse" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Add" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "add_sparse" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Add" "', argument " "4"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "add_sparse" "', argument " "4"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "4"" of type '" "mfem::SparseMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_sparse" "', argument " "4"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   arg4 = reinterpret_cast< mfem::SparseMatrix * >(argp4);
   {
@@ -13556,7 +13556,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Add__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_sparse__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::SparseMatrix * > *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -13564,13 +13564,13 @@ SWIGINTERN PyObject *_wrap_Add__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject 
   PyObject * obj0 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:Add",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:add_sparse",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Add" "', argument " "1"" of type '" "mfem::Array< mfem::SparseMatrix * > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "add_sparse" "', argument " "1"" of type '" "mfem::Array< mfem::SparseMatrix * > &""'"); 
   }
   if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "1"" of type '" "mfem::Array< mfem::SparseMatrix * > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_sparse" "', argument " "1"" of type '" "mfem::Array< mfem::SparseMatrix * > &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::SparseMatrix * > * >(argp1);
   {
@@ -13593,7 +13593,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_sparse(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[5] = {
     0
@@ -13611,7 +13611,7 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_Add__SWIG_4(self, args);
+      return _wrap_add_sparse__SWIG_2(self, args);
     }
   }
   if (argc == 2) {
@@ -13622,7 +13622,7 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__SparseMatrix, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_Add__SWIG_2(self, args);
+        return _wrap_add_sparse__SWIG_0(self, args);
       }
     }
   }
@@ -13644,7 +13644,7 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
           int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__SparseMatrix, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_Add__SWIG_3(self, args);
+            return _wrap_add_sparse__SWIG_1(self, args);
           }
         }
       }
@@ -13652,10 +13652,8 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
   }
   
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Add'.\n"
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'add_sparse'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::Add(mfem::DenseMatrix const &,mfem::DenseMatrix const &,double,mfem::DenseMatrix &)\n"
-    "    mfem::Add(double,mfem::DenseMatrix const &,double,mfem::DenseMatrix const &,mfem::DenseMatrix &)\n"
     "    mfem::Add(mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n"
     "    mfem::Add(double,mfem::SparseMatrix const &,double,mfem::SparseMatrix const &)\n"
     "    mfem::Add(mfem::Array< mfem::SparseMatrix * > &)\n");
@@ -13774,7 +13772,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mult", _wrap_Mult, METH_VARARGS, NULL},
 	 { (char *)"RAP", _wrap_RAP, METH_VARARGS, NULL},
 	 { (char *)"Mult_AtDA", _wrap_Mult_AtDA, METH_VARARGS, NULL},
-	 { (char *)"Add", _wrap_Add, METH_VARARGS, NULL},
+	 { (char *)"add_sparse", _wrap_add_sparse, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

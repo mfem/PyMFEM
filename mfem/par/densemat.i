@@ -53,9 +53,11 @@ def __setitem__(self, *args):
 def __getitem__(self, *args):
     i, j = args[0][0], args[0][1]
     return _densemat.DenseMatrix___getitem__(self, i, j)
-%} 
+%}
 
+%rename(add_dense) mfem::Add;
 %include "linalg/densemat.hpp"
+
 %extend mfem::DenseMatrix {
   const double __getitem__(const int i, const int j) const{
     return (* self)(i, j);

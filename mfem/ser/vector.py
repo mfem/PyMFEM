@@ -92,6 +92,14 @@ except AttributeError:
 
 import array
 
+def add_vector(*args):
+    return _vector.add_vector(*args)
+add_vector = _vector.add_vector
+
+def subtract_vector(*args):
+    return _vector.subtract_vector(*args)
+subtract_vector = _vector.subtract_vector
+
 def CheckFinite(v, n):
     return _vector.CheckFinite(v, n)
 CheckFinite = _vector.CheckFinite
@@ -101,13 +109,6 @@ class Vector(_object):
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Vector, name)
     __repr__ = _swig_repr
-
-    def __init__(self, *args):
-        this = _vector.new_Vector(*args)
-        try:
-            self.this.append(this)
-        except Exception:
-            self.this = this
 
     def Load(self, *args):
         return _vector.Vector_Load(self, *args)
@@ -253,6 +254,19 @@ class Vector(_object):
         return _vector.Vector_CheckFinite(self)
     __swig_destroy__ = _vector.delete_Vector
     __del__ = lambda self: None
+
+    def __init__(self, *args):
+
+        if len(args) == 1:
+            if isinstance(args[0], list): 
+                 args = (args[0], len(args[0]))
+
+
+        this = _vector.new_Vector(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
 
     def __setitem__(self, i, v):
         return _vector.Vector___setitem__(self, i, v)

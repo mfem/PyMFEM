@@ -73,9 +73,44 @@ def __idiv__(self, v):
     return ret
 %}
 %rename(Assign) mfem::Vector::operator=;
+
+// these inlines are to rename add/subtract...
+%inline %{
+void add_vector(const mfem::Vector &v1, const mfem::Vector &v2, mfem::Vector &v){
+   add(v1, v2, v);
+}
+   /// Do v = v1 + alpha * v2.
+void add_vector(const mfem::Vector &v1, double alpha, const mfem::Vector &v2, mfem::Vector &v){
+   add(v1, alpha, v2, v);
+}
+   /// z = a * (x + y)
+void add_vector(const double a, const mfem::Vector &x, const mfem::Vector &y, mfem::Vector &z){
+   add(a, x, y, z);
+}
+  /// z = a * x + b * y
+void add_vector (const double a, const mfem::Vector &x,
+		   const double b, const mfem::Vector &y, mfem::Vector &z){
+   add(a, x, b, y, z);
+}
+   /// Do v = v1 - v2.
+void subtract_vector(const mfem::Vector &v1, const mfem::Vector &v2, mfem::Vector &v){
+   subtract(v1, v2, v);
+}
+   /// z = a * (x - y)
+void subtract_vector(const double a, const mfem::Vector &x,
+		       const mfem::Vector &y, mfem::Vector &z){
+   subtract(a, x, y, z);
+}
+%}
+
 %include "linalg/vector.hpp"
 
 %extend mfem::Vector {
+   Vector(const mfem::Vector &v, int offset, int size){
+      mfem::Vector *vec;
+      vec = new mfem::Vector(v.GetData() +  offset, size);     
+      return vec;
+  }
   void __setitem__(int i, const double v) {
     (* self)(i) = v;
     }

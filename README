@@ -1,30 +1,35 @@
 '''''
 PyMFEM
 '''''
-
-PyMFEM is a SWIG Wrapper for MFEM, finite element method library
-(http://mfem.org).
-PyMFEM allows to call this c++ library from python, and extend
-the library so that a user can use python object instead of
-passing c++ function pointer.
+PyMFEM is a SWIG Wrapper for MFEM, ligith-weight FEM (finite element
+method) library developed by LLNL (http://mfem.org).
+This wrapper is meant for a rapid-prototyping of FEM program.
+With PyMFEM, a user can create c++ MFEM objects and call their
+method from python. We strongly recomment to visit the MFEM web site
+to find more detail of the MFEM libirary.
 
 -- Module structure --
   <root>/mfem/ser : wrapper for serial MFEM
              /par : wrapper for parallel MFEM
              /Makefile_tempates: example template
+	     /examples : example script
 
 -- INSTALLATION --
 
-0: 3rd parth libs
+0: 3rd parth library
   0-1) mpi4py
-         needed either you use parallel MFEM or MUMPS.
+         needed either you use parallel MFEM
   0-2) MFEM
-         needless to say!?
 	 serial version and parallel version need to be
 	 compiled at separate directory.
 
+         By default, Makefile assumes that MFEM is installed
+	 under /usr/local/mfem-3.2 and serial version of MFEM
+	 is installed under /usr/local/mfem-3.2ser.
+	 A user can change it by editint Makefile.local
+
   0-2) HYPRE
-	 Needed if parallel MFEM is used
+	 for parallel MFEM is used
 
 1:  recompile MFEM with -fPIC option
     This may not be necessary. (I didn't need it on MacOSX, 
@@ -53,17 +58,30 @@ This is needed only when you edit SWIG interface files.
    * make ser (sereal MFEM wrapepr)
    * make par (parallel MFEM wrapper)
 
+4) run example
+   Some of example c++ programs are converted in python and
+   found in example directory. Once PYTHONPATH is set, you
+   can run them as follows.
+     
+     > python ex1.py  (serial)
+     > mpiexec -n 2 python ex1p.py (parallel)
+
 -- Features --
- PyMFEM realized a couple of features, which does not exists in the
- original MFEM.
- Some of them are made to the wrapper simply more python-like.
- Some of them are better to be integrated to MFEM itself in future.
+ Following features are realized in PyMFEM using SWIG interface
+ in order to use MFEM more conveientely from python. 
+ Some of them may be e integrated to MFEM itself in future.
  
   4-1) mfem::Vector
      Constructor using pthon list:   v = mfem.Vector([1,2,3])
      Array element access:  print v[0] or v[0] = 3
      Assign method:         v.Assign(1) (equivalent to v=1 in c++)
      Data Access as Numpy:  v.GetDataArray()
+
+     In c++, a new partial view to existing vector is acquired
+     as
+	Vector v(vec.GetData() + sc, sc);
+     , where as in python, In python, we need to
+        v = mfem.Vector(vec, offset, size)
 
   4-2) mfem::Coefficient
        PyCoefficient is derived from FunctionCoefficient
@@ -90,7 +108,14 @@ This is needed only when you edit SWIG interface files.
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
        return numpy array of Vector()
   
-
+       = operator is renamed as Assign method.
+         (python)
+	     g = mfem.GridFunction(fespace)
+	     g.Assign(0)
+         (c++)
+	     GridFunction *g = new GridFunction(&fespace);
+	     g = 0;
+	     
   4-4) mfem::Mesh
          Wrapper of following methods are customized to
 	 return either python list object or tuple of lists
@@ -134,9 +159,19 @@ This is needed only when you edit SWIG interface files.
 	 These two are not distinguishable from python. So, RAP_P and
 	 RAP_R are added. P indicates the third argment is pointer.
 	 
-  4-6) estimators
-        ZienkiewiczZhuEstimator constructor has two versions. flux_fes
-	can be passed as pointer or reference. In python class, you
+         Add functions are accessed as add_sparse.
+
+         GetIArray, GetJArray, and GetDataArray. These methos gives numpy
+	 array of CSR matrix data. It borrows data from SparseMatrix.
+	 Therefore, be careful not to access after the matrix is freeed.	 
+	 
+  4-6) densemat
+         Add functions are accessed as add_dense.
+	 
+  4-7) estimators
+        ZienkiewiczZhuEstimator and L2ZienkiewZhuEstimator
+	have two versions of constructor. flux_fes
+	can be eithor passed as pointer or reference. In python class, you
 	need to pass 5th argument if you want to pass flux_fes as
 	reference. By default,  own_flux_fes is  False, so a user
 	can skip passing this keyword when passing by reference
@@ -144,16 +179,44 @@ This is needed only when you edit SWIG interface files.
 	pass by reference 
           ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = False)	  
         pass by pointer
-          ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = True)	  
-  (below is not yet implement in parallel version)
-  4-7) operator
+          ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = True)
+	pass by reference 
+          L2ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = False)	  
+        pass by pointer
+          L2ZienkiewiczZhuEstimator(integ, sol, flux_fes, own_flux_fes = True)	  
+	  
+
+  4-8) operator
         PyTimeDependentOperatorBase and PyOperatorBase is added to
 	allow for implementing those operator in python. A user
 	can inherit these class and overwrite Mult in python. See
 	ex9.py for example.
 	
-  4-8) ode
+  4-9) ode
         Step usins reference passing for t and dt. To get the result
 	from this method, use
 	   t, dt = ode_solver.Step(u, t, dt)
-	   
+
+
+  
+-- Known issues --
+
+  PyMFEM is a on-going effort. Not all MFEM functioality is propary
+  wrapped yet. Presnetly most of serial example (except for
+  ex15.cpp) and 5 parallel examples are rewritten in python.
+  This would be sufficient for certain projects, but for other projects,
+  you may find various features are missing. Please inform us if you
+  notice something missing.
+
+  1) t*.hpp files are not wrapped
+  
+  2) Mesh::SwapNodes is not working perfectly.
+  
+  3) Memory management.
+      python uses garbage collection. Since wrapper does not know
+      exactly how objects are used in c++ layer, MFEM object may be
+      collected before being ready to be freed. We are addressing
+      this by adjusting thisown flag, but the approach may not 
+      work in a different scenario.
+      
+Work supported by DE-FC02-99ER54512

@@ -136,7 +136,14 @@ class NonlinearForm(operators.Operator):
             self.this = this
 
     def AddDomainIntegrator(self, nlfi):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi.thisown=0 
+
+
         return _nonlinearform.NonlinearForm_AddDomainIntegrator(self, nlfi)
+
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs=None):
         return _nonlinearform.NonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
@@ -154,6 +161,9 @@ class NonlinearForm(operators.Operator):
         return _nonlinearform.NonlinearForm_GetGradient(self, x)
     __swig_destroy__ = _nonlinearform.delete_NonlinearForm
     __del__ = lambda self: None
+
+    def GetGradientMatrix(self, x):
+        return _nonlinearform.NonlinearForm_GetGradientMatrix(self, x)
 NonlinearForm_swigregister = _nonlinearform.NonlinearForm_swigregister
 NonlinearForm_swigregister(NonlinearForm)
 

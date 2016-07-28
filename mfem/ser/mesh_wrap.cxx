@@ -13928,10 +13928,8 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
   int *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  mfem::GridFunction *Pnodes2 ;
+  int own_nodes3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -13942,25 +13940,23 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_SwapNodes" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "mfem::GridFunction *&""'"); 
+  {
+    int res2 = 0;
+    res2 = SWIG_ConvertPtr(obj1, (void **) &Pnodes2, SWIGTYPE_p_mfem__GridFunction, 0);
+    if (!SWIG_IsOK(res2)){
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "mfem::GridFunction *""'");      
+    }
+    arg2 = &Pnodes2;
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "mfem::GridFunction *&""'"); 
+  {
+    own_nodes3 = (int)PyInt_AsLong(obj2);
+    arg3 = &own_nodes3;
   }
-  arg2 = reinterpret_cast< mfem::GridFunction ** >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_int,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Mesh_SwapNodes" "', argument " "3"" of type '" "int &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_SwapNodes" "', argument " "3"" of type '" "int &""'"); 
-  }
-  arg3 = reinterpret_cast< int * >(argp3);
   {
     try {
-      (arg1)->SwapNodes(*arg2,*arg3); 
+      //std::cout << std::to_string((*arg2)->Sum()) << "\n";      
+      (arg1)->SwapNodes(*arg2,*arg3);
+      //std::cout << std::to_string((*arg2)->Sum()) << "\n";
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13972,6 +13968,12 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj(SWIG_as_voidptr(arg2), SWIGTYPE_p_mfem__GridFunction, 0 |  0 ));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyLong_FromLong((long)*arg3));  
+  }
   return resultobj;
 fail:
   return NULL;

@@ -11,12 +11,12 @@ NO_WHOLE_ARCHIVE = ,--no_whole_archive
 SWIG=$(shell which swig)
 SWIGFLAG = -Wall -c++ -python
 
-MFEM=/usr/local/mfem-3.1
+MFEM=/usr/local/mfem-3.2
 MFEMLIB = mfem
 MFEMINCDIR = $(MFEM)
 MFEMLNKDIR = $(MFEM)
 
-MFEMSER=/usr/local/mfem-3.1ser
+MFEMSER=/usr/local/mfem-3.2ser
 MFEMSERLIB = mfem
 MFEMSERINCDIR = $(MFEMSER)
 MFEMSERLNKDIR = $(MFEMSER)
