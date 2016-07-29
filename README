@@ -5,7 +5,7 @@ PyMFEM is a SWIG Wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
 This wrapper is meant for a rapid-prototyping of FEM program.
 With PyMFEM, a user can create c++ MFEM objects and call their
-method from python. We strongly recomment to visit the MFEM web site
+method from python. We strongly recommend to visit the MFEM web site
 to find more detail of the MFEM libirary.
 
 -- Module structure --
