@@ -66,6 +66,8 @@ This is needed only when you edit SWIG interface files.
      > python ex1.py  (serial)
      > mpiexec -n 2 python ex1p.py (parallel)
 
+   These examples are simplfied. 
+
 -- Features --
  Following features are realized in PyMFEM using SWIG interface
  in order to use MFEM more conveientely from python. 
@@ -218,5 +220,7 @@ This is needed only when you edit SWIG interface files.
       collected before being ready to be freed. We are addressing
       this by adjusting thisown flag, but the approach may not 
       work in a different scenario.
-      
+
+  4) Visualization through socket and visit is not included.
+  
 Work supported by DE-FC02-99ER54512
