@@ -14,8 +14,8 @@ sys.path.insert(0, root)
 from  setup_local import *
 
 ## this forces to use compiler written in setup_local.py
-os.environ['CXX'] = mpicxx
-os.environ['CC'] = mpicc
+if cc_par != '': os.environ['CC'] = cc_par
+if cxx_par != '': os.environ['CXX'] = cxx_par
 
 from distutils.core import setup, Extension
 from distutils.core import *
@@ -55,7 +55,7 @@ libraries0.extend([hyprelib])
 
 include_dirs = [mfemincdir, numpyincdir, mpi4pyincdir,
                 mpichincdir, hypreincdir]
-library_dirs = [mfemlnkdir, hyprelnkdir]
+library_dirs = [mfemlnkdir, hyprelnkdir, metislnkdir]
 
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
