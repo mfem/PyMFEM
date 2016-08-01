@@ -21,12 +21,25 @@ to find more detail of the MFEM libirary.
          needed either you use parallel MFEM
   0-2) MFEM
 	 serial version and parallel version need to be
-	 compiled at separate directory.
+	 compiled in separate directory.
 
          By default, Makefile assumes that MFEM is installed
 	 under /usr/local/mfem-3.2 and serial version of MFEM
 	 is installed under /usr/local/mfem-3.2ser.
 	 A user can change it by editint Makefile.local
+
+         < note about METIS version>
+         MUMPS uses METIS5. Therefore, if you are going to use
+	 this with MUMPS in PyMFEM_pi,
+	 parallel MFEM is required to build MFEM with METIS5.
+	 Open config.mk in mfem/config (see INSTALL in MFEM for
+	 detail) change 
+   	    MFEM_USE_MPI         = YES 
+            MFEM_USE_METIS_5     = YES
+	 You also need to specify METIS_DIR, METIS_OPT, METIS_LIB
+	 Then, try.
+	    make config
+	    mamke -j	 
 
   0-2) HYPRE
 	 for parallel MFEM is used
