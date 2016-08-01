@@ -18,31 +18,62 @@ import_array();
 %import "array.i"
  //%import "gridfunc.i"
 
-%typemap(in)  (double *_data, int _size){
-  int i;
-  if (!PyList_Check($input)) {
-    PyErr_SetString(PyExc_ValueError, "Expecting a list");
-    return NULL;
-  }
-  $2 = PyList_Size($input);
-  $1 = (double *) malloc(($2)*sizeof(double));
-  for (i = 0; i < $2; i++) {
-    PyObject *s = PyList_GetItem($input,i);
-    if (PyInt_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else if (PyFloat_Check(s)) {
-        $1[i] = (double)PyFloat_AsDouble(s);
-    } else {
-        free($1);      
-        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+%typemap(in)  (double *_data){// int _size){
+  int i, si;
+  if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, $disown|0) != -1){
+	      
+  }if (PyArray_Check($input)){
+    $1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)$input));
+	 //     $1 = (double *) PyArray_DATA($input);
+  } else {
+     if (!PyList_Check($input)) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list");
         return NULL;
-    }
+     }
+     si = PyList_Size($input);
+     $1 = (double *) malloc((si)*sizeof(double));
+     for (i = 0; i < si; i++) {
+        PyObject *s = PyList_GetItem($input,i);
+        if (PyInt_Check(s)) {
+            $1[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+            $1[i] = (double)PyFloat_AsDouble(s);
+        } else {
+            free($1);      
+            PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+            return NULL;
+        }
+     }
   }
-}
-%typemap(typecheck) (double *_data, int _size) {
-   $1 = PyList_Check($input) ? 1 : 0;
+
 }
 
+%typemap(typecheck ) (double *_data){//, int _size) {
+   if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, 1) != -1){
+      $1 = 1;
+   }
+   else if (PyList_Check($input)){
+      $1 = 1;
+   }
+   else if (PyArray_Check($input)){
+      $1 = 1;
+   }
+   else {
+      $1 = 0;
+   }
+}
+
+%pythonprepend mfem::Vector::Vector %{
+from numpy import ndarray
+if len(args) == 1:
+    if isinstance(args[0], list): 
+        args = (args[0], len(args[0]))
+    elif isinstance(args[0], ndarray):
+        if args[0].dtype != 'float64':
+            raise ValueError('Must be float64 array')
+        else:
+            args = (args[0], args[0].shape[0])
+%}
 
 %feature("shadow") mfem::Vector::operator+= %{
 def __iadd__(self, v):

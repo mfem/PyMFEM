@@ -27,9 +27,14 @@ HYPRELIB = HYPRE
 HYPREINCDIR = $(HYPRE)/include
 HYPRELNKDIR = $(HYPRE)/lib
 
-METIS4=/usr/local/metis
-METIS4LIB = metis
-METIS4LIBA   = $(METIS4)/lib/libmetis.a	
+#metis
+# METISLIB will become -lmetis
+# METISLNKDIR will become -L<dir>
+# overwrite METISLIBA to black in Makefile.local if metis is provide as .so
+METIS=/usr/local/
+METISLIB = metis
+METISLNKDIR = $(METIS)/lib/
+METISLIBA   = $(METIS)/libmetis.a 
 
 #MPI
 MPIINCDIR= /opt/local/include/mpich-mp         #mpi.h
