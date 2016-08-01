@@ -59,14 +59,24 @@ This is needed only when you edit SWIG interface files.
    * make par (parallel MFEM wrapper)
 
 4) run example
-   Some of example c++ programs are converted in python and
+   Add PyMFEM to your PYTHONPATH. In bash,
+      > export PYTHONPATH=<hogehogehoge>:$PYTHONPATH
+   Then, launch python and see if it import mfem
+      > import mfem
+      > import mfem.ser (serial)
+      or
+      > import mfem      
+      > import mfem.par (parallel)
+   
+   Many of example c++ programs in MFEM are converted in python and
    found in example directory. Once PYTHONPATH is set, you
    can run them as follows.
      
      > python ex1.py  (serial)
      > mpiexec -n 2 python ex1p.py (parallel)
 
-   These examples are simplfied. 
+   Note that python version  examples are simplfied. It does not
+   parse arguments nor visulaization via socket connection.
 
 -- Features --
  Following features are realized in PyMFEM using SWIG interface
@@ -74,7 +84,7 @@ This is needed only when you edit SWIG interface files.
  Some of them may be e integrated to MFEM itself in future.
  
   4-1) mfem::Vector
-     Constructor using pthon list:   v = mfem.Vector([1,2,3])
+     Constructor using python list:   v = mfem.Vector([1,2,3])
      Array element access:  print v[0] or v[0] = 3
      Assign method:         v.Assign(1) (equivalent to v=1 in c++)
      Data Access as Numpy:  v.GetDataArray()
@@ -223,4 +233,4 @@ This is needed only when you edit SWIG interface files.
 
   4) Visualization through socket and visit is not included.
   
-Work supported by DE-FC02-99ER54512
+*This work is supported by US DoE contract DE-FC02-99ER54512

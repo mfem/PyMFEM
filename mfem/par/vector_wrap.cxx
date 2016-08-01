@@ -3952,31 +3952,48 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   int arg2 ;
+  int val2 ;
+  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   mfem::Vector *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:new_Vector",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_Vector",&obj0,&obj1)) SWIG_fail;
   {
-    int i;
-    if (!PyList_Check(obj0)) {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list");
-      return NULL;
-    }
-    arg2 = PyList_Size(obj0);
-    arg1 = (double *) malloc((arg2)*sizeof(double));
-    for (i = 0; i < arg2; i++) {
-      PyObject *s = PyList_GetItem(obj0,i);
-      if (PyInt_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else if (PyFloat_Check(s)) {
-        arg1[i] = (double)PyFloat_AsDouble(s);
-      } else {
-        free(arg1);      
-        PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+    // int _size){
+    int i, si;
+    if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
+      
+    }if (PyArray_Check(obj0)){
+      arg1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)obj0));
+      //     arg1 = (double *) PyArray_DATA(obj0);
+    } else {
+      if (!PyList_Check(obj0)) {
+        PyErr_SetString(PyExc_ValueError, "Expecting a list");
         return NULL;
       }
+      si = PyList_Size(obj0);
+      arg1 = (double *) malloc((si)*sizeof(double));
+      for (i = 0; i < si; i++) {
+        PyObject *s = PyList_GetItem(obj0,i);
+        if (PyInt_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else if (PyFloat_Check(s)) {
+          arg1[i] = (double)PyFloat_AsDouble(s);
+        } else {
+          free(arg1);      
+          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
+          return NULL;
+        }
+      }
     }
+    
   }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Vector" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
   result = (mfem::Vector *)new mfem::Vector(arg1,arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6629,16 +6646,31 @@ SWIGINTERN PyObject *_wrap_new_Vector(PyObject *self, PyObject *args) {
       return _wrap_new_Vector__SWIG_2(self, args);
     }
   }
-  if (argc == 1) {
+  if (argc == 2) {
     int _v;
     {
-      _v = PyList_Check(argv[0]) ? 1 : 0;
+      //, int _size) {
+      if (SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
+        _v = 1;
+      }
+      else if (PyList_Check(argv[0])){
+        _v = 1;
+      }
+      else if (PyArray_Check(argv[0])){
+        _v = 1;
+      }
+      else {
+        _v = 0;
+      }
     }
     if (_v) {
-      if (argc <= 1) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
         return _wrap_new_Vector__SWIG_3(self, args);
       }
-      return _wrap_new_Vector__SWIG_3(self, args);
     }
   }
   if (argc == 3) {

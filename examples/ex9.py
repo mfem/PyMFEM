@@ -55,7 +55,7 @@ for lev in range(ref_levels):
 fec = mfem.DG_FECollection(order, dim)
 fes = mfem.FiniteElementSpace(mesh, fec)
 
-print( "Number of unknowns: " + str(fes.GetVSize()))
+print( "Number of unknowns: " + str(fes.GetVSize())
 
 #
 #  Define coefficient using VecotrPyCoefficient and PyCoefficient

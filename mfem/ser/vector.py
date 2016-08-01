@@ -257,9 +257,15 @@ class Vector(_object):
 
     def __init__(self, *args):
 
+        from numpy import ndarray
         if len(args) == 1:
             if isinstance(args[0], list): 
-                 args = (args[0], len(args[0]))
+                args = (args[0], len(args[0]))
+            elif isinstance(args[0], ndarray):
+                if args[0].dtype != 'float64':
+                    raise ValueError('Must be float64 array')
+                else:
+                    args = (args[0], args[0].shape[0])
 
 
         this = _vector.new_Vector(*args)

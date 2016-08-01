@@ -13,6 +13,10 @@ root =  os.path.abspath(os.path.join(os.path.realpath(__file__),
 sys.path.insert(0, root)
 from  setup_local import *
 
+## this forces to use compiler written in setup_local.py
+if cc_ser != '': os.environ['CC'] = cc_ser
+if cxx_ser != '': os.environ['CXX'] = cxx_ser
+
 from distutils.core import *
 from distutils      import sysconfig
 
@@ -32,7 +36,10 @@ modules= ["array", "socketstream",
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
 
-extra_link_args =  ['-Wl,'+whole_archive+','+mfemserlnkdir+'/libmfem.a'+no_whole_archive]
+extra_text = [x for x in
+              ['-Wl', whole_archive,  mfemserlnkdir+'/libmfem.a',
+               no_whole_archive] if x != '']
+extra_link_args =  [','.join(extra_text)]
 include_dirs = [mfemserincdir, numpyincdir]
 library_dirs = [mfemserlnkdir]
 libraries    = [mfemserlib]
@@ -43,7 +50,7 @@ ext_modules = [Extension(proxy_names[modules[0]],
                         extra_link_args = extra_link_args,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                         libraries = [])]
+                        libraries = [])]
 
 ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],

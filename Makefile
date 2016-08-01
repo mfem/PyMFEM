@@ -5,8 +5,16 @@
 MAKE=$(shell which make)
 PYTHON=$(shell which python)
 
+# serial compiler
+CXX_SER = g++
+CC_SER = g++
+
+# parallel compiler(CC_PAR)/linker(CXX_PAR)
+CXX_PAR = mpicxx
+CC_PAR = g++
+
 WHOLE_ARCHIVE = --whole_archive
-NO_WHOLE_ARCHIVE = ,--no_whole_archive
+NO_WHOLE_ARCHIVE = --no-whole-archive
 
 SWIG=$(shell which swig)
 SWIGFLAG = -Wall -c++ -python
@@ -27,28 +35,25 @@ HYPRELIB = HYPRE
 HYPREINCDIR = $(HYPRE)/include
 HYPRELNKDIR = $(HYPRE)/lib
 
-METIS4=/usr/local/metis
-METIS4LIB = metis
-METIS4LIBA   = $(METIS4)/lib/libmetis.a	
+#metis
+# METISLIB will become -lmetis
+# METISLNKDIR will become -L<dir>
+# overwrite METISLIBA to black in Makefile.local if metis is provide as .so
+METIS=/usr/local/
+METISLIB = metis
+METISLNKDIR = $(METIS)/lib/
+METISLIBA   = $(METIS)/libmetis.a 
 
 #MPI
 MPIINCDIR= /opt/local/include/mpich-mp         #mpi.h
 MPICHINCDIR    = /opt/local/include/mpich-mp
 MPICHLNKDIR    = /opt/local/lib/mpich-mp
 MPILIB = mpi
-MPICC = mpicc
-MPICXX = mpicxx
-MPIFC = mpifort
-MPIFL = mpifort
 MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
 
 #numpy
 NUMPYINCDIR = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
 
-OUTC    = -o 
-OPTF    = -O  -DALLOW_NON_INIT
-OPTL    = -O 
-OPTC    = -O
 NOCOMPACTUNWIND = 
 include ./Makefile.local
 

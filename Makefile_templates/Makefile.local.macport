@@ -12,8 +12,8 @@ MFEMSERINCDIR  = $(MFEMSER)
 MFEMSERLNKDIR  = $(MFEMSER)
 
 # METIS4
-METIS4   = $(HOME)/src/metis-4.0
-METIS4LIBA   = $(HOME)/src/metis-4.0/libmetis.a
+# do not use .a file for metis
+METISLIBA   = 
 
 # HYPRE
 HYPRE 	 = $(HOME)/src/hypre-2.11.0
