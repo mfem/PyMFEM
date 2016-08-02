@@ -2,7 +2,8 @@
 %{
 #include <mpi.h>
 #include "fem/pbilinearform.hpp"
-#include "numpy/arrayobject.h"  
+#include "numpy/arrayobject.h"
+#include "pyoperator.hpp"           
 #define MFEM_USE_MPI  
 %}
 %include mpi4py/mpi4py.i

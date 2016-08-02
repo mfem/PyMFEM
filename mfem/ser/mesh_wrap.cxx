@@ -13944,7 +13944,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
     int res2 = 0;
     res2 = SWIG_ConvertPtr(obj1, (void **) &Pnodes2, SWIGTYPE_p_mfem__GridFunction, 0);
     if (!SWIG_IsOK(res2)){
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "mfem::GridFunction *""'");      
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
     }
     arg2 = &Pnodes2;
   }
@@ -13954,9 +13954,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   {
     try {
-      //std::cout << std::to_string((*arg2)->Sum()) << "\n";      
-      (arg1)->SwapNodes(*arg2,*arg3);
-      //std::cout << std::to_string((*arg2)->Sum()) << "\n";
+      (arg1)->SwapNodes(*arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13969,7 +13967,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SwapNodes(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   resultobj = SWIG_Py_Void();
   {
-    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj(SWIG_as_voidptr(arg2), SWIGTYPE_p_mfem__GridFunction, 0 |  0 ));
+    resultobj = SWIG_Python_AppendOutput(resultobj, SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), SWIGTYPE_p_mfem__GridFunction, 0 |  0 ));
   }
   {
     resultobj = SWIG_Python_AppendOutput(resultobj, PyLong_FromLong((long)*arg3));  
@@ -20280,34 +20278,6 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_Mesh__SWIG_15(self, args);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
-    }
-    if (_v) {
-      {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
           if (PyArray_PyIntAsInt(argv[2])   != -1){
             _v = 1;
           } else {
@@ -20372,6 +20342,15 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    {
+      _v = 0; // ignore this pattern
+    }
+    if (_v) {
+      return _wrap_new_Mesh__SWIG_15(self, args);
+    }
+  }
   if (argc == 4) {
     int _v;
     void *vptr = 0;
@@ -20400,80 +20379,6 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           }
           if (_v) {
             return _wrap_new_Mesh__SWIG_22(self, args);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
-    }
-    if (_v) {
-      {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
-          }
-          if (_v) {
-            return _wrap_new_Mesh__SWIG_14(self, args);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
-    }
-    if (_v) {
-      {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
-            _v = 0;
-          }
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_Mesh__SWIG_11(self, args);
           }
         }
       }
@@ -20621,96 +20526,31 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 5) {
+  if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
+      _v = 0; // ignore this pattern
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
+        if (PyArray_PyIntAsInt(argv[3])   != -1){
           _v = 1;
         } else {
           _v = 0;
         }
       }
       if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
-          }
-          if (_v) {
-            {
-              if (PyFloat_Check(argv[4])){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              return _wrap_new_Mesh__SWIG_13(self, args);
-            }
-          }
-        }
+        return _wrap_new_Mesh__SWIG_14(self, args);
       }
     }
   }
-  if (argc == 5) {
+  if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
+      _v = 0; // ignore this pattern
     }
     if (_v) {
-      {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
-            _v = 0;
-          }
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              return _wrap_new_Mesh__SWIG_10(self, args);
-            }
-          }
-        }
-      }
+      return _wrap_new_Mesh__SWIG_11(self, args);
     }
   }
   if (argc == 5) {
@@ -20850,18 +20690,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 6) {
+  if (argc == 5) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
+      _v = 0; // ignore this pattern
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
+        if (PyArray_PyIntAsInt(argv[3])   != -1){
           _v = 1;
         } else {
           _v = 0;
@@ -20869,94 +20705,33 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
-          }
-          if (_v) {
-            {
-              if (PyFloat_Check(argv[4])){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              {
-                if (PyFloat_Check(argv[5])){
-                  _v = 1;
-                } else {
-                  _v = 0;
-                }
-              }
-              if (_v) {
-                return _wrap_new_Mesh__SWIG_12(self, args);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 6) {
-    int _v;
-    {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
-    }
-    if (_v) {
-      {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
+          if (PyFloat_Check(argv[4])){
             _v = 1;
           } else {
             _v = 0;
           }
         }
         if (_v) {
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              {
-                if (PyFloat_Check(argv[5])){
-                  _v = 1;
-                } else {
-                  _v = 0;
-                }
-              }
-              if (_v) {
-                return _wrap_new_Mesh__SWIG_9(self, args);
-              }
-            }
-          }
+          return _wrap_new_Mesh__SWIG_13(self, args);
         }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      _v = 0; // ignore this pattern
+    }
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[4])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_new_Mesh__SWIG_10(self, args);
       }
     }
   }
@@ -21066,18 +20841,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 7) {
+  if (argc == 6) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
+      _v = 0; // ignore this pattern
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
+        if (PyArray_PyIntAsInt(argv[4])   != -1){
           _v = 1;
         } else {
           _v = 0;
@@ -21085,7 +20856,34 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
+          if (PyFloat_Check(argv[5])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
+        }
+        if (_v) {
+          return _wrap_new_Mesh__SWIG_9(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      _v = 0; // ignore this pattern
+    }
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[3])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        {
+          if (PyFloat_Check(argv[4])){
             _v = 1;
           } else {
             _v = 0;
@@ -21093,38 +20891,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[5])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
-            {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              {
-                if (PyFloat_Check(argv[5])){
-                  _v = 1;
-                } else {
-                  _v = 0;
-                }
-              }
-              if (_v) {
-                {
-                  if (PyFloat_Check(argv[6])){
-                    _v = 1;
-                  } else {
-                    _v = 0;
-                  }
-                }
-                if (_v) {
-                  return _wrap_new_Mesh__SWIG_8(self, args);
-                }
-              }
-            }
+            return _wrap_new_Mesh__SWIG_12(self, args);
           }
         }
       }
@@ -21192,18 +20966,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 8) {
+  if (argc == 7) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
+      _v = 0; // ignore this pattern
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
+        if (PyArray_PyIntAsInt(argv[4])   != -1){
           _v = 1;
         } else {
           _v = 0;
@@ -21211,7 +20981,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
+          if (PyFloat_Check(argv[5])){
             _v = 1;
           } else {
             _v = 0;
@@ -21219,47 +20989,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         }
         if (_v) {
           {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
+            if (PyFloat_Check(argv[6])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
-            {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              {
-                if (PyFloat_Check(argv[5])){
-                  _v = 1;
-                } else {
-                  _v = 0;
-                }
-              }
-              if (_v) {
-                {
-                  if (PyFloat_Check(argv[6])){
-                    _v = 1;
-                  } else {
-                    _v = 0;
-                  }
-                }
-                if (_v) {
-                  {
-                    if (PyFloat_Check(argv[7])){
-                      _v = 1;
-                    } else {
-                      _v = 0;
-                    }
-                  }
-                  if (_v) {
-                    return _wrap_new_Mesh__SWIG_7(self, args);
-                  }
-                }
-              }
-            }
+            return _wrap_new_Mesh__SWIG_8(self, args);
           }
         }
       }
@@ -21330,6 +21067,51 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                   }
                 }
               }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 8) {
+    int _v;
+    {
+      _v = 0; // ignore this pattern
+    }
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[4])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        {
+          if (PyFloat_Check(argv[5])){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
+        }
+        if (_v) {
+          {
+            if (PyFloat_Check(argv[6])){
+              _v = 1;
+            } else {
+              _v = 0;
+            }
+          }
+          if (_v) {
+            {
+              if (PyFloat_Check(argv[7])){
+                _v = 1;
+              } else {
+                _v = 0;
+              }
+            }
+            if (_v) {
+              return _wrap_new_Mesh__SWIG_7(self, args);
             }
           }
         }

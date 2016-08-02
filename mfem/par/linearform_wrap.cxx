@@ -3460,23 +3460,24 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[6]
 #define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[7]
 #define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[8]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[9]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[10]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[11]
-#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[12]
-#define SWIGTYPE_p_mfem__Vector swig_types[13]
-#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[15]
-#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[17]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[18]
-#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[19]
-#define SWIGTYPE_p_quad_t swig_types[20]
-#define SWIGTYPE_p_seg_t swig_types[21]
-#define SWIGTYPE_p_tet_t swig_types[22]
-#define SWIGTYPE_p_tri_t swig_types[23]
-static swig_type_info *swig_types[25];
-static swig_module_info swig_module = {swig_types, 24, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__GridFunction swig_types[9]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[10]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[11]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[12]
+#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[13]
+#define SWIGTYPE_p_mfem__Vector swig_types[14]
+#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[15]
+#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[16]
+#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[17]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[19]
+#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[20]
+#define SWIGTYPE_p_quad_t swig_types[21]
+#define SWIGTYPE_p_seg_t swig_types[22]
+#define SWIGTYPE_p_tet_t swig_types[23]
+#define SWIGTYPE_p_tri_t swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4148,6 +4149,7 @@ static void *_p_mfem__DGDirichletLFIntegratorTo_p_mfem__LinearFormIntegrator(voi
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", "mfem::LinearForm *", 0, 0, (void*)0, 0};
@@ -4180,6 +4182,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__DGDirichletLFIntegrator,
   &_swigt__p_mfem__DomainLFIntegrator,
   &_swigt__p_mfem__FiniteElementSpace,
+  &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__LinearForm,
@@ -4200,6 +4203,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {  {&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
@@ -4232,6 +4236,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__DGDirichletLFIntegrator,
   _swigc__p_mfem__DomainLFIntegrator,
   _swigc__p_mfem__FiniteElementSpace,
+  _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__LinearForm,

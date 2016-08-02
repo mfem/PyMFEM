@@ -3462,21 +3462,22 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ArrayT_mfem__Vertex_t swig_types[8]
 #define SWIGTYPE_p_mfem__DSTable swig_types[9]
 #define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[10]
-#define SWIGTYPE_p_mfem__GroupTopology swig_types[11]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[12]
-#define SWIGTYPE_p_mfem__Mesh swig_types[13]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[14]
-#define SWIGTYPE_p_mfem__ParNCMesh swig_types[15]
-#define SWIGTYPE_p_mfem__STable swig_types[16]
-#define SWIGTYPE_p_mfem__Table swig_types[17]
-#define SWIGTYPE_p_p_mfem__ArrayT_HYPRE_Int_t swig_types[18]
-#define SWIGTYPE_p_quad_t swig_types[19]
-#define SWIGTYPE_p_seg_t swig_types[20]
-#define SWIGTYPE_p_std__ostream swig_types[21]
-#define SWIGTYPE_p_tet_t swig_types[22]
-#define SWIGTYPE_p_tri_t swig_types[23]
-static swig_type_info *swig_types[25];
-static swig_module_info swig_module = {swig_types, 24, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__GridFunction swig_types[11]
+#define SWIGTYPE_p_mfem__GroupTopology swig_types[12]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[13]
+#define SWIGTYPE_p_mfem__Mesh swig_types[14]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[15]
+#define SWIGTYPE_p_mfem__ParNCMesh swig_types[16]
+#define SWIGTYPE_p_mfem__STable swig_types[17]
+#define SWIGTYPE_p_mfem__Table swig_types[18]
+#define SWIGTYPE_p_p_mfem__ArrayT_HYPRE_Int_t swig_types[19]
+#define SWIGTYPE_p_quad_t swig_types[20]
+#define SWIGTYPE_p_seg_t swig_types[21]
+#define SWIGTYPE_p_std__ostream swig_types[22]
+#define SWIGTYPE_p_tet_t swig_types[23]
+#define SWIGTYPE_p_tri_t swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6303,6 +6304,7 @@ static swig_type_info _swigt__p_mfem__ArrayT_mfem__Element_p_t = {"_p_mfem__Arra
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Vertex_t = {"_p_mfem__ArrayT_mfem__Vertex_t", "mfem::Array< mfem::Vertex > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DSTable = {"_p_mfem__DSTable", "mfem::DSTable *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FaceElementTransformations = {"_p_mfem__FaceElementTransformations", "mfem::FaceElementTransformations *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GroupTopology = {"_p_mfem__GroupTopology", "mfem::GroupTopology *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
@@ -6329,6 +6331,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_mfem__Vertex_t,
   &_swigt__p_mfem__DSTable,
   &_swigt__p_mfem__FaceElementTransformations,
+  &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__GroupTopology,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__Mesh,
@@ -6355,6 +6358,7 @@ static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Element_p_t[] = {  {&_swigt__
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Vertex_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Vertex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DSTable[] = {  {&_swigt__p_mfem__DSTable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FaceElementTransformations[] = {  {&_swigt__p_mfem__FaceElementTransformations, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GroupTopology[] = {  {&_swigt__p_mfem__GroupTopology, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__ParMesh, _p_mfem__ParMeshTo_p_mfem__Mesh, 0, 0},  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
@@ -6381,6 +6385,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_mfem__Vertex_t,
   _swigc__p_mfem__DSTable,
   _swigc__p_mfem__FaceElementTransformations,
+  _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__GroupTopology,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__Mesh,

@@ -2,7 +2,8 @@
 %{
 #include <mpi.h>
 #include "fem/pnonlinearform.hpp"
-#include "fem/linearform.hpp"  
+#include "fem/linearform.hpp"
+#include "pyoperator.hpp"           
 #define MFEM_USE_MPI  
 %}
 %include mpi4py/mpi4py.i

@@ -3456,19 +3456,20 @@ namespace Swig {
 #define SWIGTYPE_p_char swig_types[2]
 #define SWIGTYPE_p_hex_t swig_types[3]
 #define SWIGTYPE_p_int swig_types[4]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[5]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[6]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[7]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[8]
-#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[9]
-#define SWIGTYPE_p_mfem__ParLinearForm swig_types[10]
-#define SWIGTYPE_p_mfem__Vector swig_types[11]
-#define SWIGTYPE_p_quad_t swig_types[12]
-#define SWIGTYPE_p_seg_t swig_types[13]
-#define SWIGTYPE_p_tet_t swig_types[14]
-#define SWIGTYPE_p_tri_t swig_types[15]
-static swig_type_info *swig_types[17];
-static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__GridFunction swig_types[5]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[6]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[7]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[8]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[9]
+#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[10]
+#define SWIGTYPE_p_mfem__ParLinearForm swig_types[11]
+#define SWIGTYPE_p_mfem__Vector swig_types[12]
+#define SWIGTYPE_p_quad_t swig_types[13]
+#define SWIGTYPE_p_seg_t swig_types[14]
+#define SWIGTYPE_p_tet_t swig_types[15]
+#define SWIGTYPE_p_tri_t swig_types[16]
+static swig_type_info *swig_types[18];
+static swig_module_info swig_module = {swig_types, 17, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4048,6 +4049,7 @@ static swig_type_info _swigt__p_Map = {"_p_Map", "Map *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", "mfem::HypreParVector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
@@ -4066,6 +4068,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_hex_t,
   &_swigt__p_int,
+  &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__HypreParVector,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
@@ -4084,6 +4087,7 @@ static swig_cast_info _swigc__p_Map[] = {  {&_swigt__p_Map, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {  {&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
@@ -4102,6 +4106,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_hex_t,
   _swigc__p_int,
+  _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__HypreParVector,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,

@@ -90,6 +90,13 @@ except AttributeError:
     _newclass = 0
 
 
+try:
+    import weakref
+    weakref_proxy = weakref.proxy
+except Exception:
+    weakref_proxy = lambda x: x
+
+
 
 _solvers_p.MFEM_USE_MPI_swigconstant(_solvers_p)
 MFEM_USE_MPI = _solvers_p.MFEM_USE_MPI

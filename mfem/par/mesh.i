@@ -49,13 +49,6 @@ import_array();
     $1 = 0;
   }
 }
-%typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
-  if (PyFloat_Check($input)){
-    $1 = 1;
-  } else {
-    $1 = 0;
-  }
-}
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....
 %typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
@@ -67,10 +60,20 @@ import_array();
 }
 
 // ignore these constructors, since in python element::type is given by 
-// string (see extend section below)
-%ignore mfem::Mesh(int nx, int ny, int nz, Element::Type type, int generate_edges = 0, double sx = 1.0, double sy = 1.0, double sz = 1.0);
-%ignore mfem::Mesh(int nx, int ny, Element::Type type, int generate_edges = 0,
-		   double sx = 1.0, double sy = 1.0);
+// string (see extend section below).
+// %ignore does not work well !?
+//%ignore mfem::Mesh(int nx, int ny, int nz, mfem::Element::Type type,
+//		   int generate_edges = 0, double sx = 1.0, double sy = 1.0,
+//		   double sz = 1.0);
+//%ignore mfem::Mesh(int nx, int ny, mfem::Element::Type type,
+//                   int generate_edges = 0,
+//		     double sx = 1.0, double sy = 1.0);
+%typemap(typecheck) (int nx, int ny, int nz, mfem::Element::Type type) {
+  $1 = 0; // ignore this pattern
+}
+%typemap(typecheck) (int nx, int ny, mfem::Element::Type type) {
+  $1 = 0; // ignore this pattern
+}
 
 // to give vertex array as list
 %typemap(in) (const double *){
@@ -118,6 +121,32 @@ import_array();
 }
 %typemap(typecheck) (const int *vi) {
    $1 = PyList_Check($input) ? 1 : 0;
+}
+
+// SwapNodes
+%typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){
+int res2 = 0;
+res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
+if (!SWIG_IsOK(res2)){
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
+ }
+ $1 = &Pnodes;
+ } 
+%typemap(in) int &own_nodes_ (int own_nodes){
+  own_nodes = (int)PyInt_AsLong($input);
+  $1 = &own_nodes;
+} 
+%typemap(argout) (mfem::GridFunction *&nodes){
+  %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
+ }   
+%typemap(argout) int &own_nodes_{
+  %append_output(PyLong_FromLong((long)*$1));  
+}
+
+
+// default number is -1, which conflict with error code of PyArray_PyIntAsInt...
+%typemap(typecheck) (int nonconforming = -1) {
+   $1 = PyInt_Check($input) ? 1 : 0;
 }
 
 
@@ -333,7 +362,7 @@ namespace mfem{
      PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
      int *x    = (int *)PyArray_DATA(array);
      for (i = 0; i < self->GetNBE() ; i++){
-       x[i] = self->GetBdrElement(i)->GetAttribute();
+       x[i] = (int)(self->GetBdrElement(i)->GetAttribute());
      }
      return array;
    }   

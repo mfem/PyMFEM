@@ -3,6 +3,7 @@
 #include <mpi.h>
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
+#include "pyoperator.hpp"           
 #define MFEM_USE_MPI
 
 %}

@@ -3461,26 +3461,27 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[7]
 #define SWIGTYPE_p_mfem__FiniteElementCollection swig_types[8]
 #define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[9]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[10]
-#define SWIGTYPE_p_mfem__Mesh swig_types[11]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[12]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[13]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[14]
-#define SWIGTYPE_p_mfem__NeighborDofMessage swig_types[15]
-#define SWIGTYPE_p_mfem__NeighborRowReply swig_types[16]
-#define SWIGTYPE_p_mfem__NeighborRowRequest swig_types[17]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[18]
-#define SWIGTYPE_p_mfem__ParNCMesh swig_types[19]
-#define SWIGTYPE_p_mfem__STable swig_types[20]
-#define SWIGTYPE_p_mfem__Table swig_types[21]
-#define SWIGTYPE_p_mfem__Vector swig_types[22]
-#define SWIGTYPE_p_quad_t swig_types[23]
-#define SWIGTYPE_p_seg_t swig_types[24]
-#define SWIGTYPE_p_std__setT_int_t swig_types[25]
-#define SWIGTYPE_p_tet_t swig_types[26]
-#define SWIGTYPE_p_tri_t swig_types[27]
-static swig_type_info *swig_types[29];
-static swig_module_info swig_module = {swig_types, 28, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__GridFunction swig_types[10]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[11]
+#define SWIGTYPE_p_mfem__Mesh swig_types[12]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[13]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[14]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[15]
+#define SWIGTYPE_p_mfem__NeighborDofMessage swig_types[16]
+#define SWIGTYPE_p_mfem__NeighborRowReply swig_types[17]
+#define SWIGTYPE_p_mfem__NeighborRowRequest swig_types[18]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[19]
+#define SWIGTYPE_p_mfem__ParNCMesh swig_types[20]
+#define SWIGTYPE_p_mfem__STable swig_types[21]
+#define SWIGTYPE_p_mfem__Table swig_types[22]
+#define SWIGTYPE_p_mfem__Vector swig_types[23]
+#define SWIGTYPE_p_quad_t swig_types[24]
+#define SWIGTYPE_p_seg_t swig_types[25]
+#define SWIGTYPE_p_std__setT_int_t swig_types[26]
+#define SWIGTYPE_p_tet_t swig_types[27]
+#define SWIGTYPE_p_tri_t swig_types[28]
+static swig_type_info *swig_types[30];
+static swig_module_info swig_module = {swig_types, 29, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5665,6 +5666,7 @@ static swig_type_info _swigt__p_mfem__ArrayT_long_t = {"_p_mfem__ArrayT_long_t",
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Refinement_t = {"_p_mfem__ArrayT_mfem__Refinement_t", "mfem::Array< mfem::Refinement > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementCollection = {"_p_mfem__FiniteElementCollection", "mfem::FiniteElementCollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NCMesh = {"_p_mfem__NCMesh", "mfem::NCMesh *", 0, 0, (void*)0, 0};
@@ -5695,6 +5697,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_mfem__Refinement_t,
   &_swigt__p_mfem__FiniteElementCollection,
   &_swigt__p_mfem__FiniteElementSpace,
+  &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__NCMesh,
@@ -5725,6 +5728,7 @@ static swig_cast_info _swigc__p_mfem__ArrayT_long_t[] = {  {&_swigt__p_mfem__Arr
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Refinement_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Refinement_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementCollection[] = {  {&_swigt__p_mfem__FiniteElementCollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NCMesh[] = {  {&_swigt__p_mfem__ParNCMesh, _p_mfem__ParNCMeshTo_p_mfem__NCMesh, 0, 0},  {&_swigt__p_mfem__NCMesh, 0, 0, 0},{0, 0, 0, 0}};
@@ -5755,6 +5759,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_mfem__Refinement_t,
   _swigc__p_mfem__FiniteElementCollection,
   _swigc__p_mfem__FiniteElementSpace,
+  _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__NCMesh,

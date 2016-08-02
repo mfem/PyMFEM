@@ -58,10 +58,20 @@ import_array();
   }
 }
 // ignore these constructors, since in python element::type is given by 
-// string (see extend section below)
-%ignore mfem::Mesh(int nx, int ny, int nz, Element::Type type, int generate_edges = 0, double sx = 1.0, double sy = 1.0, double sz = 1.0);
-%ignore mfem::Mesh(int nx, int ny, Element::Type type, int generate_edges = 0,
-		   double sx = 1.0, double sy = 1.0);
+// string (see extend section below).
+// %ignore does not work well !?
+//%ignore mfem::Mesh(int nx, int ny, int nz, mfem::Element::Type type,
+//		   int generate_edges = 0, double sx = 1.0, double sy = 1.0,
+//		   double sz = 1.0);
+//%ignore mfem::Mesh(int nx, int ny, mfem::Element::Type type,
+//                   int generate_edges = 0,
+//		     double sx = 1.0, double sy = 1.0);
+%typemap(typecheck) (int nx, int ny, int nz, mfem::Element::Type type) {
+  $1 = 0; // ignore this pattern
+}
+%typemap(typecheck) (int nx, int ny, mfem::Element::Type type) {
+  $1 = 0; // ignore this pattern
+}
 
 // to give vertex array as list
 %typemap(in) (const double *){

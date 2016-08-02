@@ -17,7 +17,7 @@ problem = 0
 ref_levels = 1
 order = 1
 ode_solver_type = 4
-t_final = 0.1
+t_final = 10
 dt = 0.01
 vis_steps = 5
 
@@ -55,7 +55,7 @@ for lev in range(ref_levels):
 fec = mfem.DG_FECollection(order, dim)
 fes = mfem.FiniteElementSpace(mesh, fec)
 
-print( "Number of unknowns: " + str(fes.GetVSize())
+print("Number of unknowns: " + str(fes.GetVSize()))
 
 #
 #  Define coefficient using VecotrPyCoefficient and PyCoefficient
@@ -166,7 +166,7 @@ class FE_Evolution(mfem.PyTimeDependentOperator):
         self.M = M
         self.b = b
         self.z = mfem.Vector(M.Size())
-        self.zp = np.zeros(M.Size()))
+        self.zp = np.zeros(M.Size())
         self.M_prec = mfem.DSmoother()        
         self.M_solver = mfem.CGSolver()
         self.M_solver.SetPreconditioner(self.M_prec)        
