@@ -21,6 +21,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 %init %{
 import_array();
 %}
+%import "cpointer.i"
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -37,6 +38,8 @@ import_array();
 %import "coefficient.i"
 %import "fe.i"
 
+//
+%pointer_class(int, intp);
 //  conversion of Int (can handle numpy int)
 %typemap(in) int {
   PyArray_PyIntAsInt($input);  
@@ -226,7 +229,13 @@ def GetBoundingBox(self, ref = 2):
     _mesh.Mesh_GetBoundingBox(self, min, max, ref)      
     return min.GetDataArray().copy(), max.GetDataArray().copy()
 %}
-
+%feature("shadow") mfem::Mesh::GetFaceElements %{
+def GetFaceElements(self, Face):
+    Elem1 = intp()
+    Elem2 = intp()  
+    val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)
+    return Elem1.value(), Elem2.value()
+%}
 
 %immutable attributes;
 %immutable bdr_attributes;

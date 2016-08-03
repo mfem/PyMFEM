@@ -153,7 +153,10 @@ This is needed only when you edit SWIG interface files.
             GetEdgeVertices(i)
             GetFaceVertices(i)
             GetElementFaces(i)
-
+	 pointer passing in following methos are returned
+	 as tuple
+            elem1, elem2 = mesh.GetFaceElements(i)
+	    
          Additional constructors:
 	    # this one takes file name as string
 	    Mesh(const char *mesh_file, int generate_edges, int refine,

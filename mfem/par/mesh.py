@@ -112,6 +112,40 @@ import sparsemat
 import eltrans
 import fe
 import coefficient
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _mesh.new_intp()
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _mesh.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _mesh.intp_assign(self, value)
+
+    def value(self):
+        return _mesh.intp_value(self)
+
+    def cast(self):
+        return _mesh.intp_cast(self)
+    __swig_getmethods__["frompointer"] = lambda x: _mesh.intp_frompointer
+    if _newclass:
+        frompointer = staticmethod(_mesh.intp_frompointer)
+intp_swigregister = _mesh.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _mesh.intp_frompointer(t)
+intp_frompointer = _mesh.intp_frompointer
+
 class Mesh(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Mesh, name, value)
@@ -385,8 +419,13 @@ class Mesh(_object):
     def FaceIsInterior(self, FaceNo):
         return _mesh.Mesh_FaceIsInterior(self, FaceNo)
 
-    def GetFaceElements(self, Face, Elem1, Elem2):
-        return _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)
+    def GetFaceElements(self, Face):
+        Elem1 = intp()
+        Elem2 = intp()  
+        val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)
+        return Elem1.value(), Elem2.value()
+
+
 
     def GetFaceInfos(self, Face, Inf1, Inf2):
         return _mesh.Mesh_GetFaceInfos(self, Face, Inf1, Inf2)
