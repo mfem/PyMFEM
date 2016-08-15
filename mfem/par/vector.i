@@ -22,10 +22,12 @@ import_array();
   int i, si;
   if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, $disown|0) != -1){
 	      
-  }if (PyArray_Check($input)){
+  }
+  else if (PyArray_Check($input)){
     $1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)$input));
 	 //     $1 = (double *) PyArray_DATA($input);
-  } else {
+  }
+  else {
      if (!PyList_Check($input)) {
         PyErr_SetString(PyExc_ValueError, "Expecting a list");
         return NULL;
@@ -63,16 +65,30 @@ import_array();
    }
 }
 
+
 %pythonprepend mfem::Vector::Vector %{
 from numpy import ndarray
+keep_link = False
+own_data = False  
 if len(args) == 1:
     if isinstance(args[0], list): 
         args = (args[0], len(args[0]))
+        own_data = True	  
     elif isinstance(args[0], ndarray):
         if args[0].dtype != 'float64':
             raise ValueError('Must be float64 array')
         else:
             args = (args[0], args[0].shape[0])
+             # in this case, args[0] need to be maintained
+	     # in this object.
+	    keep_link = True
+%}
+
+%pythonappend mfem::Vector::Vector %{
+if keep_link:
+   self._link_to_data = args[0]
+if own_data:
+   self.MakeDataOwner()
 %}
 
 %feature("shadow") mfem::Vector::operator+= %{

@@ -97,10 +97,24 @@ This is needed only when you edit SWIG interface files.
  Some of them may be e integrated to MFEM itself in future.
  
   4-1) mfem::Vector
-     Constructor using python list:   v = mfem.Vector([1,2,3])
+     Constructor using python list/numpy array:
+     
+        v = mfem.Vector([1,2,3.])
+        v = mfem.Vector(np.array([1,2,3,4.])
+
+        Note that when list is passed. Contents of list is copied and data is
+	owned by mfem::Vector. When numpy arra is passed. Data is not copied.
+	mfem::Vector holds the passed numpy array as _link_to_data attribute,
+	so that python does not garbage collect the numpy array untill mfem::Vector
+	is deleted.
+
+        Constructor also get SWIG object to <double *>. However, memory
+	management for this pointer object is left to a user.
+	
      Array element access:  print v[0] or v[0] = 3
      Assign method:         v.Assign(1) (equivalent to v=1 in c++)
      Data Access as Numpy:  v.GetDataArray()
+
 
      In c++, a new partial view to existing vector is acquired
      as

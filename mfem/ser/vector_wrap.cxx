@@ -3973,10 +3973,12 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
     int i, si;
     if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
       
-    }if (PyArray_Check(obj0)){
+    }
+    else if (PyArray_Check(obj0)){
       arg1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)obj0));
       //     arg1 = (double *) PyArray_DATA(obj0);
-    } else {
+    }
+    else {
       if (!PyList_Check(obj0)) {
         PyErr_SetString(PyExc_ValueError, "Expecting a list");
         return NULL;

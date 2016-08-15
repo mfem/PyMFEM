@@ -258,14 +258,20 @@ class Vector(_object):
     def __init__(self, *args):
 
         from numpy import ndarray
+        keep_link = False
+        own_data = False  
         if len(args) == 1:
             if isinstance(args[0], list): 
                 args = (args[0], len(args[0]))
+                own_data = True	  
             elif isinstance(args[0], ndarray):
                 if args[0].dtype != 'float64':
                     raise ValueError('Must be float64 array')
                 else:
                     args = (args[0], args[0].shape[0])
+        # in this case, args[0] need to be maintained
+        # in this object.
+        	    keep_link = True
 
 
         this = _vector.new_Vector(*args)
@@ -273,6 +279,14 @@ class Vector(_object):
             self.this.append(this)
         except Exception:
             self.this = this
+
+        if keep_link:
+           self._link_to_data = args[0]
+        if own_data:
+           self.MakeDataOwner()
+
+
+
 
     def __setitem__(self, i, v):
         return _vector.Vector___setitem__(self, i, v)

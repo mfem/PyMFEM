@@ -46,18 +46,20 @@ libraries    = [mfemserlib]
 
 
 ext_modules = [Extension(proxy_names[modules[0]],
-                        sources=sources[modules[0]],
-                        extra_link_args = extra_link_args,
-                        include_dirs = include_dirs,
-                        library_dirs = library_dirs,
-                        libraries = [])]
+                         sources=sources[modules[0]],
+                         extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'],
+                         extra_link_args = extra_link_args,
+                         include_dirs = include_dirs,
+                         library_dirs = library_dirs,
+                         libraries = [])]
 
 ext_modules.extend([Extension(proxy_names[name],
-                        sources=sources[name],
-                        extra_link_args = [],
-                        include_dirs = include_dirs,
-                        library_dirs = library_dirs,
-                        libraries = [])
+                              sources=sources[name],
+                              extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'],                              
+                              extra_link_args = [],
+                              include_dirs = include_dirs,
+                              library_dirs = library_dirs,
+                              libraries = [])
                for name in modules[1:]])
 
 

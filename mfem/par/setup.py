@@ -59,6 +59,7 @@ library_dirs = [mfemlnkdir, hyprelnkdir, metislnkdir]
 
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
+                        extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'],                            
                         extra_link_args = extra_link_args + extra_link_args0,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
@@ -66,6 +67,7 @@ ext_modules = [Extension(proxy_names[modules[0]],
 
 ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],
+                        extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'], 
                         extra_link_args = extra_link_args,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
