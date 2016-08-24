@@ -1,0 +1,20 @@
+'''
+mfem.common
+'''
+
+this directory collect common modules common
+
+In order to chekc if it is running in parallel or serial,
+this moduels always starts with
+
+import sys
+if 'mfem.ser' in sys.modules:
+   import mfem.ser as mfem
+else:
+   import mfem.par as mfem
+
+For this to work, there is loading order.
+
+import mfem.ser as mfem
+import mfem.common
+

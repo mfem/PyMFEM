@@ -97,6 +97,40 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _hypre.new_intp()
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _hypre.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _hypre.intp_assign(self, value)
+
+    def value(self):
+        return _hypre.intp_value(self)
+
+    def cast(self):
+        return _hypre.intp_cast(self)
+    __swig_getmethods__["frompointer"] = lambda x: _hypre.intp_frompointer
+    if _newclass:
+        frompointer = staticmethod(_hypre.intp_frompointer)
+intp_swigregister = _hypre.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _hypre.intp_frompointer(t)
+intp_frompointer = _hypre.intp_frompointer
+
 import sparsemat
 import array
 import vector
@@ -121,6 +155,10 @@ import pmesh
 import pncmesh
 import communication
 import sets
+
+def sizeof_HYPRE_Int():
+    return _hypre.sizeof_HYPRE_Int()
+sizeof_HYPRE_Int = _hypre.sizeof_HYPRE_Int
 
 def to_int(i):
     return _hypre.to_int(i)
