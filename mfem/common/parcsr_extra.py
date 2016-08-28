@@ -94,11 +94,13 @@ def ParMultComplex(A, B):
     if I_A is None and I_B is None:
        return (mfem.ParMult(R_A, R_B), None)
     elif I_A is None:
-       r = mfem.ParMult(R_A, R_B))
-       i = mfem.ParMult(R_A, I_B))
+       r = mfem.ParMult(R_A, R_B)
+       i = mfem.ParMult(R_A, I_B)
+       return (r, i)
     elif I_B is None:
-       r = mfem.ParMult(R_A, R_B))
-       i = mfem.ParMult(I_A, R_B))
+       r = mfem.ParMult(R_A, R_B)
+       i = mfem.ParMult(I_A, R_B)
+       return (r, i)       
     else:
        r = ToHypreParCSR((ToScipyCoo(mfem.ParMult(R_A, R_B)) - ToScipyCoo(mfem.ParMult((I_A, I_B)))).tocsr())
        i = ToHypreParCSR((ToScipyCoo(mfem.ParMult(R_A, I_B)) + ToScipyCoo(mfem.ParMult((I_A, R_B)))).tocsr())

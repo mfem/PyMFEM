@@ -11,10 +11,10 @@
         only its own rows.
 
 
-   example_1 tests
-      concatenate 2x4 matrices to form 4x4
+   example_2 tests
+      concatenate 2 of 2x5 matrices and one 1x5 to form 5x5
       peform ParMMULTI, RAP, and ParAdd 
-      works only for mpirun -np 2 (2 cpu)
+      works only for mpirun -np 3 (3 cpu)
 
 '''
 import mfem.par as par
@@ -38,11 +38,12 @@ def print_hypre(M, txt):
               print 'MyID: ', myid              
           print ToScipyCoo(M)
 
+shape = (2, 5) if myid < 2 else (1, 5)
 # make sample matrix
-row  = np.array([0, 0, 1, 1])
-col  = np.array([0, 3, 1, 2])
+row  = np.array([0, 0, 0, 0])
+col  = np.array([0, 3, 1, 4])
 data = np.array([4, 5, 7, 9])
-m = coo_matrix((data, (row, col)), shape=(2,4))
+m = coo_matrix((data, (row, col)), shape=shape)
 m = m.tocsr()
 m = m*(myid+1)
 
@@ -51,10 +52,10 @@ print_hypre(M, 'matrix M')
 
 # make sample matrix
 if True:
-   row  = np.array([1, 1, 0, 0])
-   col  = np.array([0, 3, 1, 2])
+   row  = np.array([0, 0, 0, 0])
+   col  = np.array([4, 3, 1, 2])
    data = np.array([4, 10,7, 2 ])
-   m = coo_matrix((data, (row, col)), shape=(2,4))
+   m = coo_matrix((data, (row, col)), shape=shape)
    m = m.tocsr()
    m = m*(myid+1)
    M2 = ToHypreParCSR(m)

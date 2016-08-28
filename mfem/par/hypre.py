@@ -360,6 +360,12 @@ class HypreParMatrix(operators.Operator):
         return _hypre.HypreParMatrix_Read(self, comm, fname)
     __swig_destroy__ = _hypre.delete_HypreParMatrix
     __del__ = lambda self: None
+
+    def get_local_nnz(self):
+        return _hypre.HypreParMatrix_get_local_nnz(self)
+
+    def GetCooDataArray(self, base_i=0, base_j=0):
+        return _hypre.HypreParMatrix_GetCooDataArray(self, base_i, base_j)
 HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister
 HypreParMatrix_swigregister(HypreParMatrix)
 

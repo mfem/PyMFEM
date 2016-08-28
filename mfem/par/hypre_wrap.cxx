@@ -3615,11 +3615,11 @@ namespace swig {
 
 
 #include <mpi.h>
+#include <Python.h>
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           
 #define MFEM_USE_MPI
-
 
 
 #include "mpi4py/mpi4py.h"
@@ -3804,9 +3804,9 @@ SWIGINTERN intp *intp_frompointer(int *t){
     return (intp *) t;
   }
 
-  int sizeof_HYPRE_Int(){
+int sizeof_HYPRE_Int(){
     return sizeof(HYPRE_Int);
-  }
+}
 
 
 SWIGINTERN int
@@ -4041,6 +4041,166 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
+SWIGINTERN HYPRE_Int mfem_HypreParMatrix_get_local_nnz(mfem::HypreParMatrix *self){
+  //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);
+   hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
+   MPI_Comm          comm;
+   hypre_CSRMatrix  *diag;
+   hypre_CSRMatrix  *offd;
+   if (!matrix)
+   {
+      /*hypre_error_in_arg(1);*/
+     return 0;
+   }
+   comm = hypre_ParCSRMatrixComm(matrix);
+   diag            = hypre_ParCSRMatrixDiag(matrix);
+   offd            = hypre_ParCSRMatrixOffd(matrix);
+   return hypre_CSRMatrixNumNonzeros(diag) + hypre_CSRMatrixNumNonzeros(offd);
+}
+SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParMatrix *self,HYPRE_Int const base_i=0,HYPRE_Int const base_j=0){
+  //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);
+   hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
+
+
+   MPI_Comm          comm;
+   HYPRE_Int         first_row_index;
+   HYPRE_Int         first_col_diag;
+   hypre_CSRMatrix  *diag;
+   hypre_CSRMatrix  *offd;
+   HYPRE_Int        *col_map_offd;
+   HYPRE_Int         num_rows;
+   HYPRE_Int        *row_starts;
+   HYPRE_Int        *col_starts;
+   HYPRE_Complex    *diag_data;
+   HYPRE_Int        *diag_i;
+   HYPRE_Int        *diag_j;
+   HYPRE_Complex    *offd_data;
+   HYPRE_Int        *offd_i;
+   HYPRE_Int        *offd_j;
+   HYPRE_Int         myid, num_procs, i, j, I, J;
+   HYPRE_Int         num_nonzeros_offd;
+   HYPRE_Int         ilower, iupper, jlower, jupper;
+   
+   HYPRE_Int innz = 0;
+   HYPRE_Int nnz;
+
+   PyObject *arr1, *arr2, *arr3, *o;   
+   if (!matrix)
+   {
+      /*hypre_error_in_arg(1);*/
+     return Py_None;    
+   }
+
+   comm = hypre_ParCSRMatrixComm(matrix);
+   diag = hypre_ParCSRMatrixDiag(matrix);
+   offd = hypre_ParCSRMatrixOffd(matrix);
+   nnz =  hypre_CSRMatrixNumNonzeros(diag) + hypre_CSRMatrixNumNonzeros(offd);
+
+   first_row_index = hypre_ParCSRMatrixFirstRowIndex(matrix);
+   first_col_diag  = hypre_ParCSRMatrixFirstColDiag(matrix);
+   diag            = hypre_ParCSRMatrixDiag(matrix);
+   offd            = hypre_ParCSRMatrixOffd(matrix);
+   col_map_offd    = hypre_ParCSRMatrixColMapOffd(matrix);
+   num_rows        = hypre_ParCSRMatrixNumRows(matrix);
+   row_starts      = hypre_ParCSRMatrixRowStarts(matrix);
+   col_starts      = hypre_ParCSRMatrixColStarts(matrix);
+   hypre_MPI_Comm_rank(comm, &myid);
+   hypre_MPI_Comm_size(comm, &num_procs);
+   num_nonzeros_offd = hypre_CSRMatrixNumNonzeros(offd);
+
+   diag_data = hypre_CSRMatrixData(diag);
+   diag_i    = hypre_CSRMatrixI(diag);
+   diag_j    = hypre_CSRMatrixJ(diag);
+   offd_i    = hypre_CSRMatrixI(offd);
+   if (num_nonzeros_offd)
+   {
+      offd_data = hypre_CSRMatrixData(offd);
+      offd_j    = hypre_CSRMatrixJ(offd);
+   }
+
+   //#ifdef HYPRE_NO_GLOBAL_PARTITION
+   if (HYPRE_AssumedPartitionCheck()){
+     //std::cout << "no_global_partition\n";
+      ilower = row_starts[0]+base_i;
+      iupper = row_starts[1]+base_i - 1;
+      jlower = col_starts[0]+base_j;
+      jupper = col_starts[1]+base_j - 1;
+   } else {
+      ilower = row_starts[myid]  +base_i;
+      iupper = row_starts[myid+1]+base_i - 1;
+      jlower = col_starts[myid]  +base_j;
+      jupper = col_starts[myid+1]+base_j - 1;
+   }
+   
+   HYPRE_Int* irn;// = (HYPRE_Int *)malloc(sizeof(HYPRE_Int)*nnz);
+   HYPRE_Int* jcn;// = (HYPRE_Int *)malloc(sizeof(HYPRE_Int)*nnz);
+   double* a;// = (double *)malloc(sizeof(double)*nnz);
+   npy_intp dims[] = {nnz};
+   int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+
+   //std::cout << "nnz " << std::to_string(nnz) << "\n";
+   arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+   arr2 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+   arr3 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, NPY_DOUBLE, 0));
+   
+   if (arr1 == NULL) goto alloc_fail;
+   if (arr2 == NULL) goto alloc_fail;
+   if (arr3 == NULL) goto alloc_fail;
+   irn = (HYPRE_Int *) PyArray_DATA(arr1);
+   jcn = (HYPRE_Int *) PyArray_DATA(arr2);
+   a = (double *) PyArray_DATA(arr3);
+   //*irn_p = irn;
+   //*jcn_p = jcn;
+   //*a_p   = a;
+
+   for (i = 0; i < num_rows; i++)
+   {
+      I = first_row_index + i + base_i;
+      for (j = diag_i[i]; j < diag_i[i+1]; j++)
+      {
+         J = first_col_diag + diag_j[j] + base_j;
+         if ( diag_data )
+	 {
+           irn[innz]= I;
+           jcn[innz] = J;
+           a[innz] = (double)diag_data[j];
+	   innz = innz + 1;		     
+         }		     
+		     
+      }
+      if ( num_nonzeros_offd )
+      {
+         for (j = offd_i[i]; j < offd_i[i+1]; j++)
+         {
+            J = col_map_offd[offd_j[j]] + base_j;
+            if ( offd_data )
+            {
+               irn[innz]= I;;
+               jcn[innz] = J;
+               a[innz] = (double)offd_data[j];
+    	       innz = innz + 1;		     	       
+     	    }
+         }
+      }
+   }
+
+  o = PyList_New(8);
+  PyList_SetItem(o, 0, PyLong_FromLong((long)num_rows));
+  PyList_SetItem(o, 1, PyLong_FromLong((long)ilower));
+  PyList_SetItem(o, 2, PyLong_FromLong((long)iupper));
+  PyList_SetItem(o, 3, PyLong_FromLong((long)jlower));
+  PyList_SetItem(o, 4, PyLong_FromLong((long)jupper));  
+  PyList_SetItem(o, 5, arr1);
+  PyList_SetItem(o, 6, arr2);
+  PyList_SetItem(o, 7, arr3);
+  
+  return o;
+  alloc_fail:
+     Py_XDECREF(arr1);
+     Py_XDECREF(arr2);
+     Py_XDECREF(arr3);
+     return Py_None;
+}
 
 SWIGINTERN int
 SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val) 
@@ -10238,6 +10398,237 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_HypreParMatrix_get_local_nnz(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  HYPRE_Int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HypreParMatrix_get_local_nnz",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_get_local_nnz" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    try {
+      result = (HYPRE_Int)mfem_HypreParMatrix_get_local_nnz(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  HYPRE_Int arg2 ;
+  HYPRE_Int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:HypreParMatrix_GetCooDataArray",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_GetCooDataArray" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
+  {
+    try {
+      result = (PyObject *)mfem_HypreParMatrix_GetCooDataArray__SWIG_0(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  HYPRE_Int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:HypreParMatrix_GetCooDataArray",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_GetCooDataArray" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    try {
+      result = (PyObject *)mfem_HypreParMatrix_GetCooDataArray__SWIG_0(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HypreParMatrix_GetCooDataArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_GetCooDataArray" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    try {
+      result = (PyObject *)mfem_HypreParMatrix_GetCooDataArray__SWIG_0(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_HypreParMatrix_GetCooDataArray__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_HypreParMatrix_GetCooDataArray__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        {
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
+        }
+        if (_v) {
+          return _wrap_HypreParMatrix_GetCooDataArray__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'HypreParMatrix_GetCooDataArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::HypreParMatrix::GetCooDataArray(HYPRE_Int const,HYPRE_Int const)\n"
+    "    mfem::HypreParMatrix::GetCooDataArray(HYPRE_Int const)\n"
+    "    mfem::HypreParMatrix::GetCooDataArray()\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *HypreParMatrix_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -16204,6 +16595,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"HypreParMatrix_Print", _wrap_HypreParMatrix_Print, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_Read", _wrap_HypreParMatrix_Read, METH_VARARGS, NULL},
 	 { (char *)"delete_HypreParMatrix", _wrap_delete_HypreParMatrix, METH_VARARGS, NULL},
+	 { (char *)"HypreParMatrix_get_local_nnz", _wrap_HypreParMatrix_get_local_nnz, METH_VARARGS, NULL},
+	 { (char *)"HypreParMatrix_GetCooDataArray", _wrap_HypreParMatrix_GetCooDataArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ParMult", _wrap_ParMult, METH_VARARGS, NULL},
 	 { (char *)"RAP", _wrap_RAP, METH_VARARGS, NULL},
