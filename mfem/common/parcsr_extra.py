@@ -187,6 +187,12 @@ def TransposeComplex(A):
     HypreParCSR
     '''
     return (A[0].Transpose(), A[1].Transpose())
+
+def Conj(A):
+    R = A[0]
+    I = A[1]
+    I = ToHypreParCSR(-ToScipyCoo(I).tocsr())
+    return (R, I)
  
 def RapComplex(A, B):
     '''
@@ -194,8 +200,8 @@ def RapComplex(A, B):
 
     for complex A and B
     '''
-    return ParMultComplex(TransposeComplex(B), ParMultComplex(A, B))
-
+    X = ParMultComplex(A, B)
+    return ParMultComplex(Conj(TransposeComplex(B)), X)
 
 def Array2Hypre(v, partitioning = None, rank = 0):
     '''
@@ -264,6 +270,7 @@ def ResetHypreDiag(M, idx, value = 1.0):
     set diagonal element to value (normally 1)
     '''
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
+    
     from mpi4py import MPI
     myid     = MPI.COMM_WORLD.rank
      
@@ -271,11 +278,20 @@ def ResetHypreDiag(M, idx, value = 1.0):
     n = jupper - jlower + 1
     n = M.N()    
     from scipy.sparse import coo_matrix, lil_matrix
-
+ 
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
+
+#    for k in range(2):
+#        MPI.COMM_WORLD.Barrier()                              
+#        if myid == k:
+#            print 'MyID : ', k
+#            print 'mat shape ', mat.shape
+#            print 'idx', np.max(idx), np.min(idx)
+#        MPI.COMM_WORLD.Barrier()                              
+    
     for ii in idx:
         if ii >= ilower and ii <= iupper:
-           mat[ii-ilower, ii-ilower] = value
+           mat[ii-ilower, ii] = value
 
     return  ToHypreParCSR(mat.tocsr())
 
