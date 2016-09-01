@@ -176,13 +176,17 @@ def Array2CHypre(array, part):
 
 def CHypre2Array(array):
     if array[0] is not None:
-        ans = Hypre2Array(array[0])
+        r= Hypre2Array(array[0])
     else:
-        ans = 0.0
+        r = 0.0
     if array[1] is None:
-        return ans
+        return r
     else:
-        return ans + 1j*Hypre2Array(array[1])
+        i = Hypre2Array(array[1])
+    if i is None:
+        return r
+    else:
+        return r + 1j*i
 
 
        
