@@ -46,7 +46,34 @@ def get_col_partitioning(M):
     rows = [0] + list(np.cumsum(m_array))
     return rows
  
- 
+def ToHypreParVec(vec):
+       
+    from mpi4py import MPI
+
+    if mfem.sizeof_HYPRE_Int() == 4:
+        dtype = 'int32'
+    else:
+        dtype = 'int64'        
+    
+    comm     = MPI.COMM_WORLD     
+    num_proc = MPI.COMM_WORLD.size
+    myid     = MPI.COMM_WORLD.rank
+
+    vec = vec.flatten()
+    ml = vec.shape[0]
+    
+    # collect col array to determin partitioning
+    m_array = comm.allgather(ml)
+    cols= [0] + list(np.cumsum(m_array))
+    glob_size = cols[-1]
+    col_starts = np.array([cols[myid], cols[myid+1], glob_size], dtype=dtype)
+    
+    vec = vec.dtype('float')
+    v =  mfem.HypreParVec(MPI.COMM_WORLD,
+                             [glob_size, vec, col_starts])
+    print v
+    return v
+   
 def ToHypreParCSR(mat, check_partitioning = False, verbose = False):
     '''
     convert scipy sparse matrix to hypre
@@ -140,13 +167,69 @@ def ToScipyCoo(mat):
     #   print jcn
     from scipy.sparse import coo_matrix
     return coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
+ 
+def InnerProductComplex(A, B):
+    R_A, I_A = A
+    R_B, I_B = B
 
+    if I_A is None and I_B is None:
+       return mfem.InnerProduct(R_A, R_B)
+    elif I_A is None:
+       r = mfem.InnerProduct(R_A, R_B)
+       i = mfem.InnerProduct(R_A, I_B)
+    elif I_B is None:
+       r = mfem.InnerProduct(R_A, R_B)
+       i = mfem.InnerProduct(I_A, R_B)
+    else:
+       r = mfem.InnerProduct(R_A, R_B) - mfem.InnerProduct(I_A, I_B)
+       i = mfem.InnerProduct(R_A, I_B) + mfem.InnerProduct(I_A, R_B)
+    return r + 1j* i 
+   
 def ParAdd(A, B):
     '''
     add HypreParCSR
     '''
     return ToHypreParCSR((ToScipyCoo(A)+ ToScipyCoo(B)).tocsr())
+ 
+def ParMultVecComplex(A, v):
+    '''
+    A*v
+    '''
+    from mpi4py import MPI
     
+    comm     = MPI.COMM_WORLD     
+    num_proc = MPI.COMM_WORLD.size
+    myid     = MPI.COMM_WORLD.rank
+
+    R_A, I_A = A
+    R_v, I_v = v
+
+    if I_A is None and I_v is None:
+       ans_r = mfem.HypreParVector(R_v)
+       R_A.Mult(R_v, ans_r)
+       return (ans_r, None)
+    ans_r = mfem.HypreParVector(R_v)
+    ans_i = mfem.HypreParVector(I_v)
+    if I_A is None:
+       R_A.Mult(R_v, ans_r)
+       R_A.Mult(I_v, ans_i)              
+    elif I_v is None:
+       R_A.Mult(R_v, ans_r)
+       I_A.Mult(R_v, ans_i)              
+    else:
+       ans_r2 = mfem.HypreParVector(R_v)
+       ans_i2 = mfem.HypreParVector(I_v)
+       
+       R_A.Mult(R_v, ans_r)
+       I_A.Mult(I_v, ans_r2)
+       ans_r -= ans_r2
+
+       R_A.Mult(I_v, ans_i)
+       I_A.Mult(R_v, ans_i2)
+       ans_i += ans_i2       
+
+    return (ans_r, ans_i)       
+   
 def ParMultComplex(A, B):
     '''
     compute complex mult of hypre real matrices
@@ -203,7 +286,7 @@ def RapComplex(A, B):
     X = ParMultComplex(A, B)
     return ParMultComplex(Conj(TransposeComplex(B)), X)
 
-def Array2Hypre(v, partitioning = None, rank = 0):
+def Array2HypreVec(v, partitioning = None, rank = 0):
     '''
     convert array in rank (default = 0)  to 
     distributed Hypre 1D Matrix (size = m x 1)
@@ -223,24 +306,21 @@ def Array2Hypre(v, partitioning = None, rank = 0):
         nrows = end_row - start_row
 
     from scipy.sparse import csr_matrix, coo_matrix
-    d = data[start_row:end_row]
-    m = csr_matrix(np.array(d).reshape(-1,1), shape=(nrows,1), dtype='float')
+    v = np. np.ascontiguousarray(data[start_row:end_row].flatten())
+    return ToHypreParVec(v)    
+    #m = csr_matrix(np.array(d).reshape(-1,1), shape=(nrows,1), dtype='float')
+    #return ToHypreParCSR(m)
 
-    return ToHypreParCSR(m)
-
-def Hypre2Array(M):
+def HypreVec2Array(V, copy = True):
     '''
-    convert m x 1 or 1 x m HYPRE matrix to 1D array 
+    convert HypreParVec to 1D array 
     on rank = 0
     '''
-    if (M.M() != 1 and M.N() != 1):
-        raise ValueError("input M must be 1D array")
-     
     from mpi4py import MPI
     myid     = MPI.COMM_WORLD.rank
 
-    m = ToScipyCoo(M)
-    data = m.toarray().flatten()
+    data = V.GetDataArray()
+    if copy: data = data.copy()
 
     rcounts = len(data)
 

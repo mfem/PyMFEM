@@ -3948,6 +3948,22 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
+SWIGINTERN PyObject *mfem_HypreParVector_GetPartitioningArray(mfem::HypreParVector *self){
+  // assumed partitioning mode only
+  npy_intp dims[] = {3};
+  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_Int *part_out;
+  
+  HYPRE_Int *part = self -> Partitioning();
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+
+  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out[0] = part[0];
+  part_out[1] = part[1];
+  part_out[2] = part[2];  
+
+  return arr1;
+}
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
@@ -4526,15 +4542,12 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   HYPRE_Int arg2 ;
   double *arg3 = (double *) 0 ;
   HYPRE_Int *arg4 = (HYPRE_Int *) 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
   mfem::HypreParVector *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_HypreParVector",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_HypreParVector",&obj0,&obj1,&obj2)) SWIG_fail;
   {
     MPI_Comm *ptr = (MPI_Comm *)0;
     int res = SWIG_AsPtr_MPI_Comm(obj0, &ptr);
@@ -4549,42 +4562,9 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    // int _size){
-    int i, si;
-    if (SWIG_ConvertPtr(obj2, (void **) &arg3, SWIGTYPE_p_double, 0|0) != -1){
-      
-    }
-    else if (PyArray_Check(obj2)){
-      arg3 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)obj2));
-      //     arg3 = (double *) PyArray_DATA(obj2);
-    }
-    else {
-      if (!PyList_Check(obj2)) {
-        PyErr_SetString(PyExc_ValueError, "Expecting a list");
-        return NULL;
-      }
-      si = PyList_Size(obj2);
-      arg3 = (double *) malloc((si)*sizeof(double));
-      for (i = 0; i < si; i++) {
-        PyObject *s = PyList_GetItem(obj2,i);
-        if (PyInt_Check(s)) {
-          arg3[i] = (double)PyFloat_AsDouble(s);
-        } else if (PyFloat_Check(s)) {
-          arg3[i] = (double)PyFloat_AsDouble(s);
-        } else {
-          free(arg3);      
-          PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-          return NULL;
-        }
-      }
-    }
-    
+    arg3 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,0)));
+    arg4 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,1)));
   }
-  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_HypreParVector" "', argument " "4"" of type '" "HYPRE_Int *""'"); 
-  }
-  arg4 = reinterpret_cast< HYPRE_Int * >(argp4);
   {
     try {
       result = (mfem::HypreParVector *)new mfem::HypreParVector(arg1,arg2,arg3,arg4); 
@@ -4800,14 +4780,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_HypreParVector(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[5] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -4882,7 +4862,7 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 4) {
+  if (argc == 3) {
     int _v;
     int res = SWIG_AsPtr_MPI_Comm(argv[0], (MPI_Comm**)(0));
     _v = SWIG_CheckState(res);
@@ -4896,27 +4876,21 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          //, int _size) {
-          if (SWIG_ConvertPtr(argv[2], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
-            _v = 1;
-          }
-          else if (PyList_Check(argv[2])){
-            _v = 1;
-          }
-          else if (PyArray_Check(argv[2])){
-            _v = 1;
-          }
+          /* check if list of 2 numpy array or not */
+          if (!PyList_Check(argv[2])) _v = 0;
           else {
-            _v = 0;
+            if (PyList_Size(argv[2]) == 2){
+              _v = 1;
+              if (!PyArray_Check(PyList_GetItem(argv[2],0))) _v = 0;
+              if (!PyArray_Check(PyList_GetItem(argv[2],1))) _v = 0;
+            } else _v = 0;       
           }
         }
         if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_int, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
+          if (argc <= 3) {
             return _wrap_new_HypreParVector__SWIG_1(self, args);
           }
+          return _wrap_new_HypreParVector__SWIG_1(self, args);
         }
       }
     }
@@ -5500,6 +5474,40 @@ SWIGINTERN PyObject *_wrap_delete_HypreParVector(PyObject *SWIGUNUSEDPARM(self),
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParVector_GetPartitioningArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParVector *arg1 = (mfem::HypreParVector *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HypreParVector_GetPartitioningArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParVector_GetPartitioningArray" "', argument " "1"" of type '" "mfem::HypreParVector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParVector * >(argp1);
+  {
+    try {
+      result = (PyObject *)mfem_HypreParVector_GetPartitioningArray(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = result;
   return resultobj;
 fail:
   return NULL;
@@ -16554,6 +16562,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"HypreParVector_Randomize", _wrap_HypreParVector_Randomize, METH_VARARGS, NULL},
 	 { (char *)"HypreParVector_Print", _wrap_HypreParVector_Print, METH_VARARGS, NULL},
 	 { (char *)"delete_HypreParVector", _wrap_delete_HypreParVector, METH_VARARGS, NULL},
+	 { (char *)"HypreParVector_GetPartitioningArray", _wrap_HypreParVector_GetPartitioningArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParVector_swigregister", HypreParVector_swigregister, METH_VARARGS, NULL},
 	 { (char *)"InnerProduct", _wrap_InnerProduct, METH_VARARGS, NULL},
 	 { (char *)"ParNormlp", _wrap_ParNormlp, METH_VARARGS, NULL},

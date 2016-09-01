@@ -1,24 +1,66 @@
 '''
   CHypre (Complex Hypre)
   
+  CHypreVec : ParVector
+  CHypreMat : ParCSR
+
   container object to support complex using
   real value hypre
 
   it should work with pure real or pure imaginary
   case too.
+
+  method names follows scipy.sparse
 '''
 import numpy as np
 from scipy.sparse  import csr_matrix
 from mfem.common.parcsr_extra import *
 
 
-#ParMultComplex, RapComplex, Array2Hypre, Hypre2Array,
-#TransposeComplex, ResetHypreDiag, ToScipyCoo,
-#get_row_partitioning, ParAdd, get_col_partitioning, Conj
-
 from mpi4py import MPI
 myid     = MPI.COMM_WORLD.rank
+class CHypreVec(list):
+    def __init__(self, r = None, i = None):
 
+        list.__init__(self, [None]*2)
+
+        if isinstance(r, np.ndarray):
+            self[0] = ToHypreParVec(r)
+        else:
+            self[0] = r
+        if isinstance(i, np.ndarray):
+            self[1] = ToHypreParVec(i)
+        else:
+            self[1] = i
+            
+    def isComplex(self):
+        return not (self[1] is None)
+            
+    def __imul__(self, other):
+        if self[0] is not None:
+            self[0] *= other
+        if self[1] is not None:
+            self[1] *= other
+            
+    def dot(self, others):
+        if not isinstance(other, CHypreVec):
+             raise ValueError(
+                   "argument should be CHypreVec")
+        return InnerProductComplex(A, B)
+    
+    def setitem(self, i, v):
+        if self[0] is not None:
+            part = self[0].GetPartitioningArray()
+        else:
+            part = self[1].GetPartitioningArray()
+
+        if part[0] <= i and i < part[1]:
+            v = complex(v)
+            if self[0] is not None:
+                self[0][int(i - part[0])] = v.real
+            if self[1] is not None:            
+                self[1][int(i - part[0])] = v.imag
+                
 class CHypreMat(list):
     def __init__(self, r = None, i = None):
         list.__init__(self, [None]*2)
@@ -34,11 +76,13 @@ class CHypreMat(list):
     def isComplex(self):
         return not (self[1] is None)
 
-    def __mul__(self, other): # A * B
-        if not isinstance(other, CHypreMat):
-             raise ValueError(
-                   "argument should be CHypreMat")
-        return CHypreMat(*ParMultComplex(self, other))
+    def __mul__(self, other): # A * B or A * v
+        if isinstance(others, CHypreMat):
+            return CHypreMat(*ParMultComplex(self, other))
+        if isinstance(others, CHypreVec):
+            return CHypreVec(*ParMultVecComplex(self, other))
+        raise ValueError(
+                   "argument should be CHypreMat/Vec")
     
     def __rmul__(self, other):
         if not isinstance(other, CHypreMat):
@@ -155,7 +199,11 @@ class CHypreMat(list):
         
         #dprint3('NNZ ', M1.NNZ(), ' ' ,  M2.NNZ(), ' ',  M1.M(), ' ', M1.N())            
 
-def Array2CHypre(array, part):
+def Array2CHypreVec(array, part): 
+    '''
+    convert array in rank (default = 0)  to 
+    distributed Hypre 1D Matrix (size = m x 1)
+    '''
     isComplex = MPI.COMM_WORLD.bcast(np.iscomplexobj(array), root=0)
 
     if isComplex:
@@ -165,28 +213,39 @@ def Array2CHypre(array, part):
        else:
            rarray= array.real
            iarray= array.imag
-       return  CHypreMat(Array2Hypre(rarray, part),
-                     Array2Hypre(iarray, part))
+       return  CHypreVec(Array2HypreVec(rarray, part),
+                         Array2HypreVec(iarray, part))
     else:
        if array is None:
            rarray = None
        else:
            rarray= array
-       return CHypreMat(Array2Hypre(rarray, part), None)
+       return CHypreVec(Array2Hypre(rarray, part), None)
 
-def CHypre2Array(array):
+def CHypreVec2Array(array):
+    from mpi4py import MPI
+    myid     = MPI.COMM_WORLD.rank
+    
     if array[0] is not None:
-        r= Hypre2Array(array[0])
+        r= HypreVec2Array(array[0])
     else:
-        r = 0.0
+        if myid == 0:
+            r = 0.0
+        else:
+            r = None
     if array[1] is None:
         return r
     else:
-        i = Hypre2Array(array[1])
+        i = HypreVec2Array(array[1])
     if i is None:
         return r
     else:
-        return r + 1j*i
+        if myid == 0:
+            return r + 1j*i            
+        else:
+            return None
+        
+
 
 
        

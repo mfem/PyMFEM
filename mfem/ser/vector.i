@@ -96,31 +96,32 @@ if own_data:
 %feature("shadow") mfem::Vector::operator+= %{
 def __iadd__(self, v):
     ret = _vector.Vector___iadd__(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0                  
-    return ret
+    #ret.thisown = self.thisown
+    ret.thisown = 0                  
+    return self
 %}
 %feature("shadow") mfem::Vector::operator-= %{
 def __isub__(self, v):
     ret = _vector.Vector___isub__(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0            
-    return ret
+    #ret.thisown = self.thisown
+    ret.thisown = 0            
+    return self
 %} 
 %feature("shadow") mfem::Vector::operator*= %{
 def __imul__(self, v):
     ret = _vector.Vector___imul__(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0            
-    return ret
+    #ret.thisown = self.thisown
+    ret.thisown = 0            
+    return self
 %} 
 %feature("shadow") mfem::Vector::operator/= %{
 def __idiv__(self, v):
     ret = _vector.Vector___idiv__(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0      
-    return ret
+    #ret.thisown = self.thisown
+    ret.thisown = 0      
+    return self
 %}
+
 %rename(Assign) mfem::Vector::operator=;
 
 // these inlines are to rename add/subtract...

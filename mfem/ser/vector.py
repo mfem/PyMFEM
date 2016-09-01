@@ -157,33 +157,33 @@ class Vector(_object):
 
     def __imul__(self, v):
         ret = _vector.Vector___imul__(self, v)
-        ret.thisown = self.thisown
-        self.thisown = 0            
-        return ret
+    #ret.thisown = self.thisown
+        ret.thisown = 0            
+        return self
 
 
 
     def __idiv__(self, v):
         ret = _vector.Vector___idiv__(self, v)
-        ret.thisown = self.thisown
-        self.thisown = 0      
-        return ret
+    #ret.thisown = self.thisown
+        ret.thisown = 0      
+        return self
 
 
 
     def __isub__(self, v):
         ret = _vector.Vector___isub__(self, v)
-        ret.thisown = self.thisown
-        self.thisown = 0            
-        return ret
+    #ret.thisown = self.thisown
+        ret.thisown = 0            
+        return self
 
 
 
     def __iadd__(self, v):
         ret = _vector.Vector___iadd__(self, v)
-        ret.thisown = self.thisown
-        self.thisown = 0                  
-        return ret
+    #ret.thisown = self.thisown
+        ret.thisown = 0                  
+        return self
 
 
 

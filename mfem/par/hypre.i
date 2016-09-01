@@ -16,6 +16,7 @@ import_array();
 %}
 %import "cpointer.i"
 %pointer_class(int, intp);
+%import vector.i
 %import sparsemat.i
 %import fespace.i
 %import pfespace.i
@@ -31,7 +32,29 @@ int sizeof_HYPRE_Int(){
 }
 %}
 
+/*
+   support numpy array input to 
+   HypreParVector(MPI_Comm comm, HYPRE_Int glob_size, double *_data,
+                  HYPRE_Int *col);
+
+*/
+%typemap(in) (double *_data,  HYPRE_Int *col){
+  $1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0)));
+  $2 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1)));
+}
+%typemap(typecheck )(double *_data,  HYPRE_Int *col){
+  /* check if list of 2 numpy array or not */
+  if (!PyList_Check($input)) $1 = 0;
+  else {
+     if (PyList_Size($input) == 2){
+       $1 = 1;
+       if (!PyArray_Check(PyList_GetItem($input,0))) $1 = 0;
+       if (!PyArray_Check(PyList_GetItem($input,1))) $1 = 0;
+     } else $1 = 0;       
+  }
+}
  /*
+    support numpy array input to 
     HypreParMatrix(MPI_Comm comm, int nrows, HYPRE_Int glob_nrows,
                   HYPRE_Int glob_ncols, int *I, HYPRE_Int *J,
                   double *data, HYPRE_Int *rows, HYPRE_Int *cols);
@@ -78,15 +101,43 @@ typedef int HYPRE_Int;
 */
 
 
-#define MFEM_USE_MPI  
+#define MFEM_USE_MPI
+%pythonappend mfem::HypreParVector::HypreParVector %{
+  if isinstance(args[-1], list):
+     # in this case, ParVector does not own the object
+     # in order to prevent python from freeing the input
+     # array, object is kept in ParVector
+     # args[-1][0]  _data
+     # args[-1][0]  col
+     self._linked_array = args[-1][0]
+%}
 %pythonappend mfem::HypreParMatrix::operator*= %{
 #    val.thisown = 0
     return self
 %}
 %include "linalg/hypre.hpp"
 
+%extend mfem::HypreParVector {
+PyObject* GetPartitioningArray()
+{
+  // assumed partitioning mode only
+  npy_intp dims[] = {3};
+  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_Int *part_out;
+  
+  HYPRE_Int *part = self -> Partitioning();
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+
+  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out[0] = part[0];
+  part_out[1] = part[1];
+  part_out[2] = part[2];  
+
+  return arr1;
+}
+}   
 %extend mfem::HypreParMatrix {
-  HYPRE_Int get_local_nnz()//mfem::HypreParMatrix *pmatrix)
+HYPRE_Int get_local_nnz()//mfem::HypreParMatrix *pmatrix)
 {
   //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);
    hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);

@@ -131,9 +131,9 @@ def intp_frompointer(t):
     return _hypre.intp_frompointer(t)
 intp_frompointer = _hypre.intp_frompointer
 
-import sparsemat
-import array
 import vector
+import array
+import sparsemat
 import operators
 import matrix
 import densemat
@@ -181,6 +181,17 @@ class HypreParVector(vector.Vector):
         except Exception:
             self.this = this
 
+        if isinstance(args[-1], list):
+        # in this case, ParVector does not own the object
+        # in order to prevent python from freeing the input
+        # array, object is kept in ParVector
+        # args[-1][0]  _data
+        # args[-1][0]  col
+           self._linked_array = args[-1][0]
+
+
+
+
     def GetComm(self):
         return _hypre.HypreParVector_GetComm(self)
 
@@ -215,6 +226,9 @@ class HypreParVector(vector.Vector):
         return _hypre.HypreParVector_Print(self, fname)
     __swig_destroy__ = _hypre.delete_HypreParVector
     __del__ = lambda self: None
+
+    def GetPartitioningArray(self):
+        return _hypre.HypreParVector_GetPartitioningArray(self)
 HypreParVector_swigregister = _hypre.HypreParVector_swigregister
 HypreParVector_swigregister(HypreParVector)
 
