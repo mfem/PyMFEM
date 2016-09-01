@@ -68,10 +68,10 @@ def ToHypreParVec(vec):
     glob_size = cols[-1]
     col_starts = np.array([cols[myid], cols[myid+1], glob_size], dtype=dtype)
     
-    vec = vec.dtype('float')
-    v =  mfem.HypreParVec(MPI.COMM_WORLD,
-                             [glob_size, vec, col_starts])
-    print v
+    vec = vec.astype('float')
+    v =  mfem.HypreParVector(MPI.COMM_WORLD,
+                             glob_size, [vec, col_starts])
+
     return v
    
 def ToHypreParCSR(mat, check_partitioning = False, verbose = False):
@@ -209,7 +209,7 @@ def ParMultVecComplex(A, v):
        R_A.Mult(R_v, ans_r)
        return (ans_r, None)
     ans_r = mfem.HypreParVector(R_v)
-    ans_i = mfem.HypreParVector(I_v)
+    ans_i = mfem.HypreParVector(R_v)
     if I_A is None:
        R_A.Mult(R_v, ans_r)
        R_A.Mult(I_v, ans_i)              
@@ -306,7 +306,7 @@ def Array2HypreVec(v, partitioning = None, rank = 0):
         nrows = end_row - start_row
 
     from scipy.sparse import csr_matrix, coo_matrix
-    v = np. np.ascontiguousarray(data[start_row:end_row].flatten())
+    v = np.ascontiguousarray(data[start_row:end_row].flatten())
     return ToHypreParVec(v)    
     #m = csr_matrix(np.array(d).reshape(-1,1), shape=(nrows,1), dtype='float')
     #return ToHypreParCSR(m)

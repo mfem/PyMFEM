@@ -21,9 +21,7 @@ from mpi4py import MPI
 myid     = MPI.COMM_WORLD.rank
 class CHypreVec(list):
     def __init__(self, r = None, i = None):
-
         list.__init__(self, [None]*2)
-
         if isinstance(r, np.ndarray):
             self[0] = ToHypreParVec(r)
         else:
@@ -42,7 +40,7 @@ class CHypreVec(list):
         if self[1] is not None:
             self[1] *= other
             
-    def dot(self, others):
+    def dot(self, other):
         if not isinstance(other, CHypreVec):
              raise ValueError(
                    "argument should be CHypreVec")
@@ -77,9 +75,9 @@ class CHypreMat(list):
         return not (self[1] is None)
 
     def __mul__(self, other): # A * B or A * v
-        if isinstance(others, CHypreMat):
+        if isinstance(other, CHypreMat):
             return CHypreMat(*ParMultComplex(self, other))
-        if isinstance(others, CHypreVec):
+        if isinstance(other, CHypreVec):
             return CHypreVec(*ParMultVecComplex(self, other))
         raise ValueError(
                    "argument should be CHypreMat/Vec")
