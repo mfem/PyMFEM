@@ -1,9 +1,10 @@
 '''''
 PyMFEM
 '''''
-PyMFEM is a SWIG Wrapper for MFEM, ligith-weight FEM (finite element
+PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
-This wrapper is meant for a rapid-prototyping of FEM program.
+This wrapper is meant for a rapid-prototyping of FEM program, and
+is built using SWIG 3.0.
 With PyMFEM, a user can create c++ MFEM objects and call their
 method from python. We strongly recommend to visit the MFEM web site
 to find more detail of the MFEM libirary.
@@ -11,8 +12,9 @@ to find more detail of the MFEM libirary.
 -- Module structure --
   <root>/mfem/ser : wrapper for serial MFEM
              /par : wrapper for parallel MFEM
+	     /common : helper modules 
              /Makefile_tempates: example template
-	     /examples : example script
+	     /examples : example scripts
 
 -- INSTALLATION --
 
@@ -26,7 +28,7 @@ to find more detail of the MFEM libirary.
          By default, Makefile assumes that MFEM is installed
 	 under /usr/local/mfem-3.2 and serial version of MFEM
 	 is installed under /usr/local/mfem-3.2ser.
-	 A user can change it by editint Makefile.local
+	 A user can change it by editing Makefile.local
 
          < note about METIS version>
          MUMPS uses METIS5. Therefore, if you are going to use
@@ -239,8 +241,22 @@ This is needed only when you edit SWIG interface files.
 	from this method, use
 	   t, dt = ode_solver.Step(u, t, dt)
 
+  4-10) hypre
+        Following methods are added trhough SWIG interface
+        HypreParVector::GetPartitioningArray  returns Partitioning as numpy array
+        HypreParMatrix::GetColPartArray  returns ColPart as numpy array
+        HypreParMatrix::GetRowPartArray  returns RowPart as numpy array	
+        HypreParMatrix::GetCooDataArray  returns data to construct local coo matrix
 
-  
+        mfem.common.chypre
+        This module defines CHypreVec and CHhypreMat classes. Those are classes
+	supports...
+	    1) create HypreParCSR and HypreParVector from scipy.sparse.csr_matrix
+	    and numpy.ndarray, respectively
+	    2) convert HypreMatrix/Vector to numpy array or scipy.sparse matrix
+	    3) handle complex number using a pair of Hypre object (real and imag)
+        Class methods of these classes are named in a similar way to numpy array. 
+	
 -- Known issues --
 
   PyMFEM is a on-going effort. Not all MFEM functioality is propary

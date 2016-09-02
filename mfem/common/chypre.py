@@ -10,7 +10,10 @@
   it should work with pure real or pure imaginary
   case too.
 
-  method names follows scipy.sparse
+  method names are basically follows the naming used
+  in scipy.sparse. However, since it inherits the list
+  object, __setitem__ can not be used for accessing
+  array  elements. Use set_element, instead.
 '''
 import numpy as np
 from scipy.sparse  import csr_matrix
@@ -31,6 +34,22 @@ class CHypreVec(list):
         else:
             self[1] = i
             
+    @property
+    def imag(self):
+        return self[1]
+    @imag.setter
+    def imag(self, value):
+        self[1]  = value
+    @property
+    def real(self):
+        return self[0]
+    @real.setter
+    def real(self, value):
+        self[0]  = value
+    @property
+    def shape(self):
+        return 1, self[0].GlobalSize()
+            
     def isComplex(self):
         return not (self[1] is None)
             
@@ -46,7 +65,7 @@ class CHypreVec(list):
                    "argument should be CHypreVec")
         return InnerProductComplex(A, B)
     
-    def setitem(self, i, v):
+    def set_element(self, i, v):
         if self[0] is not None:
             part = self[0].GetPartitioningArray()
         else:
@@ -164,14 +183,26 @@ class CHypreMat(list):
             self[0] = ResetHypreDiag(self[0], idx, value = float(value))
         if self[1] is not None:            
             self[1] = ResetHypreDiag(self[1], idx, value = float(np.imag(value)))
+            
+    def resetCol(self, idx):
+        if self[0] is not None:
+            self[0] = ResetHypreCol(self[0], idx)
+        if self[1] is not None:            
+            self[1] = ResetHypreCol(self[1], idx)
+            
+    def resetRow(self, idx):
+        if self[0] is not None:
+            self[0] = ResetHypreRow(self[0], idx)
+        if self[1] is not None:            
+            self[1] = ResetHypreRow(self[1], idx)
 
-
+    @property
     def nnz(self):
-        ans = []
-        if self[0] is not None: ans.append(self[0].NNZ())
-        if self[1] is not None: ans.append(self[1].NNZ())
-        return ans
-
+        if self[0] is not None and self[1] is not None:
+            return self[0].NNZ(), self[1].NNZ()
+        if self[0] is not None: return self[0].NNZ()
+        if self[1] is not None: return self[1].NNZ()
+    
     def m(self):
         '''
         return global row number: two number should be the same
@@ -194,8 +225,10 @@ class CHypreMat(list):
         if len(ans) == 2 and ans[0] != ans[1]:
             raise ValueError("data format error, real and imag should have same size")
         return ans[0]
-        
-        #dprint3('NNZ ', M1.NNZ(), ' ' ,  M2.NNZ(), ' ',  M1.M(), ' ', M1.N())            
+    @property
+    def shape(self):
+        return self.m(), self.n()
+
 
 def Array2CHypreVec(array, part): 
     '''
@@ -243,7 +276,10 @@ def CHypreVec2Array(array):
         else:
             return None
         
-
-
+def CHypreMat2Coo(mat):
+    if mat.isComplex():
+         return ToScipyCoo(mat.real) + 1j*ToScipyCoo(mat.imag)
+    else:
+         return ToScipyCoo(mat.real)
 
        

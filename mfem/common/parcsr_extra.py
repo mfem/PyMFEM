@@ -360,18 +360,53 @@ def ResetHypreDiag(M, idx, value = 1.0):
     from scipy.sparse import coo_matrix, lil_matrix
  
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
-
-#    for k in range(2):
-#        MPI.COMM_WORLD.Barrier()                              
-#        if myid == k:
-#            print 'MyID : ', k
-#            print 'mat shape ', mat.shape
-#            print 'idx', np.max(idx), np.min(idx)
-#        MPI.COMM_WORLD.Barrier()                              
-    
     for ii in idx:
         if ii >= ilower and ii <= iupper:
            mat[ii-ilower, ii] = value
 
     return  ToHypreParCSR(mat.tocsr())
+
+def ResetHypreRow(M, idx):
+    '''
+    set diagonal element to value (normally 1)
+    '''
+    num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
+    
+    from mpi4py import MPI
+    myid     = MPI.COMM_WORLD.rank
+     
+    m = iupper - ilower + 1
+    n = jupper - jlower + 1
+    n = M.N()    
+    from scipy.sparse import coo_matrix, lil_matrix
+
+    for ii in idx:
+       ii = np.where(irn == ii)[0]
+       data[ii] = 0.0
+
+    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
+    return  ToHypreParCSR(mat.tocsr())
+ 
+def ResetHypreCol(M, idx):
+    '''
+    set diagonal element to value (normally 1)
+    '''
+    num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
+    
+    from mpi4py import MPI
+    myid     = MPI.COMM_WORLD.rank
+     
+    m = iupper - ilower + 1
+    n = jupper - jlower + 1
+    n = M.N()    
+    from scipy.sparse import coo_matrix, lil_matrix
+
+    for ii in idx:
+       ii = np.where(jcn == ii)[0]
+       data[ii] = 0.0
+
+    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
+    return  ToHypreParCSR(mat.tocsr())
+ 
+ 
 

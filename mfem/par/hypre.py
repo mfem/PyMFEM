@@ -375,6 +375,12 @@ class HypreParMatrix(operators.Operator):
     __swig_destroy__ = _hypre.delete_HypreParMatrix
     __del__ = lambda self: None
 
+    def GetRowPartArray(self):
+        return _hypre.HypreParMatrix_GetRowPartArray(self)
+
+    def GetColPartArray(self):
+        return _hypre.HypreParMatrix_GetColPartArray(self)
+
     def get_local_nnz(self):
         return _hypre.HypreParMatrix_get_local_nnz(self)
 

@@ -4057,6 +4057,38 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
+SWIGINTERN PyObject *mfem_HypreParMatrix_GetRowPartArray(mfem::HypreParMatrix *self){
+  // assumed partitioning mode only
+  npy_intp dims[] = {3};
+  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_Int *part_out;
+  
+  HYPRE_Int *part = self -> RowPart();
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+
+  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out[0] = part[0];
+  part_out[1] = part[1];
+  part_out[2] = part[2];  
+
+  return arr1;
+}
+SWIGINTERN PyObject *mfem_HypreParMatrix_GetColPartArray(mfem::HypreParMatrix *self){
+  // assumed partitioning mode only
+  npy_intp dims[] = {3};
+  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_Int *part_out;
+  
+  HYPRE_Int *part = self -> ColPart();
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+
+  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out[0] = part[0];
+  part_out[1] = part[1];
+  part_out[2] = part[2];  
+
+  return arr1;
+}
 SWIGINTERN HYPRE_Int mfem_HypreParMatrix_get_local_nnz(mfem::HypreParMatrix *self){
   //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);
    hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
@@ -10406,6 +10438,74 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_HypreParMatrix_GetRowPartArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HypreParMatrix_GetRowPartArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_GetRowPartArray" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    try {
+      result = (PyObject *)mfem_HypreParMatrix_GetRowPartArray(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_GetColPartArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HypreParMatrix_GetColPartArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_GetColPartArray" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    try {
+      result = (PyObject *)mfem_HypreParMatrix_GetColPartArray(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_HypreParMatrix_get_local_nnz(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
@@ -16604,6 +16704,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"HypreParMatrix_Print", _wrap_HypreParMatrix_Print, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_Read", _wrap_HypreParMatrix_Read, METH_VARARGS, NULL},
 	 { (char *)"delete_HypreParMatrix", _wrap_delete_HypreParMatrix, METH_VARARGS, NULL},
+	 { (char *)"HypreParMatrix_GetRowPartArray", _wrap_HypreParMatrix_GetRowPartArray, METH_VARARGS, NULL},
+	 { (char *)"HypreParMatrix_GetColPartArray", _wrap_HypreParMatrix_GetColPartArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_get_local_nnz", _wrap_HypreParMatrix_get_local_nnz, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_GetCooDataArray", _wrap_HypreParMatrix_GetCooDataArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_VARARGS, NULL},

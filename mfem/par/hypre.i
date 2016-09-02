@@ -137,6 +137,40 @@ PyObject* GetPartitioningArray()
 }
 }   
 %extend mfem::HypreParMatrix {
+PyObject* GetRowPartArray()
+{
+  // assumed partitioning mode only
+  npy_intp dims[] = {3};
+  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_Int *part_out;
+  
+  HYPRE_Int *part = self -> RowPart();
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+
+  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out[0] = part[0];
+  part_out[1] = part[1];
+  part_out[2] = part[2];  
+
+  return arr1;
+}
+PyObject* GetColPartArray()
+{
+  // assumed partitioning mode only
+  npy_intp dims[] = {3};
+  int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
+  HYPRE_Int *part_out;
+  
+  HYPRE_Int *part = self -> ColPart();
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+
+  part_out = (HYPRE_Int *) PyArray_DATA(arr1);
+  part_out[0] = part[0];
+  part_out[1] = part[1];
+  part_out[2] = part[2];  
+
+  return arr1;
+}
 HYPRE_Int get_local_nnz()//mfem::HypreParMatrix *pmatrix)
 {
   //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);

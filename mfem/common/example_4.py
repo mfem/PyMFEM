@@ -12,12 +12,12 @@
 
 
    example_4 tests
-      transpose of matrix
-
+      how to make complex matrix
+      transpose/conj of complex matrix
 
 '''
 import mfem.par as par
-from mfem.common.parcsr_extra import *
+from mfem.common.chypre import *
 
 from scipy.sparse import csr_matrix, coo_matrix
 
@@ -48,8 +48,11 @@ m = coo_matrix((data, (row, col)), shape=shape)
 m = m.tocsr()
 
 
-M = ToHypreParCSR(m)
-print_hypre(M, 'matrix M')
+M1 = CHypreMat(m, m)
+M2 = M1.transpose().conj()
+
+print_hypre(M1[1], 'matrix M1 (imag)')
+print_hypre(M2[1], 'matrix M2 (imag)')
 
 
 
