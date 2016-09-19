@@ -6,6 +6,7 @@ rtld_now = sys.getdlopenflags()
 sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
 
 from  array import *
+from  socketstream import *
 from  operators import *
 from  blockoperator import *
 from  blockvector import *

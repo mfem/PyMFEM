@@ -255,7 +255,21 @@ This is needed only when you edit SWIG interface files.
 	    and numpy.ndarray, respectively
 	    2) convert HypreMatrix/Vector to numpy array or scipy.sparse matrix
 	    3) handle complex number using a pair of Hypre object (real and imag)
-        Class methods of these classes are named in a similar way to numpy array. 
+        Class methods of these classes are named in a similar way to numpy array.
+
+   4-11) socketstream
+
+         socketstream object support << operator partially. This is done by
+	 adding __lshift__ and other methos to socketstream class in .i file.
+	 We don't want to wrap the whole iostream. Instead, we are adding
+	 methods used in examples such as precision. Also, note that
+	 sock << flush in c++ should be rephrased sock.flush()
+
+         (example)
+           sol_sock = mfem.socketstream("localhost", 19916)
+           sol_sock.precision(8)
+           sol_sock << "solution\n" << mesh << x
+           sol_sock.flush()
 	
 -- Known issues --
 
@@ -277,6 +291,7 @@ This is needed only when you edit SWIG interface files.
       this by adjusting thisown flag, but the approach may not 
       work in a different scenario.
 
-  4) Visualization through socket and visit is not included.
+  4) Visualization through visit is not included. Visulaization
+     using socketsteram is on-going work.
   
 *This work is supported by US DoE contract DE-FC02-99ER54512

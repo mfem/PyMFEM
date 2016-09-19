@@ -394,7 +394,7 @@ namespace mfem{
      }
      return array;
    }
-  };   
+  };
 }
 
 

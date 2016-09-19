@@ -1,18 +1,49 @@
 '''
-   MFEM example 1
+   MFEM example 1 (converted from ex1.cpp)
 
-   See c++ version in the MFEM library for more detail 
+   Sample runs:  python2.7 ex1.py -m star.mesh
+                         ex1.py -m square-disc.mesh
+                         ex1.py -m escher.mesh
+                         ex1.py -m fichera.mesh
+
+   Description:  This example code demonstrates the use of MFEM to define a
+                 simple finite element discretization of the Laplace problem
+                 -Delta u = 1 with homogeneous Dirichlet boundary conditions.
+
+                 See c++ version in the MFEM library for more detail 
 '''
-from mfem import path
-import mfem.ser as mfem
-from mfem.ser import intArray
+
+
+import argparse
 from os.path import expanduser, join
 import numpy as np
+from mfem import path
 
-order = 1
-static_cond = False
-meshfile = expanduser(join(path, 'data', 'star.mesh'))
+parser = argparse.ArgumentParser(description='Ex1 (Laplace Problem)')
+parser.add_argument('-m', '--mesh',
+                    default = 'star.mesh',
+                    action = 'store', type = str,
+                    help='Mesh file to use.')
+parser.add_argument('-vis', '--visualization',
+                    action = 'store_true',
+                    help='Enable GLVis visualization')
+parser.add_argument('-o', '--order',
+                    action = 'store', default = 1, type=int,
+                    help = "Finite element order (polynomial degree) or -1 for isoparametric space.");
+parser.add_argument('-sc', '--static-condensation',
+                    action = 'store_true', 
+                    help = "Enable static condensation.")
+args = parser.parse_args()
+
+
+import mfem.ser as mfem
+from mfem.ser import intArray
+
+order = args.order
+static_cond = args.static_condensation
+meshfile =expanduser(join(path, 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
+visualization = args.visualization
 
 dim = mesh.Dimension()
 
@@ -88,3 +119,13 @@ a.RecoverFEMSolution(X, b, x)
 #     using GLVis: "glvis -m refined.mesh -g sol.gf".
 mesh.PrintToFile('refined.mesh', 8)
 x.SaveToFile('sol.gf', 8)
+
+#13. Send the solution by socket to a GLVis server.
+if (visualization):
+    sol_sock = mfem.socketstream("localhost", 19916)
+    sol_sock.precision(8)
+    sol_sock << "solution\n" << mesh << x
+    sol_sock.flush()
+
+
+

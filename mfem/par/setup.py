@@ -22,7 +22,7 @@ from distutils.core import *
 from distutils      import sysconfig
 
 modules= [
-          "array",
+          "array", "socketstream",
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
           "fe", "mesh", "fespace", 
