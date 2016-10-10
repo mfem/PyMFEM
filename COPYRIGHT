@@ -1,18 +1,19 @@
 # Copyright (c) 2016, S. Shiraiwa and PSFC, MIT
 #
-# This file is part of the PyMFEM library. For more information and source code
-# availability see http://mfem.org.
+# This file is part of the PyMFEM, python wrapper for MFEM finite element
+# library. For more information and source code about MFEM, availability
+# see http://mfem.org.
 #
-# MFEM is free software; you can redistribute it and/or modify it under the
+# PyMFEM is free software; you can redistribute it and/or modify it under the
 # terms of the GNU Lesser General Public License (as published by the Free
 # Software Foundation) version 2.1 dated February 1999.
 
 COPYRIGHT
 
-The following copyright applies to each file in the MFEM distribution, unless
+The following copyright applies to each file in the PyMFEM distribution, unless
 otherwise stated in the file:
 
-Copyright (c) 2016, S. Shiraiwa and PSFC, MIT
+Copyright (c) 2016-, S. Shiraiwa and PSFC, MIT
 
 Neither S.Shiraiwa nor PSFC, MIT makes any warranty, express or implied, or
 assumes any liability or responsibility for the accuracy, completeness, or
