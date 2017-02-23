@@ -56,7 +56,7 @@ libraries0.extend([hyprelib, boostlib])
 
 include_dirs = [mfemincdir, numpyincdir, mpi4pyincdir,
                 mpichincdir, hypreincdir, boostincdir]
-library_dirs = [mfemlnkdir, hyprelnkdir, metislnkdir]
+library_dirs = [mfemlnkdir, hyprelnkdir, metislnkdir, boostlibdir]
 libraries    = [boostlib]
 
 ext_modules = [Extension(proxy_names[modules[0]],

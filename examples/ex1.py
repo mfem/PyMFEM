@@ -1,10 +1,16 @@
 '''
    MFEM example 1 (converted from ex1.cpp)
 
-   Sample runs:  python2.7 ex1.py -m star.mesh
-                         ex1.py -m square-disc.mesh
-                         ex1.py -m escher.mesh
-                         ex1.py -m fichera.mesh
+   See c++ version in the MFEM library for more detail 
+
+   How to run:
+      mpirun -np 2 python2.7 <arguments>
+
+   Example of arguments:
+      ex1.py -m star.mesh
+      ex1.py -m square-disc.mesh
+      ex1.py -m escher.mesh
+      ex1.py -m fichera.mesh
 
    Description:  This example code demonstrates the use of MFEM to define a
                  simple finite element discretization of the Laplace problem

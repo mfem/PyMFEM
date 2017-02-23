@@ -14,7 +14,7 @@
   }
 }
 %typemap(typecheck) std::ostream& {
-  if (PyFile_Check($input)   != -1){
+  if (PyFile_Check($input)){
     $1 = 1;
   } else {
     $1 = 0;
