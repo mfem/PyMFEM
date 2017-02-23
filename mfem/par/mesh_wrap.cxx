@@ -18520,7 +18520,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -18658,7 +18658,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -18884,7 +18884,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -18902,7 +18902,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -18929,7 +18929,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -19283,7 +19283,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])   != -1){
+          if (PyFile_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -19306,7 +19306,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])   != -1){
+          if (PyFile_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -19496,7 +19496,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])   != -1){
+          if (PyFile_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -19519,7 +19519,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])   != -1){
+          if (PyFile_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -20630,7 +20630,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyFile_Check(argv[3])   != -1){
+            if (PyFile_Check(argv[3])){
               _v = 1;
             } else {
               _v = 0;
@@ -20772,7 +20772,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;

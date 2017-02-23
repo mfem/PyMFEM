@@ -5846,7 +5846,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -5984,7 +5984,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintXG(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -6122,7 +6122,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOne(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -6260,7 +6260,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintAsOneXG(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -6398,7 +6398,7 @@ SWIGINTERN PyObject *_wrap_ParMesh_PrintInfo(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;

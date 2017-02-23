@@ -9771,7 +9771,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -9789,7 +9789,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -9934,7 +9934,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab(PyObject *self, PyObject *arg
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -10137,7 +10137,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -10155,7 +10155,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;

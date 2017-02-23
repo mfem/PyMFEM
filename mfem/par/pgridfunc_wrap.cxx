@@ -9138,7 +9138,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;

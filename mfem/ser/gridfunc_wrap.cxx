@@ -11353,7 +11353,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -11371,7 +11371,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])   != -1){
+        if (PyFile_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -13048,7 +13048,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyFile_Check(argv[0])   != -1){
+      if (PyFile_Check(argv[0])){
         _v = 1;
       } else {
         _v = 0;
@@ -13065,7 +13065,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyFile_Check(argv[0])   != -1){
+      if (PyFile_Check(argv[0])){
         _v = 1;
       } else {
         _v = 0;

@@ -116,6 +116,7 @@ B = mfem.Vector()
 X = mfem.Vector()
 a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
 print("Size of linear system: " + str(A.Size()))
+
 # 10. Solve 
 M = mfem.GSSmoother(A)
 mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0);
