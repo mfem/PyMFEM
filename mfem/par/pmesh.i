@@ -1,13 +1,13 @@
 %module pmesh
 %{
 #include <mpi.h>
+#include "config/config.hpp"
 #include "mesh/pmesh.hpp"
 #include "general/communication.hpp"  
 #include "numpy/arrayobject.h"
-#define MFEM_USE_MPI
-  //#include "mpi4py/mpi4py.h"  
 %}
 
+%include  "config/_config.hpp" // include mfem MACRO
 %init %{
 import_array();
 %}
@@ -24,5 +24,6 @@ import_array();
 %immutable face_nbr_vertices;
 %immutable gtopo;
 
-#define MFEM_USE_MPI  
+%pointer_class(int, intp);
+
 %include "mesh/pmesh.hpp"

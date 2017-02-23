@@ -3609,6 +3609,7 @@ namespace swig {
 }
 
 
+#include "config/config.hpp"      
 #include "fem/fem.hpp"
 #include "fem/fe_coll.hpp"
 #include "fem/fespace.hpp"
@@ -3625,7 +3626,13 @@ namespace swig {
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
-#define MFEM_USE_MPI  
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
 
 
 SWIGINTERN int
@@ -3779,13 +3786,6 @@ SWIG_AsVal_int (PyObject * obj, int *val)
     }
   }  
   return res;
-}
-
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
 }
 
 
@@ -4226,6 +4226,17 @@ void SwigDirector_MatrixPyCoefficientBase::_EvalPyT(mfem::Vector &arg0, double a
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *MFEM_TIMER_TYPE_swigconstant(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *module;
+  PyObject *d;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigconstant", &module)) return NULL;
+  d = PyModule_GetDict(module);
+  if (!d) return NULL;
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(0)));
+  return SWIG_Py_Void();
+}
+
+
 SWIGINTERN PyObject *_wrap_Coefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = (mfem::Coefficient *) 0 ;
@@ -11458,6 +11469,7 @@ SWIGINTERN PyObject *MatrixPyCoefficientBase_swigregister(PyObject *SWIGUNUSEDPA
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"MFEM_TIMER_TYPE_swigconstant", MFEM_TIMER_TYPE_swigconstant, METH_VARARGS, NULL},
 	 { (char *)"Coefficient_SetTime", _wrap_Coefficient_SetTime, METH_VARARGS, NULL},
 	 { (char *)"Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_VARARGS, NULL},
 	 { (char *)"Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, NULL},

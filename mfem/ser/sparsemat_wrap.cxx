@@ -3459,26 +3459,27 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__Array2DT_mfem__SparseMatrix_p_t swig_types[5]
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
 #define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[7]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[9]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[10]
-#define SWIGTYPE_p_mfem__Matrix swig_types[11]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[12]
-#define SWIGTYPE_p_mfem__Operator swig_types[13]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[14]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[15]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[16]
-#define SWIGTYPE_p_mfem__RowNode swig_types[17]
-#define SWIGTYPE_p_mfem__Solver swig_types[18]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[19]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[20]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[21]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[22]
-#define SWIGTYPE_p_mfem__Vector swig_types[23]
-#define SWIGTYPE_p_std__ostream swig_types[24]
-#define SWIGTYPE_p_void swig_types[25]
-static swig_type_info *swig_types[27];
-static swig_module_info swig_module = {swig_types, 26, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[8]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[9]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[10]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[11]
+#define SWIGTYPE_p_mfem__Matrix swig_types[12]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[13]
+#define SWIGTYPE_p_mfem__Operator swig_types[14]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[15]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[16]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[17]
+#define SWIGTYPE_p_mfem__RowNode swig_types[18]
+#define SWIGTYPE_p_mfem__Solver swig_types[19]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[20]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[21]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[22]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[23]
+#define SWIGTYPE_p_mfem__Vector swig_types[24]
+#define SWIGTYPE_p_std__ostream swig_types[25]
+#define SWIGTYPE_p_void swig_types[26]
+static swig_type_info *swig_types[28];
+static swig_module_info swig_module = {swig_types, 27, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4862,12 +4863,12 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Empty(PyObject *SWIGUNUSEDPARM(self), Py
   if (!PyArg_ParseTuple(args,(char *)"O:SparseMatrix_Empty",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Empty" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Empty" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
   {
     try {
-      result = (bool)(arg1)->Empty(); 
+      result = (bool)((mfem::SparseMatrix const *)arg1)->Empty(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5511,6 +5512,39 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_SortColumnIndices(PyObject *SWIGUNUSEDPA
   {
     try {
       (arg1)->SortColumnIndices(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_MoveDiagonalFirst(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SparseMatrix_MoveDiagonalFirst",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_MoveDiagonalFirst" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    try {
+      (arg1)->MoveDiagonalFirst(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -9275,16 +9309,67 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SparseMatrix_Finalize__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  int arg2 ;
+  bool arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_Finalize",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Finalize" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SparseMatrix_Finalize" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SparseMatrix_Finalize" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  {
+    try {
+      (arg1)->Finalize(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SparseMatrix_Finalize(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -9311,12 +9396,34 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Finalize(PyObject *self, PyObject *args)
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_Finalize__SWIG_2(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_Finalize'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::SparseMatrix::Finalize(int)\n"
-    "    mfem::SparseMatrix::Finalize()\n");
+    "    mfem::SparseMatrix::Finalize()\n"
+    "    mfem::SparseMatrix::Finalize(int,bool)\n");
   return 0;
 }
 
@@ -12035,6 +12142,51 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  std::ostream *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SparseMatrix_PrintInfo",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintInfo" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_PrintInfo" "', argument " "2"" of type '" "std::ostream &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_PrintInfo" "', argument " "2"" of type '" "std::ostream &""'"); 
+  }
+  arg2 = reinterpret_cast< std::ostream * >(argp2);
+  {
+    try {
+      ((mfem::SparseMatrix const *)arg1)->PrintInfo(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_SparseMatrix_IsSymmetric(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
@@ -12196,6 +12348,40 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_CountSmallElems(PyObject *SWIGUNUSEDPARM
   {
     try {
       result = (int)((mfem::SparseMatrix const *)arg1)->CountSmallElems(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_CheckFinite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SparseMatrix_CheckFinite",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_CheckFinite" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    try {
+      result = (int)((mfem::SparseMatrix const *)arg1)->CheckFinite(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12470,6 +12656,40 @@ SWIGINTERN PyObject *_wrap_delete_SparseMatrix(PyObject *SWIGUNUSEDPARM(self), P
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_GetType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Operator::Type result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:SparseMatrix_GetType",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_GetType" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    try {
+      result = (mfem::Operator::Type)((mfem::SparseMatrix const *)arg1)->GetType(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -13689,6 +13909,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SparseMatrix_SetWidth", _wrap_SparseMatrix_SetWidth, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_ActualWidth", _wrap_SparseMatrix_ActualWidth, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_SortColumnIndices", _wrap_SparseMatrix_SortColumnIndices, METH_VARARGS, NULL},
+	 { (char *)"SparseMatrix_MoveDiagonalFirst", _wrap_SparseMatrix_MoveDiagonalFirst, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_Elem", _wrap_SparseMatrix_Elem, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix___call__", _wrap_SparseMatrix___call__, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_GetDiag", _wrap_SparseMatrix_GetDiag, METH_VARARGS, NULL},
@@ -13749,11 +13970,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SparseMatrix_PrintMM", _wrap_SparseMatrix_PrintMM, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_PrintCSR", _wrap_SparseMatrix_PrintCSR, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_PrintCSR2", _wrap_SparseMatrix_PrintCSR2, METH_VARARGS, NULL},
+	 { (char *)"SparseMatrix_PrintInfo", _wrap_SparseMatrix_PrintInfo, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_IsSymmetric", _wrap_SparseMatrix_IsSymmetric, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_Symmetrize", _wrap_SparseMatrix_Symmetrize, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_NumNonZeroElems", _wrap_SparseMatrix_NumNonZeroElems, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_MaxNorm", _wrap_SparseMatrix_MaxNorm, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_CountSmallElems", _wrap_SparseMatrix_CountSmallElems, METH_VARARGS, NULL},
+	 { (char *)"SparseMatrix_CheckFinite", _wrap_SparseMatrix_CheckFinite, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_SetGraphOwner", _wrap_SparseMatrix_SetGraphOwner, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_SetDataOwner", _wrap_SparseMatrix_SetDataOwner, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_OwnsGraph", _wrap_SparseMatrix_OwnsGraph, METH_VARARGS, NULL},
@@ -13761,6 +13984,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SparseMatrix_LoseData", _wrap_SparseMatrix_LoseData, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_Swap", _wrap_SparseMatrix_Swap, METH_VARARGS, NULL},
 	 { (char *)"delete_SparseMatrix", _wrap_delete_SparseMatrix, METH_VARARGS, NULL},
+	 { (char *)"SparseMatrix_GetType", _wrap_SparseMatrix_GetType, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_GetIArray", _wrap_SparseMatrix_GetIArray, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_GetJArray", _wrap_SparseMatrix_GetJArray, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_GetDataArray", _wrap_SparseMatrix_GetDataArray, METH_VARARGS, NULL},
@@ -13809,17 +14033,20 @@ static void *_p_mfem__MatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDP
 static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
 }
-static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
-}
 static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
 }
 static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
 }
+static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
+}
 static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
+}
+static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
 }
 static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
@@ -13852,6 +14079,7 @@ static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Op
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
@@ -13872,6 +14100,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Array2DT_mfem__SparseMatrix_p_t,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
+  &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__DenseMatrixInverse,
   &_swigt__p_mfem__IdentityOperator,
@@ -13907,12 +14136,13 @@ static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {  {&_swigt__p_mfem__Mat
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {{&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RowNode[] = {  {&_swigt__p_mfem__RowNode, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
@@ -13928,6 +14158,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Array2DT_mfem__SparseMatrix_p_t,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__SparseMatrix_p_t,
+  _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__DenseMatrixInverse,
   _swigc__p_mfem__IdentityOperator,

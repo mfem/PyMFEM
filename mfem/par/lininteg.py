@@ -437,6 +437,31 @@ class DGDirichletLFIntegrator(LinearFormIntegrator):
 DGDirichletLFIntegrator_swigregister = _lininteg.DGDirichletLFIntegrator_swigregister
 DGDirichletLFIntegrator_swigregister(DGDirichletLFIntegrator)
 
+class DGElasticityDirichletLFIntegrator(LinearFormIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [LinearFormIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DGElasticityDirichletLFIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [LinearFormIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, DGElasticityDirichletLFIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, uD_, lambda_, mu_, alpha_, kappa_):
+        this = _lininteg.new_DGElasticityDirichletLFIntegrator(uD_, lambda_, mu_, alpha_, kappa_)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def AssembleRHSElementVect(self, *args):
+        return _lininteg.DGElasticityDirichletLFIntegrator_AssembleRHSElementVect(self, *args)
+    __swig_destroy__ = _lininteg.delete_DGElasticityDirichletLFIntegrator
+    __del__ = lambda self: None
+DGElasticityDirichletLFIntegrator_swigregister = _lininteg.DGElasticityDirichletLFIntegrator_swigregister
+DGElasticityDirichletLFIntegrator_swigregister(DGElasticityDirichletLFIntegrator)
+
 # This file is compatible with both classic and new-style classes.
 
 

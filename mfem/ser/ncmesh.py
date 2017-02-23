@@ -178,6 +178,9 @@ class CoarseFineTransformations(_object):
     if _newclass:
         embeddings = _swig_property(_ncmesh.CoarseFineTransformations_embeddings_get)
 
+    def Clear(self):
+        return _ncmesh.CoarseFineTransformations_Clear(self)
+
     def __init__(self):
         this = _ncmesh.new_CoarseFineTransformations()
         try:

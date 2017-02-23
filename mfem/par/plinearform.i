@@ -1,10 +1,11 @@
 %module plinearform
 %{
-#include <mpi.h>
+#include "config/config.hpp"    
 #include "fem/plinearform.hpp"
 #include "numpy/arrayobject.h"
-#define MFEM_USE_MPI  
 %}
+%include  "config/_config.hpp" // include mfem MACRO
+
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 
@@ -15,5 +16,7 @@ import_array();
 %import linearform.i
 %import pfespace.i
 %import hypre.i
-#define MFEM_USE_MPI
+
+%pointer_class(int, intp);
 %include "fem/plinearform.hpp"
+

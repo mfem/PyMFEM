@@ -97,6 +97,9 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_pncmesh.MFEM_TIMER_TYPE_swigconstant(_pncmesh)
+MFEM_TIMER_TYPE = _pncmesh.MFEM_TIMER_TYPE
 import mesh
 import matrix
 import vector

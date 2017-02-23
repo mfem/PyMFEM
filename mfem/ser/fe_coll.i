@@ -20,6 +20,8 @@
 import_array();
 %}
 
+
+
 %import "mesh.i"
 %import "array.i"
 %import "matrix.i"
@@ -35,6 +37,7 @@ import_array();
  //%inline %{
  //  typedef mfem::L2_FECollection mfem::DG_FECollection;
  // %}
+%pointer_class(int, intp);
 
 %include "fem/fe_coll.hpp"
 %pythoncode %{

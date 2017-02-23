@@ -97,6 +97,9 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_pmesh.MFEM_TIMER_TYPE_swigconstant(_pmesh)
+MFEM_TIMER_TYPE = _pmesh.MFEM_TIMER_TYPE
 import mesh
 import matrix
 import vector
@@ -254,6 +257,9 @@ class ParMesh(mesh.Mesh):
 
     def PrintInfo(self, *args):
         return _pmesh.ParMesh_PrintInfo(self, *args)
+
+    def ParPrint(self, out):
+        return _pmesh.ParMesh_ParPrint(self, out)
     __swig_destroy__ = _pmesh.delete_ParMesh
     __del__ = lambda self: None
 ParMesh_swigregister = _pmesh.ParMesh_swigregister

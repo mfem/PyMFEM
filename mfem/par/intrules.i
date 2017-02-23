@@ -20,6 +20,7 @@
 %ignore mfem::Array<mfem::IntegrationPoint>::Max;
 %ignore mfem::Array<mfem::IntegrationPoint>::Min;
 %ignore mfem::Array<mfem::IntegrationPoint>::Print;
+%ignore mfem::Array<mfem::IntegrationPoint>::Load;
 %template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
 
 %include "fem/intrules.hpp"

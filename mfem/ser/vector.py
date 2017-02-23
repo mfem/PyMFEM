@@ -134,6 +134,9 @@ class Vector(_object):
     def Size(self):
         return _vector.Vector_Size(self)
 
+    def Capacity(self):
+        return _vector.Vector_Capacity(self)
+
     def GetData(self):
         return _vector.Vector_GetData(self)
 

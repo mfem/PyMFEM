@@ -2,11 +2,12 @@
 %{
 #include <mpi.h>
 #include <Python.h>
+#include "config/config.hpp"        
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           
-#define MFEM_USE_MPI
 %}
+%include  "config/_config.hpp" // include mfem MACRO
 
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
@@ -101,7 +102,6 @@ typedef int HYPRE_Int;
 */
 
 
-#define MFEM_USE_MPI
 %pythonappend mfem::HypreParVector::HypreParVector %{
   if isinstance(args[-1], list):
      # in this case, ParVector does not own the object

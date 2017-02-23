@@ -114,6 +114,65 @@ import eltrans
 import fe
 import coefficient
 import lininteg
+class BasisType(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BasisType, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, BasisType, name)
+    __repr__ = _swig_repr
+    GaussLegendre = _fe_coll.BasisType_GaussLegendre
+    GaussLobatto = _fe_coll.BasisType_GaussLobatto
+    Positive = _fe_coll.BasisType_Positive
+    OpenUniform = _fe_coll.BasisType_OpenUniform
+    ClosedUniform = _fe_coll.BasisType_ClosedUniform
+    OpenHalfUniform = _fe_coll.BasisType_OpenHalfUniform
+    __swig_getmethods__["Check"] = lambda x: _fe_coll.BasisType_Check
+    if _newclass:
+        Check = staticmethod(_fe_coll.BasisType_Check)
+    __swig_getmethods__["GetQuadrature1D"] = lambda x: _fe_coll.BasisType_GetQuadrature1D
+    if _newclass:
+        GetQuadrature1D = staticmethod(_fe_coll.BasisType_GetQuadrature1D)
+    __swig_getmethods__["Name"] = lambda x: _fe_coll.BasisType_Name
+    if _newclass:
+        Name = staticmethod(_fe_coll.BasisType_Name)
+    __swig_getmethods__["GetChar"] = lambda x: _fe_coll.BasisType_GetChar
+    if _newclass:
+        GetChar = staticmethod(_fe_coll.BasisType_GetChar)
+    __swig_getmethods__["GetType"] = lambda x: _fe_coll.BasisType_GetType
+    if _newclass:
+        GetType = staticmethod(_fe_coll.BasisType_GetType)
+
+    def __init__(self):
+        this = _fe_coll.new_BasisType()
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _fe_coll.delete_BasisType
+    __del__ = lambda self: None
+BasisType_swigregister = _fe_coll.BasisType_swigregister
+BasisType_swigregister(BasisType)
+
+def BasisType_Check(b_type):
+    return _fe_coll.BasisType_Check(b_type)
+BasisType_Check = _fe_coll.BasisType_Check
+
+def BasisType_GetQuadrature1D(b_type):
+    return _fe_coll.BasisType_GetQuadrature1D(b_type)
+BasisType_GetQuadrature1D = _fe_coll.BasisType_GetQuadrature1D
+
+def BasisType_Name(b_type):
+    return _fe_coll.BasisType_Name(b_type)
+BasisType_Name = _fe_coll.BasisType_Name
+
+def BasisType_GetChar(b_type):
+    return _fe_coll.BasisType_GetChar(b_type)
+BasisType_GetChar = _fe_coll.BasisType_GetChar
+
+def BasisType_GetType(b_ident):
+    return _fe_coll.BasisType_GetType(b_ident)
+BasisType_GetType = _fe_coll.BasisType_GetType
+
 class FiniteElementCollection(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, FiniteElementCollection, name, value)
@@ -169,8 +228,6 @@ class H1_FECollection(FiniteElementCollection):
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, H1_FECollection, name)
     __repr__ = _swig_repr
-    GaussLobatto = _fe_coll.H1_FECollection_GaussLobatto
-    Positive = _fe_coll.H1_FECollection_Positive
 
     def __init__(self, *args):
         this = _fe_coll.new_H1_FECollection(*args)
@@ -196,6 +253,9 @@ class H1_FECollection(FiniteElementCollection):
 
     def GetBasisType(self):
         return _fe_coll.H1_FECollection_GetBasisType(self)
+
+    def GetDofMap(self, GeomType):
+        return _fe_coll.H1_FECollection_GetDofMap(self, GeomType)
     __swig_destroy__ = _fe_coll.delete_H1_FECollection
     __del__ = lambda self: None
 H1_FECollection_swigregister = _fe_coll.H1_FECollection_swigregister
@@ -255,9 +315,6 @@ class L2_FECollection(FiniteElementCollection):
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, L2_FECollection, name)
     __repr__ = _swig_repr
-    GaussLegendre = _fe_coll.L2_FECollection_GaussLegendre
-    GaussLobatto = _fe_coll.L2_FECollection_GaussLobatto
-    Positive = _fe_coll.L2_FECollection_Positive
 
     def __init__(self, *args):
         this = _fe_coll.new_L2_FECollection(*args)
@@ -299,8 +356,8 @@ class RT_FECollection(FiniteElementCollection):
     __getattr__ = lambda self, name: _swig_getattr(self, RT_FECollection, name)
     __repr__ = _swig_repr
 
-    def __init__(self, p, dim):
-        this = _fe_coll.new_RT_FECollection(p, dim)
+    def __init__(self, *args):
+        this = _fe_coll.new_RT_FECollection(*args)
         try:
             self.this.append(this)
         except Exception:
@@ -380,8 +437,8 @@ class ND_FECollection(FiniteElementCollection):
     __getattr__ = lambda self, name: _swig_getattr(self, ND_FECollection, name)
     __repr__ = _swig_repr
 
-    def __init__(self, p, dim):
-        this = _fe_coll.new_ND_FECollection(p, dim)
+    def __init__(self, *args):
+        this = _fe_coll.new_ND_FECollection(*args)
         try:
             self.this.append(this)
         except Exception:
@@ -417,8 +474,8 @@ class ND_Trace_FECollection(ND_FECollection):
     __getattr__ = lambda self, name: _swig_getattr(self, ND_Trace_FECollection, name)
     __repr__ = _swig_repr
 
-    def __init__(self, p, dim):
-        this = _fe_coll.new_ND_Trace_FECollection(p, dim)
+    def __init__(self, *args):
+        this = _fe_coll.new_ND_Trace_FECollection(*args)
         try:
             self.this.append(this)
         except Exception:

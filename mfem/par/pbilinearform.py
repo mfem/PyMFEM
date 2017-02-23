@@ -97,16 +97,20 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
-import bilinearform
-import array
-import fespace
-import vector
-import coefficient
-import matrix
+
+_pbilinearform.MFEM_TIMER_TYPE_swigconstant(_pbilinearform)
+MFEM_TIMER_TYPE = _pbilinearform.MFEM_TIMER_TYPE
+import handle
 import operators
-import intrules
+import vector
+import array
+import hypre
 import sparsemat
+import matrix
 import densemat
+import fespace
+import coefficient
+import intrules
 import eltrans
 import fe
 import mesh
@@ -117,15 +121,15 @@ import table
 import vertex
 import fe_coll
 import lininteg
-import bilininteg
-import gridfunc
-import linearform
 import pfespace
 import pmesh
 import pncmesh
 import communication
 import sets
-import hypre
+import bilinearform
+import bilininteg
+import gridfunc
+import linearform
 class ParBilinearForm(bilinearform.BilinearForm):
     __swig_setmethods__ = {}
     for _s in [bilinearform.BilinearForm]:
@@ -147,11 +151,14 @@ class ParBilinearForm(bilinearform.BilinearForm):
     def KeepNbrBlock(self, knb=True):
         return _pbilinearform.ParBilinearForm_KeepNbrBlock(self, knb)
 
+    def SetOperatorType(self, tid):
+        return _pbilinearform.ParBilinearForm_SetOperatorType(self, tid)
+
     def Assemble(self, skip_zeros=1):
         return _pbilinearform.ParBilinearForm_Assemble(self, skip_zeros)
 
-    def ParallelAssembleElim(self):
-        return _pbilinearform.ParBilinearForm_ParallelAssembleElim(self)
+    def ParallelAssembleElim(self, *args):
+        return _pbilinearform.ParBilinearForm_ParallelAssembleElim(self, *args)
 
     def ParallelAssemble(self, *args):
         return _pbilinearform.ParBilinearForm_ParallelAssemble(self, *args)
@@ -171,8 +178,14 @@ class ParBilinearForm(bilinearform.BilinearForm):
     def SCParFESpace(self):
         return _pbilinearform.ParBilinearForm_SCParFESpace(self)
 
-    def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
-        return _pbilinearform.ParBilinearForm_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
+    def GetProlongation(self):
+        return _pbilinearform.ParBilinearForm_GetProlongation(self)
+
+    def GetRestriction(self):
+        return _pbilinearform.ParBilinearForm_GetRestriction(self)
+
+    def FormSystemMatrix(self, ess_tdof_list, A):
+        return _pbilinearform.ParBilinearForm_FormSystemMatrix(self, ess_tdof_list, A)
 
     def RecoverFEMSolution(self, X, b, x):
         return _pbilinearform.ParBilinearForm_RecoverFEMSolution(self, X, b, x)
@@ -181,6 +194,9 @@ class ParBilinearForm(bilinearform.BilinearForm):
         return _pbilinearform.ParBilinearForm_Update(self, nfes)
     __swig_destroy__ = _pbilinearform.delete_ParBilinearForm
     __del__ = lambda self: None
+
+    def FormLinearSystem(self, *args):
+        return _pbilinearform.ParBilinearForm_FormLinearSystem(self, *args)
 ParBilinearForm_swigregister = _pbilinearform.ParBilinearForm_swigregister
 ParBilinearForm_swigregister(ParBilinearForm)
 
@@ -202,8 +218,8 @@ class ParMixedBilinearForm(bilinearform.MixedBilinearForm):
         except Exception:
             self.this = this
 
-    def ParallelAssemble(self):
-        return _pbilinearform.ParMixedBilinearForm_ParallelAssemble(self)
+    def ParallelAssemble(self, *args):
+        return _pbilinearform.ParMixedBilinearForm_ParallelAssemble(self, *args)
 
     def TrueAddMult(self, x, y, a=1.0):
         return _pbilinearform.ParMixedBilinearForm_TrueAddMult(self, x, y, a)

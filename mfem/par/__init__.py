@@ -15,6 +15,7 @@ from  blockvector import *
 from  blockmatrix import *
 from  coefficient import *
 from  lininteg import *
+from  handle import *
 from  mesh import *
 from  fe_coll import *
 from  vector import *

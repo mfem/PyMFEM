@@ -200,6 +200,9 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     def SortColumnIndices(self):
         return _sparsemat.SparseMatrix_SortColumnIndices(self)
 
+    def MoveDiagonalFirst(self):
+        return _sparsemat.SparseMatrix_MoveDiagonalFirst(self)
+
     def Elem(self, *args):
         return _sparsemat.SparseMatrix_Elem(self, *args)
 
@@ -290,8 +293,8 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     def Jacobi3(self, b, x0, x1, sc=1.0):
         return _sparsemat.SparseMatrix_Jacobi3(self, b, x0, x1, sc)
 
-    def Finalize(self, skip_zeros=1):
-        return _sparsemat.SparseMatrix_Finalize(self, skip_zeros)
+    def Finalize(self, *args):
+        return _sparsemat.SparseMatrix_Finalize(self, *args)
 
     def Finalized(self):
         return _sparsemat.SparseMatrix_Finalized(self)
@@ -392,6 +395,9 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     def PrintCSR2(self, out):
         return _sparsemat.SparseMatrix_PrintCSR2(self, out)
 
+    def PrintInfo(self, out):
+        return _sparsemat.SparseMatrix_PrintInfo(self, out)
+
     def IsSymmetric(self):
         return _sparsemat.SparseMatrix_IsSymmetric(self)
 
@@ -406,6 +412,9 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
 
     def CountSmallElems(self, tol):
         return _sparsemat.SparseMatrix_CountSmallElems(self, tol)
+
+    def CheckFinite(self):
+        return _sparsemat.SparseMatrix_CheckFinite(self)
 
     def SetGraphOwner(self, ownij):
         return _sparsemat.SparseMatrix_SetGraphOwner(self, ownij)
@@ -426,6 +435,9 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_Swap(self, other)
     __swig_destroy__ = _sparsemat.delete_SparseMatrix
     __del__ = lambda self: None
+
+    def GetType(self):
+        return _sparsemat.SparseMatrix_GetType(self)
 
     def GetIArray(self):
         return _sparsemat.SparseMatrix_GetIArray(self)

@@ -22,13 +22,13 @@ from distutils.core import *
 from distutils      import sysconfig
 
 modules= [
-          "array", "socketstream",
+          "array", "socketstream", "handle", 
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
           "fe", "mesh", "fespace", 
           "fe_coll", "coefficient",
           "linearform", "vector", "lininteg",
-          "gridfunc", "bilinearform",
+          "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
           "solvers", "estimators", "mesh_operators", "ode",
           "sparsesmoothers",

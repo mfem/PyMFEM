@@ -3014,9 +3014,10 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_mfem__DSTable swig_types[5]
 #define SWIGTYPE_p_mfem__STable swig_types[6]
 #define SWIGTYPE_p_mfem__Table swig_types[7]
-#define SWIGTYPE_p_std__ostream swig_types[8]
-static swig_type_info *swig_types[10];
-static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__istream swig_types[8]
+#define SWIGTYPE_p_std__ostream swig_types[9]
+static swig_type_info *swig_types[11];
+static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5090,6 +5091,39 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Table_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  std::istream *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Table_Load",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Load" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__istream,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Table_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  }
+  arg2 = reinterpret_cast< std::istream * >(argp2);
+  (arg1)->Load(*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Table_Copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
@@ -6068,6 +6102,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Table_Print", _wrap_Table_Print, METH_VARARGS, NULL},
 	 { (char *)"Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, NULL},
 	 { (char *)"Table_Save", _wrap_Table_Save, METH_VARARGS, NULL},
+	 { (char *)"Table_Load", _wrap_Table_Load, METH_VARARGS, NULL},
 	 { (char *)"Table_Copy", _wrap_Table_Copy, METH_VARARGS, NULL},
 	 { (char *)"Table_Swap", _wrap_Table_Swap, METH_VARARGS, NULL},
 	 { (char *)"Table_Clear", _wrap_Table_Clear, METH_VARARGS, NULL},
@@ -6105,6 +6140,7 @@ static swig_type_info _swigt__p_mfem__Connection = {"_p_mfem__Connection", "mfem
 static swig_type_info _swigt__p_mfem__DSTable = {"_p_mfem__DSTable", "mfem::DSTable *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", "mfem::STable *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -6116,6 +6152,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__DSTable,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__Table,
+  &_swigt__p_std__istream,
   &_swigt__p_std__ostream,
 };
 
@@ -6127,6 +6164,7 @@ static swig_cast_info _swigc__p_mfem__Connection[] = {  {&_swigt__p_mfem__Connec
 static swig_cast_info _swigc__p_mfem__DSTable[] = {  {&_swigt__p_mfem__DSTable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {  {&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -6138,6 +6176,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__DSTable,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__Table,
+  _swigc__p_std__istream,
   _swigc__p_std__ostream,
 };
 

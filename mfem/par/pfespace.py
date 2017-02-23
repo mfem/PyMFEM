@@ -97,12 +97,15 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
-import fespace
-import array
+
+_pfespace.MFEM_TIMER_TYPE_swigconstant(_pfespace)
+MFEM_TIMER_TYPE = _pfespace.MFEM_TIMER_TYPE
+import operators
 import vector
+import array
+import fespace
 import coefficient
 import matrix
-import operators
 import intrules
 import sparsemat
 import densemat
@@ -212,6 +215,12 @@ class ParFiniteElementSpace(fespace.FiniteElementSpace):
 
 
 
+    def GetSharedEdgeDofs(self, group, ei, dofs):
+        return _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
+
+    def GetSharedFaceDofs(self, group, fi, dofs):
+        return _pfespace.ParFiniteElementSpace_GetSharedFaceDofs(self, group, fi, dofs)
+
     def Dof_TrueDof_Matrix(self):
         return _pfespace.ParFiniteElementSpace_Dof_TrueDof_Matrix(self)
 
@@ -253,6 +262,9 @@ class ParFiniteElementSpace(fespace.FiniteElementSpace):
 
     def GetMyTDofOffset(self):
         return _pfespace.ParFiniteElementSpace_GetMyTDofOffset(self)
+
+    def GetProlongationMatrix(self):
+        return _pfespace.ParFiniteElementSpace_GetProlongationMatrix(self)
 
     def GetRestrictionMatrix(self):
         return _pfespace.ParFiniteElementSpace_GetRestrictionMatrix(self)

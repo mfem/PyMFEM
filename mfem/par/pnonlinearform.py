@@ -97,6 +97,9 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_pnonlinearform.MFEM_TIMER_TYPE_swigconstant(_pnonlinearform)
+MFEM_TIMER_TYPE = _pnonlinearform.MFEM_TIMER_TYPE
 import nonlinearform
 import operators
 import vector
@@ -163,6 +166,9 @@ class ParNonlinearForm(nonlinearform.NonlinearForm):
 
     def GetGradient(self, x):
         return _pnonlinearform.ParNonlinearForm_GetGradient(self, x)
+
+    def SetGradientType(self, tid):
+        return _pnonlinearform.ParNonlinearForm_SetGradientType(self, tid)
     __swig_destroy__ = _pnonlinearform.delete_ParNonlinearForm
     __del__ = lambda self: None
 ParNonlinearForm_swigregister = _pnonlinearform.ParNonlinearForm_swigregister

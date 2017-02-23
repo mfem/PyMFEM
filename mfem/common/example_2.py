@@ -55,9 +55,7 @@ if True:
    row  = np.array([0, 0, 0, 0])
    col  = np.array([4, 3, 1, 2])
    data = np.array([4, 10,7, 2 ])
-   m = coo_matrix((data, (row, col)), shape=shape)
-   m = m.tocsr()
-   m = m*(myid+1)
+   m = coo_matrix((data, (row, col)), shape=shape).tocsr()
    M2 = ToHypreParCSR(m)
 else:
    m2 = ToScipyCoo(M)

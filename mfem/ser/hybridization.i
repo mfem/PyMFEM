@@ -1,5 +1,6 @@
 %module  hybridization
 %{
+#include "fem/gridfunc.hpp"  
 #include "fem/linearform.hpp"
 #include "fem/hybridization.hpp"
 #include "numpy/arrayobject.h"      
@@ -8,6 +9,7 @@
 %init %{
 import_array();
 %}
+
 
 %import "fespace.i"
 %import "bilininteg.i"

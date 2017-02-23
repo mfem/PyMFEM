@@ -97,6 +97,9 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_coefficient.MFEM_TIMER_TYPE_swigconstant(_coefficient)
+MFEM_TIMER_TYPE = _coefficient.MFEM_TIMER_TYPE
 import array
 import matrix
 import vector

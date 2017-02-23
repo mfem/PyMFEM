@@ -97,6 +97,9 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_hypre.MFEM_TIMER_TYPE_swigconstant(_hypre)
+MFEM_TIMER_TYPE = _hypre.MFEM_TIMER_TYPE
 class intp(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
@@ -159,10 +162,6 @@ import sets
 def sizeof_HYPRE_Int():
     return _hypre.sizeof_HYPRE_Int()
 sizeof_HYPRE_Int = _hypre.sizeof_HYPRE_Int
-
-def to_int(i):
-    return _hypre.to_int(i)
-to_int = _hypre.to_int
 class HypreParVector(vector.Vector):
     __swig_setmethods__ = {}
     for _s in [vector.Vector]:
@@ -288,11 +287,11 @@ class HypreParMatrix(operators.Operator):
     def NNZ(self):
         return _hypre.HypreParMatrix_NNZ(self)
 
-    def RowPart(self):
-        return _hypre.HypreParMatrix_RowPart(self)
+    def RowPart(self, *args):
+        return _hypre.HypreParMatrix_RowPart(self, *args)
 
-    def ColPart(self):
-        return _hypre.HypreParMatrix_ColPart(self)
+    def ColPart(self, *args):
+        return _hypre.HypreParMatrix_ColPart(self, *args)
 
     def M(self):
         return _hypre.HypreParMatrix_M(self)
@@ -339,6 +338,12 @@ class HypreParMatrix(operators.Operator):
     def BooleanMult(self, alpha, x, beta, y):
         return _hypre.HypreParMatrix_BooleanMult(self, alpha, x, beta, y)
 
+    def __iadd__(self, B):
+        return _hypre.HypreParMatrix___iadd__(self, B)
+
+    def Add(self, beta, B):
+        return _hypre.HypreParMatrix_Add(self, beta, B)
+
     def LeftDiagMult(self, D, row_starts=None):
         return _hypre.HypreParMatrix_LeftDiagMult(self, D, row_starts)
 
@@ -375,6 +380,9 @@ class HypreParMatrix(operators.Operator):
     __swig_destroy__ = _hypre.delete_HypreParMatrix
     __del__ = lambda self: None
 
+    def GetType(self):
+        return _hypre.HypreParMatrix_GetType(self)
+
     def GetRowPartArray(self):
         return _hypre.HypreParMatrix_GetRowPartArray(self)
 
@@ -389,6 +397,10 @@ class HypreParMatrix(operators.Operator):
 HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister
 HypreParMatrix_swigregister(HypreParMatrix)
 
+
+def add_sparse(*args):
+    return _hypre.add_sparse(*args)
+add_sparse = _hypre.add_sparse
 
 def ParMult(A, B):
     return _hypre.ParMult(A, B)
@@ -448,6 +460,9 @@ class HypreSmoother(operators.Solver):
 
     def SetFIRCoefficients(self, max_eig):
         return _hypre.HypreSmoother_SetFIRCoefficients(self, max_eig)
+
+    def SetPositiveDiagonal(self, pos=True):
+        return _hypre.HypreSmoother_SetPositiveDiagonal(self, pos)
 
     def SetOperator(self, op):
         return _hypre.HypreSmoother_SetOperator(self, op)

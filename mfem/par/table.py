@@ -215,6 +215,9 @@ class Table(_object):
     def Save(self, out):
         return _table.Table_Save(self, out)
 
+    def Load(self, arg2):
+        return _table.Table_Load(self, arg2)
+
     def Copy(self, copy):
         return _table.Table_Copy(self, copy)
 

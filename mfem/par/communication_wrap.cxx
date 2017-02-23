@@ -3017,8 +3017,10 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_mfem__STable swig_types[8]
 #define SWIGTYPE_p_mfem__Table swig_types[9]
 #define SWIGTYPE_p_p_p_char swig_types[10]
-static swig_type_info *swig_types[12];
-static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
+#define SWIGTYPE_p_std__istream swig_types[11]
+#define SWIGTYPE_p_std__ostream swig_types[12]
+static swig_type_info *swig_types[14];
+static swig_module_info swig_module = {swig_types, 13, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3124,12 +3126,9 @@ namespace swig {
 
 
 #include <mpi.h>
+#include "config/config.hpp"    
 #include "general/sets.hpp"
 #include "general/communication.hpp"
-#define MFEM_USE_MPI  
-
-
-#include "mpi4py/mpi4py.h"
 
 
 SWIGINTERNINLINE PyObject*
@@ -3137,6 +3136,9 @@ SWIGINTERNINLINE PyObject*
 {
   return PyInt_FromLong((long) value);
 }
+
+
+#include "mpi4py/mpi4py.h"
 
 
 SWIGINTERNINLINE PyObject*
@@ -3324,6 +3326,17 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *MFEM_TIMER_TYPE_swigconstant(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *module;
+  PyObject *d;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigconstant", &module)) return NULL;
+  d = PyModule_GetDict(module);
+  if (!d) return NULL;
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(0)));
+  return SWIG_Py_Void();
+}
+
+
 SWIGINTERN PyObject *_wrap_new_MPI_Session__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::MPI_Session *result = 0 ;
@@ -4012,6 +4025,72 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroupTopology_Save(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
+  std::ostream *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GroupTopology_Save",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Save" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Save" "', argument " "2"" of type '" "std::ostream &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupTopology_Save" "', argument " "2"" of type '" "std::ostream &""'"); 
+  }
+  arg2 = reinterpret_cast< std::ostream * >(argp2);
+  ((mfem::GroupTopology const *)arg1)->Save(*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroupTopology_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
+  std::istream *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GroupTopology_Load",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Load" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__istream,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupTopology_Load" "', argument " "2"" of type '" "std::istream &""'"); 
+  }
+  arg2 = reinterpret_cast< std::istream * >(argp2);
+  (arg1)->Load(*arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_GroupTopology(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
@@ -4217,6 +4296,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"MFEM_TIMER_TYPE_swigconstant", MFEM_TIMER_TYPE_swigconstant, METH_VARARGS, NULL},
 	 { (char *)"new_MPI_Session", _wrap_new_MPI_Session, METH_VARARGS, NULL},
 	 { (char *)"delete_MPI_Session", _wrap_delete_MPI_Session, METH_VARARGS, NULL},
 	 { (char *)"MPI_Session_WorldRank", _wrap_MPI_Session_WorldRank, METH_VARARGS, NULL},
@@ -4238,6 +4318,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"GroupTopology_GetGroupMasterGroup", _wrap_GroupTopology_GetGroupMasterGroup, METH_VARARGS, NULL},
 	 { (char *)"GroupTopology_GetGroupSize", _wrap_GroupTopology_GetGroupSize, METH_VARARGS, NULL},
 	 { (char *)"GroupTopology_GetGroup", _wrap_GroupTopology_GetGroup, METH_VARARGS, NULL},
+	 { (char *)"GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, NULL},
+	 { (char *)"GroupTopology_Load", _wrap_GroupTopology_Load, METH_VARARGS, NULL},
 	 { (char *)"delete_GroupTopology", _wrap_delete_GroupTopology, METH_VARARGS, NULL},
 	 { (char *)"GroupTopology_swigregister", GroupTopology_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_GroupCommunicator", _wrap_new_GroupCommunicator, METH_VARARGS, NULL},
@@ -4268,6 +4350,8 @@ static swig_type_info _swigt__p_mfem__MPI_Session = {"_p_mfem__MPI_Session", "mf
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_p_char = {"_p_p_p_char", "char ***", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
@@ -4281,6 +4365,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__Table,
   &_swigt__p_p_p_char,
+  &_swigt__p_std__istream,
+  &_swigt__p_std__ostream,
 };
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
@@ -4294,6 +4380,8 @@ static swig_cast_info _swigc__p_mfem__MPI_Session[] = {  {&_swigt__p_mfem__MPI_S
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_p_char[] = {  {&_swigt__p_p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
@@ -4307,6 +4395,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__STable,
   _swigc__p_mfem__Table,
   _swigc__p_p_p_char,
+  _swigc__p_std__istream,
+  _swigc__p_std__ostream,
 };
 
 

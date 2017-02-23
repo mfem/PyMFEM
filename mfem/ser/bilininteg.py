@@ -278,6 +278,1080 @@ class SumIntegrator(BilinearFormIntegrator):
 SumIntegrator_swigregister = _bilininteg.SumIntegrator_swigregister
 SumIntegrator_swigregister(SumIntegrator)
 
+class MixedScalarIntegrator(BilinearFormIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarIntegrator, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+
+    def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
+        return _bilininteg.MixedScalarIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+
+    def AssembleElementMatrix(self, fe, Trans, elmat):
+        return _bilininteg.MixedScalarIntegrator_AssembleElementMatrix(self, fe, Trans, elmat)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarIntegrator
+    __del__ = lambda self: None
+MixedScalarIntegrator_swigregister = _bilininteg.MixedScalarIntegrator_swigregister
+MixedScalarIntegrator_swigregister(MixedScalarIntegrator)
+
+class MixedVectorIntegrator(BilinearFormIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorIntegrator, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+
+    def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
+        return _bilininteg.MixedVectorIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+
+    def AssembleElementMatrix(self, fe, Trans, elmat):
+        return _bilininteg.MixedVectorIntegrator_AssembleElementMatrix(self, fe, Trans, elmat)
+    __swig_destroy__ = _bilininteg.delete_MixedVectorIntegrator
+    __del__ = lambda self: None
+MixedVectorIntegrator_swigregister = _bilininteg.MixedVectorIntegrator_swigregister
+MixedVectorIntegrator_swigregister(MixedVectorIntegrator)
+
+class MixedScalarVectorIntegrator(BilinearFormIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarVectorIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarVectorIntegrator, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined")
+    __repr__ = _swig_repr
+
+    def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
+        return _bilininteg.MixedScalarVectorIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarVectorIntegrator
+    __del__ = lambda self: None
+MixedScalarVectorIntegrator_swigregister = _bilininteg.MixedScalarVectorIntegrator_swigregister
+MixedScalarVectorIntegrator_swigregister(MixedScalarVectorIntegrator)
+
+class MixedScalarMassIntegrator(MixedScalarIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarMassIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarMassIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedScalarMassIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedScalarMassIntegrator
+    __del__ = lambda self: None
+MixedScalarMassIntegrator_swigregister = _bilininteg.MixedScalarMassIntegrator_swigregister
+MixedScalarMassIntegrator_swigregister(MixedScalarMassIntegrator)
+
+class MixedVectorProductIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorProductIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorProductIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedVectorProductIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedVectorProductIntegrator
+    __del__ = lambda self: None
+MixedVectorProductIntegrator_swigregister = _bilininteg.MixedVectorProductIntegrator_swigregister
+MixedVectorProductIntegrator_swigregister(MixedVectorProductIntegrator)
+
+class MixedScalarDerivativeIntegrator(MixedScalarIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarDerivativeIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarDerivativeIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedScalarDerivativeIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedScalarDerivativeIntegrator
+    __del__ = lambda self: None
+MixedScalarDerivativeIntegrator_swigregister = _bilininteg.MixedScalarDerivativeIntegrator_swigregister
+MixedScalarDerivativeIntegrator_swigregister(MixedScalarDerivativeIntegrator)
+
+class MixedScalarWeakDerivativeIntegrator(MixedScalarIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarWeakDerivativeIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarWeakDerivativeIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedScalarWeakDerivativeIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedScalarWeakDerivativeIntegrator
+    __del__ = lambda self: None
+MixedScalarWeakDerivativeIntegrator_swigregister = _bilininteg.MixedScalarWeakDerivativeIntegrator_swigregister
+MixedScalarWeakDerivativeIntegrator_swigregister(MixedScalarWeakDerivativeIntegrator)
+
+class MixedScalarDivergenceIntegrator(MixedScalarIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarDivergenceIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarDivergenceIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedScalarDivergenceIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedScalarDivergenceIntegrator
+    __del__ = lambda self: None
+MixedScalarDivergenceIntegrator_swigregister = _bilininteg.MixedScalarDivergenceIntegrator_swigregister
+MixedScalarDivergenceIntegrator_swigregister(MixedScalarDivergenceIntegrator)
+
+class MixedVectorDivergenceIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorDivergenceIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorDivergenceIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedVectorDivergenceIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedVectorDivergenceIntegrator
+    __del__ = lambda self: None
+MixedVectorDivergenceIntegrator_swigregister = _bilininteg.MixedVectorDivergenceIntegrator_swigregister
+MixedVectorDivergenceIntegrator_swigregister(MixedVectorDivergenceIntegrator)
+
+class MixedScalarWeakGradientIntegrator(MixedScalarIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarWeakGradientIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarWeakGradientIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedScalarWeakGradientIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedScalarWeakGradientIntegrator
+    __del__ = lambda self: None
+MixedScalarWeakGradientIntegrator_swigregister = _bilininteg.MixedScalarWeakGradientIntegrator_swigregister
+MixedScalarWeakGradientIntegrator_swigregister(MixedScalarWeakGradientIntegrator)
+
+class MixedScalarCurlIntegrator(MixedScalarIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedScalarCurlIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedScalarCurlIntegrator
+    __del__ = lambda self: None
+MixedScalarCurlIntegrator_swigregister = _bilininteg.MixedScalarCurlIntegrator_swigregister
+MixedScalarCurlIntegrator_swigregister(MixedScalarCurlIntegrator)
+
+class MixedScalarWeakCurlIntegrator(MixedScalarIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarWeakCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarWeakCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedScalarWeakCurlIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedScalarWeakCurlIntegrator
+    __del__ = lambda self: None
+MixedScalarWeakCurlIntegrator_swigregister = _bilininteg.MixedScalarWeakCurlIntegrator_swigregister
+MixedScalarWeakCurlIntegrator_swigregister(MixedScalarWeakCurlIntegrator)
+
+class MixedVectorMassIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorMassIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorMassIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedVectorMassIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedVectorMassIntegrator
+    __del__ = lambda self: None
+MixedVectorMassIntegrator_swigregister = _bilininteg.MixedVectorMassIntegrator_swigregister
+MixedVectorMassIntegrator_swigregister(MixedVectorMassIntegrator)
+
+class MixedCrossProductIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCrossProductIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCrossProductIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedCrossProductIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedCrossProductIntegrator
+    __del__ = lambda self: None
+MixedCrossProductIntegrator_swigregister = _bilininteg.MixedCrossProductIntegrator_swigregister
+MixedCrossProductIntegrator_swigregister(MixedCrossProductIntegrator)
+
+class MixedDotProductIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedDotProductIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedDotProductIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedDotProductIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedDotProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedDotProductIntegrator_FiniteElementTypeFailureMessage(self)
+    __swig_destroy__ = _bilininteg.delete_MixedDotProductIntegrator
+    __del__ = lambda self: None
+MixedDotProductIntegrator_swigregister = _bilininteg.MixedDotProductIntegrator_swigregister
+MixedDotProductIntegrator_swigregister(MixedDotProductIntegrator)
+
+class MixedWeakGradDotIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedWeakGradDotIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedWeakGradDotIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedWeakGradDotIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedWeakGradDotIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedWeakGradDotIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcShape(self, scalar_fe, Trans, shape):
+        return _bilininteg.MixedWeakGradDotIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedWeakGradDotIntegrator
+    __del__ = lambda self: None
+MixedWeakGradDotIntegrator_swigregister = _bilininteg.MixedWeakGradDotIntegrator_swigregister
+MixedWeakGradDotIntegrator_swigregister(MixedWeakGradDotIntegrator)
+
+class MixedWeakDivCrossIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedWeakDivCrossIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedWeakDivCrossIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedWeakDivCrossIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedWeakDivCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedWeakDivCrossIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedWeakDivCrossIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedWeakDivCrossIntegrator
+    __del__ = lambda self: None
+MixedWeakDivCrossIntegrator_swigregister = _bilininteg.MixedWeakDivCrossIntegrator_swigregister
+MixedWeakDivCrossIntegrator_swigregister(MixedWeakDivCrossIntegrator)
+
+class MixedGradGradIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedGradGradIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedGradGradIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedGradGradIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedGradGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedGradGradIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def GetIntegrationOrder(self, trial_fe, test_fe, Trans):
+        return _bilininteg.MixedGradGradIntegrator_GetIntegrationOrder(self, trial_fe, test_fe, Trans)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedGradGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedGradGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedGradGradIntegrator
+    __del__ = lambda self: None
+MixedGradGradIntegrator_swigregister = _bilininteg.MixedGradGradIntegrator_swigregister
+MixedGradGradIntegrator_swigregister(MixedGradGradIntegrator)
+
+class MixedCrossGradGradIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCrossGradGradIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCrossGradGradIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedCrossGradGradIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedCrossGradGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedCrossGradGradIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedCrossGradGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedCrossGradGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedCrossGradGradIntegrator
+    __del__ = lambda self: None
+MixedCrossGradGradIntegrator_swigregister = _bilininteg.MixedCrossGradGradIntegrator_swigregister
+MixedCrossGradGradIntegrator_swigregister(MixedCrossGradGradIntegrator)
+
+class MixedCurlCurlIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCurlCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCurlCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedCurlCurlIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedCurlCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedCurlCurlIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedCurlCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedCurlCurlIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedCurlCurlIntegrator
+    __del__ = lambda self: None
+MixedCurlCurlIntegrator_swigregister = _bilininteg.MixedCurlCurlIntegrator_swigregister
+MixedCurlCurlIntegrator_swigregister(MixedCurlCurlIntegrator)
+
+class MixedCrossCurlCurlIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCrossCurlCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCrossCurlCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedCrossCurlCurlIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedCrossCurlCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedCrossCurlCurlIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedCrossCurlCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedCrossCurlCurlIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedCrossCurlCurlIntegrator
+    __del__ = lambda self: None
+MixedCrossCurlCurlIntegrator_swigregister = _bilininteg.MixedCrossCurlCurlIntegrator_swigregister
+MixedCrossCurlCurlIntegrator_swigregister(MixedCrossCurlCurlIntegrator)
+
+class MixedCrossCurlGradIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCrossCurlGradIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCrossCurlGradIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedCrossCurlGradIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedCrossCurlGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedCrossCurlGradIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedCrossCurlGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedCrossCurlGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedCrossCurlGradIntegrator
+    __del__ = lambda self: None
+MixedCrossCurlGradIntegrator_swigregister = _bilininteg.MixedCrossCurlGradIntegrator_swigregister
+MixedCrossCurlGradIntegrator_swigregister(MixedCrossCurlGradIntegrator)
+
+class MixedCrossGradCurlIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCrossGradCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCrossGradCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedCrossGradCurlIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedCrossGradCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedCrossGradCurlIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedCrossGradCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedCrossGradCurlIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedCrossGradCurlIntegrator
+    __del__ = lambda self: None
+MixedCrossGradCurlIntegrator_swigregister = _bilininteg.MixedCrossGradCurlIntegrator_swigregister
+MixedCrossGradCurlIntegrator_swigregister(MixedCrossGradCurlIntegrator)
+
+class MixedWeakCurlCrossIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedWeakCurlCrossIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedWeakCurlCrossIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedWeakCurlCrossIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedWeakCurlCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedWeakCurlCrossIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedWeakCurlCrossIntegrator
+    __del__ = lambda self: None
+MixedWeakCurlCrossIntegrator_swigregister = _bilininteg.MixedWeakCurlCrossIntegrator_swigregister
+MixedWeakCurlCrossIntegrator_swigregister(MixedWeakCurlCrossIntegrator)
+
+class MixedScalarWeakCurlCrossIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarWeakCurlCrossIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarWeakCurlCrossIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedScalarWeakCurlCrossIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedScalarWeakCurlCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedScalarWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcShape(self, scalar_fe, Trans, shape):
+        return _bilininteg.MixedScalarWeakCurlCrossIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarWeakCurlCrossIntegrator
+    __del__ = lambda self: None
+MixedScalarWeakCurlCrossIntegrator_swigregister = _bilininteg.MixedScalarWeakCurlCrossIntegrator_swigregister
+MixedScalarWeakCurlCrossIntegrator_swigregister(MixedScalarWeakCurlCrossIntegrator)
+
+class MixedCrossGradIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCrossGradIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCrossGradIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedCrossGradIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedCrossGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedCrossGradIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedCrossGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+
+    def CalcTestShape(self, test_fe, Trans, shape):
+        return _bilininteg.MixedCrossGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedCrossGradIntegrator
+    __del__ = lambda self: None
+MixedCrossGradIntegrator_swigregister = _bilininteg.MixedCrossGradIntegrator_swigregister
+MixedCrossGradIntegrator_swigregister(MixedCrossGradIntegrator)
+
+class MixedCrossCurlIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedCrossCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedCrossCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedCrossCurlIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedCrossCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedCrossCurlIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcTrialShape(self, trial_fe, Trans, shape):
+        return _bilininteg.MixedCrossCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedCrossCurlIntegrator
+    __del__ = lambda self: None
+MixedCrossCurlIntegrator_swigregister = _bilininteg.MixedCrossCurlIntegrator_swigregister
+MixedCrossCurlIntegrator_swigregister(MixedCrossCurlIntegrator)
+
+class MixedScalarCrossCurlIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarCrossCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarCrossCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedScalarCrossCurlIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedScalarCrossCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedScalarCrossCurlIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcShape(self, scalar_fe, Trans, shape):
+        return _bilininteg.MixedScalarCrossCurlIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarCrossCurlIntegrator
+    __del__ = lambda self: None
+MixedScalarCrossCurlIntegrator_swigregister = _bilininteg.MixedScalarCrossCurlIntegrator_swigregister
+MixedScalarCrossCurlIntegrator_swigregister(MixedScalarCrossCurlIntegrator)
+
+class MixedScalarCrossGradIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarCrossGradIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarCrossGradIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedScalarCrossGradIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedScalarCrossGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedScalarCrossGradIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcVShape(self, vector_fe, Trans, shape):
+        return _bilininteg.MixedScalarCrossGradIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarCrossGradIntegrator
+    __del__ = lambda self: None
+MixedScalarCrossGradIntegrator_swigregister = _bilininteg.MixedScalarCrossGradIntegrator_swigregister
+MixedScalarCrossGradIntegrator_swigregister(MixedScalarCrossGradIntegrator)
+
+class MixedScalarCrossProductIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarCrossProductIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarCrossProductIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedScalarCrossProductIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedScalarCrossProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedScalarCrossProductIntegrator_FiniteElementTypeFailureMessage(self)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarCrossProductIntegrator
+    __del__ = lambda self: None
+MixedScalarCrossProductIntegrator_swigregister = _bilininteg.MixedScalarCrossProductIntegrator_swigregister
+MixedScalarCrossProductIntegrator_swigregister(MixedScalarCrossProductIntegrator)
+
+class MixedScalarWeakCrossProductIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarWeakCrossProductIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarWeakCrossProductIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedScalarWeakCrossProductIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedScalarWeakCrossProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedScalarWeakCrossProductIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcShape(self, scalar_fe, Trans, shape):
+        return _bilininteg.MixedScalarWeakCrossProductIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarWeakCrossProductIntegrator
+    __del__ = lambda self: None
+MixedScalarWeakCrossProductIntegrator_swigregister = _bilininteg.MixedScalarWeakCrossProductIntegrator_swigregister
+MixedScalarWeakCrossProductIntegrator_swigregister(MixedScalarWeakCrossProductIntegrator)
+
+class MixedDirectionalDerivativeIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedDirectionalDerivativeIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedDirectionalDerivativeIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedDirectionalDerivativeIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedDirectionalDerivativeIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedDirectionalDerivativeIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcVShape(self, vector_fe, Trans, shape):
+        return _bilininteg.MixedDirectionalDerivativeIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedDirectionalDerivativeIntegrator
+    __del__ = lambda self: None
+MixedDirectionalDerivativeIntegrator_swigregister = _bilininteg.MixedDirectionalDerivativeIntegrator_swigregister
+MixedDirectionalDerivativeIntegrator_swigregister(MixedDirectionalDerivativeIntegrator)
+
+class MixedGradDivIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedGradDivIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedGradDivIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedGradDivIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedGradDivIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedGradDivIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcVShape(self, vector_fe, Trans, shape):
+        return _bilininteg.MixedGradDivIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+
+    def CalcShape(self, scalar_fe, Trans, shape):
+        return _bilininteg.MixedGradDivIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedGradDivIntegrator
+    __del__ = lambda self: None
+MixedGradDivIntegrator_swigregister = _bilininteg.MixedGradDivIntegrator_swigregister
+MixedGradDivIntegrator_swigregister(MixedGradDivIntegrator)
+
+class MixedDivGradIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedDivGradIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedDivGradIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedDivGradIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedDivGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedDivGradIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcVShape(self, vector_fe, Trans, shape):
+        return _bilininteg.MixedDivGradIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+
+    def CalcShape(self, scalar_fe, Trans, shape):
+        return _bilininteg.MixedDivGradIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedDivGradIntegrator
+    __del__ = lambda self: None
+MixedDivGradIntegrator_swigregister = _bilininteg.MixedDivGradIntegrator_swigregister
+MixedDivGradIntegrator_swigregister(MixedDivGradIntegrator)
+
+class MixedScalarWeakDivergenceIntegrator(MixedScalarVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedScalarWeakDivergenceIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedScalarVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedScalarWeakDivergenceIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, vq):
+        this = _bilininteg.new_MixedScalarWeakDivergenceIntegrator(vq)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def VerifyFiniteElementTypes(self, trial_fe, test_fe):
+        return _bilininteg.MixedScalarWeakDivergenceIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+
+    def FiniteElementTypeFailureMessage(self):
+        return _bilininteg.MixedScalarWeakDivergenceIntegrator_FiniteElementTypeFailureMessage(self)
+
+    def CalcVShape(self, vector_fe, Trans, shape):
+        return _bilininteg.MixedScalarWeakDivergenceIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    __swig_destroy__ = _bilininteg.delete_MixedScalarWeakDivergenceIntegrator
+    __del__ = lambda self: None
+MixedScalarWeakDivergenceIntegrator_swigregister = _bilininteg.MixedScalarWeakDivergenceIntegrator_swigregister
+MixedScalarWeakDivergenceIntegrator_swigregister(MixedScalarWeakDivergenceIntegrator)
+
+class MixedVectorGradientIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorGradientIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorGradientIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedVectorGradientIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedVectorGradientIntegrator
+    __del__ = lambda self: None
+MixedVectorGradientIntegrator_swigregister = _bilininteg.MixedVectorGradientIntegrator_swigregister
+MixedVectorGradientIntegrator_swigregister(MixedVectorGradientIntegrator)
+
+class MixedVectorCurlIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedVectorCurlIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedVectorCurlIntegrator
+    __del__ = lambda self: None
+MixedVectorCurlIntegrator_swigregister = _bilininteg.MixedVectorCurlIntegrator_swigregister
+MixedVectorCurlIntegrator_swigregister(MixedVectorCurlIntegrator)
+
+class MixedVectorWeakCurlIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorWeakCurlIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorWeakCurlIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedVectorWeakCurlIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedVectorWeakCurlIntegrator
+    __del__ = lambda self: None
+MixedVectorWeakCurlIntegrator_swigregister = _bilininteg.MixedVectorWeakCurlIntegrator_swigregister
+MixedVectorWeakCurlIntegrator_swigregister(MixedVectorWeakCurlIntegrator)
+
+class MixedVectorWeakDivergenceIntegrator(MixedVectorIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MixedVectorWeakDivergenceIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MixedVectorIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MixedVectorWeakDivergenceIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_MixedVectorWeakDivergenceIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _bilininteg.delete_MixedVectorWeakDivergenceIntegrator
+    __del__ = lambda self: None
+MixedVectorWeakDivergenceIntegrator_swigregister = _bilininteg.MixedVectorWeakDivergenceIntegrator_swigregister
+MixedVectorWeakDivergenceIntegrator_swigregister(MixedVectorWeakDivergenceIntegrator)
+
 class DiffusionIntegrator(BilinearFormIntegrator):
     __swig_setmethods__ = {}
     for _s in [BilinearFormIntegrator]:
@@ -473,6 +1547,34 @@ class VectorFEDivergenceIntegrator(BilinearFormIntegrator):
     __del__ = lambda self: None
 VectorFEDivergenceIntegrator_swigregister = _bilininteg.VectorFEDivergenceIntegrator_swigregister
 VectorFEDivergenceIntegrator_swigregister(VectorFEDivergenceIntegrator)
+
+class VectorFEWeakDivergenceIntegrator(BilinearFormIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, VectorFEWeakDivergenceIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, VectorFEWeakDivergenceIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_VectorFEWeakDivergenceIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def AssembleElementMatrix(self, el, Trans, elmat):
+        return _bilininteg.VectorFEWeakDivergenceIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+
+    def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
+        return _bilininteg.VectorFEWeakDivergenceIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    __swig_destroy__ = _bilininteg.delete_VectorFEWeakDivergenceIntegrator
+    __del__ = lambda self: None
+VectorFEWeakDivergenceIntegrator_swigregister = _bilininteg.VectorFEWeakDivergenceIntegrator_swigregister
+VectorFEWeakDivergenceIntegrator_swigregister(VectorFEWeakDivergenceIntegrator)
 
 class VectorFECurlIntegrator(BilinearFormIntegrator):
     __swig_setmethods__ = {}
@@ -697,6 +1799,9 @@ class VectorDiffusionIntegrator(BilinearFormIntegrator):
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         return _bilininteg.VectorDiffusionIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+
+    def AssembleElementVector(self, el, Tr, elfun, elvect):
+        return _bilininteg.VectorDiffusionIntegrator_AssembleElementVector(self, el, Tr, elfun, elvect)
     __swig_destroy__ = _bilininteg.delete_VectorDiffusionIntegrator
     __del__ = lambda self: None
 VectorDiffusionIntegrator_swigregister = _bilininteg.VectorDiffusionIntegrator_swigregister
@@ -776,6 +1881,31 @@ class DGDiffusionIntegrator(BilinearFormIntegrator):
     __del__ = lambda self: None
 DGDiffusionIntegrator_swigregister = _bilininteg.DGDiffusionIntegrator_swigregister
 DGDiffusionIntegrator_swigregister(DGDiffusionIntegrator)
+
+class DGElasticityIntegrator(BilinearFormIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DGElasticityIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [BilinearFormIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, DGElasticityIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _bilininteg.new_DGElasticityIntegrator(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def AssembleFaceMatrix(self, *args):
+        return _bilininteg.DGElasticityIntegrator_AssembleFaceMatrix(self, *args)
+    __swig_destroy__ = _bilininteg.delete_DGElasticityIntegrator
+    __del__ = lambda self: None
+DGElasticityIntegrator_swigregister = _bilininteg.DGElasticityIntegrator_swigregister
+DGElasticityIntegrator_swigregister(DGElasticityIntegrator)
 
 class TraceJumpIntegrator(BilinearFormIntegrator):
     __swig_setmethods__ = {}

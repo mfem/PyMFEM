@@ -1,10 +1,13 @@
 %module pfespace
 %{
 #include <mpi.h>
+#include  "config/config.hpp" 
 #include "fem/pfespace.hpp"
 #include "numpy/arrayobject.h"
-#define MFEM_USE_MPI  
+#include "pyoperator.hpp"  
 %}
+%include  "config/_config.hpp" // include mfem MACRO
+
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 
@@ -26,10 +29,12 @@ typedef int HYPRE_Int;
 import_array();
 %}
 
+%import operators.i
 %import fespace.i
 %import pmesh.i
 %import hypre.i
 
+%pointer_class(int, intp);
 %immutable face_nbr_glob_dof_map;
 //DoF accesser
 
@@ -55,5 +60,4 @@ def GetFaceDofs(self, i):
     return vdofs.ToList()
 %}
 
-#define MFEM_USE_MPI  
 %include "fem/pfespace.hpp"

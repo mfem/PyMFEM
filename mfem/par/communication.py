@@ -90,6 +90,9 @@ except AttributeError:
     _newclass = 0
 
 
+
+_communication.MFEM_TIMER_TYPE_swigconstant(_communication)
+MFEM_TIMER_TYPE = _communication.MFEM_TIMER_TYPE
 import array
 import table
 import sets
@@ -175,6 +178,12 @@ class GroupTopology(_object):
 
     def GetGroup(self, g):
         return _communication.GroupTopology_GetGroup(self, g)
+
+    def Save(self, out):
+        return _communication.GroupTopology_Save(self, out)
+
+    def Load(self, arg2):
+        return _communication.GroupTopology_Load(self, arg2)
     __swig_destroy__ = _communication.delete_GroupTopology
     __del__ = lambda self: None
 GroupTopology_swigregister = _communication.GroupTopology_swigregister

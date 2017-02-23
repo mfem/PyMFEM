@@ -1,10 +1,5 @@
 %module mesh
 %{
-#define MFEM_USE_MPI  
-#include "mesh/mesh_headers.hpp"
-#include "fem/fem.hpp"
-#include "general/array.hpp"
-
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -12,12 +7,18 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "config/config.hpp"      
+#include "mesh/mesh_headers.hpp"
+#include "fem/fem.hpp"
+#include "general/array.hpp"
+
 mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp" 
 %}
+
 %init %{
 import_array();
 %}

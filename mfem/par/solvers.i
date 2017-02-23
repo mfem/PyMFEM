@@ -1,12 +1,14 @@
 %module solvers
 %{
-#include <mpi.h>  
+#include <mpi.h>
+#include "config/config.hpp"
 #include "linalg/matrix.hpp"
 #include "linalg/sparsemat.hpp"
 #include "linalg/solvers.hpp"
-#define MFEM_USE_MPI
 #include "pyoperator.hpp"               
 %}
+
+%include "config/_config.hpp" // include mfem MACRO
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 
@@ -14,6 +16,6 @@
 %import "operators.i"
 %import "matrix.i"
 %import "sparsemat.i"
-#define MFEM_USE_MPI  
+
 %include "linalg/solvers.hpp"
 

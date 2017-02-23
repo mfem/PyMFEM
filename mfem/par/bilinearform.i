@@ -23,6 +23,8 @@ import_array();
 %import "linearform.i"
 %import "gridfunc.i"
 
+%pointer_class(int, intp);
+
 %exception {
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
