@@ -3588,6 +3588,7 @@ namespace swig {
 
 
 #include <mpi.h>
+#include "iostream_typemap.hpp"       
 #include "config/config.hpp"
 #include "mesh/mesh_headers.hpp"
 #include "mpi4py/mpi4py.h"
@@ -6503,9 +6504,6 @@ SWIG_init(void) {
 #else
   return;
 #endif
-  
-  
-  import_array();
   
   
   import_array();

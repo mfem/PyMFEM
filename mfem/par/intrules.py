@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 class IntegrationPointArray(array.BaseArray):
     __swig_setmethods__ = {}
     for _s in [array.BaseArray]:

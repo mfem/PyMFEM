@@ -104,6 +104,7 @@ import handle
 import operators
 import vector
 import array
+import ostream_typemap
 import hypre
 import sparsemat
 import matrix

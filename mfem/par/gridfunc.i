@@ -1,7 +1,5 @@
 %module gridfunc
 %{
-  #include "fem/linearform.hpp"
-  #include "fem/gridfunc.hpp"
   #include <iostream>
   #include <sstream>
   #include <fstream>
@@ -9,6 +7,9 @@
   #include <cmath>
   #include <cstring>
   #include <ctime>
+  #include "iostream_typemap.hpp"    
+  #include "fem/linearform.hpp"
+  #include "fem/gridfunc.hpp"
   #include "pycoefficient.hpp"
   #include "numpy/arrayobject.h"      
 %}
@@ -30,6 +31,8 @@ import_array();
 %import "sparsemat.i"
 %import "lininteg.i"
 %import "eltrans.i"
+
+%import "ostream_typemap.i"
 
 %rename(Assign) mfem::GridFunction::operator=;
 

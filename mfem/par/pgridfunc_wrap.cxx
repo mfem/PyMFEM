@@ -3574,11 +3574,10 @@ namespace Swig {
 #define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[120]
 #define SWIGTYPE_p_quad_t swig_types[121]
 #define SWIGTYPE_p_seg_t swig_types[122]
-#define SWIGTYPE_p_std__ostream swig_types[123]
-#define SWIGTYPE_p_tet_t swig_types[124]
-#define SWIGTYPE_p_tri_t swig_types[125]
-static swig_type_info *swig_types[127];
-static swig_module_info swig_module = {swig_types, 126, 0, 0, 0, 0};
+#define SWIGTYPE_p_tet_t swig_types[123]
+#define SWIGTYPE_p_tri_t swig_types[124]
+static swig_type_info *swig_types[126];
+static swig_module_info swig_module = {swig_types, 125, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3684,6 +3683,7 @@ namespace swig {
 
 
 #include <mpi.h>
+#include "iostream_typemap.hpp"      
 #include  "config/config.hpp"
 #include "fem/pgridfunc.hpp"
 #include "fem/linearform.hpp"  
@@ -8986,8 +8986,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save(PyObject *SWIGUNUSEDPARM(self), 
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  boost_ofdstream *stream2 = NULL ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8997,14 +8996,18 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Save" "', argument " "1"" of type '" "mfem::ParGridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_Save" "', argument " "2"" of type '" "std::ostream &""'"); 
+  {
+    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
+    if (!f) {
+      SWIG_Error(SWIG_TypeError, "File object expected.");
+      SWIG_fail;
+    }
+    else {
+      // If threaded incrment the use count
+      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
+      arg2 = new std::ostream(stream2);
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_Save" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     try {
       ((mfem::ParGridFunction const *)arg1)->Save(*arg2); 
@@ -9014,8 +9017,16 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save(PyObject *SWIGUNUSEDPARM(self), 
     }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    delete arg2;
+    delete stream2;
+  }
   return resultobj;
 fail:
+  {
+    delete arg2;
+    delete stream2;
+  }
   return NULL;
 }
 
@@ -9026,8 +9037,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_0(PyObject *SWIGUNUSE
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  boost_ofdstream *stream2 = NULL ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -9037,14 +9047,18 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_SaveAsOne" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_SaveAsOne" "', argument " "2"" of type '" "std::ostream &""'"); 
+  {
+    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
+    if (!f) {
+      SWIG_Error(SWIG_TypeError, "File object expected.");
+      SWIG_fail;
+    }
+    else {
+      // If threaded incrment the use count
+      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
+      arg2 = new std::ostream(stream2);
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_SaveAsOne" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     try {
       (arg1)->SaveAsOne(*arg2); 
@@ -9054,8 +9068,16 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_0(PyObject *SWIGUNUSE
     }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    delete arg2;
+    delete stream2;
+  }
   return resultobj;
 fail:
+  {
+    delete arg2;
+    delete stream2;
+  }
   return NULL;
 }
 
@@ -9115,9 +9137,13 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne(PyObject *self, PyObject *a
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
-      _v = SWIG_CheckState(res);
+      {
+        if (PyFile_Check(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
       if (_v) {
         return _wrap_ParGridFunction_SaveAsOne__SWIG_0(self, args);
       }
@@ -10193,7 +10219,6 @@ static swig_type_info _swigt__p_p_mfem__PyCoefficientBase = {"_p_p_mfem__PyCoeff
 static swig_type_info _swigt__p_p_mfem__ExtrudeCoefficient = {"_p_p_mfem__ExtrudeCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
@@ -10321,7 +10346,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__TransformedCoefficient,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
-  &_swigt__p_std__ostream,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
 };
@@ -10449,7 +10473,6 @@ static swig_cast_info _swigc__p_p_mfem__ExtrudeCoefficient[] = {{&_swigt__p_p_mf
 static swig_cast_info _swigc__p_p_mfem__Coefficient[] = {  {&_swigt__p_p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_p_mfem__ConstantCoefficient, _p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PWConstCoefficient, _p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__FunctionCoefficient, _p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__GridFunctionCoefficient, _p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__TransformedCoefficient, _p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeltaCoefficient, _p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RestrictedCoefficient, _p_p_mfem__RestrictedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PyCoefficientBase, _p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ExtrudeCoefficient, _p_p_mfem__ExtrudeCoefficientTo_p_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -10577,7 +10600,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_mfem__TransformedCoefficient,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
-  _swigc__p_std__ostream,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
 };

@@ -101,6 +101,7 @@ except Exception:
 _coefficient.MFEM_TIMER_TYPE_swigconstant(_coefficient)
 MFEM_TIMER_TYPE = _coefficient.MFEM_TIMER_TYPE
 import array
+import ostream_typemap
 import matrix
 import vector
 import operators

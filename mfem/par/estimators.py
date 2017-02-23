@@ -101,6 +101,7 @@ except Exception:
 _estimators.MFEM_TIMER_TYPE_swigconstant(_estimators)
 MFEM_TIMER_TYPE = _estimators.MFEM_TIMER_TYPE
 import array
+import ostream_typemap
 import vector
 import fespace
 import coefficient

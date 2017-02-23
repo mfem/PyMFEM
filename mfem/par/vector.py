@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 
 def add_vector(*args):
     return _vector.add_vector(*args)

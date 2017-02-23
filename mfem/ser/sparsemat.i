@@ -3,8 +3,9 @@
 %{
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"     
-  %}
+#include "iostream_typemap.hpp"  
+#include "pyoperator.hpp"
+%}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
@@ -22,6 +23,8 @@ import_array();
 %pythonappend mfem::SparseMatrix::operator+= %{
     val.thisown = self.thisown
 %}
+
+%import "ostream_typemap.i"
 
 // RAP_P, RAP_R replaces RAP, since RAP has two definition one accept
 // pointer and the other accept reference. From Python, two

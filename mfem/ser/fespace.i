@@ -1,11 +1,5 @@
 %module fespace
 %{
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/coefficient.hpp"
-#include "fem/intrules.hpp"  
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -13,7 +7,16 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+
+#include "iostream_typemap.hpp"            
+  
 #include "numpy/arrayobject.h"
+#include "fem/fem.hpp"
+#include "fem/fe_coll.hpp"
+#include "fem/fespace.hpp"
+#include "fem/eltrans.hpp"
+#include "fem/coefficient.hpp"
+#include "fem/intrules.hpp"  
 #include "pyoperator.hpp"       
 %}
 
@@ -33,6 +36,7 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "lininteg.i"
+%import "ostream_typemap.i"
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int ndofs = -1) {

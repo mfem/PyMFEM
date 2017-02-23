@@ -43,9 +43,11 @@ to find more detail of the MFEM libirary.
 	    make config
 	    mamke -j	 
 
-  0-2) HYPRE
+  0-3) HYPRE
 	 for parallel MFEM is used
-
+  0-4) boost
+         used for wrapping std::iostream
+	  
 1:  recompile MFEM with -fPIC option
     This may not be necessary. (I didn't need it on MacOSX, 
     I don't know why)     
@@ -270,7 +272,16 @@ This is needed only when you edit SWIG interface files.
            sol_sock.precision(8)
            sol_sock << "solution\n" << mesh << x
            sol_sock.flush()
-	
+	   
+   4-12) std::ostream&
+
+         methods which takes std::ostream& are wrapped so that one can
+	 pass python file object.
+
+         (example)
+	    sparsmat.PrintInfo(sys.stdout)
+       
+
 -- Known issues --
 
   PyMFEM is a on-going effort. Not all MFEM functioality is propary

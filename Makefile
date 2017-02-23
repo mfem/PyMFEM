@@ -54,6 +54,11 @@ MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
 #numpy
 NUMPYINCDIR = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
 
+#Boost
+BOOSTINCDIR = /opt/local/include
+BOOSTLIBDIR = /opt/local/lib
+BOOSTLIB = boost_iostream-mt
+
 NOCOMPACTUNWIND = 
 include ./Makefile.local
 

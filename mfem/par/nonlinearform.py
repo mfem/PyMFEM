@@ -100,6 +100,7 @@ except Exception:
 import operators
 import vector
 import array
+import ostream_typemap
 import fespace
 import coefficient
 import matrix

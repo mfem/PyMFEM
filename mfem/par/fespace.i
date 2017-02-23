@@ -13,6 +13,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "iostream_typemap.hpp"      
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           
 %}
@@ -33,6 +34,8 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "lininteg.i"
+
+%import "ostream_typemap.i"
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int ndofs = -1) {

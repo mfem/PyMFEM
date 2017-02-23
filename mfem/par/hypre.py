@@ -136,6 +136,7 @@ intp_frompointer = _hypre.intp_frompointer
 
 import vector
 import array
+import ostream_typemap
 import sparsemat
 import operators
 import matrix

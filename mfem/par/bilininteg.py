@@ -98,6 +98,7 @@ except Exception:
 
 
 import array
+import ostream_typemap
 import coefficient
 import matrix
 import vector

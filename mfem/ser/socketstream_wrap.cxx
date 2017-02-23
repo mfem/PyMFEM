@@ -3571,11 +3571,11 @@ namespace swig {
 }
 
 
-#include <iostream>
+#include "iostream_typemap.hpp"          
+#include "numpy/arrayobject.h"    
 #include "mesh/mesh_headers.hpp"
 #include "fem/gridfunc.hpp"  
 #include "general/socketstream.hpp"
-#include "numpy/arrayobject.h"  
 
 
 SWIGINTERN swig_type_info*

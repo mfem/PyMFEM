@@ -1,6 +1,7 @@
 %module communication
 %{
 #include <mpi.h>
+#include "iostream_typemap.hpp"      
 #include "config/config.hpp"    
 #include "general/sets.hpp"
 #include "general/communication.hpp"
@@ -17,5 +18,7 @@ import_array();
 %import array.i
 %import table.i
 %import sets.i
+
+%import ostream_typemap.i
 
 %include "general/communication.hpp"

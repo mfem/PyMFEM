@@ -99,6 +99,7 @@ except Exception:
 
 import intrules
 import array
+import ostream_typemap
 import densemat
 import vector
 import operators

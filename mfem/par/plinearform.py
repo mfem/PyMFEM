@@ -103,6 +103,7 @@ MFEM_TIMER_TYPE = _plinearform.MFEM_TIMER_TYPE
 import linearform
 import coefficient
 import array
+import ostream_typemap
 import matrix
 import vector
 import operators

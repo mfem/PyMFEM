@@ -101,6 +101,7 @@ import mesh
 import matrix
 import vector
 import array
+import ostream_typemap
 import operators
 import element
 import densemat

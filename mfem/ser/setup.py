@@ -31,7 +31,8 @@ modules= ["array", "socketstream",
           "solvers", "estimators", "mesh_operators", "ode",
           "sparsesmoothers",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
-          "nonlininteg", "nonlinearform", ]
+          "nonlininteg", "nonlinearform",
+          "ostream_typemap", "istream_typemap"]
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
@@ -40,9 +41,9 @@ extra_text = [x for x in
               ['-Wl', whole_archive,  mfemserlnkdir+'/libmfem.a',
                no_whole_archive] if x != '']
 extra_link_args =  [','.join(extra_text)]
-include_dirs = [mfemserincdir, numpyincdir]
-library_dirs = [mfemserlnkdir]
-libraries    = [mfemserlib]
+include_dirs = [mfemserincdir, numpyincdir, boostincdir]
+library_dirs = [mfemserlnkdir, boostlibdir]
+libraries    = [boostlib]
 
 
 ext_modules = [Extension(proxy_names[modules[0]],
@@ -51,7 +52,7 @@ ext_modules = [Extension(proxy_names[modules[0]],
                          extra_link_args = extra_link_args,
                          include_dirs = include_dirs,
                          library_dirs = library_dirs,
-                         libraries = [])]
+                         libraries = libraries)]
 
 ext_modules.extend([Extension(proxy_names[name],
                               sources=sources[name],
@@ -59,7 +60,7 @@ ext_modules.extend([Extension(proxy_names[name],
                               extra_link_args = [],
                               include_dirs = include_dirs,
                               library_dirs = library_dirs,
-                              libraries = [])
+                              libraries = libraries)
                for name in modules[1:]])
 
 

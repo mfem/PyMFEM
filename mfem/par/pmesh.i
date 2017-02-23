@@ -1,6 +1,7 @@
 %module pmesh
 %{
 #include <mpi.h>
+#include "iostream_typemap.hpp"     
 #include "config/config.hpp"
 #include "mesh/pmesh.hpp"
 #include "general/communication.hpp"  
@@ -19,6 +20,7 @@ import_array();
 %import pncmesh.i
  //
 %import communication.i
+%import "ostream_typemap.i"
 
 %immutable face_nbr_elements;
 %immutable face_nbr_vertices;

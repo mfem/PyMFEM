@@ -1,14 +1,15 @@
 %module vector
 
 %{
-#include "mfem.hpp"  
-#include "linalg/vector.hpp"
 #include <sstream>
 #include <fstream>
 #include <limits>
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "iostream_typemap.hpp"        
+#include "mfem.hpp"  
+#include "linalg/vector.hpp"
 #include "numpy/arrayobject.h"
 %}
 
@@ -18,7 +19,7 @@ import_array();
 %}
 %import "pointer.i"
 %import "array.i"
- //%import "gridfunc.i"
+%import "ostream_typemap.i"
 
 %typemap(in)  (double *_data){// int _size){
   int i, si;

@@ -94,6 +94,7 @@ except AttributeError:
 _communication.MFEM_TIMER_TYPE_swigconstant(_communication)
 MFEM_TIMER_TYPE = _communication.MFEM_TIMER_TYPE
 import array
+import ostream_typemap
 import table
 import sets
 class MPI_Session(_object):

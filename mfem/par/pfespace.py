@@ -103,6 +103,7 @@ MFEM_TIMER_TYPE = _pfespace.MFEM_TIMER_TYPE
 import operators
 import vector
 import array
+import ostream_typemap
 import fespace
 import coefficient
 import matrix

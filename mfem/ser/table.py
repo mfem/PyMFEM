@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 class Connection(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Connection, name, value)

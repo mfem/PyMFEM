@@ -3,11 +3,11 @@ PYTHON   = python2.7
 WHOLE_ARCHIVE = -all_load
 NO_WHOLE_ARCHIVE = 
 
-MFEM     = $(HOME)/src/mfem-3.2
+MFEM     = $(HOME)/src/mfem-3.3
 MFEMINCDIR  = $(MFEM)
 MFEMLNKDIR  = $(MFEM)
 
-MFEMSER  = $(HOME)/src/mfem-3.2ser
+MFEMSER  = $(HOME)/src/mfem-3.3ser
 MFEMSERINCDIR  = $(MFEMSER)
 MFEMSERLNKDIR  = $(MFEMSER)
 
@@ -24,4 +24,9 @@ HYPRELNKDIR = $(HYPRE)/src/hypre/lib
 MPICHINCDIR    = /opt/local/include/mpich-mp
 MPICHLNKDIR    = /opt/local/lib/mpich-mp
 MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
+
+#Boost
+BOOSTINCDIR = /opt/local/include
+BOOSTLIBDIR = /opt/local/lib
+BOOSTLIB = boost_iostreams-mt
 

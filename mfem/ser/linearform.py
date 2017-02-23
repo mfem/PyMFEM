@@ -99,6 +99,7 @@ except Exception:
 
 import coefficient
 import array
+import ostream_typemap
 import matrix
 import vector
 import operators

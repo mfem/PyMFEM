@@ -101,12 +101,14 @@ import handle
 import operators
 import vector
 import array
+import ostream_typemap
+import hypre
+import sparsemat
+import matrix
+import densemat
 import fespace
 import coefficient
-import matrix
 import intrules
-import sparsemat
-import densemat
 import eltrans
 import fe
 import mesh
@@ -117,15 +119,14 @@ import table
 import vertex
 import fe_coll
 import lininteg
-import bilininteg
-import gridfunc
-import linearform
-import hypre
 import pfespace
 import pmesh
 import pncmesh
 import communication
 import sets
+import bilininteg
+import gridfunc
+import linearform
 class Hybridization(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Hybridization, name, value)

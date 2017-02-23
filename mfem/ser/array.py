@@ -90,6 +90,7 @@ except AttributeError:
     _newclass = 0
 
 
+import ostream_typemap
 class BaseArray(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, BaseArray, name, value)

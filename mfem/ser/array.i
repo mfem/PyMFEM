@@ -1,14 +1,18 @@
 %module array
 %rename(Equal) mfem::Array <class T>::operator=;
 %{
-#include "general/array.hpp"
 #include <iostream>
+#include <stdio.h>
+#include "iostream_typemap.hpp"    
+#include "general/array.hpp"  
 #include "numpy/arrayobject.h"    
 %}
 
 %init %{
 import_array();
 %}
+
+%import "ostream_typemap.i"
 
 %typemap(in) (int *_data, int asize) {
   int i;
@@ -39,6 +43,7 @@ import_array();
 //%import "intrules.i"
 //%newobject intArray
 %include "general/array.hpp"
+
 %extend mfem::Array{
   void __setitem__(int i, const T v) {
     (* self)[i] = v;
@@ -65,50 +70,4 @@ namespace mfem{
 }
 
 
- /*
-%pythoncode %{
-def ToList(A):
-    return [A[i] for i in range(A.Size())]
-%}
 
-
-namespace mfem{
-class BaseArray
-{
-protected:
-   /// Pointer to data
-   void *data;
-   /// Size of the array
-   int size;
-   /// Size of the allocated memory
-   int allocsize;
-   int inc;
-   
-   BaseArray() { }
-   /// Creates array of asize elements of size elementsize
-   BaseArray(int asize, int ainc, int elmentsize);
-   /// Free the allocated memory
-   ~BaseArray();
-   void GrowSize(int minsize, int elementsize);
-};
-%rename(intArray) Array<int>; 
-
-class Array<int> : public BaseArray
-{
- public:  
-     /// Creates array of asize elements
-   explicit inline Array(int asize = 0, int ainc = 0)
-      : BaseArray(asize, ainc, sizeof (int)) { }
-
-   inline Array(int *_data, int asize, int ainc = 0)
-     { data = _data; size = asize; allocsize = -asize; inc = ainc; }
-   /// Destructor
-   inline ~Array() { }
-   
-   inline int Size() const { return size; }
-   /// Prints array to stream with width elements per row
-   void Print(std::ostream &out = std::cout, int width = 4);
-};
-
-}
-*/

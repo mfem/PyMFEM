@@ -103,6 +103,7 @@ MFEM_TIMER_TYPE = _handle.MFEM_TIMER_TYPE
 import operators
 import vector
 import array
+import ostream_typemap
 import hypre
 import sparsemat
 import matrix

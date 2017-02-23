@@ -1,11 +1,13 @@
 %module(directors="1") operators
 %{
 #include "linalg/operator.hpp"
-#include "pyoperator.hpp"   
+#include "iostream_typemap.hpp"    
+#include "pyoperator.hpp"
 %}
 
 %import "vector.i"
 %import "array.i"
+%import "ostream_typemap.i"
 
 %exception {
     try { $action }

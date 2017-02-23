@@ -3,7 +3,8 @@
 %{
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"         
+#include "pyoperator.hpp"
+#include "iostream_typemap.hpp"
 %}
 // initialization required to return numpy array from SWIG
 %init %{
@@ -14,6 +15,7 @@ import_array();
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
+%import "ostream_typemap.i"
 
 %rename(Assign) mfem::DenseMatrix::operator=;
 %feature("shadow") mfem::DenseMatrix::operator+= %{

@@ -37,7 +37,8 @@ modules= [
           "pmesh", "pncmesh", "communication",
           "pfespace", "pgridfunc",
           "plinearform", "pbilinearform", "pnonlinearform",
-          "hypre"]
+          "hypre", 
+          "ostream_typemap", "istream_typemap"]
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 #sources['solvers'] = ['solvers_p_wrap.cxx']
@@ -51,11 +52,12 @@ extra_text = [x for x in
 extra_link_args0 =  [','.join(extra_text)]
 extra_link_args =  []
 libraries0 = [] if metisliba != '' else [metislib]
-libraries0.extend([hyprelib])
+libraries0.extend([hyprelib, boostlib])
 
 include_dirs = [mfemincdir, numpyincdir, mpi4pyincdir,
-                mpichincdir, hypreincdir]
+                mpichincdir, hypreincdir, boostincdir]
 library_dirs = [mfemlnkdir, hyprelnkdir, metislnkdir]
+libraries    = [boostlib]
 
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
@@ -71,7 +73,7 @@ ext_modules.extend([Extension(proxy_names[name],
                         extra_link_args = extra_link_args,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                              libraries = [])
+                        libraries = libraries)
                for name in modules[1:]])
 
 #ext_modules = [Extension(proxy_names[name],

@@ -10,6 +10,7 @@
   #include <cmath>
   #include <cstring>
   #include <ctime>
+  #include "iostream_typemap.hpp"    
   #include "pycoefficient.hpp"
   #include "numpy/arrayobject.h"      
 %}
@@ -30,6 +31,7 @@ import_array();
 %import "sparsemat.i"
 %import "lininteg.i"
 %import "eltrans.i"
+%import "ostream_typemap.i"
 
 %rename(Assign) mfem::GridFunction::operator=;
 

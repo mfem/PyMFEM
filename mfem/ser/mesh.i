@@ -14,12 +14,15 @@
 mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+#include "iostream_typemap.hpp"         
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp" 
 %}
+
 %init %{
 import_array();
 %}
+
 %import "cpointer.i"
 %import "matrix.i"
 %import "array.i"
@@ -36,7 +39,7 @@ import_array();
 %feature("notabstract") VectorConstantCoefficient;
 %import "coefficient.i"
 %import "fe.i"
-
+%import "ostream_typemap.i"
 //
 %pointer_class(int, intp);
 //  conversion of Int (can handle numpy int)

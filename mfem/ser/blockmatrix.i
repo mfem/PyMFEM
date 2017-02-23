@@ -1,6 +1,7 @@
 %module blockmatrix
 
 %{
+#include "iostream_typemap.hpp"        
 #include "linalg/blockmatrix.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
@@ -13,4 +14,6 @@ import_array();
 %import "vector.i"
 %import "matrix.i"
 %import "sparsemat.i"
+%import "ostream_typemap.i"
+
 %include "linalg/blockmatrix.hpp"
