@@ -260,22 +260,20 @@ while  (time < t_final + 1e-10):
 
          # 14. Recompute the field on the current mesh: assemble the stiffness
          #     matrix and the right-hand side.
-         print("here")
          a.Assemble();
-         print("here")
          b.Assemble();
-         print("here")
+
          # 15. Project the exact solution to the essential boundary DOFs.
          x.ProjectBdrCoefficient(bdr, ess_bdr);
          # 16. Create and solve the linear system.
          ess_tdof_list = intArray()
          fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list);
-         print("here")
+
          A = mfem.SparseMatrix()
          B = mfem.Vector()
          X = mfem.Vector()
          a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
-         print("here")
+
          M = mfem.GSSmoother(A);
          mfem.PCG(A, M, B, X, 0, 500, 1e-12, 0.0)
 
@@ -284,13 +282,8 @@ while  (time < t_final + 1e-10):
 
          # 18. Send the solution by socket to a GLVis server
          if visualization:
-             print("here")
              sout.precision(8)
-             print sout
-             #sout << "solution\n"# << mesh #<< x
-             print sout
-             sout.flush()
-             print sout
+             sout.send_solution(mesh, x)             
 
          # 19. Apply the refiner on the mesh. The refiner calls the error
          #     estimator to obtain element errors, then it selects elements to

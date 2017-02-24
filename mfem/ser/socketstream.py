@@ -188,6 +188,12 @@ class socketstream(_object):
     def precision(self, *args):
         return _socketstream.socketstream_precision(self, *args)
 
+    def send_solution(self, mesh, gf):
+        return _socketstream.socketstream_send_solution(self, mesh, gf)
+
+    def send_text(self, ostr):
+        return _socketstream.socketstream_send_text(self, ostr)
+
     def __lshift__(self, *args):
         return _socketstream.socketstream___lshift__(self, *args)
 

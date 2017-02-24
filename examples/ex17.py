@@ -88,24 +88,24 @@ class VisMan(object):
         if self.output is None: return
 
         sid = self.sid
-        self.output << "window_geometry "
-        self.output << str(self.win_x + self.stride_x*(sid % self.win_nx)) << ' '
-        self.output << str(self.win_y + self.stride_y*(sid/self.win_nx)) << ' '
-        self.output << str(self.win_w) << ' ' << str(self.win_h)
-        self.output.endline()
+        command = ("window_geometry " +
+                   str(self.win_x + self.stride_x*(sid % self.win_nx)) +
+                   ' ' +
+                   str(self.win_y + self.stride_y*(sid/self.win_nx)) +
+                   ' ' +  str(self.win_w) +  ' ' +  str(self.win_h))
+        self.output.send_text(command)
         self.output.flush()
 
-    def flush(self):
-        if self.output is None: return
+    def send_solution(self, mesh, x):
+        if self.output is None: return        
+        self.output.send_solution(mesh, x)
+    def send_text(self, x):
+        if self.output is None: return        
+        self.output.send_text(x)
+    def flush(self):        
+        if self.output is None: return        
         self.output.flush()
-    def endline(self):
-        if self.output is None: return
-        self.output.endline()        
-    def __lshift__(self, thing):
-        if self.output is None: return
-        self.output << thing
-        return self
-
+        
 parser = ArgParser(description='Ex17')
 parser.add_argument('-m', '--mesh',
                     default = 'beam-tri.mesh',
@@ -265,10 +265,10 @@ if (visualization):
     glvis_keys = "Rjlc" if (dim < 3) else "c"
     
     vis.NewWindow()
-    vis << "solution\n" << mesh << x ;vis.flush()                     
-    vis << "keys " << glvis_keys ; vis.endline()
-    vis << "window_title 'Deformed configuration'"; vis.endline()
-    vis << "plot_caption 'Backward displacement'"; vis.endline()
+    vis.send_solution(mesh, x)
+    vis.send_text("keys " + glvis_keys)    
+    vis.send_text("window_title 'Deformed configuration'")
+    vis.send_text("plot_caption 'Backward displacement'")
     vis.PositionWindow()
     vis.CloseConnection()
 
@@ -288,22 +288,14 @@ if (visualization):
         stress_c.SetComponent(si, sj);
         stress.ProjectCoefficient(stress_c);
         vis.NewWindow()
-        vis << "solution\n" << mesh << stress ;vis.flush()
-        vis << "keys " << glvis_keys; vis.endline()    
-        vis << "window_title |Stress" << c[si] << c[sj] << "|";  vis.endline()
+        vis.send_solution(mesh, stress)
+        vis.send_text("keys " + glvis_keys)
+        vis.send_text("window_title |Stress" + c[si] + c[sj] + "|")
         vis.PositionWindow()
         vis.CloseConnection()
         
-    make_plot(0, 0)
-    make_plot(0, 1)
-    make_plot(1, 1)
-
-    '''
-    this does error.. (I don't know why !)
-
     for si in range(dim):
         for jj in range(dim-si):
-             print si, si+jj
              make_plot(si, si+jj)
-    '''
-    print 'end'
+
+
