@@ -15,7 +15,7 @@
 
 '''
 import sys
-import argparse
+from mfem.common.arg_parser import ArgParser
 from os.path import expanduser, join
 import numpy as np
 from mfem import path
@@ -106,7 +106,7 @@ class VisMan(object):
         self.output << thing
         return self
 
-parser = argparse.ArgumentParser(description='Ex17')
+parser = ArgParser(description='Ex17')
 parser.add_argument('-m', '--mesh',
                     default = 'beam-tri.mesh',
                     action = 'store', type = str,
@@ -135,8 +135,10 @@ order = args.order
 alpha = args.alpha;
 kappa = args.kappa;
 visualization = args.visualization
-if (kappa < 0): kappa = (order+1.)*(order+1.)
-
+if (kappa < 0): 
+   kappa = (order+1.)*(order+1.)
+   args.kappa = kappa
+parser.print_options(args)
 # 2. Read the mesh from the given mesh file.
 meshfile =expanduser(join(path, 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
