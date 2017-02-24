@@ -14,11 +14,8 @@ class ArgParser(ArgumentParser):
         print("Options used:")
         d = vars(args)
 
-        print self.argument_list
         keys = ['_'.join(filter(None, x.split('-'))) 
                 for x in self.argument_list]
-        print keys
-        print d
         for k in keys:
             if k in d: print("   --" +  k + "  " + str(d[k]))
 
