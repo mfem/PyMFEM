@@ -23,6 +23,88 @@ from mfem import path
 import mfem.ser as mfem
 from mfem.ser import intArray
 
+# 
+class InitDisplacement(mfem.VectorPyCoefficient):
+    def __init__(self, dim):
+       self.dim = dim
+       mfem.VectorPyCoefficient.__init__(self, dim)
+    def EvalValue(self, x):
+       u = [0.0]*dim
+       u[-1]  = -0.2*x[0]
+       return tuple(u)
+   
+class StressCoefficient(mfem.PyCoefficientBase):
+    def __init__(self, lambda_, mu_, si=0, sj=0):
+        super(StressCoefficient, self).__init__(0)
+        self.lam = lambda_   # coefficient
+        self.mu  = mu_       # coefficient
+        self.si  = si ; self.sj = sj     # component
+        self.u  = None   # displacement GridFunction
+        self.grad = mfem.DenseMatrix()
+        
+    def SetComponent(self, i, j):
+        self.si = i
+        self.sj = j
+    def SetDisplacement(self, u):
+        self.u = u
+    def Eval(self, T, ip):
+        si, sj = self.si, self.sj
+        L = self.lam.Eval(T, ip)
+        M = self.mu.Eval(T, ip)
+        self.u.GetVectorGradient(T, self.grad)
+        if (self.si == self.sj):
+            div_u = self.grad.Trace();
+            return L * div_u + 2 * M * self.grad[si, si]
+        else:
+            return M * (self.grad[si,sj] + self.grad[sj,si]);
+
+class VisMan(object):
+    def __init__(self, vishost, visport):
+        self.host = vishost
+        self.port = visport
+        self.socks = []
+        self.output = None
+        self.win_x = 0
+        self.win_y = 0
+        self.win_w = 200 # window width
+        self.win_h = 150 # window height
+        self.stride_x = self.win_w
+        self.stride_y = self.win_h + 20
+        self.win_nx = 4 # number of windows in a row
+        self.sid = 0
+    def NewWindow(self):
+        self.socks.append(mfem.socketstream(self.host, self.port))
+        self.output = self.socks[-1]
+        self.output.precision(8)                          
+        self.socks
+        self.sid = self.sid + 1
+        
+    def CloseConnection(self):
+        self.socks = []
+        del self.output        
+        self.output = None
+                          
+    def PositionWindow(self):
+        if self.output is None: return
+
+        sid = self.sid
+        self.output << "window_geometry "
+        self.output << str(self.win_x + self.stride_x*(sid % self.win_nx)) << ' '
+        self.output << str(self.win_y + self.stride_y*(sid/self.win_nx)) << ' '
+        self.output << str(self.win_w) << ' ' << str(self.win_h)
+        self.output.endline()
+        self.output.flush()
+
+    def flush(self):
+        if self.output is None: return
+        self.output.flush()
+    def endline(self):
+        if self.output is None: return
+        self.output.endline()        
+    def __lshift__(self, thing):
+        if self.output is None: return
+        self.output << thing
+        return self
 
 parser = argparse.ArgumentParser(description='Ex17')
 parser.add_argument('-m', '--mesh',
@@ -30,20 +112,19 @@ parser.add_argument('-m', '--mesh',
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-r', '--refine',
-                    default = 'beam-tri.mesh',
                     action = 'store', default = -1, type=int,
-                    help = "Number of times to refine the mesh uniformly, -1 for auto.")
+       help = "Number of times to refine the mesh uniformly, -1 for auto.")
 parser.add_argument('-o', '--order',
                     action = 'store', default = 1, type=int,
                     help = "Finite element order (polynomial degree)");
 parser.add_argument('-a', '--alpha',
                     action = 'store', default = -1.0, type=float,
-          help = '\n'.join(["One of the two DG penalty parameters, typically +1/-1."
-                            " See the documentation of class DGElasticityIntegrator."]))
+       help = '\n'.join(["One of the two DG penalty parameters, typically +1/-1."
+                         " See the documentation of class DGElasticityIntegrator."]))
 parser.add_argument('-k', '--kappa',
                     action = 'store', default = -1.0, type=float,
-          help = '\n'.join(["One of the two DG penalty parameters, should be positve."
-                            " Negative values are replaced with (order+1)^2."]))
+       help = '\n'.join(["One of the two DG penalty parameters, should be positve."
+                          " Negative values are replaced with (order+1)^2."]))
 parser.add_argument('-vis', '--visualization',
                     action = 'store_true',
                     help='Enable GLVis visualization')
@@ -54,17 +135,7 @@ order = args.order
 alpha = args.alpha;
 kappa = args.kappa;
 visualization = args.visualization
-if (kappa < 0): kappa = (order+1)*(order+1)
-
-# 
-class InitDisplacement(mfem.VectorPyCoefficient):
-    def __init__(self, dim):
-       self.dim = dim
-       mfem.VectorPyCoefficient.__init__(self, dim)
-    def EvalValue(self, x):
-       u = [0.0]*dim
-       u[-1]  = -0.2*x[0]
-       return tuple(u)
+if (kappa < 0): kappa = (order+1.)*(order+1.)
 
 # 2. Read the mesh from the given mesh file.
 meshfile =expanduser(join(path, 'data', args.mesh))
@@ -87,7 +158,7 @@ if (mesh.NURBSext):  mesh.SetCurvature(order)
 # 4. Define a DG vector finite element space on the mesh. Here, we use
 #    Gauss-Lobatto nodal basis because it gives rise to a sparser matrix
 #    compared to the default Gauss-Legendre nodal basis.
-fec = mfem.DG_FECollectio(order, dim, mfem.BasisType.GaussLobatto)
+fec = mfem.DG_FECollection(order, dim, mfem.BasisType.GaussLobatto)
 fespace = mfem.FiniteElementSpace(mesh, fec, dim)
 print('Number of finite element unknowns: '+ str(fespace.GetVSize()))
 print('Assembling:')
@@ -102,8 +173,6 @@ dir_bdr = intArray(mesh.bdr_attributes.Max())
 dir_bdr.Assign(0)
 dir_bdr[0] = 1 # boundary attribute 1 is Dirichlet
 dir_bdr[1] = 1 # boundary attribute 2 is Dirichlet
-
-fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 
 # 6. Define the DG solution vector 'x' as a finite element grid function
 #    corresponding to fespace. Initialize 'x' using the 'InitDisplacement'
@@ -146,6 +215,7 @@ b.Assemble()
 #    conditions.
 a = mfem.BilinearForm(fespace)
 a.AddDomainIntegrator(mfem.ElasticityIntegrator(lambda_c, mu_c))
+
 a.AddInteriorFaceIntegrator(mfem.DGElasticityIntegrator(lambda_c, mu_c, alpha, kappa))
 a.AddBdrFaceIntegrator(mfem.DGElasticityIntegrator(lambda_c, mu_c, alpha, kappa), dir_bdr)
 print('matrix ...')
@@ -175,8 +245,9 @@ a.RecoverFEMSolution(X, b, x)
 # 13. Use the DG solution space as the mesh nodal space. This allows us to
 #     save the displaced mesh as a curved DG mesh.
 mesh.SetNodalFESpace(fespace)
+reference_nodes = mfem.Vector()
 if (visualization):
-     reference_nodes = mesh.GetNodes()
+    reference_nodes.Assign(mesh.GetNodes())
 # 14. Save the displaced mesh and minus the solution (which gives the
 #     backward displacements to the reference mesh). This output can be
 #     viewed later using GLVis: "glvis -m displaced.mesh -g sol.gf".
@@ -187,3 +258,50 @@ mesh.PrintToFile('displaced.mesh', 8)
 x.SaveToFile('sol.gf', 8)
 
 # 15. Visualization: send data by socket to a GLVis server.
+if (visualization):    
+    vis = VisMan("localhost", 19916)
+    glvis_keys = "Rjlc" if (dim < 3) else "c"
+    
+    vis.NewWindow()
+    vis << "solution\n" << mesh << x ;vis.flush()                     
+    vis << "keys " << glvis_keys ; vis.endline()
+    vis << "window_title 'Deformed configuration'"; vis.endline()
+    vis << "plot_caption 'Backward displacement'"; vis.endline()
+    vis.PositionWindow()
+    vis.CloseConnection()
+
+    c = "xyz"
+    scalar_dg_space = mfem.FiniteElementSpace(mesh, fec)
+    stress = mfem.GridFunction(scalar_dg_space)
+    stress_c =  StressCoefficient(lambda_c, mu_c)
+
+    mesh.GetNodes().Assign(reference_nodes)
+    mesh.PrintToFile('reference.mesh', 8)    
+
+    x.Neg()
+    stress_c.SetDisplacement(x)
+    stress.ProjectCoefficient(stress_c)
+
+    def make_plot(si, sj):
+        stress_c.SetComponent(si, sj);
+        stress.ProjectCoefficient(stress_c);
+        vis.NewWindow()
+        vis << "solution\n" << mesh << stress ;vis.flush()
+        vis << "keys " << glvis_keys; vis.endline()    
+        vis << "window_title |Stress" << c[si] << c[sj] << "|";  vis.endline()
+        vis.PositionWindow()
+        vis.CloseConnection()
+        
+    make_plot(0, 0)
+    make_plot(0, 1)
+    make_plot(1, 1)
+
+    '''
+    this does error.. (I don't know why !)
+
+    for si in range(dim):
+        for jj in range(dim-si):
+             print si, si+jj
+             make_plot(si, si+jj)
+    '''
+    print 'end'

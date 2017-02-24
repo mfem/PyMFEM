@@ -257,6 +257,7 @@ class BilinearForm(matrix.Matrix):
     def AddBdrFaceIntegrator(self, *args):
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        bfi = args[0]	     
         self._integrators.append(bfi)
         bfi.thisown=0 
 

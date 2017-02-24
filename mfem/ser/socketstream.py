@@ -191,6 +191,9 @@ class socketstream(_object):
     def __lshift__(self, *args):
         return _socketstream.socketstream___lshift__(self, *args)
 
+    def endline(self):
+        return _socketstream.socketstream_endline(self)
+
     def flush(self):
         return _socketstream.socketstream_flush(self)
 socketstream_swigregister = _socketstream.socketstream_swigregister

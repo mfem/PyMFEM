@@ -147,6 +147,13 @@ This is needed only when you edit SWIG interface files.
        Cof_Jt = Jt(3) // VectorPyCoefficient constructor need sdim 
        dd = mfem.VectorFEBoundaryTangentLFIntegrator(Cof_Jt);
 
+       If one wants to call Eval with a transformation object and
+       an integration point, and one can inherit PyCoefficientBase
+       (or their Vector/Matrix version) and overwrite Eval methods.
+       These classes are defined as a director classes in c++.
+       Therefore, if one overwrite Eval method, SWIG reroute the
+       call to the Python side.
+
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
        return numpy array of Vector()
@@ -213,6 +220,10 @@ This is needed only when you edit SWIG interface files.
 	 
   4-6) densemat
          Add functions are accessed as add_dense.
+	 elements are accessed similar to a regular python array
+	      densmat[i,j] = xxx
+	      x = densmat[i,j]
+	 GetDataArray returns copy of data
 	 
   4-7) estimators
         ZienkiewiczZhuEstimator and L2ZienkiewZhuEstimator

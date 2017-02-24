@@ -3855,13 +3855,21 @@ SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_0(mfem::socket
       *self << ostr;
       return *self;
    }
-SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_1(mfem::socketstream *self,mfem::Mesh const &mesh){ 
+SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_1(mfem::socketstream *self,int const x){ 
+      *self << x;
+      return *self;
+   }
+SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_2(mfem::socketstream *self,mfem::Mesh const &mesh){ 
       *self << mesh;
       return *self;
    }
-SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_2(mfem::socketstream *self,mfem::GridFunction const &gf){ 
+SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_3(mfem::socketstream *self,mfem::GridFunction const &gf){ 
       *self << gf;
       return *self;
+   }
+SWIGINTERN mfem::socketstream &mfem_socketstream_endline(mfem::socketstream *self){
+     *self << std::endl;
+     return *self;
    }
 SWIGINTERN mfem::socketstream &mfem_socketstream_flush(mfem::socketstream *self){ 
      self->flush();
@@ -4914,6 +4922,41 @@ fail:
 SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketstream___lshift__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream___lshift__" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    try {
+      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_1(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
   mfem::Mesh *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4939,7 +4982,7 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_1(PyObject *SWIGUNUSEDP
   arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
   {
     try {
-      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_1(arg1,(mfem::Mesh const &)*arg2); 
+      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_2(arg1,(mfem::Mesh const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4952,7 +4995,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -4980,7 +5023,7 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_2(PyObject *SWIGUNUSEDP
   arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
   {
     try {
-      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_2(arg1,(mfem::GridFunction const &)*arg2); 
+      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_3(arg1,(mfem::GridFunction const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5014,7 +5057,7 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift__(PyObject *self, PyObject *arg
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Mesh, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_socketstream___lshift____SWIG_1(self, args);
+        return _wrap_socketstream___lshift____SWIG_2(self, args);
       }
     }
   }
@@ -5027,7 +5070,25 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift__(PyObject *self, PyObject *arg
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__GridFunction, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_socketstream___lshift____SWIG_2(self, args);
+        return _wrap_socketstream___lshift____SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_socketstream___lshift____SWIG_1(self, args);
       }
     }
   }
@@ -5048,6 +5109,35 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift__(PyObject *self, PyObject *arg
 fail:
   Py_INCREF(Py_NotImplemented);
   return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_endline(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_endline",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_endline" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      result = (mfem::socketstream *) &mfem_socketstream_endline(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -5340,6 +5430,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_socketstream", _wrap_delete_socketstream, METH_VARARGS, NULL},
 	 { (char *)"socketstream_precision", _wrap_socketstream_precision, METH_VARARGS, NULL},
 	 { (char *)"socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, NULL},
+	 { (char *)"socketstream_endline", _wrap_socketstream_endline, METH_VARARGS, NULL},
 	 { (char *)"socketstream_flush", _wrap_socketstream_flush, METH_VARARGS, NULL},
 	 { (char *)"socketstream_swigregister", socketstream_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_socketserver", _wrap_new_socketserver, METH_VARARGS, NULL},
