@@ -730,7 +730,7 @@ class PyCoefficient(PyCoefficientBase):
 class PyCoefficientT(PyCoefficientBase):
    def __init__(self):
        PyCoefficientBase.__init__(self, 1)
-   def _EvalPyT(self, x, t, V):
+   def _EvalPyT(self, x, t):
        return self.EvalValue(x.GetDataArray(), t)
    def EvalValue(self, x, t):
        return 0.0
