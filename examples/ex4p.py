@@ -5,6 +5,7 @@
 
    How to run:
       mpirun -np 2 python <arguments>
+
    Example of arguments:
       ex4p.py -m square-disc.mesh
       ex4p.py -m star.mesh
