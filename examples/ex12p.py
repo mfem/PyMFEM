@@ -25,7 +25,6 @@ from mfem.common.arg_parser import ArgParser
 import mfem.par as mfem
 from mpi4py import MPI
 
-
 num_procs = MPI.COMM_WORLD.size
 myid      = MPI.COMM_WORLD.rank
 

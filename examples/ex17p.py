@@ -1,29 +1,31 @@
 '''
-   MFEM example 17 
+   MFEM example 17p 
 
    How to run:
-       python <arguments>
+       mpirun -np 4 python <arguments>
 
    Example of arguments:
-       ex17.py -m beam-tri.mesh
-       ex17.py -m beam-quad.mesh
-       ex17.py -m beam-tet.mesh
-       ex17.py -m beam-hex.mesh
-       ex17.py -m beam-quad.mesh -r 2 -o 3
-       ex17.py -m beam-quad.mesh -r 2 -o 2 -a 1 -k 1
-       ex17.py -m beam-hex.mesh -r 2 -o 2
+       ex17p.py -m beam-tri.mesh
+       ex17p.py -m beam-quad.mesh
+       ex17p.py -m beam-tet.mesh
+       ex17p.py -m beam-hex.mesh
+       ex17p.py -m beam-quad.mesh -rs 2 -rp 2 -o 3 -elast
+       ex17p.py -m beam-quad.mesh -rs 2 -rp 3 -o 2 -a 1 -k 1
+       ex17p.py -m beam-hex.mesh -rs 2 -rp 1 -o 2
 
 '''
 import sys
 from mfem.common.arg_parser import ArgParser
 from os.path import expanduser, join
 import numpy as np
+
 from mfem import path
+import mfem.par as mfem
+from mpi4py import MPI
 
-import mfem.ser as mfem
-from mfem.ser import intArray
+num_procs = MPI.COMM_WORLD.size
+myid      = MPI.COMM_WORLD.rank
 
-# 
 class InitDisplacement(mfem.VectorPyCoefficient):
     def __init__(self, dim):
        self.dim = dim
@@ -111,9 +113,12 @@ parser.add_argument('-m', '--mesh',
                     default = 'beam-tri.mesh',
                     action = 'store', type = str,
                     help='Mesh file to use.')
-parser.add_argument('-r', '--refine',
+parser.add_argument('-rs', '--refine-serial',
                     action = 'store', default = -1, type=int,
-       help = "Number of times to refine the mesh uniformly, -1 for auto.")
+       help = "Number of times to refine the mesh uniformly before parallel")
+parser.add_argument('-rp', '--refine-parallel',
+                    action = 'store', default = 1, type=int,
+       help = "Number of times to refine the mesh uniformly after parallel")
 parser.add_argument('-o', '--order',
                     action = 'store', default = 1, type=int,
                     help = "Finite element order (polynomial degree)");
@@ -125,53 +130,73 @@ parser.add_argument('-k', '--kappa',
                     action = 'store', default = -1.0, type=float,
        help = '\n'.join(["One of the two DG penalty parameters, should be positve."
                           " Negative values are replaced with (order+1)^2."]))
+parser.add_argument('-elast', '--amg-for-elasticity',
+            action = 'store_true',
+            help = 'Use the special AMG elasticity solver (GM/LN approaches)',
+                    dest = 'amg_elast', default = False)
+parser.add_argument('-sys', '--amg-for-systems',
+             action = 'store_false',
+             help =  'Use  standard AMG for systems (unknown approach).',
+                    dest = 'amg_elast', default = True)
 parser.add_argument('-vis', '--visualization',
                     action = 'store_true',
                     help='Enable GLVis visualization')
 
 args = parser.parse_args()
-ref_levels = args.refine
+ser_ref_levels = args.refine_serial
+par_ref_levels = args.refine_parallel
 order = args.order
-alpha = args.alpha;
-kappa = args.kappa;
+alpha = args.alpha
+kappa = args.kappa
+amg_elast = args.amg_elast
 visualization = args.visualization
 if (kappa < 0): 
    kappa = (order+1.)*(order+1.)
    args.kappa = kappa
-parser.print_options(args)
+if (myid == 0): parser.print_options(args)
+
 # 2. Read the mesh from the given mesh file.
 meshfile =expanduser(join(path, 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 if (mesh.attributes.Max() < 2 or 
     mesh.bdr_attributes.Max() < 2):
-    print("\n".join(["Input mesh should have at least two materials and ", "two boundary attributes! (See schematic in ex17.cpp)\n"]))
-    sys.exit()
+    if (myid == 0):
+        print("\n".join(["Input mesh should have at least two materials and ", "two boundary attributes! (See schematic in ex17.cpp)\n"]))
+        sys.exit()
 
 # 3. Refine the mesh to increase the resolution.
-ref_levels = int(np.floor(np.log(5000./mesh.GetNE())/np.log(2.)/dim))
-for x in range(ref_levels):
-   mesh.UniformRefinement();
+if ser_ref_levels < 0: 
+   ser_ref_levels = int(np.floor(np.log(5000./mesh.GetNE())/np.log(2.)/dim))
+for x in range(ser_ref_levels):
+    mesh.UniformRefinement();
 
 # Since NURBS meshes do not support DG integrators, we convert them to
 # regular polynomial mesh of the specified (solution) order.
 if (mesh.NURBSext):  mesh.SetCurvature(order)
+pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+del mesh
+for x in range(par_ref_levels):
+    pmesh.UniformRefinement();
 
 # 4. Define a DG vector finite element space on the mesh. Here, we use
 #    Gauss-Lobatto nodal basis because it gives rise to a sparser matrix
 #    compared to the default Gauss-Legendre nodal basis.
 fec = mfem.DG_FECollection(order, dim, mfem.BasisType.GaussLobatto)
-fespace = mfem.FiniteElementSpace(mesh, fec, dim)
-print('Number of finite element unknowns: '+ str(fespace.GetVSize()))
-print('Assembling:')
+fespace = mfem.ParFiniteElementSpace(pmesh, fec, dim, mfem.Ordering.byVDIM)
+
+glob_size = fespace.GlobalTrueVSize()
+if (myid == 0):
+    print('Number of finite element unknowns: '+ str(glob_size))
+    print('Assembling:')
 
 # 5. In this example, the Dirichlet boundary conditions are defined by
 #    marking boundary attributes 1 and 2 in the marker Array 'dir_bdr'.
 #    These b.c. are imposed weakly, by adding the appropriate boundary
 #    integrators over the marked 'dir_bdr' to the bilinear and linear forms.
 #    With this DG formulation, there are no essential boundary conditions.
-ess_tdof_list = intArray()
-dir_bdr = intArray(mesh.bdr_attributes.Max())
+ess_tdof_list = mfem.intArray()
+dir_bdr = mfem.intArray(pmesh.bdr_attributes.Max())
 dir_bdr.Assign(0)
 dir_bdr[0] = 1 # boundary attribute 1 is Dirichlet
 dir_bdr[1] = 1 # boundary attribute 2 is Dirichlet
@@ -179,18 +204,18 @@ dir_bdr[1] = 1 # boundary attribute 2 is Dirichlet
 # 6. Define the DG solution vector 'x' as a finite element grid function
 #    corresponding to fespace. Initialize 'x' using the 'InitDisplacement'
 #    function.
-x = mfem.GridFunction(fespace) 
+x = mfem.ParGridFunction(fespace) 
 init_x = InitDisplacement(dim)
 x.ProjectCoefficient(init_x)
 
 # 7. Set up the Lame constants for the two materials. They are defined as
 #    piece-wise (with respect to the element attributes) constant
 #    coefficients, i.e. type PWConstCoefficient.
-lamb = mfem.Vector(mesh.attributes.Max())  # lambda is not possible in python
+lamb = mfem.Vector(pmesh.attributes.Max())  # lambda is not possible in python
 lamb.Assign(1.0)
 lamb[0] = 50.
 lambda_c = mfem.PWConstCoefficient(lamb)
-mu = mfem.Vector(mesh.attributes.Max())
+mu = mfem.Vector(pmesh.attributes.Max())
 mu.Assign(1.0);
 mu[0] = 50.0
 mu_c = mfem.PWConstCoefficient(mu)
@@ -202,9 +227,10 @@ mu_c = mfem.PWConstCoefficient(mu)
 #    values for the Dirichlet boundary condition are taken from the
 #    VectorFunctionCoefficient 'x_init' which in turn is based on the
 #    function 'InitDisplacement'.
-b = mfem.LinearForm(fespace)
-print('r.h.s ...')
-integrator = mfem.DGElasticityDirichletLFIntegrator(init_x, lambda_c, mu_c, alpha, kappa)
+b = mfem.ParLinearForm(fespace)
+if (myid == 0): print('r.h.s ...')
+integrator = mfem.DGElasticityDirichletLFIntegrator(init_x, lambda_c,
+                                                    mu_c, alpha, kappa)
 b.AddBdrFaceIntegrator(integrator , dir_bdr)
 b.Assemble()
 
@@ -215,49 +241,69 @@ b.Assemble()
 #    boundary face integrator works together with the boundary integrator
 #    added to the linear form b(.) to impose weakly the Dirichlet boundary
 #    conditions.
-a = mfem.BilinearForm(fespace)
+a = mfem.ParBilinearForm(fespace)
 a.AddDomainIntegrator(mfem.ElasticityIntegrator(lambda_c, mu_c))
 
-a.AddInteriorFaceIntegrator(mfem.DGElasticityIntegrator(lambda_c, mu_c, alpha, kappa))
-a.AddBdrFaceIntegrator(mfem.DGElasticityIntegrator(lambda_c, mu_c, alpha, kappa), dir_bdr)
-print('matrix ...')
+a.AddInteriorFaceIntegrator(
+    mfem.DGElasticityIntegrator(lambda_c, mu_c, alpha, kappa))
+a.AddBdrFaceIntegrator(
+    mfem.DGElasticityIntegrator(lambda_c, mu_c, alpha, kappa),dir_bdr)
+if (myid == 0): print('matrix ...')
 a.Assemble()
 
-A = mfem.SparseMatrix()
+A = mfem.HypreParMatrix()
 B = mfem.Vector()
 X = mfem.Vector()
 a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
-print('...done')
-
-A.PrintInfo(sys.stdout)
+if (myid == 0): print('done.')
 
 # 11. Define a simple symmetric Gauss-Seidel preconditioner and use it to
 #     solve the system Ax=b with PCG for the symmetric formulation, or GMRES
 #     for the non-symmetric.
-M = mfem.GSSmoother(A)
-rtol = 1e-6
-if (alpha == -1.0):
-    mfem.PCG(A, M, B, X, 3, 5000, rtol*rtol, 0.0)
-else:
-    mfem.GMRES(A, M, B, X, 3, 5000, 50, rtol*rtol, 0.0)
 
+rtol = 1e-6
+amg = mfem.HypreBoomerAMG(A)
+if (amg_elast):
+    amg.SetElasticityOptions(fespace)
+else:
+    amg.SetSystemsOptions(dim)
+
+if (alpha == -1.0):
+   solver = mfem.CGSolver(A.GetComm())
+else:                        
+   solver = mfem.GMRESSolver(A.GetComm())
+   solver.SetKDim(50)
+   
+solver.SetRelTol(rtol)
+solver.SetMaxIter(500)
+solver.SetPrintLevel(1)
+solver.SetOperator(A)
+solver.SetPreconditioner(amg)
+solver.Mult(B, X)
+    
 # 12. Recover the solution as a finite element grid function 'x'.
 a.RecoverFEMSolution(X, b, x)
 
 # 13. Use the DG solution space as the mesh nodal space. This allows us to
 #     save the displaced mesh as a curved DG mesh.
-mesh.SetNodalFESpace(fespace)
+pmesh.SetNodalFESpace(fespace)
 reference_nodes = mfem.Vector()
+
 if (visualization):
-    reference_nodes.Assign(mesh.GetNodes())
+    reference_nodes.Assign(pmesh.GetNodes())
 # 14. Save the displaced mesh and minus the solution (which gives the
 #     backward displacements to the reference mesh). This output can be
-#     viewed later using GLVis: "glvis -m displaced.mesh -g sol.gf".
-nodes = mesh.GetNodes()
+#     viewed later using GLVis
+nodes = pmesh.GetNodes()
 nodes += x
 x.Neg()
-mesh.PrintToFile('displaced.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+
+smyid = '{:0>6d}'.format(myid)
+mesh_name  =  "mesh."+smyid
+sol_name   =  "sol." +smyid
+
+pmesh.PrintToFile(mesh_name, 8)
+x.SaveToFile(sol_name, 8)
 
 # 15. Visualization: send data by socket to a GLVis server.
 if (visualization):    
@@ -265,7 +311,9 @@ if (visualization):
     glvis_keys = "Rjlc" if (dim < 3) else "c"
     
     vis.NewWindow()
-    vis.send_solution(mesh, x)
+    vis.send_text("parallel " + str(pmesh.GetNRanks()) +  " " +
+                  str(pmesh.GetMyRank()))    
+    vis.send_solution(pmesh, x)
     vis.send_text("keys " + glvis_keys)    
     vis.send_text("window_title 'Deformed configuration'")
     vis.send_text("plot_caption 'Backward displacement'")
@@ -273,23 +321,26 @@ if (visualization):
     vis.CloseConnection()
 
     c = "xyz"
-    scalar_dg_space = mfem.FiniteElementSpace(mesh, fec)
-    stress = mfem.GridFunction(scalar_dg_space)
+    scalar_dg_space = mfem.ParFiniteElementSpace(pmesh, fec)
+    stress = mfem.ParGridFunction(scalar_dg_space)
     stress_c =  StressCoefficient(lambda_c, mu_c)
 
-    mesh.GetNodes().Assign(reference_nodes)
+    pmesh.GetNodes().Assign(reference_nodes)
     x.Neg()
     stress_c.SetDisplacement(x)
+    
     def make_plot(si, sj):
         stress_c.SetComponent(si, sj);
         stress.ProjectCoefficient(stress_c);
         vis.NewWindow()
-        vis.send_solution(mesh, stress)
+        vis.send_text("parallel " + str(pmesh.GetNRanks()) +  " " +
+                  str(pmesh.GetMyRank()))    
+        vis.send_solution(pmesh, stress)
         vis.send_text("keys " + glvis_keys)
         vis.send_text("window_title |Stress" + c[si] + c[sj] + "|")
         vis.PositionWindow()
         vis.CloseConnection()
-        
+    
     for si in range(dim):
         for jj in range(dim-si):
              make_plot(si, si+jj)
