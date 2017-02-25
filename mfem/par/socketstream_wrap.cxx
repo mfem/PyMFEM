@@ -3457,12 +3457,16 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__GridFunction swig_types[3]
 #define SWIGTYPE_p_mfem__IntegrationRule swig_types[4]
 #define SWIGTYPE_p_mfem__L2_FECollection swig_types[5]
-#define SWIGTYPE_p_quad_t swig_types[6]
-#define SWIGTYPE_p_seg_t swig_types[7]
-#define SWIGTYPE_p_tet_t swig_types[8]
-#define SWIGTYPE_p_tri_t swig_types[9]
-static swig_type_info *swig_types[11];
-static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__Mesh swig_types[6]
+#define SWIGTYPE_p_mfem__socketbuf swig_types[7]
+#define SWIGTYPE_p_mfem__socketserver swig_types[8]
+#define SWIGTYPE_p_mfem__socketstream swig_types[9]
+#define SWIGTYPE_p_quad_t swig_types[10]
+#define SWIGTYPE_p_seg_t swig_types[11]
+#define SWIGTYPE_p_tet_t swig_types[12]
+#define SWIGTYPE_p_tri_t swig_types[13]
+static swig_type_info *swig_types[15];
+static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3575,6 +3579,309 @@ namespace swig {
 #include "numpy/arrayobject.h"  
 
 
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+  if (PyUnicode_Check(obj))
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+#if PY_VERSION_HEX>=0x03000000
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    PyBytes_AsStringAndSize(obj, &cstr, &len);
+    if(alloc) *alloc = SWIG_NEWOBJ;
+#else
+    PyString_AsStringAndSize(obj, &cstr, &len);
+#endif
+    if (cptr) {
+      if (alloc) {
+	/* 
+	   In python the user should not be able to modify the inner
+	   string representation. To warranty that, if you define
+	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
+	   buffer is always returned.
+
+	   The default behavior is just to return the pointer value,
+	   so, be careful.
+	*/ 
+#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
+	if (*alloc != SWIG_OLDOBJ) 
+#else
+	if (*alloc == SWIG_NEWOBJ) 
+#endif
+	{
+	  *cptr = reinterpret_cast< char* >(memcpy((new char[len + 1]), cstr, sizeof(char)*(len + 1)));
+	  *alloc = SWIG_NEWOBJ;
+	} else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+	#if PY_VERSION_HEX>=0x03000000
+	assert(0); /* Should never reach here in Python 3 */
+	#endif
+	*cptr = SWIG_Python_str_AsChar(obj);
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000
+    Py_XDECREF(obj);
+#endif
+    return SWIG_OK;
+  } else {
+#if defined(SWIG_PYTHON_2_UNICODE)
+#if PY_VERSION_HEX<0x03000000
+    if (PyUnicode_Check(obj)) {
+      char *cstr; Py_ssize_t len;
+      if (!alloc && cptr) {
+        return SWIG_RuntimeError;
+      }
+      obj = PyUnicode_AsUTF8String(obj);
+      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
+        if (cptr) {
+          if (alloc) *alloc = SWIG_NEWOBJ;
+          *cptr = reinterpret_cast< char* >(memcpy((new char[len + 1]), cstr, sizeof(char)*(len + 1)));
+        }
+        if (psize) *psize = len + 1;
+
+        Py_XDECREF(obj);
+        return SWIG_OK;
+      } else {
+        Py_XDECREF(obj);
+      }
+    }
+#endif
+#endif
+
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+#if PY_VERSION_HEX < 0x03000000
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+#endif
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+SWIGINTERN int mfem_socketstream_precision__SWIG_0(mfem::socketstream *self,int const p){
+     return self->precision(p);     
+   }
+SWIGINTERN int mfem_socketstream_precision__SWIG_1(mfem::socketstream *self){ 
+     return self->precision();
+   }
+SWIGINTERN void mfem_socketstream_send_solution(mfem::socketstream *self,mfem::Mesh const &mesh,mfem::GridFunction const &gf){
+     *self << "solution\n" << mesh << gf << std::flush;
+   }
+SWIGINTERN void mfem_socketstream_send_text(mfem::socketstream *self,char const ostr[]){ 
+      *self << ostr << std::endl;
+   }
+SWIGINTERN void mfem_socketstream_flush(mfem::socketstream *self){ 
+     self->flush();
+   }
+SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_0(mfem::socketstream *self,char const ostr[]){ 
+      *self << ostr;
+      return *self;
+   }
+SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_1(mfem::socketstream *self,int const x){ 
+      *self << x;
+      return *self;
+   }
+SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_2(mfem::socketstream *self,mfem::Mesh const &mesh){ 
+      *self << mesh;
+      return *self;
+   }
+SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_3(mfem::socketstream *self,mfem::GridFunction const &gf){ 
+      *self << gf;
+      return *self;
+   }
+SWIGINTERN mfem::socketstream &mfem_socketstream_endline(mfem::socketstream *self){
+     *self << std::endl;
+     return *self;
+   }
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -3585,8 +3892,1653 @@ namespace swig {
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_new_socketbuf__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_socketbuf")) SWIG_fail;
+  {
+    try {
+      result = (mfem::socketbuf *)new mfem::socketbuf(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketbuf, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketbuf__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketbuf *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_socketbuf",&obj0)) SWIG_fail;
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
+  {
+    try {
+      result = (mfem::socketbuf *)new mfem::socketbuf(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketbuf, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketbuf__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 ;
+  int arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketbuf *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_socketbuf",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_socketbuf" "', argument " "1"" of type '" "char const []""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    try {
+      result = (mfem::socketbuf *)new mfem::socketbuf((char const (*))arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketbuf, SWIG_POINTER_NEW |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketbuf(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_socketbuf__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
+    }
+    if (_v) {
+      return _wrap_new_socketbuf__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_new_socketbuf__SWIG_2(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_socketbuf'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::socketbuf::socketbuf()\n"
+    "    mfem::socketbuf::socketbuf(int)\n"
+    "    mfem::socketbuf::socketbuf(char const [],int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketbuf_attach(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketbuf_attach",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_attach" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    try {
+      result = (int)(arg1)->attach(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketbuf_detach(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketbuf_detach",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_detach" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->detach(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketbuf_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  char *arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:socketbuf_open",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_open" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketbuf_open" "', argument " "2"" of type '" "char const []""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
+  {
+    try {
+      result = (int)(arg1)->open((char const (*))arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketbuf_close(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketbuf_close",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_close" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->close(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketbuf_getsocketdescriptor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketbuf_getsocketdescriptor",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_getsocketdescriptor" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->getsocketdescriptor(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketbuf_is_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketbuf_is_open",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_is_open" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  {
+    try {
+      result = (bool)(arg1)->is_open(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_socketbuf(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_socketbuf",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_socketbuf" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *socketbuf_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__socketbuf, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  bool arg1 ;
+  bool val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_socketstream",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_bool(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_socketstream" "', argument " "1"" of type '" "bool""'");
+  } 
+  arg1 = static_cast< bool >(val1);
+  {
+    try {
+      result = (mfem::socketstream *)new mfem::socketstream(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_socketstream")) SWIG_fail;
+  {
+    try {
+      result = (mfem::socketstream *)new mfem::socketstream(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_socketstream",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_socketstream" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
+  {
+    try {
+      result = (mfem::socketstream *)new mfem::socketstream(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  bool arg2 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_socketstream",&obj0,&obj1)) SWIG_fail;
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_socketstream" "', argument " "2"" of type '" "bool""'");
+  } 
+  arg2 = static_cast< bool >(val2);
+  {
+    try {
+      result = (mfem::socketstream *)new mfem::socketstream(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_socketstream",&obj0)) SWIG_fail;
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
+  {
+    try {
+      result = (mfem::socketstream *)new mfem::socketstream(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 ;
+  int arg2 ;
+  bool arg3 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_socketstream",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_socketstream" "', argument " "1"" of type '" "char const []""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_socketstream" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  {
+    try {
+      result = (mfem::socketstream *)new mfem::socketstream((char const (*))arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_6(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 ;
+  int arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_socketstream",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_socketstream" "', argument " "1"" of type '" "char const []""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    try {
+      result = (mfem::socketstream *)new mfem::socketstream((char const (*))arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_socketstream__SWIG_1(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketbuf, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_socketstream__SWIG_2(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_bool(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_socketstream__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
+    }
+    if (_v) {
+      return _wrap_new_socketstream__SWIG_4(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_socketstream__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_new_socketstream__SWIG_6(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_socketstream__SWIG_5(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_socketstream'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::socketstream::socketstream(bool)\n"
+    "    mfem::socketstream::socketstream()\n"
+    "    mfem::socketstream::socketstream(mfem::socketbuf *)\n"
+    "    mfem::socketstream::socketstream(int,bool)\n"
+    "    mfem::socketstream::socketstream(int)\n"
+    "    mfem::socketstream::socketstream(char const [],int,bool)\n"
+    "    mfem::socketstream::socketstream(char const [],int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_rdbuf(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketbuf *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_rdbuf",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_rdbuf" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      result = (mfem::socketbuf *)(arg1)->rdbuf(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  char *arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:socketstream_open",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_open" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream_open" "', argument " "2"" of type '" "char const []""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
+  {
+    try {
+      result = (int)(arg1)->open((char const (*))arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_close(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_close",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_close" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->close(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_is_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_is_open",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_is_open" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      result = (bool)(arg1)->is_open(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_socketstream(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_socketstream",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_socketstream" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_precision__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketstream_precision",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_precision" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    try {
+      result = (int)mfem_socketstream_precision__SWIG_0(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_precision__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_precision",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_precision" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      result = (int)mfem_socketstream_precision__SWIG_1(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_precision(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_socketstream_precision__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_socketstream_precision__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'socketstream_precision'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::socketstream::precision(int const)\n"
+    "    mfem::socketstream::precision()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_send_solution(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  mfem::GridFunction *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:socketstream_send_solution",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_send_solution" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream_send_solution" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "socketstream_send_solution" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "socketstream_send_solution" "', argument " "3"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "socketstream_send_solution" "', argument " "3"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
+  {
+    try {
+      mfem_socketstream_send_solution(arg1,(mfem::Mesh const &)*arg2,(mfem::GridFunction const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_send_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  char *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketstream_send_text",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_send_text" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream_send_text" "', argument " "2"" of type '" "char const []""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_socketstream_send_text(arg1,(char const (*))arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_flush(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_flush",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_flush" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      mfem_socketstream_flush(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  char *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketstream___lshift__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream___lshift__" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream___lshift__" "', argument " "2"" of type '" "char const []""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_0(arg1,(char const (*))arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketstream___lshift__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream___lshift__" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    try {
+      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_1(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  mfem::Mesh *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketstream___lshift__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream___lshift__" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream___lshift__" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "socketstream___lshift__" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  {
+    try {
+      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_2(arg1,(mfem::Mesh const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  mfem::GridFunction *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketstream___lshift__",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream___lshift__" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream___lshift__" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "socketstream___lshift__" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  {
+    try {
+      result = (mfem::socketstream *) &mfem_socketstream___lshift____SWIG_3(arg1,(mfem::GridFunction const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream___lshift__(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Mesh, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_socketstream___lshift____SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__GridFunction, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_socketstream___lshift____SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_socketstream___lshift____SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_socketstream___lshift____SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  Py_INCREF(Py_NotImplemented);
+  return Py_NotImplemented;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_endline(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketstream *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_endline",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_endline" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      result = (mfem::socketstream *) &mfem_socketstream_endline(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *socketstream_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__socketstream, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  mfem::socketserver *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_socketserver",&obj0)) SWIG_fail;
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
+  {
+    try {
+      result = (mfem::socketserver *)new mfem::socketserver(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketserver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketserver_good(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketserver *arg1 = (mfem::socketserver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketserver_good",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketserver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketserver_good" "', argument " "1"" of type '" "mfem::socketserver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketserver * >(argp1);
+  {
+    try {
+      result = (bool)(arg1)->good(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketserver_close(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketserver *arg1 = (mfem::socketserver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketserver_close",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketserver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketserver_close" "', argument " "1"" of type '" "mfem::socketserver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketserver * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->close(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketserver_accept__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketserver *arg1 = (mfem::socketserver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketserver_accept",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketserver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketserver_accept" "', argument " "1"" of type '" "mfem::socketserver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketserver * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->accept(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketserver_accept__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketserver *arg1 = (mfem::socketserver *) 0 ;
+  mfem::socketstream *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:socketserver_accept",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketserver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketserver_accept" "', argument " "1"" of type '" "mfem::socketserver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketserver * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__socketstream,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketserver_accept" "', argument " "2"" of type '" "mfem::socketstream &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "socketserver_accept" "', argument " "2"" of type '" "mfem::socketstream &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::socketstream * >(argp2);
+  {
+    try {
+      result = (int)(arg1)->accept(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketserver_accept(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketserver, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_socketserver_accept__SWIG_0(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketserver, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__socketstream, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_socketserver_accept__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'socketserver_accept'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::socketserver::accept()\n"
+    "    mfem::socketserver::accept(mfem::socketstream &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_socketserver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketserver *arg1 = (mfem::socketserver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_socketserver",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketserver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_socketserver" "', argument " "1"" of type '" "mfem::socketserver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketserver * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *socketserver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__socketserver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"new_socketbuf", _wrap_new_socketbuf, METH_VARARGS, NULL},
+	 { (char *)"socketbuf_attach", _wrap_socketbuf_attach, METH_VARARGS, NULL},
+	 { (char *)"socketbuf_detach", _wrap_socketbuf_detach, METH_VARARGS, NULL},
+	 { (char *)"socketbuf_open", _wrap_socketbuf_open, METH_VARARGS, NULL},
+	 { (char *)"socketbuf_close", _wrap_socketbuf_close, METH_VARARGS, NULL},
+	 { (char *)"socketbuf_getsocketdescriptor", _wrap_socketbuf_getsocketdescriptor, METH_VARARGS, NULL},
+	 { (char *)"socketbuf_is_open", _wrap_socketbuf_is_open, METH_VARARGS, NULL},
+	 { (char *)"delete_socketbuf", _wrap_delete_socketbuf, METH_VARARGS, NULL},
+	 { (char *)"socketbuf_swigregister", socketbuf_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_socketstream", _wrap_new_socketstream, METH_VARARGS, NULL},
+	 { (char *)"socketstream_rdbuf", _wrap_socketstream_rdbuf, METH_VARARGS, NULL},
+	 { (char *)"socketstream_open", _wrap_socketstream_open, METH_VARARGS, NULL},
+	 { (char *)"socketstream_close", _wrap_socketstream_close, METH_VARARGS, NULL},
+	 { (char *)"socketstream_is_open", _wrap_socketstream_is_open, METH_VARARGS, NULL},
+	 { (char *)"delete_socketstream", _wrap_delete_socketstream, METH_VARARGS, NULL},
+	 { (char *)"socketstream_precision", _wrap_socketstream_precision, METH_VARARGS, NULL},
+	 { (char *)"socketstream_send_solution", _wrap_socketstream_send_solution, METH_VARARGS, NULL},
+	 { (char *)"socketstream_send_text", _wrap_socketstream_send_text, METH_VARARGS, NULL},
+	 { (char *)"socketstream_flush", _wrap_socketstream_flush, METH_VARARGS, NULL},
+	 { (char *)"socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, NULL},
+	 { (char *)"socketstream_endline", _wrap_socketstream_endline, METH_VARARGS, NULL},
+	 { (char *)"socketstream_swigregister", socketstream_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_socketserver", _wrap_new_socketserver, METH_VARARGS, NULL},
+	 { (char *)"socketserver_good", _wrap_socketserver_good, METH_VARARGS, NULL},
+	 { (char *)"socketserver_close", _wrap_socketserver_close, METH_VARARGS, NULL},
+	 { (char *)"socketserver_accept", _wrap_socketserver_accept, METH_VARARGS, NULL},
+	 { (char *)"delete_socketserver", _wrap_delete_socketserver, METH_VARARGS, NULL},
+	 { (char *)"socketserver_swigregister", socketserver_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -3599,6 +5551,10 @@ static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__socketbuf = {"_p_mfem__socketbuf", "mfem::socketbuf *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__socketserver = {"_p_mfem__socketserver", "mfem::socketserver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__socketstream = {"_p_mfem__socketstream", "mfem::socketstream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -3611,6 +5567,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
+  &_swigt__p_mfem__Mesh,
+  &_swigt__p_mfem__socketbuf,
+  &_swigt__p_mfem__socketserver,
+  &_swigt__p_mfem__socketstream,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -3623,6 +5583,10 @@ static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__socketbuf[] = {  {&_swigt__p_mfem__socketbuf, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__socketserver[] = {  {&_swigt__p_mfem__socketserver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__socketstream[] = {  {&_swigt__p_mfem__socketstream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -3635,6 +5599,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
+  _swigc__p_mfem__Mesh,
+  _swigc__p_mfem__socketbuf,
+  _swigc__p_mfem__socketserver,
+  _swigc__p_mfem__socketstream,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,
@@ -4336,6 +6304,7 @@ SWIG_init(void) {
   
   import_array();
   
+  SWIG_Python_SetConstant(d, "socketstream_secure_default",SWIG_From_bool(static_cast< bool >(mfem::socketstream::secure_default)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

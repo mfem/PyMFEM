@@ -14,9 +14,9 @@ import_array();
 //%rename(sopen)  open(const char hostname[], int port);
 %import "mesh.i"
 %import "gridfunc.i"
-%import "ostream_typemap.i"
+//%import "ostream_typemap.i"
 
-//%include "general/socketstream.hpp"
+%include "general/socketstream.hpp"
 
 %extend mfem::socketstream{
   int precision(const int p)

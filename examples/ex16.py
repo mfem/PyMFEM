@@ -2,7 +2,7 @@
    MFEM example 16
 
    How to run:
-      mpirun -np 2 python2.7 <arguments>
+      python <arguments>
 
    Example of arguments:
       ex16.py -m inline-tri.mesh

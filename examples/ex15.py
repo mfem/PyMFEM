@@ -2,7 +2,7 @@
    MFEM example 15
 
    How to run:
-      mpirun -np 2 python2.7 <arguments>
+      python <arguments>
 
    Example of arguments:
       ex15.py

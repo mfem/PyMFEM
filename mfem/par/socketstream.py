@@ -120,6 +120,118 @@ import fe_coll
 import lininteg
 import bilininteg
 import linearform
+class socketbuf(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, socketbuf, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, socketbuf, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _socketstream.new_socketbuf(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def attach(self, sd):
+        return _socketstream.socketbuf_attach(self, sd)
+
+    def detach(self):
+        return _socketstream.socketbuf_detach(self)
+
+    def open(self, hostname, port):
+        return _socketstream.socketbuf_open(self, hostname, port)
+
+    def close(self):
+        return _socketstream.socketbuf_close(self)
+
+    def getsocketdescriptor(self):
+        return _socketstream.socketbuf_getsocketdescriptor(self)
+
+    def is_open(self):
+        return _socketstream.socketbuf_is_open(self)
+    __swig_destroy__ = _socketstream.delete_socketbuf
+    __del__ = lambda self: None
+socketbuf_swigregister = _socketstream.socketbuf_swigregister
+socketbuf_swigregister(socketbuf)
+
+class socketstream(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, socketstream, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, socketstream, name)
+    __repr__ = _swig_repr
+    secure_default = _socketstream.socketstream_secure_default
+
+    def __init__(self, *args):
+        this = _socketstream.new_socketstream(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def rdbuf(self):
+        return _socketstream.socketstream_rdbuf(self)
+
+    def open(self, hostname, port):
+        return _socketstream.socketstream_open(self, hostname, port)
+
+    def close(self):
+        return _socketstream.socketstream_close(self)
+
+    def is_open(self):
+        return _socketstream.socketstream_is_open(self)
+    __swig_destroy__ = _socketstream.delete_socketstream
+    __del__ = lambda self: None
+
+    def precision(self, *args):
+        return _socketstream.socketstream_precision(self, *args)
+
+    def send_solution(self, mesh, gf):
+        return _socketstream.socketstream_send_solution(self, mesh, gf)
+
+    def send_text(self, ostr):
+        return _socketstream.socketstream_send_text(self, ostr)
+
+    def flush(self):
+        return _socketstream.socketstream_flush(self)
+
+    def __lshift__(self, *args):
+        return _socketstream.socketstream___lshift__(self, *args)
+
+    def endline(self):
+        return _socketstream.socketstream_endline(self)
+socketstream_swigregister = _socketstream.socketstream_swigregister
+socketstream_swigregister(socketstream)
+
+class socketserver(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, socketserver, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, socketserver, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, port):
+        this = _socketstream.new_socketserver(port)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def good(self):
+        return _socketstream.socketserver_good(self)
+
+    def close(self):
+        return _socketstream.socketserver_close(self)
+
+    def accept(self, *args):
+        return _socketstream.socketserver_accept(self, *args)
+    __swig_destroy__ = _socketstream.delete_socketserver
+    __del__ = lambda self: None
+socketserver_swigregister = _socketstream.socketserver_swigregister
+socketserver_swigregister(socketserver)
+
 # This file is compatible with both classic and new-style classes.
 
 
