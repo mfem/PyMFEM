@@ -224,6 +224,6 @@ if (visualization):
     sol_sock.send_text("parallel " + str(num_procs) + " "  + str(myid))
     sol_sock.precision(8)
     sol_sock.send_solution(pmesh,  x)
-    sol_sock.flush()
+
                
 
