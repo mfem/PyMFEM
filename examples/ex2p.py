@@ -67,23 +67,22 @@ if (mesh.attributes.Max() < 2 or  mesh.bdr_attributes.Max() < 2):
                      'two boundary attributes! (See schematic in ex2.cpp)']))
          sys.exit()
                     
-#   4. Select the order of the finite element discretization space. For NURBS
-#      meshes, we increase the order by degree elevation.
+#  4. Select the order of the finite element discretization space. For NURBS
+#     meshes, we increase the order by degree elevation.
 if (mesh.NURBSext and order > mesh.NURBSext.GetOrder()):
     mesh.DegreeElevate(order - mesh.NURBSext.GetOrder())
-
-#   5. Refine the serial mesh on all processors to increase the resolution. In
-#      this example we do 'ref_levels' of uniform refinement. We choose
-#      'ref_levels' to be the largest number that gives a final mesh with no
-#      more than 1,000 elements.
-               
+    
+#  5. Refine the serial mesh on all processors to increase the resolution. In
+#     this example we do 'ref_levels' of uniform refinement. We choose
+#     'ref_levels' to be the largest number that gives a final mesh with no
+#     more than 1,000 elements.
 ref_levels = int(np.floor(np.log(1000./mesh.GetNE())/np.log(2.)/dim))
 for x in range(ref_levels):
-   mesh.UniformRefinement();
+    mesh.UniformRefinement();
 
-#   6. Define a parallel mesh by a partitioning of the serial mesh. Refine
-#      this mesh further in parallel to increase the resolution. Once the
-#      parallel mesh is defined, the serial mesh can be deleted.
+#  6. Define a parallel mesh by a partitioning of the serial mesh. Refine
+#     this mesh further in parallel to increase the resolution. Once the
+#     parallel mesh is defined, the serial mesh can be deleted.
 pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
 del mesh
 par_ref_levels = 1
@@ -104,7 +103,8 @@ else:
     fespace = mfem.ParFiniteElementSpace(pmesh, fec, dim,
                                          mfem.Ordering.byVDIM)
 size = fespace.GlobalTrueVSize()
-print("Number of finite element unknowns: " + str(size))
+if (myid == 0):
+    print("Number of finite element unknowns: " + str(size))
 
 # 8. Determine the list of true (i.e. parallel conforming) essential
 #    boundary dofs. In this example, the boundary conditions are defined by
@@ -220,9 +220,9 @@ x.SaveToFile(sol_name, 8)
 
 if (visualization):
     sol_sock = mfem.socketstream("localhost", 19916)
-    sol_sock << "parallel " << str(num_procs) << " "  << str(myid) << "\n"
+    sol_sock.send_text("parallel " + str(num_procs) + " "  + str(myid))
     sol_sock.precision(8)
-    sol_sock << "solution\n" << pmesh << x
+    sol_sock.send_solution(pmesh,  x)
     sol_sock.flush()
                
 
