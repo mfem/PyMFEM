@@ -27,16 +27,19 @@ import_array();
    { 
      return self->precision();
    }
-  mfem::socketstream& send_solution(const mfem::Mesh &mesh,
+  void send_solution(const mfem::Mesh &mesh,
  				    const mfem::GridFunction &gf) 
    {
      *self << "solution\n" << mesh << gf << std::flush;
    }
-  mfem::socketstream& send_text(const char ostr[])
+  void send_text(const char ostr[])
    { 
       *self << ostr << std::endl;
    }
-  
+  void flush()
+   { 
+     self->flush();
+   } 
   mfem::socketstream& __lshift__(const char ostr[])
    { 
       *self << ostr;
@@ -60,10 +63,6 @@ import_array();
   mfem::socketstream& endline()
    {
      *self << std::endl;
-      return *self;
-   } 
-  mfem::socketstream& flush()
-   { 
-     self->flush();
+     return *self;
    } 
 } 

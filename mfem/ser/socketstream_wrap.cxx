@@ -3851,11 +3851,14 @@ SWIGINTERN int mfem_socketstream_precision__SWIG_0(mfem::socketstream *self,int 
 SWIGINTERN int mfem_socketstream_precision__SWIG_1(mfem::socketstream *self){ 
      return self->precision();
    }
-SWIGINTERN mfem::socketstream &mfem_socketstream_send_solution(mfem::socketstream *self,mfem::Mesh const &mesh,mfem::GridFunction const &gf){
+SWIGINTERN void mfem_socketstream_send_solution(mfem::socketstream *self,mfem::Mesh const &mesh,mfem::GridFunction const &gf){
      *self << "solution\n" << mesh << gf << std::flush;
    }
-SWIGINTERN mfem::socketstream &mfem_socketstream_send_text(mfem::socketstream *self,char const ostr[]){ 
+SWIGINTERN void mfem_socketstream_send_text(mfem::socketstream *self,char const ostr[]){ 
       *self << ostr << std::endl;
+   }
+SWIGINTERN void mfem_socketstream_flush(mfem::socketstream *self){
+     *self << std::flush;
    }
 SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_0(mfem::socketstream *self,char const ostr[]){ 
       *self << ostr;
@@ -3875,10 +3878,6 @@ SWIGINTERN mfem::socketstream &mfem_socketstream___lshift____SWIG_3(mfem::socket
    }
 SWIGINTERN mfem::socketstream &mfem_socketstream_endline(mfem::socketstream *self){
      *self << std::endl;
-     return *self;
-   }
-SWIGINTERN mfem::socketstream &mfem_socketstream_flush(mfem::socketstream *self){
-     *self << std::flush;
      return *self;
    }
 
@@ -4899,7 +4898,6 @@ SWIGINTERN PyObject *_wrap_socketstream_send_solution(PyObject *SWIGUNUSEDPARM(s
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  mfem::socketstream *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:socketstream_send_solution",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
@@ -4925,13 +4923,13 @@ SWIGINTERN PyObject *_wrap_socketstream_send_solution(PyObject *SWIGUNUSEDPARM(s
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
   {
     try {
-      result = (mfem::socketstream *) &mfem_socketstream_send_solution(arg1,(mfem::Mesh const &)*arg2,(mfem::GridFunction const &)*arg3); 
+      mfem_socketstream_send_solution(arg1,(mfem::Mesh const &)*arg2,(mfem::GridFunction const &)*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -4949,7 +4947,6 @@ SWIGINTERN PyObject *_wrap_socketstream_send_text(PyObject *SWIGUNUSEDPARM(self)
   int alloc2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  mfem::socketstream *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:socketstream_send_text",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
@@ -4964,17 +4961,45 @@ SWIGINTERN PyObject *_wrap_socketstream_send_text(PyObject *SWIGUNUSEDPARM(self)
   arg2 = reinterpret_cast< char * >(buf2);
   {
     try {
-      result = (mfem::socketstream *) &mfem_socketstream_send_text(arg1,(char const (*))arg2); 
+      mfem_socketstream_send_text(arg1,(char const (*))arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_socketstream_flush(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_flush",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_flush" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
+  {
+    try {
+      mfem_socketstream_flush(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -5230,35 +5255,6 @@ SWIGINTERN PyObject *_wrap_socketstream_endline(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (mfem::socketstream *) &mfem_socketstream_endline(arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_socketstream_flush(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  mfem::socketstream *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:socketstream_flush",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_flush" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
-  {
-    try {
-      result = (mfem::socketstream *) &mfem_socketstream_flush(arg1); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5532,9 +5528,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"socketstream_precision", _wrap_socketstream_precision, METH_VARARGS, NULL},
 	 { (char *)"socketstream_send_solution", _wrap_socketstream_send_solution, METH_VARARGS, NULL},
 	 { (char *)"socketstream_send_text", _wrap_socketstream_send_text, METH_VARARGS, NULL},
+	 { (char *)"socketstream_flush", _wrap_socketstream_flush, METH_VARARGS, NULL},
 	 { (char *)"socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, NULL},
 	 { (char *)"socketstream_endline", _wrap_socketstream_endline, METH_VARARGS, NULL},
-	 { (char *)"socketstream_flush", _wrap_socketstream_flush, METH_VARARGS, NULL},
 	 { (char *)"socketstream_swigregister", socketstream_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_socketserver", _wrap_new_socketserver, METH_VARARGS, NULL},
 	 { (char *)"socketserver_good", _wrap_socketserver_good, METH_VARARGS, NULL},
