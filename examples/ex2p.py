@@ -16,14 +16,17 @@
       ex2p.py -m beam-quad.mesh -o 3 -sc
 '''
 from mfem import path
+from mfem.common.arg_parser import ArgParser
 import mfem.par as mfem
 from mpi4py import MPI
+num_procs = MPI.COMM_WORLD.size
+myid      = MPI.COMM_WORLD.rank
 
-import argparse, sys
+import sys
 from os.path import expanduser, join
 import numpy as np
 
-parser = argparse.ArgumentParser(description='Ex2 (linear elastisity)')
+parser = ArgParser(description='Ex2 (linear elastisity)')
 parser.add_argument('-m', '--mesh',
                     default = 'beam-tri.mesh',
                     action = 'store', type = str,
@@ -51,9 +54,7 @@ order = args.order
 static_cond = args.static_condensation
 amg_elast = args.amg_elast
 visualization = args.visualization
-
-num_procs = MPI.COMM_WORLD.size
-myid      = MPI.COMM_WORLD.rank
+if (myid == 0): parser.print_options(args)
 
 #  3. Read the (serial) mesh from the given mesh file on all processors.  We
 #     can handle triangular, quadrilateral, tetrahedral, hexahedral, surface
