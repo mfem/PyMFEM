@@ -4,28 +4,41 @@
    See c++ version in the MFEM library for more detail 
 
    How to run:
-      mpirun -np 2 python2.7 <arguments>
+      python <arguments>
 
    Example of arguments:
       ex1.py -m star.mesh
       ex1.py -m square-disc.mesh
       ex1.py -m escher.mesh
       ex1.py -m fichera.mesh
+      ex1.py -m square-disc-p3.mesh -o 3
+      ex1.py -m square-disc-nurbs.mesh -o -1
+      ex1.py -m disc-nurbs.mesh -o -1
+      ex1.py -m pipe-nurbs.mesh -o -1
+      ex1.py -m star-surf.mesh
+      ex1.py -m square-disc-surf.mesh
+      ex1.py -m inline-segment.mesh
+      ex1.py -m amr-quad.mesh
+      ex1.py -m amr-hex.mesh
+      ex1.py -m fichera-amr.mesh
+      ex1.py -m mobius-strip.mesh
+      ex1.py -m mobius-strip.mesh -o -1 -sc
 
    Description:  This example code demonstrates the use of MFEM to define a
                  simple finite element discretization of the Laplace problem
                  -Delta u = 1 with homogeneous Dirichlet boundary conditions.
 
-                 See c++ version in the MFEM library for more detail 
 '''
 
-
-import argparse
+import sys
 from os.path import expanduser, join
 import numpy as np
-from mfem import path
 
-parser = argparse.ArgumentParser(description='Ex1 (Laplace Problem)')
+from mfem.common.arg_parser import ArgParser
+from mfem import path
+import mfem.ser as mfem
+
+parser = ArgParser(description='Ex1 (Laplace Problem)')
 parser.add_argument('-m', '--mesh',
                     default = 'star.mesh',
                     action = 'store', type = str,
@@ -40,10 +53,8 @@ parser.add_argument('-sc', '--static-condensation',
                     action = 'store_true', 
                     help = "Enable static condensation.")
 args = parser.parse_args()
+parser.print_options(args)
 
-
-import mfem.ser as mfem
-from mfem.ser import intArray
 
 order = args.order
 static_cond = args.static_condensation
@@ -81,10 +92,10 @@ print('Number of finite element unknowns: '+
 #    In this example, the boundary conditions are defined by marking all
 #    the boundary attributes from the mesh as essential (Dirichlet) and
 #    converting them to a list of true dofs.
-ess_tdof_list = intArray()
+ess_tdof_list = mfem.intArray()
 if mesh.bdr_attributes.Size()>0:
-    ess_bdr = intArray([1]*mesh.bdr_attributes.Max())
-    ess_bdr = intArray(mesh.bdr_attributes.Max())
+    ess_bdr = mfem.intArray([1]*mesh.bdr_attributes.Max())
+    ess_bdr = mfem.intArray(mesh.bdr_attributes.Max())
     ess_bdr.Assign(1)
     fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
 #6. Set up the linear form b(.) which corresponds to the right-hand side of
@@ -131,8 +142,8 @@ x.SaveToFile('sol.gf', 8)
 if (visualization):
     sol_sock = mfem.socketstream("localhost", 19916)
     sol_sock.precision(8)
-    sol_sock << "solution\n" << mesh << x
-    sol_sock.flush()
+    sol_sock.send_solution(mesh,  x)
+
 
 
 

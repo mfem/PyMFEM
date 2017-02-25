@@ -1,16 +1,43 @@
 '''
-   MFEM example 8 (DPG method )xs
+   MFEM example 8 (DPG method )
 
    See c++ version in the MFEM library for more detail 
+
+   How to run:
+      python <arguments>
+
+   Example of arguments:
+      ex8.py -m square-disc.mesh
+      ex8.py -m star.mesh
+      ex8.py -m escher.mesh
+      ex8.py -m fichera.mesh
+      ex8.py -m square-disc-p3.mesh
+      ex8.py -m star-surf.mesh -o 2
+      ex8.py -m mobius-strip.mesh
 '''
-from mfem import path
-import mfem.ser as mfem
-from mfem.ser import intArray
 from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, exp, sqrt
 
-order = 1
+from mfem.common.arg_parser import ArgParser
+from mfem import path
+import mfem.ser as mfem
+
+parser = ArgParser(description='Ex8')
+parser.add_argument('-m', '--mesh',
+                    default = 'star.mesh', 
+                    action = 'store', type = str,
+                    help='Mesh file to use.')
+parser.add_argument('-o', '--order',
+                    action = 'store', default = 1, type=int,
+      help = "Finite element order (polynomial degree)");
+parser.add_argument('-vis', '--visualization',
+                    action = 'store_true', default = True, 
+                    help='Enable GLVis visualization')
+
+args = parser.parse_args()
+order = args.order
+visualization = args.visualization
 
 #   2. Read the mesh from the given mesh file. We can handle triangular,
 #      quadrilateral, tetrahedral, hexahedral, surface and volume meshes with
@@ -65,8 +92,8 @@ s0 = x0_space.GetVSize()
 s1 = xhat_space.GetVSize()
 s_test = test_space.GetVSize()
 
-offsets = intArray([0, s0, s0+s1])
-offsets_test = intArray([0, s_test])
+offsets = mfem.intArray([0, s0, s0+s1])
+offsets_test = mfem.intArray([0, s_test])
 
 print('\n'.join(["nNumber of Unknowns", 
                  " Trial space,     X0   : " + str(s0) +
@@ -189,3 +216,8 @@ x0.MakeRef(x0_space, x.GetBlock(x0_var), 0);
 #     later using GLVis: "glvis -m refined.mesh -g sol.gf".      
 mesh.PrintToFile('refined.mesh', 8)
 x0.SaveToFile('sol.gf', 8)
+
+if (visualization):
+    sol_sock = mfem.socketstream("localhost", 19916)
+    sol_sock.precision(8)
+    sol_sock.send_solution(mesh,  x0)
