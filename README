@@ -1,5 +1,5 @@
 '''''
-PyMFEM
+PyMFEM for mfem 3.3
 '''''
 PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
@@ -272,17 +272,21 @@ This is needed only when you edit SWIG interface files.
 
    4-11) socketstream
 
-         socketstream object support << operator partially. This is done by
-	 adding __lshift__ and other methos to socketstream class in .i file.
-	 We don't want to wrap the whole iostream. Instead, we are adding
-	 methods used in examples such as precision. Also, note that
-	 sock << flush in c++ should be rephrased sock.flush()
-
+         socketstream in PyMFEM has send_text and send_solution. These
+	 method also send endl and flush. One can use them as follows
+	 
          (example)
-           sol_sock = mfem.socketstream("localhost", 19916)
-           sol_sock.precision(8)
-           sol_sock << "solution\n" << mesh << x
-           sol_sock.flush()
+           sock = mfem.socketstream("localhost", 19916)
+           sock.precision(8)
+           sock.send_text("parallel " + str(num_procs) +  " " + str(myid))    
+           sock.send_solution(pmesh, x)
+	 
+         socketstream object support << operator partially, but not works
+	 perfectly. This was done by adding __lshift__ and other methos to
+	 socketstream class in .i file. We don't want to wrap the whole
+	 iostream. Instead, we are adding methods used in examples such as
+	 precision. Also, note that sock << flush in c++ should be rephrased
+	 sock.flush()
 	   
    4-12) std::ostream&
 
@@ -313,7 +317,8 @@ This is needed only when you edit SWIG interface files.
       this by adjusting thisown flag, but the approach may not 
       work in a different scenario.
 
-  4) Visualization through visit is not included. Visulaization
-     using socketsteram is on-going work.
+  4) Visualization through visit is not included
+
+  5) SuperLU and Petsc are not supported.
   
 *This work is supported by US DoE contract DE-FC02-99ER54512
