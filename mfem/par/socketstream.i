@@ -39,7 +39,8 @@ import_array();
   void flush()
    { 
      self->flush();
-   } 
+   }
+  
   mfem::socketstream& __lshift__(const char ostr[])
    { 
       *self << ostr;
