@@ -99,6 +99,7 @@ except Exception:
 
 import fespace
 import array
+import ostream_typemap
 import vector
 import coefficient
 import matrix

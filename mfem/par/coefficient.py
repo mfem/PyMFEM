@@ -97,7 +97,11 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_coefficient.MFEM_TIMER_TYPE_swigconstant(_coefficient)
+MFEM_TIMER_TYPE = _coefficient.MFEM_TIMER_TYPE
 import array
+import ostream_typemap
 import matrix
 import vector
 import operators
@@ -733,7 +737,7 @@ class PyCoefficient(PyCoefficientBase):
 class PyCoefficientT(PyCoefficientBase):
    def __init__(self):
        PyCoefficientBase.__init__(self, 1)
-   def _EvalPyT(self, x, t, V):
+   def _EvalPyT(self, x, t):
        return self.EvalValue(x.GetDataArray(), t)
    def EvalValue(self, x, t):
        return 0.0

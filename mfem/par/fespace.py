@@ -98,6 +98,7 @@ except Exception:
 
 
 import array
+import ostream_typemap
 import vector
 import coefficient
 import matrix
@@ -184,6 +185,9 @@ class FiniteElementSpace(_object):
 
     def GetConformingRestriction(self):
         return _fespace.FiniteElementSpace_GetConformingRestriction(self)
+
+    def GetProlongationMatrix(self):
+        return _fespace.FiniteElementSpace_GetProlongationMatrix(self)
 
     def GetRestrictionMatrix(self):
         return _fespace.FiniteElementSpace_GetRestrictionMatrix(self)
@@ -305,6 +309,9 @@ class FiniteElementSpace(_object):
 
 
 
+    def GetFaceInteriorDofs(self, i, dofs):
+        return _fespace.FiniteElementSpace_GetFaceInteriorDofs(self, i, dofs)
+
     def GetNumElementInteriorDofs(self, i):
         return _fespace.FiniteElementSpace_GetNumElementInteriorDofs(self, i)
 
@@ -386,6 +393,9 @@ class FiniteElementSpace(_object):
 
     def RebuildElementToDofTable(self):
         return _fespace.FiniteElementSpace_RebuildElementToDofTable(self)
+
+    def ReorderElementToDofTable(self):
+        return _fespace.FiniteElementSpace_ReorderElementToDofTable(self)
 
     def BuildDofToArrays(self):
         return _fespace.FiniteElementSpace_BuildDofToArrays(self)
@@ -477,6 +487,33 @@ FiniteElementSpace_MarkerToList = _fespace.FiniteElementSpace_MarkerToList
 def FiniteElementSpace_ListToMarker(list, marker_size, marker, mark_val=-1):
     return _fespace.FiniteElementSpace_ListToMarker(list, marker_size, marker, mark_val)
 FiniteElementSpace_ListToMarker = _fespace.FiniteElementSpace_ListToMarker
+
+class QuadratureSpace(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, QuadratureSpace, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, QuadratureSpace, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _fespace.new_QuadratureSpace(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _fespace.delete_QuadratureSpace
+    __del__ = lambda self: None
+
+    def GetSize(self):
+        return _fespace.QuadratureSpace_GetSize(self)
+
+    def GetElementIntRule(self, idx):
+        return _fespace.QuadratureSpace_GetElementIntRule(self, idx)
+
+    def Save(self, out):
+        return _fespace.QuadratureSpace_Save(self, out)
+QuadratureSpace_swigregister = _fespace.QuadratureSpace_swigregister
+QuadratureSpace_swigregister(QuadratureSpace)
 
 # This file is compatible with both classic and new-style classes.
 

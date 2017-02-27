@@ -99,6 +99,7 @@ except Exception:
 
 import vector
 import array
+import ostream_typemap
 import operators
 class ODESolver(_object):
     __swig_setmethods__ = {}
@@ -110,11 +111,14 @@ class ODESolver(_object):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
 
-    def Init(self, _f):
-        return _ode.ODESolver_Init(self, _f)
+    def Init(self, f):
+        return _ode.ODESolver_Init(self, f)
 
     def Step(self, x, t, dt):
         return _ode.ODESolver_Step(self, x, t, dt)
+
+    def Run(self, x, t, dt, tf):
+        return _ode.ODESolver_Run(self, x, t, dt, tf)
     __swig_destroy__ = _ode.delete_ODESolver
     __del__ = lambda self: None
 ODESolver_swigregister = _ode.ODESolver_swigregister

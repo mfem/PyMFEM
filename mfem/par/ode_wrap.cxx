@@ -3850,6 +3850,80 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ODESolver_Run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ODESolver *arg1 = (mfem::ODESolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  double *arg3 = 0 ;
+  double *arg4 = 0 ;
+  double arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double temp3 ;
+  double dtemp4 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:ODESolver_Run",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ODESolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ODESolver_Run" "', argument " "1"" of type '" "mfem::ODESolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ODESolver * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ODESolver_Run" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ODESolver_Run" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    temp3 = PyFloat_AsDouble(obj2);
+    arg3 = &temp3;
+  }
+  {
+    dtemp4 = PyFloat_AsDouble(obj3);
+    arg4 = &dtemp4;
+  }
+  ecode5 = SWIG_AsVal_double(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ODESolver_Run" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  {
+    try {
+      (arg1)->Run(*arg2,*arg3,*arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg3));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_ODESolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ODESolver *arg1 = (mfem::ODESolver *) 0 ;
@@ -5948,6 +6022,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"ODESolver_Init", _wrap_ODESolver_Init, METH_VARARGS, NULL},
 	 { (char *)"ODESolver_Step", _wrap_ODESolver_Step, METH_VARARGS, NULL},
+	 { (char *)"ODESolver_Run", _wrap_ODESolver_Run, METH_VARARGS, NULL},
 	 { (char *)"delete_ODESolver", _wrap_delete_ODESolver, METH_VARARGS, NULL},
 	 { (char *)"ODESolver_swigregister", ODESolver_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ForwardEulerSolver_Init", _wrap_ForwardEulerSolver_Init, METH_VARARGS, NULL},

@@ -101,6 +101,7 @@ import mesh
 import matrix
 import vector
 import array
+import ostream_typemap
 import operators
 import element
 import densemat
@@ -177,6 +178,9 @@ class CoarseFineTransformations(_object):
     __swig_getmethods__["embeddings"] = _ncmesh.CoarseFineTransformations_embeddings_get
     if _newclass:
         embeddings = _swig_property(_ncmesh.CoarseFineTransformations_embeddings_get)
+
+    def Clear(self):
+        return _ncmesh.CoarseFineTransformations_Clear(self)
 
     def __init__(self):
         this = _ncmesh.new_CoarseFineTransformations()

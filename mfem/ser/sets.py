@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 import table
 class IntegerSet(_object):
     __swig_setmethods__ = {}

@@ -23,6 +23,8 @@ import_array();
 %import "linearform.i"
 %import "gridfunc.i"
 
+%pointer_class(int, intp);
+
 %exception {
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
@@ -42,6 +44,7 @@ namespace mfem {
    %} 
 %pythonprepend BilinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 

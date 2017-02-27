@@ -98,6 +98,7 @@ except Exception:
 
 
 import array
+import ostream_typemap
 import fespace
 import vector
 import coefficient
@@ -160,6 +161,9 @@ class BilinearForm(matrix.Matrix):
 
     def UsePrecomputedSparsity(self, ps=1):
         return _bilinearform.BilinearForm_UsePrecomputedSparsity(self, ps)
+
+    def UseSparsity(self, *args):
+        return _bilinearform.BilinearForm_UseSparsity(self, *args)
 
     def AllocateMatrix(self):
         return _bilinearform.BilinearForm_AllocateMatrix(self)
@@ -250,21 +254,31 @@ class BilinearForm(matrix.Matrix):
         return _bilinearform.BilinearForm_AddInteriorFaceIntegrator(self, bfi)
 
 
-    def AddBdrFaceIntegrator(self, bfi):
+    def AddBdrFaceIntegrator(self, *args):
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        bfi = args[0]
         self._integrators.append(bfi)
         bfi.thisown=0 
 
 
-        return _bilinearform.BilinearForm_AddBdrFaceIntegrator(self, bfi)
+        return _bilinearform.BilinearForm_AddBdrFaceIntegrator(self, *args)
 
 
     def Assemble(self, skip_zeros=1):
         return _bilinearform.BilinearForm_Assemble(self, skip_zeros)
 
+    def GetProlongation(self):
+        return _bilinearform.BilinearForm_GetProlongation(self)
+
+    def GetRestriction(self):
+        return _bilinearform.BilinearForm_GetRestriction(self)
+
     def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
         return _bilinearform.BilinearForm_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
+
+    def FormSystemMatrix(self, ess_tdof_list, A):
+        return _bilinearform.BilinearForm_FormSystemMatrix(self, ess_tdof_list, A)
 
     def RecoverFEMSolution(self, X, b, x):
         return _bilinearform.BilinearForm_RecoverFEMSolution(self, X, b, x)

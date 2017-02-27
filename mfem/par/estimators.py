@@ -97,7 +97,11 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_estimators.MFEM_TIMER_TYPE_swigconstant(_estimators)
+MFEM_TIMER_TYPE = _estimators.MFEM_TIMER_TYPE
 import array
+import ostream_typemap
 import vector
 import fespace
 import coefficient
@@ -138,10 +142,14 @@ class AbstractErrorEstimator(_object):
 AbstractErrorEstimator_swigregister = _estimators.AbstractErrorEstimator_swigregister
 AbstractErrorEstimator_swigregister(AbstractErrorEstimator)
 
-class ErrorEstimator(_object):
+class ErrorEstimator(AbstractErrorEstimator):
     __swig_setmethods__ = {}
+    for _s in [AbstractErrorEstimator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, ErrorEstimator, name, value)
     __swig_getmethods__ = {}
+    for _s in [AbstractErrorEstimator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, ErrorEstimator, name)
 
     def __init__(self, *args, **kwargs):

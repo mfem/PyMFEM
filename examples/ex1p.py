@@ -3,6 +3,7 @@
 
    See c++ version in the MFEM library for more detail 
 '''
+import sys
 from mfem import path
 import mfem.par as mfem
 from mpi4py import MPI

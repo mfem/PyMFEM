@@ -97,10 +97,14 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
-import nonlinearform
-import operators
+
+_pnonlinearform.MFEM_TIMER_TYPE_swigconstant(_pnonlinearform)
+MFEM_TIMER_TYPE = _pnonlinearform.MFEM_TIMER_TYPE
 import vector
 import array
+import ostream_typemap
+import nonlinearform
+import operators
 import fespace
 import coefficient
 import matrix
@@ -115,8 +119,11 @@ import element
 import geom
 import table
 import vertex
+import gridfunc
+import bilininteg
 import fe_coll
 import lininteg
+import linearform
 import nonlininteg
 import pfespace
 import pmesh
@@ -125,9 +132,6 @@ import communication
 import sets
 import hypre
 import pgridfunc
-import gridfunc
-import bilininteg
-import linearform
 class ParNonlinearForm(nonlinearform.NonlinearForm):
     __swig_setmethods__ = {}
     for _s in [nonlinearform.NonlinearForm]:
@@ -163,6 +167,9 @@ class ParNonlinearForm(nonlinearform.NonlinearForm):
 
     def GetGradient(self, x):
         return _pnonlinearform.ParNonlinearForm_GetGradient(self, x)
+
+    def SetGradientType(self, tid):
+        return _pnonlinearform.ParNonlinearForm_SetGradientType(self, tid)
     __swig_destroy__ = _pnonlinearform.delete_ParNonlinearForm
     __del__ = lambda self: None
 ParNonlinearForm_swigregister = _pnonlinearform.ParNonlinearForm_swigregister

@@ -10,6 +10,7 @@ from os.path import expanduser, join
 import numpy as np
 
 order = 1
+visualization = True
 meshfile = expanduser(join(path, 'data', 'beam-tri.mesh'))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
@@ -121,5 +122,10 @@ nodes += x
 x *= -1
 mesh.PrintToFile('displaced.mesh', 8)
 x.SaveToFile('sol.gf', 8)
-#ans((x, nodes, mesh))
+
+
+if (visualization):
+    sol_sock = mfem.socketstream("localhost", 19916)
+    sol_sock.precision(8)
+    sol_sock.send_solution(mesh,  x)
 

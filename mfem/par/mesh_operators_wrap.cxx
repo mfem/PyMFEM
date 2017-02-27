@@ -3454,26 +3454,27 @@ namespace Swig {
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_hex_t swig_types[2]
-#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[3]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[4]
-#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[5]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[6]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[7]
-#define SWIGTYPE_p_mfem__L2ZienkiewiczZhuEstimator swig_types[8]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[9]
-#define SWIGTYPE_p_mfem__Mesh swig_types[10]
-#define SWIGTYPE_p_mfem__MeshOperator swig_types[11]
-#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[12]
-#define SWIGTYPE_p_mfem__Rebalancer swig_types[13]
-#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[14]
-#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[15]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[16]
-#define SWIGTYPE_p_quad_t swig_types[17]
-#define SWIGTYPE_p_seg_t swig_types[18]
-#define SWIGTYPE_p_tet_t swig_types[19]
-#define SWIGTYPE_p_tri_t swig_types[20]
-static swig_type_info *swig_types[22];
-static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
+#define SWIGTYPE_p_intp swig_types[3]
+#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[5]
+#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[6]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[7]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[8]
+#define SWIGTYPE_p_mfem__L2ZienkiewiczZhuEstimator swig_types[9]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[10]
+#define SWIGTYPE_p_mfem__Mesh swig_types[11]
+#define SWIGTYPE_p_mfem__MeshOperator swig_types[12]
+#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[13]
+#define SWIGTYPE_p_mfem__Rebalancer swig_types[14]
+#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[15]
+#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[16]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[17]
+#define SWIGTYPE_p_quad_t swig_types[18]
+#define SWIGTYPE_p_seg_t swig_types[19]
+#define SWIGTYPE_p_tet_t swig_types[20]
+#define SWIGTYPE_p_tri_t swig_types[21]
+static swig_type_info *swig_types[23];
+static swig_module_info swig_module = {swig_types, 22, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5079,6 +5080,7 @@ static void *_p_mfem__RebalancerTo_p_mfem__MeshOperator(void *x, int *SWIGUNUSED
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t = {"_p_mfem__ArrayT_mfem__MeshOperator_p_t", "mfem::Array< mfem::MeshOperator * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ErrorEstimator = {"_p_mfem__ErrorEstimator", "mfem::ErrorEstimator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__AnisotropicErrorEstimator = {"_p_mfem__AnisotropicErrorEstimator", 0, 0, 0, 0, 0};
@@ -5102,6 +5104,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_char,
   &_swigt__p_hex_t,
+  &_swigt__p_intp,
   &_swigt__p_mfem__AnisotropicErrorEstimator,
   &_swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t,
   &_swigt__p_mfem__ErrorEstimator,
@@ -5125,6 +5128,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__MeshOperator_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AnisotropicErrorEstimator[] = {{&_swigt__p_mfem__AnisotropicErrorEstimator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ZienkiewiczZhuEstimator[] = {{&_swigt__p_mfem__ZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
@@ -5148,6 +5152,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_char,
   _swigc__p_hex_t,
+  _swigc__p_intp,
   _swigc__p_mfem__AnisotropicErrorEstimator,
   _swigc__p_mfem__ArrayT_mfem__MeshOperator_p_t,
   _swigc__p_mfem__ErrorEstimator,

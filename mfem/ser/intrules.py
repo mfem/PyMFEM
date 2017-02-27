@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 class IntegrationPointArray(array.BaseArray):
     __swig_setmethods__ = {}
     for _s in [array.BaseArray]:
@@ -273,6 +274,80 @@ class IntegrationRule(IntegrationPointArray):
 IntegrationRule_swigregister = _intrules.IntegrationRule_swigregister
 IntegrationRule_swigregister(IntegrationRule)
 
+class QuadratureFunctions1D(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, QuadratureFunctions1D, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, QuadratureFunctions1D, name)
+    __repr__ = _swig_repr
+
+    def GaussLegendre(self, np, ir):
+        return _intrules.QuadratureFunctions1D_GaussLegendre(self, np, ir)
+
+    def GaussLobatto(self, np, ir):
+        return _intrules.QuadratureFunctions1D_GaussLobatto(self, np, ir)
+
+    def OpenUniform(self, np, ir):
+        return _intrules.QuadratureFunctions1D_OpenUniform(self, np, ir)
+
+    def ClosedUniform(self, np, ir):
+        return _intrules.QuadratureFunctions1D_ClosedUniform(self, np, ir)
+
+    def OpenHalfUniform(self, np, ir):
+        return _intrules.QuadratureFunctions1D_OpenHalfUniform(self, np, ir)
+
+    def GivePolyPoints(self, np, pts, type):
+        return _intrules.QuadratureFunctions1D_GivePolyPoints(self, np, pts, type)
+
+    def __init__(self):
+        this = _intrules.new_QuadratureFunctions1D()
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _intrules.delete_QuadratureFunctions1D
+    __del__ = lambda self: None
+QuadratureFunctions1D_swigregister = _intrules.QuadratureFunctions1D_swigregister
+QuadratureFunctions1D_swigregister(QuadratureFunctions1D)
+
+class Quadrature1D(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, Quadrature1D, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, Quadrature1D, name)
+    __repr__ = _swig_repr
+    Invalid = _intrules.Quadrature1D_Invalid
+    GaussLegendre = _intrules.Quadrature1D_GaussLegendre
+    GaussLobatto = _intrules.Quadrature1D_GaussLobatto
+    OpenUniform = _intrules.Quadrature1D_OpenUniform
+    ClosedUniform = _intrules.Quadrature1D_ClosedUniform
+    OpenHalfUniform = _intrules.Quadrature1D_OpenHalfUniform
+    __swig_getmethods__["CheckClosed"] = lambda x: _intrules.Quadrature1D_CheckClosed
+    if _newclass:
+        CheckClosed = staticmethod(_intrules.Quadrature1D_CheckClosed)
+    __swig_getmethods__["CheckOpen"] = lambda x: _intrules.Quadrature1D_CheckOpen
+    if _newclass:
+        CheckOpen = staticmethod(_intrules.Quadrature1D_CheckOpen)
+
+    def __init__(self):
+        this = _intrules.new_Quadrature1D()
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _intrules.delete_Quadrature1D
+    __del__ = lambda self: None
+Quadrature1D_swigregister = _intrules.Quadrature1D_swigregister
+Quadrature1D_swigregister(Quadrature1D)
+
+def Quadrature1D_CheckClosed(type):
+    return _intrules.Quadrature1D_CheckClosed(type)
+Quadrature1D_CheckClosed = _intrules.Quadrature1D_CheckClosed
+
+def Quadrature1D_CheckOpen(type):
+    return _intrules.Quadrature1D_CheckOpen(type)
+Quadrature1D_CheckOpen = _intrules.Quadrature1D_CheckOpen
+
 class IntegrationRules(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, IntegrationRules, name, value)
@@ -280,8 +355,8 @@ class IntegrationRules(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, IntegrationRules, name)
     __repr__ = _swig_repr
 
-    def __init__(self, Ref=0):
-        this = _intrules.new_IntegrationRules(Ref)
+    def __init__(self, *args):
+        this = _intrules.new_IntegrationRules(*args)
         try:
             self.this.append(this)
         except Exception:

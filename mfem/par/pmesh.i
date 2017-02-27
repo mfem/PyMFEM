@@ -1,13 +1,14 @@
 %module pmesh
 %{
 #include <mpi.h>
+#include "iostream_typemap.hpp"     
+#include "config/config.hpp"
 #include "mesh/pmesh.hpp"
 #include "general/communication.hpp"  
 #include "numpy/arrayobject.h"
-#define MFEM_USE_MPI
-  //#include "mpi4py/mpi4py.h"  
 %}
 
+%include  "config/_config.hpp" // include mfem MACRO
 %init %{
 import_array();
 %}
@@ -19,10 +20,12 @@ import_array();
 %import pncmesh.i
  //
 %import communication.i
+%import "ostream_typemap.i"
 
 %immutable face_nbr_elements;
 %immutable face_nbr_vertices;
 %immutable gtopo;
 
-#define MFEM_USE_MPI  
+%pointer_class(int, intp);
+
 %include "mesh/pmesh.hpp"

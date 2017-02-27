@@ -98,6 +98,7 @@ except Exception:
 
 
 import array
+import ostream_typemap
 import vector
 import densemat
 import operators
@@ -147,6 +148,12 @@ class ElementTransformation(_object):
 
     def Weight(self):
         return _eltrans.ElementTransformation_Weight(self)
+
+    def AdjugateJacobian(self):
+        return _eltrans.ElementTransformation_AdjugateJacobian(self)
+
+    def InverseJacobian(self):
+        return _eltrans.ElementTransformation_InverseJacobian(self)
 
     def Order(self):
         return _eltrans.ElementTransformation_Order(self)
@@ -205,12 +212,6 @@ class IsoparametricTransformation(ElementTransformation):
             return _eltrans.ElementTransformation_Transform(self, *args)
 
 
-
-    def Jacobian(self):
-        return _eltrans.IsoparametricTransformation_Jacobian(self)
-
-    def Weight(self):
-        return _eltrans.IsoparametricTransformation_Weight(self)
 
     def Order(self):
         return _eltrans.IsoparametricTransformation_Order(self)

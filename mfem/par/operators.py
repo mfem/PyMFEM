@@ -99,6 +99,7 @@ except Exception:
 
 import vector
 import array
+import ostream_typemap
 class Operator(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Operator, name, value)
@@ -138,10 +139,28 @@ class Operator(_object):
     def GetGradient(self, x):
         return _operators.Operator_GetGradient(self, x)
 
+    def GetProlongation(self):
+        return _operators.Operator_GetProlongation(self)
+
+    def GetRestriction(self):
+        return _operators.Operator_GetRestriction(self)
+
+    def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
+        return _operators.Operator_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
+
+    def RecoverFEMSolution(self, X, b, x):
+        return _operators.Operator_RecoverFEMSolution(self, X, b, x)
+
     def PrintMatlab(self, out, n=0, m=0):
         return _operators.Operator_PrintMatlab(self, out, n, m)
     __swig_destroy__ = _operators.delete_Operator
     __del__ = lambda self: None
+    MFEM_SPARSEMAT = _operators.Operator_MFEM_SPARSEMAT
+    HYPRE_PARCSR = _operators.Operator_HYPRE_PARCSR
+    PETSC_MATAIJ = _operators.Operator_PETSC_MATAIJ
+    PETSC_MATIS = _operators.Operator_PETSC_MATIS
+    PETSC_MATSHELL = _operators.Operator_PETSC_MATSHELL
+    PETSC_MATNEST = _operators.Operator_PETSC_MATNEST
     def __disown__(self):
         self.this.disown()
         _operators.disown_Operator(self)
@@ -159,6 +178,9 @@ class TimeDependentOperator(Operator):
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, TimeDependentOperator, name)
     __repr__ = _swig_repr
+    EXPLICIT = _operators.TimeDependentOperator_EXPLICIT
+    IMPLICIT = _operators.TimeDependentOperator_IMPLICIT
+    HOMOGENEOUS = _operators.TimeDependentOperator_HOMOGENEOUS
 
     def __init__(self, *args):
         if self.__class__ == TimeDependentOperator:
@@ -177,8 +199,32 @@ class TimeDependentOperator(Operator):
     def SetTime(self, _t):
         return _operators.TimeDependentOperator_SetTime(self, _t)
 
+    def isExplicit(self):
+        return _operators.TimeDependentOperator_isExplicit(self)
+
+    def isImplicit(self):
+        return _operators.TimeDependentOperator_isImplicit(self)
+
+    def isHomogeneous(self):
+        return _operators.TimeDependentOperator_isHomogeneous(self)
+
+    def ExplicitMult(self, x, y):
+        return _operators.TimeDependentOperator_ExplicitMult(self, x, y)
+
+    def ImplicitMult(self, x, k, y):
+        return _operators.TimeDependentOperator_ImplicitMult(self, x, k, y)
+
+    def Mult(self, x, y):
+        return _operators.TimeDependentOperator_Mult(self, x, y)
+
     def ImplicitSolve(self, dt, x, k):
         return _operators.TimeDependentOperator_ImplicitSolve(self, dt, x, k)
+
+    def GetImplicitGradient(self, x, k, shift):
+        return _operators.TimeDependentOperator_GetImplicitGradient(self, x, k, shift)
+
+    def GetExplicitGradient(self, x):
+        return _operators.TimeDependentOperator_GetExplicitGradient(self, x)
     __swig_destroy__ = _operators.delete_TimeDependentOperator
     __del__ = lambda self: None
     def __disown__(self):
@@ -321,6 +367,34 @@ class TripleProductOperator(Operator):
     __del__ = lambda self: None
 TripleProductOperator_swigregister = _operators.TripleProductOperator_swigregister
 TripleProductOperator_swigregister(TripleProductOperator)
+
+class ConstrainedOperator(Operator):
+    __swig_setmethods__ = {}
+    for _s in [Operator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ConstrainedOperator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Operator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ConstrainedOperator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, list, own_A=False):
+        this = _operators.new_ConstrainedOperator(A, list, own_A)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
+    def EliminateRHS(self, x, b):
+        return _operators.ConstrainedOperator_EliminateRHS(self, x, b)
+
+    def Mult(self, x, y):
+        return _operators.ConstrainedOperator_Mult(self, x, y)
+    __swig_destroy__ = _operators.delete_ConstrainedOperator
+    __del__ = lambda self: None
+ConstrainedOperator_swigregister = _operators.ConstrainedOperator_swigregister
+ConstrainedOperator_swigregister(ConstrainedOperator)
 
 class PyOperatorBase(Operator):
     __swig_setmethods__ = {}

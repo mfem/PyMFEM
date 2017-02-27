@@ -97,9 +97,13 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_plinearform.MFEM_TIMER_TYPE_swigconstant(_plinearform)
+MFEM_TIMER_TYPE = _plinearform.MFEM_TIMER_TYPE
 import linearform
 import coefficient
 import array
+import ostream_typemap
 import matrix
 import vector
 import operators

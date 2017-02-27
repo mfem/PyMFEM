@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 class Connection(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Connection, name, value)
@@ -214,6 +215,9 @@ class Table(_object):
 
     def Save(self, out):
         return _table.Table_Save(self, out)
+
+    def Load(self, arg2):
+        return _table.Table_Load(self, arg2)
 
     def Copy(self, copy):
         return _table.Table_Copy(self, copy)

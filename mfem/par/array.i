@@ -1,14 +1,17 @@
 %module array
 %rename(Equal) mfem::Array <class T>::operator=;
 %{
-#include "general/array.hpp"
 #include <iostream>
+#include "iostream_typemap.hpp"    
+#include "general/array.hpp"
 #include "numpy/arrayobject.h"
 %}
 
 %init %{
 import_array();
 %}
+
+%import "ostream_typemap.i"
 
 %typemap(in) (int *_data, int asize) {
   int i;

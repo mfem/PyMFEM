@@ -100,6 +100,7 @@ except Exception:
 import matrix
 import vector
 import array
+import ostream_typemap
 import operators
 import ncmesh
 import element
@@ -108,44 +109,16 @@ import geom
 import intrules
 import table
 import vertex
+import gridfunc
+import coefficient
 import sparsemat
 import eltrans
 import fe
-import coefficient
-class intp(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _mesh.new_intp()
-        try:
-            self.this.append(this)
-        except Exception:
-            self.this = this
-    __swig_destroy__ = _mesh.delete_intp
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _mesh.intp_assign(self, value)
-
-    def value(self):
-        return _mesh.intp_value(self)
-
-    def cast(self):
-        return _mesh.intp_cast(self)
-    __swig_getmethods__["frompointer"] = lambda x: _mesh.intp_frompointer
-    if _newclass:
-        frompointer = staticmethod(_mesh.intp_frompointer)
-intp_swigregister = _mesh.intp_swigregister
-intp_swigregister(intp)
-
-def intp_frompointer(t):
-    return _mesh.intp_frompointer(t)
-intp_frompointer = _mesh.intp_frompointer
-
+import fespace
+import fe_coll
+import lininteg
+import bilininteg
+import linearform
 class Mesh(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Mesh, name, value)
@@ -228,6 +201,12 @@ class Mesh(_object):
     def FinalizeHexMesh(self, generate_edges=0, refine=0, fix_orientation=True):
         return _mesh.Mesh_FinalizeHexMesh(self, generate_edges, refine, fix_orientation)
 
+    def FinalizeTopology(self):
+        return _mesh.Mesh_FinalizeTopology(self)
+
+    def Finalize(self, refine=False, fix_orientation=False):
+        return _mesh.Mesh_Finalize(self, refine, fix_orientation)
+
     def SetAttributes(self):
         return _mesh.Mesh_SetAttributes(self)
 
@@ -236,6 +215,9 @@ class Mesh(_object):
 
     def Load(self, input, generate_edges=0, refine=1, fix_orientation=True):
         return _mesh.Mesh_Load(self, input, generate_edges, refine, fix_orientation)
+
+    def Clear(self):
+        return _mesh.Mesh_Clear(self)
 
     def MeshGenerator(self):
         return _mesh.Mesh_MeshGenerator(self)
@@ -278,6 +260,15 @@ class Mesh(_object):
 
     def GetVertex(self, *args):
         return _mesh.Mesh_GetVertex(self, *args)
+
+    def GetElementData(self, geom, elem_vtx, attr):
+        return _mesh.Mesh_GetElementData(self, geom, elem_vtx, attr)
+
+    def GetBdrElementData(self, geom, bdr_elem_vtx, bdr_attr):
+        return _mesh.Mesh_GetBdrElementData(self, geom, bdr_elem_vtx, bdr_attr)
+
+    def ChangeVertexDataOwnership(self, vertices, len_vertices, zerocopy=False):
+        return _mesh.Mesh_ChangeVertexDataOwnership(self, vertices, len_vertices, zerocopy)
 
     def GetElementsArray(self):
         return _mesh.Mesh_GetElementsArray(self)
@@ -499,6 +490,12 @@ class Mesh(_object):
     def SetNodes(self, node_coord):
         return _mesh.Mesh_SetNodes(self, node_coord)
 
+    def OwnsNodes(self):
+        return _mesh.Mesh_OwnsNodes(self)
+
+    def SetNodesOwner(self, nodes_owner):
+        return _mesh.Mesh_SetNodesOwner(self, nodes_owner)
+
     def NewNodes(self, nodes, make_owner=False):
         return _mesh.Mesh_NewNodes(self, nodes, make_owner)
 
@@ -650,8 +647,8 @@ def Mesh_GetTransformationFEforElementType(arg2):
 Mesh_GetTransformationFEforElementType = _mesh.Mesh_GetTransformationFEforElementType
 
 
-def __lshift__(out, mesh):
-    return _mesh.__lshift__(out, mesh)
+def __lshift__(*args):
+    return _mesh.__lshift__(*args)
 __lshift__ = _mesh.__lshift__
 class NodeExtrudeCoefficient(coefficient.VectorCoefficient):
     __swig_setmethods__ = {}
@@ -681,27 +678,27 @@ NodeExtrudeCoefficient_swigregister(NodeExtrudeCoefficient)
 def Extrude1D(mesh, ny, sy, closed=False):
     return _mesh.Extrude1D(mesh, ny, sy, closed)
 Extrude1D = _mesh.Extrude1D
-class named_ifstream(_object):
+class named_ifgzstream(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, named_ifstream, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, named_ifgzstream, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, named_ifstream, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, named_ifgzstream, name)
     __repr__ = _swig_repr
-    __swig_setmethods__["filename"] = _mesh.named_ifstream_filename_set
-    __swig_getmethods__["filename"] = _mesh.named_ifstream_filename_get
+    __swig_setmethods__["filename"] = _mesh.named_ifgzstream_filename_set
+    __swig_getmethods__["filename"] = _mesh.named_ifgzstream_filename_get
     if _newclass:
-        filename = _swig_property(_mesh.named_ifstream_filename_get, _mesh.named_ifstream_filename_set)
+        filename = _swig_property(_mesh.named_ifgzstream_filename_get, _mesh.named_ifgzstream_filename_set)
 
     def __init__(self, mesh_name):
-        this = _mesh.new_named_ifstream(mesh_name)
+        this = _mesh.new_named_ifgzstream(mesh_name)
         try:
             self.this.append(this)
         except Exception:
             self.this = this
-    __swig_destroy__ = _mesh.delete_named_ifstream
+    __swig_destroy__ = _mesh.delete_named_ifgzstream
     __del__ = lambda self: None
-named_ifstream_swigregister = _mesh.named_ifstream_swigregister
-named_ifstream_swigregister(named_ifstream)
+named_ifgzstream_swigregister = _mesh.named_ifgzstream_swigregister
+named_ifgzstream_swigregister(named_ifgzstream)
 
 # This file is compatible with both classic and new-style classes.
 

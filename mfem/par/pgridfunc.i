@@ -1,12 +1,15 @@
 %module pgridfunc
 %{
 #include <mpi.h>
+#include "iostream_typemap.hpp"      
+#include  "config/config.hpp"
 #include "fem/pgridfunc.hpp"
 #include "fem/linearform.hpp"  
 #include "pycoefficient.hpp"  
 #include "numpy/arrayobject.h"
-#define MFEM_USE_MPI  
 %}
+%include  "config/_config.hpp" // include mfem MACRO
+
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 
@@ -20,6 +23,9 @@ import_array();
 %import pmesh.i
 %import linearform.i
 
+%import "ostream_typemap.i"
+
+%pointer_class(int, intp);
 
 %typemap(in) const mfem::IntegrationRule *irs[]{
   if (PyList_Check($input)) {
@@ -46,5 +52,4 @@ import_array();
 
 %rename(Assign) mfem::ParGridFunction::operator=;
 
-#define MFEM_USE_MPI  
 %include "fem/pgridfunc.hpp"

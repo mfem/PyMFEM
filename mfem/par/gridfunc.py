@@ -98,6 +98,7 @@ except Exception:
 
 
 import array
+import ostream_typemap
 import vector
 import coefficient
 import matrix
@@ -144,6 +145,12 @@ class GridFunction(vector.Vector):
 
     def VectorDim(self):
         return _gridfunc.GridFunction_VectorDim(self)
+
+    def GetTrueDofs(self, tv):
+        return _gridfunc.GridFunction_GetTrueDofs(self, tv)
+
+    def SetFromTrueDofs(self, tv):
+        return _gridfunc.GridFunction_SetFromTrueDofs(self, tv)
 
     def GetValue(self, i, ip, vdim=1):
         return _gridfunc.GridFunction_GetValue(self, i, ip, vdim)
@@ -272,8 +279,8 @@ class GridFunction(vector.Vector):
     def SetSpace(self, f):
         return _gridfunc.GridFunction_SetSpace(self, f)
 
-    def MakeRef(self, f, v, v_offset):
-        return _gridfunc.GridFunction_MakeRef(self, f, v, v_offset)
+    def MakeRef(self, *args):
+        return _gridfunc.GridFunction_MakeRef(self, *args)
 
     def Save(self, out):
         return _gridfunc.GridFunction_Save(self, out)
@@ -302,6 +309,55 @@ class GridFunction(vector.Vector):
         return _gridfunc.GridFunction_idiv(self, c)
 GridFunction_swigregister = _gridfunc.GridFunction_swigregister
 GridFunction_swigregister(GridFunction)
+
+class QuadratureFunction(vector.Vector):
+    __swig_setmethods__ = {}
+    for _s in [vector.Vector]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, QuadratureFunction, name, value)
+    __swig_getmethods__ = {}
+    for _s in [vector.Vector]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, QuadratureFunction, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _gridfunc.new_QuadratureFunction(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _gridfunc.delete_QuadratureFunction
+    __del__ = lambda self: None
+
+    def GetSpace(self):
+        return _gridfunc.QuadratureFunction_GetSpace(self)
+
+    def SetSpace(self, *args):
+        return _gridfunc.QuadratureFunction_SetSpace(self, *args)
+
+    def GetVDim(self):
+        return _gridfunc.QuadratureFunction_GetVDim(self)
+
+    def SetVDim(self, vdim_):
+        return _gridfunc.QuadratureFunction_SetVDim(self, vdim_)
+
+    def OwnsSpace(self):
+        return _gridfunc.QuadratureFunction_OwnsSpace(self)
+
+    def SetOwnsSpace(self, own):
+        return _gridfunc.QuadratureFunction_SetOwnsSpace(self, own)
+
+    def GetElementIntRule(self, idx):
+        return _gridfunc.QuadratureFunction_GetElementIntRule(self, idx)
+
+    def GetElementValues(self, *args):
+        return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
+
+    def Save(self, out):
+        return _gridfunc.QuadratureFunction_Save(self, out)
+QuadratureFunction_swigregister = _gridfunc.QuadratureFunction_swigregister
+QuadratureFunction_swigregister(QuadratureFunction)
 
 
 def __lshift__(*args):

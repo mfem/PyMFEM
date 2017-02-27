@@ -98,6 +98,7 @@ except Exception:
 
 
 import array
+import ostream_typemap
 import vector
 import mesh
 import matrix

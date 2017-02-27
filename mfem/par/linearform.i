@@ -54,6 +54,7 @@ namespace mfem {
    %} 
 %pythonprepend LinearForm::AddBdrFaceIntegrator %{ 
     if not hasattr(self, "_integrators"): self._integrators = []
+    lfi = args[0]	     
     self._integrators.append(lfi)
     lfi.thisown=0 
    %} 

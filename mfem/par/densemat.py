@@ -98,6 +98,7 @@ except Exception:
 
 
 import array
+import ostream_typemap
 import vector
 import operators
 import matrix
@@ -122,8 +123,14 @@ class DenseMatrix(matrix.Matrix):
     def UseExternalData(self, d, h, w):
         return _densemat.DenseMatrix_UseExternalData(self, d, h, w)
 
+    def Reset(self, d, h, w):
+        return _densemat.DenseMatrix_Reset(self, d, h, w)
+
     def ClearExternalData(self):
         return _densemat.DenseMatrix_ClearExternalData(self)
+
+    def Clear(self):
+        return _densemat.DenseMatrix_Clear(self)
 
     def Size(self):
         return _densemat.DenseMatrix_Size(self)
@@ -133,6 +140,12 @@ class DenseMatrix(matrix.Matrix):
 
     def Data(self):
         return _densemat.DenseMatrix_Data(self)
+
+    def GetData(self):
+        return _densemat.DenseMatrix_GetData(self)
+
+    def OwnsData(self):
+        return _densemat.DenseMatrix_OwnsData(self)
 
     def __call__(self, *args):
         return _densemat.DenseMatrix___call__(self, *args)
@@ -257,8 +270,8 @@ class DenseMatrix(matrix.Matrix):
     def GetRow(self, r, row):
         return _densemat.DenseMatrix_GetRow(self, r, row)
 
-    def GetColumn(self, c, col):
-        return _densemat.DenseMatrix_GetColumn(self, c, col)
+    def GetColumn(self, *args):
+        return _densemat.DenseMatrix_GetColumn(self, *args)
 
     def GetColumnReference(self, c, col):
         return _densemat.DenseMatrix_GetColumnReference(self, c, col)
@@ -409,13 +422,21 @@ def MultABt(A, B, ABt):
     return _densemat.MultABt(A, B, ABt)
 MultABt = _densemat.MultABt
 
-def MultADBt(A, D, B, ADAt):
-    return _densemat.MultADBt(A, D, B, ADAt)
+def MultADBt(A, D, B, ADBt):
+    return _densemat.MultADBt(A, D, B, ADBt)
 MultADBt = _densemat.MultADBt
 
 def AddMultABt(A, B, ABt):
     return _densemat.AddMultABt(A, B, ABt)
 AddMultABt = _densemat.AddMultABt
+
+def AddMultADBt(A, D, B, ADBt):
+    return _densemat.AddMultADBt(A, D, B, ADBt)
+AddMultADBt = _densemat.AddMultADBt
+
+def AddMult_a_ABt(a, A, B, ABt):
+    return _densemat.AddMult_a_ABt(a, A, B, ABt)
+AddMult_a_ABt = _densemat.AddMult_a_ABt
 
 def MultAtB(A, B, AtB):
     return _densemat.MultAtB(A, B, AtB)
@@ -649,6 +670,9 @@ class DenseTensor(_object):
 
     def AddMult(self, elem_dof, x, y):
         return _densemat.DenseTensor_AddMult(self, elem_dof, x, y)
+
+    def Clear(self):
+        return _densemat.DenseTensor_Clear(self)
     __swig_destroy__ = _densemat.delete_DenseTensor
     __del__ = lambda self: None
 DenseTensor_swigregister = _densemat.DenseTensor_swigregister

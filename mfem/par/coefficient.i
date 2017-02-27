@@ -12,6 +12,7 @@
 %module(directors="1")  coefficient
 /*%module  coefficient*/
 %{
+#include "config/config.hpp"      
 #include "fem/fem.hpp"
 #include "fem/fe_coll.hpp"
 #include "fem/fespace.hpp"
@@ -28,8 +29,8 @@
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
-#define MFEM_USE_MPI  
 %}
+%include  "config/_config.hpp" // include mfem MACRO
 //%import "general/array.hpp"
 %import "array.i"
 %import "matrix.i"
@@ -38,7 +39,7 @@
 %import "densemat.i"
 %import "vector.i"
 %import "eltrans.i"
-#define MFEM_USE_MPI  
+
 //%import "pmesh.i"
 %ignore Function;
 %ignore DeltaCoefficient;
@@ -223,7 +224,7 @@ class PyCoefficient(PyCoefficientBase):
 class PyCoefficientT(PyCoefficientBase):
    def __init__(self):
        PyCoefficientBase.__init__(self, 1)
-   def _EvalPyT(self, x, t, V):
+   def _EvalPyT(self, x, t):
        return self.EvalValue(x.GetDataArray(), t)
    def EvalValue(self, x, t):
        return 0.0

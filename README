@@ -1,5 +1,5 @@
 '''''
-PyMFEM
+PyMFEM for mfem 3.3
 '''''
 PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
@@ -43,9 +43,11 @@ to find more detail of the MFEM libirary.
 	    make config
 	    mamke -j	 
 
-  0-2) HYPRE
+  0-3) HYPRE
 	 for parallel MFEM is used
-
+  0-4) boost
+         used for wrapping std::iostream
+	  
 1:  recompile MFEM with -fPIC option
     This may not be necessary. (I didn't need it on MacOSX, 
     I don't know why)     
@@ -145,6 +147,13 @@ This is needed only when you edit SWIG interface files.
        Cof_Jt = Jt(3) // VectorPyCoefficient constructor need sdim 
        dd = mfem.VectorFEBoundaryTangentLFIntegrator(Cof_Jt);
 
+       If one wants to call Eval with a transformation object and
+       an integration point, and one can inherit PyCoefficientBase
+       (or their Vector/Matrix version) and overwrite Eval methods.
+       These classes are defined as a director classes in c++.
+       Therefore, if one overwrite Eval method, SWIG reroute the
+       call to the Python side.
+
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
        return numpy array of Vector()
@@ -197,6 +206,10 @@ This is needed only when you edit SWIG interface files.
          GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
          GetBdrAttributeArray(int idx) returns array of boundary attribute
 
+         SwapNodes returns nodes and onws_nodes as follows.
+	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
+	    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
+
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.
@@ -211,6 +224,10 @@ This is needed only when you edit SWIG interface files.
 	 
   4-6) densemat
          Add functions are accessed as add_dense.
+	 elements are accessed similar to a regular python array
+	      densmat[i,j] = xxx
+	      x = densmat[i,j]
+	 GetDataArray returns copy of data
 	 
   4-7) estimators
         ZienkiewiczZhuEstimator and L2ZienkiewZhuEstimator
@@ -259,18 +276,31 @@ This is needed only when you edit SWIG interface files.
 
    4-11) socketstream
 
-         socketstream object support << operator partially. This is done by
-	 adding __lshift__ and other methos to socketstream class in .i file.
-	 We don't want to wrap the whole iostream. Instead, we are adding
-	 methods used in examples such as precision. Also, note that
-	 sock << flush in c++ should be rephrased sock.flush()
+         socketstream in PyMFEM has send_text and send_solution. These
+	 method also send endl and flush. One can use them as follows
+	 
+         (example)
+           sock = mfem.socketstream("localhost", 19916)
+           sock.precision(8)
+           sock.send_text("parallel " + str(num_procs) +  " " + str(myid))    
+           sock.send_solution(pmesh, x)
+	 
+         socketstream object support << operator partially, but not works
+	 perfectly. This was done by adding __lshift__ and other methos to
+	 socketstream class in .i file. We don't want to wrap the whole
+	 iostream. Instead, we are adding methods used in examples such as
+	 precision. Also, note that sock << flush in c++ should be rephrased
+	 sock.flush()
+	   
+   4-12) std::ostream&
+
+         methods which takes std::ostream& are wrapped so that one can
+	 pass python file object.
 
          (example)
-           sol_sock = mfem.socketstream("localhost", 19916)
-           sol_sock.precision(8)
-           sol_sock << "solution\n" << mesh << x
-           sol_sock.flush()
-	
+	    sparsmat.PrintInfo(sys.stdout)
+       
+
 -- Known issues --
 
   PyMFEM is a on-going effort. Not all MFEM functioality is propary
@@ -291,7 +321,8 @@ This is needed only when you edit SWIG interface files.
       this by adjusting thisown flag, but the approach may not 
       work in a different scenario.
 
-  4) Visualization through visit is not included. Visulaization
-     using socketsteram is on-going work.
+  4) Visualization through visit is not included
+
+  5) SuperLU and Petsc are not supported.
   
 *This work is supported by US DoE contract DE-FC02-99ER54512

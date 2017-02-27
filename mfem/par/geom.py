@@ -99,6 +99,7 @@ except Exception:
 
 import intrules
 import array
+import ostream_typemap
 import densemat
 import vector
 import operators
@@ -201,9 +202,13 @@ class RefinedGeometry(_object):
     __swig_getmethods__["RefEdges"] = _geom.RefinedGeometry_RefEdges_get
     if _newclass:
         RefEdges = _swig_property(_geom.RefinedGeometry_RefEdges_get)
+    __swig_setmethods__["NumBdrEdges"] = _geom.RefinedGeometry_NumBdrEdges_set
+    __swig_getmethods__["NumBdrEdges"] = _geom.RefinedGeometry_NumBdrEdges_get
+    if _newclass:
+        NumBdrEdges = _swig_property(_geom.RefinedGeometry_NumBdrEdges_get, _geom.RefinedGeometry_NumBdrEdges_set)
 
-    def __init__(self, NPts, NRefG, NRefE):
-        this = _geom.new_RefinedGeometry(NPts, NRefG, NRefE)
+    def __init__(self, NPts, NRefG, NRefE, NBdrE=0):
+        this = _geom.new_RefinedGeometry(NPts, NRefG, NRefE, NBdrE)
         try:
             self.this.append(this)
         except Exception:

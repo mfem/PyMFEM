@@ -97,8 +97,12 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_solvers.MFEM_TIMER_TYPE_swigconstant(_solvers)
+MFEM_TIMER_TYPE = _solvers.MFEM_TIMER_TYPE
 import vector
 import array
+import ostream_typemap
 import operators
 import matrix
 import sparsemat

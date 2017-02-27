@@ -103,6 +103,7 @@ MFEM_USE_MPI = _solvers_p.MFEM_USE_MPI
 import operators
 import vector
 import array
+import ostream_typemap
 class IterativeSolver(operators.Solver):
     __swig_setmethods__ = {}
     for _s in [operators.Solver]:

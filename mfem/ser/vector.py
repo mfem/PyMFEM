@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 
 def add_vector(*args):
     return _vector.add_vector(*args)
@@ -133,6 +134,9 @@ class Vector(_object):
 
     def Size(self):
         return _vector.Vector_Size(self)
+
+    def Capacity(self):
+        return _vector.Vector_Capacity(self)
 
     def GetData(self):
         return _vector.Vector_GetData(self)

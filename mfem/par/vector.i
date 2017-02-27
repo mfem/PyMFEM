@@ -8,7 +8,8 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"
+#include "iostream_typemap.hpp"           
 %}
 
 // initialization required to return numpy array from SWIG
@@ -16,7 +17,7 @@
 import_array();
 %}
 %import "array.i"
- //%import "gridfunc.i"
+%import "ostream_typemap.i"
 
 %typemap(in)  (double *_data){// int _size){
   int i, si;

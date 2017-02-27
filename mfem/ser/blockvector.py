@@ -91,6 +91,7 @@ except AttributeError:
 
 
 import array
+import ostream_typemap
 import vector
 class BlockVector(vector.Vector):
     __swig_setmethods__ = {}

@@ -1,7 +1,8 @@
 %module sparsemat
 
 %{
-#include "linalg/sparsemat.hpp"
+#include "linalg/sparsemat.hpp"  
+#include "iostream_typemap.hpp"  
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"               
   %}
@@ -22,6 +23,8 @@ import_array();
 %pythonappend mfem::SparseMatrix::operator+= %{
     val.thisown = self.thisown
 %}
+
+%import "ostream_typemap.i"
 
 // RAP_P, RAP_R replaces RAP, since RAP has two definition one accept
 // pointer and the other accept reference. From Python, two

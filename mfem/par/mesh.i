@@ -1,10 +1,5 @@
 %module mesh
 %{
-#define MFEM_USE_MPI  
-#include "mesh/mesh_headers.hpp"
-#include "fem/fem.hpp"
-#include "general/array.hpp"
-
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -12,12 +7,19 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "config/config.hpp"      
+#include "mesh/mesh_headers.hpp"
+#include "fem/fem.hpp"
+#include "general/array.hpp"
+
 mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
+#include "iostream_typemap.hpp"   
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp" 
 %}
+
 %init %{
 import_array();
 %}
@@ -28,6 +30,7 @@ import_array();
 %import "vector.i"
 %import "element.i"
 %import "vertex.i"
+%import "gridfunc.i"
 %import "mesh/mesquite.hpp"
 %import "densemat.i"
 %import "sparsemat.i"
@@ -38,6 +41,7 @@ import_array();
 %import "coefficient.i"
 %import "fe.i"
 
+%import "ostream_typemap.i"
 //
 %pointer_class(int, intp);
 //  conversion of Int (can handle numpy int)
@@ -140,6 +144,8 @@ if (!SWIG_IsOK(res2)){
   $1 = &own_nodes;
 } 
 %typemap(argout) (mfem::GridFunction *&nodes){
+  Py_XDECREF($result);
+  $result = PyList_New(0);
   %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
  }   
 %typemap(argout) int &own_nodes_{

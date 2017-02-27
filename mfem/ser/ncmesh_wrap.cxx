@@ -3453,26 +3453,26 @@ namespace Swig {
 
 #define SWIGTYPE_p_char swig_types[0]
 #define SWIGTYPE_p_hex_t swig_types[1]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[3]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[4]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Vertex_t swig_types[5]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[6]
-#define SWIGTYPE_p_mfem__DenseTensor swig_types[7]
-#define SWIGTYPE_p_mfem__Embedding swig_types[8]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[9]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[10]
-#define SWIGTYPE_p_mfem__Mesh swig_types[11]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[12]
-#define SWIGTYPE_p_mfem__NCMesh__GeomInfo swig_types[13]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[14]
-#define SWIGTYPE_p_mfem__Refinement swig_types[15]
-#define SWIGTYPE_p_mfem__STable swig_types[16]
-#define SWIGTYPE_p_mfem__Table swig_types[17]
-#define SWIGTYPE_p_quad_t swig_types[18]
-#define SWIGTYPE_p_seg_t swig_types[19]
-#define SWIGTYPE_p_std__istream swig_types[20]
-#define SWIGTYPE_p_std__ostream swig_types[21]
+#define SWIGTYPE_p_intp swig_types[2]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[5]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Vertex_t swig_types[6]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[7]
+#define SWIGTYPE_p_mfem__DenseTensor swig_types[8]
+#define SWIGTYPE_p_mfem__Embedding swig_types[9]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[10]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[11]
+#define SWIGTYPE_p_mfem__Mesh swig_types[12]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[13]
+#define SWIGTYPE_p_mfem__NCMesh__GeomInfo swig_types[14]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[15]
+#define SWIGTYPE_p_mfem__Refinement swig_types[16]
+#define SWIGTYPE_p_mfem__STable swig_types[17]
+#define SWIGTYPE_p_mfem__Table swig_types[18]
+#define SWIGTYPE_p_quad_t swig_types[19]
+#define SWIGTYPE_p_seg_t swig_types[20]
+#define SWIGTYPE_p_std__istream swig_types[21]
 #define SWIGTYPE_p_tet_t swig_types[22]
 #define SWIGTYPE_p_tri_t swig_types[23]
 static swig_type_info *swig_types[25];
@@ -3581,8 +3581,9 @@ namespace swig {
 }
 
 
-  #include "mesh/ncmesh.hpp"
-  #include "numpy/arrayobject.h"    
+#include "iostream_typemap.hpp"           
+#include "mesh/ncmesh.hpp"
+#include "numpy/arrayobject.h"    
 
 
 SWIGINTERNINLINE PyObject*
@@ -4525,6 +4526,39 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_embeddings_get(PyObject *SW
   arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
   result = (mfem::Array< mfem::Embedding > *)& ((arg1)->embeddings);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CoarseFineTransformations_Clear(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CoarseFineTransformations *arg1 = (mfem::CoarseFineTransformations *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CoarseFineTransformations_Clear",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CoarseFineTransformations, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoarseFineTransformations_Clear" "', argument " "1"" of type '" "mfem::CoarseFineTransformations *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
+  {
+    try {
+      (arg1)->Clear(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -5488,8 +5522,7 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents(PyObject *SWIGUNUSEDPARM(se
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  boost_ofdstream *stream2 = NULL ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5499,14 +5532,18 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintVertexParents" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintVertexParents" "', argument " "2"" of type '" "std::ostream &""'"); 
+  {
+    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
+    if (!f) {
+      SWIG_Error(SWIG_TypeError, "File object expected.");
+      SWIG_fail;
+    }
+    else {
+      // If threaded incrment the use count
+      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
+      arg2 = new std::ostream(stream2);
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NCMesh_PrintVertexParents" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     try {
       ((mfem::NCMesh const *)arg1)->PrintVertexParents(*arg2); 
@@ -5521,8 +5558,16 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents(PyObject *SWIGUNUSEDPARM(se
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    delete arg2;
+    delete stream2;
+  }
   return resultobj;
 fail:
+  {
+    delete arg2;
+    delete stream2;
+  }
   return NULL;
 }
 
@@ -5533,8 +5578,7 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements(PyObject *SWIGUNUSEDPARM(s
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  boost_ofdstream *stream2 = NULL ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5544,14 +5588,18 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_PrintCoarseElements" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NCMesh_PrintCoarseElements" "', argument " "2"" of type '" "std::ostream &""'"); 
+  {
+    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
+    if (!f) {
+      SWIG_Error(SWIG_TypeError, "File object expected.");
+      SWIG_fail;
+    }
+    else {
+      // If threaded incrment the use count
+      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
+      arg2 = new std::ostream(stream2);
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NCMesh_PrintCoarseElements" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     try {
       ((mfem::NCMesh const *)arg1)->PrintCoarseElements(*arg2); 
@@ -5566,8 +5614,16 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements(PyObject *SWIGUNUSEDPARM(s
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
+  {
+    delete arg2;
+    delete stream2;
+  }
   return resultobj;
 fail:
+  {
+    delete arg2;
+    delete stream2;
+  }
   return NULL;
 }
 
@@ -5842,6 +5898,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, NULL},
 	 { (char *)"CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_VARARGS, NULL},
 	 { (char *)"CoarseFineTransformations_embeddings_get", _wrap_CoarseFineTransformations_embeddings_get, METH_VARARGS, NULL},
+	 { (char *)"CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_VARARGS, NULL},
 	 { (char *)"new_CoarseFineTransformations", _wrap_new_CoarseFineTransformations, METH_VARARGS, NULL},
 	 { (char *)"delete_CoarseFineTransformations", _wrap_delete_CoarseFineTransformations, METH_VARARGS, NULL},
 	 { (char *)"CoarseFineTransformations_swigregister", CoarseFineTransformations_swigregister, METH_VARARGS, NULL},
@@ -5885,6 +5942,7 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 }
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Embedding_t = {"_p_mfem__ArrayT_mfem__Embedding_t", "mfem::Array< mfem::Embedding > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Refinement_t = {"_p_mfem__ArrayT_mfem__Refinement_t", "mfem::Array< mfem::Refinement > *", 0, 0, (void*)0, 0};
@@ -5904,13 +5962,13 @@ static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_hex_t,
+  &_swigt__p_intp,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__Embedding_t,
   &_swigt__p_mfem__ArrayT_mfem__Refinement_t,
@@ -5930,13 +5988,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_std__istream,
-  &_swigt__p_std__ostream,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Embedding_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Embedding_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Refinement_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Refinement_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5956,13 +6014,13 @@ static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_hex_t,
+  _swigc__p_intp,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__Embedding_t,
   _swigc__p_mfem__ArrayT_mfem__Refinement_t,
@@ -5982,7 +6040,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_std__istream,
-  _swigc__p_std__ostream,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
 };

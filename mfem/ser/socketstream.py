@@ -101,6 +101,7 @@ import mesh
 import matrix
 import vector
 import array
+import ostream_typemap
 import operators
 import ncmesh
 import element
@@ -187,11 +188,20 @@ class socketstream(_object):
     def precision(self, *args):
         return _socketstream.socketstream_precision(self, *args)
 
-    def __lshift__(self, *args):
-        return _socketstream.socketstream___lshift__(self, *args)
+    def send_solution(self, mesh, gf):
+        return _socketstream.socketstream_send_solution(self, mesh, gf)
+
+    def send_text(self, ostr):
+        return _socketstream.socketstream_send_text(self, ostr)
 
     def flush(self):
         return _socketstream.socketstream_flush(self)
+
+    def __lshift__(self, *args):
+        return _socketstream.socketstream___lshift__(self, *args)
+
+    def endline(self):
+        return _socketstream.socketstream_endline(self)
 socketstream_swigregister = _socketstream.socketstream_swigregister
 socketstream_swigregister(socketstream)
 

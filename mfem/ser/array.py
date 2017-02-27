@@ -90,6 +90,7 @@ except AttributeError:
     _newclass = 0
 
 
+import ostream_typemap
 class BaseArray(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, BaseArray, name, value)
@@ -185,8 +186,11 @@ class intArray(BaseArray):
     def Print(self, *args):
         return _array.intArray_Print(self, *args)
 
-    def Save(self, out):
-        return _array.intArray_Save(self, out)
+    def Save(self, out, fmt=0):
+        return _array.intArray_Save(self, out, fmt)
+
+    def Load(self, *args):
+        return _array.intArray_Load(self, *args)
 
     def Max(self):
         return _array.intArray_Max(self)
@@ -317,8 +321,11 @@ class doubleArray(BaseArray):
     def Print(self, *args):
         return _array.doubleArray_Print(self, *args)
 
-    def Save(self, out):
-        return _array.doubleArray_Save(self, out)
+    def Save(self, out, fmt=0):
+        return _array.doubleArray_Save(self, out, fmt)
+
+    def Load(self, *args):
+        return _array.doubleArray_Load(self, *args)
 
     def Max(self):
         return _array.doubleArray_Max(self)

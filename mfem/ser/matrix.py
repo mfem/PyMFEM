@@ -99,6 +99,7 @@ except Exception:
 
 import vector
 import array
+import ostream_typemap
 import operators
 class Matrix(operators.Operator):
     __swig_setmethods__ = {}

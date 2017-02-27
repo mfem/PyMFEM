@@ -97,13 +97,17 @@ except Exception:
     weakref_proxy = lambda x: x
 
 
+
+_pgridfunc.MFEM_TIMER_TYPE_swigconstant(_pgridfunc)
+MFEM_TIMER_TYPE = _pgridfunc.MFEM_TIMER_TYPE
 import pfespace
-import fespace
-import array
+import operators
 import vector
+import array
+import ostream_typemap
+import fespace
 import coefficient
 import matrix
-import operators
 import intrules
 import sparsemat
 import densemat
@@ -156,14 +160,17 @@ class ParGridFunction(gridfunc.GridFunction):
     def SetSpace(self, f):
         return _pgridfunc.ParGridFunction_SetSpace(self, f)
 
-    def MakeRef(self, f, v, v_offset):
-        return _pgridfunc.ParGridFunction_MakeRef(self, f, v, v_offset)
+    def MakeRef(self, *args):
+        return _pgridfunc.ParGridFunction_MakeRef(self, *args)
 
     def Distribute(self, *args):
         return _pgridfunc.ParGridFunction_Distribute(self, *args)
 
     def AddDistribute(self, *args):
         return _pgridfunc.ParGridFunction_AddDistribute(self, *args)
+
+    def SetFromTrueDofs(self, tv):
+        return _pgridfunc.ParGridFunction_SetFromTrueDofs(self, tv)
 
     def Assign(self, *args):
         return _pgridfunc.ParGridFunction_Assign(self, *args)

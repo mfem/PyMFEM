@@ -15,6 +15,7 @@ from  blockvector import *
 from  blockmatrix import *
 from  coefficient import *
 from  lininteg import *
+from  handle import *
 from  mesh import *
 from  fe_coll import *
 from  vector import *
@@ -43,6 +44,7 @@ from  pmesh import *
 from  pfespace import *
 from  plinearform import *
 from  pbilinearform import *
+from  pnonlinearform import *
 from  pgridfunc import *
 from  hypre import *
 

@@ -99,6 +99,7 @@ except Exception:
 
 import coefficient
 import array
+import ostream_typemap
 import matrix
 import vector
 import operators
@@ -156,14 +157,15 @@ class LinearForm(vector.Vector):
         return _linearform.LinearForm_AddBoundaryIntegrator(self, lfi)
 
 
-    def AddBdrFaceIntegrator(self, lfi):
+    def AddBdrFaceIntegrator(self, *args):
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        lfi = args[0]	     
         self._integrators.append(lfi)
         lfi.thisown=0 
 
 
-        return _linearform.LinearForm_AddBdrFaceIntegrator(self, lfi)
+        return _linearform.LinearForm_AddBdrFaceIntegrator(self, *args)
 
 
     def Assemble(self):

@@ -1,6 +1,7 @@
 %module densemat
 
 %{
+#include "iostream_typemap.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
@@ -14,6 +15,7 @@ import_array();
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
+%import "ostream_typemap.i"
 
 %rename(Assign) mfem::DenseMatrix::operator=;
 %feature("shadow") mfem::DenseMatrix::operator+= %{
