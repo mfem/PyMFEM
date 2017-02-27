@@ -120,17 +120,17 @@ import element
 import geom
 import table
 import vertex
+import gridfunc
+import bilininteg
 import fe_coll
 import lininteg
+import linearform
 import pfespace
 import pmesh
 import pncmesh
 import communication
 import sets
 import bilinearform
-import bilininteg
-import gridfunc
-import linearform
 class ParBilinearForm(bilinearform.BilinearForm):
     __swig_setmethods__ = {}
     for _s in [bilinearform.BilinearForm]:
@@ -185,9 +185,6 @@ class ParBilinearForm(bilinearform.BilinearForm):
     def GetRestriction(self):
         return _pbilinearform.ParBilinearForm_GetRestriction(self)
 
-    def FormSystemMatrix(self, ess_tdof_list, A):
-        return _pbilinearform.ParBilinearForm_FormSystemMatrix(self, ess_tdof_list, A)
-
     def RecoverFEMSolution(self, X, b, x):
         return _pbilinearform.ParBilinearForm_RecoverFEMSolution(self, X, b, x)
 
@@ -198,6 +195,9 @@ class ParBilinearForm(bilinearform.BilinearForm):
 
     def FormLinearSystem(self, *args):
         return _pbilinearform.ParBilinearForm_FormLinearSystem(self, *args)
+
+    def FormSystemMatrix(self, *args):
+        return _pbilinearform.ParBilinearForm_FormSystemMatrix(self, *args)
 ParBilinearForm_swigregister = _pbilinearform.ParBilinearForm_swigregister
 ParBilinearForm_swigregister(ParBilinearForm)
 

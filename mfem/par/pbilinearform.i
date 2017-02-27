@@ -30,7 +30,7 @@ import_array();
 %template(FormLinearSystem) mfem::ParBilinearForm::FormLinearSystem<T >;
 %enddef
 %define FORM_SYSTEM_MATRIX_WRAP(T)
-%template(FormLinearSystem) mfem::ParBilinearForm::FormSystemMatrix<T >;
+%template(FormSystemMatrix) mfem::ParBilinearForm::FormSystemMatrix<T >;
 %enddef
 
 // instatitate template methods (step 2: Instantiation)

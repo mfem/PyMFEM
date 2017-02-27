@@ -2,30 +2,35 @@
    MFEM example 16
 
    How to run:
-      python <arguments>
+      mpirun -np 4 python <arguments>
 
    Example of arguments:
-      ex16.py -m inline-tri.mesh
-      ex16.py -m disc-nurbs.mesh -tf 2
-      ex16.py -s 1 -a 0.0 -k 1.0
-      ex16.py -s 2 -a 1.0 -k 0.0
-      ex16.py -s 3 -a 0.5 -k 0.5 -o 4
-      ex16.py -s 14 -dt 1.0e-4 -tf 4.0e-2 -vs 40
-      ex16.py -m fichera-q2.mesh
-      ex16.py -m escher.mesh
-      ex16.py -m beam-tet.mesh -tf 10 -dt 0.1
-      ex16.py -m amr-quad.mesh -o 4 -r 0
-      ex16.py -m amr-hex.mesh -o 2 -r 0
-
+      ex16p.py -m inline-tri.mesh
+      ex16p.py -m disc-nurbs.mesh -tf 2
+      ex16p.py -s 1 -a 0.0 -k 1.0
+      ex16p.py -s 2 -a 1.0 -k 0.0
+      ex16p.py -s 3 -a 0.5 -k 0.5 -o 4
+      ex16p.py -s 14 -dt 1.0e-4 -tf 4.0e-2 -vs 40
+      ex16p.py -m fichera-q2.mesh
+      ex16p.py -m escher.mesh
+      ex16p.py -m beam-tet.mesh -tf 10 -dt 0.1
+      ex16p.py -m amr-quad.mesh -o 4 -rs 0 -rp 0
+      ex16p.py -m amr-hex.mesh -o 2 -rs 0 -rp 0
 '''
 import sys
 from mfem.common.arg_parser import ArgParser
 from os.path import expanduser, join
 import numpy as np
-from mfem import path
+from numpy import sqrt, pi, cos, sin, hypot, arctan2
+from scipy.special import erfc
 
-import mfem.ser as mfem
-from mfem.ser import intArray
+from mfem import path
+from mfem.par import intArray, add_vector, add_sparse
+import mfem.par as mfem
+from mpi4py import MPI
+
+num_procs = MPI.COMM_WORLD.size
+myid      = MPI.COMM_WORLD.rank
 
 class ConductionOperator(mfem.PyTimeDependentOperator):
     def __init__(self, fespace, alpha, kappa, u):
@@ -39,16 +44,16 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
         self.fespace = fespace
 
         self.ess_tdof_list = intArray()
-        self.Mmat = mfem.SparseMatrix()
-        self.Kmat = mfem.SparseMatrix()
-        self.M_solver = mfem.CGSolver()
-        self.M_prec = mfem.DSmoother()
-        self.T_solver = mfem.CGSolver()
-        self.T_prec = mfem.DSmoother()
+        self.Mmat = mfem.HypreParMatrix()
+        self.Kmat = mfem.HypreParMatrix()
+        self.M_solver = mfem.CGSolver(fespace.GetComm())
+        self.M_prec = mfem.HypreSmoother()
+        self.T_solver = mfem.CGSolver(fespace.GetComm())
+        self.T_prec = mfem.HypreSmoother()
         self.z = mfem.Vector(self.Height())
 
 
-        self.M = mfem.BilinearForm(fespace)
+        self.M = mfem.ParBilinearForm(fespace)
         self.M.AddDomainIntegrator(mfem.MassIntegrator())
         self.M.Assemble()
         self.M.FormSystemMatrix(self.ess_tdof_list, self.Mmat);
@@ -56,8 +61,9 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
         self.M_solver.iterative_mode = False
         self.M_solver.SetRelTol(rel_tol)
         self.M_solver.SetAbsTol(0.0);
-        self.M_solver.SetMaxIter(30);
+        self.M_solver.SetMaxIter(100);
         self.M_solver.SetPrintLevel(0);
+        self.M_prec.SetType(mfem.HypreSmoother.Jacobi)
         self.M_solver.SetPreconditioner(self.M_prec);
         self.M_solver.SetOperator(self.Mmat);
 
@@ -82,7 +88,7 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
         #    du_dt = M^{-1}*[-K(u + dt*du_dt)]
         #    for du_dt
         if self.T is None:
-            self.T = mfem.add_sparse(1.0, self.Mmat, dt, self.Kmat)
+            self.T = mfem.add_hypre(1.0, self.Mmat, dt, self.Kmat)
             current_dt = dt;
             self.T_solver.SetOperator(self.T)
         self.Kmat.Mult(u, self.z)
@@ -90,15 +96,15 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
         self.T_solver.Mult(self.z, du_dt)
 
     def SetParameters(self, u):
-        u_alpha_gf = mfem.GridFunction(self.fespace)
+        u_alpha_gf = mfem.ParGridFunction(self.fespace)
         u_alpha_gf.SetFromTrueDofs(u);
         for i in range(u_alpha_gf.Size()):
              u_alpha_gf[i] = self.kappa + self.alpha * u_alpha_gf[i]
 
-        self.K = mfem.BilinearForm(self.fespace)        
+        self.K = mfem.ParBilinearForm(self.fespace)        
         u_coeff = mfem.GridFunctionCoefficient(u_alpha_gf)
         self.K.AddDomainIntegrator(mfem.DiffusionIntegrator(u_coeff))
-        self.K.Assemble()
+        self.K.Assemble(0)
         self.K.FormSystemMatrix(self.ess_tdof_list, self.Kmat)
         self.T = None
 
@@ -109,14 +115,18 @@ class InitialTemperature(mfem.PyCoefficient):
         if norm2 < 0.5: return 2.0
         return 1.0
 
-parser = ArgParser(description='Ex16')
+parser = ArgParser(description='Ex16p')
 parser.add_argument('-m', '--mesh',
                     default = 'star.mesh',
                     action = 'store', type = str,
                     help='Mesh file to use.')
-parser.add_argument('-r', '--refine',
+parser.add_argument('-rs', '--refine-serial',
                     action = 'store', default = 2, type=int,
-       help = "Number of times to refine the mesh uniformly, -1 for auto.")
+       help = "Number of times to refine the mesh uniformly in serial")
+parser.add_argument('-rp', '--refine-parallel',
+                    action = 'store', default = 1, type=int,
+       help = "Number of times to refine the mesh uniformly in parallel")
+
 parser.add_argument('-o', '--order',
                     action = 'store', default = 2, type=int,
                     help = "Finite element order (polynomial degree)");
@@ -144,7 +154,8 @@ parser.add_argument('-vs', '--visualization-steps',
                     help = "Visualize every n-th timestep.");                    
 
 args = parser.parse_args()
-ref_levels = args.refine
+ser_ref_levels = args.refine_serial
+par_ref_levels = args.refine_parallel
 order = args.order
 dt = args.time_step
 t_final = args.t_final
@@ -153,15 +164,16 @@ kappa = args.kappa;
 visualization = args.visualization
 vis_steps = args.visualization_steps
 ode_solver_type = args.ode_solver
-parser.print_options(args)
+if myid == 0: parser.print_options(args)
 
-# 2. Read the mesh from the given mesh file. We can handle triangular,
-#    quadrilateral, tetrahedral and hexahedral meshes with the same code.
+# 3. Read the serial mesh from the given mesh file on all processors. We can
+#    handle triangular, quadrilateral, tetrahedral and hexahedral meshes
+#    with the same code.
 meshfile =expanduser(join(path, 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
 
-# 3. Define the ODE solver used for time integration. Several implicit
+# 4. Define the ODE solver used for time integration. Several implicit
 #    singly diagonal implicit Runge-Kutta (SDIRK) methods, as well as
 #    explicit Runge-Kutta methods are available.
 if   ode_solver_type == 1:   ode_solver = BackwardEulerSolver()
@@ -177,41 +189,57 @@ elif ode_solver_type == 24:  ode_solver = mfem.SDIRK34Solver()
 else:
     print( "Unknown ODE solver type: " + str(ode_solver_type))
     exit
-# 4. Refine the mesh to increase the resolution. In this example we do
-#    'ref_levels' of uniform refinement, where 'ref_levels' is a
-#    command-line parameter.
-for lev in range(ref_levels):
+# 5. Refine the mesh in serial to increase the resolution. In this example
+#    we do 'ser_ref_levels' of uniform refinement, where 'ser_ref_levels' is
+#    a command-line parameter.
+for lev in range(ser_ref_levels):
     mesh.UniformRefinement()
-# 5. Define the vector finite element space representing the current and the
+
+# 6. Define a parallel mesh by a partitioning of the serial mesh. Refine
+#    this mesh further in parallel to increase the resolution. Once the
+#    parallel mesh is defined, the serial mesh can be deleted.
+pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+del mesh
+for x in range(par_ref_levels):
+    pmesh.UniformRefinement();
+   
+# 7. Define the vector finite element space representing the current and the
 #    initial temperature, u_ref.
 fe_coll = mfem.H1_FECollection(order, dim)
-fespace = mfem.FiniteElementSpace(mesh, fe_coll)
-fe_size = fespace.GetTrueVSize();
-print( "Number of temperature unknowns: " + str(fe_size))
-u_gf = mfem.GridFunction(fespace)
+fespace = mfem.ParFiniteElementSpace(pmesh, fe_coll)
 
-# 6. Set the initial conditions for u. All boundaries are considered
+fe_size = fespace.GlobalTrueVSize();
+if myid == 0:
+    print( "Number of temperature unknowns: " + str(fe_size))
+u_gf = mfem.ParGridFunction(fespace)
+
+# 8. Set the initial conditions for u. All boundaries are considered
 #    natural.
 u_0 = InitialTemperature()
 u_gf.ProjectCoefficient(u_0);
 u = mfem.Vector()
 u_gf.GetTrueDofs(u)
 
-# 7. Initialize the conduction operator and the visualization.
+# 9. Initialize the conduction operator and the visualization.
 oper = ConductionOperator(fespace, alpha, kappa, u)  
 u_gf.SetFromTrueDofs(u)
 
-mesh.PrintToFile('ex16.mesh', 8)
-u_gf.SaveToFile('ex16-init.gf', 8)
+smyid = '{:0>6d}'.format(myid)
+mesh_name  =  "ex16-mesh."+smyid
+sol_name   =  "ex16-init."+smyid
+pmesh.PrintToFile(mesh_name, 8)
+u_gf.SaveToFile(sol_name, 8)
 
 if visualization:
     sout =  mfem.socketstream("localhost", 19916)
+    sout.send_text("parallel " + str(num_procs) +  " " + str(myid))                
     sout.precision(8)
-    sout << "solution\n" << mesh << u_gf
-    sout << "pause\n"
+    sout.send_solution(pmesh, u_gf)
+    sout.send_text("pause")
     sout.flush()
-    print("GLVis visualization paused.")
-    print(" Press space (in the GLVis window) to resume it.")
+    if myid == 0:
+         print("GLVis visualization paused.")
+         print(" Press space (in the GLVis window) to resume it.")
 
 # 8. Perform time-integration (looping over the time iterations, ti, with a
 #    time-step dt).
@@ -225,14 +253,16 @@ while not last_step:
     t, dt = ode_solver.Step(u, t, dt)
 
     if (last_step or (ti % vis_steps) == 0):
-         print("step "  + str(ti) + ", t = " +str(t))
+         if myid == 0: print("step "  + str(ti) + ", t = " +str(t))
          u_gf.SetFromTrueDofs(u);
          if (visualization):
-             sout << "solution\n" << mesh << u_gf
+             sout.send_text("parallel " + str(num_procs) +  " " + str(myid))        
+             sout.send_solution(pmesh, u_gf)
              sout.flush()
 
     oper.SetParameters(u)
 
-# 9. Save the final solution. This output can be viewed later using GLVis:
-#    "glvis -m ex16.mesh -g ex16-final.gf".
-u_gf.SaveToFile('ex16-final.gf', 8)
+# 11. Save the final solution in parallel. This output can be viewed later
+#     using GLVis: "glvis -np <np> -m ex16-mesh -g ex16-final".
+sol_name   =  "ex16-final."+smyid
+u_gf.SaveToFile(sol_name, 8)
