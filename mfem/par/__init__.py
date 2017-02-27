@@ -44,6 +44,7 @@ from  pmesh import *
 from  pfespace import *
 from  plinearform import *
 from  pbilinearform import *
+from  pnonlinearform import *
 from  pgridfunc import *
 from  hypre import *
 

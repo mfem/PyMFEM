@@ -15,6 +15,7 @@
 import_array();
 %}
 */
+%import vector.i
 %import nonlinearform.i
 %import pfespace.i
 %import pgridfunc.i

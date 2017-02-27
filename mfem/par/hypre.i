@@ -115,6 +115,7 @@ typedef int HYPRE_Int;
 #    val.thisown = 0
     return self
 %}
+%rename(add_hypre) mfem::Add;
 %include "linalg/hypre.hpp"
 
 %extend mfem::HypreParVector {

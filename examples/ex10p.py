@@ -1,32 +1,50 @@
 '''
-   MFEM example 10
+   MFEM example 10p
 
       This examples solves a time dependent nonlinear elasticity
       problem of the form dv/dt = H(x) + S v, dx/dt = v, where H is a
       hyperelastic model and S is a viscosity operator of Laplacian
       type.
 
-      refinement loop. 
-      See c++ version in the MFEM library for more detail 
+   How to run:
+      mpirun -np 4 python <arguments>
+
+   Example of arguments:
+      ex10p.py -m beam-quad.mesh -s 3 -rs 2 -dt 3
+      ex10p.py -m beam-tri.mesh -s 3 -rs 2 -dt 3
+      ex10p.py -m beam-hex.mesh -s 2 -rs 1 -dt 3
+      ex10p.py -m beam-tet.mesh -s 2 -rs 1 -dt 3
+      ex10p.py -m beam-quad.mesh -s 14 -rs 2 -dt 0.03 -vs 20
+      ex10p.py -m beam-hex.mesh -s 14 -rs 1 -dt 0.05 -vs 20
+
+   See c++ version in the MFEM library for more detail 
 '''
 import sys
 from mfem.common.arg_parser import ArgParser
-from mfem import path
-import mfem.ser as mfem
-from mfem.ser import intArray, add_vector, add_sparse
 from os.path import expanduser, join
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
-parser = ArgParser(description='Ex10')
+from mfem import path
+from mfem.par import intArray, add_vector, add_sparse
+import mfem.par as mfem
+from mpi4py import MPI
+
+num_procs = MPI.COMM_WORLD.size
+myid      = MPI.COMM_WORLD.rank
+
+parser = ArgParser(description='Ex10p')
 parser.add_argument('-m', '--mesh',
                     default = 'beam-quad.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
-parser.add_argument('-r', '--refine-serial',
+parser.add_argument('-rs', '--refine-serial',
                     action = 'store', default = 2, type=int,
        help = "Number of times to refine the mesh uniformly before parallel")
+parser.add_argument('-rp', '--refine-parallel',
+                    action = 'store', default = 0, type=int,
+       help = "Number of times to refine the mesh uniformly after parallel")
 parser.add_argument('-o', '--order',
                     action = 'store', default = 2, type=int,
                     help = "Finite element order (polynomial degree)");
@@ -42,6 +60,7 @@ parser.add_argument('-tf', '--t-final',
 parser.add_argument('-dt', '--time-step',
                     action = 'store', default = 3.0, type=float,
                     help = "Time step")
+
 parser.add_argument("-v", "--viscosity",
                     action = 'store', default = 1e-2, type=float,
                     help = "Viscosity coefficient.")
@@ -59,7 +78,8 @@ parser.add_argument("-vs", "--visualization-steps",
                     help = "Visualize every n-th timestep.");
 args = parser.parse_args()
 
-ref_levels = args.refine_serial
+ser_ref_levels = args.refine_serial
+par_ref_levels = args.refine_parallel
 order = args.order
 ode_solver_type = args.ode_solver
 t_final = args.t_final
@@ -69,24 +89,18 @@ mu = args.shear_modulus
 K = args.bulk_modulus
 visualization = args.visualization
 vis_steps = args.visualization_steps
-parser.print_options(args)
-'''
-ref_levels = 2
-order = 1
-ode_solver_type = 3
-t_final = 10.0
-dt = 3
-visc = 1e-2
-mu = 0.25
-K = 5.0
+if (myid == 0): parser.print_options(args)
 
-vis_steps = 1
-'''
-
+# 3. Read the serial mesh from the given mesh file on all processors. We can
+#    handle triangular, quadrilateral, tetrahedral and hexahedral meshes
+#    with the same code.
 meshfile = expanduser(join(path, 'data', args.mesh))
 mesh = mfem.Mesh(meshfile, 1,1)
 dim = mesh.Dimension()
-#        self.solver.SetOperator(M)
+
+# 4. Define the ODE solver used for time integration. Several implicit
+#    singly diagonal implicit Runge-Kutta (SDIRK) methods, as well as
+#    explicit Runge-Kutta methods are available.
 if   ode_solver_type == 1:   ode_solver = BackwardEulerSolver()
 elif ode_solver_type == 2:   ode_solver = mfem.SDIRK23Solver(2)
 elif ode_solver_type == 3:   ode_solver = mfem.SDIRK33Solver()
@@ -98,40 +112,56 @@ elif ode_solver_type == 22:  ode_solver = mfem.ImplicitMidpointSolver()
 elif ode_solver_type == 23:  ode_solver = mfem.SDIRK23Solver()
 elif ode_solver_type == 24:  ode_solver = mfem.SDIRK34Solver()
 else:
-    print( "Unknown ODE solver type: " + str(ode_solver_type))
-    exit
+    if myid == 0: print( "Unknown ODE solver type: " + str(ode_solver_type))
+    sys.exit()
 
-for lev in range(ref_levels):
+# 5. Refine the mesh in serial to increase the resolution. In this example
+#    we do 'ser_ref_levels' of uniform refinement, where 'ser_ref_levels' is
+#    a command-line parameter.
+for lev in range(ser_ref_levels):
     mesh.UniformRefinement()
 
-# 5. Define the vector finite element spaces representing the mesh
-#    deformation x, the velocity v, and the initial configuration, x_ref.
-#    Define also the elastic energy density, w, which is in a discontinuous
-#    higher-order space. Since x and v are integrated in time as a system,
-#    we group them together in block vector vx, with offsets given by the
-#    fe_offset array.
+# 6. Define a parallel mesh by a partitioning of the serial mesh. Refine
+#    this mesh further in parallel to increase the resolution. Once the
+#    parallel mesh is defined, the serial mesh can be deleted.
+pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+del mesh
+for x in range(par_ref_levels):
+    pmesh.UniformRefinement();
+
+# 7. Define the parallel vector finite element spaces representing the mesh
+#    deformation x_gf, the velocity v_gf, and the initial configuration,
+#    x_ref. Define also the elastic energy density, w_gf, which is in a
+#    discontinuous higher-order space. Since x and v are integrated in time
+#    as a system, we group them together in block vector vx, on the unique
+#    parallel degrees of freedom, with offsets given by array true_offset.
+
 fec = mfem.H1_FECollection(order, dim)
-fespace = mfem.FiniteElementSpace(mesh, fec, dim)
+fespace = mfem.ParFiniteElementSpace(pmesh, fec, dim)
+glob_size = fespace.GlobalTrueVSize()
+if (myid == 0):
+    print('Number of velocity/deformation unknowns: '+ str(glob_size))
 
-fe_size = fespace.GetVSize();
-print( "Number of velocity/deformation unknowns: " + str(fe_size))
-fe_offset = intArray([0, fe_size, 2*fe_size])
+true_size = fespace.TrueVSize()
+true_offset = mfem.intArray(3)
+true_offset[0] = 0;
+true_offset[1] = true_size;
+true_offset[2] = 2*true_size;
 
-vx = mfem.BlockVector(fe_offset)
-x  = mfem.GridFunction()
-v  = mfem.GridFunction()
-v.MakeRef(fespace, vx.GetBlock(0), 0);
-x.MakeRef(fespace, vx.GetBlock(1), 0);
+vx = mfem.BlockVector(true_offset)
 
-x_ref = mfem.GridFunction(fespace);
-mesh.GetNodes(x_ref)
+v_gf  = mfem.ParGridFunction(fespace)
+x_gf  = mfem.ParGridFunction(fespace)
+
+x_ref = mfem.ParGridFunction(fespace)
+pmesh.GetNodes(x_ref)
 
 w_fec = mfem.L2_FECollection(order + 1, dim)
-w_fespace = mfem.FiniteElementSpace(mesh, w_fec)
-w = mfem.GridFunction(w_fespace);
+w_fespace = mfem.ParFiniteElementSpace(pmesh, w_fec)
+w_gf = mfem.ParGridFunction(w_fespace)
 
-# 6. Set the initial conditions for v and x, and the boundary conditions on
-#    a beam-like mesh (see description above).
+# 8. Set the initial conditions for v_gf, x_gf and vx, and define the
+#    boundary conditions on a beam-like mesh (see description above).
 class InitialVelocity(mfem.VectorPyCoefficient):
    def EvalValue(self, x):
        dim = len(x)
@@ -141,21 +171,24 @@ class InitialVelocity(mfem.VectorPyCoefficient):
        v[-1]  = s*x[0]**2*(8.0-x[0])
        v[0]   = -s*x[0]**2
        return v
-
 class InitialDeformation(mfem.VectorPyCoefficient):
    def EvalValue(self, x):
        return x.copy()
-        
+
 velo = InitialVelocity(dim)
-v.ProjectCoefficient(velo)
+v_gf.ProjectCoefficient(velo)
 deform =  InitialDeformation(dim)
-x.ProjectCoefficient(deform)
+x_gf.ProjectCoefficient(deform)
+   
+v_gf.GetTrueDofs(vx.GetBlock(0));
+x_gf.GetTrueDofs(vx.GetBlock(1));
 
-ess_bdr = intArray(fespace.GetMesh().bdr_attributes.Max())
+ess_bdr = mfem.intArray(fespace.GetMesh().bdr_attributes.Max())
 ess_bdr.Assign(0)
-ess_bdr[0] = 1
+ess_bdr[0] = 1; 
 
-# 7. Define HyperelasticOperator and initialize it 
+
+# 9. Initialize the hyperelastic operator, the GLVis visualization and print
 #    the initial energies.
 class ElasticEnergyCoefficient(mfem.PyCoefficient):
     def __init__(self, model, x):
@@ -167,24 +200,19 @@ class ElasticEnergyCoefficient(mfem.PyCoefficient):
     def Eval(self, T, ip):
         self.model.SetTransformation(T)
         self.x.GetVectorGradient(T, self.J)
-        #T.Jacobian().Print()        
-        #print self.x.GetDataArray()
-        #self.J.Print()        
         return self.model.EvalW(self.J)/(self.J.Det())
     
-class BackwardEulerOperator(mfem.PyOperator):
+class ReducedSystemOperator(mfem.PyOperator):
     def __init__(self, M, S, H):
-        mfem.PyOperator.__init__(self, M.Height())
+        mfem.PyOperator.__init__(self, M.ParFESpace().TrueVSize())
         self.M = M
         self.S = S
         self.H = H
         self.Jacobian = None
-        h = M.Height()
+        h = M.ParFESpace().TrueVSize()
         self.w = mfem.Vector(h)
         self.z = mfem.Vector(h)
         self.dt = 0.0
-#        v = mfem.Vector()
-#        self.x = None
         
     def SetParameters(self, dt, v, x):
         self.dt = dt
@@ -195,22 +223,20 @@ class BackwardEulerOperator(mfem.PyOperator):
         add_vector(self.v, self.dt, k, self.w)
         add_vector(self.x, self.dt, self.w, self.z)
         self.H.Mult(self.z, y)
-        self.M.AddMult(k, y)
-        self.S.AddMult(self.w, y)
+        self.M.TrueAddMult(k, y)
+        self.S.TrueAddMult(self.w, y)
 
     def GetGradient(self, k):
-        Jacobian = add_sparse(1.0, self.M.SpMat(), self.dt, self.S.SpMat())
-        self.Jacobian = Jacobian
+        localJ = mfem.add_sparse(1.0, self.M.SpMat(), self.dt, self.S.SpMat());
         add_vector(self.v, self.dt, k, self.w)
         add_vector(self.x, self.dt, self.w, self.z)
-        grad_H = self.H.GetGradientMatrix(self.z)
-
-        Jacobian.Add(self.dt**2, grad_H)
-        return Jacobian;
+        localJ.Add(self.dt * self.dt,  self.H.GetLocalGradient(self.z))
+        Jacobian = self.M.ParallelAssemble(localJ)
+        return Jacobian
     
 class HyperelasticOperator(mfem.PyTimeDependentOperator):
     def __init__(self, fespace, ess_bdr, visc, mu, K):
-        mfem.PyTimeDependentOperator.__init__(self, 2*fespace.GetVSize(), 0.0)
+        mfem.PyTimeDependentOperator.__init__(self, 2*fespace.TrueVSize(), 0.0)
        
         rel_tol = 1e-8;
         skip_zero_entries = 0;
@@ -218,10 +244,11 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         self.z = mfem.Vector(self.Height()/2)
         self.fespace =  fespace
         self.viscosity = visc
+        self.newton_solver = mfem.NewtonSolver(fespace.GetComm())
        
-        M = mfem.BilinearForm(fespace)
-        S = mfem.BilinearForm(fespace)
-        H = mfem.NonlinearForm(fespace)
+        M = mfem.ParBilinearForm(fespace)
+        S = mfem.ParBilinearForm(fespace)
+        H = mfem.ParNonlinearForm(fespace)
         self.M = M
         self.H = H
         self.S = S
@@ -231,16 +258,18 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         M.Assemble(skip_zero_entries)
         M.EliminateEssentialBC(ess_bdr)
         M.Finalize(skip_zero_entries)
+        self.Mmat = M.ParallelAssemble()
 
-        M_solver = mfem.CGSolver()
-        M_prec = mfem.DSmoother()
+        M_solver = mfem.CGSolver(fespace.GetComm())
+        M_prec = mfem.HypreSmoother()
         M_solver.iterative_mode = False
         M_solver.SetRelTol(rel_tol)
         M_solver.SetAbsTol(0.0)
         M_solver.SetMaxIter(30)
         M_solver.SetPrintLevel(0)
+        M_prec.SetType(mfem.HypreSmoother.Jacobi)
         M_solver.SetPreconditioner(M_prec)
-        M_solver.SetOperator(M.SpMat())
+        M_solver.SetOperator(self.Mmat)
        
         self.M_solver = M_solver
         self.M_prec = M_prec
@@ -256,10 +285,14 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         S.EliminateEssentialBC(ess_bdr)
         S.Finalize(skip_zero_entries)
 
-        self.backward_euler_oper = BackwardEulerOperator(M, S, H)        
-       
-        J_prec = mfem.DSmoother(1);
-        J_minres = mfem.MINRESSolver()
+        self.reduced_oper = ReducedSystemOperator(M, S, H)        
+
+        J_hypreSmoother= mfem.HypreSmoother()
+        J_hypreSmoother.SetType(mfem.HypreSmoother.l1Jacobi)
+        J_hypreSmoother.SetPositiveDiagonal(True)
+        J_prec = J_hypreSmoother;
+        
+        J_minres = mfem.MINRESSolver(fespace.GetComm())
         J_minres.SetRelTol(rel_tol);
         J_minres.SetAbsTol(0.0);
         J_minres.SetMaxIter(300);
@@ -269,10 +302,10 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         self.J_solver = J_minres
         self.J_prec  =  J_prec
 
-        newton_solver = mfem.NewtonSolver()
+        newton_solver = mfem.NewtonSolver(fespace.GetComm())
         newton_solver.iterative_mode = False
         newton_solver.SetSolver(self.J_solver);
-        newton_solver.SetOperator(self.backward_euler_oper);
+        newton_solver.SetOperator(self.reduced_oper)
         newton_solver.SetPrintLevel(1); #print Newton iterations
         newton_solver.SetRelTol(rel_tol);
         newton_solver.SetAbsTol(0.0);
@@ -285,13 +318,13 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         x = mfem.Vector(vx, sc,  sc)
         dv_dt = mfem.Vector(dvx_dt, 0, sc)
         dx_dt = mfem.Vector(dvx_dt, sc,  sc)
-        self.H.Mult(x, z);
-        if (self.viscosity != 0.0):  S.AddMult(v, z)
-        z.Neg()
-        M_solver.Mult(z, dv_dt);
-        dx_dt = v;
-#        Print(vx.Size())
 
+        self.H.Mult(x, z);
+        if (self.viscosity != 0.0):  S.TrueAddMult(v, z)
+        z.Neg()
+        self.M_solver.Mult(z, dv_dt);
+        dx_dt = v
+        
     def ImplicitSolve(self, dt, vx, dvx_dt):
         sc = self.Height()/2
         v = mfem.Vector(vx, 0,  sc)
@@ -305,7 +338,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         # we reduce it to a nonlinear equation for kv, represented by the
         # backward_euler_oper. This equation is solved with the newton_solver
         # object (using J_solver and J_prec internally).
-        self.backward_euler_oper.SetParameters(dt, v, x)
+        self.reduced_oper.SetParameters(dt, v, x)
         zero = mfem.Vector() # empty vector is interpreted as
                              # zero r.h.s. by NewtonSolver
         self.newton_solver.Mult(zero, dv_dt)
@@ -313,55 +346,112 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
 
     def ElasticEnergy(self, x):
         return self.H.GetEnergy(x)
-       
+
     def KineticEnergy(self, v):
-        return 0.5*self.M.InnerProduct(v, v)
-       
+        local_energy  = 0.5*self.M.InnerProduct(v, v)
+        energy = MPI.COMM_WORLD.allreduce(local_energy, op = MPI.SUM)
+        return energy
+    
     def GetElasticEnergyDensity(self, x, w):
         w_coeff = ElasticEnergyCoefficient(self.model, x)
         w.ProjectCoefficient(w_coeff)
         
-oper = HyperelasticOperator(fespace, ess_bdr, visc, mu, K)
-ee0 = oper.ElasticEnergy(x)
-ke0 = oper.KineticEnergy(v)
-       
-print("initial elastic energy (EE) = " + str(ee0)) 
-print("initial kinetic energy (KE) = " + str(ke0)) 
-print("initial   total energy (TE) = " + str(ee0 + ke0))
+def visualize(out, pmesh, deformed_nodes, field,
+              field_name = '', init_vis = False):
+   nodes = deformed_nodes;
+   owns_nodes = 0
 
+   nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes);
+
+   out.send_text("parallel " + str(num_procs) +  " " + str(myid))            
+   out.send_solution(pmesh, field)
+    
+   nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes);
+
+   if (init_vis):
+      out.send_text("window_size 400 400")
+      out.send_text( "window_title '"  + field_name)
+      if (pmesh.SpaceDimension() == 2):
+         out.send_text("view 0 0")
+         out.send_text("keys jl")
+      out.send_text("keys cm")         # show colorbar and mesh
+      out.send_text("autoscale value") # update value-range; keep mesh-extents fixed
+      out.send_text("pause")
+   out.flush()
+       
+oper = HyperelasticOperator(fespace, ess_bdr, visc,  mu, K)
+if (visualization):
+    vis_v = mfem.socketstream("localhost", 19916)
+    vis_v.precision(8)
+    visualize(vis_v, pmesh, x_gf, v_gf, "Velocity", True)
+                    
+    MPI.COMM_WORLD.Barrier()
+    vis_w = mfem.socketstream("localhost", 19916)
+    oper.GetElasticEnergyDensity(x_gf, w_gf)
+    vis_w.precision(8)
+    visualize(vis_w, pmesh, x_gf, w_gf, "Elastic energy density", True)
+
+ee0 = oper.ElasticEnergy(x_gf)
+ke0 = oper.KineticEnergy(v_gf)
+
+if myid == 0:
+    print("initial elastic energy (EE) = " + str(ee0)) 
+    print("initial kinetic energy (KE) = " + str(ke0)) 
+    print("initial   total energy (TE) = " + str(ee0 + ke0))
+                    
 # 8. Perform time-integration (looping over the time iterations, ti, with a
 #    time-step dt).
-ode_solver.Init(oper)
 t = 0. ; ti = 1
+
+oper.SetTime(t);
+ode_solver.Init(oper)
 last_step = False;
+
 while not last_step:
-    ti = ti + 1
-    if (t + dt >= t_final - dt/2): last_step = True
+    dt_real = min(dt, t_final -t)
+    t, dt = ode_solver.Step(vx, t, dt_real)
 
-    t, dt = ode_solver.Step(vx, t, dt)
-
+    if (t >= t_final - 1e-8*dt): last_step = True    
+    
+    if (myid == 0): print ti % vis_steps
+    
     if (last_step or (ti % vis_steps) == 0):
-        ee = oper.ElasticEnergy(x)
-        ke = oper.KineticEnergy(v)
-
+        v_gf.Distribute(vx.GetBlock(0))
+        x_gf.Distribute(vx.GetBlock(1))
+        
+        ee = oper.ElasticEnergy(x_gf)
+        ke = oper.KineticEnergy(v_gf)
+        
         text = ("step " + str(ti) + ", t = " + str(t) + ", EE = " +
                 str(ee) +  ", KE = " + str(ke) + 
                 ", dTE = " + str((ee+ke)-(ee0+ke0)))
 
-        print(text)
-
+        if myid == 0: print(text)
+        if visualization:
+            visualize(vis_v, pmesh, x_gf, v_gf)
+            oper.GetElasticEnergyDensity(x_gf, w_gf)
+            visualize(vis_w, pmesh, x_gf, w_gf)
+    
+    ti = ti + 1
 
 #
 # if i translate c++ line-by-line, ti seems the second swap does not work...
 #
-nodes = x
+
+smyid = '{:0>6d}'.format(myid)
+mesh_name  =  "deformed."+smyid
+velo_name   =  "velocity."+smyid
+ee_name   =  "elastic_energy."+smyid
+
+nodes = x_gf
 owns_nodes = 0
-nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
-mesh.PrintToFile('deformed.mesh', 8)
-mesh.SwapNodes(nodes, owns_nodes)
-v.SaveToFile('velocity.sol', 8)
-oper.GetElasticEnergyDensity(x, w)
-w.SaveToFile('elastic_energy.sol',  8)
+nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
+pmesh.PrintToFile(mesh_name, 8)
+pmesh.SwapNodes(nodes, owns_nodes)
+    
+v_gf.SaveToFile(velo_name, 8)
+oper.GetElasticEnergyDensity(x_gf, w_gf)
+w_gf.SaveToFile(ee_name,  8)
 
 
 

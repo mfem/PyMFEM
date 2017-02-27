@@ -399,9 +399,9 @@ HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister
 HypreParMatrix_swigregister(HypreParMatrix)
 
 
-def add_sparse(*args):
-    return _hypre.add_sparse(*args)
-add_sparse = _hypre.add_sparse
+def add_hypre(alpha, A, beta, B):
+    return _hypre.add_hypre(alpha, A, beta, B)
+add_hypre = _hypre.add_hypre
 
 def ParMult(A, B):
     return _hypre.ParMult(A, B)

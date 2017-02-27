@@ -10727,6 +10727,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_Assign(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__GridFunction, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+	std::cout << "calling grid grid, 2\n";
         return _wrap_GridFunction_Assign__SWIG_2(self, args);
       }
     }
@@ -10740,6 +10741,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_Assign(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+	std::cout << "calling grid vec, 1\n";	
         return _wrap_GridFunction_Assign__SWIG_1(self, args);
       }
     }
@@ -10758,6 +10760,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_Assign(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
+	std::cout << "calling grid float 0\n";		
         return _wrap_GridFunction_Assign__SWIG_0(self, args);
       }
     }

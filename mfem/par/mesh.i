@@ -30,6 +30,7 @@ import_array();
 %import "vector.i"
 %import "element.i"
 %import "vertex.i"
+%import "gridfunc.i"
 %import "mesh/mesquite.hpp"
 %import "densemat.i"
 %import "sparsemat.i"
@@ -143,6 +144,8 @@ if (!SWIG_IsOK(res2)){
   $1 = &own_nodes;
 } 
 %typemap(argout) (mfem::GridFunction *&nodes){
+  Py_XDECREF($result);
+  $result = PyList_New(0);
   %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
  }   
 %typemap(argout) int &own_nodes_{

@@ -206,6 +206,10 @@ This is needed only when you edit SWIG interface files.
          GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
          GetBdrAttributeArray(int idx) returns array of boundary attribute
 
+         SwapNodes returns nodes and onws_nodes as follows.
+	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
+	    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
+
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.

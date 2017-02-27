@@ -100,11 +100,11 @@ except Exception:
 
 _pnonlinearform.MFEM_TIMER_TYPE_swigconstant(_pnonlinearform)
 MFEM_TIMER_TYPE = _pnonlinearform.MFEM_TIMER_TYPE
-import nonlinearform
-import operators
 import vector
 import array
 import ostream_typemap
+import nonlinearform
+import operators
 import fespace
 import coefficient
 import matrix
@@ -119,8 +119,11 @@ import element
 import geom
 import table
 import vertex
+import gridfunc
+import bilininteg
 import fe_coll
 import lininteg
+import linearform
 import nonlininteg
 import pfespace
 import pmesh
@@ -129,9 +132,6 @@ import communication
 import sets
 import hypre
 import pgridfunc
-import gridfunc
-import bilininteg
-import linearform
 class ParNonlinearForm(nonlinearform.NonlinearForm):
     __swig_setmethods__ = {}
     for _s in [nonlinearform.NonlinearForm]:

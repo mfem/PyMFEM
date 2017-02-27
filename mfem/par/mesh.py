@@ -109,44 +109,16 @@ import geom
 import intrules
 import table
 import vertex
+import gridfunc
+import coefficient
 import sparsemat
 import eltrans
 import fe
-import coefficient
-class intp(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _mesh.new_intp()
-        try:
-            self.this.append(this)
-        except Exception:
-            self.this = this
-    __swig_destroy__ = _mesh.delete_intp
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _mesh.intp_assign(self, value)
-
-    def value(self):
-        return _mesh.intp_value(self)
-
-    def cast(self):
-        return _mesh.intp_cast(self)
-    __swig_getmethods__["frompointer"] = lambda x: _mesh.intp_frompointer
-    if _newclass:
-        frompointer = staticmethod(_mesh.intp_frompointer)
-intp_swigregister = _mesh.intp_swigregister
-intp_swigregister(intp)
-
-def intp_frompointer(t):
-    return _mesh.intp_frompointer(t)
-intp_frompointer = _mesh.intp_frompointer
-
+import fespace
+import fe_coll
+import lininteg
+import bilininteg
+import linearform
 class Mesh(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Mesh, name, value)
@@ -675,8 +647,8 @@ def Mesh_GetTransformationFEforElementType(arg2):
 Mesh_GetTransformationFEforElementType = _mesh.Mesh_GetTransformationFEforElementType
 
 
-def __lshift__(out, mesh):
-    return _mesh.__lshift__(out, mesh)
+def __lshift__(*args):
+    return _mesh.__lshift__(*args)
 __lshift__ = _mesh.__lshift__
 class NodeExtrudeCoefficient(coefficient.VectorCoefficient):
     __swig_setmethods__ = {}

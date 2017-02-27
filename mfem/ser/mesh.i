@@ -28,6 +28,7 @@ import_array();
 %import "array.i"
 %import "ncmesh.i"
 %import "vector.i"
+%import "gridfunc.i"
 %import "element.i"
 %import "vertex.i"
 %import "mesh/mesquite.hpp"
@@ -129,6 +130,8 @@ import_array();
 }
 
 // SwapNodes
+
+
 %typemap(in) mfem::GridFunction *&nodes (mfem::GridFunction *Pnodes){
 int res2 = 0;
 res2 = SWIG_ConvertPtr($input, (void **) &Pnodes, $descriptor(mfem::GridFunction *), 0);
@@ -136,14 +139,17 @@ if (!SWIG_IsOK(res2)){
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_SwapNodes" "', argument " "2"" of type '" "*mfem::GridFunction""'");      
  }
  $1 = &Pnodes;
- } 
+ }
+ 
 %typemap(in) int &own_nodes_ (int own_nodes){
   own_nodes = (int)PyInt_AsLong($input);
   $1 = &own_nodes;
 } 
 %typemap(argout) (mfem::GridFunction *&nodes){
+  Py_XDECREF($result);
+  $result = PyList_New(0);
   %append_output(SWIG_NewPointerObj(SWIG_as_voidptr(*arg2), $descriptor(mfem::GridFunction *), 0 |  0 ));
- }   
+ }
 %typemap(argout) int &own_nodes_{
   %append_output(PyLong_FromLong((long)*$1));  
 }

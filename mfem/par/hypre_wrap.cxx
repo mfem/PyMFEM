@@ -10958,7 +10958,7 @@ SWIGINTERN PyObject *HypreParMatrix_swigregister(PyObject *SWIGUNUSEDPARM(self),
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_add_sparse__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_add_hypre(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
   mfem::HypreParMatrix *arg2 = 0 ;
@@ -10978,31 +10978,31 @@ SWIGINTERN PyObject *_wrap_add_sparse__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject * obj3 = 0 ;
   mfem::HypreParMatrix *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:add_sparse",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:add_hypre",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   ecode1 = SWIG_AsVal_double(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "add_sparse" "', argument " "1"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "add_hypre" "', argument " "1"" of type '" "double""'");
   } 
   arg1 = static_cast< double >(val1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__HypreParMatrix,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "add_sparse" "', argument " "2"" of type '" "mfem::HypreParMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "add_hypre" "', argument " "2"" of type '" "mfem::HypreParMatrix const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_sparse" "', argument " "2"" of type '" "mfem::HypreParMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_hypre" "', argument " "2"" of type '" "mfem::HypreParMatrix const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix * >(argp2);
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "add_sparse" "', argument " "3"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "add_hypre" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__HypreParMatrix,  0  | 0);
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "add_sparse" "', argument " "4"" of type '" "mfem::HypreParMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "add_hypre" "', argument " "4"" of type '" "mfem::HypreParMatrix const &""'"); 
   }
   if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_sparse" "', argument " "4"" of type '" "mfem::HypreParMatrix const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "add_hypre" "', argument " "4"" of type '" "mfem::HypreParMatrix const &""'"); 
   }
   arg4 = reinterpret_cast< mfem::HypreParMatrix * >(argp4);
   {
@@ -11022,60 +11022,6 @@ SWIGINTERN PyObject *_wrap_add_sparse__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_add_sparse(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 4) {
-    int _v;
-    {
-      if (PyFloat_Check(argv[0])){
-        _v = 1;
-      } else {
-        _v = 0;
-      }
-    }
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__HypreParMatrix, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if (PyFloat_Check(argv[2])){
-            _v = 1;
-          } else {
-            _v = 0;
-          }
-        }
-        if (_v) {
-          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__HypreParMatrix, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_add_sparse__SWIG_3(self, args);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'add_sparse'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Add(mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n"
-    "    mfem::Add(double,mfem::SparseMatrix const &,double,mfem::SparseMatrix const &)\n"
-    "    mfem::Add(mfem::Array< mfem::SparseMatrix * > &)\n"
-    "    mfem::Add(double,mfem::HypreParMatrix const &,double,mfem::HypreParMatrix const &)\n");
-  return 0;
 }
 
 
@@ -17168,7 +17114,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"HypreParMatrix_get_local_nnz", _wrap_HypreParMatrix_get_local_nnz, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_GetCooDataArray", _wrap_HypreParMatrix_GetCooDataArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_VARARGS, NULL},
-	 { (char *)"add_sparse", _wrap_add_sparse, METH_VARARGS, NULL},
+	 { (char *)"add_hypre", _wrap_add_hypre, METH_VARARGS, NULL},
 	 { (char *)"ParMult", _wrap_ParMult, METH_VARARGS, NULL},
 	 { (char *)"RAP", _wrap_RAP, METH_VARARGS, NULL},
 	 { (char *)"EliminateBC", _wrap_EliminateBC, METH_VARARGS, NULL},
