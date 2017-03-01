@@ -74,11 +74,25 @@ def ToHypreParVec(vec):
 
     return v
    
-def ToHypreParCSR(mat, check_partitioning = False, verbose = False):
+def ToHypreParCSR(mat, check_partitioning = False, verbose = True,
+                  col_starts = None):
     '''
     convert scipy sparse matrix to hypre
 
     vertically stack csr matrix to generte HYPRE Par CSR
+
+    Note:
+    row partitioning is inferred from distribution of input matrix.
+    column patitioning needs to be specified col_starts.
+
+    If col_starts is not given, column partitioning is chosen 
+    to be the same as row partitioning. This works if matrix is square (M = N).
+
+    For an aribtrary rectangular matrix, the column partitioning can be
+    different from the row partitioning. For example, MFEM mixedbilinearfomr 
+    uses different partitiong rules for row and column.
+
+    
     '''
        
     from mpi4py import MPI
@@ -97,25 +111,25 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False):
             MPI.COMM_WORLD.Barrier()                              
             if myid == k:
                 print 'MyID : ', k
-                print (m, n), nrows, i, j, data, row_starts, col_starts
+                print (m, n), nrows, len(data), i, j, data, row_starts, col_starts
+                print 'NNZ', np.sum(data != 0.0)
         MPI.COMM_WORLD.Barrier()                              
 
     from scipy.sparse import csr_matrix
-    
+
     if isinstance(mat, csr_matrix):
         mat = mat.astype('float')
         ml, nl = mat.shape
         n_array = comm.allgather(nl)            
     else:
         raise ValueError("Import Matrix Format should be csr or None")
-        
+
     # collect row array to determin the size of matrix
     m_array = comm.allgather(ml)
     rows = [0] + list(np.cumsum(m_array))
     m = rows[-1]
     row_starts = np.array([rows[myid], rows[myid+1], m], dtype=dtype)
 
-    col_starts =  row_starts.copy()
     n = nl
     nrows = ml
 
@@ -123,13 +137,17 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False):
     j = mat.indices.astype(dtype)
     data = mat.data
 
-    col_starts[-1]=n
-    if col_starts[0] > n:
-       col_starts[0] = n
-    if col_starts[1] > n:
-       col_starts[1] = n
-    col_starts[2] = n
-
+    if col_starts is None:
+       col_starts =  row_starts.copy()
+       col_starts[-1]=n
+       if col_starts[0] > n:
+           col_starts[0] = n
+       if col_starts[1] > n:
+           col_starts[1] = n
+       col_starts[2] = n
+    else:
+       # make sure that dtype is right....
+       col_starts = np.array(col_starts, dtype = dtype)
     if check_partitioning:
         ch = get_assumed_patitioning(m)
         if (row_starts[0] != ch[0] or 
@@ -137,12 +155,14 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False):
             nrows != ch[2]):
             verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)
             raise ValueError("partitioning of input matrix is not correct")
-    if verbose: verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)         
+    if verbose: verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)
+
+    
     #
-    # here I am passing row_starts as col_starts too
     # it seems row_starts and col_starts are both to determin
     # which part is treated diagnal element.
     #
+
     return  mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
@@ -188,8 +208,11 @@ def InnerProductComplex(A, B):
 def ParAdd(A, B):
     '''
     add HypreParCSR
+
     '''
-    return ToHypreParCSR((ToScipyCoo(A)+ ToScipyCoo(B)).tocsr())
+    col_starts = A.GetColPartArray(); col_starts[2] = A.N()    
+    return ToHypreParCSR((ToScipyCoo(A)+ ToScipyCoo(B)).tocsr(),
+                          col_starts = col_starts)
  
 def ParMultVecComplex(A, v):
     '''
@@ -260,8 +283,13 @@ def ParMultComplex(A, B):
        i = mfem.ParMult(I_A, R_B)
        return (r, i)       
     else:
-       r = ToHypreParCSR((ToScipyCoo(mfem.ParMult(R_A, R_B)) - ToScipyCoo(mfem.ParMult(I_A, I_B))).tocsr())
-       i = ToHypreParCSR((ToScipyCoo(mfem.ParMult(R_A, I_B)) + ToScipyCoo(mfem.ParMult(I_A, R_B))).tocsr())
+       A = mfem.ParMult(R_A, R_B)
+       B = mfem.ParMult(I_A, I_B)
+       C = mfem.ParMult(R_A, I_B)
+       D = mfem.ParMult(I_A, R_B)
+       col_starts = A.GetColPartArray(); col_starts[2] = A.N()
+       r = ToHypreParCSR((ToScipyCoo(A) - ToScipyCoo(B)).tocsr(), col_starts = col_starts)
+       i = ToHypreParCSR((ToScipyCoo(C) + ToScipyCoo(D)).tocsr(), col_starts = col_starts)
        return (r, i)
 
 def TransposeComplex(A):
@@ -269,12 +297,18 @@ def TransposeComplex(A):
     A is tuple (A_real, A_imag), whose real/imag are
     HypreParCSR
     '''
-    return (A[0].Transpose(), A[1].Transpose())
+    
+    R = A[0].Transpose() if A[0] is not None else None
+    I = A[1].Transpose() if A[1] is not None else None    
+    return (R, I)
 
 def Conj(A):
+   
     R = A[0]
     I = A[1]
-    I = ToHypreParCSR(-ToScipyCoo(I).tocsr())
+    if I is None: return A
+    col_starts = I.GetColPartArray(); col_starts[2] = I.N()    
+    I = ToHypreParCSR(-ToScipyCoo(I).tocsr(), col_starts = col_starts)
     return (R, I)
  
 def RapComplex(A, B):
@@ -349,8 +383,8 @@ def ResetHypreDiag(M, idx, value = 1.0):
     '''
     set diagonal element to value (normally 1)
     '''
+    col_starts = M.GetColPartArray()    
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
-    
     from mpi4py import MPI
     myid     = MPI.COMM_WORLD.rank
      
@@ -364,12 +398,13 @@ def ResetHypreDiag(M, idx, value = 1.0):
         if ii >= ilower and ii <= iupper:
            mat[ii-ilower, ii] = value
 
-    return  ToHypreParCSR(mat.tocsr())
+    return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
 
 def ResetHypreRow(M, idx):
     '''
     set diagonal element to value (normally 1)
     '''
+    col_starts = M.GetColPartArray(); col_starts[2] = M.N()  
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
     
     from mpi4py import MPI
@@ -383,30 +418,45 @@ def ResetHypreRow(M, idx):
     for ii in idx:
        ii = np.where(irn == ii)[0]
        data[ii] = 0.0
+    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
+    mat.eliminate_zeros()
+    return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
+    '''
+    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
 
-    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
-    return  ToHypreParCSR(mat.tocsr())
- 
+    # idx  -> idx2 (index in scipy.sparse index space)
+    idx2 = np.array(idx)-ilower
+    idx2 = idx2[np.logical_and(idx2 > 0,  idx2 < m)]
+    
+    from mfem.common.sparse_utils import eliminate_rows, eliminate_cols
+    mat = eliminate_rows(mat, idx2)
+    return  ToHypreParCSR(mat)
+    '''
 def ResetHypreCol(M, idx):
     '''
     set diagonal element to value (normally 1)
     '''
+    col_starts = M.GetColPartArray(); col_starts[2] = M.N()
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
     
     from mpi4py import MPI
     myid     = MPI.COMM_WORLD.rank
-     
+
+    #print np.min(irn), np.max(irn), np.min(jcn), np.max(jcn)
+
+    
     m = iupper - ilower + 1
-    n = jupper - jlower + 1
-    n = M.N()    
+    n0 = jupper - jlower + 1
+    n = M.N()
     from scipy.sparse import coo_matrix, lil_matrix
 
     for ii in idx:
        ii = np.where(jcn == ii)[0]
        data[ii] = 0.0
-
-    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
-    return  ToHypreParCSR(mat.tocsr())
+    
+    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
+    mat.eliminate_zeros()    
+    return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
  
  
 
