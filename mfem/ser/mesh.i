@@ -24,6 +24,7 @@ import_array();
 %}
 
 %import "cpointer.i"
+%pointer_class(int, intp);
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -42,7 +43,7 @@ import_array();
 %import "fe.i"
 %import "ostream_typemap.i"
 //
-%pointer_class(int, intp);
+
 //  conversion of Int (can handle numpy int)
 %typemap(in) int {
   PyArray_PyIntAsInt($input);  

@@ -4080,11 +4080,6 @@ SWIGINTERN PyObject *_wrap_BasisType_Check(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4111,11 +4106,6 @@ SWIGINTERN PyObject *_wrap_BasisType_GetQuadrature1D(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4142,11 +4132,6 @@ SWIGINTERN PyObject *_wrap_BasisType_Name(PyObject *SWIGUNUSEDPARM(self), PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -4173,11 +4158,6 @@ SWIGINTERN PyObject *_wrap_BasisType_GetChar(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_char(static_cast< char >(result));
   return resultobj;
@@ -4207,11 +4187,6 @@ SWIGINTERN PyObject *_wrap_BasisType_GetType(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4232,11 +4207,6 @@ SWIGINTERN PyObject *_wrap_new_BasisType(PyObject *SWIGUNUSEDPARM(self), PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BasisType, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4265,11 +4235,6 @@ SWIGINTERN PyObject *_wrap_delete_BasisType(PyObject *SWIGUNUSEDPARM(self), PyOb
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4312,11 +4277,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_FiniteElementForGeometry(PyOb
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -4352,11 +4312,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_DofForGeometry(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4398,11 +4353,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_DofOrderForOrientation(PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -4432,11 +4382,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_Name(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -4472,11 +4417,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_HasFaceDofs(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4512,11 +4452,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_TraceFiniteElementForGeometry
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -4546,11 +4481,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_GetTraceCollection(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   return resultobj;
@@ -4579,11 +4509,6 @@ SWIGINTERN PyObject *_wrap_delete_FiniteElementCollection(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4614,11 +4539,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_New(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
@@ -4679,11 +4599,6 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_SubDofOrder(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4729,11 +4644,6 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection__SWIG_0(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4766,11 +4676,6 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection__SWIG_1(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4797,11 +4702,6 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4926,11 +4826,6 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_FiniteElementForGeometry(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -4966,11 +4861,6 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -5012,11 +4902,6 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_DofOrderForOrientation(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -5046,11 +4931,6 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_Name(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -5080,11 +4960,6 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_GetTraceCollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   return resultobj;
@@ -5114,11 +4989,6 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_GetBasisType(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -5154,11 +5024,6 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -5187,11 +5052,6 @@ SWIGINTERN PyObject *_wrap_delete_H1_FECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5231,11 +5091,6 @@ SWIGINTERN PyObject *_wrap_new_H1Pos_FECollection__SWIG_0(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1Pos_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5262,11 +5117,6 @@ SWIGINTERN PyObject *_wrap_new_H1Pos_FECollection__SWIG_1(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1Pos_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5352,11 +5202,6 @@ SWIGINTERN PyObject *_wrap_delete_H1Pos_FECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5402,11 +5247,6 @@ SWIGINTERN PyObject *_wrap_new_H1_Trace_FECollection__SWIG_0(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5439,11 +5279,6 @@ SWIGINTERN PyObject *_wrap_new_H1_Trace_FECollection__SWIG_1(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5547,11 +5382,6 @@ SWIGINTERN PyObject *_wrap_delete_H1_Trace_FECollection(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5603,11 +5433,6 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection__SWIG_0(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__L2_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5646,11 +5471,6 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection__SWIG_1(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__L2_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5683,11 +5503,6 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__L2_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5839,11 +5654,6 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_FiniteElementForGeometry(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -5879,11 +5689,6 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -5925,11 +5730,6 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_DofOrderForOrientation(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -5959,11 +5759,6 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_Name(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -5999,11 +5794,6 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_TraceFiniteElementForGeometry(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -6033,11 +5823,6 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_GetBasisType(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -6066,11 +5851,6 @@ SWIGINTERN PyObject *_wrap_delete_L2_FECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6122,11 +5902,6 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6165,11 +5940,6 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection__SWIG_3(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6202,11 +5972,6 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection__SWIG_4(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6358,11 +6123,6 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_FiniteElementForGeometry(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -6398,11 +6158,6 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -6444,11 +6199,6 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_DofOrderForOrientation(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -6478,11 +6228,6 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_Name(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -6512,11 +6257,6 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_GetTraceCollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   return resultobj;
@@ -6545,11 +6285,6 @@ SWIGINTERN PyObject *_wrap_delete_RT_FECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6601,11 +6336,6 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection__SWIG_0(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6644,11 +6374,6 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection__SWIG_1(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6681,11 +6406,6 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection__SWIG_2(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6830,11 +6550,6 @@ SWIGINTERN PyObject *_wrap_delete_RT_Trace_FECollection(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6886,11 +6601,6 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection__SWIG_0(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DG_Interface_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6929,11 +6639,6 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection__SWIG_1(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DG_Interface_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6966,11 +6671,6 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection__SWIG_2(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DG_Interface_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7115,11 +6815,6 @@ SWIGINTERN PyObject *_wrap_delete_DG_Interface_FECollection(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7171,11 +6866,6 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection__SWIG_0(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7214,11 +6904,6 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection__SWIG_1(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7251,11 +6936,6 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7407,11 +7087,6 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_FiniteElementForGeometry(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -7447,11 +7122,6 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -7493,11 +7163,6 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_DofOrderForOrientation(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -7527,11 +7192,6 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_Name(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -7561,11 +7221,6 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_GetTraceCollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   return resultobj;
@@ -7594,11 +7249,6 @@ SWIGINTERN PyObject *_wrap_delete_ND_FECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7650,11 +7300,6 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection__SWIG_0(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7693,11 +7338,6 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection__SWIG_1(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7730,11 +7370,6 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection__SWIG_2(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND_Trace_FECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7879,11 +7514,6 @@ SWIGINTERN PyObject *_wrap_delete_ND_Trace_FECollection(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7917,11 +7547,6 @@ SWIGINTERN PyObject *_wrap_new_NURBSFECollection(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NURBSFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7951,11 +7576,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_GetOrder(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -7990,11 +7610,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_UpdateOrder(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8023,11 +7638,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_Reset(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8063,11 +7673,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_FiniteElementForGeometry(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -8103,11 +7708,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_DofForGeometry(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8149,11 +7749,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_DofOrderForOrientation(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -8183,11 +7778,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_Name(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -8217,11 +7807,6 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_GetTraceCollection(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   return resultobj;
@@ -8250,11 +7835,6 @@ SWIGINTERN PyObject *_wrap_delete_NURBSFECollection(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8282,11 +7862,6 @@ SWIGINTERN PyObject *_wrap_new_LinearFECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LinearFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8322,11 +7897,6 @@ SWIGINTERN PyObject *_wrap_LinearFECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -8362,11 +7932,6 @@ SWIGINTERN PyObject *_wrap_LinearFECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8408,11 +7973,6 @@ SWIGINTERN PyObject *_wrap_LinearFECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -8442,11 +8002,6 @@ SWIGINTERN PyObject *_wrap_LinearFECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -8475,11 +8030,6 @@ SWIGINTERN PyObject *_wrap_delete_LinearFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8507,11 +8057,6 @@ SWIGINTERN PyObject *_wrap_new_QuadraticFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadraticFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8547,11 +8092,6 @@ SWIGINTERN PyObject *_wrap_QuadraticFECollection_FiniteElementForGeometry(PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -8587,11 +8127,6 @@ SWIGINTERN PyObject *_wrap_QuadraticFECollection_DofForGeometry(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8633,11 +8168,6 @@ SWIGINTERN PyObject *_wrap_QuadraticFECollection_DofOrderForOrientation(PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -8667,11 +8197,6 @@ SWIGINTERN PyObject *_wrap_QuadraticFECollection_Name(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -8700,11 +8225,6 @@ SWIGINTERN PyObject *_wrap_delete_QuadraticFECollection(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8732,11 +8252,6 @@ SWIGINTERN PyObject *_wrap_new_QuadraticPosFECollection(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadraticPosFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8772,11 +8287,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosFECollection_FiniteElementForGeometry(PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -8812,11 +8322,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosFECollection_DofForGeometry(PyObject *SWI
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8858,11 +8363,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosFECollection_DofOrderForOrientation(PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -8892,11 +8392,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosFECollection_Name(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -8925,11 +8420,6 @@ SWIGINTERN PyObject *_wrap_delete_QuadraticPosFECollection(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8957,11 +8447,6 @@ SWIGINTERN PyObject *_wrap_new_CubicFECollection(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CubicFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8997,11 +8482,6 @@ SWIGINTERN PyObject *_wrap_CubicFECollection_FiniteElementForGeometry(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -9037,11 +8517,6 @@ SWIGINTERN PyObject *_wrap_CubicFECollection_DofForGeometry(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -9083,11 +8558,6 @@ SWIGINTERN PyObject *_wrap_CubicFECollection_DofOrderForOrientation(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -9117,11 +8587,6 @@ SWIGINTERN PyObject *_wrap_CubicFECollection_Name(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -9150,11 +8615,6 @@ SWIGINTERN PyObject *_wrap_delete_CubicFECollection(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9182,11 +8642,6 @@ SWIGINTERN PyObject *_wrap_new_CrouzeixRaviartFECollection(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CrouzeixRaviartFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9222,11 +8677,6 @@ SWIGINTERN PyObject *_wrap_CrouzeixRaviartFECollection_FiniteElementForGeometry(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -9262,11 +8712,6 @@ SWIGINTERN PyObject *_wrap_CrouzeixRaviartFECollection_DofForGeometry(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -9308,11 +8753,6 @@ SWIGINTERN PyObject *_wrap_CrouzeixRaviartFECollection_DofOrderForOrientation(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -9342,11 +8782,6 @@ SWIGINTERN PyObject *_wrap_CrouzeixRaviartFECollection_Name(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -9375,11 +8810,6 @@ SWIGINTERN PyObject *_wrap_delete_CrouzeixRaviartFECollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9407,11 +8837,6 @@ SWIGINTERN PyObject *_wrap_new_LinearNonConf3DFECollection(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LinearNonConf3DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9447,11 +8872,6 @@ SWIGINTERN PyObject *_wrap_LinearNonConf3DFECollection_FiniteElementForGeometry(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -9487,11 +8907,6 @@ SWIGINTERN PyObject *_wrap_LinearNonConf3DFECollection_DofForGeometry(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -9533,11 +8948,6 @@ SWIGINTERN PyObject *_wrap_LinearNonConf3DFECollection_DofOrderForOrientation(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -9567,11 +8977,6 @@ SWIGINTERN PyObject *_wrap_LinearNonConf3DFECollection_Name(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -9600,11 +9005,6 @@ SWIGINTERN PyObject *_wrap_delete_LinearNonConf3DFECollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9632,11 +9032,6 @@ SWIGINTERN PyObject *_wrap_new_RT0_2DFECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT0_2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9672,11 +9067,6 @@ SWIGINTERN PyObject *_wrap_RT0_2DFECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -9712,11 +9102,6 @@ SWIGINTERN PyObject *_wrap_RT0_2DFECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -9758,11 +9143,6 @@ SWIGINTERN PyObject *_wrap_RT0_2DFECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -9792,11 +9172,6 @@ SWIGINTERN PyObject *_wrap_RT0_2DFECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -9825,11 +9200,6 @@ SWIGINTERN PyObject *_wrap_delete_RT0_2DFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9857,11 +9227,6 @@ SWIGINTERN PyObject *_wrap_new_RT1_2DFECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT1_2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9897,11 +9262,6 @@ SWIGINTERN PyObject *_wrap_RT1_2DFECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -9937,11 +9297,6 @@ SWIGINTERN PyObject *_wrap_RT1_2DFECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -9983,11 +9338,6 @@ SWIGINTERN PyObject *_wrap_RT1_2DFECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -10017,11 +9367,6 @@ SWIGINTERN PyObject *_wrap_RT1_2DFECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10050,11 +9395,6 @@ SWIGINTERN PyObject *_wrap_delete_RT1_2DFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10082,11 +9422,6 @@ SWIGINTERN PyObject *_wrap_new_RT2_2DFECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT2_2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10122,11 +9457,6 @@ SWIGINTERN PyObject *_wrap_RT2_2DFECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -10162,11 +9492,6 @@ SWIGINTERN PyObject *_wrap_RT2_2DFECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -10208,11 +9533,6 @@ SWIGINTERN PyObject *_wrap_RT2_2DFECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -10242,11 +9562,6 @@ SWIGINTERN PyObject *_wrap_RT2_2DFECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10275,11 +9590,6 @@ SWIGINTERN PyObject *_wrap_delete_RT2_2DFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10307,11 +9617,6 @@ SWIGINTERN PyObject *_wrap_new_Const2DFECollection(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Const2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10347,11 +9652,6 @@ SWIGINTERN PyObject *_wrap_Const2DFECollection_FiniteElementForGeometry(PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -10387,11 +9687,6 @@ SWIGINTERN PyObject *_wrap_Const2DFECollection_DofForGeometry(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -10433,11 +9728,6 @@ SWIGINTERN PyObject *_wrap_Const2DFECollection_DofOrderForOrientation(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -10467,11 +9757,6 @@ SWIGINTERN PyObject *_wrap_Const2DFECollection_Name(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10500,11 +9785,6 @@ SWIGINTERN PyObject *_wrap_delete_Const2DFECollection(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10532,11 +9812,6 @@ SWIGINTERN PyObject *_wrap_new_LinearDiscont2DFECollection(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LinearDiscont2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10572,11 +9847,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont2DFECollection_FiniteElementForGeometry(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -10612,11 +9882,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont2DFECollection_DofForGeometry(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -10658,11 +9923,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont2DFECollection_DofOrderForOrientation(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -10692,11 +9952,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont2DFECollection_Name(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10725,11 +9980,6 @@ SWIGINTERN PyObject *_wrap_delete_LinearDiscont2DFECollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10757,11 +10007,6 @@ SWIGINTERN PyObject *_wrap_new_GaussLinearDiscont2DFECollection(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GaussLinearDiscont2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10797,11 +10042,6 @@ SWIGINTERN PyObject *_wrap_GaussLinearDiscont2DFECollection_FiniteElementForGeom
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -10837,11 +10077,6 @@ SWIGINTERN PyObject *_wrap_GaussLinearDiscont2DFECollection_DofForGeometry(PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -10883,11 +10118,6 @@ SWIGINTERN PyObject *_wrap_GaussLinearDiscont2DFECollection_DofOrderForOrientati
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -10917,11 +10147,6 @@ SWIGINTERN PyObject *_wrap_GaussLinearDiscont2DFECollection_Name(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10950,11 +10175,6 @@ SWIGINTERN PyObject *_wrap_delete_GaussLinearDiscont2DFECollection(PyObject *SWI
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10982,11 +10202,6 @@ SWIGINTERN PyObject *_wrap_new_P1OnQuadFECollection(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__P1OnQuadFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11022,11 +10237,6 @@ SWIGINTERN PyObject *_wrap_P1OnQuadFECollection_FiniteElementForGeometry(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -11062,11 +10272,6 @@ SWIGINTERN PyObject *_wrap_P1OnQuadFECollection_DofForGeometry(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -11108,11 +10313,6 @@ SWIGINTERN PyObject *_wrap_P1OnQuadFECollection_DofOrderForOrientation(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -11142,11 +10342,6 @@ SWIGINTERN PyObject *_wrap_P1OnQuadFECollection_Name(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11175,11 +10370,6 @@ SWIGINTERN PyObject *_wrap_delete_P1OnQuadFECollection(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11207,11 +10397,6 @@ SWIGINTERN PyObject *_wrap_new_QuadraticDiscont2DFECollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11247,11 +10432,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont2DFECollection_FiniteElementForGeomet
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -11287,11 +10467,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont2DFECollection_DofForGeometry(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -11333,11 +10508,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont2DFECollection_DofOrderForOrientation
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -11367,11 +10537,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont2DFECollection_Name(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11400,11 +10565,6 @@ SWIGINTERN PyObject *_wrap_delete_QuadraticDiscont2DFECollection(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11432,11 +10592,6 @@ SWIGINTERN PyObject *_wrap_new_QuadraticPosDiscont2DFECollection(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11472,11 +10627,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosDiscont2DFECollection_FiniteElementForGeo
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -11512,11 +10662,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosDiscont2DFECollection_DofForGeometry(PyOb
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -11558,11 +10703,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosDiscont2DFECollection_DofOrderForOrientat
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -11592,11 +10732,6 @@ SWIGINTERN PyObject *_wrap_QuadraticPosDiscont2DFECollection_Name(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11625,11 +10760,6 @@ SWIGINTERN PyObject *_wrap_delete_QuadraticPosDiscont2DFECollection(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11657,11 +10787,6 @@ SWIGINTERN PyObject *_wrap_new_GaussQuadraticDiscont2DFECollection(PyObject *SWI
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GaussQuadraticDiscont2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11697,11 +10822,6 @@ SWIGINTERN PyObject *_wrap_GaussQuadraticDiscont2DFECollection_FiniteElementForG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -11737,11 +10857,6 @@ SWIGINTERN PyObject *_wrap_GaussQuadraticDiscont2DFECollection_DofForGeometry(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -11783,11 +10898,6 @@ SWIGINTERN PyObject *_wrap_GaussQuadraticDiscont2DFECollection_DofOrderForOrient
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -11817,11 +10927,6 @@ SWIGINTERN PyObject *_wrap_GaussQuadraticDiscont2DFECollection_Name(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11850,11 +10955,6 @@ SWIGINTERN PyObject *_wrap_delete_GaussQuadraticDiscont2DFECollection(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11882,11 +10982,6 @@ SWIGINTERN PyObject *_wrap_new_CubicDiscont2DFECollection(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CubicDiscont2DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11922,11 +11017,6 @@ SWIGINTERN PyObject *_wrap_CubicDiscont2DFECollection_FiniteElementForGeometry(P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -11962,11 +11052,6 @@ SWIGINTERN PyObject *_wrap_CubicDiscont2DFECollection_DofForGeometry(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -12008,11 +11093,6 @@ SWIGINTERN PyObject *_wrap_CubicDiscont2DFECollection_DofOrderForOrientation(PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -12042,11 +11122,6 @@ SWIGINTERN PyObject *_wrap_CubicDiscont2DFECollection_Name(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12075,11 +11150,6 @@ SWIGINTERN PyObject *_wrap_delete_CubicDiscont2DFECollection(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12107,11 +11177,6 @@ SWIGINTERN PyObject *_wrap_new_Const3DFECollection(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Const3DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12147,11 +11212,6 @@ SWIGINTERN PyObject *_wrap_Const3DFECollection_FiniteElementForGeometry(PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -12187,11 +11247,6 @@ SWIGINTERN PyObject *_wrap_Const3DFECollection_DofForGeometry(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -12233,11 +11288,6 @@ SWIGINTERN PyObject *_wrap_Const3DFECollection_DofOrderForOrientation(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -12267,11 +11317,6 @@ SWIGINTERN PyObject *_wrap_Const3DFECollection_Name(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12300,11 +11345,6 @@ SWIGINTERN PyObject *_wrap_delete_Const3DFECollection(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12332,11 +11372,6 @@ SWIGINTERN PyObject *_wrap_new_LinearDiscont3DFECollection(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LinearDiscont3DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12372,11 +11407,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont3DFECollection_FiniteElementForGeometry(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -12412,11 +11442,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont3DFECollection_DofForGeometry(PyObject *
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -12458,11 +11483,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont3DFECollection_DofOrderForOrientation(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -12492,11 +11512,6 @@ SWIGINTERN PyObject *_wrap_LinearDiscont3DFECollection_Name(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12525,11 +11540,6 @@ SWIGINTERN PyObject *_wrap_delete_LinearDiscont3DFECollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12557,11 +11567,6 @@ SWIGINTERN PyObject *_wrap_new_QuadraticDiscont3DFECollection(PyObject *SWIGUNUS
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12597,11 +11602,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont3DFECollection_FiniteElementForGeomet
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -12637,11 +11637,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont3DFECollection_DofForGeometry(PyObjec
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -12683,11 +11678,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont3DFECollection_DofOrderForOrientation
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -12717,11 +11707,6 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont3DFECollection_Name(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12750,11 +11735,6 @@ SWIGINTERN PyObject *_wrap_delete_QuadraticDiscont3DFECollection(PyObject *SWIGU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12782,11 +11762,6 @@ SWIGINTERN PyObject *_wrap_new_RefinedLinearFECollection(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RefinedLinearFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12822,11 +11797,6 @@ SWIGINTERN PyObject *_wrap_RefinedLinearFECollection_FiniteElementForGeometry(Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -12862,11 +11832,6 @@ SWIGINTERN PyObject *_wrap_RefinedLinearFECollection_DofForGeometry(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -12908,11 +11873,6 @@ SWIGINTERN PyObject *_wrap_RefinedLinearFECollection_DofOrderForOrientation(PyOb
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -12942,11 +11902,6 @@ SWIGINTERN PyObject *_wrap_RefinedLinearFECollection_Name(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12975,11 +11930,6 @@ SWIGINTERN PyObject *_wrap_delete_RefinedLinearFECollection(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13007,11 +11957,6 @@ SWIGINTERN PyObject *_wrap_new_ND1_3DFECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ND1_3DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13047,11 +11992,6 @@ SWIGINTERN PyObject *_wrap_ND1_3DFECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -13087,11 +12027,6 @@ SWIGINTERN PyObject *_wrap_ND1_3DFECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -13133,11 +12068,6 @@ SWIGINTERN PyObject *_wrap_ND1_3DFECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -13167,11 +12097,6 @@ SWIGINTERN PyObject *_wrap_ND1_3DFECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13200,11 +12125,6 @@ SWIGINTERN PyObject *_wrap_delete_ND1_3DFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13232,11 +12152,6 @@ SWIGINTERN PyObject *_wrap_new_RT0_3DFECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT0_3DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13272,11 +12187,6 @@ SWIGINTERN PyObject *_wrap_RT0_3DFECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -13312,11 +12222,6 @@ SWIGINTERN PyObject *_wrap_RT0_3DFECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -13358,11 +12263,6 @@ SWIGINTERN PyObject *_wrap_RT0_3DFECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -13392,11 +12292,6 @@ SWIGINTERN PyObject *_wrap_RT0_3DFECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13425,11 +12320,6 @@ SWIGINTERN PyObject *_wrap_delete_RT0_3DFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13457,11 +12347,6 @@ SWIGINTERN PyObject *_wrap_new_RT1_3DFECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RT1_3DFECollection, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13497,11 +12382,6 @@ SWIGINTERN PyObject *_wrap_RT1_3DFECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -13537,11 +12417,6 @@ SWIGINTERN PyObject *_wrap_RT1_3DFECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -13583,11 +12458,6 @@ SWIGINTERN PyObject *_wrap_RT1_3DFECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -13617,11 +12487,6 @@ SWIGINTERN PyObject *_wrap_RT1_3DFECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13650,11 +12515,6 @@ SWIGINTERN PyObject *_wrap_delete_RT1_3DFECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13692,11 +12552,6 @@ SWIGINTERN PyObject *_wrap_new_Local_FECollection(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Local_FECollection, SWIG_POINTER_NEW |  0 );
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
@@ -13734,11 +12589,6 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_FiniteElementForGeometry(PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   return resultobj;
@@ -13774,11 +12624,6 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_DofForGeometry(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -13820,11 +12665,6 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_DofOrderForOrientation(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -13854,11 +12694,6 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_Name(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13887,11 +12722,6 @@ SWIGINTERN PyObject *_wrap_delete_Local_FECollection(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;

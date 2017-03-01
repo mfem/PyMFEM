@@ -24,6 +24,8 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 import_array();
 %}
 %import "cpointer.i"
+%pointer_class(int, intp);
+
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -43,7 +45,7 @@ import_array();
 
 %import "ostream_typemap.i"
 //
-%pointer_class(int, intp);
+
 //  conversion of Int (can handle numpy int)
 %typemap(in) int {
   PyArray_PyIntAsInt($input);  

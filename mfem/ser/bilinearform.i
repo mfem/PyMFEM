@@ -23,6 +23,7 @@ import_array();
 %import "linearform.i"
 %import "gridfunc.i"
 
+%import "cpointer.i"
 %pointer_class(int, intp);
 
 %exception {

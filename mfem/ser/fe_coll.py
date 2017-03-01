@@ -104,17 +104,21 @@ import array
 import ostream_typemap
 import operators
 import ncmesh
-import element
-import densemat
-import geom
+import gridfunc
+import coefficient
 import intrules
-import table
-import vertex
 import sparsemat
+import densemat
 import eltrans
 import fe
-import coefficient
+import fespace
 import lininteg
+import bilininteg
+import linearform
+import element
+import geom
+import table
+import vertex
 class BasisType(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, BasisType, name, value)
