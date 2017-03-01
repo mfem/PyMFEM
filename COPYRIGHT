@@ -1,4 +1,5 @@
-# Copyright (c) 2016, S. Shiraiwa and PSFC, MIT
+# Copyright (c) 2016, S. Shiraiwa and Plasma Science Fusion Center,
+# Massacthusett Institute of Technology (PSFC, MIT) 
 #
 # This file is part of the PyMFEM, python wrapper for MFEM finite element
 # library. For more information and source code about MFEM, availability
@@ -13,7 +14,7 @@ COPYRIGHT
 The following copyright applies to each file in the PyMFEM distribution, unless
 otherwise stated in the file:
 
-Copyright (c) 2016-, S. Shiraiwa and PSFC, MIT
+Copyright (c) 2016 - , S. Shiraiwa and PSFC, MIT
 
 Neither S.Shiraiwa nor PSFC, MIT makes any warranty, express or implied, or
 assumes any liability or responsibility for the accuracy, completeness, or
