@@ -1,8 +1,9 @@
 import sys
-if 'mfem.ser' in sys.modules:
-   import mfem.ser as mfem
-else:
-   import mfem.par as mfem
+
+#
+#   this modules works only with parallel version
+#
+import mfem.par as mfem
    
 import numpy as np
 
