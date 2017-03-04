@@ -4109,8 +4109,18 @@ SWIGINTERN void mfem_Mesh_PrintToFile(mfem::Mesh const *self,char const *mesh_fi
         mesh_ofs.precision(precision);
         self->Print(mesh_ofs);	
    }
+SWIGINTERN PyObject *mfem_Mesh_GetAttributeArray(mfem::Mesh const *self){
+     int i;
+     npy_intp dims[] = {self->GetNE()};
+     PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
+     int *x    = (int *)PyArray_DATA(array);
+     for (i = 0; i < self->GetNE() ; i++){
+       x[i] = (int)(self->GetElement(i)->GetAttribute());
+     }
+     return array;
+   }
 SWIGINTERN PyObject *mfem_Mesh_GetVertexArray(mfem::Mesh const *self,int i){
-     int L = self->Dimension();
+     int L = self->SpaceDimension();     
      int n;
      const double *v = self->GetVertex(i);
      npy_intp dims[] = {L};
@@ -21333,6 +21343,35 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_GetAttributeArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_GetAttributeArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetAttributeArray" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    try {
+      result = (PyObject *)mfem_Mesh_GetAttributeArray((mfem::Mesh const *)arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_GetVertexArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -22459,6 +22498,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_Mesh", _wrap_delete_Mesh, METH_VARARGS, NULL},
 	 { (char *)"new_Mesh", _wrap_new_Mesh, METH_VARARGS, NULL},
 	 { (char *)"Mesh_PrintToFile", _wrap_Mesh_PrintToFile, METH_VARARGS, NULL},
+	 { (char *)"Mesh_GetAttributeArray", _wrap_Mesh_GetAttributeArray, METH_VARARGS, NULL},
 	 { (char *)"Mesh_GetVertexArray", _wrap_Mesh_GetVertexArray, METH_VARARGS, NULL},
 	 { (char *)"Mesh_GetBdrElementFace", _wrap_Mesh_GetBdrElementFace, METH_VARARGS, NULL},
 	 { (char *)"Mesh_GetBdrAttributeArray", _wrap_Mesh_GetBdrAttributeArray, METH_VARARGS, NULL},

@@ -662,6 +662,9 @@ class Mesh(_object):
     def PrintToFile(self, mesh_file, precision):
         return _mesh.Mesh_PrintToFile(self, mesh_file, precision)
 
+    def GetAttributeArray(self):
+        return _mesh.Mesh_GetAttributeArray(self)
+
     def GetVertexArray(self, i):
         return _mesh.Mesh_GetVertexArray(self, i)
 
