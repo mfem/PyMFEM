@@ -372,48 +372,19 @@ class MixedBilinearForm(matrix.Matrix):
         return _bilinearform.MixedBilinearForm_GetBlocks(self, blocks)
 
     def SpMat(self, *args):
-        val = _bilinearform.MixedBilinearForm_SpMat(self, *args)
-
-        if not hasattr(self, "_spmat"): self._spmat = []
-        self._spmat.append(val)
-        val.thisown=0 
-
-
-        return val
-
+        return _bilinearform.MixedBilinearForm_SpMat(self, *args)
 
     def LoseMat(self):
         return _bilinearform.MixedBilinearForm_LoseMat(self)
 
     def AddDomainIntegrator(self, bfi):
-
-        if not hasattr(self, "_integrators"): self._integrators = []
-        self._integrators.append(bfi)
-        bfi.thisown=0 
-
-
         return _bilinearform.MixedBilinearForm_AddDomainIntegrator(self, bfi)
 
-
     def AddBoundaryIntegrator(self, bfi):
-
-        if not hasattr(self, "_integrators"): self._integrators = []
-        self._integrators.append(bfi)
-        bfi.thisown=0 
-
-
         return _bilinearform.MixedBilinearForm_AddBoundaryIntegrator(self, bfi)
 
-
     def AddTraceFaceIntegrator(self, bfi):
-
-        if not hasattr(self, "_integrators"): self._integrators = []
-        self._integrators.append(bfi)
-        bfi.thisown=0 
-
-
         return _bilinearform.MixedBilinearForm_AddTraceFaceIntegrator(self, bfi)
-
 
     def GetDBFI(self):
         return _bilinearform.MixedBilinearForm_GetDBFI(self)
