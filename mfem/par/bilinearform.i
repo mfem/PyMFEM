@@ -84,12 +84,12 @@ namespace mfem {
     val.thisown=0 
    %} 
 
-%pythonprepend DiscreteDomainInterpolator::AddDomainIntegrator %{
+%pythonprepend DiscreteDomainInterpolator::AddDomainInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
     di.thisown=0 
    %} 
-%pythonprepend DiscreteDomainInterpolator::AddTraceFaceIntegrator %{
+%pythonprepend DiscreteDomainInterpolator::AddTraceFaceInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
     di.thisown=0 
