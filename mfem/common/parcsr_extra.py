@@ -75,7 +75,7 @@ def ToHypreParVec(vec):
 
     return v
    
-def ToHypreParCSR(mat, check_partitioning = False, verbose = True,
+def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
                   col_starts = None):
     '''
     convert scipy sparse matrix to hypre
