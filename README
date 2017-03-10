@@ -178,6 +178,7 @@ This is needed only when you edit SWIG interface files.
             GetEdgeVertices(i)
             GetFaceVertices(i)
             GetElementFaces(i)
+	    
 	 pointer passing in following methos are returned
 	 as tuple
             elem1, elem2 = mesh.GetFaceElements(i)
@@ -204,7 +205,8 @@ This is needed only when you edit SWIG interface files.
 
          GetBdrElementFace(i) returns tuple
          GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
-         GetBdrAttributeArray(int idx) returns array of boundary attribute
+         GetBdrAttributeArray() returns array of boundary attribute
+         GetAttributeArray() returns array of attribute	 
 
          SwapNodes returns nodes and onws_nodes as follows.
 	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)

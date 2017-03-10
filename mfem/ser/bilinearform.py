@@ -111,15 +111,15 @@ import eltrans
 import fe
 import mesh
 import ncmesh
+import gridfunc
+import bilininteg
+import fe_coll
+import lininteg
+import linearform
 import element
 import geom
 import table
 import vertex
-import fe_coll
-import lininteg
-import bilininteg
-import gridfunc
-import linearform
 class BilinearForm(matrix.Matrix):
     __swig_setmethods__ = {}
     for _s in [matrix.Matrix]:
@@ -465,10 +465,24 @@ class DiscreteLinearOperator(MixedBilinearForm):
             self.this = this
 
     def AddDomainInterpolator(self, di):
+
+        if not hasattr(self, "_integrators"): self._integrators = []
+        self._integrators.append(di)
+        di.thisown=0 
+
+
         return _bilinearform.DiscreteLinearOperator_AddDomainInterpolator(self, di)
 
+
     def AddTraceFaceInterpolator(self, di):
+
+        if not hasattr(self, "_integrators"): self._integrators = []
+        self._integrators.append(di)
+        di.thisown=0 
+
+
         return _bilinearform.DiscreteLinearOperator_AddTraceFaceInterpolator(self, di)
+
 
     def GetDI(self):
         return _bilinearform.DiscreteLinearOperator_GetDI(self)

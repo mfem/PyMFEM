@@ -24,6 +24,8 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 import_array();
 %}
 %import "cpointer.i"
+%pointer_class(int, intp);
+
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -43,7 +45,7 @@ import_array();
 
 %import "ostream_typemap.i"
 //
-%pointer_class(int, intp);
+
 //  conversion of Int (can handle numpy int)
 %typemap(in) int {
   PyArray_PyIntAsInt($input);  
@@ -344,9 +346,20 @@ namespace mfem{
         mesh_ofs.precision(precision);
         self->Print(mesh_ofs);	
    }
+   PyObject* GetAttributeArray() const
+   {
+     int i;
+     npy_intp dims[] = {self->GetNE()};
+     PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
+     int *x    = (int *)PyArray_DATA(array);
+     for (i = 0; i < self->GetNE() ; i++){
+       x[i] = (int)(self->GetElement(i)->GetAttribute());
+     }
+     return array;
+   }   
    PyObject* GetVertexArray(int i) const
    {
-     int L = self->Dimension();
+     int L = self->SpaceDimension();          
      int n;
      const double *v = self->GetVertex(i);
      npy_intp dims[] = {L};

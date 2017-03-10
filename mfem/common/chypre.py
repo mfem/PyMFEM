@@ -10,7 +10,7 @@
   it should work with pure real or pure imaginary
   case too.
 
-  method names are basically follows the naming used
+  it follows the mathod naming convetion used
   in scipy.sparse. However, since it inherits the list
   object, __setitem__ can not be used for accessing
   array  elements. Use set_element, instead.
@@ -79,14 +79,14 @@ class CHypreVec(list):
                 self[1][int(i - part[0])] = v.imag
                 
 class CHypreMat(list):
-    def __init__(self, r = None, i = None):
+    def __init__(self, r = None, i = None, col_starts = None):
         list.__init__(self, [None]*2)
         if isinstance(r, csr_matrix):
-            self[0] = ToHypreParCSR(r)
+            self[0] = ToHypreParCSR(r, col_starts = col_starts)
         else:
             self[0] = r
         if isinstance(i, csr_matrix):
-            self[1] = ToHypreParCSR(i)
+            self[1] = ToHypreParCSR(i, col_starts = col_starts)
         else:
             self[1] = i
 
@@ -150,18 +150,28 @@ class CHypreMat(list):
             self[0] *= other
         if self[1] is not None:
             self[1] *= other
+        return self
 
     def dot(self, other):
         return self.__mul__(other)
     
     def transpose(self):
-        return CHypreMat(self[0].Transpose(), self[1].Transpose())
+        '''
+        transpose of matrix
+        this method returns a new matrix
+        '''
+        R = self[0].Transpose() if self[0] is not None else None
+        I = self[1].Transpose() if self[1] is not None else None    
+        return CHypreMat(R, I)
+        #return CHypreMat(self[0].Transpose(), self[1].Transpose())
 
     def conj(self, inplace = True):
         '''
         complex conjugate
           if copy is on, imaginary part becomes different object
-        ''' 
+        '''
+        if self[1] is None: return self
+        
         if not inplace:
            self[1] = ToHypreParCSR(-ToScipyCoo(self[1]).tocsr())
         else:

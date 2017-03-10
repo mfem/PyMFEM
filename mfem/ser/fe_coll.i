@@ -21,7 +21,7 @@ import_array();
 %}
 
 
-
+%import "cpointer.i"
 %import "mesh.i"
 %import "array.i"
 %import "matrix.i"

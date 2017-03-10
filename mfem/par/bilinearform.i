@@ -53,6 +53,14 @@ namespace mfem {
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
+%pythonappend BilinearForm::SpMat %{
+    if not hasattr(self, "_spmat"): self._spmat = []
+    self._spmat.append(val)
+    val.thisown=0 
+   %}
+%pythonappend BilinearForm::EnableHybridization %{
+    constr_integ.thisown = 0
+   %} 
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{ 
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
@@ -72,16 +80,17 @@ namespace mfem {
     if not hasattr(self, "_spmat"): self._spmat = []
     self._spmat.append(val)
     val.thisown=0 
-   %} 
-%pythonappend BilinearForm::SpMat %{
-    if not hasattr(self, "_spmat"): self._spmat = []
-    self._spmat.append(val)
-    val.thisown=0 
    %}
-%pythonappend BilinearForm::EnableHybridization %{
-    constr_integ.thisown = 0
+%pythonprepend DiscreteLinearOperator::AddDomainInterpolator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    self._integrators.append(di)
+    di.thisown=0 
    %} 
-} 
-
+%pythonprepend DiscreteLinearOperator::AddTraceFaceInterpolator %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    self._integrators.append(di)
+    di.thisown=0 
+   %}
+} //end of namespace  
 
 %include "fem/bilinearform.hpp"
