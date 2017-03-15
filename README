@@ -95,6 +95,21 @@ This is needed only when you edit SWIG interface files.
    Note that python version  examples are simplfied. It does not
    parse arguments nor visulaization via socket connection.
 
+5) (optional) run test
+   cd test
+   python test.py
+
+   this script runs all example python script and corresponding
+   C++ verison and compare the text output. It will report if
+   there is siginficant difference in output.
+
+   Possible fail reason:
+      Bug ;D
+      Conversgence of iterative solver depends on the intial
+      condition...?
+      ex7p fails thought the glvis shows the same plot...
+  
+
 -- Features --
  Following features are realized in PyMFEM using SWIG interface
  in order to use MFEM more conveientely from python. 
@@ -297,9 +312,11 @@ This is needed only when you edit SWIG interface files.
    4-12) std::ostream&
 
          methods which takes std::ostream& are wrapped so that one can
-	 pass python file object.
+	 pass python file object. Note that you may want to flush
+	 sys.stdout first.
 
          (example)
+	    sys.stdout.flush()
 	    sparsmat.PrintInfo(sys.stdout)
        
 

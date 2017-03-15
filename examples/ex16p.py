@@ -247,7 +247,7 @@ ode_solver.Init(oper)
 t = 0.0; ti = 1
 last_step = False
 while not last_step:
-    ti = ti + 1
+
     if (t + dt >= t_final - dt/2): last_step = True
 
     t, dt = ode_solver.Step(u, t, dt)
@@ -259,7 +259,7 @@ while not last_step:
              sout.send_text("parallel " + str(num_procs) +  " " + str(myid))        
              sout.send_solution(pmesh, u_gf)
              sout.flush()
-
+    ti = ti + 1
     oper.SetParameters(u)
 
 # 11. Save the final solution in parallel. This output can be viewed later

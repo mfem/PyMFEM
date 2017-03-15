@@ -229,6 +229,7 @@ X = mfem.Vector()
 a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
 print('...done')
 
+sys.stdout.flush() # without this, the following output will be out of order....
 A.PrintInfo(sys.stdout)
 
 # 11. Define a simple symmetric Gauss-Seidel preconditioner and use it to

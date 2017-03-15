@@ -55,7 +55,7 @@ parser.add_argument('-s', '--ode-solver',
                     action = 'store', default = 3, type=int,
                     help = help_ode)
 parser.add_argument('-tf', '--t-final',
-                    action = 'store', default = 1.0, type=float,
+                    action = 'store', default = 300.0, type=float,
                     help = "Final time; start time is 0.")
 parser.add_argument('-dt', '--time-step',
                     action = 'store', default = 3.0, type=float,
@@ -412,8 +412,6 @@ while not last_step:
     t, dt = ode_solver.Step(vx, t, dt_real)
 
     if (t >= t_final - 1e-8*dt): last_step = True    
-    
-    if (myid == 0): print ti % vis_steps
     
     if (last_step or (ti % vis_steps) == 0):
         v_gf.Distribute(vx.GetBlock(0))

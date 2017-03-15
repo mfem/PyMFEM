@@ -48,7 +48,7 @@ parser.add_argument('-sys', '--amg-for-systems',
              help =  'Use  standard AMG for systems (unknown approach).',
                     dest = 'amg_elast', default = True)
 parser.add_argument('-vis', '--visualization',
-                    action = 'store_true',
+                    action = 'store_true', default=True,
                     help='Enable GLVis visualization')
 args = parser.parse_args()
 
@@ -162,6 +162,7 @@ else:
     amg.SetSystemsOptions(dim)
 
 lobpcg = mfem.HypreLOBPCG(MPI.COMM_WORLD)
+lobpcg.SetNumModes(nev);
 lobpcg.SetPreconditioner(amg)              
 lobpcg.SetMaxIter(100)
 lobpcg.SetTol(1e-8)

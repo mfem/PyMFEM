@@ -82,14 +82,17 @@ all: par ser
 cxx: parcxx sercxx
 par: setup_local.py
 	$(MAKE) -C mfem/par
+	cp setup_local.py mfem/.       
 ser: setup_local.py
 	$(MAKE) -C mfem/ser
+	cp setup_local.py mfem/.       
 parcxx: setup_local.py
 	$(MAKE) -C mfem/par cxx
 sercxx: setup_local.py
 	$(MAKE) -C mfem/ser cxx
 setup_local.py: Makefile.local
 	$(PYTHON) write_setup_local.py
+	cp setup_local.py mfem/.       
 cleancxx:
 	for dirs in $(SUBDIRS); do\
 		$(MAKE) -C $$dirs cleancxx;\

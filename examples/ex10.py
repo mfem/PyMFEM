@@ -37,7 +37,7 @@ parser.add_argument('-s', '--ode-solver',
                     action = 'store', default = 3, type=int,
                     help = help_ode)
 parser.add_argument('-tf', '--t-final',
-                    action = 'store', default = 1.0, type=float,
+                    action = 'store', default = 300.0, type=float,
                     help = "Final time; start time is 0.")
 parser.add_argument('-dt', '--time-step',
                     action = 'store', default = 3.0, type=float,
@@ -74,7 +74,7 @@ parser.print_options(args)
 ref_levels = 2
 order = 1
 ode_solver_type = 3
-t_final = 10.0
+t_final = 300.0
 dt = 3
 visc = 1e-2
 mu = 0.25
@@ -335,7 +335,6 @@ ode_solver.Init(oper)
 t = 0. ; ti = 1
 last_step = False;
 while not last_step:
-    ti = ti + 1
     if (t + dt >= t_final - dt/2): last_step = True
 
     t, dt = ode_solver.Step(vx, t, dt)
@@ -349,8 +348,7 @@ while not last_step:
                 ", dTE = " + str((ee+ke)-(ee0+ke0)))
 
         print(text)
-
-
+    ti = ti + 1
 #
 # if i translate c++ line-by-line, ti seems the second swap does not work...
 #
