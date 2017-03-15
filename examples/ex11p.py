@@ -41,7 +41,7 @@ myid      = MPI.COMM_WORLD.rank
 
 parser = ArgParser(description='Ex2 (linear elastisity)')
 parser.add_argument('-m', '--mesh',
-                    default = 'beam-tri.mesh',
+                    default = 'star.mesh',
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-rs', '--refine-serial',
@@ -60,7 +60,7 @@ parser.add_argument("-n", "--num-eigs",
                    action = 'store', default = 5, type=int,                   
                  help =  "Number of desired eigenmodes.");
 parser.add_argument('-vis', '--visualization',
-                    action = 'store_true',
+                    action = 'store_true', default=True,
                     help='Enable GLVis visualization')
 args = parser.parse_args()
 

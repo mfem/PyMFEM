@@ -169,8 +169,9 @@ norm_u = mfem.ComputeLpNorm(2, ucoeff, mesh, irs)
 err_u  = u.ComputeL2Error(ucoeff, irs)
 err_p  = p.ComputeL2Error(pcoeff, irs)
 
-print("|| p_h - p_ex || / || p_ex || = " + str(err_p / norm_p))
 print("|| u_h - u_ex || / || u_ex || = " + str(err_u / norm_u))
+print("|| p_h - p_ex || / || p_ex || = " + str(err_p / norm_p))
+
 
 
 

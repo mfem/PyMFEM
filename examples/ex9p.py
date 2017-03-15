@@ -218,7 +218,7 @@ while True:
    t, dt = ode_solver.Step(U, t, dt);
    ti = ti + 1
    if ti % vis_steps == 0:
-       print("time step: " + str(ti) + ", time: " + str(t))
+       if myid == 0: print("time step: " + str(ti) + ", time: " + str(t))
 
 u.Assign(U)       
 sol_name   =  "ex9-final."+smyid       

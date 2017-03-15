@@ -219,7 +219,6 @@ ode_solver.Init(oper)
 t = 0.0; ti = 1
 last_step = False
 while not last_step:
-    ti = ti + 1
     if (t + dt >= t_final - dt/2): last_step = True
 
     t, dt = ode_solver.Step(u, t, dt)
@@ -230,7 +229,7 @@ while not last_step:
          if (visualization):
              sout << "solution\n" << mesh << u_gf
              sout.flush()
-
+    ti = ti + 1
     oper.SetParameters(u)
 
 # 9. Save the final solution. This output can be viewed later using GLVis:

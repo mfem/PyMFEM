@@ -124,6 +124,7 @@ mfem.PCG(A, M, B, X, 1, 500, 1e-12, 0.0);
 a.RecoverFEMSolution(X, b, x);
 
 # 12. Compute and print the L^2 norm of the error.
+print("")
 print("|| E_h - E ||_{L^2} = " + str(x.ComputeL2Error(E)))
 
 mesh.PrintToFile('refined.mesh', 8)
