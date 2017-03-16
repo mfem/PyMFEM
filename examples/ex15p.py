@@ -268,7 +268,7 @@ while  (time < t_final + 1e-10):
     while(True):
          global_dofs = fespace.GlobalTrueVSize()       
          if myid == 0:
-             print("Iteration: " + str(ref_it) +", number of unknowns: " 
+             print_txt = ("Iteration: " + str(ref_it) +", number of unknowns: " 
                     + str(global_dofs))
 
          # 15. Recompute the field on the current mesh: assemble the stiffness
@@ -313,7 +313,7 @@ while  (time < t_final + 1e-10):
          #     determines if all elements satisfy the local threshold.
          refiner.Apply(pmesh)
          if myid == 0:
-             print("total error: " + str(estimator.GetTotalError()))
+             print(print_txt + ", total error: " + str(estimator.GetTotalError()))
          # 21. Quit the AMR loop if the termination criterion has been met
          if refiner.Stop():
              a.Update()

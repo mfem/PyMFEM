@@ -37,8 +37,8 @@ import time
 import shutil
 import re
 
-#skip_test = ['ex11p'] #skip this since it asks user input
-skip_test = ['ex15p']  #skip this since it asks user input
+skip_test = [''] 
+#skip_test = ['ex15p']  #skip this since it takes too long on my Mac..;D
 
 class bcolors:
     HEADER = '\033[95m'
@@ -49,7 +49,14 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
-    
+
+## special handling of text (needs to be set manually)
+ignore_txt_def = ['seconds', 'residual']    
+ignore_txt_dict = {'ex15p':['seconds', 'residual',],
+                   'ex10':['iteration', 'seconds', 'residual',],
+                   'ex10p':['iteration', 'seconds', 'residual',],
+                   'ex13p':['iteration', 'seconds', 'residual',]}
+
 def run_file(command, num = 5):
     t1 = time.time()
     p = sp.Popen(command,stdout=sp.PIPE, stderr=sp.STDOUT, stdin=sp.PIPE)
@@ -64,12 +71,13 @@ def pad_lines(lines):
     length = max([len(l.strip()) for l in lines])
     return  [l.strip() + " "*(length-len(l.strip())) for l in lines]
 
-def extract_numbers(line):
+def extract_numbers(line, case):
     nums = []
     line = line.strip()
 
-    if line.find("seconds") != -1: return []
-    if line.find("iteration") != -1: return []    
+    igt = ignore_txt_dict.get(case, ignore_txt_def)
+    for x in igt: 
+        if line.lower().find(x) != -1: return []
     for x in line.split():
         try:
             if x.endswith(','): x = x[:-1]
@@ -80,14 +88,14 @@ def extract_numbers(line):
             pass
     return nums
 
-def compare_results(lines1, lines2, verbose=True):
+def compare_results(lines1, lines2, case, verbose=True):
     lines1 = pad_lines(lines1)
     lines2 = pad_lines(lines2)
 
     compare = []
     for l1, l2 in zip(lines1, lines2):
-        nums1 = extract_numbers(l1)
-        nums2 = extract_numbers(l2)
+        nums1 = extract_numbers(l1, case)
+        nums2 = extract_numbers(l2, case)
         flag = nums1 == nums2
         if len(nums1) == 0 and len(nums2) == 0: flag = 'ignored'
         if verbose:print(l1 + "\t" + l2 + " : " + str(flag))
@@ -108,7 +116,8 @@ def run_test(mfem_exes, pymfem_exes, serial=True, np=2, verbose=False):
     results = []; fails = []
 
     for e1, e2 in zip(mfem_exes, pymfem_exes):
-        print("Running : " + os.path.basename(e1))
+        case =  os.path.basename(e1)
+        print("Running : " + case)
         comm = comm_mpi + [e1]
         t1, l1 = run_file(comm, num = 5)
 
@@ -116,7 +125,7 @@ def run_test(mfem_exes, pymfem_exes, serial=True, np=2, verbose=False):
         comm = comm_mpi + [sys.executable,  e2]
         t2, l2 = run_file(comm, num = 5)
 
-        flag = compare_results(l1, l2, verbose=verbose)
+        flag = compare_results(l1, l2, case, verbose=verbose)
         if flag:
             print(os.path.basename(e1) + "  " +  bcolors.OKGREEN + "PASS" + bcolors.ENDC)
         else:
@@ -148,7 +157,7 @@ def find_mfem_examples(dir, serial = True, example='all'):
 
     pairs = [(num, name) for num, name in zip(nums, names)]
     names = [name  for num, name in sorted(pairs)]
-    
+
     return names
 
 def print_help(self):
@@ -212,10 +221,9 @@ if __name__=="__main__":
     from mfem.setup_local import mfemser as mfemser_dir  # mfem library dir
 
     mfemp_exes = find_mfem_examples(mfem_dir, serial = False, example = example)
-    mfems_exes = find_mfem_examples(mfem_dir, serial = True,  example = example)    
+    mfems_exes = find_mfem_examples(mfemser_dir, serial = True,  example = example)    
     pymfems_exes = [os.path.join(dir1, "examples", os.path.basename(x))+".py"  for x in mfems_exes]
     pymfemp_exes = [os.path.join(dir1, "examples", os.path.basename(x))+".py"  for x in mfemp_exes]
-
 
     if len(mfems_exes) != 0 and tests:
         print(bcolors.BOLD+"Running Serial Version"+bcolors.ENDC)
