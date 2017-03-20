@@ -608,6 +608,11 @@ class MixedDotProductIntegrator(MixedScalarVectorIntegrator):
         except Exception:
             self.this = this
 
+        if len(args) > 0: self._coeff = vq
+
+
+
+
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         return _bilininteg.MixedDotProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
 
@@ -635,6 +640,11 @@ class MixedWeakGradDotIntegrator(MixedScalarVectorIntegrator):
             self.this.append(this)
         except Exception:
             self.this = this
+
+        if len(args) > 0: self._coeff = vq
+
+
+
 
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         return _bilininteg.MixedWeakGradDotIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
@@ -1348,6 +1358,11 @@ class MixedVectorWeakDivergenceIntegrator(MixedVectorIntegrator):
             self.this.append(this)
         except Exception:
             self.this = this
+
+        if len(args) > 0: self._coeff = args[0]
+
+
+
     __swig_destroy__ = _bilininteg.delete_MixedVectorWeakDivergenceIntegrator
     __del__ = lambda self: None
 MixedVectorWeakDivergenceIntegrator_swigregister = _bilininteg.MixedVectorWeakDivergenceIntegrator_swigregister
@@ -1651,7 +1666,7 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
         except Exception:
             self.this = this
 
-        self._coeff = args[0]
+        if len(args) > 0: self._coeff = args[0]
 
 
 
@@ -1715,7 +1730,7 @@ class VectorFEMassIntegrator(BilinearFormIntegrator):
         except Exception:
             self.this = this
 
-        self._coeff = args[0]
+        if len(args) > 0: self._coeff = args[0]
 
 
 
