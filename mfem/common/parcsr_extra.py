@@ -409,7 +409,7 @@ def ResetHypreDiag(M, idx, value = 1.0):
         if ii >= ilower and ii <= iupper:
            mat[ii-ilower, ii] = value
  
-     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
+    return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
 
 def ResetHypreRow(M, idx):
     '''
