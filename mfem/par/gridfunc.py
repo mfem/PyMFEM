@@ -130,13 +130,6 @@ class GridFunction(vector.Vector):
     __getattr__ = lambda self, name: _swig_getattr(self, GridFunction, name)
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        this = _gridfunc.new_GridFunction(*args)
-        try:
-            self.this.append(this)
-        except Exception:
-            self.this = this
-
     def MakeOwner(self, _fec):
         return _gridfunc.GridFunction_MakeOwner(self, _fec)
 
@@ -292,6 +285,13 @@ class GridFunction(vector.Vector):
         return _gridfunc.GridFunction_SaveSTL(self, out, TimesToRefine)
     __swig_destroy__ = _gridfunc.delete_GridFunction
     __del__ = lambda self: None
+
+    def __init__(self, *args):
+        this = _gridfunc.new_GridFunction(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
 
     def SaveToFile(self, gf_file, precision):
         return _gridfunc.GridFunction_SaveToFile(self, gf_file, precision)

@@ -3903,6 +3903,16 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
+SWIGINTERN mfem::GridFunction *new_mfem_GridFunction__SWIG_6(mfem::Mesh *m,char const *grid_file){
+   mfem::GridFunction *gf;
+   std::ifstream igrid(grid_file);
+   if (!igrid) {
+      std::cerr << "\nCan not open grid function file: " << grid_file << '\n' << std::endl;
+      return NULL;
+   }
+   gf = new mfem::GridFunction(m, igrid);
+   return gf;
+}
 SWIGINTERN void mfem_GridFunction_SaveToFile(mfem::GridFunction const *self,char const *gf_file,int const precision){
 	std::ofstream mesh_ofs(gf_file);	
         mesh_ofs.precision(precision);
@@ -4240,103 +4250,6 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 0) {
-    return _wrap_new_GridFunction__SWIG_0(self, args);
-  }
-  if (argc == 1) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_GridFunction__SWIG_1(self, args);
-    }
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_GridFunction__SWIG_2(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_GridFunction__SWIG_3(self, args);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_GridFunction__SWIG_4(self, args);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__GridFunction, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
-            _v = 0;
-          }
-        }
-        if (_v) {
-          return _wrap_new_GridFunction__SWIG_5(self, args);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_GridFunction'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::GridFunction()\n"
-    "    mfem::GridFunction::GridFunction(mfem::GridFunction const &)\n"
-    "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *)\n"
-    "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *,double *)\n"
-    "    mfem::GridFunction::GridFunction(mfem::Mesh *,std::istream &)\n"
-    "    mfem::GridFunction::GridFunction(mfem::Mesh *,mfem::GridFunction *[],int)\n");
-  return 0;
 }
 
 
@@ -11515,6 +11428,158 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::GridFunction *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_GridFunction",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GridFunction" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_GridFunction" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      result = (mfem::GridFunction *)new_mfem_GridFunction__SWIG_6(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NEW |  0 );
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_GridFunction__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_GridFunction__SWIG_1(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_GridFunction__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_GridFunction__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_GridFunction__SWIG_4(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_GridFunction__SWIG_6(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__GridFunction, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
+        }
+        if (_v) {
+          return _wrap_new_GridFunction__SWIG_5(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_GridFunction'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GridFunction::GridFunction()\n"
+    "    mfem::GridFunction::GridFunction(mfem::GridFunction const &)\n"
+    "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *)\n"
+    "    mfem::GridFunction::GridFunction(mfem::FiniteElementSpace *,double *)\n"
+    "    mfem::GridFunction::GridFunction(mfem::Mesh *,std::istream &)\n"
+    "    mfem::GridFunction::GridFunction(mfem::Mesh *,mfem::GridFunction *[],int)\n"
+    "    mfem::GridFunction::GridFunction(mfem::Mesh *,char const *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_GridFunction_SaveToFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
@@ -13611,7 +13676,6 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_GridFunction", _wrap_new_GridFunction, METH_VARARGS, NULL},
 	 { (char *)"GridFunction_MakeOwner", _wrap_GridFunction_MakeOwner, METH_VARARGS, NULL},
 	 { (char *)"GridFunction_OwnFEC", _wrap_GridFunction_OwnFEC, METH_VARARGS, NULL},
 	 { (char *)"GridFunction_VectorDim", _wrap_GridFunction_VectorDim, METH_VARARGS, NULL},
@@ -13660,6 +13724,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"GridFunction_SaveVTK", _wrap_GridFunction_SaveVTK, METH_VARARGS, NULL},
 	 { (char *)"GridFunction_SaveSTL", _wrap_GridFunction_SaveSTL, METH_VARARGS, NULL},
 	 { (char *)"delete_GridFunction", _wrap_delete_GridFunction, METH_VARARGS, NULL},
+	 { (char *)"new_GridFunction", _wrap_new_GridFunction, METH_VARARGS, NULL},
 	 { (char *)"GridFunction_SaveToFile", _wrap_GridFunction_SaveToFile, METH_VARARGS, NULL},
 	 { (char *)"GridFunction_iadd", _wrap_GridFunction_iadd, METH_VARARGS, NULL},
 	 { (char *)"GridFunction_isub", _wrap_GridFunction_isub, METH_VARARGS, NULL},

@@ -79,6 +79,16 @@ def GetNodalValues(self, *args):
 
 namespace mfem{
 %extend GridFunction{
+GridFunction(Mesh *m, const char *grid_file){
+   mfem::GridFunction *gf;
+   std::ifstream igrid(grid_file);
+   if (!igrid) {
+      std::cerr << "\nCan not open grid function file: " << grid_file << '\n' << std::endl;
+      return NULL;
+   }
+   gf = new mfem::GridFunction(m, igrid);
+   return gf;
+}
 void SaveToFile(const char *gf_file, const int precision) const
    {
 	std::ofstream mesh_ofs(gf_file);	
