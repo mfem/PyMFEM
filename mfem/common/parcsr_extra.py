@@ -127,6 +127,7 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
 
     # collect row array to determin the size of matrix
     m_array = comm.allgather(ml)
+
     rows = [0] + list(np.cumsum(m_array))
     m = rows[-1]
     row_starts = np.array([rows[myid], rows[myid+1], m], dtype=dtype)
@@ -149,12 +150,19 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     else:
        # make sure that dtype is right....
        col_starts = np.array(col_starts, dtype = dtype)
+
     if check_partitioning:
         ch = get_assumed_patitioning(m)
         if (row_starts[0] != ch[0] or 
             row_starts[1] != ch[1] or 
             nrows != ch[2]):
-            verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)
+            for k in range(num_proc):
+                MPI.COMM_WORLD.Barrier()                              
+                if myid == k:
+                    print 'MyID : ', k
+                    print ch, nrows, row_starts, col_starts
+                    print 'NNZ', np.sum(data != 0.0)
+            MPI.COMM_WORLD.Barrier()                              
             raise ValueError("partitioning of input matrix is not correct")
     if verbose: verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)
 
@@ -164,10 +172,12 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     # which part is treated diagnal element.
     #
 
-    return  mfem.HypreParMatrix(MPI.COMM_WORLD,
+    M = mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
                                 data, row_starts, col_starts])
+
+    return M
 
 def ToScipyCoo(mat):
     '''
@@ -393,17 +403,17 @@ def ResetHypreDiag(M, idx, value = 1.0):
     n = jupper - jlower + 1
     n = M.N()    
     from scipy.sparse import coo_matrix, lil_matrix
- 
+  
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
     for ii in idx:
         if ii >= ilower and ii <= iupper:
            mat[ii-ilower, ii] = value
-
-    return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
+ 
+     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
 
 def ResetHypreRow(M, idx):
     '''
-    set diagonal element to value (normally 1)
+    set row 0.0
     '''
     col_starts = M.GetColPartArray(); col_starts[2] = M.N()  
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
@@ -417,25 +427,15 @@ def ResetHypreRow(M, idx):
     from scipy.sparse import coo_matrix, lil_matrix
 
     for ii in idx:
-       ii = np.where(irn == ii)[0]
-       data[ii] = 0.0
+       k = np.where(irn == ii)[0]
+       data[k] = 0.0
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
     mat.eliminate_zeros()
     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
-    '''
-    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
 
-    # idx  -> idx2 (index in scipy.sparse index space)
-    idx2 = np.array(idx)-ilower
-    idx2 = idx2[np.logical_and(idx2 > 0,  idx2 < m)]
-    
-    from mfem.common.sparse_utils import eliminate_rows, eliminate_cols
-    mat = eliminate_rows(mat, idx2)
-    return  ToHypreParCSR(mat)
-    '''
 def ResetHypreCol(M, idx):
     '''
-    set diagonal element to value (normally 1)
+    set col zero
     '''
     col_starts = M.GetColPartArray(); col_starts[2] = M.N()
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
@@ -452,8 +452,8 @@ def ResetHypreCol(M, idx):
     from scipy.sparse import coo_matrix, lil_matrix
 
     for ii in idx:
-       ii = np.where(jcn == ii)[0]
-       data[ii] = 0.0
+       k = np.where(jcn == ii)[0]
+       data[k] = 0.0
     
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
     mat.eliminate_zeros()    
