@@ -131,7 +131,37 @@ class CHypreMat(list):
             i = None
             
         return CHypreMat(r, i)
-    
+
+    def __sub__(self, other): #A - B
+        if not isinstance(other, CHypreMat):
+             raise ValueError(
+                   "argument should be CHypreMat")
+         
+        if self[0] is not None and other[0] is None:
+            r = ToHypreParCSR((ToScipyCoo(self[0]) - ToScipyCoo(other[0])).tocsr())            
+        elif self[0] is not None:
+            r = self[0]
+        elif other[0] is not None:
+            r = other[0].Mult(-1.0)
+        else:
+            r = None
+
+        if self[1] is not None and other[1] is None:
+            i = ToHypreParCSR((ToScipyCoo(self[1])- ToScipyCoo(other[1])).tocsr())            
+        elif self[1] is not None:
+            i = self[1]
+        elif other[1] is not None:
+            i = other[1].Mult(-1.0)
+        else:
+            i = None
+        return CHypreMat(r, i)
+
+    def __neg__(self): -B
+       r = None; i = None
+       if self[0] is not None: r = self[0].Mult(-1.0)
+       if self[i] is not None: i = self[1].Mult(-1.0)
+       return CHypreMat(r, i) 
+
     @property
     def imag(self):
         return self[1]
