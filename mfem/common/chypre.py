@@ -77,7 +77,20 @@ class CHypreVec(list):
                 self[0][int(i - part[0])] = v.real
             if self[1] is not None:            
                 self[1][int(i - part[0])] = v.imag
-                
+    def gather(self):
+        myid = MPI.COMM_WORLD.rank
+        vecr = 0.0; veci = 0.0
+        if self[0] is not None:
+           vecr  = gather_vector(self[0].GetDataArray(), MPI.DOUBLE)
+        if self[1] is not None:        
+           veci = gather_vector(self[1].GetDataArray(), MPI.DOUBLE)
+
+        if myid == 0:
+            if self[0] is None:
+                return vecr
+            else:
+                return vecr + 1j*veci
+    
 class CHypreMat(list):
     def __init__(self, r = None, i = None, col_starts = None):
         list.__init__(self, [None]*2)
@@ -271,6 +284,20 @@ class CHypreMat(list):
     def shape(self):
         return self.m(), self.n()
 
+    def get_squaremat_from_right(self):
+        '''
+        squre matrix which can be multipled from the right of self.
+        '''
+        size = self.shape[1]
+        part = self.GetRowPartArray()
+        return SquqreCHypreMat(part)
+    
+def SquqreCHypreMat(self, part):
+    lr = part[1]-part[0]
+    c  = part[2]
+    m1 = coo_matrix((row, col), shape=(lr, c))
+    m2 = coo_matrix((row, col), shape=(lr, c))
+    return CHypreMat(m1, m2)
 
 def Array2CHypreVec(array, part): 
     '''

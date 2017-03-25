@@ -59,6 +59,10 @@ print_hypre((-M1).imag,   '#### matrix -M1 imag')
 print_hypre((M1-M1).real, '#### M1-M2 (real)')
 print_hypre((M1-M1).imag, '#### M1-M2 (imag)')
 
+print_hypre(M1.transpose().real, '#### matrix M1^t real ')
+
+
+
 
 
 
