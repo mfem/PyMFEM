@@ -19,12 +19,18 @@ import numpy as np
 from scipy.sparse  import csr_matrix
 from mfem.common.parcsr_extra import *
 
+try:
+   import mfem.par
+   MFEM_PAR = True
+except:
+   MFEM_PAR = False
 
-from mpi4py import MPI
-myid     = MPI.COMM_WORLD.rank
 class CHypreVec(list):
-    def __init__(self, r = None, i = None):
+    def __init__(self, r = None, i = None, horizontal = False):
         list.__init__(self, [None]*2)
+        print "making CHypreVec"
+        self._horizontal = horizontal
+        
         if isinstance(r, np.ndarray):
             self[0] = ToHypreParVec(r)
         else:
@@ -33,6 +39,13 @@ class CHypreVec(list):
             self[1] = ToHypreParVec(i)
         else:
             self[1] = i
+            
+    def __repr__(self):
+        if self[0] is not None:
+            part = self[0].GetPartitioningArray()
+        else:
+            part = self[1].GetPartitioningArray()            
+        return "CHypreVec"+str(self.shape)+"["+str(part[1]-part[0])+"]"
             
     @property
     def imag(self):
@@ -48,7 +61,10 @@ class CHypreVec(list):
         self[0]  = value
     @property
     def shape(self):
-        return 1, self[0].GlobalSize()
+        if self._horizontal:
+            return 1, self[0].GlobalSize()
+        else:
+            return self[0].GlobalSize(), 1
             
     def isComplex(self):
         return not (self[1] is None)
@@ -58,12 +74,68 @@ class CHypreVec(list):
             self[0] *= other
         if self[1] is not None:
             self[1] *= other
-            
+        return self
+
+    def __add__(self, other):
+        Vector = mfem.HypreParVector
+        if self[0] is not None and other[0] is not None:
+            r = Vector(self[0])            
+            add_vector(self[0], others[0], r)
+        elif self[0] is not None:
+            r = Vector(self[0])
+        elif other[0] is not None:
+            r = Vector(other[0])
+        else:
+            r = None
+        if self[1] is not None and other[1] is not None:
+            i = Vector(self[1])            
+            add_vector(self[1], others[1], i)
+        elif self[1] is not None:
+            i = Vector(self[1])
+        elif other[1] is not None:
+            i = Vector(other[1])
+        else:
+            i = None
+        return CHypreVec(r, i, horizontal = self._horizontal)
+
+    def __sub__(self, other):
+        Vector = mfem.HypreParVector        
+        if self[0] is not None and other[0] is not None:
+            r = Vector(self[0])            
+            add_vector(self[0], -1, others[0], r)
+        elif self[0] is not None:
+            r = Vector(self[0])
+        elif other[0] is not None:
+            r = Vector(other[0])
+            r *=-1.
+        else:
+            r = None
+        if self[1] is not None and other[1] is not None:
+            i = Vector(self[1])            
+            add_vector(self[1], -1, others[1], i)
+        elif self[1] is not None:
+            i = Vector(self[1])
+        elif other[1] is not None:
+            i = Vector(other[1])
+            i *=-1.
+        else:
+            i = None
+        print r, i
+        return CHypreVec(r, i, horizontal = self._horizontal)
+    
     def dot(self, other):
-        if not isinstance(other, CHypreVec):
-             raise ValueError(
-                   "argument should be CHypreVec")
-        return InnerProductComplex(A, B)
+        if isinstance(other, CHypreVec):
+            print "inner product complex"
+            return InnerProductComplex(self, other)            
+        elif (isinstance(other, CHypreMat) and
+            self._horizontal):
+            ret = other.transpose().dot(self)
+            ret._horizontal = True
+            return ret
+        else:
+            raise ValueError(
+                  "CHypreVec::dot supports Vec*Vec (InnerProduct) and (Mat^t*Vec)^t ")
+
     
     def set_element(self, i, v):
         if self[0] is not None:
@@ -77,7 +149,9 @@ class CHypreVec(list):
                 self[0][int(i - part[0])] = v.real
             if self[1] is not None:            
                 self[1][int(i - part[0])] = v.imag
+                
     def gather(self):
+        from mpi4py import MPI
         myid = MPI.COMM_WORLD.rank
         vecr = 0.0; veci = 0.0
         if self[0] is not None:
@@ -90,6 +164,51 @@ class CHypreVec(list):
                 return vecr
             else:
                 return vecr + 1j*veci
+            
+    def get_squaremat_from_right(self):
+        '''
+        squre matrix which can be multipled from the right of self.
+        '''
+        if not self._horizontal:
+            raise ValueError("Vector orientation is not right")
+        
+        part = self[0].GetPartitioningArray()
+        return SquareCHypreMat(part)
+    
+    def transpose(self):
+        self._horizontal = not self.horizontal
+
+    def _do_reset(self, v, idx):
+        data = v.GetDataArray(); v.thisown = False
+        part = v.GetPartitioningArray()
+        for i in idx:
+            if i >= part[1]:continue                
+            if i < part[0]:continue
+            data[i - part[0]] = 0
+        return  ToHypreParVec(data)
+        
+    def resetCol(self, idx):
+        if self._horizontal:
+            if self[0] is not None:
+                self[0] = self._do_reset(self[0], idx)
+            if self[1] is not None:
+                self[1] = self._do_reset(self[0], idx)
+        else:            
+            if 0 in idx: self *= 0.0
+            
+    def resetRow(self, idx):
+        if self._horizontal:
+            if 0 in idx: self *= 0.0
+        else:
+            if self[0] is not None:
+                self[0] = self._do_reset(self[0], idx)
+            if self[1] is not None:
+                self[1] = self._do_reset(self[0], idx)
+    def selectRows(self, nonzeros):
+        return self
+     
+    def selectCols(self, nonzeros):
+        return self
     
 class CHypreMat(list):
     def __init__(self, r = None, i = None, col_starts = None):
@@ -103,6 +222,9 @@ class CHypreMat(list):
         else:
             self[1] = i
 
+    def __repr__(self):
+        return "CHypreMat"+str(self.shape) +"["+str(self.lshape)+"]"
+    
     def isComplex(self):
         return not (self[1] is None)
 
@@ -233,7 +355,7 @@ class CHypreMat(list):
         ret = ret * B.conj()  # this should put B back to original
         return ret
 
-    def setDiag(self, idx, value):
+    def setDiag(self, idx, value = 1.0):
         if self[0] is not None:
             self[0] = ResetHypreDiag(self[0], idx, value = float(value))
         if self[1] is not None:            
@@ -250,7 +372,13 @@ class CHypreMat(list):
             self[0] = ResetHypreRow(self[0], idx)
         if self[1] is not None:            
             self[1] = ResetHypreRow(self[1], idx)
-
+            
+    def selectRows(self, nonzeros):
+        return self
+     
+    def selectCols(self, nonzeros):
+        return self
+    
     @property
     def nnz(self):
         if self[0] is not None and self[1] is not None:
@@ -282,21 +410,42 @@ class CHypreMat(list):
         return ans[0]
     @property
     def shape(self):
-        return self.m(), self.n()
+        if self[0] is not None:
+            return (self[0].GetGlobalNumRows(), self[0].GetGlobalNumCols())
+        elif self[1] is not None:        
+            return (self[1].GetGlobalNumRows(), self[1].GetGlobalNumCols())
+        else:
+            return (0,0)
+    @property
+    def lshape(self):
+        if self[0] is not None:
+            return (self[0].GetNumRows(), self[0].GetNumCols())
+        elif self[1] is not None:        
+            return (self[1].GetNumRows(), self[1].GetNumCols())
+        else:
+            return (0,0)
 
     def get_squaremat_from_right(self):
         '''
         squre matrix which can be multipled from the right of self.
         '''
         size = self.shape[1]
-        part = self.GetRowPartArray()
-        return SquqreCHypreMat(part)
+        if self[0] is not None:
+            part = self[0].GetColPartArray()
+            part[2] = self[0].GetGlobalNumCols()
+        elif self[1] is not None:
+            part = self[1].GetColPartArray()
+            part[2] = self[1].GetGlobalNumCols()            
+        else:
+            raise ValueError("CHypreMat is empty")
+        return SquareCHypreMat(part)
     
-def SquqreCHypreMat(self, part):
+def SquareCHypreMat(part):
+    from scipy.sparse import csr_matrix
     lr = part[1]-part[0]
     c  = part[2]
-    m1 = coo_matrix((row, col), shape=(lr, c))
-    m2 = coo_matrix((row, col), shape=(lr, c))
+    m1 = csr_matrix((lr, c))
+    m2 = csr_matrix((lr, c))
     return CHypreMat(m1, m2)
 
 def Array2CHypreVec(array, part): 
@@ -352,3 +501,103 @@ def CHypreMat2Coo(mat):
          return ToScipyCoo(mat.real)
 
        
+
+
+def LF2PyVec(rlf, ilf = None, horizontal= False):
+    if MFEM_PAR:
+        '''
+        From ParLF to CHypreVec
+        '''
+        rv = rlf.ParallelAssemble()
+        if ilf is not None:
+            iv = ilf.ParallelAssemble()
+        else:
+            iv = None
+        return CHypreVec(rv, iv, horizontal = horizontal)
+    else:
+        b1 = rlf.GetDataArray(); rlf.thisown = False
+        if ilf is not None:
+           b2 = ilf.GetDataArray(); ilf.thisown = False
+           b1 = b1+1j*b2
+        if horizontal:
+           return b1.reshape((1, -1))               
+        else:
+           return b1.reshape((-1, 1))
+       
+LinearForm2PyVector = LF2PyVec
+
+def MfemVec2PyVec(rlf, ilf = None, horizontal= False):
+    b1 = rlf.GetDataArray(); rlf.thisown = False
+    if ilf is not None:
+       b2 = ilf.GetDataArray(); ilf.thisown = False
+    else:
+       b2 = None
+       
+    if MFEM_PAR:
+        b1 = ToHypreParVec(b1)
+        if b2 is not None:
+           b2 = ToHypreParVec(b2)
+        return CHypreVec(b1, b2, horizontal = horizontal)           
+    else:
+        if b2 is not None: b1 = b1+1j*b2
+        if horizontal:
+            return b1.reshape((1, -1))               
+        else:
+            return b1.reshape((-1, 1))
+       
+LinearForm2PyVector = LF2PyVec
+
+
+def BF2PyMat(rbf, ibf = None, finalize = False):
+    '''
+    Convert pair of BilinearForms to CHypreMat or 
+    ScipySparsematrix
+    '''
+    if finalize:
+        rbf.Finalize()
+        if ibf is not None: ibf.Finalize()
+        
+    if MFEM_PAR:
+        M1 =  rbf.ParallelAssemble()
+        if ibf is not None:
+            M2 =  ibf.ParallelAssemble()
+        else:
+            M2 = None
+        return CHypreMat(M1,  M2)
+    else:
+        from mfem.common.sparse_utils import sparsemat_to_scipycsr        
+        M1 =  rbf.SpMat()        
+        if ibf is None:        
+            return sparsemat_to_scipycsr(M1, dtype = float)
+        if ibf is not None:
+            M2 =  ibf.SpMat()
+            m1 = sparsemat_to_scipycsr(M1, dtype = float).tolil()
+            m2 = sparsemat_to_scipycsr(M2, dtype = complex).tolil()
+            m = m1 + 1j*m2
+            m = m.tocsr()
+        return m
+
+BilinearForm2PyMatix = BF2PyMat
+
+def MfemMat2PyMat(M1, M2 = None):
+    '''
+    Convert pair of SpMat/HypreParCSR to CHypreMat or 
+    ScipySparsematrix. Thisi is simpler version of BF2PyMat, only 
+    difference is it skippes convertion from BF to Matrix.
+    '''
+    from mfem.common.sparse_utils import sparsemat_to_scipycsr
+    if MFEM_PAR:
+        return CHypreMat(M1,  M2)
+    else:
+        if ibf is None:        
+            return sparsemat_to_scipycsr(M1, dtype = float)
+        if ibf is not None:
+            m1 = sparsemat_to_scipycsr(M1, dtype = float).tolil()
+            m2 = sparsemat_to_scipycsr(M2, dtype = complex).tolil()
+            m = m1 + 1j*m2
+            m = m.tocsr()
+        return m
+
+
+
+

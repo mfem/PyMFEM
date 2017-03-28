@@ -152,8 +152,11 @@ import element
 import geom
 import table
 import vertex
+import gridfunc
+import bilininteg
 import fe_coll
 import lininteg
+import linearform
 import pfespace
 import pmesh
 import pncmesh
@@ -914,6 +917,17 @@ class HypreAME(_object):
         return _hypre.HypreAME_StealEigenvectors(self)
 HypreAME_swigregister = _hypre.HypreAME_swigregister
 HypreAME_swigregister(HypreAME)
+
+
+def parvec__repr__(self):
+    return "HypreParVector ("+str(self.GlobalSize())+")"
+def parmat__repr__(self):
+    shape = (self.GetGlobalNumRows(), self.GetGlobalNumCols())
+    lshape = (self.GetNumRows(), self.GetNumCols())  	       
+    return "HypreParMatrix "+str(shape)+"["+str(lshape)+"]"
+
+HypreParVector.__repr__ = parvec__repr__
+HypreParMatrix.__repr__ = parmat__repr__
 
 # This file is compatible with both classic and new-style classes.
 

@@ -3,7 +3,7 @@ import sys
 #
 #   this modules works only with parallel version
 #
-import mfem.par as mfem
+
    
 import numpy as np
 
@@ -48,7 +48,7 @@ def get_col_partitioning(M):
     return rows
  
 def ToHypreParVec(vec):
-       
+    import mfem.par as mfem       
     from mpi4py import MPI
 
     if mfem.sizeof_HYPRE_Int() == 4:
@@ -97,7 +97,8 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     '''
        
     from mpi4py import MPI
-
+    import mfem.par as mfem
+    
     if mfem.sizeof_HYPRE_Int() == 4:
         dtype = 'int32'
     else:
@@ -200,9 +201,11 @@ def ToScipyCoo(mat):
     return coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
  
 def InnerProductComplex(A, B):
+    print   A, B
+    import mfem.par as mfem    
     R_A, I_A = A
     R_B, I_B = B
-
+    print     R_A, I_A, R_B, I_B
     if I_A is None and I_B is None:
        return mfem.InnerProduct(R_A, R_B)
     elif I_A is None:
@@ -229,12 +232,13 @@ def ParMultVecComplex(A, v):
     '''
     A*v
     '''
+    import mfem.par as mfem
     from mpi4py import MPI
     
     comm     = MPI.COMM_WORLD     
     num_proc = MPI.COMM_WORLD.size
     myid     = MPI.COMM_WORLD.rank
-
+    print 'Here'
     R_A, I_A = A
     R_v, I_v = v
 
@@ -242,8 +246,11 @@ def ParMultVecComplex(A, v):
        ans_r = mfem.HypreParVector(R_v)
        R_A.Mult(R_v, ans_r)
        return (ans_r, None)
+    print 'Here2'
     ans_r = mfem.HypreParVector(R_v)
     ans_i = mfem.HypreParVector(R_v)
+
+    print 'Here3'    
     if I_A is None:
        R_A.Mult(R_v, ans_r)
        R_A.Mult(I_v, ans_i)              
@@ -252,16 +259,22 @@ def ParMultVecComplex(A, v):
        I_A.Mult(R_v, ans_i)              
     else:
        ans_r2 = mfem.HypreParVector(R_v)
-       ans_i2 = mfem.HypreParVector(I_v)
+       ans_i2 = mfem.HypreParVector(R_v)
+       print "here",  R_v.GetDataArray()
+       print "here",  I_v.GetDataArray()                   
        
+       print 'Here4', R_A, R_v, ans_r           
        R_A.Mult(R_v, ans_r)
+       print "ans_r",  ans_r.GetDataArray()                          
+       print 'Here42'                  
        I_A.Mult(I_v, ans_r2)
+       print "ans_r2",  ans_r2.GetDataArray()                                 
        ans_r -= ans_r2
-
+       print 'Here5'           
        R_A.Mult(I_v, ans_i)
        I_A.Mult(R_v, ans_i2)
        ans_i += ans_i2       
-
+       print 'Here6', ans_r, ans_i      
     return (ans_r, ans_i)       
    
 def ParMultComplex(A, B):
@@ -274,6 +287,7 @@ def ParMultComplex(A, B):
     (R_A*R_B - I_A*I_B, R_A*I_B + I_A*R_B)
     '''
     from mpi4py import MPI
+    import mfem.par as mfem
     
     comm     = MPI.COMM_WORLD     
     num_proc = MPI.COMM_WORLD.size
@@ -394,6 +408,7 @@ def ResetHypreDiag(M, idx, value = 1.0):
     '''
     set diagonal element to value (normally 1)
     '''
+    print M
     col_starts = M.GetColPartArray()    
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
     from mpi4py import MPI

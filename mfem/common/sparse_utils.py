@@ -32,9 +32,10 @@ def eliminate_cols(m, cols):
 
 def sparsemat_to_scipycsr(mat, dtype):
      w, h = mat.Width(), mat.Height()
-     I = mat.GetIArray().copy()
-     J = mat.GetJArray().copy()
-     data = mat.GetDataArray().copy()
+     I = mat.GetIArray()
+     J = mat.GetJArray()
+     data = mat.GetDataArray()
+     mat.LoseData()
      m1 =csr_matrix((data, J, I), shape = (h, w),
                     dtype = dtype)
      return m1

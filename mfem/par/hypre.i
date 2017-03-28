@@ -2,6 +2,8 @@
 %{
 #include <mpi.h>
 #include <Python.h>
+#include "fem/gridfunc.hpp"
+#include "fem/linearform.hpp"  
 #include "config/config.hpp"        
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
@@ -116,8 +118,21 @@ typedef int HYPRE_Int;
     return self
 %}
 %rename(add_hypre) mfem::Add;
+
 %include "linalg/hypre.hpp"
 
+%pythoncode %{
+def parvec__repr__(self):
+    return "HypreParVector ("+str(self.GlobalSize())+")"
+def parmat__repr__(self):
+    shape = (self.GetGlobalNumRows(), self.GetGlobalNumCols())
+    lshape = (self.GetNumRows(), self.GetNumCols())  	       
+    return "HypreParMatrix "+str(shape)+"["+str(lshape)+"]"
+
+HypreParVector.__repr__ = parvec__repr__
+HypreParMatrix.__repr__ = parmat__repr__
+%}
+    
 %extend mfem::HypreParVector {
 PyObject* GetPartitioningArray()
 {

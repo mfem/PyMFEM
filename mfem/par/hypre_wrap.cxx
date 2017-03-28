@@ -3487,30 +3487,32 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__IdentityOperator swig_types[33]
 #define SWIGTYPE_p_mfem__IntegrationRule swig_types[34]
 #define SWIGTYPE_p_mfem__L2_FECollection swig_types[35]
-#define SWIGTYPE_p_mfem__Matrix swig_types[36]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[37]
-#define SWIGTYPE_p_mfem__Operator swig_types[38]
-#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[39]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[40]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[41]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[42]
-#define SWIGTYPE_p_mfem__STable swig_types[43]
-#define SWIGTYPE_p_mfem__Solver swig_types[44]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[45]
-#define SWIGTYPE_p_mfem__Table swig_types[46]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[47]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[48]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[49]
-#define SWIGTYPE_p_mfem__Vector swig_types[50]
-#define SWIGTYPE_p_p_int swig_types[51]
-#define SWIGTYPE_p_p_intp swig_types[52]
-#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[53]
-#define SWIGTYPE_p_quad_t swig_types[54]
-#define SWIGTYPE_p_seg_t swig_types[55]
-#define SWIGTYPE_p_tet_t swig_types[56]
-#define SWIGTYPE_p_tri_t swig_types[57]
-static swig_type_info *swig_types[59];
-static swig_module_info swig_module = {swig_types, 58, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__LinearForm swig_types[36]
+#define SWIGTYPE_p_mfem__Matrix swig_types[37]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[38]
+#define SWIGTYPE_p_mfem__Operator swig_types[39]
+#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[40]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[41]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[42]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[43]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[44]
+#define SWIGTYPE_p_mfem__STable swig_types[45]
+#define SWIGTYPE_p_mfem__Solver swig_types[46]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[47]
+#define SWIGTYPE_p_mfem__Table swig_types[48]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[49]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[50]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[51]
+#define SWIGTYPE_p_mfem__Vector swig_types[52]
+#define SWIGTYPE_p_p_int swig_types[53]
+#define SWIGTYPE_p_p_intp swig_types[54]
+#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[55]
+#define SWIGTYPE_p_quad_t swig_types[56]
+#define SWIGTYPE_p_seg_t swig_types[57]
+#define SWIGTYPE_p_tet_t swig_types[58]
+#define SWIGTYPE_p_tri_t swig_types[59]
+static swig_type_info *swig_types[61];
+static swig_module_info swig_module = {swig_types, 60, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3617,6 +3619,8 @@ namespace swig {
 
 #include <mpi.h>
 #include <Python.h>
+#include "fem/gridfunc.hpp"
+#include "fem/linearform.hpp"  
 #include "config/config.hpp"        
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
@@ -4435,11 +4439,6 @@ SWIGINTERN PyObject *_wrap_sizeof_HYPRE_Int(PyObject *SWIGUNUSEDPARM(self), PyOb
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4486,11 +4485,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4535,11 +4529,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4572,11 +4561,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_2(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4615,11 +4599,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_3(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4652,11 +4631,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_4(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4694,11 +4668,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_5(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4728,11 +4697,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_6(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4894,11 +4858,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_GetComm(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_MPI_Comm(static_cast< MPI_Comm >(result));
   return resultobj;
@@ -4928,11 +4887,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Partitioning(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -4962,11 +4916,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_GlobalSize(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -4996,11 +4945,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_StealParVector(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_hypre_ParVector, 0 |  0 );
   return resultobj;
@@ -5035,11 +4979,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetOwnership(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5069,11 +5008,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_GetOwnership(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -5103,11 +5037,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_GlobalVector(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
   return resultobj;
@@ -5146,11 +5075,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Assign__SWIG_0(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
   return resultobj;
@@ -5192,11 +5116,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Assign__SWIG_1(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
   return resultobj;
@@ -5312,11 +5231,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetData(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5352,11 +5266,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Randomize(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -5395,11 +5304,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_Print(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -5430,11 +5334,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreParVector(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5464,11 +5363,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_GetPartitioningArray(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = result;
   return resultobj;
@@ -5520,11 +5414,6 @@ SWIGINTERN PyObject *_wrap_InnerProduct__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -5563,11 +5452,6 @@ SWIGINTERN PyObject *_wrap_InnerProduct__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -5670,11 +5554,6 @@ SWIGINTERN PyObject *_wrap_ParNormlp(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -5695,11 +5574,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5729,11 +5603,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5789,11 +5658,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_2(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5864,11 +5728,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5957,11 +5816,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_4(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6092,11 +5946,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6155,11 +6004,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_6(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6230,11 +6074,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_7(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6347,11 +6186,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_8(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6414,11 +6248,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_9(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6897,11 +6726,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MakeRef(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6931,11 +6755,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetComm(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_MPI_Comm(static_cast< MPI_Comm >(result));
   return resultobj;
@@ -6965,11 +6784,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_StealData(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_hypre_ParCSRMatrix, 0 |  0 );
   return resultobj;
@@ -7025,11 +6839,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_SetOwnerFlags(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7059,11 +6868,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_OwnsDiag(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_signed_SS_char(static_cast< signed char >(result));
   return resultobj;
@@ -7093,11 +6897,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_OwnsOffd(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_signed_SS_char(static_cast< signed char >(result));
   return resultobj;
@@ -7127,11 +6926,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_OwnsColMap(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_signed_SS_char(static_cast< signed char >(result));
   return resultobj;
@@ -7160,11 +6954,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_CopyRowStarts(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7193,11 +6982,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_CopyColStarts(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7227,11 +7011,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_NNZ(PyObject *SWIGUNUSEDPARM(self), Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -7261,11 +7040,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_RowPart__SWIG_0(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -7295,11 +7069,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_ColPart__SWIG_0(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -7329,11 +7098,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_RowPart__SWIG_1(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -7403,11 +7167,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_ColPart__SWIG_1(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -7477,11 +7236,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_M(PyObject *SWIGUNUSEDPARM(self), PyOb
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -7511,11 +7265,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_N(PyObject *SWIGUNUSEDPARM(self), PyOb
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -7556,11 +7305,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetDiag__SWIG_0(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7601,11 +7345,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetDiag__SWIG_1(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7708,11 +7447,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetOffd(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7771,11 +7505,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetBlocks__SWIG_0(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7825,11 +7554,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetBlocks__SWIG_1(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7870,11 +7594,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetBlocks__SWIG_2(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7987,11 +7706,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Transpose(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -8021,11 +7735,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetNumRows(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8055,11 +7764,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetNumCols(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8089,11 +7793,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetGlobalNumRows(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8123,11 +7822,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetGlobalNumCols(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8157,11 +7851,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetRowStarts(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -8191,11 +7880,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetColStarts(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
@@ -8267,11 +7951,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_0(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8334,11 +8013,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_1(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8392,11 +8066,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_2(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8478,11 +8147,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_3(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8555,11 +8219,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_4(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8623,11 +8282,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_5(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8699,11 +8353,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose__SWIG_0(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8766,11 +8415,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose__SWIG_1(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8824,11 +8468,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose__SWIG_2(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8899,11 +8538,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_6(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8974,11 +8608,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose__SWIG_3(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9031,11 +8660,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Mult__SWIG_7(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9332,11 +8956,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_MultTranspose__SWIG_4(PyObject *SWIGUN
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9558,11 +9177,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_BooleanMult(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9604,11 +9218,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix___iadd__(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -9659,11 +9268,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Add(PyObject *SWIGUNUSEDPARM(self), Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -9714,11 +9318,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_LeftDiagMult__SWIG_0(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -9760,11 +9359,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_LeftDiagMult__SWIG_1(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -9858,11 +9452,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_ScaleRows(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9903,11 +9492,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_InvScaleRows(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9945,11 +9529,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix___imul__(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9987,11 +9566,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Threshold__SWIG_0(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10020,11 +9594,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Threshold__SWIG_1(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10102,11 +9671,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_EliminateZeroRows(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10171,11 +9735,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_EliminateRowsCols__SWIG_0(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10217,11 +9776,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_EliminateRowsCols__SWIG_1(PyObject *SW
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -10329,11 +9883,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -10380,11 +9929,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -10425,11 +9969,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Print__SWIG_2(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -10570,11 +10109,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Read(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
@@ -10605,11 +10139,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreParMatrix(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10639,11 +10168,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetType(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -10673,11 +10197,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetRowPartArray(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = result;
   return resultobj;
@@ -10707,11 +10226,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetColPartArray(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = result;
   return resultobj;
@@ -10741,11 +10255,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_get_local_nnz(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -10787,11 +10296,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray__SWIG_0(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = result;
   return resultobj;
@@ -10827,11 +10331,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray__SWIG_1(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = result;
   return resultobj;
@@ -10861,11 +10360,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray__SWIG_2(PyObject *SWIG
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = result;
   return resultobj;
@@ -11012,11 +10506,6 @@ SWIGINTERN PyObject *_wrap_add_hypre(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -11055,11 +10544,6 @@ SWIGINTERN PyObject *_wrap_ParMult(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -11098,11 +10582,6 @@ SWIGINTERN PyObject *_wrap_RAP__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -11150,11 +10629,6 @@ SWIGINTERN PyObject *_wrap_RAP__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -11293,11 +10767,6 @@ SWIGINTERN PyObject *_wrap_EliminateBC(PyObject *SWIGUNUSEDPARM(self), PyObject 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11318,11 +10787,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11400,11 +10864,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11473,11 +10932,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_2(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11540,11 +10994,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_3(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11598,11 +11047,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_4(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11647,11 +11091,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_5(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11690,11 +11129,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_6(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11727,11 +11161,6 @@ SWIGINTERN PyObject *_wrap_new_HypreSmoother__SWIG_7(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreSmoother, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12058,11 +11487,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetType__SWIG_0(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12100,11 +11524,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetType__SWIG_1(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12212,11 +11631,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetSOROptions(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12260,11 +11674,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetPolyOptions(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12317,11 +11726,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetTaubinOptions(PyObject *SWIGUNUSEDPA
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12360,11 +11764,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetWindowByName(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -12422,11 +11821,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetWindowParameters(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12464,11 +11858,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetFIRCoefficients(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12506,11 +11895,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetPositiveDiagonal__SWIG_0(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12539,11 +11923,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetPositiveDiagonal__SWIG_1(PyObject *S
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12630,11 +12009,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_SetOperator(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12687,11 +12061,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_Mult__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12744,11 +12113,6 @@ SWIGINTERN PyObject *_wrap_HypreSmoother_Mult__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12835,11 +12199,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreSmoother(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12876,11 +12235,6 @@ SWIGINTERN PyObject *_wrap_HypreSolver_SetupFcn(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -12910,11 +12264,6 @@ SWIGINTERN PyObject *_wrap_HypreSolver_SolveFcn(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -12955,11 +12304,6 @@ SWIGINTERN PyObject *_wrap_HypreSolver_SetOperator(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13012,11 +12356,6 @@ SWIGINTERN PyObject *_wrap_HypreSolver_Mult__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13069,11 +12408,6 @@ SWIGINTERN PyObject *_wrap_HypreSolver_Mult__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13160,11 +12494,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreSolver(PyObject *SWIGUNUSEDPARM(self), Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13204,11 +12533,6 @@ SWIGINTERN PyObject *_wrap_new_HyprePCG(PyObject *SWIGUNUSEDPARM(self), PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HyprePCG, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13246,11 +12570,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetTol(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13285,11 +12604,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetMaxIter(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13324,11 +12638,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetLogging(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13363,11 +12672,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetPrintLevel(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13408,11 +12712,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetPreconditioner(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13456,11 +12755,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetResidualConvergenceOptions__SWIG_0(PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13495,11 +12789,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetResidualConvergenceOptions__SWIG_1(PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13528,11 +12817,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetResidualConvergenceOptions__SWIG_2(PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13638,11 +12922,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetZeroInintialIterate(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13683,11 +12962,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_GetNumIterations(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13717,11 +12991,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SetupFcn(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -13751,11 +13020,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_SolveFcn(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -13808,11 +13072,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_Mult__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13865,11 +13124,6 @@ SWIGINTERN PyObject *_wrap_HyprePCG_Mult__SWIG_1_0(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13956,11 +13210,6 @@ SWIGINTERN PyObject *_wrap_delete_HyprePCG(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14000,11 +13249,6 @@ SWIGINTERN PyObject *_wrap_new_HypreGMRES(PyObject *SWIGUNUSEDPARM(self), PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreGMRES, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14042,11 +13286,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetTol(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14081,11 +13320,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetMaxIter(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14120,11 +13354,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetKDim(PyObject *SWIGUNUSEDPARM(self), Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14159,11 +13388,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetLogging(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14198,11 +13422,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetPrintLevel(PyObject *SWIGUNUSEDPARM(sel
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14243,11 +13462,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetPreconditioner(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14276,11 +13490,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetZeroInintialIterate(PyObject *SWIGUNUSE
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14310,11 +13519,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SetupFcn(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14344,11 +13548,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_SolveFcn(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14401,11 +13600,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_Mult__SWIG_0(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14458,11 +13652,6 @@ SWIGINTERN PyObject *_wrap_HypreGMRES_Mult__SWIG_1_0(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14549,11 +13738,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreGMRES(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14590,11 +13774,6 @@ SWIGINTERN PyObject *_wrap_HypreIdentity_SetupFcn(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14624,11 +13803,6 @@ SWIGINTERN PyObject *_wrap_HypreIdentity_SolveFcn(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14657,11 +13831,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreIdentity(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14682,11 +13851,6 @@ SWIGINTERN PyObject *_wrap_new_HypreIdentity(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreIdentity, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14714,11 +13878,6 @@ SWIGINTERN PyObject *_wrap_new_HypreDiagScale__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreDiagScale, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14751,11 +13910,6 @@ SWIGINTERN PyObject *_wrap_new_HypreDiagScale__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreDiagScale, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14819,11 +13973,6 @@ SWIGINTERN PyObject *_wrap_HypreDiagScale_SetupFcn(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14853,11 +14002,6 @@ SWIGINTERN PyObject *_wrap_HypreDiagScale_SolveFcn(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -14887,11 +14031,6 @@ SWIGINTERN PyObject *_wrap_HypreDiagScale_GetData(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   return resultobj;
@@ -14920,11 +14059,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreDiagScale(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14964,11 +14098,6 @@ SWIGINTERN PyObject *_wrap_new_HypreParaSails(PyObject *SWIGUNUSEDPARM(self), Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParaSails, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15003,11 +14132,6 @@ SWIGINTERN PyObject *_wrap_HypreParaSails_SetSymmetry(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15037,11 +14161,6 @@ SWIGINTERN PyObject *_wrap_HypreParaSails_SetupFcn(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15071,11 +14190,6 @@ SWIGINTERN PyObject *_wrap_HypreParaSails_SolveFcn(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15104,11 +14218,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreParaSails(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15136,11 +14245,6 @@ SWIGINTERN PyObject *_wrap_new_HypreBoomerAMG__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreBoomerAMG, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15173,11 +14277,6 @@ SWIGINTERN PyObject *_wrap_new_HypreBoomerAMG__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreBoomerAMG, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15252,11 +14351,6 @@ SWIGINTERN PyObject *_wrap_HypreBoomerAMG_SetOperator(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15291,11 +14385,6 @@ SWIGINTERN PyObject *_wrap_HypreBoomerAMG_SetSystemsOptions(PyObject *SWIGUNUSED
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15333,11 +14422,6 @@ SWIGINTERN PyObject *_wrap_HypreBoomerAMG_SetElasticityOptions(PyObject *SWIGUNU
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15372,11 +14456,6 @@ SWIGINTERN PyObject *_wrap_HypreBoomerAMG_SetPrintLevel(PyObject *SWIGUNUSEDPARM
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15406,11 +14485,6 @@ SWIGINTERN PyObject *_wrap_HypreBoomerAMG_SetupFcn(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15440,11 +14514,6 @@ SWIGINTERN PyObject *_wrap_HypreBoomerAMG_SolveFcn(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15473,11 +14542,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreBoomerAMG(PyObject *SWIGUNUSEDPARM(self),
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15526,11 +14590,6 @@ SWIGINTERN PyObject *_wrap_new_HypreAMS(PyObject *SWIGUNUSEDPARM(self), PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreAMS, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15565,11 +14624,6 @@ SWIGINTERN PyObject *_wrap_HypreAMS_SetPrintLevel(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15598,11 +14652,6 @@ SWIGINTERN PyObject *_wrap_HypreAMS_SetSingularProblem(PyObject *SWIGUNUSEDPARM(
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15632,11 +14681,6 @@ SWIGINTERN PyObject *_wrap_HypreAMS_SetupFcn(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15666,11 +14710,6 @@ SWIGINTERN PyObject *_wrap_HypreAMS_SolveFcn(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15699,11 +14738,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreAMS(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15752,11 +14786,6 @@ SWIGINTERN PyObject *_wrap_new_HypreADS(PyObject *SWIGUNUSEDPARM(self), PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreADS, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15791,11 +14820,6 @@ SWIGINTERN PyObject *_wrap_HypreADS_SetPrintLevel(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15825,11 +14849,6 @@ SWIGINTERN PyObject *_wrap_HypreADS_SetupFcn(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15859,11 +14878,6 @@ SWIGINTERN PyObject *_wrap_HypreADS_SolveFcn(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj((new HYPRE_PtrToParSolverFcn(static_cast< const HYPRE_PtrToParSolverFcn& >(result))), SWIGTYPE_p_HYPRE_PtrToParSolverFcn, SWIG_POINTER_OWN |  0 );
   return resultobj;
@@ -15892,11 +14906,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreADS(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15935,11 +14944,6 @@ SWIGINTERN PyObject *_wrap_new_HypreLOBPCG(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreLOBPCG, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15968,11 +14972,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreLOBPCG(PyObject *SWIGUNUSEDPARM(self), Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16010,11 +15009,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetTol(PyObject *SWIGUNUSEDPARM(self), Py
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16049,11 +15043,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetMaxIter(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16088,11 +15077,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetPrintLevel(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16127,11 +15111,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetNumModes(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16166,11 +15145,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetPrecondUsageMode(PyObject *SWIGUNUSEDP
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16205,11 +15179,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetRandomSeed(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16250,11 +15219,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetPreconditioner(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16295,11 +15259,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetOperator(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16340,11 +15299,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_SetMassMatrix(PyObject *SWIGUNUSEDPARM(se
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16373,11 +15327,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_Solve(PyObject *SWIGUNUSEDPARM(self), PyO
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16418,11 +15367,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_GetEigenvalues(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16461,11 +15405,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_GetEigenvector(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
   return resultobj;
@@ -16495,11 +15434,6 @@ SWIGINTERN PyObject *_wrap_HypreLOBPCG_StealEigenvectors(PyObject *SWIGUNUSEDPAR
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_p_mfem__HypreParVector, 0 |  0 );
   return resultobj;
@@ -16538,11 +15472,6 @@ SWIGINTERN PyObject *_wrap_new_HypreAME(PyObject *SWIGUNUSEDPARM(self), PyObject
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreAME, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16571,11 +15500,6 @@ SWIGINTERN PyObject *_wrap_delete_HypreAME(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16613,11 +15537,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_SetTol(PyObject *SWIGUNUSEDPARM(self), PyObj
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16652,11 +15571,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_SetMaxIter(PyObject *SWIGUNUSEDPARM(self), P
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16691,11 +15605,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_SetPrintLevel(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16730,11 +15639,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_SetNumModes(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16775,11 +15679,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_SetPreconditioner(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16820,11 +15719,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_SetOperator(PyObject *SWIGUNUSEDPARM(self), 
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16865,11 +15759,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_SetMassMatrix(PyObject *SWIGUNUSEDPARM(self)
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16898,11 +15787,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_Solve(PyObject *SWIGUNUSEDPARM(self), PyObje
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16943,11 +15827,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_GetEigenvalues(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16986,11 +15865,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_GetEigenvector(PyObject *SWIGUNUSEDPARM(self
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
   return resultobj;
@@ -17020,11 +15894,6 @@ SWIGINTERN PyObject *_wrap_HypreAME_StealEigenvectors(PyObject *SWIGUNUSEDPARM(s
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_p_mfem__HypreParVector, 0 |  0 );
   return resultobj;
@@ -17389,6 +16258,15 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
 }
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
 static swig_type_info _swigt__p_HYPRE_ParVector = {"_p_HYPRE_ParVector", "HYPRE_ParVector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_HYPRE_PtrToParSolverFcn = {"_p_HYPRE_PtrToParSolverFcn", "HYPRE_PtrToParSolverFcn *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
@@ -17440,6 +16318,8 @@ static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_int = {"_p_p_int", "int **|HYPRE_Int **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_intp = {"_p_p_intp", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__HypreParVector = {"_p_p_mfem__HypreParVector", "mfem::HypreParVector **", 0, 0, (void*)0, 0};
@@ -17485,12 +16365,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
+  &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__Matrix,
   &_swigt__p_mfem__MatrixInverse,
   &_swigt__p_mfem__Operator,
   &_swigt__p_mfem__ParFiniteElementSpace,
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
+  &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__RAPOperator,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__Solver,
@@ -17559,7 +16441,9 @@ static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__HypreSmoot
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_intp[] = {{&_swigt__p_p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_int[] = {  {&_swigt__p_p_intp, _p_p_intpTo_p_p_int, 0, 0},  {&_swigt__p_p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__HypreParVector[] = {  {&_swigt__p_p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
@@ -17605,12 +16489,14 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
+  _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__Matrix,
   _swigc__p_mfem__MatrixInverse,
   _swigc__p_mfem__Operator,
   _swigc__p_mfem__ParFiniteElementSpace,
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
+  _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__RAPOperator,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__Solver,

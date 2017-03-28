@@ -1,5 +1,11 @@
-import sys, ctypes
+import mfem
 
+if mfem.mfem_mode is None:
+   mfem.mfem_mode = 'serial'
+if mfem.mfem_mode == 'parallel':
+   raise ImportError("MFEM parallel mode is already loaded")
+
+import sys, ctypes
 ## libmfem.a is linked only with _array.so
 ## this make sure that symbols are resovled
 rtld_now = sys.getdlopenflags()
