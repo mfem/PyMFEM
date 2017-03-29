@@ -16,9 +16,11 @@
   array  elements. Use set_element, instead.
 '''
 import numpy as np
-from scipy.sparse  import csr_matrix
+from scipy.sparse  import csr_matrix, coo_matrix, lil_matrix
 from mfem.common.parcsr_extra import *
 
+# DO NOT IMPORT MPI in Global, sicne some routins will be used
+# in serial mode too.
 try:
    import mfem.par
    MFEM_PAR = True
@@ -42,8 +44,10 @@ class CHypreVec(list):
     def __repr__(self):
         if self[0] is not None:
             part = self[0].GetPartitioningArray()
+        elif self[1] is not None:
+            part = self[1].GetPartitioningArray()
         else:
-            part = self[1].GetPartitioningArray()            
+            return "CHypreVec (empty)"
         return "CHypreVec"+str(self.shape)+"["+str(part[1]-part[0])+"]"
             
     @property
@@ -67,7 +71,18 @@ class CHypreVec(list):
             
     def isComplex(self):
         return not (self[1] is None)
-            
+     
+    def GetPartitioningArray(self):
+        if self[0] is not None:
+            part = self[0].GetPartitioningArray()
+            part[2] = self[0].GlobalSize()
+        elif self[1] is not None:         
+            prat =  self[1].GetPartitioningArray()
+            part[2] = self[1].GlobalSize()         
+        else:
+            raise ValueError("CHypreVec is empty")
+        return part
+     
     def __imul__(self, other):
         if self[0] is not None:
             self[0] *= other
@@ -76,7 +91,7 @@ class CHypreVec(list):
         return self
 
     def __add__(self, other):
-        Vector = mfem.HypreParVector
+        Vector = mfem.par.HypreParVector
         if self[0] is not None and other[0] is not None:
             r = Vector(self[0])            
             add_vector(self[0], others[0], r)
@@ -98,10 +113,12 @@ class CHypreVec(list):
         return CHypreVec(r, i, horizontal = self._horizontal)
 
     def __sub__(self, other):
-        Vector = mfem.HypreParVector        
+        from mfem.par import HypreParVector as Vector
+        from mfem.par import add_vector
+        add_vector 
         if self[0] is not None and other[0] is not None:
             r = Vector(self[0])            
-            add_vector(self[0], -1, others[0], r)
+            add_vector(self[0], -1, other[0], r)
         elif self[0] is not None:
             r = Vector(self[0])
         elif other[0] is not None:
@@ -111,7 +128,7 @@ class CHypreVec(list):
             r = None
         if self[1] is not None and other[1] is not None:
             i = Vector(self[1])            
-            add_vector(self[1], -1, others[1], i)
+            add_vector(self[1], -1, other[1], i)
         elif self[1] is not None:
             i = Vector(self[1])
         elif other[1] is not None:
@@ -136,11 +153,7 @@ class CHypreVec(list):
 
     
     def set_element(self, i, v):
-        if self[0] is not None:
-            part = self[0].GetPartitioningArray()
-        else:
-            part = self[1].GetPartitioningArray()
-
+        part = self.GetPartitioningArray()
         if part[0] <= i and i < part[1]:
             v = complex(v)
             if self[0] is not None:
@@ -170,7 +183,7 @@ class CHypreVec(list):
         if not self._horizontal:
             raise ValueError("Vector orientation is not right")
         
-        part = self[0].GetPartitioningArray()
+        part = self.GetPartitioningArray()
         return SquareCHypreMat(part)
     
     def transpose(self):
@@ -203,35 +216,73 @@ class CHypreVec(list):
             if self[1] is not None:
                 self[1] = self._do_reset(self[1], idx)
 
-    def _do_select(self, v, idx):
+    def _do_select(self, v, lidx):
         data = v.GetDataArray(); v.thisown = False
-        part = v.GetPartitioningArray()
-        idx2 = idx[idx >= part[0]]
-        idx2 = idx2[idx2 < part[1]]
-        idx2 = idx2 - part[0]
-        return  ToHypreParVec(data[idx2])
+        return  ToHypreParVec(data[lidx])
 
     def selectRows(self, idx):
+        '''
+        idx is global index
+        '''
+        if self._horizontal:
+            if not 0 in idx: raise ValueError("VectorSize becomes zero")
+            return self
+        part = self.GetPartitioningArray()                        
+        idx = idx[idx >= part[0]]
+        idx = idx[idx < part[1]]
+        lidx = idx - part[0]
+
+        r = None; i = None        
         if not self._horizontal:
             if self[0] is not None:
-                self[0] = self._do_select(self[0], idx)
+                r = self._do_select(self[0], lidx)
             if self[1] is not None:
-                self[1] = self._do_select(self[1], idx)
-        else:            
-            if 0 in idx: raise ValueError("VectorSize becomes zero")
-
-        return self
+                i = self._do_select(self[1], lidx)
+        return CHypreVec(r, i)
      
     def selectCols(self, idx):
+        '''
+        idx is global index
+        '''
+        if not self._horizontal:
+            if not 0 in idx: raise ValueError("VectorSize becomes zero")
+            return self
+         
+        part = self.GetPartitioningArray()                        
+        idx = idx[idx >= part[0]]
+        idx = idx[idx < part[1]]
+        lidx = idx - part[0]
+
+        r = None; i = None
         if self._horizontal:
             if self[0] is not None:
-                self[0] = self._do_select(self[0], idx)
+                r = self._do_select(self[0], lidx)
             if self[1] is not None:
-                self[1] = self._do_select(self[1], idx)
-        else:            
-            if 0 in idx: raise ValueError("VectorSize becomes zero")
-
-    
+                i = self._do_select(self[1], lidx)
+        return CHypreVec(r, i)
+     
+    def isAllZero(self):
+        if self[0] is not None:
+            if any(self[0].GlobalVector().GetDataArray()): return False
+        if self[1] is not None:            
+            if any(self[1].GlobalVector().GetDataArray()): return False
+        return True
+     
+    def get_global_coo(self):
+        data = self[0].GetDataArray()
+        if self[1] is not None:
+            data = data + 1j*self[1].GetDataArray()
+        gcoo = coo_matrix(self.shape, dtype = data.dtype)
+        gcoo.data = data
+        part = self.GetPartitioningArray()        
+        if self._horizontal:
+            gcoo.row  = np.zeros(len(data))
+            gcoo.col  = np.arange(len(data))+ part[0]
+        else:
+            gcoo.col  = np.zeros(len(data))
+            gcoo.row  = np.arange(len(data))+ part[0]
+        return gcoo
+     
 class CHypreMat(list):
     def __init__(self, r = None, i = None, col_starts = None):
         list.__init__(self, [None]*2)
@@ -323,7 +374,8 @@ class CHypreMat(list):
            r = ToHypreParCSR((- ToScipyCoo(self[0])).tocsr())
        if self[1] is not None:
            i = ToHypreParCSR((- ToScipyCoo(self[1])).tocsr())
-       return CHypreMat(r, i) 
+       return CHypreMat(r, i)
+
 
     @property
     def imag(self):
@@ -337,6 +389,17 @@ class CHypreMat(list):
     @real.setter
     def real(self, value):
         self[0]  = value
+
+    def GetColPartArray(self):
+        if self[0] is not None:
+            return self[0].GetColPartArray()
+        else:
+            return self[1].GetColPartArray()        
+    def GetRowPartArray(self):
+        if self[0] is not None:
+            return self[0].GetRowPartArray()
+        else:
+            return self[1].GetRowPartArray()        
         
     def __imul__(self, other):
         if self[0] is not None:
@@ -399,17 +462,21 @@ class CHypreMat(list):
         if self[1] is not None:            
             self[1] = ResetHypreRow(self[1], idx)
             
-    def selectRows(self, nonzeros):
-        cpart = self[0].GetColPartArray()
-        cpart[2] = self[0].GetGlobalNumCols()
+    def selectRows(self, idx):
+        '''
+        idx is global index
+        '''
         rpart = self[1].GetRowPartArray()
         rpart[2] = self[1].GetGlobalNumRows()            
-
-        nonzeros = nonzeros[nonzeros >= rpart[0]]
-        nonzeros = nonzeros[nonzeros < rpart[1]]
-        idx = nonzeros - rpart[0]
+        cpart = self[0].GetColPartArray()
+        cpart[2] = self[0].GetGlobalNumCols()
+        
+        idx = idx[idx >= rpart[0]]
+        idx = idx[idx < rpart[1]]
+        idx = idx - rpart[0]
 
         csr = ToScipyCoo(self[0]).tocsr()
+
         csr = csr[idx, :]
         r = ToHypreParCSR(csr, col_starts = cpart)
         if self[1] is not None:
@@ -419,11 +486,32 @@ class CHypreMat(list):
         else:
            i = None
         return CHypreMat(r, i)
-     
-    def selectCols(self, nonzeros):
-        mat = self.transpose()
-        mat.selectRows(nonzeros)
-        return  mat.transpose()
+       
+    def selectCols(self, idx):
+        '''
+        idx is global index
+        '''
+        cpart = self[0].GetColPartArray()
+        cpart[2] = self[0].GetGlobalNumCols()
+        idx = idx[idx >= cpart[0]]
+        idx = idx[idx < cpart[1]]
+        idx = idx - cpart[0]
+
+        rpart = self[1].GetRowPartArray()
+        rpart[2] = self[1].GetGlobalNumRows()            
+
+        mat = self.transpose()        
+        csr = ToScipyCoo(mat[0]).tocsr()
+        csr = csr[idx, :]
+        r = ToHypreParCSR(csr, col_starts = rpart)
+        if self[1] is not None:
+           csr = ToScipyCoo(mat[1]).tocsr()
+           csr = csr[idx, :]
+           i = ToHypreParCSR(csr, col_starts =rpart)
+        else:
+           i = None
+        mat = CHypreMat(r, i).transpose()
+        return mat
     
     @property
     def nnz(self):
@@ -471,13 +559,21 @@ class CHypreMat(list):
         else:
             return (0,0)
 
-    def elimination_matrix(self, nonzeros):
-        #  ret = lil_matrix((len(nonzeros), self.shape[0]))
-        #  for k, z in enumerate(nonzeros):
-        #     ret[k, z] = 1.
-        #  return ret.tocoo()
-        pass
+    def get_local_coo(self):
+        if self.isComplex():
+            return ToScipyCoo(self[0]) + 1j*ToScipyCoo(self[1])
+        else:
+            return ToScipyCoo(self[0])
 
+    def get_global_coo(self):
+        lcoo = self.get_local_coo()
+        gcoo = coo_matrix(self.shape)
+        gcoo.data = lcoo.data
+
+        gcoo.row  = lcoo.row + self.GetRowPartArray()[0]
+        gcoo.col  = lcoo.col
+        return gcoo
+        
     def get_squaremat_from_right(self):
         '''
         squre matrix which can be multipled from the right of self.
@@ -492,6 +588,28 @@ class CHypreMat(list):
         else:
             raise ValueError("CHypreMat is empty")
         return SquareCHypreMat(part)
+     
+    def elimination_matrix(self, idx):
+        #  # local version
+        #  ret = lil_matrix((len(nonzeros), self.shape[0]))
+        #  for k, z in enumerate(nonzeros):
+        #     ret[k, z] = 1.
+        #  return ret.tocoo()
+        cpart = self.GetColPartArray()
+        rpart = self.GetRowPartArray()
+
+        idx = idx[idx >= rpart[0]]
+        idx = idx[idx < rpart[1]]
+        idx = idx - rpart[0]
+        
+        shape = (len(idx), self.shape[1])
+        print shape, idx + rpart[0]
+        elil =  lil_matrix(shape)
+        for i, j in enumerate(idx):
+           elil[i, j + rpart[0]] = 1
+       
+        r = ToHypreParCSR(elil.tocsr(), col_starts =cpart)
+        return CHypreMat(r, None)
     
 def SquareCHypreMat(part):
     from scipy.sparse import csr_matrix
@@ -548,13 +666,11 @@ def CHypreVec2Array(array):
             return None
         
 def CHypreMat2Coo(mat):
+    print("CHYPREMat2Coo: deprecated,  Use class method !!!!")
     if mat.isComplex():
          return ToScipyCoo(mat.real) + 1j*ToScipyCoo(mat.imag)
     else:
          return ToScipyCoo(mat.real)
-
-       
-
 
 def LF2PyVec(rlf, ilf = None, horizontal= False):
     if MFEM_PAR:

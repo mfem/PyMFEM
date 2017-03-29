@@ -5,7 +5,7 @@ def get_mpi_datatype(data):
     get MPI datatype from numpy dtype
     '''
     #print '!!!chekcing MPI type ',  data.dtype.name
-    s = data.dtype.itemsize
+    s = data.dtype.itemsize  # get data size of element
     if data.dtype.name.startswith('int'):
         if s == 8:
            return MPI.LONG
