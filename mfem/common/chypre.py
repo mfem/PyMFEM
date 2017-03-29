@@ -227,6 +227,7 @@ class CHypreVec(list):
         if self._horizontal:
             if not 0 in idx: raise ValueError("VectorSize becomes zero")
             return self
+
         part = self.GetPartitioningArray()                        
         idx = idx[idx >= part[0]]
         idx = idx[idx < part[1]]
@@ -238,7 +239,7 @@ class CHypreVec(list):
                 r = self._do_select(self[0], lidx)
             if self[1] is not None:
                 i = self._do_select(self[1], lidx)
-        return CHypreVec(r, i)
+        return CHypreVec(r, i, horizontal = self._horizontal)
      
     def selectCols(self, idx):
         '''
@@ -259,14 +260,31 @@ class CHypreVec(list):
                 r = self._do_select(self[0], lidx)
             if self[1] is not None:
                 i = self._do_select(self[1], lidx)
-        return CHypreVec(r, i)
+        return CHypreVec(r, i, horizontal = self._horizontal)
      
-    def isAllZero(self):
+    def GlobalVector(self):
         if self[0] is not None:
-            if any(self[0].GlobalVector().GetDataArray()): return False
+            v = self[0].GlobalVector().GetDataArray()
+        else:
+            v = 0.0
         if self[1] is not None:            
-            if any(self[1].GlobalVector().GetDataArray()): return False
-        return True
+            v = v + 1j*self[1].GlobalVector().GetDataArray()
+        return v
+
+    def toarray(self):
+        '''
+        numpy array of local vector
+        '''
+        if self[0] is not None:
+            v = self[0].GetDataArray()
+        else:
+            v = 0.0
+        if self[1] is not None:            
+            v = v + 1j*self[1].GetDataArray()
+        return v
+
+    def isAllZero(self):
+        return any(self.GlobalVector())
      
     def get_global_coo(self):
         data = self[0].GetDataArray()
@@ -282,7 +300,23 @@ class CHypreVec(list):
             gcoo.col  = np.zeros(len(data))
             gcoo.row  = np.arange(len(data))+ part[0]
         return gcoo
-     
+
+    @property
+    def true_nnz(self):
+        '''
+        more expensive version which reports nnz after
+        eliminating all zero entries
+        '''
+        data = self[0].GetDataArray()
+        if self[1] is not None:
+            data = data + 1j*self[1].GetDataArray()
+        local_nnz = np.sum(data == 0.)
+
+        from mpi4py import MPI
+        comm     = MPI.COMM_WORLD     
+        nnz = comm.allgather(local_nnz)
+        return nnz
+
 class CHypreMat(list):
     def __init__(self, r = None, i = None, col_starts = None):
         list.__init__(self, [None]*2)
@@ -519,7 +553,16 @@ class CHypreMat(list):
             return self[0].NNZ(), self[1].NNZ()
         if self[0] is not None: return self[0].NNZ()
         if self[1] is not None: return self[1].NNZ()
-    
+    @property
+    def true_nnz(self):
+        '''
+        more expensive version which reports nnz after
+        eliminating all zero entries
+        '''
+        coo = self.get_local_coo()
+        coo.eliminate_zeros()
+        return coo.nnz
+
     def m(self):
         '''
         return global row number: two number should be the same
@@ -561,7 +604,7 @@ class CHypreMat(list):
 
     def get_local_coo(self):
         if self.isComplex():
-            return ToScipyCoo(self[0]) + 1j*ToScipyCoo(self[1])
+            return (ToScipyCoo(self[0]) + 1j*ToScipyCoo(self[1])).tocoo()
         else:
             return ToScipyCoo(self[0])
 
@@ -758,14 +801,14 @@ def MfemMat2PyMat(M1, M2 = None):
     if MFEM_PAR:
         return CHypreMat(M1,  M2)
     else:
-        if ibf is None:        
+        if M2 is None:        
             return sparsemat_to_scipycsr(M1, dtype = float)
-        if ibf is not None:
+        else:
             m1 = sparsemat_to_scipycsr(M1, dtype = float).tolil()
             m2 = sparsemat_to_scipycsr(M2, dtype = complex).tolil()
             m = m1 + 1j*m2
             m = m.tocsr()
-        return m
+            return m
 
 
 
