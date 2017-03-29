@@ -201,11 +201,10 @@ def ToScipyCoo(mat):
     return coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
  
 def InnerProductComplex(A, B):
-    print   A, B
     import mfem.par as mfem    
     R_A, I_A = A
     R_B, I_B = B
-    print     R_A, I_A, R_B, I_B
+
     if I_A is None and I_B is None:
        return mfem.InnerProduct(R_A, R_B)
     elif I_A is None:
@@ -238,19 +237,23 @@ def ParMultVecComplex(A, v):
     comm     = MPI.COMM_WORLD     
     num_proc = MPI.COMM_WORLD.size
     myid     = MPI.COMM_WORLD.rank
-    print 'Here'
+
     R_A, I_A = A
     R_v, I_v = v
+    ### Take Row partitioning of A for output
+    if R_A is not None:
+        part = R_A.GetRowPartArray()
+    elif I_A is not None:
+        part = I_A.GetRowPartArray()
+    else: return (None, None)
 
+    ans_r = ToHypreParVec(np.zeros(part[1]-part[0]))
     if I_A is None and I_v is None:
-       ans_r = mfem.HypreParVector(R_v)
        R_A.Mult(R_v, ans_r)
        return (ans_r, None)
-    print 'Here2'
-    ans_r = mfem.HypreParVector(R_v)
-    ans_i = mfem.HypreParVector(R_v)
+    else:
+       ans_i = ToHypreParVec(np.zeros(part[1]-part[0]))
 
-    print 'Here3'    
     if I_A is None:
        R_A.Mult(R_v, ans_r)
        R_A.Mult(I_v, ans_i)              
@@ -258,23 +261,16 @@ def ParMultVecComplex(A, v):
        R_A.Mult(R_v, ans_r)
        I_A.Mult(R_v, ans_i)              
     else:
-       ans_r2 = mfem.HypreParVector(R_v)
-       ans_i2 = mfem.HypreParVector(R_v)
-       print "here",  R_v.GetDataArray()
-       print "here",  I_v.GetDataArray()                   
-       
-       print 'Here4', R_A, R_v, ans_r           
+       ans_r2 = ToHypreParVec(np.zeros(part[1]-part[0]))
+       ans_i2 = ToHypreParVec(np.zeros(part[1]-part[0]))
        R_A.Mult(R_v, ans_r)
-       print "ans_r",  ans_r.GetDataArray()                          
-       print 'Here42'                  
        I_A.Mult(I_v, ans_r2)
-       print "ans_r2",  ans_r2.GetDataArray()                                 
        ans_r -= ans_r2
-       print 'Here5'           
+
        R_A.Mult(I_v, ans_i)
        I_A.Mult(R_v, ans_i2)
-       ans_i += ans_i2       
-       print 'Here6', ans_r, ans_i      
+       ans_i += ans_i2      
+
     return (ans_r, ans_i)       
    
 def ParMultComplex(A, B):
@@ -408,7 +404,6 @@ def ResetHypreDiag(M, idx, value = 1.0):
     '''
     set diagonal element to value (normally 1)
     '''
-    print M
     col_starts = M.GetColPartArray()    
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
     from mpi4py import MPI

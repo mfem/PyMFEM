@@ -28,7 +28,6 @@ except:
 class CHypreVec(list):
     def __init__(self, r = None, i = None, horizontal = False):
         list.__init__(self, [None]*2)
-        print "making CHypreVec"
         self._horizontal = horizontal
         
         if isinstance(r, np.ndarray):
@@ -39,7 +38,7 @@ class CHypreVec(list):
             self[1] = ToHypreParVec(i)
         else:
             self[1] = i
-            
+
     def __repr__(self):
         if self[0] is not None:
             part = self[0].GetPartitioningArray()
@@ -120,12 +119,11 @@ class CHypreVec(list):
             i *=-1.
         else:
             i = None
-        print r, i
+
         return CHypreVec(r, i, horizontal = self._horizontal)
     
     def dot(self, other):
         if isinstance(other, CHypreVec):
-            print "inner product complex"
             return InnerProductComplex(self, other)            
         elif (isinstance(other, CHypreMat) and
             self._horizontal):
@@ -192,7 +190,7 @@ class CHypreVec(list):
             if self[0] is not None:
                 self[0] = self._do_reset(self[0], idx)
             if self[1] is not None:
-                self[1] = self._do_reset(self[0], idx)
+                self[1] = self._do_reset(self[1], idx)
         else:            
             if 0 in idx: self *= 0.0
             
@@ -203,12 +201,36 @@ class CHypreVec(list):
             if self[0] is not None:
                 self[0] = self._do_reset(self[0], idx)
             if self[1] is not None:
-                self[1] = self._do_reset(self[0], idx)
-    def selectRows(self, nonzeros):
+                self[1] = self._do_reset(self[1], idx)
+
+    def _do_select(self, v, idx):
+        data = v.GetDataArray(); v.thisown = False
+        part = v.GetPartitioningArray()
+        idx2 = idx[idx >= part[0]]
+        idx2 = idx2[idx2 < part[1]]
+        idx2 = idx2 - part[0]
+        return  ToHypreParVec(data[idx2])
+
+    def selectRows(self, idx):
+        if not self._horizontal:
+            if self[0] is not None:
+                self[0] = self._do_select(self[0], idx)
+            if self[1] is not None:
+                self[1] = self._do_select(self[1], idx)
+        else:            
+            if 0 in idx: raise ValueError("VectorSize becomes zero")
+
         return self
      
-    def selectCols(self, nonzeros):
-        return self
+    def selectCols(self, idx):
+        if self._horizontal:
+            if self[0] is not None:
+                self[0] = self._do_select(self[0], idx)
+            if self[1] is not None:
+                self[1] = self._do_select(self[1], idx)
+        else:            
+            if 0 in idx: raise ValueError("VectorSize becomes zero")
+
     
 class CHypreMat(list):
     def __init__(self, r = None, i = None, col_starts = None):
@@ -246,49 +268,53 @@ class CHypreMat(list):
         if not isinstance(other, CHypreMat):
              raise ValueError(
                    "argument should be CHypreMat")
-         
-        if self[0] is not None and other[0] is not  None:
-            r = ToHypreParCSR((ToScipyCoo(self[0])+ ToScipyCoo(other[0])).tocsr())            
-        elif self[0] is not None:
-            r = self[0]
-        elif other[0] is not None:
-            r = other[0]            
+        if self[0] is not None:
+            r = ToScipyCoo(self[0])
         else:
+            r = 0
+        if  other[0] is not  None:
+            r = r + ToScipyCoo(other[0])            
+        if r == 0:
             r = None
-
-        if self[1] is not None and other[1] is not  None:
-            i = ToHypreParCSR((ToScipyCoo(self[1])+ ToScipyCoo(other[1])).tocsr())            
-        elif self[1] is not None:
-            i = self[1]
-        elif other[1] is not None:
-            i = other[1]            
         else:
+            r = ToHypreParCSR(r.tocsr())            
+
+        if self[1] is not None:
+            i = ToScipyCoo(self[1])
+        else:
+            i = 0
+        if  other[1] is not  None:
+            i = i + ToScipyCoo(other[1])            
+        if i == 0:
             i = None
+        else:
+            i = ToHypreParCSR(i.tocsr())            
             
         return CHypreMat(r, i)
 
     def __sub__(self, other): #A - B
-        if not isinstance(other, CHypreMat):
-             raise ValueError(
-                   "argument should be CHypreMat")
-         
-        if self[0] is not None and other[0] is not  None:
-            r = ToHypreParCSR((ToScipyCoo(self[0]) - ToScipyCoo(other[0])).tocsr())            
-        elif self[0] is not None:
-            r = self[0]
-        elif other[0] is not None:
-            r = ToHypreParCSR((- ToScipyCoo(other[0])).tocsr())
+        if self[0] is not None:
+            r = -ToScipyCoo(self[0])
         else:
+            r = 0
+        if  other[0] is not  None:
+            r = r - ToScipyCoo(other[0])            
+        if r == 0:
             r = None
-
-        if self[1] is not None and other[1] is not  None:
-            i = ToHypreParCSR((ToScipyCoo(self[1])- ToScipyCoo(other[1])).tocsr())            
-        elif self[1] is not None:
-            i = self[1]
-        elif other[1] is not None:
-            i = ToHypreParCSR((- ToScipyCoo(other[1])).tocsr())        
         else:
+            r = ToHypreParCSR(r.tocsr())            
+
+        if self[1] is not None:
+            i = -ToScipyCoo(self[1])
+        else:
+            i = 0
+        if  other[1] is not  None:
+            i = i - ToScipyCoo(other[1])            
+        if i == 0:
             i = None
+        else:
+            i = ToHypreParCSR(i.tocsr())            
+            
         return CHypreMat(r, i)
 
     def __neg__(self): #-B
@@ -374,10 +400,30 @@ class CHypreMat(list):
             self[1] = ResetHypreRow(self[1], idx)
             
     def selectRows(self, nonzeros):
-        return self
+        cpart = self[0].GetColPartArray()
+        cpart[2] = self[0].GetGlobalNumCols()
+        rpart = self[1].GetRowPartArray()
+        rpart[2] = self[1].GetGlobalNumRows()            
+
+        nonzeros = nonzeros[nonzeros >= rpart[0]]
+        nonzeros = nonzeros[nonzeros < rpart[1]]
+        idx = nonzeros - rpart[0]
+
+        csr = ToScipyCoo(self[0]).tocsr()
+        csr = csr[idx, :]
+        r = ToHypreParCSR(csr, col_starts = cpart)
+        if self[1] is not None:
+           csr = ToScipyCoo(self[1]).tocsr()
+           csr = csr[idx, :]
+           i = ToHypreParCSR(csr, col_starts =cpart)
+        else:
+           i = None
+        return CHypreMat(r, i)
      
     def selectCols(self, nonzeros):
-        return self
+        mat = self.transpose()
+        mat.selectRows(nonzeros)
+        return  mat.transpose()
     
     @property
     def nnz(self):
@@ -424,6 +470,13 @@ class CHypreMat(list):
             return (self[1].GetNumRows(), self[1].GetNumCols())
         else:
             return (0,0)
+
+    def elimination_matrix(self, nonzeros):
+        #  ret = lil_matrix((len(nonzeros), self.shape[0]))
+        #  for k, z in enumerate(nonzeros):
+        #     ret[k, z] = 1.
+        #  return ret.tocoo()
+        pass
 
     def get_squaremat_from_right(self):
         '''
