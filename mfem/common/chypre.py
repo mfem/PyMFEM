@@ -301,11 +301,12 @@ class CHypreVec(list):
             gcoo.row  = np.arange(len(data))+ part[0]
         return gcoo
 
-    @property
     def true_nnz(self):
         '''
         more expensive version which reports nnz after
         eliminating all zero entries
+        I can not use @property, since ScipyCoo can't 
+        have @property (class inherited from ndarray)
         '''
         data = self[0].GetDataArray()
         if self[1] is not None:
@@ -553,7 +554,7 @@ class CHypreMat(list):
             return self[0].NNZ(), self[1].NNZ()
         if self[0] is not None: return self[0].NNZ()
         if self[1] is not None: return self[1].NNZ()
-    @property
+
     def true_nnz(self):
         '''
         more expensive version which reports nnz after

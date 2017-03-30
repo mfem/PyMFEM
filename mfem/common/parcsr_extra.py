@@ -441,7 +441,7 @@ def ResetHypreRow(M, idx):
        data[k] = 0.0
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
     mat.eliminate_zeros()
-    print 'reset row', len(idx), str((m, n)), len(data), mat.nnz
+
     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
 
 def ResetHypreCol(M, idx):
