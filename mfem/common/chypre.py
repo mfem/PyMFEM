@@ -317,6 +317,10 @@ class CHypreVec(list):
         comm     = MPI.COMM_WORLD     
         nnz = comm.allgather(local_nnz)
         return nnz
+     
+    @property     
+    def isHypre(self):
+        return True
 
 class CHypreMat(list):
     def __init__(self, r = None, i = None, col_starts = None):
@@ -340,7 +344,9 @@ class CHypreMat(list):
         if isinstance(other, CHypreMat):
             return CHypreMat(*ParMultComplex(self, other))
         if isinstance(other, CHypreVec):
-            return CHypreVec(*ParMultVecComplex(self, other))
+            v =  CHypreVec(*ParMultVecComplex(self, other))
+            v._horizontal = other._horizontal
+            return v
         raise ValueError(
                    "argument should be CHypreMat/Vec")
     
@@ -654,6 +660,10 @@ class CHypreMat(list):
        
         r = ToHypreParCSR(elil.tocsr(), col_starts =cpart)
         return CHypreMat(r, None)
+     
+    @property     
+    def isHypre(self):
+        return True
     
 def SquareCHypreMat(part):
     from scipy.sparse import csr_matrix
@@ -795,7 +805,7 @@ BilinearForm2PyMatix = BF2PyMat
 def MfemMat2PyMat(M1, M2 = None):
     '''
     Convert pair of SpMat/HypreParCSR to CHypreMat or 
-    ScipySparsematrix. Thisi is simpler version of BF2PyMat, only 
+    ScipySparsematrix. This is simpler version of BF2PyMat, only 
     difference is it skippes convertion from BF to Matrix.
     '''
     from mfem.common.sparse_utils import sparsemat_to_scipycsr
