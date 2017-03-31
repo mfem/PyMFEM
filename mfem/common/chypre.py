@@ -479,10 +479,9 @@ class CHypreMat(list):
         '''
         B^* A B
         '''
-        #ret = self*B
-        #return B.transpose().conj() * ret
         ret = B.conj().transpose()*self
-        ret = ret * B.conj()  # this should put B back to original
+        ret = ret * (B.conj())
+        # this should put B back to original
         return ret
 
     def setDiag(self, idx, value = 1.0):
@@ -567,7 +566,8 @@ class CHypreMat(list):
         eliminating all zero entries
         '''
         coo = self.get_local_coo()
-        coo.eliminate_zeros()
+        if hasattr(coo, "eliminate_zeros"):        
+            coo.eliminate_zeros()
         return coo.nnz
 
     def m(self):
