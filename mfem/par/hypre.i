@@ -41,9 +41,16 @@ int sizeof_HYPRE_Int(){
                   HYPRE_Int *col);
 
 */
-%typemap(in) (double *_data,  HYPRE_Int *col){
-  $1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0)));
-  $2 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1)));
+%typemap(in) (double *_data,  HYPRE_Int *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
+  //PyArrayObject *tmp_arr1, *tmp_arr2;
+  tmp_arr1_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0));
+  tmp_arr2_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1));
+  $1 = (double *) PyArray_DATA(tmp_arr1_);
+  $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
+}
+%typemap(freearg) (double *_data,  HYPRE_Int *col){
+  Py_XDECREF(tmp_arr1_$argnum);
+  Py_XDECREF(tmp_arr2_$argnum);  
 }
 %typemap(typecheck )(double *_data,  HYPRE_Int *col){
   /* check if list of 2 numpy array or not */
@@ -64,15 +71,36 @@ int sizeof_HYPRE_Int(){
 
     allows to use numpy array to call this
  */
-%typemap(in) (int *I, HYPRE_Int *J,
-              double *data, HYPRE_Int *rows, HYPRE_Int *cols){
+%typemap(in) (int *I,
+	      HYPRE_Int *J,
+              double *data,
+	      HYPRE_Int *rows,
+	      HYPRE_Int *cols)
+             (PyArrayObject *tmp_arr1_ = NULL,
+	      PyArrayObject *tmp_arr2_ = NULL,
+	      PyArrayObject *tmp_arr3_ = NULL,
+	      PyArrayObject *tmp_arr4_ = NULL,
+	      PyArrayObject *tmp_arr5_ = NULL){
+  tmp_arr1_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0));
+  tmp_arr2_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1));
+  tmp_arr3_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,2));
+  tmp_arr4_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,3));
+  tmp_arr5_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4));
 
-  $1 = (int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0)));
-  $2 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1)));
-  $3 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,2)));
-  $4 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,3)));
-  $5 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4)));  
-}  
+  $1 = (int *) PyArray_DATA(tmp_arr1_);
+  $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
+  $3 = (double *) PyArray_DATA(tmp_arr3_);
+  $4 = (HYPRE_Int *) PyArray_DATA(tmp_arr4_);
+  $5 = (HYPRE_Int *) PyArray_DATA(tmp_arr5_);
+}
+%typemap(freearg) (int *I, HYPRE_Int *J,
+		   double *data, HYPRE_Int *rows, HYPRE_Int *cols){
+  Py_XDECREF(tmp_arr1_$argnum);
+  Py_XDECREF(tmp_arr2_$argnum);  
+  Py_XDECREF(tmp_arr3_$argnum);
+  Py_XDECREF(tmp_arr4_$argnum);
+  Py_XDECREF(tmp_arr5_$argnum);    
+}
 
 %typemap(typecheck ) (int *I, HYPRE_Int *J,
                       double *data, HYPRE_Int *rows,

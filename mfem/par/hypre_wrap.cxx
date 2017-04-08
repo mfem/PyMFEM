@@ -4499,6 +4499,8 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   HYPRE_Int arg2 ;
   double *arg3 = (double *) 0 ;
   HYPRE_Int *arg4 = (HYPRE_Int *) 0 ;
+  PyArrayObject *tmp_arr1_3 = NULL ;
+  PyArrayObject *tmp_arr2_3 = NULL ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -4519,8 +4521,11 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    arg3 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,0)));
-    arg4 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,1)));
+    //PyArrayObject *tmp_arr1, *tmp_arr2;
+    tmp_arr1_3 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,0));
+    tmp_arr2_3 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,1));
+    arg3 = (double *) PyArray_DATA(tmp_arr1_3);
+    arg4 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_3);
   }
   {
     try {
@@ -4531,8 +4536,16 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
+  {
+    Py_XDECREF(tmp_arr1_3);
+    Py_XDECREF(tmp_arr2_3);  
+  }
   return resultobj;
 fail:
+  {
+    Py_XDECREF(tmp_arr1_3);
+    Py_XDECREF(tmp_arr2_3);  
+  }
   return NULL;
 }
 
@@ -6205,6 +6218,11 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_9(PyObject *SWIGUNUSEDPARM(s
   double *arg7 = (double *) 0 ;
   HYPRE_Int *arg8 = (HYPRE_Int *) 0 ;
   HYPRE_Int *arg9 = (HYPRE_Int *) 0 ;
+  PyArrayObject *tmp_arr1_5 = NULL ;
+  PyArrayObject *tmp_arr2_5 = NULL ;
+  PyArrayObject *tmp_arr3_5 = NULL ;
+  PyArrayObject *tmp_arr4_5 = NULL ;
+  PyArrayObject *tmp_arr5_5 = NULL ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -6235,11 +6253,17 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_9(PyObject *SWIGUNUSEDPARM(s
     arg4 = PyInt_AsLong(obj3);
   }
   {
-    arg5 = (int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,0)));
-    arg6 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,1)));
-    arg7 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,2)));
-    arg8 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,3)));
-    arg9 = (HYPRE_Int *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,4)));  
+    tmp_arr1_5 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,0));
+    tmp_arr2_5 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,1));
+    tmp_arr3_5 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,2));
+    tmp_arr4_5 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,3));
+    tmp_arr5_5 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj4,4));
+    
+    arg5 = (int *) PyArray_DATA(tmp_arr1_5);
+    arg6 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_5);
+    arg7 = (double *) PyArray_DATA(tmp_arr3_5);
+    arg8 = (HYPRE_Int *) PyArray_DATA(tmp_arr4_5);
+    arg9 = (HYPRE_Int *) PyArray_DATA(tmp_arr5_5);
   }
   {
     try {
@@ -6250,8 +6274,22 @@ SWIGINTERN PyObject *_wrap_new_HypreParMatrix__SWIG_9(PyObject *SWIGUNUSEDPARM(s
     }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NEW |  0 );
+  {
+    Py_XDECREF(tmp_arr1_5);
+    Py_XDECREF(tmp_arr2_5);  
+    Py_XDECREF(tmp_arr3_5);
+    Py_XDECREF(tmp_arr4_5);
+    Py_XDECREF(tmp_arr5_5);    
+  }
   return resultobj;
 fail:
+  {
+    Py_XDECREF(tmp_arr1_5);
+    Py_XDECREF(tmp_arr2_5);  
+    Py_XDECREF(tmp_arr3_5);
+    Py_XDECREF(tmp_arr4_5);
+    Py_XDECREF(tmp_arr5_5);    
+  }
   return NULL;
 }
 
