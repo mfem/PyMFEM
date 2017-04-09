@@ -190,13 +190,19 @@ class CHypreVec(list):
         self._horizontal = not self.horizontal
 
     def _do_reset(self, v, idx):
-        data = v.GetDataArray()#; v.thisown = False
+        # ownership is transferrd to a new vector.
+        ownership = v.GetOwnership()
+        data = v.GetDataArray()
         part = v.GetPartitioningArray()
         for i in idx:
             if i >= part[1]:continue                
             if i < part[0]:continue
             data[i - part[0]] = 0
-        return  ToHypreParVec(data)
+            
+        ret = ToHypreParVec(data)
+        ret.SetOwnership(ownership)
+        v.SetOwnership(0)
+        return  ret
         
     def resetCol(self, idx):
         if self._horizontal:
@@ -217,8 +223,14 @@ class CHypreVec(list):
                 self[1] = self._do_reset(self[1], idx)
 
     def _do_select(self, v, lidx):
-        data = v.GetDataArray()#; v.thisown = False
-        return  ToHypreParVec(data[lidx])
+        # ownership is transferrd to a new vector.       
+        ownership = v.GetOwnership()       
+        data = v.GetDataArray()
+        data2 = data[lidx]
+        ret = ToHypreParVec(data2)
+        ret.SetOwnership(ownership)
+        v.SetOwnership(0)
+        return  ret
 
     def selectRows(self, idx):
         '''
@@ -738,7 +750,7 @@ def LF2PyVec(rlf, ilf = None, horizontal= False):
             iv = None
         return CHypreVec(rv, iv, horizontal = horizontal)
     else:
-        b1 = rlf.GetDataArray()#; rlf.thisown = False
+        b1 = rlf.GetDataArray().copy()#; rlf.thisown = False
         if ilf is not None:
            b2 = ilf.GetDataArray()#; ilf.thisown = False
            b1 = b1+1j*b2
@@ -750,7 +762,7 @@ def LF2PyVec(rlf, ilf = None, horizontal= False):
 LinearForm2PyVector = LF2PyVec
 
 def MfemVec2PyVec(rlf, ilf = None, horizontal= False):
-    b1 = rlf.GetDataArray()#; rlf.thisown = False
+    b1 = rlf.GetDataArray().copy()#; rlf.thisown = False
     if ilf is not None:
        b2 = ilf.GetDataArray()#; ilf.thisown = False
     else:

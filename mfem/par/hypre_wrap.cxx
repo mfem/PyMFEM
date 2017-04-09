@@ -3960,7 +3960,9 @@ SWIGINTERN PyObject *mfem_HypreParVector_GetPartitioningArray(mfem::HypreParVect
   HYPRE_Int *part_out;
   
   HYPRE_Int *part = self -> Partitioning();
-  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+  PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
+  Py_XDECREF(tmp_arr);
 
   part_out = (HYPRE_Int *) PyArray_DATA(arr1);
   part_out[0] = part[0];
@@ -4019,7 +4021,9 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetRowPartArray(mfem::HypreParMatrix *s
   HYPRE_Int *part_out;
   
   HYPRE_Int *part = self -> RowPart();
-  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+  PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
+  Py_XDECREF(tmp_arr);
 
   part_out = (HYPRE_Int *) PyArray_DATA(arr1);
   part_out[0] = part[0];
@@ -4035,7 +4039,9 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetColPartArray(mfem::HypreParMatrix *s
   HYPRE_Int *part_out;
   
   HYPRE_Int *part = self -> ColPart();
-  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
+  PyObject *tmp_arr = PyArray_ZEROS(1, dims, typenum, 0);
+  PyObject *arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr);
+  Py_XDECREF(tmp_arr);
 
   part_out = (HYPRE_Int *) PyArray_DATA(arr1);
   part_out[0] = part[0];
@@ -4087,7 +4093,7 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
    HYPRE_Int innz = 0;
    HYPRE_Int nnz;
 
-   PyObject *arr1, *arr2, *arr3, *o;   
+   PyObject *arr1 = NULL, *arr2 = NULL, *arr3 = NULL, *o = NULL;   
    if (!matrix)
    {
       /*hypre_error_in_arg(1);*/
@@ -4141,10 +4147,20 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
    npy_intp dims[] = {nnz};
    int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
 
-   //std::cout << "nnz " << std::to_string(nnz) << "\n";
-   arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
-   arr2 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, typenum, 0));
-   arr3 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_ZEROS(1, dims, NPY_DOUBLE, 0));
+
+   PyObject *tmp_arr1 = PyArray_ZEROS(1, dims, typenum, 0);
+   PyObject *tmp_arr2 = PyArray_ZEROS(1, dims, typenum, 0);
+   PyObject *tmp_arr3 = PyArray_ZEROS(1, dims, NPY_DOUBLE, 0);
+   if (tmp_arr1 == NULL) goto alloc_fail;
+   if (tmp_arr2 == NULL) goto alloc_fail;
+   if (tmp_arr3 == NULL) goto alloc_fail;
+
+   arr1 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr1);
+   arr2 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr2);
+   arr3 =  (PyObject *)PyArray_GETCONTIGUOUS((PyArrayObject *)tmp_arr3);
+   Py_XDECREF(tmp_arr1);
+   Py_XDECREF(tmp_arr2);
+   Py_XDECREF(tmp_arr3);
    
    if (arr1 == NULL) goto alloc_fail;
    if (arr2 == NULL) goto alloc_fail;
@@ -4202,6 +4218,7 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
      Py_XDECREF(arr1);
      Py_XDECREF(arr2);
      Py_XDECREF(arr3);
+     Py_XDECREF(o);     
      return Py_None;
 }
 
@@ -4537,14 +4554,14 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   {
-    Py_XDECREF(tmp_arr1_3);
-    Py_XDECREF(tmp_arr2_3);  
+    //Py_XDECREF(tmp_arr1_3); Dont do this.. HypreParVec constructer requires outside object alive
+    //Py_XDECREF(tmp_arr2_3);  
   }
   return resultobj;
 fail:
   {
-    Py_XDECREF(tmp_arr1_3);
-    Py_XDECREF(tmp_arr2_3);  
+    //Py_XDECREF(tmp_arr1_3); Dont do this.. HypreParVec constructer requires outside object alive
+    //Py_XDECREF(tmp_arr2_3);  
   }
   return NULL;
 }
