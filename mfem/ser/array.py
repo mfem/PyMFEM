@@ -120,6 +120,12 @@ class intArray(BaseArray):
             self.this.append(this)
         except Exception:
             self.this = this
+
+        if len(args) == 1 and isinstance(args[0], list):
+            self.MakeDataOwner()
+
+
+
     __swig_destroy__ = _array.delete_intArray
     __del__ = lambda self: None
 
@@ -255,6 +261,12 @@ class doubleArray(BaseArray):
             self.this.append(this)
         except Exception:
             self.this = this
+
+        if len(args) == 1 and isinstance(args[0], list):
+            self.MakeDataOwner()
+
+
+
     __swig_destroy__ = _array.delete_doubleArray
     __del__ = lambda self: None
 

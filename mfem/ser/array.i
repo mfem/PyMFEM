@@ -40,6 +40,10 @@ import_array();
    if ($1) free($1);
 }
 
+%pythonappend mfem::Array::Array %{
+  if len(args) == 1 and isinstance(args[0], list):
+      self.MakeDataOwner()
+%}
 //%import "intrules.i"
 //%newobject intArray
 %include "general/array.hpp"

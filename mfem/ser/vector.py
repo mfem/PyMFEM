@@ -261,7 +261,7 @@ class Vector(_object):
 
     def __init__(self, *args):
 
-        from numpy import ndarray
+        from numpy import ndarray, ascontiguousarray
         keep_link = False
         own_data = False
         if len(args) == 1:
@@ -272,7 +272,7 @@ class Vector(_object):
                 if args[0].dtype != 'float64':
                     raise ValueError('Must be float64 array')
                 else:
-                    args = (args[0], args[0].shape[0])
+          	    args = (ascontiguousarray(args[0]), args[0].shape[0])
         # in this case, args[0] need to be maintained
         # in this object.
         	    keep_link = True

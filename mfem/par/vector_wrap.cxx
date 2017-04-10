@@ -3853,7 +3853,7 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
       
     }
     else if (PyArray_Check(obj0)){
-      arg1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)obj0));
+      arg1 = (double *) PyArray_DATA((PyArrayObject *)obj0);
       //     arg1 = (double *) PyArray_DATA(obj0);
     }
     else {
