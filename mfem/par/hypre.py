@@ -396,6 +396,9 @@ class HypreParMatrix(operators.Operator):
     def get_local_nnz(self):
         return _hypre.HypreParMatrix_get_local_nnz(self)
 
+    def get_local_true_nnz(self):
+        return _hypre.HypreParMatrix_get_local_true_nnz(self)
+
     def GetCooDataArray(self, base_i=0, base_j=0):
         return _hypre.HypreParMatrix_GetCooDataArray(self, base_i, base_j)
 HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister

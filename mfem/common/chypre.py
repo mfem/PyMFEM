@@ -577,10 +577,19 @@ class CHypreMat(list):
         more expensive version which reports nnz after
         eliminating all zero entries
         '''
-        coo = self.get_local_coo()
-        if hasattr(coo, "eliminate_zeros"):        
-            coo.eliminate_zeros()
-        return coo.nnz
+        #coo = self.get_local_coo()
+        if self[0] is not None:        
+            nnz0, tnnz0 = self[0].get_local_true_nnz()
+        else:
+            nnz0 = 0
+            tnnz0 = 0
+        if self[1] is not None:
+            nnz1, tnnz1 = self[1].get_local_true_nnz()
+        else:
+            nnz1 = 0
+            tnnz1 = 0
+        print nnz0, tnnz0, nnz1, tnnz1
+        return tnnz0, tnnz1
 
     def m(self):
         '''

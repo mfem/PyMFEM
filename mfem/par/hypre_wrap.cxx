@@ -4066,6 +4066,93 @@ SWIGINTERN HYPRE_Int mfem_HypreParMatrix_get_local_nnz(mfem::HypreParMatrix *sel
    offd            = hypre_ParCSRMatrixOffd(matrix);
    return hypre_CSRMatrixNumNonzeros(diag) + hypre_CSRMatrixNumNonzeros(offd);
 }
+SWIGINTERN PyObject *mfem_HypreParMatrix_get_local_true_nnz(mfem::HypreParMatrix *self){
+   hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
+
+
+   MPI_Comm          comm;
+   HYPRE_Int         first_row_index;
+   HYPRE_Int         first_col_diag;
+   hypre_CSRMatrix  *diag;
+   hypre_CSRMatrix  *offd;
+   HYPRE_Int        *col_map_offd;
+   HYPRE_Int         num_rows;
+   HYPRE_Int        *row_starts;
+   HYPRE_Int        *col_starts;
+   HYPRE_Complex    *diag_data;
+   HYPRE_Int        *diag_i;
+   HYPRE_Int        *diag_j;
+   HYPRE_Complex    *offd_data;
+   HYPRE_Int        *offd_i;
+   HYPRE_Int        *offd_j;
+   HYPRE_Int         myid, num_procs, i, j;
+   HYPRE_Int         num_nonzeros_offd;
+   PyObject *o = NULL;      
+   HYPRE_Int tnnz = 0;
+   HYPRE_Int nnz;
+   if (!matrix)
+   {
+      /*hypre_error_in_arg(1);*/
+     return Py_None;    
+   }
+
+   comm = hypre_ParCSRMatrixComm(matrix);
+   diag = hypre_ParCSRMatrixDiag(matrix);
+   offd = hypre_ParCSRMatrixOffd(matrix);
+   nnz =  hypre_CSRMatrixNumNonzeros(diag) + hypre_CSRMatrixNumNonzeros(offd);
+
+   first_row_index = hypre_ParCSRMatrixFirstRowIndex(matrix);
+   first_col_diag  = hypre_ParCSRMatrixFirstColDiag(matrix);
+   diag            = hypre_ParCSRMatrixDiag(matrix);
+   offd            = hypre_ParCSRMatrixOffd(matrix);
+   col_map_offd    = hypre_ParCSRMatrixColMapOffd(matrix);
+   num_rows        = hypre_ParCSRMatrixNumRows(matrix);
+   row_starts      = hypre_ParCSRMatrixRowStarts(matrix);
+   col_starts      = hypre_ParCSRMatrixColStarts(matrix);
+   hypre_MPI_Comm_rank(comm, &myid);
+   hypre_MPI_Comm_size(comm, &num_procs);
+   num_nonzeros_offd = hypre_CSRMatrixNumNonzeros(offd);
+
+   diag_data = hypre_CSRMatrixData(diag);
+   diag_i    = hypre_CSRMatrixI(diag);
+   diag_j    = hypre_CSRMatrixJ(diag);
+   offd_i    = hypre_CSRMatrixI(offd);
+   if (num_nonzeros_offd)
+   {
+      offd_data = hypre_CSRMatrixData(offd);
+      offd_j    = hypre_CSRMatrixJ(offd);
+   }
+   for (i = 0; i < num_rows; i++)
+   {
+      for (j = diag_i[i]; j < diag_i[i+1]; j++)
+      {
+         if ( diag_data )
+	 {
+           if ((double)diag_data[j] != 0){
+    	       tnnz = tnnz + 1;		     
+           }
+         }		     
+		     
+      }
+      if ( num_nonzeros_offd )
+      {
+         for (j = offd_i[i]; j < offd_i[i+1]; j++)
+         {
+            if ( offd_data )
+            {
+	      if ((double)offd_data[j] != 0){
+         	       tnnz = tnnz + 1;		     
+               }
+     	    }
+         }
+      }
+   }
+   o = PyList_New(2);
+   PyList_SetItem(o, 0, PyLong_FromLong((long)nnz));
+   PyList_SetItem(o, 1, PyLong_FromLong((long)tnnz));
+
+   return o;
+}
 SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParMatrix *self,HYPRE_Int const base_i=0,HYPRE_Int const base_j=0){
   //hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*pmatrix);
    hypre_ParCSRMatrix *matrix =  static_cast<hypre_ParCSRMatrix *>(*self);
@@ -4141,12 +4228,40 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
       jupper = col_starts[myid+1]+base_j - 1;
    }
    
-   HYPRE_Int* irn;// = (HYPRE_Int *)malloc(sizeof(HYPRE_Int)*nnz);
-   HYPRE_Int* jcn;// = (HYPRE_Int *)malloc(sizeof(HYPRE_Int)*nnz);
-   double* a;// = (double *)malloc(sizeof(double)*nnz);
-   npy_intp dims[] = {nnz};
+   HYPRE_Int tnnz;
+   tnnz = 0;
+   for (i = 0; i < num_rows; i++)
+   {
+      for (j = diag_i[i]; j < diag_i[i+1]; j++)
+      {
+         if ( diag_data )
+	 {
+           if ((double)diag_data[j] != 0){
+    	       tnnz = tnnz + 1;		     
+           }
+         }		     
+		     
+      }
+      if ( num_nonzeros_offd )
+      {
+         for (j = offd_i[i]; j < offd_i[i+1]; j++)
+         {
+            if ( offd_data )
+            {
+	      if ((double)offd_data[j] != 0){
+         	       tnnz = tnnz + 1;		     
+               }
+     	    }
+         }
+      }
+   }
+   
+   HYPRE_Int* irn;
+   HYPRE_Int* jcn;
+   double* a;
+   //npy_intp dims[] = {nnz};
+   npy_intp dims[] = {tnnz};
    int typenum =  (sizeof(HYPRE_Int) == 4) ? NPY_INT32 : NPY_INT64;
-
 
    PyObject *tmp_arr1 = PyArray_ZEROS(1, dims, typenum, 0);
    PyObject *tmp_arr2 = PyArray_ZEROS(1, dims, typenum, 0);
@@ -4180,10 +4295,12 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
          J = first_col_diag + diag_j[j] + base_j;
          if ( diag_data )
 	 {
-           irn[innz]= I;
-           jcn[innz] = J;
-           a[innz] = (double)diag_data[j];
-	   innz = innz + 1;		     
+	   if ((double)diag_data[j] != 0.){
+               irn[innz]= I;
+               jcn[innz] = J;
+               a[innz] = (double)diag_data[j];
+               innz = innz + 1;
+	   }
          }		     
 		     
       }
@@ -4194,10 +4311,12 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
             J = col_map_offd[offd_j[j]] + base_j;
             if ( offd_data )
             {
-               irn[innz]= I;;
-               jcn[innz] = J;
-               a[innz] = (double)offd_data[j];
-    	       innz = innz + 1;		     	       
+     	       if ((double)offd_data[j] != 0.){	      
+                   irn[innz]= I;;
+                   jcn[innz] = J;
+                   a[innz] = (double)offd_data[j];
+       	           innz = innz + 1;
+	       }
      	    }
          }
       }
@@ -10318,6 +10437,35 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_HypreParMatrix_get_local_true_nnz(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:HypreParMatrix_get_local_true_nnz",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_get_local_true_nnz" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    try {
+      result = (PyObject *)mfem_HypreParMatrix_get_local_true_nnz(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = result;
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_HypreParMatrix_GetCooDataArray__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
@@ -16036,6 +16184,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"HypreParMatrix_GetRowPartArray", _wrap_HypreParMatrix_GetRowPartArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_GetColPartArray", _wrap_HypreParMatrix_GetColPartArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_get_local_nnz", _wrap_HypreParMatrix_get_local_nnz, METH_VARARGS, NULL},
+	 { (char *)"HypreParMatrix_get_local_true_nnz", _wrap_HypreParMatrix_get_local_true_nnz, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_GetCooDataArray", _wrap_HypreParMatrix_GetCooDataArray, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_VARARGS, NULL},
 	 { (char *)"add_hypre", _wrap_add_hypre, METH_VARARGS, NULL},
