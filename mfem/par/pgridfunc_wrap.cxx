@@ -5045,7 +5045,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_GetTrueDofs__SWIG_1(PyObject *SWIGUNU
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5199,7 +5199,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_ParallelAverage__SWIG_2(PyObject *SWI
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5368,7 +5368,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_ParallelProject__SWIG_2(PyObject *SWI
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5537,7 +5537,7 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_ParallelAssemble__SWIG_2(PyObject *SW
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;

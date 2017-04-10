@@ -5187,7 +5187,7 @@ SWIGINTERN PyObject *_wrap_HypreParVector_GlobalVector(PyObject *SWIGUNUSEDPARM(
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5348,7 +5348,7 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetData(PyObject *SWIGUNUSEDPARM(self)
       
     }
     else if (PyArray_Check(obj1)){
-      arg2 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)obj1));
+      arg2 = (double *) PyArray_DATA((PyArrayObject *)obj1);
       //     arg2 = (double *) PyArray_DATA(obj1);
     }
     else {
@@ -7881,7 +7881,7 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Transpose(PyObject *SWIGUNUSEDPARM(sel
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -10710,7 +10710,7 @@ SWIGINTERN PyObject *_wrap_add_hypre(PyObject *SWIGUNUSEDPARM(self), PyObject *a
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -10748,7 +10748,7 @@ SWIGINTERN PyObject *_wrap_ParMult(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -10786,7 +10786,7 @@ SWIGINTERN PyObject *_wrap_RAP__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject 
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -10833,7 +10833,7 @@ SWIGINTERN PyObject *_wrap_RAP__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject 
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;

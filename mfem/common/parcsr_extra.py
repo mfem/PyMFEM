@@ -269,7 +269,7 @@ def ParMultVecComplex(A, v):
 
        R_A.Mult(I_v, ans_i)
        I_A.Mult(R_v, ans_i2)
-       ans_i += ans_i2      
+       ans_i += ans_i2
 
     return (ans_r, ans_i)       
    
@@ -294,7 +294,8 @@ def ParMultComplex(A, B):
     R_B, I_B = B
 
     if I_A is None and I_B is None:
-       return (mfem.ParMult(R_A, R_B), None)
+       r = mfem.ParMult(R_A, R_B)
+       return (r, None)
     elif I_A is None:
        r = mfem.ParMult(R_A, R_B)
        i = mfem.ParMult(R_A, I_B)
@@ -308,6 +309,7 @@ def ParMultComplex(A, B):
        B = mfem.ParMult(I_A, I_B)
        C = mfem.ParMult(R_A, I_B)
        D = mfem.ParMult(I_A, R_B)
+       
        col_starts = A.GetColPartArray(); col_starts[2] = A.N()
        r = ToHypreParCSR((ToScipyCoo(A) - ToScipyCoo(B)).tocsr(), col_starts = col_starts)
        i = ToHypreParCSR((ToScipyCoo(C) + ToScipyCoo(D)).tocsr(), col_starts = col_starts)
@@ -320,7 +322,9 @@ def TransposeComplex(A):
     '''
     
     R = A[0].Transpose() if A[0] is not None else None
-    I = A[1].Transpose() if A[1] is not None else None    
+    I = A[1].Transpose() if A[1] is not None else None
+    if R is not None: R.thisown = True
+    if I is not None: I.thisown = True    
     return (R, I)
 
 def Conj(A):

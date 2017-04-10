@@ -147,7 +147,13 @@ typedef int HYPRE_Int;
     return self
 %}
 
+
+%newobject mfem::HypreParVector::GlobalVector;
+%newobject mfem::HypreParMatrix::Transpose;
+%newobject mfem::Add;
 %rename(add_hypre) mfem::Add;
+%newobject mfem::ParMult;
+%newobject mfem::RAP;
 
 %include "linalg/hypre.hpp"
 

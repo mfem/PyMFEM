@@ -118,10 +118,12 @@ import element
 import geom
 import table
 import vertex
+import gridfunc
+import fespace
 import fe_coll
 import lininteg
+import bilininteg
 import pfespace
-import fespace
 import pmesh
 import pncmesh
 import communication

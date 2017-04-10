@@ -4211,7 +4211,7 @@ SWIGINTERN PyObject *_wrap_ParBilinearForm_ParallelAssemble__SWIG_0(PyObject *SW
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4278,7 +4278,7 @@ SWIGINTERN PyObject *_wrap_ParBilinearForm_ParallelAssemble__SWIG_1(PyObject *SW
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;

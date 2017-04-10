@@ -276,7 +276,7 @@ class CHypreVec(list):
      
     def GlobalVector(self):
         if self[0] is not None:
-            v = self[0].GlobalVector().GetDataArray()
+            v = self[0].GlobalVector().GetDataArray().copy()
         else:
             v = 0.0
         if self[1] is not None:            
@@ -753,8 +753,10 @@ def LF2PyVec(rlf, ilf = None, horizontal= False):
         From ParLF to CHypreVec
         '''
         rv = rlf.ParallelAssemble()
+        rv.thisown = True
         if ilf is not None:
             iv = ilf.ParallelAssemble()
+            iv.thisown = True            
         else:
             iv = None
         return CHypreVec(rv, iv, horizontal = horizontal)
@@ -803,8 +805,10 @@ def BF2PyMat(rbf, ibf = None, finalize = False):
         
     if MFEM_PAR:
         M1 =  rbf.ParallelAssemble()
+        M1.thisown = True        
         if ibf is not None:
             M2 =  ibf.ParallelAssemble()
+            M2.thisown = True                    
         else:
             M2 = None
         return CHypreMat(M1,  M2)
