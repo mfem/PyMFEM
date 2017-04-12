@@ -276,11 +276,13 @@ class CHypreVec(list):
      
     def GlobalVector(self):
         if self[0] is not None:
-            v = self[0].GlobalVector().GetDataArray().copy()
+            gv = self[0].GlobalVector()
+            v = gv.GetDataArray().copy()  
         else:
             v = 0.0
         if self[1] is not None:            
-            v = v + 1j*self[1].GlobalVector().GetDataArray()
+            gv = self[1].GlobalVector()
+            v = v + 1j*gv.GetDataArray()
         return v
 
     def toarray(self):
