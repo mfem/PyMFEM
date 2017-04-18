@@ -249,6 +249,9 @@ def GetFaceElements(self, Face):
 %immutable attributes;
 %immutable bdr_attributes;
 %ignore MesquiteSmooth;
+
+%newobject mfem::Mesh::GetFaceToElementTable;
+%newobject mfem::Mesh::GetVertexToElementTable;
 %include "mesh/mesh.hpp"
 %mutable;
 

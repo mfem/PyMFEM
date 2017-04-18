@@ -3,27 +3,42 @@
 #include "iostream_typemap.hpp"    
 #include "general/table.hpp"
 #include <iostream>
+#include "numpy/arrayobject.h"    
+%}
+
+// initialization required to return numpy array from SWIG
+%init %{
+import_array();
 %}
 
 %import array.i
-%import "ostream_typemap.i"
+%import ostream_typemap.i
 
-// recipe for ostream
-%typemap(in) std::ostream& (boost_ofdstream *stream=NULL) {
-  FILE *f=PyFile_AsFile($input); // Verify the semantics of this
-  if (!f) {
-    SWIG_Error(SWIG_TypeError, "File object expected.");
-    SWIG_fail;
-  }
-  else {
-    // If threaded incrment the use count
-    stream = new boost_ofdstream(fileno(f), io::never_close_handle);
-    $1 = new std::ostream(stream);
-  }
+//  conversion of Int (can handle numpy int)
+%typemap(in) int {
+  PyArray_PyIntAsInt($input);  
+  $1 = PyInt_AsLong($input);
 }
-%typemap(freearg) std::ostream& {
-  delete $1;
-  delete stream$argnum;
+%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) int {
+  if (PyArray_PyIntAsInt($input)   != -1){
+    $1 = 1;
+  } else {
+    $1 = 0;
+  }
 }
 
 %include "general/table.hpp"
+
+%extend mfem::Table {
+PyObject* GetRowList(int i) const{
+     const int *row = self->GetRow(i);
+     int L = self->RowSize(i);
+     int kk = 0;
+     PyObject *o;
+     o = PyList_New(L);
+     for (kk =0; kk < L; kk ++){
+       PyList_SetItem(o, kk, PyLong_FromLong((long) *(row + kk)));
+     }
+     return o;
+  }
+};

@@ -107,7 +107,7 @@ This is needed only when you edit SWIG interface files.
       Bug ;D
       Conversgence of iterative solver depends on the intial
       condition...?
-      ex7p fails thought the glvis shows the same plot...
+      ex7p fails although the glvis shows the same plot...
   
 
 -- Features --
@@ -319,12 +319,16 @@ This is needed only when you edit SWIG interface files.
 	    sys.stdout.flush()
 	    sparsmat.PrintInfo(sys.stdout)
        
+   4-13) mfem::table
+           GetRowList returns a version of GetRow which returns Python
+	   list instead of int pointer.
 
+  
 -- Known issues --
 
   PyMFEM is a on-going effort. Not all MFEM functioality is propary
-  wrapped yet. Presnetly most of serial example (except for
-  ex15.cpp) and 5 parallel examples are rewritten in python.
+  wrapped yet. Presnetly all serial/parallel examples avaiable in
+  the top-level mfem/example directory are rewritten in python.
   This would be sufficient for certain projects, but for other projects,
   you may find various features are missing. Please inform us if you
   notice something missing.
@@ -337,8 +341,8 @@ This is needed only when you edit SWIG interface files.
       python uses garbage collection. Since wrapper does not know
       exactly how objects are used in c++ layer, MFEM object may be
       collected before being ready to be freed. We are addressing
-      this by adjusting thisown flag, but the approach may not 
-      work in a different scenario.
+      this by adjusting thisown flag or %newobject directive. This
+      needs to be done method by method, and not yet completed.
 
   4) Visualization through visit is not included
 

@@ -13178,7 +13178,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetVertexToElementTable(PyObject *SWIGUNUSEDPARM
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -13207,7 +13207,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceToElementTable(PyObject *SWIGUNUSEDPARM(s
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, 0 |  0 );
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
