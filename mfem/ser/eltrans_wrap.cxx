@@ -3660,157 +3660,6 @@ namespace swig {
 #include "numpy/arrayobject.h"      
 
 
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
-
-SWIGINTERN int
-SWIG_AsVal_double (PyObject *obj, double *val)
-{
-  int res = SWIG_TypeError;
-  if (PyFloat_Check(obj)) {
-    if (val) *val = PyFloat_AsDouble(obj);
-    return SWIG_OK;
-#if PY_VERSION_HEX < 0x03000000
-  } else if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-#endif
-  } else if (PyLong_Check(obj)) {
-    double v = PyLong_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    double d = PyFloat_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = d;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      long v = PyLong_AsLong(obj);
-      if (!PyErr_Occurred()) {
-	if (val) *val = v;
-	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
-      } else {
-	PyErr_Clear();
-      }
-    }
-  }
-#endif
-  return res;
-}
-
-
-#include <float.h>
-
-
-#include <math.h>
-
-
-SWIGINTERNINLINE int
-SWIG_CanCastAsInteger(double *d, double min, double max) {
-  double x = *d;
-  if ((min <= x && x <= max)) {
-   double fx = floor(x);
-   double cx = ceil(x);
-   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
-   if ((errno == EDOM) || (errno == ERANGE)) {
-     errno = 0;
-   } else {
-     double summ, reps, diff;
-     if (rd < x) {
-       diff = x - rd;
-     } else if (rd > x) {
-       diff = rd - x;
-     } else {
-       return 1;
-     }
-     summ = rd + x;
-     reps = diff/summ;
-     if (reps < 8*DBL_EPSILON) {
-       *d = rd;
-       return 1;
-     }
-   }
-  }
-  return 0;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
-{
-#if PY_VERSION_HEX < 0x03000000
-  if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else
-#endif
-  if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-      return SWIG_OverflowError;
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    long v = PyInt_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      double d;
-      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
-	return res;
-      }
-    }
-  }
-#endif
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
-{
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
-}
-
-
 SWIGINTERNINLINE PyObject*
   SWIG_From_int  (int value)
 {
@@ -3837,8 +3686,6 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_Attribute_set(PyObject *SWIGUNU
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -3848,11 +3695,10 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_Attribute_set(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementTransformation_Attribute_set" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ElementTransformation_Attribute_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   if (arg1) (arg1)->Attribute = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3889,8 +3735,6 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_ElementNo_set(PyObject *SWIGUNU
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -3900,11 +3744,10 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_ElementNo_set(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementTransformation_ElementNo_set" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ElementTransformation_ElementNo_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   if (arg1) (arg1)->ElementNo = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4788,8 +4631,6 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetIdentityTransformation
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4799,11 +4640,10 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetIdentityTransformation
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IsoparametricTransformation_SetIdentityTransformation" "', argument " "1"" of type '" "mfem::IsoparametricTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IsoparametricTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IsoparametricTransformation_SetIdentityTransformation" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       (arg1)->SetIdentityTransformation(arg2); 
@@ -5669,8 +5509,6 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_Elem1No_set(PyObject *SWIG
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5680,11 +5518,10 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_Elem1No_set(PyObject *SWIG
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FaceElementTransformations_Elem1No_set" "', argument " "1"" of type '" "mfem::FaceElementTransformations *""'"); 
   }
   arg1 = reinterpret_cast< mfem::FaceElementTransformations * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FaceElementTransformations_Elem1No_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   if (arg1) (arg1)->Elem1No = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5721,8 +5558,6 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_Elem2No_set(PyObject *SWIG
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5732,11 +5567,10 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_Elem2No_set(PyObject *SWIG
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FaceElementTransformations_Elem2No_set" "', argument " "1"" of type '" "mfem::FaceElementTransformations *""'"); 
   }
   arg1 = reinterpret_cast< mfem::FaceElementTransformations * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FaceElementTransformations_Elem2No_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   if (arg1) (arg1)->Elem2No = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5773,8 +5607,6 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_FaceGeom_set(PyObject *SWI
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5784,11 +5616,10 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_FaceGeom_set(PyObject *SWI
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FaceElementTransformations_FaceGeom_set" "', argument " "1"" of type '" "mfem::FaceElementTransformations *""'"); 
   }
   arg1 = reinterpret_cast< mfem::FaceElementTransformations * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FaceElementTransformations_FaceGeom_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   if (arg1) (arg1)->FaceGeom = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;

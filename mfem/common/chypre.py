@@ -590,7 +590,7 @@ class CHypreMat(list):
         else:
             nnz1 = 0
             tnnz1 = 0
-        print nnz0, tnnz0, nnz1, tnnz1
+        #print nnz0, tnnz0, nnz1, tnnz1
         return tnnz0, tnnz1
 
     def m(self):

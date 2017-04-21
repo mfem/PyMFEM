@@ -232,6 +232,9 @@ class Table(_object):
         return _table.Table_MemoryUsage(self)
     __swig_destroy__ = _table.delete_Table
     __del__ = lambda self: None
+
+    def GetRowList(self, i):
+        return _table.Table_GetRowList(self, i)
 Table_swigregister = _table.Table_swigregister
 Table_swigregister(Table)
 
