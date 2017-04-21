@@ -29,7 +29,14 @@
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
+#include "numpy/arrayobject.h"
 %}
+
+// initialization required to return numpy array from SWIG
+%init %{
+import_array();
+%}
+
 %include  "config/_config.hpp" // include mfem MACRO
 //%import "general/array.hpp"
 %import "array.i"

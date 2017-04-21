@@ -3626,6 +3626,7 @@ namespace swig {
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
+#include "numpy/arrayobject.h"
 
 
 SWIGINTERNINLINE PyObject*
@@ -3682,111 +3683,6 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
-
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
-
-#include <float.h>
-
-
-#include <math.h>
-
-
-SWIGINTERNINLINE int
-SWIG_CanCastAsInteger(double *d, double min, double max) {
-  double x = *d;
-  if ((min <= x && x <= max)) {
-   double fx = floor(x);
-   double cx = ceil(x);
-   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
-   if ((errno == EDOM) || (errno == ERANGE)) {
-     errno = 0;
-   } else {
-     double summ, reps, diff;
-     if (rd < x) {
-       diff = x - rd;
-     } else if (rd > x) {
-       diff = rd - x;
-     } else {
-       return 1;
-     }
-     summ = rd + x;
-     reps = diff/summ;
-     if (reps < 8*DBL_EPSILON) {
-       *d = rd;
-       return 1;
-     }
-   }
-  }
-  return 0;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
-{
-#if PY_VERSION_HEX < 0x03000000
-  if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else
-#endif
-  if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-      return SWIG_OverflowError;
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    long v = PyInt_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      double d;
-      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
-	return res;
-      }
-    }
-  }
-#endif
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
-{
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
-}
 
 
 double fake_func(const mfem::Vector &x)
@@ -4789,17 +4685,14 @@ SWIGINTERN PyObject *ConstantCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(s
 SWIGINTERN PyObject *_wrap_new_PWConstCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   mfem::PWConstCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_PWConstCoefficient",&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_PWConstCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     try {
       result = (mfem::PWConstCoefficient *)new mfem::PWConstCoefficient(arg1); 
@@ -4909,8 +4802,11 @@ SWIGINTERN PyObject *_wrap_new_PWConstCoefficient(PyObject *self, PyObject *args
   if (argc == 1) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       return _wrap_new_PWConstCoefficient__SWIG_0(self, args);
@@ -4933,8 +4829,6 @@ SWIGINTERN PyObject *_wrap_PWConstCoefficient___call__(PyObject *SWIGUNUSEDPARM(
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   double *result = 0 ;
@@ -4945,11 +4839,10 @@ SWIGINTERN PyObject *_wrap_PWConstCoefficient___call__(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PWConstCoefficient___call__" "', argument " "1"" of type '" "mfem::PWConstCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PWConstCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PWConstCoefficient___call__" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       result = (double *) &(arg1)->operator ()(arg2); 
@@ -5398,8 +5291,6 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_0(PyObject *SWIGUNU
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::GridFunctionCoefficient *result = 0 ;
@@ -5410,11 +5301,10 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_GridFunctionCoefficient" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       result = (mfem::GridFunctionCoefficient *)new mfem::GridFunctionCoefficient(arg1,arg2); 
@@ -5497,8 +5387,11 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_GridFunctionCoefficient__SWIG_0(self, args);
@@ -6785,8 +6678,6 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_0(PyObject *SWIGU
   int arg1 ;
   void (*arg2)(mfem::Vector const &,mfem::Vector &) = (void (*)(mfem::Vector const &,mfem::Vector &)) 0 ;
   mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
-  int val1 ;
-  int ecode1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -6795,11 +6686,10 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_0(PyObject *SWIGU
   mfem::VectorFunctionCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_VectorFunctionCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_VectorFunctionCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void);
     if (!SWIG_IsOK(res)) {
@@ -6835,18 +6725,15 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_1(PyObject *SWIGU
   PyObject *resultobj = 0;
   int arg1 ;
   void (*arg2)(mfem::Vector const &,mfem::Vector &) = (void (*)(mfem::Vector const &,mfem::Vector &)) 0 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::VectorFunctionCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_VectorFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_VectorFunctionCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void);
     if (!SWIG_IsOK(res)) {
@@ -6878,8 +6765,6 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_2(PyObject *SWIGU
   int arg1 ;
   void (*arg2)(mfem::Vector const &,double,mfem::Vector &) = (void (*)(mfem::Vector const &,double,mfem::Vector &)) 0 ;
   mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
-  int val1 ;
-  int ecode1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -6888,11 +6773,10 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_2(PyObject *SWIGU
   mfem::VectorFunctionCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_VectorFunctionCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_VectorFunctionCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void);
     if (!SWIG_IsOK(res)) {
@@ -6928,18 +6812,15 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_3(PyObject *SWIGU
   PyObject *resultobj = 0;
   int arg1 ;
   void (*arg2)(mfem::Vector const &,double,mfem::Vector &) = (void (*)(mfem::Vector const &,double,mfem::Vector &)) 0 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::VectorFunctionCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_VectorFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_VectorFunctionCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void);
     if (!SWIG_IsOK(res)) {
@@ -6981,8 +6862,11 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
   if (argc == 2) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       void *ptr = 0;
@@ -6996,8 +6880,11 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
   if (argc == 2) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       void *ptr = 0;
@@ -7011,8 +6898,11 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
   if (argc == 3) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       void *ptr = 0;
@@ -7031,8 +6921,11 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
   if (argc == 3) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       void *ptr = 0;
@@ -7402,17 +7295,14 @@ SWIGINTERN PyObject *VectorFunctionCoefficient_swigregister(PyObject *SWIGUNUSED
 SWIGINTERN PyObject *_wrap_new_VectorArrayCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   mfem::VectorArrayCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_VectorArrayCoefficient",&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_VectorArrayCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     try {
       result = (mfem::VectorArrayCoefficient *)new mfem::VectorArrayCoefficient(arg1); 
@@ -7439,8 +7329,6 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDP
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::Coefficient *result = 0 ;
@@ -7451,11 +7339,10 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorArrayCoefficient_GetCoeff" "', argument " "1"" of type '" "mfem::VectorArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VectorArrayCoefficient_GetCoeff" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       result = (mfem::Coefficient *) &(arg1)->GetCoeff(arg2); 
@@ -7517,8 +7404,6 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
   mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7531,11 +7416,10 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::VectorArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VectorArrayCoefficient_Set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorArrayCoefficient_Set" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
@@ -7569,8 +7453,6 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Eval__SWIG_0(PyObject *SWIGUNU
   mfem::IntegrationPoint *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   void *argp4 = 0 ;
@@ -7587,11 +7469,10 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Eval__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorArrayCoefficient_Eval" "', argument " "1"" of type '" "mfem::VectorArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VectorArrayCoefficient_Eval" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorArrayCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
@@ -7923,8 +7804,11 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Eval(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         void *vptr = 0;
@@ -8791,18 +8675,15 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_0(PyObject *SWIGU
   PyObject *resultobj = 0;
   int arg1 ;
   void (*arg2)(mfem::Vector const &,mfem::DenseMatrix &) = (void (*)(mfem::Vector const &,mfem::DenseMatrix &)) 0 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::MatrixFunctionCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_MatrixFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MatrixFunctionCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void);
     if (!SWIG_IsOK(res)) {
@@ -8833,18 +8714,15 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_1(PyObject *SWIGU
   PyObject *resultobj = 0;
   int arg1 ;
   void (*arg2)(mfem::Vector const &,double,mfem::DenseMatrix &) = (void (*)(mfem::Vector const &,double,mfem::DenseMatrix &)) 0 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::MatrixFunctionCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_MatrixFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MatrixFunctionCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__DenseMatrix__void);
     if (!SWIG_IsOK(res)) {
@@ -8886,8 +8764,11 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
   if (argc == 2) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       void *ptr = 0;
@@ -8901,8 +8782,11 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
   if (argc == 2) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if (PyArray_PyIntAsInt(argv[0])   != -1){
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       void *ptr = 0;
@@ -9035,17 +8919,14 @@ SWIGINTERN PyObject *MatrixFunctionCoefficient_swigregister(PyObject *SWIGUNUSED
 SWIGINTERN PyObject *_wrap_new_MatrixArrayCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   mfem::MatrixArrayCoefficient *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_MatrixArrayCoefficient",&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_MatrixArrayCoefficient" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    PyArray_PyIntAsInt(obj0);  
+    arg1 = PyInt_AsLong(obj0);
+  }
   {
     try {
       result = (mfem::MatrixArrayCoefficient *)new mfem::MatrixArrayCoefficient(arg1); 
@@ -9073,10 +8954,6 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDP
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -9088,16 +8965,14 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixArrayCoefficient_GetCoeff" "', argument " "1"" of type '" "mfem::MatrixArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MatrixArrayCoefficient_GetCoeff" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MatrixArrayCoefficient_GetCoeff" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   {
     try {
       result = (mfem::Coefficient *) &(arg1)->GetCoeff(arg2,arg3); 
@@ -9126,10 +9001,6 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
   mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -9143,16 +9014,14 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::MatrixArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MatrixArrayCoefficient_Set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MatrixArrayCoefficient_Set" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixArrayCoefficient_Set" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
@@ -9187,10 +9056,6 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Eval__SWIG_0(PyObject *SWIGUNU
   mfem::IntegrationPoint *arg5 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   void *argp5 = 0 ;
@@ -9208,16 +9073,14 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Eval__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixArrayCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatrixArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MatrixArrayCoefficient_Eval" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MatrixArrayCoefficient_Eval" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixArrayCoefficient_Eval" "', argument " "4"" of type '" "mfem::ElementTransformation &""'"); 
@@ -9365,13 +9228,19 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Eval(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           void *vptr = 0;
@@ -10206,19 +10075,16 @@ SWIGINTERN PyObject *_wrap_new_PyCoefficientBase(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::PyCoefficientBase *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_PyCoefficientBase",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_PyCoefficientBase" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
@@ -10511,10 +10377,6 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_0(PyObject *SWIGUNU
   int arg2 ;
   int arg3 ;
   mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -10525,16 +10387,14 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_0(PyObject *SWIGUNU
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_VectorPyCoefficientBase",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   arg1 = obj0;
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_VectorPyCoefficientBase" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_VectorPyCoefficientBase" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_VectorPyCoefficientBase" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
@@ -10570,10 +10430,6 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_1(PyObject *SWIGUNU
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
   int arg3 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -10581,16 +10437,14 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_1(PyObject *SWIGUNU
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_VectorPyCoefficientBase",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_VectorPyCoefficientBase" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_VectorPyCoefficientBase" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
@@ -10633,13 +10487,19 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *self, PyObject 
     _v = (argv[0] != 0);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_VectorPyCoefficientBase__SWIG_1(self, args);
@@ -10652,13 +10512,19 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *self, PyObject 
     _v = (argv[0] != 0);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           void *vptr = 0;
@@ -11128,10 +10994,6 @@ SWIGINTERN PyObject *_wrap_new_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
   int arg3 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -11139,16 +11001,14 @@ SWIGINTERN PyObject *_wrap_new_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_MatrixPyCoefficientBase",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_MatrixPyCoefficientBase" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MatrixPyCoefficientBase" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
@@ -12582,6 +12442,9 @@ SWIG_init(void) {
 #endif
   
   SWIG_InstallConstants(d,swig_const_table);
+  
+  
+  import_array();
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

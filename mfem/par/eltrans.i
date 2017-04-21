@@ -24,8 +24,8 @@ def Transform(self, *args):
     if isinstance(args[0], IntegrationPoint):
         vec = Vector()
         _eltrans.ElementTransformation_Transform(self, args[0], vec)
-        vec.thisown = 0      
-        return vec.GetDataArray()
+        ret = vec.GetDataArray().copy()
+        return ret
     else:
         return _eltrans.ElementTransformation_Transform(self, *args)
 %}
