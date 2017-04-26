@@ -3820,48 +3820,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ElementTransformation_MySetIntPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::ElementTransformation *arg1 = (mfem::ElementTransformation *) 0 ;
-  mfem::IntegrationPoint *arg2 = (mfem::IntegrationPoint *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:ElementTransformation_MySetIntPoint",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementTransformation_MySetIntPoint" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationPoint, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ElementTransformation_MySetIntPoint" "', argument " "2"" of type '" "mfem::IntegrationPoint const *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
-  {
-    try {
-      (arg1)->MySetIntPoint((mfem::IntegrationPoint const *)arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_ElementTransformation_GetIntPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ElementTransformation *arg1 = (mfem::ElementTransformation *) 0 ;
@@ -6024,7 +5982,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ElementTransformation_ElementNo_set", _wrap_ElementTransformation_ElementNo_set, METH_VARARGS, NULL},
 	 { (char *)"ElementTransformation_ElementNo_get", _wrap_ElementTransformation_ElementNo_get, METH_VARARGS, NULL},
 	 { (char *)"ElementTransformation_SetIntPoint", _wrap_ElementTransformation_SetIntPoint, METH_VARARGS, NULL},
-	 { (char *)"ElementTransformation_MySetIntPoint", _wrap_ElementTransformation_MySetIntPoint, METH_VARARGS, NULL},
 	 { (char *)"ElementTransformation_GetIntPoint", _wrap_ElementTransformation_GetIntPoint, METH_VARARGS, NULL},
 	 { (char *)"ElementTransformation_Transform", _wrap_ElementTransformation_Transform, METH_VARARGS, NULL},
 	 { (char *)"ElementTransformation_Jacobian", _wrap_ElementTransformation_Jacobian, METH_VARARGS, NULL},

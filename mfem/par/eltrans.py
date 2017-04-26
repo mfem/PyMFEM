@@ -127,9 +127,6 @@ class ElementTransformation(_object):
     def SetIntPoint(self, ip):
         return _eltrans.ElementTransformation_SetIntPoint(self, ip)
 
-    def MySetIntPoint(self, ip):
-        return _eltrans.ElementTransformation_MySetIntPoint(self, ip)
-
     def GetIntPoint(self):
         return _eltrans.ElementTransformation_GetIntPoint(self)
 
