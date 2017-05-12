@@ -244,7 +244,22 @@ This is needed only when you edit SWIG interface files.
 	 elements are accessed similar to a regular python array
 	      densmat[i,j] = xxx
 	      x = densmat[i,j]
-	 GetDataArray returns copy of data
+	 GetDataArray returns copy of data.
+	 
+	 Note that internally MFEM densmatrix is column major, while numpy
+	 is row major. Therefore,
+            v = Vector([1,2,3,4,5,6,7,8,9])
+	    m = DenseMatrix(v.GetData(), 3, 3)
+         will make
+	    [1 4,7]
+	    [2,5,8]
+	    [3,6,9],
+	 whereas
+	    numpy.arange(9).reshape(3,3)
+         would give you
+	    [1 2,3]
+	    [4,5,6]
+	    [7,8,9].
 	 
   4-7) estimators
         ZienkiewiczZhuEstimator and L2ZienkiewZhuEstimator
