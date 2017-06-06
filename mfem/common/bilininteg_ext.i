@@ -8,6 +8,9 @@ namespace mfem {
 %pythonprepend SumIntegrator::AddIntegrator %{
     integ.thisown = 0
 %}
+%pythonappend DiffusionIntegrator::DiffusionIntegrator %{
+    if len(args) > 0: self._coeff = args[0]
+%}
 %pythonappend CurlCurlIntegrator::CurlCurlIntegrator %{
     if len(args) > 0: self._coeff = args[0]
 %}
