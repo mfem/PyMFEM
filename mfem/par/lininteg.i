@@ -29,14 +29,7 @@
     //    catch (std::exception &e) { SWIG_fail; }    
 }
 
-namespace mfem { 
-%pythonappend VectorFEBoundaryTangentLFIntegrator::VectorFEBoundaryTangentLFIntegrator %{
-    self._coeff = QG
-%}
-%pythonappend VectorFEDomainLFIntegrator::VectorFEDomainLFIntegrator %{
-   self._coeff = F
-%}
-}
+%include "../common/lininteg_ext.i"
 
 %include "fem/lininteg.hpp"
 

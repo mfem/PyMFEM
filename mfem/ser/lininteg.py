@@ -146,6 +146,11 @@ class DomainLFIntegrator(LinearFormIntegrator):
         except Exception:
             self.this = this
 
+        self._coeff = args[0]
+
+
+
+
     def AssembleRHSElementVect(self, *args):
         return _lininteg.DomainLFIntegrator_AssembleRHSElementVect(self, *args)
     __swig_destroy__ = _lininteg.delete_DomainLFIntegrator
@@ -170,6 +175,11 @@ class BoundaryLFIntegrator(LinearFormIntegrator):
             self.this.append(this)
         except Exception:
             self.this = this
+
+        self._coeff = QG
+
+
+
 
     def AssembleRHSElementVect(self, *args):
         return _lininteg.BoundaryLFIntegrator_AssembleRHSElementVect(self, *args)

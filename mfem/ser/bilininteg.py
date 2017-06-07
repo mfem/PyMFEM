@@ -1428,6 +1428,11 @@ class MassIntegrator(BilinearFormIntegrator):
         except Exception:
             self.this = this
 
+        if len(args) > 0: self._coeff = args[0]
+
+
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         return _bilininteg.MassIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
 

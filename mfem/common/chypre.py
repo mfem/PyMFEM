@@ -520,8 +520,8 @@ class CHypreMat(list):
         '''
         idx is global index
         '''
-        rpart = self[1].GetRowPartArray()
-        rpart[2] = self[1].GetGlobalNumRows()            
+        rpart = self[0].GetRowPartArray()
+        rpart[2] = self[0].GetGlobalNumRows()            
         cpart = self[0].GetColPartArray()
         cpart[2] = self[0].GetGlobalNumCols()
         
@@ -547,12 +547,12 @@ class CHypreMat(list):
         '''
         cpart = self[0].GetColPartArray()
         cpart[2] = self[0].GetGlobalNumCols()
+        rpart = self[0].GetRowPartArray()
+        rpart[2] = self[0].GetGlobalNumRows()
+        
         idx = idx[idx >= cpart[0]]
         idx = idx[idx < cpart[1]]
         idx = idx - cpart[0]
-
-        rpart = self[1].GetRowPartArray()
-        rpart[2] = self[1].GetGlobalNumRows()            
 
         mat = self.transpose()        
         csr = ToScipyCoo(mat[0]).tocsr()
