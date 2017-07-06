@@ -1,0 +1,19 @@
+INSTALL
+
+If you want to install in a site-pacakge directory, you need to copy *.py and
+*.so files. setup.py in the base directory takes care of *.py. As for *.so,
+you need to do it manually. Please see the following step.
+
+1)
+python setup.py build
+
+2) install *.py
+python setup.py install --prefix=<where>
+
+3) copy *.so
+
+You may be use find command.
+
+find . -name "*.so" -exec cp -v {} <where>/lib/python2.7/site-packages/<egg-directory>/{} \;
+
+where <egg directory> is something like PyMFEM-3.3.0-py2.7.egg (for python2.7)
