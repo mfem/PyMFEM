@@ -3695,6 +3695,7 @@ namespace swig {
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
+#include "numpy/arrayobject.h"        
 
 
 SWIGINTERN int
@@ -10581,6 +10582,9 @@ SWIG_init(void) {
 #endif
   
   SWIG_InstallConstants(d,swig_const_table);
+  
+  
+  import_array();
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

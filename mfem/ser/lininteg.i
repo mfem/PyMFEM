@@ -9,6 +9,11 @@
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
+#include "numpy/arrayobject.h"        
+%}
+
+%init %{
+import_array();
 %}
 
  //%include "fem/coefficient.hpp"
