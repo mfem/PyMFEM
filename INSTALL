@@ -4,6 +4,9 @@ If you want to install in a site-pacakge directory, you need to copy *.py and
 *.so files. setup.py in the base directory takes care of *.py. As for *.so,
 you need to do it manually. Please see the following step.
 
+0)
+First you need to compile it. See the instruction in README.
+
 1)
 python setup.py build
 
