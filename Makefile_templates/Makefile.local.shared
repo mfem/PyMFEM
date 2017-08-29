@@ -1,0 +1,37 @@
+WHOLE_ARCHIVE = -all_load
+NO_WHOLE_ARCHIVE = 
+INSTALL_PREFIX=$(HOME)/sandbox/PetraM
+
+MFEM     = $(HOME)/sandbox
+MFEMBUILDDIR = $(HOME)/src/mfem/cmbuild
+MFEMINCDIR  = $(MFEM)/include
+MFEMLNKDIR  = $(MFEM)/lib
+
+MFEMSER  = $(HOME)/sandbox/mfem_ser
+MFEMSERBUILDDIR = $(HOME)/src/mfem_ser/cmbuild
+MFEMSERINCDIR  = $(MFEMSER)/include
+MFEMSERLNKDIR  = $(MFEMSER)/lib
+
+# METIS4
+# do not use .a file for metis
+METIS = $(HOME)/sandbox
+METISLIB = metis
+METISINCDIR = $(METIS)/include
+METISLNKDIR = $(METIS)/lib
+#METISLIBA   = 
+
+# HYPRE
+HYPRE 	 = $(HOME)/sandbox
+HYPREINCDIR = $(HYPRE)/include
+HYPRELNKDIR = $(HYPRE)/lib
+
+#MPI
+MPICHINCDIR    = /opt/local/include/mpich-mp
+MPICHLNKDIR    = /opt/local/lib/mpich-mp
+MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
+
+#Boost
+BOOSTINCDIR = /opt/local/include
+BOOSTLIBDIR = /opt/local/lib
+BOOSTLIB = boost_iostreams-mt
+
