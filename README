@@ -19,12 +19,24 @@ to find more detail of the MFEM libirary.
 -- INSTALLATION --
 
 0: 3rd parth library
-  0-1) mpi4py
-         needed either you use parallel MFEM
-  0-2) MFEM
-	 serial version and parallel version need to be
-	 compiled in separate directory.
+  0-1) MFEM
+	 PyMFEM can be build either with parallel or serial MFEM or both.
 
+	 MFEM needs to be compiled as shared library (see note on shared
+	 MFEM library build below)
+	 Note that if two versions are used, serial version and parallel
+	 MFEM needs to be compiled in separate directory.
+	 
+
+         <shared MFEM build>
+
+         mkdir cmbuild; cd cmbuild
+         ccmake .. -DBUILD_SHARED_LIBS=1
+
+	 on MacOSX, one needs to do
+	 
+         install_name_tool -id <fullpath to dylib> libmfem.dylib
+	 
          By default, Makefile assumes that MFEM is installed
 	 under /usr/local/mfem-3.2 and serial version of MFEM
 	 is installed under /usr/local/mfem-3.2ser.
@@ -43,10 +55,13 @@ to find more detail of the MFEM libirary.
 	    make config
 	    mamke -j	 
 
-  0-3) HYPRE
-	 for parallel MFEM is used
-  0-4) boost
+  0-2) HYPRE
+	 used for parallel MFEM. Need to be build as shared library
+  0-3) boost
          used for wrapping std::iostream
+  0-4) mpi4py
+         needed either you use parallel MFEM
+	 
 	  
 1:  recompile MFEM with -fPIC option
     This may not be necessary. (I didn't need it on MacOSX, 
