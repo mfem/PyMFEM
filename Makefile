@@ -4,7 +4,7 @@
 ##   
 MAKE=$(shell which make)
 PYTHON=$(shell which python)
-INSTALL_PREFIX=/usr/local/lib
+INSTALL_PREFIX=/usr/local/
 
 # serial compiler
 CXX_SER = g++
