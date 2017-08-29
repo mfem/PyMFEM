@@ -19,9 +19,8 @@ cxx: $(ALLCXX)
 
 allso: 
 	$(PYTHON) setup.py build_ext --inplace
-
 %_wrap.cxx: %.i
-	$(SWIG) $(SWIGFLAG) $(MPI4PYINC) $(MFEMINC) $(MPIINC) $<
+	$(SWIG) -I$(MFEMBUILDDIR) $(SWIGFLAG) $(MPI4PYINC) $(MFEMINC) $(MPIINC) $<
 endif
 cleancxx:
 	rm -f *.cxx

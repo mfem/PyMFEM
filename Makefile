@@ -4,6 +4,7 @@
 ##   
 MAKE=$(shell which make)
 PYTHON=$(shell which python)
+INSTALL_PREFIX=/usr/local/lib
 
 # serial compiler
 CXX_SER = g++
@@ -19,18 +20,27 @@ NO_WHOLE_ARCHIVE = --no-whole-archive
 SWIG=$(shell which swig)
 SWIGFLAG = -Wall -c++ -python
 
-MFEM=/usr/local/mfem-3.2
-MFEMLIB = mfem
-MFEMINCDIR = $(MFEM)
-MFEMLNKDIR = $(MFEM)
+#
+# MFEM path:
+#
+#   MFEMBUILDDIR : directory of MFEM build. Need to find config/config.hppx
+#   MFEMINCDIR : include files
+#   MFEMLNKDIR : path to mfem.so
 
-MFEMSER=/usr/local/mfem-3.2ser
+MFEM=/usr/local
+MFEMLIB = mfem
+MFEMBUILDDIR = $(HOME)/src/mfem
+MFEMINCDIR = $(MFEM)/include
+MFEMLNKDIR = $(MFEM)/lib
+
+MFEMSER=/usr/local/mfem_ser
 MFEMSERLIB = mfem
-MFEMSERINCDIR = $(MFEMSER)
-MFEMSERLNKDIR = $(MFEMSER)
+MFEMSERBUILDDIR = $(HOME)/src/mfem_ser
+MFEMSERINCDIR = $(MFEMSER)/include
+MFEMSERLNKDIR = $(MFEMSER)/lib
 
 # HYPRE
-HYPRE=/usr/local/hypre-2.11.0
+HYPRE=/usr/local
 HYPRELIB = HYPRE
 HYPREINCDIR = $(HYPRE)/include
 HYPRELNKDIR = $(HYPRE)/lib
@@ -39,15 +49,16 @@ HYPRELNKDIR = $(HYPRE)/lib
 # METISLIB will become -lmetis
 # METISLNKDIR will become -L<dir>
 # overwrite METISLIBA to black in Makefile.local if metis is provide as .so
-METIS=/usr/local/
+METIS=/usr/local
 METISLIB = metis
-METISLNKDIR = $(METIS)/lib/
-METISLIBA   = $(METIS)/libmetis.a 
+METISINCDIR = $(METIS)/include
+METISLNKDIR = $(METIS)/lib
+#METISLIBA   = $(METIS)/libmetis.a 
 
 #MPI
-MPIINCDIR= /opt/local/include/mpich-mp         #mpi.h
-MPICHINCDIR    = /opt/local/include/mpich-mp
-MPICHLNKDIR    = /opt/local/lib/mpich-mp
+MPIINCDIR= /usr/local/include/mpich-mp         #mpi.h
+MPICHINCDIR    = /usr/local/include/mpich-mp
+MPICHLNKDIR    = /usr/local/lib/mpich-mp
 MPILIB = mpi
 MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
 
@@ -55,8 +66,8 @@ MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
 NUMPYINCDIR = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
 
 #Boost
-BOOSTINCDIR = /opt/local/include
-BOOSTLIBDIR = /opt/local/lib
+BOOSTINCDIR = /usr/local/include
+BOOSTLIBDIR = /usr/local/lib
 BOOSTLIB = boost_iostream-mt
 
 NOCOMPACTUNWIND = 
@@ -74,7 +85,7 @@ export
 
 SUBDIRS = mfem/par mfem/ser
 
-.PHONEY:clean par ser  subdirs subdirs_cxx parcxx sercxx
+.PHONEY:clean par ser  subdirs subdirs_cxx parcxx sercxx pyinstall
 
 default: setup_local.py 
 #default: setup_local.py
@@ -92,7 +103,10 @@ sercxx: setup_local.py
 	$(MAKE) -C mfem/ser cxx
 setup_local.py: Makefile.local
 	$(PYTHON) write_setup_local.py
-	cp setup_local.py mfem/.       
+	cp setup_local.py mfem/.
+pyinstall:
+	$(PYTHON) setup.py build
+	$(PYTHON) setup.py install --prefix=$(INSTALL_PREFIX)
 cleancxx:
 	for dirs in $(SUBDIRS); do\
 		$(MAKE) -C $$dirs cleancxx;\

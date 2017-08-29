@@ -7,13 +7,14 @@
 from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
-from os import path
+from os import path, listdir
 
 here = path.abspath(path.dirname(__file__))
 
 with open(path.join(here, 'README')) as f:
     long_description = f.read()
 
+datafiles = [path.join('data', f) for f in listdir('data')]
 setup(
     name='PyMFEM',
     version='3.3.0',
@@ -40,7 +41,7 @@ setup(
     packages=find_packages(),
     install_requires=[],
     extras_require={},
-    package_data={},
-    data_files=[],
+    package_data={'mfem.par':['*.so'], 'mfem.ser':['*.so']},
+    data_files=[('data', datafiles)],
     entry_points={},
 )

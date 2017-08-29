@@ -37,7 +37,7 @@
 import_array();
 %}
 
-%include  "config/_config.hpp" // include mfem MACRO
+%include  "config/_config.hpp" // need to read macro such as MFEM_USE_MPI
 //%import "general/array.hpp"
 %import "array.i"
 %import "matrix.i"
