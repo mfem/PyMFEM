@@ -90,7 +90,6 @@ This is needed only when you edit SWIG interface files.
    * make ser (sereal MFEM wrapepr)
    * make par (parallel MFEM wrapper)
 
-   * SEE INSTALL to install files in the site-packages
 
 4) run example
    Add PyMFEM to your PYTHONPATH. In bash,

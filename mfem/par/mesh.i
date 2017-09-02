@@ -178,7 +178,7 @@ def GetElementVertices(self, i):
 %}
 
 %feature("shadow") mfem::Mesh::GetElementEdges %{
-def GetElementVEdges(self, i):
+def GetElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      

@@ -347,7 +347,7 @@ class Mesh(_object):
 
 
 
-    def GetElementVEdges(self, i):
+    def GetElementEdges(self, i):
         from  .array import intArray
         ia = intArray()
         ib = intArray()      
