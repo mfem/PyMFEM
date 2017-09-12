@@ -14,12 +14,21 @@ def get_mpi_datatype(data):
         elif s == 2:         
            return MPI.SHORT
         else:
-           raise AttributeError("Unknow data type")
-    if data.dtype.name.startswith('float'):       
+           pass
+    elif data.dtype.name.startswith('float'):       
         if s == 16:
            return MPI.LONG_DOUBLE
         elif s == 8:
            return MPI.DOUBLE
         else:
-           raise AttributeError("Unknow data type")
-       
+           pass
+    elif data.dtype.name.startswith('complex'):              
+        if s == 16:
+           return MPI.DOUBLE_COMPLEX
+        elif s == 8:
+           return MPI.COMPLEX
+        else:
+           pass
+    else:
+        pass
+    assert False, "Unknow data type"                   
