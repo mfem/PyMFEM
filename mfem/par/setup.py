@@ -66,7 +66,8 @@ ext_modules = [Extension(proxy_names[modules[0]],
                         extra_link_args = extra_link_args + extra_link_args0,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                         libraries = libraries0)]
+                        runtime_library_dirs = library_dirs,  
+                        libraries = libraries0)]
 
 ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],
