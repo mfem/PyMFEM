@@ -23,20 +23,20 @@ SWIGFLAG = -Wall -c++ -python
 #
 # MFEM path:
 #
-#   MFEMBUILDDIR : directory of MFEM build. Need to find config/config.hppx
+#   MFEMBUILDDIR : directory of MFEM build. Need to find config/config.hpp
 #   MFEMINCDIR : include files
 #   MFEMLNKDIR : path to mfem.so
 
 MFEM=/usr/local
 MFEMLIB = mfem
-MFEMBUILDDIR = $(HOME)/src/mfem
-MFEMINCDIR = $(MFEM)/include
+MFEMBUILDDIR = $(HOME)/src/mfem/cmbuild
+MFEMINCDIR = $(MFEM)/include/mfem
 MFEMLNKDIR = $(MFEM)/lib
 
 MFEMSER=/usr/local/mfem_ser
 MFEMSERLIB = mfem
-MFEMSERBUILDDIR = $(HOME)/src/mfem_ser
-MFEMSERINCDIR = $(MFEMSER)/include
+MFEMSERBUILDDIR = $(HOME)/src/mfem_ser/cmbuild
+MFEMSERINCDIR = $(MFEMSER)/include/mfem
 MFEMSERLNKDIR = $(MFEMSER)/lib
 
 # HYPRE

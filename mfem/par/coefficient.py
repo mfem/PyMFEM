@@ -461,6 +461,46 @@ class VectorGridFunctionCoefficient(VectorCoefficient):
 VectorGridFunctionCoefficient_swigregister = _coefficient.VectorGridFunctionCoefficient_swigregister
 VectorGridFunctionCoefficient_swigregister(VectorGridFunctionCoefficient)
 
+class VectorDeltaCoefficient(VectorCoefficient):
+    __swig_setmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, VectorDeltaCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, VectorDeltaCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _coefficient.new_VectorDeltaCoefficient(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def SetDeltaCoefficient(self, _d):
+        return _coefficient.VectorDeltaCoefficient_SetDeltaCoefficient(self, _d)
+
+    def GetDeltaCoefficient(self):
+        return _coefficient.VectorDeltaCoefficient_GetDeltaCoefficient(self)
+
+    def SetDirection(self, _d):
+        return _coefficient.VectorDeltaCoefficient_SetDirection(self, _d)
+
+    def GetDeltaCenter(self, center):
+        return _coefficient.VectorDeltaCoefficient_GetDeltaCenter(self, center)
+
+    def EvalDelta(self, V, T, ip):
+        return _coefficient.VectorDeltaCoefficient_EvalDelta(self, V, T, ip)
+
+    def Eval(self, V, T, ip):
+        return _coefficient.VectorDeltaCoefficient_Eval(self, V, T, ip)
+    __swig_destroy__ = _coefficient.delete_VectorDeltaCoefficient
+    __del__ = lambda self: None
+VectorDeltaCoefficient_swigregister = _coefficient.VectorDeltaCoefficient_swigregister
+VectorDeltaCoefficient_swigregister(VectorDeltaCoefficient)
+
 class VectorRestrictedCoefficient(VectorCoefficient):
     __swig_setmethods__ = {}
     for _s in [VectorCoefficient]:
@@ -506,6 +546,12 @@ class MatrixCoefficient(_object):
 
     def GetTime(self):
         return _coefficient.MatrixCoefficient_GetTime(self)
+
+    def GetHeight(self):
+        return _coefficient.MatrixCoefficient_GetHeight(self)
+
+    def GetWidth(self):
+        return _coefficient.MatrixCoefficient_GetWidth(self)
 
     def GetVDim(self):
         return _coefficient.MatrixCoefficient_GetVDim(self)

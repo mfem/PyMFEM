@@ -9,4 +9,6 @@ Makefile.local
 setup_local.py
 build
 dist
+test/*
+#test/*.py
 *.egg-info

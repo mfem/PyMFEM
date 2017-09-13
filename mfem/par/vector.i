@@ -128,7 +128,7 @@ def __imul__(self, v):
 %} 
 %feature("shadow") mfem::Vector::operator/= %{
 def __idiv__(self, v):
-    ret = _vector.Vector___idiv__(self, v)
+    ret = _vector.Vector___itruediv__(self, v)
     #ret.thisown = self.thisown
     ret.thisown = 0      
     return self
