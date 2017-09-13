@@ -9,7 +9,7 @@ MFEMLNKDIR  = $(MFEM)/lib
 
 MFEMSER  =  $(HOME)/sandbox/mfem_sep_2017/ser
 MFEMSERBUILDDIR = $(HOME)/src/mfem_sep_2017_ser/cmbuild
-MFEMINCDIR  = $(MFEM)/include/mfem
+MFEMINCDIR  = $(MFEMSER)/include/mfem
 MFEMSERLNKDIR  = $(MFEMSER)/lib
 
 # METIS4
