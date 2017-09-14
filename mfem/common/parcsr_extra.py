@@ -3,7 +3,7 @@ import sys
 #
 #   this modules works only with parallel version
 #
-import mfem.par as mfem
+
    
 import numpy as np
 
@@ -48,7 +48,7 @@ def get_col_partitioning(M):
     return rows
  
 def ToHypreParVec(vec):
-       
+    import mfem.par as mfem       
     from mpi4py import MPI
 
     if mfem.sizeof_HYPRE_Int() == 4:
@@ -97,7 +97,8 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     '''
        
     from mpi4py import MPI
-
+    import mfem.par as mfem
+    
     if mfem.sizeof_HYPRE_Int() == 4:
         dtype = 'int32'
     else:
@@ -127,6 +128,7 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
 
     # collect row array to determin the size of matrix
     m_array = comm.allgather(ml)
+
     rows = [0] + list(np.cumsum(m_array))
     m = rows[-1]
     row_starts = np.array([rows[myid], rows[myid+1], m], dtype=dtype)
@@ -149,12 +151,19 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     else:
        # make sure that dtype is right....
        col_starts = np.array(col_starts, dtype = dtype)
+
     if check_partitioning:
         ch = get_assumed_patitioning(m)
         if (row_starts[0] != ch[0] or 
             row_starts[1] != ch[1] or 
             nrows != ch[2]):
-            verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)
+            for k in range(num_proc):
+                MPI.COMM_WORLD.Barrier()                              
+                if myid == k:
+                    print 'MyID : ', k
+                    print ch, nrows, row_starts, col_starts
+                    print 'NNZ', np.sum(data != 0.0)
+            MPI.COMM_WORLD.Barrier()                              
             raise ValueError("partitioning of input matrix is not correct")
     if verbose: verbose_message(m, n, nrows, i, j, data, row_starts, col_starts)
 
@@ -164,10 +173,12 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     # which part is treated diagnal element.
     #
 
-    return  mfem.HypreParMatrix(MPI.COMM_WORLD,
+    M = mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
                                 data, row_starts, col_starts])
+
+    return M
 
 def ToScipyCoo(mat):
     '''
@@ -190,6 +201,7 @@ def ToScipyCoo(mat):
     return coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
  
 def InnerProductComplex(A, B):
+    import mfem.par as mfem    
     R_A, I_A = A
     R_B, I_B = B
 
@@ -219,6 +231,7 @@ def ParMultVecComplex(A, v):
     '''
     A*v
     '''
+    import mfem.par as mfem
     from mpi4py import MPI
     
     comm     = MPI.COMM_WORLD     
@@ -227,13 +240,20 @@ def ParMultVecComplex(A, v):
 
     R_A, I_A = A
     R_v, I_v = v
+    ### Take Row partitioning of A for output
+    if R_A is not None:
+        part = R_A.GetRowPartArray()
+    elif I_A is not None:
+        part = I_A.GetRowPartArray()
+    else: return (None, None)
 
+    ans_r = ToHypreParVec(np.zeros(part[1]-part[0]))
     if I_A is None and I_v is None:
-       ans_r = mfem.HypreParVector(R_v)
        R_A.Mult(R_v, ans_r)
        return (ans_r, None)
-    ans_r = mfem.HypreParVector(R_v)
-    ans_i = mfem.HypreParVector(R_v)
+    else:
+       ans_i = ToHypreParVec(np.zeros(part[1]-part[0]))
+
     if I_A is None:
        R_A.Mult(R_v, ans_r)
        R_A.Mult(I_v, ans_i)              
@@ -241,16 +261,15 @@ def ParMultVecComplex(A, v):
        R_A.Mult(R_v, ans_r)
        I_A.Mult(R_v, ans_i)              
     else:
-       ans_r2 = mfem.HypreParVector(R_v)
-       ans_i2 = mfem.HypreParVector(I_v)
-       
+       ans_r2 = ToHypreParVec(np.zeros(part[1]-part[0]))
+       ans_i2 = ToHypreParVec(np.zeros(part[1]-part[0]))
        R_A.Mult(R_v, ans_r)
        I_A.Mult(I_v, ans_r2)
        ans_r -= ans_r2
 
        R_A.Mult(I_v, ans_i)
        I_A.Mult(R_v, ans_i2)
-       ans_i += ans_i2       
+       ans_i += ans_i2
 
     return (ans_r, ans_i)       
    
@@ -264,6 +283,7 @@ def ParMultComplex(A, B):
     (R_A*R_B - I_A*I_B, R_A*I_B + I_A*R_B)
     '''
     from mpi4py import MPI
+    import mfem.par as mfem
     
     comm     = MPI.COMM_WORLD     
     num_proc = MPI.COMM_WORLD.size
@@ -274,7 +294,8 @@ def ParMultComplex(A, B):
     R_B, I_B = B
 
     if I_A is None and I_B is None:
-       return (mfem.ParMult(R_A, R_B), None)
+       r = mfem.ParMult(R_A, R_B)
+       return (r, None)
     elif I_A is None:
        r = mfem.ParMult(R_A, R_B)
        i = mfem.ParMult(R_A, I_B)
@@ -288,6 +309,7 @@ def ParMultComplex(A, B):
        B = mfem.ParMult(I_A, I_B)
        C = mfem.ParMult(R_A, I_B)
        D = mfem.ParMult(I_A, R_B)
+       
        col_starts = A.GetColPartArray(); col_starts[2] = A.N()
        r = ToHypreParCSR((ToScipyCoo(A) - ToScipyCoo(B)).tocsr(), col_starts = col_starts)
        i = ToHypreParCSR((ToScipyCoo(C) + ToScipyCoo(D)).tocsr(), col_starts = col_starts)
@@ -300,7 +322,9 @@ def TransposeComplex(A):
     '''
     
     R = A[0].Transpose() if A[0] is not None else None
-    I = A[1].Transpose() if A[1] is not None else None    
+    I = A[1].Transpose() if A[1] is not None else None
+    if R is not None: R.thisown = True
+    if I is not None: I.thisown = True    
     return (R, I)
 
 def Conj(A):
@@ -393,17 +417,17 @@ def ResetHypreDiag(M, idx, value = 1.0):
     n = jupper - jlower + 1
     n = M.N()    
     from scipy.sparse import coo_matrix, lil_matrix
- 
+  
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
     for ii in idx:
         if ii >= ilower and ii <= iupper:
            mat[ii-ilower, ii] = value
-
+ 
     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
 
 def ResetHypreRow(M, idx):
     '''
-    set diagonal element to value (normally 1)
+    set row 0.0
     '''
     col_starts = M.GetColPartArray(); col_starts[2] = M.N()  
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
@@ -417,25 +441,16 @@ def ResetHypreRow(M, idx):
     from scipy.sparse import coo_matrix, lil_matrix
 
     for ii in idx:
-       ii = np.where(irn == ii)[0]
-       data[ii] = 0.0
+       k = np.where(irn == ii)[0]
+       data[k] = 0.0
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
     mat.eliminate_zeros()
-    return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
-    '''
-    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
 
-    # idx  -> idx2 (index in scipy.sparse index space)
-    idx2 = np.array(idx)-ilower
-    idx2 = idx2[np.logical_and(idx2 > 0,  idx2 < m)]
-    
-    from mfem.common.sparse_utils import eliminate_rows, eliminate_cols
-    mat = eliminate_rows(mat, idx2)
-    return  ToHypreParCSR(mat)
-    '''
+    return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
+
 def ResetHypreCol(M, idx):
     '''
-    set diagonal element to value (normally 1)
+    set col zero
     '''
     col_starts = M.GetColPartArray(); col_starts[2] = M.N()
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
@@ -452,8 +467,8 @@ def ResetHypreCol(M, idx):
     from scipy.sparse import coo_matrix, lil_matrix
 
     for ii in idx:
-       ii = np.where(jcn == ii)[0]
-       data[ii] = 0.0
+       k = np.where(jcn == ii)[0]
+       data[k] = 0.0
     
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
     mat.eliminate_zeros()    

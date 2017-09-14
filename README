@@ -18,13 +18,34 @@ to find more detail of the MFEM libirary.
 
 -- INSTALLATION --
 
-0: 3rd parth library
-  0-1) mpi4py
-         needed either you use parallel MFEM
-  0-2) MFEM
-	 serial version and parallel version need to be
-	 compiled in separate directory.
+0: Dependencies
+  0-1) MFEM
+	 PyMFEM can be build either with parallel or serial MFEM or both.
 
+	 From this version (after Sep. 2017), the build script assumes that
+	 MFEM (and HYPRE and Metis5 too) is built as shared library.
+	 
+	 Note that if two versions are used, serial version and parallel
+	 MFEM needs to be compiled in separate directory. For example, one
+	 may install parallel MFEM to 
+	     /usr/local/mfem/par/
+         and serial MFEM to 
+             /usr/local/mfem/ser/
+
+         <shared MFEM library>
+
+ 	 CMake build has an option to build a shared libaray. Consult MFEM
+	 INSTALL manual for more detail.
+
+         mkdir cmbuild; cd cmbuild
+         cmake .. -DBUILD_SHARED_LIBS=1
+
+	 (MacOSX specific)
+	 dynamic library installed on MacOSX does not hafe proper install_name
+	 implanted into libmfem.dylib.
+	 
+         install_name_tool -id <fullpath to dylib> libmfem.dylib
+	 
          By default, Makefile assumes that MFEM is installed
 	 under /usr/local/mfem-3.2 and serial version of MFEM
 	 is installed under /usr/local/mfem-3.2ser.
@@ -43,25 +64,44 @@ to find more detail of the MFEM libirary.
 	    make config
 	    mamke -j	 
 
-  0-3) HYPRE
-	 for parallel MFEM is used
+  0-2) HYPRE
+	 Required for parallel MFEM. CMake build has an option to build
+	 a shared library (DHYPRE_SHARED=1)
+
+  0-3) Metis5
+	 Required for parallel MFEM. To build Metis5 as shared library
+	 use share=1 when running make config
+	 
+  	 $ make config shared=1
+	 
   0-4) boost
          used for wrapping std::iostream
-	  
-1:  recompile MFEM with -fPIC option
-    This may not be necessary. (I didn't need it on MacOSX, 
-    I don't know why)     
+	 
+  0-5) mpi4py
+         Required for parallel MFEM
 
 2: Prepare Makefile.local
-   copy template from Makefile_template/* to repository root.
-   rename it as Makefile.local
-   edit it for your enviroment
+   copy a sample template (Makefile_templates/Makefile.local.shared)
+   to the repository root as Makefile.local.
 
-   Leaving MFEMSER in Makefile.local  skips building serial version.
-   Leaving MFEM in Makefile.local  skips building parallel version.   
+   edit it for your enviroment.
+
+   make will include Makefile.local to overwrite some parameters and
+   the result is wrtten to setup_local.py, which is being loaded to
+   setup.py.
+   
+   Variables which may need to be adjusted include... 
+
+   * Parallel and Serial MFEM shared library location (MFEM and MFEMSER)
+     - Leaving MFEMSER in Makefile.local  skips building serial version.
+     - Leaving MFEM in Makefile.local  skips building parallel version.
+   * Hypre and Metis libary location
+   * MPICH location to look for mpi.h and linking to libmpi etc..
+   * BOOST library location      
    
 2-1 (Optional): Build SWIG cxx files
-This is needed only when you edit SWIG interface files.
+This is needed only when you edit SWIG interface files. cxx files
+in this repository are generated using SWIG 3.0.8
    * make cxx
 
    or
@@ -96,8 +136,10 @@ This is needed only when you edit SWIG interface files.
    parse arguments nor visulaization via socket connection.
 
 5) (optional) run test
-   cd test
-   python test.py
+   $ cd test
+   $ python test.py -serial -mfemsdir (path to CMake build dir for serial MFEM) -verbose
+   $ python test.py -parallel -mfempdir (path to CMake build dir for parallel MFEM) -verbose
+
 
    this script runs all example python script and corresponding
    C++ verison and compare the text output. It will report if
@@ -107,7 +149,7 @@ This is needed only when you edit SWIG interface files.
       Bug ;D
       Conversgence of iterative solver depends on the intial
       condition...?
-      ex7p fails thought the glvis shows the same plot...
+      ex7p fails although the glvis shows the same plot...
   
 
 -- Features --
@@ -244,7 +286,22 @@ This is needed only when you edit SWIG interface files.
 	 elements are accessed similar to a regular python array
 	      densmat[i,j] = xxx
 	      x = densmat[i,j]
-	 GetDataArray returns copy of data
+	 GetDataArray returns copy of data.
+	 
+	 Note that internally MFEM densmatrix is column major, while numpy
+	 is row major. Therefore,
+            v = Vector([1,2,3,4,5,6,7,8,9])
+	    m = DenseMatrix(v.GetData(), 3, 3)
+         will make
+	    [1 4,7]
+	    [2,5,8]
+	    [3,6,9],
+	 whereas
+	    numpy.arange(9).reshape(3,3)
+         would give you
+	    [1 2,3]
+	    [4,5,6]
+	    [7,8,9].
 	 
   4-7) estimators
         ZienkiewiczZhuEstimator and L2ZienkiewZhuEstimator
@@ -319,12 +376,16 @@ This is needed only when you edit SWIG interface files.
 	    sys.stdout.flush()
 	    sparsmat.PrintInfo(sys.stdout)
        
+   4-13) mfem::table
+           GetRowList returns a version of GetRow which returns Python
+	   list instead of int pointer.
 
+  
 -- Known issues --
 
   PyMFEM is a on-going effort. Not all MFEM functioality is propary
-  wrapped yet. Presnetly most of serial example (except for
-  ex15.cpp) and 5 parallel examples are rewritten in python.
+  wrapped yet. Presnetly all serial/parallel examples avaiable in
+  the top-level mfem/example directory are rewritten in python.
   This would be sufficient for certain projects, but for other projects,
   you may find various features are missing. Please inform us if you
   notice something missing.
@@ -337,8 +398,8 @@ This is needed only when you edit SWIG interface files.
       python uses garbage collection. Since wrapper does not know
       exactly how objects are used in c++ layer, MFEM object may be
       collected before being ready to be freed. We are addressing
-      this by adjusting thisown flag, but the approach may not 
-      work in a different scenario.
+      this by adjusting thisown flag or %newobject directive. This
+      needs to be done method by method, and not yet completed.
 
   4) Visualization through visit is not included
 

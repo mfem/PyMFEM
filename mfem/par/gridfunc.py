@@ -130,13 +130,6 @@ class GridFunction(vector.Vector):
     __getattr__ = lambda self, name: _swig_getattr(self, GridFunction, name)
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        this = _gridfunc.new_GridFunction(*args)
-        try:
-            self.this.append(this)
-        except Exception:
-            self.this = this
-
     def MakeOwner(self, _fec):
         return _gridfunc.GridFunction_MakeOwner(self, _fec)
 
@@ -293,6 +286,13 @@ class GridFunction(vector.Vector):
     __swig_destroy__ = _gridfunc.delete_GridFunction
     __del__ = lambda self: None
 
+    def __init__(self, *args):
+        this = _gridfunc.new_GridFunction(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+
     def SaveToFile(self, gf_file, precision):
         return _gridfunc.GridFunction_SaveToFile(self, gf_file, precision)
 
@@ -403,24 +403,20 @@ Extrude1DGridFunction = _gridfunc.Extrude1DGridFunction
 
 def __iadd__(self, v):
     ret = _gridfunc.GridFunction_iadd(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0      
-    return ret
+    ret.thisown = 0
+    return self
 def __isub__(self, v):
     ret = _gridfunc.GridFunction_isub(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0      
-    return ret
+    ret.thisown = 0
+    return self
 def __idiv__(self, v):
     ret = _gridfunc.GridFunction_idiv(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0
-    return ret
+    ret.thisown = 0
+    return self
 def __imul__(self, v):
     ret = _gridfunc.GridFunction_imul(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0
-    return ret
+    ret.thisown = 0
+    return self
 
 GridFunction.__iadd__  = __iadd__
 GridFunction.__idiv__  = __idiv__

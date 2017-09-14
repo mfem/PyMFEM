@@ -179,7 +179,7 @@ def GetElementVertices(self, i):
 %}
 
 %feature("shadow") mfem::Mesh::GetElementEdges %{
-def GetElementVEdges(self, i):
+def GetElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
@@ -249,6 +249,9 @@ def GetFaceElements(self, Face):
 %immutable attributes;
 %immutable bdr_attributes;
 %ignore MesquiteSmooth;
+
+%newobject mfem::Mesh::GetFaceToElementTable;
+%newobject mfem::Mesh::GetVertexToElementTable;
 %include "mesh/mesh.hpp"
 %mutable;
 

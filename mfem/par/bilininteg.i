@@ -31,22 +31,6 @@ import_array();
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
-namespace mfem {
-%pythonprepend TransposeIntegrator::TransposeIntegrator %{
-    if _own_bfi == 1:  _bfi.thisown = 0
-%}
-%pythonprepend InverseIntegrator::InverseIntegrator %{
-    if own_integ == 1:  integ.thisown = 0
-%}
-%pythonprepend SumIntegrator::AddIntegrator %{
-    integ.thisown = 0
-%}
-%pythonappend CurlCurlIntegrator::CurlCurlIntegrator %{
-    self._coeff = args[0]
-%}
-%pythonappend VectorFEMassIntegrator::VectorFEMassIntegrator %{
-    self._coeff = args[0]
-%}
-}
 
+%include "../common/bilininteg_ext.i"
 %include "fem/bilininteg.hpp"

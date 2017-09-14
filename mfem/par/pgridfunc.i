@@ -52,4 +52,9 @@ import_array();
 
 %rename(Assign) mfem::ParGridFunction::operator=;
 
+%newobject mfem::ParGridFunction::ParallelAssemble;
+%newobject mfem::ParGridFunction::ParallelAverage;
+%newobject mfem::ParGridFunction::ParallelProject;
+%newobject mfem::ParGridFunction::GetTrueDofs;
+
 %include "fem/pgridfunc.hpp"

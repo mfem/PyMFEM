@@ -7,5 +7,8 @@
 *~
 Makefile.local
 setup_local.py
-!/build/*.o
-!/build/*.o
+build
+dist
+test/*
+#test/*.py
+*.egg-info

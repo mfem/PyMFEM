@@ -11,9 +11,11 @@
         only its own rows.
 
 
-   example_4 tests
-      how to make complex matrix
+   example_5 tests
+      how to make a non-square matrix
       transpose/conj of complex matrix
+
+   usage: mpirun -np 3 python example_5.py
 
 '''
 import mfem.par as par
@@ -39,20 +41,26 @@ def print_hypre(M, txt):
           print 'shape = ', m.shape
           print  m.toarray()
        MPI.COMM_WORLD.Barrier()                              
-shape = (1, 6)
+shape = (2, 10)
 # make sample matrix
+
 row  = np.array([0, 0, ])
-col  = np.array([0, 3, ])
-data = np.array([1, 3.*(myid+1), ])
+col  = np.array([0, myid+1, ])
+data = np.array([1, myid+1, ])
 m = coo_matrix((data, (row, col)), shape=shape)
 m = m.tocsr()
 
+M1 = CHypreMat(m, m*2)
 
-M1 = CHypreMat(m, m)
-M2 = M1.transpose().conj()
+print_hypre(M1.real,      '#### matrix M1 real ')
+print_hypre(M1.imag,      '#### matrix M1 imag ')
+print_hypre((-M1).real,   '#### matrix -M1 real')
+print_hypre((-M1).imag,   '#### matrix -M1 imag')
+print_hypre((M1-M1).real, '#### M1-M2 (real)')
+print_hypre((M1-M1).imag, '#### M1-M2 (imag)')
 
-print_hypre(M1[1], 'matrix M1 (imag)')
-print_hypre(M2[1], 'matrix M2 (imag)')
+print_hypre(M1.transpose().real, '#### matrix M1^t real ')
+
 
 
 

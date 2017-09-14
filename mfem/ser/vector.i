@@ -40,7 +40,7 @@ import_array();
 	      
   }
   else if (PyArray_Check($input)){
-    $1 = (double *) PyArray_DATA(PyArray_GETCONTIGUOUS((PyArrayObject *)$input));
+    $1 = (double *) PyArray_DATA((PyArrayObject *)$input);
 	 //     $1 = (double *) PyArray_DATA($input);
   }
   else {
@@ -82,7 +82,7 @@ import_array();
 }
 
 %pythonprepend mfem::Vector::Vector %{
-from numpy import ndarray
+from numpy import ndarray, ascontiguousarray
 keep_link = False
 own_data = False
 if len(args) == 1:
@@ -93,7 +93,7 @@ if len(args) == 1:
         if args[0].dtype != 'float64':
             raise ValueError('Must be float64 array')
         else:
-            args = (args[0], args[0].shape[0])
+  	    args = (ascontiguousarray(args[0]), args[0].shape[0])
              # in this case, args[0] need to be maintained
 	     # in this object.
 	    keep_link = True
@@ -130,7 +130,7 @@ def __imul__(self, v):
 %} 
 %feature("shadow") mfem::Vector::operator/= %{
 def __idiv__(self, v):
-    ret = _vector.Vector___idiv__(self, v)
+    ret = _vector.Vector___itruediv__(self, v)
     #ret.thisown = self.thisown
     ret.thisown = 0      
     return self

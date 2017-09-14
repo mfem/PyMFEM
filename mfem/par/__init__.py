@@ -1,5 +1,11 @@
-from mpi4py import MPI
+import mfem
 
+if mfem.mfem_mode is None:
+   mfem.mfem_mode = 'parallel'
+if mfem.mfem_mode == 'serial':
+   raise ImportError("MFEM serial mode is already loaded")
+
+from mpi4py import MPI
 
 ## libmfem.a is linked only with _array.so
 ## this make sure that symbols are resovled

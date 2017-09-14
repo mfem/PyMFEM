@@ -119,16 +119,16 @@ import element
 import geom
 import table
 import vertex
+import gridfunc
+import bilininteg
 import fe_coll
 import lininteg
+import linearform
 import pmesh
 import pncmesh
 import communication
 import sets
 import hypre
-import gridfunc
-import bilininteg
-import linearform
 
 def GlobalLpNorm(p, loc_norm, comm):
     return _pgridfunc.GlobalLpNorm(p, loc_norm, comm)

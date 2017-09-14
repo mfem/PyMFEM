@@ -29,8 +29,15 @@
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
+#include "numpy/arrayobject.h"
 %}
-%include  "config/_config.hpp" // include mfem MACRO
+
+// initialization required to return numpy array from SWIG
+%init %{
+import_array();
+%}
+
+%include  "config/_config.hpp" // need to read macro such as MFEM_USE_MPI
 //%import "general/array.hpp"
 %import "array.i"
 %import "matrix.i"
@@ -196,7 +203,7 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
    Vector transip(x, 3);
 
    T.Transform(ip, transip);
-   K.SetSize(vdim);
+   K.SetSize(height, width);   
    if (isTimeDependent)
    {
       _EvalPyT(transip, GetTime(),  K);          

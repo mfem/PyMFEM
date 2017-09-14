@@ -39,13 +39,6 @@ def __imul__(self, v):
     self.thisown = 0            
     return ret
 %} 
-%feature("shadow") mfem::DenseMatrix::operator/= %{
-def __idiv__(self, v):
-    ret = _densmat.DenseMatrix___idiv__(self, v)  
-    ret.thisown = self.thisown
-    self.thisown = 0      
-    return ret
-%}
 %feature("shadow") mfem::DenseMatrix::__setitem__%{
 def __setitem__(self, *args):
     i, j, v = args[0][0], args[0][1], args[1]

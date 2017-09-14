@@ -3695,16 +3695,7 @@ namespace swig {
 #include <cstring>
 #include <ctime>
 #include "pycoefficient.hpp"
-
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
+#include "numpy/arrayobject.h"        
 
 
 SWIGINTERN int
@@ -3749,101 +3740,6 @@ SWIG_AsVal_double (PyObject *obj, double *val)
     }
   }
 #endif
-  return res;
-}
-
-
-#include <float.h>
-
-
-#include <math.h>
-
-
-SWIGINTERNINLINE int
-SWIG_CanCastAsInteger(double *d, double min, double max) {
-  double x = *d;
-  if ((min <= x && x <= max)) {
-   double fx = floor(x);
-   double cx = ceil(x);
-   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
-   if ((errno == EDOM) || (errno == ERANGE)) {
-     errno = 0;
-   } else {
-     double summ, reps, diff;
-     if (rd < x) {
-       diff = x - rd;
-     } else if (rd > x) {
-       diff = rd - x;
-     } else {
-       return 1;
-     }
-     summ = rd + x;
-     reps = diff/summ;
-     if (reps < 8*DBL_EPSILON) {
-       *d = rd;
-       return 1;
-     }
-   }
-  }
-  return 0;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
-{
-#if PY_VERSION_HEX < 0x03000000
-  if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else
-#endif
-  if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-      return SWIG_OverflowError;
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    long v = PyInt_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      double d;
-      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
-	return res;
-      }
-    }
-  }
-#endif
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
-{
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
   return res;
 }
 
@@ -4153,10 +4049,6 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPA
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -4171,16 +4063,14 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DomainLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DomainLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_DomainLFIntegrator" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   {
     try {
       result = (mfem::DomainLFIntegrator *)new mfem::DomainLFIntegrator(*arg1,arg2,arg3); 
@@ -4207,8 +4097,6 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator__SWIG_1(PyObject *SWIGUNUSEDPA
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::DomainLFIntegrator *result = 0 ;
@@ -4222,11 +4110,10 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator__SWIG_1(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DomainLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DomainLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       result = (mfem::DomainLFIntegrator *)new mfem::DomainLFIntegrator(*arg1,arg2); 
@@ -4372,8 +4259,11 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_DomainLFIntegrator__SWIG_1(self, args);
@@ -4387,13 +4277,19 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_DomainLFIntegrator__SWIG_0(self, args);
@@ -4666,10 +4562,6 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator__SWIG_0(PyObject *SWIGUNUSED
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -4684,16 +4576,14 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BoundaryLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BoundaryLFIntegrator" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   {
     try {
       result = (mfem::BoundaryLFIntegrator *)new mfem::BoundaryLFIntegrator(*arg1,arg2,arg3); 
@@ -4720,8 +4610,6 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator__SWIG_1(PyObject *SWIGUNUSED
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::BoundaryLFIntegrator *result = 0 ;
@@ -4735,11 +4623,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator__SWIG_1(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryLFIntegrator" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BoundaryLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       result = (mfem::BoundaryLFIntegrator *)new mfem::BoundaryLFIntegrator(*arg1,arg2); 
@@ -4825,8 +4712,11 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_BoundaryLFIntegrator__SWIG_1(self, args);
@@ -4840,13 +4730,19 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_BoundaryLFIntegrator__SWIG_0(self, args);
@@ -5118,10 +5014,6 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator__SWIG_0(PyObject *SWIG
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -5136,16 +5028,14 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator__SWIG_0(PyObject *SWIG
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryNormalLFIntegrator" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BoundaryNormalLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BoundaryNormalLFIntegrator" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   {
     try {
       result = (mfem::BoundaryNormalLFIntegrator *)new mfem::BoundaryNormalLFIntegrator(*arg1,arg2,arg3); 
@@ -5172,8 +5062,6 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator__SWIG_1(PyObject *SWIG
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::BoundaryNormalLFIntegrator *result = 0 ;
@@ -5187,11 +5075,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator__SWIG_1(PyObject *SWIG
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryNormalLFIntegrator" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BoundaryNormalLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       result = (mfem::BoundaryNormalLFIntegrator *)new mfem::BoundaryNormalLFIntegrator(*arg1,arg2); 
@@ -5277,8 +5164,11 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator(PyObject *self, PyObje
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_BoundaryNormalLFIntegrator__SWIG_1(self, args);
@@ -5292,13 +5182,19 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator(PyObject *self, PyObje
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_BoundaryNormalLFIntegrator__SWIG_0(self, args);
@@ -5570,10 +5466,6 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator__SWIG_0(PyObject *
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -5588,16 +5480,14 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator__SWIG_0(PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryTangentialLFIntegrator" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BoundaryTangentialLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BoundaryTangentialLFIntegrator" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
   {
     try {
       result = (mfem::BoundaryTangentialLFIntegrator *)new mfem::BoundaryTangentialLFIntegrator(*arg1,arg2,arg3); 
@@ -5624,8 +5514,6 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator__SWIG_1(PyObject *
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   mfem::BoundaryTangentialLFIntegrator *result = 0 ;
@@ -5639,11 +5527,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator__SWIG_1(PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BoundaryTangentialLFIntegrator" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BoundaryTangentialLFIntegrator" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    PyArray_PyIntAsInt(obj1);  
+    arg2 = PyInt_AsLong(obj1);
+  }
   {
     try {
       result = (mfem::BoundaryTangentialLFIntegrator *)new mfem::BoundaryTangentialLFIntegrator(*arg1,arg2); 
@@ -5729,8 +5616,11 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator(PyObject *self, Py
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_BoundaryTangentialLFIntegrator__SWIG_1(self, args);
@@ -5744,13 +5634,19 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator(PyObject *self, Py
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if (PyArray_PyIntAsInt(argv[1])   != -1){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if (PyArray_PyIntAsInt(argv[2])   != -1){
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_new_BoundaryTangentialLFIntegrator__SWIG_0(self, args);
@@ -10686,6 +10582,9 @@ SWIG_init(void) {
 #endif
   
   SWIG_InstallConstants(d,swig_const_table);
+  
+  
+  import_array();
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

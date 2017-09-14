@@ -54,7 +54,9 @@ order = args.order
 static_cond = args.static_condensation
 amg_elast = args.amg_elast
 visualization = args.visualization
-if (myid == 0): parser.print_options(args)
+if (myid == 0):
+   parser.print_options(args)
+
 
 #  3. Read the (serial) mesh from the given mesh file on all processors.  We
 #     can handle triangular, quadrilateral, tetrahedral, hexahedral, surface
@@ -66,7 +68,7 @@ if (mesh.attributes.Max() < 2 or  mesh.bdr_attributes.Max() < 2):
     if (myid == 0):
          print('\n'.join(['Input mesh should have at least two materials and',
                      'two boundary attributes! (See schematic in ex2.cpp)']))
-         sys.exit()
+    sys.exit()
                     
 #  4. Select the order of the finite element discretization space. For NURBS
 #     meshes, we increase the order by degree elevation.

@@ -152,8 +152,11 @@ import element
 import geom
 import table
 import vertex
+import gridfunc
+import bilininteg
 import fe_coll
 import lininteg
+import linearform
 import pfespace
 import pmesh
 import pncmesh
@@ -392,6 +395,9 @@ class HypreParMatrix(operators.Operator):
 
     def get_local_nnz(self):
         return _hypre.HypreParMatrix_get_local_nnz(self)
+
+    def get_local_true_nnz(self):
+        return _hypre.HypreParMatrix_get_local_true_nnz(self)
 
     def GetCooDataArray(self, base_i=0, base_j=0):
         return _hypre.HypreParMatrix_GetCooDataArray(self, base_i, base_j)
@@ -914,6 +920,22 @@ class HypreAME(_object):
         return _hypre.HypreAME_StealEigenvectors(self)
 HypreAME_swigregister = _hypre.HypreAME_swigregister
 HypreAME_swigregister(HypreAME)
+
+
+def parvec__repr__(self):
+    return "HypreParVector ("+str(self.GlobalSize())+")"
+def parvec__del__(self):
+    if hasattr(self, "_linked_array"):
+        self._linked_arry = None
+def parmat__repr__(self):
+    shape = (self.GetGlobalNumRows(), self.GetGlobalNumCols())
+    lshape = (self.GetNumRows(), self.GetNumCols())  	       
+    return "HypreParMatrix "+str(shape)+"["+str(lshape)+"]"
+
+
+HypreParVector.__repr__ = parvec__repr__
+HypreParVector.__del__  = parvec__del__      
+HypreParMatrix.__repr__ = parmat__repr__
 
 # This file is compatible with both classic and new-style classes.
 

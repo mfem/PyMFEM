@@ -27,7 +27,13 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "pycoefficient.hpp"  
+#include "pycoefficient.hpp"
+#include "numpy/arrayobject.h"
+%}
+
+// initialization required to return numpy array from SWIG
+%init %{
+import_array();
 %}
 
 //%import "general/array.hpp"
@@ -195,7 +201,7 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
    Vector transip(x, 3);
 
    T.Transform(ip, transip);
-   K.SetSize(vdim);
+   K.SetSize(height, width);   
    if (isTimeDependent)
    {
       _EvalPyT(transip, GetTime(),  K);          

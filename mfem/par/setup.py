@@ -46,18 +46,19 @@ sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
 
 
-extra_text = [x for x in
-              ['-Wl', whole_archive, metisliba, mfemlnkdir+'/libmfem.a',
-               no_whole_archive] if x != '']
-extra_link_args0 =  [','.join(extra_text)]
+#extra_text = [x for x in
+#              ['-Wl', whole_archive, metisliba, mfemlnkdir+'/libmfem.a',
+#               no_whole_archive] if x != '']
+extra_link_args0 = []
 extra_link_args =  []
-libraries0 = [] if metisliba != '' else [metislib]
-libraries0.extend([hyprelib, boostlib])
+#libraries0 = [] if metisliba != '' else [metislib]
+#libraries0.extend([hyprelib, boostlib])
+libraries0    = [metislib, boostlib, hyprelib, mfemlib]
 
-include_dirs = [mfemincdir, numpyincdir, mpi4pyincdir,
+include_dirs = [mfembuilddir, mfemincdir, numpyincdir, mpi4pyincdir,
                 mpichincdir, hypreincdir, boostincdir]
 library_dirs = [mfemlnkdir, hyprelnkdir, metislnkdir, boostlibdir]
-libraries    = [boostlib]
+libraries    = [boostlib, hyprelib, mfemlib]
 
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
@@ -65,7 +66,8 @@ ext_modules = [Extension(proxy_names[modules[0]],
                         extra_link_args = extra_link_args + extra_link_args0,
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                         libraries = libraries0)]
+                        runtime_library_dirs = library_dirs,  
+                        libraries = libraries0)]
 
 ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],
@@ -86,7 +88,7 @@ ext_modules.extend([Extension(proxy_names[name],
 
 
 setup (name = 'mfem',
-       version = '0.2',
+       version = '3.3',
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,

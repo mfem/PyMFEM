@@ -21,6 +21,7 @@ import_array();
 %import pfespace.i
 %import hypre.i
 
+%newobject mfem::ParBilinearForm::ParallelAssemble;
 %pointer_class(int, intp);
 
 %include "fem/pbilinearform.hpp"
