@@ -20,6 +20,8 @@
    See c++ version in the MFEM library for more detail 
 '''
 import sys
+import mfem.par as mfem
+
 from mfem.common.arg_parser import ArgParser
 from os.path import expanduser, join
 import numpy as np
@@ -28,7 +30,6 @@ from scipy.special import erfc
 
 from mfem import path
 from mfem.par import intArray, add_vector, add_sparse
-import mfem.par as mfem
 from mpi4py import MPI
 
 num_procs = MPI.COMM_WORLD.size
