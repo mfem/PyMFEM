@@ -376,29 +376,59 @@ class CHypreMat(list):
                    "argument should be CHypreMat")
         if self[0] is not None:
             r = ToScipyCoo(self[0])
+            if  other[0] is not  None:
+               r = r + ToScipyCoo(other[0])               
         else:
-            r = 0
-        if  other[0] is not  None:
-            r = r + ToScipyCoo(other[0])            
-        if r == 0:
-            r = None
-        else:
+            if  other[0] is not  None:
+               r = ToScipyCoo(other[0])               
+            else:
+               r = None
+        if r is not None:
             r = ToHypreParCSR(r.tocsr())            
+
 
         if self[1] is not None:
             i = ToScipyCoo(self[1])
+            if  other[1] is not  None:
+               i = i + ToScipyCoo(other[1])
         else:
-            i = 0
-        if  other[1] is not  None:
-            i = i + ToScipyCoo(other[1])            
-        if i == 0:
-            i = None
-        else:
+            if  other[1] is not  None:
+               i = ToScipyCoo(other[1])               
+            else:
+               i = None
+        if i is not None:
             i = ToHypreParCSR(i.tocsr())            
             
         return CHypreMat(r, i)
 
     def __sub__(self, other): #A - B
+        if self[0] is not None:
+            r = ToScipyCoo(self[0])
+            if  other[0] is not  None:
+               r = r - ToScipyCoo(other[0])               
+        else:
+            if  other[0] is not  None:
+               r = - ToScipyCoo(other[0])               
+            else:
+               r = None
+        if r is not None:
+            r = ToHypreParCSR(r.tocsr())            
+
+        if self[1] is not None:
+            i = ToScipyCoo(self[1])
+            if  other[1] is not  None:
+               i = i - ToScipyCoo(other[1])
+        else:
+            if  other[1] is not  None:
+               i = - ToScipyCoo(other[1])               
+            else:
+               i = None
+        if i is not None:
+            i = ToHypreParCSR(i.tocsr())            
+            
+        return CHypreMat(r, i)
+
+        '''    
         if self[0] is not None:
             r = -ToScipyCoo(self[0])
         else:
@@ -422,7 +452,7 @@ class CHypreMat(list):
             i = ToHypreParCSR(i.tocsr())            
             
         return CHypreMat(r, i)
-
+        '''
     def __neg__(self): #-B
        r = None; i = None
        if self[0] is not None:

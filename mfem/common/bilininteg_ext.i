@@ -20,14 +20,17 @@ namespace mfem {
 %pythonappend VectorFEMassIntegrator::VectorFEMassIntegrator %{
     if len(args) > 0: self._coeff = args[0]
 %}
+%pythonappend MixedVectorGradientIntegrator::MixedVectorGradientIntegrator%{
+    if len(args) > 0: self._coeff = args[0]
+%}
 %pythonappend MixedVectorWeakDivergenceIntegrator::MixedVectorWeakDivergenceIntegrator%{
     if len(args) > 0: self._coeff = args[0]
 %}
 %pythonappend  MixedDotProductIntegrator::MixedDotProductIntegrator%{
-    if len(args) > 0: self._coeff = vq
+    self._coeff = vq
 %}
 %pythonappend  MixedWeakGradDotIntegrator::MixedWeakGradDotIntegrator%{
-    if len(args) > 0: self._coeff = vq
+    self._coeff = vq
 %}
 }  
   

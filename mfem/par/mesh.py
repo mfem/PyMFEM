@@ -662,6 +662,9 @@ class Mesh(_object):
 
     def PrintInfo(self, *args):
         return _mesh.Mesh_PrintInfo(self, *args)
+
+    def FindPoints(self, point_mat, elem_id, ip, warn=True):
+        return _mesh.Mesh_FindPoints(self, point_mat, elem_id, ip, warn)
     __swig_destroy__ = _mesh.delete_Mesh
     __del__ = lambda self: None
 
@@ -689,6 +692,9 @@ class Mesh(_object):
 
     def GetBdrArray(self, idx):
         return _mesh.Mesh_GetBdrArray(self, idx)
+
+    def GetDomainArray(self, idx):
+        return _mesh.Mesh_GetDomainArray(self, idx)
 Mesh_swigregister = _mesh.Mesh_swigregister
 Mesh_swigregister(Mesh)
 
