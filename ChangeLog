@@ -1,0 +1,7 @@
+Change Log.
+
+2017 10.10	chypre.py
+	CHypreMat::__add__ and 	CHypreMat::__sub__ was calling CHypreMat without
+	specifing col_parts. 
+
+	

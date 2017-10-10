@@ -3,11 +3,13 @@
 #include <mpi.h>
 #include <Python.h>
 #include "fem/gridfunc.hpp"
-#include "fem/linearform.hpp"  
+#include "fem/linearform.hpp"
+#include "fem/pfespace.hpp"    
 #include "config/config.hpp"        
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"           
+#include "pyoperator.hpp"
+#include "iostream_typemap.hpp"    
 %}
 %include  "config/_config.hpp" // include mfem MACRO
 
