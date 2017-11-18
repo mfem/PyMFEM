@@ -2,6 +2,7 @@
 %{
 #include "config/config.hpp"
 #include "fem/gridfunc.hpp"
+#include "fem/pgridfunc.hpp"  
 #include "fem/plinearform.hpp"
 #include "numpy/arrayobject.h"
 %}
@@ -16,6 +17,7 @@ import_array();
 
 %import linearform.i
 %import pfespace.i
+%import pgridfunc.i
 %import hypre.i
 
 %newobject mfem::ParLinearForm::ParallelAssemble;

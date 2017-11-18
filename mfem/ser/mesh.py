@@ -663,8 +663,8 @@ class Mesh(_object):
     def PrintInfo(self, *args):
         return _mesh.Mesh_PrintInfo(self, *args)
 
-    def FindPoints(self, point_mat, elem_id, ip, warn=True):
-        return _mesh.Mesh_FindPoints(self, point_mat, elem_id, ip, warn)
+    def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
+        return _mesh.Mesh_FindPoints(self, point_mat, elem_ids, ips, warn, inv_trans)
     __swig_destroy__ = _mesh.delete_Mesh
     __del__ = lambda self: None
 

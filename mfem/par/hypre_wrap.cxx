@@ -3634,6 +3634,55 @@ SWIGINTERNINLINE PyObject*
 }
 
 
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+#if PY_VERSION_HEX >= 0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+      return PyBytes_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#else
+#if PY_VERSION_HEX >= 0x03010000
+      return PyUnicode_DecodeUTF8(carray, static_cast< Py_ssize_t >(size), "surrogateescape");
+#else
+      return PyUnicode_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+#endif
+#else
+      return PyString_FromStringAndSize(carray, static_cast< Py_ssize_t >(size));
+#endif
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject * 
+SWIG_FromCharPtr(const char *cptr)
+{ 
+  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
+
 #include "mpi4py/mpi4py.h"
 
 
@@ -3836,19 +3885,6 @@ SWIG_AsPtr_MPI_Comm (PyObject * input, MPI_Comm **p) {
 SWIGINTERN PyObject *
 SWIG_From_MPI_Comm  (MPI_Comm v) {
   return PyMPIComm_New(v);
-}
-
-
-SWIGINTERN swig_type_info*
-SWIG_pchar_descriptor(void)
-{
-  static int init = 0;
-  static swig_type_info* info = 0;
-  if (!init) {
-    info = SWIG_TypeQuery("_p_char");
-    init = 1;
-  }
-  return info;
 }
 
 
@@ -7929,12 +7965,12 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_Transpose(PyObject *SWIGUNUSEDPARM(sel
   if (!PyArg_ParseTuple(args,(char *)"O:HypreParMatrix_Transpose",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_Transpose" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_Transpose" "', argument " "1"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
   {
     try {
-      result = (mfem::HypreParMatrix *)(arg1)->Transpose(); 
+      result = (mfem::HypreParMatrix *)((mfem::HypreParMatrix const *)arg1)->Transpose(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10970,17 +11006,17 @@ SWIGINTERN PyObject *_wrap_ParMult(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   if (!PyArg_ParseTuple(args,(char *)"OO:ParMult",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMult" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMult" "', argument " "1"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMult" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParMult" "', argument " "2"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix * >(argp2);
   {
     try {
-      result = (mfem::HypreParMatrix *)mfem::ParMult(arg1,arg2); 
+      result = (mfem::HypreParMatrix *)mfem::ParMult((mfem::HypreParMatrix const *)arg1,(mfem::HypreParMatrix const *)arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11008,17 +11044,17 @@ SWIGINTERN PyObject *_wrap_ParAdd(PyObject *SWIGUNUSEDPARM(self), PyObject *args
   if (!PyArg_ParseTuple(args,(char *)"OO:ParAdd",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParAdd" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParAdd" "', argument " "1"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParAdd" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParAdd" "', argument " "2"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix * >(argp2);
   {
     try {
-      result = (mfem::HypreParMatrix *)mfem::ParAdd(arg1,arg2); 
+      result = (mfem::HypreParMatrix *)mfem::ParAdd((mfem::HypreParMatrix const *)arg1,(mfem::HypreParMatrix const *)arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11046,17 +11082,17 @@ SWIGINTERN PyObject *_wrap_RAP__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject 
   if (!PyArg_ParseTuple(args,(char *)"OO:RAP",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAP" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAP" "', argument " "1"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RAP" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RAP" "', argument " "2"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix * >(argp2);
   {
     try {
-      result = (mfem::HypreParMatrix *)mfem::RAP(arg1,arg2); 
+      result = (mfem::HypreParMatrix *)mfem::RAP((mfem::HypreParMatrix const *)arg1,(mfem::HypreParMatrix const *)arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11088,22 +11124,22 @@ SWIGINTERN PyObject *_wrap_RAP__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject 
   if (!PyArg_ParseTuple(args,(char *)"OOO:RAP",&obj0,&obj1,&obj2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAP" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAP" "', argument " "1"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RAP" "', argument " "2"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RAP" "', argument " "2"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::HypreParMatrix * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RAP" "', argument " "3"" of type '" "mfem::HypreParMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RAP" "', argument " "3"" of type '" "mfem::HypreParMatrix const *""'"); 
   }
   arg3 = reinterpret_cast< mfem::HypreParMatrix * >(argp3);
   {
     try {
-      result = (mfem::HypreParMatrix *)mfem::RAP(arg1,arg2,arg3); 
+      result = (mfem::HypreParMatrix *)mfem::RAP((mfem::HypreParMatrix const *)arg1,(mfem::HypreParMatrix const *)arg2,(mfem::HypreParMatrix const *)arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11169,8 +11205,8 @@ fail:
     "    mfem::RAP(mfem::SparseMatrix const &,mfem::SparseMatrix const &,mfem::SparseMatrix *)\n"
     "    mfem::RAP(mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n"
     "    mfem::RAP(mfem::SparseMatrix const &,mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n"
-    "    mfem::RAP(mfem::HypreParMatrix *,mfem::HypreParMatrix *)\n"
-    "    mfem::RAP(mfem::HypreParMatrix *,mfem::HypreParMatrix *,mfem::HypreParMatrix *)\n");
+    "    mfem::RAP(mfem::HypreParMatrix const *,mfem::HypreParMatrix const *)\n"
+    "    mfem::RAP(mfem::HypreParMatrix const *,mfem::HypreParMatrix const *,mfem::HypreParMatrix const *)\n");
   return 0;
 }
 
@@ -17853,13 +17889,15 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30301)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30301)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30302)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.3.2"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30302)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30301)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30301)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30301)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30302)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30302)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30302)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("3.3.2release"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
   

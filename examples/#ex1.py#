@@ -78,7 +78,6 @@ def run(order = 1, static_cond = False,
        ess_bdr = mfem.intArray([1]*mesh.bdr_attributes.Max())
        ess_bdr = mfem.intArray(mesh.bdr_attributes.Max())
        ess_bdr.Assign(1)
-       print ess_bdr, ess_tdof_list
        fespace.GetEssentialTrueDofs(ess_bdr, ess_tdof_list)
    #6. Set up the linear form b(.) which corresponds to the right-hand side of
    #   the FEM linear system, which in this case is (1,phi_i) where phi_i are

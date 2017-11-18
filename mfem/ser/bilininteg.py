@@ -149,14 +149,14 @@ class BilinearFormIntegrator(_object):
     def AssembleElementGrad(self, el, Tr, elfun, elmat):
         return _bilininteg.BilinearFormIntegrator_AssembleElementGrad(self, el, Tr, elfun, elmat)
 
+    def AssembleFaceGrad(self, el1, el2, Tr, elfun, elmat):
+        return _bilininteg.BilinearFormIntegrator_AssembleFaceGrad(self, el1, el2, Tr, elfun, elmat)
+
     def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=1):
         return _bilininteg.BilinearFormIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
         return _bilininteg.BilinearFormIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
-
-    def SetIntRule(self, ir):
-        return _bilininteg.BilinearFormIntegrator_SetIntRule(self, ir)
     __swig_destroy__ = _bilininteg.delete_BilinearFormIntegrator
     __del__ = lambda self: None
 BilinearFormIntegrator_swigregister = _bilininteg.BilinearFormIntegrator_swigregister
