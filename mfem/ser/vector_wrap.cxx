@@ -6503,6 +6503,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vector_DistanceSquaredTo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  double *arg2 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Vector_DistanceSquaredTo",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_DistanceSquaredTo" "', argument " "1"" of type '" "mfem::Vector const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Vector_DistanceSquaredTo" "', argument " "2"" of type '" "double const *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  result = (double)((mfem::Vector const *)arg1)->DistanceSquaredTo((double const *)arg2);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vector_DistanceTo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
@@ -6836,6 +6867,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DistanceSquared(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  double *arg1 = (double *) 0 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DistanceSquared",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DistanceSquared" "', argument " "1"" of type '" "double const *""'"); 
+  }
+  arg1 = reinterpret_cast< double * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DistanceSquared" "', argument " "2"" of type '" "double const *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  {
+    PyArray_PyIntAsInt(obj2);  
+    arg3 = PyInt_AsLong(obj2);
+  }
+  result = (double)mfem::DistanceSquared((double const *)arg1,(double const *)arg2,arg3);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Distance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
@@ -6955,6 +7023,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Vector_Max", _wrap_Vector_Max, METH_VARARGS, NULL},
 	 { (char *)"Vector_Min", _wrap_Vector_Min, METH_VARARGS, NULL},
 	 { (char *)"Vector_Sum", _wrap_Vector_Sum, METH_VARARGS, NULL},
+	 { (char *)"Vector_DistanceSquaredTo", _wrap_Vector_DistanceSquaredTo, METH_VARARGS, NULL},
 	 { (char *)"Vector_DistanceTo", _wrap_Vector_DistanceTo, METH_VARARGS, NULL},
 	 { (char *)"Vector_CheckFinite", _wrap_Vector_CheckFinite, METH_VARARGS, NULL},
 	 { (char *)"delete_Vector", _wrap_delete_Vector, METH_VARARGS, NULL},
@@ -6964,6 +7033,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Vector_GetDataArray", _wrap_Vector_GetDataArray, METH_VARARGS, NULL},
 	 { (char *)"Vector_swigregister", Vector_swigregister, METH_VARARGS, NULL},
 	 { (char *)"IsFinite", _wrap_IsFinite, METH_VARARGS, NULL},
+	 { (char *)"DistanceSquared", _wrap_DistanceSquared, METH_VARARGS, NULL},
 	 { (char *)"Distance", _wrap_Distance, METH_VARARGS, NULL},
 	 { (char *)"InnerProduct", _wrap_InnerProduct, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

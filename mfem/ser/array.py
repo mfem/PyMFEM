@@ -390,6 +390,14 @@ class doubleArray(BaseArray):
 doubleArray_swigregister = _array.doubleArray_swigregister
 doubleArray_swigregister(doubleArray)
 
+
+def doubleSwap(*args):
+    return _array.doubleSwap(*args)
+doubleSwap = _array.doubleSwap
+
+def intSwap(*args):
+    return _array.intSwap(*args)
+intSwap = _array.intSwap
 # This file is compatible with both classic and new-style classes.
 
 

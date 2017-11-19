@@ -1,6 +1,7 @@
 %module nonlinearform
 %{
 #include <mpi.h>
+#include "fem/linearform.hpp"      
 #include "fem/nonlininteg.hpp"
 #include "fem/nonlinearform.hpp"
 #include "pyoperator.hpp"               

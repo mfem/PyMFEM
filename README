@@ -223,6 +223,13 @@ in this repository are generated using SWIG 3.0.8
 	     GridFunction *g = new GridFunction(&fespace);
 	     g = 0;
 	     
+      GridFunction(FiniteElementSpace *f, double *data) is extended to
+      support offsets
+          v = mfem.GridFunction(fec, <pointer to double>, offset)
+      so that follwoing can be wrappeds
+	  GridFucntion(fes, vec.GetData() + sc)
+      the same is used for ParGridFunction
+	     
   4-4) mfem::Mesh
          Wrapper of following methods are customized to
 	 return either python list object or tuple of lists
@@ -261,10 +268,11 @@ in this repository are generated using SWIG 3.0.8
 	 as numpy object
 
          GetBdrElementFace(i) returns tuple
-         GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
+         GetBdrArray(int idx) returns array of boundary element whose BdrAttribute is idx
          GetBdrAttributeArray() returns array of boundary attribute
-         GetAttributeArray() returns array of attribute	 
-
+         GetAttributeArray() returns array of aqttribute
+         GetDomainArray(int idx) returns array of element whose Attribute is idx
+	 
          SwapNodes returns nodes and onws_nodes as follows.
 	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 	    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)

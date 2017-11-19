@@ -1,3 +1,4 @@
+
 %module mesh
 %{
 #include "mesh/mesh_headers.hpp"
@@ -23,8 +24,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 import_array();
 %}
 
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -413,6 +413,26 @@ namespace mfem{
      c = 0;
      for (i = 0; i < self -> GetNBE() ; i++){
        if (self->GetBdrElement(i)->GetAttribute() == idx){
+	 x[c] = (int)i;
+         c++;
+       }
+     }
+     return array;
+   }
+   PyObject* GetDomainArray(int idx) const
+   {
+
+     int i;
+     int c = 0;     
+     for (i = 0; i < self->GetNE() ; i++){
+       if (self->GetElement(i)->GetAttribute() == idx){c++;}
+     }
+     npy_intp dims[] = {c};
+     PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
+     int *x    = (int *)PyArray_DATA(array);
+     c = 0;
+     for (i = 0; i < self -> GetNE() ; i++){
+       if (self->GetElement(i)->GetAttribute() == idx){
 	 x[c] = (int)i;
          c++;
        }

@@ -374,55 +374,53 @@ class CHypreMat(list):
         if not isinstance(other, CHypreMat):
              raise ValueError(
                    "argument should be CHypreMat")
-        if self[0] is not None:
-            r = ToScipyCoo(self[0])
+        if self[0] is not None and other[0] is not None:            
+            r =  ParAdd(self[0], other[0])
+        elif self[0] is not None:
+            r = self[0]
+        elif other[0] is not None:
+            r = other[0]
         else:
-            r = 0
-        if  other[0] is not  None:
-            r = r + ToScipyCoo(other[0])            
-        if r == 0:
             r = None
+        if self[1] is not None and other[1] is not None:
+            i =  ParAdd(self[1], other[1])           
+#            i =  mfem.par.add_hypre(1.0, self[1], 1.0, other[1])
+        elif self[0] is not None:
+            i = self[1]
+        elif other[0] is not None:
+            i = other[1]
         else:
-            r = ToHypreParCSR(r.tocsr())            
-
-        if self[1] is not None:
-            i = ToScipyCoo(self[1])
-        else:
-            i = 0
-        if  other[1] is not  None:
-            i = i + ToScipyCoo(other[1])            
-        if i == 0:
             i = None
-        else:
-            i = ToHypreParCSR(i.tocsr())            
-            
-        return CHypreMat(r, i)
+
+        return CHypreMat(r, i)        
 
     def __sub__(self, other): #A - B
-        if self[0] is not None:
-            r = -ToScipyCoo(self[0])
+        if not isinstance(other, CHypreMat):
+             raise ValueError(
+                   "argument should be CHypreMat")
+        if self[0] is not None and other[0] is not None:
+            other[0] *= -1
+            r =  ParAdd(self[0], other[0])
+            other[0] *= -1            
+        elif self[0] is not None:
+            r = self[0]
+        elif other[0] is not None:
+            r = other[0]
         else:
-            r = 0
-        if  other[0] is not  None:
-            r = r - ToScipyCoo(other[0])            
-        if r == 0:
             r = None
+        if self[1] is not None and other[1] is not None:
+            other[1] *= -1           
+            i =  ParAdd(self[1], other[1])
+            other[1] *= -1                       
+        elif self[0] is not None:
+            i = self[1]
+        elif other[0] is not None:
+            i = other[1]
         else:
-            r = ToHypreParCSR(r.tocsr())            
-
-        if self[1] is not None:
-            i = -ToScipyCoo(self[1])
-        else:
-            i = 0
-        if  other[1] is not  None:
-            i = i - ToScipyCoo(other[1])            
-        if i == 0:
             i = None
-        else:
-            i = ToHypreParCSR(i.tocsr())            
-            
-        return CHypreMat(r, i)
 
+        return CHypreMat(r, i)        
+       
     def __neg__(self): #-B
        r = None; i = None
        if self[0] is not None:

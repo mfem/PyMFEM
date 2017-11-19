@@ -5,7 +5,12 @@
 #include "linalg/matrix.hpp"
 #include "linalg/sparsemat.hpp"
 #include "linalg/solvers.hpp"
-#include "pyoperator.hpp"               
+#include "pyoperator.hpp"
+#include "numpy/arrayobject.h"    
+%}
+
+%init %{
+import_array();
 %}
 
 %include "config/_config.hpp" // include mfem MACRO

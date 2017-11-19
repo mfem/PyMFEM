@@ -67,9 +67,10 @@ def ToList(self):
 }  
 namespace mfem{
 %template(intArray) Array<int>;
-}
-namespace mfem{
 %template(doubleArray) Array<double>;
+%template(doubleSwap) Swap<double>;  
+%template(intSwap) Swap<int>;  
 }
+
 
 

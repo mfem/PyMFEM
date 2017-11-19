@@ -256,6 +256,9 @@ class Vector(_object):
     def Sum(self):
         return _vector.Vector_Sum(self)
 
+    def DistanceSquaredTo(self, p):
+        return _vector.Vector_DistanceSquaredTo(self, p)
+
     def DistanceTo(self, p):
         return _vector.Vector_DistanceTo(self, p)
 
@@ -312,6 +315,10 @@ Vector_swigregister(Vector)
 def IsFinite(val):
     return _vector.IsFinite(val)
 IsFinite = _vector.IsFinite
+
+def DistanceSquared(x, y, n):
+    return _vector.DistanceSquared(x, y, n)
+DistanceSquared = _vector.DistanceSquared
 
 def Distance(x, y, n):
     return _vector.Distance(x, y, n)

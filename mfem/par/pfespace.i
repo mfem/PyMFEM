@@ -1,7 +1,8 @@
 %module pfespace
 %{
 #include <mpi.h>
-#include  "config/config.hpp" 
+#include  "config/config.hpp"
+#include "fem/linearform.hpp"  
 #include "fem/pfespace.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"  
@@ -37,6 +38,11 @@ import_array();
 %pointer_class(int, intp);
 %immutable face_nbr_glob_dof_map;
 //DoF accesser
+
+// default number is -1, which conflict with error code of PyArray_PyIntAsInt...
+%typemap(typecheck) (int component = -1) {
+   $1 = PyInt_Check($input) ? 1 : 0;
+}
 
 %feature("shadow") mfem::ParFiniteElementSpace::GetBdrElementDofs %{
 def GetBdrElementDofs(self, i):

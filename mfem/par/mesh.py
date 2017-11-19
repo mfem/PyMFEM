@@ -137,6 +137,41 @@ def intp_frompointer(t):
     return _mesh.intp_frompointer(t)
 intp_frompointer = _mesh.intp_frompointer
 
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _mesh.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _mesh.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _mesh.doublep_assign(self, value)
+
+    def value(self):
+        return _mesh.doublep_value(self)
+
+    def cast(self):
+        return _mesh.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_mesh.doublep_frompointer)
+    else:
+        frompointer = _mesh.doublep_frompointer
+doublep_swigregister = _mesh.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _mesh.doublep_frompointer(t)
+doublep_frompointer = _mesh.doublep_frompointer
+
 import matrix
 import vector
 import array
@@ -662,6 +697,9 @@ class Mesh(_object):
 
     def PrintInfo(self, *args):
         return _mesh.Mesh_PrintInfo(self, *args)
+
+    def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
+        return _mesh.Mesh_FindPoints(self, point_mat, elem_ids, ips, warn, inv_trans)
     __swig_destroy__ = _mesh.delete_Mesh
     __del__ = lambda self: None
 
@@ -689,6 +727,9 @@ class Mesh(_object):
 
     def GetBdrArray(self, idx):
         return _mesh.Mesh_GetBdrArray(self, idx)
+
+    def GetDomainArray(self, idx):
+        return _mesh.Mesh_GetDomainArray(self, idx)
 Mesh_swigregister = _mesh.Mesh_swigregister
 Mesh_swigregister(Mesh)
 

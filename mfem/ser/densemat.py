@@ -209,11 +209,17 @@ class DenseMatrix(matrix.Matrix):
     def Invert(self):
         return _densemat.DenseMatrix_Invert(self)
 
+    def SquareRootInverse(self):
+        return _densemat.DenseMatrix_SquareRootInverse(self)
+
     def Det(self):
         return _densemat.DenseMatrix_Det(self)
 
     def Weight(self):
         return _densemat.DenseMatrix_Weight(self)
+
+    def Set(self, *args):
+        return _densemat.DenseMatrix_Set(self, *args)
 
     def Add(self, c, A):
         return _densemat.DenseMatrix_Add(self, c, A)
@@ -256,6 +262,9 @@ class DenseMatrix(matrix.Matrix):
 
     def FNorm(self):
         return _densemat.DenseMatrix_FNorm(self)
+
+    def FNorm2(self):
+        return _densemat.DenseMatrix_FNorm2(self)
 
     def Eigenvalues(self, *args):
         return _densemat.DenseMatrix_Eigenvalues(self, *args)

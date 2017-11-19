@@ -4,6 +4,7 @@
 #include "iostream_typemap.hpp"     
 #include "config/config.hpp"
 #include "mesh/pmesh.hpp"
+#include "fem/linearform.hpp"
 #include "general/communication.hpp"  
 #include "numpy/arrayobject.h"
 %}
