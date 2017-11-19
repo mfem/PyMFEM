@@ -23,8 +23,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 %init %{
 import_array();
 %}
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
 
 %import "matrix.i"
 %import "array.i"

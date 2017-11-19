@@ -3449,37 +3449,38 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_hex_t swig_types[1]
-#define SWIGTYPE_p_intp swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
-#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[4]
-#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[5]
-#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[6]
-#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[7]
-#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[8]
-#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[9]
-#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[10]
-#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[11]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[12]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[14]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[15]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[16]
-#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[17]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[18]
-#define SWIGTYPE_p_mfem__Vector swig_types[19]
-#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[20]
-#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[21]
-#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[22]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[23]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[24]
-#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[25]
-#define SWIGTYPE_p_quad_t swig_types[26]
-#define SWIGTYPE_p_seg_t swig_types[27]
-#define SWIGTYPE_p_tet_t swig_types[28]
-#define SWIGTYPE_p_tri_t swig_types[29]
-static swig_type_info *swig_types[31];
-static swig_module_info swig_module = {swig_types, 30, 0, 0, 0, 0};
+#define SWIGTYPE_p_doublep swig_types[1]
+#define SWIGTYPE_p_hex_t swig_types[2]
+#define SWIGTYPE_p_intp swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
+#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[5]
+#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[6]
+#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[7]
+#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[8]
+#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[9]
+#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[11]
+#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[12]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[13]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[14]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[15]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[16]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[17]
+#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[19]
+#define SWIGTYPE_p_mfem__Vector swig_types[20]
+#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[21]
+#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[22]
+#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[23]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[24]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[25]
+#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[26]
+#define SWIGTYPE_p_quad_t swig_types[27]
+#define SWIGTYPE_p_seg_t swig_types[28]
+#define SWIGTYPE_p_tet_t swig_types[29]
+#define SWIGTYPE_p_tri_t swig_types[30]
+static swig_type_info *swig_types[32];
+static swig_module_info swig_module = {swig_types, 31, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4438,6 +4439,7 @@ static void *_p_mfem__DeltaLFIntegratorTo_p_mfem__LinearFormIntegrator(void *x, 
     return (void *)((mfem::LinearFormIntegrator *)  ((mfem::DeltaLFIntegrator *) x));
 }
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
@@ -4470,6 +4472,7 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
+  &_swigt__p_doublep,
   &_swigt__p_hex_t,
   &_swigt__p_intp,
   &_swigt__p_mfem__ArrayT_int_t,
@@ -4502,6 +4505,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -4534,6 +4538,7 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
+  _swigc__p_doublep,
   _swigc__p_hex_t,
   _swigc__p_intp,
   _swigc__p_mfem__ArrayT_int_t,

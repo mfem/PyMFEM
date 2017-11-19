@@ -148,6 +148,41 @@ def intp_frompointer(t):
     return _hypre.intp_frompointer(t)
 intp_frompointer = _hypre.intp_frompointer
 
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _hypre.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _hypre.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _hypre.doublep_assign(self, value)
+
+    def value(self):
+        return _hypre.doublep_value(self)
+
+    def cast(self):
+        return _hypre.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_hypre.doublep_frompointer)
+    else:
+        frompointer = _hypre.doublep_frompointer
+doublep_swigregister = _hypre.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _hypre.doublep_frompointer(t)
+doublep_frompointer = _hypre.doublep_frompointer
+
 import vector
 import array
 import ostream_typemap

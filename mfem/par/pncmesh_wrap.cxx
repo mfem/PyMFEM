@@ -3451,72 +3451,73 @@ namespace Swig {
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_Map swig_types[1]
 #define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_hex_t swig_types[3]
-#define SWIGTYPE_p_int swig_types[4]
-#define SWIGTYPE_p_intp swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_long_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[8]
-#define SWIGTYPE_p_mfem__Const2DFECollection swig_types[9]
-#define SWIGTYPE_p_mfem__Const3DFECollection swig_types[10]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFECollection swig_types[11]
-#define SWIGTYPE_p_mfem__CubicDiscont2DFECollection swig_types[12]
-#define SWIGTYPE_p_mfem__CubicFECollection swig_types[13]
-#define SWIGTYPE_p_mfem__DG_Interface_FECollection swig_types[14]
-#define SWIGTYPE_p_mfem__FiniteElementCollection swig_types[15]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[16]
-#define SWIGTYPE_p_mfem__GaussLinearDiscont2DFECollection swig_types[17]
-#define SWIGTYPE_p_mfem__GaussQuadraticDiscont2DFECollection swig_types[18]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[19]
-#define SWIGTYPE_p_mfem__H1Pos_FECollection swig_types[20]
-#define SWIGTYPE_p_mfem__H1_FECollection swig_types[21]
-#define SWIGTYPE_p_mfem__H1_Trace_FECollection swig_types[22]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[23]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[24]
-#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[25]
-#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[26]
-#define SWIGTYPE_p_mfem__LinearFECollection swig_types[27]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[28]
-#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[29]
-#define SWIGTYPE_p_mfem__Local_FECollection swig_types[30]
-#define SWIGTYPE_p_mfem__Mesh swig_types[31]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[32]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[33]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[34]
-#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[35]
-#define SWIGTYPE_p_mfem__ND_FECollection swig_types[36]
-#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[37]
-#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[38]
-#define SWIGTYPE_p_mfem__NeighborDofMessage swig_types[39]
-#define SWIGTYPE_p_mfem__NeighborRowReply swig_types[40]
-#define SWIGTYPE_p_mfem__NeighborRowRequest swig_types[41]
-#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[42]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[43]
-#define SWIGTYPE_p_mfem__ParNCMesh swig_types[44]
-#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[45]
-#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[46]
-#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[47]
-#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[48]
-#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[49]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[50]
-#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[51]
-#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[52]
-#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[53]
-#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[54]
-#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[55]
-#define SWIGTYPE_p_mfem__RT_FECollection swig_types[56]
-#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[57]
-#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[58]
-#define SWIGTYPE_p_mfem__STable swig_types[59]
-#define SWIGTYPE_p_mfem__Table swig_types[60]
-#define SWIGTYPE_p_mfem__Vector swig_types[61]
-#define SWIGTYPE_p_quad_t swig_types[62]
-#define SWIGTYPE_p_seg_t swig_types[63]
-#define SWIGTYPE_p_std__setT_int_t swig_types[64]
-#define SWIGTYPE_p_tet_t swig_types[65]
-#define SWIGTYPE_p_tri_t swig_types[66]
-static swig_type_info *swig_types[68];
-static swig_module_info swig_module = {swig_types, 67, 0, 0, 0, 0};
+#define SWIGTYPE_p_doublep swig_types[3]
+#define SWIGTYPE_p_hex_t swig_types[4]
+#define SWIGTYPE_p_int swig_types[5]
+#define SWIGTYPE_p_intp swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_long_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[9]
+#define SWIGTYPE_p_mfem__Const2DFECollection swig_types[10]
+#define SWIGTYPE_p_mfem__Const3DFECollection swig_types[11]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFECollection swig_types[12]
+#define SWIGTYPE_p_mfem__CubicDiscont2DFECollection swig_types[13]
+#define SWIGTYPE_p_mfem__CubicFECollection swig_types[14]
+#define SWIGTYPE_p_mfem__DG_Interface_FECollection swig_types[15]
+#define SWIGTYPE_p_mfem__FiniteElementCollection swig_types[16]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[17]
+#define SWIGTYPE_p_mfem__GaussLinearDiscont2DFECollection swig_types[18]
+#define SWIGTYPE_p_mfem__GaussQuadraticDiscont2DFECollection swig_types[19]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[20]
+#define SWIGTYPE_p_mfem__H1Pos_FECollection swig_types[21]
+#define SWIGTYPE_p_mfem__H1_FECollection swig_types[22]
+#define SWIGTYPE_p_mfem__H1_Trace_FECollection swig_types[23]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[24]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[25]
+#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[26]
+#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[27]
+#define SWIGTYPE_p_mfem__LinearFECollection swig_types[28]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[29]
+#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[30]
+#define SWIGTYPE_p_mfem__Local_FECollection swig_types[31]
+#define SWIGTYPE_p_mfem__Mesh swig_types[32]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[33]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[34]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[35]
+#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[36]
+#define SWIGTYPE_p_mfem__ND_FECollection swig_types[37]
+#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[38]
+#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[39]
+#define SWIGTYPE_p_mfem__NeighborDofMessage swig_types[40]
+#define SWIGTYPE_p_mfem__NeighborRowReply swig_types[41]
+#define SWIGTYPE_p_mfem__NeighborRowRequest swig_types[42]
+#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[43]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[44]
+#define SWIGTYPE_p_mfem__ParNCMesh swig_types[45]
+#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[46]
+#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[47]
+#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[48]
+#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[49]
+#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[50]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[51]
+#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[52]
+#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[53]
+#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[54]
+#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[55]
+#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[56]
+#define SWIGTYPE_p_mfem__RT_FECollection swig_types[57]
+#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[58]
+#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[59]
+#define SWIGTYPE_p_mfem__STable swig_types[60]
+#define SWIGTYPE_p_mfem__Table swig_types[61]
+#define SWIGTYPE_p_mfem__Vector swig_types[62]
+#define SWIGTYPE_p_quad_t swig_types[63]
+#define SWIGTYPE_p_seg_t swig_types[64]
+#define SWIGTYPE_p_std__setT_int_t swig_types[65]
+#define SWIGTYPE_p_tet_t swig_types[66]
+#define SWIGTYPE_p_tri_t swig_types[67]
+static swig_type_info *swig_types[69];
+static swig_module_info swig_module = {swig_types, 68, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5670,6 +5671,7 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Map = {"_p_Map", "Map *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
@@ -5739,6 +5741,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_Map,
   &_swigt__p_char,
+  &_swigt__p_doublep,
   &_swigt__p_hex_t,
   &_swigt__p_int,
   &_swigt__p_intp,
@@ -5808,6 +5811,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Map[] = {  {&_swigt__p_Map, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_intp, _p_intpTo_p_int, 0, 0},  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
@@ -5877,6 +5881,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_Map,
   _swigc__p_char,
+  _swigc__p_doublep,
   _swigc__p_hex_t,
   _swigc__p_int,
   _swigc__p_intp,

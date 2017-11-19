@@ -1,3 +1,4 @@
+
 %module mesh
 %{
 #include "mesh/mesh_headers.hpp"
@@ -23,8 +24,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 import_array();
 %}
 
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"

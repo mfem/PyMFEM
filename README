@@ -223,6 +223,13 @@ in this repository are generated using SWIG 3.0.8
 	     GridFunction *g = new GridFunction(&fespace);
 	     g = 0;
 	     
+      GridFunction(FiniteElementSpace *f, double *data) is extended to
+      support offsets
+          v = mfem.GridFunction(fec, <pointer to double>, offset)
+      so that follwoing can be wrappeds
+	  GridFucntion(fes, vec.GetData() + sc)
+      the same is used for ParGridFunction
+	     
   4-4) mfem::Mesh
          Wrapper of following methods are customized to
 	 return either python list object or tuple of lists

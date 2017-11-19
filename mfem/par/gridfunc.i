@@ -89,6 +89,12 @@ GridFunction(Mesh *m, const char *grid_file){
    gf = new mfem::GridFunction(m, igrid);
    return gf;
 }
+GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
+   mfem::GridFunction *gf;   
+   gf = new mfem::GridFunction(fes, v.GetData() + offset);
+   return gf;
+}
+ 
 void SaveToFile(const char *gf_file, const int precision) const
    {
 	std::ofstream mesh_ofs(gf_file);	
@@ -121,8 +127,7 @@ GridFunction & idiv(double c)
       return *self;
    }
   }
-   
-}
+}  // end of namespace
 
 %pythoncode %{
 def __iadd__(self, v):

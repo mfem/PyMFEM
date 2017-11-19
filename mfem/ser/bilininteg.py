@@ -114,13 +114,13 @@ import densemat
 import eltrans
 import fe
 import gridfunc
-import fespace
 import mesh
 import ncmesh
 import element
 import geom
 import table
 import vertex
+import fespace
 import fe_coll
 import lininteg
 import linearform

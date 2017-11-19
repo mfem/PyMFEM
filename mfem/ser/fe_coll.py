@@ -102,6 +102,76 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _fe_coll.new_intp()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe_coll.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _fe_coll.intp_assign(self, value)
+
+    def value(self):
+        return _fe_coll.intp_value(self)
+
+    def cast(self):
+        return _fe_coll.intp_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_fe_coll.intp_frompointer)
+    else:
+        frompointer = _fe_coll.intp_frompointer
+intp_swigregister = _fe_coll.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _fe_coll.intp_frompointer(t)
+intp_frompointer = _fe_coll.intp_frompointer
+
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _fe_coll.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe_coll.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _fe_coll.doublep_assign(self, value)
+
+    def value(self):
+        return _fe_coll.doublep_value(self)
+
+    def cast(self):
+        return _fe_coll.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_fe_coll.doublep_frompointer)
+    else:
+        frompointer = _fe_coll.doublep_frompointer
+doublep_swigregister = _fe_coll.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _fe_coll.doublep_frompointer(t)
+doublep_frompointer = _fe_coll.doublep_frompointer
+
 import mesh
 import matrix
 import vector

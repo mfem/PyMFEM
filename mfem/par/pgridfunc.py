@@ -157,13 +157,6 @@ class ParGridFunction(gridfunc.GridFunction):
     __getattr__ = lambda self, name: _swig_getattr(self, ParGridFunction, name)
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        this = _pgridfunc.new_ParGridFunction(*args)
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-
     def ParFESpace(self):
         return _pgridfunc.ParGridFunction_ParFESpace(self)
 
@@ -237,6 +230,13 @@ class ParGridFunction(gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
     __swig_destroy__ = _pgridfunc.delete_ParGridFunction
     __del__ = lambda self: None
+
+    def __init__(self, *args):
+        this = _pgridfunc.new_ParGridFunction(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
 ParGridFunction_swigregister = _pgridfunc.ParGridFunction_swigregister
 ParGridFunction_swigregister(ParGridFunction)
 

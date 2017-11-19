@@ -19,8 +19,8 @@
 %init %{
 import_array();
 %}
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
+
 %import vector.i
 %import sparsemat.i
 %import fespace.i
