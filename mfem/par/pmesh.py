@@ -113,6 +113,76 @@ MFEM_VERSION_PATCH = _pmesh.MFEM_VERSION_PATCH
 MFEM_GIT_STRING = _pmesh.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _pmesh.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pmesh.MFEM_HYPRE_VERSION
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _pmesh.new_intp()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _pmesh.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _pmesh.intp_assign(self, value)
+
+    def value(self):
+        return _pmesh.intp_value(self)
+
+    def cast(self):
+        return _pmesh.intp_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_pmesh.intp_frompointer)
+    else:
+        frompointer = _pmesh.intp_frompointer
+intp_swigregister = _pmesh.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _pmesh.intp_frompointer(t)
+intp_frompointer = _pmesh.intp_frompointer
+
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _pmesh.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _pmesh.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _pmesh.doublep_assign(self, value)
+
+    def value(self):
+        return _pmesh.doublep_value(self)
+
+    def cast(self):
+        return _pmesh.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_pmesh.doublep_frompointer)
+    else:
+        frompointer = _pmesh.doublep_frompointer
+doublep_swigregister = _pmesh.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _pmesh.doublep_frompointer(t)
+doublep_frompointer = _pmesh.doublep_frompointer
+
 import mesh
 import matrix
 import vector

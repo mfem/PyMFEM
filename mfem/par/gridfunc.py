@@ -102,6 +102,76 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _gridfunc.new_intp()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _gridfunc.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _gridfunc.intp_assign(self, value)
+
+    def value(self):
+        return _gridfunc.intp_value(self)
+
+    def cast(self):
+        return _gridfunc.intp_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_gridfunc.intp_frompointer)
+    else:
+        frompointer = _gridfunc.intp_frompointer
+intp_swigregister = _gridfunc.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _gridfunc.intp_frompointer(t)
+intp_frompointer = _gridfunc.intp_frompointer
+
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _gridfunc.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _gridfunc.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _gridfunc.doublep_assign(self, value)
+
+    def value(self):
+        return _gridfunc.doublep_value(self)
+
+    def cast(self):
+        return _gridfunc.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_gridfunc.doublep_frompointer)
+    else:
+        frompointer = _gridfunc.doublep_frompointer
+doublep_swigregister = _gridfunc.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _gridfunc.doublep_frompointer(t)
+doublep_frompointer = _gridfunc.doublep_frompointer
+
 import array
 import ostream_typemap
 import vector

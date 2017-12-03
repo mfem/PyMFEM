@@ -17,6 +17,7 @@
 import_array();
 %}
 
+%include "../common/cpointers.i"
 %import pfespace.i
 %import gridfunc.i
 %import hypre.i

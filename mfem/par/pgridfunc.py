@@ -113,6 +113,76 @@ MFEM_VERSION_PATCH = _pgridfunc.MFEM_VERSION_PATCH
 MFEM_GIT_STRING = _pgridfunc.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _pgridfunc.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pgridfunc.MFEM_HYPRE_VERSION
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _pgridfunc.new_intp()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _pgridfunc.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _pgridfunc.intp_assign(self, value)
+
+    def value(self):
+        return _pgridfunc.intp_value(self)
+
+    def cast(self):
+        return _pgridfunc.intp_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_pgridfunc.intp_frompointer)
+    else:
+        frompointer = _pgridfunc.intp_frompointer
+intp_swigregister = _pgridfunc.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _pgridfunc.intp_frompointer(t)
+intp_frompointer = _pgridfunc.intp_frompointer
+
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _pgridfunc.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _pgridfunc.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _pgridfunc.doublep_assign(self, value)
+
+    def value(self):
+        return _pgridfunc.doublep_value(self)
+
+    def cast(self):
+        return _pgridfunc.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_pgridfunc.doublep_frompointer)
+    else:
+        frompointer = _pgridfunc.doublep_frompointer
+doublep_swigregister = _pgridfunc.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _pgridfunc.doublep_frompointer(t)
+doublep_frompointer = _pgridfunc.doublep_frompointer
+
 import pfespace
 import operators
 import vector

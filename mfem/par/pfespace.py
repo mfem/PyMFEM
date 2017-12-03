@@ -113,6 +113,76 @@ MFEM_VERSION_PATCH = _pfespace.MFEM_VERSION_PATCH
 MFEM_GIT_STRING = _pfespace.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _pfespace.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pfespace.MFEM_HYPRE_VERSION
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _pfespace.new_intp()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _pfespace.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _pfespace.intp_assign(self, value)
+
+    def value(self):
+        return _pfespace.intp_value(self)
+
+    def cast(self):
+        return _pfespace.intp_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_pfespace.intp_frompointer)
+    else:
+        frompointer = _pfespace.intp_frompointer
+intp_swigregister = _pfespace.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _pfespace.intp_frompointer(t)
+intp_frompointer = _pfespace.intp_frompointer
+
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _pfespace.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _pfespace.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _pfespace.doublep_assign(self, value)
+
+    def value(self):
+        return _pfespace.doublep_value(self)
+
+    def cast(self):
+        return _pfespace.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_pfespace.doublep_frompointer)
+    else:
+        frompointer = _pfespace.doublep_frompointer
+doublep_swigregister = _pfespace.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _pfespace.doublep_frompointer(t)
+doublep_frompointer = _pfespace.doublep_frompointer
+
 import operators
 import vector
 import array

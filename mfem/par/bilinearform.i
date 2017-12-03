@@ -8,6 +8,7 @@
 %init %{
 import_array();
 %}
+%include "../common/cpointers.i"
 
 %import "array.i"
 %import "fespace.i"

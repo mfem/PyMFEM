@@ -17,6 +17,7 @@ import_array();
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 
+%include "../common/cpointers.i"
 %import mesh.i
 %import pncmesh.i
  //

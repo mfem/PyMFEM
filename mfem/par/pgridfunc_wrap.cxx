@@ -3757,6 +3757,22 @@ SWIG_FromCharPtr(const char *cptr)
 
 typedef int intp;
 
+SWIGINTERN intp *new_intp(){
+    return (new int());
+  }
+SWIGINTERN void delete_intp(intp *self){
+    if (self) delete self;
+  }
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
 
 SWIGINTERN int
 SWIG_AsVal_double (PyObject *obj, double *val)
@@ -3802,38 +3818,6 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 #endif
   return res;
 }
-
-
-SWIGINTERN int
-SWIG_AsPtr_MPI_Comm (PyObject * input, MPI_Comm **p) {
-  if (input == Py_None) {
-    if (p) *p = 0;
-    return SWIG_OK;
-  } else if (PyObject_TypeCheck(input,&PyMPIComm_Type)) {
-    if (p) *p = PyMPIComm_Get(input);
-    return SWIG_OK;
-  } else {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(input,&argp,SWIGTYPE_p_MPI_Comm, 0);
-    if (!SWIG_IsOK(res)) return res;
-    if (!argp) return SWIG_ValueError;
-    if (p) *p = static_cast< MPI_Comm* >(argp);
-    return SWIG_OK;
-  }
-}
-
-
-  #define SWIG_From_double   PyFloat_FromDouble 
-
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
 
 
 #include <float.h>
@@ -3930,6 +3914,64 @@ SWIG_AsVal_int (PyObject * obj, int *val)
   return res;
 }
 
+SWIGINTERN void intp_assign(intp *self,int value){
+    *self = value;
+  }
+SWIGINTERN int intp_value(intp *self){
+    return *self;
+  }
+SWIGINTERN int *intp_cast(intp *self){
+    return self;
+  }
+SWIGINTERN intp *intp_frompointer(int *t){
+    return (intp *) t;
+  }
+
+typedef double doublep;
+
+SWIGINTERN doublep *new_doublep(){
+    return (new double());
+  }
+SWIGINTERN void delete_doublep(doublep *self){
+    if (self) delete self;
+  }
+SWIGINTERN void doublep_assign(doublep *self,double value){
+    *self = value;
+  }
+SWIGINTERN double doublep_value(doublep *self){
+    return *self;
+  }
+
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+SWIGINTERN double *doublep_cast(doublep *self){
+    return self;
+  }
+SWIGINTERN doublep *doublep_frompointer(double *t){
+    return (doublep *) t;
+  }
+
+typedef int intp;
+
+
+SWIGINTERN int
+SWIG_AsPtr_MPI_Comm (PyObject * input, MPI_Comm **p) {
+  if (input == Py_None) {
+    if (p) *p = 0;
+    return SWIG_OK;
+  } else if (PyObject_TypeCheck(input,&PyMPIComm_Type)) {
+    if (p) *p = PyMPIComm_Get(input);
+    return SWIG_OK;
+  } else {
+    void *argp = 0;
+    int res = SWIG_ConvertPtr(input,&argp,SWIGTYPE_p_MPI_Comm, 0);
+    if (!SWIG_IsOK(res)) return res;
+    if (!argp) return SWIG_ValueError;
+    if (p) *p = static_cast< MPI_Comm* >(argp);
+    return SWIG_OK;
+  }
+}
+
 SWIGINTERN mfem::ParGridFunction *new_mfem_ParGridFunction__SWIG_7(mfem::ParFiniteElementSpace *fes,mfem::Vector const &v,int offset){
    mfem::ParGridFunction *gf;   
    gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
@@ -3946,6 +3988,280 @@ SWIGINTERN mfem::ParGridFunction *new_mfem_ParGridFunction__SWIG_7(mfem::ParFini
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_new_intp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  intp *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_intp")) SWIG_fail;
+  result = (intp *)new_intp();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_intp, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_intp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  intp *arg1 = (intp *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_intp",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_intp" "', argument " "1"" of type '" "intp *""'"); 
+  }
+  arg1 = reinterpret_cast< intp * >(argp1);
+  delete_intp(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  intp *arg1 = (intp *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:intp_assign",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_assign" "', argument " "1"" of type '" "intp *""'"); 
+  }
+  arg1 = reinterpret_cast< intp * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intp_assign" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  intp_assign(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intp_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  intp *arg1 = (intp *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:intp_value",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_value" "', argument " "1"" of type '" "intp *""'"); 
+  }
+  arg1 = reinterpret_cast< intp * >(argp1);
+  result = (int)intp_value(arg1);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intp_cast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  intp *arg1 = (intp *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:intp_cast",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_cast" "', argument " "1"" of type '" "intp *""'"); 
+  }
+  arg1 = reinterpret_cast< intp * >(argp1);
+  result = (int *)intp_cast(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intp_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int *arg1 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  intp *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:intp_frompointer",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_frompointer" "', argument " "1"" of type '" "int *""'"); 
+  }
+  arg1 = reinterpret_cast< int * >(argp1);
+  result = (intp *)intp_frompointer(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_intp, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *intp_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_intp, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_doublep(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  doublep *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_doublep")) SWIG_fail;
+  result = (doublep *)new_doublep();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_doublep, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_doublep(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  doublep *arg1 = (doublep *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_doublep",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_doublep" "', argument " "1"" of type '" "doublep *""'"); 
+  }
+  arg1 = reinterpret_cast< doublep * >(argp1);
+  delete_doublep(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  doublep *arg1 = (doublep *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:doublep_assign",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_assign" "', argument " "1"" of type '" "doublep *""'"); 
+  }
+  arg1 = reinterpret_cast< doublep * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doublep_assign" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  doublep_assign(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doublep_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  doublep *arg1 = (doublep *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:doublep_value",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_value" "', argument " "1"" of type '" "doublep *""'"); 
+  }
+  arg1 = reinterpret_cast< doublep * >(argp1);
+  result = (double)doublep_value(arg1);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doublep_cast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  doublep *arg1 = (doublep *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:doublep_cast",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_cast" "', argument " "1"" of type '" "doublep *""'"); 
+  }
+  arg1 = reinterpret_cast< doublep * >(argp1);
+  result = (double *)doublep_cast(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doublep_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  double *arg1 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  doublep *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:doublep_frompointer",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_frompointer" "', argument " "1"" of type '" "double *""'"); 
+  }
+  arg1 = reinterpret_cast< double * >(argp1);
+  result = (doublep *)doublep_frompointer(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_doublep, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *doublep_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_doublep, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_GlobalLpNorm(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
@@ -10348,6 +10664,20 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"new_intp", _wrap_new_intp, METH_VARARGS, NULL},
+	 { (char *)"delete_intp", _wrap_delete_intp, METH_VARARGS, NULL},
+	 { (char *)"intp_assign", _wrap_intp_assign, METH_VARARGS, NULL},
+	 { (char *)"intp_value", _wrap_intp_value, METH_VARARGS, NULL},
+	 { (char *)"intp_cast", _wrap_intp_cast, METH_VARARGS, NULL},
+	 { (char *)"intp_frompointer", _wrap_intp_frompointer, METH_VARARGS, NULL},
+	 { (char *)"intp_swigregister", intp_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_doublep", _wrap_new_doublep, METH_VARARGS, NULL},
+	 { (char *)"delete_doublep", _wrap_delete_doublep, METH_VARARGS, NULL},
+	 { (char *)"doublep_assign", _wrap_doublep_assign, METH_VARARGS, NULL},
+	 { (char *)"doublep_value", _wrap_doublep_value, METH_VARARGS, NULL},
+	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, NULL},
+	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, NULL},
+	 { (char *)"doublep_swigregister", doublep_swigregister, METH_VARARGS, NULL},
 	 { (char *)"GlobalLpNorm", _wrap_GlobalLpNorm, METH_VARARGS, NULL},
 	 { (char *)"ParGridFunction_ParFESpace", _wrap_ParGridFunction_ParFESpace, METH_VARARGS, NULL},
 	 { (char *)"ParGridFunction_Update", _wrap_ParGridFunction_Update, METH_VARARGS, NULL},

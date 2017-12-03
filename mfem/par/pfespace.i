@@ -30,6 +30,7 @@ typedef int HYPRE_Int;
 import_array();
 %}
 
+%include "../common/cpointers.i"
 %import operators.i
 %import fespace.i
 %import pmesh.i

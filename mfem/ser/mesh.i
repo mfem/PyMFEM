@@ -170,6 +170,14 @@ def GetBdrElementVertices(self, i):
     return ivert.ToList()
 %}
 
+%feature("shadow") mfem::Mesh::GetBdrElementAdjacentElement %{
+def GetBdrElementAdjacentElement(self, bdr_el):
+    el = intp()
+    info = intp()  
+    _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+    return el.value(), info.value()
+%}
+
 %feature("shadow") mfem::Mesh::GetElementVertices %{
 def GetElementVertices(self, i):
     from  .array import intArray

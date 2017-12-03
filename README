@@ -1,10 +1,10 @@
 '''''
-PyMFEM for mfem 3.3
+PyMFEM for mfem 3.3.2
 '''''
 PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
 This wrapper is meant for a rapid-prototyping of FEM program, and
-is built using SWIG 3.0.
+is built using SWIG 3.0.12
 With PyMFEM, a user can create c++ MFEM objects and call their
 method from python. We strongly recommend to visit the MFEM web site
 to find more detail of the MFEM libirary.
@@ -242,6 +242,7 @@ in this repository are generated using SWIG 3.0.8
             GetEdgeVertices(i)
             GetFaceVertices(i)
             GetElementFaces(i)
+	    GetBdrElementAdjacentElement()
 	    
 	 pointer passing in following methos are returned
 	 as tuple

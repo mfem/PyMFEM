@@ -443,8 +443,13 @@ class Mesh(_object):
     def GetBdrElementEdgeIndex(self, i):
         return _mesh.Mesh_GetBdrElementEdgeIndex(self, i)
 
-    def GetBdrElementAdjacentElement(self, bdr_el, el, info):
-        return _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+    def GetBdrElementAdjacentElement(self, bdr_el):
+        el = intp()
+        info = intp()  
+        _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+        return el.value(), info.value()
+
+
 
     def GetElementType(self, i):
         return _mesh.Mesh_GetElementType(self, i)
