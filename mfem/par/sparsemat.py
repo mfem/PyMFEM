@@ -463,10 +463,6 @@ def SparseMatrixFunction(S, f):
     return _sparsemat.SparseMatrixFunction(S, f)
 SparseMatrixFunction = _sparsemat.SparseMatrixFunction
 
-def Transpose(A):
-    return _sparsemat.Transpose(A)
-Transpose = _sparsemat.Transpose
-
 def TransposeAbstractSparseMatrix(A, useActualWidth):
     return _sparsemat.TransposeAbstractSparseMatrix(A, useActualWidth)
 TransposeAbstractSparseMatrix = _sparsemat.TransposeAbstractSparseMatrix

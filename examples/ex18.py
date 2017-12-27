@@ -176,7 +176,6 @@ if (cfl > 0):
     A.Mult(sol, z)
     dt = cfl * hmin / ex18_common.max_char_speed / (2*order+1)
 
-print("init done")    
 # Integrate in time.
 done = False;
 ti = 0            
@@ -202,7 +201,7 @@ for k in range(num_equation):
 
 # 10. Compute the L2 solution error summed for all components.
 if (t_final == 2.0):
-   error = sol.ComputeLpError(2, u0)
+   error = sol.ComputeLpError(2., u0)
    print("Solution error: " + str(error))
 
 

@@ -13,6 +13,7 @@ import_array();
 
 %import array.i
 %import ostream_typemap.i
+%import "../common/ignore_common_functions.i"
 
 //  conversion of Int (can handle numpy int)
 %typemap(in) int {

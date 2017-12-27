@@ -71,7 +71,7 @@ cfl = args.cfl_number
 visualization = args.visualization
 vis_steps = args.visualization_steps
 
-parser.print_options(args)
+if myid==0: parser.print_options(args)
 
 ex18_common.num_equation = 4
 ex18_common.specific_heat_ratio = 1.4
@@ -126,7 +126,7 @@ vfes = mfem.ParFiniteElementSpace(pmesh, fec, num_equation, mfem.Ordering.byNODE
 
 assert fes.GetOrdering() == mfem.Ordering.byNODES, "Ordering must be byNODES"
 glob_size = vfes.GlobalTrueVSize();
-print("Number of unknowns: " + str(glob_size))
+if myid==0: print("Number of unknowns: " + str(glob_size))
 
 # 8. Define the initial conditions, save the corresponding mesh and grid
 #    functions to a file. This can be opened with GLVis with the -gc option.
@@ -168,7 +168,8 @@ A.AddInteriorFaceIntegrator(ii)
 #     iterations, ti, with a time-step dt).
 euler = FE_Evolution(vfes, A, Aflux.SpMat())
 
-if (visualization):    
+if (visualization):
+    MPI.COMM_WORLD.Barrier()    
     sout =  mfem.socketstream("localhost", 19916)
     sout.send_text("parallel " + str(num_procs) +  " " + str(myid))                    
     sout.precision(8)
@@ -182,7 +183,7 @@ if (visualization):
 # Determine the minimum element size.
 my_hmin = 0
 if (cfl > 0):
-   my_hmin = min([pmesh.GetElementSize(i, 1) for i in range(mesh.GetNE())])
+   my_hmin = min([pmesh.GetElementSize(i, 1) for i in range(pmesh.GetNE())])
 hmin = MPI.COMM_WORLD.allreduce(my_hmin, op = MPI.MIN)
 
 t = 0.0            
@@ -197,7 +198,6 @@ if (cfl > 0):
     ex18_common.max_char_speed = max_char_speed
     dt = cfl * hmin / ex18_common.max_char_speed / (2*order+1)
 
-print("init done")    
 # Integrate in time.
 done = False;
 ti = 0            
@@ -213,7 +213,7 @@ while not done:
     ti = ti+1
     done = (t >= t_final - 1e-8*dt)
     if (done or ti % vis_steps == 0):
-        print("time step: " + str(ti) + ", time: " + str(t))
+        if myid == 0: print("time step: " + str(ti) + ", time: " + str(t))
         if (visualization):
             sout.send_text("parallel " + str(num_procs) +  " " + str(myid))                    
             sout.send_solution(pmesh, mom)
@@ -229,7 +229,7 @@ for k in range(num_equation):
 
 # 12. Compute the L2 solution error summed for all components.
 if (t_final == 2.0):
-   error = sol.ComputeLpError(2, u0)
+   error = sol.ComputeLpError(2., u0)
    if myid==0: print("Solution error: " + str(error))
     
 
