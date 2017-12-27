@@ -115,9 +115,6 @@ class BlockVector(vector.Vector):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
-
-    def Assign(self, *args):
-        return _blockvector.BlockVector_Assign(self, *args)
     __swig_destroy__ = _blockvector.delete_BlockVector
     __del__ = lambda self: None
 
