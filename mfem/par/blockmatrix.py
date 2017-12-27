@@ -195,14 +195,6 @@ class BlockMatrix(matrix.AbstractSparseMatrix):
 BlockMatrix_swigregister = _blockmatrix.BlockMatrix_swigregister
 BlockMatrix_swigregister(BlockMatrix)
 
-
-def Transpose(*args):
-    return _blockmatrix.Transpose(*args)
-Transpose = _blockmatrix.Transpose
-
-def Mult(*args):
-    return _blockmatrix.Mult(*args)
-Mult = _blockmatrix.Mult
 # This file is compatible with both classic and new-style classes.
 
 

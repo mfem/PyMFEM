@@ -130,10 +130,18 @@ class NonlinearFormIntegrator(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, NonlinearFormIntegrator, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, NonlinearFormIntegrator, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
+
+    def __init__(self, ir=None):
+        if self.__class__ == NonlinearFormIntegrator:
+            _self = None
+        else:
+            _self = self
+        this = _nonlininteg.new_NonlinearFormIntegrator(_self, ir)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
 
     def SetIntRule(self, ir):
         return _nonlininteg.NonlinearFormIntegrator_SetIntRule(self, ir)
@@ -157,6 +165,10 @@ class NonlinearFormIntegrator(_object):
         return _nonlininteg.NonlinearFormIntegrator_GetElementEnergy(self, el, Tr, elfun)
     __swig_destroy__ = _nonlininteg.delete_NonlinearFormIntegrator
     __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _nonlininteg.disown_NonlinearFormIntegrator(self)
+        return weakref_proxy(self)
 NonlinearFormIntegrator_swigregister = _nonlininteg.NonlinearFormIntegrator_swigregister
 NonlinearFormIntegrator_swigregister(NonlinearFormIntegrator)
 

@@ -3118,52 +3118,6 @@ namespace swig {
 #include "numpy/arrayobject.h"
 
 
-SWIGINTERN int
-SWIG_AsVal_double (PyObject *obj, double *val)
-{
-  int res = SWIG_TypeError;
-  if (PyFloat_Check(obj)) {
-    if (val) *val = PyFloat_AsDouble(obj);
-    return SWIG_OK;
-#if PY_VERSION_HEX < 0x03000000
-  } else if (PyInt_Check(obj)) {
-    if (val) *val = (double) PyInt_AsLong(obj);
-    return SWIG_OK;
-#endif
-  } else if (PyLong_Check(obj)) {
-    double v = PyLong_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    double d = PyFloat_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = d;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      long v = PyLong_AsLong(obj);
-      if (!PyErr_Occurred()) {
-	if (val) *val = v;
-	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
-      } else {
-	PyErr_Clear();
-      }
-    }
-  }
-#endif
-  return res;
-}
-
-
 SWIGINTERNINLINE PyObject*
   SWIG_From_int  (int value)
 {
@@ -3322,121 +3276,6 @@ fail:
     "    mfem::BlockVector::BlockVector(mfem::Array< int > const &)\n"
     "    mfem::BlockVector::BlockVector(mfem::BlockVector const &)\n"
     "    mfem::BlockVector::BlockVector(double *,mfem::Array< int > const &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockVector_Assign__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::BlockVector *arg1 = (mfem::BlockVector *) 0 ;
-  mfem::BlockVector *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  mfem::BlockVector *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:BlockVector_Assign",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockVector_Assign" "', argument " "1"" of type '" "mfem::BlockVector *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__BlockVector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockVector_Assign" "', argument " "2"" of type '" "mfem::BlockVector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockVector_Assign" "', argument " "2"" of type '" "mfem::BlockVector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::BlockVector * >(argp2);
-  result = (mfem::BlockVector *) &(arg1)->operator =((mfem::BlockVector const &)*arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockVector_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::BlockVector *arg1 = (mfem::BlockVector *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  mfem::BlockVector *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:BlockVector_Assign",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockVector_Assign" "', argument " "1"" of type '" "mfem::BlockVector *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlockVector_Assign" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  result = (mfem::BlockVector *) &(arg1)->operator =(arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockVector_Assign(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockVector, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__BlockVector, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_BlockVector_Assign__SWIG_0(self, args);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockVector, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_BlockVector_Assign__SWIG_1(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BlockVector_Assign'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BlockVector::operator =(mfem::BlockVector const &)\n"
-    "    mfem::BlockVector::operator =(double)\n");
   return 0;
 }
 
@@ -3695,7 +3534,6 @@ SWIGINTERN PyObject *BlockVector_swigregister(PyObject *SWIGUNUSEDPARM(self), Py
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"new_BlockVector", _wrap_new_BlockVector, METH_VARARGS, NULL},
-	 { (char *)"BlockVector_Assign", _wrap_BlockVector_Assign, METH_VARARGS, NULL},
 	 { (char *)"delete_BlockVector", _wrap_delete_BlockVector, METH_VARARGS, NULL},
 	 { (char *)"BlockVector_GetBlock", _wrap_BlockVector_GetBlock, METH_VARARGS, NULL},
 	 { (char *)"BlockVector_GetBlockView", _wrap_BlockVector_GetBlockView, METH_VARARGS, NULL},

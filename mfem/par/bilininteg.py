@@ -129,10 +129,18 @@ class BilinearFormIntegrator(_object):
     __setattr__ = lambda self, name, value: _swig_setattr(self, BilinearFormIntegrator, name, value)
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, BilinearFormIntegrator, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined")
     __repr__ = _swig_repr
+
+    def __init__(self, ir=None):
+        if self.__class__ == BilinearFormIntegrator:
+            _self = None
+        else:
+            _self = self
+        this = _bilininteg.new_BilinearFormIntegrator(_self, ir)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         return _bilininteg.BilinearFormIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -159,6 +167,10 @@ class BilinearFormIntegrator(_object):
         return _bilininteg.BilinearFormIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
     __swig_destroy__ = _bilininteg.delete_BilinearFormIntegrator
     __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _bilininteg.disown_BilinearFormIntegrator(self)
+        return weakref_proxy(self)
 BilinearFormIntegrator_swigregister = _bilininteg.BilinearFormIntegrator_swigregister
 BilinearFormIntegrator_swigregister(BilinearFormIntegrator)
 

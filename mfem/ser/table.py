@@ -243,14 +243,6 @@ class Table(_object):
 Table_swigregister = _table.Table_swigregister
 Table_swigregister(Table)
 
-
-def Transpose(*args):
-    return _table.Transpose(*args)
-Transpose = _table.Transpose
-
-def Mult(*args):
-    return _table.Mult(*args)
-Mult = _table.Mult
 class STable(Table):
     __swig_setmethods__ = {}
     for _s in [Table]:

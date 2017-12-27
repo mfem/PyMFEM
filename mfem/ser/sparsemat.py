@@ -368,7 +368,8 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     def __iadd__(self, B):
         val = _sparsemat.SparseMatrix___iadd__(self, B)
 
-        val.thisown = self.thisown
+        val.thisown = 0
+        return self
 
 
         return val
@@ -380,7 +381,8 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     def __imul__(self, a):
         val = _sparsemat.SparseMatrix___imul__(self, a)
 
-        val.thisown = self.thisown
+        val.thisown = 0
+        return self
 
 
         return val
@@ -461,10 +463,6 @@ def SparseMatrixFunction(S, f):
     return _sparsemat.SparseMatrixFunction(S, f)
 SparseMatrixFunction = _sparsemat.SparseMatrixFunction
 
-def Transpose(A):
-    return _sparsemat.Transpose(A)
-Transpose = _sparsemat.Transpose
-
 def TransposeAbstractSparseMatrix(A, useActualWidth):
     return _sparsemat.TransposeAbstractSparseMatrix(A, useActualWidth)
 TransposeAbstractSparseMatrix = _sparsemat.TransposeAbstractSparseMatrix
@@ -473,21 +471,9 @@ def MultAbstractSparseMatrix(A, B):
     return _sparsemat.MultAbstractSparseMatrix(A, B)
 MultAbstractSparseMatrix = _sparsemat.MultAbstractSparseMatrix
 
-def Mult(*args):
-    return _sparsemat.Mult(*args)
-Mult = _sparsemat.Mult
-
-def RAP(*args):
-    return _sparsemat.RAP(*args)
-RAP = _sparsemat.RAP
-
 def Mult_AtDA(A, D, OAtDA=None):
     return _sparsemat.Mult_AtDA(A, D, OAtDA)
 Mult_AtDA = _sparsemat.Mult_AtDA
-
-def add_sparse(*args):
-    return _sparsemat.add_sparse(*args)
-add_sparse = _sparsemat.add_sparse
 # This file is compatible with both classic and new-style classes.
 
 

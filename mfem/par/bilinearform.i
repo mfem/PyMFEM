@@ -31,48 +31,51 @@ import_array();
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
 
- //%include "fem/coefficient.hpp"
+%feature("director") mfem::BilinearForm;
+
 namespace mfem { 
 %pythonprepend BilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
    %}
-%pythonprepend BilinearForm::AddBoundaryIntegrator %{ 
+%pythonprepend BilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
-%pythonprepend BilinearForm::AddBdrFaceIntegrator %{ 
+%pythonprepend BilinearForm::AddBdrFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
-    bfi = args[0]	     
+    bfi = args[0]
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
-%pythonprepend BilinearForm::AddInteriorFaceIntegrator %{ 
+%pythonprepend BilinearForm::AddInteriorFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
-   %} 
+   %}
 %pythonappend BilinearForm::SpMat %{
     if not hasattr(self, "_spmat"): self._spmat = []
     self._spmat.append(val)
     val.thisown=0 
    %}
 %pythonappend BilinearForm::EnableHybridization %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    self._integrators.append(constr_integ)
     constr_integ.thisown = 0
    %} 
-%pythonprepend MixedBilinearForm::AddDomainIntegrator %{ 
+%pythonprepend MixedBilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
    %}
-%pythonprepend MixedBilinearForm::AddBoundaryIntegrator %{ 
+%pythonprepend MixedBilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
    %} 
-%pythonprepend MixedBilinearForm::AddTraceFaceIntegrator %{ 
+%pythonprepend MixedBilinearForm::AddTraceFaceIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
@@ -82,6 +85,7 @@ namespace mfem {
     self._spmat.append(val)
     val.thisown=0 
    %}
+
 %pythonprepend DiscreteLinearOperator::AddDomainInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
@@ -92,6 +96,7 @@ namespace mfem {
     self._integrators.append(di)
     di.thisown=0 
    %}
-} //end of namespace  
+  
+} //end of namespace
 
 %include "fem/bilinearform.hpp"

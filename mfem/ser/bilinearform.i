@@ -29,13 +29,15 @@ import_array();
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
 
+%feature("director") mfem::BilinearForm;
+
  //%include "fem/coefficient.hpp"
 namespace mfem { 
 %pythonprepend BilinearForm::AddDomainIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
-   %}
+    %}
 %pythonprepend BilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
@@ -58,6 +60,8 @@ namespace mfem {
     val.thisown=0 
    %}
 %pythonappend BilinearForm::EnableHybridization %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    self._integrators.append(constr_integ)
     constr_integ.thisown = 0
    %} 
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
@@ -80,7 +84,6 @@ namespace mfem {
     self._spmat.append(val)
     val.thisown=0 
    %}
-
 %pythonprepend DiscreteLinearOperator::AddDomainInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
@@ -90,7 +93,6 @@ namespace mfem {
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
     di.thisown=0 
-   %}
-  
+    %}
 } //end of namespace
 %include "fem/bilinearform.hpp"

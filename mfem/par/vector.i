@@ -1,3 +1,4 @@
+
 %module vector
 
 %{
@@ -127,15 +128,23 @@ def __imul__(self, v):
     return self
 %} 
 %feature("shadow") mfem::Vector::operator/= %{
-def __idiv__(self, v):
+def __itruediv__(self, v):
     ret = _vector.Vector___itruediv__(self, v)
     #ret.thisown = self.thisown
     ret.thisown = 0      
     return self
 %}
-%rename(Assign) mfem::Vector::operator=;
+//rename(Assign) mfem::Vector::operator=;
+%pythonappend mfem::Vector::Assign %{
+    return self
+%}
 
-// these inlines are to rename add/subtract...
+%ignore mfem::add;
+%ignore mfem::subtract;
+%ignore mfem::Vector::operator =;
+%ignore mfem::Vector::operator double *;
+%ignore mfem::Vector::operator const double *;
+
 %inline %{
 void add_vector(const mfem::Vector &v1, const mfem::Vector &v2, mfem::Vector &v){
    add(v1, v2, v);
@@ -164,6 +173,7 @@ void subtract_vector(const double a, const mfem::Vector &x,
 }
 %}
 
+
 %include "linalg/vector.hpp"
 
 %extend mfem::Vector {
@@ -172,11 +182,57 @@ void subtract_vector(const double a, const mfem::Vector &x,
       vec = new mfem::Vector(v.GetData() +  offset, size);     
       return vec;
   }
+  void Assign(const double v) {
+    (* self) = v;
+  }
   void __setitem__(int i, const double v) {
-    (* self)(i) = v;
+    int len = self->Size();        
+    if (i >= 0){    
+       (* self)(i) = v;
+    } else {
+      (* self)(len+i) = v;
     }
-  const double __getitem__(const int i) const{
-    return (* self)(i);
+  }
+  PyObject* __getitem__(PyObject* param) {
+    int len = self->Size();    
+    if (PySlice_Check(param)) {
+        long start = 0, stop = 0, step = 0, slicelength = 0;
+        int check;
+	check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+				     &slicelength);
+	if (check == -1) {
+            PyErr_SetString(PyExc_ValueError, "Slicing mfem::Vector failed.");
+            return NULL; 
+	}
+	if (step == 1) {
+            mfem::Vector *vec;
+            vec = new mfem::Vector(self->GetData() +  start, slicelength);
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), $descriptor(mfem::Vector *), 1);  
+	} else {
+            mfem::Vector *vec;
+            vec = new mfem::Vector(slicelength);
+            double* data = vec -> GetData();
+	    int idx = start;
+            for (int i = 0; i < slicelength; i++)
+            {
+	      data[i] = (* self)(idx);
+	      idx += step;
+            }
+            return SWIG_NewPointerObj(SWIG_as_voidptr(vec), $descriptor(mfem::Vector *), 1);
+	}
+    } else {
+        PyErr_Clear();
+        long idx = PyInt_AsLong(param);
+        if (PyErr_Occurred()) {
+           PyErr_SetString(PyExc_ValueError, "Argument must be either int or slice");
+            return NULL; 	
+        }
+        if (idx >= 0){
+           return PyFloat_FromDouble((* self)(idx));
+        } else {
+          return PyFloat_FromDouble((* self)(len+idx));
+	}
+    }
   }
   PyObject* GetDataArray(void) const{
      double * A = self->GetData();    
@@ -186,5 +242,8 @@ void subtract_vector(const double a, const mfem::Vector &x,
   }
 };
 
+%pythoncode %{
+   Vector.__idiv__ = Vector.__itruediv__
+%}
 
 

@@ -82,7 +82,7 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
         #    du_dt = M^{-1}*[-K(u + dt*du_dt)]
         #    for du_dt
         if self.T is None:
-            self.T = mfem.add_sparse(1.0, self.Mmat, dt, self.Kmat)
+            self.T = mfem.Add(1.0, self.Mmat, dt, self.Kmat)
             current_dt = dt;
             self.T_solver.SetOperator(self.T)
         self.Kmat.Mult(u, self.z)

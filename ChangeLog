@@ -1,11 +1,20 @@
 Change Log.
 
+2017 12.27
+        * Overloaded functions whose definitionsare distributed among several .hpp are
+	  handled by common_functions.i. Such functions include Add, Mult, Transpose,
+	  RAP, and InnerProduct.
+	* Due to above change, add_sparse, add_dense has been removed.
+	* Element access to DenseTensor object is added.
+	* GetDataArray of DenseTensor and DenseMatrix is changed to return a mere
+	  memory view of objects' internal data, instead of copy of data
+     	
 2017 12.03
-	Rebuild all cxx to work with MFEM 3.3.2
-	mesh::GetBdrElementAdjacentElement is wrapped to return two integers	
+	* Rebuild all cxx to work with MFEM 3.3.2
+	* mesh::GetBdrElementAdjacentElement is wrapped to return two integers	
 	
 2017 10.10	chypre.py
-	CHypreMat::__add__ and 	CHypreMat::__sub__ was calling CHypreMat without
-	specifing col_parts. 
+	* CHypreMat::__add__ and CHypreMat::__sub__ was calling CHypreMat without
+ 	  specifing col_parts. 
 
 	

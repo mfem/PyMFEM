@@ -13,6 +13,7 @@
 %}
 %include  "config/_config.hpp" // include mfem MACRO
 
+
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 
@@ -20,6 +21,7 @@
 import_array();
 %}
 %include "../common/cpointers.i"
+%import "../common/ignore_common_functions.i"
 
 %import vector.i
 %import sparsemat.i
@@ -152,10 +154,10 @@ typedef int HYPRE_Int;
 
 %newobject mfem::HypreParVector::GlobalVector;
 %newobject mfem::HypreParMatrix::Transpose;
-%newobject mfem::Add;
-%rename(add_hypre) mfem::Add;
 %newobject mfem::ParMult;
-%newobject mfem::RAP;
+
+//%newobject mfem::Add;
+//%newobject mfem::RAP;
 
 %include "linalg/hypre.hpp"
 

@@ -15,16 +15,18 @@ import_array();
 %import "operators.i"
 %import "matrix.i"
 %import "densemat.i"
-%ignore Walk;
+%import "ostream_typemap.i"
+%import "../common/ignore_common_functions.i"
 
+%ignore Walk;
 %pythonappend mfem::SparseMatrix::operator*= %{
-    val.thisown = self.thisown
+    val.thisown = 0
+    return self
 %}
 %pythonappend mfem::SparseMatrix::operator+= %{
-    val.thisown = self.thisown
+    val.thisown = 0
+    return self
 %}
-
-%import "ostream_typemap.i"
 
 // RAP_P, RAP_R replaces RAP, since RAP has two definition one accept
 // pointer and the other accept reference. From Python, two
@@ -42,7 +44,6 @@ import_array();
     return RAP(Rt, A, P);
   }
 %}
-%rename(add_sparse) mfem::Add;
 %include "linalg/sparsemat.hpp"
 
 %extend mfem::SparseMatrix {

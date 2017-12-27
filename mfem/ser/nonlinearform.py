@@ -158,10 +158,25 @@ class NonlinearForm(operators.Operator):
 
 
     def AddInteriorFaceIntegrator(self, nlfi):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi.thisown=0 
+
+
         return _nonlinearform.NonlinearForm_AddInteriorFaceIntegrator(self, nlfi)
 
+
     def AddBdrFaceIntegrator(self, *args):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi = args[0]
+        nlfi.thisown=0 
+
+
         return _nonlinearform.NonlinearForm_AddBdrFaceIntegrator(self, *args)
+
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs=None):
         return _nonlinearform.NonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)

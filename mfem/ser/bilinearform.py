@@ -207,7 +207,11 @@ class BilinearForm(matrix.Matrix):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
-        this = _bilinearform.new_BilinearForm(*args)
+        if self.__class__ == BilinearForm:
+            _self = None
+        else:
+            _self = self
+        this = _bilinearform.new_BilinearForm(_self, *args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -228,6 +232,8 @@ class BilinearForm(matrix.Matrix):
     def EnableHybridization(self, constr_space, constr_integ, ess_tdof_list):
         val = _bilinearform.BilinearForm_EnableHybridization(self, constr_space, constr_integ, ess_tdof_list)
 
+        if not hasattr(self, "_integrators"): self._integrators = []
+        self._integrators.append(constr_integ)
         constr_integ.thisown = 0
 
 
@@ -413,6 +419,10 @@ class BilinearForm(matrix.Matrix):
         return _bilinearform.BilinearForm_FESpace(self, *args)
     __swig_destroy__ = _bilinearform.delete_BilinearForm
     __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _bilinearform.disown_BilinearForm(self)
+        return weakref_proxy(self)
 BilinearForm_swigregister = _bilinearform.BilinearForm_swigregister
 BilinearForm_swigregister(BilinearForm)
 
@@ -491,6 +501,9 @@ class MixedBilinearForm(matrix.Matrix):
 
         return _bilinearform.MixedBilinearForm_AddBoundaryIntegrator(self, bfi)
 
+
+    def AddBoundaryDomainIntegrator(self, bdbfi):
+        return _bilinearform.MixedBilinearForm_AddBoundaryDomainIntegrator(self, bdbfi)
 
     def AddTraceFaceIntegrator(self, bfi):
 

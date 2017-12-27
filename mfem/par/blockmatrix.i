@@ -15,5 +15,6 @@ import_array();
 %import "matrix.i"
 %import "sparsemat.i"
 %import "ostream_typemap.i"
+%import "../common/ignore_common_functions.i"
 
 %include "linalg/blockmatrix.hpp"

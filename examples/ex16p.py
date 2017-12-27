@@ -25,7 +25,7 @@ from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
 from mfem import path
-from mfem.par import intArray, add_vector, add_sparse
+from mfem.par import intArray, add_vector
 import mfem.par as mfem
 from mpi4py import MPI
 
@@ -88,7 +88,7 @@ class ConductionOperator(mfem.PyTimeDependentOperator):
         #    du_dt = M^{-1}*[-K(u + dt*du_dt)]
         #    for du_dt
         if self.T is None:
-            self.T = mfem.add_hypre(1.0, self.Mmat, dt, self.Kmat)
+            self.T = mfem.Add(1.0, self.Mmat, dt, self.Kmat)
             current_dt = dt;
             self.T_solver.SetOperator(self.T)
         self.Kmat.Mult(u, self.z)

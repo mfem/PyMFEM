@@ -224,9 +224,6 @@ class DenseMatrix(matrix.Matrix):
     def Add(self, c, A):
         return _densemat.DenseMatrix_Add(self, c, A)
 
-    def Assign(self, *args):
-        return _densemat.DenseMatrix_Assign(self, *args)
-
     def __iadd__(self, v):
         ret = _densmat.DenseMatrix___iadd__(self, v)
         ret.thisown = self.thisown
@@ -379,6 +376,15 @@ class DenseMatrix(matrix.Matrix):
     __swig_destroy__ = _densemat.delete_DenseMatrix
     __del__ = lambda self: None
 
+    def Assign(self, *args):
+        val = _densemat.DenseMatrix_Assign(self, *args)
+
+        return self
+
+
+        return val
+
+
     def __getitem__(self, *args):
         i, j = args[0][0], args[0][1]
         return _densemat.DenseMatrix___getitem__(self, i, j)
@@ -396,14 +402,6 @@ class DenseMatrix(matrix.Matrix):
 DenseMatrix_swigregister = _densemat.DenseMatrix_swigregister
 DenseMatrix_swigregister(DenseMatrix)
 
-
-def add_dense(*args):
-    return _densemat.add_dense(*args)
-add_dense = _densemat.add_dense
-
-def Mult(b, c, a):
-    return _densemat.Mult(b, c, a)
-Mult = _densemat.Mult
 
 def AddMult(b, c, a):
     return _densemat.AddMult(b, c, a)
@@ -708,6 +706,41 @@ class DenseTensor(_object):
         return _densemat.DenseTensor_MemoryUsage(self)
     __swig_destroy__ = _densemat.delete_DenseTensor
     __del__ = lambda self: None
+
+    def Assign(self, c):
+        val = _densemat.DenseTensor_Assign(self, c)
+
+        return self
+
+
+        return val
+
+
+    def __getitem__(self, *args):
+      try:
+         check = len(args[0]) == 3
+      except:
+         check = False
+      if check:
+         i, j, k = args[0][0], args[0][1], args[0][2]
+         return _densemat.DenseTensor___getitem__(self, i, j, k)
+      try:
+         check = int(args[0])
+      except:
+         check = -1
+      if check >= 0:     
+         return _densemat.DenseTensor___getitem__(self, check)
+
+
+
+    def __setitem__(self, *args):
+        i, j, k, v = args[0][0], args[0][1], args[0][2], args[1]
+        return _densemat.DenseTensor___setitem__(self, i, j, k, v)
+
+
+
+    def GetDataArray(self):
+        return _densemat.DenseTensor_GetDataArray(self)
 DenseTensor_swigregister = _densemat.DenseTensor_swigregister
 DenseTensor_swigregister(DenseTensor)
 

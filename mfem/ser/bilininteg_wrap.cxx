@@ -3769,6 +3769,59 @@ namespace swig {
 #include "numpy/arrayobject.h"      
 
 
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+#if PY_VERSION_HEX < 0x03000000
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = (double) PyInt_AsLong(obj);
+    return SWIG_OK;
+#endif
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
@@ -3828,59 +3881,6 @@ SWIG_FromCharPtr(const char *cptr)
 }
 
 
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_double (PyObject *obj, double *val)
-{
-  int res = SWIG_TypeError;
-  if (PyFloat_Check(obj)) {
-    if (val) *val = PyFloat_AsDouble(obj);
-    return SWIG_OK;
-#if PY_VERSION_HEX < 0x03000000
-  } else if (PyInt_Check(obj)) {
-    if (val) *val = (double) PyInt_AsLong(obj);
-    return SWIG_OK;
-#endif
-  } else if (PyLong_Check(obj)) {
-    double v = PyLong_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    double d = PyFloat_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = d;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      long v = PyLong_AsLong(obj);
-      if (!PyErr_Occurred()) {
-	if (val) *val = v;
-	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
-      } else {
-	PyErr_Clear();
-      }
-    }
-  }
-#endif
-  return res;
-}
-
-
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -3888,9 +3888,420 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 
 #include "bilininteg_wrap.h"
 
+SwigDirector_BilinearFormIntegrator::SwigDirector_BilinearFormIntegrator(PyObject *self, mfem::IntegrationRule const *ir): mfem::BilinearFormIntegrator(ir), Swig::Director(self) {
+  SWIG_DIRECTOR_RGTR((mfem::BilinearFormIntegrator *)this, this); 
+}
+
+
+
+
+void SwigDirector_BilinearFormIntegrator::AssembleElementMatrix(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::DenseMatrix &elmat) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&Trans), SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&elmat), SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "AssembleElementMatrix";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"AssembleElementMatrix", (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_BilinearFormIntegrator::AssembleElementMatrix2(mfem::FiniteElement const &trial_fe, mfem::FiniteElement const &test_fe, mfem::ElementTransformation &Trans, mfem::DenseMatrix &elmat) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&trial_fe), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&test_fe), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&Trans), SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(&elmat), SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 1;
+  const char *const swig_method_name = "AssembleElementMatrix2";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"AssembleElementMatrix2", (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_BilinearFormIntegrator::AssembleFaceMatrix(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Trans, mfem::DenseMatrix &elmat) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el1), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&el2), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&Trans), SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(&elmat), SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 2;
+  const char *const swig_method_name = "AssembleFaceMatrix";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"AssembleFaceMatrix", (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_BilinearFormIntegrator::AssembleFaceMatrix(mfem::FiniteElement const &trial_face_fe, mfem::FiniteElement const &test_fe1, mfem::FiniteElement const &test_fe2, mfem::FaceElementTransformations &Trans, mfem::DenseMatrix &elmat) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&trial_face_fe), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&test_fe1), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&test_fe2), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(&Trans), SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  swig::SwigVar_PyObject obj4;
+  obj4 = SWIG_NewPointerObj(SWIG_as_voidptr(&elmat), SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 3;
+  const char *const swig_method_name = "AssembleFaceMatrix";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"AssembleFaceMatrix", (char *)"(OOOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_BilinearFormIntegrator::AssembleElementVector(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::Vector &elvect) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&Tr), SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&elfun), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(&elvect), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 4;
+  const char *const swig_method_name = "AssembleElementVector";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"AssembleElementVector", (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_BilinearFormIntegrator::AssembleElementGrad(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&Tr), SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&elfun), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(&elmat), SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 5;
+  const char *const swig_method_name = "AssembleElementGrad";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"AssembleElementGrad", (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_BilinearFormIntegrator::AssembleFaceGrad(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el1), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&el2), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&Tr), SWIGTYPE_p_mfem__FaceElementTransformations,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(&elfun), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj4;
+  obj4 = SWIG_NewPointerObj(SWIG_as_voidptr(&elmat), SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char *const swig_method_name = "AssembleFaceGrad";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"AssembleFaceGrad", (char *)"(OOOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_BilinearFormIntegrator::ComputeElementFlux(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::Vector &u, mfem::FiniteElement const &fluxelem, mfem::Vector &flux, int with_coef) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&el), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&Trans), SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&u), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(&fluxelem), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj4;
+  obj4 = SWIG_NewPointerObj(SWIG_as_voidptr(&flux), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj5;
+  obj5 = SWIG_From_int(static_cast< int >(with_coef));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char *const swig_method_name = "ComputeElementFlux";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"ComputeElementFlux", (char *)"(OOOOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+double SwigDirector_BilinearFormIntegrator::ComputeFluxEnergy(mfem::FiniteElement const &fluxelem, mfem::ElementTransformation &Trans, mfem::Vector &flux, mfem::Vector *d_energy) {
+  double c_result;
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&fluxelem), SWIGTYPE_p_mfem__FiniteElement,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&Trans), SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_NewPointerObj(SWIG_as_voidptr(&flux), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(d_energy), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearFormIntegrator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 9;
+  const char *const swig_method_name = "ComputeFluxEnergy";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *)"ComputeFluxEnergy", (char *)"(OOOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  double swig_val;
+  int swig_res = SWIG_AsVal_double(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""double""'");
+  }
+  c_result = static_cast< double >(swig_val);
+  return (double) c_result;
+}
+
+
+SwigDirector_BilinearFormIntegrator::~SwigDirector_BilinearFormIntegrator() {
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_new_BilinearFormIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::BilinearFormIntegrator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_BilinearFormIntegrator",&obj0,&obj1)) SWIG_fail;
+  arg1 = obj0;
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BilinearFormIntegrator" "', argument " "2"" of type '" "mfem::IntegrationRule const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (mfem::BilinearFormIntegrator *)new SwigDirector_BilinearFormIntegrator(arg1,(mfem::IntegrationRule const *)arg2); 
+      } else {
+        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
+        SWIG_fail;
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BilinearFormIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::BilinearFormIntegrator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_BilinearFormIntegrator",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  {
+    try {
+      if ( arg1 != Py_None ) {
+        /* subclassed */
+        result = (mfem::BilinearFormIntegrator *)new SwigDirector_BilinearFormIntegrator(arg1); 
+      } else {
+        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
+        SWIG_fail;
+      }
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BilinearFormIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      return _wrap_new_BilinearFormIntegrator__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    _v = (argv[0] != 0);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__IntegrationRule, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_BilinearFormIntegrator__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_BilinearFormIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::BilinearFormIntegrator::BilinearFormIntegrator(mfem::IntegrationRule const *)\n"
+    "    mfem::BilinearFormIntegrator::BilinearFormIntegrator(PyObject *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::BilinearFormIntegrator *arg1 = (mfem::BilinearFormIntegrator *) 0 ;
@@ -3909,6 +4320,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementMatrix(PyObject
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:BilinearFormIntegrator_AssembleElementMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -3940,13 +4353,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementMatrix(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_AssembleElementMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
-  {
-    try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+        } else {
+          (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3977,6 +4400,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementMatrix2(PyObjec
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOO:BilinearFormIntegrator_AssembleElementMatrix2",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4016,13 +4441,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementMatrix2(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_AssembleElementMatrix2" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  {
-    try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
+        } else {
+          (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4053,6 +4488,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceMatrix__SWIG_0(PyO
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOO:BilinearFormIntegrator_AssembleFaceMatrix",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4092,13 +4529,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceMatrix__SWIG_0(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_AssembleFaceMatrix" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  {
-    try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
+        } else {
+          (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4133,6 +4580,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceMatrix__SWIG_1(PyO
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOOO:BilinearFormIntegrator_AssembleFaceMatrix",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4180,13 +4629,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceMatrix__SWIG_1(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_AssembleFaceMatrix" "', argument " "6"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
-  {
-    try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
+        } else {
+          (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4297,6 +4756,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementVector(PyObject
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOO:BilinearFormIntegrator_AssembleElementVector",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4336,13 +4797,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementVector(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_AssembleElementVector" "', argument " "5"" of type '" "mfem::Vector &""'"); 
   }
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
-  {
-    try {
-      (arg1)->AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
+        } else {
+          (arg1)->AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4373,6 +4844,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementGrad(PyObject *
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOO:BilinearFormIntegrator_AssembleElementGrad",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4412,13 +4885,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementGrad(PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_AssembleElementGrad" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  {
-    try {
-      (arg1)->AssembleElementGrad((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::AssembleElementGrad((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
+        } else {
+          (arg1)->AssembleElementGrad((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4453,6 +4936,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceGrad(PyObject *SWI
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOOO:BilinearFormIntegrator_AssembleFaceGrad",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4500,13 +4985,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceGrad(PyObject *SWI
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_AssembleFaceGrad" "', argument " "6"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
-  {
-    try {
-      (arg1)->AssembleFaceGrad((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,(mfem::Vector const &)*arg5,*arg6); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::AssembleFaceGrad((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,(mfem::Vector const &)*arg5,*arg6);
+        } else {
+          (arg1)->AssembleFaceGrad((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,(mfem::Vector const &)*arg5,*arg6);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4543,6 +5038,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux__SWIG_0(PyO
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
   PyObject * obj6 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:BilinearFormIntegrator_ComputeElementFlux",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4594,13 +5091,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux__SWIG_0(PyO
     PyArray_PyIntAsInt(obj6);  
     arg7 = PyInt_AsLong(obj6);
   }
-  {
-    try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
+        } else {
+          (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4635,6 +5142,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux__SWIG_1(PyO
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
   PyObject * obj5 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOOO:BilinearFormIntegrator_ComputeElementFlux",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
@@ -4682,13 +5191,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux__SWIG_1(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_ComputeElementFlux" "', argument " "6"" of type '" "mfem::Vector &""'"); 
   }
   arg6 = reinterpret_cast< mfem::Vector * >(argp6);
-  {
-    try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::BilinearFormIntegrator::ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6);
+        } else {
+          (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4814,6 +5333,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeFluxEnergy__SWIG_0(PyOb
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   PyObject * obj4 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   double result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOO:BilinearFormIntegrator_ComputeFluxEnergy",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
@@ -4851,13 +5372,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeFluxEnergy__SWIG_0(PyOb
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BilinearFormIntegrator_ComputeFluxEnergy" "', argument " "5"" of type '" "mfem::Vector *""'"); 
   }
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
-  {
-    try {
-      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (double)(arg1)->mfem::BilinearFormIntegrator::ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5);
+        } else {
+          result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -4884,6 +5415,8 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeFluxEnergy__SWIG_1(PyOb
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
   double result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:BilinearFormIntegrator_ComputeFluxEnergy",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
@@ -4916,13 +5449,23 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeFluxEnergy__SWIG_1(PyOb
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearFormIntegrator_ComputeFluxEnergy" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    try {
-      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (double)(arg1)->mfem::BilinearFormIntegrator::ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+        } else {
+          result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -5025,6 +5568,31 @@ SWIGINTERN PyObject *_wrap_delete_BilinearFormIntegrator(PyObject *SWIGUNUSEDPAR
       SWIG_fail; 
     }    
   }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_disown_BilinearFormIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BilinearFormIntegrator *arg1 = (mfem::BilinearFormIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:disown_BilinearFormIntegrator",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_BilinearFormIntegrator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
+  {
+    Swig::Director *director = SWIG_DIRECTOR_CAST(arg1);
+    if (director) director->swig_disown();
+  }
+  
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -23967,6 +24535,7 @@ SWIGINTERN PyObject *VectorInnerProductInterpolator_swigregister(PyObject *SWIGU
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"new_BilinearFormIntegrator", _wrap_new_BilinearFormIntegrator, METH_VARARGS, NULL},
 	 { (char *)"BilinearFormIntegrator_AssembleElementMatrix", _wrap_BilinearFormIntegrator_AssembleElementMatrix, METH_VARARGS, NULL},
 	 { (char *)"BilinearFormIntegrator_AssembleElementMatrix2", _wrap_BilinearFormIntegrator_AssembleElementMatrix2, METH_VARARGS, NULL},
 	 { (char *)"BilinearFormIntegrator_AssembleFaceMatrix", _wrap_BilinearFormIntegrator_AssembleFaceMatrix, METH_VARARGS, NULL},
@@ -23976,6 +24545,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"BilinearFormIntegrator_ComputeElementFlux", _wrap_BilinearFormIntegrator_ComputeElementFlux, METH_VARARGS, NULL},
 	 { (char *)"BilinearFormIntegrator_ComputeFluxEnergy", _wrap_BilinearFormIntegrator_ComputeFluxEnergy, METH_VARARGS, NULL},
 	 { (char *)"delete_BilinearFormIntegrator", _wrap_delete_BilinearFormIntegrator, METH_VARARGS, NULL},
+	 { (char *)"disown_BilinearFormIntegrator", _wrap_disown_BilinearFormIntegrator, METH_VARARGS, NULL},
 	 { (char *)"BilinearFormIntegrator_swigregister", BilinearFormIntegrator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_TransposeIntegrator", _wrap_new_TransposeIntegrator, METH_VARARGS, NULL},
 	 { (char *)"TransposeIntegrator_AssembleElementMatrix", _wrap_TransposeIntegrator_AssembleElementMatrix, METH_VARARGS, NULL},

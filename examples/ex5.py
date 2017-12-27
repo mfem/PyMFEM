@@ -105,9 +105,9 @@ bVarf.AddDomainIntegrator( mfem.VectorFEDivergenceIntegrator())
 bVarf.Assemble()
 bVarf.Finalize()
 B = bVarf.SpMat()
-print B.thisown
 B *= -1;
-BT = mfem.sparsemat.Transpose(B)
+print B
+BT = mfem.Transpose(B)
 print B.thisown
 
 darcyOp = mfem.BlockOperator(block_offsets)
@@ -115,12 +115,12 @@ darcyOp.SetBlock(0,0, M)
 darcyOp.SetBlock(0,1, BT)
 darcyOp.SetBlock(1,0, B)
 
-MinvBt = mfem.sparsemat.Transpose(B)
+MinvBt = mfem.Transpose(B)
 Md = mfem.Vector(M.Height())
 M.GetDiag(Md)
 for i in range(Md.Size()):
    MinvBt.ScaleRow(i, 1/Md[i])
-S = mfem.sparsemat.Mult(B, MinvBt)
+S = mfem.Mult(B, MinvBt)
 
 invM = mfem.DSmoother(M)
 invS = mfem.GSSmoother(S)

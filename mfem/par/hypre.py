@@ -265,9 +265,6 @@ class HypreParVector(vector.Vector):
     def GlobalVector(self):
         return _hypre.HypreParVector_GlobalVector(self)
 
-    def Assign(self, *args):
-        return _hypre.HypreParVector_Assign(self, *args)
-
     def SetData(self, _data):
         return _hypre.HypreParVector_SetData(self, _data)
 
@@ -284,10 +281,6 @@ class HypreParVector(vector.Vector):
 HypreParVector_swigregister = _hypre.HypreParVector_swigregister
 HypreParVector_swigregister(HypreParVector)
 
-
-def InnerProduct(*args):
-    return _hypre.InnerProduct(*args)
-InnerProduct = _hypre.InnerProduct
 
 def ParNormlp(vec, p, comm):
     return _hypre.ParNormlp(vec, p, comm)
@@ -460,10 +453,6 @@ HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister
 HypreParMatrix_swigregister(HypreParMatrix)
 
 
-def add_hypre(alpha, A, beta, B):
-    return _hypre.add_hypre(alpha, A, beta, B)
-add_hypre = _hypre.add_hypre
-
 def ParMult(A, B):
     return _hypre.ParMult(A, B)
 ParMult = _hypre.ParMult
@@ -471,10 +460,6 @@ ParMult = _hypre.ParMult
 def ParAdd(A, B):
     return _hypre.ParAdd(A, B)
 ParAdd = _hypre.ParAdd
-
-def RAP(*args):
-    return _hypre.RAP(*args)
-RAP = _hypre.RAP
 
 def EliminateBC(A, Ae, ess_dof_list, X, B):
     return _hypre.EliminateBC(A, Ae, ess_dof_list, X, B)

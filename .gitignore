@@ -12,3 +12,4 @@ dist
 test/*
 #test/*.py
 *.egg-info
+*.py#
