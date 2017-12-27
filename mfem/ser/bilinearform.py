@@ -502,9 +502,6 @@ class MixedBilinearForm(matrix.Matrix):
         return _bilinearform.MixedBilinearForm_AddBoundaryIntegrator(self, bfi)
 
 
-    def AddBoundaryDomainIntegrator(self, bdbfi):
-        return _bilinearform.MixedBilinearForm_AddBoundaryDomainIntegrator(self, bdbfi)
-
     def AddTraceFaceIntegrator(self, bfi):
 
         if not hasattr(self, "_integrators"): self._integrators = []

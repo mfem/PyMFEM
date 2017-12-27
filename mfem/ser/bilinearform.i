@@ -28,7 +28,7 @@ import_array();
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
-
+%ignore mfem::MixedBilinearForm::AddBoundaryDomainIntegrator;
 %feature("director") mfem::BilinearForm;
 
  //%include "fem/coefficient.hpp"

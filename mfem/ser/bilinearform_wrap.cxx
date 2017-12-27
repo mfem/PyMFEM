@@ -10849,43 +10849,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddBoundaryDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:MixedBilinearForm_AddBoundaryDomainIntegrator",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AddBoundaryDomainIntegrator" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_AddBoundaryDomainIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp2);
-  {
-    try {
-      (arg1)->AddBoundaryDomainIntegrator(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddTraceFaceIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
@@ -11752,7 +11715,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MixedBilinearForm_LoseMat", _wrap_MixedBilinearForm_LoseMat, METH_VARARGS, NULL},
 	 { (char *)"MixedBilinearForm_AddDomainIntegrator", _wrap_MixedBilinearForm_AddDomainIntegrator, METH_VARARGS, NULL},
 	 { (char *)"MixedBilinearForm_AddBoundaryIntegrator", _wrap_MixedBilinearForm_AddBoundaryIntegrator, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_AddBoundaryDomainIntegrator", _wrap_MixedBilinearForm_AddBoundaryDomainIntegrator, METH_VARARGS, NULL},
 	 { (char *)"MixedBilinearForm_AddTraceFaceIntegrator", _wrap_MixedBilinearForm_AddTraceFaceIntegrator, METH_VARARGS, NULL},
 	 { (char *)"MixedBilinearForm_GetDBFI", _wrap_MixedBilinearForm_GetDBFI, METH_VARARGS, NULL},
 	 { (char *)"MixedBilinearForm_GetBBFI", _wrap_MixedBilinearForm_GetBBFI, METH_VARARGS, NULL},

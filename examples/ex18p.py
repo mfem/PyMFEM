@@ -142,13 +142,13 @@ mom = mfem.ParGridFunction(dfes, u_block,  offsets[1])
 
 #  Initialize the state.
 u0 = InitialCondition(num_equation)
-sol = mfem.GridFunction(vfes, u_block.GetData())
+sol = mfem.ParGridFunction(vfes, u_block.GetData())
 sol.ProjectCoefficient(u0)
 
 smyid = '{:0>6d}'.format(myid)
 pmesh.PrintToFile("vortex-mesh."+smyid, 8)
 for k in range(num_equation):
-    uk = mfem.GridFunction(fes, u_block.GetBlock(k).GetData())
+    uk = mfem.ParGridFunction(fes, u_block.GetBlock(k).GetData())
     sol_name = "vortex-" + str(k) + "-init."+smyid
     uk.SaveToFile(sol_name, 8)            
 
@@ -228,7 +228,8 @@ for k in range(num_equation):
     uk.SaveToFile(sol_name, 8)            
 
 # 12. Compute the L2 solution error summed for all components.
-if (t_final == 2.0):
+#if (t_final == 2.0):
+if True:
    error = sol.ComputeLpError(2., u0)
    if myid==0: print("Solution error: " + str(error))
     

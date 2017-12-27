@@ -30,7 +30,7 @@ import_array();
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
-
+%ignore mfem::MixedBilinearForm::AddBoundaryDomainIntegrator;
 %feature("director") mfem::BilinearForm;
 
 namespace mfem { 
