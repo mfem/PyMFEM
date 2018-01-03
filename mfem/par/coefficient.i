@@ -49,7 +49,7 @@ import_array();
 
 //%import "pmesh.i"
 %ignore Function;
-%ignore DeltaCoefficient;
+//%ignore DeltaCoefficient;
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 

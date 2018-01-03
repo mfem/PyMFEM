@@ -428,7 +428,7 @@ in this repository are generated using SWIG 3.0.8
   
 -- Known issues --
 
-  PyMFEM is a on-going effort. Not all MFEM functioality is propary
+  PyMFEM is an on-going effort. Not all MFEM functioality is propary
   wrapped yet. Presnetly all serial/parallel examples avaiable in
   the top-level mfem/example directory are rewritten in python.
   This would be sufficient for certain projects, but for other projects,

@@ -276,6 +276,69 @@ class TransformedCoefficient(Coefficient):
 TransformedCoefficient_swigregister = _coefficient.TransformedCoefficient_swigregister
 TransformedCoefficient_swigregister(TransformedCoefficient)
 
+class DeltaCoefficient(Coefficient):
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DeltaCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, DeltaCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _coefficient.new_DeltaCoefficient(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def SetDeltaCenter(self, center):
+        return _coefficient.DeltaCoefficient_SetDeltaCenter(self, center)
+
+    def SetScale(self, _s):
+        return _coefficient.DeltaCoefficient_SetScale(self, _s)
+
+    def SetFunction(self, f):
+        return _coefficient.DeltaCoefficient_SetFunction(self, f)
+
+    def SetTol(self, _tol):
+        return _coefficient.DeltaCoefficient_SetTol(self, _tol)
+
+    def SetWeight(self, w):
+
+        w.thisown=0 
+
+
+        return _coefficient.DeltaCoefficient_SetWeight(self, w)
+
+
+    def Center(self):
+        return _coefficient.DeltaCoefficient_Center(self)
+
+    def Scale(self):
+        return _coefficient.DeltaCoefficient_Scale(self)
+
+    def Tol(self):
+        return _coefficient.DeltaCoefficient_Tol(self)
+
+    def Weight(self):
+        return _coefficient.DeltaCoefficient_Weight(self)
+
+    def GetDeltaCenter(self, center):
+        return _coefficient.DeltaCoefficient_GetDeltaCenter(self, center)
+
+    def EvalDelta(self, T, ip):
+        return _coefficient.DeltaCoefficient_EvalDelta(self, T, ip)
+
+    def Eval(self, T, ip):
+        return _coefficient.DeltaCoefficient_Eval(self, T, ip)
+    __swig_destroy__ = _coefficient.delete_DeltaCoefficient
+    __del__ = lambda self: None
+DeltaCoefficient_swigregister = _coefficient.DeltaCoefficient_swigregister
+DeltaCoefficient_swigregister(DeltaCoefficient)
+
 class RestrictedCoefficient(Coefficient):
     __swig_setmethods__ = {}
     for _s in [Coefficient]:
