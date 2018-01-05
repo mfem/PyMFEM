@@ -1,5 +1,11 @@
-Change Log.
 
+	<<<  Change Log. >>>
+	
+2018 01.03
+	* fiexed mfem.par.InnerProduct. It was overwriten by InnerProduct defined in Vector
+	* EmptySquarePyMat and HStackPyVec are added in chypre.py
+	* DeltaCoefficient is not ignored anymore.
+	
 2017 12.27
         * Overloaded functions whose definitionsare distributed among several .hpp are
 	  handled by common_functions.i. Such functions include Add, Mult, Transpose,
