@@ -330,10 +330,6 @@ def Distance(x, y, n):
     return _vector.Distance(x, y, n)
 Distance = _vector.Distance
 
-def InnerProduct(x, y):
-    return _vector.InnerProduct(x, y)
-InnerProduct = _vector.InnerProduct
-
 Vector.__idiv__ = Vector.__itruediv__
 
 # This file is compatible with both classic and new-style classes.

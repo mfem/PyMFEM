@@ -6844,43 +6844,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InnerProduct(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::Vector *arg1 = 0 ;
-  mfem::Vector *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  double result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:InnerProduct",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InnerProduct" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InnerProduct" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InnerProduct" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InnerProduct" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  result = (double)mfem::InnerProduct((mfem::Vector const &)*arg1,(mfem::Vector const &)*arg2);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"add_vector", _wrap_add_vector, METH_VARARGS, NULL},
@@ -6938,7 +6901,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"IsFinite", _wrap_IsFinite, METH_VARARGS, NULL},
 	 { (char *)"DistanceSquared", _wrap_DistanceSquared, METH_VARARGS, NULL},
 	 { (char *)"Distance", _wrap_Distance, METH_VARARGS, NULL},
-	 { (char *)"InnerProduct", _wrap_InnerProduct, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
