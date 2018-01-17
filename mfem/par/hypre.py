@@ -103,12 +103,14 @@ except __builtin__.Exception:
 
 
 MFEM_VERSION = _hypre.MFEM_VERSION
+MFEM_VERSION_STRING = _hypre.MFEM_VERSION_STRING
 MFEM_VERSION_TYPE = _hypre.MFEM_VERSION_TYPE
 MFEM_VERSION_TYPE_RELEASE = _hypre.MFEM_VERSION_TYPE_RELEASE
 MFEM_VERSION_TYPE_DEVELOPMENT = _hypre.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _hypre.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _hypre.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _hypre.MFEM_VERSION_PATCH
+MFEM_GIT_STRING = _hypre.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _hypre.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _hypre.MFEM_HYPRE_VERSION
 class intp(_object):
@@ -145,6 +147,41 @@ intp_swigregister(intp)
 def intp_frompointer(t):
     return _hypre.intp_frompointer(t)
 intp_frompointer = _hypre.intp_frompointer
+
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _hypre.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _hypre.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _hypre.doublep_assign(self, value)
+
+    def value(self):
+        return _hypre.doublep_value(self)
+
+    def cast(self):
+        return _hypre.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_hypre.doublep_frompointer)
+    else:
+        frompointer = _hypre.doublep_frompointer
+doublep_swigregister = _hypre.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _hypre.doublep_frompointer(t)
+doublep_frompointer = _hypre.doublep_frompointer
 
 import vector
 import array
@@ -228,9 +265,6 @@ class HypreParVector(vector.Vector):
     def GlobalVector(self):
         return _hypre.HypreParVector_GlobalVector(self)
 
-    def Assign(self, *args):
-        return _hypre.HypreParVector_Assign(self, *args)
-
     def SetData(self, _data):
         return _hypre.HypreParVector_SetData(self, _data)
 
@@ -247,10 +281,6 @@ class HypreParVector(vector.Vector):
 HypreParVector_swigregister = _hypre.HypreParVector_swigregister
 HypreParVector_swigregister(HypreParVector)
 
-
-def InnerProduct(*args):
-    return _hypre.InnerProduct(*args)
-InnerProduct = _hypre.InnerProduct
 
 def ParNormlp(vec, p, comm):
     return _hypre.ParNormlp(vec, p, comm)
@@ -423,10 +453,6 @@ HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister
 HypreParMatrix_swigregister(HypreParMatrix)
 
 
-def add_hypre(alpha, A, beta, B):
-    return _hypre.add_hypre(alpha, A, beta, B)
-add_hypre = _hypre.add_hypre
-
 def ParMult(A, B):
     return _hypre.ParMult(A, B)
 ParMult = _hypre.ParMult
@@ -434,10 +460,6 @@ ParMult = _hypre.ParMult
 def ParAdd(A, B):
     return _hypre.ParAdd(A, B)
 ParAdd = _hypre.ParAdd
-
-def RAP(*args):
-    return _hypre.RAP(*args)
-RAP = _hypre.RAP
 
 def EliminateBC(A, Ae, ess_dof_list, X, B):
     return _hypre.EliminateBC(A, Ae, ess_dof_list, X, B)

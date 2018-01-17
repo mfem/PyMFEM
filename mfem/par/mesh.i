@@ -23,8 +23,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 %init %{
 import_array();
 %}
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
 
 %import "matrix.i"
 %import "array.i"
@@ -167,6 +166,14 @@ def GetBdrElementVertices(self, i):
     ivert = intArray()
     _mesh.Mesh_GetBdrElementVertices(self, i, ivert)
     return ivert.ToList()
+%}
+
+%feature("shadow") mfem::Mesh::GetBdrElementAdjacentElement %{
+def GetBdrElementAdjacentElement(self, bdr_el):
+    el = intp()
+    info = intp()  
+    _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+    return el.value(), info.value()
 %}
 
 %feature("shadow") mfem::Mesh::GetElementVertices %{

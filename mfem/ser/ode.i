@@ -2,6 +2,11 @@
 %{
 #include "linalg/ode.hpp"
 #include "pyoperator.hpp"
+#include "numpy/arrayobject.h"    
+%}
+
+%init %{
+import_array();
 %}
 
 %import "vector.i"

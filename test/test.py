@@ -215,7 +215,7 @@ if __name__=="__main__":
         od = os.getcwd()
         files = os.listdir(od)
         for x in files:
-           if x == "test.py": continue
+           if x.endswith(".py"): continue
            if os.path.isdir(x):
                shutil.rmtree(x)
            else:

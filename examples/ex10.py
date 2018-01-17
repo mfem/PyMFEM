@@ -13,7 +13,7 @@ import sys
 from mfem.common.arg_parser import ArgParser
 from mfem import path
 import mfem.ser as mfem
-from mfem.ser import intArray, add_vector, add_sparse
+from mfem.ser import intArray, add_vector, Add
 from os.path import expanduser, join
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
@@ -199,7 +199,7 @@ class BackwardEulerOperator(mfem.PyOperator):
         self.S.AddMult(self.w, y)
 
     def GetGradient(self, k):
-        Jacobian = add_sparse(1.0, self.M.SpMat(), self.dt, self.S.SpMat())
+        Jacobian = Add(1.0, self.M.SpMat(), self.dt, self.S.SpMat())
         self.Jacobian = Jacobian
         add_vector(self.v, self.dt, k, self.w)
         add_vector(self.x, self.dt, self.w, self.z)

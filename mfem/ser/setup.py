@@ -20,7 +20,7 @@ if cxx_ser != '': os.environ['CXX'] = cxx_ser
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["array", "socketstream",
+modules= ["array", "common_functions", "socketstream",
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table", "fe",
           "mesh", "fespace", 

@@ -5,6 +5,12 @@
 #include "config/config.hpp"    
 #include "general/sets.hpp"
 #include "general/communication.hpp"
+#include "numpy/arrayobject.h"
+%}
+
+%include  "config/_config.hpp" // include mfem MACRO
+%init %{
+import_array();
 %}
 
 %include "config/_config.hpp" // include mfem MACRO

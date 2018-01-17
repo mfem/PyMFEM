@@ -8,16 +8,27 @@ from setuptools import setup, find_packages
 # To use a consistent encoding
 from codecs import open
 from os import path, listdir
+import re
 
 here = path.abspath(path.dirname(__file__))
 
 with open(path.join(here, 'README')) as f:
     long_description = f.read()
+    
+def get_version():
+    VERSIONFILE = path.join('mfem', '__init__.py')
+    initfile_lines = open(VERSIONFILE, 'rt').readlines()
+    VSRE = r"^__version__ = ['\"]([^'\"]*)['\"]"
+    for line in initfile_lines:
+        mo = re.search(VSRE, line, re.M)
+        if mo:
+            return mo.group(1)
+    raise RuntimeError('Unable to find version string in %s.' % (VERSIONFILE,))
 
 datafiles = [path.join('data', f) for f in listdir('data')]
 setup(
     name='PyMFEM',
-    version='3.3.0',
+    version=get_version(),
 
     description='PyMFEM',
     long_description=long_description,

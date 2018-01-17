@@ -161,9 +161,6 @@ class Vector(_object):
     def __mul__(self, *args):
         return _vector.Vector___mul__(self, *args)
 
-    def Assign(self, *args):
-        return _vector.Vector_Assign(self, *args)
-
     def __imul__(self, v):
         ret = _vector.Vector___imul__(self, v)
     #ret.thisown = self.thisown
@@ -172,7 +169,7 @@ class Vector(_object):
 
 
 
-    def __idiv__(self, v):
+    def __itruediv__(self, v):
         ret = _vector.Vector___itruediv__(self, v)
     #ret.thisown = self.thisown
         ret.thisown = 0      
@@ -256,6 +253,9 @@ class Vector(_object):
     def Sum(self):
         return _vector.Vector_Sum(self)
 
+    def DistanceSquaredTo(self, p):
+        return _vector.Vector_DistanceSquaredTo(self, p)
+
     def DistanceTo(self, p):
         return _vector.Vector_DistanceTo(self, p)
 
@@ -297,11 +297,20 @@ class Vector(_object):
 
 
 
+    def Assign(self, v):
+        val = _vector.Vector_Assign(self, v)
+
+        return self
+
+
+        return val
+
+
     def __setitem__(self, i, v):
         return _vector.Vector___setitem__(self, i, v)
 
-    def __getitem__(self, i):
-        return _vector.Vector___getitem__(self, i)
+    def __getitem__(self, param):
+        return _vector.Vector___getitem__(self, param)
 
     def GetDataArray(self):
         return _vector.Vector_GetDataArray(self)
@@ -313,13 +322,16 @@ def IsFinite(val):
     return _vector.IsFinite(val)
 IsFinite = _vector.IsFinite
 
+def DistanceSquared(x, y, n):
+    return _vector.DistanceSquared(x, y, n)
+DistanceSquared = _vector.DistanceSquared
+
 def Distance(x, y, n):
     return _vector.Distance(x, y, n)
 Distance = _vector.Distance
 
-def InnerProduct(x, y):
-    return _vector.InnerProduct(x, y)
-InnerProduct = _vector.InnerProduct
+Vector.__idiv__ = Vector.__itruediv__
+
 # This file is compatible with both classic and new-style classes.
 
 
