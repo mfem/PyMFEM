@@ -6,16 +6,19 @@ Test for PyMFEM
   and compare numbers in output.
 
   Usage
-    usage: test.py [-h] [-np NP] [-verbose] [-parallel PARALLEL] [-serial SERIAL]
-               [-clean] [-ex EX]
+    usage: test.py [-h] [-np NP] [-verbose] [-parallel] [-serial]
+               [-clean] [-ex EX] [-mfempdir '../../mfem']
+               [-mfemsdir '../../mfem_ser']
     optional arguments:
       -h, --help          show this help message and exit
       -np NP              Number of processes for MPI
       -verbose            Verbose print out
-      -parallel PARALLEL  Test parallel version
-      -serial SERIAL      Test serial version
-      -clean              Test serial version
+      -parallel           Test parallel version
+      -serial             Test serial version
+      -clean              clean temporary files
       -ex EX              Test one example  python test.py -verbose
+      -mfempdir           Parallel MFEM build directory (examples folder should exist)
+      -mfemsdir           Serial MFEM build directory (examples folder should exist)
 
   Note:
 
@@ -175,10 +178,10 @@ if __name__=="__main__":
                         action = 'store_true', default = False,
                         help='Verbose print out')
     parser.add_argument('-parallel', 
-                        action = 'store', default = True,
+                        action = 'store_true', 
                         help='Test parallel version')
     parser.add_argument('-serial', 
-                        action = 'store', default = True,
+                        action = 'store_true', 
                         help='Test serial version')
     parser.add_argument('-clean', 
                         action = 'store_true', default = False,
@@ -186,6 +189,13 @@ if __name__=="__main__":
     parser.add_argument('-ex', 
                         action = 'store', default = "all",
                         help='Test one example')
+    parser.add_argument('-mfempdir', 
+                        action = 'store', default = "../../mfem",
+                        help='mfem (parallel) directory')
+    parser.add_argument('-mfemsdir', 
+                        action = 'store', default = "../../mfem_ser",
+                        help='mfem (serial) directory')
+    
     
     
     args = parser.parse_args()
@@ -193,16 +203,19 @@ if __name__=="__main__":
 
     np = args.np
     verbose = args.verbose
-    testp = args.parallel
-    tests = args.serial
+    testp = bool(args.parallel)
+    tests = bool(args.serial)
     clean = args.clean
     example = args.ex
+    mfempdir = args.mfempdir
+    mfemsdir = args.mfemsdir    
+
 
     if clean:
         od = os.getcwd()
         files = os.listdir(od)
         for x in files:
-           if x == "test.py": continue
+           if x.endswith(".py"): continue
            if os.path.isdir(x):
                shutil.rmtree(x)
            else:
@@ -210,22 +223,22 @@ if __name__=="__main__":
         sys.exit()
     import mfem
 
-    dir1 = os.path.dirname(os.path.dirname(mfem.__file__))
-    dir2 = os.path.dirname(script_path)
-    if dir1 != dir2:
-        print(bcolors.FAIL+'MFEM module loaded from :' + dir1 + bcolors.ENDC)
-        print(bcolors.FAIL+'This script is meant to test :' + dir2+bcolors.ENDC)        
-        raise AssertionError("mfem module is not correct one, please set PYTHONPATH to load THIS PyMFEM")
+    dir1 = os.path.dirname(script_path)
+    dir2 = os.path.dirname(os.path.dirname(mfem.__file__))
 
-    from mfem.setup_local import mfem as mfem_dir        # mfem library dir
-    from mfem.setup_local import mfemser as mfemser_dir  # mfem library dir
+    print(bcolors.FAIL+'PyMFEM module loaded from :' + dir2 + bcolors.ENDC)
+    print(bcolors.FAIL+'Searching Python Example in :' + dir1 + bcolors.ENDC)
 
+    exdir = os.path.join(dir1, "examples")
+    
+    mfem_dir = os.path.abspath(mfempdir)
+    mfemser_dir = os.path.abspath(mfemsdir)
     mfemp_exes = find_mfem_examples(mfem_dir, serial = False, example = example)
     mfems_exes = find_mfem_examples(mfemser_dir, serial = True,  example = example)    
-    pymfems_exes = [os.path.join(dir1, "examples", os.path.basename(x))+".py"  for x in mfems_exes]
-    pymfemp_exes = [os.path.join(dir1, "examples", os.path.basename(x))+".py"  for x in mfemp_exes]
+    pymfems_exes = [os.path.join(exdir, os.path.basename(x))+".py"  for x in mfems_exes]
+    pymfemp_exes = [os.path.join(exdir, os.path.basename(x))+".py"  for x in mfemp_exes]
 
-    if len(mfems_exes) != 0 and tests:
+    if mfems_exes and tests:
         print(bcolors.BOLD+"Running Serial Version"+bcolors.ENDC)
         results, fails = run_test(mfems_exes, pymfems_exes, serial = True, verbose=verbose)
     else:

@@ -11,6 +11,21 @@
 import_array();
 %}
 
+%exception {
+    try { $action }
+    catch (Swig::DirectorException &e) { SWIG_fail; }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+}
+%feature("director:except") {
+    if ($error != NULL) {
+        throw Swig::DirectorMethodException();
+    }
+}
+
 %import "array.i"
 %import "coefficient.i"
 %import "matrix.i"
@@ -27,11 +42,7 @@ import_array();
 %import "fe.i"
  //%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
 
-%exception {
-    try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
-}
+%feature("director") mfem::BilinearFormIntegrator;
 
 %include "../common/bilininteg_ext.i"
-
 %include "fem/bilininteg.hpp"

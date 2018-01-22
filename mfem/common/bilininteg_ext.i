@@ -8,20 +8,29 @@ namespace mfem {
 %pythonprepend SumIntegrator::AddIntegrator %{
     integ.thisown = 0
 %}
+%pythonappend MassIntegrator::MassIntegrator %{
+    if len(args) > 0: self._coeff = args[0]
+%}
+%pythonappend DiffusionIntegrator::DiffusionIntegrator %{
+    if len(args) > 0: self._coeff = args[0]
+%}
 %pythonappend CurlCurlIntegrator::CurlCurlIntegrator %{
     if len(args) > 0: self._coeff = args[0]
 %}
 %pythonappend VectorFEMassIntegrator::VectorFEMassIntegrator %{
     if len(args) > 0: self._coeff = args[0]
 %}
+%pythonappend MixedVectorGradientIntegrator::MixedVectorGradientIntegrator%{
+    if len(args) > 0: self._coeff = args[0]
+%}
 %pythonappend MixedVectorWeakDivergenceIntegrator::MixedVectorWeakDivergenceIntegrator%{
     if len(args) > 0: self._coeff = args[0]
 %}
 %pythonappend  MixedDotProductIntegrator::MixedDotProductIntegrator%{
-    if len(args) > 0: self._coeff = vq
+    self._coeff = vq
 %}
 %pythonappend  MixedWeakGradDotIntegrator::MixedWeakGradDotIntegrator%{
-    if len(args) > 0: self._coeff = vq
+    self._coeff = vq
 %}
 }  
   

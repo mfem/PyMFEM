@@ -45,7 +45,7 @@ import_array();
 %import "vector.i"
 %import "eltrans.i"
 %ignore Function;
-%ignore DeltaCoefficient;
+//%ignore DeltaCoefficient;
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 
@@ -201,7 +201,7 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
    Vector transip(x, 3);
 
    T.Transform(ip, transip);
-   K.SetSize(vdim);
+   K.SetSize(height, width);   
    if (isTimeDependent)
    {
       _EvalPyT(transip, GetTime(),  K);          

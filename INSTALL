@@ -1,0 +1,8 @@
+INSTALL
+
+0) to change install location, edit INSTALL_PREFIX in Makefile.local
+
+1) build/install
+   make par   (build parallel version)
+   make ser   (build serial version)
+   make pyinstall      (copy files to the place mentioned in Makefile)

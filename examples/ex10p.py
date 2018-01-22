@@ -20,6 +20,8 @@
    See c++ version in the MFEM library for more detail 
 '''
 import sys
+import mfem.par as mfem
+
 from mfem.common.arg_parser import ArgParser
 from os.path import expanduser, join
 import numpy as np
@@ -27,8 +29,7 @@ from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
 from mfem import path
-from mfem.par import intArray, add_vector, add_sparse
-import mfem.par as mfem
+from mfem.par import intArray, add_vector
 from mpi4py import MPI
 
 num_procs = MPI.COMM_WORLD.size
@@ -227,7 +228,7 @@ class ReducedSystemOperator(mfem.PyOperator):
         self.S.TrueAddMult(self.w, y)
 
     def GetGradient(self, k):
-        localJ = mfem.add_sparse(1.0, self.M.SpMat(), self.dt, self.S.SpMat());
+        localJ = mfem.Add(1.0, self.M.SpMat(), self.dt, self.S.SpMat());
         add_vector(self.v, self.dt, k, self.w)
         add_vector(self.x, self.dt, self.w, self.z)
         localJ.Add(self.dt * self.dt,  self.H.GetLocalGradient(self.z))

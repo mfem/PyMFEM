@@ -1,15 +1,19 @@
+
 %module hypre
 %{
 #include <mpi.h>
 #include <Python.h>
 #include "fem/gridfunc.hpp"
-#include "fem/linearform.hpp"  
+#include "fem/linearform.hpp"
+#include "fem/pfespace.hpp"    
 #include "config/config.hpp"        
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"           
+#include "pyoperator.hpp"
+#include "iostream_typemap.hpp"    
 %}
 %include  "config/_config.hpp" // include mfem MACRO
+
 
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
@@ -17,8 +21,9 @@
 %init %{
 import_array();
 %}
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
+%import "../common/ignore_common_functions.i"
+
 %import vector.i
 %import sparsemat.i
 %import fespace.i
@@ -155,10 +160,10 @@ typedef int HYPRE_Int;
 
 %newobject mfem::HypreParVector::GlobalVector;
 %newobject mfem::HypreParMatrix::Transpose;
-%newobject mfem::Add;
-%rename(add_hypre) mfem::Add;
 %newobject mfem::ParMult;
-%newobject mfem::RAP;
+
+//%newobject mfem::Add;
+//%newobject mfem::RAP;
 
 %include "linalg/hypre.hpp"
 
@@ -167,7 +172,7 @@ def parvec__repr__(self):
     return "HypreParVector ("+str(self.GlobalSize())+")"
 def parvec__del__(self):
     if hasattr(self, "_linked_array"):
-        self._linked_arry = None
+        self._linked_array = None
 def parmat__repr__(self):
     shape = (self.GetGlobalNumRows(), self.GetGlobalNumCols())
     lshape = (self.GetNumRows(), self.GetNumCols())  	       

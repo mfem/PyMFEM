@@ -17,6 +17,7 @@
 %init %{
 import_array();
 %}
+%include "../common/cpointers.i"
 
 %import "array.i"
 %import "vector.i"
@@ -89,6 +90,12 @@ GridFunction(Mesh *m, const char *grid_file){
    gf = new mfem::GridFunction(m, igrid);
    return gf;
 }
+GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
+   mfem::GridFunction *gf;   
+   gf = new mfem::GridFunction(fes, v.GetData() + offset);
+   return gf;
+}
+ 
 void SaveToFile(const char *gf_file, const int precision) const
    {
 	std::ofstream mesh_ofs(gf_file);	
@@ -121,30 +128,25 @@ GridFunction & idiv(double c)
       return *self;
    }
   }
-   
-}
+}  // end of namespace
 
 %pythoncode %{
 def __iadd__(self, v):
     ret = _gridfunc.GridFunction_iadd(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0      
-    return ret
+    ret.thisown = 0
+    return self
 def __isub__(self, v):
     ret = _gridfunc.GridFunction_isub(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0      
-    return ret
+    ret.thisown = 0
+    return self
 def __idiv__(self, v):
     ret = _gridfunc.GridFunction_idiv(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0
-    return ret
+    ret.thisown = 0
+    return self
 def __imul__(self, v):
     ret = _gridfunc.GridFunction_imul(self, v)
-    ret.thisown = self.thisown
-    self.thisown = 0
-    return ret
+    ret.thisown = 0
+    return self
       
 GridFunction.__iadd__  = __iadd__
 GridFunction.__idiv__  = __idiv__

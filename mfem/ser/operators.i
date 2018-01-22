@@ -2,7 +2,12 @@
 %{
 #include "iostream_typemap.hpp"        
 #include "linalg/operator.hpp"
-#include "pyoperator.hpp" 
+#include "pyoperator.hpp"
+#include "numpy/arrayobject.h"    
+%}
+
+%init %{
+import_array();
 %}
 
 %import "vector.i"
@@ -23,7 +28,6 @@
         throw Swig::DirectorMethodException();
     }
 }
-
 
 %inline %{
 void mfem::PyOperatorBase::Mult(const mfem::Vector &x, mfem::Vector &y) const

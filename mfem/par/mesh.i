@@ -23,8 +23,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 %init %{
 import_array();
 %}
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
 
 %import "matrix.i"
 %import "array.i"
@@ -169,6 +168,14 @@ def GetBdrElementVertices(self, i):
     return ivert.ToList()
 %}
 
+%feature("shadow") mfem::Mesh::GetBdrElementAdjacentElement %{
+def GetBdrElementAdjacentElement(self, bdr_el):
+    el = intp()
+    info = intp()  
+    _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+    return el.value(), info.value()
+%}
+
 %feature("shadow") mfem::Mesh::GetElementVertices %{
 def GetElementVertices(self, i):
     from  .array import intArray
@@ -178,7 +185,7 @@ def GetElementVertices(self, i):
 %}
 
 %feature("shadow") mfem::Mesh::GetElementEdges %{
-def GetElementVEdges(self, i):
+def GetElementEdges(self, i):
     from  .array import intArray
     ia = intArray()
     ib = intArray()      
@@ -415,7 +422,27 @@ namespace mfem{
        }
      }
      return array;
-   }   
+   }
+   PyObject* GetDomainArray(int idx) const
+   {
+
+     int i;
+     int c = 0;     
+     for (i = 0; i < self->GetNE() ; i++){
+       if (self->GetElement(i)->GetAttribute() == idx){c++;}
+     }
+     npy_intp dims[] = {c};
+     PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
+     int *x    = (int *)PyArray_DATA(array);
+     c = 0;
+     for (i = 0; i < self -> GetNE() ; i++){
+       if (self->GetElement(i)->GetAttribute() == idx){
+	 x[c] = (int)i;
+         c++;
+       }
+     }
+     return array;
+   }
   };   
 }
 

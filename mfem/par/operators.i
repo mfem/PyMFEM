@@ -3,6 +3,11 @@
 #include "linalg/operator.hpp"
 #include "iostream_typemap.hpp"    
 #include "pyoperator.hpp"
+#include "numpy/arrayobject.h"    
+%}
+
+%init %{
+import_array();
 %}
 
 %import "vector.i"

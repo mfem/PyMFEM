@@ -4,6 +4,7 @@
 #include "iostream_typemap.hpp"     
 #include "config/config.hpp"
 #include "mesh/pmesh.hpp"
+#include "fem/linearform.hpp"
 #include "general/communication.hpp"  
 #include "numpy/arrayobject.h"
 %}
@@ -16,6 +17,7 @@ import_array();
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 
+%include "../common/cpointers.i"
 %import mesh.i
 %import pncmesh.i
  //

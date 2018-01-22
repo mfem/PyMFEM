@@ -5,6 +5,7 @@
 #include "linalg/handle.hpp"  
 #include "fem/gridfunc.hpp"  
 #include "fem/linearform.hpp"
+#include "fem/pfespace.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
 %}

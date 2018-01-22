@@ -47,6 +47,14 @@ import_array();
 
 //%import "intrules.i"
 //%newobject intArray
+%ignore mfem::Array::operator[];
+%ignore mfem::Array2D::operator[];
+%ignore mfem::BlockArray::operator[];
+%ignore mfem::Array::operator=;
+%ignore mfem::Array2D::operator=;
+%ignore mfem::Array::operator T *;
+%ignore mfem::Array::operator const T *;
+
 %include "general/array.hpp"
 
 %extend mfem::Array{
@@ -72,10 +80,11 @@ def ToList(self):
 }  
 namespace mfem{
 %template(intArray) Array<int>;
-}
-namespace mfem{
 %template(doubleArray) Array<double>;
+%template(doubleSwap) Swap<double>;  
+%template(intSwap) Swap<int>;  
 }
+
 
 
 

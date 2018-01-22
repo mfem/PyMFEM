@@ -37,7 +37,7 @@
 import_array();
 %}
 
-%include  "config/_config.hpp" // include mfem MACRO
+%include  "config/_config.hpp" // need to read macro such as MFEM_USE_MPI
 //%import "general/array.hpp"
 %import "array.i"
 %import "matrix.i"
@@ -49,7 +49,7 @@ import_array();
 
 //%import "pmesh.i"
 %ignore Function;
-%ignore DeltaCoefficient;
+//%ignore DeltaCoefficient;
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 
@@ -203,7 +203,7 @@ void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
    Vector transip(x, 3);
 
    T.Transform(ip, transip);
-   K.SetSize(vdim);
+   K.SetSize(height, width);   
    if (isTimeDependent)
    {
       _EvalPyT(transip, GetTime(),  K);          
