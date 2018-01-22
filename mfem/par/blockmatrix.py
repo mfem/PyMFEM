@@ -127,8 +127,28 @@ class BlockMatrix(matrix.AbstractSparseMatrix):
         except __builtin__.Exception:
             self.this = this
 
+        from mfem.par import intArray  
+        if len(args) == 1:
+           if isinstance(args[0], intArray):
+               self._offsets = args[0]
+        if len(args) == 2:
+           if (isinstance(args[0], intArray) and
+               isinstance(args[1], intArray)):
+               self._offsets = (args[0], args[1])
+
+
+
+
     def SetBlock(self, i, j, mat):
-        return _blockmatrix.BlockMatrix_SetBlock(self, i, j, mat)
+        val = _blockmatrix.BlockMatrix_SetBlock(self, i, j, mat)
+
+        if not hasattr(self, '_linked_mat'):
+           self._linked_mat = {}
+        self._linked_mat[i, j] = mat
+
+
+        return val
+
 
     def NumRowBlocks(self):
         return _blockmatrix.BlockMatrix_NumRowBlocks(self)

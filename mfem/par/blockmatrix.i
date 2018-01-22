@@ -17,4 +17,21 @@ import_array();
 %import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 
+%pythonappend mfem::BlockMatrix::BlockMatrix %{
+from mfem.par import intArray  
+if len(args) == 1:
+   if isinstance(args[0], intArray):
+       self._offsets = args[0]
+if len(args) == 2:
+   if (isinstance(args[0], intArray) and
+       isinstance(args[1], intArray)):
+       self._offsets = (args[0], args[1])
+%}
+
+%pythonappend mfem::BlockMatrix::SetBlock %{
+  if not hasattr(self, '_linked_mat'):
+     self._linked_mat = {}
+  self._linked_mat[i, j] = mat
+%}
+
 %include "linalg/blockmatrix.hpp"

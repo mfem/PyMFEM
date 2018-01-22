@@ -3,10 +3,10 @@ import numpy as np
 
 from petram.mfem_config import use_parallel
 if use_parallel:
-   from petram.helper.mpi_recipes import *
-   import mfem.par as mfem   
+    from petram.helper.mpi_recipes import *
+    import mfem.par as mfem   
 else:
-   import mfem.ser as mfem
+    import mfem.ser as mfem
 
 def make_matrix(x, y, z):
     pass
@@ -32,10 +32,6 @@ def eval_at_points(gf, *args):
     mesh = gf.FESpace().Mesh()
     v, elem_id, ips = findpoints(mesh, *args)
     
-    if v != args[0].size:
-        
-    
-x.GetValue(elem_ids[0], ips[0])                   
 def findpoints(mesh, *args):
     '''
     *args : x, y or x, y, z

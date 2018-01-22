@@ -124,11 +124,39 @@ class BlockOperator(operators.Operator):
         except __builtin__.Exception:
             self.this = this
 
+        from mfem.ser import intArray  
+        if len(args) == 1:
+           if isinstance(args[0], intArray):
+               self._offsets = args[0]
+        if len(args) == 2:
+           if (isinstance(args[0], intArray) and
+               isinstance(args[1], intArray)):
+               self._offsets = (args[0], args[1])
+
+
+
+
     def SetDiagonalBlock(self, iblock, op, c=1.0):
-        return _blockoperator.BlockOperator_SetDiagonalBlock(self, iblock, op, c)
+        val = _blockoperator.BlockOperator_SetDiagonalBlock(self, iblock, op, c)
+
+        if not hasattr(self, '_linked_op'):
+           self._linked_op = {}
+        self._linked_op[iblock, iblock] = op
+
+
+        return val
+
 
     def SetBlock(self, iRow, iCol, op, c=1.0):
-        return _blockoperator.BlockOperator_SetBlock(self, iRow, iCol, op, c)
+        val = _blockoperator.BlockOperator_SetBlock(self, iRow, iCol, op, c)
+
+        if not hasattr(self, '_linked_op'):
+           self._linked_op = {}
+        self._linked_op[iRow, iCol] = op
+
+
+        return val
+
 
     def NumRowBlocks(self):
         return _blockoperator.BlockOperator_NumRowBlocks(self)
@@ -186,8 +214,21 @@ class BlockDiagonalPreconditioner(operators.Solver):
         except __builtin__.Exception:
             self.this = this
 
+        self._offsets = offsets
+
+
+
+
     def SetDiagonalBlock(self, iblock, op):
-        return _blockoperator.BlockDiagonalPreconditioner_SetDiagonalBlock(self, iblock, op)
+        val = _blockoperator.BlockDiagonalPreconditioner_SetDiagonalBlock(self, iblock, op)
+
+        if not hasattr(self, '_linked_op'):
+           self._linked_op = {}
+        self._linked_op[iblock, iblock] = op
+
+
+        return val
+
 
     def SetOperator(self, op):
         return _blockoperator.BlockDiagonalPreconditioner_SetOperator(self, op)
@@ -233,11 +274,38 @@ class BlockLowerTriangularPreconditioner(operators.Solver):
         except __builtin__.Exception:
             self.this = this
 
+        self._offsets = offsets
+
+
+
+
     def SetDiagonalBlock(self, iblock, op):
-        return _blockoperator.BlockLowerTriangularPreconditioner_SetDiagonalBlock(self, iblock, op)
+        val = _blockoperator.BlockLowerTriangularPreconditioner_SetDiagonalBlock(self, iblock, op)
+
+        if not hasattr(self, '_linked_op'):
+           self._linked_op = {}
+        self._linked_op[iblock, iblock] = op
+
+
+        return val
+
 
     def SetBlock(self, iRow, iCol, op):
-        return _blockoperator.BlockLowerTriangularPreconditioner_SetBlock(self, iRow, iCol, op)
+
+        if not (iRow > iCol):
+            raise ValueError("can not set upper triangle")
+
+
+        val = _blockoperator.BlockLowerTriangularPreconditioner_SetBlock(self, iRow, iCol, op)
+
+        if not hasattr(self, '_linked_op'):
+           self._linked_op = {}
+
+        self._linked_op[iRow, iCol] = op
+
+
+        return val
+
 
     def SetOperator(self, op):
         return _blockoperator.BlockLowerTriangularPreconditioner_SetOperator(self, op)

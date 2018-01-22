@@ -1,5 +1,9 @@
 
 	<<<  Change Log. >>>
+2018 01.20
+	* generating mfem::SparseMatrix from scipy.csr_matrix is added
+	* setting mfem::Vector using numpy array is added
+	* BlockOperator and BlockMatrix keeps a link to offset and operators
 	
 2018 01.03
 	* fiexed mfem.par.InnerProduct. It was overwriten by InnerProduct defined in Vector

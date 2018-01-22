@@ -178,7 +178,11 @@ in this repository are generated using SWIG 3.0.8
 
          negative index is also possible; v[-1] is equivalent to v[size-1]
 	 
-     Assign method:         v.Assign(1) (equivalent to v=1 in c++)
+     Assign method: operator= is replaced by Assine method 
+        v.Assign(1.) (equivalent to v=1 in c++)
+        v.Assign(<some mfem::Vector>) (copy data from mfem vector)
+        v.Assign(np.array([1., 2., 3.])  (copy data from np.array)
+	
      Data Access as Numpy:  v.GetDataArray()
 
      In c++, a new partial view to existing vector is acquired as

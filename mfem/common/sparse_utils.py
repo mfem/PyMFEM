@@ -1,3 +1,10 @@
+try:
+   import mfem.par as mfem
+   MFEM_PAR = True
+except:
+   import mfem.ser as mfem    
+   MFEM_PAR = False
+
 from scipy.sparse import csr_matrix, coo_matrix, lil_matrix, csc_matrix
 
 def eliminate_rows(m, rows):
@@ -39,3 +46,5 @@ def sparsemat_to_scipycsr(mat, dtype):
      m1 =csr_matrix((data, J, I), shape = (h, w),
                     dtype = dtype)
      return m1
+        
+

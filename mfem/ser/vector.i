@@ -1,3 +1,4 @@
+
 %module vector
 
 %{
@@ -135,8 +136,21 @@ def __itruediv__(self, v):
     return self
 %}
 //rename(Assign) mfem::Vector::operator=;
+%pythonprepend mfem::Vector::Assign %{
+from numpy import ndarray, ascontiguousarray
+keep_link = False
+if len(args) == 1 and isinstance(args[0], ndarray):
+        if args[0].dtype != 'float64':
+            raise ValueError('Must be float64 array')
+        elif args[0].ndim != 1:
+            raise ValueError('Ndim must be one') 
+        elif args[0].shape[0] != _vector.Vector_Size(self):
+            raise ValueError('Length does not match')
+        else:
+  	    args = (ascontiguousarray(args[0]),)
+%}
 %pythonappend mfem::Vector::Assign %{
-    return self
+return self
 %}
 
 %ignore mfem::add;
@@ -177,19 +191,44 @@ void subtract_vector(const double a, const mfem::Vector &x,
 %include "linalg/vector.hpp"
 
 %extend mfem::Vector {
+  /* define Assine as a replacement of = operator */  
   Vector(const mfem::Vector &v, int offset, int size){
       mfem::Vector *vec;
       vec = new mfem::Vector(v.GetData() +  offset, size);     
       return vec;
   }
-  
   void Assign(const double v) {
     (* self) = v;
   }
   void Assign(const mfem::Vector &v) {
     (* self) = v;
   }
-
+  void Assign(PyObject* param) {
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    if (!PyArray_Check(param)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return;
+    }
+    int typ = PyArray_TYPE(param);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return;
+    }
+    int ndim = PyArray_NDIM(param);
+    if (ndim != 1){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
+      return ;
+    }
+    npy_intp *shape = PyArray_DIMS(param);    
+    int len = self->Size();
+    if (shape[0] != len){    
+      PyErr_SetString(PyExc_ValueError, "input data length does not match");
+      return ;
+    }    
+    (* self) = (double *) PyArray_DATA(param);
+  }
+  
   void __setitem__(int i, const double v) {
     int len = self->Size();        
     if (i >= 0){    

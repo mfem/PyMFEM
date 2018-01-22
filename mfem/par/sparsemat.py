@@ -158,6 +158,31 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+
+        import numpy as np  
+        from scipy.sparse import csr_matrix
+        if len(args) == 1 and isinstance(args[0], csr_matrix):
+           csr = args[0]
+           if np.real(csr).dtype != 'float64':
+               csr = csr.astype('float64')
+           i = np.ascontiguousarray(csr.indptr)
+           j = np.ascontiguousarray(csr.indices)
+           data = np.ascontiguousarray(csr.data)
+           m, n = csr.shape
+           this = _sparsemat.new_SparseMatrix([i, j, data, m, n])
+           try:
+               self.this.append(this)
+           except __builtin__.Exception:
+               self.this = this
+           _sparsemat.SparseMatrix_SetGraphOwner(self, False)
+           _sparsemat.SparseMatrix_SetDataOwner(self, False)
+           self._i_data = i
+           self._j_data = j
+           self._d_data = data
+
+           return
+
+
         this = _sparsemat.new_SparseMatrix(*args)
         try:
             self.this.append(this)

@@ -3223,8 +3223,33 @@ SWIGINTERN mfem::Vector *new_mfem_Vector__SWIG_4(mfem::Vector const &v,int offse
       vec = new mfem::Vector(v.GetData() +  offset, size);     
       return vec;
   }
-SWIGINTERN void mfem_Vector_Assign(mfem::Vector *self,double const v){
+SWIGINTERN void mfem_Vector_Assign__SWIG_0(mfem::Vector *self,double const v){
     (* self) = v;
+  }
+SWIGINTERN void mfem_Vector_Assign__SWIG_1(mfem::Vector *self,PyObject *param){
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    if (!PyArray_Check(param)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return;
+    }
+    int typ = PyArray_TYPE(param);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return;
+    }
+    int ndim = PyArray_NDIM(param);
+    if (ndim != 1){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be one");
+      return ;
+    }
+    npy_intp *shape = PyArray_DIMS(param);    
+    int len = self->Size();
+    if (shape[0] != len){    
+      PyErr_SetString(PyExc_ValueError, "input data length does not match");
+      return ;
+    }    
+    (* self) = (double *) PyArray_DATA(param);
   }
 SWIGINTERN void mfem_Vector___setitem__(mfem::Vector *self,int i,double const v){
     int len = self->Size();        
@@ -6626,7 +6651,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Vector_Assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Vector_Assign__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
   double arg2 ;
@@ -6648,11 +6673,84 @@ SWIGINTERN PyObject *_wrap_Vector_Assign(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Vector_Assign" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  mfem_Vector_Assign(arg1,arg2);
+  mfem_Vector_Assign__SWIG_0(arg1,arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Vector_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Vector_Assign",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_Assign" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  arg2 = obj1;
+  mfem_Vector_Assign__SWIG_1(arg1,arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Vector_Assign(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_Vector_Assign__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      _v = (argv[1] != 0);
+      if (_v) {
+        return _wrap_Vector_Assign__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Vector_Assign'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Vector::Assign(double const)\n"
+    "    mfem::Vector::Assign(PyObject *)\n");
+  return 0;
 }
 
 

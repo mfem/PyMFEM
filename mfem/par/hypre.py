@@ -982,7 +982,7 @@ def parvec__repr__(self):
     return "HypreParVector ("+str(self.GlobalSize())+")"
 def parvec__del__(self):
     if hasattr(self, "_linked_array"):
-        self._linked_arry = None
+        self._linked_array = None
 def parmat__repr__(self):
     shape = (self.GetGlobalNumRows(), self.GetGlobalNumCols())
     lshape = (self.GetNumRows(), self.GetNumCols())  	       

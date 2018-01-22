@@ -4222,42 +4222,31 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(sel
   double *arg3 = (double *) 0 ;
   int arg4 ;
   int arg5 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  PyArrayObject *tmp_arr1_1 = NULL ;
+  PyArrayObject *tmp_arr2_1 = NULL ;
+  PyArrayObject *tmp_arr3_1 = NULL ;
+  int tmp_4_1 ;
+  int tmp_5_1 ;
   PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:new_SparseMatrix",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SparseMatrix" "', argument " "1"" of type '" "int *""'"); 
-  }
-  arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SparseMatrix" "', argument " "2"" of type '" "int *""'"); 
-  }
-  arg2 = reinterpret_cast< int * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SparseMatrix" "', argument " "3"" of type '" "double *""'"); 
-  }
-  arg3 = reinterpret_cast< double * >(argp3);
+  if (!PyArg_ParseTuple(args,(char *)"O:new_SparseMatrix",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
-  }
-  {
-    PyArray_PyIntAsInt(obj4);  
-    arg5 = PyInt_AsLong(obj4);
+    tmp_arr1_1 = (PyArrayObject *)PyList_GetItem(obj0,0);
+    tmp_arr2_1 = (PyArrayObject *)PyList_GetItem(obj0,1);
+    tmp_arr3_1 = (PyArrayObject *)PyList_GetItem(obj0,2);
+    tmp_4_1 = PyInt_AsLong(PyList_GetItem(obj0,3));
+    tmp_5_1 = PyInt_AsLong(PyList_GetItem(obj0,4));
+    
+    arg1 = (int *) PyArray_DATA(tmp_arr1_1);
+    arg2 = (int *) PyArray_DATA(tmp_arr2_1);
+    arg3 = (double *) PyArray_DATA(tmp_arr3_1);
+    arg4 = (int) tmp_4_1;
+    arg5 = (int) tmp_5_1;
+    //PyArray_CLEARFLAGS(tmp_arr1_1, NPY_ARRAY_OWNDATA);
+    //PyArray_CLEARFLAGS(tmp_arr2_1, NPY_ARRAY_OWNDATA);
+    //
+    PyArray_CLEARFLAGS(tmp_arr3_1, NPY_ARRAY_OWNDATA);    
   }
   {
     try {
@@ -4273,8 +4262,18 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(sel
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NEW |  0 );
+  {
+    //Py_XDECREF(tmp_arr1_1); Dont do this.. We set OwnsGraph and OwnsData to Fase in Python
+    //Py_XDECREF(tmp_arr2_1);  
+    //Py_XDECREF(tmp_arr3_1);
+  }
   return resultobj;
 fail:
+  {
+    //Py_XDECREF(tmp_arr1_1); Dont do this.. We set OwnsGraph and OwnsData to Fase in Python
+    //Py_XDECREF(tmp_arr2_1);  
+    //Py_XDECREF(tmp_arr3_1);
+  }
   return NULL;
 }
 
@@ -4289,12 +4288,11 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
   bool arg6 ;
   bool arg7 ;
   bool arg8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  PyArrayObject *tmp_arr1_1 = NULL ;
+  PyArrayObject *tmp_arr2_1 = NULL ;
+  PyArrayObject *tmp_arr3_1 = NULL ;
+  int tmp_4_1 ;
+  int tmp_5_1 ;
   bool val6 ;
   int ecode6 = 0 ;
   bool val7 ;
@@ -4305,47 +4303,37 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
-  PyObject * obj6 = 0 ;
-  PyObject * obj7 = 0 ;
   mfem::SparseMatrix *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOO:new_SparseMatrix",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SparseMatrix" "', argument " "1"" of type '" "int *""'"); 
-  }
-  arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SparseMatrix" "', argument " "2"" of type '" "int *""'"); 
-  }
-  arg2 = reinterpret_cast< int * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_SparseMatrix" "', argument " "3"" of type '" "double *""'"); 
-  }
-  arg3 = reinterpret_cast< double * >(argp3);
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_SparseMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    tmp_arr1_1 = (PyArrayObject *)PyList_GetItem(obj0,0);
+    tmp_arr2_1 = (PyArrayObject *)PyList_GetItem(obj0,1);
+    tmp_arr3_1 = (PyArrayObject *)PyList_GetItem(obj0,2);
+    tmp_4_1 = PyInt_AsLong(PyList_GetItem(obj0,3));
+    tmp_5_1 = PyInt_AsLong(PyList_GetItem(obj0,4));
+    
+    arg1 = (int *) PyArray_DATA(tmp_arr1_1);
+    arg2 = (int *) PyArray_DATA(tmp_arr2_1);
+    arg3 = (double *) PyArray_DATA(tmp_arr3_1);
+    arg4 = (int) tmp_4_1;
+    arg5 = (int) tmp_5_1;
+    //PyArray_CLEARFLAGS(tmp_arr1_1, NPY_ARRAY_OWNDATA);
+    //PyArray_CLEARFLAGS(tmp_arr2_1, NPY_ARRAY_OWNDATA);
+    //
+    PyArray_CLEARFLAGS(tmp_arr3_1, NPY_ARRAY_OWNDATA);    
   }
-  {
-    PyArray_PyIntAsInt(obj4);  
-    arg5 = PyInt_AsLong(obj4);
-  }
-  ecode6 = SWIG_AsVal_bool(obj5, &val6);
+  ecode6 = SWIG_AsVal_bool(obj1, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_SparseMatrix" "', argument " "6"" of type '" "bool""'");
   } 
   arg6 = static_cast< bool >(val6);
-  ecode7 = SWIG_AsVal_bool(obj6, &val7);
+  ecode7 = SWIG_AsVal_bool(obj2, &val7);
   if (!SWIG_IsOK(ecode7)) {
     SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_SparseMatrix" "', argument " "7"" of type '" "bool""'");
   } 
   arg7 = static_cast< bool >(val7);
-  ecode8 = SWIG_AsVal_bool(obj7, &val8);
+  ecode8 = SWIG_AsVal_bool(obj3, &val8);
   if (!SWIG_IsOK(ecode8)) {
     SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_SparseMatrix" "', argument " "8"" of type '" "bool""'");
   } 
@@ -4364,8 +4352,18 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NEW |  0 );
+  {
+    //Py_XDECREF(tmp_arr1_1); Dont do this.. We set OwnsGraph and OwnsData to Fase in Python
+    //Py_XDECREF(tmp_arr2_1);  
+    //Py_XDECREF(tmp_arr3_1);
+  }
   return resultobj;
 fail:
+  {
+    //Py_XDECREF(tmp_arr1_1); Dont do this.. We set OwnsGraph and OwnsData to Fase in Python
+    //Py_XDECREF(tmp_arr2_1);  
+    //Py_XDECREF(tmp_arr3_1);
+  }
   return NULL;
 }
 
@@ -4498,14 +4496,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_SparseMatrix(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[9] = {
+  PyObject *argv[5] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 8) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 0) {
@@ -4530,6 +4528,38 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix(PyObject *self, PyObject *args) {
     }
     if (_v) {
       return _wrap_new_SparseMatrix__SWIG_2(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      /* check if list of 5 numpy array or not */
+      if (!PyList_Check(argv[0])) _v = 0;
+      else {
+        if (PyList_Size(argv[0]) == 5){
+          _v = 1;
+          if (!PyArray_Check(PyList_GetItem(argv[0],0))) _v = 0;
+          if (!PyArray_Check(PyList_GetItem(argv[0],1))) _v = 0;
+          if (!PyArray_Check(PyList_GetItem(argv[0],2))) _v = 0;
+          if (!PyInt_Check(PyList_GetItem(argv[0],3))) _v = 0;
+          if (!PyInt_Check(PyList_GetItem(argv[0],4))) _v = 0;
+        } else _v = 0;       
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_SparseMatrix__SWIG_3(self, args);
+      }
+      if (argc <= 2) {
+        return _wrap_new_SparseMatrix__SWIG_3(self, args);
+      }
+      if (argc <= 3) {
+        return _wrap_new_SparseMatrix__SWIG_3(self, args);
+      }
+      if (argc <= 4) {
+        return _wrap_new_SparseMatrix__SWIG_3(self, args);
+      }
+      return _wrap_new_SparseMatrix__SWIG_3(self, args);
     }
   }
   if (argc == 2) {
@@ -4599,93 +4629,39 @@ SWIGINTERN PyObject *_wrap_new_SparseMatrix(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 5) {
+  if (argc == 4) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_double, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
-          }
-          if (_v) {
-            {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              return _wrap_new_SparseMatrix__SWIG_3(self, args);
-            }
-          }
-        }
+    {
+      /* check if list of 5 numpy array or not */
+      if (!PyList_Check(argv[0])) _v = 0;
+      else {
+        if (PyList_Size(argv[0]) == 5){
+          _v = 1;
+          if (!PyArray_Check(PyList_GetItem(argv[0],0))) _v = 0;
+          if (!PyArray_Check(PyList_GetItem(argv[0],1))) _v = 0;
+          if (!PyArray_Check(PyList_GetItem(argv[0],2))) _v = 0;
+          if (!PyInt_Check(PyList_GetItem(argv[0],3))) _v = 0;
+          if (!PyInt_Check(PyList_GetItem(argv[0],4))) _v = 0;
+        } else _v = 0;       
       }
     }
-  }
-  if (argc == 8) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_int, 0);
-    _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_double, 0);
+      {
+        int res = SWIG_AsVal_bool(argv[1], NULL);
         _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
           }
           if (_v) {
-            {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
-            }
-            if (_v) {
-              {
-                int res = SWIG_AsVal_bool(argv[5], NULL);
-                _v = SWIG_CheckState(res);
-              }
-              if (_v) {
-                {
-                  int res = SWIG_AsVal_bool(argv[6], NULL);
-                  _v = SWIG_CheckState(res);
-                }
-                if (_v) {
-                  {
-                    int res = SWIG_AsVal_bool(argv[7], NULL);
-                    _v = SWIG_CheckState(res);
-                  }
-                  if (_v) {
-                    return _wrap_new_SparseMatrix__SWIG_4(self, args);
-                  }
-                }
-              }
-            }
+            return _wrap_new_SparseMatrix__SWIG_4(self, args);
           }
         }
       }
