@@ -3797,11 +3797,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_SetBlock(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
@@ -3916,11 +3920,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetBlock__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -3962,11 +3970,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetBlock__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -4084,11 +4096,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_IsZeroBlock(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -4344,7 +4360,9 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_RowSize(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -4627,11 +4645,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Elem__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -4673,11 +4695,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Elem__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -4869,7 +4895,9 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetRow(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
@@ -5478,7 +5506,9 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_owns_blocks_set(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   if (arg1) (arg1)->owns_blocks = arg2;

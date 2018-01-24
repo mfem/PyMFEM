@@ -3179,7 +3179,9 @@ SWIGINTERN PyObject *_wrap_new_IntegerSet__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_IntegerSet",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
@@ -3368,7 +3370,9 @@ SWIGINTERN PyObject *_wrap_IntegerSet_Recreate(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
@@ -3451,7 +3455,9 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickElementInSet(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)(arg1)->PickElementInSet(arg2);
@@ -3479,7 +3485,9 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickRandomElementInSet(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)(arg1)->PickRandomElementInSet(arg2);

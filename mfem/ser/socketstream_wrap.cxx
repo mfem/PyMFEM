@@ -3931,7 +3931,9 @@ SWIGINTERN PyObject *_wrap_new_socketbuf__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_socketbuf",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -3967,7 +3969,9 @@ SWIGINTERN PyObject *_wrap_new_socketbuf__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< char * >(buf1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -4060,7 +4064,9 @@ SWIGINTERN PyObject *_wrap_socketbuf_attach(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -4134,7 +4140,9 @@ SWIGINTERN PyObject *_wrap_socketbuf_open(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -4366,7 +4374,9 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_3(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_socketstream",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
@@ -4397,7 +4407,9 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_socketstream",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -4437,7 +4449,9 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< char * >(buf1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
@@ -4480,7 +4494,9 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_6(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< char * >(buf1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -4677,7 +4693,9 @@ SWIGINTERN PyObject *_wrap_socketstream_open(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -4800,7 +4818,9 @@ SWIGINTERN PyObject *_wrap_socketstream_precision__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5074,7 +5094,9 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_1(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5296,11 +5318,15 @@ SWIGINTERN PyObject *_wrap_new_socketserver__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_socketserver",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5326,7 +5352,9 @@ SWIGINTERN PyObject *_wrap_new_socketserver__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_socketserver",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {

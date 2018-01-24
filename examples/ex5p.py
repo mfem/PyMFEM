@@ -91,8 +91,10 @@ ucoeff = uFunc_ex(dim)
 pcoeff = pFunc_ex()
 
 x = mfem.BlockVector(block_offsets)
+
 rhs = mfem.BlockVector(block_offsets)
 trueX = mfem.BlockVector(block_trueOffsets)
+
 trueRhs = mfem.BlockVector(block_trueOffsets)
 
 fform = mfem.ParLinearForm()
@@ -129,6 +131,8 @@ darcyOp.SetBlock(0,0, M)
 darcyOp.SetBlock(0,1, BT)
 darcyOp.SetBlock(1,0, B)
 
+#M2 = M.Transpose()
+#M3 = M2.Transpose()
 MinvBt =  B.Transpose()
 Md = mfem.HypreParVector(MPI.COMM_WORLD, M.GetGlobalNumRows(),
                                          M.GetRowStarts())
@@ -150,12 +154,13 @@ maxIter = 500; rtol = 1e-6; atol = 1e-10
 import time
 stime = time.clock()
 solver = mfem.MINRESSolver(MPI.COMM_WORLD)
+
 solver.SetAbsTol(atol)
 solver.SetRelTol(rtol)
 solver.SetMaxIter(maxIter)
 solver.SetOperator(darcyOp)
 solver.SetPreconditioner(darcyPr)
-solver.SetPrintLevel(verbose)
+solver.SetPrintLevel(1)
 trueX.Assign(0.0)
 solver.Mult(trueRhs, trueX)
 

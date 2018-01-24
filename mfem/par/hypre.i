@@ -74,7 +74,12 @@ int sizeof_HYPRE_Int(){
                   HYPRE_Int glob_ncols, int *I, HYPRE_Int *J,
                   double *data, HYPRE_Int *rows, HYPRE_Int *cols);
 
-    allows to use numpy array to call this
+    allows to use numpy array to call this.
+ 
+    note that if cols and rows are the same (as a pointer),
+    hypre_CSRMatrixReorder is called. It is not clear how to
+    say "same as pointer" in Python. Here, if the list length
+    is 4, cols is set to be rows. 
  */
 %typemap(in) (int *I,
 	      HYPRE_Int *J,
@@ -85,18 +90,25 @@ int sizeof_HYPRE_Int(){
 	      PyArrayObject *tmp_arr2_ = NULL,
 	      PyArrayObject *tmp_arr3_ = NULL,
 	      PyArrayObject *tmp_arr4_ = NULL,
-	      PyArrayObject *tmp_arr5_ = NULL){
+	      PyArrayObject *tmp_arr5_ = NULL, int list_len_=0){
+  
   tmp_arr1_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0));
   tmp_arr2_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1));
   tmp_arr3_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,2));
   tmp_arr4_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,3));
-  tmp_arr5_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4));
-
+  list_len_ = PyList_Size($input);
+  if (list_len_ == 5){    
+     tmp_arr5_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4));
+  }
   $1 = (int *) PyArray_DATA(tmp_arr1_);
   $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
   $3 = (double *) PyArray_DATA(tmp_arr3_);
   $4 = (HYPRE_Int *) PyArray_DATA(tmp_arr4_);
-  $5 = (HYPRE_Int *) PyArray_DATA(tmp_arr5_);
+  if (list_len_ == 4){
+    $5 = $4;
+  } else {
+    $5 = (HYPRE_Int *) PyArray_DATA(tmp_arr5_);
+  }
 }
 %typemap(freearg) (int *I, HYPRE_Int *J,
 		   double *data, HYPRE_Int *rows, HYPRE_Int *cols){
@@ -104,7 +116,9 @@ int sizeof_HYPRE_Int(){
   Py_XDECREF(tmp_arr2_$argnum);  
   Py_XDECREF(tmp_arr3_$argnum);
   Py_XDECREF(tmp_arr4_$argnum);
-  Py_XDECREF(tmp_arr5_$argnum);    
+  if (list_len_$argnum == 5){
+     Py_XDECREF(tmp_arr5_$argnum);
+  }
 }
 
 %typemap(typecheck ) (int *I, HYPRE_Int *J,
@@ -120,6 +134,12 @@ int sizeof_HYPRE_Int(){
        if (!PyArray_Check(PyList_GetItem($input,2))) $1 = 0;
        if (!PyArray_Check(PyList_GetItem($input,3))) $1 = 0;
        if (!PyArray_Check(PyList_GetItem($input,4))) $1 = 0;
+     } else if (PyList_Size($input) == 4){
+       $1 = 1;
+       if (!PyArray_Check(PyList_GetItem($input,0))) $1 = 0;
+       if (!PyArray_Check(PyList_GetItem($input,1))) $1 = 0;
+       if (!PyArray_Check(PyList_GetItem($input,2))) $1 = 0;
+       if (!PyArray_Check(PyList_GetItem($input,3))) $1 = 0;
      } else $1 = 0;       
   }
 }

@@ -4556,7 +4556,9 @@ SWIGINTERN PyObject *_wrap_L2ZienkiewiczZhuEstimator_SetLocalErrorNormP(PyObject
   }
   arg1 = reinterpret_cast< mfem::L2ZienkiewiczZhuEstimator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {

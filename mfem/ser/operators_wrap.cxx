@@ -5166,7 +5166,9 @@ SWIGINTERN PyObject *_wrap_new_Operator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   if (!PyArg_ParseTuple(args,(char *)"OO:new_Operator",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5242,11 +5244,15 @@ SWIGINTERN PyObject *_wrap_new_Operator__SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_Operator",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -5885,7 +5891,9 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
   {
-    PyArray_PyIntAsInt(obj7);  
+    if (PyArray_PyIntAsInt(obj7) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg8 = PyInt_AsLong(obj7);
   }
   {
@@ -6234,11 +6242,15 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM
     }
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
-    PyArray_PyIntAsInt(obj3);  
+    if (PyArray_PyIntAsInt(obj3) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg4 = PyInt_AsLong(obj3);
   }
   {
@@ -6300,7 +6312,9 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM
     }
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -6575,7 +6589,9 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_0(PyObject *SWIGUNUSE
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_TimeDependentOperator",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   ecode3 = SWIG_AsVal_double(obj2, &val3);
@@ -6628,7 +6644,9 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_1(PyObject *SWIGUNUSE
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_TimeDependentOperator",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   ecode3 = SWIG_AsVal_double(obj2, &val3);
@@ -6672,7 +6690,9 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_2(PyObject *SWIGUNUSE
   if (!PyArg_ParseTuple(args,(char *)"OO:new_TimeDependentOperator",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -6754,11 +6774,15 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_4(PyObject *SWIGUNUSE
   if (!PyArg_ParseTuple(args,(char *)"OOOOO:new_TimeDependentOperator",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   ecode4 = SWIG_AsVal_double(obj3, &val4);
@@ -6813,11 +6837,15 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_5(PyObject *SWIGUNUSE
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_TimeDependentOperator",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   ecode4 = SWIG_AsVal_double(obj3, &val4);
@@ -6863,11 +6891,15 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_6(PyObject *SWIGUNUSE
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_TimeDependentOperator",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -7952,7 +7984,9 @@ SWIGINTERN PyObject *_wrap_new_IdentityOperator(PyObject *SWIGUNUSEDPARM(self), 
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_IdentityOperator",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -9104,7 +9138,9 @@ SWIGINTERN PyObject *_wrap_new_PyOperatorBase__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   if (!PyArg_ParseTuple(args,(char *)"OO:new_PyOperatorBase",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -9180,11 +9216,15 @@ SWIGINTERN PyObject *_wrap_new_PyOperatorBase__SWIG_2(PyObject *SWIGUNUSEDPARM(s
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_PyOperatorBase",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -9494,7 +9534,9 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_0(PyObject *SWI
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_PyTimeDependentOperatorBase",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   ecode3 = SWIG_AsVal_double(obj2, &val3);
@@ -9539,7 +9581,9 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_1(PyObject *SWI
   if (!PyArg_ParseTuple(args,(char *)"OO:new_PyTimeDependentOperatorBase",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -9619,11 +9663,15 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_3(PyObject *SWI
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_PyTimeDependentOperatorBase",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   ecode4 = SWIG_AsVal_double(obj3, &val4);
@@ -9670,11 +9718,15 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_4(PyObject *SWI
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_PyTimeDependentOperatorBase",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {

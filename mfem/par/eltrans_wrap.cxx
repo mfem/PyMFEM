@@ -3845,7 +3845,9 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_Attribute_set(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   if (arg1) (arg1)->Attribute = arg2;
@@ -3894,7 +3896,9 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_ElementNo_set(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   if (arg1) (arg1)->ElementNo = arg2;
@@ -5006,7 +5010,9 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitGuessPointsType(P
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5045,7 +5051,9 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitGuessRelOrder(PyO
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5126,7 +5134,9 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetMaxIter(PyObject *SWI
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5291,7 +5301,9 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetPrintLevel(PyObject *
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5654,7 +5666,9 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetIdentityTransformation
   }
   arg1 = reinterpret_cast< mfem::IsoparametricTransformation * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -6498,7 +6512,9 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_Elem1No_set(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::FaceElementTransformations * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   if (arg1) (arg1)->Elem1No = arg2;
@@ -6547,7 +6563,9 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_Elem2No_set(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::FaceElementTransformations * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   if (arg1) (arg1)->Elem2No = arg2;
@@ -6596,7 +6614,9 @@ SWIGINTERN PyObject *_wrap_FaceElementTransformations_FaceGeom_set(PyObject *SWI
   }
   arg1 = reinterpret_cast< mfem::FaceElementTransformations * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   if (arg1) (arg1)->FaceGeom = arg2;

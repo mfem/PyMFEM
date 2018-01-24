@@ -3662,7 +3662,9 @@ SWIGINTERN PyObject *_wrap_new_Vertex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg1 = reinterpret_cast< double * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -3914,7 +3916,9 @@ SWIGINTERN PyObject *_wrap_Vertex___call____SWIG_1(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::Vertex * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -3954,7 +3958,9 @@ SWIGINTERN PyObject *_wrap_Vertex___call____SWIG_2(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::Vertex * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -4107,7 +4113,9 @@ SWIGINTERN PyObject *_wrap_Vertex_SetCoords__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::Vertex * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );

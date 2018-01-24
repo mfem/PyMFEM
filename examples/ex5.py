@@ -100,15 +100,13 @@ mVarf.AddDomainIntegrator(mfem.VectorFEMassIntegrator(k))
 mVarf.Assemble();
 mVarf.Finalize();
 M = mVarf.SpMat()
-print M.thisown
+
 bVarf.AddDomainIntegrator( mfem.VectorFEDivergenceIntegrator())
 bVarf.Assemble()
 bVarf.Finalize()
 B = bVarf.SpMat()
 B *= -1;
-print B
 BT = mfem.Transpose(B)
-print B.thisown
 
 darcyOp = mfem.BlockOperator(block_offsets)
 darcyOp.SetBlock(0,0, M)
@@ -142,7 +140,7 @@ solver.SetMaxIter(maxIter)
 solver.SetOperator(darcyOp)
 solver.SetPreconditioner(darcyPrec)
 solver.SetPrintLevel(1)
-x.Assign(0)
+x.Assign(0.0)
 solver.Mult(rhs, x)
 
 solve_time = time.clock() - stime

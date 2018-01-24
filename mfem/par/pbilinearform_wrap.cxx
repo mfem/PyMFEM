@@ -4131,7 +4131,9 @@ SWIGINTERN PyObject *_wrap_ParBilinearForm_Assemble__SWIG_0(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::ParBilinearForm * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -4982,11 +4984,8 @@ SWIGINTERN PyObject *_wrap_ParBilinearForm_TrueAddMult(PyObject *self, PyObject 
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyFloat_Check(argv[3])){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
           }
           if (_v) {
             return _wrap_ParBilinearForm_TrueAddMult__SWIG_0(self, args);
@@ -5209,7 +5208,9 @@ SWIGINTERN PyObject *_wrap_ParBilinearForm_FormLinearSystem__SWIG_0(PyObject *SW
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
   {
-    PyArray_PyIntAsInt(obj7);  
+    if (PyArray_PyIntAsInt(obj7) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg8 = PyInt_AsLong(obj7);
   }
   {
@@ -5669,7 +5670,9 @@ SWIGINTERN PyObject *_wrap_ParBilinearForm_FormLinearSystem__SWIG_4(PyObject *SW
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
   {
-    PyArray_PyIntAsInt(obj7);  
+    if (PyArray_PyIntAsInt(obj7) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg8 = PyInt_AsLong(obj7);
   }
   {
@@ -6407,11 +6410,8 @@ SWIGINTERN PyObject *_wrap_ParMixedBilinearForm_TrueAddMult(PyObject *self, PyOb
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyFloat_Check(argv[3])){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
           }
           if (_v) {
             return _wrap_ParMixedBilinearForm_TrueAddMult__SWIG_0(self, args);

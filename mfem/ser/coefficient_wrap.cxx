@@ -4677,7 +4677,9 @@ SWIGINTERN PyObject *_wrap_new_PWConstCoefficient__SWIG_0(PyObject *SWIGUNUSEDPA
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_PWConstCoefficient",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -4827,7 +4829,9 @@ SWIGINTERN PyObject *_wrap_PWConstCoefficient___call__(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< mfem::PWConstCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -5289,7 +5293,9 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_0(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -7531,7 +7537,9 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_0(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_VectorFunctionCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -7575,7 +7583,9 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_1(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_VectorFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -7618,7 +7628,9 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_2(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_VectorFunctionCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -7662,7 +7674,9 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_3(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_VectorFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -8144,7 +8158,9 @@ SWIGINTERN PyObject *_wrap_new_VectorArrayCoefficient(PyObject *SWIGUNUSEDPARM(s
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_VectorArrayCoefficient",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -8184,7 +8200,9 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -8261,7 +8279,9 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
@@ -8314,7 +8334,9 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Eval__SWIG_0(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
@@ -9084,7 +9106,9 @@ SWIGINTERN PyObject *_wrap_new_VectorDeltaCoefficient__SWIG_0(PyObject *SWIGUNUS
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_VectorDeltaCoefficient",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -10649,7 +10673,9 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_0(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_MatrixFunctionCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -10693,7 +10719,9 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_1(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_MatrixFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -10785,7 +10813,9 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_3(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_MatrixFunctionCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -10829,7 +10859,9 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_4(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_MatrixFunctionCoefficient",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -11095,7 +11127,9 @@ SWIGINTERN PyObject *_wrap_new_MatrixArrayCoefficient(PyObject *SWIGUNUSEDPARM(s
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_MatrixArrayCoefficient",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -11137,11 +11171,15 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -11186,11 +11224,15 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
@@ -11245,11 +11287,15 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Eval__SWIG_0(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ElementTransformation,  0 );
@@ -12016,7 +12062,9 @@ SWIGINTERN PyObject *_wrap_new_PyCoefficientBase(PyObject *SWIGUNUSEDPARM(self),
   if (!PyArg_ParseTuple(args,(char *)"OO:new_PyCoefficientBase",&obj0,&obj1)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -12322,11 +12370,15 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_0(PyObject *SWIGUNU
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_VectorPyCoefficientBase",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
@@ -12372,11 +12424,15 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_1(PyObject *SWIGUNU
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_VectorPyCoefficientBase",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {
@@ -12936,11 +12992,15 @@ SWIGINTERN PyObject *_wrap_new_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_MatrixPyCoefficientBase",&obj0,&obj1,&obj2)) SWIG_fail;
   arg1 = obj0;
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   {

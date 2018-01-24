@@ -3786,7 +3786,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Create(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg2 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
+    if (PyArray_PyIntAsInt(obj2) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg3 = PyInt_AsLong(obj2);
   }
   (arg1)->Create(*arg2,arg3);
@@ -3858,7 +3860,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_GetNeighborRank(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)((mfem::GroupTopology const *)arg1)->GetNeighborRank(arg2);
@@ -3886,7 +3890,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_IAmMaster(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (bool)((mfem::GroupTopology const *)arg1)->IAmMaster(arg2);
@@ -3914,7 +3920,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMaster(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)((mfem::GroupTopology const *)arg1)->GetGroupMaster(arg2);
@@ -3942,7 +3950,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMasterRank(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)((mfem::GroupTopology const *)arg1)->GetGroupMasterRank(arg2);
@@ -3970,7 +3980,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMasterGroup(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)((mfem::GroupTopology const *)arg1)->GetGroupMasterGroup(arg2);
@@ -3998,7 +4010,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupSize(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)((mfem::GroupTopology const *)arg1)->GetGroupSize(arg2);
@@ -4026,7 +4040,9 @@ SWIGINTERN PyObject *_wrap_GroupTopology_GetGroup(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int *)((mfem::GroupTopology const *)arg1)->GetGroup(arg2);

@@ -4646,7 +4646,9 @@ SWIGINTERN PyObject *_wrap_new_ExplicitRKSolver(PyObject *SWIGUNUSEDPARM(self), 
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_ExplicitRKSolver",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
@@ -5322,7 +5324,9 @@ SWIGINTERN PyObject *_wrap_new_SDIRK23Solver__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_SDIRK23Solver",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {

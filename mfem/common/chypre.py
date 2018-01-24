@@ -563,6 +563,14 @@ class CHypreMat(list):
         else:
            i = None
         mat = CHypreMat(r, i).transpose()
+        '''
+        if (cpart == rpart).all():
+           csr = ToScipyCoo(mat[0]).tocsr()
+           mat[0] = ToHypreParCSR(csr, col_starts =rpart)
+           if mat[1] is not None:
+              csr = ToScipyCoo(mat[1]).tocsr()
+              mat[1] = ToHypreParCSR(csr, col_starts =rpart)
+        '''
         return mat
     
     @property

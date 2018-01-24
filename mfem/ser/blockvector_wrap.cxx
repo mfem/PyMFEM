@@ -3318,7 +3318,9 @@ SWIGINTERN PyObject *_wrap_BlockVector_GetBlock__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (mfem::Vector *) &(arg1)->GetBlock(arg2);
@@ -3346,7 +3348,9 @@ SWIGINTERN PyObject *_wrap_BlockVector_GetBlock__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (mfem::Vector *) &((mfem::BlockVector const *)arg1)->GetBlock(arg2);
@@ -3435,7 +3439,9 @@ SWIGINTERN PyObject *_wrap_BlockVector_GetBlockView(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
@@ -3471,7 +3477,9 @@ SWIGINTERN PyObject *_wrap_BlockVector_BlockSize(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   result = (int)(arg1)->BlockSize(arg2);

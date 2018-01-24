@@ -5088,7 +5088,9 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux__SWIG_0(PyO
   }
   arg6 = reinterpret_cast< mfem::Vector * >(argp6);
   {
-    PyArray_PyIntAsInt(obj6);  
+    if (PyArray_PyIntAsInt(obj6) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg7 = PyInt_AsLong(obj6);
   }
   director = SWIG_DIRECTOR_CAST(arg1);
@@ -5624,7 +5626,9 @@ SWIGINTERN PyObject *_wrap_new_TransposeIntegrator__SWIG_0(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -6260,7 +6264,9 @@ SWIGINTERN PyObject *_wrap_new_LumpedIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -6472,7 +6478,9 @@ SWIGINTERN PyObject *_wrap_new_InverseIntegrator__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -6675,7 +6683,9 @@ SWIGINTERN PyObject *_wrap_new_SumIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_SumIntegrator",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
+    if (PyArray_PyIntAsInt(obj0) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg1 = PyInt_AsLong(obj0);
   }
   {
@@ -15103,7 +15113,9 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux__SWIG_0(PyObje
   }
   arg6 = reinterpret_cast< mfem::Vector * >(argp6);
   {
-    PyArray_PyIntAsInt(obj6);  
+    if (PyArray_PyIntAsInt(obj6) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg7 = PyInt_AsLong(obj6);
   }
   {
@@ -16804,7 +16816,9 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_1(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -16915,7 +16929,9 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_4(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -16985,7 +17001,9 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_6(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -18139,7 +18157,9 @@ SWIGINTERN PyObject *_wrap_new_DerivativeIntegrator(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
+    if (PyArray_PyIntAsInt(obj1) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg2 = PyInt_AsLong(obj1);
   }
   {
@@ -18600,7 +18620,9 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeElementFlux(PyObject *SWIGU
   }
   arg6 = reinterpret_cast< mfem::Vector * >(argp6);
   {
-    PyArray_PyIntAsInt(obj6);  
+    if (PyArray_PyIntAsInt(obj6) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg7 = PyInt_AsLong(obj6);
   }
   {

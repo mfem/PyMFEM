@@ -3871,7 +3871,9 @@ SWIGINTERN PyObject *_wrap_ParLinearForm_Update__SWIG_2(PyObject *SWIGUNUSEDPARM
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
+    if (PyArray_PyIntAsInt(obj3) == -1){
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
     arg4 = PyInt_AsLong(obj3);
   }
   {

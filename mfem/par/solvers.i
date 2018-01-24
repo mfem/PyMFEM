@@ -1,4 +1,4 @@
-%module solvers
+%module(directors="1")  solvers
 %{
 #include <mpi.h>
 #include "config/config.hpp"
