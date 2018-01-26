@@ -1,7 +1,8 @@
 '''''
-PyMFEM for mfem 3.3.2
+PyMFEM for mfem 3.3.2 
 '''''
-PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
+
+PyMFEM is a python2.7 wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
 This wrapper is meant for a rapid-prototyping of FEM program, and
 is built using SWIG 3.0.12
@@ -18,7 +19,7 @@ to find more detail of the MFEM libirary.
 
 -- INSTALLATION --
 
-Please see INSTALL.txt
+  Please see INSTALL.txt
 
 -- Features --
  Following features are realized in PyMFEM using SWIG interface
