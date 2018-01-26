@@ -74,12 +74,18 @@ int sizeof_HYPRE_Int(){
                   HYPRE_Int glob_ncols, int *I, HYPRE_Int *J,
                   double *data, HYPRE_Int *rows, HYPRE_Int *cols);
 
+<<<<<<< HEAD
+    allows to use numpy array to call this
+
+
+=======
     allows to use numpy array to call this.
  
     note that if cols and rows are the same (as a pointer),
     hypre_CSRMatrixReorder is called. It is not clear how to
     say "same as pointer" in Python. Here, if the list length
     is 4, cols is set to be rows. 
+>>>>>>> 91196adf49cd1cdd2bfaa356a35e11a4a47d957d
  */
 %typemap(in) (int *I,
 	      HYPRE_Int *J,
@@ -96,10 +102,18 @@ int sizeof_HYPRE_Int(){
   tmp_arr2_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1));
   tmp_arr3_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,2));
   tmp_arr4_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,3));
+<<<<<<< HEAD
+  tmp_arr5_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4));
+  // new HypreParMatrix takes the ownership of I, J, data
+  PyArray_CLEARFLAGS(tmp_arr1_, NPY_ARRAY_OWNDATA);
+  PyArray_CLEARFLAGS(tmp_arr2_, NPY_ARRAY_OWNDATA);
+  PyArray_CLEARFLAGS(tmp_arr3_, NPY_ARRAY_OWNDATA);
+=======
   list_len_ = PyList_Size($input);
   if (list_len_ == 5){    
      tmp_arr5_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,4));
   }
+>>>>>>> 91196adf49cd1cdd2bfaa356a35e11a4a47d957d
   $1 = (int *) PyArray_DATA(tmp_arr1_);
   $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
   $3 = (double *) PyArray_DATA(tmp_arr3_);

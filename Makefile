@@ -29,13 +29,13 @@ SWIGFLAG = -Wall -c++ -python
 
 MFEM=/usr/local
 MFEMLIB = mfem
-MFEMBUILDDIR = $(HOME)/src/mfem/cmbuild
+MFEMBUILDDIR = $(HOME)/src/mfem/cmbuild_par
 MFEMINCDIR = $(MFEM)/include/mfem
 MFEMLNKDIR = $(MFEM)/lib
 
 MFEMSER=/usr/local/mfem_ser
 MFEMSERLIB = mfem
-MFEMSERBUILDDIR = $(HOME)/src/mfem_ser/cmbuild
+MFEMSERBUILDDIR = $(HOME)/src/mfem_ser/cmbuild_ser
 MFEMSERINCDIR = $(MFEMSER)/include/mfem
 MFEMSERLNKDIR = $(MFEMSER)/lib
 
@@ -49,11 +49,9 @@ HYPRELNKDIR = $(HYPRE)/lib
 # METISLIB will become -lmetis
 # METISLNKDIR will become -L<dir>
 # overwrite METISLIBA to black in Makefile.local if metis is provide as .so
-METIS=/usr/local
 METISLIB = metis
-METISINCDIR = $(METIS)/include
-METISLNKDIR = $(METIS)/lib
-#METISLIBA   = $(METIS)/libmetis.a 
+METISINCDIR = /usr/local/include
+METISLNKDIR = /usr/local/lib
 
 #MPI
 MPIINCDIR= /usr/local/include/mpich-mp         #mpi.h
