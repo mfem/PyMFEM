@@ -37,20 +37,15 @@ modules= ["array", "common_functions", "socketstream",
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
 
-#extra_text = [x for x in
-#              ['-Wl', whole_archive,  mfemserlnkdir+'/libmfem.a',
-#               no_whole_archive] if x != '']
-#extra_link_args =  [','.join(extra_text)]
-extra_link_args =  []
-include_dirs = [mfemserbuilddir, mfemserincdir, numpyincdir, boostincdir]
-library_dirs = [mfemserlnkdir, boostlibdir]
-libraries    = [mfemlib, boostlib]
+include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, boostinc]
+library_dirs = [mfemserlnkdir, boostlib]
+libraries    = ['boost_iostreams', 'mfem']
 
 
 ext_modules = [Extension(proxy_names[modules[0]],
                          sources=sources[modules[0]],
                          extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'],
-                         extra_link_args = extra_link_args,
+                         extra_link_args = [],
                          include_dirs = include_dirs,
                          library_dirs = library_dirs,
                          runtime_library_dirs = library_dirs,
@@ -66,8 +61,8 @@ ext_modules.extend([Extension(proxy_names[name],
                for name in modules[1:]])
 
 
-setup (name = 'mfem',
-       version = '0.1',
+setup (name = 'mfem_serial',
+       version = '3.3.2',
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,
