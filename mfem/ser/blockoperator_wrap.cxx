@@ -3793,8 +3793,10 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock__SWIG_0(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -3846,8 +3848,10 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock__SWIG_1(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -3893,10 +3897,10 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock(PyObject *self, PyObje
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -3916,10 +3920,10 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock(PyObject *self, PyObje
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -3974,12 +3978,16 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -4033,12 +4041,16 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock__SWIG_1(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -4084,18 +4096,18 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -4116,18 +4128,18 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -4244,12 +4256,16 @@ SWIGINTERN PyObject *_wrap_BlockOperator_IsZeroBlock(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4290,12 +4306,16 @@ SWIGINTERN PyObject *_wrap_BlockOperator_GetBlock(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4336,12 +4356,16 @@ SWIGINTERN PyObject *_wrap_BlockOperator_GetBlockCoef(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4385,12 +4409,16 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlockCoef(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -4648,8 +4676,10 @@ SWIGINTERN PyObject *_wrap_BlockOperator_owns_blocks_set(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   if (arg1) (arg1)->owns_blocks = arg2;
   resultobj = SWIG_Py_Void();
@@ -4745,8 +4775,10 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_SetDiagonalBlock(PyObject
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -4869,8 +4901,10 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_GetDiagonalBlock(PyObject
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5089,8 +5123,10 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_owns_blocks_set(PyObject 
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   if (arg1) (arg1)->owns_blocks = arg2;
   resultobj = SWIG_Py_Void();
@@ -5186,8 +5222,10 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock(P
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -5236,12 +5274,16 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetBlock(PyObject 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -5366,12 +5408,16 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_GetBlock(PyObject 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5590,8 +5636,10 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_owns_blocks_set(Py
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   if (arg1) (arg1)->owns_blocks = arg2;
   resultobj = SWIG_Py_Void();

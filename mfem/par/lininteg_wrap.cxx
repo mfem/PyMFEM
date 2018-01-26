@@ -4293,12 +4293,16 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4340,8 +4344,10 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator__SWIG_1(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4488,10 +4494,10 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4506,18 +4512,18 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -4875,12 +4881,16 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator__SWIG_0(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4922,8 +4932,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator__SWIG_1(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5010,10 +5022,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5028,18 +5040,18 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5327,12 +5339,16 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator__SWIG_0(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5374,8 +5390,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator__SWIG_1(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5462,10 +5480,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator(PyObject *self, PyObje
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5480,18 +5498,18 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator(PyObject *self, PyObje
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5779,12 +5797,16 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator__SWIG_0(PyObject *
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5826,8 +5848,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator__SWIG_1(PyObject *
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5914,10 +5938,10 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator(PyObject *self, Py
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5932,18 +5956,18 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator(PyObject *self, Py
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {

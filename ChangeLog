@@ -1,5 +1,10 @@
 
 	<<<  Change Log. >>>
+2018 01.24
+	* The issue of not raising the type conversion error when int is an argument
+	is fixed
+	* ToHypreParCSR is modified so that it causes hypre_CSRMatrixReorder call when
+	col_starts and row_starts are the same.
 2018 01.20
 	* generating mfem::SparseMatrix from scipy.csr_matrix is added
 	* setting mfem::Vector using numpy array is added

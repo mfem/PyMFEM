@@ -43,29 +43,7 @@ import_array();
 %import "fe.i"
 
 %import "ostream_typemap.i"
-//
-
-//  conversion of Int (can handle numpy int)
-%typemap(in) int {
-  PyArray_PyIntAsInt($input);  
-  $1 = PyInt_AsLong($input);
-}
-%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) int {
-  if (PyArray_PyIntAsInt($input)   != -1){
-    $1 = 1;
-  } else {
-    $1 = 0;
-  }
-}
-// this prevent automatic conversion from int to double so
-// that it select collect overloaded method....
-%typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
-  if (PyFloat_Check($input)){
-    $1 = 1;
-  } else {
-    $1 = 0;
-  }
-}
+%import "../common/numpy_int_typemap.i"
 
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).

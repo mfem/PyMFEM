@@ -172,8 +172,15 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     # it seems row_starts and col_starts are both to determin
     # which part is treated diagnal element.
     #
-
-    M = mfem.HypreParMatrix(MPI.COMM_WORLD,
+    if (m == n and row_starts[0] == col_starts[0] and
+        row_starts[1] == col_starts[1]):
+        # this will cause hypre_CSRMatrixReorder call.
+        M = mfem.HypreParMatrix(MPI.COMM_WORLD,
+                                nrows,
+                                m, n, [i, j,
+                                data, row_starts])
+    else:
+        M = mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
                                 data, row_starts, col_starts])

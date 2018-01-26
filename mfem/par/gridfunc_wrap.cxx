@@ -4601,8 +4601,10 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   } 
   arg2 = reinterpret_cast< mfem::GridFunction ** >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4816,8 +4818,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_0(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -4828,8 +4832,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_0(PyObject *SWIGUNU
   }
   arg3 = reinterpret_cast< mfem::Array< double > * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -4866,8 +4872,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_1(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -4915,8 +4923,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -4927,8 +4937,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -4966,8 +4978,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue__SWIG_1(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -5011,10 +5025,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *self, PyObject *args)
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5033,10 +5047,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *self, PyObject *args)
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5044,10 +5058,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *self, PyObject *args)
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -5091,8 +5105,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValue(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -5151,8 +5167,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -5171,8 +5189,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
-    PyArray_PyIntAsInt(obj4);  
-    arg5 = PyInt_AsLong(obj4);
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
     try {
@@ -5213,8 +5233,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_1(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -5277,8 +5299,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_2(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -5305,8 +5329,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_2(PyObject *SWIGUNUSEDPA
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
-    PyArray_PyIntAsInt(obj5);  
-    arg6 = PyInt_AsLong(obj5);
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
     try {
@@ -5351,8 +5377,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_3(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -5412,10 +5440,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5439,10 +5467,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5471,10 +5499,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5486,10 +5514,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
           _v = SWIG_CheckState(res);
           if (_v) {
             {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 _v = 0;
+              } else {
+                _v = 1;    
               }
             }
             if (_v) {
@@ -5507,10 +5535,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5526,10 +5554,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
             _v = SWIG_CheckState(res);
             if (_v) {
               {
-                if (PyArray_PyIntAsInt(argv[5])   != -1){
-                  _v = 1;
-                } else {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   _v = 0;
+                } else {
+                  _v = 1;    
                 }
               }
               if (_v) {
@@ -5586,12 +5614,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res4)) {
@@ -5618,8 +5650,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUS
   }
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
-    PyArray_PyIntAsInt(obj6);  
-    arg7 = PyInt_AsLong(obj6);
+    if ((PyArray_PyIntAsInt(obj6) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg7 = PyArray_PyIntAsInt(obj6);
   }
   {
     try {
@@ -5667,12 +5701,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_1(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res4)) {
@@ -5732,18 +5770,18 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5773,18 +5811,18 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5800,10 +5838,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
               _v = SWIG_CheckState(res);
               if (_v) {
                 {
-                  if (PyArray_PyIntAsInt(argv[6])   != -1){
-                    _v = 1;
-                  } else {
+                  if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
                     _v = 0;
+                  } else {
+                    _v = 1;    
                   }
                 }
                 if (_v) {
@@ -5918,8 +5956,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValues__SWIG_1(PyObject *SWIGUN
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -6002,10 +6042,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValues(PyObject *self, PyObject
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6068,12 +6108,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceVectorValues(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res4)) {
@@ -6224,8 +6268,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -6252,8 +6298,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *S
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
-    PyArray_PyIntAsInt(obj5);  
-    arg6 = PyInt_AsLong(obj5);
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
     try {
@@ -6298,8 +6346,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_1(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -6359,10 +6409,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *self, PyO
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6391,10 +6441,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *self, PyO
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6410,10 +6460,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *self, PyO
             _v = SWIG_CheckState(res);
             if (_v) {
               {
-                if (PyArray_PyIntAsInt(argv[5])   != -1){
-                  _v = 1;
-                } else {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   _v = 0;
+                } else {
+                  _v = 1;    
                 }
               }
               if (_v) {
@@ -6491,8 +6541,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_2(PyObject *SWIGUNU
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6586,10 +6638,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -6605,10 +6657,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6628,10 +6680,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6640,10 +6692,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -6693,8 +6745,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldNodalValues(PyObject *SWIG
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6739,8 +6793,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn__SWIG_0(PyObject *S
   }
   arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6834,10 +6890,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn(PyObject *self, PyO
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -6878,12 +6934,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetDerivative(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res4)) {
@@ -7077,8 +7137,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetGradients(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -7231,8 +7293,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_0(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -7301,8 +7365,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_1(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -7361,8 +7427,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_2(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -7412,8 +7480,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_3(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -7457,10 +7527,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7479,10 +7549,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7490,11 +7560,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyFloat_Check(argv[3])){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
           }
           if (_v) {
             return _wrap_GridFunction_ImposeBounds__SWIG_2(self, args);
@@ -7510,10 +7577,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7540,10 +7607,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7551,19 +7618,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyFloat_Check(argv[3])){
-              _v = 1;
-            } else {
-              _v = 0;
-            }
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
           }
           if (_v) {
             {
-              if (PyFloat_Check(argv[4])){
-                _v = 1;
-              } else {
-                _v = 0;
-              }
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
             }
             if (_v) {
               return _wrap_GridFunction_ImposeBounds__SWIG_1(self, args);
@@ -7705,8 +7766,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_1(PyObject *SWI
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -8011,10 +8074,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient(PyObject *self, PyObj
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -9025,8 +9088,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeH1Error(PyObject *SWIGUNUSEDPARM(
   } 
   arg5 = static_cast< double >(val5);
   {
-    PyArray_PyIntAsInt(obj5);  
-    arg6 = PyInt_AsLong(obj5);
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
     try {
@@ -9615,8 +9680,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error__SWIG_0(PyObject *SWIGUN
   }
   arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
@@ -9696,8 +9763,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error__SWIG_1(PyObject *SWIGUN
   }
   arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
@@ -9754,8 +9823,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error__SWIG_2(PyObject *SWIGUN
   }
   arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -9799,10 +9870,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *self, PyObject
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -9827,10 +9898,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *self, PyObject
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -9860,10 +9931,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *self, PyObject
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -10561,11 +10632,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         void *vptr = 0;
@@ -10584,11 +10652,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         void *vptr = 0;
@@ -10607,11 +10672,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         void *vptr = 0;
@@ -10635,11 +10697,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         void *vptr = 0;
@@ -10663,11 +10722,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         void *vptr = 0;
@@ -10696,11 +10752,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         void *vptr = 0;
@@ -10729,11 +10782,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         void *vptr = 0;
@@ -10817,12 +10867,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_0(PyObject *SWIGUNUSED
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    PyArray_PyIntAsInt(obj4);  
-    arg5 = PyInt_AsLong(obj4);
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
     try {
@@ -10879,8 +10933,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_1(PyObject *SWIGUNUSED
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -10995,10 +11051,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux(PyObject *self, PyObject *ar
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -11023,18 +11079,18 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux(PyObject *self, PyObject *ar
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
             {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 _v = 0;
+              } else {
+                _v = 1;    
               }
             }
             if (_v) {
@@ -11221,11 +11277,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_Assign(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         return _wrap_GridFunction_Assign__SWIG_0(self, args);
@@ -11489,8 +11542,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeRef__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -11553,10 +11608,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeRef(PyObject *self, PyObject *args) 
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -11670,8 +11725,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg3 = reinterpret_cast< std::string * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -11727,8 +11784,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_0(PyObject *SWIGUNUSEDPARM
     }
   }
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -11849,10 +11908,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *self, PyObject *args) 
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -11969,8 +12028,10 @@ SWIGINTERN PyObject *_wrap_new_GridFunction__SWIG_7(PyObject *SWIGUNUSEDPARM(sel
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12071,10 +12132,10 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -12093,10 +12154,10 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -12147,8 +12208,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveToFile(PyObject *SWIGUNUSEDPARM(self
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12320,11 +12383,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_isub(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         return _wrap_GridFunction_isub__SWIG_1(self, args);
@@ -12516,8 +12576,10 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_1(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::QuadratureSpace * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12589,8 +12651,10 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_3(PyObject *SWIGUNUSEDPA
   }
   arg2 = reinterpret_cast< double * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12731,10 +12795,10 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -12767,10 +12831,10 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction(PyObject *self, PyObject *args
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -12875,8 +12939,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_0(PyObject *SWIGUNU
   }
   arg2 = reinterpret_cast< mfem::QuadratureSpace * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12964,8 +13030,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_2(PyObject *SWIGUNU
   }
   arg3 = reinterpret_cast< double * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -13084,10 +13152,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -13111,10 +13179,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -13181,8 +13249,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetVDim(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -13282,8 +13352,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementIntRule(PyObject *SWIGUN
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -13320,8 +13392,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues__SWIG_0(PyObject 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -13366,8 +13440,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues__SWIG_1(PyObject 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -13411,10 +13487,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues(PyObject *self, P
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -13434,10 +13510,10 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues(PyObject *self, P
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -13691,8 +13767,10 @@ SWIGINTERN PyObject *_wrap_ZZErrorEstimator__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
   {
-    PyArray_PyIntAsInt(obj5);  
-    arg6 = PyInt_AsLong(obj5);
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
     try {
@@ -13942,10 +14020,10 @@ SWIGINTERN PyObject *_wrap_ZZErrorEstimator(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
             if (_v) {
               {
-                if (PyArray_PyIntAsInt(argv[5])   != -1){
-                  _v = 1;
-                } else {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   _v = 0;
+                } else {
+                  _v = 1;    
                 }
               }
               if (_v) {
@@ -13993,8 +14071,10 @@ SWIGINTERN PyObject *_wrap_ComputeElementLpDistance(PyObject *SWIGUNUSEDPARM(sel
   } 
   arg1 = static_cast< double >(val1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -14056,8 +14136,10 @@ SWIGINTERN PyObject *_wrap_new_ExtrudeCoefficient(PyObject *SWIGUNUSEDPARM(self)
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -14197,8 +14279,10 @@ SWIGINTERN PyObject *_wrap_Extrude1DGridFunction(PyObject *SWIGUNUSEDPARM(self),
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
   {
-    PyArray_PyIntAsInt(obj3);  
-    arg4 = PyInt_AsLong(obj3);
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {

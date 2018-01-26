@@ -3993,8 +3993,10 @@ SWIGINTERN PyObject *_wrap_Hybridization_AssembleMatrix(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -4039,8 +4041,10 @@ SWIGINTERN PyObject *_wrap_Hybridization_AssembleBdrMatrix(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res3)) {

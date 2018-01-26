@@ -1,4 +1,3 @@
-
 %module vector
 
 %{
@@ -21,19 +20,7 @@ import_array();
 %import "array.i"
 %import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
-
-//  conversion of Int (can handle numpy int)
-%typemap(in) int {
-  PyArray_PyIntAsInt($input);  
-  $1 = PyInt_AsLong($input);
-}
-%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) int {
-  if (PyArray_PyIntAsInt($input)   != -1){
-    $1 = 1;
-  } else {
-    $1 = 0;
-  }
-}
+%import "../common/numpy_int_typemap.i"
 
 %typemap(in)  (double *_data){// int _size){
   int i, si;

@@ -3932,8 +3932,10 @@ SWIGINTERN PyObject *_wrap_new_socketbuf__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_socketbuf",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
-    arg1 = PyInt_AsLong(obj0);
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -3968,8 +3970,10 @@ SWIGINTERN PyObject *_wrap_new_socketbuf__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< char * >(buf1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4006,10 +4010,10 @@ SWIGINTERN PyObject *_wrap_new_socketbuf(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -4022,10 +4026,10 @@ SWIGINTERN PyObject *_wrap_new_socketbuf(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4061,8 +4065,10 @@ SWIGINTERN PyObject *_wrap_socketbuf_attach(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4135,8 +4141,10 @@ SWIGINTERN PyObject *_wrap_socketbuf_open(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4367,8 +4375,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_3(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_socketstream",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
-    arg1 = PyInt_AsLong(obj0);
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
@@ -4398,8 +4408,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_4(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_socketstream",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
-    arg1 = PyInt_AsLong(obj0);
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -4438,8 +4450,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< char * >(buf1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -4481,8 +4495,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_6(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< char * >(buf1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4538,10 +4554,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -4551,10 +4567,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -4573,10 +4589,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4590,10 +4606,10 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4678,8 +4694,10 @@ SWIGINTERN PyObject *_wrap_socketstream_open(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    PyArray_PyIntAsInt(obj2);  
-    arg3 = PyInt_AsLong(obj2);
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4801,8 +4819,10 @@ SWIGINTERN PyObject *_wrap_socketstream_precision__SWIG_0(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4876,10 +4896,10 @@ SWIGINTERN PyObject *_wrap_socketstream_precision(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5075,8 +5095,10 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift____SWIG_1(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5220,10 +5242,10 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift__(PyObject *self, PyObject *arg
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5297,12 +5319,16 @@ SWIGINTERN PyObject *_wrap_new_socketserver__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_socketserver",&obj0,&obj1)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
-    arg1 = PyInt_AsLong(obj0);
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5327,8 +5353,10 @@ SWIGINTERN PyObject *_wrap_new_socketserver__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_socketserver",&obj0)) SWIG_fail;
   {
-    PyArray_PyIntAsInt(obj0);  
-    arg1 = PyInt_AsLong(obj0);
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -5360,10 +5388,10 @@ SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -5373,18 +5401,18 @@ SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
