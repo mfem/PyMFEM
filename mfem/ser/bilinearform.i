@@ -8,6 +8,7 @@
 %init %{
 import_array();
 %}
+%include "../common/cpointers.i"
 
 %import "array.i"
 %import "fespace.i"
@@ -23,13 +24,12 @@ import_array();
 %import "linearform.i"
 %import "gridfunc.i"
 
-%import "cpointer.i"
-%pointer_class(int, intp);
-
 %exception {
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
 }
+%ignore mfem::MixedBilinearForm::AddBoundaryDomainIntegrator;
+%feature("director") mfem::BilinearForm;
 
  //%include "fem/coefficient.hpp"
 namespace mfem { 
@@ -37,7 +37,7 @@ namespace mfem {
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
     bfi.thisown=0 
-   %}
+    %}
 %pythonprepend BilinearForm::AddBoundaryIntegrator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(bfi)
@@ -60,6 +60,8 @@ namespace mfem {
     val.thisown=0 
    %}
 %pythonappend BilinearForm::EnableHybridization %{
+    if not hasattr(self, "_integrators"): self._integrators = []
+    self._integrators.append(constr_integ)
     constr_integ.thisown = 0
    %} 
 %pythonprepend MixedBilinearForm::AddDomainIntegrator %{
@@ -82,7 +84,6 @@ namespace mfem {
     self._spmat.append(val)
     val.thisown=0 
    %}
-
 %pythonprepend DiscreteLinearOperator::AddDomainInterpolator %{
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
@@ -92,7 +93,6 @@ namespace mfem {
     if not hasattr(self, "_integrators"): self._integrators = []
     self._integrators.append(di)
     di.thisown=0 
-   %}
-  
+    %}
 } //end of namespace
 %include "fem/bilinearform.hpp"

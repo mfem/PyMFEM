@@ -1,37 +1,32 @@
 WHOLE_ARCHIVE = -all_load
 NO_WHOLE_ARCHIVE = 
-INSTALL_PREFIX=$(HOME)/sandbox/PetraM
+MFEM_PREFIX ?=$(INSTALL_PREFIX)
 
-MFEM     = $(HOME)/sandbox/mfem_sep_2017/par
-MFEMBUILDDIR = $(HOME)/src/mfem_sep_2017/cmbuild
+MFEM     = $(MFEM_PREFIX)/mfem-3.3.2/par
+MFEMBUILDDIR = $(MFEM_PREFIX)/src/mfem-3.3.2/cmbuild_par
 MFEMINCDIR  = $(MFEM)/include/mfem
 MFEMLNKDIR  = $(MFEM)/lib
 
-MFEMSER  =  $(HOME)/sandbox/mfem_sep_2017/ser
-MFEMSERBUILDDIR = $(HOME)/src/mfem_sep_2017_ser/cmbuild
+MFEMSER  =  $(MFEM_PREFIX)/mfem-3.3.2/ser
+MFEMSERBUILDDIR = $(MFEM_PREFIX)/src/mfem-3.3.2/cmbuild_ser
 MFEMINCDIR  = $(MFEMSER)/include/mfem
 MFEMSERLNKDIR  = $(MFEMSER)/lib
 
-# METIS4
-# do not use .a file for metis
-METIS = $(HOME)/sandbox
-METISLIB = metis
-METISINCDIR = $(METIS)/include
-METISLNKDIR = $(METIS)/lib
-#METISLIBA   = 
+# METIS5
+METISINCDIR = $(METIS5INC)
+METISLNKDIR = $(METIS5LIB)
 
 # HYPRE
-HYPRE 	 = $(HOME)/sandbox
-HYPREINCDIR = $(HYPRE)/include
-HYPRELNKDIR = $(HYPRE)/lib
+HYPREINCDIR = $(HYPREINC)
+HYPRELNKDIR = $(HYPRELIB)
 
-#MPI
-MPICHINCDIR    = /opt/local/include/mpich-mp
-MPICHLNKDIR    = /opt/local/lib/mpich-mp
+#MPI (add the directory of mpi.h)
+MPICHINCDIR    = 
+MPICHLNKDIR    = 
 MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
 
-#Boost
-BOOSTINCDIR = /opt/local/include
-BOOSTLIBDIR = /opt/local/lib
-BOOSTLIB = boost_iostreams-mt
+#Boost (add the directory of libboost_iostream.so, and its header file.)
+BOOSTINCDIR = 
+BOOSTLIBDIR = 
+BOOSTLIB = boost_iostreams
 

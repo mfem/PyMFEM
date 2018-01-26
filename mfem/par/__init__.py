@@ -4,6 +4,7 @@ if mfem.mfem_mode is None:
    mfem.mfem_mode = 'parallel'
 if mfem.mfem_mode == 'serial':
    raise ImportError("MFEM serial mode is already loaded")
+debug_print = mfem.debug_print
 
 from mpi4py import MPI
 
@@ -14,6 +15,7 @@ rtld_now = sys.getdlopenflags()
 sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
 
 from  array import *
+from  common_functions import *
 from  socketstream import *
 from  operators import *
 from  blockoperator import *

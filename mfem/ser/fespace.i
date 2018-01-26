@@ -42,6 +42,9 @@ import_array();
 %typemap(typecheck) (int ndofs = -1) {
    $1 = PyInt_Check($input) ? 1 : 0;
 }
+%typemap(typecheck) (int component = -1) {
+   $1 = PyInt_Check($input) ? 1 : 0;
+}
 
 
 //VDoF accesser

@@ -172,8 +172,15 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     # it seems row_starts and col_starts are both to determin
     # which part is treated diagnal element.
     #
-
-    M = mfem.HypreParMatrix(MPI.COMM_WORLD,
+    if (m == n and row_starts[0] == col_starts[0] and
+        row_starts[1] == col_starts[1]):
+        # this will cause hypre_CSRMatrixReorder call.
+        M = mfem.HypreParMatrix(MPI.COMM_WORLD,
+                                nrows,
+                                m, n, [i, j,
+                                data, row_starts])
+    else:
+        M = mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
                                 data, row_starts, col_starts])
@@ -204,7 +211,6 @@ def InnerProductComplex(A, B):
     import mfem.par as mfem    
     R_A, I_A = A
     R_B, I_B = B
-
     if I_A is None and I_B is None:
        return mfem.InnerProduct(R_A, R_B)
     elif I_A is None:
@@ -240,6 +246,7 @@ def ParMultVecComplex(A, v):
 
     R_A, I_A = A
     R_v, I_v = v
+
     ### Take Row partitioning of A for output
     if R_A is not None:
         part = R_A.GetRowPartArray()
@@ -358,7 +365,7 @@ def Array2HypreVec(v, partitioning = None, rank = 0):
     data = comm.bcast(data, root=rank)
 
     if partitioning is None:
-        start_row, end_row, nrows = get_assumed_patitioning(len(v))
+        start_row, end_row, nrows = get_assumed_patitioning(len(data))
     else:
         start_row = partitioning[myid]
         end_row = partitioning[myid+1]

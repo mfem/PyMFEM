@@ -215,7 +215,7 @@ if __name__=="__main__":
         od = os.getcwd()
         files = os.listdir(od)
         for x in files:
-           if x == "test.py": continue
+           if x.endswith(".py"): continue
            if os.path.isdir(x):
                shutil.rmtree(x)
            else:
@@ -233,17 +233,21 @@ if __name__=="__main__":
     
     mfem_dir = os.path.abspath(mfempdir)
     mfemser_dir = os.path.abspath(mfemsdir)
-    mfemp_exes = find_mfem_examples(mfem_dir, serial = False, example = example)
-    mfems_exes = find_mfem_examples(mfemser_dir, serial = True,  example = example)    
-    pymfems_exes = [os.path.join(exdir, os.path.basename(x))+".py"  for x in mfems_exes]
-    pymfemp_exes = [os.path.join(exdir, os.path.basename(x))+".py"  for x in mfemp_exes]
 
-    if mfems_exes and tests:
+    if testp:
+       mfemp_exes = find_mfem_examples(mfem_dir, serial = False, example = example)
+       pymfemp_exes = [os.path.join(exdir, os.path.basename(x))+".py"  for x in mfemp_exes]
+    if tests:
+       mfems_exes = find_mfem_examples(mfemser_dir, serial = True,  example = example)    
+       pymfems_exes = [os.path.join(exdir, os.path.basename(x))+".py"  for x in mfems_exes]
+
+
+    if tests and mfems_exes:
         print(bcolors.BOLD+"Running Serial Version"+bcolors.ENDC)
         results, fails = run_test(mfems_exes, pymfems_exes, serial = True, verbose=verbose)
     else:
         results = []; fails=[]        
-    if len(mfemp_exes) != 0 and testp:
+    if testp and len(mfemp_exes) != 0:
         print(bcolors.BOLD+"Running Parallel Version"+bcolors.ENDC)
         resultp, failp = run_test(mfemp_exes, pymfemp_exes, serial = False, np = np, verbose=verbose)
     else:

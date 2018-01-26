@@ -45,7 +45,7 @@ import_array();
 %import "vector.i"
 %import "eltrans.i"
 %ignore Function;
-%ignore DeltaCoefficient;
+//%ignore DeltaCoefficient;
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 

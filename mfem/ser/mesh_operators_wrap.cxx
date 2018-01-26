@@ -3449,27 +3449,28 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_hex_t swig_types[1]
-#define SWIGTYPE_p_intp swig_types[2]
-#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[3]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[4]
-#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[5]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[6]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[7]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[8]
-#define SWIGTYPE_p_mfem__Mesh swig_types[9]
-#define SWIGTYPE_p_mfem__MeshOperator swig_types[10]
-#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[11]
-#define SWIGTYPE_p_mfem__Rebalancer swig_types[12]
-#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[13]
-#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[14]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[15]
-#define SWIGTYPE_p_quad_t swig_types[16]
-#define SWIGTYPE_p_seg_t swig_types[17]
-#define SWIGTYPE_p_tet_t swig_types[18]
-#define SWIGTYPE_p_tri_t swig_types[19]
-static swig_type_info *swig_types[21];
-static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
+#define SWIGTYPE_p_doublep swig_types[1]
+#define SWIGTYPE_p_hex_t swig_types[2]
+#define SWIGTYPE_p_intp swig_types[3]
+#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[4]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[5]
+#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[6]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[7]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[8]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[9]
+#define SWIGTYPE_p_mfem__Mesh swig_types[10]
+#define SWIGTYPE_p_mfem__MeshOperator swig_types[11]
+#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[12]
+#define SWIGTYPE_p_mfem__Rebalancer swig_types[13]
+#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[14]
+#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[15]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[16]
+#define SWIGTYPE_p_quad_t swig_types[17]
+#define SWIGTYPE_p_seg_t swig_types[18]
+#define SWIGTYPE_p_tet_t swig_types[19]
+#define SWIGTYPE_p_tri_t swig_types[20]
+static swig_type_info *swig_types[22];
+static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4579,8 +4580,10 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetNCLimit(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4803,8 +4806,10 @@ SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetOp(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::ThresholdDerefiner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4837,8 +4842,10 @@ SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetNCLimit(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::ThresholdDerefiner * >(argp1);
   {
-    PyArray_PyIntAsInt(obj1);  
-    arg2 = PyInt_AsLong(obj1);
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5070,6 +5077,7 @@ static void *_p_mfem__RebalancerTo_p_mfem__MeshOperator(void *x, int *SWIGUNUSED
     return (void *)((mfem::MeshOperator *)  ((mfem::Rebalancer *) x));
 }
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t = {"_p_mfem__ArrayT_mfem__MeshOperator_p_t", "mfem::Array< mfem::MeshOperator * > *", 0, 0, (void*)0, 0};
@@ -5092,6 +5100,7 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
+  &_swigt__p_doublep,
   &_swigt__p_hex_t,
   &_swigt__p_intp,
   &_swigt__p_mfem__AnisotropicErrorEstimator,
@@ -5114,6 +5123,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__MeshOperator_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__MeshOperator_p_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5136,6 +5146,7 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
+  _swigc__p_doublep,
   _swigc__p_hex_t,
   _swigc__p_intp,
   _swigc__p_mfem__AnisotropicErrorEstimator,

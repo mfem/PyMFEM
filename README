@@ -1,10 +1,11 @@
 '''''
-PyMFEM for mfem 3.3
+PyMFEM for mfem 3.3.2 
 '''''
-PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
+
+PyMFEM is a python2.7 wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
 This wrapper is meant for a rapid-prototyping of FEM program, and
-is built using SWIG 3.0.
+is built using SWIG 3.0.12
 With PyMFEM, a user can create c++ MFEM objects and call their
 method from python. We strongly recommend to visit the MFEM web site
 to find more detail of the MFEM libirary.
@@ -18,139 +19,7 @@ to find more detail of the MFEM libirary.
 
 -- INSTALLATION --
 
-0: Dependencies
-  0-1) MFEM
-	 PyMFEM can be build either with parallel or serial MFEM or both.
-
-	 From this version (after Sep. 2017), the build script assumes that
-	 MFEM (and HYPRE and Metis5 too) is built as shared library.
-	 
-	 Note that if two versions are used, serial version and parallel
-	 MFEM needs to be compiled in separate directory. For example, one
-	 may install parallel MFEM to 
-	     /usr/local/mfem/par/
-         and serial MFEM to 
-             /usr/local/mfem/ser/
-
-         <shared MFEM library>
-
- 	 CMake build has an option to build a shared libaray. Consult MFEM
-	 INSTALL manual for more detail.
-
-         mkdir cmbuild; cd cmbuild
-         cmake .. -DBUILD_SHARED_LIBS=1
-
-	 (MacOSX specific)
-	 dynamic library installed on MacOSX does not hafe proper install_name
-	 implanted into libmfem.dylib.
-	 
-         install_name_tool -id <fullpath to dylib> libmfem.dylib
-	 
-         By default, Makefile assumes that MFEM is installed
-	 under /usr/local/mfem-3.2 and serial version of MFEM
-	 is installed under /usr/local/mfem-3.2ser.
-	 A user can change it by editing Makefile.local
-
-         < note about METIS version>
-         MUMPS uses METIS5. Therefore, if you are going to use
-	 this with MUMPS in PyMFEM_pi,
-	 parallel MFEM is required to build MFEM with METIS5.
-	 Open config.mk in mfem/config (see INSTALL in MFEM for
-	 detail) change 
-   	    MFEM_USE_MPI         = YES 
-            MFEM_USE_METIS_5     = YES
-	 You also need to specify METIS_DIR, METIS_OPT, METIS_LIB
-	 Then, try.
-	    make config
-	    mamke -j	 
-
-  0-2) HYPRE
-	 Required for parallel MFEM. CMake build has an option to build
-	 a shared library (DHYPRE_SHARED=1)
-
-  0-3) Metis5
-	 Required for parallel MFEM. To build Metis5 as shared library
-	 use share=1 when running make config
-	 
-  	 $ make config shared=1
-	 
-  0-4) boost
-         used for wrapping std::iostream
-	 
-  0-5) mpi4py
-         Required for parallel MFEM
-
-2: Prepare Makefile.local
-   copy a sample template (Makefile_templates/Makefile.local.shared)
-   to the repository root as Makefile.local.
-
-   edit it for your enviroment.
-
-   make will include Makefile.local to overwrite some parameters and
-   the result is wrtten to setup_local.py, which is being loaded to
-   setup.py.
-   
-   Variables which may need to be adjusted include... 
-
-   * Parallel and Serial MFEM shared library location (MFEM and MFEMSER)
-     - Leaving MFEMSER in Makefile.local  skips building serial version.
-     - Leaving MFEM in Makefile.local  skips building parallel version.
-   * Hypre and Metis libary location
-   * MPICH location to look for mpi.h and linking to libmpi etc..
-   * BOOST library location      
-   
-2-1 (Optional): Build SWIG cxx files
-This is needed only when you edit SWIG interface files. cxx files
-in this repository are generated using SWIG 3.0.8
-   * make cxx
-
-   or
-   
-   * make sercxx (sereal MFEM wrapepr)
-   * make parcxx (parallel MFEM wrapper)
-	
-3: Compile Extensions
-   * make
-   or 
-   * make ser (sereal MFEM wrapepr)
-   * make par (parallel MFEM wrapper)
-
-4) run example
-   Add PyMFEM to your PYTHONPATH. In bash,
-      > export PYTHONPATH=<hogehogehoge>:$PYTHONPATH
-   Then, launch python and see if it import mfem
-      > import mfem
-      > import mfem.ser (serial)
-      or
-      > import mfem      
-      > import mfem.par (parallel)
-   
-   Many of example c++ programs in MFEM are converted in python and
-   found in example directory. Once PYTHONPATH is set, you
-   can run them as follows.
-     
-     > python ex1.py  (serial)
-     > mpiexec -n 2 python ex1p.py (parallel)
-
-   Note that python version  examples are simplfied. It does not
-   parse arguments nor visulaization via socket connection.
-
-5) (optional) run test
-   $ cd test
-   $ python test.py -serial -mfemsdir (path to CMake build dir for serial MFEM) -verbose
-   $ python test.py -parallel -mfempdir (path to CMake build dir for parallel MFEM) -verbose
-
-
-   this script runs all example python script and corresponding
-   C++ verison and compare the text output. It will report if
-   there is siginficant difference in output.
-
-   Possible fail reason:
-      Bug ;D
-      Conversgence of iterative solver depends on the intial
-      condition...?
-      ex7p fails although the glvis shows the same plot...
-  
+  Please see INSTALL.txt
 
 -- Features --
  Following features are realized in PyMFEM using SWIG interface
@@ -172,16 +41,35 @@ in this repository are generated using SWIG 3.0.8
         Constructor also get SWIG object to <double *>. However, memory
 	management for this pointer object is left to a user.
 	
-     Array element access:  print v[0] or v[0] = 3
-     Assign method:         v.Assign(1) (equivalent to v=1 in c++)
+     Array element access:
+         reading element: print v[0]
+	 element assinment v[0] = 3
+
+         negative index is also possible; v[-1] is equivalent to v[size-1]
+	 
+     Assign method: operator= is replaced by Assine method 
+        v.Assign(1.) (equivalent to v=1 in c++)
+        v.Assign(<some mfem::Vector>) (copy data from mfem vector)
+        v.Assign(np.array([1., 2., 3.])  (copy data from np.array)
+	
      Data Access as Numpy:  v.GetDataArray()
 
-
-     In c++, a new partial view to existing vector is acquired
-     as
+     In c++, a new partial view to existing vector is acquired as
 	Vector v(vec.GetData() + sc, sc);
-     , where as in python, In python, we need to
+     In Python, one can call either
         v = mfem.Vector(vec, offset, size)
+     or use slice
+        vec[offset:offset+size]  # more python-ish...
+
+     Note that this slice returns mere new nmemory view, sharing the same vector
+     object. However, be carefull that, when slice requires non contigeous momory
+     view, PyMFEM returns a new vector object NOT sharing the memory.
+     If one wants to get the access to a memory view with non-trivial striding,
+     use GetDataArray discussed below to get a numpy array pointing the
+     moemory allocated for Vector, and use slice of the newly created numpy object.
+     
+     Vector::GetDataArray returns numpy object viewing the data stored in C++ Vector
+     object. Note that the returned numpy array does not own the data.
 
   4-2) mfem::Coefficient
        PyCoefficient is derived from FunctionCoefficient
@@ -223,6 +111,13 @@ in this repository are generated using SWIG 3.0.8
 	     GridFunction *g = new GridFunction(&fespace);
 	     g = 0;
 	     
+      GridFunction(FiniteElementSpace *f, double *data) is extended to
+      support offsets
+          v = mfem.GridFunction(fec, <pointer to double>, offset)
+      so that follwoing can be wrappeds
+	  GridFucntion(fes, vec.GetData() + sc)
+      the same is used for ParGridFunction
+	     
   4-4) mfem::Mesh
          Wrapper of following methods are customized to
 	 return either python list object or tuple of lists
@@ -235,6 +130,7 @@ in this repository are generated using SWIG 3.0.8
             GetEdgeVertices(i)
             GetFaceVertices(i)
             GetElementFaces(i)
+	    GetBdrElementAdjacentElement()
 	    
 	 pointer passing in following methos are returned
 	 as tuple
@@ -261,10 +157,11 @@ in this repository are generated using SWIG 3.0.8
 	 as numpy object
 
          GetBdrElementFace(i) returns tuple
-         GetBdrArray(int idx) returns array of boundary whose BdrAttribute is idx
+         GetBdrArray(int idx) returns array of boundary element whose BdrAttribute is idx
          GetBdrAttributeArray() returns array of boundary attribute
-         GetAttributeArray() returns array of attribute	 
-
+         GetAttributeArray() returns array of aqttribute
+         GetDomainArray(int idx) returns array of element whose Attribute is idx
+	 
          SwapNodes returns nodes and onws_nodes as follows.
 	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 	    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
@@ -283,11 +180,30 @@ in this repository are generated using SWIG 3.0.8
 	 
   4-6) densemat
          Add functions are accessed as add_dense.
-	 elements are accessed similar to a regular python array
-	      densmat[i,j] = xxx
-	      x = densmat[i,j]
-	 GetDataArray returns copy of data.
 	 
+	 elements are accessed similar to a regular python array
+	 Assign method replaces = operator
+         GetDataArray returns a memory view to the internal data as numpy array.
+         (example)
+              x = DenseMatrix(3, 3)	 
+	      x.Assign(0)
+              v = Vector([1,2,3,4,5,6,7,8,9])
+  	      m = DenseMatrix(v.GetData(), 3, 3)
+	      x.Assign(m)
+
+              x[i,j] = xxx
+	      print x[i,j]
+	      
+              x = DenseTensor(2, 3, 5)
+	      x.Assign(1) # set all 1
+	      x[5] # returns DenseMatrix with col=2 and row=3
+	      print x[1,2,3]
+	      x[1,2,3]=3
+
+              # NOTE the index order is different in the numpy array returned
+	      # by DenseTensor::GetDataArray
+              x[1 2,3] = x.GetDataArray()[3,1,2]
+	      
 	 Note that internally MFEM densmatrix is column major, while numpy
 	 is row major. Therefore,
             v = Vector([1,2,3,4,5,6,7,8,9])
@@ -302,7 +218,9 @@ in this repository are generated using SWIG 3.0.8
 	    [1 2,3]
 	    [4,5,6]
 	    [7,8,9].
-	 
+
+
+	  
   4-7) estimators
         ZienkiewiczZhuEstimator and L2ZienkiewZhuEstimator
 	have two versions of constructor. flux_fes
@@ -328,7 +246,7 @@ in this repository are generated using SWIG 3.0.8
 	ex9.py for example.
 	
   4-9) ode
-        Step usins reference passing for t and dt. To get the result
+        Step uses reference passing for t and dt. To get the result
 	from this method, use
 	   t, dt = ode_solver.Step(u, t, dt)
 
@@ -383,7 +301,7 @@ in this repository are generated using SWIG 3.0.8
   
 -- Known issues --
 
-  PyMFEM is a on-going effort. Not all MFEM functioality is propary
+  PyMFEM is an on-going effort. Not all MFEM functioality is propary
   wrapped yet. Presnetly all serial/parallel examples avaiable in
   the top-level mfem/example directory are rewritten in python.
   This would be sufficient for certain projects, but for other projects,

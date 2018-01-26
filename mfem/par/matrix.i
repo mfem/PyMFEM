@@ -3,7 +3,12 @@
 %{
 #include "linalg/matrix.hpp"
 #include "pyoperator.hpp"
-#include "iostream_typemap.hpp"  
+#include "iostream_typemap.hpp"
+#include "numpy/arrayobject.h"    
+%}
+
+%init %{
+import_array();
 %}
 
 %import "vector.i"

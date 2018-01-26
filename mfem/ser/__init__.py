@@ -2,8 +2,10 @@ import mfem
 
 if mfem.mfem_mode is None:
    mfem.mfem_mode = 'serial'
+
 if mfem.mfem_mode == 'parallel':
    raise ImportError("MFEM parallel mode is already loaded")
+debug_print = mfem.debug_print
 
 import sys, ctypes
 ## libmfem.a is linked only with _array.so
@@ -12,6 +14,7 @@ rtld_now = sys.getdlopenflags()
 sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
 
 from  array import *
+from  common_functions import *
 from  socketstream import *
 from  operators import *
 from  blockoperator import *

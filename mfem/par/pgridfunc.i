@@ -17,6 +17,7 @@
 import_array();
 %}
 
+%include "../common/cpointers.i"
 %import pfespace.i
 %import gridfunc.i
 %import hypre.i
@@ -58,3 +59,13 @@ import_array();
 %newobject mfem::ParGridFunction::GetTrueDofs;
 
 %include "fem/pgridfunc.hpp"
+
+namespace mfem{
+%extend ParGridFunction{
+ParGridFunction(mfem::ParFiniteElementSpace *fes, const mfem::Vector &v, int offset){
+   mfem::ParGridFunction *gf;   
+   gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
+   return gf;
+ }
+   }  //end of extend
+}  // end of namespace  

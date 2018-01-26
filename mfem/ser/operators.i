@@ -29,7 +29,6 @@ import_array();
     }
 }
 
-
 %inline %{
 void mfem::PyOperatorBase::Mult(const mfem::Vector &x, mfem::Vector &y) const
   {

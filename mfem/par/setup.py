@@ -22,7 +22,7 @@ from distutils.core import *
 from distutils      import sysconfig
 
 modules= [
-          "array", "socketstream", "handle", 
+          "array", "common_functions", "socketstream", "handle", 
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
           "fe", "mesh", "fespace", 
@@ -49,46 +49,37 @@ proxy_names = {name: '_'+name for name in modules}
 #extra_text = [x for x in
 #              ['-Wl', whole_archive, metisliba, mfemlnkdir+'/libmfem.a',
 #               no_whole_archive] if x != '']
-extra_link_args0 = []
-extra_link_args =  []
+#extra_link_args0 = []
+#extra_link_args =  []
 #libraries0 = [] if metisliba != '' else [metislib]
 #libraries0.extend([hyprelib, boostlib])
-libraries0    = [metislib, boostlib, hyprelib, mfemlib]
+libraries    = ['boost_iostreams', 'HYPRE', 'mfem']
 
-include_dirs = [mfembuilddir, mfemincdir, numpyincdir, mpi4pyincdir,
-                mpichincdir, hypreincdir, boostincdir]
-library_dirs = [mfemlnkdir, hyprelnkdir, metislnkdir, boostlibdir]
-libraries    = [boostlib, hyprelib, mfemlib]
+include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
+                mpichinc, hypreinc, boostinc]
+library_dirs = [mfemlnkdir, hyprelib, metis5lib, boostlib]
+
 
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
                         extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'],                            
-                        extra_link_args = extra_link_args + extra_link_args0,
+                        extra_link_args = [],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
                         runtime_library_dirs = library_dirs,  
-                        libraries = libraries0)]
+                        libraries = ['metis']+libraries)]
 
 ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],
                         extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'], 
-                        extra_link_args = extra_link_args,
+                        extra_link_args = [],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
                         libraries = libraries)
                for name in modules[1:]])
 
-#ext_modules = [Extension(proxy_names[name],
-#                        sources=sources[name],
-#                        extra_link_args = extra_link_args,
-#                        include_dirs = include_dirs,
-#                        library_dirs = library_dirs,
-#                        libraries = libraries)
-#              for name in modules]
-
-
-setup (name = 'mfem',
-       version = '3.3',
+setup (name = 'mfem_parallel',
+       version = '3.3.2',
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,

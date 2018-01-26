@@ -5,6 +5,11 @@
 #include "linalg/linalg.hpp"
 #include "fem/intrules.hpp"
 #include "fem/fe.hpp"
+#include "numpy/arrayobject.h"    
+%}
+
+%init %{
+import_array();
 %}
 
 %immutable;

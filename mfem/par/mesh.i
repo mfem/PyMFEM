@@ -23,8 +23,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 %init %{
 import_array();
 %}
-%import "cpointer.i"
-%pointer_class(int, intp);
+%include "../common/cpointers.i"
 
 %import "matrix.i"
 %import "array.i"
@@ -44,29 +43,7 @@ import_array();
 %import "fe.i"
 
 %import "ostream_typemap.i"
-//
-
-//  conversion of Int (can handle numpy int)
-%typemap(in) int {
-  PyArray_PyIntAsInt($input);  
-  $1 = PyInt_AsLong($input);
-}
-%typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) int {
-  if (PyArray_PyIntAsInt($input)   != -1){
-    $1 = 1;
-  } else {
-    $1 = 0;
-  }
-}
-// this prevent automatic conversion from int to double so
-// that it select collect overloaded method....
-%typemap(typecheck,precedence=SWIG_TYPECHECK_DOUBLE) double {
-  if (PyFloat_Check($input)){
-    $1 = 1;
-  } else {
-    $1 = 0;
-  }
-}
+%import "../common/numpy_int_typemap.i"
 
 // ignore these constructors, since in python element::type is given by 
 // string (see extend section below).
@@ -167,6 +144,14 @@ def GetBdrElementVertices(self, i):
     ivert = intArray()
     _mesh.Mesh_GetBdrElementVertices(self, i, ivert)
     return ivert.ToList()
+%}
+
+%feature("shadow") mfem::Mesh::GetBdrElementAdjacentElement %{
+def GetBdrElementAdjacentElement(self, bdr_el):
+    el = intp()
+    info = intp()  
+    _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
+    return el.value(), info.value()
 %}
 
 %feature("shadow") mfem::Mesh::GetElementVertices %{
@@ -415,7 +400,27 @@ namespace mfem{
        }
      }
      return array;
-   }   
+   }
+   PyObject* GetDomainArray(int idx) const
+   {
+
+     int i;
+     int c = 0;     
+     for (i = 0; i < self->GetNE() ; i++){
+       if (self->GetElement(i)->GetAttribute() == idx){c++;}
+     }
+     npy_intp dims[] = {c};
+     PyObject *array = PyArray_SimpleNew(1, dims, NPY_INT);
+     int *x    = (int *)PyArray_DATA(array);
+     c = 0;
+     for (i = 0; i < self -> GetNE() ; i++){
+       if (self->GetElement(i)->GetAttribute() == idx){
+	 x[c] = (int)i;
+         c++;
+       }
+     }
+     return array;
+   }
   };   
 }
 
