@@ -11,6 +11,6 @@ setup_local.py
 build
 dist
 test/*
-#test/*.py
+!test/*.py
 *.egg-info
 *.py#
