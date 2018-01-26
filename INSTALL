@@ -1,8 +1,167 @@
 INSTALL
 
 0) to change install location, edit INSTALL_PREFIX in Makefile.local
+#
+# build mfem serial
+#
+cd $HOME/twopi/src/mfem-3.3.2
+mkdir cmbuild_ser
+cd cmbuild_ser
+cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$HOME/twopi/mfem-3.3.2/ser -DMFEM_ENABLE_EXAMPLES=1 -DMFEM_GIT_STRING="3.3.2release"
+make verbose=1
+make install
+(mac only)
+cd $HOME/twopi/mfem-3.3.2/ser/lib
+install_name_tool -id $HOME/twopi/mfem-3.3.2/ser/lib/libmfem.3.3.2.dylib libmfem.3.3.2.dylib
+
+#
+# build mfem parallel
+#
+cd $HOME/twopi/src/mfem-3.3.2
+mkdir cmbuild_par
+cd cmbuild_par
+export LDFLAGS=-L$HOME"/twopi/lib -lHYPRE -lmetis"
+cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$HOME/twopi/mfem-3.3.2/par -DHYPRE_DIR=$HOME/twopi/lib -DHYPRE_INCLUDE_DIRS=$HOME/twopi/include  -DMETIS_DIR=$HOME/twopi/lib -DMETIS_INCLUDE_DIRS=$HOME/twopi/include -DMFEM_USE_MPI=1 -DMFEM_USE_METIS_5=1 -DMFEM_ENABLE_EXAMPLES=1 -DCMAKE_CXX_COMPILER=mpicxx -DMFEM_GIT_STRING="3.3.2release" -DCMAKE_SHARED_LINKER_FLAGS=“-L$HOME/twopi/lib -lHYPRE -lmetis" -DCMAKE_EXE_LINKER_FLAGS=“-L$HOME/twopi/lib -lHYPRE -lmetis"
+make verbose=1
+make install
+(mac only)
+cd $HOME/twopi/mfem-3.3.2/par/lib
+install_name_tool -id $HOME/twopi/mfem-3.3.2/par/lib/libmfem.3.3.2.dylib libmfem.3.3.2.dylib
+
+# clone piScope from git
+cd twopi/src
+git clone https://github.com/sshiraiwa/PyMFEM.git
+cd PyMFEM
+cp Makefile_templates/Makefile.local.shared.twopi Makefile.local
+make ser
+make par
+make pyinstall
+
+ Note that if two versions are used, serial version and parallel
+	 MFEM needs to be compiled in separate directory. For example, one
+	 may install parallel MFEM to 
+	     /usr/local/mfem/par/
+         and serial MFEM to 
+             /usr/local/mfem/ser/
+
+         <shared MFEM library>
+
+ 	 CMake build has an option to build a shared libaray. Consult MFEM
+	 INSTALL manual for more detail.
+
+         mkdir cmbuild; cd cmbuild
+         cmake .. -DBUILD_SHARED_LIBS=1
+
+	 (MacOSX specific)
+	 dynamic library installed on MacOSX does not hafe proper install_name
+	 implanted into libmfem.dylib.
+	 
+         install_name_tool -id <fullpath to dylib> libmfem.dylib
+	 
+         By default, Makefile assumes that MFEM is installed
+	 under /usr/local/mfem-3.2 and serial version of MFEM
+	 is installed under /usr/local/mfem-3.2ser.
+	 A user can change it by editing Makefile.local
+
+         < note about METIS version>
+         MUMPS uses METIS5. Therefore, if you are going to use
+	 this with MUMPS in PyMFEM_pi,
+	 parallel MFEM is required to build MFEM with METIS5.
+	 Open config.mk in mfem/config (see INSTALL in MFEM for
+	 detail) change 
+   	    MFEM_USE_MPI         = YES 
+            MFEM_USE_METIS_5     = YES
+	 You also need to specify METIS_DIR, METIS_OPT, METIS_LIB
+	 Then, try.
+	    make config
+	    mamke -j
+
 
 1) build/install
    make par   (build parallel version)
    make ser   (build serial version)
    make pyinstall      (copy files to the place mentioned in Makefile)
+
+
+
+2: Prepare Makefile.local
+   copy a sample template (Makefile_templates/Makefile.local.shared)
+   to the repository root as Makefile.local.
+
+   edit it for your enviroment.
+
+   make will include Makefile.local to overwrite some parameters and
+   the result is wrtten to setup_local.py, which is being loaded to
+   setup.py.
+   
+   Variables which may need to be adjusted include... 
+
+   * Parallel and Serial MFEM shared library location (MFEM and MFEMSER)
+     - Leaving MFEMSER in Makefile.local  skips building serial version.
+     - Leaving MFEM in Makefile.local  skips building parallel version.
+   * Hypre and Metis libary location
+   * MPICH location to look for mpi.h and linking to libmpi etc..
+   * BOOST library location      
+   
+2-1 (Optional): Build SWIG cxx files
+This is needed only when you edit SWIG interface files. cxx files
+in this repository are generated using SWIG 3.0.8
+   * make cxx
+
+   or
+   
+   * make sercxx (sereal MFEM wrapepr)
+   * make parcxx (parallel MFEM wrapper)
+	
+3: Compile Extensions
+   * make
+   or 
+   * make ser (sereal MFEM wrapepr)
+   * make par (parallel MFEM wrapper)
+
+4) run example
+   Add PyMFEM to your PYTHONPATH. In bash,
+      > export PYTHONPATH=<hogehogehoge>:$PYTHONPATH
+   Then, launch python and see if it import mfem
+      > import mfem
+      > import mfem.ser (serial)
+      or
+      > import mfem      
+      > import mfem.par (parallel)
+   
+   Many of example c++ programs in MFEM are converted in python and
+   found in example directory. Once PYTHONPATH is set, you
+   can run them as follows.
+     
+     > python ex1.py  (serial)
+     > mpiexec -n 2 python ex1p.py (parallel)
+
+   Note that python version  examples are simplfied. It does not
+   parse arguments nor visulaization via socket connection.
+
+5) (optional) run test
+   $ cd test
+   $ python test.py -serial -mfemsdir (path to CMake build dir for serial MFEM) -verbose
+   $ python test.py -parallel -mfempdir (path to CMake build dir for parallel MFEM) -verbose
+
+
+   this script runs all example python script and corresponding
+   C++ verison and compare the text output. It will report if
+   there is siginficant difference in output.
+
+   Possible fail reason:
+      Bug ;D
+      Conversgence of iterative solver depends on the intial
+      condition...?
+      ex7p fails although the glvis shows the same plot...
+
+0: Dependencies
+  0-1) MFEM, Hypre, Metis5
+	 
+	 
+  0-4) boost
+         used for wrapping std::iostream
+	 
+  0-5) mpi4py
+         Required for parallel MFEM
+  

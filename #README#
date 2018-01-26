@@ -18,16 +18,7 @@ to find more detail of the MFEM libirary.
 
 -- INSTALLATION --
 
-0: Dependencies
-  0-1) MFEM, Hypre, Metis5
-	 
-	 
-  0-4) boost
-         used for wrapping std::iostream
-	 
-  0-5) mpi4py
-         Required for parallel MFEM
-  
+Please see INSTALL.txt
 
 -- Features --
  Following features are realized in PyMFEM using SWIG interface

@@ -3170,10 +3170,10 @@ SWIGINTERN PyObject *_wrap_Connection__from_set(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Connection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   if (arg1) (arg1)->from = arg2;
   resultobj = SWIG_Py_Void();
@@ -3221,10 +3221,10 @@ SWIGINTERN PyObject *_wrap_Connection_to_set(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   arg1 = reinterpret_cast< mfem::Connection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   if (arg1) (arg1)->to = arg2;
   resultobj = SWIG_Py_Void();
@@ -3266,16 +3266,16 @@ SWIGINTERN PyObject *_wrap_new_Connection(PyObject *SWIGUNUSEDPARM(self), PyObje
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_Connection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (mfem::Connection *)new mfem::Connection(arg1,arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Connection, SWIG_POINTER_NEW |  0 );
@@ -3429,16 +3429,16 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyO
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_Table",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (mfem::Table *)new mfem::Table(arg1,arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
@@ -3456,10 +3456,10 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyO
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_Table",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   result = (mfem::Table *)new mfem::Table(arg1);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
@@ -3481,10 +3481,10 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyO
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_Table",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__Connection_t,  0 );
   if (!SWIG_IsOK(res2)) {
@@ -3514,10 +3514,10 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyO
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_Table",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
@@ -3558,10 +3558,10 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -3571,10 +3571,10 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -3589,10 +3589,10 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -3607,18 +3607,18 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -3656,10 +3656,10 @@ SWIGINTERN PyObject *_wrap_Table_MakeI(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   (arg1)->MakeI(arg2);
   resultobj = SWIG_Py_Void();
@@ -3685,10 +3685,10 @@ SWIGINTERN PyObject *_wrap_Table_AddAColumnInRow(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   (arg1)->AddAColumnInRow(arg2);
   resultobj = SWIG_Py_Void();
@@ -3716,16 +3716,16 @@ SWIGINTERN PyObject *_wrap_Table_AddColumnsInRow(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   (arg1)->AddColumnsInRow(arg2,arg3);
   resultobj = SWIG_Py_Void();
@@ -3774,16 +3774,16 @@ SWIGINTERN PyObject *_wrap_Table_AddConnection(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   (arg1)->AddConnection(arg2,arg3);
   resultobj = SWIG_Py_Void();
@@ -3815,10 +3815,10 @@ SWIGINTERN PyObject *_wrap_Table_AddConnections(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -3826,10 +3826,10 @@ SWIGINTERN PyObject *_wrap_Table_AddConnections(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg3 = reinterpret_cast< int * >(argp3);
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   (arg1)->AddConnections(arg2,(int const *)arg3,arg4);
   resultobj = SWIG_Py_Void();
@@ -3878,16 +3878,16 @@ SWIGINTERN PyObject *_wrap_Table_SetSize(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   (arg1)->SetSize(arg2,arg3);
   resultobj = SWIG_Py_Void();
@@ -3915,16 +3915,16 @@ SWIGINTERN PyObject *_wrap_Table_SetDims(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   (arg1)->SetDims(arg2,arg3);
   resultobj = SWIG_Py_Void();
@@ -3997,16 +3997,16 @@ SWIGINTERN PyObject *_wrap_Table___call__(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   result = (int)((mfem::Table const *)arg1)->operator ()(arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
@@ -4036,10 +4036,10 @@ SWIGINTERN PyObject *_wrap_Table_GetRow__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -4074,10 +4074,10 @@ SWIGINTERN PyObject *_wrap_Table_RowSize(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (int)((mfem::Table const *)arg1)->RowSize(arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
@@ -4104,10 +4104,10 @@ SWIGINTERN PyObject *_wrap_Table_GetRow__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (int *)((mfem::Table const *)arg1)->GetRow(arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
@@ -4134,10 +4134,10 @@ SWIGINTERN PyObject *_wrap_Table_GetRow__SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (int *)(arg1)->GetRow(arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
@@ -4166,10 +4166,10 @@ SWIGINTERN PyObject *_wrap_Table_GetRow(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4184,10 +4184,10 @@ SWIGINTERN PyObject *_wrap_Table_GetRow(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4202,10 +4202,10 @@ SWIGINTERN PyObject *_wrap_Table_GetRow(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4452,10 +4452,10 @@ SWIGINTERN PyObject *_wrap_Table_SetIJ__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg3 = reinterpret_cast< int * >(argp3);
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   (arg1)->SetIJ(arg2,arg3,arg4);
   resultobj = SWIG_Py_Void();
@@ -4550,10 +4550,10 @@ SWIGINTERN PyObject *_wrap_Table_SetIJ(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -4592,16 +4592,16 @@ SWIGINTERN PyObject *_wrap_Table_Push(PyObject *SWIGUNUSEDPARM(self), PyObject *
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   result = (int)(arg1)->Push(arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
@@ -4652,10 +4652,10 @@ SWIGINTERN PyObject *_wrap_Table_MakeFromList(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_mfem__Connection_t,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -4747,10 +4747,10 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   ((mfem::Table const *)arg1)->Print(*arg2,arg3);
   resultobj = SWIG_Py_Void();
@@ -4887,10 +4887,10 @@ SWIGINTERN PyObject *_wrap_Table_Print(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5178,10 +5178,10 @@ SWIGINTERN PyObject *_wrap_Table_GetRowList(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (PyObject *)mfem_Table_GetRowList((mfem::Table const *)arg1,arg2);
   resultobj = result;
@@ -5208,16 +5208,16 @@ SWIGINTERN PyObject *_wrap_new_STable__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_STable",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (mfem::STable *)new mfem::STable(arg1,arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__STable, SWIG_POINTER_NEW |  0 );
@@ -5235,10 +5235,10 @@ SWIGINTERN PyObject *_wrap_new_STable__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_STable",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   result = (mfem::STable *)new mfem::STable(arg1);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__STable, SWIG_POINTER_NEW |  0 );
@@ -5263,10 +5263,10 @@ SWIGINTERN PyObject *_wrap_new_STable(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -5276,18 +5276,18 @@ SWIGINTERN PyObject *_wrap_new_STable(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5324,16 +5324,16 @@ SWIGINTERN PyObject *_wrap_STable___call__(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   arg1 = reinterpret_cast< mfem::STable * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   result = (int)((mfem::STable const *)arg1)->operator ()(arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
@@ -5362,16 +5362,16 @@ SWIGINTERN PyObject *_wrap_STable_Push(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   arg1 = reinterpret_cast< mfem::STable * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   result = (int)(arg1)->Push(arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
@@ -5417,10 +5417,10 @@ SWIGINTERN PyObject *_wrap_new_DSTable(PyObject *SWIGUNUSEDPARM(self), PyObject 
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_DSTable",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   result = (mfem::DSTable *)new mfem::DSTable(arg1);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSTable, SWIG_POINTER_NEW |  0 );
@@ -5493,16 +5493,16 @@ SWIGINTERN PyObject *_wrap_DSTable_Push(PyObject *SWIGUNUSEDPARM(self), PyObject
   }
   arg1 = reinterpret_cast< mfem::DSTable * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   result = (int)(arg1)->Push(arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
@@ -5531,16 +5531,16 @@ SWIGINTERN PyObject *_wrap_DSTable___call__(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::DSTable * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   result = (int)((mfem::DSTable const *)arg1)->operator ()(arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));

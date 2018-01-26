@@ -4086,10 +4086,10 @@ SWIGINTERN PyObject *_wrap_BasisType_Check(PyObject *SWIGUNUSEDPARM(self), PyObj
   
   if (!PyArg_ParseTuple(args,(char *)"O:BasisType_Check",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -4114,10 +4114,10 @@ SWIGINTERN PyObject *_wrap_BasisType_GetQuadrature1D(PyObject *SWIGUNUSEDPARM(se
   
   if (!PyArg_ParseTuple(args,(char *)"O:BasisType_GetQuadrature1D",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -4142,10 +4142,10 @@ SWIGINTERN PyObject *_wrap_BasisType_Name(PyObject *SWIGUNUSEDPARM(self), PyObje
   
   if (!PyArg_ParseTuple(args,(char *)"O:BasisType_Name",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -4170,10 +4170,10 @@ SWIGINTERN PyObject *_wrap_BasisType_GetChar(PyObject *SWIGUNUSEDPARM(self), PyO
   
   if (!PyArg_ParseTuple(args,(char *)"O:BasisType_GetChar",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -4291,10 +4291,10 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_FiniteElementForGeometry(PyOb
   }
   arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4328,10 +4328,10 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_DofForGeometry(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4367,16 +4367,16 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_DofOrderForOrientation(PyObje
   }
   arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4439,10 +4439,10 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_HasFaceDofs(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4476,10 +4476,10 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_TraceFiniteElementForGeometry
   }
   arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4609,22 +4609,22 @@ SWIGINTERN PyObject *_wrap_FiniteElementCollection_SubDofOrder(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::FiniteElementCollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res5)) {
@@ -4668,22 +4668,22 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection__SWIG_0(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_H1_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4710,16 +4710,16 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection__SWIG_1(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_H1_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4744,10 +4744,10 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_H1_FECollection",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -4779,10 +4779,10 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -4792,18 +4792,18 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4814,26 +4814,26 @@ SWIGINTERN PyObject *_wrap_new_H1_FECollection(PyObject *self, PyObject *args) {
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -4870,10 +4870,10 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_FiniteElementForGeometry(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4907,10 +4907,10 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4946,16 +4946,16 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_DofOrderForOrientation(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5076,10 +5076,10 @@ SWIGINTERN PyObject *_wrap_H1_FECollection_GetDofMap(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::H1_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5141,16 +5141,16 @@ SWIGINTERN PyObject *_wrap_new_H1Pos_FECollection__SWIG_0(PyObject *SWIGUNUSEDPA
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_H1Pos_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5175,10 +5175,10 @@ SWIGINTERN PyObject *_wrap_new_H1Pos_FECollection__SWIG_1(PyObject *SWIGUNUSEDPA
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_H1Pos_FECollection",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -5210,10 +5210,10 @@ SWIGINTERN PyObject *_wrap_new_H1Pos_FECollection(PyObject *self, PyObject *args
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -5223,18 +5223,18 @@ SWIGINTERN PyObject *_wrap_new_H1Pos_FECollection(PyObject *self, PyObject *args
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5299,22 +5299,22 @@ SWIGINTERN PyObject *_wrap_new_H1_Trace_FECollection__SWIG_0(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_H1_Trace_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5341,16 +5341,16 @@ SWIGINTERN PyObject *_wrap_new_H1_Trace_FECollection__SWIG_1(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_H1_Trace_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5382,18 +5382,18 @@ SWIGINTERN PyObject *_wrap_new_H1_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5404,26 +5404,26 @@ SWIGINTERN PyObject *_wrap_new_H1_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5491,28 +5491,28 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection__SWIG_0(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_L2_FECollection",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -5541,22 +5541,22 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection__SWIG_1(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_L2_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5583,16 +5583,16 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_L2_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5624,18 +5624,18 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5646,26 +5646,26 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection(PyObject *self, PyObject *args) {
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5677,34 +5677,34 @@ SWIGINTERN PyObject *_wrap_new_L2_FECollection(PyObject *self, PyObject *args) {
   if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -5742,10 +5742,10 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_FiniteElementForGeometry(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::L2_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5779,10 +5779,10 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::L2_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5818,16 +5818,16 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_DofOrderForOrientation(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::L2_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5890,10 +5890,10 @@ SWIGINTERN PyObject *_wrap_L2_FECollection_TraceFiniteElementForGeometry(PyObjec
   }
   arg1 = reinterpret_cast< mfem::L2_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5988,28 +5988,28 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_RT_FECollection",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -6038,22 +6038,22 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection__SWIG_3(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_RT_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6080,16 +6080,16 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection__SWIG_4(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_RT_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6121,18 +6121,18 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6143,26 +6143,26 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection(PyObject *self, PyObject *args) {
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -6174,34 +6174,34 @@ SWIGINTERN PyObject *_wrap_new_RT_FECollection(PyObject *self, PyObject *args) {
   if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -6239,10 +6239,10 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_FiniteElementForGeometry(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::RT_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6276,10 +6276,10 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::RT_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6315,16 +6315,16 @@ SWIGINTERN PyObject *_wrap_RT_FECollection_DofOrderForOrientation(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::RT_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6448,28 +6448,28 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection__SWIG_0(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_RT_Trace_FECollection",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -6498,22 +6498,22 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection__SWIG_1(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_RT_Trace_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6540,16 +6540,16 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection__SWIG_2(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_RT_Trace_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6581,18 +6581,18 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6603,26 +6603,26 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -6634,34 +6634,34 @@ SWIGINTERN PyObject *_wrap_new_RT_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -6731,28 +6731,28 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection__SWIG_0(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_DG_Interface_FECollection",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -6781,22 +6781,22 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection__SWIG_1(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_DG_Interface_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6823,16 +6823,16 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection__SWIG_2(PyObject *SWIGU
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_DG_Interface_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6864,18 +6864,18 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection(PyObject *self, PyObjec
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -6886,26 +6886,26 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection(PyObject *self, PyObjec
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -6917,34 +6917,34 @@ SWIGINTERN PyObject *_wrap_new_DG_Interface_FECollection(PyObject *self, PyObjec
   if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -7014,28 +7014,28 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection__SWIG_0(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_ND_FECollection",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -7064,22 +7064,22 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection__SWIG_1(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_ND_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -7106,16 +7106,16 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection__SWIG_2(PyObject *SWIGUNUSEDPARM(
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_ND_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7147,18 +7147,18 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7169,26 +7169,26 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection(PyObject *self, PyObject *args) {
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -7200,34 +7200,34 @@ SWIGINTERN PyObject *_wrap_new_ND_FECollection(PyObject *self, PyObject *args) {
   if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -7265,10 +7265,10 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_FiniteElementForGeometry(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::ND_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7302,10 +7302,10 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_DofForGeometry(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::ND_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7341,16 +7341,16 @@ SWIGINTERN PyObject *_wrap_ND_FECollection_DofOrderForOrientation(PyObject *SWIG
   }
   arg1 = reinterpret_cast< mfem::ND_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -7474,28 +7474,28 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection__SWIG_0(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:new_ND_Trace_FECollection",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -7524,22 +7524,22 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection__SWIG_1(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_ND_Trace_FECollection",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -7566,16 +7566,16 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection__SWIG_2(PyObject *SWIGUNUSE
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_ND_Trace_FECollection",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7607,18 +7607,18 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7629,26 +7629,26 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -7660,34 +7660,34 @@ SWIGINTERN PyObject *_wrap_new_ND_Trace_FECollection(PyObject *self, PyObject *a
   if (argc == 4) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -7751,10 +7751,10 @@ SWIGINTERN PyObject *_wrap_new_NURBSFECollection(PyObject *SWIGUNUSEDPARM(self),
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_NURBSFECollection",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -7816,10 +7816,10 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_UpdateOrder(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::NURBSFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7881,10 +7881,10 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_FiniteElementForGeometry(PyObject *
   }
   arg1 = reinterpret_cast< mfem::NURBSFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7918,10 +7918,10 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_DofForGeometry(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::NURBSFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7957,16 +7957,16 @@ SWIGINTERN PyObject *_wrap_NURBSFECollection_DofOrderForOrientation(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::NURBSFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -8113,10 +8113,10 @@ SWIGINTERN PyObject *_wrap_LinearFECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::LinearFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8150,10 +8150,10 @@ SWIGINTERN PyObject *_wrap_LinearFECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::LinearFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8189,16 +8189,16 @@ SWIGINTERN PyObject *_wrap_LinearFECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::LinearFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -8316,10 +8316,10 @@ SWIGINTERN PyObject *_wrap_QuadraticFECollection_FiniteElementForGeometry(PyObje
   }
   arg1 = reinterpret_cast< mfem::QuadraticFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8353,10 +8353,10 @@ SWIGINTERN PyObject *_wrap_QuadraticFECollection_DofForGeometry(PyObject *SWIGUN
   }
   arg1 = reinterpret_cast< mfem::QuadraticFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8392,16 +8392,16 @@ SWIGINTERN PyObject *_wrap_QuadraticFECollection_DofOrderForOrientation(PyObject
   }
   arg1 = reinterpret_cast< mfem::QuadraticFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -8519,10 +8519,10 @@ SWIGINTERN PyObject *_wrap_QuadraticPosFECollection_FiniteElementForGeometry(PyO
   }
   arg1 = reinterpret_cast< mfem::QuadraticPosFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8556,10 +8556,10 @@ SWIGINTERN PyObject *_wrap_QuadraticPosFECollection_DofForGeometry(PyObject *SWI
   }
   arg1 = reinterpret_cast< mfem::QuadraticPosFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8595,16 +8595,16 @@ SWIGINTERN PyObject *_wrap_QuadraticPosFECollection_DofOrderForOrientation(PyObj
   }
   arg1 = reinterpret_cast< mfem::QuadraticPosFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -8722,10 +8722,10 @@ SWIGINTERN PyObject *_wrap_CubicFECollection_FiniteElementForGeometry(PyObject *
   }
   arg1 = reinterpret_cast< mfem::CubicFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8759,10 +8759,10 @@ SWIGINTERN PyObject *_wrap_CubicFECollection_DofForGeometry(PyObject *SWIGUNUSED
   }
   arg1 = reinterpret_cast< mfem::CubicFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8798,16 +8798,16 @@ SWIGINTERN PyObject *_wrap_CubicFECollection_DofOrderForOrientation(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::CubicFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -8925,10 +8925,10 @@ SWIGINTERN PyObject *_wrap_CrouzeixRaviartFECollection_FiniteElementForGeometry(
   }
   arg1 = reinterpret_cast< mfem::CrouzeixRaviartFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8962,10 +8962,10 @@ SWIGINTERN PyObject *_wrap_CrouzeixRaviartFECollection_DofForGeometry(PyObject *
   }
   arg1 = reinterpret_cast< mfem::CrouzeixRaviartFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9001,16 +9001,16 @@ SWIGINTERN PyObject *_wrap_CrouzeixRaviartFECollection_DofOrderForOrientation(Py
   }
   arg1 = reinterpret_cast< mfem::CrouzeixRaviartFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -9128,10 +9128,10 @@ SWIGINTERN PyObject *_wrap_LinearNonConf3DFECollection_FiniteElementForGeometry(
   }
   arg1 = reinterpret_cast< mfem::LinearNonConf3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9165,10 +9165,10 @@ SWIGINTERN PyObject *_wrap_LinearNonConf3DFECollection_DofForGeometry(PyObject *
   }
   arg1 = reinterpret_cast< mfem::LinearNonConf3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9204,16 +9204,16 @@ SWIGINTERN PyObject *_wrap_LinearNonConf3DFECollection_DofOrderForOrientation(Py
   }
   arg1 = reinterpret_cast< mfem::LinearNonConf3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -9331,10 +9331,10 @@ SWIGINTERN PyObject *_wrap_RT0_2DFECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::RT0_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9368,10 +9368,10 @@ SWIGINTERN PyObject *_wrap_RT0_2DFECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::RT0_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9407,16 +9407,16 @@ SWIGINTERN PyObject *_wrap_RT0_2DFECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::RT0_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -9534,10 +9534,10 @@ SWIGINTERN PyObject *_wrap_RT1_2DFECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::RT1_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9571,10 +9571,10 @@ SWIGINTERN PyObject *_wrap_RT1_2DFECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::RT1_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9610,16 +9610,16 @@ SWIGINTERN PyObject *_wrap_RT1_2DFECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::RT1_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -9737,10 +9737,10 @@ SWIGINTERN PyObject *_wrap_RT2_2DFECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::RT2_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9774,10 +9774,10 @@ SWIGINTERN PyObject *_wrap_RT2_2DFECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::RT2_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9813,16 +9813,16 @@ SWIGINTERN PyObject *_wrap_RT2_2DFECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::RT2_2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -9940,10 +9940,10 @@ SWIGINTERN PyObject *_wrap_Const2DFECollection_FiniteElementForGeometry(PyObject
   }
   arg1 = reinterpret_cast< mfem::Const2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -9977,10 +9977,10 @@ SWIGINTERN PyObject *_wrap_Const2DFECollection_DofForGeometry(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::Const2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10016,16 +10016,16 @@ SWIGINTERN PyObject *_wrap_Const2DFECollection_DofOrderForOrientation(PyObject *
   }
   arg1 = reinterpret_cast< mfem::Const2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10143,10 +10143,10 @@ SWIGINTERN PyObject *_wrap_LinearDiscont2DFECollection_FiniteElementForGeometry(
   }
   arg1 = reinterpret_cast< mfem::LinearDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10180,10 +10180,10 @@ SWIGINTERN PyObject *_wrap_LinearDiscont2DFECollection_DofForGeometry(PyObject *
   }
   arg1 = reinterpret_cast< mfem::LinearDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10219,16 +10219,16 @@ SWIGINTERN PyObject *_wrap_LinearDiscont2DFECollection_DofOrderForOrientation(Py
   }
   arg1 = reinterpret_cast< mfem::LinearDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10346,10 +10346,10 @@ SWIGINTERN PyObject *_wrap_GaussLinearDiscont2DFECollection_FiniteElementForGeom
   }
   arg1 = reinterpret_cast< mfem::GaussLinearDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10383,10 +10383,10 @@ SWIGINTERN PyObject *_wrap_GaussLinearDiscont2DFECollection_DofForGeometry(PyObj
   }
   arg1 = reinterpret_cast< mfem::GaussLinearDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10422,16 +10422,16 @@ SWIGINTERN PyObject *_wrap_GaussLinearDiscont2DFECollection_DofOrderForOrientati
   }
   arg1 = reinterpret_cast< mfem::GaussLinearDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10549,10 +10549,10 @@ SWIGINTERN PyObject *_wrap_P1OnQuadFECollection_FiniteElementForGeometry(PyObjec
   }
   arg1 = reinterpret_cast< mfem::P1OnQuadFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10586,10 +10586,10 @@ SWIGINTERN PyObject *_wrap_P1OnQuadFECollection_DofForGeometry(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::P1OnQuadFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10625,16 +10625,16 @@ SWIGINTERN PyObject *_wrap_P1OnQuadFECollection_DofOrderForOrientation(PyObject 
   }
   arg1 = reinterpret_cast< mfem::P1OnQuadFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10752,10 +10752,10 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont2DFECollection_FiniteElementForGeomet
   }
   arg1 = reinterpret_cast< mfem::QuadraticDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10789,10 +10789,10 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont2DFECollection_DofForGeometry(PyObjec
   }
   arg1 = reinterpret_cast< mfem::QuadraticDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10828,16 +10828,16 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont2DFECollection_DofOrderForOrientation
   }
   arg1 = reinterpret_cast< mfem::QuadraticDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10955,10 +10955,10 @@ SWIGINTERN PyObject *_wrap_QuadraticPosDiscont2DFECollection_FiniteElementForGeo
   }
   arg1 = reinterpret_cast< mfem::QuadraticPosDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -10992,10 +10992,10 @@ SWIGINTERN PyObject *_wrap_QuadraticPosDiscont2DFECollection_DofForGeometry(PyOb
   }
   arg1 = reinterpret_cast< mfem::QuadraticPosDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11031,16 +11031,16 @@ SWIGINTERN PyObject *_wrap_QuadraticPosDiscont2DFECollection_DofOrderForOrientat
   }
   arg1 = reinterpret_cast< mfem::QuadraticPosDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -11158,10 +11158,10 @@ SWIGINTERN PyObject *_wrap_GaussQuadraticDiscont2DFECollection_FiniteElementForG
   }
   arg1 = reinterpret_cast< mfem::GaussQuadraticDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11195,10 +11195,10 @@ SWIGINTERN PyObject *_wrap_GaussQuadraticDiscont2DFECollection_DofForGeometry(Py
   }
   arg1 = reinterpret_cast< mfem::GaussQuadraticDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11234,16 +11234,16 @@ SWIGINTERN PyObject *_wrap_GaussQuadraticDiscont2DFECollection_DofOrderForOrient
   }
   arg1 = reinterpret_cast< mfem::GaussQuadraticDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -11361,10 +11361,10 @@ SWIGINTERN PyObject *_wrap_CubicDiscont2DFECollection_FiniteElementForGeometry(P
   }
   arg1 = reinterpret_cast< mfem::CubicDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11398,10 +11398,10 @@ SWIGINTERN PyObject *_wrap_CubicDiscont2DFECollection_DofForGeometry(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::CubicDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11437,16 +11437,16 @@ SWIGINTERN PyObject *_wrap_CubicDiscont2DFECollection_DofOrderForOrientation(PyO
   }
   arg1 = reinterpret_cast< mfem::CubicDiscont2DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -11564,10 +11564,10 @@ SWIGINTERN PyObject *_wrap_Const3DFECollection_FiniteElementForGeometry(PyObject
   }
   arg1 = reinterpret_cast< mfem::Const3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11601,10 +11601,10 @@ SWIGINTERN PyObject *_wrap_Const3DFECollection_DofForGeometry(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::Const3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11640,16 +11640,16 @@ SWIGINTERN PyObject *_wrap_Const3DFECollection_DofOrderForOrientation(PyObject *
   }
   arg1 = reinterpret_cast< mfem::Const3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -11767,10 +11767,10 @@ SWIGINTERN PyObject *_wrap_LinearDiscont3DFECollection_FiniteElementForGeometry(
   }
   arg1 = reinterpret_cast< mfem::LinearDiscont3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11804,10 +11804,10 @@ SWIGINTERN PyObject *_wrap_LinearDiscont3DFECollection_DofForGeometry(PyObject *
   }
   arg1 = reinterpret_cast< mfem::LinearDiscont3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -11843,16 +11843,16 @@ SWIGINTERN PyObject *_wrap_LinearDiscont3DFECollection_DofOrderForOrientation(Py
   }
   arg1 = reinterpret_cast< mfem::LinearDiscont3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -11970,10 +11970,10 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont3DFECollection_FiniteElementForGeomet
   }
   arg1 = reinterpret_cast< mfem::QuadraticDiscont3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12007,10 +12007,10 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont3DFECollection_DofForGeometry(PyObjec
   }
   arg1 = reinterpret_cast< mfem::QuadraticDiscont3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12046,16 +12046,16 @@ SWIGINTERN PyObject *_wrap_QuadraticDiscont3DFECollection_DofOrderForOrientation
   }
   arg1 = reinterpret_cast< mfem::QuadraticDiscont3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12173,10 +12173,10 @@ SWIGINTERN PyObject *_wrap_RefinedLinearFECollection_FiniteElementForGeometry(Py
   }
   arg1 = reinterpret_cast< mfem::RefinedLinearFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12210,10 +12210,10 @@ SWIGINTERN PyObject *_wrap_RefinedLinearFECollection_DofForGeometry(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::RefinedLinearFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12249,16 +12249,16 @@ SWIGINTERN PyObject *_wrap_RefinedLinearFECollection_DofOrderForOrientation(PyOb
   }
   arg1 = reinterpret_cast< mfem::RefinedLinearFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12376,10 +12376,10 @@ SWIGINTERN PyObject *_wrap_ND1_3DFECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::ND1_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12413,10 +12413,10 @@ SWIGINTERN PyObject *_wrap_ND1_3DFECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::ND1_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12452,16 +12452,16 @@ SWIGINTERN PyObject *_wrap_ND1_3DFECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::ND1_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12579,10 +12579,10 @@ SWIGINTERN PyObject *_wrap_RT0_3DFECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::RT0_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12616,10 +12616,10 @@ SWIGINTERN PyObject *_wrap_RT0_3DFECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::RT0_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12655,16 +12655,16 @@ SWIGINTERN PyObject *_wrap_RT0_3DFECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::RT0_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12782,10 +12782,10 @@ SWIGINTERN PyObject *_wrap_RT1_3DFECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::RT1_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12819,10 +12819,10 @@ SWIGINTERN PyObject *_wrap_RT1_3DFECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::RT1_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12858,16 +12858,16 @@ SWIGINTERN PyObject *_wrap_RT1_3DFECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::RT1_3DFECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -12997,10 +12997,10 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_FiniteElementForGeometry(PyObject 
   }
   arg1 = reinterpret_cast< mfem::Local_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -13034,10 +13034,10 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_DofForGeometry(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::Local_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -13073,16 +13073,16 @@ SWIGINTERN PyObject *_wrap_Local_FECollection_DofOrderForOrientation(PyObject *S
   }
   arg1 = reinterpret_cast< mfem::Local_FECollection * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {

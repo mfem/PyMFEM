@@ -4580,10 +4580,10 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetNCLimit(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4806,10 +4806,10 @@ SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetOp(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::ThresholdDerefiner * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4842,10 +4842,10 @@ SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetNCLimit(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::ThresholdDerefiner * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {

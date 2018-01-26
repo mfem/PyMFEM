@@ -3179,10 +3179,10 @@ SWIGINTERN PyObject *_wrap_new_IntegerSet__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_IntegerSet",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
@@ -3224,10 +3224,10 @@ SWIGINTERN PyObject *_wrap_new_IntegerSet(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -3370,10 +3370,10 @@ SWIGINTERN PyObject *_wrap_IntegerSet_Recreate(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -3455,10 +3455,10 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickElementInSet(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (int)(arg1)->PickElementInSet(arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
@@ -3485,10 +3485,10 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickRandomElementInSet(PyObject *SW
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   result = (int)(arg1)->PickRandomElementInSet(arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));

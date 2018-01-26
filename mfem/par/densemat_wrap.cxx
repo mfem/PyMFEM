@@ -4029,10 +4029,10 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix__SWIG_2(PyObject *SWIGUNUSEDPARM(self
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_DenseMatrix",&obj0)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -4064,16 +4064,16 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(self
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_DenseMatrix",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4160,16 +4160,16 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix__SWIG_5(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< double * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4217,10 +4217,10 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -4244,18 +4244,18 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4270,18 +4270,18 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -4331,16 +4331,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_UseExternalData(PyObject *SWIGUNUSEDPARM(
   }
   arg2 = reinterpret_cast< double * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -4389,16 +4389,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Reset(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   arg2 = reinterpret_cast< double * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -4536,10 +4536,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetSize__SWIG_0(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4579,16 +4579,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetSize__SWIG_1(PyObject *SWIGUNUSEDPARM(
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4629,10 +4629,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetSize(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -4647,18 +4647,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetSize(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -4798,16 +4798,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call____SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4848,16 +4848,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call____SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4898,18 +4898,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call__(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -4925,18 +4925,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call__(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5054,16 +5054,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5104,16 +5104,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5154,18 +5154,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -5181,18 +5181,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -7340,10 +7340,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CalcSingularvalue(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7436,10 +7436,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetRow(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -7489,10 +7489,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -7539,10 +7539,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn__SWIG_1(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7581,10 +7581,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn__SWIG_2(PyObject *SWIGUNUSEDPAR
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -7625,10 +7625,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn(PyObject *self, PyObject *args)
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7643,10 +7643,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn(PyObject *self, PyObject *args)
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7661,10 +7661,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn(PyObject *self, PyObject *args)
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7708,10 +7708,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumnReference(PyObject *SWIGUNUSEDPA
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -7761,10 +7761,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetRow__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -7814,10 +7814,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetCol__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -7867,10 +7867,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetRow__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -7916,10 +7916,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetRow(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7938,10 +7938,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetRow(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -7985,10 +7985,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetCol__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -8034,10 +8034,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetCol(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -8056,10 +8056,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetCol(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -8243,10 +8243,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Diag__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   } 
   arg2 = static_cast< double >(val2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -8293,10 +8293,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Diag__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   arg2 = reinterpret_cast< double * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -8341,10 +8341,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Diag(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -8365,10 +8365,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Diag(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -8695,16 +8695,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyRows(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -8756,16 +8756,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyCols(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -8821,28 +8821,28 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if (PyArray_PyIntAsInt(obj4) == -1){
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyInt_AsLong(obj4);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
-    if (PyArray_PyIntAsInt(obj5) == -1){
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg6 = PyInt_AsLong(obj5);
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
     try {
@@ -8894,16 +8894,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -8955,16 +8955,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNt(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -9024,40 +9024,40 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN__SWIG_2(PyObject *SWIGUNUSEDPARM(s
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if (PyArray_PyIntAsInt(obj4) == -1){
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyInt_AsLong(obj4);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
-    if (PyArray_PyIntAsInt(obj5) == -1){
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg6 = PyInt_AsLong(obj5);
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
-    if (PyArray_PyIntAsInt(obj6) == -1){
+    if ((PyArray_PyIntAsInt(obj6) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg7 = PyInt_AsLong(obj6);
+    arg7 = PyArray_PyIntAsInt(obj6);
   }
   {
-    if (PyArray_PyIntAsInt(obj7) == -1){
+    if ((PyArray_PyIntAsInt(obj7) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg8 = PyInt_AsLong(obj7);
+    arg8 = PyArray_PyIntAsInt(obj7);
   }
   {
     try {
@@ -9101,18 +9101,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -9132,34 +9132,34 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
             {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 _v = 0;
+              } else {
+                _v = 1;    
               }
             }
             if (_v) {
               {
-                if (PyArray_PyIntAsInt(argv[5])   != -1){
-                  _v = 1;
-                } else {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   _v = 0;
+                } else {
+                  _v = 1;    
                 }
               }
               if (_v) {
@@ -9181,50 +9181,50 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
             {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 _v = 0;
+              } else {
+                _v = 1;    
               }
             }
             if (_v) {
               {
-                if (PyArray_PyIntAsInt(argv[5])   != -1){
-                  _v = 1;
-                } else {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   _v = 0;
+                } else {
+                  _v = 1;    
                 }
               }
               if (_v) {
                 {
-                  if (PyArray_PyIntAsInt(argv[6])   != -1){
-                    _v = 1;
-                  } else {
+                  if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
                     _v = 0;
+                  } else {
+                    _v = 1;    
                   }
                 }
                 if (_v) {
                   {
-                    if (PyArray_PyIntAsInt(argv[7])   != -1){
-                      _v = 1;
-                    } else {
+                    if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
                       _v = 0;
+                    } else {
+                      _v = 1;    
                     }
                   }
                   if (_v) {
@@ -9278,22 +9278,22 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag__SWIG_0(PyObject *SWIGUNUSEDPA
   } 
   arg2 = static_cast< double >(val2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if (PyArray_PyIntAsInt(obj4) == -1){
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyInt_AsLong(obj4);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
     try {
@@ -9344,22 +9344,22 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag__SWIG_1(PyObject *SWIGUNUSEDPA
   }
   arg2 = reinterpret_cast< double * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if (PyArray_PyIntAsInt(obj4) == -1){
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyInt_AsLong(obj4);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
     try {
@@ -9404,26 +9404,26 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
             {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 _v = 0;
+              } else {
+                _v = 1;    
               }
             }
             if (_v) {
@@ -9446,26 +9446,26 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
             {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 _v = 0;
+              } else {
+                _v = 1;    
               }
             }
             if (_v) {
@@ -9516,16 +9516,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyExceptMN(PyObject *SWIGUNUSEDPARM(sel
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -9577,16 +9577,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -9647,16 +9647,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix__SWIG_1(PyObject *SWIGUNUSEDPAR
   }
   arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if (PyArray_PyIntAsInt(obj4) == -1){
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyInt_AsLong(obj4);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
     try {
@@ -9701,18 +9701,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix(PyObject *self, PyObject *args)
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -9738,18 +9738,18 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix(PyObject *self, PyObject *args)
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
             {
-              if (PyArray_PyIntAsInt(argv[4])   != -1){
-                _v = 1;
-              } else {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 _v = 0;
+              } else {
+                _v = 1;    
               }
             }
             if (_v) {
@@ -9790,10 +9790,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddToVector(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -9843,10 +9843,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetFromVector(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
@@ -10028,10 +10028,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     }
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10204,10 +10204,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -10396,10 +10396,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     }
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10572,10 +10572,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT(PyObject *self, PyObject *args) {
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -10851,16 +10851,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___getitem__(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -10904,16 +10904,16 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___setitem__(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -12477,10 +12477,10 @@ SWIGINTERN PyObject *_wrap_LUFactors_Factor(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12519,10 +12519,10 @@ SWIGINTERN PyObject *_wrap_LUFactors_Det(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -12566,16 +12566,16 @@ SWIGINTERN PyObject *_wrap_LUFactors_Mult(PyObject *SWIGUNUSEDPARM(self), PyObje
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -12624,16 +12624,16 @@ SWIGINTERN PyObject *_wrap_LUFactors_LSolve(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -12682,16 +12682,16 @@ SWIGINTERN PyObject *_wrap_LUFactors_USolve(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -12740,16 +12740,16 @@ SWIGINTERN PyObject *_wrap_LUFactors_Solve(PyObject *SWIGUNUSEDPARM(self), PyObj
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -12796,10 +12796,10 @@ SWIGINTERN PyObject *_wrap_LUFactors_GetInverseMatrix(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
@@ -12849,22 +12849,22 @@ SWIGINTERN PyObject *_wrap_LUFactors_SubMult(PyObject *SWIGUNUSEDPARM(self), PyO
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOOO:LUFactors_SubMult",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -12931,16 +12931,16 @@ SWIGINTERN PyObject *_wrap_LUFactors_BlockFactor(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
@@ -13009,22 +13009,22 @@ SWIGINTERN PyObject *_wrap_LUFactors_BlockForwSolve(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
@@ -13093,22 +13093,22 @@ SWIGINTERN PyObject *_wrap_LUFactors_BlockBackSolve(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::LUFactors * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
@@ -14004,10 +14004,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrixEigensystem_Eigenvalue(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -14046,10 +14046,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrixEigensystem_Eigenvector(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -14158,16 +14158,16 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrixSVD__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_DenseMatrixSVD",&obj0,&obj1)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -14213,18 +14213,18 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrixSVD(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -14338,10 +14338,10 @@ SWIGINTERN PyObject *_wrap_DenseMatrixSVD_Singularvalue(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::DenseMatrixSVD * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -14440,22 +14440,22 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_1(PyObject *SWIGUNUSEDPARM(self
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:new_DenseTensor",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    if (PyArray_PyIntAsInt(obj0) == -1){
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyInt_AsLong(obj0);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -14495,26 +14495,26 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
   if (argc == 3) {
     int _v;
     {
-      if (PyArray_PyIntAsInt(argv[0])   != -1){
-        _v = 1;
-      } else {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -14655,22 +14655,22 @@ SWIGINTERN PyObject *_wrap_DenseTensor_SetSize(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -14721,22 +14721,22 @@ SWIGINTERN PyObject *_wrap_DenseTensor_UseExternalData(PyObject *SWIGUNUSEDPARM(
   }
   arg2 = reinterpret_cast< double * >(argp2);
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if (PyArray_PyIntAsInt(obj4) == -1){
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyInt_AsLong(obj4);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
     try {
@@ -14775,10 +14775,10 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call____SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -14817,10 +14817,10 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call____SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -14863,22 +14863,22 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call____SWIG_2(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -14921,22 +14921,22 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call____SWIG_3(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -14977,10 +14977,10 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -14995,10 +14995,10 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -15013,26 +15013,26 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -15049,26 +15049,26 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -15107,10 +15107,10 @@ SWIGINTERN PyObject *_wrap_DenseTensor_GetData(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -15398,22 +15398,22 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem____SWIG_0(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -15452,10 +15452,10 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem____SWIG_1(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -15496,10 +15496,10 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem__(PyObject *self, PyObject *arg
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -15514,26 +15514,26 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem__(PyObject *self, PyObject *arg
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyArray_PyIntAsInt(argv[1])   != -1){
-          _v = 1;
-        } else {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
         {
-          if (PyArray_PyIntAsInt(argv[2])   != -1){
-            _v = 1;
-          } else {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -15577,22 +15577,22 @@ SWIGINTERN PyObject *_wrap_DenseTensor___setitem__(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
   {
-    if (PyArray_PyIntAsInt(obj1) == -1){
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyInt_AsLong(obj1);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if (PyArray_PyIntAsInt(obj2) == -1){
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyInt_AsLong(obj2);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   ecode5 = SWIG_AsVal_double(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {

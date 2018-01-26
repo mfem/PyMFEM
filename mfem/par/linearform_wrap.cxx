@@ -4199,10 +4199,10 @@ SWIGINTERN PyObject *_wrap_LinearForm_Update__SWIG_2(PyObject *SWIGUNUSEDPARM(se
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
-    if (PyArray_PyIntAsInt(obj3) == -1){
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyInt_AsLong(obj3);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -4269,10 +4269,10 @@ SWIGINTERN PyObject *_wrap_LinearForm_Update(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyArray_PyIntAsInt(argv[3])   != -1){
-              _v = 1;
-            } else {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
