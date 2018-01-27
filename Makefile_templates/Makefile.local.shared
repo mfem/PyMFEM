@@ -1,5 +1,3 @@
-WHOLE_ARCHIVE = -all_load
-NO_WHOLE_ARCHIVE = 
 MFEM_PREFIX ?=$(INSTALL_PREFIX)
 
 MFEM     = $(MFEM_PREFIX)/mfem-3.3.2/par
@@ -9,24 +7,16 @@ MFEMLNKDIR  = $(MFEM)/lib
 
 MFEMSER  =  $(MFEM_PREFIX)/mfem-3.3.2/ser
 MFEMSERBUILDDIR = $(MFEM_PREFIX)/src/mfem-3.3.2/cmbuild_ser
-MFEMINCDIR  = $(MFEMSER)/include/mfem
+MFEMSERINCDIR  = $(MFEMSER)/include/mfem
 MFEMSERLNKDIR  = $(MFEMSER)/lib
 
-# METIS5
-METISINCDIR = $(METIS5INC)
-METISLNKDIR = $(METIS5LIB)
 
-# HYPRE
-HYPREINCDIR = $(HYPREINC)
-HYPRELNKDIR = $(HYPRELIB)
-
-#MPI (add the directory of mpi.h)
-MPICHINCDIR    = 
-MPICHLNKDIR    = 
-MPI4PYINCDIR = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
+#MPI (add the directory of mpi.h and libmpi.so)
+MPICHINC    = 
+MPICHLNK    = 
 
 #Boost (add the directory of libboost_iostream.so, and its header file.)
-BOOSTINCDIR = 
-BOOSTLIBDIR = 
-BOOSTLIB = boost_iostreams
+BOOSTINC = 
+BOOSTLIB = 
+
 
