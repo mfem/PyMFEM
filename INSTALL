@@ -18,7 +18,7 @@ in $MFEM_PREFIX/mfem-3.3.2
 1) building MFEM as so (or dylib in MacOSX).
 
 1-1) download MFEM-3.3.2 and expaned
-   mkdir -p $MFEM_PREFIX/src
+   > mkdir -p $MFEM_PREFIX/src
    > cd $MFEM_PREFIX/src 
    > wget https://github.com/mfem/mfem/archive/v3.3.2.tar.gz -O mfem-3.3.2.tar.gz
    > tar -zxvf mfem-3.3.2.tar.gz
