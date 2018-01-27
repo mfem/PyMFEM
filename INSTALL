@@ -18,7 +18,7 @@ in $MFEM_PREFIX/mfem-3.3.2
 1) building MFEM as so (or dylib in MacOSX).
 
 1-1) download MFEM-3.3.2 and expaned
-   mkdir -p $MFEM_PREFIX/src
+   > mkdir -p $MFEM_PREFIX/src
    > cd $MFEM_PREFIX/src 
    > wget https://github.com/mfem/mfem/archive/v3.3.2.tar.gz -O mfem-3.3.2.tar.gz
    > tar -zxvf mfem-3.3.2.tar.gz
@@ -65,6 +65,18 @@ in $MFEM_PREFIX/mfem-3.3.2
 and run cmake and build.
 
    > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-3.3.2/par -DHYPRE_DIR=$HYPRELIB -DHYPRE_INCLUDE_DIRS=$HYPREINC  -DMETIS_DIR=$METIS5LIB -DMETIS_INCLUDE_DIRS=$METIS5INC -DMFEM_USE_MPI=1 -DMFEM_USE_METIS_5=1 -DMFEM_ENABLE_EXAMPLES=1 -DCMAKE_CXX_COMPILER=$MPICXX -DMFEM_GIT_STRING="3.3.2release" -DCMAKE_SHARED_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_EXE_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis"
+
+   or
+   
+   > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-3.3.2/par -DHYPRE_DIR=$HYPRELIB -DHYPRE_INCLUDE_DIRS=$HYPREINC  -DMETIS_DIR=$METIS5LIB -DMETIS_INCLUDE_DIRS=$METIS5INC -DMFEM_USE_MPI=1 -DMFEM_USE_METIS_5=1 -DMFEM_ENABLE_EXAMPLES=1 -DCMAKE_CXX_COMPILER=$MPICXX -DMFEM_GIT_STRING="3.3.2release" -DCMAKE_SHARED_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_EXE_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_INSTALL_RPATH=$HYPRELIB:$METIS5LIB -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE
+
+Note that libmfem.so built by the first cmake does not know the location of
+libHYPRE.so and libmetis.so, and a user may have to use LD_LIBRARY_PATH to
+specify the location of library. i these libraries are not installed in the
+default library search path. The second cmake command instead write the
+location of these libraires in the rpath of .so file.
+
+Then run make.
    > make verbose=1
 
 1-3c) test MFEM by checking if example is built correctly. However, if your cluster requires to submit a parallel job using a batch system, you need to write a batch job file.
@@ -82,7 +94,7 @@ and run cmake and build.
 You may already downloaded PyMFEM package, but here is a step to do it
 
    > cd $MFEM_PREFIX/src 
-   > wget https://github.com/mfem/PyMFEM/archive/v3.3.2.tar.gz -O PyMFEm-3.3.2.tar.gz
+   > wget https://github.com/mfem/PyMFEM/archive/v3.3.2.tar.gz -O PyMFEM-3.3.2.tar.gz
    > tar -zxvf PyMFEM-3.3.2.tar.gz
    > cd PyMFEM-3.3.2
 
