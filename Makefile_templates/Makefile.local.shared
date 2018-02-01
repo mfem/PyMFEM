@@ -16,7 +16,9 @@ MPICHINC    =
 MPICHLNK    = 
 
 #Boost (add the directory of libboost_iostream.so, and its header file.)
+#
+#  LIBBOOSTIOSTREAMS : boost_iostream-mt or  boost_iostream
 BOOSTINC = 
 BOOSTLIB = 
-
+LIBBOOSTIOSTREAMS = 
 

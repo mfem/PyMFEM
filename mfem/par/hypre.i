@@ -68,25 +68,19 @@ int sizeof_HYPRE_Int(){
      } else $1 = 0;       
   }
 }
+
  /*
     support numpy array input to 
     HypreParMatrix(MPI_Comm comm, int nrows, HYPRE_Int glob_nrows,
                   HYPRE_Int glob_ncols, int *I, HYPRE_Int *J,
                   double *data, HYPRE_Int *rows, HYPRE_Int *cols);
 
-<<<<<<< HEAD
-    allows to use numpy array to call this
-
-
-=======
-    allows to use numpy array to call this.
- 
     note that if cols and rows are the same (as a pointer),
     hypre_CSRMatrixReorder is called. It is not clear how to
     say "same as pointer" in Python. Here, if the list length
     is 4, cols is set to be rows. 
->>>>>>> 91196adf49cd1cdd2bfaa356a35e11a4a47d957d
  */
+
 %typemap(in) (int *I,
 	      HYPRE_Int *J,
               double *data,

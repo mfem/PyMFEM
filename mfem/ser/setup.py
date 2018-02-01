@@ -39,7 +39,7 @@ proxy_names = {name: '_'+name for name in modules}
 
 include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, boostinc]
 library_dirs = [mfemserlnkdir, boostlib]
-libraries    = ['boost_iostreams', 'mfem']
+libraries    = [libboostiostreams, 'mfem']
 
 
 ext_modules = [Extension(proxy_names[modules[0]],

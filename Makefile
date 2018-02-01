@@ -57,6 +57,7 @@ NUMPYINC = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
 #Boost
 BOOSTINC = /usr/local/include
 BOOSTLIB = /usr/local/lib
+LIBBOOSTIOSTREAMS = boost_iostreams
 
 NOCOMPACTUNWIND = 
 include ./Makefile.local

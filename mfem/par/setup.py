@@ -53,7 +53,7 @@ proxy_names = {name: '_'+name for name in modules}
 #extra_link_args =  []
 #libraries0 = [] if metisliba != '' else [metislib]
 #libraries0.extend([hyprelib, boostlib])
-libraries    = ['boost_iostreams', 'HYPRE', 'mfem']
+libraries    = [libboostiostreams, 'HYPRE', 'mfem']
 
 include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
                 mpichinc, hypreinc, boostinc]
