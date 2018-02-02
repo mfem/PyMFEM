@@ -413,9 +413,6 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
         return val
 
 
-    def Print(self, *args):
-        return _sparsemat.SparseMatrix_Print(self, *args)
-
     def PrintMatlab(self, *args):
         return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
 
@@ -480,6 +477,9 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
 
     def GetDataArray(self):
         return _sparsemat.SparseMatrix_GetDataArray(self)
+
+    def Print(self, *args):
+        return _sparsemat.SparseMatrix_Print(self, *args)
 SparseMatrix_swigregister = _sparsemat.SparseMatrix_swigregister
 SparseMatrix_swigregister(SparseMatrix)
 

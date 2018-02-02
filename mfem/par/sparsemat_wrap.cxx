@@ -3579,6 +3579,11 @@ namespace swig {
 }
 
 
+#include <sstream>
+#include <fstream>
+#include <limits>
+#include <cmath>
+#include <cstring>
 #include "linalg/sparsemat.hpp"  
 #include "iostream_typemap.hpp"  
 #include "numpy/arrayobject.h"
@@ -3773,6 +3778,145 @@ SWIGINTERN PyObject *mfem_SparseMatrix_GetDataArray(mfem::SparseMatrix const *se
   int L = self->Size();
   npy_intp dims[] = {I[L]};
   return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, A);
+  }
+
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+  if (PyBytes_Check(obj))
+#else
+  if (PyUnicode_Check(obj))
+#endif
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+#if PY_VERSION_HEX>=0x03000000
+#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    if(alloc) *alloc = SWIG_NEWOBJ;
+#endif
+    PyBytes_AsStringAndSize(obj, &cstr, &len);
+#else
+    PyString_AsStringAndSize(obj, &cstr, &len);
+#endif
+    if (cptr) {
+      if (alloc) {
+	/* 
+	   In python the user should not be able to modify the inner
+	   string representation. To warranty that, if you define
+	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
+	   buffer is always returned.
+
+	   The default behavior is just to return the pointer value,
+	   so, be careful.
+	*/ 
+#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
+	if (*alloc != SWIG_OLDOBJ) 
+#else
+	if (*alloc == SWIG_NEWOBJ) 
+#endif
+	{
+	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+	  *alloc = SWIG_NEWOBJ;
+	} else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+	*cptr = PyBytes_AsString(obj);
+#else
+	assert(0); /* Should never reach here with Unicode strings in Python 3 */
+#endif
+#else
+	*cptr = SWIG_Python_str_AsChar(obj);
+#endif
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    Py_XDECREF(obj);
+#endif
+    return SWIG_OK;
+  } else {
+#if defined(SWIG_PYTHON_2_UNICODE)
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
+#endif
+#if PY_VERSION_HEX<0x03000000
+    if (PyUnicode_Check(obj)) {
+      char *cstr; Py_ssize_t len;
+      if (!alloc && cptr) {
+        return SWIG_RuntimeError;
+      }
+      obj = PyUnicode_AsUTF8String(obj);
+      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
+        if (cptr) {
+          if (alloc) *alloc = SWIG_NEWOBJ;
+          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+        }
+        if (psize) *psize = len + 1;
+
+        Py_XDECREF(obj);
+        return SWIG_OK;
+      } else {
+        Py_XDECREF(obj);
+      }
+    }
+#endif
+#endif
+
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+
+
+SWIGINTERN void mfem_SparseMatrix_Print__SWIG_3(mfem::SparseMatrix *self,char const *file){
+  std::ofstream ofile(file);
+  if (!ofile)
+  {
+     std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+     return;
+  }
+  self -> Print(ofile);
+  ofile.close();
   }
 
 
@@ -11795,83 +11939,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_SparseMatrix_Print__SWIG_2(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_SparseMatrix_Print__SWIG_1(self, args);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_SparseMatrix_Print__SWIG_0(self, args);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_Print'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::SparseMatrix::Print(std::ostream &,int) const\n"
-    "    mfem::SparseMatrix::Print(std::ostream &) const\n"
-    "    mfem::SparseMatrix::Print() const\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
@@ -12927,6 +12994,142 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SparseMatrix_Print",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Print" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_SparseMatrix_Print__SWIG_3(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_SparseMatrix_Print__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_SparseMatrix_Print__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyFile_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        return _wrap_SparseMatrix_Print__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if (PyFile_Check(argv[1])){
+          _v = 1;
+        } else {
+          _v = 0;
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_Print__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_Print'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::SparseMatrix::Print(std::ostream &,int) const\n"
+    "    mfem::SparseMatrix::Print(std::ostream &) const\n"
+    "    mfem::SparseMatrix::Print() const\n"
+    "    mfem::SparseMatrix::Print(char const *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *SparseMatrix_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
@@ -13314,7 +13517,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SparseMatrix___iadd__", _wrap_SparseMatrix___iadd__, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_Add", _wrap_SparseMatrix_Add, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix___imul__", _wrap_SparseMatrix___imul__, METH_VARARGS, NULL},
-	 { (char *)"SparseMatrix_Print", _wrap_SparseMatrix_Print, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_PrintMatlab", _wrap_SparseMatrix_PrintMatlab, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_PrintMM", _wrap_SparseMatrix_PrintMM, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_PrintCSR", _wrap_SparseMatrix_PrintCSR, METH_VARARGS, NULL},
@@ -13337,6 +13539,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SparseMatrix_GetIArray", _wrap_SparseMatrix_GetIArray, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_GetJArray", _wrap_SparseMatrix_GetJArray, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_GetDataArray", _wrap_SparseMatrix_GetDataArray, METH_VARARGS, NULL},
+	 { (char *)"SparseMatrix_Print", _wrap_SparseMatrix_Print, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrix_swigregister", SparseMatrix_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SparseMatrixFunction", _wrap_SparseMatrixFunction, METH_VARARGS, NULL},
 	 { (char *)"TransposeAbstractSparseMatrix", _wrap_TransposeAbstractSparseMatrix, METH_VARARGS, NULL},

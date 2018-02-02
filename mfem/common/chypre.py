@@ -160,7 +160,7 @@ class CHypreVec(list):
                 self[0][int(i - part[0])] = v.real
             if self[1] is not None:            
                 self[1][int(i - part[0])] = v.imag
-                
+    '''            
     def gather(self):
         from mpi4py import MPI
         myid = MPI.COMM_WORLD.rank
@@ -175,7 +175,7 @@ class CHypreVec(list):
                 return vecr
             else:
                 return vecr + 1j*veci
-            
+    '''        
     def get_squaremat_from_right(self):
         '''
         squre matrix which can be multipled from the right of self.
@@ -187,7 +187,8 @@ class CHypreVec(list):
         return SquareCHypreMat(part, real = (self[1] is None))
     
     def transpose(self):
-        self._horizontal = not self.horizontal
+        self._horizontal = not self._horizontal
+        return self
 
     def _do_reset(self, v, idx):
         # ownership is transferrd to a new vector.
@@ -275,14 +276,38 @@ class CHypreVec(list):
         return CHypreVec(r, i, horizontal = self._horizontal)
      
     def GlobalVector(self):
+        '''
+        Here it is reimplmente using MPI allgather.
+        This is because GlobalVactor does not work when the vector
+        is too small so that some node does not have data.
+        '''
+        def gather_allvector(data):
+            from mpi_dtype import get_mpi_datatype
+            from mpi4py import MPI
+       
+            mpi_data_type = get_mpi_datatype(data)
+            myid     = MPI.COMM_WORLD.rank
+            rcounts = data.shape[0]
+            rcounts = np.array(MPI.COMM_WORLD.allgather(rcounts))
+
+            for x in data.shape[1:]: rcounts = rcounts * x        
+            cm = np.hstack((0, np.cumsum(rcounts)))
+            disps = list(cm[:-1])        
+            length =  cm[-1]
+            recvbuf = np.empty([length], dtype=data.dtype)
+            recvdata = [recvbuf, rcounts, disps, mpi_data_type]
+            senddata = [data.flatten(), data.flatten().shape[0]]        
+            MPI.COMM_WORLD.Allgatherv(senddata, recvdata)
+            return recvbuf.reshape(-1, *data.shape[1:])
+
+ 
         if self[0] is not None:
-            gv = self[0].GlobalVector()
-            v = gv.GetDataArray().copy()  
+            v1 = gather_allvector(self[0].GetDataArray().copy())
         else:
-            v = 0.0
-        if self[1] is not None:            
-            gv = self[1].GlobalVector()
-            v = v + 1j*gv.GetDataArray()
+            v1 = 0.0
+        if self[1] is not None:
+            v2 = gather_allvector(self[1].GetDataArray().copy())           
+            v = v1 + 1j*v2
         return v
 
     def toarray(self):
@@ -869,16 +894,34 @@ def MfemMat2PyMat(M1, M2 = None):
             m = m.tocsr()
             return m
 
-def EmptySquarePyMat(m):
+def EmptySquarePyMat(m, col_starts = None):
     from scipy.sparse import csr_matrix       
     if MFEM_PAR:
-        part = get_assumed_patitioning(m)
-        m1 = csr_matrix((part[2], m))
-        return CHypreMat(m1, None)
+        if col_starts is None:
+           col_starts = get_assumed_patitioning(m)
+        rows =  col_starts[1] - col_starts[0]
+        m1 = csr_matrix((rows, m))
+        return CHypreMat(m1, None, )
     else:
         from scipy.sparse import csr_matrix
         return csr_matrix((m, m))
 
+def IdentityPyMat(m, col_starts = None):
+    from scipy.sparse import coo_matrix, lil_matrix
+    if MFEM_PAR:
+        if col_starts is None:
+           col_starts = get_assumed_patitioning(m)
+        rows =  col_starts[1] - col_starts[0]
+        m1 = lil_matrix((rows, m))
+        for i in range(rows):
+           m1[i, i+col_starts[0]] = 1.0
+        m1 = m1.tocsr() 
+        return CHypreMat(m1, None, )
+    else:
+        m1 = coo_matrix((m, m))
+        m1.setdiag(np.ones(m))
+        return m1.tocsr()
+     
 
 def HStackPyVec(vecs, col_starts = None):
     '''
@@ -905,5 +948,35 @@ def HStackPyVec(vecs, col_starts = None):
         return ret
     else:
         return csr_matrix(np.hstack(vecs))
+
+def PyVec2PyMat(vec, col_starts = None):
+    from scipy.sparse import csr_matrix
+    if MFEM_PAR:
+        '''
+        vec must be vertical
+        '''
+        assert not vec._horizontal, "PyVec must be vertical"
+        
+        from mpi4py import MPI   
+        comm     = MPI.COMM_WORLD     
+        rows = vec.GetPartitioningArray()
+        if col_starts is None:
+            col_starts = get_assumed_patitioning(1)        
+
+        isComplex = vec.isComplex()
+        mat = np.atleast_2d(vec.toarray()).transpose()
+        
+        if isComplex:
+            m1 = csr_matrix(mat.real)
+            m2 = csr_matrix(mat.imag)           
+        else:
+            m1 = csr_matrix(mat)
+            m2 = None
+        #print m1.shape 
+        ret = CHypreMat(m1, m2, col_starts = col_starts)
+        #print "returning", ret,
+        return ret
+    else:
+        return csr_matrix(vec)
 
 

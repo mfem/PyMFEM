@@ -1,6 +1,11 @@
 %module sparsemat
 
 %{
+#include <sstream>
+#include <fstream>
+#include <limits>
+#include <cmath>
+#include <cstring>
 #include "linalg/sparsemat.hpp"  
 #include "iostream_typemap.hpp"  
 #include "numpy/arrayobject.h"
@@ -140,5 +145,15 @@ PyObject* GetDataArray(void) const{
   int L = self->Size();
   npy_intp dims[] = {I[L]};
   return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, A);
+  }
+void Print(const char *file){
+  std::ofstream ofile(file);
+  if (!ofile)
+  {
+     std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+     return;
+  }
+  self -> Print(ofile);
+  ofile.close();
   }
 };

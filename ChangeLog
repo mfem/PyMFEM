@@ -1,5 +1,9 @@
 
 	<<<  Change Log. >>>
+2018 02.02
+	* Vector::Print(filename) and SparseMatrix::Print(filename) are added
+	* chypre.IdentityPyMat is added
+	* chypre.CHypreVec.GlobalVector was rewritten to do allgather on python level.
 2018 01.24
 	* The issue of not raising the type conversion error when int is an argument
 	is fixed

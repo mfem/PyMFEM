@@ -223,9 +223,6 @@ class Vector(_object):
     def SetSubVectorComplement(self, dofs, val):
         return _vector.Vector_SetSubVectorComplement(self, dofs, val)
 
-    def Print(self, *args):
-        return _vector.Vector_Print(self, *args)
-
     def Print_HYPRE(self, out):
         return _vector.Vector_Print_HYPRE(self, out)
 
@@ -319,6 +316,9 @@ class Vector(_object):
 
         return val
 
+
+    def Print(self, *args):
+        return _vector.Vector_Print(self, *args)
 
     def __setitem__(self, i, v):
         return _vector.Vector___setitem__(self, i, v)

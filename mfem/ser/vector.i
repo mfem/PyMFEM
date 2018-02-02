@@ -216,6 +216,17 @@ void subtract_vector(const double a, const mfem::Vector &x,
     (* self) = (double *) PyArray_DATA(param);
   }
   
+  void Print(const char *file){
+        std::ofstream ofile(file);
+        if (!ofile)
+        {
+	  std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+   	  return;
+        }
+	self -> Print(ofile);
+        ofile.close();
+  }
+
   void __setitem__(int i, const double v) {
     int len = self->Size();        
     if (i >= 0){    
