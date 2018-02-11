@@ -1,9 +1,17 @@
 %module pgridfunc
 %{
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <limits>
+#include <cmath>
+#include <cstring>  
 #include <mpi.h>
 #include "iostream_typemap.hpp"      
 #include  "config/config.hpp"
+#include "mesh/pmesh.hpp"  
 #include "fem/pgridfunc.hpp"
+#include "fem/pfespace.hpp"  
 #include "fem/linearform.hpp"  
 #include "pycoefficient.hpp"  
 #include "numpy/arrayobject.h"
@@ -58,6 +66,27 @@ import_array();
 %newobject mfem::ParGridFunction::ParallelProject;
 %newobject mfem::ParGridFunction::GetTrueDofs;
 
+
+%pythonprepend mfem::ParGridFunction::ParGridFunction %{
+from mfem.par.pmesh import ParMesh
+from mfem.par.pfespace import ParFiniteElementSpace
+from mfem.par.gridfunc import GridFunction
+if (len(args) == 2 and isinstance(args[1], str) and
+     isinstance(args[0], ParMesh)):
+    g0 = GridFunction(args[0], args[1])
+    fec = g0.OwnFEC()
+    fes = g0.FESpace()
+    pfes = ParFiniteElementSpace(args[0], fec, fes.GetVDim(),
+                                      fes.GetOrdering())
+    x = ParGridFunction(pfes, g0)
+    x.thisown = 0
+    pfes.thisown = 0
+    g0.thisown = 0
+    self.this = x.this
+    return 
+%}
+   
+
 %include "fem/pgridfunc.hpp"
 
 namespace mfem{
@@ -67,5 +96,19 @@ ParGridFunction(mfem::ParFiniteElementSpace *fes, const mfem::Vector &v, int off
    gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
    return gf;
  }
-   }  //end of extend
+/*  this will be turn on in mfem-3.3.3
+ParGridFunction(ParMesh *pmesh, const char *gf_file){
+    mfem::ParGridFunction *pgf;
+    mfem::ParFiniteElementSpace *pfes;    
+    std::ifstream gfstream(gf_file);
+    if (!gfstream)
+    {
+    std::cerr << "\nCan not open ParGridFunction: " << gf_file << '\n' << std::endl;
+    return NULL;
+    }
+    pgf = new mfem::GridFunction(pmesh, gfstream);
+    return pgf;
+    }
+*/ 
+};  //end of extend
 }  // end of namespace  

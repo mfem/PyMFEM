@@ -302,6 +302,25 @@ class ParGridFunction(gridfunc.GridFunction):
     __del__ = lambda self: None
 
     def __init__(self, *args):
+
+        from mfem.par.pmesh import ParMesh
+        from mfem.par.pfespace import ParFiniteElementSpace
+        from mfem.par.gridfunc import GridFunction
+        if (len(args) == 2 and isinstance(args[1], str) and
+             isinstance(args[0], ParMesh)):
+            g0 = GridFunction(args[0], args[1])
+            fec = g0.OwnFEC()
+            fes = g0.FESpace()
+            pfes = ParFiniteElementSpace(args[0], fec, fes.GetVDim(),
+                                              fes.GetOrdering())
+            x = ParGridFunction(pfes, g0)
+            x.thisown = 0
+            pfes.thisown = 0
+            g0.thisown = 0
+            self.this = x.this
+            return 
+
+
         this = _pgridfunc.new_ParGridFunction(*args)
         try:
             self.this.append(this)

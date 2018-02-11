@@ -220,13 +220,6 @@ class ParMesh(mesh.Mesh):
     __getattr__ = lambda self, name: _swig_getattr(self, ParMesh, name)
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        this = _pmesh.new_ParMesh(*args)
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-
     def GetComm(self):
         return _pmesh.ParMesh_GetComm(self)
 
@@ -367,6 +360,16 @@ class ParMesh(mesh.Mesh):
         return _pmesh.ParMesh_FindPoints(self, point_mat, elem_ids, ips, warn, inv_trans)
     __swig_destroy__ = _pmesh.delete_ParMesh
     __del__ = lambda self: None
+
+    def __init__(self, *args):
+        this = _pmesh.new_ParMesh(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def ParPrintToFile(self, mesh_file, precision):
+        return _pmesh.ParMesh_ParPrintToFile(self, mesh_file, precision)
 ParMesh_swigregister = _pmesh.ParMesh_swigregister
 ParMesh_swigregister(ParMesh)
 

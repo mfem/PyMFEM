@@ -1,5 +1,12 @@
-
 	<<<  Change Log. >>>
+2018 02.12
+	* ParMesh::ParMesh(comm, filename)  
+	* ParMesh::ParPrintToFile(filename) # convinent version of ParPrint
+	* ParGridFunction::ParGridFunction(pmesh, filename)
+        ** this is implemented temporariy in a python proxy class
+	** it will be changed to call C++ constructor when a new version
+	** is released.
+	
 2018 02.02
 	* Vector::Print(filename) and SparseMatrix::Print(filename) are added
 	* chypre.IdentityPyMat is added

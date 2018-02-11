@@ -3687,10 +3687,18 @@ namespace swig {
 }
 
 
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <limits>
+#include <cmath>
+#include <cstring>  
 #include <mpi.h>
 #include "iostream_typemap.hpp"      
 #include  "config/config.hpp"
+#include "mesh/pmesh.hpp"  
 #include "fem/pgridfunc.hpp"
+#include "fem/pfespace.hpp"  
 #include "fem/linearform.hpp"  
 #include "pycoefficient.hpp"  
 #include "numpy/arrayobject.h"

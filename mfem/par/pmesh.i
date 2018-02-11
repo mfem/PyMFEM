@@ -1,5 +1,11 @@
 %module pmesh
 %{
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <limits>
+#include <cmath>
+#include <cstring>  
 #include <mpi.h>
 #include "iostream_typemap.hpp"     
 #include "config/config.hpp"
@@ -31,3 +37,26 @@ import_array();
 %pointer_class(int, intp);
 
 %include "mesh/pmesh.hpp"
+
+namespace mfem{
+%extend ParMesh{
+ParMesh(MPI_Comm comm, const char *mesh_file){
+    mfem::ParMesh *mesh;
+    std::ifstream imesh(mesh_file);
+    if (!imesh)
+    {
+    std::cerr << "\nCan not open mesh file: " << mesh_file << '\n' << std::endl;
+    return NULL;
+    }
+    mesh = new mfem::ParMesh(comm, imesh);
+    return mesh;
+    }
+void ParPrintToFile(const char *mesh_file, const int precision) const
+    {
+    std::ofstream mesh_ofs(mesh_file);	
+    mesh_ofs.precision(precision);
+    self->ParPrint(mesh_ofs);	
+    }
+};   
+}
+
