@@ -1,4 +1,4 @@
-%module mesh
+%module(directors="0")  mesh
 %{
 #include "mesh/mesh_headers.hpp"
 #include "fem/fem.hpp"
@@ -24,6 +24,7 @@ import_array();
 %}
 
 %include "../common/cpointers.i"
+%include "exception.i"
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -42,6 +43,7 @@ import_array();
 %import "fe.i"
 %import "ostream_typemap.i"
 %import "../common/numpy_int_typemap.i"
+
 
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....
@@ -148,7 +150,6 @@ if (!SWIG_IsOK(res2)){
    $1 = PyInt_Check($input) ? 1 : 0;
 }
 
-
 %feature("shadow") mfem::Mesh::GetBdrElementVertices %{
 def GetBdrElementVertices(self, i):
     from  .array import intArray
@@ -247,7 +248,10 @@ def GetFaceElements(self, Face):
 
 %newobject mfem::Mesh::GetFaceToElementTable;
 %newobject mfem::Mesh::GetVertexToElementTable;
+
+%include "../common/exception.i"
 %include "mesh/mesh.hpp"
+
 %mutable;
 
 namespace mfem{

@@ -124,6 +124,7 @@ import element
 import geom
 import table
 import vertex
+import handle
 class Ordering(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Ordering, name, value)
@@ -176,8 +177,8 @@ class FiniteElementSpace(_object):
     def GetMesh(self):
         return _fespace.FiniteElementSpace_GetMesh(self)
 
-    def GetNURBSext(self):
-        return _fespace.FiniteElementSpace_GetNURBSext(self)
+    def GetNURBSext(self, *args):
+        return _fespace.FiniteElementSpace_GetNURBSext(self, *args)
 
     def StealNURBSext(self):
         return _fespace.FiniteElementSpace_StealNURBSext(self)
@@ -239,11 +240,14 @@ class FiniteElementSpace(_object):
     def GetNFDofs(self):
         return _fespace.FiniteElementSpace_GetNFDofs(self)
 
+    def GetNV(self):
+        return _fespace.FiniteElementSpace_GetNV(self)
+
     def GetNE(self):
         return _fespace.FiniteElementSpace_GetNE(self)
 
-    def GetNV(self):
-        return _fespace.FiniteElementSpace_GetNV(self)
+    def GetNF(self):
+        return _fespace.FiniteElementSpace_GetNF(self)
 
     def GetNBE(self):
         return _fespace.FiniteElementSpace_GetNBE(self)
@@ -468,11 +472,14 @@ class FiniteElementSpace(_object):
     def Update(self, want_transform=True):
         return _fespace.FiniteElementSpace_Update(self, want_transform)
 
-    def GetUpdateOperator(self):
-        return _fespace.FiniteElementSpace_GetUpdateOperator(self)
+    def GetUpdateOperator(self, *args):
+        return _fespace.FiniteElementSpace_GetUpdateOperator(self, *args)
 
     def SetUpdateOperatorOwner(self, own):
         return _fespace.FiniteElementSpace_SetUpdateOperatorOwner(self, own)
+
+    def SetUpdateOperatorType(self, tid):
+        return _fespace.FiniteElementSpace_SetUpdateOperatorType(self, tid)
 
     def UpdatesFinished(self):
         return _fespace.FiniteElementSpace_UpdatesFinished(self)
@@ -482,6 +489,9 @@ class FiniteElementSpace(_object):
 
     def Save(self, out):
         return _fespace.FiniteElementSpace_Save(self, out)
+
+    def Load(self, m, input):
+        return _fespace.FiniteElementSpace_Load(self, m, input)
     __swig_destroy__ = _fespace.delete_FiniteElementSpace
     __del__ = lambda self: None
 FiniteElementSpace_swigregister = _fespace.FiniteElementSpace_swigregister

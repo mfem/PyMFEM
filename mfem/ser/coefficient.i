@@ -37,6 +37,7 @@ import_array();
 %}
 
 //%import "general/array.hpp"
+%include "exception.i"
 %import "array.i"
 %import "matrix.i"
 %import "intrules.i"
@@ -44,6 +45,8 @@ import_array();
 %import "densemat.i"
 %import "vector.i"
 %import "eltrans.i"
+%import "../common/exception_director.i"
+
 %ignore Function;
 //%ignore DeltaCoefficient;
 %feature("notabstract") VectorFunctionCoefficient;
@@ -71,6 +74,7 @@ namespace mfem {
   
 }
 
+/*
 %exception {
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
@@ -85,6 +89,7 @@ namespace mfem {
         throw Swig::DirectorMethodException();
     }
 }
+*/
 
 %typemap(in) const mfem::IntegrationRule *irs[]{
   if (PyList_Check($input)) {

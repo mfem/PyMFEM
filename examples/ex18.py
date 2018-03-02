@@ -178,7 +178,7 @@ if (cfl > 0):
 
 # Integrate in time.
 done = False;
-ti = 0            
+ti = 1            
 while not done:
     dt_real = min(dt, t_final - t);
     t, dt_real = ode_solver.Step(sol, t, dt_real);

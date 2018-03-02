@@ -9,9 +9,11 @@
 %init %{
 import_array();
 %}
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
+%import "../common/exception.i"
 
 %pythonappend mfem::BlockOperator::BlockOperator %{
 from mfem.ser import intArray  

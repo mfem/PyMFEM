@@ -2,15 +2,16 @@
 %{
 #include "fem/intrules.hpp"
 %}
+%include "exception.i"
 %import "array.i"
-
+%import "../common/exception.i"
 
 %immutable IntRules;
 %immutable RefinedIntRules;
 
-
 %ignore mfem::Array<mfem::IntegrationPoint>::Union;
 %ignore mfem::Array<mfem::IntegrationPoint>::Find;
+%ignore mfem::Array<mfem::IntegrationPoint>::FindSorted;
 %ignore mfem::Array<mfem::IntegrationPoint>::Sort;
 %ignore mfem::Array<mfem::IntegrationPoint>::DeleteFirst;
 %ignore mfem::Array<mfem::IntegrationPoint>::Unique;

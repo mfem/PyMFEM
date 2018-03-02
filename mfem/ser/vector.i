@@ -17,10 +17,13 @@
 %init %{
 import_array();
 %}
+
+%include "exception.i"
 %import "array.i"
 %import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/numpy_int_typemap.i"
+%import "../common/exception.i"
 
 %typemap(in)  (double *_data){// int _size){
   int i, si;

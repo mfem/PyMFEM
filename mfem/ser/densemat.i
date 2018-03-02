@@ -10,6 +10,8 @@
 %init %{
 import_array();
 %}
+
+%include "exception.i"
 %import "general/array.hpp"
 %import "array.i"
 %import "vector.i"
@@ -17,6 +19,7 @@ import_array();
 %import "matrix.i"
 %import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
+%import "../common/exception.i"
 
 %ignore mfem::DenseMatrix::operator=;
 %pythonappend mfem::DenseMatrix::Assign %{

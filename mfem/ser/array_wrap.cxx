@@ -3470,6 +3470,31 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_intArray__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_intArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_intArray" "', argument " "1"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_intArray" "', argument " "1"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  result = (mfem::Array< int > *)new mfem::Array< int >((mfem::Array< int > const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
@@ -3484,6 +3509,14 @@ SWIGINTERN PyObject *_wrap_new_intArray(PyObject *self, PyObject *args) {
   }
   if (argc == 0) {
     return _wrap_new_intArray__SWIG_2(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_intArray__SWIG_5(self, args);
+    }
   }
   if (argc == 1) {
     int _v;
@@ -3546,7 +3579,8 @@ fail:
     "    mfem::Array< int >::Array(int)\n"
     "    mfem::Array< int >::Array()\n"
     "    mfem::Array< int >::Array(int *,int,int)\n"
-    "    mfem::Array< int >::Array(int *,int)\n");
+    "    mfem::Array< int >::Array(int *,int)\n"
+    "    mfem::Array< int >::Array(mfem::Array< int > const &)\n");
   return 0;
 }
 
@@ -4246,6 +4280,39 @@ SWIGINTERN PyObject *_wrap_intArray_Find(PyObject *SWIGUNUSEDPARM(self), PyObjec
   temp2 = static_cast< int >(val2);
   arg2 = &temp2;
   result = (int)((mfem::Array< int > const *)arg1)->Find((int const &)*arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_intArray_FindSorted(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< int > *arg1 = (mfem::Array< int > *) 0 ;
+  int *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int temp2 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:intArray_FindSorted",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intArray_FindSorted" "', argument " "1"" of type '" "mfem::Array< int > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intArray_FindSorted" "', argument " "2"" of type '" "int""'");
+  } 
+  temp2 = static_cast< int >(val2);
+  arg2 = &temp2;
+  result = (int)((mfem::Array< int > const *)arg1)->FindSorted((int const &)*arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -5650,6 +5717,31 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< double > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_doubleArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_double_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_doubleArray" "', argument " "1"" of type '" "mfem::Array< double > const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_doubleArray" "', argument " "1"" of type '" "mfem::Array< double > const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  result = (mfem::Array< double > *)new mfem::Array< double >((mfem::Array< double > const &)*arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[4] = {
@@ -5664,6 +5756,14 @@ SWIGINTERN PyObject *_wrap_new_doubleArray(PyObject *self, PyObject *args) {
   }
   if (argc == 0) {
     return _wrap_new_doubleArray__SWIG_2(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_double_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_doubleArray__SWIG_5(self, args);
+    }
   }
   if (argc == 1) {
     int _v;
@@ -5735,7 +5835,8 @@ fail:
     "    mfem::Array< double >::Array(int)\n"
     "    mfem::Array< double >::Array()\n"
     "    mfem::Array< double >::Array(double *,int,int)\n"
-    "    mfem::Array< double >::Array(double *,int)\n");
+    "    mfem::Array< double >::Array(double *,int)\n"
+    "    mfem::Array< double >::Array(mfem::Array< double > const &)\n");
   return 0;
 }
 
@@ -6435,6 +6536,39 @@ SWIGINTERN PyObject *_wrap_doubleArray_Find(PyObject *SWIGUNUSEDPARM(self), PyOb
   temp2 = static_cast< double >(val2);
   arg2 = &temp2;
   result = (int)((mfem::Array< double > const *)arg1)->Find((double const &)*arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_doubleArray_FindSorted(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< double > *arg1 = (mfem::Array< double > *) 0 ;
+  double *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double temp2 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:doubleArray_FindSorted",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_double_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doubleArray_FindSorted" "', argument " "1"" of type '" "mfem::Array< double > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doubleArray_FindSorted" "', argument " "2"" of type '" "double""'");
+  } 
+  temp2 = static_cast< double >(val2);
+  arg2 = &temp2;
+  result = (int)((mfem::Array< double > const *)arg1)->FindSorted((double const &)*arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -8067,6 +8201,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"intArray_Last", _wrap_intArray_Last, METH_VARARGS, NULL},
 	 { (char *)"intArray_Union", _wrap_intArray_Union, METH_VARARGS, NULL},
 	 { (char *)"intArray_Find", _wrap_intArray_Find, METH_VARARGS, NULL},
+	 { (char *)"intArray_FindSorted", _wrap_intArray_FindSorted, METH_VARARGS, NULL},
 	 { (char *)"intArray_DeleteLast", _wrap_intArray_DeleteLast, METH_VARARGS, NULL},
 	 { (char *)"intArray_DeleteFirst", _wrap_intArray_DeleteFirst, METH_VARARGS, NULL},
 	 { (char *)"intArray_DeleteAll", _wrap_intArray_DeleteAll, METH_VARARGS, NULL},
@@ -8107,6 +8242,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"doubleArray_Last", _wrap_doubleArray_Last, METH_VARARGS, NULL},
 	 { (char *)"doubleArray_Union", _wrap_doubleArray_Union, METH_VARARGS, NULL},
 	 { (char *)"doubleArray_Find", _wrap_doubleArray_Find, METH_VARARGS, NULL},
+	 { (char *)"doubleArray_FindSorted", _wrap_doubleArray_FindSorted, METH_VARARGS, NULL},
 	 { (char *)"doubleArray_DeleteLast", _wrap_doubleArray_DeleteLast, METH_VARARGS, NULL},
 	 { (char *)"doubleArray_DeleteFirst", _wrap_doubleArray_DeleteFirst, METH_VARARGS, NULL},
 	 { (char *)"doubleArray_DeleteAll", _wrap_doubleArray_DeleteAll, METH_VARARGS, NULL},

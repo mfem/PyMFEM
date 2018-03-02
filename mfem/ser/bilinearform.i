@@ -9,7 +9,7 @@
 import_array();
 %}
 %include "../common/cpointers.i"
-
+%include "exception.i"
 %import "array.i"
 %import "fespace.i"
 %import "fe_coll.i"
@@ -23,12 +23,9 @@ import_array();
 %import "bilininteg.i"
 %import "linearform.i"
 %import "gridfunc.i"
+%include "../common/exception_director.i"
 
-%exception {
-    try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
-}
-%ignore mfem::MixedBilinearForm::AddBoundaryDomainIntegrator;
+//%ignore mfem::MixedBilinearForm::AddBoundaryDomainIntegrator;
 %feature("director") mfem::BilinearForm;
 
  //%include "fem/coefficient.hpp"

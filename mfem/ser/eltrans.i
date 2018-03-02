@@ -11,11 +11,13 @@
 import_array();
 %}
 
-%import array.i
-%import vector.i
-%import densemat.i
-%import fe.i
-%import intrules.i
+%include "exception.i"
+%import "array.i"
+%import "vector.i"
+%import "densemat.i"
+%import "fe.i"
+%import "intrules.i"
+%import "../common/exception.i"
 
 %feature("shadow") mfem::ElementTransformation::Transform %{
 def Transform(self, *args):

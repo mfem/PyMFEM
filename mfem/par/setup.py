@@ -22,7 +22,7 @@ from distutils.core import *
 from distutils      import sysconfig
 
 modules= [
-          "array", "common_functions", "socketstream", "handle", 
+          "error", "array", "common_functions", "socketstream", "handle", 
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
           "fe", "mesh", "fespace", 
@@ -79,7 +79,7 @@ ext_modules.extend([Extension(proxy_names[name],
                for name in modules[1:]])
 
 setup (name = 'mfem_parallel',
-       version = '3.3.2',
+       version = '3.3.3',
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,

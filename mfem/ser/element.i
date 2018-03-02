@@ -9,11 +9,13 @@
 %init %{
 import_array();
 %}
-%import array.i
-%import densemat.i
-%import geom.i
-%import table.i
 
+%include "exception.i"
+%import "array.i"
+%import "densemat.i"
+%import "geom.i"
+%import "table.i"
+%import "../common/exception.i"
 %include "mesh/element.hpp"
 
 %extend mfem::Element {

@@ -109,6 +109,10 @@ subtract_vector = _vector.subtract_vector
 def CheckFinite(v, n):
     return _vector.CheckFinite(v, n)
 CheckFinite = _vector.CheckFinite
+
+def infinity():
+    return _vector.infinity()
+infinity = _vector.infinity
 class Vector(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Vector, name, value)

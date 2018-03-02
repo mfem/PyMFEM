@@ -15,6 +15,7 @@
 %init %{
 import_array();
 %}
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
@@ -22,6 +23,7 @@ import_array();
 %import "densemat.i"
 %import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
+%import "../common/exception.i"
 
 %ignore Walk;
 %pythonappend mfem::SparseMatrix::operator*= %{

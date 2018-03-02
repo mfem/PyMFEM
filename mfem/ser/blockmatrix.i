@@ -10,11 +10,14 @@
 %init %{
 import_array();
 %}
+
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "matrix.i"
 %import "sparsemat.i"
 %import "ostream_typemap.i"
+%import "../common/exception.i"
 %import "../common/ignore_common_functions.i"
 
 %pythonappend mfem::BlockMatrix::BlockMatrix %{

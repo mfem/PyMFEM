@@ -192,6 +192,7 @@ import vertex
 import fespace
 import fe_coll
 import lininteg
+import handle
 import bilininteg
 import linearform
 class GridFunction(vector.Vector):
@@ -214,11 +215,20 @@ class GridFunction(vector.Vector):
     def VectorDim(self):
         return _gridfunc.GridFunction_VectorDim(self)
 
+    def GetTrueVector(self, *args):
+        return _gridfunc.GridFunction_GetTrueVector(self, *args)
+
     def GetTrueDofs(self, tv):
         return _gridfunc.GridFunction_GetTrueDofs(self, tv)
 
+    def SetTrueVector(self):
+        return _gridfunc.GridFunction_SetTrueVector(self)
+
     def SetFromTrueDofs(self, tv):
         return _gridfunc.GridFunction_SetFromTrueDofs(self, tv)
+
+    def SetFromTrueVector(self):
+        return _gridfunc.GridFunction_SetFromTrueVector(self)
 
     def GetValue(self, i, ip, vdim=1):
         return _gridfunc.GridFunction_GetValue(self, i, ip, vdim)
@@ -238,11 +248,11 @@ class GridFunction(vector.Vector):
     def GetFaceVectorValues(self, i, side, ir, vals, tr):
         return _gridfunc.GridFunction_GetFaceVectorValues(self, i, side, ir, vals, tr)
 
-    def GetValuesFrom(self, arg2):
-        return _gridfunc.GridFunction_GetValuesFrom(self, arg2)
+    def GetValuesFrom(self, orig_func):
+        return _gridfunc.GridFunction_GetValuesFrom(self, orig_func)
 
-    def GetBdrValuesFrom(self, arg2):
-        return _gridfunc.GridFunction_GetBdrValuesFrom(self, arg2)
+    def GetBdrValuesFrom(self, orig_func):
+        return _gridfunc.GridFunction_GetBdrValuesFrom(self, orig_func)
 
     def GetVectorFieldValues(self, i, ir, vals, tr, comp=0):
         return _gridfunc.GridFunction_GetVectorFieldValues(self, i, ir, vals, tr, comp)
@@ -351,6 +361,9 @@ class GridFunction(vector.Vector):
 
     def MakeRef(self, *args):
         return _gridfunc.GridFunction_MakeRef(self, *args)
+
+    def MakeTRef(self, *args):
+        return _gridfunc.GridFunction_MakeTRef(self, *args)
 
     def Save(self, out):
         return _gridfunc.GridFunction_Save(self, out)

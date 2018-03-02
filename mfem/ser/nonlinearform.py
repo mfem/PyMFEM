@@ -125,6 +125,7 @@ import element
 import geom
 import table
 import vertex
+import handle
 import nonlininteg
 class NonlinearForm(operators.Operator):
     __swig_setmethods__ = {}
@@ -184,6 +185,15 @@ class NonlinearForm(operators.Operator):
     def SetEssentialVDofs(self, ess_vdofs_list):
         return _nonlinearform.NonlinearForm_SetEssentialVDofs(self, ess_vdofs_list)
 
+    def SetEssentialTrueDofs(self, ess_tdof_list):
+        return _nonlinearform.NonlinearForm_SetEssentialTrueDofs(self, ess_tdof_list)
+
+    def GetEssentialTrueDofs(self):
+        return _nonlinearform.NonlinearForm_GetEssentialTrueDofs(self)
+
+    def GetGridFunctionEnergy(self, x):
+        return _nonlinearform.NonlinearForm_GetGridFunctionEnergy(self, x)
+
     def GetEnergy(self, x):
         return _nonlinearform.NonlinearForm_GetEnergy(self, x)
 
@@ -192,6 +202,15 @@ class NonlinearForm(operators.Operator):
 
     def GetGradient(self, x):
         return _nonlinearform.NonlinearForm_GetGradient(self, x)
+
+    def Update(self):
+        return _nonlinearform.NonlinearForm_Update(self)
+
+    def GetProlongation(self):
+        return _nonlinearform.NonlinearForm_GetProlongation(self)
+
+    def GetRestriction(self):
+        return _nonlinearform.NonlinearForm_GetRestriction(self)
     __swig_destroy__ = _nonlinearform.delete_NonlinearForm
     __del__ = lambda self: None
 
@@ -199,6 +218,61 @@ class NonlinearForm(operators.Operator):
         return _nonlinearform.NonlinearForm_GetGradientMatrix(self, x)
 NonlinearForm_swigregister = _nonlinearform.NonlinearForm_swigregister
 NonlinearForm_swigregister(NonlinearForm)
+
+class BlockNonlinearForm(operators.Operator):
+    __swig_setmethods__ = {}
+    for _s in [operators.Operator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BlockNonlinearForm, name, value)
+    __swig_getmethods__ = {}
+    for _s in [operators.Operator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, BlockNonlinearForm, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _nonlinearform.new_BlockNonlinearForm(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def FESpace(self, *args):
+        return _nonlinearform.BlockNonlinearForm_FESpace(self, *args)
+
+    def SetSpaces(self, f):
+        return _nonlinearform.BlockNonlinearForm_SetSpaces(self, f)
+
+    def GetBlockOffsets(self):
+        return _nonlinearform.BlockNonlinearForm_GetBlockOffsets(self)
+
+    def GetBlockTrueOffsets(self):
+        return _nonlinearform.BlockNonlinearForm_GetBlockTrueOffsets(self)
+
+    def AddDomainIntegrator(self, nlfi):
+        return _nonlinearform.BlockNonlinearForm_AddDomainIntegrator(self, nlfi)
+
+    def AddInteriorFaceIntegrator(self, nlfi):
+        return _nonlinearform.BlockNonlinearForm_AddInteriorFaceIntegrator(self, nlfi)
+
+    def AddBdrFaceIntegrator(self, *args):
+        return _nonlinearform.BlockNonlinearForm_AddBdrFaceIntegrator(self, *args)
+
+    def SetEssentialBC(self, bdr_attr_is_ess, rhs):
+        return _nonlinearform.BlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
+
+    def GetEnergy(self, x):
+        return _nonlinearform.BlockNonlinearForm_GetEnergy(self, x)
+
+    def Mult(self, x, y):
+        return _nonlinearform.BlockNonlinearForm_Mult(self, x, y)
+
+    def GetGradient(self, x):
+        return _nonlinearform.BlockNonlinearForm_GetGradient(self, x)
+    __swig_destroy__ = _nonlinearform.delete_BlockNonlinearForm
+    __del__ = lambda self: None
+BlockNonlinearForm_swigregister = _nonlinearform.BlockNonlinearForm_swigregister
+BlockNonlinearForm_swigregister(BlockNonlinearForm)
 
 # This file is compatible with both classic and new-style classes.
 

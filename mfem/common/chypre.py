@@ -366,13 +366,33 @@ class CHypreMat(list):
         list.__init__(self, [None]*2)
         if isinstance(r, csr_matrix):
             self[0] = ToHypreParCSR(r, col_starts = col_starts)
-        else:
+        elif isinstance(r, mfem.par.HypreParMatrix):
             self[0] = r
+        elif r is None:
+            self[0] = r           
+        else:
+            assert False, "unknonw matrix element"
         if isinstance(i, csr_matrix):
             self[1] = ToHypreParCSR(i, col_starts = col_starts)
-        else:
+        elif isinstance(i, mfem.par.HypreParMatrix):            
             self[1] = i
+        elif i is None:
+            self[1] = i
+        else:
+            assert False, "unknonw matrix element"
 
+    def GetOwns(self):
+        flags = [None]*6
+        if self[0] is not None:
+           flags[0] = self[0].OwnsDiag()
+           flags[1] = self[0].OwnsOffd()
+           flags[2] = self[0].OwnsColMap()
+        if self[1] is not None:
+           flags[3] = self[1].OwnsDiag()
+           flags[4] = self[1].OwnsOffd()
+           flags[5] = self[1].OwnsColMap()
+        return flags
+           
     def __repr__(self):
         return "CHypreMat"+str(self.shape) +"["+str(self.lshape)+"]"
     
@@ -495,7 +515,7 @@ class CHypreMat(list):
         this method returns a new matrix
         '''
         R = self[0].Transpose() if self[0] is not None else None
-        I = self[1].Transpose() if self[1] is not None else None    
+        I = self[1].Transpose() if self[1] is not None else None
         return CHypreMat(R, I)
         #return CHypreMat(self[0].Transpose(), self[1].Transpose())
 

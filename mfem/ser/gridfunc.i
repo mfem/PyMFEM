@@ -1,4 +1,4 @@
-%module gridfunc
+%module(directors="0")  gridfunc
 %{
   #include "fem/linearform.hpp"
   #include "fem/gridfunc.hpp"
@@ -19,6 +19,7 @@
 import_array();
 %}
 %include "../common/cpointers.i"
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "coefficient.i"
@@ -76,11 +77,8 @@ def GetNodalValues(self, *args):
 %typemap(typecheck) const mfem::IntegrationRule *irs[]{
    $1 = PyList_Check($input) ? 1 : 0;
 }
-/*
-%typemap(freearg) const mfem::IntegrationRule *irs[]{
-   free($1);
-}
-*/
+
+%include "../common/exception.i"
 %include "fem/gridfunc.hpp"
 
 namespace mfem{

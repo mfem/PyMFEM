@@ -9,25 +9,19 @@
 %init %{
 import_array();
 %}
-
+%include "exception.i"
 %import "vector.i"
 %import "array.i"
 %import "ostream_typemap.i"
+%import "../common/exception_director.i"
 
-%exception {
-    try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-}
+/*
 %feature("director:except") {
     if ($error != NULL) {
         throw Swig::DirectorMethodException();
     }
 }
+*/
 
 %inline %{
 void mfem::PyOperatorBase::Mult(const mfem::Vector &x, mfem::Vector &y) const
@@ -46,6 +40,7 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 //%feature("noabstract") mfem::TimeDependentOperator;
 %feature("director") mfem::TimeDependentOperator;
 %feature("director") mfem::Operator;
+
 
 %include "linalg/operator.hpp"
 

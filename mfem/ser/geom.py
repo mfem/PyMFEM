@@ -122,6 +122,7 @@ class Geometry(_object):
     TETRAHEDRON = _geom.Geometry_TETRAHEDRON
     CUBE = _geom.Geometry_CUBE
     NumGeom = _geom.Geometry_NumGeom
+    MaxDim = _geom.Geometry_MaxDim
     __swig_setmethods__["Name"] = _geom.Geometry_Name_set
     __swig_getmethods__["Name"] = _geom.Geometry_Name_get
     if _newclass:
@@ -207,12 +208,14 @@ class RefinedGeometry(_object):
     __swig_getmethods__["RefPts"] = _geom.RefinedGeometry_RefPts_get
     if _newclass:
         RefPts = _swig_property(_geom.RefinedGeometry_RefPts_get)
+    __swig_setmethods__["RefGeoms"] = _geom.RefinedGeometry_RefGeoms_set
     __swig_getmethods__["RefGeoms"] = _geom.RefinedGeometry_RefGeoms_get
     if _newclass:
-        RefGeoms = _swig_property(_geom.RefinedGeometry_RefGeoms_get)
+        RefGeoms = _swig_property(_geom.RefinedGeometry_RefGeoms_get, _geom.RefinedGeometry_RefGeoms_set)
+    __swig_setmethods__["RefEdges"] = _geom.RefinedGeometry_RefEdges_set
     __swig_getmethods__["RefEdges"] = _geom.RefinedGeometry_RefEdges_get
     if _newclass:
-        RefEdges = _swig_property(_geom.RefinedGeometry_RefEdges_get)
+        RefEdges = _swig_property(_geom.RefinedGeometry_RefEdges_get, _geom.RefinedGeometry_RefEdges_set)
     __swig_setmethods__["NumBdrEdges"] = _geom.RefinedGeometry_NumBdrEdges_set
     __swig_getmethods__["NumBdrEdges"] = _geom.RefinedGeometry_NumBdrEdges_get
     if _newclass:

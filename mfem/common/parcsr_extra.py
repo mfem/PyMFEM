@@ -74,7 +74,7 @@ def ToHypreParVec(vec):
                              glob_size, [vec, col_starts])
 
     return v
-   
+
 def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
                   col_starts = None):
     '''
@@ -178,13 +178,12 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
         M = mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
-                                data, row_starts])
+                                data, col_starts])
     else:
         M = mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
                                 data, row_starts, col_starts])
-
     return M
 
 def ToScipyCoo(mat):
@@ -205,8 +204,13 @@ def ToScipyCoo(mat):
     #   print irn
     #   print jcn
     from scipy.sparse import coo_matrix
-    return coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
- 
+    try:
+       return coo_matrix((data, (irn-ilower, jcn)), shape = (m, n))
+    except:
+       print "wrong input"
+       print num_rows, ilower, iupper, jlower, jupper
+       print np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n)
+       raise
 def InnerProductComplex(A, B):
     import mfem.par as mfem    
     R_A, I_A = A
@@ -295,31 +299,44 @@ def ParMultComplex(A, B):
     comm     = MPI.COMM_WORLD     
     num_proc = MPI.COMM_WORLD.size
     myid     = MPI.COMM_WORLD.rank
-
     
     R_A, I_A = A
     R_B, I_B = B
 
     if I_A is None and I_B is None:
        r = mfem.ParMult(R_A, R_B)
+       r.CopyRowStarts()
+       r.CopyColStarts()
+       
        return (r, None)
     elif I_A is None:
-       r = mfem.ParMult(R_A, R_B)
+       r = mfem.ParMult(R_A, R_B)       
        i = mfem.ParMult(R_A, I_B)
+       r.CopyRowStarts()
+       r.CopyColStarts()
+       i.CopyRowStarts()
+       i.CopyColStarts()
        return (r, i)
+   
     elif I_B is None:
        r = mfem.ParMult(R_A, R_B)
        i = mfem.ParMult(I_A, R_B)
+       r.CopyRowStarts()
+       r.CopyColStarts()
+       i.CopyRowStarts()
+       i.CopyColStarts()
+       
        return (r, i)       
     else:
        A = mfem.ParMult(R_A, R_B)
        B = mfem.ParMult(I_A, I_B)
        C = mfem.ParMult(R_A, I_B)
        D = mfem.ParMult(I_A, R_B)
-       
        col_starts = A.GetColPartArray(); col_starts[2] = A.N()
-       r = ToHypreParCSR((ToScipyCoo(A) - ToScipyCoo(B)).tocsr(), col_starts = col_starts)
-       i = ToHypreParCSR((ToScipyCoo(C) + ToScipyCoo(D)).tocsr(), col_starts = col_starts)
+       r = ToHypreParCSR((ToScipyCoo(A) - ToScipyCoo(B)).tocsr(),
+                         col_starts = col_starts)
+       i = ToHypreParCSR((ToScipyCoo(C) + ToScipyCoo(D)).tocsr(),
+                         col_starts = col_starts)
        return (r, i)
 
 def TransposeComplex(A):
@@ -424,13 +441,21 @@ def ResetHypreDiag(M, idx, value = 1.0):
     n = jupper - jlower + 1
     n = M.N()    
     from scipy.sparse import coo_matrix, lil_matrix
-  
-    mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
+    try:  
+        mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tolil()
+    except:
+       print "wrong input"
+       print num_rows, ilower, iupper, jlower, jupper
+       print np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n)
+       raise
+        
     for ii in idx:
         if ii >= ilower and ii <= iupper:
            mat[ii-ilower, ii] = value
- 
+
+
     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
+
 
 def ResetHypreRow(M, idx):
     '''

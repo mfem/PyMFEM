@@ -20,7 +20,7 @@ if cxx_ser != '': os.environ['CXX'] = cxx_ser
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["array", "common_functions", "socketstream",
+modules= ["error", "array", "common_functions", "socketstream", "handle",
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table", "fe",
           "mesh", "fespace", 
@@ -62,7 +62,7 @@ ext_modules.extend([Extension(proxy_names[name],
 
 
 setup (name = 'mfem_serial',
-       version = '3.3.2',
+       version = '3.3.3',
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,

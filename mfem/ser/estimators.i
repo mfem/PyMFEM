@@ -9,12 +9,13 @@
 import_array();
 %}
 
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "fespace.i"
 %import "bilinearform.i"
 %import "gridfunc.i"
-
+%import "../common/exception.i"
 
 %ignore mfem::ZienkiewiczZhuEstimator::ZienkiewiczZhuEstimator(BilinearFormIntegrator &integ, GridFunction &sol, FiniteElementSpace *flux_fes);
 %ignore mfem::ZienkiewiczZhuEstimator::ZienkiewiczZhuEstimator(BilinearFormIntegrator &integ, GridFunction &sol, FiniteElementSpace &flux_fes);

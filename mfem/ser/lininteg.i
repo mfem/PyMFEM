@@ -16,23 +16,15 @@
 import_array();
 %}
 
+%include "exception.i"
  //%include "fem/coefficient.hpp"
 %import "fe.i"
 %import "vector.i"
 %import "eltrans.i"
 %import "intrules.i"
 %import "coefficient.i"
+%import "../common/exception_director.i"
 
-
-%exception {
-    try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-}
 %include "../common/lininteg_ext.i"
 
 %include "fem/lininteg.hpp"

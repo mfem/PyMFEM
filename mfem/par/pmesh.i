@@ -36,6 +36,28 @@ import_array();
 
 %pointer_class(int, intp);
 
+%feature("shadow") mfem::ParMesh::GroupFace %{
+def GroupFace(self, group, i, *args):
+    if len(args) == 0:
+        args = (face = intp()
+        o = intp()
+        _pmesh.Mesh_GroupFace(self, group, i, edge, o)      
+        return edge.value(), o.value()
+    else:
+        _pmesh.Mesh_GroupFace(self, group, i, *args)            
+%}
+%feature("shadow") mfem::ParMesh::GroupEdge ${
+def GroupEdge(self, group, i, *args):
+    if len(args) == 0:
+        edge = intp()
+        o = intp()  
+        _pmesh.Mesh_GroupEdge(self, group, i, edge, o)
+        return edge.value(), o.value()
+    else:
+        _pmesh.Mesh_GroupEdge(self, group, i, *args)      
+%}
+
+
 %include "mesh/pmesh.hpp"
 
 namespace mfem{

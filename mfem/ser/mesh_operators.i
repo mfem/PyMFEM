@@ -9,9 +9,11 @@
 import_array();
 %}
 
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "mesh.i"
 %import "estimators.i"
+%import "../common/exception.i"
 
 %include "mesh/mesh_operators.hpp"  

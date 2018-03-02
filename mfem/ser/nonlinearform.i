@@ -3,18 +3,20 @@
 #include "fem/linearform.hpp"    
 #include "fem/nonlininteg.hpp"
 #include "fem/nonlinearform.hpp"
+#include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
 %}
-/*
+
 %init %{
 import_array();
 %}
-*/
-%import operators.i
-%import fespace.i
-%import nonlininteg.i
 
- //%include "fem/coefficient.hpp"
+%include "exception.i"
+%import "operators.i"
+%import "fespace.i"
+%import "nonlininteg.i"
+%import "../common/exception.i"
+
 namespace mfem { 
 %pythonprepend NonlinearForm::AddDomainIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []

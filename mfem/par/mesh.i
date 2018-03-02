@@ -24,7 +24,7 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 import_array();
 %}
 %include "../common/cpointers.i"
-
+%include "exception.i"
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -236,6 +236,7 @@ def GetFaceElements(self, Face):
 
 %newobject mfem::Mesh::GetFaceToElementTable;
 %newobject mfem::Mesh::GetVertexToElementTable;
+%include "../common/exception.i"
 %include "mesh/mesh.hpp"
 %mutable;
 

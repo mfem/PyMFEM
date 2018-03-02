@@ -3001,6 +3001,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIG_contract_assert(expr, msg) if (!(expr)) { SWIG_Error(SWIG_RuntimeError, msg); SWIG_fail; } else 
 
 
+
+  #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
+
 /* -----------------------------------------------------------------------------
  * director_common.swg
  *
@@ -3454,37 +3457,43 @@ namespace Swig {
 #define SWIGTYPE_p_intp swig_types[3]
 #define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[4]
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[5]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[6]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[7]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[8]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[9]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[10]
-#define SWIGTYPE_p_mfem__HyperelasticNLFIntegrator swig_types[11]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[12]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[13]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[14]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[15]
-#define SWIGTYPE_p_mfem__Matrix swig_types[16]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[17]
-#define SWIGTYPE_p_mfem__NonlinearForm swig_types[18]
-#define SWIGTYPE_p_mfem__NonlinearFormIntegrator swig_types[19]
-#define SWIGTYPE_p_mfem__Operator swig_types[20]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[21]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[22]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[23]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[24]
-#define SWIGTYPE_p_mfem__Solver swig_types[25]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[26]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[27]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[28]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[29]
-#define SWIGTYPE_p_mfem__Vector swig_types[30]
-#define SWIGTYPE_p_quad_t swig_types[31]
-#define SWIGTYPE_p_seg_t swig_types[32]
-#define SWIGTYPE_p_tet_t swig_types[33]
-#define SWIGTYPE_p_tri_t swig_types[34]
-static swig_type_info *swig_types[36];
-static swig_module_info swig_module = {swig_types, 35, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__FiniteElementSpace_p_t swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_p_t swig_types[8]
+#define SWIGTYPE_p_mfem__BlockNonlinearForm swig_types[9]
+#define SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[11]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[12]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[13]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[14]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[15]
+#define SWIGTYPE_p_mfem__HyperelasticNLFIntegrator swig_types[16]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[17]
+#define SWIGTYPE_p_mfem__IncompressibleNeoHookeanIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[19]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[20]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[21]
+#define SWIGTYPE_p_mfem__Matrix swig_types[22]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[23]
+#define SWIGTYPE_p_mfem__NonlinearForm swig_types[24]
+#define SWIGTYPE_p_mfem__NonlinearFormIntegrator swig_types[25]
+#define SWIGTYPE_p_mfem__Operator swig_types[26]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[27]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[28]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[29]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[30]
+#define SWIGTYPE_p_mfem__Solver swig_types[31]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[32]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[33]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[34]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[35]
+#define SWIGTYPE_p_mfem__Vector swig_types[36]
+#define SWIGTYPE_p_quad_t swig_types[37]
+#define SWIGTYPE_p_seg_t swig_types[38]
+#define SWIGTYPE_p_tet_t swig_types[39]
+#define SWIGTYPE_p_tri_t swig_types[40]
+static swig_type_info *swig_types[42];
+static swig_module_info swig_module = {swig_types, 41, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3592,6 +3601,7 @@ namespace swig {
 #include "fem/linearform.hpp"    
 #include "fem/nonlininteg.hpp"
 #include "fem/nonlinearform.hpp"
+#include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
 
 
@@ -3627,16 +3637,22 @@ SWIGINTERN PyObject *_wrap_new_NonlinearForm(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
   {
     try {
-      result = (mfem::NonlinearForm *)new mfem::NonlinearForm(arg1); 
+      result = (mfem::NonlinearForm *)new mfem::NonlinearForm(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NonlinearForm, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -3661,16 +3677,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_FESpace__SWIG_0(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
   {
     try {
-      result = (mfem::FiniteElementSpace *)(arg1)->FESpace(); 
+      result = (mfem::FiniteElementSpace *)(arg1)->FESpace();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -3695,16 +3717,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_FESpace__SWIG_1(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
   {
     try {
-      result = (mfem::FiniteElementSpace *)((mfem::NonlinearForm const *)arg1)->FESpace(); 
+      result = (mfem::FiniteElementSpace *)((mfem::NonlinearForm const *)arg1)->FESpace();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   return resultobj;
@@ -3777,16 +3805,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_AddDomainIntegrator(PyObject *SWIGUNUSE
   arg2 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp2);
   {
     try {
-      (arg1)->AddDomainIntegrator(arg2); 
+      (arg1)->AddDomainIntegrator(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3819,16 +3853,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_AddInteriorFaceIntegrator(PyObject *SWI
   arg2 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp2);
   {
     try {
-      (arg1)->AddInteriorFaceIntegrator(arg2); 
+      (arg1)->AddInteriorFaceIntegrator(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3861,16 +3901,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_AddBdrFaceIntegrator__SWIG_0(PyObject *
   arg2 = reinterpret_cast< mfem::NonlinearFormIntegrator * >(argp2);
   {
     try {
-      (arg1)->AddBdrFaceIntegrator(arg2); 
+      (arg1)->AddBdrFaceIntegrator(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3915,16 +3961,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_AddBdrFaceIntegrator__SWIG_1(PyObject *
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
   {
     try {
-      (arg1)->AddBdrFaceIntegrator(arg2,*arg3); 
+      (arg1)->AddBdrFaceIntegrator(arg2,*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4024,16 +4076,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_SetEssentialBC__SWIG_0(PyObject *SWIGUN
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
     try {
-      (arg1)->SetEssentialBC((mfem::Array< int > const &)*arg2,arg3); 
+      (arg1)->SetEssentialBC((mfem::Array< int > const &)*arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4069,16 +4127,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_SetEssentialBC__SWIG_1(PyObject *SWIGUN
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
     try {
-      (arg1)->SetEssentialBC((mfem::Array< int > const &)*arg2); 
+      (arg1)->SetEssentialBC((mfem::Array< int > const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4167,18 +4231,167 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_SetEssentialVDofs(PyObject *SWIGUNUSEDP
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
     try {
-      (arg1)->SetEssentialVDofs((mfem::Array< int > const &)*arg2); 
+      (arg1)->SetEssentialVDofs((mfem::Array< int > const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearForm_SetEssentialTrueDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearForm *arg1 = (mfem::NonlinearForm *) 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:NonlinearForm_SetEssentialTrueDofs",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearForm_SetEssentialTrueDofs" "', argument " "1"" of type '" "mfem::NonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearForm_SetEssentialTrueDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearForm_SetEssentialTrueDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    try {
+      (arg1)->SetEssentialTrueDofs((mfem::Array< int > const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearForm_GetEssentialTrueDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearForm *arg1 = (mfem::NonlinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:NonlinearForm_GetEssentialTrueDofs",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearForm_GetEssentialTrueDofs" "', argument " "1"" of type '" "mfem::NonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< int > *) &((mfem::NonlinearForm const *)arg1)->GetEssentialTrueDofs();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearForm_GetGridFunctionEnergy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearForm *arg1 = (mfem::NonlinearForm *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:NonlinearForm_GetGridFunctionEnergy",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearForm_GetGridFunctionEnergy" "', argument " "1"" of type '" "mfem::NonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NonlinearForm_GetGridFunctionEnergy" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NonlinearForm_GetGridFunctionEnergy" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      result = (double)((mfem::NonlinearForm const *)arg1)->GetGridFunctionEnergy((mfem::Vector const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -4213,16 +4426,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_GetEnergy(PyObject *SWIGUNUSEDPARM(self
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
     try {
-      result = (double)((mfem::NonlinearForm const *)arg1)->GetEnergy((mfem::Vector const &)*arg2); 
+      result = (double)((mfem::NonlinearForm const *)arg1)->GetEnergy((mfem::Vector const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -4270,16 +4489,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), Py
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
     try {
-      ((mfem::NonlinearForm const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+      ((mfem::NonlinearForm const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4316,16 +4541,141 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_GetGradient(PyObject *SWIGUNUSEDPARM(se
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
     try {
-      result = (mfem::Operator *) &((mfem::NonlinearForm const *)arg1)->GetGradient((mfem::Vector const &)*arg2); 
+      result = (mfem::Operator *) &((mfem::NonlinearForm const *)arg1)->GetGradient((mfem::Vector const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearForm_Update(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearForm *arg1 = (mfem::NonlinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:NonlinearForm_Update",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearForm_Update" "', argument " "1"" of type '" "mfem::NonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
+  {
+    try {
+      (arg1)->Update();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearForm_GetProlongation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearForm *arg1 = (mfem::NonlinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Operator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:NonlinearForm_GetProlongation",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearForm_GetProlongation" "', argument " "1"" of type '" "mfem::NonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *)((mfem::NonlinearForm const *)arg1)->GetProlongation();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NonlinearForm_GetRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NonlinearForm *arg1 = (mfem::NonlinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Operator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:NonlinearForm_GetRestriction",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NonlinearForm_GetRestriction" "', argument " "1"" of type '" "mfem::NonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *)((mfem::NonlinearForm const *)arg1)->GetRestriction();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
   return resultobj;
@@ -4349,16 +4699,22 @@ SWIGINTERN PyObject *_wrap_delete_NonlinearForm(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< mfem::NonlinearForm * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4395,16 +4751,22 @@ SWIGINTERN PyObject *_wrap_NonlinearForm_GetGradientMatrix(PyObject *SWIGUNUSEDP
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
     try {
-      result = (mfem::SparseMatrix *)mfem_NonlinearForm_GetGradientMatrix((mfem::NonlinearForm const *)arg1,(mfem::Vector const &)*arg2); 
+      result = (mfem::SparseMatrix *)mfem_NonlinearForm_GetGradientMatrix((mfem::NonlinearForm const *)arg1,(mfem::Vector const &)*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   return resultobj;
@@ -4420,6 +4782,934 @@ SWIGINTERN PyObject *NonlinearForm_swigregister(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_new_BlockNonlinearForm__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_BlockNonlinearForm")) SWIG_fail;
+  {
+    try {
+      result = (mfem::BlockNonlinearForm *)new mfem::BlockNonlinearForm();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockNonlinearForm, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockNonlinearForm__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::FiniteElementSpace * > *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::BlockNonlinearForm *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_BlockNonlinearForm",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_mfem__FiniteElementSpace_p_t,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockNonlinearForm" "', argument " "1"" of type '" "mfem::Array< mfem::FiniteElementSpace * > &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockNonlinearForm" "', argument " "1"" of type '" "mfem::Array< mfem::FiniteElementSpace * > &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::FiniteElementSpace * > * >(argp1);
+  {
+    try {
+      result = (mfem::BlockNonlinearForm *)new mfem::BlockNonlinearForm(*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockNonlinearForm, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockNonlinearForm(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_BlockNonlinearForm__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__FiniteElementSpace_p_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_BlockNonlinearForm__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_BlockNonlinearForm'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::BlockNonlinearForm::BlockNonlinearForm()\n"
+    "    mfem::BlockNonlinearForm::BlockNonlinearForm(mfem::Array< mfem::FiniteElementSpace * > &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_FESpace__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::FiniteElementSpace *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_FESpace",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_FESpace" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::FiniteElementSpace *)(arg1)->FESpace(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_FESpace__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::FiniteElementSpace *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_FESpace",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_FESpace" "', argument " "1"" of type '" "mfem::BlockNonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::FiniteElementSpace *)((mfem::BlockNonlinearForm const *)arg1)->FESpace(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_FESpace(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockNonlinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_BlockNonlinearForm_FESpace__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockNonlinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_BlockNonlinearForm_FESpace__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BlockNonlinearForm_FESpace'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::BlockNonlinearForm::FESpace(int)\n"
+    "    mfem::BlockNonlinearForm::FESpace(int) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_SetSpaces(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::Array< mfem::FiniteElementSpace * > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_SetSpaces",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_SetSpaces" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__FiniteElementSpace_p_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_SetSpaces" "', argument " "2"" of type '" "mfem::Array< mfem::FiniteElementSpace * > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_SetSpaces" "', argument " "2"" of type '" "mfem::Array< mfem::FiniteElementSpace * > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< mfem::FiniteElementSpace * > * >(argp2);
+  {
+    try {
+      (arg1)->SetSpaces(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_GetBlockOffsets(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:BlockNonlinearForm_GetBlockOffsets",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_GetBlockOffsets" "', argument " "1"" of type '" "mfem::BlockNonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< int > *) &((mfem::BlockNonlinearForm const *)arg1)->GetBlockOffsets();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_GetBlockTrueOffsets(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:BlockNonlinearForm_GetBlockTrueOffsets",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_GetBlockTrueOffsets" "', argument " "1"" of type '" "mfem::BlockNonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< int > *) &((mfem::BlockNonlinearForm const *)arg1)->GetBlockTrueOffsets();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::BlockNonlinearFormIntegrator *arg2 = (mfem::BlockNonlinearFormIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_AddDomainIntegrator",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::BlockNonlinearFormIntegrator *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::BlockNonlinearFormIntegrator * >(argp2);
+  {
+    try {
+      (arg1)->AddDomainIntegrator(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_AddInteriorFaceIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::BlockNonlinearFormIntegrator *arg2 = (mfem::BlockNonlinearFormIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_AddInteriorFaceIntegrator",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_AddInteriorFaceIntegrator" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_AddInteriorFaceIntegrator" "', argument " "2"" of type '" "mfem::BlockNonlinearFormIntegrator *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::BlockNonlinearFormIntegrator * >(argp2);
+  {
+    try {
+      (arg1)->AddInteriorFaceIntegrator(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_AddBdrFaceIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::BlockNonlinearFormIntegrator *arg2 = (mfem::BlockNonlinearFormIntegrator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_AddBdrFaceIntegrator",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_AddBdrFaceIntegrator" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_AddBdrFaceIntegrator" "', argument " "2"" of type '" "mfem::BlockNonlinearFormIntegrator *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::BlockNonlinearFormIntegrator * >(argp2);
+  {
+    try {
+      (arg1)->AddBdrFaceIntegrator(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_AddBdrFaceIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::BlockNonlinearFormIntegrator *arg2 = (mfem::BlockNonlinearFormIntegrator *) 0 ;
+  mfem::Array< int > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:BlockNonlinearForm_AddBdrFaceIntegrator",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_AddBdrFaceIntegrator" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_AddBdrFaceIntegrator" "', argument " "2"" of type '" "mfem::BlockNonlinearFormIntegrator *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::BlockNonlinearFormIntegrator * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockNonlinearForm_AddBdrFaceIntegrator" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_AddBdrFaceIntegrator" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  {
+    try {
+      (arg1)->AddBdrFaceIntegrator(arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_AddBdrFaceIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockNonlinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_BlockNonlinearForm_AddBdrFaceIntegrator__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockNonlinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__BlockNonlinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_BlockNonlinearForm_AddBdrFaceIntegrator__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BlockNonlinearForm_AddBdrFaceIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::BlockNonlinearForm::AddBdrFaceIntegrator(mfem::BlockNonlinearFormIntegrator *)\n"
+    "    mfem::BlockNonlinearForm::AddBdrFaceIntegrator(mfem::BlockNonlinearFormIntegrator *,mfem::Array< int > &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_SetEssentialBC(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::Array< mfem::Array< int > * > *arg2 = 0 ;
+  mfem::Array< mfem::Vector * > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:BlockNonlinearForm_SetEssentialBC",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_SetEssentialBC" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_SetEssentialBC" "', argument " "2"" of type '" "mfem::Array< mfem::Array< int > * > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_SetEssentialBC" "', argument " "2"" of type '" "mfem::Array< mfem::Array< int > * > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< mfem::Array< int > * > * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_mfem__Vector_p_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockNonlinearForm_SetEssentialBC" "', argument " "3"" of type '" "mfem::Array< mfem::Vector * > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_SetEssentialBC" "', argument " "3"" of type '" "mfem::Array< mfem::Vector * > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< mfem::Vector * > * >(argp3);
+  {
+    try {
+      (arg1)->SetEssentialBC((mfem::Array< mfem::Array< int > * > const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_GetEnergy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_GetEnergy",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_GetEnergy" "', argument " "1"" of type '" "mfem::BlockNonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_GetEnergy" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_GetEnergy" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      result = (double)((mfem::BlockNonlinearForm const *)arg1)->GetEnergy((mfem::Vector const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:BlockNonlinearForm_Mult",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_Mult" "', argument " "1"" of type '" "mfem::BlockNonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockNonlinearForm_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::BlockNonlinearForm const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockNonlinearForm_GetGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::Operator *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockNonlinearForm_GetGradient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockNonlinearForm_GetGradient" "', argument " "1"" of type '" "mfem::BlockNonlinearForm const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockNonlinearForm_GetGradient" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockNonlinearForm_GetGradient" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      result = (mfem::Operator *) &((mfem::BlockNonlinearForm const *)arg1)->GetGradient((mfem::Vector const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_BlockNonlinearForm(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockNonlinearForm *arg1 = (mfem::BlockNonlinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_BlockNonlinearForm",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockNonlinearForm, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BlockNonlinearForm" "', argument " "1"" of type '" "mfem::BlockNonlinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockNonlinearForm * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *BlockNonlinearForm_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__BlockNonlinearForm, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"new_NonlinearForm", _wrap_new_NonlinearForm, METH_VARARGS, NULL},
@@ -4429,12 +5719,32 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"NonlinearForm_AddBdrFaceIntegrator", _wrap_NonlinearForm_AddBdrFaceIntegrator, METH_VARARGS, NULL},
 	 { (char *)"NonlinearForm_SetEssentialBC", _wrap_NonlinearForm_SetEssentialBC, METH_VARARGS, NULL},
 	 { (char *)"NonlinearForm_SetEssentialVDofs", _wrap_NonlinearForm_SetEssentialVDofs, METH_VARARGS, NULL},
+	 { (char *)"NonlinearForm_SetEssentialTrueDofs", _wrap_NonlinearForm_SetEssentialTrueDofs, METH_VARARGS, NULL},
+	 { (char *)"NonlinearForm_GetEssentialTrueDofs", _wrap_NonlinearForm_GetEssentialTrueDofs, METH_VARARGS, NULL},
+	 { (char *)"NonlinearForm_GetGridFunctionEnergy", _wrap_NonlinearForm_GetGridFunctionEnergy, METH_VARARGS, NULL},
 	 { (char *)"NonlinearForm_GetEnergy", _wrap_NonlinearForm_GetEnergy, METH_VARARGS, NULL},
 	 { (char *)"NonlinearForm_Mult", _wrap_NonlinearForm_Mult, METH_VARARGS, NULL},
 	 { (char *)"NonlinearForm_GetGradient", _wrap_NonlinearForm_GetGradient, METH_VARARGS, NULL},
+	 { (char *)"NonlinearForm_Update", _wrap_NonlinearForm_Update, METH_VARARGS, NULL},
+	 { (char *)"NonlinearForm_GetProlongation", _wrap_NonlinearForm_GetProlongation, METH_VARARGS, NULL},
+	 { (char *)"NonlinearForm_GetRestriction", _wrap_NonlinearForm_GetRestriction, METH_VARARGS, NULL},
 	 { (char *)"delete_NonlinearForm", _wrap_delete_NonlinearForm, METH_VARARGS, NULL},
 	 { (char *)"NonlinearForm_GetGradientMatrix", _wrap_NonlinearForm_GetGradientMatrix, METH_VARARGS, NULL},
 	 { (char *)"NonlinearForm_swigregister", NonlinearForm_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_BlockNonlinearForm", _wrap_new_BlockNonlinearForm, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_FESpace", _wrap_BlockNonlinearForm_FESpace, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_SetSpaces", _wrap_BlockNonlinearForm_SetSpaces, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_GetBlockOffsets", _wrap_BlockNonlinearForm_GetBlockOffsets, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_GetBlockTrueOffsets", _wrap_BlockNonlinearForm_GetBlockTrueOffsets, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_AddDomainIntegrator", _wrap_BlockNonlinearForm_AddDomainIntegrator, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_AddInteriorFaceIntegrator", _wrap_BlockNonlinearForm_AddInteriorFaceIntegrator, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_AddBdrFaceIntegrator", _wrap_BlockNonlinearForm_AddBdrFaceIntegrator, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_SetEssentialBC", _wrap_BlockNonlinearForm_SetEssentialBC, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_GetEnergy", _wrap_BlockNonlinearForm_GetEnergy, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_Mult", _wrap_BlockNonlinearForm_Mult, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_GetGradient", _wrap_BlockNonlinearForm_GetGradient, METH_VARARGS, NULL},
+	 { (char *)"delete_BlockNonlinearForm", _wrap_delete_BlockNonlinearForm, METH_VARARGS, NULL},
+	 { (char *)"BlockNonlinearForm_swigregister", BlockNonlinearForm_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -4452,6 +5762,9 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
 }
 static void *_p_mfem__HyperelasticNLFIntegratorTo_p_mfem__NonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::NonlinearFormIntegrator *)  ((mfem::HyperelasticNLFIntegrator *) x));
+}
+static void *_p_mfem__IncompressibleNeoHookeanIntegratorTo_p_mfem__BlockNonlinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::BlockNonlinearFormIntegrator *)  ((mfem::IncompressibleNeoHookeanIntegrator *) x));
 }
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
@@ -4480,6 +5793,9 @@ static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPA
 static void *_p_mfem__NonlinearFormTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::NonlinearForm *) x));
 }
+static void *_p_mfem__BlockNonlinearFormTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::BlockNonlinearForm *) x));
+}
 static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
 }
@@ -4506,6 +5822,12 @@ static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (voi
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t = {"_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t", "mfem::Array< mfem::Array< int > * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__FiniteElementSpace_p_t = {"_p_mfem__ArrayT_mfem__FiniteElementSpace_p_t", "mfem::Array< mfem::FiniteElementSpace * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__Vector_p_t = {"_p_mfem__ArrayT_mfem__Vector_p_t", "mfem::Array< mfem::Vector * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__BlockNonlinearForm = {"_p_mfem__BlockNonlinearForm", "mfem::BlockNonlinearForm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__BlockNonlinearFormIntegrator = {"_p_mfem__BlockNonlinearFormIntegrator", "mfem::BlockNonlinearFormIntegrator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IncompressibleNeoHookeanIntegrator = {"_p_mfem__IncompressibleNeoHookeanIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
@@ -4544,6 +5866,11 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_intp,
   &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t,
+  &_swigt__p_mfem__ArrayT_mfem__FiniteElementSpace_p_t,
+  &_swigt__p_mfem__ArrayT_mfem__Vector_p_t,
+  &_swigt__p_mfem__BlockNonlinearForm,
+  &_swigt__p_mfem__BlockNonlinearFormIntegrator,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__DenseMatrixInverse,
@@ -4551,6 +5878,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__HyperelasticNLFIntegrator,
   &_swigt__p_mfem__IdentityOperator,
+  &_swigt__p_mfem__IncompressibleNeoHookeanIntegrator,
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__LinearForm,
@@ -4580,6 +5908,12 @@ static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0,
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__FiniteElementSpace_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__FiniteElementSpace_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Vector_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Vector_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BlockNonlinearForm[] = {  {&_swigt__p_mfem__BlockNonlinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IncompressibleNeoHookeanIntegrator[] = {{&_swigt__p_mfem__IncompressibleNeoHookeanIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BlockNonlinearFormIntegrator[] = {  {&_swigt__p_mfem__BlockNonlinearFormIntegrator, 0, 0, 0},  {&_swigt__p_mfem__IncompressibleNeoHookeanIntegrator, _p_mfem__IncompressibleNeoHookeanIntegratorTo_p_mfem__BlockNonlinearFormIntegrator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
@@ -4601,7 +5935,7 @@ static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOper
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NonlinearForm, _p_mfem__NonlinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NonlinearForm, _p_mfem__NonlinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockNonlinearForm, _p_mfem__BlockNonlinearFormTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
@@ -4618,6 +5952,11 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_intp,
   _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t,
+  _swigc__p_mfem__ArrayT_mfem__FiniteElementSpace_p_t,
+  _swigc__p_mfem__ArrayT_mfem__Vector_p_t,
+  _swigc__p_mfem__BlockNonlinearForm,
+  _swigc__p_mfem__BlockNonlinearFormIntegrator,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__DenseMatrixInverse,
@@ -4625,6 +5964,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__HyperelasticNLFIntegrator,
   _swigc__p_mfem__IdentityOperator,
+  _swigc__p_mfem__IncompressibleNeoHookeanIntegrator,
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__LinearForm,
@@ -5336,6 +6676,9 @@ SWIG_init(void) {
 #endif
   
   SWIG_InstallConstants(d,swig_const_table);
+  
+  
+  import_array();
   
 #if PY_VERSION_HEX >= 0x03000000
   return m;

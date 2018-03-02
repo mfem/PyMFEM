@@ -605,8 +605,8 @@ class DenseMatrixEigensystem(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, DenseMatrixEigensystem, name)
     __repr__ = _swig_repr
 
-    def __init__(self, m):
-        this = _densemat.new_DenseMatrixEigensystem(m)
+    def __init__(self, *args):
+        this = _densemat.new_DenseMatrixEigensystem(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:

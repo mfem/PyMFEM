@@ -125,6 +125,7 @@ import element
 import geom
 import table
 import vertex
+import handle
 class Hybridization(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Hybridization, name, value)
