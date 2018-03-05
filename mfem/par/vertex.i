@@ -8,6 +8,9 @@
 import_array();
 %}
 
+%include "exception.i"
 %import "element.i"
+%import "../common/exception.i"
+
 %include "mesh/vertex.hpp"
 

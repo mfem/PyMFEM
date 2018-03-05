@@ -137,13 +137,15 @@ import bilininteg
 import fe_coll
 import lininteg
 import linearform
-import nonlininteg
+import handle
+import hypre
 import pfespace
 import pmesh
 import pncmesh
 import communication
 import sets
-import hypre
+import nonlininteg
+import blockoperator
 import pgridfunc
 class ParNonlinearForm(nonlinearform.NonlinearForm):
     __swig_setmethods__ = {}
@@ -166,8 +168,8 @@ class ParNonlinearForm(nonlinearform.NonlinearForm):
     def ParFESpace(self):
         return _pnonlinearform.ParNonlinearForm_ParFESpace(self)
 
-    def SetEssentialBC(self, bdr_attr_is_ess, rhs=None):
-        return _pnonlinearform.ParNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
+    def GetParGridFunctionEnergy(self, x):
+        return _pnonlinearform.ParNonlinearForm_GetParGridFunctionEnergy(self, x)
 
     def GetEnergy(self, *args):
         return _pnonlinearform.ParNonlinearForm_GetEnergy(self, *args)
@@ -184,15 +186,55 @@ class ParNonlinearForm(nonlinearform.NonlinearForm):
     def SetGradientType(self, tid):
         return _pnonlinearform.ParNonlinearForm_SetGradientType(self, tid)
 
-    def GetProlongation(self):
-        return _pnonlinearform.ParNonlinearForm_GetProlongation(self)
-
-    def GetRestriction(self):
-        return _pnonlinearform.ParNonlinearForm_GetRestriction(self)
+    def Update(self):
+        return _pnonlinearform.ParNonlinearForm_Update(self)
     __swig_destroy__ = _pnonlinearform.delete_ParNonlinearForm
     __del__ = lambda self: None
 ParNonlinearForm_swigregister = _pnonlinearform.ParNonlinearForm_swigregister
 ParNonlinearForm_swigregister(ParNonlinearForm)
+
+class ParBlockNonlinearForm(nonlinearform.BlockNonlinearForm):
+    __swig_setmethods__ = {}
+    for _s in [nonlinearform.BlockNonlinearForm]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ParBlockNonlinearForm, name, value)
+    __swig_getmethods__ = {}
+    for _s in [nonlinearform.BlockNonlinearForm]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ParBlockNonlinearForm, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _pnonlinearform.new_ParBlockNonlinearForm(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def ParFESpace(self, *args):
+        return _pnonlinearform.ParBlockNonlinearForm_ParFESpace(self, *args)
+
+    def SetParSpaces(self, pf):
+        return _pnonlinearform.ParBlockNonlinearForm_SetParSpaces(self, pf)
+
+    def SetEssentialBC(self, bdr_attr_is_ess, rhs):
+        return _pnonlinearform.ParBlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
+
+    def Mult(self, x, y):
+        return _pnonlinearform.ParBlockNonlinearForm_Mult(self, x, y)
+
+    def GetLocalGradient(self, x):
+        return _pnonlinearform.ParBlockNonlinearForm_GetLocalGradient(self, x)
+
+    def GetGradient(self, x):
+        return _pnonlinearform.ParBlockNonlinearForm_GetGradient(self, x)
+
+    def SetGradientType(self, tid):
+        return _pnonlinearform.ParBlockNonlinearForm_SetGradientType(self, tid)
+    __swig_destroy__ = _pnonlinearform.delete_ParBlockNonlinearForm
+    __del__ = lambda self: None
+ParBlockNonlinearForm_swigregister = _pnonlinearform.ParBlockNonlinearForm_swigregister
+ParBlockNonlinearForm_swigregister(ParBlockNonlinearForm)
 
 # This file is compatible with both classic and new-style classes.
 

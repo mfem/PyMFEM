@@ -122,6 +122,7 @@ import hypre
 import sparsemat
 import matrix
 import densemat
+import pfespace
 import fespace
 import coefficient
 import intrules
@@ -138,7 +139,6 @@ import bilininteg
 import fe_coll
 import lininteg
 import linearform
-import pfespace
 import pmesh
 import pncmesh
 import communication

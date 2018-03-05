@@ -8,6 +8,11 @@
 %init %{
 import_array();
 %}
+
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
+%import "../common/exception.i"
+
 %include "linalg/blockvector.hpp"
+

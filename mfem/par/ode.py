@@ -453,6 +453,104 @@ class SDIRK33Solver(ODESolver):
 SDIRK33Solver_swigregister = _ode.SDIRK33Solver_swigregister
 SDIRK33Solver_swigregister(SDIRK33Solver)
 
+class SIASolver(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SIASolver, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, SIASolver, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+
+    def Init(self, P, F):
+        return _ode.SIASolver_Init(self, P, F)
+
+    def Step(self, q, p, t, dt):
+        return _ode.SIASolver_Step(self, q, p, t, dt)
+
+    def Run(self, q, p, t, dt, tf):
+        return _ode.SIASolver_Run(self, q, p, t, dt, tf)
+    __swig_destroy__ = _ode.delete_SIASolver
+    __del__ = lambda self: None
+SIASolver_swigregister = _ode.SIASolver_swigregister
+SIASolver_swigregister(SIASolver)
+
+class SIA1Solver(SIASolver):
+    __swig_setmethods__ = {}
+    for _s in [SIASolver]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SIA1Solver, name, value)
+    __swig_getmethods__ = {}
+    for _s in [SIASolver]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SIA1Solver, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _ode.new_SIA1Solver()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Step(self, q, p, t, dt):
+        return _ode.SIA1Solver_Step(self, q, p, t, dt)
+    __swig_destroy__ = _ode.delete_SIA1Solver
+    __del__ = lambda self: None
+SIA1Solver_swigregister = _ode.SIA1Solver_swigregister
+SIA1Solver_swigregister(SIA1Solver)
+
+class SIA2Solver(SIASolver):
+    __swig_setmethods__ = {}
+    for _s in [SIASolver]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SIA2Solver, name, value)
+    __swig_getmethods__ = {}
+    for _s in [SIASolver]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SIA2Solver, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _ode.new_SIA2Solver()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Step(self, q, p, t, dt):
+        return _ode.SIA2Solver_Step(self, q, p, t, dt)
+    __swig_destroy__ = _ode.delete_SIA2Solver
+    __del__ = lambda self: None
+SIA2Solver_swigregister = _ode.SIA2Solver_swigregister
+SIA2Solver_swigregister(SIA2Solver)
+
+class SIAVSolver(SIASolver):
+    __swig_setmethods__ = {}
+    for _s in [SIASolver]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SIAVSolver, name, value)
+    __swig_getmethods__ = {}
+    for _s in [SIASolver]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SIAVSolver, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, order):
+        this = _ode.new_SIAVSolver(order)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Step(self, q, p, t, dt):
+        return _ode.SIAVSolver_Step(self, q, p, t, dt)
+    __swig_destroy__ = _ode.delete_SIAVSolver
+    __del__ = lambda self: None
+SIAVSolver_swigregister = _ode.SIAVSolver_swigregister
+SIAVSolver_swigregister(SIAVSolver)
+
 # This file is compatible with both classic and new-style classes.
 
 

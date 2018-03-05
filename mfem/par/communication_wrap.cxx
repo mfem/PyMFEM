@@ -3703,10 +3703,10 @@ SWIGINTERN PyObject *_wrap_GroupTopology_GetComm(PyObject *SWIGUNUSEDPARM(self),
   if (!PyArg_ParseTuple(args,(char *)"O:GroupTopology_GetComm",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetComm" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetComm" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  result = (arg1)->GetComm();
+  result = ((mfem::GroupTopology const *)arg1)->GetComm();
   resultobj = SWIG_From_MPI_Comm(static_cast< MPI_Comm >(result));
   return resultobj;
 fail:
@@ -3725,10 +3725,10 @@ SWIGINTERN PyObject *_wrap_GroupTopology_MyRank(PyObject *SWIGUNUSEDPARM(self), 
   if (!PyArg_ParseTuple(args,(char *)"O:GroupTopology_MyRank",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_MyRank" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_MyRank" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  result = (int)(arg1)->MyRank();
+  result = (int)((mfem::GroupTopology const *)arg1)->MyRank();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3747,10 +3747,10 @@ SWIGINTERN PyObject *_wrap_GroupTopology_NRanks(PyObject *SWIGUNUSEDPARM(self), 
   if (!PyArg_ParseTuple(args,(char *)"O:GroupTopology_NRanks",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_NRanks" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_NRanks" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  result = (int)(arg1)->NRanks();
+  result = (int)((mfem::GroupTopology const *)arg1)->NRanks();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -4280,15 +4280,15 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_Create(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_Create" "', argument " "1"" of type '" "mfem::GroupCommunicator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_Create" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_Create" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupCommunicator_Create" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupCommunicator_Create" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  (arg1)->Create(*arg2);
+  (arg1)->Create((mfem::Array< int > const &)*arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4356,15 +4356,15 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_SetLTDofTable(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_SetLTDofTable" "', argument " "1"" of type '" "mfem::GroupCommunicator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_SetLTDofTable" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_SetLTDofTable" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupCommunicator_SetLTDofTable" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupCommunicator_SetLTDofTable" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  (arg1)->SetLTDofTable(*arg2);
+  (arg1)->SetLTDofTable((mfem::Array< int > const &)*arg2);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5350,20 +5350,20 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30302)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.3.2"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30302)%2))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30302)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30302)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30302)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("3.3.2release"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
   
   import_array();
   
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30303)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.3.3"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30303)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30303)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30303)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30303)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("heads/graceexit-0-gc3cb4ba35f1ab95b2055752db6da7e1728ff7d0d"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

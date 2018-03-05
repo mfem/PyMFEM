@@ -176,6 +176,9 @@ class intArray(BaseArray):
     def Find(self, el):
         return _array.intArray_Find(self, el)
 
+    def FindSorted(self, el):
+        return _array.intArray_FindSorted(self, el)
+
     def DeleteLast(self):
         return _array.intArray_DeleteLast(self)
 
@@ -316,6 +319,9 @@ class doubleArray(BaseArray):
 
     def Find(self, el):
         return _array.doubleArray_Find(self, el)
+
+    def FindSorted(self, el):
+        return _array.doubleArray_FindSorted(self, el)
 
     def DeleteLast(self):
         return _array.doubleArray_DeleteLast(self)

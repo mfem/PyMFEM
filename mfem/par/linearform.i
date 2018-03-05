@@ -1,4 +1,4 @@
-%module(directors="1")  linearform
+%module(directors="1") linearform
 %{
 #include "fem/fem.hpp"
 #include "fem/fe_coll.hpp"
@@ -22,6 +22,8 @@
 import_array();
 %}
 
+//%include "../common/cpointers.i"
+//%import "cpointers.i"
 %import "coefficient.i"
 %import "array.i"
 %import "mesh.i"

@@ -12,9 +12,14 @@
 import_array();
 %}
 //%rename(sopen)  open(const char hostname[], int port);
+%include "exception.i"
+ //%include "../common/cpointers.i"
+ //%import "cpointers.i"
 %import "mesh.i"
 %import "gridfunc.i"
+%import "../common/exception.i"
 //%import "ostream_typemap.i"
+
 
 %include "general/socketstream.hpp"
 

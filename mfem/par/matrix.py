@@ -119,6 +119,9 @@ class Matrix(operators.Operator):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+    DIAG_ZERO = _matrix.Matrix_DIAG_ZERO
+    DIAG_ONE = _matrix.Matrix_DIAG_ONE
+    DIAG_KEEP = _matrix.Matrix_DIAG_KEEP
 
     def Elem(self, *args):
         return _matrix.Matrix_Elem(self, *args)
@@ -174,8 +177,8 @@ class AbstractSparseMatrix(Matrix):
     def GetRow(self, row, cols, srow):
         return _matrix.AbstractSparseMatrix_GetRow(self, row, cols, srow)
 
-    def EliminateZeroRows(self):
-        return _matrix.AbstractSparseMatrix_EliminateZeroRows(self)
+    def EliminateZeroRows(self, threshold=1e-12):
+        return _matrix.AbstractSparseMatrix_EliminateZeroRows(self, threshold)
 
     def Mult(self, x, y):
         return _matrix.AbstractSparseMatrix_Mult(self, x, y)

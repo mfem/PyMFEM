@@ -27,21 +27,3 @@
 
 %include "fem/intrules.hpp"
 
-
- // following symbos are ignored to wrap Array<IntegrationPoint>
- /*
-
-
-%ignore Union;
-%ignore Find;
-%ignore DeleteFirst;
-%ignore PartialSum;
-%ignore Sum;
-%ignore Save;
-%ignore Print;
-%ignore IsSorted;
-//%namespace mfem{
-%template(IntegrationPointArray) mfem::Array<mfem::IntegrationPoint>;
-//}
-
-*/

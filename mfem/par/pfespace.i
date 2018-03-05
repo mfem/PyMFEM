@@ -7,10 +7,12 @@
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"  
 %}
-%include  "config/_config.hpp" // include mfem MACRO
+%include  "config/config.hpp" // include mfem MACRO
 
+#ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
+#endif
 
 %inline %{
 /*--------------------------------------------------------------------------
@@ -30,11 +32,14 @@ typedef int HYPRE_Int;
 import_array();
 %}
 
-%include "../common/cpointers.i"
-%import operators.i
-%import fespace.i
-%import pmesh.i
-%import hypre.i
+%include "exception.i"
+ //%include "../common/cpointers.i"
+ //%import "cpointers.i"
+%import "operators.i"
+%import "fespace.i"
+%import "pmesh.i"
+%import "hypre.i"
+%import "../common/exception.i"
 
 %pointer_class(int, intp);
 %immutable face_nbr_glob_dof_map;

@@ -3577,14 +3577,14 @@ namespace swig {
 #include "numpy/arrayobject.h"    
 
 
-  #define SWIG_From_double   PyFloat_FromDouble 
-
-
 SWIGINTERNINLINE PyObject*
   SWIG_From_int  (int value)
 {
   return PyInt_FromLong((long) value);
 }
+
+
+  #define SWIG_From_double   PyFloat_FromDouble 
 
 
 SWIGINTERN int
@@ -4304,7 +4304,49 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_AbstractSparseMatrix_EliminateZeroRows(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_AbstractSparseMatrix_EliminateZeroRows__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AbstractSparseMatrix *arg1 = (mfem::AbstractSparseMatrix *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AbstractSparseMatrix_EliminateZeroRows",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__AbstractSparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AbstractSparseMatrix_EliminateZeroRows" "', argument " "1"" of type '" "mfem::AbstractSparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AbstractSparseMatrix * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AbstractSparseMatrix_EliminateZeroRows" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      (arg1)->EliminateZeroRows(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbstractSparseMatrix_EliminateZeroRows__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::AbstractSparseMatrix *arg1 = (mfem::AbstractSparseMatrix *) 0 ;
   void *argp1 = 0 ;
@@ -4334,6 +4376,52 @@ SWIGINTERN PyObject *_wrap_AbstractSparseMatrix_EliminateZeroRows(PyObject *SWIG
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AbstractSparseMatrix_EliminateZeroRows(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__AbstractSparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_AbstractSparseMatrix_EliminateZeroRows__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__AbstractSparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_AbstractSparseMatrix_EliminateZeroRows__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'AbstractSparseMatrix_EliminateZeroRows'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::AbstractSparseMatrix::EliminateZeroRows(double const)\n"
+    "    mfem::AbstractSparseMatrix::EliminateZeroRows()\n");
+  return 0;
 }
 
 
@@ -5699,6 +5787,9 @@ SWIG_init(void) {
   
   import_array();
   
+  SWIG_Python_SetConstant(d, "Matrix_DIAG_ZERO",SWIG_From_int(static_cast< int >(mfem::Matrix::DIAG_ZERO)));
+  SWIG_Python_SetConstant(d, "Matrix_DIAG_ONE",SWIG_From_int(static_cast< int >(mfem::Matrix::DIAG_ONE)));
+  SWIG_Python_SetConstant(d, "Matrix_DIAG_KEEP",SWIG_From_int(static_cast< int >(mfem::Matrix::DIAG_KEEP)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

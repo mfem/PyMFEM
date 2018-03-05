@@ -102,76 +102,6 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
-class intp(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _mesh.new_intp()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _mesh.delete_intp
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _mesh.intp_assign(self, value)
-
-    def value(self):
-        return _mesh.intp_value(self)
-
-    def cast(self):
-        return _mesh.intp_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_mesh.intp_frompointer)
-    else:
-        frompointer = _mesh.intp_frompointer
-intp_swigregister = _mesh.intp_swigregister
-intp_swigregister(intp)
-
-def intp_frompointer(t):
-    return _mesh.intp_frompointer(t)
-intp_frompointer = _mesh.intp_frompointer
-
-class doublep(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _mesh.new_doublep()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _mesh.delete_doublep
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _mesh.doublep_assign(self, value)
-
-    def value(self):
-        return _mesh.doublep_value(self)
-
-    def cast(self):
-        return _mesh.doublep_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_mesh.doublep_frompointer)
-    else:
-        frompointer = _mesh.doublep_frompointer
-doublep_swigregister = _mesh.doublep_swigregister
-doublep_swigregister(doublep)
-
-def doublep_frompointer(t):
-    return _mesh.doublep_frompointer(t)
-doublep_frompointer = _mesh.doublep_frompointer
-
 import matrix
 import vector
 import array
@@ -192,6 +122,10 @@ import fe
 import fespace
 import fe_coll
 import lininteg
+import handle
+import hypre
+import communication
+import sets
 import bilininteg
 import linearform
 class Mesh(_object):
@@ -218,6 +152,10 @@ class Mesh(_object):
     __swig_getmethods__["ncmesh"] = _mesh.Mesh_ncmesh_get
     if _newclass:
         ncmesh = _swig_property(_mesh.Mesh_ncmesh_get, _mesh.Mesh_ncmesh_set)
+    __swig_setmethods__["remove_unused_vertices"] = _mesh.Mesh_remove_unused_vertices_set
+    __swig_getmethods__["remove_unused_vertices"] = _mesh.Mesh_remove_unused_vertices_get
+    if _newclass:
+        remove_unused_vertices = _swig_property(_mesh.Mesh_remove_unused_vertices_get, _mesh.Mesh_remove_unused_vertices_set)
 
     def NewElement(self, geom):
         return _mesh.Mesh_NewElement(self, geom)
@@ -444,6 +382,7 @@ class Mesh(_object):
         return _mesh.Mesh_GetBdrElementEdgeIndex(self, i)
 
     def GetBdrElementAdjacentElement(self, bdr_el):
+        from mfem.par import intp
         el = intp()
         info = intp()  
         _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
@@ -472,6 +411,9 @@ class Mesh(_object):
 
     def GetBdrElementTransformation(self, *args):
         return _mesh.Mesh_GetBdrElementTransformation(self, *args)
+
+    def GetLocalFaceTransformation(self, face_type, elem_type, Transf, info):
+        return _mesh.Mesh_GetLocalFaceTransformation(self, face_type, elem_type, Transf, info)
 
     def GetFaceTransformation(self, *args):
         return _mesh.Mesh_GetFaceTransformation(self, *args)
@@ -622,8 +564,8 @@ class Mesh(_object):
     def KnotInsert(self, kv):
         return _mesh.Mesh_KnotInsert(self, kv)
 
-    def DegreeElevate(self, t):
-        return _mesh.Mesh_DegreeElevate(self, t)
+    def DegreeElevate(self, rel_degree, degree=16):
+        return _mesh.Mesh_DegreeElevate(self, rel_degree, degree)
 
     def EnsureNCMesh(self, triangles_nonconforming=False):
         return _mesh.Mesh_EnsureNCMesh(self, triangles_nonconforming)
@@ -737,6 +679,7 @@ class Mesh(_object):
         return _mesh.Mesh_GetDomainArray(self, idx)
 Mesh_swigregister = _mesh.Mesh_swigregister
 Mesh_swigregister(Mesh)
+cvar = _mesh.cvar
 
 def Mesh_GetTransformationFEforElementType(arg2):
     return _mesh.Mesh_GetTransformationFEforElementType(arg2)

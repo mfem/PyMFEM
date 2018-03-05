@@ -6,20 +6,23 @@
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           
 %}
-%include  "config/_config.hpp" // include mfem MACRO
+%include  "config/config.hpp" // include mfem MACRO
 
+#ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
-
+#endif
 
 %init %{
 import_array();
 %}
 
-%import handle.i
-%import bilinearform.i
-%import pfespace.i
-%import hypre.i
+%include "exception.i"
+%import "handle.i"
+%import "bilinearform.i"
+%import "pfespace.i"
+%import "hypre.i"
+%import "../common/exception.i"
 
 %newobject mfem::ParBilinearForm::ParallelAssemble;
 %pointer_class(int, intp);

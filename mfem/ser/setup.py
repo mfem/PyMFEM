@@ -21,6 +21,7 @@ from distutils.core import *
 from distutils      import sysconfig
 
 modules= ["error", "array", "common_functions", "socketstream", "handle",
+          "segment", "point",
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table", "fe",
           "mesh", "fespace", 

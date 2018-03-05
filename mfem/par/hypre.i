@@ -1,4 +1,3 @@
-
 %module hypre
 %{
 #include <mpi.h>
@@ -12,22 +11,26 @@
 #include "pyoperator.hpp"
 #include "iostream_typemap.hpp"    
 %}
-%include  "config/_config.hpp" // include mfem MACRO
+%include  "config/config.hpp" // include mfem MACRO
 
-
+#ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
+#endif
 
 %init %{
 import_array();
 %}
-%include "../common/cpointers.i"
-%import "../common/ignore_common_functions.i"
 
-%import vector.i
-%import sparsemat.i
-%import fespace.i
-%import pfespace.i
+%include "exception.i"
+ //%include "../common/cpointers.i"
+ //%import "cpointers.i"
+%import "../common/ignore_common_functions.i"
+%import "vector.i"
+%import "sparsemat.i"
+ //%import "fespace.i"
+%import "pfespace.i"
+%import "../common/exception.i"
 
 %ignore DiscreteCurl;
 %ignore DiscreteGrad;

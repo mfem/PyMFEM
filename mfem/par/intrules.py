@@ -275,6 +275,12 @@ class IntegrationRule(IntegrationPointArray):
         except __builtin__.Exception:
             self.this = this
 
+    def GetOrder(self):
+        return _intrules.IntegrationRule_GetOrder(self)
+
+    def SetOrder(self, order):
+        return _intrules.IntegrationRule_SetOrder(self, order)
+
     def GetNPoints(self):
         return _intrules.IntegrationRule_GetNPoints(self)
 

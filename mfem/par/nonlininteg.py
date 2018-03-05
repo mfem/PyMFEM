@@ -125,6 +125,10 @@ import bilininteg
 import fe_coll
 import lininteg
 import linearform
+import handle
+import hypre
+import communication
+import sets
 class NonlinearFormIntegrator(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, NonlinearFormIntegrator, name, value)
@@ -171,6 +175,39 @@ class NonlinearFormIntegrator(_object):
         return weakref_proxy(self)
 NonlinearFormIntegrator_swigregister = _nonlininteg.NonlinearFormIntegrator_swigregister
 NonlinearFormIntegrator_swigregister(NonlinearFormIntegrator)
+
+class BlockNonlinearFormIntegrator(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BlockNonlinearFormIntegrator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, BlockNonlinearFormIntegrator, name)
+    __repr__ = _swig_repr
+
+    def GetElementEnergy(self, el, Tr, elfun):
+        return _nonlininteg.BlockNonlinearFormIntegrator_GetElementEnergy(self, el, Tr, elfun)
+
+    def AssembleElementVector(self, el, Tr, elfun, elvec):
+        return _nonlininteg.BlockNonlinearFormIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
+
+    def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
+        return _nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceVector(self, el1, el2, Tr, elfun, elvect)
+
+    def AssembleElementGrad(self, el, Tr, elfun, elmats):
+        return _nonlininteg.BlockNonlinearFormIntegrator_AssembleElementGrad(self, el, Tr, elfun, elmats)
+
+    def AssembleFaceGrad(self, el1, el2, Tr, elfun, elmats):
+        return _nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceGrad(self, el1, el2, Tr, elfun, elmats)
+    __swig_destroy__ = _nonlininteg.delete_BlockNonlinearFormIntegrator
+    __del__ = lambda self: None
+
+    def __init__(self):
+        this = _nonlininteg.new_BlockNonlinearFormIntegrator()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+BlockNonlinearFormIntegrator_swigregister = _nonlininteg.BlockNonlinearFormIntegrator_swigregister
+BlockNonlinearFormIntegrator_swigregister(BlockNonlinearFormIntegrator)
 
 class HyperelasticModel(_object):
     __swig_setmethods__ = {}
@@ -290,6 +327,37 @@ class HyperelasticNLFIntegrator(NonlinearFormIntegrator):
     __del__ = lambda self: None
 HyperelasticNLFIntegrator_swigregister = _nonlininteg.HyperelasticNLFIntegrator_swigregister
 HyperelasticNLFIntegrator_swigregister(HyperelasticNLFIntegrator)
+
+class IncompressibleNeoHookeanIntegrator(BlockNonlinearFormIntegrator):
+    __swig_setmethods__ = {}
+    for _s in [BlockNonlinearFormIntegrator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, IncompressibleNeoHookeanIntegrator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [BlockNonlinearFormIntegrator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, IncompressibleNeoHookeanIntegrator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, _mu):
+        this = _nonlininteg.new_IncompressibleNeoHookeanIntegrator(_mu)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def GetElementEnergy(self, el, Tr, elfun):
+        return _nonlininteg.IncompressibleNeoHookeanIntegrator_GetElementEnergy(self, el, Tr, elfun)
+
+    def AssembleElementVector(self, el, Tr, elfun, elvec):
+        return _nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
+
+    def AssembleElementGrad(self, el, Tr, elfun, elmats):
+        return _nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementGrad(self, el, Tr, elfun, elmats)
+    __swig_destroy__ = _nonlininteg.delete_IncompressibleNeoHookeanIntegrator
+    __del__ = lambda self: None
+IncompressibleNeoHookeanIntegrator_swigregister = _nonlininteg.IncompressibleNeoHookeanIntegrator_swigregister
+IncompressibleNeoHookeanIntegrator_swigregister(IncompressibleNeoHookeanIntegrator)
 
 # This file is compatible with both classic and new-style classes.
 

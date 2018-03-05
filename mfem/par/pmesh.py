@@ -113,76 +113,6 @@ MFEM_VERSION_PATCH = _pmesh.MFEM_VERSION_PATCH
 MFEM_GIT_STRING = _pmesh.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _pmesh.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pmesh.MFEM_HYPRE_VERSION
-class intp(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _pmesh.new_intp()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _pmesh.delete_intp
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _pmesh.intp_assign(self, value)
-
-    def value(self):
-        return _pmesh.intp_value(self)
-
-    def cast(self):
-        return _pmesh.intp_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_pmesh.intp_frompointer)
-    else:
-        frompointer = _pmesh.intp_frompointer
-intp_swigregister = _pmesh.intp_swigregister
-intp_swigregister(intp)
-
-def intp_frompointer(t):
-    return _pmesh.intp_frompointer(t)
-intp_frompointer = _pmesh.intp_frompointer
-
-class doublep(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _pmesh.new_doublep()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _pmesh.delete_doublep
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _pmesh.doublep_assign(self, value)
-
-    def value(self):
-        return _pmesh.doublep_value(self)
-
-    def cast(self):
-        return _pmesh.doublep_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_pmesh.doublep_frompointer)
-    else:
-        frompointer = _pmesh.doublep_frompointer
-doublep_swigregister = _pmesh.doublep_swigregister
-doublep_swigregister(doublep)
-
-def doublep_frompointer(t):
-    return _pmesh.doublep_frompointer(t)
-doublep_frompointer = _pmesh.doublep_frompointer
-
 import mesh
 import matrix
 import vector
@@ -204,6 +134,9 @@ import fe
 import fespace
 import fe_coll
 import lininteg
+import handle
+import hypre
+import pfespace
 import bilininteg
 import linearform
 import pncmesh
@@ -235,15 +168,18 @@ class ParMesh(mesh.Mesh):
     __swig_getmethods__["have_face_nbr_data"] = _pmesh.ParMesh_have_face_nbr_data_get
     if _newclass:
         have_face_nbr_data = _swig_property(_pmesh.ParMesh_have_face_nbr_data_get, _pmesh.ParMesh_have_face_nbr_data_set)
+    __swig_setmethods__["face_nbr_group"] = _pmesh.ParMesh_face_nbr_group_set
     __swig_getmethods__["face_nbr_group"] = _pmesh.ParMesh_face_nbr_group_get
     if _newclass:
-        face_nbr_group = _swig_property(_pmesh.ParMesh_face_nbr_group_get)
+        face_nbr_group = _swig_property(_pmesh.ParMesh_face_nbr_group_get, _pmesh.ParMesh_face_nbr_group_set)
+    __swig_setmethods__["face_nbr_elements_offset"] = _pmesh.ParMesh_face_nbr_elements_offset_set
     __swig_getmethods__["face_nbr_elements_offset"] = _pmesh.ParMesh_face_nbr_elements_offset_get
     if _newclass:
-        face_nbr_elements_offset = _swig_property(_pmesh.ParMesh_face_nbr_elements_offset_get)
+        face_nbr_elements_offset = _swig_property(_pmesh.ParMesh_face_nbr_elements_offset_get, _pmesh.ParMesh_face_nbr_elements_offset_set)
+    __swig_setmethods__["face_nbr_vertices_offset"] = _pmesh.ParMesh_face_nbr_vertices_offset_set
     __swig_getmethods__["face_nbr_vertices_offset"] = _pmesh.ParMesh_face_nbr_vertices_offset_get
     if _newclass:
-        face_nbr_vertices_offset = _swig_property(_pmesh.ParMesh_face_nbr_vertices_offset_get)
+        face_nbr_vertices_offset = _swig_property(_pmesh.ParMesh_face_nbr_vertices_offset_get, _pmesh.ParMesh_face_nbr_vertices_offset_set)
     __swig_getmethods__["face_nbr_elements"] = _pmesh.ParMesh_face_nbr_elements_get
     if _newclass:
         face_nbr_elements = _swig_property(_pmesh.ParMesh_face_nbr_elements_get)
@@ -278,11 +214,29 @@ class ParMesh(mesh.Mesh):
     def GroupVertex(self, group, i):
         return _pmesh.ParMesh_GroupVertex(self, group, i)
 
-    def GroupEdge(self, group, i, edge, o):
-        return _pmesh.ParMesh_GroupEdge(self, group, i, edge, o)
+    def GroupEdge(self, group, i, *args):
+        if len(args) == 0:
+            from mfem.par import intp  
+            edge = intp()
+            o = intp()  
+            _pmesh.Mesh_GroupEdge(self, group, i, edge, o)
+            return edge.value(), o.value()
+        else:
+            return _pmesh.Mesh_GroupEdge(self, group, i, *args)      
 
-    def GroupFace(self, group, i, face, o):
-        return _pmesh.ParMesh_GroupFace(self, group, i, face, o)
+
+
+    def GroupFace(self, group, i, *args):
+        if len(args) == 0:
+            from mfem.par import intp    
+            face = intp()
+            o = intp()
+            _pmesh.Mesh_GroupFace(self, group, i, face, o)      
+            return face.value(), o.value()
+        else:
+            return _pmesh.Mesh_GroupFace(self, group, i, *args)            
+
+
 
     def GenerateOffsets(self, N, loc_sizes, offsets):
         return _pmesh.ParMesh_GenerateOffsets(self, N, loc_sizes, offsets)

@@ -3758,6 +3758,32 @@ SWIGINTERNINLINE PyObject*
   return PyBool_FromLong(value ? 1 : 0);
 }
 
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
 SWIGINTERN PyObject *mfem_SparseMatrix_GetIArray(mfem::SparseMatrix const *self){
   int * I = self->GetI();
   int L = self->Size();
@@ -7204,9 +7230,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRow__SWIG_1(PyObject *SWIGUNUSE
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   int arg2 ;
-  int arg3 ;
+  mfem::Matrix::DiagonalPolicy arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7223,12 +7251,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRow__SWIG_1(PyObject *SWIGUNUSE
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  {
-    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(obj2);
-  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SparseMatrix_EliminateRow" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+  } 
+  arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
   {
     try {
       (arg1)->EliminateRow(arg2,arg3); 
@@ -7335,11 +7362,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRow(PyObject *self, PyObject *a
       }
       if (_v) {
         {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
         }
         if (_v) {
           return _wrap_SparseMatrix_EliminateRow__SWIG_1(self, args);
@@ -7381,13 +7405,63 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_EliminateRow'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::SparseMatrix::EliminateRow(int,double const,mfem::Vector &)\n"
-    "    mfem::SparseMatrix::EliminateRow(int,int)\n"
+    "    mfem::SparseMatrix::EliminateRow(int,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::SparseMatrix::EliminateRow(int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCol__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  int arg2 ;
+  mfem::Matrix::DiagonalPolicy arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_EliminateCol",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateCol" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SparseMatrix_EliminateCol" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+  } 
+  arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  {
+    try {
+      (arg1)->EliminateCol(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   int arg2 ;
@@ -7428,6 +7502,70 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCol(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_SparseMatrix_EliminateCol__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_EliminateCol__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_EliminateCol'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::SparseMatrix::EliminateCol(int,mfem::Matrix::DiagonalPolicy)\n"
+    "    mfem::SparseMatrix::EliminateCol(int)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
@@ -7453,12 +7591,12 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_0(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateCols" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Vector, 0 |  0 );
@@ -7473,7 +7611,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_0(PyObject *SWIGUNUS
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->EliminateCols(*arg2,arg3,arg4); 
+      (arg1)->EliminateCols((mfem::Array< int > const &)*arg2,arg3,arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -7512,12 +7650,12 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_1(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateCols" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Vector, 0 |  0 );
@@ -7527,7 +7665,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_1(PyObject *SWIGUNUS
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
     try {
-      (arg1)->EliminateCols(*arg2,arg3); 
+      (arg1)->EliminateCols((mfem::Array< int > const &)*arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -7562,17 +7700,17 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_2(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateCols" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateCols" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
     try {
-      (arg1)->EliminateCols(*arg2); 
+      (arg1)->EliminateCols((mfem::Array< int > const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -7608,8 +7746,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols(PyObject *self, PyObject *
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         return _wrap_SparseMatrix_EliminateCols__SWIG_2(self, args);
@@ -7622,8 +7759,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols(PyObject *self, PyObject *
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         void *vptr = 0;
@@ -7641,8 +7777,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols(PyObject *self, PyObject *
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         void *vptr = 0;
@@ -7663,9 +7798,9 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols(PyObject *self, PyObject *
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_EliminateCols'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > &,mfem::Vector *,mfem::Vector *)\n"
-    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > &,mfem::Vector *)\n"
-    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > &)\n");
+    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &,mfem::Vector *,mfem::Vector *)\n"
+    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &,mfem::Vector *)\n"
+    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &)\n");
   return 0;
 }
 
@@ -7676,13 +7811,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol__SWIG_0(PyObject *SWIGUN
   int arg2 ;
   double arg3 ;
   mfem::Vector *arg4 = 0 ;
-  int arg5 ;
+  mfem::Matrix::DiagonalPolicy arg5 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7714,12 +7851,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol__SWIG_0(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateRowCol" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
+  ecode5 = SWIG_AsVal_int(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SparseMatrix_EliminateRowCol" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+  } 
+  arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
   {
     try {
       (arg1)->EliminateRowCol(arg2,arg3,*arg4,arg5); 
@@ -7808,13 +7944,15 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowColMultipleRHS__SWIG_0(PyObj
   int arg2 ;
   mfem::Vector *arg3 = 0 ;
   mfem::DenseMatrix *arg4 = 0 ;
-  int arg5 ;
+  mfem::Matrix::DiagonalPolicy arg5 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7849,12 +7987,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowColMultipleRHS__SWIG_0(PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateRowColMultipleRHS" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
+  ecode5 = SWIG_AsVal_int(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "SparseMatrix_EliminateRowColMultipleRHS" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+  } 
+  arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
   {
     try {
       (arg1)->EliminateRowColMultipleRHS(arg2,(mfem::Vector const &)*arg3,*arg4,arg5); 
@@ -8001,11 +8138,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowColMultipleRHS(PyObject *sel
           _v = SWIG_CheckState(res);
           if (_v) {
             {
-              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-                _v = 0;
-              } else {
-                _v = 1;    
-              }
+              int res = SWIG_AsVal_int(argv[4], NULL);
+              _v = SWIG_CheckState(res);
             }
             if (_v) {
               return _wrap_SparseMatrix_EliminateRowColMultipleRHS__SWIG_0(self, args);
@@ -8019,9 +8153,59 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowColMultipleRHS(PyObject *sel
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_EliminateRowColMultipleRHS'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::SparseMatrix::EliminateRowColMultipleRHS(int,mfem::Vector const &,mfem::DenseMatrix &,int)\n"
+    "    mfem::SparseMatrix::EliminateRowColMultipleRHS(int,mfem::Vector const &,mfem::DenseMatrix &,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::SparseMatrix::EliminateRowColMultipleRHS(int,mfem::Vector const &,mfem::DenseMatrix &)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowColDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  int arg2 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_EliminateRowColDiag",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateRowColDiag" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SparseMatrix_EliminateRowColDiag" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      (arg1)->EliminateRowColDiag(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -8029,9 +8213,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol__SWIG_2(PyObject *SWIGUN
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   int arg2 ;
-  int arg3 ;
+  mfem::Matrix::DiagonalPolicy arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -8048,12 +8234,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol__SWIG_2(PyObject *SWIGUN
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  {
-    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(obj2);
-  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SparseMatrix_EliminateRowCol" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+  } 
+  arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
   {
     try {
       (arg1)->EliminateRowCol(arg2,arg3); 
@@ -8115,66 +8300,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowColDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
-  int arg2 ;
-  double arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_EliminateRowColDiag",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateRowColDiag" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  ecode3 = SWIG_AsVal_double(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SparseMatrix_EliminateRowColDiag" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    try {
-      (arg1)->EliminateRowColDiag(arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   int arg2 ;
   mfem::SparseMatrix *arg3 = 0 ;
-  int arg4 ;
+  mfem::Matrix::DiagonalPolicy arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -8200,12 +8337,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol__SWIG_4(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SparseMatrix_EliminateRowCol" "', argument " "3"" of type '" "mfem::SparseMatrix &""'"); 
   }
   arg3 = reinterpret_cast< mfem::SparseMatrix * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
-  }
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "SparseMatrix_EliminateRowCol" "', argument " "4"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+  } 
+  arg4 = static_cast< mfem::Matrix::DiagonalPolicy >(val4);
   {
     try {
       (arg1)->EliminateRowCol(arg2,*arg3,arg4); 
@@ -8347,11 +8483,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol(PyObject *self, PyObject
       }
       if (_v) {
         {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
         }
         if (_v) {
           return _wrap_SparseMatrix_EliminateRowCol__SWIG_2(self, args);
@@ -8378,11 +8511,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol(PyObject *self, PyObject
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
+            int res = SWIG_AsVal_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
           }
           if (_v) {
             return _wrap_SparseMatrix_EliminateRowCol__SWIG_4(self, args);
@@ -8444,11 +8574,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol(PyObject *self, PyObject
           _v = SWIG_CheckState(res);
           if (_v) {
             {
-              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-                _v = 0;
-              } else {
-                _v = 1;    
-              }
+              int res = SWIG_AsVal_int(argv[4], NULL);
+              _v = SWIG_CheckState(res);
             }
             if (_v) {
               return _wrap_SparseMatrix_EliminateRowCol__SWIG_0(self, args);
@@ -8462,11 +8589,11 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateRowCol(PyObject *self, PyObject
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_EliminateRowCol'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::SparseMatrix::EliminateRowCol(int,double const,mfem::Vector &,int)\n"
+    "    mfem::SparseMatrix::EliminateRowCol(int,double const,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::SparseMatrix::EliminateRowCol(int,double const,mfem::Vector &)\n"
-    "    mfem::SparseMatrix::EliminateRowCol(int,int)\n"
+    "    mfem::SparseMatrix::EliminateRowCol(int,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::SparseMatrix::EliminateRowCol(int)\n"
-    "    mfem::SparseMatrix::EliminateRowCol(int,mfem::SparseMatrix &,int)\n"
+    "    mfem::SparseMatrix::EliminateRowCol(int,mfem::SparseMatrix &,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::SparseMatrix::EliminateRowCol(int,mfem::SparseMatrix &)\n");
   return 0;
 }
@@ -8505,7 +8632,49 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateZeroRows(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateZeroRows__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:SparseMatrix_EliminateZeroRows",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_EliminateZeroRows" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SparseMatrix_EliminateZeroRows" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      (arg1)->EliminateZeroRows(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateZeroRows__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   void *argp1 = 0 ;
@@ -8535,6 +8704,52 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateZeroRows(PyObject *SWIGUNUSEDPA
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateZeroRows(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_SparseMatrix_EliminateZeroRows__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_SparseMatrix_EliminateZeroRows__SWIG_0(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_EliminateZeroRows'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::SparseMatrix::EliminateZeroRows(double const)\n"
+    "    mfem::SparseMatrix::EliminateZeroRows()\n");
+  return 0;
 }
 
 
@@ -9722,7 +9937,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_GetSubMatrix(PyObject *SWIGUNUSEDPARM(se
   if (!PyArg_ParseTuple(args,(char *)"OOOO:SparseMatrix_GetSubMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_GetSubMatrix" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_GetSubMatrix" "', argument " "1"" of type '" "mfem::SparseMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
@@ -9751,7 +9966,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_GetSubMatrix(PyObject *SWIGUNUSEDPARM(se
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->GetSubMatrix((mfem::Array< int > const &)*arg2,(mfem::Array< int > const &)*arg3,*arg4); 
+      ((mfem::SparseMatrix const *)arg1)->GetSubMatrix((mfem::Array< int > const &)*arg2,(mfem::Array< int > const &)*arg3,*arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 

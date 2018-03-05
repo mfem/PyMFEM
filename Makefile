@@ -96,6 +96,7 @@ setup_local.py: Makefile.local
 	$(PYTHON) write_setup_local.py
 	cp setup_local.py mfem/.
 pyinstall:
+	$(PYTHON) clean_import.py -x
 	$(PYTHON) setup.py build
 	$(PYTHON) setup.py install --prefix=$(PREFIX)
 cleancxx:

@@ -15,20 +15,25 @@
 #include "numpy/arrayobject.h"
 %}
 
-%include  "config/_config.hpp" // include mfem MACRO
+%include  "config/config.hpp" // include mfem MACRO
+
 %init %{
 import_array();
 %}
 
+#ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
+#endif
 
-%include "../common/cpointers.i"
-%import mesh.i
-%import pncmesh.i
- //
-%import communication.i
+%include "exception.i"
+ //%include "../common/cpointers.i"
+ //%import "cpointers.i"
+%import "mesh.i"
+%import "pncmesh.i"
+%import "communication.i"
 %import "ostream_typemap.i"
+%import "../common/exception.i"
 
 %immutable face_nbr_elements;
 %immutable face_nbr_vertices;
@@ -39,22 +44,25 @@ import_array();
 %feature("shadow") mfem::ParMesh::GroupFace %{
 def GroupFace(self, group, i, *args):
     if len(args) == 0:
-        args = (face = intp()
+        from mfem.par import intp    
+        face = intp()
         o = intp()
-        _pmesh.Mesh_GroupFace(self, group, i, edge, o)      
-        return edge.value(), o.value()
+        _pmesh.Mesh_GroupFace(self, group, i, face, o)      
+        return face.value(), o.value()
     else:
-        _pmesh.Mesh_GroupFace(self, group, i, *args)            
+        return _pmesh.Mesh_GroupFace(self, group, i, *args)            
 %}
-%feature("shadow") mfem::ParMesh::GroupEdge ${
+	  
+%feature("shadow") mfem::ParMesh::GroupEdge %{
 def GroupEdge(self, group, i, *args):
     if len(args) == 0:
+        from mfem.par import intp  
         edge = intp()
         o = intp()  
         _pmesh.Mesh_GroupEdge(self, group, i, edge, o)
         return edge.value(), o.value()
     else:
-        _pmesh.Mesh_GroupEdge(self, group, i, *args)      
+        return _pmesh.Mesh_GroupEdge(self, group, i, *args)      
 %}
 
 

@@ -21,8 +21,10 @@ from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= [
-          "error", "array", "common_functions", "socketstream", "handle", 
+modules= ["cpointers",
+          "error", "array", "common_functions",
+          "point", "segment", 
+          "socketstream", "handle", 
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
           "fe", "mesh", "fespace", 
@@ -31,8 +33,8 @@ modules= [
           "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
           "solvers", "estimators", "mesh_operators", "ode",
-          "sparsesmoothers",
-          "matrix", "operators", "ncmesh", "eltrans", "geom",
+          "sparsesmoothers", "ncmesh", 
+          "matrix", "operators", "eltrans", "geom",
           "nonlininteg", "nonlinearform", 
           "pmesh", "pncmesh", "communication",
           "pfespace", "pgridfunc",

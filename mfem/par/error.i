@@ -7,4 +7,5 @@
 %}
 %include "exception.i"
 %include "../common/exception.i"
+
 %include "general/error.hpp"
