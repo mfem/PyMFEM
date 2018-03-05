@@ -160,6 +160,7 @@ def GetBdrElementVertices(self, i):
 
 %feature("shadow") mfem::Mesh::GetBdrElementAdjacentElement %{
 def GetBdrElementAdjacentElement(self, bdr_el):
+    from mfem.ser import intp
     el = intp()
     info = intp()  
     _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
@@ -236,6 +237,7 @@ def GetBoundingBox(self, ref = 2):
 %}
 %feature("shadow") mfem::Mesh::GetFaceElements %{
 def GetFaceElements(self, Face):
+    from mfem.ser import intp
     Elem1 = intp()
     Elem2 = intp()  
     val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)

@@ -449,6 +449,7 @@ class Mesh(_object):
         return _mesh.Mesh_GetBdrElementEdgeIndex(self, i)
 
     def GetBdrElementAdjacentElement(self, bdr_el):
+        from mfem.ser import intp
         el = intp()
         info = intp()  
         _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
@@ -500,6 +501,7 @@ class Mesh(_object):
         return _mesh.Mesh_FaceIsInterior(self, FaceNo)
 
     def GetFaceElements(self, Face):
+        from mfem.ser import intp
         Elem1 = intp()
         Elem2 = intp()  
         val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)

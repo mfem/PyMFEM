@@ -434,6 +434,7 @@ class Mesh(_object):
         return _mesh.Mesh_FaceIsInterior(self, FaceNo)
 
     def GetFaceElements(self, Face):
+        from mfem.par import intp  
         Elem1 = intp()
         Elem2 = intp()  
         val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)

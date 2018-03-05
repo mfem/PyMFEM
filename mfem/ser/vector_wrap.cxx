@@ -4243,7 +4243,6 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"OO:new_Vector",&obj0,&obj1)) SWIG_fail;
   {
-    // int _size){
     int i, si;
     if (SWIG_ConvertPtr(obj0, (void **) &arg1, SWIGTYPE_p_double, 0|0) != -1){
       
@@ -4266,7 +4265,6 @@ SWIGINTERN PyObject *_wrap_new_Vector__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
         } else if (PyFloat_Check(s)) {
           arg1[i] = (double)PyFloat_AsDouble(s);
         } else {
-          free(arg1);      
           PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
           return NULL;
         }
@@ -7766,7 +7764,6 @@ SWIGINTERN PyObject *_wrap_new_Vector(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      //, int _size) {
       if (SWIG_ConvertPtr(argv[0], (void **) &_v, SWIGTYPE_p_double, 1) != -1){
         _v = 1;
       }

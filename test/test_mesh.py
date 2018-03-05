@@ -4,23 +4,27 @@ import sys
 
 def run_test():
     print("Test mesh module")
-    Nvert = 6; Nelem = 8
+    Nvert = 6; Nelem = 8; Nbelem=2
     
     mesh = mfem.Mesh(2, Nvert, Nelem, 2, 3)
     tri_v = [[1.,  0.,  0.], [0.,  1.,  0.], [-1.,  0.,  0.],
              [0., -1.,  0.], [0.,  0.,  1.], [ 0.,  0., -1.]]
     tri_e = [[0, 1, 4], [1, 2, 4], [2, 3, 4], [3, 0, 4],
              [1, 0, 5], [2, 1, 5], [3, 2, 5], [0, 3, 5]]
+    tri_l = [[1,4], [1,2]]
+    
     for j in range(Nvert):
         mesh.AddVertex(tri_v[j])
     for j in range(Nelem):
         mesh.AddTriangle(tri_e[j], 1)
-
-    mesh.AddBdrSegment([1,4], 1)
-    mesh.AddBdrSegment([1,2], 1)    
+    for j in range(Nbelem):
+        mesh.AddBdrSegment(tri_l[j], 1)
         
     mesh.FinalizeTriMesh(1,1, True)
 
+    print(mesh.GetEdgeVertices(1))
+    print(mesh.GetFaceElements(1))
+    
     assert mesh.GetBdrElementAdjacentElement(1) == (1, 0), "GetBdrElementadjacentElement failed"
     
 if __name__=='__main__':
