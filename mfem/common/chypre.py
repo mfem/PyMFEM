@@ -307,8 +307,8 @@ class CHypreVec(list):
             v1 = 0.0
         if self[1] is not None:
             v2 = gather_allvector(self[1].GetDataArray().copy())           
-            v = v1 + 1j*v2
-        return v
+            v1 = v1 + 1j*v2
+        return v1
 
     def toarray(self):
         '''

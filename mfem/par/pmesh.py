@@ -219,10 +219,10 @@ class ParMesh(mesh.Mesh):
             from mfem.par import intp  
             edge = intp()
             o = intp()  
-            _pmesh.Mesh_GroupEdge(self, group, i, edge, o)
+            _pmesh.ParMesh_GroupEdge(self, group, i, edge, o)
             return edge.value(), o.value()
         else:
-            return _pmesh.Mesh_GroupEdge(self, group, i, *args)      
+            return _pmesh.ParMesh_GroupEdge(self, group, i, *args)      
 
 
 
@@ -231,10 +231,10 @@ class ParMesh(mesh.Mesh):
             from mfem.par import intp    
             face = intp()
             o = intp()
-            _pmesh.Mesh_GroupFace(self, group, i, face, o)      
+            _pmesh.Mesh_ParGroupFace(self, group, i, face, o)      
             return face.value(), o.value()
         else:
-            return _pmesh.Mesh_GroupFace(self, group, i, *args)            
+            return _pmesh.ParMesh_GroupFace(self, group, i, *args)            
 
 
 
