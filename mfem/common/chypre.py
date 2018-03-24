@@ -160,6 +160,22 @@ class CHypreVec(list):
                 self[0][int(i - part[0])] = v.real
             if self[1] is not None:            
                 self[1][int(i - part[0])] = v.imag
+    def get_element(self, i):
+        part = self.GetPartitioningArray()
+        if part[0] <= i and i < part[1]:
+            if self[0] is not None:
+                r = self[0][int(i - part[0])]
+            else:
+                r = 0
+            if self[1] is not None:            
+                return r + 1j*self[1][int(i - part[0])]
+            else:
+                return r
+    def copy_element(self, tdof, vec):
+        tdof = tdof.ToList()              
+        for i in tdof:
+            v = vec.get_element(i)
+            self.set_element(i, v)
     '''            
     def gather(self):
         from mpi4py import MPI
@@ -734,6 +750,18 @@ class CHypreMat(list):
        
         r = ToHypreParCSR(elil.tocsr(), col_starts =cpart)
         return CHypreMat(r, None)
+     
+    def eliminate_RowsCols(self, tdof):
+        if self[0] is not None:
+            Aer = self[0].EliminateRowsCols(tdof)
+        else:
+            Aer = None
+        if self[1] is not None:
+            Aei = self[1].EliminateRowsCols(tdof)
+        else:
+            Aei = None
+        self.setDiag(tdof.ToList(), value = 1.0)
+        return CHypreMat(Aer, Aei)
      
     @property     
     def isHypre(self):
