@@ -92,9 +92,11 @@ class CHypreVec(list):
 
     def __add__(self, other):
         Vector = mfem.par.HypreParVector
+        from mfem.par import add_vector
+        
         if self[0] is not None and other[0] is not None:
             r = Vector(self[0])            
-            add_vector(self[0], others[0], r)
+            add_vector(self[0], other[0], r)
         elif self[0] is not None:
             r = Vector(self[0])
         elif other[0] is not None:
@@ -103,7 +105,7 @@ class CHypreVec(list):
             r = None
         if self[1] is not None and other[1] is not None:
             i = Vector(self[1])            
-            add_vector(self[1], others[1], i)
+            add_vector(self[1], other[1], i)
         elif self[1] is not None:
             i = Vector(self[1])
         elif other[1] is not None:
@@ -115,7 +117,7 @@ class CHypreVec(list):
     def __sub__(self, other):
         from mfem.par import HypreParVector as Vector
         from mfem.par import add_vector
-        add_vector 
+        
         if self[0] is not None and other[0] is not None:
             r = Vector(self[0])            
             add_vector(self[0], -1, other[0], r)
@@ -172,7 +174,6 @@ class CHypreVec(list):
             else:
                 return r
     def copy_element(self, tdof, vec):
-        tdof = tdof.ToList()              
         for i in tdof:
             v = vec.get_element(i)
             self.set_element(i, v)
@@ -752,12 +753,17 @@ class CHypreMat(list):
         return CHypreMat(r, None)
      
     def eliminate_RowsCols(self, tdof):
+        tdof = mfem.par.intArray(tdof)
         if self[0] is not None:
             Aer = self[0].EliminateRowsCols(tdof)
+            Aer.CopyRowStarts()
+            Aer.CopyColStarts()        
         else:
             Aer = None
         if self[1] is not None:
             Aei = self[1].EliminateRowsCols(tdof)
+            Aei.CopyRowStarts()
+            Aei.CopyColStarts()        
         else:
             Aei = None
         self.setDiag(tdof.ToList(), value = 1.0)

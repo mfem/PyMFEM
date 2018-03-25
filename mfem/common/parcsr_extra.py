@@ -179,11 +179,15 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
                                 nrows,
                                 m, n, [i, j,
                                 data, col_starts])
+        M.CopyRowStarts()
+        M.CopyColStarts()
     else:
         M = mfem.HypreParMatrix(MPI.COMM_WORLD,
                                 nrows,
                                 m, n, [i, j,
                                 data, row_starts, col_starts])
+        M.CopyRowStarts()
+        M.CopyColStarts()
     return M
 
 def ToScipyCoo(mat):
@@ -432,7 +436,8 @@ def ResetHypreDiag(M, idx, value = 1.0):
     '''
     set diagonal element to value (normally 1)
     '''
-    col_starts = M.GetColPartArray()    
+    col_starts = M.GetColPartArray()
+
     num_rows, ilower, iupper, jlower, jupper, irn, jcn, data = M.GetCooDataArray()
     from mpi4py import MPI
     myid     = MPI.COMM_WORLD.rank
