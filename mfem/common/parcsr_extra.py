@@ -453,11 +453,13 @@ def ResetHypreDiag(M, idx, value = 1.0):
        print num_rows, ilower, iupper, jlower, jupper
        print np.min(irn-ilower), np.max(irn-ilower) , np.min(jcn),  np.max(jcn), (m, n)
        raise
-        
-    for ii in idx:
-        if ii >= ilower and ii <= iupper:
-           mat[ii-ilower, ii] = value
 
+    idx = np.array(idx, dtype=int, copy=False)
+    ii =  idx[np.logical_and(idx >= ilower, idx <= iupper)]
+    mat[ii-ilower, ii] = value    
+    #for ii in idx:
+    #    if ii >= ilower and ii <= iupper:
+    #       mat[ii-ilower, ii] = value
 
     return  ToHypreParCSR(mat.tocsr(), col_starts = col_starts)
 
@@ -477,9 +479,9 @@ def ResetHypreRow(M, idx):
     n = M.N()    
     from scipy.sparse import coo_matrix, lil_matrix
 
-    for ii in idx:
-       k = np.where(irn == ii)[0]
-       data[k] = 0.0
+    k = np.in1d(irn, idx)
+    data[k] = 0.0
+    
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
     mat.eliminate_zeros()
 
@@ -503,9 +505,8 @@ def ResetHypreCol(M, idx):
     n = M.N()
     from scipy.sparse import coo_matrix, lil_matrix
 
-    for ii in idx:
-       k = np.where(jcn == ii)[0]
-       data[k] = 0.0
+    k = np.in1d(irn, idx)
+    data[k] = 0.0
     
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
     mat.eliminate_zeros()    
