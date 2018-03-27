@@ -16,6 +16,7 @@
   array  elements. Use set_element, instead.
 '''
 import numpy as np
+from numbers import Number
 from scipy.sparse  import csr_matrix, coo_matrix, lil_matrix
 from mfem.common.parcsr_extra import *
 
@@ -419,12 +420,25 @@ class CHypreMat(list):
     def __mul__(self, other): # A * B or A * v
         if isinstance(other, CHypreMat):
             return CHypreMat(*ParMultComplex(self, other))
-        if isinstance(other, CHypreVec):
+        elif isinstance(other, CHypreVec):
             v =  CHypreVec(*ParMultVecComplex(self, other))
             v._horizontal = other._horizontal
             return v
-        raise ValueError(
-                   "argument should be CHypreMat/Vec")
+        elif isinstance(other, Number):
+            if self[0] is not None:
+               R = mfem.par.Add(other, self[0], 0.0, self[0])
+               R.CopyRowStarts()
+               R.CopyColStarts()
+            else:
+               R = None
+            if self[1] is not None:
+               I = mfem.par.Add(other, self[1], 0.0, self[1])
+               I.CopyRowStarts()
+               I.CopyColStarts()
+            else:
+               I = None
+            return CHypreMat(R, I)
+        raise ValueError("argument should be CHypreMat/Vec")
     
     def __rmul__(self, other):
         if not isinstance(other, CHypreMat):
