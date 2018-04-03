@@ -53,6 +53,7 @@ import_array();
 //%ignore DeltaCoefficient;
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
+%feature("notabstract") VectorDeltaCoefficient;
 
 namespace mfem { 
 %pythonprepend DeltaCoefficient::SetWeight %{

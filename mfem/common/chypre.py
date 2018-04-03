@@ -500,9 +500,14 @@ class CHypreMat(list):
     def __neg__(self): #-B
        r = None; i = None
        if self[0] is not None:
-           r = ToHypreParCSR((- ToScipyCoo(self[0])).tocsr())
+           r = mfem.par.Add(-1, self[0], 0.0, self[0])
+           r.CopyRowStarts()
+           r.CopyColStarts()
        if self[1] is not None:
-           i = ToHypreParCSR((- ToScipyCoo(self[1])).tocsr())
+           i = mfem.par.Add(-1, self[1], 0.0, self[0])
+           i.CopyRowStarts()
+           i.CopyColStarts()
+           
        return CHypreMat(r, i)
 
 
@@ -974,7 +979,7 @@ def EmptySquarePyMat(m, col_starts = None):
         from scipy.sparse import csr_matrix
         return csr_matrix((m, m))
 
-def IdentityPyMat(m, col_starts = None):
+def IdentityPyMat(m, col_starts = None, diag=1.0):
     from scipy.sparse import coo_matrix, lil_matrix
     if MFEM_PAR:
         if col_starts is None:
@@ -987,7 +992,7 @@ def IdentityPyMat(m, col_starts = None):
         return CHypreMat(m1, None, )
     else:
         m1 = coo_matrix((m, m))
-        m1.setdiag(np.ones(m))
+        m1.setdiag(np.zeros(m)+diag)
         return m1.tocsr()
      
 

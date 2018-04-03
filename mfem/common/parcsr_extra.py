@@ -76,7 +76,7 @@ def ToHypreParVec(vec):
     return v
 
 def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
-                  col_starts = None):
+                  col_starts = None, assert_non_square_no_col_starts=True):
     '''
     convert scipy sparse matrix to hypre
 
@@ -93,6 +93,7 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     different from the row partitioning. For example, MFEM mixedbilinearfomr 
     uses different partitiong rules for row and column.
 
+    ToDo: change default assert_non_square_no_col_starts to False
     
     '''
        
@@ -140,6 +141,10 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     j = mat.indices.astype(dtype)
     data = mat.data
 
+    if col_starts is None and m != nl:
+        col_starts = get_assumed_patitioning(nl)
+        if assert_non_square_no_col_starts:
+             assert False, "col_starts must be specified for non diagonal array"
     if col_starts is None:
        col_starts =  row_starts.copy()
        col_starts[-1]=n
@@ -151,7 +156,6 @@ def ToHypreParCSR(mat, check_partitioning = False, verbose = False,
     else:
        # make sure that dtype is right....
        col_starts = np.array(col_starts, dtype = dtype)
-
     if check_partitioning:
         ch = get_assumed_patitioning(m)
         if (row_starts[0] != ch[0] or 

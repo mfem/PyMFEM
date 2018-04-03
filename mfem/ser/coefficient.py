@@ -524,10 +524,14 @@ class VectorDeltaCoefficient(VectorCoefficient):
     for _s in [VectorCoefficient]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, VectorDeltaCoefficient, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _coefficient.new_VectorDeltaCoefficient(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
 
     def SetDeltaCoefficient(self, _d):
         return _coefficient.VectorDeltaCoefficient_SetDeltaCoefficient(self, _d)
