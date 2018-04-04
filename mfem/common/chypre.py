@@ -467,6 +467,13 @@ class CHypreMat(list):
             i = other[1]
         else:
             i = None
+            
+        if r is not None:
+           r.CopyRowStarts()
+           r.CopyColStarts()
+        if i is not None:
+           i.CopyRowStarts()
+           i.CopyColStarts()
 
         return CHypreMat(r, i)        
 
@@ -481,7 +488,7 @@ class CHypreMat(list):
         elif self[0] is not None:
             r = self[0]
         elif other[0] is not None:
-            r = other[0]
+            r = mfem.par.Add(-1, othe[0], 0.0, other[0])                      
         else:
             r = None
         if self[1] is not None and other[1] is not None:
@@ -491,10 +498,17 @@ class CHypreMat(list):
         elif self[0] is not None:
             i = self[1]
         elif other[0] is not None:
-            i = other[1]
+            i = mfem.par.Add(-1, othe[1], 0.0, other[1])           
         else:
             i = None
 
+        if r is not None:
+           r.CopyRowStarts()
+           r.CopyColStarts()
+        if i is not None:
+           i.CopyRowStarts()
+           i.CopyColStarts()
+           
         return CHypreMat(r, i)        
        
     def __neg__(self): #-B
