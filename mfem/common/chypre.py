@@ -1001,7 +1001,7 @@ def IdentityPyMat(m, col_starts = None, diag=1.0):
         rows =  col_starts[1] - col_starts[0]
         m1 = lil_matrix((rows, m))
         for i in range(rows):
-           m1[i, i+col_starts[0]] = 1.0
+           m1[i, i+col_starts[0]] = diag
         m1 = m1.tocsr() 
         return CHypreMat(m1, None, )
     else:
