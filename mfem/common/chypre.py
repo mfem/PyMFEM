@@ -786,20 +786,23 @@ class CHypreMat(list):
         return CHypreMat(r, None)
      
     def eliminate_RowsCols(self, tdof):
-        tdof = mfem.par.intArray(tdof)
+        # note: tdof is a valued viewed in each node. MyTDoF offset is subtracted
+        tdof1 = mfem.par.intArray(tdof)
         if self[0] is not None:
-            Aer = self[0].EliminateRowsCols(tdof)
+            Aer = self[0].EliminateRowsCols(tdof1)
             Aer.CopyRowStarts()
-            Aer.CopyColStarts()        
+            Aer.CopyColStarts()
+            row0 = Aer.GetRowPartArray()[0]
         else:
             Aer = None
         if self[1] is not None:
-            Aei = self[1].EliminateRowsCols(tdof)
+            Aei = self[1].EliminateRowsCols(tdof1)
             Aei.CopyRowStarts()
-            Aei.CopyColStarts()        
+            Aei.CopyColStarts()
+            row0 = Aei.GetRowPartArray()[0]            
         else:
             Aei = None
-        self.setDiag(tdof.ToList(), value = 1.0)
+        self.setDiag([x+row0 for x in tdof], value = 1.0)
         return CHypreMat(Aer, Aei)
      
     @property     
