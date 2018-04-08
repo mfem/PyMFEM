@@ -453,18 +453,18 @@ class CHypreMat(list):
         if self[0] is not None and other[0] is not None:            
             r =  ParAdd(self[0], other[0])
         elif self[0] is not None:
-            r = self[0]
+            r = ToHypreParCSR(ToScipyCoo(self[0]))
         elif other[0] is not None:
-            r = other[0]
+            r = ToHypreParCSR(ToScipyCoo(other[0]))
         else:
             r = None
         if self[1] is not None and other[1] is not None:
             i =  ParAdd(self[1], other[1])           
 #            i =  mfem.par.add_hypre(1.0, self[1], 1.0, other[1])
-        elif self[0] is not None:
-            i = self[1]
-        elif other[0] is not None:
-            i = other[1]
+        elif self[1] is not None:
+            i = ToHypreParCSR(ToScipyCoo(self[1]))
+        elif other[1] is not None:
+            i = ToHypreParCSR(ToScipyCoo(other[1]))
         else:
             i = None
             
@@ -486,7 +486,7 @@ class CHypreMat(list):
             r =  ParAdd(self[0], other[0])
             other[0] *= -1            
         elif self[0] is not None:
-            r = self[0]
+            r = ToHypreParCSR(ToScipyCoo(self[0]))           
         elif other[0] is not None:
             r = mfem.par.Add(-1, othe[0], 0.0, other[0])                      
         else:
@@ -495,9 +495,9 @@ class CHypreMat(list):
             other[1] *= -1           
             i =  ParAdd(self[1], other[1])
             other[1] *= -1                       
-        elif self[0] is not None:
-            i = self[1]
-        elif other[0] is not None:
+        elif self[1] is not None:
+            i = ToHypreParCSR(ToScipyCoo(self[1]))           
+        elif other[1] is not None:
             i = mfem.par.Add(-1, othe[1], 0.0, other[1])           
         else:
             i = None
@@ -785,25 +785,42 @@ class CHypreMat(list):
         r = ToHypreParCSR(elil.tocsr(), col_starts =cpart)
         return CHypreMat(r, None)
      
-    def eliminate_RowsCols(self, tdof):
+    def eliminate_RowsCols(self, tdof, inplace=False):
         # note: tdof is a valued viewed in each node. MyTDoF offset is subtracted
         tdof1 = mfem.par.intArray(tdof)
-        if self[0] is not None:
-            Aer = self[0].EliminateRowsCols(tdof1)
+        if not inplace:
+            print("inplace flag off copying ParCSR")
+            if self[0] is not None:           
+                r =  ToHypreParCSR(ToScipyCoo(self[0]).tocsr())
+
+            else:
+                r = None
+            if self[1] is not None:           
+                i =  ToHypreParCSR(ToScipyCoo(self[1]).tocsr())
+
+            else:
+                i = None
+            target = CHypreMat(r, i)
+        else:
+            target = self
+        if target[0] is not None:
+            Aer = target[0].EliminateRowsCols(tdof1)
             Aer.CopyRowStarts()
             Aer.CopyColStarts()
             row0 = Aer.GetRowPartArray()[0]
         else:
             Aer = None
-        if self[1] is not None:
-            Aei = self[1].EliminateRowsCols(tdof1)
+        if target[1] is not None:
+            Aei = target[1].EliminateRowsCols(tdof1)
             Aei.CopyRowStarts()
             Aei.CopyColStarts()
             row0 = Aei.GetRowPartArray()[0]            
         else:
             Aei = None
-        self.setDiag([x+row0 for x in tdof], value = 1.0)
-        return CHypreMat(Aer, Aei)
+        target.setDiag([x+row0 for x in tdof], value = 1.0)
+        mat = CHypreMat(Aer, Aei)
+        #print mat.get_local_coo()
+        return mat, target
      
     @property     
     def isHypre(self):

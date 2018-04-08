@@ -509,7 +509,7 @@ def ResetHypreCol(M, idx):
     n = M.N()
     from scipy.sparse import coo_matrix, lil_matrix
 
-    k = np.in1d(irn, idx)
+    k = np.in1d(jcn, idx)
     data[k] = 0.0
     
     mat =  coo_matrix((data, (irn-ilower, jcn)), shape = (m, n)).tocsr()
