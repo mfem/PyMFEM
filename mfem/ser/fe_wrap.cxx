@@ -5955,6 +5955,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_FiniteElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:FiniteElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "FiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::FiniteElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_FiniteElement_Project__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
@@ -6921,6 +6996,156 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ScalarFiniteElement_NodalLocalInterpolation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScalarFiniteElement *arg1 = (mfem::ScalarFiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  mfem::ScalarFiniteElement *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ScalarFiniteElement_NodalLocalInterpolation",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScalarFiniteElement_NodalLocalInterpolation" "', argument " "1"" of type '" "mfem::ScalarFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScalarFiniteElement_NodalLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_NodalLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScalarFiniteElement_NodalLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_NodalLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ScalarFiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ScalarFiniteElement_NodalLocalInterpolation" "', argument " "4"" of type '" "mfem::ScalarFiniteElement const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_NodalLocalInterpolation" "', argument " "4"" of type '" "mfem::ScalarFiniteElement const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::ScalarFiniteElement * >(argp4);
+  {
+    try {
+      ((mfem::ScalarFiniteElement const *)arg1)->NodalLocalInterpolation(*arg2,*arg3,(mfem::ScalarFiniteElement const &)*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ScalarFiniteElement_ScalarLocalInterpolation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScalarFiniteElement *arg1 = (mfem::ScalarFiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  mfem::ScalarFiniteElement *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ScalarFiniteElement_ScalarLocalInterpolation",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScalarFiniteElement_ScalarLocalInterpolation" "', argument " "1"" of type '" "mfem::ScalarFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScalarFiniteElement_ScalarLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_ScalarLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScalarFiniteElement_ScalarLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_ScalarLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ScalarFiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ScalarFiniteElement_ScalarLocalInterpolation" "', argument " "4"" of type '" "mfem::ScalarFiniteElement const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarFiniteElement_ScalarLocalInterpolation" "', argument " "4"" of type '" "mfem::ScalarFiniteElement const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::ScalarFiniteElement * >(argp4);
+  {
+    try {
+      ((mfem::ScalarFiniteElement const *)arg1)->ScalarLocalInterpolation(*arg2,*arg3,(mfem::ScalarFiniteElement const &)*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_ScalarFiniteElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ScalarFiniteElement *arg1 = (mfem::ScalarFiniteElement *) 0 ;
@@ -7007,6 +7232,81 @@ SWIGINTERN PyObject *_wrap_NodalFiniteElement_GetLocalInterpolation(PyObject *SW
   {
     try {
       ((mfem::NodalFiniteElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NodalFiniteElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NodalFiniteElement *arg1 = (mfem::NodalFiniteElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:NodalFiniteElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__NodalFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NodalFiniteElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::NodalFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NodalFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NodalFiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NodalFiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NodalFiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NodalFiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "NodalFiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NodalFiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::NodalFiniteElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7660,6 +7960,81 @@ SWIGINTERN PyObject *_wrap_PositiveFiniteElement_GetLocalInterpolation(PyObject 
   {
     try {
       ((mfem::PositiveFiniteElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PositiveFiniteElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PositiveFiniteElement *arg1 = (mfem::PositiveFiniteElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:PositiveFiniteElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PositiveFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PositiveFiniteElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::PositiveFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PositiveFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PositiveFiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PositiveFiniteElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PositiveFiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PositiveFiniteElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "PositiveFiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PositiveFiniteElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::PositiveFiniteElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -36010,6 +36385,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RT_QuadrilateralElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RT_QuadrilateralElement *arg1 = (mfem::RT_QuadrilateralElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:RT_QuadrilateralElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RT_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RT_QuadrilateralElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::RT_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RT_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RT_QuadrilateralElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_QuadrilateralElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RT_QuadrilateralElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_QuadrilateralElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RT_QuadrilateralElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_QuadrilateralElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::RT_QuadrilateralElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_RT_QuadrilateralElement_Project__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::RT_QuadrilateralElement *arg1 = (mfem::RT_QuadrilateralElement *) 0 ;
@@ -37340,6 +37790,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RT_HexahedronElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RT_HexahedronElement *arg1 = (mfem::RT_HexahedronElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:RT_HexahedronElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RT_HexahedronElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RT_HexahedronElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::RT_HexahedronElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RT_HexahedronElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RT_HexahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_HexahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RT_HexahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_HexahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RT_HexahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_HexahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::RT_HexahedronElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_RT_HexahedronElement_Project__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::RT_HexahedronElement *arg1 = (mfem::RT_HexahedronElement *) 0 ;
@@ -38381,6 +38906,81 @@ SWIGINTERN PyObject *_wrap_RT_TriangleElement_GetLocalInterpolation(PyObject *SW
   {
     try {
       ((mfem::RT_TriangleElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RT_TriangleElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RT_TriangleElement *arg1 = (mfem::RT_TriangleElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:RT_TriangleElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RT_TriangleElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RT_TriangleElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::RT_TriangleElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RT_TriangleElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RT_TriangleElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_TriangleElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RT_TriangleElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_TriangleElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RT_TriangleElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_TriangleElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::RT_TriangleElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -39520,6 +40120,81 @@ SWIGINTERN PyObject *_wrap_RT_TetrahedronElement_GetLocalInterpolation(PyObject 
   {
     try {
       ((mfem::RT_TetrahedronElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RT_TetrahedronElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RT_TetrahedronElement *arg1 = (mfem::RT_TetrahedronElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:RT_TetrahedronElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RT_TetrahedronElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RT_TetrahedronElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::RT_TetrahedronElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RT_TetrahedronElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RT_TetrahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_TetrahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RT_TetrahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_TetrahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RT_TetrahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RT_TetrahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::RT_TetrahedronElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -40775,6 +41450,81 @@ SWIGINTERN PyObject *_wrap_ND_HexahedronElement_GetLocalInterpolation(PyObject *
   {
     try {
       ((mfem::ND_HexahedronElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_HexahedronElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_HexahedronElement *arg1 = (mfem::ND_HexahedronElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ND_HexahedronElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_HexahedronElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_HexahedronElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_HexahedronElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_HexahedronElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_HexahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_HexahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_HexahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_HexahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_HexahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_HexahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_HexahedronElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -42128,6 +42878,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ND_QuadrilateralElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_QuadrilateralElement *arg1 = (mfem::ND_QuadrilateralElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ND_QuadrilateralElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_QuadrilateralElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_QuadrilateralElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_QuadrilateralElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_QuadrilateralElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_QuadrilateralElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_QuadrilateralElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_QuadrilateralElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_QuadrilateralElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ND_QuadrilateralElement_Project__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ND_QuadrilateralElement *arg1 = (mfem::ND_QuadrilateralElement *) 0 ;
@@ -43169,6 +43994,81 @@ SWIGINTERN PyObject *_wrap_ND_TetrahedronElement_GetLocalInterpolation(PyObject 
   {
     try {
       ((mfem::ND_TetrahedronElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_TetrahedronElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_TetrahedronElement *arg1 = (mfem::ND_TetrahedronElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ND_TetrahedronElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_TetrahedronElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_TetrahedronElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_TetrahedronElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_TetrahedronElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_TetrahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_TetrahedronElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_TetrahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_TetrahedronElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_TetrahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_TetrahedronElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_TetrahedronElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -44308,6 +45208,81 @@ SWIGINTERN PyObject *_wrap_ND_TriangleElement_GetLocalInterpolation(PyObject *SW
   {
     try {
       ((mfem::ND_TriangleElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_TriangleElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_TriangleElement *arg1 = (mfem::ND_TriangleElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ND_TriangleElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_TriangleElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_TriangleElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_TriangleElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_TriangleElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_TriangleElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_TriangleElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_TriangleElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_TriangleElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_TriangleElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_TriangleElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_TriangleElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -45476,6 +46451,81 @@ SWIGINTERN PyObject *_wrap_ND_SegmentElement_GetLocalInterpolation(PyObject *SWI
   {
     try {
       ((mfem::ND_SegmentElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ND_SegmentElement_GetTransferMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ND_SegmentElement *arg1 = (mfem::ND_SegmentElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ND_SegmentElement_GetTransferMatrix",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ND_SegmentElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ND_SegmentElement_GetTransferMatrix" "', argument " "1"" of type '" "mfem::ND_SegmentElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ND_SegmentElement * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ND_SegmentElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_SegmentElement_GetTransferMatrix" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ND_SegmentElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_SegmentElement_GetTransferMatrix" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ND_SegmentElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ND_SegmentElement_GetTransferMatrix" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::ND_SegmentElement const *)arg1)->GetTransferMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -47655,6 +48705,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"FiniteElement_GetFaceDofs", _wrap_FiniteElement_GetFaceDofs, METH_VARARGS, NULL},
 	 { (char *)"FiniteElement_CalcHessian", _wrap_FiniteElement_CalcHessian, METH_VARARGS, NULL},
 	 { (char *)"FiniteElement_GetLocalInterpolation", _wrap_FiniteElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"FiniteElement_GetTransferMatrix", _wrap_FiniteElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"FiniteElement_ProjectMatrixCoefficient", _wrap_FiniteElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"FiniteElement_ProjectDelta", _wrap_FiniteElement_ProjectDelta, METH_VARARGS, NULL},
 	 { (char *)"FiniteElement_Project", _wrap_FiniteElement_Project, METH_VARARGS, NULL},
@@ -47669,9 +48720,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"FiniteElement_VerifyNodal", _wrap_FiniteElement_VerifyNodal, METH_VARARGS, NULL},
 	 { (char *)"FiniteElement_swigregister", FiniteElement_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ScalarFiniteElement_SetMapType", _wrap_ScalarFiniteElement_SetMapType, METH_VARARGS, NULL},
+	 { (char *)"ScalarFiniteElement_NodalLocalInterpolation", _wrap_ScalarFiniteElement_NodalLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"ScalarFiniteElement_ScalarLocalInterpolation", _wrap_ScalarFiniteElement_ScalarLocalInterpolation, METH_VARARGS, NULL},
 	 { (char *)"delete_ScalarFiniteElement", _wrap_delete_ScalarFiniteElement, METH_VARARGS, NULL},
 	 { (char *)"ScalarFiniteElement_swigregister", ScalarFiniteElement_swigregister, METH_VARARGS, NULL},
 	 { (char *)"NodalFiniteElement_GetLocalInterpolation", _wrap_NodalFiniteElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"NodalFiniteElement_GetTransferMatrix", _wrap_NodalFiniteElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"NodalFiniteElement_ProjectMatrixCoefficient", _wrap_NodalFiniteElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"NodalFiniteElement_Project", _wrap_NodalFiniteElement_Project, METH_VARARGS, NULL},
 	 { (char *)"NodalFiniteElement_ProjectGrad", _wrap_NodalFiniteElement_ProjectGrad, METH_VARARGS, NULL},
@@ -47679,6 +48733,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_NodalFiniteElement", _wrap_delete_NodalFiniteElement, METH_VARARGS, NULL},
 	 { (char *)"NodalFiniteElement_swigregister", NodalFiniteElement_swigregister, METH_VARARGS, NULL},
 	 { (char *)"PositiveFiniteElement_GetLocalInterpolation", _wrap_PositiveFiniteElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"PositiveFiniteElement_GetTransferMatrix", _wrap_PositiveFiniteElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"PositiveFiniteElement_Project", _wrap_PositiveFiniteElement_Project, METH_VARARGS, NULL},
 	 { (char *)"delete_PositiveFiniteElement", _wrap_delete_PositiveFiniteElement, METH_VARARGS, NULL},
 	 { (char *)"PositiveFiniteElement_swigregister", PositiveFiniteElement_swigregister, METH_VARARGS, NULL},
@@ -48125,6 +49180,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RT_QuadrilateralElement_CalcVShape", _wrap_RT_QuadrilateralElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"RT_QuadrilateralElement_CalcDivShape", _wrap_RT_QuadrilateralElement_CalcDivShape, METH_VARARGS, NULL},
 	 { (char *)"RT_QuadrilateralElement_GetLocalInterpolation", _wrap_RT_QuadrilateralElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"RT_QuadrilateralElement_GetTransferMatrix", _wrap_RT_QuadrilateralElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"RT_QuadrilateralElement_ProjectMatrixCoefficient", _wrap_RT_QuadrilateralElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"RT_QuadrilateralElement_Project", _wrap_RT_QuadrilateralElement_Project, METH_VARARGS, NULL},
 	 { (char *)"RT_QuadrilateralElement_ProjectGrad", _wrap_RT_QuadrilateralElement_ProjectGrad, METH_VARARGS, NULL},
@@ -48135,6 +49191,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RT_HexahedronElement_CalcVShape", _wrap_RT_HexahedronElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"RT_HexahedronElement_CalcDivShape", _wrap_RT_HexahedronElement_CalcDivShape, METH_VARARGS, NULL},
 	 { (char *)"RT_HexahedronElement_GetLocalInterpolation", _wrap_RT_HexahedronElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"RT_HexahedronElement_GetTransferMatrix", _wrap_RT_HexahedronElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"RT_HexahedronElement_ProjectMatrixCoefficient", _wrap_RT_HexahedronElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"RT_HexahedronElement_Project", _wrap_RT_HexahedronElement_Project, METH_VARARGS, NULL},
 	 { (char *)"RT_HexahedronElement_ProjectCurl", _wrap_RT_HexahedronElement_ProjectCurl, METH_VARARGS, NULL},
@@ -48144,6 +49201,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RT_TriangleElement_CalcVShape", _wrap_RT_TriangleElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"RT_TriangleElement_CalcDivShape", _wrap_RT_TriangleElement_CalcDivShape, METH_VARARGS, NULL},
 	 { (char *)"RT_TriangleElement_GetLocalInterpolation", _wrap_RT_TriangleElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"RT_TriangleElement_GetTransferMatrix", _wrap_RT_TriangleElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"RT_TriangleElement_ProjectMatrixCoefficient", _wrap_RT_TriangleElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"RT_TriangleElement_Project", _wrap_RT_TriangleElement_Project, METH_VARARGS, NULL},
 	 { (char *)"RT_TriangleElement_ProjectGrad", _wrap_RT_TriangleElement_ProjectGrad, METH_VARARGS, NULL},
@@ -48154,6 +49212,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RT_TetrahedronElement_CalcVShape", _wrap_RT_TetrahedronElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"RT_TetrahedronElement_CalcDivShape", _wrap_RT_TetrahedronElement_CalcDivShape, METH_VARARGS, NULL},
 	 { (char *)"RT_TetrahedronElement_GetLocalInterpolation", _wrap_RT_TetrahedronElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"RT_TetrahedronElement_GetTransferMatrix", _wrap_RT_TetrahedronElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"RT_TetrahedronElement_ProjectMatrixCoefficient", _wrap_RT_TetrahedronElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"RT_TetrahedronElement_Project", _wrap_RT_TetrahedronElement_Project, METH_VARARGS, NULL},
 	 { (char *)"RT_TetrahedronElement_ProjectCurl", _wrap_RT_TetrahedronElement_ProjectCurl, METH_VARARGS, NULL},
@@ -48163,6 +49222,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ND_HexahedronElement_CalcVShape", _wrap_ND_HexahedronElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"ND_HexahedronElement_CalcCurlShape", _wrap_ND_HexahedronElement_CalcCurlShape, METH_VARARGS, NULL},
 	 { (char *)"ND_HexahedronElement_GetLocalInterpolation", _wrap_ND_HexahedronElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"ND_HexahedronElement_GetTransferMatrix", _wrap_ND_HexahedronElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"ND_HexahedronElement_ProjectMatrixCoefficient", _wrap_ND_HexahedronElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"ND_HexahedronElement_Project", _wrap_ND_HexahedronElement_Project, METH_VARARGS, NULL},
 	 { (char *)"ND_HexahedronElement_ProjectGrad", _wrap_ND_HexahedronElement_ProjectGrad, METH_VARARGS, NULL},
@@ -48173,6 +49233,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ND_QuadrilateralElement_CalcVShape", _wrap_ND_QuadrilateralElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"ND_QuadrilateralElement_CalcCurlShape", _wrap_ND_QuadrilateralElement_CalcCurlShape, METH_VARARGS, NULL},
 	 { (char *)"ND_QuadrilateralElement_GetLocalInterpolation", _wrap_ND_QuadrilateralElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"ND_QuadrilateralElement_GetTransferMatrix", _wrap_ND_QuadrilateralElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"ND_QuadrilateralElement_ProjectMatrixCoefficient", _wrap_ND_QuadrilateralElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"ND_QuadrilateralElement_Project", _wrap_ND_QuadrilateralElement_Project, METH_VARARGS, NULL},
 	 { (char *)"ND_QuadrilateralElement_ProjectGrad", _wrap_ND_QuadrilateralElement_ProjectGrad, METH_VARARGS, NULL},
@@ -48182,6 +49243,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ND_TetrahedronElement_CalcVShape", _wrap_ND_TetrahedronElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"ND_TetrahedronElement_CalcCurlShape", _wrap_ND_TetrahedronElement_CalcCurlShape, METH_VARARGS, NULL},
 	 { (char *)"ND_TetrahedronElement_GetLocalInterpolation", _wrap_ND_TetrahedronElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"ND_TetrahedronElement_GetTransferMatrix", _wrap_ND_TetrahedronElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"ND_TetrahedronElement_ProjectMatrixCoefficient", _wrap_ND_TetrahedronElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"ND_TetrahedronElement_Project", _wrap_ND_TetrahedronElement_Project, METH_VARARGS, NULL},
 	 { (char *)"ND_TetrahedronElement_ProjectGrad", _wrap_ND_TetrahedronElement_ProjectGrad, METH_VARARGS, NULL},
@@ -48192,6 +49254,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ND_TriangleElement_CalcVShape", _wrap_ND_TriangleElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"ND_TriangleElement_CalcCurlShape", _wrap_ND_TriangleElement_CalcCurlShape, METH_VARARGS, NULL},
 	 { (char *)"ND_TriangleElement_GetLocalInterpolation", _wrap_ND_TriangleElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"ND_TriangleElement_GetTransferMatrix", _wrap_ND_TriangleElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"ND_TriangleElement_ProjectMatrixCoefficient", _wrap_ND_TriangleElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"ND_TriangleElement_Project", _wrap_ND_TriangleElement_Project, METH_VARARGS, NULL},
 	 { (char *)"ND_TriangleElement_ProjectGrad", _wrap_ND_TriangleElement_ProjectGrad, METH_VARARGS, NULL},
@@ -48201,6 +49264,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"ND_SegmentElement_CalcShape", _wrap_ND_SegmentElement_CalcShape, METH_VARARGS, NULL},
 	 { (char *)"ND_SegmentElement_CalcVShape", _wrap_ND_SegmentElement_CalcVShape, METH_VARARGS, NULL},
 	 { (char *)"ND_SegmentElement_GetLocalInterpolation", _wrap_ND_SegmentElement_GetLocalInterpolation, METH_VARARGS, NULL},
+	 { (char *)"ND_SegmentElement_GetTransferMatrix", _wrap_ND_SegmentElement_GetTransferMatrix, METH_VARARGS, NULL},
 	 { (char *)"ND_SegmentElement_ProjectMatrixCoefficient", _wrap_ND_SegmentElement_ProjectMatrixCoefficient, METH_VARARGS, NULL},
 	 { (char *)"ND_SegmentElement_Project", _wrap_ND_SegmentElement_Project, METH_VARARGS, NULL},
 	 { (char *)"ND_SegmentElement_ProjectGrad", _wrap_ND_SegmentElement_ProjectGrad, METH_VARARGS, NULL},

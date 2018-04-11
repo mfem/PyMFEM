@@ -4294,6 +4294,61 @@ fail:
 SWIGINTERN PyObject *_wrap_IntegrationPointArray_Append__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Array< mfem::IntegrationPoint > *arg1 = (mfem::Array< mfem::IntegrationPoint > *) 0 ;
+  mfem::IntegrationPoint *arg2 = (mfem::IntegrationPoint *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:IntegrationPointArray_Append",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray_Append" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationPoint, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IntegrationPointArray_Append" "', argument " "2"" of type '" "mfem::IntegrationPoint const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationPointArray_Append" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  {
+    try {
+      result = (int)(arg1)->Append((mfem::IntegrationPoint const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegrationPointArray_Append__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::IntegrationPoint > *arg1 = (mfem::Array< mfem::IntegrationPoint > *) 0 ;
   mfem::Array< mfem::IntegrationPoint > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -4342,14 +4397,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_IntegrationPointArray_Append(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 2) {
@@ -4374,7 +4429,27 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_Append(PyObject *self, PyObject
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_IntegrationPointArray_Append__SWIG_1(self, args);
+        return _wrap_IntegrationPointArray_Append__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_IntegrationPointArray_Append__SWIG_1(self, args);
+        }
       }
     }
   }
@@ -4383,6 +4458,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'IntegrationPointArray_Append'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Array< mfem::IntegrationPoint >::Append(mfem::IntegrationPoint const &)\n"
+    "    mfem::Array< mfem::IntegrationPoint >::Append(mfem::IntegrationPoint const *,int)\n"
     "    mfem::Array< mfem::IntegrationPoint >::Append(mfem::Array< mfem::IntegrationPoint > const &)\n");
   return 0;
 }

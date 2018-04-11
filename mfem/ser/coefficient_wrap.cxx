@@ -4887,6 +4887,57 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_PWConstCoefficient_UpdateConstants(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PWConstCoefficient *arg1 = (mfem::PWConstCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:PWConstCoefficient_UpdateConstants",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PWConstCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PWConstCoefficient_UpdateConstants" "', argument " "1"" of type '" "mfem::PWConstCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PWConstCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PWConstCoefficient_UpdateConstants" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PWConstCoefficient_UpdateConstants" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      (arg1)->UpdateConstants(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_PWConstCoefficient___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::PWConstCoefficient *arg1 = (mfem::PWConstCoefficient *) 0 ;
@@ -14484,6 +14535,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_ConstantCoefficient", _wrap_delete_ConstantCoefficient, METH_VARARGS, NULL},
 	 { (char *)"ConstantCoefficient_swigregister", ConstantCoefficient_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_PWConstCoefficient", _wrap_new_PWConstCoefficient, METH_VARARGS, NULL},
+	 { (char *)"PWConstCoefficient_UpdateConstants", _wrap_PWConstCoefficient_UpdateConstants, METH_VARARGS, NULL},
 	 { (char *)"PWConstCoefficient___call__", _wrap_PWConstCoefficient___call__, METH_VARARGS, NULL},
 	 { (char *)"PWConstCoefficient_GetNConst", _wrap_PWConstCoefficient_GetNConst, METH_VARARGS, NULL},
 	 { (char *)"PWConstCoefficient_Eval", _wrap_PWConstCoefficient_Eval, METH_VARARGS, NULL},

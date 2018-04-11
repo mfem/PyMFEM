@@ -1,5 +1,6 @@
 '''''
-PyMFEM for mfem 3.3.2 
+PyMFEM
+(built on mfem commit 324d66b0c7fc75225e830dcfb02647722bae1fe0)
 '''''
 
 PyMFEM is a python2.7 wrapper for MFEM, ligith-weight FEM (finite element
