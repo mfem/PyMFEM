@@ -31,6 +31,8 @@ in $MFEM_PREFIX
    > git checkout <proper git commit SHA>
 
 1-2) build serial MFEM using cmake
+     Note DMFEM_USE_EXCEPTIONS=1 allows to throw an python exception instead of aborting.
+     This option saves python interpreter from crash. Using this option in parallel is questionable, since mfem error may happen only some of computing processes.
 
    > cd $MFEM_PREFIX/src/mfem	
    > mkdir cmbuild_ser
