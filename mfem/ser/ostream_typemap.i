@@ -13,7 +13,7 @@
     $1 = new std::ostream(stream);
   }
 }
-%typemap(typecheck) std::ostream& {
+%typemap(typecheck, precedence=SWIG_TYPECHECK_STRING_ARRAY) std::ostream& {
   if (PyFile_Check($input)){
     $1 = 1;
   } else {

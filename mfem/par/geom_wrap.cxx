@@ -4681,6 +4681,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RefinedGeometry_RefGeoms_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RefinedGeometry *arg1 = (mfem::RefinedGeometry *) 0 ;
+  mfem::Array< int > *arg2 = (mfem::Array< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RefinedGeometry_RefGeoms_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RefinedGeometry, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinedGeometry_RefGeoms_set" "', argument " "1"" of type '" "mfem::RefinedGeometry *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RefinedGeometry * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinedGeometry_RefGeoms_set" "', argument " "2"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  if (arg1) (arg1)->RefGeoms = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_RefinedGeometry_RefGeoms_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::RefinedGeometry *arg1 = (mfem::RefinedGeometry *) 0 ;
@@ -4697,6 +4727,36 @@ SWIGINTERN PyObject *_wrap_RefinedGeometry_RefGeoms_get(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::RefinedGeometry * >(argp1);
   result = (mfem::Array< int > *)& ((arg1)->RefGeoms);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinedGeometry_RefEdges_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RefinedGeometry *arg1 = (mfem::RefinedGeometry *) 0 ;
+  mfem::Array< int > *arg2 = (mfem::Array< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RefinedGeometry_RefEdges_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RefinedGeometry, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinedGeometry_RefEdges_set" "', argument " "1"" of type '" "mfem::RefinedGeometry *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RefinedGeometry * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinedGeometry_RefEdges_set" "', argument " "2"" of type '" "mfem::Array< int > *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  if (arg1) (arg1)->RefEdges = *arg2;
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -5485,7 +5545,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"RefinedGeometry_ETimes_set", _wrap_RefinedGeometry_ETimes_set, METH_VARARGS, NULL},
 	 { (char *)"RefinedGeometry_ETimes_get", _wrap_RefinedGeometry_ETimes_get, METH_VARARGS, NULL},
 	 { (char *)"RefinedGeometry_RefPts_get", _wrap_RefinedGeometry_RefPts_get, METH_VARARGS, NULL},
+	 { (char *)"RefinedGeometry_RefGeoms_set", _wrap_RefinedGeometry_RefGeoms_set, METH_VARARGS, NULL},
 	 { (char *)"RefinedGeometry_RefGeoms_get", _wrap_RefinedGeometry_RefGeoms_get, METH_VARARGS, NULL},
+	 { (char *)"RefinedGeometry_RefEdges_set", _wrap_RefinedGeometry_RefEdges_set, METH_VARARGS, NULL},
 	 { (char *)"RefinedGeometry_RefEdges_get", _wrap_RefinedGeometry_RefEdges_get, METH_VARARGS, NULL},
 	 { (char *)"RefinedGeometry_NumBdrEdges_set", _wrap_RefinedGeometry_NumBdrEdges_set, METH_VARARGS, NULL},
 	 { (char *)"RefinedGeometry_NumBdrEdges_get", _wrap_RefinedGeometry_NumBdrEdges_get, METH_VARARGS, NULL},
@@ -6257,6 +6319,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Geometry_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::Geometry::TETRAHEDRON)));
   SWIG_Python_SetConstant(d, "Geometry_CUBE",SWIG_From_int(static_cast< int >(mfem::Geometry::CUBE)));
   SWIG_Python_SetConstant(d, "Geometry_NumGeom",SWIG_From_int(static_cast< int >(mfem::Geometry::NumGeom)));
+  SWIG_Python_SetConstant(d, "Geometry_MaxDim",SWIG_From_int(static_cast< int >(mfem::Geometry::MaxDim)));
   PyDict_SetItemString(md,(char *)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_NumBdrArray",Swig_var_Geometry_NumBdrArray_get, Swig_var_Geometry_NumBdrArray_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_Name",Swig_var_Geometry_Name_get, Swig_var_Geometry_Name_set);

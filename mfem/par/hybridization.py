@@ -127,9 +127,6 @@ import bilininteg
 import fe_coll
 import lininteg
 import linearform
-import pfespace
-import pmesh
-import pncmesh
 import communication
 import sets
 class Hybridization(_object):

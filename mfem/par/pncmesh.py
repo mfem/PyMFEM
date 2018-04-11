@@ -134,10 +134,14 @@ import fe
 import fespace
 import fe_coll
 import lininteg
-import bilininteg
-import linearform
+import handle
+import hypre
+import pfespace
+import pmesh
 import communication
 import sets
+import bilininteg
+import linearform
 class ParNCMesh(ncmesh.NCMesh):
     __swig_setmethods__ = {}
     for _s in [ncmesh.NCMesh]:
@@ -173,6 +177,21 @@ class ParNCMesh(ncmesh.NCMesh):
     def Rebalance(self):
         return _pncmesh.ParNCMesh_Rebalance(self)
 
+    def GetNElements(self):
+        return _pncmesh.ParNCMesh_GetNElements(self)
+
+    def GetNGhostVertices(self):
+        return _pncmesh.ParNCMesh_GetNGhostVertices(self)
+
+    def GetNGhostEdges(self):
+        return _pncmesh.ParNCMesh_GetNGhostEdges(self)
+
+    def GetNGhostFaces(self):
+        return _pncmesh.ParNCMesh_GetNGhostFaces(self)
+
+    def GetNGhostElements(self):
+        return _pncmesh.ParNCMesh_GetNGhostElements(self)
+
     def GetSharedVertices(self):
         return _pncmesh.ParNCMesh_GetSharedVertices(self)
 
@@ -182,29 +201,38 @@ class ParNCMesh(ncmesh.NCMesh):
     def GetSharedFaces(self):
         return _pncmesh.ParNCMesh_GetSharedFaces(self)
 
-    def GetSharedList(self, type):
-        return _pncmesh.ParNCMesh_GetSharedList(self, type)
+    def GetSharedList(self, entity):
+        return _pncmesh.ParNCMesh_GetSharedList(self, entity)
 
     def GetFaceOrientation(self, index):
         return _pncmesh.ParNCMesh_GetFaceOrientation(self, index)
 
-    def GetOwner(self, type, index):
-        return _pncmesh.ParNCMesh_GetOwner(self, type, index)
+    def GetOwnerId(self, entity, index):
+        return _pncmesh.ParNCMesh_GetOwnerId(self, entity, index)
 
-    def GetGroup(self, type, index, size):
-        return _pncmesh.ParNCMesh_GetGroup(self, type, index, size)
+    def GetGroupId(self, entity, index):
+        return _pncmesh.ParNCMesh_GetGroupId(self, entity, index)
 
-    def RankInGroup(self, type, index, rank):
-        return _pncmesh.ParNCMesh_RankInGroup(self, type, index, rank)
+    def GetGroup(self, id):
+        return _pncmesh.ParNCMesh_GetGroup(self, id)
 
-    def IsGhost(self, type, index):
-        return _pncmesh.ParNCMesh_IsGhost(self, type, index)
+    def GroupContains(self, id, rank):
+        return _pncmesh.ParNCMesh_GroupContains(self, id, rank)
+
+    def AugmentMasterGroups(self):
+        return _pncmesh.ParNCMesh_AugmentMasterGroups(self)
+
+    def IsGhost(self, entity, index):
+        return _pncmesh.ParNCMesh_IsGhost(self, entity, index)
 
     def ElementRank(self, index):
         return _pncmesh.ParNCMesh_ElementRank(self, index)
 
     def GetFaceNeighbors(self, pmesh):
         return _pncmesh.ParNCMesh_GetFaceNeighbors(self, pmesh)
+
+    def GetMyRank(self):
+        return _pncmesh.ParNCMesh_GetMyRank(self)
 
     def SendRebalanceDofs(self, old_ndofs, old_element_dofs, old_global_offset, space):
         return _pncmesh.ParNCMesh_SendRebalanceDofs(self, old_ndofs, old_element_dofs, old_global_offset, space)
@@ -221,97 +249,28 @@ class ParNCMesh(ncmesh.NCMesh):
     def GetBoundaryClosure(self, bdr_attr_is_ess, bdr_vertices, bdr_edges):
         return _pncmesh.ParNCMesh_GetBoundaryClosure(self, bdr_attr_is_ess, bdr_vertices, bdr_edges)
 
+    def Trim(self):
+        return _pncmesh.ParNCMesh_Trim(self)
+
+    def MemoryUsage(self, with_base=True):
+        return _pncmesh.ParNCMesh_MemoryUsage(self, with_base)
+
+    def PrintMemoryDetail(self, with_base=True):
+        return _pncmesh.ParNCMesh_PrintMemoryDetail(self, with_base)
+
     def GetDebugMesh(self, debug_mesh):
         return _pncmesh.ParNCMesh_GetDebugMesh(self, debug_mesh)
 ParNCMesh_swigregister = _pncmesh.ParNCMesh_swigregister
 ParNCMesh_swigregister(ParNCMesh)
 
-class NeighborDofMessage(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, NeighborDofMessage, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, NeighborDofMessage, name)
-    __repr__ = _swig_repr
-
-    def AddDofs(self, type, id, dofs):
-        return _pncmesh.NeighborDofMessage_AddDofs(self, type, id, dofs)
-
-    def Init(self, pncmesh, fec, ndofs):
-        return _pncmesh.NeighborDofMessage_Init(self, pncmesh, fec, ndofs)
-
-    def GetDofs(self, type, id, dofs, ndofs):
-        return _pncmesh.NeighborDofMessage_GetDofs(self, type, id, dofs, ndofs)
-
-    def __init__(self):
-        this = _pncmesh.new_NeighborDofMessage()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _pncmesh.delete_NeighborDofMessage
-    __del__ = lambda self: None
-NeighborDofMessage_swigregister = _pncmesh.NeighborDofMessage_swigregister
-NeighborDofMessage_swigregister(NeighborDofMessage)
-
-class NeighborRowRequest(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, NeighborRowRequest, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, NeighborRowRequest, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["rows"] = _pncmesh.NeighborRowRequest_rows_set
-    __swig_getmethods__["rows"] = _pncmesh.NeighborRowRequest_rows_get
-    if _newclass:
-        rows = _swig_property(_pncmesh.NeighborRowRequest_rows_get, _pncmesh.NeighborRowRequest_rows_set)
-
-    def RequestRow(self, row):
-        return _pncmesh.NeighborRowRequest_RequestRow(self, row)
-
-    def RemoveRequest(self, row):
-        return _pncmesh.NeighborRowRequest_RemoveRequest(self, row)
-
-    def __init__(self):
-        this = _pncmesh.new_NeighborRowRequest()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _pncmesh.delete_NeighborRowRequest
-    __del__ = lambda self: None
-NeighborRowRequest_swigregister = _pncmesh.NeighborRowRequest_swigregister
-NeighborRowRequest_swigregister(NeighborRowRequest)
-
-class NeighborRowReply(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, NeighborRowReply, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, NeighborRowReply, name)
-    __repr__ = _swig_repr
-
-    def AddRow(self, row, cols, srow):
-        return _pncmesh.NeighborRowReply_AddRow(self, row, cols, srow)
-
-    def HaveRow(self, row):
-        return _pncmesh.NeighborRowReply_HaveRow(self, row)
-
-    def GetRow(self, row, cols, srow):
-        return _pncmesh.NeighborRowReply_GetRow(self, row, cols, srow)
-
-    def __init__(self):
-        this = _pncmesh.new_NeighborRowReply()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _pncmesh.delete_NeighborRowReply
-    __del__ = lambda self: None
-NeighborRowReply_swigregister = _pncmesh.NeighborRowReply_swigregister
-NeighborRowReply_swigregister(NeighborRowReply)
-
 
 def __lt__(a, b):
     return _pncmesh.__lt__(a, b)
 __lt__ = _pncmesh.__lt__
+
+def __eq__(a, b):
+    return _pncmesh.__eq__(a, b)
+__eq__ = _pncmesh.__eq__
 # This file is compatible with both classic and new-style classes.
 
 

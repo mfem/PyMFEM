@@ -1,4 +1,3 @@
-
 %module hypre
 %{
 #include <mpi.h>
@@ -12,22 +11,26 @@
 #include "pyoperator.hpp"
 #include "iostream_typemap.hpp"    
 %}
-%include  "config/_config.hpp" // include mfem MACRO
+%include  "config/config.hpp" // include mfem MACRO
 
-
+#ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
+#endif
 
 %init %{
 import_array();
 %}
-%include "../common/cpointers.i"
-%import "../common/ignore_common_functions.i"
 
-%import vector.i
-%import sparsemat.i
-%import fespace.i
-%import pfespace.i
+%include "exception.i"
+ //%include "../common/cpointers.i"
+ //%import "cpointers.i"
+%import "../common/ignore_common_functions.i"
+%import "vector.i"
+%import "sparsemat.i"
+ //%import "fespace.i"
+%import "pfespace.i"
+%import "../common/exception.i"
 
 %ignore DiscreteCurl;
 %ignore DiscreteGrad;
@@ -47,15 +50,15 @@ int sizeof_HYPRE_Int(){
 
 */
 %typemap(in) (double *_data,  HYPRE_Int *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
-  //PyArrayObject *tmp_arr1, *tmp_arr2;
-  tmp_arr1_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0));
-  tmp_arr2_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1));
+  //HypreParVec constructer requires outside object alive
+  //   We keep reference to such outside numpy array in ProxyClass
+  tmp_arr1_ = (PyArrayObject *)PyList_GetItem($input,0);
+  tmp_arr2_ = (PyArrayObject *)PyList_GetItem($input,1);
+  
   $1 = (double *) PyArray_DATA(tmp_arr1_);
   $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
 }
 %typemap(freearg) (double *_data,  HYPRE_Int *col){
-  //Py_XDECREF(tmp_arr1_$argnum); Dont do this.. HypreParVec constructer requires outside object alive
-  //Py_XDECREF(tmp_arr2_$argnum);  
 }
 %typemap(typecheck )(double *_data,  HYPRE_Int *col){
   /* check if list of 2 numpy array or not */
@@ -68,25 +71,19 @@ int sizeof_HYPRE_Int(){
      } else $1 = 0;       
   }
 }
+
  /*
     support numpy array input to 
     HypreParMatrix(MPI_Comm comm, int nrows, HYPRE_Int glob_nrows,
                   HYPRE_Int glob_ncols, int *I, HYPRE_Int *J,
                   double *data, HYPRE_Int *rows, HYPRE_Int *cols);
 
-<<<<<<< HEAD
-    allows to use numpy array to call this
-
-
-=======
-    allows to use numpy array to call this.
- 
     note that if cols and rows are the same (as a pointer),
     hypre_CSRMatrixReorder is called. It is not clear how to
     say "same as pointer" in Python. Here, if the list length
     is 4, cols is set to be rows. 
->>>>>>> 91196adf49cd1cdd2bfaa356a35e11a4a47d957d
  */
+
 %typemap(in) (int *I,
 	      HYPRE_Int *J,
               double *data,
@@ -162,15 +159,21 @@ typedef int HYPRE_Int;
 %}
 */
 
-
+%pythonprepend mfem::HypreParVector::HypreParVector %{
+import numpy as np
+self._linked_array = None          
+if isinstance(args[-1], list):
+    v = np.ascontiguousarray(args[-1][0])
+    col = np.ascontiguousarray(args[-1][1])
+    args = list(args[:-1])
+    args.append([v, col])
+%}  
 %pythonappend mfem::HypreParVector::HypreParVector %{
   if isinstance(args[-1], list):
      # in this case, ParVector does not own the object
      # in order to prevent python from freeing the input
      # array, object is kept in ParVector
-     # args[-1][0]  _data
-     # args[-1][0]  col
-     self._linked_array = args[-1][0]
+     self._linked_array = args[-1]
 %}
 
 %pythonappend mfem::HypreParMatrix::operator*= %{

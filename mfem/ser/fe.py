@@ -110,6 +110,88 @@ import densemat
 import operators
 import matrix
 import sparsemat
+class BasisType(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BasisType, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, BasisType, name)
+    __repr__ = _swig_repr
+    Invalid = _fe.BasisType_Invalid
+    GaussLegendre = _fe.BasisType_GaussLegendre
+    GaussLobatto = _fe.BasisType_GaussLobatto
+    Positive = _fe.BasisType_Positive
+    OpenUniform = _fe.BasisType_OpenUniform
+    ClosedUniform = _fe.BasisType_ClosedUniform
+    OpenHalfUniform = _fe.BasisType_OpenHalfUniform
+    NumBasisTypes = _fe.BasisType_NumBasisTypes
+    if _newclass:
+        Check = staticmethod(_fe.BasisType_Check)
+    else:
+        Check = _fe.BasisType_Check
+    if _newclass:
+        CheckNodal = staticmethod(_fe.BasisType_CheckNodal)
+    else:
+        CheckNodal = _fe.BasisType_CheckNodal
+    if _newclass:
+        GetQuadrature1D = staticmethod(_fe.BasisType_GetQuadrature1D)
+    else:
+        GetQuadrature1D = _fe.BasisType_GetQuadrature1D
+    if _newclass:
+        GetNodalBasis = staticmethod(_fe.BasisType_GetNodalBasis)
+    else:
+        GetNodalBasis = _fe.BasisType_GetNodalBasis
+    if _newclass:
+        Name = staticmethod(_fe.BasisType_Name)
+    else:
+        Name = _fe.BasisType_Name
+    if _newclass:
+        GetChar = staticmethod(_fe.BasisType_GetChar)
+    else:
+        GetChar = _fe.BasisType_GetChar
+    if _newclass:
+        GetType = staticmethod(_fe.BasisType_GetType)
+    else:
+        GetType = _fe.BasisType_GetType
+
+    def __init__(self):
+        this = _fe.new_BasisType()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe.delete_BasisType
+    __del__ = lambda self: None
+BasisType_swigregister = _fe.BasisType_swigregister
+BasisType_swigregister(BasisType)
+
+def BasisType_Check(b_type):
+    return _fe.BasisType_Check(b_type)
+BasisType_Check = _fe.BasisType_Check
+
+def BasisType_CheckNodal(b_type):
+    return _fe.BasisType_CheckNodal(b_type)
+BasisType_CheckNodal = _fe.BasisType_CheckNodal
+
+def BasisType_GetQuadrature1D(b_type):
+    return _fe.BasisType_GetQuadrature1D(b_type)
+BasisType_GetQuadrature1D = _fe.BasisType_GetQuadrature1D
+
+def BasisType_GetNodalBasis(qpt_type):
+    return _fe.BasisType_GetNodalBasis(qpt_type)
+BasisType_GetNodalBasis = _fe.BasisType_GetNodalBasis
+
+def BasisType_Name(b_type):
+    return _fe.BasisType_Name(b_type)
+BasisType_Name = _fe.BasisType_Name
+
+def BasisType_GetChar(b_type):
+    return _fe.BasisType_GetChar(b_type)
+BasisType_GetChar = _fe.BasisType_GetChar
+
+def BasisType_GetType(b_ident):
+    return _fe.BasisType_GetType(b_ident)
+BasisType_GetType = _fe.BasisType_GetType
+
 class FunctionSpace(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, FunctionSpace, name, value)
@@ -162,6 +244,12 @@ class FiniteElement(_object):
 
     def GetOrder(self):
         return _fe.FiniteElement_GetOrder(self)
+
+    def HasAnisotropicOrders(self):
+        return _fe.FiniteElement_HasAnisotropicOrders(self)
+
+    def GetAnisotropicOrders(self):
+        return _fe.FiniteElement_GetAnisotropicOrders(self)
 
     def Space(self):
         return _fe.FiniteElement_Space(self)
@@ -223,6 +311,9 @@ class FiniteElement(_object):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.FiniteElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.FiniteElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.FiniteElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -243,6 +334,14 @@ class FiniteElement(_object):
     __swig_destroy__ = _fe.delete_FiniteElement
     __del__ = lambda self: None
     if _newclass:
+        IsClosedType = staticmethod(_fe.FiniteElement_IsClosedType)
+    else:
+        IsClosedType = _fe.FiniteElement_IsClosedType
+    if _newclass:
+        IsOpenType = staticmethod(_fe.FiniteElement_IsOpenType)
+    else:
+        IsOpenType = _fe.FiniteElement_IsOpenType
+    if _newclass:
         VerifyClosed = staticmethod(_fe.FiniteElement_VerifyClosed)
     else:
         VerifyClosed = _fe.FiniteElement_VerifyClosed
@@ -250,16 +349,32 @@ class FiniteElement(_object):
         VerifyOpen = staticmethod(_fe.FiniteElement_VerifyOpen)
     else:
         VerifyOpen = _fe.FiniteElement_VerifyOpen
+    if _newclass:
+        VerifyNodal = staticmethod(_fe.FiniteElement_VerifyNodal)
+    else:
+        VerifyNodal = _fe.FiniteElement_VerifyNodal
 FiniteElement_swigregister = _fe.FiniteElement_swigregister
 FiniteElement_swigregister(FiniteElement)
 
-def FiniteElement_VerifyClosed(pt_type):
-    return _fe.FiniteElement_VerifyClosed(pt_type)
+def FiniteElement_IsClosedType(b_type):
+    return _fe.FiniteElement_IsClosedType(b_type)
+FiniteElement_IsClosedType = _fe.FiniteElement_IsClosedType
+
+def FiniteElement_IsOpenType(b_type):
+    return _fe.FiniteElement_IsOpenType(b_type)
+FiniteElement_IsOpenType = _fe.FiniteElement_IsOpenType
+
+def FiniteElement_VerifyClosed(b_type):
+    return _fe.FiniteElement_VerifyClosed(b_type)
 FiniteElement_VerifyClosed = _fe.FiniteElement_VerifyClosed
 
-def FiniteElement_VerifyOpen(pt_type):
-    return _fe.FiniteElement_VerifyOpen(pt_type)
+def FiniteElement_VerifyOpen(b_type):
+    return _fe.FiniteElement_VerifyOpen(b_type)
 FiniteElement_VerifyOpen = _fe.FiniteElement_VerifyOpen
+
+def FiniteElement_VerifyNodal(b_type):
+    return _fe.FiniteElement_VerifyNodal(b_type)
+FiniteElement_VerifyNodal = _fe.FiniteElement_VerifyNodal
 
 class ScalarFiniteElement(FiniteElement):
     __swig_setmethods__ = {}
@@ -277,6 +392,12 @@ class ScalarFiniteElement(FiniteElement):
 
     def SetMapType(self, M):
         return _fe.ScalarFiniteElement_SetMapType(self, M)
+
+    def NodalLocalInterpolation(self, Trans, I, fine_fe):
+        return _fe.ScalarFiniteElement_NodalLocalInterpolation(self, Trans, I, fine_fe)
+
+    def ScalarLocalInterpolation(self, Trans, I, fine_fe):
+        return _fe.ScalarFiniteElement_ScalarLocalInterpolation(self, Trans, I, fine_fe)
     __swig_destroy__ = _fe.delete_ScalarFiniteElement
     __del__ = lambda self: None
 ScalarFiniteElement_swigregister = _fe.ScalarFiniteElement_swigregister
@@ -298,6 +419,9 @@ class NodalFiniteElement(ScalarFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.NodalFiniteElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.NodalFiniteElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.NodalFiniteElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -331,6 +455,9 @@ class PositiveFiniteElement(ScalarFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.PositiveFiniteElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.PositiveFiniteElement_GetTransferMatrix(self, fe, Trans, I)
 
     def Project(self, *args):
         return _fe.PositiveFiniteElement_Project(self, *args)
@@ -1893,6 +2020,10 @@ class Poly_1D(_object):
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Poly_1D, name)
     __repr__ = _swig_repr
+    ChangeOfBasis = _fe.Poly_1D_ChangeOfBasis
+    Barycentric = _fe.Poly_1D_Barycentric
+    Positive = _fe.Poly_1D_Positive
+    NumEvalTypes = _fe.Poly_1D_NumEvalTypes
 
     def __init__(self):
         this = _fe.new_Poly_1D()
@@ -1905,8 +2036,8 @@ class Poly_1D(_object):
     else:
         Binom = _fe.Poly_1D_Binom
 
-    def GetPoints(self, p, type):
-        return _fe.Poly_1D_GetPoints(self, p, type)
+    def GetPoints(self, p, btype):
+        return _fe.Poly_1D_GetPoints(self, p, btype)
 
     def OpenPoints(self, *args):
         return _fe.Poly_1D_OpenPoints(self, *args)
@@ -1914,14 +2045,8 @@ class Poly_1D(_object):
     def ClosedPoints(self, *args):
         return _fe.Poly_1D_ClosedPoints(self, *args)
 
-    def GetBasis(self, p, type):
-        return _fe.Poly_1D_GetBasis(self, p, type)
-
-    def OpenBasis(self, *args):
-        return _fe.Poly_1D_OpenBasis(self, *args)
-
-    def ClosedBasis(self, *args):
-        return _fe.Poly_1D_ClosedBasis(self, *args)
+    def GetBasis(self, p, btype):
+        return _fe.Poly_1D_GetBasis(self, p, btype)
     if _newclass:
         CalcBasis = staticmethod(_fe.Poly_1D_CalcBasis)
     else:
@@ -1979,13 +2104,94 @@ def Poly_1D_CalcBernstein(*args):
     return _fe.Poly_1D_CalcBernstein(*args)
 Poly_1D_CalcBernstein = _fe.Poly_1D_CalcBernstein
 
-class H1_SegmentElement(NodalFiniteElement):
+class TensorBasisElement(_object):
     __swig_setmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TensorBasisElement, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, TensorBasisElement, name)
+    __repr__ = _swig_repr
+    L2_DOF_MAP = _fe.TensorBasisElement_L2_DOF_MAP
+    H1_DOF_MAP = _fe.TensorBasisElement_H1_DOF_MAP
+
+    def __init__(self, dims, p, btype, dmtype):
+        this = _fe.new_TensorBasisElement(dims, p, btype, dmtype)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def GetBasisType(self):
+        return _fe.TensorBasisElement_GetBasisType(self)
+
+    def GetBasis1D(self):
+        return _fe.TensorBasisElement_GetBasis1D(self)
+
+    def GetDofMap(self):
+        return _fe.TensorBasisElement_GetDofMap(self)
+    if _newclass:
+        GetTensorProductGeometry = staticmethod(_fe.TensorBasisElement_GetTensorProductGeometry)
+    else:
+        GetTensorProductGeometry = _fe.TensorBasisElement_GetTensorProductGeometry
+    if _newclass:
+        Pow = staticmethod(_fe.TensorBasisElement_Pow)
+    else:
+        Pow = _fe.TensorBasisElement_Pow
+    __swig_destroy__ = _fe.delete_TensorBasisElement
+    __del__ = lambda self: None
+TensorBasisElement_swigregister = _fe.TensorBasisElement_swigregister
+TensorBasisElement_swigregister(TensorBasisElement)
+
+def TensorBasisElement_GetTensorProductGeometry(dim):
+    return _fe.TensorBasisElement_GetTensorProductGeometry(dim)
+TensorBasisElement_GetTensorProductGeometry = _fe.TensorBasisElement_GetTensorProductGeometry
+
+def TensorBasisElement_Pow(base, dim):
+    return _fe.TensorBasisElement_Pow(base, dim)
+TensorBasisElement_Pow = _fe.TensorBasisElement_Pow
+
+class NodalTensorFiniteElement(NodalFiniteElement, TensorBasisElement):
+    __swig_setmethods__ = {}
+    for _s in [NodalFiniteElement, TensorBasisElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, NodalTensorFiniteElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [NodalFiniteElement, TensorBasisElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, NodalTensorFiniteElement, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _fe.delete_NodalTensorFiniteElement
+    __del__ = lambda self: None
+NodalTensorFiniteElement_swigregister = _fe.NodalTensorFiniteElement_swigregister
+NodalTensorFiniteElement_swigregister(NodalTensorFiniteElement)
+
+class PositiveTensorFiniteElement(PositiveFiniteElement, TensorBasisElement):
+    __swig_setmethods__ = {}
+    for _s in [PositiveFiniteElement, TensorBasisElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PositiveTensorFiniteElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [PositiveFiniteElement, TensorBasisElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, PositiveTensorFiniteElement, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _fe.delete_PositiveTensorFiniteElement
+    __del__ = lambda self: None
+PositiveTensorFiniteElement_swigregister = _fe.PositiveTensorFiniteElement_swigregister
+PositiveTensorFiniteElement_swigregister(PositiveTensorFiniteElement)
+
+class H1_SegmentElement(NodalTensorFiniteElement):
+    __swig_setmethods__ = {}
+    for _s in [NodalTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, H1_SegmentElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, H1_SegmentElement, name)
     __repr__ = _swig_repr
@@ -2005,21 +2211,18 @@ class H1_SegmentElement(NodalFiniteElement):
 
     def ProjectDelta(self, vertex, dofs):
         return _fe.H1_SegmentElement_ProjectDelta(self, vertex, dofs)
-
-    def GetDofMap(self):
-        return _fe.H1_SegmentElement_GetDofMap(self)
     __swig_destroy__ = _fe.delete_H1_SegmentElement
     __del__ = lambda self: None
 H1_SegmentElement_swigregister = _fe.H1_SegmentElement_swigregister
 H1_SegmentElement_swigregister(H1_SegmentElement)
 
-class H1_QuadrilateralElement(NodalFiniteElement):
+class H1_QuadrilateralElement(NodalTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, H1_QuadrilateralElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, H1_QuadrilateralElement, name)
     __repr__ = _swig_repr
@@ -2039,21 +2242,18 @@ class H1_QuadrilateralElement(NodalFiniteElement):
 
     def ProjectDelta(self, vertex, dofs):
         return _fe.H1_QuadrilateralElement_ProjectDelta(self, vertex, dofs)
-
-    def GetDofMap(self):
-        return _fe.H1_QuadrilateralElement_GetDofMap(self)
     __swig_destroy__ = _fe.delete_H1_QuadrilateralElement
     __del__ = lambda self: None
 H1_QuadrilateralElement_swigregister = _fe.H1_QuadrilateralElement_swigregister
 H1_QuadrilateralElement_swigregister(H1_QuadrilateralElement)
 
-class H1_HexahedronElement(NodalFiniteElement):
+class H1_HexahedronElement(NodalTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, H1_HexahedronElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, H1_HexahedronElement, name)
     __repr__ = _swig_repr
@@ -2073,21 +2273,18 @@ class H1_HexahedronElement(NodalFiniteElement):
 
     def ProjectDelta(self, vertex, dofs):
         return _fe.H1_HexahedronElement_ProjectDelta(self, vertex, dofs)
-
-    def GetDofMap(self):
-        return _fe.H1_HexahedronElement_GetDofMap(self)
     __swig_destroy__ = _fe.delete_H1_HexahedronElement
     __del__ = lambda self: None
 H1_HexahedronElement_swigregister = _fe.H1_HexahedronElement_swigregister
 H1_HexahedronElement_swigregister(H1_HexahedronElement)
 
-class H1Pos_SegmentElement(PositiveFiniteElement):
+class H1Pos_SegmentElement(PositiveTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, H1Pos_SegmentElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, H1Pos_SegmentElement, name)
     __repr__ = _swig_repr
@@ -2107,21 +2304,18 @@ class H1Pos_SegmentElement(PositiveFiniteElement):
 
     def ProjectDelta(self, vertex, dofs):
         return _fe.H1Pos_SegmentElement_ProjectDelta(self, vertex, dofs)
-
-    def GetDofMap(self):
-        return _fe.H1Pos_SegmentElement_GetDofMap(self)
     __swig_destroy__ = _fe.delete_H1Pos_SegmentElement
     __del__ = lambda self: None
 H1Pos_SegmentElement_swigregister = _fe.H1Pos_SegmentElement_swigregister
 H1Pos_SegmentElement_swigregister(H1Pos_SegmentElement)
 
-class H1Pos_QuadrilateralElement(PositiveFiniteElement):
+class H1Pos_QuadrilateralElement(PositiveTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, H1Pos_QuadrilateralElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, H1Pos_QuadrilateralElement, name)
     __repr__ = _swig_repr
@@ -2141,21 +2335,18 @@ class H1Pos_QuadrilateralElement(PositiveFiniteElement):
 
     def ProjectDelta(self, vertex, dofs):
         return _fe.H1Pos_QuadrilateralElement_ProjectDelta(self, vertex, dofs)
-
-    def GetDofMap(self):
-        return _fe.H1Pos_QuadrilateralElement_GetDofMap(self)
     __swig_destroy__ = _fe.delete_H1Pos_QuadrilateralElement
     __del__ = lambda self: None
 H1Pos_QuadrilateralElement_swigregister = _fe.H1Pos_QuadrilateralElement_swigregister
 H1Pos_QuadrilateralElement_swigregister(H1Pos_QuadrilateralElement)
 
-class H1Pos_HexahedronElement(PositiveFiniteElement):
+class H1Pos_HexahedronElement(PositiveTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, H1Pos_HexahedronElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, H1Pos_HexahedronElement, name)
     __repr__ = _swig_repr
@@ -2175,9 +2366,6 @@ class H1Pos_HexahedronElement(PositiveFiniteElement):
 
     def ProjectDelta(self, vertex, dofs):
         return _fe.H1Pos_HexahedronElement_ProjectDelta(self, vertex, dofs)
-
-    def GetDofMap(self):
-        return _fe.H1Pos_HexahedronElement_GetDofMap(self)
     __swig_destroy__ = _fe.delete_H1Pos_HexahedronElement
     __del__ = lambda self: None
 H1Pos_HexahedronElement_swigregister = _fe.H1Pos_HexahedronElement_swigregister
@@ -2295,13 +2483,13 @@ class H1Pos_TetrahedronElement(PositiveFiniteElement):
 H1Pos_TetrahedronElement_swigregister = _fe.H1Pos_TetrahedronElement_swigregister
 H1Pos_TetrahedronElement_swigregister(H1Pos_TetrahedronElement)
 
-class L2_SegmentElement(NodalFiniteElement):
+class L2_SegmentElement(NodalTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, L2_SegmentElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, L2_SegmentElement, name)
     __repr__ = _swig_repr
@@ -2326,13 +2514,13 @@ class L2_SegmentElement(NodalFiniteElement):
 L2_SegmentElement_swigregister = _fe.L2_SegmentElement_swigregister
 L2_SegmentElement_swigregister(L2_SegmentElement)
 
-class L2Pos_SegmentElement(PositiveFiniteElement):
+class L2Pos_SegmentElement(PositiveTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, L2Pos_SegmentElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, L2Pos_SegmentElement, name)
     __repr__ = _swig_repr
@@ -2357,13 +2545,13 @@ class L2Pos_SegmentElement(PositiveFiniteElement):
 L2Pos_SegmentElement_swigregister = _fe.L2Pos_SegmentElement_swigregister
 L2Pos_SegmentElement_swigregister(L2Pos_SegmentElement)
 
-class L2_QuadrilateralElement(NodalFiniteElement):
+class L2_QuadrilateralElement(NodalTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, L2_QuadrilateralElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, L2_QuadrilateralElement, name)
     __repr__ = _swig_repr
@@ -2391,13 +2579,13 @@ class L2_QuadrilateralElement(NodalFiniteElement):
 L2_QuadrilateralElement_swigregister = _fe.L2_QuadrilateralElement_swigregister
 L2_QuadrilateralElement_swigregister(L2_QuadrilateralElement)
 
-class L2Pos_QuadrilateralElement(PositiveFiniteElement):
+class L2Pos_QuadrilateralElement(PositiveTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, L2Pos_QuadrilateralElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, L2Pos_QuadrilateralElement, name)
     __repr__ = _swig_repr
@@ -2422,13 +2610,13 @@ class L2Pos_QuadrilateralElement(PositiveFiniteElement):
 L2Pos_QuadrilateralElement_swigregister = _fe.L2Pos_QuadrilateralElement_swigregister
 L2Pos_QuadrilateralElement_swigregister(L2Pos_QuadrilateralElement)
 
-class L2_HexahedronElement(NodalFiniteElement):
+class L2_HexahedronElement(NodalTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, L2_HexahedronElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [NodalFiniteElement]:
+    for _s in [NodalTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, L2_HexahedronElement, name)
     __repr__ = _swig_repr
@@ -2453,13 +2641,13 @@ class L2_HexahedronElement(NodalFiniteElement):
 L2_HexahedronElement_swigregister = _fe.L2_HexahedronElement_swigregister
 L2_HexahedronElement_swigregister(L2_HexahedronElement)
 
-class L2Pos_HexahedronElement(PositiveFiniteElement):
+class L2Pos_HexahedronElement(PositiveTensorFiniteElement):
     __swig_setmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, L2Pos_HexahedronElement, name, value)
     __swig_getmethods__ = {}
-    for _s in [PositiveFiniteElement]:
+    for _s in [PositiveTensorFiniteElement]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, L2Pos_HexahedronElement, name)
     __repr__ = _swig_repr
@@ -2638,6 +2826,9 @@ class RT_QuadrilateralElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_QuadrilateralElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_QuadrilateralElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2681,6 +2872,9 @@ class RT_HexahedronElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_HexahedronElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_HexahedronElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_HexahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2720,6 +2914,9 @@ class RT_TriangleElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_TriangleElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_TriangleElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_TriangleElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -2764,6 +2961,9 @@ class RT_TetrahedronElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_TetrahedronElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_TetrahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2803,6 +3003,9 @@ class ND_HexahedronElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_HexahedronElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_HexahedronElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_HexahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -2847,6 +3050,9 @@ class ND_QuadrilateralElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_QuadrilateralElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_QuadrilateralElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2886,6 +3092,9 @@ class ND_TetrahedronElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_TetrahedronElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_TetrahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -2930,6 +3139,9 @@ class ND_TriangleElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_TriangleElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_TriangleElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_TriangleElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2969,6 +3181,9 @@ class ND_SegmentElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_SegmentElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_SegmentElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_SegmentElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -3020,6 +3235,9 @@ class NURBSFiniteElement(ScalarFiniteElement):
 
     def Weights(self):
         return _fe.NURBSFiniteElement_Weights(self)
+
+    def SetOrder(self):
+        return _fe.NURBSFiniteElement_SetOrder(self)
     __swig_destroy__ = _fe.delete_NURBSFiniteElement
     __del__ = lambda self: None
 NURBSFiniteElement_swigregister = _fe.NURBSFiniteElement_swigregister
@@ -3043,6 +3261,9 @@ class NURBS1DFiniteElement(NURBSFiniteElement):
         except __builtin__.Exception:
             self.this = this
 
+    def SetOrder(self):
+        return _fe.NURBS1DFiniteElement_SetOrder(self)
+
     def CalcShape(self, ip, shape):
         return _fe.NURBS1DFiniteElement_CalcShape(self, ip, shape)
 
@@ -3064,12 +3285,15 @@ class NURBS2DFiniteElement(NURBSFiniteElement):
     __getattr__ = lambda self, name: _swig_getattr(self, NURBS2DFiniteElement, name)
     __repr__ = _swig_repr
 
-    def __init__(self, p):
-        this = _fe.new_NURBS2DFiniteElement(p)
+    def __init__(self, *args):
+        this = _fe.new_NURBS2DFiniteElement(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def SetOrder(self):
+        return _fe.NURBS2DFiniteElement_SetOrder(self)
 
     def CalcShape(self, ip, shape):
         return _fe.NURBS2DFiniteElement_CalcShape(self, ip, shape)
@@ -3092,12 +3316,15 @@ class NURBS3DFiniteElement(NURBSFiniteElement):
     __getattr__ = lambda self, name: _swig_getattr(self, NURBS3DFiniteElement, name)
     __repr__ = _swig_repr
 
-    def __init__(self, p):
-        this = _fe.new_NURBS3DFiniteElement(p)
+    def __init__(self, *args):
+        this = _fe.new_NURBS3DFiniteElement(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def SetOrder(self):
+        return _fe.NURBS3DFiniteElement_SetOrder(self)
 
     def CalcShape(self, ip, shape):
         return _fe.NURBS3DFiniteElement_CalcShape(self, ip, shape)

@@ -160,6 +160,7 @@ class Operator(_object):
         return _operators.Operator_PrintMatlab(self, out, n, m)
     __swig_destroy__ = _operators.delete_Operator
     __del__ = lambda self: None
+    ANY_TYPE = _operators.Operator_ANY_TYPE
     MFEM_SPARSEMAT = _operators.Operator_MFEM_SPARSEMAT
     Hypre_ParCSR = _operators.Operator_Hypre_ParCSR
     PETSC_MATAIJ = _operators.Operator_PETSC_MATAIJ
@@ -168,6 +169,9 @@ class Operator(_object):
     PETSC_MATNEST = _operators.Operator_PETSC_MATNEST
     PETSC_MATHYPRE = _operators.Operator_PETSC_MATHYPRE
     PETSC_MATGENERIC = _operators.Operator_PETSC_MATGENERIC
+
+    def GetType(self):
+        return _operators.Operator_GetType(self)
     def __disown__(self):
         self.this.disown()
         _operators.disown_Operator(self)

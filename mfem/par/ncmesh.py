@@ -122,6 +122,10 @@ import fe
 import fespace
 import fe_coll
 import lininteg
+import handle
+import hypre
+import communication
+import sets
 import bilininteg
 import linearform
 class Refinement(_object):
@@ -229,6 +233,15 @@ class NCMesh(_object):
     def SpaceDimension(self):
         return _ncmesh.NCMesh_SpaceDimension(self)
 
+    def GetNVertices(self):
+        return _ncmesh.NCMesh_GetNVertices(self)
+
+    def GetNEdges(self):
+        return _ncmesh.NCMesh_GetNEdges(self)
+
+    def GetNFaces(self):
+        return _ncmesh.NCMesh_GetNFaces(self)
+
     def Refine(self, refinements):
         return _ncmesh.NCMesh_Refine(self, refinements)
 
@@ -250,6 +263,12 @@ class NCMesh(_object):
     def GetEdgeList(self):
         return _ncmesh.NCMesh_GetEdgeList(self)
 
+    def GetVertexList(self):
+        return _ncmesh.NCMesh_GetVertexList(self)
+
+    def GetNCList(self, entity):
+        return _ncmesh.NCMesh_GetNCList(self, entity)
+
     def MarkCoarseLevel(self):
         return _ncmesh.NCMesh_MarkCoarseLevel(self)
 
@@ -262,6 +281,15 @@ class NCMesh(_object):
     def ClearTransforms(self):
         return _ncmesh.NCMesh_ClearTransforms(self)
 
+    def GetEdgeVertices(self, edge_id, vert_index):
+        return _ncmesh.NCMesh_GetEdgeVertices(self, edge_id, vert_index)
+
+    def GetEdgeNCOrientation(self, edge_id):
+        return _ncmesh.NCMesh_GetEdgeNCOrientation(self, edge_id)
+
+    def GetFaceVerticesEdges(self, face_id, vert_index, edge_index, edge_orientation):
+        return _ncmesh.NCMesh_GetFaceVerticesEdges(self, face_id, vert_index, edge_index, edge_orientation)
+
     def GetEdgeMaster(self, v1, v2):
         return _ncmesh.NCMesh_GetEdgeMaster(self, v1, v2)
 
@@ -270,6 +298,9 @@ class NCMesh(_object):
 
     def GetElementGeometry(self):
         return _ncmesh.NCMesh_GetElementGeometry(self)
+
+    def GetFaceGeometry(self):
+        return _ncmesh.NCMesh_GetFaceGeometry(self)
 
     def GetElementDepth(self, i):
         return _ncmesh.NCMesh_GetElementDepth(self, i)
@@ -289,6 +320,9 @@ class NCMesh(_object):
     def SetVertexPositions(self, vertices):
         return _ncmesh.NCMesh_SetVertexPositions(self, vertices)
 
+    def Trim(self):
+        return _ncmesh.NCMesh_Trim(self)
+
     def MemoryUsage(self):
         return _ncmesh.NCMesh_MemoryUsage(self)
 
@@ -297,13 +331,8 @@ class NCMesh(_object):
 
     def PrintStats(self, *args):
         return _ncmesh.NCMesh_PrintStats(self, *args)
-    __swig_setmethods__["GI"] = _ncmesh.NCMesh_GI_set
-    __swig_getmethods__["GI"] = _ncmesh.NCMesh_GI_get
-    if _newclass:
-        GI = _swig_property(_ncmesh.NCMesh_GI_get, _ncmesh.NCMesh_GI_set)
 NCMesh_swigregister = _ncmesh.NCMesh_swigregister
 NCMesh_swigregister(NCMesh)
-cvar = _ncmesh.cvar
 
 # This file is compatible with both classic and new-style classes.
 

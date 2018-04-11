@@ -21,8 +21,10 @@ from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= [
-          "array", "common_functions", "socketstream", "handle", 
+modules= ["cpointers",
+          "error", "array", "common_functions",
+          "point", "segment", 
+          "socketstream", "handle", 
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table",
           "fe", "mesh", "fespace", 
@@ -31,8 +33,8 @@ modules= [
           "gridfunc", "hybridization", "bilinearform",
           "bilininteg", "intrules", "sparsemat", "densemat",
           "solvers", "estimators", "mesh_operators", "ode",
-          "sparsesmoothers",
-          "matrix", "operators", "ncmesh", "eltrans", "geom",
+          "sparsesmoothers", "ncmesh", 
+          "matrix", "operators", "eltrans", "geom",
           "nonlininteg", "nonlinearform", 
           "pmesh", "pncmesh", "communication",
           "pfespace", "pgridfunc",
@@ -53,7 +55,7 @@ proxy_names = {name: '_'+name for name in modules}
 #extra_link_args =  []
 #libraries0 = [] if metisliba != '' else [metislib]
 #libraries0.extend([hyprelib, boostlib])
-libraries    = ['boost_iostreams', 'HYPRE', 'mfem']
+libraries    = [libboostiostreams, 'HYPRE', 'mfem']
 
 include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
                 mpichinc, hypreinc, boostinc]
@@ -79,7 +81,7 @@ ext_modules.extend([Extension(proxy_names[name],
                for name in modules[1:]])
 
 setup (name = 'mfem_parallel',
-       version = '3.3.2',
+       version = '3.3.3',
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,

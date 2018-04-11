@@ -8,18 +8,19 @@
 %init %{
 import_array();
 %}
-
+%include "exception.i"
 %import "vector.i"
 %import "array.i"
 %import "operators.i"
+%import "../common/exception.i"
 
 %typemap(in) double &t (double temp){
-  temp3 = PyFloat_AsDouble($input);
-  $1 = &temp3;
+  temp = PyFloat_AsDouble($input);
+  $1 = &temp;
  }
 %typemap(in) double &dt (double dtemp){
-  dtemp4 = PyFloat_AsDouble($input);
-  $1 = &dtemp4;
+  dtemp = PyFloat_AsDouble($input);
+  $1 = &dtemp;
 }
 %typemap(argout) double &t {
   %append_output(PyFloat_FromDouble(*$1));

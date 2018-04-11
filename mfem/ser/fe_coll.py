@@ -188,76 +188,13 @@ import eltrans
 import fe
 import fespace
 import lininteg
+import handle
 import bilininteg
 import linearform
 import element
 import geom
 import table
 import vertex
-class BasisType(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, BasisType, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, BasisType, name)
-    __repr__ = _swig_repr
-    GaussLegendre = _fe_coll.BasisType_GaussLegendre
-    GaussLobatto = _fe_coll.BasisType_GaussLobatto
-    Positive = _fe_coll.BasisType_Positive
-    OpenUniform = _fe_coll.BasisType_OpenUniform
-    ClosedUniform = _fe_coll.BasisType_ClosedUniform
-    OpenHalfUniform = _fe_coll.BasisType_OpenHalfUniform
-    if _newclass:
-        Check = staticmethod(_fe_coll.BasisType_Check)
-    else:
-        Check = _fe_coll.BasisType_Check
-    if _newclass:
-        GetQuadrature1D = staticmethod(_fe_coll.BasisType_GetQuadrature1D)
-    else:
-        GetQuadrature1D = _fe_coll.BasisType_GetQuadrature1D
-    if _newclass:
-        Name = staticmethod(_fe_coll.BasisType_Name)
-    else:
-        Name = _fe_coll.BasisType_Name
-    if _newclass:
-        GetChar = staticmethod(_fe_coll.BasisType_GetChar)
-    else:
-        GetChar = _fe_coll.BasisType_GetChar
-    if _newclass:
-        GetType = staticmethod(_fe_coll.BasisType_GetType)
-    else:
-        GetType = _fe_coll.BasisType_GetType
-
-    def __init__(self):
-        this = _fe_coll.new_BasisType()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _fe_coll.delete_BasisType
-    __del__ = lambda self: None
-BasisType_swigregister = _fe_coll.BasisType_swigregister
-BasisType_swigregister(BasisType)
-
-def BasisType_Check(b_type):
-    return _fe_coll.BasisType_Check(b_type)
-BasisType_Check = _fe_coll.BasisType_Check
-
-def BasisType_GetQuadrature1D(b_type):
-    return _fe_coll.BasisType_GetQuadrature1D(b_type)
-BasisType_GetQuadrature1D = _fe_coll.BasisType_GetQuadrature1D
-
-def BasisType_Name(b_type):
-    return _fe_coll.BasisType_Name(b_type)
-BasisType_Name = _fe_coll.BasisType_Name
-
-def BasisType_GetChar(b_type):
-    return _fe_coll.BasisType_GetChar(b_type)
-BasisType_GetChar = _fe_coll.BasisType_GetChar
-
-def BasisType_GetType(b_ident):
-    return _fe_coll.BasisType_GetType(b_ident)
-BasisType_GetType = _fe_coll.BasisType_GetType
-
 class FiniteElementCollection(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, FiniteElementCollection, name, value)
@@ -581,22 +518,23 @@ class NURBSFECollection(FiniteElementCollection):
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, NURBSFECollection, name)
     __repr__ = _swig_repr
+    VariableOrder = _fe_coll.NURBSFECollection_VariableOrder
 
-    def __init__(self, Order):
-        this = _fe_coll.new_NURBSFECollection(Order)
+    def __init__(self, *args):
+        this = _fe_coll.new_NURBSFECollection(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
 
+    def Reset(self):
+        return _fe_coll.NURBSFECollection_Reset(self)
+
     def GetOrder(self):
         return _fe_coll.NURBSFECollection_GetOrder(self)
 
-    def UpdateOrder(self, Order):
-        return _fe_coll.NURBSFECollection_UpdateOrder(self, Order)
-
-    def Reset(self):
-        return _fe_coll.NURBSFECollection_Reset(self)
+    def SetOrder(self, Order):
+        return _fe_coll.NURBSFECollection_SetOrder(self, Order)
 
     def FiniteElementForGeometry(self, GeomType):
         return _fe_coll.NURBSFECollection_FiniteElementForGeometry(self, GeomType)

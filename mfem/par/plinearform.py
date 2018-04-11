@@ -135,13 +135,14 @@ import gridfunc
 import fespace
 import fe_coll
 import lininteg
-import bilininteg
+import handle
+import hypre
 import pfespace
 import pmesh
 import pncmesh
 import communication
 import sets
-import hypre
+import bilininteg
 import pgridfunc
 class ParLinearForm(linearform.LinearForm):
     __swig_setmethods__ = {}

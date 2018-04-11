@@ -23,8 +23,9 @@ mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 %init %{
 import_array();
 %}
-%include "../common/cpointers.i"
-
+//%include "../common/cpointers.i"
+//%import "cpointers.i"
+%include "exception.i"
 %import "matrix.i"
 %import "array.i"
 %import "ncmesh.i"
@@ -148,6 +149,7 @@ def GetBdrElementVertices(self, i):
 
 %feature("shadow") mfem::Mesh::GetBdrElementAdjacentElement %{
 def GetBdrElementAdjacentElement(self, bdr_el):
+    from mfem.par import intp
     el = intp()
     info = intp()  
     _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
@@ -224,6 +226,7 @@ def GetBoundingBox(self, ref = 2):
 %}
 %feature("shadow") mfem::Mesh::GetFaceElements %{
 def GetFaceElements(self, Face):
+    from mfem.par import intp  
     Elem1 = intp()
     Elem2 = intp()  
     val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)
@@ -236,6 +239,7 @@ def GetFaceElements(self, Face):
 
 %newobject mfem::Mesh::GetFaceToElementTable;
 %newobject mfem::Mesh::GetVertexToElementTable;
+
 %include "mesh/mesh.hpp"
 %mutable;
 
@@ -423,6 +427,9 @@ namespace mfem{
    }
   };   
 }
+
+
+
 
 
 

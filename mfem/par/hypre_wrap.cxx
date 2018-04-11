@@ -3001,6 +3001,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIG_contract_assert(expr, msg) if (!(expr)) { SWIG_Error(SWIG_RuntimeError, msg); SWIG_fail; } else 
 
 
+
+  #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
+
 /* -----------------------------------------------------------------------------
  * director_common.swg
  *
@@ -3448,70 +3451,68 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_HYPRE_ParVector swig_types[0]
-#define SWIGTYPE_p_HYPRE_PtrToParSolverFcn swig_types[1]
-#define SWIGTYPE_p_MPI_Comm swig_types[2]
-#define SWIGTYPE_p_Map swig_types[3]
-#define SWIGTYPE_p_char swig_types[4]
-#define SWIGTYPE_p_double swig_types[5]
-#define SWIGTYPE_p_doublep swig_types[6]
+#define SWIGTYPE_p_CommGroup swig_types[0]
+#define SWIGTYPE_p_GroupId swig_types[1]
+#define SWIGTYPE_p_HYPRE_ParVector swig_types[2]
+#define SWIGTYPE_p_HYPRE_PtrToParSolverFcn swig_types[3]
+#define SWIGTYPE_p_MPI_Comm swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_double swig_types[6]
 #define SWIGTYPE_p_hex_t swig_types[7]
 #define SWIGTYPE_p_hypre_ParCSRMatrix swig_types[8]
 #define SWIGTYPE_p_hypre_ParVector swig_types[9]
 #define SWIGTYPE_p_int swig_types[10]
-#define SWIGTYPE_p_intp swig_types[11]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[12]
-#define SWIGTYPE_p_mfem__Array2DT_mfem__HypreParMatrix_p_t swig_types[13]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[14]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[15]
-#define SWIGTYPE_p_mfem__ConformingProlongationOperator swig_types[16]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[17]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[18]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[19]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[20]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[21]
-#define SWIGTYPE_p_mfem__HypreAME swig_types[22]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[23]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[24]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[25]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[26]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[27]
-#define SWIGTYPE_p_mfem__HypreLOBPCG swig_types[28]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[29]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[30]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[31]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[32]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[33]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[34]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[35]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[36]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[37]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[38]
-#define SWIGTYPE_p_mfem__Matrix swig_types[39]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[40]
-#define SWIGTYPE_p_mfem__Operator swig_types[41]
-#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[42]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[43]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[44]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[45]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[46]
-#define SWIGTYPE_p_mfem__STable swig_types[47]
-#define SWIGTYPE_p_mfem__Solver swig_types[48]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[49]
-#define SWIGTYPE_p_mfem__Table swig_types[50]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[51]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[52]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[53]
-#define SWIGTYPE_p_mfem__Vector swig_types[54]
-#define SWIGTYPE_p_p_int swig_types[55]
-#define SWIGTYPE_p_p_intp swig_types[56]
-#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[57]
-#define SWIGTYPE_p_quad_t swig_types[58]
-#define SWIGTYPE_p_seg_t swig_types[59]
-#define SWIGTYPE_p_tet_t swig_types[60]
-#define SWIGTYPE_p_tri_t swig_types[61]
-static swig_type_info *swig_types[63];
-static swig_module_info swig_module = {swig_types, 62, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[11]
+#define SWIGTYPE_p_mfem__Array2DT_mfem__HypreParMatrix_p_t swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[13]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[14]
+#define SWIGTYPE_p_mfem__ConformingProlongationOperator swig_types[15]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[16]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[17]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[18]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[19]
+#define SWIGTYPE_p_mfem__HypreADS swig_types[20]
+#define SWIGTYPE_p_mfem__HypreAME swig_types[21]
+#define SWIGTYPE_p_mfem__HypreAMS swig_types[22]
+#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[23]
+#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[24]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[25]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[26]
+#define SWIGTYPE_p_mfem__HypreLOBPCG swig_types[27]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[28]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[29]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[30]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[31]
+#define SWIGTYPE_p_mfem__HypreSmoother swig_types[32]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[33]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[34]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[35]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[36]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[37]
+#define SWIGTYPE_p_mfem__Matrix swig_types[38]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[39]
+#define SWIGTYPE_p_mfem__Operator swig_types[40]
+#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[41]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[42]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[43]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[44]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[45]
+#define SWIGTYPE_p_mfem__STable swig_types[46]
+#define SWIGTYPE_p_mfem__Solver swig_types[47]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[48]
+#define SWIGTYPE_p_mfem__Table swig_types[49]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[50]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[51]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[52]
+#define SWIGTYPE_p_mfem__Vector swig_types[53]
+#define SWIGTYPE_p_p_int swig_types[54]
+#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[55]
+#define SWIGTYPE_p_quad_t swig_types[56]
+#define SWIGTYPE_p_seg_t swig_types[57]
+#define SWIGTYPE_p_tet_t swig_types[58]
+#define SWIGTYPE_p_tri_t swig_types[59]
+static swig_type_info *swig_types[61];
+static swig_module_info swig_module = {swig_types, 60, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3687,202 +3688,6 @@ SWIG_FromCharPtr(const char *cptr)
 #include "mpi4py/mpi4py.h"
 
 
-typedef int intp;
-
-SWIGINTERN intp *new_intp(){
-    return (new int());
-  }
-SWIGINTERN void delete_intp(intp *self){
-    if (self) delete self;
-  }
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
-
-SWIGINTERN int
-SWIG_AsVal_double (PyObject *obj, double *val)
-{
-  int res = SWIG_TypeError;
-  if (PyFloat_Check(obj)) {
-    if (val) *val = PyFloat_AsDouble(obj);
-    return SWIG_OK;
-#if PY_VERSION_HEX < 0x03000000
-  } else if (PyInt_Check(obj)) {
-    if (val) *val = (double) PyInt_AsLong(obj);
-    return SWIG_OK;
-#endif
-  } else if (PyLong_Check(obj)) {
-    double v = PyLong_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    double d = PyFloat_AsDouble(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = d;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      long v = PyLong_AsLong(obj);
-      if (!PyErr_Occurred()) {
-	if (val) *val = v;
-	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
-      } else {
-	PyErr_Clear();
-      }
-    }
-  }
-#endif
-  return res;
-}
-
-
-#include <float.h>
-
-
-#include <math.h>
-
-
-SWIGINTERNINLINE int
-SWIG_CanCastAsInteger(double *d, double min, double max) {
-  double x = *d;
-  if ((min <= x && x <= max)) {
-   double fx = floor(x);
-   double cx = ceil(x);
-   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
-   if ((errno == EDOM) || (errno == ERANGE)) {
-     errno = 0;
-   } else {
-     double summ, reps, diff;
-     if (rd < x) {
-       diff = x - rd;
-     } else if (rd > x) {
-       diff = rd - x;
-     } else {
-       return 1;
-     }
-     summ = rd + x;
-     reps = diff/summ;
-     if (reps < 8*DBL_EPSILON) {
-       *d = rd;
-       return 1;
-     }
-   }
-  }
-  return 0;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
-{
-#if PY_VERSION_HEX < 0x03000000
-  if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else
-#endif
-  if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-      return SWIG_OverflowError;
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    long v = PyInt_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      double d;
-      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
-	return res;
-      }
-    }
-  }
-#endif
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
-{
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
-}
-
-SWIGINTERN void intp_assign(intp *self,int value){
-    *self = value;
-  }
-SWIGINTERN int intp_value(intp *self){
-    return *self;
-  }
-SWIGINTERN int *intp_cast(intp *self){
-    return self;
-  }
-SWIGINTERN intp *intp_frompointer(int *t){
-    return (intp *) t;
-  }
-
-typedef double doublep;
-
-SWIGINTERN doublep *new_doublep(){
-    return (new double());
-  }
-SWIGINTERN void delete_doublep(doublep *self){
-    if (self) delete self;
-  }
-SWIGINTERN void doublep_assign(doublep *self,double value){
-    *self = value;
-  }
-SWIGINTERN double doublep_value(doublep *self){
-    return *self;
-  }
-
-  #define SWIG_From_double   PyFloat_FromDouble 
-
-SWIGINTERN double *doublep_cast(doublep *self){
-    return self;
-  }
-SWIGINTERN doublep *doublep_frompointer(double *t){
-    return (doublep *) t;
-  }
-
 int sizeof_HYPRE_Int(){
     return sizeof(HYPRE_Int);
 }
@@ -4048,6 +3853,134 @@ SWIGINTERN PyObject *mfem_HypreParVector_GetPartitioningArray(mfem::HypreParVect
 }
 
 SWIGINTERN int
+SWIG_AsVal_double (PyObject *obj, double *val)
+{
+  int res = SWIG_TypeError;
+  if (PyFloat_Check(obj)) {
+    if (val) *val = PyFloat_AsDouble(obj);
+    return SWIG_OK;
+#if PY_VERSION_HEX < 0x03000000
+  } else if (PyInt_Check(obj)) {
+    if (val) *val = (double) PyInt_AsLong(obj);
+    return SWIG_OK;
+#endif
+  } else if (PyLong_Check(obj)) {
+    double v = PyLong_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    double d = PyFloat_AsDouble(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = d;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      long v = PyLong_AsLong(obj);
+      if (!PyErr_Occurred()) {
+	if (val) *val = v;
+	return SWIG_AddCast(SWIG_AddCast(SWIG_OK));
+      } else {
+	PyErr_Clear();
+      }
+    }
+  }
+#endif
+  return res;
+}
+
+
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
 {
   int r;
@@ -4059,6 +3992,16 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   if (val) *val = r ? true : false;
   return SWIG_OK;
 }
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
 
 
 SWIGINTERN int
@@ -4414,6 +4357,22 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
 }
 
 SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
+SWIGINTERN int
 SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val) 
 {
 #if PY_VERSION_HEX < 0x03000000
@@ -4487,280 +4446,6 @@ SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_intp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  intp *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)":new_intp")) SWIG_fail;
-  result = (intp *)new_intp();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_intp, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_intp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  intp *arg1 = (intp *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_intp",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_intp" "', argument " "1"" of type '" "intp *""'"); 
-  }
-  arg1 = reinterpret_cast< intp * >(argp1);
-  delete_intp(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  intp *arg1 = (intp *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:intp_assign",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_assign" "', argument " "1"" of type '" "intp *""'"); 
-  }
-  arg1 = reinterpret_cast< intp * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intp_assign" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  intp_assign(arg1,arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intp_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  intp *arg1 = (intp *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:intp_value",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_value" "', argument " "1"" of type '" "intp *""'"); 
-  }
-  arg1 = reinterpret_cast< intp * >(argp1);
-  result = (int)intp_value(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intp_cast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  intp *arg1 = (intp *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:intp_cast",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_cast" "', argument " "1"" of type '" "intp *""'"); 
-  }
-  arg1 = reinterpret_cast< intp * >(argp1);
-  result = (int *)intp_cast(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_intp_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int *arg1 = (int *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  intp *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:intp_frompointer",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_frompointer" "', argument " "1"" of type '" "int *""'"); 
-  }
-  arg1 = reinterpret_cast< int * >(argp1);
-  result = (intp *)intp_frompointer(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_intp, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *intp_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_intp, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_new_doublep(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  doublep *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)":new_doublep")) SWIG_fail;
-  result = (doublep *)new_doublep();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_doublep, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_doublep(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  doublep *arg1 = (doublep *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_doublep",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_doublep" "', argument " "1"" of type '" "doublep *""'"); 
-  }
-  arg1 = reinterpret_cast< doublep * >(argp1);
-  delete_doublep(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  doublep *arg1 = (doublep *) 0 ;
-  double arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:doublep_assign",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_assign" "', argument " "1"" of type '" "doublep *""'"); 
-  }
-  arg1 = reinterpret_cast< doublep * >(argp1);
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doublep_assign" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  doublep_assign(arg1,arg2);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doublep_value(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  doublep *arg1 = (doublep *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  double result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:doublep_value",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_value" "', argument " "1"" of type '" "doublep *""'"); 
-  }
-  arg1 = reinterpret_cast< doublep * >(argp1);
-  result = (double)doublep_value(arg1);
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doublep_cast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  doublep *arg1 = (doublep *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  double *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:doublep_cast",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_cast" "', argument " "1"" of type '" "doublep *""'"); 
-  }
-  arg1 = reinterpret_cast< doublep * >(argp1);
-  result = (double *)doublep_cast(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_doublep_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  double *arg1 = (double *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  doublep *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:doublep_frompointer",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_frompointer" "', argument " "1"" of type '" "double *""'"); 
-  }
-  arg1 = reinterpret_cast< double * >(argp1);
-  result = (doublep *)doublep_frompointer(arg1);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_doublep, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *doublep_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_doublep, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
 SWIGINTERN PyObject *_wrap_sizeof_HYPRE_Int(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int result;
@@ -4859,9 +4544,11 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    //PyArrayObject *tmp_arr1, *tmp_arr2;
-    tmp_arr1_3 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,0));
-    tmp_arr2_3 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,1));
+    //HypreParVec constructer requires outside object alive
+    //   We keep reference to such outside numpy array in ProxyClass
+    tmp_arr1_3 = (PyArrayObject *)PyList_GetItem(obj2,0);
+    tmp_arr2_3 = (PyArrayObject *)PyList_GetItem(obj2,1);
+    
     arg3 = (double *) PyArray_DATA(tmp_arr1_3);
     arg4 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_3);
   }
@@ -4875,14 +4562,12 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   {
-    //Py_XDECREF(tmp_arr1_3); Dont do this.. HypreParVec constructer requires outside object alive
-    //Py_XDECREF(tmp_arr2_3);  
+    
   }
   return resultobj;
 fail:
   {
-    //Py_XDECREF(tmp_arr1_3); Dont do this.. HypreParVec constructer requires outside object alive
-    //Py_XDECREF(tmp_arr2_3);  
+    
   }
   return NULL;
 }
@@ -5416,7 +5101,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetData(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::HypreParVector * >(argp1);
   {
-    // int _size){
     int i, si;
     if (SWIG_ConvertPtr(obj1, (void **) &arg2, SWIGTYPE_p_double, 0|0) != -1){
       
@@ -5439,7 +5123,6 @@ SWIGINTERN PyObject *_wrap_HypreParVector_SetData(PyObject *SWIGUNUSEDPARM(self)
         } else if (PyFloat_Check(s)) {
           arg2[i] = (double)PyFloat_AsDouble(s);
         } else {
-          free(arg2);      
           PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
           return NULL;
         }
@@ -9359,6 +9042,68 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_BooleanMult(PyObject *SWIGUNUSEDPARM(s
   {
     try {
       (arg1)->BooleanMult(arg2,arg3,arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_BooleanMultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  int arg2 ;
+  int *arg3 = (int *) 0 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:HypreParMatrix_BooleanMultTranspose",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_BooleanMultTranspose" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "HypreParMatrix_BooleanMultTranspose" "', argument " "3"" of type '" "int *""'"); 
+  }
+  arg3 = reinterpret_cast< int * >(argp3);
+  {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
+  }
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "HypreParMatrix_BooleanMultTranspose" "', argument " "5"" of type '" "int *""'"); 
+  }
+  arg5 = reinterpret_cast< int * >(argp5);
+  {
+    try {
+      (arg1)->BooleanMultTranspose(arg2,arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -16354,20 +16099,6 @@ SWIGINTERN PyObject *HypreAME_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObj
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_intp", _wrap_new_intp, METH_VARARGS, NULL},
-	 { (char *)"delete_intp", _wrap_delete_intp, METH_VARARGS, NULL},
-	 { (char *)"intp_assign", _wrap_intp_assign, METH_VARARGS, NULL},
-	 { (char *)"intp_value", _wrap_intp_value, METH_VARARGS, NULL},
-	 { (char *)"intp_cast", _wrap_intp_cast, METH_VARARGS, NULL},
-	 { (char *)"intp_frompointer", _wrap_intp_frompointer, METH_VARARGS, NULL},
-	 { (char *)"intp_swigregister", intp_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_doublep", _wrap_new_doublep, METH_VARARGS, NULL},
-	 { (char *)"delete_doublep", _wrap_delete_doublep, METH_VARARGS, NULL},
-	 { (char *)"doublep_assign", _wrap_doublep_assign, METH_VARARGS, NULL},
-	 { (char *)"doublep_value", _wrap_doublep_value, METH_VARARGS, NULL},
-	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, NULL},
-	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, NULL},
-	 { (char *)"doublep_swigregister", doublep_swigregister, METH_VARARGS, NULL},
 	 { (char *)"sizeof_HYPRE_Int", _wrap_sizeof_HYPRE_Int, METH_VARARGS, NULL},
 	 { (char *)"new_HypreParVector", _wrap_new_HypreParVector, METH_VARARGS, NULL},
 	 { (char *)"HypreParVector_GetComm", _wrap_HypreParVector_GetComm, METH_VARARGS, NULL},
@@ -16412,6 +16143,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"HypreParMatrix_Mult", _wrap_HypreParMatrix_Mult, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_MultTranspose", _wrap_HypreParMatrix_MultTranspose, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_BooleanMult", _wrap_HypreParMatrix_BooleanMult, METH_VARARGS, NULL},
+	 { (char *)"HypreParMatrix_BooleanMultTranspose", _wrap_HypreParMatrix_BooleanMultTranspose, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix___iadd__", _wrap_HypreParMatrix___iadd__, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_Add", _wrap_HypreParMatrix_Add, METH_VARARGS, NULL},
 	 { (char *)"HypreParMatrix_LeftDiagMult", _wrap_HypreParMatrix_LeftDiagMult, METH_VARARGS, NULL},
@@ -16642,15 +16374,6 @@ static void *_p_mfem__ConformingProlongationOperatorTo_p_mfem__Operator(void *x,
 static void *_p_mfem__HypreSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::HypreSmoother *) x));
 }
-static void *_p_intpTo_p_int(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((int *)  ((intp *) x));
-}
-static void *_p_doublepTo_p_double(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((double *)  ((doublep *) x));
-}
-static void *_p_p_intpTo_p_p_int(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((int **)  ((intp **) x));
-}
 static void *_p_mfem__HypreSmootherTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *)  ((mfem::HypreSmoother *) x));
 }
@@ -16726,18 +16449,17 @@ static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUS
 static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
 }
+static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_HYPRE_ParVector = {"_p_HYPRE_ParVector", "HYPRE_ParVector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_HYPRE_PtrToParSolverFcn = {"_p_HYPRE_PtrToParSolverFcn", "HYPRE_PtrToParSolverFcn *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_Map = {"_p_Map", "Map *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hypre_ParCSRMatrix = {"_p_hypre_ParCSRMatrix", "hypre_ParCSRMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hypre_ParVector = {"_p_hypre_ParVector", "hypre_ParVector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Array2DT_mfem__HypreParMatrix_p_t = {"_p_mfem__Array2DT_mfem__HypreParMatrix_p_t", "mfem::Array2D< mfem::HypreParMatrix * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_double_t = {"_p_mfem__ArrayT_double_t", "mfem::Array< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
@@ -16782,7 +16504,6 @@ static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_int = {"_p_p_int", "int **|HYPRE_Int **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_intp = {"_p_p_intp", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__HypreParVector = {"_p_p_mfem__HypreParVector", "mfem::HypreParVector **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
@@ -16790,18 +16511,17 @@ static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_CommGroup,
+  &_swigt__p_GroupId,
   &_swigt__p_HYPRE_ParVector,
   &_swigt__p_HYPRE_PtrToParSolverFcn,
   &_swigt__p_MPI_Comm,
-  &_swigt__p_Map,
   &_swigt__p_char,
   &_swigt__p_double,
-  &_swigt__p_doublep,
   &_swigt__p_hex_t,
   &_swigt__p_hypre_ParCSRMatrix,
   &_swigt__p_hypre_ParVector,
   &_swigt__p_int,
-  &_swigt__p_intp,
   &_swigt__p_mfem__AbstractSparseMatrix,
   &_swigt__p_mfem__Array2DT_mfem__HypreParMatrix_p_t,
   &_swigt__p_mfem__ArrayT_double_t,
@@ -16846,7 +16566,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__TripleProductOperator,
   &_swigt__p_mfem__Vector,
   &_swigt__p_p_int,
-  &_swigt__p_p_intp,
   &_swigt__p_p_mfem__HypreParVector,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
@@ -16854,18 +16573,17 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_tri_t,
 };
 
+static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_HYPRE_ParVector[] = {  {&_swigt__p_HYPRE_ParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_HYPRE_PtrToParSolverFcn[] = {  {&_swigt__p_HYPRE_PtrToParSolverFcn, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_Map[] = {  {&_swigt__p_Map, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},  {&_swigt__p_doublep, _p_doublepTo_p_double, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hypre_ParCSRMatrix[] = {  {&_swigt__p_hypre_ParCSRMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hypre_ParVector[] = {  {&_swigt__p_hypre_ParVector, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_intp, _p_intpTo_p_int, 0, 0},  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Array2DT_mfem__HypreParMatrix_p_t[] = {  {&_swigt__p_mfem__Array2DT_mfem__HypreParMatrix_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_double_t[] = {  {&_swigt__p_mfem__ArrayT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -16909,8 +16627,7 @@ static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_intp[] = {{&_swigt__p_p_intp, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_int[] = {  {&_swigt__p_p_intp, _p_p_intpTo_p_p_int, 0, 0},  {&_swigt__p_p_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_int[] = {  {&_swigt__p_p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__HypreParVector[] = {  {&_swigt__p_p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -16918,18 +16635,17 @@ static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_CommGroup,
+  _swigc__p_GroupId,
   _swigc__p_HYPRE_ParVector,
   _swigc__p_HYPRE_PtrToParSolverFcn,
   _swigc__p_MPI_Comm,
-  _swigc__p_Map,
   _swigc__p_char,
   _swigc__p_double,
-  _swigc__p_doublep,
   _swigc__p_hex_t,
   _swigc__p_hypre_ParCSRMatrix,
   _swigc__p_hypre_ParVector,
   _swigc__p_int,
-  _swigc__p_intp,
   _swigc__p_mfem__AbstractSparseMatrix,
   _swigc__p_mfem__Array2DT_mfem__HypreParMatrix_p_t,
   _swigc__p_mfem__ArrayT_double_t,
@@ -16974,7 +16690,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__TripleProductOperator,
   _swigc__p_mfem__Vector,
   _swigc__p_p_int,
-  _swigc__p_p_intp,
   _swigc__p_p_mfem__HypreParVector,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
@@ -17670,15 +17385,15 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30302)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.3.2"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30302)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30303)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.3.3"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30303)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30302)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30302)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30302)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("3.3.2release"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30303)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30303)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30303)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("heads/graceexit-0-gc3cb4ba35f1ab95b2055752db6da7e1728ff7d0d"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
   

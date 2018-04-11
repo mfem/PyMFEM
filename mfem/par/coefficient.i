@@ -36,9 +36,9 @@
 %init %{
 import_array();
 %}
-
-%include  "config/_config.hpp" // need to read macro such as MFEM_USE_MPI
+%include  "config/config.hpp" // need to read macro such as MFEM_USE_MPI
 //%import "general/array.hpp"
+%include "exception.i"
 %import "array.i"
 %import "matrix.i"
 %import "intrules.i"
@@ -46,12 +46,14 @@ import_array();
 %import "densemat.i"
 %import "vector.i"
 %import "eltrans.i"
+%import "../common/exception_director.i"
 
 //%import "pmesh.i"
 %ignore Function;
 //%ignore DeltaCoefficient;
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
+%feature("notabstract") VectorDeltaCoefficient;
 
 namespace mfem { 
 %pythonprepend DeltaCoefficient::SetWeight %{

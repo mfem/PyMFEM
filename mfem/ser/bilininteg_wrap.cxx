@@ -3001,6 +3001,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIG_contract_assert(expr, msg) if (!(expr)) { SWIG_Error(SWIG_RuntimeError, msg); SWIG_fail; } else 
 
 
+
+  #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
+
 /* -----------------------------------------------------------------------------
  * director_common.swg
  *
@@ -3582,82 +3585,84 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[131]
 #define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[132]
 #define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[133]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[134]
-#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[135]
-#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[136]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[137]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[138]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[139]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[140]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[141]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[142]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[143]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[144]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[145]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[146]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[147]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[148]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[149]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[150]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[151]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[152]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[153]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[154]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[155]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[156]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[157]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[158]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[159]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[160]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[161]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[162]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[163]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[164]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[165]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[166]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[167]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[168]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[169]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[170]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[171]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[172]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[173]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[174]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[175]
-#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[176]
-#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[177]
-#define SWIGTYPE_p_mfem__SumIntegrator swig_types[178]
-#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[179]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[180]
-#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[181]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[182]
-#define SWIGTYPE_p_mfem__Vector swig_types[183]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[184]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[185]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[186]
-#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[187]
-#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[188]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[189]
-#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[190]
-#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[191]
-#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[192]
-#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[193]
-#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[194]
-#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[195]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[196]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[197]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[198]
-#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[199]
-#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[200]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[201]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[202]
-#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[203]
-#define SWIGTYPE_p_quad_t swig_types[204]
-#define SWIGTYPE_p_seg_t swig_types[205]
-#define SWIGTYPE_p_tet_t swig_types[206]
-#define SWIGTYPE_p_tri_t swig_types[207]
-static swig_type_info *swig_types[209];
-static swig_module_info swig_module = {swig_types, 208, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[134]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[135]
+#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[136]
+#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[137]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[138]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[139]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[140]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[141]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[142]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[143]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[144]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[145]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[146]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[147]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[148]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[149]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[150]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[151]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[152]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[153]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[154]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[155]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[156]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[157]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[158]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[159]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[160]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[161]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[162]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[163]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[164]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[165]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[166]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[167]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[168]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[169]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[170]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[171]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[172]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[173]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[174]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[175]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[176]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[177]
+#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[178]
+#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[179]
+#define SWIGTYPE_p_mfem__SumIntegrator swig_types[180]
+#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[181]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[182]
+#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[183]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[184]
+#define SWIGTYPE_p_mfem__Vector swig_types[185]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[186]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[187]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[188]
+#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[189]
+#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[190]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[191]
+#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[192]
+#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[193]
+#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[194]
+#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[195]
+#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[196]
+#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[197]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[198]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[199]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[200]
+#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[201]
+#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[202]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[203]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[204]
+#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[205]
+#define SWIGTYPE_p_quad_t swig_types[206]
+#define SWIGTYPE_p_seg_t swig_types[207]
+#define SWIGTYPE_p_tet_t swig_types[208]
+#define SWIGTYPE_p_tri_t swig_types[209]
+static swig_type_info *swig_types[211];
+static swig_module_info swig_module = {swig_types, 210, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4220,10 +4225,22 @@ SWIGINTERN PyObject *_wrap_new_BilinearFormIntegrator__SWIG_0(PyObject *SWIGUNUS
         SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
         SWIG_fail;
       }
+      
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4249,10 +4266,22 @@ SWIGINTERN PyObject *_wrap_new_BilinearFormIntegrator__SWIG_1(PyObject *SWIGUNUS
         SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
         SWIG_fail;
       }
+      
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -4362,11 +4391,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementMatrix(PyObject
           (arg1)->mfem::BilinearFormIntegrator::AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
         } else {
           (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -4450,11 +4490,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementMatrix2(PyObjec
           (arg1)->mfem::BilinearFormIntegrator::AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
         } else {
           (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -4538,11 +4589,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceMatrix__SWIG_0(PyO
           (arg1)->mfem::BilinearFormIntegrator::AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
         } else {
           (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -4638,11 +4700,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceMatrix__SWIG_1(PyO
           (arg1)->mfem::BilinearFormIntegrator::AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
         } else {
           (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -4806,11 +4879,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementVector(PyObject
           (arg1)->mfem::BilinearFormIntegrator::AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
         } else {
           (arg1)->AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -4894,11 +4978,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleElementGrad(PyObject *
           (arg1)->mfem::BilinearFormIntegrator::AssembleElementGrad((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
         } else {
           (arg1)->AssembleElementGrad((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -4994,11 +5089,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_AssembleFaceGrad(PyObject *SWI
           (arg1)->mfem::BilinearFormIntegrator::AssembleFaceGrad((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,(mfem::Vector const &)*arg5,*arg6);
         } else {
           (arg1)->AssembleFaceGrad((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,(mfem::Vector const &)*arg5,*arg6);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5102,11 +5208,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux__SWIG_0(PyO
           (arg1)->mfem::BilinearFormIntegrator::ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
         } else {
           (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5202,11 +5319,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux__SWIG_1(PyO
           (arg1)->mfem::BilinearFormIntegrator::ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6);
         } else {
           (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5383,11 +5511,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeFluxEnergy__SWIG_0(PyOb
           result = (double)(arg1)->mfem::BilinearFormIntegrator::ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5);
         } else {
           result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5460,11 +5599,22 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeFluxEnergy__SWIG_1(PyOb
           result = (double)(arg1)->mfem::BilinearFormIntegrator::ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
         } else {
           result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
-        } 
+        }
       }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+      catch (mfem::ErrorException &_e) {
+        std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+        s = s + s2;    
+        SWIG_exception(SWIG_RuntimeError, s.c_str());
+      }
+#endif
+      
+      catch (Swig::DirectorException &e){
+        SWIG_fail;
       }    
+      catch (...) {
+        SWIG_exception(SWIG_RuntimeError, "unknown exception");
+      }	 
     }
   } catch (Swig::DirectorException&) {
     SWIG_fail;
@@ -5564,11 +5714,22 @@ SWIGINTERN PyObject *_wrap_delete_BilinearFormIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5633,11 +5794,22 @@ SWIGINTERN PyObject *_wrap_new_TransposeIntegrator__SWIG_0(PyObject *SWIGUNUSEDP
   }
   {
     try {
-      result = (mfem::TransposeIntegrator *)new mfem::TransposeIntegrator(arg1,arg2); 
+      result = (mfem::TransposeIntegrator *)new mfem::TransposeIntegrator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TransposeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5662,11 +5834,22 @@ SWIGINTERN PyObject *_wrap_new_TransposeIntegrator__SWIG_1(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   {
     try {
-      result = (mfem::TransposeIntegrator *)new mfem::TransposeIntegrator(arg1); 
+      result = (mfem::TransposeIntegrator *)new mfem::TransposeIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TransposeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -5775,11 +5958,22 @@ SWIGINTERN PyObject *_wrap_TransposeIntegrator_AssembleElementMatrix(PyObject *S
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5851,11 +6045,22 @@ SWIGINTERN PyObject *_wrap_TransposeIntegrator_AssembleElementMatrix2(PyObject *
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5927,11 +6132,22 @@ SWIGINTERN PyObject *_wrap_TransposeIntegrator_AssembleFaceMatrix__SWIG_0_0(PyOb
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6015,11 +6231,22 @@ SWIGINTERN PyObject *_wrap_TransposeIntegrator_AssembleFaceMatrix__SWIG_0_1(PyOb
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6091,11 +6318,22 @@ SWIGINTERN PyObject *_wrap_TransposeIntegrator_AssembleFaceMatrix__SWIG_1(PyObje
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6227,11 +6465,22 @@ SWIGINTERN PyObject *_wrap_delete_TransposeIntegrator(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::TransposeIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6271,11 +6520,22 @@ SWIGINTERN PyObject *_wrap_new_LumpedIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   {
     try {
-      result = (mfem::LumpedIntegrator *)new mfem::LumpedIntegrator(arg1,arg2); 
+      result = (mfem::LumpedIntegrator *)new mfem::LumpedIntegrator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LumpedIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6300,11 +6560,22 @@ SWIGINTERN PyObject *_wrap_new_LumpedIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   {
     try {
-      result = (mfem::LumpedIntegrator *)new mfem::LumpedIntegrator(arg1); 
+      result = (mfem::LumpedIntegrator *)new mfem::LumpedIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LumpedIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6413,11 +6684,22 @@ SWIGINTERN PyObject *_wrap_LumpedIntegrator_AssembleElementMatrix(PyObject *SWIG
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6441,11 +6723,22 @@ SWIGINTERN PyObject *_wrap_delete_LumpedIntegrator(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::LumpedIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6485,11 +6778,22 @@ SWIGINTERN PyObject *_wrap_new_InverseIntegrator__SWIG_0(PyObject *SWIGUNUSEDPAR
   }
   {
     try {
-      result = (mfem::InverseIntegrator *)new mfem::InverseIntegrator(arg1,arg2); 
+      result = (mfem::InverseIntegrator *)new mfem::InverseIntegrator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__InverseIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6514,11 +6818,22 @@ SWIGINTERN PyObject *_wrap_new_InverseIntegrator__SWIG_1(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
   {
     try {
-      result = (mfem::InverseIntegrator *)new mfem::InverseIntegrator(arg1); 
+      result = (mfem::InverseIntegrator *)new mfem::InverseIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__InverseIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6627,11 +6942,22 @@ SWIGINTERN PyObject *_wrap_InverseIntegrator_AssembleElementMatrix(PyObject *SWI
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6655,11 +6981,22 @@ SWIGINTERN PyObject *_wrap_delete_InverseIntegrator(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< mfem::InverseIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6690,11 +7027,22 @@ SWIGINTERN PyObject *_wrap_new_SumIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   {
     try {
-      result = (mfem::SumIntegrator *)new mfem::SumIntegrator(arg1); 
+      result = (mfem::SumIntegrator *)new mfem::SumIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SumIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6710,11 +7058,22 @@ SWIGINTERN PyObject *_wrap_new_SumIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   if (!PyArg_ParseTuple(args,(char *)":new_SumIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::SumIntegrator *)new mfem::SumIntegrator(); 
+      result = (mfem::SumIntegrator *)new mfem::SumIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SumIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -6785,11 +7144,22 @@ SWIGINTERN PyObject *_wrap_SumIntegrator_AddIntegrator(PyObject *SWIGUNUSEDPARM(
   arg2 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp2);
   {
     try {
-      (arg1)->AddIntegrator(arg2); 
+      (arg1)->AddIntegrator(arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6849,11 +7219,22 @@ SWIGINTERN PyObject *_wrap_SumIntegrator_AssembleElementMatrix(PyObject *SWIGUNU
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6877,11 +7258,22 @@ SWIGINTERN PyObject *_wrap_delete_SumIntegrator(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< mfem::SumIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -6960,11 +7352,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarIntegrator_AssembleElementMatrix2(PyObject
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7024,11 +7427,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarIntegrator_AssembleElementMatrix(PyObject 
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7052,11 +7466,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarIntegrator(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::MixedScalarIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7135,11 +7560,22 @@ SWIGINTERN PyObject *_wrap_MixedVectorIntegrator_AssembleElementMatrix2(PyObject
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7199,11 +7635,22 @@ SWIGINTERN PyObject *_wrap_MixedVectorIntegrator_AssembleElementMatrix(PyObject 
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7227,11 +7674,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorIntegrator(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::MixedVectorIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7310,11 +7768,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarVectorIntegrator_AssembleElementMatrix2(Py
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7338,11 +7807,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarVectorIntegrator(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::MixedScalarVectorIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7365,11 +7845,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarMassIntegrator__SWIG_0(PyObject *SWIGU
   if (!PyArg_ParseTuple(args,(char *)":new_MixedScalarMassIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedScalarMassIntegrator *)new mfem::MixedScalarMassIntegrator(); 
+      result = (mfem::MixedScalarMassIntegrator *)new mfem::MixedScalarMassIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7397,11 +7888,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarMassIntegrator__SWIG_1(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarMassIntegrator *)new mfem::MixedScalarMassIntegrator(*arg1); 
+      result = (mfem::MixedScalarMassIntegrator *)new mfem::MixedScalarMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7459,11 +7961,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarMassIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::MixedScalarMassIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7498,11 +8011,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorProductIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorProductIntegrator *)new mfem::MixedVectorProductIntegrator(*arg1); 
+      result = (mfem::MixedVectorProductIntegrator *)new mfem::MixedVectorProductIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorProductIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7526,11 +8050,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorProductIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MixedVectorProductIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7553,11 +8088,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarDerivativeIntegrator__SWIG_0(PyObject 
   if (!PyArg_ParseTuple(args,(char *)":new_MixedScalarDerivativeIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedScalarDerivativeIntegrator *)new mfem::MixedScalarDerivativeIntegrator(); 
+      result = (mfem::MixedScalarDerivativeIntegrator *)new mfem::MixedScalarDerivativeIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7585,11 +8131,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarDerivativeIntegrator__SWIG_1(PyObject 
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarDerivativeIntegrator *)new mfem::MixedScalarDerivativeIntegrator(*arg1); 
+      result = (mfem::MixedScalarDerivativeIntegrator *)new mfem::MixedScalarDerivativeIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7647,11 +8204,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarDerivativeIntegrator(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::MixedScalarDerivativeIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7674,11 +8242,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakDerivativeIntegrator__SWIG_0(PyObj
   if (!PyArg_ParseTuple(args,(char *)":new_MixedScalarWeakDerivativeIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedScalarWeakDerivativeIntegrator *)new mfem::MixedScalarWeakDerivativeIntegrator(); 
+      result = (mfem::MixedScalarWeakDerivativeIntegrator *)new mfem::MixedScalarWeakDerivativeIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7706,11 +8285,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakDerivativeIntegrator__SWIG_1(PyObj
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarWeakDerivativeIntegrator *)new mfem::MixedScalarWeakDerivativeIntegrator(*arg1); 
+      result = (mfem::MixedScalarWeakDerivativeIntegrator *)new mfem::MixedScalarWeakDerivativeIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7768,11 +8358,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarWeakDerivativeIntegrator(PyObject *
   arg1 = reinterpret_cast< mfem::MixedScalarWeakDerivativeIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7795,11 +8396,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarDivergenceIntegrator__SWIG_0(PyObject 
   if (!PyArg_ParseTuple(args,(char *)":new_MixedScalarDivergenceIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedScalarDivergenceIntegrator *)new mfem::MixedScalarDivergenceIntegrator(); 
+      result = (mfem::MixedScalarDivergenceIntegrator *)new mfem::MixedScalarDivergenceIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7827,11 +8439,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarDivergenceIntegrator__SWIG_1(PyObject 
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarDivergenceIntegrator *)new mfem::MixedScalarDivergenceIntegrator(*arg1); 
+      result = (mfem::MixedScalarDivergenceIntegrator *)new mfem::MixedScalarDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7889,11 +8512,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarDivergenceIntegrator(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::MixedScalarDivergenceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7928,11 +8562,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorDivergenceIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorDivergenceIntegrator *)new mfem::MixedVectorDivergenceIntegrator(*arg1); 
+      result = (mfem::MixedVectorDivergenceIntegrator *)new mfem::MixedVectorDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -7956,11 +8601,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorDivergenceIntegrator(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::MixedVectorDivergenceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -7983,11 +8639,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakGradientIntegrator__SWIG_0(PyObjec
   if (!PyArg_ParseTuple(args,(char *)":new_MixedScalarWeakGradientIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedScalarWeakGradientIntegrator *)new mfem::MixedScalarWeakGradientIntegrator(); 
+      result = (mfem::MixedScalarWeakGradientIntegrator *)new mfem::MixedScalarWeakGradientIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8015,11 +8682,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakGradientIntegrator__SWIG_1(PyObjec
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarWeakGradientIntegrator *)new mfem::MixedScalarWeakGradientIntegrator(*arg1); 
+      result = (mfem::MixedScalarWeakGradientIntegrator *)new mfem::MixedScalarWeakGradientIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8077,11 +8755,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarWeakGradientIntegrator(PyObject *SW
   arg1 = reinterpret_cast< mfem::MixedScalarWeakGradientIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8104,11 +8793,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarCurlIntegrator__SWIG_0(PyObject *SWIGU
   if (!PyArg_ParseTuple(args,(char *)":new_MixedScalarCurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedScalarCurlIntegrator *)new mfem::MixedScalarCurlIntegrator(); 
+      result = (mfem::MixedScalarCurlIntegrator *)new mfem::MixedScalarCurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8136,11 +8836,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarCurlIntegrator__SWIG_1(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarCurlIntegrator *)new mfem::MixedScalarCurlIntegrator(*arg1); 
+      result = (mfem::MixedScalarCurlIntegrator *)new mfem::MixedScalarCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8198,11 +8909,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarCurlIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::MixedScalarCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8225,11 +8947,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakCurlIntegrator__SWIG_0(PyObject *S
   if (!PyArg_ParseTuple(args,(char *)":new_MixedScalarWeakCurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedScalarWeakCurlIntegrator *)new mfem::MixedScalarWeakCurlIntegrator(); 
+      result = (mfem::MixedScalarWeakCurlIntegrator *)new mfem::MixedScalarWeakCurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8257,11 +8990,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakCurlIntegrator__SWIG_1(PyObject *S
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarWeakCurlIntegrator *)new mfem::MixedScalarWeakCurlIntegrator(*arg1); 
+      result = (mfem::MixedScalarWeakCurlIntegrator *)new mfem::MixedScalarWeakCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8319,11 +9063,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarWeakCurlIntegrator(PyObject *SWIGUN
   arg1 = reinterpret_cast< mfem::MixedScalarWeakCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8346,11 +9101,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorMassIntegrator__SWIG_0(PyObject *SWIGU
   if (!PyArg_ParseTuple(args,(char *)":new_MixedVectorMassIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator(); 
+      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8378,11 +9144,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorMassIntegrator__SWIG_1(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator(*arg1); 
+      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8410,11 +9187,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorMassIntegrator__SWIG_2(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator(*arg1); 
+      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8442,11 +9230,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorMassIntegrator__SWIG_3(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator(*arg1); 
+      result = (mfem::MixedVectorMassIntegrator *)new mfem::MixedVectorMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8524,11 +9323,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorMassIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::MixedVectorMassIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8563,11 +9373,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCrossProductIntegrator(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCrossProductIntegrator *)new mfem::MixedCrossProductIntegrator(*arg1); 
+      result = (mfem::MixedCrossProductIntegrator *)new mfem::MixedCrossProductIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCrossProductIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8591,11 +9412,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCrossProductIntegrator(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::MixedCrossProductIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8630,11 +9462,22 @@ SWIGINTERN PyObject *_wrap_new_MixedDotProductIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedDotProductIntegrator *)new mfem::MixedDotProductIntegrator(*arg1); 
+      result = (mfem::MixedDotProductIntegrator *)new mfem::MixedDotProductIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedDotProductIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8683,11 +9526,22 @@ SWIGINTERN PyObject *_wrap_MixedDotProductIntegrator_VerifyFiniteElementTypes(Py
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedDotProductIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedDotProductIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -8712,11 +9566,22 @@ SWIGINTERN PyObject *_wrap_MixedDotProductIntegrator_FiniteElementTypeFailureMes
   arg1 = reinterpret_cast< mfem::MixedDotProductIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedDotProductIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedDotProductIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -8740,11 +9605,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedDotProductIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::MixedDotProductIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8779,11 +9655,22 @@ SWIGINTERN PyObject *_wrap_new_MixedWeakGradDotIntegrator(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedWeakGradDotIntegrator *)new mfem::MixedWeakGradDotIntegrator(*arg1); 
+      result = (mfem::MixedWeakGradDotIntegrator *)new mfem::MixedWeakGradDotIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -8832,11 +9719,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakGradDotIntegrator_VerifyFiniteElementTypes(P
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedWeakGradDotIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedWeakGradDotIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -8861,11 +9759,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakGradDotIntegrator_FiniteElementTypeFailureMe
   arg1 = reinterpret_cast< mfem::MixedWeakGradDotIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedWeakGradDotIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedWeakGradDotIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -8925,11 +9834,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakGradDotIntegrator_CalcShape(PyObject *SWIGUN
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8953,11 +9873,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedWeakGradDotIntegrator(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< mfem::MixedWeakGradDotIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -8992,11 +9923,22 @@ SWIGINTERN PyObject *_wrap_new_MixedWeakDivCrossIntegrator(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedWeakDivCrossIntegrator *)new mfem::MixedWeakDivCrossIntegrator(*arg1); 
+      result = (mfem::MixedWeakDivCrossIntegrator *)new mfem::MixedWeakDivCrossIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9045,11 +9987,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakDivCrossIntegrator_VerifyFiniteElementTypes(
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedWeakDivCrossIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedWeakDivCrossIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -9074,11 +10027,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakDivCrossIntegrator_FiniteElementTypeFailureM
   arg1 = reinterpret_cast< mfem::MixedWeakDivCrossIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedWeakDivCrossIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedWeakDivCrossIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -9138,11 +10102,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakDivCrossIntegrator_CalcTestShape(PyObject *S
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9166,11 +10141,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedWeakDivCrossIntegrator(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::MixedWeakDivCrossIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9193,11 +10179,22 @@ SWIGINTERN PyObject *_wrap_new_MixedGradGradIntegrator__SWIG_0(PyObject *SWIGUNU
   if (!PyArg_ParseTuple(args,(char *)":new_MixedGradGradIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator(); 
+      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedGradGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9225,11 +10222,22 @@ SWIGINTERN PyObject *_wrap_new_MixedGradGradIntegrator__SWIG_1(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator(*arg1); 
+      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedGradGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9257,11 +10265,22 @@ SWIGINTERN PyObject *_wrap_new_MixedGradGradIntegrator__SWIG_2(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator(*arg1); 
+      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedGradGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9289,11 +10308,22 @@ SWIGINTERN PyObject *_wrap_new_MixedGradGradIntegrator__SWIG_3(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator(*arg1); 
+      result = (mfem::MixedGradGradIntegrator *)new mfem::MixedGradGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedGradGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9396,11 +10426,22 @@ SWIGINTERN PyObject *_wrap_MixedGradGradIntegrator_VerifyFiniteElementTypes(PyOb
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedGradGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedGradGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -9425,11 +10466,22 @@ SWIGINTERN PyObject *_wrap_MixedGradGradIntegrator_FiniteElementTypeFailureMessa
   arg1 = reinterpret_cast< mfem::MixedGradGradIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedGradGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedGradGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -9490,11 +10542,22 @@ SWIGINTERN PyObject *_wrap_MixedGradGradIntegrator_GetIntegrationOrder(PyObject 
   arg4 = reinterpret_cast< mfem::ElementTransformation * >(argp4);
   {
     try {
-      result = (int)(arg1)->GetIntegrationOrder((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4); 
+      result = (int)(arg1)->GetIntegrationOrder((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -9554,11 +10617,22 @@ SWIGINTERN PyObject *_wrap_MixedGradGradIntegrator_CalcTrialShape(PyObject *SWIG
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9618,11 +10692,22 @@ SWIGINTERN PyObject *_wrap_MixedGradGradIntegrator_CalcTestShape(PyObject *SWIGU
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9646,11 +10731,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedGradGradIntegrator(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::MixedGradGradIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9685,11 +10781,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCrossGradGradIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCrossGradGradIntegrator *)new mfem::MixedCrossGradGradIntegrator(*arg1); 
+      result = (mfem::MixedCrossGradGradIntegrator *)new mfem::MixedCrossGradGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCrossGradGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9738,11 +10845,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradGradIntegrator_VerifyFiniteElementTypes
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedCrossGradGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedCrossGradGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -9767,11 +10885,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradGradIntegrator_FiniteElementTypeFailure
   arg1 = reinterpret_cast< mfem::MixedCrossGradGradIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedCrossGradGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedCrossGradGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -9831,11 +10960,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradGradIntegrator_CalcTrialShape(PyObject 
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9895,11 +11035,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradGradIntegrator_CalcTestShape(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9923,11 +11074,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCrossGradGradIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MixedCrossGradGradIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -9950,11 +11112,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCurlCurlIntegrator__SWIG_0(PyObject *SWIGUNU
   if (!PyArg_ParseTuple(args,(char *)":new_MixedCurlCurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator(); 
+      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -9982,11 +11155,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCurlCurlIntegrator__SWIG_1(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator(*arg1); 
+      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10014,11 +11198,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCurlCurlIntegrator__SWIG_2(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator(*arg1); 
+      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10046,11 +11241,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCurlCurlIntegrator__SWIG_3(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator(*arg1); 
+      result = (mfem::MixedCurlCurlIntegrator *)new mfem::MixedCurlCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10153,11 +11359,22 @@ SWIGINTERN PyObject *_wrap_MixedCurlCurlIntegrator_VerifyFiniteElementTypes(PyOb
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedCurlCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedCurlCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -10182,11 +11399,22 @@ SWIGINTERN PyObject *_wrap_MixedCurlCurlIntegrator_FiniteElementTypeFailureMessa
   arg1 = reinterpret_cast< mfem::MixedCurlCurlIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedCurlCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedCurlCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10246,11 +11474,22 @@ SWIGINTERN PyObject *_wrap_MixedCurlCurlIntegrator_CalcTrialShape(PyObject *SWIG
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10310,11 +11549,22 @@ SWIGINTERN PyObject *_wrap_MixedCurlCurlIntegrator_CalcTestShape(PyObject *SWIGU
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10338,11 +11588,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCurlCurlIntegrator(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::MixedCurlCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10377,11 +11638,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCrossCurlCurlIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCrossCurlCurlIntegrator *)new mfem::MixedCrossCurlCurlIntegrator(*arg1); 
+      result = (mfem::MixedCrossCurlCurlIntegrator *)new mfem::MixedCrossCurlCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCrossCurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10430,11 +11702,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlCurlIntegrator_VerifyFiniteElementTypes
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedCrossCurlCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedCrossCurlCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -10459,11 +11742,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlCurlIntegrator_FiniteElementTypeFailure
   arg1 = reinterpret_cast< mfem::MixedCrossCurlCurlIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedCrossCurlCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedCrossCurlCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10523,11 +11817,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlCurlIntegrator_CalcTrialShape(PyObject 
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10587,11 +11892,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlCurlIntegrator_CalcTestShape(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10615,11 +11931,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCrossCurlCurlIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MixedCrossCurlCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10654,11 +11981,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCrossCurlGradIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCrossCurlGradIntegrator *)new mfem::MixedCrossCurlGradIntegrator(*arg1); 
+      result = (mfem::MixedCrossCurlGradIntegrator *)new mfem::MixedCrossCurlGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCrossCurlGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10707,11 +12045,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlGradIntegrator_VerifyFiniteElementTypes
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedCrossCurlGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedCrossCurlGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -10736,11 +12085,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlGradIntegrator_FiniteElementTypeFailure
   arg1 = reinterpret_cast< mfem::MixedCrossCurlGradIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedCrossCurlGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedCrossCurlGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -10800,11 +12160,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlGradIntegrator_CalcTrialShape(PyObject 
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10864,11 +12235,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlGradIntegrator_CalcTestShape(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10892,11 +12274,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCrossCurlGradIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MixedCrossCurlGradIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -10931,11 +12324,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCrossGradCurlIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCrossGradCurlIntegrator *)new mfem::MixedCrossGradCurlIntegrator(*arg1); 
+      result = (mfem::MixedCrossGradCurlIntegrator *)new mfem::MixedCrossGradCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCrossGradCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -10984,11 +12388,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradCurlIntegrator_VerifyFiniteElementTypes
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedCrossGradCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedCrossGradCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -11013,11 +12428,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradCurlIntegrator_FiniteElementTypeFailure
   arg1 = reinterpret_cast< mfem::MixedCrossGradCurlIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedCrossGradCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedCrossGradCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11077,11 +12503,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradCurlIntegrator_CalcTrialShape(PyObject 
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11141,11 +12578,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradCurlIntegrator_CalcTestShape(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11169,11 +12617,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCrossGradCurlIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MixedCrossGradCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11208,11 +12667,22 @@ SWIGINTERN PyObject *_wrap_new_MixedWeakCurlCrossIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedWeakCurlCrossIntegrator *)new mfem::MixedWeakCurlCrossIntegrator(*arg1); 
+      result = (mfem::MixedWeakCurlCrossIntegrator *)new mfem::MixedWeakCurlCrossIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11261,11 +12731,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakCurlCrossIntegrator_VerifyFiniteElementTypes
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedWeakCurlCrossIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedWeakCurlCrossIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -11290,11 +12771,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakCurlCrossIntegrator_FiniteElementTypeFailure
   arg1 = reinterpret_cast< mfem::MixedWeakCurlCrossIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedWeakCurlCrossIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedWeakCurlCrossIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11354,11 +12846,22 @@ SWIGINTERN PyObject *_wrap_MixedWeakCurlCrossIntegrator_CalcTestShape(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11382,11 +12885,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedWeakCurlCrossIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::MixedWeakCurlCrossIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11421,11 +12935,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakCurlCrossIntegrator(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarWeakCurlCrossIntegrator *)new mfem::MixedScalarWeakCurlCrossIntegrator(*arg1); 
+      result = (mfem::MixedScalarWeakCurlCrossIntegrator *)new mfem::MixedScalarWeakCurlCrossIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakCurlCrossIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11474,11 +12999,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakCurlCrossIntegrator_VerifyFiniteElemen
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedScalarWeakCurlCrossIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedScalarWeakCurlCrossIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -11503,11 +13039,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakCurlCrossIntegrator_FiniteElementTypeF
   arg1 = reinterpret_cast< mfem::MixedScalarWeakCurlCrossIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedScalarWeakCurlCrossIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedScalarWeakCurlCrossIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11567,11 +13114,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakCurlCrossIntegrator_CalcShape(PyObject
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11595,11 +13153,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarWeakCurlCrossIntegrator(PyObject *S
   arg1 = reinterpret_cast< mfem::MixedScalarWeakCurlCrossIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11634,11 +13203,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCrossGradIntegrator(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCrossGradIntegrator *)new mfem::MixedCrossGradIntegrator(*arg1); 
+      result = (mfem::MixedCrossGradIntegrator *)new mfem::MixedCrossGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCrossGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11687,11 +13267,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradIntegrator_VerifyFiniteElementTypes(PyO
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedCrossGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedCrossGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -11716,11 +13307,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradIntegrator_FiniteElementTypeFailureMess
   arg1 = reinterpret_cast< mfem::MixedCrossGradIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedCrossGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedCrossGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -11780,11 +13382,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradIntegrator_CalcTrialShape(PyObject *SWI
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11844,11 +13457,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossGradIntegrator_CalcTestShape(PyObject *SWIG
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTestShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11872,11 +13496,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCrossGradIntegrator(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::MixedCrossGradIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -11911,11 +13546,22 @@ SWIGINTERN PyObject *_wrap_new_MixedCrossCurlIntegrator(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedCrossCurlIntegrator *)new mfem::MixedCrossCurlIntegrator(*arg1); 
+      result = (mfem::MixedCrossCurlIntegrator *)new mfem::MixedCrossCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedCrossCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -11964,11 +13610,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlIntegrator_VerifyFiniteElementTypes(PyO
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedCrossCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedCrossCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -11993,11 +13650,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlIntegrator_FiniteElementTypeFailureMess
   arg1 = reinterpret_cast< mfem::MixedCrossCurlIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedCrossCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedCrossCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12057,11 +13725,22 @@ SWIGINTERN PyObject *_wrap_MixedCrossCurlIntegrator_CalcTrialShape(PyObject *SWI
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcTrialShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12085,11 +13764,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedCrossCurlIntegrator(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::MixedCrossCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12124,11 +13814,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarCrossCurlIntegrator(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarCrossCurlIntegrator *)new mfem::MixedScalarCrossCurlIntegrator(*arg1); 
+      result = (mfem::MixedScalarCrossCurlIntegrator *)new mfem::MixedScalarCrossCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarCrossCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12177,11 +13878,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossCurlIntegrator_VerifyFiniteElementTyp
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedScalarCrossCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedScalarCrossCurlIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -12206,11 +13918,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossCurlIntegrator_FiniteElementTypeFailu
   arg1 = reinterpret_cast< mfem::MixedScalarCrossCurlIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedScalarCrossCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedScalarCrossCurlIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12270,11 +13993,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossCurlIntegrator_CalcShape(PyObject *SW
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12298,11 +14032,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarCrossCurlIntegrator(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::MixedScalarCrossCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12337,11 +14082,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarCrossGradIntegrator(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarCrossGradIntegrator *)new mfem::MixedScalarCrossGradIntegrator(*arg1); 
+      result = (mfem::MixedScalarCrossGradIntegrator *)new mfem::MixedScalarCrossGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarCrossGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12390,11 +14146,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossGradIntegrator_VerifyFiniteElementTyp
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedScalarCrossGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedScalarCrossGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -12419,11 +14186,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossGradIntegrator_FiniteElementTypeFailu
   arg1 = reinterpret_cast< mfem::MixedScalarCrossGradIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedScalarCrossGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedScalarCrossGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12483,11 +14261,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossGradIntegrator_CalcVShape(PyObject *S
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12511,11 +14300,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarCrossGradIntegrator(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::MixedScalarCrossGradIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12550,11 +14350,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarCrossProductIntegrator(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarCrossProductIntegrator *)new mfem::MixedScalarCrossProductIntegrator(*arg1); 
+      result = (mfem::MixedScalarCrossProductIntegrator *)new mfem::MixedScalarCrossProductIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarCrossProductIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12603,11 +14414,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossProductIntegrator_VerifyFiniteElement
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedScalarCrossProductIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedScalarCrossProductIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -12632,11 +14454,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarCrossProductIntegrator_FiniteElementTypeFa
   arg1 = reinterpret_cast< mfem::MixedScalarCrossProductIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedScalarCrossProductIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedScalarCrossProductIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12660,11 +14493,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarCrossProductIntegrator(PyObject *SW
   arg1 = reinterpret_cast< mfem::MixedScalarCrossProductIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12699,11 +14543,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakCrossProductIntegrator(PyObject *S
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarWeakCrossProductIntegrator *)new mfem::MixedScalarWeakCrossProductIntegrator(*arg1); 
+      result = (mfem::MixedScalarWeakCrossProductIntegrator *)new mfem::MixedScalarWeakCrossProductIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakCrossProductIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12752,11 +14607,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakCrossProductIntegrator_VerifyFiniteEle
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedScalarWeakCrossProductIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedScalarWeakCrossProductIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -12781,11 +14647,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakCrossProductIntegrator_FiniteElementTy
   arg1 = reinterpret_cast< mfem::MixedScalarWeakCrossProductIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedScalarWeakCrossProductIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedScalarWeakCrossProductIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -12845,11 +14722,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakCrossProductIntegrator_CalcShape(PyObj
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12873,11 +14761,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarWeakCrossProductIntegrator(PyObject
   arg1 = reinterpret_cast< mfem::MixedScalarWeakCrossProductIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -12912,11 +14811,22 @@ SWIGINTERN PyObject *_wrap_new_MixedDirectionalDerivativeIntegrator(PyObject *SW
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedDirectionalDerivativeIntegrator *)new mfem::MixedDirectionalDerivativeIntegrator(*arg1); 
+      result = (mfem::MixedDirectionalDerivativeIntegrator *)new mfem::MixedDirectionalDerivativeIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedDirectionalDerivativeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -12965,11 +14875,22 @@ SWIGINTERN PyObject *_wrap_MixedDirectionalDerivativeIntegrator_VerifyFiniteElem
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedDirectionalDerivativeIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedDirectionalDerivativeIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -12994,11 +14915,22 @@ SWIGINTERN PyObject *_wrap_MixedDirectionalDerivativeIntegrator_FiniteElementTyp
   arg1 = reinterpret_cast< mfem::MixedDirectionalDerivativeIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedDirectionalDerivativeIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedDirectionalDerivativeIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13058,11 +14990,22 @@ SWIGINTERN PyObject *_wrap_MixedDirectionalDerivativeIntegrator_CalcVShape(PyObj
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13086,11 +15029,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedDirectionalDerivativeIntegrator(PyObject 
   arg1 = reinterpret_cast< mfem::MixedDirectionalDerivativeIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13125,11 +15079,22 @@ SWIGINTERN PyObject *_wrap_new_MixedGradDivIntegrator(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedGradDivIntegrator *)new mfem::MixedGradDivIntegrator(*arg1); 
+      result = (mfem::MixedGradDivIntegrator *)new mfem::MixedGradDivIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedGradDivIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13178,11 +15143,22 @@ SWIGINTERN PyObject *_wrap_MixedGradDivIntegrator_VerifyFiniteElementTypes(PyObj
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedGradDivIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedGradDivIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -13207,11 +15183,22 @@ SWIGINTERN PyObject *_wrap_MixedGradDivIntegrator_FiniteElementTypeFailureMessag
   arg1 = reinterpret_cast< mfem::MixedGradDivIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedGradDivIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedGradDivIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13271,11 +15258,22 @@ SWIGINTERN PyObject *_wrap_MixedGradDivIntegrator_CalcVShape(PyObject *SWIGUNUSE
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13335,11 +15333,22 @@ SWIGINTERN PyObject *_wrap_MixedGradDivIntegrator_CalcShape(PyObject *SWIGUNUSED
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13363,11 +15372,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedGradDivIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::MixedGradDivIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13402,11 +15422,22 @@ SWIGINTERN PyObject *_wrap_new_MixedDivGradIntegrator(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedDivGradIntegrator *)new mfem::MixedDivGradIntegrator(*arg1); 
+      result = (mfem::MixedDivGradIntegrator *)new mfem::MixedDivGradIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedDivGradIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13455,11 +15486,22 @@ SWIGINTERN PyObject *_wrap_MixedDivGradIntegrator_VerifyFiniteElementTypes(PyObj
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedDivGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedDivGradIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -13484,11 +15526,22 @@ SWIGINTERN PyObject *_wrap_MixedDivGradIntegrator_FiniteElementTypeFailureMessag
   arg1 = reinterpret_cast< mfem::MixedDivGradIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedDivGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedDivGradIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13548,11 +15601,22 @@ SWIGINTERN PyObject *_wrap_MixedDivGradIntegrator_CalcVShape(PyObject *SWIGUNUSE
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13612,11 +15676,22 @@ SWIGINTERN PyObject *_wrap_MixedDivGradIntegrator_CalcShape(PyObject *SWIGUNUSED
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13640,11 +15715,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedDivGradIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::MixedDivGradIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13679,11 +15765,22 @@ SWIGINTERN PyObject *_wrap_new_MixedScalarWeakDivergenceIntegrator(PyObject *SWI
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedScalarWeakDivergenceIntegrator *)new mfem::MixedScalarWeakDivergenceIntegrator(*arg1); 
+      result = (mfem::MixedScalarWeakDivergenceIntegrator *)new mfem::MixedScalarWeakDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedScalarWeakDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13732,11 +15829,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakDivergenceIntegrator_VerifyFiniteEleme
   arg3 = reinterpret_cast< mfem::FiniteElement * >(argp3);
   {
     try {
-      result = (bool)((mfem::MixedScalarWeakDivergenceIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3); 
+      result = (bool)((mfem::MixedScalarWeakDivergenceIntegrator const *)arg1)->VerifyFiniteElementTypes((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
@@ -13761,11 +15869,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakDivergenceIntegrator_FiniteElementType
   arg1 = reinterpret_cast< mfem::MixedScalarWeakDivergenceIntegrator * >(argp1);
   {
     try {
-      result = (char *)((mfem::MixedScalarWeakDivergenceIntegrator const *)arg1)->FiniteElementTypeFailureMessage(); 
+      result = (char *)((mfem::MixedScalarWeakDivergenceIntegrator const *)arg1)->FiniteElementTypeFailureMessage();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
@@ -13825,11 +15944,22 @@ SWIGINTERN PyObject *_wrap_MixedScalarWeakDivergenceIntegrator_CalcVShape(PyObje
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->CalcVShape((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13853,11 +15983,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedScalarWeakDivergenceIntegrator(PyObject *
   arg1 = reinterpret_cast< mfem::MixedScalarWeakDivergenceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -13880,11 +16021,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorGradientIntegrator__SWIG_0(PyObject *S
   if (!PyArg_ParseTuple(args,(char *)":new_MixedVectorGradientIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator(); 
+      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorGradientIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13912,11 +16064,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorGradientIntegrator__SWIG_1(PyObject *S
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator(*arg1); 
+      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorGradientIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13944,11 +16107,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorGradientIntegrator__SWIG_2(PyObject *S
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator(*arg1); 
+      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorGradientIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -13976,11 +16150,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorGradientIntegrator__SWIG_3(PyObject *S
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator(*arg1); 
+      result = (mfem::MixedVectorGradientIntegrator *)new mfem::MixedVectorGradientIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorGradientIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14058,11 +16243,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorGradientIntegrator(PyObject *SWIGUN
   arg1 = reinterpret_cast< mfem::MixedVectorGradientIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14085,11 +16281,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorCurlIntegrator__SWIG_0(PyObject *SWIGU
   if (!PyArg_ParseTuple(args,(char *)":new_MixedVectorCurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator(); 
+      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14117,11 +16324,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorCurlIntegrator__SWIG_1(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator(*arg1); 
+      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14149,11 +16367,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorCurlIntegrator__SWIG_2(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator(*arg1); 
+      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14181,11 +16410,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorCurlIntegrator__SWIG_3(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator(*arg1); 
+      result = (mfem::MixedVectorCurlIntegrator *)new mfem::MixedVectorCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14263,11 +16503,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorCurlIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::MixedVectorCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14290,11 +16541,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakCurlIntegrator__SWIG_0(PyObject *S
   if (!PyArg_ParseTuple(args,(char *)":new_MixedVectorWeakCurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator(); 
+      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14322,11 +16584,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakCurlIntegrator__SWIG_1(PyObject *S
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator(*arg1); 
+      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14354,11 +16627,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakCurlIntegrator__SWIG_2(PyObject *S
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator(*arg1); 
+      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14386,11 +16670,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakCurlIntegrator__SWIG_3(PyObject *S
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator(*arg1); 
+      result = (mfem::MixedVectorWeakCurlIntegrator *)new mfem::MixedVectorWeakCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14468,11 +16763,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorWeakCurlIntegrator(PyObject *SWIGUN
   arg1 = reinterpret_cast< mfem::MixedVectorWeakCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14495,11 +16801,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakDivergenceIntegrator__SWIG_0(PyObj
   if (!PyArg_ParseTuple(args,(char *)":new_MixedVectorWeakDivergenceIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator(); 
+      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14527,11 +16844,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakDivergenceIntegrator__SWIG_1(PyObj
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator(*arg1); 
+      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14559,11 +16887,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakDivergenceIntegrator__SWIG_2(PyObj
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator(*arg1); 
+      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14591,11 +16930,22 @@ SWIGINTERN PyObject *_wrap_new_MixedVectorWeakDivergenceIntegrator__SWIG_3(PyObj
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator(*arg1); 
+      result = (mfem::MixedVectorWeakDivergenceIntegrator *)new mfem::MixedVectorWeakDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14673,11 +17023,22 @@ SWIGINTERN PyObject *_wrap_delete_MixedVectorWeakDivergenceIntegrator(PyObject *
   arg1 = reinterpret_cast< mfem::MixedVectorWeakDivergenceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14700,11 +17061,22 @@ SWIGINTERN PyObject *_wrap_new_DiffusionIntegrator__SWIG_0(PyObject *SWIGUNUSEDP
   if (!PyArg_ParseTuple(args,(char *)":new_DiffusionIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::DiffusionIntegrator *)new mfem::DiffusionIntegrator(); 
+      result = (mfem::DiffusionIntegrator *)new mfem::DiffusionIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14732,11 +17104,22 @@ SWIGINTERN PyObject *_wrap_new_DiffusionIntegrator__SWIG_1(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::DiffusionIntegrator *)new mfem::DiffusionIntegrator(*arg1); 
+      result = (mfem::DiffusionIntegrator *)new mfem::DiffusionIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14764,11 +17147,22 @@ SWIGINTERN PyObject *_wrap_new_DiffusionIntegrator__SWIG_2(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::DiffusionIntegrator *)new mfem::DiffusionIntegrator(*arg1); 
+      result = (mfem::DiffusionIntegrator *)new mfem::DiffusionIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -14872,11 +17266,22 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_AssembleElementMatrix(PyObject *S
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -14948,11 +17353,22 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_AssembleElementMatrix2(PyObject *
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15024,11 +17440,22 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_AssembleElementVector(PyObject *S
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
   {
     try {
-      (arg1)->AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5); 
+      (arg1)->AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15120,11 +17547,22 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux__SWIG_0(PyObje
   }
   {
     try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7); 
+      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15208,11 +17646,22 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux__SWIG_1(PyObje
   arg6 = reinterpret_cast< mfem::Vector * >(argp6);
   {
     try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6); 
+      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15377,11 +17826,22 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeFluxEnergy__SWIG_0(PyObjec
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
   {
     try {
-      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5); 
+      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -15442,11 +17902,22 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeFluxEnergy__SWIG_1(PyObjec
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -15543,11 +18014,22 @@ SWIGINTERN PyObject *_wrap_delete_DiffusionIntegrator(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::DiffusionIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15579,11 +18061,22 @@ SWIGINTERN PyObject *_wrap_new_MassIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::IntegrationRule * >(argp1);
   {
     try {
-      result = (mfem::MassIntegrator *)new mfem::MassIntegrator((mfem::IntegrationRule const *)arg1); 
+      result = (mfem::MassIntegrator *)new mfem::MassIntegrator((mfem::IntegrationRule const *)arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15599,11 +18092,22 @@ SWIGINTERN PyObject *_wrap_new_MassIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   if (!PyArg_ParseTuple(args,(char *)":new_MassIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::MassIntegrator *)new mfem::MassIntegrator(); 
+      result = (mfem::MassIntegrator *)new mfem::MassIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15640,11 +18144,22 @@ SWIGINTERN PyObject *_wrap_new_MassIntegrator__SWIG_2(PyObject *SWIGUNUSEDPARM(s
   arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      result = (mfem::MassIntegrator *)new mfem::MassIntegrator(*arg1,(mfem::IntegrationRule const *)arg2); 
+      result = (mfem::MassIntegrator *)new mfem::MassIntegrator(*arg1,(mfem::IntegrationRule const *)arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15672,11 +18187,22 @@ SWIGINTERN PyObject *_wrap_new_MassIntegrator__SWIG_3(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::MassIntegrator *)new mfem::MassIntegrator(*arg1); 
+      result = (mfem::MassIntegrator *)new mfem::MassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -15795,11 +18321,22 @@ SWIGINTERN PyObject *_wrap_MassIntegrator_AssembleElementMatrix(PyObject *SWIGUN
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15871,11 +18408,22 @@ SWIGINTERN PyObject *_wrap_MassIntegrator_AssembleElementMatrix2(PyObject *SWIGU
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15899,11 +18447,22 @@ SWIGINTERN PyObject *_wrap_delete_MassIntegrator(PyObject *SWIGUNUSEDPARM(self),
   arg1 = reinterpret_cast< mfem::MassIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -15938,11 +18497,22 @@ SWIGINTERN PyObject *_wrap_new_BoundaryMassIntegrator(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::BoundaryMassIntegrator *)new mfem::BoundaryMassIntegrator(*arg1); 
+      result = (mfem::BoundaryMassIntegrator *)new mfem::BoundaryMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BoundaryMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16014,11 +18584,22 @@ SWIGINTERN PyObject *_wrap_BoundaryMassIntegrator_AssembleFaceMatrix__SWIG_0_0(P
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16102,11 +18683,22 @@ SWIGINTERN PyObject *_wrap_BoundaryMassIntegrator_AssembleFaceMatrix__SWIG_0_1(P
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16178,11 +18770,22 @@ SWIGINTERN PyObject *_wrap_BoundaryMassIntegrator_AssembleFaceMatrix__SWIG_1(PyO
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16314,11 +18917,22 @@ SWIGINTERN PyObject *_wrap_delete_BoundaryMassIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::BoundaryMassIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16362,11 +18976,22 @@ SWIGINTERN PyObject *_wrap_new_ConvectionIntegrator__SWIG_0(PyObject *SWIGUNUSED
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = (mfem::ConvectionIntegrator *)new mfem::ConvectionIntegrator(*arg1,arg2); 
+      result = (mfem::ConvectionIntegrator *)new mfem::ConvectionIntegrator(*arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ConvectionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16394,11 +19019,22 @@ SWIGINTERN PyObject *_wrap_new_ConvectionIntegrator__SWIG_1(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::ConvectionIntegrator *)new mfem::ConvectionIntegrator(*arg1); 
+      result = (mfem::ConvectionIntegrator *)new mfem::ConvectionIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ConvectionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16507,11 +19143,22 @@ SWIGINTERN PyObject *_wrap_ConvectionIntegrator_AssembleElementMatrix(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16535,11 +19182,22 @@ SWIGINTERN PyObject *_wrap_delete_ConvectionIntegrator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::ConvectionIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16583,11 +19241,22 @@ SWIGINTERN PyObject *_wrap_new_GroupConvectionIntegrator__SWIG_0(PyObject *SWIGU
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = (mfem::GroupConvectionIntegrator *)new mfem::GroupConvectionIntegrator(*arg1,arg2); 
+      result = (mfem::GroupConvectionIntegrator *)new mfem::GroupConvectionIntegrator(*arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GroupConvectionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16615,11 +19284,22 @@ SWIGINTERN PyObject *_wrap_new_GroupConvectionIntegrator__SWIG_1(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::GroupConvectionIntegrator *)new mfem::GroupConvectionIntegrator(*arg1); 
+      result = (mfem::GroupConvectionIntegrator *)new mfem::GroupConvectionIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GroupConvectionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16728,11 +19408,22 @@ SWIGINTERN PyObject *_wrap_GroupConvectionIntegrator_AssembleElementMatrix(PyObj
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16756,11 +19447,22 @@ SWIGINTERN PyObject *_wrap_delete_GroupConvectionIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::GroupConvectionIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -16783,11 +19485,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_0(PyObject *SWIGUNUSED
   if (!PyArg_ParseTuple(args,(char *)":new_VectorMassIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16823,11 +19536,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_1(PyObject *SWIGUNUSED
   }
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,arg2); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16855,11 +19579,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_2(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16896,11 +19631,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_3(PyObject *SWIGUNUSED
   arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,(mfem::IntegrationRule const *)arg2); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,(mfem::IntegrationRule const *)arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16936,11 +19682,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_4(PyObject *SWIGUNUSED
   }
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,arg2); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -16968,11 +19725,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_5(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17008,11 +19776,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_6(PyObject *SWIGUNUSED
   }
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,arg2); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17040,11 +19819,22 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator__SWIG_7(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1); 
+      result = (mfem::VectorMassIntegrator *)new mfem::VectorMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17230,11 +20020,22 @@ SWIGINTERN PyObject *_wrap_VectorMassIntegrator_AssembleElementMatrix(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17306,11 +20107,22 @@ SWIGINTERN PyObject *_wrap_VectorMassIntegrator_AssembleElementMatrix2(PyObject 
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17334,11 +20146,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorMassIntegrator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::VectorMassIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17361,11 +20184,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEDivergenceIntegrator__SWIG_0(PyObject *SW
   if (!PyArg_ParseTuple(args,(char *)":new_VectorFEDivergenceIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorFEDivergenceIntegrator *)new mfem::VectorFEDivergenceIntegrator(); 
+      result = (mfem::VectorFEDivergenceIntegrator *)new mfem::VectorFEDivergenceIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17393,11 +20227,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEDivergenceIntegrator__SWIG_1(PyObject *SW
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEDivergenceIntegrator *)new mfem::VectorFEDivergenceIntegrator(*arg1); 
+      result = (mfem::VectorFEDivergenceIntegrator *)new mfem::VectorFEDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17491,11 +20336,22 @@ SWIGINTERN PyObject *_wrap_VectorFEDivergenceIntegrator_AssembleElementMatrix(Py
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17567,11 +20423,22 @@ SWIGINTERN PyObject *_wrap_VectorFEDivergenceIntegrator_AssembleElementMatrix2(P
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17595,11 +20462,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorFEDivergenceIntegrator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::VectorFEDivergenceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17622,11 +20500,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEWeakDivergenceIntegrator__SWIG_0(PyObject
   if (!PyArg_ParseTuple(args,(char *)":new_VectorFEWeakDivergenceIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorFEWeakDivergenceIntegrator *)new mfem::VectorFEWeakDivergenceIntegrator(); 
+      result = (mfem::VectorFEWeakDivergenceIntegrator *)new mfem::VectorFEWeakDivergenceIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17654,11 +20543,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEWeakDivergenceIntegrator__SWIG_1(PyObject
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEWeakDivergenceIntegrator *)new mfem::VectorFEWeakDivergenceIntegrator(*arg1); 
+      result = (mfem::VectorFEWeakDivergenceIntegrator *)new mfem::VectorFEWeakDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17752,11 +20652,22 @@ SWIGINTERN PyObject *_wrap_VectorFEWeakDivergenceIntegrator_AssembleElementMatri
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17828,11 +20739,22 @@ SWIGINTERN PyObject *_wrap_VectorFEWeakDivergenceIntegrator_AssembleElementMatri
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17856,11 +20778,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorFEWeakDivergenceIntegrator(PyObject *SWI
   arg1 = reinterpret_cast< mfem::VectorFEWeakDivergenceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -17883,11 +20816,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFECurlIntegrator__SWIG_0(PyObject *SWIGUNUS
   if (!PyArg_ParseTuple(args,(char *)":new_VectorFECurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorFECurlIntegrator *)new mfem::VectorFECurlIntegrator(); 
+      result = (mfem::VectorFECurlIntegrator *)new mfem::VectorFECurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFECurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -17915,11 +20859,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFECurlIntegrator__SWIG_1(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFECurlIntegrator *)new mfem::VectorFECurlIntegrator(*arg1); 
+      result = (mfem::VectorFECurlIntegrator *)new mfem::VectorFECurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFECurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -18013,11 +20968,22 @@ SWIGINTERN PyObject *_wrap_VectorFECurlIntegrator_AssembleElementMatrix(PyObject
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18089,11 +21055,22 @@ SWIGINTERN PyObject *_wrap_VectorFECurlIntegrator_AssembleElementMatrix2(PyObjec
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18117,11 +21094,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorFECurlIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::VectorFECurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18164,11 +21152,22 @@ SWIGINTERN PyObject *_wrap_new_DerivativeIntegrator(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      result = (mfem::DerivativeIntegrator *)new mfem::DerivativeIntegrator(*arg1,arg2); 
+      result = (mfem::DerivativeIntegrator *)new mfem::DerivativeIntegrator(*arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DerivativeIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -18228,11 +21227,22 @@ SWIGINTERN PyObject *_wrap_DerivativeIntegrator_AssembleElementMatrix(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18304,11 +21314,22 @@ SWIGINTERN PyObject *_wrap_DerivativeIntegrator_AssembleElementMatrix2(PyObject 
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18332,11 +21353,22 @@ SWIGINTERN PyObject *_wrap_delete_DerivativeIntegrator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::DerivativeIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18359,11 +21391,22 @@ SWIGINTERN PyObject *_wrap_new_CurlCurlIntegrator__SWIG_0(PyObject *SWIGUNUSEDPA
   if (!PyArg_ParseTuple(args,(char *)":new_CurlCurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::CurlCurlIntegrator *)new mfem::CurlCurlIntegrator(); 
+      result = (mfem::CurlCurlIntegrator *)new mfem::CurlCurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -18391,11 +21434,22 @@ SWIGINTERN PyObject *_wrap_new_CurlCurlIntegrator__SWIG_1(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::CurlCurlIntegrator *)new mfem::CurlCurlIntegrator(*arg1); 
+      result = (mfem::CurlCurlIntegrator *)new mfem::CurlCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -18423,11 +21477,22 @@ SWIGINTERN PyObject *_wrap_new_CurlCurlIntegrator__SWIG_2(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::CurlCurlIntegrator *)new mfem::CurlCurlIntegrator(*arg1); 
+      result = (mfem::CurlCurlIntegrator *)new mfem::CurlCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -18531,11 +21596,22 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_AssembleElementMatrix(PyObject *SW
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18627,11 +21703,22 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeElementFlux(PyObject *SWIGU
   }
   {
     try {
-      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7); 
+      (arg1)->ComputeElementFlux((mfem::FiniteElement const &)*arg2,*arg3,*arg4,(mfem::FiniteElement const &)*arg5,*arg6,arg7);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18701,11 +21788,22 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeFluxEnergy__SWIG_0(PyObject
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
   {
     try {
-      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5); 
+      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4,arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -18766,11 +21864,22 @@ SWIGINTERN PyObject *_wrap_CurlCurlIntegrator_ComputeFluxEnergy__SWIG_1(PyObject
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      result = (double)(arg1)->ComputeFluxEnergy((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -18867,11 +21976,22 @@ SWIGINTERN PyObject *_wrap_delete_CurlCurlIntegrator(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< mfem::CurlCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -18894,11 +22014,22 @@ SWIGINTERN PyObject *_wrap_new_VectorCurlCurlIntegrator__SWIG_0(PyObject *SWIGUN
   if (!PyArg_ParseTuple(args,(char *)":new_VectorCurlCurlIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorCurlCurlIntegrator *)new mfem::VectorCurlCurlIntegrator(); 
+      result = (mfem::VectorCurlCurlIntegrator *)new mfem::VectorCurlCurlIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorCurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -18926,11 +22057,22 @@ SWIGINTERN PyObject *_wrap_new_VectorCurlCurlIntegrator__SWIG_1(PyObject *SWIGUN
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorCurlCurlIntegrator *)new mfem::VectorCurlCurlIntegrator(*arg1); 
+      result = (mfem::VectorCurlCurlIntegrator *)new mfem::VectorCurlCurlIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorCurlCurlIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19024,11 +22166,22 @@ SWIGINTERN PyObject *_wrap_VectorCurlCurlIntegrator_AssembleElementMatrix(PyObje
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19089,11 +22242,22 @@ SWIGINTERN PyObject *_wrap_VectorCurlCurlIntegrator_GetElementEnergy(PyObject *S
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      result = (double)(arg1)->GetElementEnergy((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4); 
+      result = (double)(arg1)->GetElementEnergy((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
@@ -19117,11 +22281,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorCurlCurlIntegrator(PyObject *SWIGUNUSEDP
   arg1 = reinterpret_cast< mfem::VectorCurlCurlIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19144,11 +22319,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_0(PyObject *SWIGUNUS
   if (!PyArg_ParseTuple(args,(char *)":new_VectorFEMassIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(); 
+      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19173,11 +22359,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_1(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(arg1); 
+      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19205,11 +22402,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_2(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(*arg1); 
+      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19234,11 +22442,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_3(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(arg1); 
+      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19266,11 +22485,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_4(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(*arg1); 
+      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19295,11 +22525,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_5(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(arg1); 
+      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19327,11 +22568,22 @@ SWIGINTERN PyObject *_wrap_new_VectorFEMassIntegrator__SWIG_6(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(*arg1); 
+      result = (mfem::VectorFEMassIntegrator *)new mfem::VectorFEMassIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFEMassIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19475,11 +22727,22 @@ SWIGINTERN PyObject *_wrap_VectorFEMassIntegrator_AssembleElementMatrix(PyObject
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19551,11 +22814,22 @@ SWIGINTERN PyObject *_wrap_VectorFEMassIntegrator_AssembleElementMatrix2(PyObjec
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19579,11 +22853,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorFEMassIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::VectorFEMassIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19606,11 +22891,22 @@ SWIGINTERN PyObject *_wrap_new_VectorDivergenceIntegrator__SWIG_0(PyObject *SWIG
   if (!PyArg_ParseTuple(args,(char *)":new_VectorDivergenceIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorDivergenceIntegrator *)new mfem::VectorDivergenceIntegrator(); 
+      result = (mfem::VectorDivergenceIntegrator *)new mfem::VectorDivergenceIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19635,11 +22931,22 @@ SWIGINTERN PyObject *_wrap_new_VectorDivergenceIntegrator__SWIG_1(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorDivergenceIntegrator *)new mfem::VectorDivergenceIntegrator(arg1); 
+      result = (mfem::VectorDivergenceIntegrator *)new mfem::VectorDivergenceIntegrator(arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19667,11 +22974,22 @@ SWIGINTERN PyObject *_wrap_new_VectorDivergenceIntegrator__SWIG_2(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorDivergenceIntegrator *)new mfem::VectorDivergenceIntegrator(*arg1); 
+      result = (mfem::VectorDivergenceIntegrator *)new mfem::VectorDivergenceIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorDivergenceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19787,11 +23105,22 @@ SWIGINTERN PyObject *_wrap_VectorDivergenceIntegrator_AssembleElementMatrix2(PyO
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19815,11 +23144,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorDivergenceIntegrator(PyObject *SWIGUNUSE
   arg1 = reinterpret_cast< mfem::VectorDivergenceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -19842,11 +23182,22 @@ SWIGINTERN PyObject *_wrap_new_DivDivIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM
   if (!PyArg_ParseTuple(args,(char *)":new_DivDivIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::DivDivIntegrator *)new mfem::DivDivIntegrator(); 
+      result = (mfem::DivDivIntegrator *)new mfem::DivDivIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DivDivIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19874,11 +23225,22 @@ SWIGINTERN PyObject *_wrap_new_DivDivIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::DivDivIntegrator *)new mfem::DivDivIntegrator(*arg1); 
+      result = (mfem::DivDivIntegrator *)new mfem::DivDivIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DivDivIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -19972,11 +23334,22 @@ SWIGINTERN PyObject *_wrap_DivDivIntegrator_AssembleElementMatrix(PyObject *SWIG
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20000,11 +23373,22 @@ SWIGINTERN PyObject *_wrap_delete_DivDivIntegrator(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::DivDivIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20027,11 +23411,22 @@ SWIGINTERN PyObject *_wrap_new_VectorDiffusionIntegrator__SWIG_0(PyObject *SWIGU
   if (!PyArg_ParseTuple(args,(char *)":new_VectorDiffusionIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::VectorDiffusionIntegrator *)new mfem::VectorDiffusionIntegrator(); 
+      result = (mfem::VectorDiffusionIntegrator *)new mfem::VectorDiffusionIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorDiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20059,11 +23454,22 @@ SWIGINTERN PyObject *_wrap_new_VectorDiffusionIntegrator__SWIG_1(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorDiffusionIntegrator *)new mfem::VectorDiffusionIntegrator(*arg1); 
+      result = (mfem::VectorDiffusionIntegrator *)new mfem::VectorDiffusionIntegrator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorDiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20157,11 +23563,22 @@ SWIGINTERN PyObject *_wrap_VectorDiffusionIntegrator_AssembleElementMatrix(PyObj
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20233,11 +23650,22 @@ SWIGINTERN PyObject *_wrap_VectorDiffusionIntegrator_AssembleElementVector(PyObj
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
   {
     try {
-      (arg1)->AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5); 
+      (arg1)->AssembleElementVector((mfem::FiniteElement const &)*arg2,*arg3,(mfem::Vector const &)*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20261,11 +23689,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorDiffusionIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::VectorDiffusionIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20312,11 +23751,22 @@ SWIGINTERN PyObject *_wrap_new_ElasticityIntegrator__SWIG_0(PyObject *SWIGUNUSED
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
   {
     try {
-      result = (mfem::ElasticityIntegrator *)new mfem::ElasticityIntegrator(*arg1,*arg2); 
+      result = (mfem::ElasticityIntegrator *)new mfem::ElasticityIntegrator(*arg1,*arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ElasticityIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20362,11 +23812,22 @@ SWIGINTERN PyObject *_wrap_new_ElasticityIntegrator__SWIG_1(PyObject *SWIGUNUSED
   arg3 = static_cast< double >(val3);
   {
     try {
-      result = (mfem::ElasticityIntegrator *)new mfem::ElasticityIntegrator(*arg1,arg2,arg3); 
+      result = (mfem::ElasticityIntegrator *)new mfem::ElasticityIntegrator(*arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ElasticityIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20489,11 +23950,22 @@ SWIGINTERN PyObject *_wrap_ElasticityIntegrator_AssembleElementMatrix(PyObject *
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   {
     try {
-      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4); 
+      (arg1)->AssembleElementMatrix((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20517,11 +23989,22 @@ SWIGINTERN PyObject *_wrap_delete_ElasticityIntegrator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::ElasticityIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20574,11 +24057,22 @@ SWIGINTERN PyObject *_wrap_new_DGTraceIntegrator__SWIG_0(PyObject *SWIGUNUSEDPAR
   arg3 = static_cast< double >(val3);
   {
     try {
-      result = (mfem::DGTraceIntegrator *)new mfem::DGTraceIntegrator(*arg1,arg2,arg3); 
+      result = (mfem::DGTraceIntegrator *)new mfem::DGTraceIntegrator(*arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DGTraceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20636,11 +24130,22 @@ SWIGINTERN PyObject *_wrap_new_DGTraceIntegrator__SWIG_1(PyObject *SWIGUNUSEDPAR
   arg4 = static_cast< double >(val4);
   {
     try {
-      result = (mfem::DGTraceIntegrator *)new mfem::DGTraceIntegrator(*arg1,*arg2,arg3,arg4); 
+      result = (mfem::DGTraceIntegrator *)new mfem::DGTraceIntegrator(*arg1,*arg2,arg3,arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DGTraceIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -20793,11 +24298,22 @@ SWIGINTERN PyObject *_wrap_DGTraceIntegrator_AssembleFaceMatrix__SWIG_0_0(PyObje
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20881,11 +24397,22 @@ SWIGINTERN PyObject *_wrap_DGTraceIntegrator_AssembleFaceMatrix__SWIG_0_1(PyObje
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -20957,11 +24484,22 @@ SWIGINTERN PyObject *_wrap_DGTraceIntegrator_AssembleFaceMatrix__SWIG_1(PyObject
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -21093,11 +24631,22 @@ SWIGINTERN PyObject *_wrap_delete_DGTraceIntegrator(PyObject *SWIGUNUSEDPARM(sel
   arg1 = reinterpret_cast< mfem::DGTraceIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -21138,11 +24687,22 @@ SWIGINTERN PyObject *_wrap_new_DGDiffusionIntegrator__SWIG_0(PyObject *SWIGUNUSE
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = (mfem::DGDiffusionIntegrator *)new mfem::DGDiffusionIntegrator(arg1,arg2); 
+      result = (mfem::DGDiffusionIntegrator *)new mfem::DGDiffusionIntegrator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DGDiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -21188,11 +24748,22 @@ SWIGINTERN PyObject *_wrap_new_DGDiffusionIntegrator__SWIG_1(PyObject *SWIGUNUSE
   arg3 = static_cast< double >(val3);
   {
     try {
-      result = (mfem::DGDiffusionIntegrator *)new mfem::DGDiffusionIntegrator(*arg1,arg2,arg3); 
+      result = (mfem::DGDiffusionIntegrator *)new mfem::DGDiffusionIntegrator(*arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DGDiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -21238,11 +24809,22 @@ SWIGINTERN PyObject *_wrap_new_DGDiffusionIntegrator__SWIG_2(PyObject *SWIGUNUSE
   arg3 = static_cast< double >(val3);
   {
     try {
-      result = (mfem::DGDiffusionIntegrator *)new mfem::DGDiffusionIntegrator(*arg1,arg2,arg3); 
+      result = (mfem::DGDiffusionIntegrator *)new mfem::DGDiffusionIntegrator(*arg1,arg2,arg3);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DGDiffusionIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -21413,11 +24995,22 @@ SWIGINTERN PyObject *_wrap_DGDiffusionIntegrator_AssembleFaceMatrix__SWIG_0_0(Py
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -21501,11 +25094,22 @@ SWIGINTERN PyObject *_wrap_DGDiffusionIntegrator_AssembleFaceMatrix__SWIG_0_1(Py
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -21577,11 +25181,22 @@ SWIGINTERN PyObject *_wrap_DGDiffusionIntegrator_AssembleFaceMatrix__SWIG_1(PyOb
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -21713,11 +25328,22 @@ SWIGINTERN PyObject *_wrap_delete_DGDiffusionIntegrator(PyObject *SWIGUNUSEDPARM
   arg1 = reinterpret_cast< mfem::DGDiffusionIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -21758,11 +25384,22 @@ SWIGINTERN PyObject *_wrap_new_DGElasticityIntegrator__SWIG_0(PyObject *SWIGUNUS
   arg2 = static_cast< double >(val2);
   {
     try {
-      result = (mfem::DGElasticityIntegrator *)new mfem::DGElasticityIntegrator(arg1,arg2); 
+      result = (mfem::DGElasticityIntegrator *)new mfem::DGElasticityIntegrator(arg1,arg2);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DGElasticityIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -21820,11 +25457,22 @@ SWIGINTERN PyObject *_wrap_new_DGElasticityIntegrator__SWIG_1(PyObject *SWIGUNUS
   arg4 = static_cast< double >(val4);
   {
     try {
-      result = (mfem::DGElasticityIntegrator *)new mfem::DGElasticityIntegrator(*arg1,*arg2,arg3,arg4); 
+      result = (mfem::DGElasticityIntegrator *)new mfem::DGElasticityIntegrator(*arg1,*arg2,arg3,arg4);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DGElasticityIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -21972,11 +25620,22 @@ SWIGINTERN PyObject *_wrap_DGElasticityIntegrator_AssembleFaceMatrix__SWIG_0_0(P
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22060,11 +25719,22 @@ SWIGINTERN PyObject *_wrap_DGElasticityIntegrator_AssembleFaceMatrix__SWIG_0_1(P
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22136,11 +25806,22 @@ SWIGINTERN PyObject *_wrap_DGElasticityIntegrator_AssembleFaceMatrix__SWIG_1(PyO
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22272,11 +25953,22 @@ SWIGINTERN PyObject *_wrap_delete_DGElasticityIntegrator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::DGElasticityIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22299,11 +25991,22 @@ SWIGINTERN PyObject *_wrap_new_TraceJumpIntegrator(PyObject *SWIGUNUSEDPARM(self
   if (!PyArg_ParseTuple(args,(char *)":new_TraceJumpIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::TraceJumpIntegrator *)new mfem::TraceJumpIntegrator(); 
+      result = (mfem::TraceJumpIntegrator *)new mfem::TraceJumpIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TraceJumpIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -22375,11 +26078,22 @@ SWIGINTERN PyObject *_wrap_TraceJumpIntegrator_AssembleFaceMatrix__SWIG_0_0(PyOb
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22463,11 +26177,22 @@ SWIGINTERN PyObject *_wrap_TraceJumpIntegrator_AssembleFaceMatrix__SWIG_0_1(PyOb
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22551,11 +26276,22 @@ SWIGINTERN PyObject *_wrap_TraceJumpIntegrator_AssembleFaceMatrix__SWIG_1(PyObje
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22691,11 +26427,22 @@ SWIGINTERN PyObject *_wrap_delete_TraceJumpIntegrator(PyObject *SWIGUNUSEDPARM(s
   arg1 = reinterpret_cast< mfem::TraceJumpIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22718,11 +26465,22 @@ SWIGINTERN PyObject *_wrap_new_NormalTraceJumpIntegrator(PyObject *SWIGUNUSEDPAR
   if (!PyArg_ParseTuple(args,(char *)":new_NormalTraceJumpIntegrator")) SWIG_fail;
   {
     try {
-      result = (mfem::NormalTraceJumpIntegrator *)new mfem::NormalTraceJumpIntegrator(); 
+      result = (mfem::NormalTraceJumpIntegrator *)new mfem::NormalTraceJumpIntegrator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NormalTraceJumpIntegrator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -22794,11 +26552,22 @@ SWIGINTERN PyObject *_wrap_NormalTraceJumpIntegrator_AssembleFaceMatrix__SWIG_0_
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22882,11 +26651,22 @@ SWIGINTERN PyObject *_wrap_NormalTraceJumpIntegrator_AssembleFaceMatrix__SWIG_0_
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -22970,11 +26750,22 @@ SWIGINTERN PyObject *_wrap_NormalTraceJumpIntegrator_AssembleFaceMatrix__SWIG_1(
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
   {
     try {
-      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6); 
+      (arg1)->AssembleFaceMatrix((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,(mfem::FiniteElement const &)*arg4,*arg5,*arg6);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23110,11 +26901,22 @@ SWIGINTERN PyObject *_wrap_delete_NormalTraceJumpIntegrator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::NormalTraceJumpIntegrator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23137,11 +26939,22 @@ SWIGINTERN PyObject *_wrap_new_DiscreteInterpolator(PyObject *SWIGUNUSEDPARM(sel
   if (!PyArg_ParseTuple(args,(char *)":new_DiscreteInterpolator")) SWIG_fail;
   {
     try {
-      result = (mfem::DiscreteInterpolator *)new mfem::DiscreteInterpolator(); 
+      result = (mfem::DiscreteInterpolator *)new mfem::DiscreteInterpolator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DiscreteInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -23165,11 +26978,22 @@ SWIGINTERN PyObject *_wrap_delete_DiscreteInterpolator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::DiscreteInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23248,11 +27072,22 @@ SWIGINTERN PyObject *_wrap_GradientInterpolator_AssembleElementMatrix2(PyObject 
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23268,11 +27103,22 @@ SWIGINTERN PyObject *_wrap_new_GradientInterpolator(PyObject *SWIGUNUSEDPARM(sel
   if (!PyArg_ParseTuple(args,(char *)":new_GradientInterpolator")) SWIG_fail;
   {
     try {
-      result = (mfem::GradientInterpolator *)new mfem::GradientInterpolator(); 
+      result = (mfem::GradientInterpolator *)new mfem::GradientInterpolator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GradientInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -23296,11 +27142,22 @@ SWIGINTERN PyObject *_wrap_delete_GradientInterpolator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::GradientInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23379,11 +27236,22 @@ SWIGINTERN PyObject *_wrap_IdentityInterpolator_AssembleElementMatrix2(PyObject 
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23399,11 +27267,22 @@ SWIGINTERN PyObject *_wrap_new_IdentityInterpolator(PyObject *SWIGUNUSEDPARM(sel
   if (!PyArg_ParseTuple(args,(char *)":new_IdentityInterpolator")) SWIG_fail;
   {
     try {
-      result = (mfem::IdentityInterpolator *)new mfem::IdentityInterpolator(); 
+      result = (mfem::IdentityInterpolator *)new mfem::IdentityInterpolator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__IdentityInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -23427,11 +27306,22 @@ SWIGINTERN PyObject *_wrap_delete_IdentityInterpolator(PyObject *SWIGUNUSEDPARM(
   arg1 = reinterpret_cast< mfem::IdentityInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23510,11 +27400,22 @@ SWIGINTERN PyObject *_wrap_CurlInterpolator_AssembleElementMatrix2(PyObject *SWI
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23530,11 +27431,22 @@ SWIGINTERN PyObject *_wrap_new_CurlInterpolator(PyObject *SWIGUNUSEDPARM(self), 
   if (!PyArg_ParseTuple(args,(char *)":new_CurlInterpolator")) SWIG_fail;
   {
     try {
-      result = (mfem::CurlInterpolator *)new mfem::CurlInterpolator(); 
+      result = (mfem::CurlInterpolator *)new mfem::CurlInterpolator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CurlInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -23558,11 +27470,22 @@ SWIGINTERN PyObject *_wrap_delete_CurlInterpolator(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::CurlInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23641,11 +27564,22 @@ SWIGINTERN PyObject *_wrap_DivergenceInterpolator_AssembleElementMatrix2(PyObjec
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23661,11 +27595,22 @@ SWIGINTERN PyObject *_wrap_new_DivergenceInterpolator(PyObject *SWIGUNUSEDPARM(s
   if (!PyArg_ParseTuple(args,(char *)":new_DivergenceInterpolator")) SWIG_fail;
   {
     try {
-      result = (mfem::DivergenceInterpolator *)new mfem::DivergenceInterpolator(); 
+      result = (mfem::DivergenceInterpolator *)new mfem::DivergenceInterpolator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DivergenceInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -23689,11 +27634,22 @@ SWIGINTERN PyObject *_wrap_delete_DivergenceInterpolator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::DivergenceInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23772,11 +27728,22 @@ SWIGINTERN PyObject *_wrap_NormalInterpolator_AssembleElementMatrix2(PyObject *S
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23792,11 +27759,22 @@ SWIGINTERN PyObject *_wrap_new_NormalInterpolator(PyObject *SWIGUNUSEDPARM(self)
   if (!PyArg_ParseTuple(args,(char *)":new_NormalInterpolator")) SWIG_fail;
   {
     try {
-      result = (mfem::NormalInterpolator *)new mfem::NormalInterpolator(); 
+      result = (mfem::NormalInterpolator *)new mfem::NormalInterpolator();
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NormalInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -23820,11 +27798,22 @@ SWIGINTERN PyObject *_wrap_delete_NormalInterpolator(PyObject *SWIGUNUSEDPARM(se
   arg1 = reinterpret_cast< mfem::NormalInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23859,11 +27848,22 @@ SWIGINTERN PyObject *_wrap_new_ScalarProductInterpolator(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::ScalarProductInterpolator *)new mfem::ScalarProductInterpolator(*arg1); 
+      result = (mfem::ScalarProductInterpolator *)new mfem::ScalarProductInterpolator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ScalarProductInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -23935,11 +27935,22 @@ SWIGINTERN PyObject *_wrap_ScalarProductInterpolator_AssembleElementMatrix2(PyOb
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -23963,11 +27974,22 @@ SWIGINTERN PyObject *_wrap_delete_ScalarProductInterpolator(PyObject *SWIGUNUSED
   arg1 = reinterpret_cast< mfem::ScalarProductInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24002,11 +28024,22 @@ SWIGINTERN PyObject *_wrap_new_ScalarVectorProductInterpolator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
   {
     try {
-      result = (mfem::ScalarVectorProductInterpolator *)new mfem::ScalarVectorProductInterpolator(*arg1); 
+      result = (mfem::ScalarVectorProductInterpolator *)new mfem::ScalarVectorProductInterpolator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ScalarVectorProductInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -24078,11 +28111,22 @@ SWIGINTERN PyObject *_wrap_ScalarVectorProductInterpolator_AssembleElementMatrix
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24106,11 +28150,22 @@ SWIGINTERN PyObject *_wrap_delete_ScalarVectorProductInterpolator(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::ScalarVectorProductInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24145,11 +28200,22 @@ SWIGINTERN PyObject *_wrap_new_VectorScalarProductInterpolator(PyObject *SWIGUNU
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorScalarProductInterpolator *)new mfem::VectorScalarProductInterpolator(*arg1); 
+      result = (mfem::VectorScalarProductInterpolator *)new mfem::VectorScalarProductInterpolator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorScalarProductInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -24221,11 +28287,22 @@ SWIGINTERN PyObject *_wrap_VectorScalarProductInterpolator_AssembleElementMatrix
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24249,11 +28326,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorScalarProductInterpolator(PyObject *SWIG
   arg1 = reinterpret_cast< mfem::VectorScalarProductInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24288,11 +28376,22 @@ SWIGINTERN PyObject *_wrap_new_VectorCrossProductInterpolator(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorCrossProductInterpolator *)new mfem::VectorCrossProductInterpolator(*arg1); 
+      result = (mfem::VectorCrossProductInterpolator *)new mfem::VectorCrossProductInterpolator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorCrossProductInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -24364,11 +28463,22 @@ SWIGINTERN PyObject *_wrap_VectorCrossProductInterpolator_AssembleElementMatrix2
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24392,11 +28502,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorCrossProductInterpolator(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::VectorCrossProductInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24431,11 +28552,22 @@ SWIGINTERN PyObject *_wrap_new_VectorInnerProductInterpolator(PyObject *SWIGUNUS
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
   {
     try {
-      result = (mfem::VectorInnerProductInterpolator *)new mfem::VectorInnerProductInterpolator(*arg1); 
+      result = (mfem::VectorInnerProductInterpolator *)new mfem::VectorInnerProductInterpolator(*arg1);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorInnerProductInterpolator, SWIG_POINTER_NEW |  0 );
   return resultobj;
@@ -24507,11 +28639,22 @@ SWIGINTERN PyObject *_wrap_VectorInnerProductInterpolator_AssembleElementMatrix2
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
   {
     try {
-      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5); 
+      (arg1)->AssembleElementMatrix2((mfem::FiniteElement const &)*arg2,(mfem::FiniteElement const &)*arg3,*arg4,*arg5);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -24535,11 +28678,22 @@ SWIGINTERN PyObject *_wrap_delete_VectorInnerProductInterpolator(PyObject *SWIGU
   arg1 = reinterpret_cast< mfem::VectorInnerProductInterpolator * >(argp1);
   {
     try {
-      delete arg1; 
+      delete arg1;
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
     }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
   }
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -25377,12 +29531,6 @@ static void *_p_mfem__VectorCrossProductInterpolatorTo_p_mfem__DiscreteInterpola
 static void *_p_mfem__VectorInnerProductInterpolatorTo_p_mfem__DiscreteInterpolator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::DiscreteInterpolator *)  ((mfem::VectorInnerProductInterpolator *) x));
 }
-static void *_p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TetrahedronElement *) x));
-}
-static void *_p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TetrahedronElement *) x));
-}
 static void *_p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TriangleElement *) x));
 }
@@ -25390,22 +29538,22 @@ static void *_p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement(void *x, int *S
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TriangleElement *) x));
 }
 static void *_p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
 }
 static void *_p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_HexahedronElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_HexahedronElement *) x));
 }
 static void *_p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_QuadrilateralElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_QuadrilateralElement *) x));
 }
 static void *_p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_QuadrilateralElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_QuadrilateralElement *) x));
 }
 static void *_p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_SegmentElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_SegmentElement *) x));
 }
 static void *_p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_SegmentElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_SegmentElement *) x));
 }
 static void *_p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_TetrahedronElement *) x));
@@ -25420,22 +29568,28 @@ static void *_p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement(void *x, int *S
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_TriangleElement *) x));
 }
 static void *_p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_HexahedronElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_HexahedronElement *) x));
 }
 static void *_p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_QuadrilateralElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_QuadrilateralElement *) x));
 }
 static void *_p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_SegmentElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_SegmentElement *) x));
 }
 static void *_p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_HexahedronElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::H1_HexahedronElement *) x));
 }
 static void *_p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_QuadrilateralElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::H1_QuadrilateralElement *) x));
 }
 static void *_p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_SegmentElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::H1_SegmentElement *) x));
+}
+static void *_p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::PositiveTensorFiniteElement *) x));
+}
+static void *_p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::NodalTensorFiniteElement *) x));
 }
 static void *_p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::RotTriLinearHexFiniteElement *) x));
@@ -25599,6 +29753,12 @@ static void *_p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement(void *x, 
 static void *_p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT1QuadFiniteElement *) x));
 }
+static void *_p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TetrahedronElement *) x));
+}
+static void *_p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TetrahedronElement *) x));
+}
 static void *_p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_QuadrilateralElement *) x));
 }
@@ -25684,15 +29844,13 @@ static swig_type_info _swigt__p_mfem__RT0HexFiniteElement = {"_p_mfem__RT0HexFin
 static swig_type_info _swigt__p_mfem__RT1HexFiniteElement = {"_p_mfem__RT1HexFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT0TetFiniteElement = {"_p_mfem__RT0TetFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RotTriLinearHexFiniteElement = {"_p_mfem__RotTriLinearHexFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__NodalTensorFiniteElement = {"_p_mfem__NodalTensorFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PositiveTensorFiniteElement = {"_p_mfem__PositiveTensorFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_SegmentElement = {"_p_mfem__H1_SegmentElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_QuadrilateralElement = {"_p_mfem__H1_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_HexahedronElement = {"_p_mfem__H1_HexahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_SegmentElement = {"_p_mfem__H1Pos_SegmentElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_QuadrilateralElement = {"_p_mfem__H1Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1Pos_HexahedronElement = {"_p_mfem__H1Pos_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__H1_TriangleElement = {"_p_mfem__H1_TriangleElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_TetrahedronElement = {"_p_mfem__L2Pos_TetrahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_TetrahedronElement = {"_p_mfem__L2_TetrahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2Pos_TriangleElement = {"_p_mfem__L2Pos_TriangleElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2_TriangleElement = {"_p_mfem__L2_TriangleElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2Pos_HexahedronElement = {"_p_mfem__L2Pos_HexahedronElement", 0, 0, 0, 0, 0};
@@ -25704,6 +29862,8 @@ static swig_type_info _swigt__p_mfem__L2_SegmentElement = {"_p_mfem__L2_SegmentE
 static swig_type_info _swigt__p_mfem__H1Pos_TetrahedronElement = {"_p_mfem__H1Pos_TetrahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_TriangleElement = {"_p_mfem__H1Pos_TriangleElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_TetrahedronElement = {"_p_mfem__H1_TetrahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1_TriangleElement = {"_p_mfem__H1_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_HexahedronElement = {"_p_mfem__H1Pos_HexahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P0TetFiniteElement = {"_p_mfem__P0TetFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P1TetNonConfFiniteElement = {"_p_mfem__P1TetNonConfFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Lagrange1DFiniteElement = {"_p_mfem__Lagrange1DFiniteElement", 0, 0, 0, 0, 0};
@@ -25745,6 +29905,8 @@ static swig_type_info _swigt__p_mfem__Quad1DFiniteElement = {"_p_mfem__Quad1DFin
 static swig_type_info _swigt__p_mfem__QuadPos1DFiniteElement = {"_p_mfem__QuadPos1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Quad2DFiniteElement = {"_p_mfem__Quad2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT1QuadFiniteElement = {"_p_mfem__RT1QuadFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_TetrahedronElement = {"_p_mfem__L2_TetrahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_TetrahedronElement = {"_p_mfem__L2Pos_TetrahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_QuadrilateralElement = {"_p_mfem__RT_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_HexahedronElement = {"_p_mfem__RT_HexahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_TriangleElement = {"_p_mfem__RT_TriangleElement", 0, 0, 0, 0, 0};
@@ -25982,6 +30144,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Nedelec1HexFiniteElement,
   &_swigt__p_mfem__Nedelec1TetFiniteElement,
   &_swigt__p_mfem__NodalFiniteElement,
+  &_swigt__p_mfem__NodalTensorFiniteElement,
   &_swigt__p_mfem__NodeExtrudeCoefficient,
   &_swigt__p_mfem__NormalInterpolator,
   &_swigt__p_mfem__NormalTraceJumpIntegrator,
@@ -25997,6 +30160,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__PWConstCoefficient,
   &_swigt__p_mfem__PointFiniteElement,
   &_swigt__p_mfem__PositiveFiniteElement,
+  &_swigt__p_mfem__PositiveTensorFiniteElement,
   &_swigt__p_mfem__PyCoefficientBase,
   &_swigt__p_mfem__Quad1DFiniteElement,
   &_swigt__p_mfem__Quad2DFiniteElement,
@@ -26103,15 +30267,13 @@ static swig_cast_info _swigc__p_mfem__RT0HexFiniteElement[] = {{&_swigt__p_mfem_
 static swig_cast_info _swigc__p_mfem__RT1HexFiniteElement[] = {{&_swigt__p_mfem__RT1HexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT0TetFiniteElement[] = {{&_swigt__p_mfem__RT0TetFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RotTriLinearHexFiniteElement[] = {{&_swigt__p_mfem__RotTriLinearHexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NodalTensorFiniteElement[] = {{&_swigt__p_mfem__NodalTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PositiveTensorFiniteElement[] = {{&_swigt__p_mfem__PositiveTensorFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_SegmentElement[] = {{&_swigt__p_mfem__H1_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_QuadrilateralElement[] = {{&_swigt__p_mfem__H1_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_HexahedronElement[] = {{&_swigt__p_mfem__H1_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_SegmentElement[] = {{&_swigt__p_mfem__H1Pos_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__H1Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1Pos_HexahedronElement[] = {{&_swigt__p_mfem__H1Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__H1_TriangleElement[] = {{&_swigt__p_mfem__H1_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_TetrahedronElement[] = {{&_swigt__p_mfem__L2Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_TetrahedronElement[] = {{&_swigt__p_mfem__L2_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2Pos_TriangleElement[] = {{&_swigt__p_mfem__L2Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_TriangleElement[] = {{&_swigt__p_mfem__L2_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2Pos_HexahedronElement[] = {{&_swigt__p_mfem__L2Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -26123,6 +30285,8 @@ static swig_cast_info _swigc__p_mfem__L2_SegmentElement[] = {{&_swigt__p_mfem__L
 static swig_cast_info _swigc__p_mfem__H1Pos_TetrahedronElement[] = {{&_swigt__p_mfem__H1Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_TriangleElement[] = {{&_swigt__p_mfem__H1Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_TetrahedronElement[] = {{&_swigt__p_mfem__H1_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1_TriangleElement[] = {{&_swigt__p_mfem__H1_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_HexahedronElement[] = {{&_swigt__p_mfem__H1Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P0TetFiniteElement[] = {{&_swigt__p_mfem__P0TetFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P1TetNonConfFiniteElement[] = {{&_swigt__p_mfem__P1TetNonConfFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Lagrange1DFiniteElement[] = {{&_swigt__p_mfem__Lagrange1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -26164,6 +30328,8 @@ static swig_cast_info _swigc__p_mfem__Quad1DFiniteElement[] = {{&_swigt__p_mfem_
 static swig_cast_info _swigc__p_mfem__QuadPos1DFiniteElement[] = {{&_swigt__p_mfem__QuadPos1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Quad2DFiniteElement[] = {{&_swigt__p_mfem__Quad2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT1QuadFiniteElement[] = {{&_swigt__p_mfem__RT1QuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_TetrahedronElement[] = {{&_swigt__p_mfem__L2_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_TetrahedronElement[] = {{&_swigt__p_mfem__L2Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_QuadrilateralElement[] = {{&_swigt__p_mfem__RT_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_HexahedronElement[] = {{&_swigt__p_mfem__RT_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_TriangleElement[] = {{&_swigt__p_mfem__RT_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -26177,7 +30343,7 @@ static swig_cast_info _swigc__p_mfem__NURBSFiniteElement[] = {{&_swigt__p_mfem__
 static swig_cast_info _swigc__p_mfem__NURBS1DFiniteElement[] = {{&_swigt__p_mfem__NURBS1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBS2DFiniteElement[] = {{&_swigt__p_mfem__NURBS2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBS3DFiniteElement[] = {{&_swigt__p_mfem__NURBS3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GradientInterpolator[] = {  {&_swigt__p_mfem__GradientInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GroupConvectionIntegrator[] = {  {&_swigt__p_mfem__GroupConvectionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
@@ -26402,6 +30568,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Nedelec1HexFiniteElement,
   _swigc__p_mfem__Nedelec1TetFiniteElement,
   _swigc__p_mfem__NodalFiniteElement,
+  _swigc__p_mfem__NodalTensorFiniteElement,
   _swigc__p_mfem__NodeExtrudeCoefficient,
   _swigc__p_mfem__NormalInterpolator,
   _swigc__p_mfem__NormalTraceJumpIntegrator,
@@ -26417,6 +30584,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__PWConstCoefficient,
   _swigc__p_mfem__PointFiniteElement,
   _swigc__p_mfem__PositiveFiniteElement,
+  _swigc__p_mfem__PositiveTensorFiniteElement,
   _swigc__p_mfem__PyCoefficientBase,
   _swigc__p_mfem__Quad1DFiniteElement,
   _swigc__p_mfem__Quad2DFiniteElement,

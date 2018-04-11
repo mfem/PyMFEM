@@ -1,46 +1,54 @@
 INSTALL
 
-PyMFEM-3.3.2 is written for mfem-3.3.2. A user needs to install mfem-3.3.2
-as dynamic link library. PyMFEM contains wrappor for parallel mfem 
+PyMFEM is a Python wrapper for the mfem (Modular Finite Element Method) library.
+
+This wrapper is built by parsing mfem header file by SWIG, and therefore, it is
+strongly recommended to use the same vaersion of the mfem library from which the
+wrapper c++ code is generated. The version of mfem is noted at the beginning of
+README.
+
+PyMFEM contains wrappor for parallel mfem 
 (mfem.par module) and serial mfem (mfem.ser module). Each module must be
-linked with parallel and serial MFEM library. This install guide describes
-a  procedure to install MFEM as the dynamic link library and to setup 
-PyMFEM to be linked with the newly build MFEM library. Please note that
+linked with parallel and serial shared MFEM library. This install guide describes
+a procedure to install MFEM as the dynamic link library and to setup 
+PyMFEM to be linked with the newly build MFEM library. A user need cmake
+to follow the instruction. Additinally, please note that
 the parallel version of MFEM requires Hypre and METIS-5 to be installed
 too, which is not covered in this document. This document assumes linux
 like enviroment including MacOS X (tested on Seirra and highSierra)
 
 It assumes that a user will install everything under $MFEM_PREFIX
-in $MFEM_PREFIX/mfem-3.3.2
+in $MFEM_PREFIX
 
    export MFEM_PREFIX = /usr/local
 
 1) building MFEM as so (or dylib in MacOSX).
 
-1-1) download MFEM-3.3.2 and expaned
+1-1) download mfem and expaned
    > mkdir -p $MFEM_PREFIX/src
    > cd $MFEM_PREFIX/src 
-   > wget https://github.com/mfem/mfem/archive/v3.3.2.tar.gz -O mfem-3.3.2.tar.gz
-   > tar -zxvf mfem-3.3.2.tar.gz
+   > git clone git@github.com:mfem/mfem.git
+   > git checkout <proper git commit SHA>
 
 1-2) build serial MFEM using cmake
+     Note DMFEM_USE_EXCEPTIONS=1 allows to throw an python exception instead of aborting.
+     This option saves python interpreter from crash. Using this option in parallel is questionable, since mfem error may happen only some of computing processes.
 
-   > cd $MFEM_PREFIX/src/mfem-3.3.2
+   > cd $MFEM_PREFIX/src/mfem	
    > mkdir cmbuild_ser
    > cd cmbuild_ser
-   > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-3.3.2/ser -DMFEM_ENABLE_EXAMPLES=1 -DMFEM_GIT_STRING="3.3.2release"
+   > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-git/ser -DMFEM_ENABLE_EXAMPLES=1 -DMFEM_USE_EXCEPTIONS=1
    > make verbose=1
    > make install
 
-1-2a) (Max Only) MacOSX user needs to set install-name of library using intall_name_tool
-
-   > cd $MFEM_PREFIX/mfem-3.3.2/ser/lib
-   > install_name_tool -id $MFEM_PREFIXmfem-3.3.2/ser/lib/libmfem.3.3.2.dylib libmfem.3.3.2.dylib
+1-2a) (Max Only) MacOSX user may need to set install-name of library using intall_name_tool
+   > cd $MFEM_PREFIX/mfem/ser/lib
+   > install_name_tool -id $MFEM_PREFIX/mfem/ser/lib/libmfem.3.3.3.dylib libmfem.3.3.3.dylib
 
 1-2b) test MFEM by checking if example is built correctly
    > example/ex1
 
-1-2c) instlal serial MFEM to $MFEM_PREFIX/mfem-3.3.2/ser
+1-2c) instlal serial MFEM to $MFEM_PREFIX/mfem/ser
 
    > make install
 
@@ -49,7 +57,7 @@ in $MFEM_PREFIX/mfem-3.3.2
 
 1-3a) make cmake working directory
 
-   > cd $MFEM_PREFIX/src/mfem-3.3.2
+   > cd $MFEM_PREFIX/src/mfem
    > mkdir cmbuild_par
    > cd cmbuild_par
 
@@ -64,11 +72,11 @@ in $MFEM_PREFIX/mfem-3.3.2
 
 and run cmake and build.
 
-   > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-3.3.2/par -DHYPRE_DIR=$HYPRELIB -DHYPRE_INCLUDE_DIRS=$HYPREINC  -DMETIS_DIR=$METIS5LIB -DMETIS_INCLUDE_DIRS=$METIS5INC -DMFEM_USE_MPI=1 -DMFEM_USE_METIS_5=1 -DMFEM_ENABLE_EXAMPLES=1 -DCMAKE_CXX_COMPILER=$MPICXX -DMFEM_GIT_STRING="3.3.2release" -DCMAKE_SHARED_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_EXE_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis"
+   > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-git/par -DHYPRE_DIR=$HYPRELIB -DHYPRE_INCLUDE_DIRS=$HYPREINC  -DMETIS_DIR=$METIS5LIB -DMETIS_INCLUDE_DIRS=$METIS5INC -DMFEM_USE_MPI=1 -DMFEM_USE_METIS_5=1 -DMFEM_ENABLE_EXAMPLES=1 -DCMAKE_CXX_COMPILER=$MPICXX -DCMAKE_SHARED_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_EXE_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis"
 
    or
    
-   > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-3.3.2/par -DHYPRE_DIR=$HYPRELIB -DHYPRE_INCLUDE_DIRS=$HYPREINC  -DMETIS_DIR=$METIS5LIB -DMETIS_INCLUDE_DIRS=$METIS5INC -DMFEM_USE_MPI=1 -DMFEM_USE_METIS_5=1 -DMFEM_ENABLE_EXAMPLES=1 -DCMAKE_CXX_COMPILER=$MPICXX -DMFEM_GIT_STRING="3.3.2release" -DCMAKE_SHARED_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_EXE_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_INSTALL_RPATH=$HYPRELIB:$METIS5LIB -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE
+   > cmake .. -DCMAKE_VERBOSE_MAKEFILE=1 -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=$MFEM_PREFIX/mfem-git/par -DHYPRE_DIR=$HYPRELIB -DHYPRE_INCLUDE_DIRS=$HYPREINC  -DMETIS_DIR=$METIS5LIB -DMETIS_INCLUDE_DIRS=$METIS5INC -DMFEM_USE_MPI=1 -DMFEM_USE_METIS_5=1 -DMFEM_ENABLE_EXAMPLES=1 -DCMAKE_CXX_COMPILER=$MPICXX -DCMAKE_SHARED_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_EXE_LINKER_FLAGS="-L$HYPRELIB -lHYPRE -L$METIS5LIB -lmetis" -DCMAKE_INSTALL_RPATH=$HYPRELIB:$METIS5LIB -DCMAKE_BUILD_WITH_INSTALL_RPATH=TRUE
 
 Note that libmfem.so built by the first cmake does not know the location of
 libHYPRE.so and libmetis.so, and a user may have to use LD_LIBRARY_PATH to
@@ -82,7 +90,7 @@ Then run make.
 1-3c) test MFEM by checking if example is built correctly. However, if your cluster requires to submit a parallel job using a batch system, you need to write a batch job file.
    > example/ex1p
 
-1-3d) instlal serial MFEM to $MFEM_PREFIX/mfem-3.3.2/ser
+1-3d) instlal parallel MFEM
 
    > make install
 
@@ -93,10 +101,9 @@ Then run make.
 2-1) Donwload PyMFEM
 You may already downloaded PyMFEM package, but here is a step to do it
 
-   > cd $MFEM_PREFIX/src 
-   > wget https://github.com/mfem/PyMFEM/archive/v3.3.2.tar.gz -O PyMFEM-3.3.2.tar.gz
-   > tar -zxvf PyMFEM-3.3.2.tar.gz
-   > cd PyMFEM-3.3.2
+   > cd $MFEM_PREFIX/src
+   > git clone git@github.com:mfem/PyMFEM.git   
+   > cd PyMFEM
 
 2-2) Prepare Makefile.local. Copy a template and edit it. A usre needs to
 set the location of MPI library and boost library. MPI is not necessary
@@ -130,7 +137,7 @@ Run make
    > make pyinstall PREFIX=(other install location)
 
 By default (1st one), make will install PyMFEM in /usr/local/lib/python2.7/site-packages/.
-In the second command, it installs files in $(MFEM_PREFIX)/lib/python2.7/site-packages/PyMFEM-3.3.2-py2.7.egg
+In the second command, it installs files in $(MFEM_PREFIX)/lib/python2.7/site-packages/PyMFEM-3.3.3rc0-py2.7.egg
 
 
 3) run example
@@ -160,8 +167,8 @@ You can clean the test directory using.
 
 4) (optional) run test
    $ cd test
-   $ python test.py -serial -mfemsdir $MFEM_PREFIX/src/mfem-3.3.2/cmbuild_ser -verbose
-   $ python test.py -parallel -mfempdir $MFEM_PREFIX/src/mfem-3.3.2/cmbuild_par -verbose
+   $ python test.py -serial -mfemsdir $MFEM_PREFIX/src/mfem/cmbuild_ser -verbose
+   $ python test.py -parallel -mfempdir $MFEM_PREFIX/src/mfem/cmbuild_par -verbose
 
 
    this script runs all example python script and corresponding

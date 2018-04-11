@@ -4,6 +4,8 @@
 #include "fem/linearform.hpp"      
 #include "fem/nonlininteg.hpp"
 #include "fem/nonlinearform.hpp"
+#include "fem/pfespace.hpp"
+#include "numpy/arrayobject.h"
 #include "pyoperator.hpp"               
 %}
 /*
@@ -11,9 +13,11 @@
 import_array();
 %}
 */
-%import operators.i
-%import fespace.i
-%import nonlininteg.i
+%include "exception.i"
+%import "operators.i"
+%import "fespace.i"
+%import "nonlininteg.i"
+%import "../common/exception.i"
 
 namespace mfem { 
 %pythonprepend NonlinearForm::AddDomainIntegrator %{

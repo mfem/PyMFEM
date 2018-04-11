@@ -11,10 +11,12 @@
 import_array();
 %}
 
-%import array.i
-%import ostream_typemap.i
+%include "exception.i"
+%import "array.i"
+%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/numpy_int_typemap.i"
+%import "../common/exception.i"
 
 %include "general/table.hpp"
 

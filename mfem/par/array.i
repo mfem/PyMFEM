@@ -1,4 +1,5 @@
 %module array
+
 %rename(Equal) mfem::Array <class T>::operator=;
 %{
 #include <iostream>

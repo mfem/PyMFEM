@@ -10,6 +10,7 @@
 import_array();
 %}
 */
+/*
 %exception {
     try { $action }
     catch (Swig::DirectorException &e) { SWIG_fail; }    
@@ -19,18 +20,14 @@ import_array();
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
 }
-%feature("director:except") {
-    if ($error != NULL) {
-        throw Swig::DirectorMethodException();
-    }
-}
-
-%import vector.i
-%import operators.i
-%import fespace.i
-%import eltrans.i
+*/
+%include "exception.i"
+%import "vector.i"
+%import "operators.i"
+%import "fespace.i"
+%import "eltrans.i"
+%import "../common/exception_director.i"
 
 %feature("director") mfem::NonlinearFormIntegrator;
-
 
 %include "fem/nonlininteg.hpp"

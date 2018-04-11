@@ -9,18 +9,23 @@
 #include "pyoperator.hpp"  
 %}
 
-%include "config/_config.hpp" // include mfem MACRO
+%include "config/config.hpp" // include mfem MACRO
+
+#ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
+#endif
 
 %init %{
 import_array();
 %}
 
-%import mesh.i
-%import ncmesh.i
-%import communication.i
+%include "exception.i"
+%import "mesh.i"
+ //%import "ncmesh.i"
+%import "communication.i"
 %import "ostream_typemap.i"
+%import "../common/exception.i"
 
 %pointer_class(int, intp);
 

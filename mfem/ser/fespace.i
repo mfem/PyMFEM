@@ -24,6 +24,7 @@
 import_array();
 %}
 
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "coefficient.i"
@@ -36,7 +37,9 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "lininteg.i"
+%import "handle.i"
 %import "ostream_typemap.i"
+%import "../common/exception.i"
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int ndofs = -1) {

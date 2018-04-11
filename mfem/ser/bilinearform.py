@@ -195,6 +195,7 @@ import element
 import geom
 import table
 import vertex
+import handle
 class BilinearForm(matrix.Matrix):
     __swig_setmethods__ = {}
     for _s in [matrix.Matrix]:
@@ -324,14 +325,14 @@ class BilinearForm(matrix.Matrix):
         return _bilinearform.BilinearForm_AddDomainIntegrator(self, bfi)
 
 
-    def AddBoundaryIntegrator(self, bfi):
+    def AddBoundaryIntegrator(self, *args):
 
         if not hasattr(self, "_integrators"): self._integrators = []
         self._integrators.append(bfi)
         bfi.thisown=0 
 
 
-        return _bilinearform.BilinearForm_AddBoundaryIntegrator(self, bfi)
+        return _bilinearform.BilinearForm_AddBoundaryIntegrator(self, *args)
 
 
     def AddInteriorFaceIntegrator(self, bfi):
@@ -417,6 +418,9 @@ class BilinearForm(matrix.Matrix):
 
     def FESpace(self, *args):
         return _bilinearform.BilinearForm_FESpace(self, *args)
+
+    def SetDiagonalPolicy(self, policy):
+        return _bilinearform.BilinearForm_SetDiagonalPolicy(self, policy)
     __swig_destroy__ = _bilinearform.delete_BilinearForm
     __del__ = lambda self: None
     def __disown__(self):

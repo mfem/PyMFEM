@@ -127,8 +127,8 @@ class BlockVector(vector.Vector):
     def BlockSize(self, i):
         return _blockvector.BlockVector_BlockSize(self, i)
 
-    def Update(self, data, bOffsets):
-        return _blockvector.BlockVector_Update(self, data, bOffsets)
+    def Update(self, *args):
+        return _blockvector.BlockVector_Update(self, *args)
 BlockVector_swigregister = _blockvector.BlockVector_swigregister
 BlockVector_swigregister(BlockVector)
 

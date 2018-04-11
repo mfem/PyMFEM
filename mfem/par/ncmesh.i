@@ -16,5 +16,4 @@ import_array();
 %import "ostream_typemap.i"
 
 %immutable embeddings;
-
 %include  "mesh/ncmesh.hpp"

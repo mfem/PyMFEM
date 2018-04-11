@@ -282,14 +282,14 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     def EliminateRow(self, *args):
         return _sparsemat.SparseMatrix_EliminateRow(self, *args)
 
-    def EliminateCol(self, col):
-        return _sparsemat.SparseMatrix_EliminateCol(self, col)
+    def EliminateCol(self, *args):
+        return _sparsemat.SparseMatrix_EliminateCol(self, *args)
 
     def EliminateCols(self, cols, x=None, b=None):
         return _sparsemat.SparseMatrix_EliminateCols(self, cols, x, b)
 
-    def EliminateRowColMultipleRHS(self, rc, sol, rhs, d=0):
-        return _sparsemat.SparseMatrix_EliminateRowColMultipleRHS(self, rc, sol, rhs, d)
+    def EliminateRowColMultipleRHS(self, *args):
+        return _sparsemat.SparseMatrix_EliminateRowColMultipleRHS(self, *args)
 
     def EliminateRowColDiag(self, rc, value):
         return _sparsemat.SparseMatrix_EliminateRowColDiag(self, rc, value)
@@ -300,8 +300,8 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
     def SetDiagIdentity(self):
         return _sparsemat.SparseMatrix_SetDiagIdentity(self)
 
-    def EliminateZeroRows(self):
-        return _sparsemat.SparseMatrix_EliminateZeroRows(self)
+    def EliminateZeroRows(self, threshold=1e-12):
+        return _sparsemat.SparseMatrix_EliminateZeroRows(self, threshold)
 
     def Gauss_Seidel_forw(self, x, y):
         return _sparsemat.SparseMatrix_Gauss_Seidel_forw(self, x, y)
@@ -413,9 +413,6 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
         return val
 
 
-    def Print(self, *args):
-        return _sparsemat.SparseMatrix_Print(self, *args)
-
     def PrintMatlab(self, *args):
         return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
 
@@ -480,6 +477,9 @@ class SparseMatrix(matrix.AbstractSparseMatrix):
 
     def GetDataArray(self):
         return _sparsemat.SparseMatrix_GetDataArray(self)
+
+    def Print(self, *args):
+        return _sparsemat.SparseMatrix_Print(self, *args)
 SparseMatrix_swigregister = _sparsemat.SparseMatrix_swigregister
 SparseMatrix_swigregister(SparseMatrix)
 

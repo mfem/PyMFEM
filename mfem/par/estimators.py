@@ -136,6 +136,10 @@ import bilininteg
 import fe_coll
 import lininteg
 import linearform
+import handle
+import hypre
+import communication
+import sets
 import bilinearform
 class AbstractErrorEstimator(_object):
     __swig_setmethods__ = {}

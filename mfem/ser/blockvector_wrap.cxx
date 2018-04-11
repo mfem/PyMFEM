@@ -3001,6 +3001,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 
 
+  #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
+
+
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_char swig_types[0]
@@ -3132,7 +3135,22 @@ SWIGINTERN PyObject *_wrap_new_BlockVector__SWIG_0(PyObject *SWIGUNUSEDPARM(self
   mfem::BlockVector *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)":new_BlockVector")) SWIG_fail;
-  result = (mfem::BlockVector *)new mfem::BlockVector();
+  {
+    try {
+      result = (mfem::BlockVector *)new mfem::BlockVector();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3157,7 +3175,22 @@ SWIGINTERN PyObject *_wrap_new_BlockVector__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockVector" "', argument " "1"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
-  result = (mfem::BlockVector *)new mfem::BlockVector((mfem::Array< int > const &)*arg1);
+  {
+    try {
+      result = (mfem::BlockVector *)new mfem::BlockVector((mfem::Array< int > const &)*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3182,7 +3215,22 @@ SWIGINTERN PyObject *_wrap_new_BlockVector__SWIG_2(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockVector" "', argument " "1"" of type '" "mfem::BlockVector const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
-  result = (mfem::BlockVector *)new mfem::BlockVector((mfem::BlockVector const &)*arg1);
+  {
+    try {
+      result = (mfem::BlockVector *)new mfem::BlockVector((mfem::BlockVector const &)*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3216,7 +3264,22 @@ SWIGINTERN PyObject *_wrap_new_BlockVector__SWIG_3(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockVector" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  result = (mfem::BlockVector *)new mfem::BlockVector(arg1,(mfem::Array< int > const &)*arg2);
+  {
+    try {
+      result = (mfem::BlockVector *)new mfem::BlockVector(arg1,(mfem::Array< int > const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockVector, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3293,7 +3356,22 @@ SWIGINTERN PyObject *_wrap_delete_BlockVector(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BlockVector" "', argument " "1"" of type '" "mfem::BlockVector *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3323,7 +3401,22 @@ SWIGINTERN PyObject *_wrap_BlockVector_GetBlock__SWIG_0(PyObject *SWIGUNUSEDPARM
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (mfem::Vector *) &(arg1)->GetBlock(arg2);
+  {
+    try {
+      result = (mfem::Vector *) &(arg1)->GetBlock(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
   return resultobj;
 fail:
@@ -3353,7 +3446,22 @@ SWIGINTERN PyObject *_wrap_BlockVector_GetBlock__SWIG_1(PyObject *SWIGUNUSEDPARM
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (mfem::Vector *) &((mfem::BlockVector const *)arg1)->GetBlock(arg2);
+  {
+    try {
+      result = (mfem::Vector *) &((mfem::BlockVector const *)arg1)->GetBlock(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
   return resultobj;
 fail:
@@ -3452,7 +3560,22 @@ SWIGINTERN PyObject *_wrap_BlockVector_GetBlockView(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockVector_GetBlockView" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  (arg1)->GetBlockView(arg2,*arg3);
+  {
+    try {
+      (arg1)->GetBlockView(arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3482,7 +3605,22 @@ SWIGINTERN PyObject *_wrap_BlockVector_BlockSize(PyObject *SWIGUNUSEDPARM(self),
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (int)(arg1)->BlockSize(arg2);
+  {
+    try {
+      result = (int)(arg1)->BlockSize(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3490,7 +3628,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockVector_Update(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockVector_Update__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::BlockVector *arg1 = (mfem::BlockVector *) 0 ;
   double *arg2 = (double *) 0 ;
@@ -3524,11 +3662,127 @@ SWIGINTERN PyObject *_wrap_BlockVector_Update(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockVector_Update" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  (arg1)->Update(arg2,(mfem::Array< int > const &)*arg3);
+  {
+    try {
+      (arg1)->Update(arg2,(mfem::Array< int > const &)*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockVector_Update__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockVector *arg1 = (mfem::BlockVector *) 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:BlockVector_Update",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockVector_Update" "', argument " "1"" of type '" "mfem::BlockVector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockVector_Update" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockVector_Update" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    try {
+      (arg1)->Update((mfem::Array< int > const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockVector_Update(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockVector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_BlockVector_Update__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockVector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_BlockVector_Update__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BlockVector_Update'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::BlockVector::Update(double *,mfem::Array< int > const &)\n"
+    "    mfem::BlockVector::Update(mfem::Array< int > const &)\n");
+  return 0;
 }
 
 

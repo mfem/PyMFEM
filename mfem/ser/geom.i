@@ -8,8 +8,10 @@
 import_array();
 %}
 
-%import intrules.i
-%import densemat.i
+%include "exception.i"
+%import "intrules.i"
+%import "densemat.i"
+%import "../common/exception.i"
 
 %immutable RefPts;
 %immutable GlobGeometryRefiner;

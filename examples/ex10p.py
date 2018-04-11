@@ -204,7 +204,7 @@ class ElasticEnergyCoefficient(mfem.PyCoefficient):
         return self.model.EvalW(self.J)/(self.J.Det())
     
 class ReducedSystemOperator(mfem.PyOperator):
-    def __init__(self, M, S, H):
+    def __init__(self, M, S, H, ess_tdof_list):
         mfem.PyOperator.__init__(self, M.ParFESpace().TrueVSize())
         self.M = M
         self.S = S
@@ -214,6 +214,7 @@ class ReducedSystemOperator(mfem.PyOperator):
         self.w = mfem.Vector(h)
         self.z = mfem.Vector(h)
         self.dt = 0.0
+        self.ess_tdof_list = ess_tdof_list
         
     def SetParameters(self, dt, v, x):
         self.dt = dt
@@ -226,13 +227,15 @@ class ReducedSystemOperator(mfem.PyOperator):
         self.H.Mult(self.z, y)
         self.M.TrueAddMult(k, y)
         self.S.TrueAddMult(self.w, y)
-
+        y.SetSubVector(self.ess_tdof_list, 0.0);
+   
     def GetGradient(self, k):
         localJ = mfem.Add(1.0, self.M.SpMat(), self.dt, self.S.SpMat());
         add_vector(self.v, self.dt, k, self.w)
         add_vector(self.x, self.dt, self.w, self.z)
         localJ.Add(self.dt * self.dt,  self.H.GetLocalGradient(self.z))
         Jacobian = self.M.ParallelAssemble(localJ)
+        Jacobian.EliminateRowsCols(self.ess_tdof_list)        
         return Jacobian
     
 class HyperelasticOperator(mfem.PyTimeDependentOperator):
@@ -242,6 +245,8 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         rel_tol = 1e-8;
         skip_zero_entries = 0;
         ref_density = 1.0
+        
+        self.ess_tdof_list = intArray()
         self.z = mfem.Vector(self.Height()/2)
         self.fespace =  fespace
         self.viscosity = visc
@@ -260,6 +265,9 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         M.EliminateEssentialBC(ess_bdr)
         M.Finalize(skip_zero_entries)
         self.Mmat = M.ParallelAssemble()
+        
+        fespace.GetEssentialTrueDofs(ess_bdr, self.ess_tdof_list)
+        self.Mmat.EliminateRowsCols(self.ess_tdof_list)
 
         M_solver = mfem.CGSolver(fespace.GetComm())
         M_prec = mfem.HypreSmoother()
@@ -277,7 +285,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
 
         model = mfem.NeoHookeanModel(mu, K)
         H.AddDomainIntegrator(mfem.HyperelasticNLFIntegrator(model))
-        H.SetEssentialBC(ess_bdr)
+        H.SetEssentialTrueDofs(self.ess_tdof_list)
         self.model = model
 
         visc_coeff = mfem.ConstantCoefficient(visc)
@@ -286,7 +294,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         S.EliminateEssentialBC(ess_bdr)
         S.Finalize(skip_zero_entries)
 
-        self.reduced_oper = ReducedSystemOperator(M, S, H)        
+        self.reduced_oper = ReducedSystemOperator(M, S, H, self.ess_tdof_list)        
 
         J_hypreSmoother= mfem.HypreSmoother()
         J_hypreSmoother.SetType(mfem.HypreSmoother.l1Jacobi)
@@ -321,7 +329,9 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         dx_dt = mfem.Vector(dvx_dt, sc,  sc)
 
         self.H.Mult(x, z);
-        if (self.viscosity != 0.0):  S.TrueAddMult(v, z)
+        if (self.viscosity != 0.0):
+            S.TrueAddMult(v, z)
+            z.SetSubVector(self.ess_tdof_list, 0.0)
         z.Neg()
         self.M_solver.Mult(z, dv_dt);
         dx_dt = v

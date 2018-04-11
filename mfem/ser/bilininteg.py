@@ -123,6 +123,7 @@ import vertex
 import fespace
 import fe_coll
 import lininteg
+import handle
 import linearform
 class BilinearFormIntegrator(_object):
     __swig_setmethods__ = {}

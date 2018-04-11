@@ -20,7 +20,8 @@ if cxx_ser != '': os.environ['CXX'] = cxx_ser
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["array", "common_functions", "socketstream",
+modules= ["error", "array", "common_functions", "socketstream", "handle",
+          "segment", "point",
           "blockvector", "blockoperator", "blockmatrix",
           "vertex", "sets", "element", "table", "fe",
           "mesh", "fespace", 
@@ -39,7 +40,7 @@ proxy_names = {name: '_'+name for name in modules}
 
 include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, boostinc]
 library_dirs = [mfemserlnkdir, boostlib]
-libraries    = ['boost_iostreams', 'mfem']
+libraries    = [libboostiostreams, 'mfem']
 
 
 ext_modules = [Extension(proxy_names[modules[0]],
@@ -62,7 +63,7 @@ ext_modules.extend([Extension(proxy_names[name],
 
 
 setup (name = 'mfem_serial',
-       version = '3.3.2',
+       version = '3.3.3',
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,

@@ -123,6 +123,10 @@ import fe
 import fespace
 import fe_coll
 import lininteg
+import handle
+import hypre
+import communication
+import sets
 import bilininteg
 import linearform
 import estimators

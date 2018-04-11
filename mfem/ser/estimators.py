@@ -125,6 +125,7 @@ import element
 import geom
 import table
 import vertex
+import handle
 import bilinearform
 class AbstractErrorEstimator(_object):
     __swig_setmethods__ = {}

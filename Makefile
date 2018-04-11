@@ -57,6 +57,7 @@ NUMPYINC = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
 #Boost
 BOOSTINC = /usr/local/include
 BOOSTLIB = /usr/local/lib
+LIBBOOSTIOSTREAMS = boost_iostreams
 
 NOCOMPACTUNWIND = 
 include ./Makefile.local
@@ -95,6 +96,7 @@ setup_local.py: Makefile.local
 	$(PYTHON) write_setup_local.py
 	cp setup_local.py mfem/.
 pyinstall:
+	$(PYTHON) clean_import.py -x
 	$(PYTHON) setup.py build
 	$(PYTHON) setup.py install --prefix=$(PREFIX)
 cleancxx:

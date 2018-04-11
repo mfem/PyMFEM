@@ -13849,7 +13849,7 @@ SWIGINTERN PyObject *DenseMatrixInverse_swigregister(PyObject *SWIGUNUSEDPARM(se
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -13883,6 +13883,82 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem(PyObject *SWIGUNUSEDPARM(s
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseMatrixEigensystem *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::DenseMatrixEigensystem *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_DenseMatrixEigensystem",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__DenseMatrixEigensystem,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseMatrixEigensystem" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DenseMatrixEigensystem" "', argument " "1"" of type '" "mfem::DenseMatrixEigensystem const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseMatrixEigensystem * >(argp1);
+  {
+    try {
+      result = (mfem::DenseMatrixEigensystem *)new mfem::DenseMatrixEigensystem((mfem::DenseMatrixEigensystem const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrixEigensystem, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DenseMatrixEigensystem(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_DenseMatrixEigensystem__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseMatrixEigensystem, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_DenseMatrixEigensystem__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_DenseMatrixEigensystem'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::DenseMatrixEigensystem::DenseMatrixEigensystem(mfem::DenseMatrix &)\n"
+    "    mfem::DenseMatrixEigensystem::DenseMatrixEigensystem(mfem::DenseMatrixEigensystem const &)\n");
+  return 0;
 }
 
 
@@ -14477,6 +14553,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_DenseTensor__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseTensor *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::DenseTensor *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_DenseTensor",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__DenseTensor,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DenseTensor" "', argument " "1"" of type '" "mfem::DenseTensor const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DenseTensor" "', argument " "1"" of type '" "mfem::DenseTensor const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseTensor * >(argp1);
+  {
+    try {
+      result = (mfem::DenseTensor *)new mfem::DenseTensor((mfem::DenseTensor const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseTensor, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[4] = {
@@ -14491,6 +14604,14 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
   }
   if (argc == 0) {
     return _wrap_new_DenseTensor__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseTensor, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_DenseTensor__SWIG_2(self, args);
+    }
   }
   if (argc == 3) {
     int _v;
@@ -14528,7 +14649,8 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_DenseTensor'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DenseTensor::DenseTensor()\n"
-    "    mfem::DenseTensor::DenseTensor(int,int,int)\n");
+    "    mfem::DenseTensor::DenseTensor(int,int,int)\n"
+    "    mfem::DenseTensor::DenseTensor(mfem::DenseTensor const &)\n");
   return 0;
 }
 

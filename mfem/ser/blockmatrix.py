@@ -171,8 +171,11 @@ class BlockMatrix(matrix.AbstractSparseMatrix):
     def RowSize(self, i):
         return _blockmatrix.BlockMatrix_RowSize(self, i)
 
-    def EliminateRowCol(self, ess_bc_dofs, sol, rhs):
-        return _blockmatrix.BlockMatrix_EliminateRowCol(self, ess_bc_dofs, sol, rhs)
+    def EliminateRowCol(self, *args):
+        return _blockmatrix.BlockMatrix_EliminateRowCol(self, *args)
+
+    def Finalize(self, *args):
+        return _blockmatrix.BlockMatrix_Finalize(self, *args)
 
     def CreateMonolithic(self):
         return _blockmatrix.BlockMatrix_CreateMonolithic(self)
@@ -192,8 +195,8 @@ class BlockMatrix(matrix.AbstractSparseMatrix):
     def GetRow(self, row, cols, srow):
         return _blockmatrix.BlockMatrix_GetRow(self, row, cols, srow)
 
-    def EliminateZeroRows(self):
-        return _blockmatrix.BlockMatrix_EliminateZeroRows(self)
+    def EliminateZeroRows(self, threshold=1e-12):
+        return _blockmatrix.BlockMatrix_EliminateZeroRows(self, threshold)
 
     def Mult(self, x, y):
         return _blockmatrix.BlockMatrix_Mult(self, x, y)

@@ -22,6 +22,7 @@
 import_array();
 %}
 
+%include "exception.i"
 %import "coefficient.i"
 %import "array.i"
 %import "mesh.i"
@@ -33,12 +34,8 @@ import_array();
 %import "vector.i"
 %import "eltrans.i"
 %import "lininteg.i"
- //%import "fem/fespace.hpp"
-
-%exception {
-    try { $action }
-    catch (Swig::DirectorException &e) { SWIG_fail; }    
-}
+%include "../common/exception_director.i"
+ //%import "fem/fespace.hpp
 
  //%include "fem/coefficient.hpp"
 namespace mfem { 

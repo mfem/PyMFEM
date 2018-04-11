@@ -17,57 +17,16 @@
 %init %{
 import_array();
 %}
+
+%include "exception.i"
 %import "array.i"
 %import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/numpy_int_typemap.i"
+%import "../common/typemap_macros.i"
+%import "../common/exception.i"
 
-%typemap(in)  (double *_data){// int _size){
-  int i, si;
-  if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, $disown|0) != -1){
-	      
-  }
-  else if (PyArray_Check($input)){
-    $1 = (double *) PyArray_DATA((PyArrayObject *)$input);
-	 //     $1 = (double *) PyArray_DATA($input);
-  }
-  else {
-     if (!PyList_Check($input)) {
-        PyErr_SetString(PyExc_ValueError, "Expecting a list");
-        return NULL;
-     }
-     si = PyList_Size($input);
-     $1 = (double *) malloc((si)*sizeof(double));
-     for (i = 0; i < si; i++) {
-        PyObject *s = PyList_GetItem($input,i);
-        if (PyInt_Check(s)) {
-            $1[i] = (double)PyFloat_AsDouble(s);
-        } else if (PyFloat_Check(s)) {
-            $1[i] = (double)PyFloat_AsDouble(s);
-        } else {
-            free($1);      
-            PyErr_SetString(PyExc_ValueError, "List items must be integer/float");
-            return NULL;
-        }
-     }
-  }
-
-}
-
-%typemap(typecheck ) (double *_data){//, int _size) {
-   if (SWIG_ConvertPtr($input, (void **) &$1, $1_descriptor, 1) != -1){
-      $1 = 1;
-   }
-   else if (PyList_Check($input)){
-      $1 = 1;
-   }
-   else if (PyArray_Check($input)){
-      $1 = 1;
-   }
-   else {
-      $1 = 0;
-   }
-}
+ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 
 %pythonprepend mfem::Vector::Vector %{
 from numpy import ndarray, ascontiguousarray
@@ -216,6 +175,17 @@ void subtract_vector(const double a, const mfem::Vector &x,
     (* self) = (double *) PyArray_DATA(param);
   }
   
+  void Print(const char *file){
+        std::ofstream ofile(file);
+        if (!ofile)
+        {
+	  std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+   	  return;
+        }
+	self -> Print(ofile);
+        ofile.close();
+  }
+
   void __setitem__(int i, const double v) {
     int len = self->Size();        
     if (i >= 0){    

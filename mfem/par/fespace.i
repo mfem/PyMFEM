@@ -22,6 +22,9 @@
 import_array();
 %}
 
+%include "exception.i"
+ //%include "../common/cpointers.i"
+ //%import "cpointers.i"
 %import "array.i"
 %import "vector.i"
 %import "coefficient.i"
@@ -34,16 +37,14 @@ import_array();
 %import "sparsemat.i"
 %import "eltrans.i"
 %import "lininteg.i"
-
+%import "handle.i"
 %import "ostream_typemap.i"
+%include "../common/typemap_macros.i"
+%import "../common/exception.i"
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
-%typemap(typecheck) (int ndofs = -1) {
-   $1 = PyInt_Check($input) ? 1 : 0;
-}
-%typemap(typecheck) (int component = -1) {
-   $1 = PyInt_Check($input) ? 1 : 0;
-}
+INT_DEFAULT_NEGATIVE_ONE(int ndofs = -1)
+INT_DEFAULT_NEGATIVE_ONE(int component = -1)
 
 //VDoF accesser
 %feature("shadow") mfem::FiniteElementSpace::GetBdrElementVDofs %{

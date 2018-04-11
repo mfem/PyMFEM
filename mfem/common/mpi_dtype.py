@@ -29,6 +29,8 @@ def get_mpi_datatype(data):
            return MPI.COMPLEX
         else:
            pass
+    elif data.dtype.name.startswith('bool'):
+        return MPI.BOOL        
     else:
         pass
-    assert False, "Unknow data type"                   
+    assert False, "MPI data type is unknown for " + data.dtype.name

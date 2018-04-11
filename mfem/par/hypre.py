@@ -113,76 +113,6 @@ MFEM_VERSION_PATCH = _hypre.MFEM_VERSION_PATCH
 MFEM_GIT_STRING = _hypre.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _hypre.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _hypre.MFEM_HYPRE_VERSION
-class intp(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _hypre.new_intp()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _hypre.delete_intp
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _hypre.intp_assign(self, value)
-
-    def value(self):
-        return _hypre.intp_value(self)
-
-    def cast(self):
-        return _hypre.intp_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_hypre.intp_frompointer)
-    else:
-        frompointer = _hypre.intp_frompointer
-intp_swigregister = _hypre.intp_swigregister
-intp_swigregister(intp)
-
-def intp_frompointer(t):
-    return _hypre.intp_frompointer(t)
-intp_frompointer = _hypre.intp_frompointer
-
-class doublep(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
-    __repr__ = _swig_repr
-
-    def __init__(self):
-        this = _hypre.new_doublep()
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _hypre.delete_doublep
-    __del__ = lambda self: None
-
-    def assign(self, value):
-        return _hypre.doublep_assign(self, value)
-
-    def value(self):
-        return _hypre.doublep_value(self)
-
-    def cast(self):
-        return _hypre.doublep_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_hypre.doublep_frompointer)
-    else:
-        frompointer = _hypre.doublep_frompointer
-doublep_swigregister = _hypre.doublep_swigregister
-doublep_swigregister(doublep)
-
-def doublep_frompointer(t):
-    return _hypre.doublep_frompointer(t)
-doublep_frompointer = _hypre.doublep_frompointer
-
 import vector
 import array
 import ostream_typemap
@@ -206,9 +136,7 @@ import bilininteg
 import fe_coll
 import lininteg
 import linearform
-import pfespace
-import pmesh
-import pncmesh
+import handle
 import communication
 import sets
 
@@ -227,6 +155,16 @@ class HypreParVector(vector.Vector):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+
+        import numpy as np
+        self._linked_array = None          
+        if isinstance(args[-1], list):
+            v = np.ascontiguousarray(args[-1][0])
+            col = np.ascontiguousarray(args[-1][1])
+            args = list(args[:-1])
+            args.append([v, col])
+
+
         this = _hypre.new_HypreParVector(*args)
         try:
             self.this.append(this)
@@ -237,9 +175,7 @@ class HypreParVector(vector.Vector):
         # in this case, ParVector does not own the object
         # in order to prevent python from freeing the input
         # array, object is kept in ParVector
-        # args[-1][0]  _data
-        # args[-1][0]  col
-           self._linked_array = args[-1][0]
+           self._linked_array = args[-1]
 
 
 
@@ -383,6 +319,9 @@ class HypreParMatrix(operators.Operator):
 
     def BooleanMult(self, alpha, x, beta, y):
         return _hypre.HypreParMatrix_BooleanMult(self, alpha, x, beta, y)
+
+    def BooleanMultTranspose(self, alpha, x, beta, y):
+        return _hypre.HypreParMatrix_BooleanMultTranspose(self, alpha, x, beta, y)
 
     def __iadd__(self, B):
         return _hypre.HypreParMatrix___iadd__(self, B)

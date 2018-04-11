@@ -1,6 +1,11 @@
 %module sparsemat
 
 %{
+#include <sstream>
+#include <fstream>
+#include <limits>
+#include <cmath>
+#include <cstring>
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "iostream_typemap.hpp"  
@@ -10,6 +15,7 @@
 %init %{
 import_array();
 %}
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
@@ -17,6 +23,7 @@ import_array();
 %import "densemat.i"
 %import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
+%import "../common/exception.i"
 
 %ignore Walk;
 %pythonappend mfem::SparseMatrix::operator*= %{
@@ -140,5 +147,15 @@ PyObject* GetDataArray(void) const{
   int L = self->Size();
   npy_intp dims[] = {I[L]};
   return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, A);
+  }
+void Print(const char *file){
+  std::ofstream ofile(file);
+  if (!ofile)
+  {
+     std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+     return;
+  }
+  self -> Print(ofile);
+  ofile.close();
   }
 };

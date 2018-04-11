@@ -6538,6 +6538,40 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Operator_GetType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Operator::Type result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Operator_GetType",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_GetType" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  {
+    try {
+      result = (mfem::Operator::Type)((mfem::Operator const *)arg1)->GetType(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_disown_Operator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
@@ -10092,6 +10126,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Operator_RecoverFEMSolution", _wrap_Operator_RecoverFEMSolution, METH_VARARGS, NULL},
 	 { (char *)"Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, NULL},
 	 { (char *)"delete_Operator", _wrap_delete_Operator, METH_VARARGS, NULL},
+	 { (char *)"Operator_GetType", _wrap_Operator_GetType, METH_VARARGS, NULL},
 	 { (char *)"disown_Operator", _wrap_disown_Operator, METH_VARARGS, NULL},
 	 { (char *)"Operator_swigregister", Operator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_TimeDependentOperator", _wrap_new_TimeDependentOperator, METH_VARARGS, NULL},
@@ -11004,6 +11039,7 @@ SWIG_init(void) {
   
   import_array();
   
+  SWIG_Python_SetConstant(d, "Operator_ANY_TYPE",SWIG_From_int(static_cast< int >(mfem::Operator::ANY_TYPE)));
   SWIG_Python_SetConstant(d, "Operator_MFEM_SPARSEMAT",SWIG_From_int(static_cast< int >(mfem::Operator::MFEM_SPARSEMAT)));
   SWIG_Python_SetConstant(d, "Operator_Hypre_ParCSR",SWIG_From_int(static_cast< int >(mfem::Operator::Hypre_ParCSR)));
   SWIG_Python_SetConstant(d, "Operator_PETSC_MATAIJ",SWIG_From_int(static_cast< int >(mfem::Operator::PETSC_MATAIJ)));

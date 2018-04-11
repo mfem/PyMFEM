@@ -188,6 +188,7 @@ import fe
 import fespace
 import fe_coll
 import lininteg
+import handle
 import bilininteg
 import linearform
 import element
@@ -218,6 +219,10 @@ class Mesh(_object):
     __swig_getmethods__["ncmesh"] = _mesh.Mesh_ncmesh_get
     if _newclass:
         ncmesh = _swig_property(_mesh.Mesh_ncmesh_get, _mesh.Mesh_ncmesh_set)
+    __swig_setmethods__["remove_unused_vertices"] = _mesh.Mesh_remove_unused_vertices_set
+    __swig_getmethods__["remove_unused_vertices"] = _mesh.Mesh_remove_unused_vertices_get
+    if _newclass:
+        remove_unused_vertices = _swig_property(_mesh.Mesh_remove_unused_vertices_get, _mesh.Mesh_remove_unused_vertices_set)
 
     def NewElement(self, geom):
         return _mesh.Mesh_NewElement(self, geom)
@@ -444,6 +449,7 @@ class Mesh(_object):
         return _mesh.Mesh_GetBdrElementEdgeIndex(self, i)
 
     def GetBdrElementAdjacentElement(self, bdr_el):
+        from mfem.ser import intp
         el = intp()
         info = intp()  
         _mesh.Mesh_GetBdrElementAdjacentElement(self, bdr_el, el, info)
@@ -473,6 +479,9 @@ class Mesh(_object):
     def GetBdrElementTransformation(self, *args):
         return _mesh.Mesh_GetBdrElementTransformation(self, *args)
 
+    def GetLocalFaceTransformation(self, face_type, elem_type, Transf, info):
+        return _mesh.Mesh_GetLocalFaceTransformation(self, face_type, elem_type, Transf, info)
+
     def GetFaceTransformation(self, *args):
         return _mesh.Mesh_GetFaceTransformation(self, *args)
 
@@ -492,6 +501,7 @@ class Mesh(_object):
         return _mesh.Mesh_FaceIsInterior(self, FaceNo)
 
     def GetFaceElements(self, Face):
+        from mfem.ser import intp
         Elem1 = intp()
         Elem2 = intp()  
         val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)
@@ -622,8 +632,8 @@ class Mesh(_object):
     def KnotInsert(self, kv):
         return _mesh.Mesh_KnotInsert(self, kv)
 
-    def DegreeElevate(self, t):
-        return _mesh.Mesh_DegreeElevate(self, t)
+    def DegreeElevate(self, rel_degree, degree=16):
+        return _mesh.Mesh_DegreeElevate(self, rel_degree, degree)
 
     def EnsureNCMesh(self, triangles_nonconforming=False):
         return _mesh.Mesh_EnsureNCMesh(self, triangles_nonconforming)
@@ -737,6 +747,7 @@ class Mesh(_object):
         return _mesh.Mesh_GetDomainArray(self, idx)
 Mesh_swigregister = _mesh.Mesh_swigregister
 Mesh_swigregister(Mesh)
+cvar = _mesh.cvar
 
 def Mesh_GetTransformationFEforElementType(arg2):
     return _mesh.Mesh_GetTransformationFEforElementType(arg2)

@@ -16,11 +16,13 @@ import_array();
 %ignore poly1d;
 %mutable;
 
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "intrules.i"
 %import "densemat.i"
 %import "sparsemat.i"
+%import "../common/exception.i"
 
 %include "fem/fe.hpp"
 

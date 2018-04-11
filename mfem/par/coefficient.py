@@ -559,8 +559,8 @@ class VectorDeltaCoefficient(VectorCoefficient):
     def EvalDelta(self, V, T, ip):
         return _coefficient.VectorDeltaCoefficient_EvalDelta(self, V, T, ip)
 
-    def Eval(self, V, T, ip):
-        return _coefficient.VectorDeltaCoefficient_Eval(self, V, T, ip)
+    def Eval(self, *args):
+        return _coefficient.VectorDeltaCoefficient_Eval(self, *args)
     __swig_destroy__ = _coefficient.delete_VectorDeltaCoefficient
     __del__ = lambda self: None
 VectorDeltaCoefficient_swigregister = _coefficient.VectorDeltaCoefficient_swigregister

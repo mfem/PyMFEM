@@ -1,4 +1,4 @@
-%module gridfunc
+%module(directors="0")  gridfunc
 %{
   #include <iostream>
   #include <sstream>
@@ -17,8 +17,9 @@
 %init %{
 import_array();
 %}
-%include "../common/cpointers.i"
-
+//%include "../common/cpointers.i"
+//%import "cpointers.i"
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "coefficient.i"
@@ -76,6 +77,7 @@ def GetNodalValues(self, *args):
    $1 = PyList_Check($input) ? 1 : 0;
 }
 
+%include "../common/exception.i"
 %include "fem/gridfunc.hpp"
 
 namespace mfem{

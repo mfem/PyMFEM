@@ -1,5 +1,6 @@
 '''''
-PyMFEM for mfem 3.3.2 
+PyMFEM
+(built on mfem commit 324d66b0c7fc75225e830dcfb02647722bae1fe0)
 '''''
 
 PyMFEM is a python2.7 wrapper for MFEM, ligith-weight FEM (finite element
@@ -298,7 +299,24 @@ to find more detail of the MFEM libirary.
            GetRowList returns a version of GetRow which returns Python
 	   list instead of int pointer.
 
-  
+   4-14) mfem::ParMesh
+   
+         ParMesh(comm, filename)
+            load parallel file
+	 
+         ParPrintToFile(filename)
+            write parallel file
+	    
+   4-14) mfem::ParGridFunction
+
+         ParGridFunction(pmesh, filename) : read parallel GridFunction
+
+         example to read ParMesh and ParGridFunction:
+   	    smyid = '{:0>6d}'.format(myid)  # myid = MPI.COMM_WORLD.rank
+            mesh1 = mfem.ParMesh(comm, 'wg.mesh.'+smyid)
+            mesh1.ReorientTetMesh()
+            x = mfem.ParGridFunction(mesh1, 'wg.gf.'+smyid)
+	    
 -- Known issues --
 
   PyMFEM is an on-going effort. Not all MFEM functioality is propary

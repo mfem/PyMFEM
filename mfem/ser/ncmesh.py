@@ -102,6 +102,76 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+class intp(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, intp, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _ncmesh.new_intp()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _ncmesh.delete_intp
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _ncmesh.intp_assign(self, value)
+
+    def value(self):
+        return _ncmesh.intp_value(self)
+
+    def cast(self):
+        return _ncmesh.intp_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_ncmesh.intp_frompointer)
+    else:
+        frompointer = _ncmesh.intp_frompointer
+intp_swigregister = _ncmesh.intp_swigregister
+intp_swigregister(intp)
+
+def intp_frompointer(t):
+    return _ncmesh.intp_frompointer(t)
+intp_frompointer = _ncmesh.intp_frompointer
+
+class doublep(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, doublep, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        this = _ncmesh.new_doublep()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _ncmesh.delete_doublep
+    __del__ = lambda self: None
+
+    def assign(self, value):
+        return _ncmesh.doublep_assign(self, value)
+
+    def value(self):
+        return _ncmesh.doublep_value(self)
+
+    def cast(self):
+        return _ncmesh.doublep_cast(self)
+    if _newclass:
+        frompointer = staticmethod(_ncmesh.doublep_frompointer)
+    else:
+        frompointer = _ncmesh.doublep_frompointer
+doublep_swigregister = _ncmesh.doublep_swigregister
+doublep_swigregister(doublep)
+
+def doublep_frompointer(t):
+    return _ncmesh.doublep_frompointer(t)
+doublep_frompointer = _ncmesh.doublep_frompointer
+
 import mesh
 import matrix
 import vector
@@ -118,6 +188,7 @@ import fe
 import fespace
 import fe_coll
 import lininteg
+import handle
 import bilininteg
 import linearform
 import element
@@ -229,6 +300,15 @@ class NCMesh(_object):
     def SpaceDimension(self):
         return _ncmesh.NCMesh_SpaceDimension(self)
 
+    def GetNVertices(self):
+        return _ncmesh.NCMesh_GetNVertices(self)
+
+    def GetNEdges(self):
+        return _ncmesh.NCMesh_GetNEdges(self)
+
+    def GetNFaces(self):
+        return _ncmesh.NCMesh_GetNFaces(self)
+
     def Refine(self, refinements):
         return _ncmesh.NCMesh_Refine(self, refinements)
 
@@ -250,6 +330,12 @@ class NCMesh(_object):
     def GetEdgeList(self):
         return _ncmesh.NCMesh_GetEdgeList(self)
 
+    def GetVertexList(self):
+        return _ncmesh.NCMesh_GetVertexList(self)
+
+    def GetNCList(self, entity):
+        return _ncmesh.NCMesh_GetNCList(self, entity)
+
     def MarkCoarseLevel(self):
         return _ncmesh.NCMesh_MarkCoarseLevel(self)
 
@@ -262,6 +348,15 @@ class NCMesh(_object):
     def ClearTransforms(self):
         return _ncmesh.NCMesh_ClearTransforms(self)
 
+    def GetEdgeVertices(self, edge_id, vert_index):
+        return _ncmesh.NCMesh_GetEdgeVertices(self, edge_id, vert_index)
+
+    def GetEdgeNCOrientation(self, edge_id):
+        return _ncmesh.NCMesh_GetEdgeNCOrientation(self, edge_id)
+
+    def GetFaceVerticesEdges(self, face_id, vert_index, edge_index, edge_orientation):
+        return _ncmesh.NCMesh_GetFaceVerticesEdges(self, face_id, vert_index, edge_index, edge_orientation)
+
     def GetEdgeMaster(self, v1, v2):
         return _ncmesh.NCMesh_GetEdgeMaster(self, v1, v2)
 
@@ -270,6 +365,9 @@ class NCMesh(_object):
 
     def GetElementGeometry(self):
         return _ncmesh.NCMesh_GetElementGeometry(self)
+
+    def GetFaceGeometry(self):
+        return _ncmesh.NCMesh_GetFaceGeometry(self)
 
     def GetElementDepth(self, i):
         return _ncmesh.NCMesh_GetElementDepth(self, i)
@@ -289,6 +387,9 @@ class NCMesh(_object):
     def SetVertexPositions(self, vertices):
         return _ncmesh.NCMesh_SetVertexPositions(self, vertices)
 
+    def Trim(self):
+        return _ncmesh.NCMesh_Trim(self)
+
     def MemoryUsage(self):
         return _ncmesh.NCMesh_MemoryUsage(self)
 
@@ -297,13 +398,8 @@ class NCMesh(_object):
 
     def PrintStats(self, *args):
         return _ncmesh.NCMesh_PrintStats(self, *args)
-    __swig_setmethods__["GI"] = _ncmesh.NCMesh_GI_set
-    __swig_getmethods__["GI"] = _ncmesh.NCMesh_GI_get
-    if _newclass:
-        GI = _swig_property(_ncmesh.NCMesh_GI_get, _ncmesh.NCMesh_GI_set)
 NCMesh_swigregister = _ncmesh.NCMesh_swigregister
 NCMesh_swigregister(NCMesh)
-cvar = _ncmesh.cvar
 
 # This file is compatible with both classic and new-style classes.
 

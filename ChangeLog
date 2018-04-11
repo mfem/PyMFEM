@@ -1,5 +1,24 @@
-
 	<<<  Change Log. >>>
+2018 04.18
+	* update ex10p
+	* CHypreParVec::__mul__, __imul__  are updated to support multiplying
+	complex number
+	* Various fixes in chypre.py
+	* wrapper class regenerated using mfem 324d66b0c7fc75225e830dcfb02647722bae1fe0
+	* INSTALL instruction is updated to mention DMFEM_USE_EXCEPTIONS=1
+	 
+2018 02.12
+	* ParMesh::ParMesh(comm, filename)  
+	* ParMesh::ParPrintToFile(filename) # convinent version of ParPrint
+	* ParGridFunction::ParGridFunction(pmesh, filename)
+        ** this is implemented temporariy in a python proxy class
+	** it will be changed to call C++ constructor when a new version
+	** is released.
+	
+2018 02.02
+	* Vector::Print(filename) and SparseMatrix::Print(filename) are added
+	* chypre.IdentityPyMat is added
+	* chypre.CHypreVec.GlobalVector was rewritten to do allgather on python level.
 2018 01.24
 	* The issue of not raising the type conversion error when int is an argument
 	is fixed

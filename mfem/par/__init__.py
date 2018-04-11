@@ -14,6 +14,9 @@ import sys, ctypes
 rtld_now = sys.getdlopenflags()
 sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
 
+from  cpointers import *
+from  point import *
+from  segment import *
 from  array import *
 from  common_functions import *
 from  socketstream import *

@@ -182,6 +182,9 @@ class PWConstCoefficient(Coefficient):
         except __builtin__.Exception:
             self.this = this
 
+    def UpdateConstants(self, c):
+        return _coefficient.PWConstCoefficient_UpdateConstants(self, c)
+
     def __call__(self, i):
         return _coefficient.PWConstCoefficient___call__(self, i)
 
@@ -548,8 +551,8 @@ class VectorDeltaCoefficient(VectorCoefficient):
     def EvalDelta(self, V, T, ip):
         return _coefficient.VectorDeltaCoefficient_EvalDelta(self, V, T, ip)
 
-    def Eval(self, V, T, ip):
-        return _coefficient.VectorDeltaCoefficient_Eval(self, V, T, ip)
+    def Eval(self, *args):
+        return _coefficient.VectorDeltaCoefficient_Eval(self, *args)
     __swig_destroy__ = _coefficient.delete_VectorDeltaCoefficient
     __del__ = lambda self: None
 VectorDeltaCoefficient_swigregister = _coefficient.VectorDeltaCoefficient_swigregister

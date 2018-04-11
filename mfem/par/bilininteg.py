@@ -123,6 +123,10 @@ import table
 import vertex
 import fe_coll
 import lininteg
+import handle
+import hypre
+import communication
+import sets
 import linearform
 class BilinearFormIntegrator(_object):
     __swig_setmethods__ = {}
