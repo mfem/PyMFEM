@@ -65,10 +65,17 @@ class CHypreVec(list):
         self[0]  = value
     @property
     def shape(self):
-        if self._horizontal:
-            return 1, self[0].GlobalSize()
+        if self[0] is not None:
+           size = self[0].GlobalSize()
+        elif self[1] is not None:
+           size = self[1].GlobalSize()
         else:
-            return self[0].GlobalSize(), 1
+           size = 0.0
+       
+        if self._horizontal:
+            return 1, size
+        else:
+            return size, 1
             
     def isComplex(self):
         return not (self[1] is None)
@@ -85,63 +92,119 @@ class CHypreVec(list):
         return part
      
     def __imul__(self, other):
-        if self[0] is not None:
-            self[0] *= other
-        if self[1] is not None:
-            self[1] *= other
+        if isinstance(other, CHypreVec):
+           assert False, "CHypreVec *= vector is not supported. Use dot"
+        elif np.iscomplexobj(other):
+           other = complex(other)
+           i = other.imag
+           r = other.real
+           
+           if self[0] is not None and self[0] is not None:
+               rr = self[0].GetDataArray()*r - self[1].GetDataArray()*i
+               ii = self[0].GetDataArray()*i + self[1].GetDataArray()*r
+               self[0] = ToHypreParVec(rr)
+               self[1] = ToHypreParVec(ii)
+               
+           elif self[0] is not None:
+               if i != 0.:
+                   self[1] = ToHypreParVec(i*self[0].GetDataArray())
+               if r != 0.:
+                   self[0] *= r
+               else:
+                   self[0] = None
+                   
+           elif self[1] is not None:
+               if i != 0.:
+                   self[0] = ToHypreParVec(-i*self[1].GetDataArray())
+               if r != 0.:
+                   self[1] *= r
+               else:
+                   self[1] = None
+                   
+           else:
+               passself[0] = None
+        else:
+           other = float(other)        
+           if self[0] is not None:
+               self[0] *= other
+           if self[1] is not None:
+               self[1] *= other
         return self
+     
+    def __mul__(self, other):
+        if isinstance(other, CHypreVec):
+            assert False, "CHypreVec *= vector is not supported. Use dot"
+        elif np.iscomplexobj(other):
+            other = complex(other)
+            i = other.imag
+            r = other.real
+        else:
+            r = float(other)
+            i = 0.0
+        rdata = self[0].GetDataArray() if self[0] is not None else 0
+        idata = self[1].GetDataArray() if self[1] is not None else 0
+           
+        rr = rdata*r - idata*i
+        ii = rdata*i + idata*r
 
+        rr = ToHypreParVec(rr) if np.count_nonzero(rr) != 0 else None
+        ii = ToHypreParVec(ii) if np.count_nonzero(ii) != 0 else None           
+              
+        return CHypreVec(rr, ii, horizontal=self._horizontal)
+     
     def __add__(self, other):
-        Vector = mfem.par.HypreParVector
-        from mfem.par import add_vector
-        
+        assert self._horizontal == other._horizontal, "can not add vertical and hirozontal vector"
+       
         if self[0] is not None and other[0] is not None:
-            r = Vector(self[0])            
-            add_vector(self[0], other[0], r)
+            data = self[0].GetDataArray() + other[0].GetDataArray()
+            r = ToHypreParVec(data)
         elif self[0] is not None:
-            r = Vector(self[0])
+            data = self[0].GetDataArray()
+            r = ToHypreParVec(data)
         elif other[0] is not None:
-            r = Vector(other[0])
+            data = other[0].GetDataArray()
+            r = ToHypreParVec(data)
         else:
             r = None
         if self[1] is not None and other[1] is not None:
-            i = Vector(self[1])            
-            add_vector(self[1], other[1], i)
+            data = self[1].GetDataArray() + other[1].GetDataArray()
+            i = ToHypreParVec(data)
         elif self[1] is not None:
-            i = Vector(self[1])
+            data = self[1].GetDataArray()
+            i = ToHypreParVec(data)
         elif other[1] is not None:
-            i = Vector(other[1])
+            data = other[1].GetDataArray()
+            i = ToHypreParVec(data)
         else:
             i = None
         return CHypreVec(r, i, horizontal = self._horizontal)
 
     def __sub__(self, other):
-        from mfem.par import HypreParVector as Vector
-        from mfem.par import add_vector
-        
+        assert self._horizontal == other._horizontal, "can not add vertical and hirozontal vector"
         if self[0] is not None and other[0] is not None:
-            r = Vector(self[0])            
-            add_vector(self[0], -1, other[0], r)
+            data = self[0].GetDataArray() - other[0].GetDataArray()
+            r = ToHypreParVec(data)
         elif self[0] is not None:
-            r = Vector(self[0])
+            data = self[0].GetDataArray()
+            r = ToHypreParVec(data)
         elif other[0] is not None:
-            r = Vector(other[0])
-            r *=-1.
+            data = -other[0].GetDataArray()
+            r = ToHypreParVec(data)
         else:
             r = None
         if self[1] is not None and other[1] is not None:
-            i = Vector(self[1])            
-            add_vector(self[1], -1, other[1], i)
+            data = self[1].GetDataArray() - other[1].GetDataArray()
+            i = ToHypreParVec(data)
         elif self[1] is not None:
-            i = Vector(self[1])
+            data = self[1].GetDataArray()
+            i = ToHypreParVec(data)
         elif other[1] is not None:
-            i = Vector(other[1])
-            i *=-1.
+            data = -other[1].GetDataArray()
+            i = ToHypreParVec(data)
         else:
             i = None
-
         return CHypreVec(r, i, horizontal = self._horizontal)
-    
+     
     def dot(self, other):
         if isinstance(other, CHypreVec):
             return InnerProductComplex(self, other)            
@@ -453,18 +516,18 @@ class CHypreMat(list):
         if self[0] is not None and other[0] is not None:            
             r =  ParAdd(self[0], other[0])
         elif self[0] is not None:
-            r = ToHypreParCSR(ToScipyCoo(self[0]))
+            r = ToHypreParCSR(ToScipyCoo(self[0]).tocsr())
         elif other[0] is not None:
-            r = ToHypreParCSR(ToScipyCoo(other[0]))
+            r = ToHypreParCSR(ToScipyCoo(other[0]).tocsr())
         else:
             r = None
         if self[1] is not None and other[1] is not None:
             i =  ParAdd(self[1], other[1])           
 #            i =  mfem.par.add_hypre(1.0, self[1], 1.0, other[1])
         elif self[1] is not None:
-            i = ToHypreParCSR(ToScipyCoo(self[1]))
+            i = ToHypreParCSR(ToScipyCoo(self[1]).tocsr())
         elif other[1] is not None:
-            i = ToHypreParCSR(ToScipyCoo(other[1]))
+            i = ToHypreParCSR(ToScipyCoo(other[1]).tocsr())
         else:
             i = None
             
@@ -486,7 +549,7 @@ class CHypreMat(list):
             r =  ParAdd(self[0], other[0])
             other[0] *= -1            
         elif self[0] is not None:
-            r = ToHypreParCSR(ToScipyCoo(self[0]))           
+            r = ToHypreParCSR(ToScipyCoo(self[0]).tocsr())           
         elif other[0] is not None:
             r = mfem.par.Add(-1, othe[0], 0.0, other[0])                      
         else:
@@ -496,7 +559,7 @@ class CHypreMat(list):
             i =  ParAdd(self[1], other[1])
             other[1] *= -1                       
         elif self[1] is not None:
-            i = ToHypreParCSR(ToScipyCoo(self[1]))           
+            i = ToHypreParCSR(ToScipyCoo(self[1]).tocsr())           
         elif other[1] is not None:
             i = mfem.par.Add(-1, othe[1], 0.0, other[1])           
         else:

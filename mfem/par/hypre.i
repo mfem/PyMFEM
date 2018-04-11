@@ -50,15 +50,15 @@ int sizeof_HYPRE_Int(){
 
 */
 %typemap(in) (double *_data,  HYPRE_Int *col)(PyArrayObject * tmp_arr1_ = NULL,  PyArrayObject * tmp_arr2_ = NULL){
-  //PyArrayObject *tmp_arr1, *tmp_arr2;
-  tmp_arr1_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,0));
-  tmp_arr2_ = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem($input,1));
+  //HypreParVec constructer requires outside object alive
+  //   We keep reference to such outside numpy array in ProxyClass
+  tmp_arr1_ = (PyArrayObject *)PyList_GetItem($input,0);
+  tmp_arr2_ = (PyArrayObject *)PyList_GetItem($input,1);
+  
   $1 = (double *) PyArray_DATA(tmp_arr1_);
   $2 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_);
 }
 %typemap(freearg) (double *_data,  HYPRE_Int *col){
-  //Py_XDECREF(tmp_arr1_$argnum); Dont do this.. HypreParVec constructer requires outside object alive
-  //Py_XDECREF(tmp_arr2_$argnum);  
 }
 %typemap(typecheck )(double *_data,  HYPRE_Int *col){
   /* check if list of 2 numpy array or not */
@@ -159,15 +159,21 @@ typedef int HYPRE_Int;
 %}
 */
 
-
+%pythonprepend mfem::HypreParVector::HypreParVector %{
+import numpy as np
+self._linked_array = None          
+if isinstance(args[-1], list):
+    v = np.ascontiguousarray(args[-1][0])
+    col = np.ascontiguousarray(args[-1][1])
+    args = list(args[:-1])
+    args.append([v, col])
+%}  
 %pythonappend mfem::HypreParVector::HypreParVector %{
   if isinstance(args[-1], list):
      # in this case, ParVector does not own the object
      # in order to prevent python from freeing the input
      # array, object is kept in ParVector
-     # args[-1][0]  _data
-     # args[-1][0]  col
-     self._linked_array = args[-1][0]
+     self._linked_array = args[-1]
 %}
 
 %pythonappend mfem::HypreParMatrix::operator*= %{

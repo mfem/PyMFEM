@@ -4544,9 +4544,11 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    //PyArrayObject *tmp_arr1, *tmp_arr2;
-    tmp_arr1_3 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,0));
-    tmp_arr2_3 = PyArray_GETCONTIGUOUS((PyArrayObject *)PyList_GetItem(obj2,1));
+    //HypreParVec constructer requires outside object alive
+    //   We keep reference to such outside numpy array in ProxyClass
+    tmp_arr1_3 = (PyArrayObject *)PyList_GetItem(obj2,0);
+    tmp_arr2_3 = (PyArrayObject *)PyList_GetItem(obj2,1);
+    
     arg3 = (double *) PyArray_DATA(tmp_arr1_3);
     arg4 = (HYPRE_Int *) PyArray_DATA(tmp_arr2_3);
   }
@@ -4560,14 +4562,12 @@ SWIGINTERN PyObject *_wrap_new_HypreParVector__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HypreParVector, SWIG_POINTER_NEW |  0 );
   {
-    //Py_XDECREF(tmp_arr1_3); Dont do this.. HypreParVec constructer requires outside object alive
-    //Py_XDECREF(tmp_arr2_3);  
+    
   }
   return resultobj;
 fail:
   {
-    //Py_XDECREF(tmp_arr1_3); Dont do this.. HypreParVec constructer requires outside object alive
-    //Py_XDECREF(tmp_arr2_3);  
+    
   }
   return NULL;
 }

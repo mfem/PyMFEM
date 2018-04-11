@@ -9,6 +9,7 @@ def run_test():
     import mfem.par as par
     from mfem.common.parcsr_extra import ToHypreParCSR, ToScipyCoo
     from mpi4py import MPI
+    from mfem.common.mpi_debug import nicePrint
     
     comm     = MPI.COMM_WORLD     
     num_proc = MPI.COMM_WORLD.size
@@ -35,7 +36,41 @@ def run_test():
 
     M = ToHypreParCSR(m, assert_non_square_no_col_starts=False)
     print_hypre(M, 'matrix M')
+
     
+    from mfem.common.chypre import CHypreVec
+    
+    r1 = np.array([0, 0, 1, 1])
+    r2 = np.array([1, 1, 0, 0])
+    vec1 = CHypreVec(r1, None)
+    vec2 = CHypreVec(r2, None)    
+
+    if myid == 0: print("v1")
+    v1 = (vec1-vec1*1j)
+    v2 = (vec1+vec1*1j)
+    nicePrint(v1.GlobalVector())
+    nicePrint(v2.GlobalVector())
+    nicePrint((v1+v2).GlobalVector())
+    nicePrint((v1-v2).GlobalVector())
+    
+    if myid == 0: print("v1, v2")
+    v1 = (vec1-vec2*1j)
+    v2 = (vec1+vec2*1j)
+    nicePrint(v1.GlobalVector())
+    nicePrint(v2.GlobalVector())
+    nicePrint((v1+v2).GlobalVector())
+    nicePrint((v1-v2).GlobalVector())
+
+    v1 *= 3
+    nicePrint(v1.GlobalVector())
+    v1 *= 1j
+    nicePrint(v1.GlobalVector())
+    print(v1.dot(v1))    
+    v1 *= 1+1j
+    nicePrint("v1", v1.GlobalVector())
+    nicePrint("v2", v2.GlobalVector())    
+    print(v1.dot(v1))
+    print(v1.dot(v2))    
 if __name__=='__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '-p':   
         import mfem.par as mfem

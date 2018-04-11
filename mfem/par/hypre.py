@@ -155,6 +155,16 @@ class HypreParVector(vector.Vector):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+
+        import numpy as np
+        self._linked_array = None          
+        if isinstance(args[-1], list):
+            v = np.ascontiguousarray(args[-1][0])
+            col = np.ascontiguousarray(args[-1][1])
+            args = list(args[:-1])
+            args.append([v, col])
+
+
         this = _hypre.new_HypreParVector(*args)
         try:
             self.this.append(this)
@@ -165,9 +175,7 @@ class HypreParVector(vector.Vector):
         # in this case, ParVector does not own the object
         # in order to prevent python from freeing the input
         # array, object is kept in ParVector
-        # args[-1][0]  _data
-        # args[-1][0]  col
-           self._linked_array = args[-1][0]
+           self._linked_array = args[-1]
 
 
 

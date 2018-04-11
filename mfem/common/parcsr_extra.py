@@ -61,7 +61,7 @@ def ToHypreParVec(vec):
     myid     = MPI.COMM_WORLD.rank
 
     vec = vec.flatten()
-    ml = vec.shape[0]
+    ml = vec.shape[0]    
     
     # collect col array to determin partitioning
     m_array = comm.allgather(ml)
@@ -69,7 +69,7 @@ def ToHypreParVec(vec):
     glob_size = cols[-1]
     col_starts = np.array([cols[myid], cols[myid+1], glob_size], dtype=dtype)
     
-    vec = vec.astype('float')
+    vec = vec.astype('float', copy=False )
     v =  mfem.HypreParVector(MPI.COMM_WORLD,
                              glob_size, [vec, col_starts])
 
