@@ -26,15 +26,15 @@ SWIGFLAG = -Wall -c++ -python
 #   MFEMINCDIR : include files
 #   MFEMLNKDIR : path to mfem.so
 
-MFEM=/usr/local
+MFEM ?=/usr/local
 MFEMLIB = mfem
-MFEMBUILDDIR = $(HOME)/src/mfem/cmbuild_par
+MFEMBUILDDIR ?= $(HOME)/src/mfem/cmbuild_par
 MFEMINCDIR = $(MFEM)/include/mfem
 MFEMLNKDIR = $(MFEM)/lib
 
-MFEMSER=/usr/local/mfem_ser
+MFEMSER ?=/usr/local/mfem_ser
 MFEMSERLIB = mfem
-MFEMSERBUILDDIR = $(HOME)/src/mfem_ser/cmbuild_ser
+MFEMSERBUILDDIR ?= $(HOME)/src/mfem_ser/cmbuild_ser
 MFEMSERINCDIR = $(MFEMSER)/include/mfem
 MFEMSERLNKDIR = $(MFEMSER)/lib
 
@@ -55,9 +55,9 @@ MPI4PYINC = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
 NUMPYINC = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
 
 #Boost
-BOOSTINC = /usr/local/include
-BOOSTLIB = /usr/local/lib
-LIBBOOSTIOSTREAMS = boost_iostreams
+BOOSTINC ?= /usr/local/include
+BOOSTLIB ?= /usr/local/lib
+LIBBOOSTIOSTREAMS ?= boost_iostreams
 
 NOCOMPACTUNWIND = 
 include ./Makefile.local
