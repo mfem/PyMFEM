@@ -660,17 +660,35 @@ class CHypreMat(list):
         if self[1] is not None:            
             self[1] = ResetHypreDiag(self[1], idx, value = float(np.imag(value)))
             
-    def resetCol(self, idx):
+    def resetCol(self, idx, inplace=True):
         if self[0] is not None:
-            self[0] = ResetHypreCol(self[0], idx)
-        if self[1] is not None:            
-            self[1] = ResetHypreCol(self[1], idx)
+            r = ResetHypreCol(self[0], idx)
+        else:
+            r = None
+        if self[1] is not None:
+            i = ResetHypreCol(self[1], idx)
+        else:
+            i = None
+        if inplace:
+            self[0]=r; self[1]=i
+            return self
+        else:
+            return  CHypreMat(r, i)
             
-    def resetRow(self, idx):
+    def resetRow(self, idx, inplace=True):
         if self[0] is not None:
-            self[0] = ResetHypreRow(self[0], idx)
-        if self[1] is not None:            
-            self[1] = ResetHypreRow(self[1], idx)
+            r = ResetHypreRow(self[0], idx)
+        else:
+            r = None
+        if self[1] is not None:
+            i = ResetHypreRow(self[1], idx)
+        else:
+            i = None
+        if inplace:
+            self[0]=r; self[1]=i
+            return self
+        else:
+            return  CHypreMat(r, i)
             
     def selectRows(self, idx):
         '''
@@ -852,7 +870,7 @@ class CHypreMat(list):
         # note: tdof is a valued viewed in each node. MyTDoF offset is subtracted
         tdof1 = mfem.par.intArray(tdof)
         if not inplace:
-            print("inplace flag off copying ParCSR")
+            #print("inplace flag off copying ParCSR")
             if self[0] is not None:           
                 r =  ToHypreParCSR(ToScipyCoo(self[0]).tocsr())
 
