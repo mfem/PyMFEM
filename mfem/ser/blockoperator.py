@@ -106,6 +106,14 @@ import array
 import ostream_typemap
 import vector
 import operators
+
+def Opr2BlockOpr(op):
+    return _blockoperator.Opr2BlockOpr(op)
+Opr2BlockOpr = _blockoperator.Opr2BlockOpr
+
+def Opr2SparseMat(op):
+    return _blockoperator.Opr2SparseMat(op)
+Opr2SparseMat = _blockoperator.Opr2SparseMat
 class BlockOperator(operators.Operator):
     __swig_setmethods__ = {}
     for _s in [operators.Operator]:

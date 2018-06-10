@@ -3,6 +3,9 @@
 %{
 #include "linalg/blockoperator.hpp"
 #include "numpy/arrayobject.h"
+#include "linalg/operator.hpp"
+#include "linalg/sparsemat.hpp"
+#include "linalg/hypre.hpp"    
 #include "pyoperator.hpp"       
 %}
 // initialization required to return numpy array from SWIG
@@ -63,4 +66,16 @@ if len(args) == 2:
    self._linked_op[iRow, iCol] = op
 %}  
 
+%inline %{
+  mfem::BlockOperator *Opr2BlockOpr(mfem::Operator *op) {
+    return dynamic_cast<mfem::BlockOperator*>(op);
+  }
+  mfem::SparseMatrix *Opr2SparseMat(mfem::Operator *op) {
+    return dynamic_cast<mfem::SparseMatrix*>(op);
+  }
+  mfem::HypreParMatrix *Opr2HypreParMat(mfem::Operator *op) {
+    return dynamic_cast<mfem::HypreParMatrix*>(op);
+  }
+  
+%}
 %include "linalg/blockoperator.hpp"
