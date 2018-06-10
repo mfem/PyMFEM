@@ -47,6 +47,7 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 //%feature("noabstract") mfem::TimeDependentOperator;
 %feature("director") mfem::TimeDependentOperator;
 %feature("director") mfem::Operator;
+%feature("director") mfem::Solver;
 
 %include "linalg/operator.hpp"
 
