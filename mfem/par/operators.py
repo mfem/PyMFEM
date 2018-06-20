@@ -335,6 +335,34 @@ class TransposeOperator(Operator):
 TransposeOperator_swigregister = _operators.TransposeOperator_swigregister
 TransposeOperator_swigregister(TransposeOperator)
 
+class ProductOperator(Operator):
+    __swig_setmethods__ = {}
+    for _s in [Operator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ProductOperator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Operator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ProductOperator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B, ownA, ownB):
+        this = _operators.new_ProductOperator(A, B, ownA, ownB)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Mult(self, x, y):
+        return _operators.ProductOperator_Mult(self, x, y)
+
+    def MultTranspose(self, x, y):
+        return _operators.ProductOperator_MultTranspose(self, x, y)
+    __swig_destroy__ = _operators.delete_ProductOperator
+    __del__ = lambda self: None
+ProductOperator_swigregister = _operators.ProductOperator_swigregister
+ProductOperator_swigregister(ProductOperator)
+
 class RAPOperator(Operator):
     __swig_setmethods__ = {}
     for _s in [Operator]:

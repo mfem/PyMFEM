@@ -251,8 +251,8 @@ class ParFiniteElementSpace(fespace.FiniteElementSpace):
     def DivideByGroupSize(self, vec):
         return _pfespace.ParFiniteElementSpace_DivideByGroupSize(self, vec)
 
-    def GroupComm(self):
-        return _pfespace.ParFiniteElementSpace_GroupComm(self)
+    def GroupComm(self, *args):
+        return _pfespace.ParFiniteElementSpace_GroupComm(self, *args)
 
     def ScalarGroupComm(self):
         return _pfespace.ParFiniteElementSpace_ScalarGroupComm(self)
@@ -322,6 +322,9 @@ class ParFiniteElementSpace(fespace.FiniteElementSpace):
 
     def Nonconforming(self):
         return _pfespace.ParFiniteElementSpace_Nonconforming(self)
+
+    def GetTrueTransferOperator(self, coarse_fes, T):
+        return _pfespace.ParFiniteElementSpace_GetTrueTransferOperator(self, coarse_fes, T)
 
     def Update(self, want_transform=True):
         return _pfespace.ParFiniteElementSpace_Update(self, want_transform)

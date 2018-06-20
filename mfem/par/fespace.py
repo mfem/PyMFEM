@@ -472,6 +472,12 @@ class FiniteElementSpace(_object):
     def H2L_GlobalRestrictionMatrix(self, lfes):
         return _fespace.FiniteElementSpace_H2L_GlobalRestrictionMatrix(self, lfes)
 
+    def GetTransferOperator(self, coarse_fes, T):
+        return _fespace.FiniteElementSpace_GetTransferOperator(self, coarse_fes, T)
+
+    def GetTrueTransferOperator(self, coarse_fes, T):
+        return _fespace.FiniteElementSpace_GetTrueTransferOperator(self, coarse_fes, T)
+
     def Update(self, want_transform=True):
         return _fespace.FiniteElementSpace_Update(self, want_transform)
 

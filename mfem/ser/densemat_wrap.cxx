@@ -12932,6 +12932,60 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_AddMultVVt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AddMultVVt",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AddMultVVt" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AddMultVVt" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AddMultVVt" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AddMultVVt" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  {
+    try {
+      mfem::AddMultVVt((mfem::Vector const &)*arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_AddMult_a_VWt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
@@ -17093,6 +17147,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MultVVt", _wrap_MultVVt, METH_VARARGS, NULL},
 	 { (char *)"MultVWt", _wrap_MultVWt, METH_VARARGS, NULL},
 	 { (char *)"AddMultVWt", _wrap_AddMultVWt, METH_VARARGS, NULL},
+	 { (char *)"AddMultVVt", _wrap_AddMultVVt, METH_VARARGS, NULL},
 	 { (char *)"AddMult_a_VWt", _wrap_AddMult_a_VWt, METH_VARARGS, NULL},
 	 { (char *)"AddMult_a_VVt", _wrap_AddMult_a_VVt, METH_VARARGS, NULL},
 	 { (char *)"LUFactors_data_set", _wrap_LUFactors_data_set, METH_VARARGS, NULL},
