@@ -74,7 +74,7 @@ def SnapNodes(mesh):
 #  3. Refine the mesh while snapping nodes to the sphere.    
 for l in range(ref_levels+1):
     if l > 0: mesh.UniformRefinement()
-    if (always_snap or l == ref_levels):
+    if always_snap:
         SnapNodes(mesh)    
 if amr == 1:
     for l in range(5):
@@ -89,7 +89,8 @@ pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
 for i in range(par_ref_levels):
     pmesh.UniformRefinement()
     if always_snap: SnapNodes(pmesh)
-if not always_snap or par_ref_levels < 1:SnapNodes(pmesh)
+if (not always_snap) or (par_ref_levels < 1):
+    SnapNodes(pmesh)
 if amr == 1:
     for l in range(5):
         pmesh.RefineAtVertex(mfem.Vertex(0,0,1))
@@ -104,7 +105,7 @@ elif amr == 2:
 #      finite elements -- the same as the mesh nodes.
 fespace = mfem.ParFiniteElementSpace(pmesh, fec)
 size = fespace.GlobalTrueVSize()
-print("Number of unknowns: " + str(size))
+if myid==0: print("Number of unknowns: " + str(size))
     
 #   5. Set up the linear form b(.) which corresponds to the right-hand side of
 #      the FEM linear system, which in this case is (1,phi_i) where phi_i are
@@ -113,7 +114,7 @@ print("Number of unknowns: " + str(size))
 class analytic_rhs(mfem.PyCoefficient):
    def EvalValue(self, x):
        l2 = np.sum(x**2)
-       return  7*x[0]*x[1]/l2
+       return  7.*x[0]*x[1]/l2
 class analytic_solution(mfem.PyCoefficient):
    def EvalValue(self, x):
        l2 = np.sum(x**2)       
@@ -139,10 +140,15 @@ a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
 a.AddDomainIntegrator(mfem.MassIntegrator(one))
 
 #  8. Assemble the linear system, apply conforming constraints, etc.
-a.Assemble();
+a.Assemble()
+a.Finalize()
+mat = a.ParallelAssemble()
+mat.Print("parmatrix")
+
 A = mfem.HypreParMatrix()
 B = mfem.Vector(); X = mfem.Vector()
 empty_tdof_list = mfem.intArray()
+
 a.FormLinearSystem(empty_tdof_list, x, b, A, X, B)
 
 amg = mfem.HypreBoomerAMG(A)
