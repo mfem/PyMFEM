@@ -2,6 +2,8 @@
 
 %{
 #include "linalg/blockoperator.hpp"
+#include "linalg/operator.hpp"
+#include "linalg/sparsemat.hpp"    
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"   
 %}
@@ -65,5 +67,13 @@ if len(args) == 2:
    self._linked_op[iRow, iCol] = op
 %}  
 
+%inline %{
+  mfem::BlockOperator *Opr2BlockOpr(mfem::Operator *op) {
+    return dynamic_cast<mfem::BlockOperator*>(op);
+  }
+  mfem::SparseMatrix *Opr2SparseMat(mfem::Operator *op) {
+    return dynamic_cast<mfem::SparseMatrix*>(op);
+  }
+%}
 
 %include "linalg/blockoperator.hpp"

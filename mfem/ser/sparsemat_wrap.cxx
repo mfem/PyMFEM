@@ -7935,7 +7935,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_0(PyObject *SWIGUNUS
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Vector, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SparseMatrix_EliminateCols" "', argument " "3"" of type '" "mfem::Vector *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SparseMatrix_EliminateCols" "', argument " "3"" of type '" "mfem::Vector const *""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Vector, 0 |  0 );
@@ -7945,7 +7945,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_0(PyObject *SWIGUNUS
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->EliminateCols((mfem::Array< int > const &)*arg2,arg3,arg4);
+      (arg1)->EliminateCols((mfem::Array< int > const &)*arg2,(mfem::Vector const *)arg3,arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -8000,12 +8000,12 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols__SWIG_1(PyObject *SWIGUNUS
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Vector, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SparseMatrix_EliminateCols" "', argument " "3"" of type '" "mfem::Vector *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SparseMatrix_EliminateCols" "', argument " "3"" of type '" "mfem::Vector const *""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
     try {
-      (arg1)->EliminateCols((mfem::Array< int > const &)*arg2,arg3);
+      (arg1)->EliminateCols((mfem::Array< int > const &)*arg2,(mfem::Vector const *)arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -8150,8 +8150,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_EliminateCols(PyObject *self, PyObject *
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_EliminateCols'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &,mfem::Vector *,mfem::Vector *)\n"
-    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &,mfem::Vector *)\n"
+    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &,mfem::Vector const *,mfem::Vector *)\n"
+    "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &,mfem::Vector const *)\n"
     "    mfem::SparseMatrix::EliminateCols(mfem::Array< int > const &)\n");
   return 0;
 }

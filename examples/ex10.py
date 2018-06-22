@@ -171,8 +171,8 @@ class ElasticEnergyCoefficient(mfem.PyCoefficient):
         #print self.x.GetDataArray()
         #self.J.Print()        
         return self.model.EvalW(self.J)/(self.J.Det())
-    
-class BackwardEulerOperator(mfem.PyOperator):
+
+class ReducedSystemOperator(mfem.PyOperator):    
     def __init__(self, M, S, H):
         mfem.PyOperator.__init__(self, M.Height())
         self.M = M
@@ -183,8 +183,8 @@ class BackwardEulerOperator(mfem.PyOperator):
         self.w = mfem.Vector(h)
         self.z = mfem.Vector(h)
         self.dt = 0.0
-#        v = mfem.Vector()
-#        self.x = None
+        self.v = None
+        self.x = None
         
     def SetParameters(self, dt, v, x):
         self.dt = dt
@@ -256,7 +256,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         S.EliminateEssentialBC(ess_bdr)
         S.Finalize(skip_zero_entries)
 
-        self.backward_euler_oper = BackwardEulerOperator(M, S, H)        
+        self.reduced_oper = ReducedSystemOperator(M, S, H)        
        
         J_prec = mfem.DSmoother(1);
         J_minres = mfem.MINRESSolver()
@@ -272,7 +272,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         newton_solver = mfem.NewtonSolver()
         newton_solver.iterative_mode = False
         newton_solver.SetSolver(self.J_solver);
-        newton_solver.SetOperator(self.backward_euler_oper);
+        newton_solver.SetOperator(self.reduced_oper);
         newton_solver.SetPrintLevel(1); #print Newton iterations
         newton_solver.SetRelTol(rel_tol);
         newton_solver.SetAbsTol(0.0);
@@ -305,7 +305,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         # we reduce it to a nonlinear equation for kv, represented by the
         # backward_euler_oper. This equation is solved with the newton_solver
         # object (using J_solver and J_prec internally).
-        self.backward_euler_oper.SetParameters(dt, v, x)
+        self.reduced_oper.SetParameters(dt, v, x)
         zero = mfem.Vector() # empty vector is interpreted as
                              # zero r.h.s. by NewtonSolver
         self.newton_solver.Mult(zero, dv_dt)

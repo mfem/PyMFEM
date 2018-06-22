@@ -42,7 +42,7 @@ class f_exact(mfem.VectorPyCoefficient):
     def EvalValue(self, p):
        dim = p.shape[0]
        x = p[0]; y = p[1]
-       temp = 1 + 2*kappa*kappa
+       temp = 1. + 2.*kappa*kappa
        
        F0 = temp * cos(kappa*x)*sin(kappa*y)
        F1 = temp * cos(kappa*y)*sin(kappa*x)       
@@ -104,6 +104,7 @@ print("Size of linear system: " + str(A.Size()))
 
 # 10. Solve 
 M = mfem.GSSmoother(A)
+X.Print("x")
 mfem.PCG(A, M, B, X, 1, 10000, 1e-20, 0.0);
 
 # 11. Recover the solution as a finite element grid function.

@@ -3457,33 +3457,34 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[3]
 #define SWIGTYPE_p_mfem__ExplicitRKSolver swig_types[4]
 #define SWIGTYPE_p_mfem__ForwardEulerSolver swig_types[5]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[6]
-#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[7]
-#define SWIGTYPE_p_mfem__ODESolver swig_types[8]
-#define SWIGTYPE_p_mfem__Operator swig_types[9]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[10]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[11]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[12]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[13]
-#define SWIGTYPE_p_mfem__RK2Solver swig_types[14]
-#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[15]
-#define SWIGTYPE_p_mfem__RK4Solver swig_types[16]
-#define SWIGTYPE_p_mfem__RK6Solver swig_types[17]
-#define SWIGTYPE_p_mfem__RK8Solver swig_types[18]
-#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[19]
-#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[20]
-#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[21]
-#define SWIGTYPE_p_mfem__SIA1Solver swig_types[22]
-#define SWIGTYPE_p_mfem__SIA2Solver swig_types[23]
-#define SWIGTYPE_p_mfem__SIASolver swig_types[24]
-#define SWIGTYPE_p_mfem__SIAVSolver swig_types[25]
-#define SWIGTYPE_p_mfem__Solver swig_types[26]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[27]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[28]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[29]
-#define SWIGTYPE_p_mfem__Vector swig_types[30]
-static swig_type_info *swig_types[32];
-static swig_module_info swig_module = {swig_types, 31, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__GeneralizedAlphaSolver swig_types[6]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[7]
+#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[8]
+#define SWIGTYPE_p_mfem__ODESolver swig_types[9]
+#define SWIGTYPE_p_mfem__Operator swig_types[10]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[11]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[12]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[13]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[14]
+#define SWIGTYPE_p_mfem__RK2Solver swig_types[15]
+#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[16]
+#define SWIGTYPE_p_mfem__RK4Solver swig_types[17]
+#define SWIGTYPE_p_mfem__RK6Solver swig_types[18]
+#define SWIGTYPE_p_mfem__RK8Solver swig_types[19]
+#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[20]
+#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[21]
+#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[22]
+#define SWIGTYPE_p_mfem__SIA1Solver swig_types[23]
+#define SWIGTYPE_p_mfem__SIA2Solver swig_types[24]
+#define SWIGTYPE_p_mfem__SIASolver swig_types[25]
+#define SWIGTYPE_p_mfem__SIAVSolver swig_types[26]
+#define SWIGTYPE_p_mfem__Solver swig_types[27]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[28]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[29]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[30]
+#define SWIGTYPE_p_mfem__Vector swig_types[31]
+static swig_type_info *swig_types[33];
+static swig_module_info swig_module = {swig_types, 32, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6228,6 +6229,280 @@ SWIGINTERN PyObject *SDIRK33Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_new_GeneralizedAlphaSolver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::GeneralizedAlphaSolver *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_GeneralizedAlphaSolver",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_GeneralizedAlphaSolver" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  {
+    try {
+      result = (mfem::GeneralizedAlphaSolver *)new mfem::GeneralizedAlphaSolver(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GeneralizedAlphaSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GeneralizedAlphaSolver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlphaSolver *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_GeneralizedAlphaSolver")) SWIG_fail;
+  {
+    try {
+      result = (mfem::GeneralizedAlphaSolver *)new mfem::GeneralizedAlphaSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GeneralizedAlphaSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GeneralizedAlphaSolver(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_GeneralizedAlphaSolver__SWIG_1(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_GeneralizedAlphaSolver__SWIG_0(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_GeneralizedAlphaSolver'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GeneralizedAlphaSolver::GeneralizedAlphaSolver(double)\n"
+    "    mfem::GeneralizedAlphaSolver::GeneralizedAlphaSolver()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralizedAlphaSolver_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlphaSolver *arg1 = (mfem::GeneralizedAlphaSolver *) 0 ;
+  mfem::TimeDependentOperator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeneralizedAlphaSolver_Init",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeneralizedAlphaSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralizedAlphaSolver_Init" "', argument " "1"" of type '" "mfem::GeneralizedAlphaSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlphaSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__TimeDependentOperator,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralizedAlphaSolver_Init" "', argument " "2"" of type '" "mfem::TimeDependentOperator &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralizedAlphaSolver_Init" "', argument " "2"" of type '" "mfem::TimeDependentOperator &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::TimeDependentOperator * >(argp2);
+  {
+    try {
+      (arg1)->Init(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralizedAlphaSolver_Step(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlphaSolver *arg1 = (mfem::GeneralizedAlphaSolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  double *arg3 = 0 ;
+  double *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double temp3 ;
+  double dtemp4 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:GeneralizedAlphaSolver_Step",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeneralizedAlphaSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralizedAlphaSolver_Step" "', argument " "1"" of type '" "mfem::GeneralizedAlphaSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlphaSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralizedAlphaSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralizedAlphaSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    temp3 = PyFloat_AsDouble(obj2);
+    arg3 = &temp3;
+  }
+  {
+    dtemp4 = PyFloat_AsDouble(obj3);
+    arg4 = &dtemp4;
+  }
+  {
+    try {
+      (arg1)->Step(*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg3));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_GeneralizedAlphaSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlphaSolver *arg1 = (mfem::GeneralizedAlphaSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_GeneralizedAlphaSolver",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeneralizedAlphaSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_GeneralizedAlphaSolver" "', argument " "1"" of type '" "mfem::GeneralizedAlphaSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlphaSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *GeneralizedAlphaSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__GeneralizedAlphaSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_SIASolver_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SIASolver *arg1 = (mfem::SIASolver *) 0 ;
@@ -7063,6 +7338,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_SDIRK33Solver", _wrap_new_SDIRK33Solver, METH_VARARGS, NULL},
 	 { (char *)"delete_SDIRK33Solver", _wrap_delete_SDIRK33Solver, METH_VARARGS, NULL},
 	 { (char *)"SDIRK33Solver_swigregister", SDIRK33Solver_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_GeneralizedAlphaSolver", _wrap_new_GeneralizedAlphaSolver, METH_VARARGS, NULL},
+	 { (char *)"GeneralizedAlphaSolver_Init", _wrap_GeneralizedAlphaSolver_Init, METH_VARARGS, NULL},
+	 { (char *)"GeneralizedAlphaSolver_Step", _wrap_GeneralizedAlphaSolver_Step, METH_VARARGS, NULL},
+	 { (char *)"delete_GeneralizedAlphaSolver", _wrap_delete_GeneralizedAlphaSolver, METH_VARARGS, NULL},
+	 { (char *)"GeneralizedAlphaSolver_swigregister", GeneralizedAlphaSolver_swigregister, METH_VARARGS, NULL},
 	 { (char *)"SIASolver_Init", _wrap_SIASolver_Init, METH_VARARGS, NULL},
 	 { (char *)"SIASolver_Step", _wrap_SIASolver_Step, METH_VARARGS, NULL},
 	 { (char *)"SIASolver_Run", _wrap_SIASolver_Run, METH_VARARGS, NULL},
@@ -7137,6 +7417,9 @@ static void *_p_mfem__SDIRK23SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSED
 static void *_p_mfem__SDIRK33SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ODESolver *)  ((mfem::SDIRK33Solver *) x));
 }
+static void *_p_mfem__GeneralizedAlphaSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::GeneralizedAlphaSolver *) x));
+}
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TimeDependentOperator *)  ((mfem::PyTimeDependentOperatorBase *) x));
 }
@@ -7175,6 +7458,7 @@ static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)
 static swig_type_info _swigt__p_mfem__BackwardEulerSolver = {"_p_mfem__BackwardEulerSolver", "mfem::BackwardEulerSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ExplicitRKSolver = {"_p_mfem__ExplicitRKSolver", "mfem::ExplicitRKSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ForwardEulerSolver = {"_p_mfem__ForwardEulerSolver", "mfem::ForwardEulerSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GeneralizedAlphaSolver = {"_p_mfem__GeneralizedAlphaSolver", "mfem::GeneralizedAlphaSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ImplicitMidpointSolver = {"_p_mfem__ImplicitMidpointSolver", "mfem::ImplicitMidpointSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ODESolver = {"_p_mfem__ODESolver", "mfem::ODESolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
@@ -7209,6 +7493,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__ExplicitRKSolver,
   &_swigt__p_mfem__ForwardEulerSolver,
+  &_swigt__p_mfem__GeneralizedAlphaSolver,
   &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__ImplicitMidpointSolver,
   &_swigt__p_mfem__ODESolver,
@@ -7241,8 +7526,9 @@ static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0
 static swig_cast_info _swigc__p_mfem__BackwardEulerSolver[] = {  {&_swigt__p_mfem__BackwardEulerSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ExplicitRKSolver[] = {  {&_swigt__p_mfem__RK6Solver, _p_mfem__RK6SolverTo_p_mfem__ExplicitRKSolver, 0, 0},  {&_swigt__p_mfem__RK8Solver, _p_mfem__RK8SolverTo_p_mfem__ExplicitRKSolver, 0, 0},  {&_swigt__p_mfem__ExplicitRKSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ForwardEulerSolver[] = {  {&_swigt__p_mfem__ForwardEulerSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GeneralizedAlphaSolver[] = {  {&_swigt__p_mfem__GeneralizedAlphaSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ImplicitMidpointSolver[] = {  {&_swigt__p_mfem__ImplicitMidpointSolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ODESolver[] = {  {&_swigt__p_mfem__ForwardEulerSolver, _p_mfem__ForwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK2Solver, _p_mfem__RK2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK3SSPSolver, _p_mfem__RK3SSPSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK4Solver, _p_mfem__RK4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK6Solver, _p_mfem__RK6SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK8Solver, _p_mfem__RK8SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__BackwardEulerSolver, _p_mfem__BackwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ImplicitMidpointSolver, _p_mfem__ImplicitMidpointSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK34Solver, _p_mfem__SDIRK34SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ODESolver, 0, 0, 0},  {&_swigt__p_mfem__ExplicitRKSolver, _p_mfem__ExplicitRKSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK23Solver, _p_mfem__SDIRK23SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK33Solver, _p_mfem__SDIRK33SolverTo_p_mfem__ODESolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ODESolver[] = {  {&_swigt__p_mfem__ExplicitRKSolver, _p_mfem__ExplicitRKSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK23Solver, _p_mfem__SDIRK23SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK33Solver, _p_mfem__SDIRK33SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__GeneralizedAlphaSolver, _p_mfem__GeneralizedAlphaSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ODESolver, 0, 0, 0},  {&_swigt__p_mfem__ForwardEulerSolver, _p_mfem__ForwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK2Solver, _p_mfem__RK2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK3SSPSolver, _p_mfem__RK3SSPSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK4Solver, _p_mfem__RK4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__BackwardEulerSolver, _p_mfem__BackwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ImplicitMidpointSolver, _p_mfem__ImplicitMidpointSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK34Solver, _p_mfem__SDIRK34SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK8Solver, _p_mfem__RK8SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK6Solver, _p_mfem__RK6SolverTo_p_mfem__ODESolver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {{&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
@@ -7275,6 +7561,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__ExplicitRKSolver,
   _swigc__p_mfem__ForwardEulerSolver,
+  _swigc__p_mfem__GeneralizedAlphaSolver,
   _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__ImplicitMidpointSolver,
   _swigc__p_mfem__ODESolver,

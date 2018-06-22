@@ -8034,6 +8034,55 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GridFunction_ProjectDiscCoefficient__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::GridFunction::AvgType arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:GridFunction_ProjectDiscCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectDiscCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ProjectDiscCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectDiscCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "GridFunction_ProjectDiscCoefficient" "', argument " "3"" of type '" "mfem::GridFunction::AvgType""'");
+  } 
+  arg3 = static_cast< mfem::GridFunction::AvgType >(val3);
+  {
+    try {
+      (arg1)->ProjectDiscCoefficient(*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GridFunction_ProjectDiscCoefficient(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[4] = {
@@ -8080,12 +8129,33 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectDiscCoefficient(PyObject *self, P
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_GridFunction_ProjectDiscCoefficient__SWIG_3(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GridFunction_ProjectDiscCoefficient'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ProjectDiscCoefficient(mfem::VectorCoefficient &)\n"
-    "    mfem::GridFunction::ProjectDiscCoefficient(mfem::Coefficient &,mfem::GridFunction::AvgType)\n");
+    "    mfem::GridFunction::ProjectDiscCoefficient(mfem::Coefficient &,mfem::GridFunction::AvgType)\n"
+    "    mfem::GridFunction::ProjectDiscCoefficient(mfem::VectorCoefficient &,mfem::GridFunction::AvgType)\n");
   return 0;
 }
 
@@ -13364,7 +13434,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementIntRule(PyObject *SWIGUN
   if (!PyArg_ParseTuple(args,(char *)"OO:QuadratureFunction_GetElementIntRule",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_GetElementIntRule" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_GetElementIntRule" "', argument " "1"" of type '" "mfem::QuadratureFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
@@ -13375,7 +13445,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementIntRule(PyObject *SWIGUN
   }
   {
     try {
-      result = (mfem::IntegrationRule *) &(arg1)->GetElementIntRule(arg2); 
+      result = (mfem::IntegrationRule *) &((mfem::QuadratureFunction const *)arg1)->GetElementIntRule(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13440,6 +13510,54 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues__SWIG_1(PyObject 
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   int arg2 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:QuadratureFunction_GetElementValues",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_GetElementValues" "', argument " "1"" of type '" "mfem::QuadratureFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunction_GetElementValues" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "QuadratureFunction_GetElementValues" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::QuadratureFunction const *)arg1)->GetElementValues(arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
+  int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -13472,6 +13590,54 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues__SWIG_1(PyObject 
   {
     try {
       (arg1)->GetElementValues(arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
+  int arg2 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:QuadratureFunction_GetElementValues",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_GetElementValues" "', argument " "1"" of type '" "mfem::QuadratureFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunction_GetElementValues" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "QuadratureFunction_GetElementValues" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::QuadratureFunction const *)arg1)->GetElementValues(arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13534,10 +13700,56 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues(PyObject *self, P
       }
       if (_v) {
         void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           return _wrap_QuadratureFunction_GetElementValues__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_QuadratureFunction_GetElementValues__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_QuadratureFunction_GetElementValues__SWIG_3(self, args);
         }
       }
     }
@@ -13547,7 +13759,9 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'QuadratureFunction_GetElementValues'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::QuadratureFunction::GetElementValues(int,mfem::Vector &)\n"
-    "    mfem::QuadratureFunction::GetElementValues(int,mfem::DenseMatrix &)\n");
+    "    mfem::QuadratureFunction::GetElementValues(int,mfem::Vector &) const\n"
+    "    mfem::QuadratureFunction::GetElementValues(int,mfem::DenseMatrix &)\n"
+    "    mfem::QuadratureFunction::GetElementValues(int,mfem::DenseMatrix &) const\n");
   return 0;
 }
 

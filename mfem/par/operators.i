@@ -47,10 +47,17 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
 //%feature("noabstract") mfem::TimeDependentOperator;
 %feature("director") mfem::TimeDependentOperator;
 %feature("director") mfem::Operator;
+%feature("director") mfem::Solver;
+
+//%feature("nodirector") mfem::Operator::GetGradient;
+//%feature("nodirector") mfem::Operator::GetProlongation;
+//%feature("nodirector") mfem::Operator::GetRestriction;
+//%feature("nodirector") mfem::TimeDependentOperator::GetImplicitGradient;
+//%feature("nodirector") mfem::TimeDependentOperator::GetExplicitGradient;
 
 %include "linalg/operator.hpp"
-
 %include "pyoperator.hpp"
+
 %pythoncode %{
 class PyOperator(PyOperatorBase):
    def __init__(self, *args):

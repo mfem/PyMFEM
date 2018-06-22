@@ -198,6 +198,9 @@ class GroupTopology(_object):
 
     def Load(self, arg2):
         return _communication.GroupTopology_Load(self, arg2)
+
+    def Copy(self, copy):
+        return _communication.GroupTopology_Copy(self, copy)
     __swig_destroy__ = _communication.delete_GroupTopology
     __del__ = lambda self: None
 GroupTopology_swigregister = _communication.GroupTopology_swigregister
@@ -222,8 +225,8 @@ class GroupCommunicator(_object):
     def Create(self, ldof_group):
         return _communication.GroupCommunicator_Create(self, ldof_group)
 
-    def GroupLDofTable(self):
-        return _communication.GroupCommunicator_GroupLDofTable(self)
+    def GroupLDofTable(self, *args):
+        return _communication.GroupCommunicator_GroupLDofTable(self, *args)
 
     def Finalize(self):
         return _communication.GroupCommunicator_Finalize(self)
@@ -231,8 +234,8 @@ class GroupCommunicator(_object):
     def SetLTDofTable(self, ldof_ltdof):
         return _communication.GroupCommunicator_SetLTDofTable(self, ldof_ltdof)
 
-    def GetGroupTopology(self):
-        return _communication.GroupCommunicator_GetGroupTopology(self)
+    def GetGroupTopology(self, *args):
+        return _communication.GroupCommunicator_GetGroupTopology(self, *args)
 
     def PrintInfo(self, *args):
         return _communication.GroupCommunicator_PrintInfo(self, *args)

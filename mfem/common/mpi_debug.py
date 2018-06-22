@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 def nicePrint(*s):
     from mpi4py import MPI
     

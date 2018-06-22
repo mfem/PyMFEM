@@ -483,6 +483,10 @@ def AddMultVWt(v, w, VWt):
     return _densemat.AddMultVWt(v, w, VWt)
 AddMultVWt = _densemat.AddMultVWt
 
+def AddMultVVt(v, VWt):
+    return _densemat.AddMultVVt(v, VWt)
+AddMultVVt = _densemat.AddMultVVt
+
 def AddMult_a_VWt(a, v, w, VWt):
     return _densemat.AddMult_a_VWt(a, v, w, VWt)
 AddMult_a_VWt = _densemat.AddMult_a_VWt

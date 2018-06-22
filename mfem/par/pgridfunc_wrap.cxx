@@ -6898,6 +6898,55 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ParGridFunction_ProjectDiscCoefficient__SWIG_0_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::GridFunction::AvgType arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:ParGridFunction_ProjectDiscCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "3"" of type '" "mfem::GridFunction::AvgType""'");
+  } 
+  arg3 = static_cast< mfem::GridFunction::AvgType >(val3);
+  {
+    try {
+      (arg1)->ProjectDiscCoefficient(*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ParGridFunction_ProjectDiscCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
@@ -6967,6 +7016,55 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_ProjectDiscCoefficient__SWIG_2(PyObje
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "3"" of type '" "mfem::GridFunction::AvgType""'");
+  } 
+  arg3 = static_cast< mfem::GridFunction::AvgType >(val3);
+  {
+    try {
+      (arg1)->ProjectDiscCoefficient(*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_ProjectDiscCoefficient__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::GridFunction::AvgType arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:ParGridFunction_ProjectDiscCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ParGridFunction_ProjectDiscCoefficient" "', argument " "3"" of type '" "mfem::GridFunction::AvgType""'");
@@ -7073,6 +7171,26 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_ProjectDiscCoefficient(PyObject *self
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_ParGridFunction_ProjectDiscCoefficient__SWIG_0_3(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
@@ -7086,6 +7204,26 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_ProjectDiscCoefficient(PyObject *self
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_ParGridFunction_ProjectDiscCoefficient__SWIG_3(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParGridFunction_ProjectDiscCoefficient'.\n"
@@ -7093,8 +7231,10 @@ fail:
     "    ProjectDiscCoefficient(mfem::VectorCoefficient &,mfem::Array< int > &)\n"
     "    ProjectDiscCoefficient(mfem::VectorCoefficient &)\n"
     "    ProjectDiscCoefficient(mfem::Coefficient &,mfem::GridFunction::AvgType)\n"
+    "    ProjectDiscCoefficient(mfem::VectorCoefficient &,mfem::GridFunction::AvgType)\n"
     "    mfem::ParGridFunction::ProjectDiscCoefficient(mfem::VectorCoefficient &)\n"
-    "    mfem::ParGridFunction::ProjectDiscCoefficient(mfem::Coefficient &,mfem::GridFunction::AvgType)\n");
+    "    mfem::ParGridFunction::ProjectDiscCoefficient(mfem::Coefficient &,mfem::GridFunction::AvgType)\n"
+    "    mfem::ParGridFunction::ProjectDiscCoefficient(mfem::VectorCoefficient &,mfem::GridFunction::AvgType)\n");
   return 0;
 }
 
@@ -11997,16 +12137,16 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30303)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.3.3"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30303)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30400)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.4.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30400)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30303)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30303)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30303)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("heads/graceexit-0-gc3cb4ba35f1ab95b2055752db6da7e1728ff7d0d"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30400)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30400)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("v3.4-0-g0715efbaf95990a4e76380ac69337096b1cd347d-dirty"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
   
   if (import_mpi4py() < 0)

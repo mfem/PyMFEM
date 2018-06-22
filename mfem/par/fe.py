@@ -311,6 +311,9 @@ class FiniteElement(_object):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.FiniteElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.FiniteElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.FiniteElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -389,6 +392,12 @@ class ScalarFiniteElement(FiniteElement):
 
     def SetMapType(self, M):
         return _fe.ScalarFiniteElement_SetMapType(self, M)
+
+    def NodalLocalInterpolation(self, Trans, I, fine_fe):
+        return _fe.ScalarFiniteElement_NodalLocalInterpolation(self, Trans, I, fine_fe)
+
+    def ScalarLocalInterpolation(self, Trans, I, fine_fe):
+        return _fe.ScalarFiniteElement_ScalarLocalInterpolation(self, Trans, I, fine_fe)
     __swig_destroy__ = _fe.delete_ScalarFiniteElement
     __del__ = lambda self: None
 ScalarFiniteElement_swigregister = _fe.ScalarFiniteElement_swigregister
@@ -410,6 +419,9 @@ class NodalFiniteElement(ScalarFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.NodalFiniteElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.NodalFiniteElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.NodalFiniteElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -443,6 +455,9 @@ class PositiveFiniteElement(ScalarFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.PositiveFiniteElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.PositiveFiniteElement_GetTransferMatrix(self, fe, Trans, I)
 
     def Project(self, *args):
         return _fe.PositiveFiniteElement_Project(self, *args)
@@ -2811,6 +2826,9 @@ class RT_QuadrilateralElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_QuadrilateralElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_QuadrilateralElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2854,6 +2872,9 @@ class RT_HexahedronElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_HexahedronElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_HexahedronElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_HexahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2893,6 +2914,9 @@ class RT_TriangleElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_TriangleElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_TriangleElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_TriangleElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -2937,6 +2961,9 @@ class RT_TetrahedronElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.RT_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.RT_TetrahedronElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.RT_TetrahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -2976,6 +3003,9 @@ class ND_HexahedronElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_HexahedronElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_HexahedronElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_HexahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -3020,6 +3050,9 @@ class ND_QuadrilateralElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_QuadrilateralElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_QuadrilateralElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -3059,6 +3092,9 @@ class ND_TetrahedronElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_TetrahedronElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_TetrahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
@@ -3103,6 +3139,9 @@ class ND_TriangleElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_TriangleElement_GetLocalInterpolation(self, Trans, I)
 
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_TriangleElement_GetTransferMatrix(self, fe, Trans, I)
+
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_TriangleElement_ProjectMatrixCoefficient(self, mc, T, dofs)
 
@@ -3142,6 +3181,9 @@ class ND_SegmentElement(VectorFiniteElement):
 
     def GetLocalInterpolation(self, Trans, I):
         return _fe.ND_SegmentElement_GetLocalInterpolation(self, Trans, I)
+
+    def GetTransferMatrix(self, fe, Trans, I):
+        return _fe.ND_SegmentElement_GetTransferMatrix(self, fe, Trans, I)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         return _fe.ND_SegmentElement_ProjectMatrixCoefficient(self, mc, T, dofs)

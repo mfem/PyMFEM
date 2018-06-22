@@ -9115,12 +9115,12 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_0(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -9138,7 +9138,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_0(PyObject *S
   arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
   {
     try {
-      (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2,*arg3,*arg4,arg5);
+      (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9195,12 +9195,12 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_1(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -9213,7 +9213,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_1(PyObject *S
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2,*arg3,*arg4);
+      (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9401,8 +9401,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC(PyObject *self, PyO
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
@@ -9424,8 +9423,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC(PyObject *self, PyO
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
@@ -9448,8 +9446,8 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC(PyObject *self, PyO
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BilinearForm_EliminateEssentialBC'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &)\n"
+    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
+    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &)\n"
     "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &)\n");
   return 0;
@@ -9553,12 +9551,12 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -9576,7 +9574,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_0(PyObject *SWIGUNU
   arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
   {
     try {
-      (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2,*arg3,*arg4,arg5);
+      (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9633,12 +9631,12 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_1(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -9651,7 +9649,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_1(PyObject *SWIGUNU
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2,*arg3,*arg4);
+      (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -9839,8 +9837,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
@@ -9862,8 +9859,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
@@ -9886,8 +9882,8 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs(PyObject *self, PyObject 
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BilinearForm_EliminateVDofs'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &)\n"
+    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
+    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &)\n"
     "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &)\n");
   return 0;
@@ -9931,12 +9927,12 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_0(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -9954,7 +9950,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_0(PyO
   arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
   {
     try {
-      (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2,*arg3,*arg4,arg5);
+      (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10011,12 +10007,12 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_1(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -10029,7 +10025,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_1(PyO
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2,*arg3,*arg4);
+      (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10217,8 +10213,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs(PyObject *s
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
@@ -10240,8 +10235,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs(PyObject *s
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
@@ -10264,8 +10258,8 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs(PyObject *s
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'BilinearForm_EliminateEssentialBCFromDofs'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &)\n"
+    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
+    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &)\n"
     "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n"
     "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &)\n");
   return 0;
@@ -12530,12 +12524,12 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -12548,7 +12542,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUN
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->EliminateTrialDofs(*arg2,*arg3,*arg4);
+      (arg1)->EliminateTrialDofs(*arg2,(mfem::Vector const &)*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -12605,12 +12599,12 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(P
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
@@ -12623,7 +12617,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(P
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   {
     try {
-      (arg1)->EliminateEssentialBCFromTrialDofs(*arg2,*arg3,*arg4);
+      (arg1)->EliminateEssentialBCFromTrialDofs(*arg2,(mfem::Vector const &)*arg3,*arg4);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {

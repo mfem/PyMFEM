@@ -254,19 +254,31 @@ class Solver(Operator):
     for _s in [Operator]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, Solver, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
     __swig_setmethods__["iterative_mode"] = _operators.Solver_iterative_mode_set
     __swig_getmethods__["iterative_mode"] = _operators.Solver_iterative_mode_get
     if _newclass:
         iterative_mode = _swig_property(_operators.Solver_iterative_mode_get, _operators.Solver_iterative_mode_set)
 
+    def __init__(self, *args):
+        if self.__class__ == Solver:
+            _self = None
+        else:
+            _self = self
+        this = _operators.new_Solver(_self, *args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
     def SetOperator(self, op):
         return _operators.Solver_SetOperator(self, op)
     __swig_destroy__ = _operators.delete_Solver
     __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_Solver(self)
+        return weakref_proxy(self)
 Solver_swigregister = _operators.Solver_swigregister
 Solver_swigregister(Solver)
 

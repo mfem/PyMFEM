@@ -10374,12 +10374,12 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_GetSize(PyObject *SWIGUNUSEDPARM(self
   if (!PyArg_ParseTuple(args,(char *)"O:QuadratureSpace_GetSize",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureSpace_GetSize" "', argument " "1"" of type '" "mfem::QuadratureSpace *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureSpace_GetSize" "', argument " "1"" of type '" "mfem::QuadratureSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureSpace * >(argp1);
   {
     try {
-      result = (int)(arg1)->GetSize();
+      result = (int)((mfem::QuadratureSpace const *)arg1)->GetSize();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -10416,7 +10416,7 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_GetElementIntRule(PyObject *SWIGUNUSE
   if (!PyArg_ParseTuple(args,(char *)"OO:QuadratureSpace_GetElementIntRule",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureSpace_GetElementIntRule" "', argument " "1"" of type '" "mfem::QuadratureSpace *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureSpace_GetElementIntRule" "', argument " "1"" of type '" "mfem::QuadratureSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureSpace * >(argp1);
   {
@@ -10427,7 +10427,7 @@ SWIGINTERN PyObject *_wrap_QuadratureSpace_GetElementIntRule(PyObject *SWIGUNUSE
   }
   {
     try {
-      result = (mfem::IntegrationRule *) &(arg1)->GetElementIntRule(arg2);
+      result = (mfem::IntegrationRule *) &((mfem::QuadratureSpace const *)arg1)->GetElementIntRule(arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {

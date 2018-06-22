@@ -254,19 +254,31 @@ class Solver(Operator):
     for _s in [Operator]:
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, Solver, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
     __swig_setmethods__["iterative_mode"] = _operators.Solver_iterative_mode_set
     __swig_getmethods__["iterative_mode"] = _operators.Solver_iterative_mode_get
     if _newclass:
         iterative_mode = _swig_property(_operators.Solver_iterative_mode_get, _operators.Solver_iterative_mode_set)
 
+    def __init__(self, *args):
+        if self.__class__ == Solver:
+            _self = None
+        else:
+            _self = self
+        this = _operators.new_Solver(_self, *args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
     def SetOperator(self, op):
         return _operators.Solver_SetOperator(self, op)
     __swig_destroy__ = _operators.delete_Solver
     __del__ = lambda self: None
+    def __disown__(self):
+        self.this.disown()
+        _operators.disown_Solver(self)
+        return weakref_proxy(self)
 Solver_swigregister = _operators.Solver_swigregister
 Solver_swigregister(Solver)
 
@@ -322,6 +334,34 @@ class TransposeOperator(Operator):
     __del__ = lambda self: None
 TransposeOperator_swigregister = _operators.TransposeOperator_swigregister
 TransposeOperator_swigregister(TransposeOperator)
+
+class ProductOperator(Operator):
+    __swig_setmethods__ = {}
+    for _s in [Operator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ProductOperator, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Operator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ProductOperator, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B, ownA, ownB):
+        this = _operators.new_ProductOperator(A, B, ownA, ownB)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Mult(self, x, y):
+        return _operators.ProductOperator_Mult(self, x, y)
+
+    def MultTranspose(self, x, y):
+        return _operators.ProductOperator_MultTranspose(self, x, y)
+    __swig_destroy__ = _operators.delete_ProductOperator
+    __del__ = lambda self: None
+ProductOperator_swigregister = _operators.ProductOperator_swigregister
+ProductOperator_swigregister(ProductOperator)
 
 class RAPOperator(Operator):
     __swig_setmethods__ = {}

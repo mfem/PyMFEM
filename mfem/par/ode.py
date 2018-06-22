@@ -453,6 +453,34 @@ class SDIRK33Solver(ODESolver):
 SDIRK33Solver_swigregister = _ode.SDIRK33Solver_swigregister
 SDIRK33Solver_swigregister(SDIRK33Solver)
 
+class GeneralizedAlphaSolver(ODESolver):
+    __swig_setmethods__ = {}
+    for _s in [ODESolver]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, GeneralizedAlphaSolver, name, value)
+    __swig_getmethods__ = {}
+    for _s in [ODESolver]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, GeneralizedAlphaSolver, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, rho=1.0):
+        this = _ode.new_GeneralizedAlphaSolver(rho)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Init(self, _f):
+        return _ode.GeneralizedAlphaSolver_Init(self, _f)
+
+    def Step(self, x, t, dt):
+        return _ode.GeneralizedAlphaSolver_Step(self, x, t, dt)
+    __swig_destroy__ = _ode.delete_GeneralizedAlphaSolver
+    __del__ = lambda self: None
+GeneralizedAlphaSolver_swigregister = _ode.GeneralizedAlphaSolver_swigregister
+GeneralizedAlphaSolver_swigregister(GeneralizedAlphaSolver)
+
 class SIASolver(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, SIASolver, name, value)
