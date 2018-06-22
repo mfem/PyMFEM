@@ -215,12 +215,22 @@ class FaceIntegrator(mfem.NonlinearFormIntegrator):
                 globals()['max_char_speed'] = mcs
                 
             self.fluxN *= ip.weight;
+
+            #
+            fluxN = np.atleast_2d(self.fluxN.GetDataArray())
+            shape1 = np.atleast_2d(self.shape1.GetDataArray())
+            shape2 = np.atleast_2d(self.shape2.GetDataArray())                        
+            mat1 = elvect1_mat.GetDataArray()
+            mat2 = elvect2_mat.GetDataArray()
+            mat1 -=  shape1.transpose().dot(fluxN)
+            mat2 +=  shape2.transpose().dot(fluxN)            
+            '''
             for k in range(num_equation):
                 for s in range(dof1):
                     elvect1_mat[s, k] -= self.fluxN[k] * self.shape1[s]
                 for s in range(dof2):                   
                     elvect2_mat[s, k] += self.fluxN[k] * self.shape2[s]
-
+            '''
 class RiemannSolver(object):
     def __init__(self):
         num_equation = globals()['num_equation']                
@@ -244,9 +254,14 @@ class RiemannSolver(object):
 
         normag = np.sqrt(np.sum(nor.GetDataArray()**2))
 
+        '''
         for i in range(num_equation):
             flux[i] = (0.5 * (self.flux1[i] + self.flux2[i])
                        - 0.5 * maxE * (state2[i] - state1[i]) * normag)
+        '''
+        f = (0.5 * (self.flux1.GetDataArray() + self.flux2.GetDataArray())
+             -  0.5 * maxE * (state2.GetDataArray() - state1.GetDataArray()) * normag)
+        flux.Assign(f)
 
         return maxE;
 
@@ -339,6 +354,10 @@ def ComputePressure(state, dim):
     return pres
 
 def ComputeFlux(state, dim, flux):
+    from mpi4py import MPI
+    num_procs = MPI.COMM_WORLD.size
+    myid      = MPI.COMM_WORLD.rank
+
     den = state[0];
     den_vel = state[1:1+dim].GetDataArray()
     den_energy = state[1 + dim]
@@ -347,14 +366,22 @@ def ComputeFlux(state, dim, flux):
 
     pres = ComputePressure(state, dim)
 
+    den_vel2 = np.atleast_2d(den_vel)
+    fluxA = flux.GetDataArray()
+    fluxA[0,:] = den_vel
+    fluxA[1:1+dim, :] = den_vel2.transpose().dot(den_vel2) / den
+    for d in range(dim): fluxA[1+d,d] += pres
+    
+    '''
     for d in range(dim):
        flux[0, d] = den_vel[d]
        for i in range(dim):       
           flux[1+i, d] = den_vel[i] * den_vel[d] / den;
        flux[1+d, d] += pres;
-
+    '''
+    
     H = (den_energy + pres) / den
-    for d in range(dim): flux[1+dim, d] = den_vel[d] * H
+    flux.GetDataArray()[1+dim, :] = den_vel * H
 
 def ComputeFluxDotN(state, nor, fluxN):
     # NOTE: nor in general is not a unit normal
