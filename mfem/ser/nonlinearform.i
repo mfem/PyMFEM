@@ -16,6 +16,15 @@ import_array();
 %import "fespace.i"
 %import "nonlininteg.i"
 %import "../common/exception.i"
+%include "../common/typemap_macros.i"
+
+
+LIST_TO_OBJARRAY_IN(mfem::Array<mfem::FiniteElementSpace *> &f,
+		    mfem::FiniteElementSpace *)
+LIST_TO_OBJARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,
+		    mfem::Array<int> *)
+LIST_TO_OBJARRAY_IN(mfem::Array<mfem::Vector *> &rhs,
+		    mfem::Vector *)
 
 namespace mfem { 
 %pythonprepend NonlinearForm::AddDomainIntegrator %{
@@ -35,6 +44,7 @@ namespace mfem {
     nlfi.thisown=0 
 %}
 }
+
 
 %include "fem/nonlinearform.hpp"
 

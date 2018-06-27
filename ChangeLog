@@ -1,4 +1,14 @@
 	<<<  Change Log. >>>
+2018 06.22
+	* regenerate wrapper using MFEM 3.4
+	* In nonlinearfomr.i, a new typemap is introduce to wrap folloing
+	* arguments as list/tuple
+	**  Array<FiniteElementSpace *>
+	**  Array<Array<int>>
+	**  Array<Vector *>
+	* following dynamic cast wrapper is added
+	** Opr2BlockOpr : Operator -> BlockOprator
+	** Opr2SparseMat : Operator -> SparseMatrix
 2018 04.18
 	* update ex10p
 	* CHypreParVec::__mul__, __imul__  are updated to support multiplying

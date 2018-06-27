@@ -167,3 +167,7 @@ def GetEdgeInteriorDofs(self, i):
 %}  
 %include "fem/fespace.hpp"
 
+ //amespace mfem{
+ //%template(FiniteElementSpaceArray) Array<FiniteElementSpace>;
+ //}
+
