@@ -28,7 +28,7 @@ from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
 
-parser = ArgParser(description='Ex10')
+parser = ArgParser(description='Ex19')
 parser.add_argument('-m', '--mesh',
                     default = 'beam-quad.mesh', 
                     action = 'store', type = str,
@@ -47,7 +47,7 @@ parser.add_argument('-abs', '--absolute-tolerance',
                     help = "Absolute tolerance for the Newton solve.")
 parser.add_argument("-it", "--newton-iterations",
                     action = 'store', default = 500, type=int,
-                   "Maximum iterations for the Newton solve.");
+                    help = "Maximum iterations for the Newton solve.")
 parser.add_argument("-mu", "--shear-modulus",
                     action = 'store', default = 1.0, type=float,                    
                     help = "Shear modulus in the Neo-Hookean material.")
@@ -56,101 +56,102 @@ parser.add_argument('-vis', '--visualization',
                     help='Enable GLVis visualization')
 
 args = parser.parse_args()
-
-ref_levels = args.refine
-order = args.order
-visualization = args.visualization
-mu = args.shear_modulus
-newton_rel_tol = args.relative_tolelance
-newton_abs_tol = args.absolute_tolelance
-newton_iter = args.newton_iteration
-
-parser.print_options(args)
-
-meshfile = expanduser(join(path, 'data', args.mesh))
-mesh = mfem.Mesh(meshfile, 1,1)
-dim = mesh.Dimension()
-
-for lev in range(ref_levels):
-    mesh.UniformRefinement()
     
-#  4. Define the shear modulus for the incompressible Neo-Hookean material
-c_mu = mfem.ConstantCoefficient(mu)
+def ex19_main(args):
+    ref_levels = args.refine
+    order = args.order
+    visualization = args.visualization
+    mu = args.shear_modulus
+    newton_rel_tol = args.relative_tolerance
+    newton_abs_tol = args.absolute_tolerance
+    newton_iter = args.newton_iterations
 
-#  5. Define the finite element spaces for displacement and pressure
-#     (Taylor-Hood elements). By default, the displacement (u/x) is a second
-#     order vector field, while the pressure (p) is a linear scalar function.
-quad_coll = mfem.H1_FECollection(order, dim)
-lin_coll =  mfem.H1_FECollection(order-1, dim)
+    parser.print_options(args)
 
-R_space = mfem.FiniteElementSpace(mesh, quad_coll, dim, mfem.Ordering.byVDIM)
-W_space = mfem.FiniteElementSpace(mesh, lin_coll)
+    meshfile = expanduser(join(path, 'data', args.mesh))
+    mesh = mfem.Mesh(meshfile, 1,1)
+    dim = mesh.Dimension()
 
-spaces = [R_space W_space]
-R_size = R_space.GetVSize()
-W_size = W_space.GetVSize()
+    for lev in range(ref_levels):
+        mesh.UniformRefinement()
 
-#   6. Define the Dirichlet conditions (set to boundary attribute 1 and 2)
-ess_bdr_u = mfem.intArray(R_space.GetMesh()->bdr_attributes.Max())
-ess_bdr_p = mfem.intArray(W_space.GetMesh()->bdr_attributes.Max())
-ess_bdr_u.Assign(0)
-ess_bdr_p.Assign(1)
-ess_bdr = [ess_bdr_u, ess_bdr_p]
+    #  4. Define the shear modulus for the incompressible Neo-Hookean material
+    c_mu = mfem.ConstantCoefficient(mu)
+
+    #  5. Define the finite element spaces for displacement and pressure
+    #     (Taylor-Hood elements). By default, the displacement (u/x) is a second
+    #     order vector field, while the pressure (p) is a linear scalar function.
+    quad_coll = mfem.H1_FECollection(order, dim)
+    lin_coll =  mfem.H1_FECollection(order-1, dim)
+
+    R_space = mfem.FiniteElementSpace(mesh, quad_coll, dim, mfem.Ordering.byVDIM)
+    W_space = mfem.FiniteElementSpace(mesh, lin_coll)
+
+    spaces = [R_space, W_space]
+    R_size = R_space.GetVSize()
+    W_size = W_space.GetVSize()
+
+    #   6. Define the Dirichlet conditions (set to boundary attribute 1 and 2)
+    ess_bdr_u = mfem.intArray(R_space.GetMesh().bdr_attributes.Max())
+    ess_bdr_p = mfem.intArray(W_space.GetMesh().bdr_attributes.Max())
+    ess_bdr_u.Assign(0)
+    ess_bdr_p.Assign(1)
+    ess_bdr = [ess_bdr_u, ess_bdr_p]
 
 
-print("***********************************************************")
-print("dim(R) = " + str(R_szie))
-print("dim(W) = " + str(W_size))
-print("dim(R+W) = " + str(R_size + W_size))
-print("***********************************************************")
+    print("***********************************************************")
+    print("dim(R) = " + str(R_size))
+    print("dim(W) = " + str(W_size))
+    print("dim(R+W) = " + str(R_size + W_size))
+    print("***********************************************************")
 
-block_offsets = intArray([0, R_size, W_size])
-block_offsets.PartialSum()
+    block_offsets = intArray([0, R_size, W_size])
+    block_offsets.PartialSum()
 
-xp= mfem.BlockVector(block_offsets)
+    xp= mfem.BlockVector(block_offsets)
 
-#  9. Define grid functions for the current configuration, reference
-#     configuration, final deformation, and pressure
-x_gf  = mfem.GridFunction(R_space)
-x_ref = mfem.GridFunction(R_space)
-x_def = mfem.GridFunction(R_space)
-p_gf  = mfem.GridFunction(W_space)
+    #  9. Define grid functions for the current configuration, reference
+    #     configuration, final deformation, and pressure
+    x_gf  = mfem.GridFunction(R_space)
+    x_ref = mfem.GridFunction(R_space)
+    x_def = mfem.GridFunction(R_space)
+    p_gf  = mfem.GridFunction(W_space)
 
-x_gf.MakeRef(R_space, xp.GetBlock(0), 0)
-p_gf.MakeRef(W_space, xp.GetBlock(1), 0)
+    x_gf.MakeRef(R_space, xp.GetBlock(0), 0)
+    p_gf.MakeRef(W_space, xp.GetBlock(1), 0)
 
-deform = InitialDeformation(dim)
-refconfig = ReferenceConfiguration(dim)
+    deform = InitialDeformation(dim)
+    refconfig = ReferenceConfiguration(dim)
 
-x_gf.ProjectCoefficient(deform)
-x_ref.ProjectCoefficient(refconfig)
-p_gf.Assign(0.0)
+    x_gf.ProjectCoefficient(deform)
+    x_ref.ProjectCoefficient(refconfig)
+    p_gf.Assign(0.0)
 
-#  10. Initialize the incompressible neo-Hookean operator
-oper = RubberOperator(spaces, ess_bdr, block_offsets,
-                     newton_rel_tol, newton_abs_tol, newton_iter,
-                     mu);
-#  11. Solve the Newton system
-oper.Solve(xp)
+    #  10. Initialize the incompressible neo-Hookean operator
+    oper = RubberOperator(spaces, ess_bdr, block_offsets,
+                         newton_rel_tol, newton_abs_tol, newton_iter,
+                         mu);
+    #  11. Solve the Newton system
+    oper.Solve(xp)
 
-#  12. Compute the final deformation
-mfem.subtract_vector(x_gf, x_ref, x_def)
+    #  12. Compute the final deformation
+    mfem.subtract_vector(x_gf, x_ref, x_def)
 
-#  13. Visualize the results if requested
-if (visualization):    
-    vis_u = mfem.socketstream("localhost", 19916)
-    visualize(vis_u, mesh, x_gf, x_def, "Deformation", True)
-    vis_p = mfem.socketstream("localhost", 19916)
-    visualize(vis_p, mesh, x_gf, p_gf, "Deformation", True)
+    #  13. Visualize the results if requested
+    if (visualization):    
+        vis_u = mfem.socketstream("localhost", 19916)
+        visualize(vis_u, mesh, x_gf, x_def, "Deformation", True)
+        vis_p = mfem.socketstream("localhost", 19916)
+        visualize(vis_p, mesh, x_gf, p_gf, "Deformation", True)
     
-#  14. Save the displaced mesh, the final deformation, and the pressure
-nodes = x
-owns_nodes = 0
-nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
+    #  14. Save the displaced mesh, the final deformation, and the pressure
+    nodes = x
+    owns_nodes = 0
+    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 
-mesh.PrintToFile('deformed.mesh', 8)
-p_gf.SaveToFile('pressure.sol', 8)
-x_def.SaveToFile("defomrtaion.sol",  8)
+    mesh.PrintToFile('deformed.mesh', 8)
+    p_gf.SaveToFile('pressure.sol', 8)
+    x_def.SaveToFile("defomrtaion.sol",  8)
 
 '''
  Custom block preconditioner for the Jacobian of the incompressible nonlinear
@@ -181,7 +182,7 @@ class JacobianPreconditioner(mfem.Solver):
         # only need to define them once
         self.mass_precs = self.GSSmoother(mass)
 
-        mass_pcg_iter = mfem.CGSolver()
+        mass_pcg = mfem.CGSolver()
         mass_pcg.SetRelTol(1e-12)
         mass_pcg.SetAbsTol(1e-12)
         mass_pcg.SetMaxIter(200)
@@ -189,6 +190,7 @@ class JacobianPreconditioner(mfem.Solver):
         mass_pcg.SetPreconditioner(self.mass_prec)
         mass_pcg.SetOperator(self.pressure_mass)
         mass_pcg.iterative_mode = False
+        self.mass_pcg = mass_pcg
 
         # The stiffness matrix does change every Newton cycle, so we will define it
         # during SetOperator
@@ -207,7 +209,7 @@ class JacobianPreconditioner(mfem.Solver):
         temp2 = mfem.Vector(block_offsets[1]-block_offsets[0])        
 
         # Perform the block elimination for the preconditioner
-        self.mass_pcg-.Mult(pres_in, pres_out)
+        self.mass_pcg.Mult(pres_in, pres_out)
         pres_out *= -gamma
 
         self.jacobian.GetBlock(0,1).Mult(pres_out, temp)
@@ -216,7 +218,7 @@ class JacobianPreconditioner(mfem.Solver):
         
     def SetOperator(op):
         self.jacobian = mfem.Opr2BlockOpr(op)
-        if (self.stiff_prec == NULL)
+        if (self.stiff_prec == NULL):
             # Initialize the stiffness preconditioner and solver
             stiff_prec_gs = self.GSSmoother()
             self.stiff_prec = stiff_prec_gs
@@ -239,10 +241,11 @@ class RubberOperator(mfem.PyOperator):
     def __init__(self, spaces, ess_bdr, block_offsets,
                        rel_tol, abs_tol, iter, mu):
 
-        # Array<Vector *> -> tuple 
+        # Array<Vector *> -> tuple
+        super(RubberOperator, self).__init__(spaces[0].GetVSize())
         self.rhs = (mfem.Vector(), mfem.Vector())
-        self.rhs[0].Assgin(0)
-        self.rhs[1].Assgin(0)
+        self.rhs[0].Assign(0)
+        self.rhs[1].Assign(0)
         
         self.spaces = spaces
         self.mu = mfem.ConstantCoefficient(mu)
@@ -281,16 +284,16 @@ class RubberOperator(mfem.PyOperator):
         newton_solver.SetAbsTol(abs_tol)
         newton_solver.SetMaxIter(iter)
         
-    def Solve(xp):
+    def Solve(self, xp):
         zero = mfem.Vector()
         self.newton_solver(zero, xp)
         if not newton_solver.GetConverged():
             assert False, "Newton Solver did not converge."
 
-    def Mult(k, y):
+    def Mult(self, k, y):
         self.Hform.Mult(k, y)
 
-    def GetGradient(xp):
+    def GetGradient(self, xp):
         return Hform.GetGradient(xp)
         
         
@@ -327,10 +330,11 @@ class InitialDeformation(mfem.VectorPyCoefficient):
 #  FunctionCOefficient is wrapperd usng VectorPyCoefficient class   
 class ReferenceConfiguration(mfem.VectorPyCoefficient):
    def EvalValue(self, x):
-       return y
+       return x
    
 
-
+if __name__ == '__main__':
+    ex19_main(args)
 
 
 
