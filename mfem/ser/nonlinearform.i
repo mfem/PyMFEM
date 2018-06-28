@@ -1,8 +1,10 @@
 %module nonlinearform
 %{
+#include "fem/estimators.hpp"  
 #include "fem/linearform.hpp"    
 #include "fem/nonlininteg.hpp"
 #include "fem/nonlinearform.hpp"
+#include "fem/fespace.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
 %}
@@ -12,19 +14,16 @@ import_array();
 %}
 
 %include "exception.i"
+%import "array.i"
+%import "intrules.i"
+%import "vector.i"
+%import "gridfunc.i"
 %import "operators.i"
 %import "fespace.i"
 %import "nonlininteg.i"
 %import "../common/exception.i"
 %include "../common/typemap_macros.i"
 
-
-LIST_TO_OBJARRAY_IN(mfem::Array<mfem::FiniteElementSpace *> &f,
-		    mfem::FiniteElementSpace *)
-LIST_TO_OBJARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,
-		    mfem::Array<int> *)
-LIST_TO_OBJARRAY_IN(mfem::Array<mfem::Vector *> &rhs,
-		    mfem::Vector *)
 
 namespace mfem { 
 %pythonprepend NonlinearForm::AddDomainIntegrator %{
@@ -44,6 +43,29 @@ namespace mfem {
     nlfi.thisown=0 
 %}
 }
+namespace mfem { 
+%pythonprepend BlockNonlinearForm::AddDomainIntegrator %{
+#    if not hasattr(self, "_integrators"): self._integrators = []
+#    self._integrators.append(nlfi)
+    nlfi.thisown=0 
+%}
+%pythonprepend BlockNonlinearForm::AddInteriorFaceIntegrator %{
+#    if not hasattr(self, "_integrators"): self._integrators = []
+#    self._integrators.append(nlfi)
+    nlfi.thisown=0 
+%}
+%pythonprepend BlockNonlinearForm::AddBdrFaceIntegrator %{
+#    if not hasattr(self, "_integrators"): self._integrators = []
+#    self._integrators.append(nlfi)
+    nlfi = args[0]
+    nlfi.thisown=0 
+%}
+}
+LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementSpace *> &f,
+    		        mfem::FiniteElementSpace *)
+LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,
+ 		        mfem::Array<int> *)
+LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::Vector *> &rhs, mfem::Vector *)
 
 
 %include "fem/nonlinearform.hpp"

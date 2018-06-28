@@ -30,11 +30,11 @@ from scipy.special import erfc
 
 parser = ArgParser(description='Ex19')
 parser.add_argument('-m', '--mesh',
-                    default = 'beam-quad.mesh', 
+                    default = 'beam-hex.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-r', '--refine',
-                    action = 'store', default = 2, type=int,
+                    action = 'store', default = 0, type=int,
                     help = "Number of times to refine the mesh uniformly")
 parser.add_argument('-o', '--order',
                     action = 'store', default = 2, type=int,
@@ -90,12 +90,12 @@ def ex19_main(args):
     spaces = [R_space, W_space]
     R_size = R_space.GetVSize()
     W_size = W_space.GetVSize()
-
+    
     #   6. Define the Dirichlet conditions (set to boundary attribute 1 and 2)
     ess_bdr_u = mfem.intArray(R_space.GetMesh().bdr_attributes.Max())
     ess_bdr_p = mfem.intArray(W_space.GetMesh().bdr_attributes.Max())
-    ess_bdr_u.Assign(0)
-    ess_bdr_p.Assign(1)
+    ess_bdr_u.Assign(0); ess_bdr_u[0] = 1;ess_bdr_u[1] = 1
+    ess_bdr_p.Assign(0); 
     ess_bdr = [ess_bdr_u, ess_bdr_p]
 
 
@@ -145,13 +145,13 @@ def ex19_main(args):
         visualize(vis_p, mesh, x_gf, p_gf, "Deformation", True)
     
     #  14. Save the displaced mesh, the final deformation, and the pressure
-    nodes = x
+    nodes = x_gf
     owns_nodes = 0
     nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 
     mesh.PrintToFile('deformed.mesh', 8)
     p_gf.SaveToFile('pressure.sol', 8)
-    x_def.SaveToFile("defomrtaion.sol",  8)
+    x_def.SaveToFile("deformation.sol",  8)
 
 '''
  Custom block preconditioner for the Jacobian of the incompressible nonlinear
@@ -174,13 +174,13 @@ class JacobianPreconditioner(mfem.Solver):
     def __init__(self, spaces, mass, offsets):
         self.pressure_mass = mass
         self.block_offsets = offsets
-        super(JacobianPreconditioner, self).__init__(offsets)
+        super(JacobianPreconditioner, self).__init__(offsets[2])
         
-        gamma = 0.00001;
+        self.gamma = 0.00001;
 
         # The mass matrix and preconditioner do not change every Newton cycle, so we
         # only need to define them once
-        self.mass_precs = self.GSSmoother(mass)
+        self.mass_prec = mfem.GSSmoother(mass)
 
         mass_pcg = mfem.CGSolver()
         mass_pcg.SetRelTol(1e-12)
@@ -199,6 +199,7 @@ class JacobianPreconditioner(mfem.Solver):
 
     def Mult(self, k, y):
         # Extract the blocks from the input and output vectors
+        block_offsets = self.block_offsets
         disp_in = k[block_offsets[0]:block_offsets[1]]
         pres_in = k[block_offsets[1]:block_offsets[2]]        
 
@@ -210,17 +211,17 @@ class JacobianPreconditioner(mfem.Solver):
 
         # Perform the block elimination for the preconditioner
         self.mass_pcg.Mult(pres_in, pres_out)
-        pres_out *= -gamma
+        pres_out *= -self.gamma
 
         self.jacobian.GetBlock(0,1).Mult(pres_out, temp)
         mfem.subtract_vector(disp_in, temp, temp2)
         self.stiff_pcg.Mult(temp2, disp_out)
         
-    def SetOperator(op):
+    def SetOperator(self, op):
         self.jacobian = mfem.Opr2BlockOpr(op)
-        if (self.stiff_prec == NULL):
+        if (self.stiff_prec == None):
             # Initialize the stiffness preconditioner and solver
-            stiff_prec_gs = self.GSSmoother()
+            stiff_prec_gs = mfem.GSSmoother()
             self.stiff_prec = stiff_prec_gs
 
             stiff_pcg_iter = mfem.GMRESSolver()
@@ -235,17 +236,15 @@ class JacobianPreconditioner(mfem.Solver):
 
         #  At each Newton cycle, compute the new stiffness preconditioner by updating
         #  the iterative solver which, in turn, updates its preconditioner
-        self.stiff_pcg.SetOperator(jacobian.GetBlock(0,0))
+        self.stiff_pcg.SetOperator(self.jacobian.GetBlock(0,0))
 
 class RubberOperator(mfem.PyOperator):
     def __init__(self, spaces, ess_bdr, block_offsets,
                        rel_tol, abs_tol, iter, mu):
 
         # Array<Vector *> -> tuple
-        super(RubberOperator, self).__init__(spaces[0].GetVSize())
-        self.rhs = (mfem.Vector(), mfem.Vector())
-        self.rhs[0].Assign(0)
-        self.rhs[1].Assign(0)
+        super(RubberOperator, self).__init__(spaces[0].GetVSize() + spaces[1].GetVSize())
+        rhs = (None, None)
         
         self.spaces = spaces
         self.mu = mfem.ConstantCoefficient(mu)
@@ -253,10 +252,10 @@ class RubberOperator(mfem.PyOperator):
 
         Hform = mfem.BlockNonlinearForm(spaces)
         Hform.AddDomainIntegrator(mfem.IncompressibleNeoHookeanIntegrator(self.mu))
-        Hform.SetEssentialBC(ess_bdr, self.rhs)
+        Hform.SetEssentialBC(ess_bdr, rhs)
         self.Hform = Hform
 
-        a = mfem.BilinearForm(self.spaces[0])
+        a = mfem.BilinearForm(self.spaces[1])
         one = mfem.ConstantCoefficient(1.0)
         a.AddDomainIntegrator(mfem.MassIntegrator(one))
         a.Assemble()
@@ -274,27 +273,28 @@ class RubberOperator(mfem.PyOperator):
         j_gmres.SetPreconditioner(self.j_prec)
         self.j_solver = j_gmres
 
-        self.newton_solver = mfem.NewtonSolver()
+        newton_solver = mfem.NewtonSolver()
         # Set the newton solve parameters
-        newton_solver.iterative_mode = true;
+        newton_solver.iterative_mode = True;
         newton_solver.SetSolver(self.j_solver);
         newton_solver.SetOperator(self)
         newton_solver.SetPrintLevel(1)
         newton_solver.SetRelTol(rel_tol)
         newton_solver.SetAbsTol(abs_tol)
         newton_solver.SetMaxIter(iter)
+        self.newton_solver = newton_solver
         
     def Solve(self, xp):
         zero = mfem.Vector()
-        self.newton_solver(zero, xp)
-        if not newton_solver.GetConverged():
+        self.newton_solver.Mult(zero, xp)
+        if not self.newton_solver.GetConverged():
             assert False, "Newton Solver did not converge."
 
     def Mult(self, k, y):
         self.Hform.Mult(k, y)
 
     def GetGradient(self, xp):
-        return Hform.GetGradient(xp)
+        return self.Hform.GetGradient(xp)
         
         
 #  Inline visualization

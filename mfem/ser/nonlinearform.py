@@ -102,30 +102,30 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
-import operators
-import vector
 import array
 import ostream_typemap
-import fespace
+import intrules
+import vector
+import gridfunc
 import coefficient
 import matrix
-import intrules
+import operators
 import sparsemat
 import densemat
 import eltrans
 import fe
 import mesh
 import ncmesh
-import gridfunc
-import bilininteg
-import fe_coll
-import lininteg
-import linearform
 import element
 import geom
 import table
 import vertex
+import fespace
+import fe_coll
+import lininteg
 import handle
+import bilininteg
+import linearform
 import nonlininteg
 class NonlinearForm(operators.Operator):
     __swig_setmethods__ = {}
@@ -250,13 +250,35 @@ class BlockNonlinearForm(operators.Operator):
         return _nonlinearform.BlockNonlinearForm_GetBlockTrueOffsets(self)
 
     def AddDomainIntegrator(self, nlfi):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi.thisown=0 
+
+
         return _nonlinearform.BlockNonlinearForm_AddDomainIntegrator(self, nlfi)
 
+
     def AddInteriorFaceIntegrator(self, nlfi):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi.thisown=0 
+
+
         return _nonlinearform.BlockNonlinearForm_AddInteriorFaceIntegrator(self, nlfi)
 
+
     def AddBdrFaceIntegrator(self, *args):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi = args[0]
+        nlfi.thisown=0 
+
+
         return _nonlinearform.BlockNonlinearForm_AddBdrFaceIntegrator(self, *args)
+
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs):
         return _nonlinearform.BlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
