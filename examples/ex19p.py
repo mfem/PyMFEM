@@ -20,22 +20,31 @@
 import sys
 from mfem.common.arg_parser import ArgParser
 from mfem import path
-import mfem.ser as mfem
-from mfem.ser import intArray, add_vector, Add
+
+import mfem.par as mfem
+from mfem.par import intArray, add_vector, Add
 from os.path import expanduser, join
 import numpy as np
 from numpy import sqrt, pi, cos, sin, hypot, arctan2
 from scipy.special import erfc
 
+# 1. Initialize MPI.from mpi4py import MPI
 
-parser = ArgParser(description='Ex19')
+from mpi4py import MPI
+num_procs = MPI.COMM_WORLD.size
+myid      = MPI.COMM_WORLD.rank
+
+parser = ArgParser(description='Ex19p')
 parser.add_argument('-m', '--mesh',
                     default = 'beam-hex.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
-parser.add_argument('-r', '--refine',
+parser.add_argument('-rs', '--refine-serial',
                     action = 'store', default = 0, type=int,
-                    help = "Number of times to refine the mesh uniformly")
+                    help = "Number of times to refine the mesh uniformly in serial")
+parser.add_argument('-rp', '--refine-parallel',
+                    action = 'store', default = 0, type=int,
+                    help = "Number of times to refine the mesh uniformly in parallel")
 parser.add_argument('-o', '--order',
                     action = 'store', default = 2, type=int,
                     help = "Finite element order (polynomial degree)");
@@ -58,7 +67,8 @@ parser.add_argument('-vis', '--visualization',
 args = parser.parse_args()
     
 def ex19_main(args):
-    ref_levels = args.refine
+    ser_ref_levels = args.refine_serial
+    par_ref_levels = args.refine_parallel    
     order = args.order
     visualization = args.visualization
     mu = args.shear_modulus
@@ -66,15 +76,20 @@ def ex19_main(args):
     newton_abs_tol = args.absolute_tolerance
     newton_iter = args.newton_iterations
 
-    parser.print_options(args)
+    if myid == 0: parser.print_options(args)
 
     meshfile = expanduser(join(path, 'data', args.mesh))
     mesh = mfem.Mesh(meshfile, 1,1)
     dim = mesh.Dimension()
 
-    for lev in range(ref_levels):
+    for lev in range(ser_ref_levels):
         mesh.UniformRefinement()
 
+    pmesh = mfem.ParMesh(MPI.COMM_WORLD, mesh)
+    del mesh
+    for lev in range(par_ref_levels):
+        pmesh.UniformRefinement();
+    
     #  4. Define the shear modulus for the incompressible Neo-Hookean material
     c_mu = mfem.ConstantCoefficient(mu)
 
@@ -84,12 +99,12 @@ def ex19_main(args):
     quad_coll = mfem.H1_FECollection(order, dim)
     lin_coll =  mfem.H1_FECollection(order-1, dim)
 
-    R_space = mfem.FiniteElementSpace(mesh, quad_coll, dim, mfem.Ordering.byVDIM)
-    W_space = mfem.FiniteElementSpace(mesh, lin_coll)
+    R_space = mfem.ParFiniteElementSpace(pmesh, quad_coll, dim, mfem.Ordering.byVDIM)
+    W_space = mfem.ParFiniteElementSpace(pmesh, lin_coll)
 
     spaces = [R_space, W_space]
-    R_size = R_space.GetVSize()
-    W_size = W_space.GetVSize()
+    glob_R_size = R_space.GlobalTrueVSize()
+    glob_W_size = W_space.GlobalTrueVSize()
     
     #   6. Define the Dirichlet conditions (set to boundary attribute 1 and 2)
     ess_bdr_u = mfem.intArray(R_space.GetMesh().bdr_attributes.Max())
@@ -99,26 +114,26 @@ def ex19_main(args):
     ess_bdr = [ess_bdr_u, ess_bdr_p]
 
 
-    print("***********************************************************")
-    print("dim(u) = " + str(R_size))
-    print("dim(p) = " + str(W_size))
-    print("dim(u+p) = " + str(R_size + W_size))
-    print("***********************************************************")
+    if myid == 0:
+        print("***********************************************************")
+        print("dim(u) = " + str(glob_R_size))
+        print("dim(p) = " + str(glob_W_size))
+        print("dim(u+p) = " + str(glob_R_size + glob_W_size))
+        print("***********************************************************")
 
-    block_offsets = intArray([0, R_size, W_size])
+    block_offsets = intArray([0, R_space.TrueVSize(), W_space.TrueVSize()])
     block_offsets.PartialSum()
-
     xp= mfem.BlockVector(block_offsets)
 
     #  9. Define grid functions for the current configuration, reference
     #     configuration, final deformation, and pressure
-    x_gf  = mfem.GridFunction(R_space)
-    x_ref = mfem.GridFunction(R_space)
-    x_def = mfem.GridFunction(R_space)
-    p_gf  = mfem.GridFunction(W_space)
+    x_gf  = mfem.ParGridFunction(R_space)
+    x_ref = mfem.ParGridFunction(R_space)
+    x_def = mfem.ParGridFunction(R_space)
+    p_gf  = mfem.ParGridFunction(W_space)
 
-    x_gf.MakeRef(R_space, xp.GetBlock(0), 0)
-    p_gf.MakeRef(W_space, xp.GetBlock(1), 0)
+    #x_gf.MakeRef(R_space, xp.GetBlock(0), 0)
+    #p_gf.MakeRef(W_space, xp.GetBlock(1), 0)
 
     deform = InitialDeformation(dim)
     refconfig = ReferenceConfiguration(dim)
@@ -127,31 +142,41 @@ def ex19_main(args):
     x_ref.ProjectCoefficient(refconfig)
     p_gf.Assign(0.0)
 
-    #  10. Initialize the incompressible neo-Hookean operator
+    #  12. Set up the block solution vectors    
+    x_gf.GetTrueDofs(xp.GetBlock(0))
+    p_gf.GetTrueDofs(xp.GetBlock(1))
+
+    #  13. Initialize the incompressible neo-Hookean operator
     oper = RubberOperator(spaces, ess_bdr, block_offsets,
                          newton_rel_tol, newton_abs_tol, newton_iter,
                          mu);
-    #  11. Solve the Newton system
+    #  14. Solve the Newton system
     oper.Solve(xp)
 
-    #  12. Compute the final deformation
+    #  15. Distribute the shared degrees of freedom
+    x_gf.Distribute(xp.GetBlock(0));
+    p_gf.Distribute(xp.GetBlock(1));
+    
+    #  16. Compute the final deformation
     mfem.subtract_vector(x_gf, x_ref, x_def)
 
-    #  13. Visualize the results if requested
+    #  17. Visualize the results if requested
     if (visualization):    
         vis_u = mfem.socketstream("localhost", 19916)
-        visualize(vis_u, mesh, x_gf, x_def, "Deformation", True)
+        visualize(vis_u, pmesh, x_gf, x_def, "Deformation", True)
+        MPI.COMM_WORLD.Barrier()
         vis_p = mfem.socketstream("localhost", 19916)
-        visualize(vis_p, mesh, x_gf, p_gf, "Deformation", True)
+        visualize(vis_p, pmesh, x_gf, p_gf, "Deformation", True)
     
     #  14. Save the displaced mesh, the final deformation, and the pressure
     nodes = x_gf
     owns_nodes = 0
-    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
-
-    mesh.PrintToFile('deformed.mesh', 8)
-    p_gf.SaveToFile('pressure.sol', 8)
-    x_def.SaveToFile("deformation.sol",  8)
+    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
+    
+    smyid = '.'+'{:0>6d}'.format(myid)
+    pmesh.PrintToFile('deformed.mesh'+smyid, 8)
+    p_gf.SaveToFile('pressure.sol'+smyid, 8)
+    x_def.SaveToFile("deformation.sol"+smyid,  8)
 
 '''
  Custom block preconditioner for the Jacobian of the incompressible nonlinear
@@ -174,15 +199,17 @@ class JacobianPreconditioner(mfem.Solver):
     def __init__(self, spaces, mass, offsets):
         self.pressure_mass = mass
         self.block_offsets = offsets
+        self.spaces = spaces
         super(JacobianPreconditioner, self).__init__(offsets[2])
         
         self.gamma = 0.00001;
 
         # The mass matrix and preconditioner do not change every Newton cycle, so we
         # only need to define them once
-        self.mass_prec = mfem.GSSmoother(mass)
+        self.mass_prec = mfem.HypreBoomerAMG()
+        self.mass_prec.SetPrintLevel(0)        
 
-        mass_pcg = mfem.CGSolver()
+        mass_pcg = mfem.CGSolver(MPI.COMM_WORLD)
         mass_pcg.SetRelTol(1e-12)
         mass_pcg.SetAbsTol(1e-12)
         mass_pcg.SetMaxIter(200)
@@ -221,10 +248,13 @@ class JacobianPreconditioner(mfem.Solver):
         self.jacobian = mfem.Opr2BlockOpr(op)
         if (self.stiff_prec == None):
             # Initialize the stiffness preconditioner and solver
-            stiff_prec_gs = mfem.GSSmoother()
-            self.stiff_prec = stiff_prec_gs
+            stiff_prec_amg = mfem.HypreBoomerAMG()
+            stiff_prec_amg.SetPrintLevel(0)
+            stiff_prec_amg.SetElasticityOptions(self.spaces[0])
+            
+            self.stiff_prec = stiff_prec_amg
 
-            stiff_pcg_iter = mfem.GMRESSolver()
+            stiff_pcg_iter = mfem.GMRESSolver(MPI.COMM_WORLD)
             stiff_pcg_iter.SetRelTol(1e-8)
             stiff_pcg_iter.SetAbsTol(1e-8)
             stiff_pcg_iter.SetMaxIter(200)
@@ -243,28 +273,31 @@ class RubberOperator(mfem.PyOperator):
                        rel_tol, abs_tol, iter, mu):
 
         # Array<Vector *> -> tuple
-        super(RubberOperator, self).__init__(spaces[0].GetVSize() + spaces[1].GetVSize())
+        super(RubberOperator, self).__init__(spaces[0].TrueVSize() + spaces[1].TrueVSize())
         rhs = (None, None)
         
         self.spaces = spaces
         self.mu = mfem.ConstantCoefficient(mu)
         self.block_offsets = block_offsets
 
-        Hform = mfem.BlockNonlinearForm(spaces)
+        Hform = mfem.ParBlockNonlinearForm(spaces)
         Hform.AddDomainIntegrator(mfem.IncompressibleNeoHookeanIntegrator(self.mu))
         Hform.SetEssentialBC(ess_bdr, rhs)
         self.Hform = Hform
 
-        a = mfem.BilinearForm(self.spaces[1])
+        a = mfem.ParBilinearForm(self.spaces[1])
         one = mfem.ConstantCoefficient(1.0)
+        mass = mfem.OperatorHandle(mfem.Operator.Hypre_ParCSR)                
         a.AddDomainIntegrator(mfem.MassIntegrator(one))
         a.Assemble()
         a.Finalize()
-        pressure_mass = a.LoseMat()
-
+        a.ParallelAssemble(mass)
+        mass.SetOperatorOwner(False)
+        pressure_mass = mass.Ptr()
+        
         self.j_prec = JacobianPreconditioner(spaces, pressure_mass, block_offsets)
 
-        j_gmres = mfem.GMRESSolver()
+        j_gmres = mfem.GMRESSolver(MPI.COMM_WORLD)
         j_gmres.iterative_mode = False
         j_gmres.SetRelTol(1e-12)
         j_gmres.SetAbsTol(1e-12)
@@ -273,7 +306,7 @@ class RubberOperator(mfem.PyOperator):
         j_gmres.SetPreconditioner(self.j_prec)
         self.j_solver = j_gmres
 
-        newton_solver = mfem.NewtonSolver()
+        newton_solver = mfem.NewtonSolver(MPI.COMM_WORLD)
         # Set the newton solve parameters
         newton_solver.iterative_mode = True;
         newton_solver.SetSolver(self.j_solver);
@@ -292,7 +325,7 @@ class RubberOperator(mfem.PyOperator):
 
     def Mult(self, k, y):
         self.Hform.Mult(k, y)
-
+        
     def GetGradient(self, xp):
         return self.Hform.GetGradient(xp)
         

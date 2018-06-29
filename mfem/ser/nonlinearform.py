@@ -102,30 +102,30 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+import operators
+import vector
 import array
 import ostream_typemap
-import intrules
-import vector
-import gridfunc
+import fespace
 import coefficient
 import matrix
-import operators
+import intrules
 import sparsemat
 import densemat
 import eltrans
 import fe
 import mesh
 import ncmesh
+import gridfunc
+import bilininteg
+import fe_coll
+import lininteg
+import linearform
 import element
 import geom
 import table
 import vertex
-import fespace
-import fe_coll
-import lininteg
 import handle
-import bilininteg
-import linearform
 import nonlininteg
 class NonlinearForm(operators.Operator):
     __swig_setmethods__ = {}

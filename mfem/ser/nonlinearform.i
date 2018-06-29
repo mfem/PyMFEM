@@ -14,10 +14,6 @@ import_array();
 %}
 
 %include "exception.i"
-%import "array.i"
-%import "intrules.i"
-%import "vector.i"
-%import "gridfunc.i"
 %import "operators.i"
 %import "fespace.i"
 %import "nonlininteg.i"
@@ -42,8 +38,6 @@ namespace mfem {
     nlfi = args[0]
     nlfi.thisown=0 
 %}
-}
-namespace mfem { 
 %pythonprepend BlockNonlinearForm::AddDomainIntegrator %{
 #    if not hasattr(self, "_integrators"): self._integrators = []
 #    self._integrators.append(nlfi)
@@ -61,12 +55,12 @@ namespace mfem {
     nlfi.thisown=0 
 %}
 }
+
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::FiniteElementSpace *> &f,
     		        mfem::FiniteElementSpace *)
 LIST_TO_MFEMOBJ_ARRAY_IN(const mfem::Array<mfem::Array<int> *> &bdr_attr_is_ess,
  		        mfem::Array<int> *)
 LIST_TO_MFEMOBJ_ARRAY_IN(mfem::Array<mfem::Vector *> &rhs, mfem::Vector *)
-
 
 %include "fem/nonlinearform.hpp"
 
