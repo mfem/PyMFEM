@@ -139,3 +139,120 @@
    }
 }
 %enddef
+
+%define LIST_TO_OBJARRAY_IN(type_name, OBJTYPE)
+%typemap(in) type_name (){
+  //  List/Tuple -> OBJTYPE
+  int res = 0;
+  if (PyList_Check($input)) {
+     int ll = PyList_Size($input);
+     $1 = new mfem::Array<OBJTYPE>(ll);
+     for (int i = 0; i < ll; i++) {
+       OBJTYPE ttt;
+       PyObject *s = PyList_GetItem($input,i);
+       res = SWIG_ConvertPtr(s, (void **) &ttt,
+			     $descriptor(OBJTYPE),
+			     0);
+       if (!SWIG_IsOK(res)) { 	 
+             return NULL;
+       }	
+       $1[i] = ttt;
+     }
+  } else if (PyTuple_Check($input)) {
+     int ll = PyTuple_Size($input);
+     $1 = new mfem::Array<OBJTYPE>(ll);     
+     for (int i = 0; i < ll; i++) {
+       OBJTYPE ttt;
+       PyObject *s = PyTuple_GetItem($input,i);
+       res = SWIG_ConvertPtr(s, (void **) &ttt,
+			     $descriptor(OBJTYPE),
+			     0);
+       if (!SWIG_IsOK(res)) {
+	 return NULL;
+       }	
+       $1[i] = ttt;
+     }
+  } else {
+    PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+    return NULL;
+  }
+     //$1 = temp;
+}
+%typemap(freearg) type_name{
+  if ($1 != 0){
+    //delete $1;
+  }
+}
+%typemap(typecheck, precedence=SWIG_TYPECHECK_POINTER) (type_name) {
+  $1 = 0;
+  if (PyList_Check($input)){
+      $1 = 1;
+  }
+  if (PyTuple_Check($input)){
+     $1 = 1;
+  }
+}
+%enddef
+
+%define LIST_TO_MFEMOBJ_ARRAY_IN(type_name, OBJTYPE)
+%typemap(in) type_name (){
+  //  List/Tuple -> OBJTYPE
+  int res = 0;
+  if (PyList_Check($input)) {
+     int ll = PyList_Size($input);
+     $1 = new mfem::Array<OBJTYPE>(ll);
+     for (int i = 0; i < ll; i++) {
+       OBJTYPE ttt;
+       PyObject *s = PyList_GetItem($input,i);
+       if (s == Py_None){
+	 ttt = NULL;
+       } else {
+         res = SWIG_ConvertPtr(s, (void **) &ttt,
+			     $descriptor(OBJTYPE),
+			     0);
+       }
+       if (!SWIG_IsOK(res)) { 	 
+             return NULL;
+       }	
+       $1[0][i] = ttt;
+     }
+  } else if (PyTuple_Check($input)) {
+     int ll = PyTuple_Size($input);
+     $1 = new mfem::Array<OBJTYPE>(ll);     
+     for (int i = 0; i < ll; i++) {
+       OBJTYPE ttt;
+       PyObject *s = PyTuple_GetItem($input,i);
+       if (s == Py_None){
+	 ttt = NULL;
+       } else {
+         res = SWIG_ConvertPtr(s, (void **) &ttt,
+			     $descriptor(OBJTYPE),
+			     0);
+       }
+       if (!SWIG_IsOK(res)) {
+	 return NULL;
+       }	
+       $1[0][i] = ttt;
+     }
+  } else {
+    PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
+    return NULL;
+  }
+     //$1 = temp;
+}
+%typemap(freearg) type_name{
+  if ($1 != 0){
+    delete $1;
+  }
+}
+%typemap(typecheck, precedence=SWIG_TYPECHECK_POINTER) (type_name) {
+  $1 = 0;
+  if (PyList_Check($input)){
+     $1 = 1;
+  }
+  if (PyTuple_Check($input)){
+     $1 = 1;
+  }
+}
+%enddef
+

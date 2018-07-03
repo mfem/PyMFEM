@@ -250,13 +250,35 @@ class BlockNonlinearForm(operators.Operator):
         return _nonlinearform.BlockNonlinearForm_GetBlockTrueOffsets(self)
 
     def AddDomainIntegrator(self, nlfi):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi.thisown=0 
+
+
         return _nonlinearform.BlockNonlinearForm_AddDomainIntegrator(self, nlfi)
 
+
     def AddInteriorFaceIntegrator(self, nlfi):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi.thisown=0 
+
+
         return _nonlinearform.BlockNonlinearForm_AddInteriorFaceIntegrator(self, nlfi)
 
+
     def AddBdrFaceIntegrator(self, *args):
+
+        #    if not hasattr(self, "_integrators"): self._integrators = []
+        #    self._integrators.append(nlfi)
+        nlfi = args[0]
+        nlfi.thisown=0 
+
+
         return _nonlinearform.BlockNonlinearForm_AddBdrFaceIntegrator(self, *args)
+
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs):
         return _nonlinearform.BlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)

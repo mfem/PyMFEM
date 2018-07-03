@@ -15,7 +15,7 @@
 #include "numpy/arrayobject.h"
 %}
 
-%include  "config/config.hpp" // include mfem MACRO
+%include "../common/mfem_config.i"
 
 %init %{
 import_array();
