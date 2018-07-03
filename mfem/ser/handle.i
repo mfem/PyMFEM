@@ -12,7 +12,7 @@
 #endif
 %}
 
-%include  "config/config.hpp" // include mfem MACRO
+%include "../common/mfem_config.i"
 
 %include "exception.i"
 %import "../common/exception.i"

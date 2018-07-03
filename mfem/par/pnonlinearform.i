@@ -8,7 +8,8 @@
 #include "pyoperator.hpp"           
 %}
 
-%include "config/config.hpp" // include mfem MACRO
+%include "../common/mfem_config.i"
+
 #ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);

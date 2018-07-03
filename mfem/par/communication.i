@@ -8,11 +8,12 @@
 #include "numpy/arrayobject.h"
 %}
 
+%include "../common/mfem_config.i"
+
 %init %{
 import_array();
 %}
 
-%include "config/config.hpp" // include mfem MACRO
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
 /*
