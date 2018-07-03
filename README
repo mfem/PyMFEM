@@ -316,7 +316,23 @@ to find more detail of the MFEM libirary.
             mesh1 = mfem.ParMesh(comm, 'wg.mesh.'+smyid)
             mesh1.ReorientTetMesh()
             x = mfem.ParGridFunction(mesh1, 'wg.gf.'+smyid)
-	    
+
+   4-15) mfem:BlockNonlinearForm, mfem:ParBlockNonlinearForm
+        
+         Constructor accept tuple/list of (Par)FiniteElementSpace
+	     R_space = mfem.FiniteElementSpace(...)
+             W_space = mfem.FiniteElementSpace(...)
+             spaces = [R_space, W_space]
+     	     mfem.BlockNonlinearForm(spaces)
+
+             note that user must pay attention that Python does not
+	     garbage collect spaces. (this will be fix in future)
+
+         Similarly, mfem::(Par)BlockNonlinearForm::SetEssentialBC()
+	 accept tuple/list of intArray (= wrapped Array<int>) and
+	 mfem::Vector
+
+	     
 -- Known issues --
 
   PyMFEM is an on-going effort. Not all MFEM functioality is propary
