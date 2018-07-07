@@ -30,6 +30,7 @@ from  handle import *
 from  mesh import *
 from  fe_coll import *
 from  vector import *
+from  complex_operator import *
 from  fespace import *
 from  linearform import *
 from  bilininteg import *

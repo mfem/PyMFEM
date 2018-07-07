@@ -332,6 +332,18 @@ to find more detail of the MFEM libirary.
 	 accept tuple/list of intArray (= wrapped Array<int>) and
 	 mfem::Vector
 
+   4-16) mfem:ComplexOperator
+         ownReal, onwImag for Constructor is optional.
+	 hermitan keyword is used to specify the type of matrix
+
+             op_complex = ComplexOperator(M1, M2, ownReal=False, ownImag=False,
+	                                  hermitan=True)
+             hermitan = False results in BLOCK_SYMMETRIC format
+
+         Returned ComplexOperator hold the passed real and imag operators
+	 so that Python does not garbage collect them.
+	 If thisown of real/imag operatros are 1, a user has an option to
+	 set ownReal, ownImag.
 	     
 -- Known issues --
 
