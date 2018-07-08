@@ -1,5 +1,10 @@
-%module densemat
+/*
 
+   densemat.i
+
+*/
+%module densemat
+%feature("autodoc", "1");
 %{
 #include "iostream_typemap.hpp"          
 #include "linalg/sparsemat.hpp"
@@ -22,13 +27,27 @@ import_array();
 %import "../common/exception.i"
 
 %ignore mfem::DenseMatrix::operator=;
+%ignore mfem::DenseTensor::operator=;
+
+%pythonprepend mfem::DenseMatrix::Assign %{
+from numpy import ndarray, ascontiguousarray
+keep_link = False
+if len(args) == 1 and isinstance(args[0], ndarray):
+        if args[0].dtype != 'float64':
+            raise ValueError('Must be float64 array')
+        elif args[0].ndim != 2:
+            raise ValueError('Ndim must be one') 
+        elif args[0].shape[0] != _densemat.DenseMatrix_Size(self):
+            raise ValueError('Length does not match')
+        else:
+  	    args = (ascontiguousarray(args[0]),)
+%}
 %pythonappend mfem::DenseMatrix::Assign %{
     return self
 %}
 %pythonappend mfem::DenseTensor::Assign %{
     return self
 %}
-
 %feature("shadow") mfem::DenseMatrix::operator+= %{
 def __iadd__(self, v):
     ret = _densmat.DenseMatrix___iadd__(self, v)
@@ -91,6 +110,35 @@ def __getitem__(self, *args):
   void Assign(const mfem::DenseMatrix &m) {
     (* self) = m;
   }
+  void Assign(PyObject* numpymat) {
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    if (!PyArray_Check(numpymat)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return;
+    }
+    int typ = PyArray_TYPE(numpymat);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return;
+    }
+    int ndim = PyArray_NDIM(numpymat);
+    if (ndim != 2){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be two");
+      return ;
+    }
+    npy_intp *shape = PyArray_DIMS(numpymat);    
+    int len = self->Size();
+    if (shape[0] != len){    
+      PyErr_SetString(PyExc_ValueError, "input data length does not match");
+      return ;
+    }
+    PyArrayObject * tmp = 
+      PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_Transpose((PyArrayObject *)numpymat, NULL));
+    (* self) = (double *) PyArray_DATA(tmp);
+    Py_XDECREF(tmp);
+  }
+  
   const double __getitem__(const int i, const int j) const{
     return (* self)(i, j);
   }
@@ -103,6 +151,7 @@ def __getitem__(self, *args):
      return  PyArray_Transpose((PyArrayObject *)PyArray_SimpleNewFromData(2, dims, NPY_DOUBLE, A), NULL);
   }
 };
+
 %extend mfem::DenseTensor {
   void Assign(const double c) {
     (* self) = c;

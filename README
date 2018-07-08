@@ -185,6 +185,7 @@ to find more detail of the MFEM libirary.
 	 elements are accessed similar to a regular python array
 	 Assign method replaces = operator
          GetDataArray returns a memory view to the internal data as numpy array.
+	 
          (example)
               x = DenseMatrix(3, 3)	 
 	      x.Assign(0)
@@ -194,6 +195,10 @@ to find more detail of the MFEM libirary.
 
               x[i,j] = xxx
 	      print x[i,j]
+
+              # Assigning (copy) from numpy array
+	      m = DenseMatrix(3,3)
+	      m.Assign(np.arange(9.).reshape(3,3))
 	      
               x = DenseTensor(2, 3, 5)
 	      x.Assign(1) # set all 1

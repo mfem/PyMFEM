@@ -54,6 +54,8 @@ import_array();
 %feature("notabstract") VectorFunctionCoefficient;
 %feature("notabstract") VectorConstantCoefficient;
 %feature("notabstract") VectorDeltaCoefficient;
+%feature("notabstract") MatrixFunctionCoefficient;
+%feature("notabstract") MatrixConstantCoefficient;
 
 namespace mfem { 
 %pythonprepend DeltaCoefficient::SetWeight %{
@@ -244,12 +246,12 @@ class VectorPyCoefficient(VectorPyCoefficientBase):
        VectorPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray())
-       for i in range(self.sdim):
-           V[i] = v[i]
+       V.Assign(v)	 
+
    def _EvalPyT(self, x, t, V):
-       v = self.EvalValue(x.GetDataArray())  
-       for i in range(self.sdim):
-           V[i] = v[i]
+       v = self.EvalValue(x.GetDataArray())
+       V.Assign(v)	 	 
+
    def EvalValue(self, x):
        return [0,0,0]
   
@@ -259,12 +261,12 @@ class VectorPyCoefficientT(VectorPyCoefficientBase):
        VectorPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPy(self, x, V):
        v = self.EvalValue(x.GetDataArray(), 0)
-       for i in range(self.sdim):
-           V[i] = v[i]
+       V.Assign(v)
+
    def _EvalPyT(self, x, t, V):
-       v = self.EvalValue(x.GetDataArray(), t)  
-       for i in range(self.sdim):
-           V[i] = v[i]
+       v = self.EvalValue(x.GetDataArray(), t)
+       V.Assign(v)	 	 	 
+
    def EvalValue(self, x, t):
        return [0,0,0]
 
@@ -274,9 +276,8 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase):
        MatrixPyCoefficientBase.__init__(self, dim, 0)
    def _EvalPy(self, x, K):
        k = self.EvalValue(x.GetDataArray())
-       for i in range(self.sdim):
-           for j in range(self.sdim):
-               K[i, j] = k[i, j]
+       K.Assign(k)	 	 	 	 	 	 
+
    def EvalValue(self, x):
        return np.array([[0,0,0], [0,0,0] [0,0,0]])
   
@@ -285,10 +286,9 @@ class MatrixPyCoefficientT(MatrixPyCoefficientBase):
        self.sdim = dim  
        MatrixPyCoefficientBase.__init__(self, dim, 1)
    def _EvalPyT(self, x, t, K):
-       k = self.EvalValue(x.GetDataArray(), t)  
-       for i in range(self.sdim):
-           for j in range(self.sdim):
-               K[i, j] = k[i, j]
+       k = self.EvalValue(x.GetDataArray(), t)
+       K.Assign(k)	 	 	 	 	 	 
+
    def EvalValue(self, x, t):
        return np.array([[0,0,0], [0,0,0] [0,0,0]])
 	 

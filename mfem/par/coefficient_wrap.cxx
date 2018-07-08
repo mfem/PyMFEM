@@ -10741,6 +10741,43 @@ SWIGINTERN PyObject *MatrixCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_new_MatrixConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseMatrix *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::MatrixConstantCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_MatrixConstantCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixConstantCoefficient" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixConstantCoefficient" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  {
+    try {
+      result = (mfem::MatrixConstantCoefficient *)new mfem::MatrixConstantCoefficient((mfem::DenseMatrix const &)*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixConstantCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_MatrixConstantCoefficient_Eval__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::MatrixConstantCoefficient *arg1 = (mfem::MatrixConstantCoefficient *) 0 ;
@@ -13887,146 +13924,234 @@ SWIGINTERN PyObject *MatrixPyCoefficientBase_swigregister(PyObject *SWIGUNUSEDPA
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"Coefficient_SetTime", _wrap_Coefficient_SetTime, METH_VARARGS, NULL},
-	 { (char *)"Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_VARARGS, NULL},
-	 { (char *)"Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_Coefficient", _wrap_delete_Coefficient, METH_VARARGS, NULL},
+	 { (char *)"Coefficient_SetTime", _wrap_Coefficient_SetTime, METH_VARARGS, (char *)"Coefficient_SetTime(Coefficient self, double t)"},
+	 { (char *)"Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_VARARGS, (char *)"Coefficient_GetTime(Coefficient self) -> double"},
+	 { (char *)"Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Coefficient_Eval(Coefficient self, ElementTransformation T, IntegrationPoint ip, double t) -> double\n"
+		""},
+	 { (char *)"delete_Coefficient", _wrap_delete_Coefficient, METH_VARARGS, (char *)"delete_Coefficient(Coefficient self)"},
 	 { (char *)"Coefficient_swigregister", Coefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"ConstantCoefficient_constant_set", _wrap_ConstantCoefficient_constant_set, METH_VARARGS, NULL},
-	 { (char *)"ConstantCoefficient_constant_get", _wrap_ConstantCoefficient_constant_get, METH_VARARGS, NULL},
-	 { (char *)"new_ConstantCoefficient", _wrap_new_ConstantCoefficient, METH_VARARGS, NULL},
-	 { (char *)"ConstantCoefficient_Eval", _wrap_ConstantCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_ConstantCoefficient", _wrap_delete_ConstantCoefficient, METH_VARARGS, NULL},
+	 { (char *)"ConstantCoefficient_constant_set", _wrap_ConstantCoefficient_constant_set, METH_VARARGS, (char *)"ConstantCoefficient_constant_set(ConstantCoefficient self, double constant)"},
+	 { (char *)"ConstantCoefficient_constant_get", _wrap_ConstantCoefficient_constant_get, METH_VARARGS, (char *)"ConstantCoefficient_constant_get(ConstantCoefficient self) -> double"},
+	 { (char *)"new_ConstantCoefficient", _wrap_new_ConstantCoefficient, METH_VARARGS, (char *)"\n"
+		"ConstantCoefficient(double c=1.0)\n"
+		"new_ConstantCoefficient() -> ConstantCoefficient\n"
+		""},
+	 { (char *)"ConstantCoefficient_Eval", _wrap_ConstantCoefficient_Eval, METH_VARARGS, (char *)"ConstantCoefficient_Eval(ConstantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_ConstantCoefficient", _wrap_delete_ConstantCoefficient, METH_VARARGS, (char *)"delete_ConstantCoefficient(ConstantCoefficient self)"},
 	 { (char *)"ConstantCoefficient_swigregister", ConstantCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_PWConstCoefficient", _wrap_new_PWConstCoefficient, METH_VARARGS, NULL},
-	 { (char *)"PWConstCoefficient_UpdateConstants", _wrap_PWConstCoefficient_UpdateConstants, METH_VARARGS, NULL},
-	 { (char *)"PWConstCoefficient___call__", _wrap_PWConstCoefficient___call__, METH_VARARGS, NULL},
-	 { (char *)"PWConstCoefficient_GetNConst", _wrap_PWConstCoefficient_GetNConst, METH_VARARGS, NULL},
-	 { (char *)"PWConstCoefficient_Eval", _wrap_PWConstCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_PWConstCoefficient", _wrap_delete_PWConstCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_PWConstCoefficient", _wrap_new_PWConstCoefficient, METH_VARARGS, (char *)"\n"
+		"PWConstCoefficient(int NumOfSubD=0)\n"
+		"PWConstCoefficient()\n"
+		"new_PWConstCoefficient(Vector c) -> PWConstCoefficient\n"
+		""},
+	 { (char *)"PWConstCoefficient_UpdateConstants", _wrap_PWConstCoefficient_UpdateConstants, METH_VARARGS, (char *)"PWConstCoefficient_UpdateConstants(PWConstCoefficient self, Vector c)"},
+	 { (char *)"PWConstCoefficient___call__", _wrap_PWConstCoefficient___call__, METH_VARARGS, (char *)"PWConstCoefficient___call__(PWConstCoefficient self, int i) -> double &"},
+	 { (char *)"PWConstCoefficient_GetNConst", _wrap_PWConstCoefficient_GetNConst, METH_VARARGS, (char *)"PWConstCoefficient_GetNConst(PWConstCoefficient self) -> int"},
+	 { (char *)"PWConstCoefficient_Eval", _wrap_PWConstCoefficient_Eval, METH_VARARGS, (char *)"PWConstCoefficient_Eval(PWConstCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_PWConstCoefficient", _wrap_delete_PWConstCoefficient, METH_VARARGS, (char *)"delete_PWConstCoefficient(PWConstCoefficient self)"},
 	 { (char *)"PWConstCoefficient_swigregister", PWConstCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_FunctionCoefficient", _wrap_new_FunctionCoefficient, METH_VARARGS, NULL},
-	 { (char *)"FunctionCoefficient_Eval", _wrap_FunctionCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_FunctionCoefficient", _wrap_delete_FunctionCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_FunctionCoefficient", _wrap_new_FunctionCoefficient, METH_VARARGS, (char *)"\n"
+		"FunctionCoefficient(double (*)(mfem::Vector const &) f)\n"
+		"FunctionCoefficient(double (*)(mfem::Vector const &,double) tdf)\n"
+		"FunctionCoefficient(double (*)(mfem::Vector &) f)\n"
+		"new_FunctionCoefficient(double (*)(mfem::Vector &,double) tdf) -> FunctionCoefficient\n"
+		""},
+	 { (char *)"FunctionCoefficient_Eval", _wrap_FunctionCoefficient_Eval, METH_VARARGS, (char *)"FunctionCoefficient_Eval(FunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_FunctionCoefficient", _wrap_delete_FunctionCoefficient, METH_VARARGS, (char *)"delete_FunctionCoefficient(FunctionCoefficient self)"},
 	 { (char *)"FunctionCoefficient_swigregister", FunctionCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_GridFunctionCoefficient", _wrap_new_GridFunctionCoefficient, METH_VARARGS, NULL},
-	 { (char *)"GridFunctionCoefficient_SetGridFunction", _wrap_GridFunctionCoefficient_SetGridFunction, METH_VARARGS, NULL},
-	 { (char *)"GridFunctionCoefficient_GetGridFunction", _wrap_GridFunctionCoefficient_GetGridFunction, METH_VARARGS, NULL},
-	 { (char *)"GridFunctionCoefficient_Eval", _wrap_GridFunctionCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_GridFunctionCoefficient", _wrap_delete_GridFunctionCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_GridFunctionCoefficient", _wrap_new_GridFunctionCoefficient, METH_VARARGS, (char *)"\n"
+		"GridFunctionCoefficient(mfem::GridFunction * gf, int comp=1)\n"
+		"new_GridFunctionCoefficient(mfem::GridFunction * gf) -> GridFunctionCoefficient\n"
+		""},
+	 { (char *)"GridFunctionCoefficient_SetGridFunction", _wrap_GridFunctionCoefficient_SetGridFunction, METH_VARARGS, (char *)"GridFunctionCoefficient_SetGridFunction(GridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { (char *)"GridFunctionCoefficient_GetGridFunction", _wrap_GridFunctionCoefficient_GetGridFunction, METH_VARARGS, (char *)"GridFunctionCoefficient_GetGridFunction(GridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { (char *)"GridFunctionCoefficient_Eval", _wrap_GridFunctionCoefficient_Eval, METH_VARARGS, (char *)"GridFunctionCoefficient_Eval(GridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_GridFunctionCoefficient", _wrap_delete_GridFunctionCoefficient, METH_VARARGS, (char *)"delete_GridFunctionCoefficient(GridFunctionCoefficient self)"},
 	 { (char *)"GridFunctionCoefficient_swigregister", GridFunctionCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_TransformedCoefficient", _wrap_new_TransformedCoefficient, METH_VARARGS, NULL},
-	 { (char *)"TransformedCoefficient_Eval", _wrap_TransformedCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_TransformedCoefficient", _wrap_delete_TransformedCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_TransformedCoefficient", _wrap_new_TransformedCoefficient, METH_VARARGS, (char *)"\n"
+		"TransformedCoefficient(Coefficient q, double (*)(double) F)\n"
+		"new_TransformedCoefficient(Coefficient q1, Coefficient q2, double (*)(double,double) F) -> TransformedCoefficient\n"
+		""},
+	 { (char *)"TransformedCoefficient_Eval", _wrap_TransformedCoefficient_Eval, METH_VARARGS, (char *)"TransformedCoefficient_Eval(TransformedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_TransformedCoefficient", _wrap_delete_TransformedCoefficient, METH_VARARGS, (char *)"delete_TransformedCoefficient(TransformedCoefficient self)"},
 	 { (char *)"TransformedCoefficient_swigregister", TransformedCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_DeltaCoefficient", _wrap_new_DeltaCoefficient, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_SetDeltaCenter", _wrap_DeltaCoefficient_SetDeltaCenter, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_SetScale", _wrap_DeltaCoefficient_SetScale, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_SetFunction", _wrap_DeltaCoefficient_SetFunction, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_SetTol", _wrap_DeltaCoefficient_SetTol, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_SetWeight", _wrap_DeltaCoefficient_SetWeight, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_Center", _wrap_DeltaCoefficient_Center, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_Scale", _wrap_DeltaCoefficient_Scale, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_Tol", _wrap_DeltaCoefficient_Tol, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_Weight", _wrap_DeltaCoefficient_Weight, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_GetDeltaCenter", _wrap_DeltaCoefficient_GetDeltaCenter, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_EvalDelta", _wrap_DeltaCoefficient_EvalDelta, METH_VARARGS, NULL},
-	 { (char *)"DeltaCoefficient_Eval", _wrap_DeltaCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_DeltaCoefficient", _wrap_delete_DeltaCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_DeltaCoefficient", _wrap_new_DeltaCoefficient, METH_VARARGS, (char *)"\n"
+		"DeltaCoefficient()\n"
+		"DeltaCoefficient(double x, double s)\n"
+		"DeltaCoefficient(double x, double y, double s)\n"
+		"new_DeltaCoefficient(double x, double y, double z, double s) -> DeltaCoefficient\n"
+		""},
+	 { (char *)"DeltaCoefficient_SetDeltaCenter", _wrap_DeltaCoefficient_SetDeltaCenter, METH_VARARGS, (char *)"DeltaCoefficient_SetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { (char *)"DeltaCoefficient_SetScale", _wrap_DeltaCoefficient_SetScale, METH_VARARGS, (char *)"DeltaCoefficient_SetScale(DeltaCoefficient self, double _s)"},
+	 { (char *)"DeltaCoefficient_SetFunction", _wrap_DeltaCoefficient_SetFunction, METH_VARARGS, (char *)"DeltaCoefficient_SetFunction(DeltaCoefficient self, double (*)(double) f)"},
+	 { (char *)"DeltaCoefficient_SetTol", _wrap_DeltaCoefficient_SetTol, METH_VARARGS, (char *)"DeltaCoefficient_SetTol(DeltaCoefficient self, double _tol)"},
+	 { (char *)"DeltaCoefficient_SetWeight", _wrap_DeltaCoefficient_SetWeight, METH_VARARGS, (char *)"DeltaCoefficient_SetWeight(DeltaCoefficient self, Coefficient w)"},
+	 { (char *)"DeltaCoefficient_Center", _wrap_DeltaCoefficient_Center, METH_VARARGS, (char *)"DeltaCoefficient_Center(DeltaCoefficient self) -> double const *"},
+	 { (char *)"DeltaCoefficient_Scale", _wrap_DeltaCoefficient_Scale, METH_VARARGS, (char *)"DeltaCoefficient_Scale(DeltaCoefficient self) -> double"},
+	 { (char *)"DeltaCoefficient_Tol", _wrap_DeltaCoefficient_Tol, METH_VARARGS, (char *)"DeltaCoefficient_Tol(DeltaCoefficient self) -> double"},
+	 { (char *)"DeltaCoefficient_Weight", _wrap_DeltaCoefficient_Weight, METH_VARARGS, (char *)"DeltaCoefficient_Weight(DeltaCoefficient self) -> Coefficient"},
+	 { (char *)"DeltaCoefficient_GetDeltaCenter", _wrap_DeltaCoefficient_GetDeltaCenter, METH_VARARGS, (char *)"DeltaCoefficient_GetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { (char *)"DeltaCoefficient_EvalDelta", _wrap_DeltaCoefficient_EvalDelta, METH_VARARGS, (char *)"DeltaCoefficient_EvalDelta(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"DeltaCoefficient_Eval", _wrap_DeltaCoefficient_Eval, METH_VARARGS, (char *)"DeltaCoefficient_Eval(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_DeltaCoefficient", _wrap_delete_DeltaCoefficient, METH_VARARGS, (char *)"delete_DeltaCoefficient(DeltaCoefficient self)"},
 	 { (char *)"DeltaCoefficient_swigregister", DeltaCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_RestrictedCoefficient", _wrap_new_RestrictedCoefficient, METH_VARARGS, NULL},
-	 { (char *)"RestrictedCoefficient_Eval", _wrap_RestrictedCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_RestrictedCoefficient", _wrap_delete_RestrictedCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_RestrictedCoefficient", _wrap_new_RestrictedCoefficient, METH_VARARGS, (char *)"new_RestrictedCoefficient(Coefficient _c, intArray attr) -> RestrictedCoefficient"},
+	 { (char *)"RestrictedCoefficient_Eval", _wrap_RestrictedCoefficient_Eval, METH_VARARGS, (char *)"RestrictedCoefficient_Eval(RestrictedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_RestrictedCoefficient", _wrap_delete_RestrictedCoefficient, METH_VARARGS, (char *)"delete_RestrictedCoefficient(RestrictedCoefficient self)"},
 	 { (char *)"RestrictedCoefficient_swigregister", RestrictedCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"VectorCoefficient_SetTime", _wrap_VectorCoefficient_SetTime, METH_VARARGS, NULL},
-	 { (char *)"VectorCoefficient_GetTime", _wrap_VectorCoefficient_GetTime, METH_VARARGS, NULL},
-	 { (char *)"VectorCoefficient_GetVDim", _wrap_VectorCoefficient_GetVDim, METH_VARARGS, NULL},
-	 { (char *)"VectorCoefficient_Eval", _wrap_VectorCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorCoefficient", _wrap_delete_VectorCoefficient, METH_VARARGS, NULL},
+	 { (char *)"VectorCoefficient_SetTime", _wrap_VectorCoefficient_SetTime, METH_VARARGS, (char *)"VectorCoefficient_SetTime(VectorCoefficient self, double t)"},
+	 { (char *)"VectorCoefficient_GetTime", _wrap_VectorCoefficient_GetTime, METH_VARARGS, (char *)"VectorCoefficient_GetTime(VectorCoefficient self) -> double"},
+	 { (char *)"VectorCoefficient_GetVDim", _wrap_VectorCoefficient_GetVDim, METH_VARARGS, (char *)"VectorCoefficient_GetVDim(VectorCoefficient self) -> int"},
+	 { (char *)"VectorCoefficient_Eval", _wrap_VectorCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"VectorCoefficient_Eval(VectorCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_VectorCoefficient", _wrap_delete_VectorCoefficient, METH_VARARGS, (char *)"delete_VectorCoefficient(VectorCoefficient self)"},
 	 { (char *)"VectorCoefficient_swigregister", VectorCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorConstantCoefficient", _wrap_new_VectorConstantCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorConstantCoefficient_Eval", _wrap_VectorConstantCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorConstantCoefficient", _wrap_delete_VectorConstantCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_VectorConstantCoefficient", _wrap_new_VectorConstantCoefficient, METH_VARARGS, (char *)"new_VectorConstantCoefficient(Vector v) -> VectorConstantCoefficient"},
+	 { (char *)"VectorConstantCoefficient_Eval", _wrap_VectorConstantCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"VectorConstantCoefficient_Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_VectorConstantCoefficient", _wrap_delete_VectorConstantCoefficient, METH_VARARGS, (char *)"delete_VectorConstantCoefficient(VectorConstantCoefficient self)"},
 	 { (char *)"VectorConstantCoefficient_swigregister", VectorConstantCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorFunctionCoefficient", _wrap_new_VectorFunctionCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorFunctionCoefficient_Eval", _wrap_VectorFunctionCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorFunctionCoefficient", _wrap_delete_VectorFunctionCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_VectorFunctionCoefficient", _wrap_new_VectorFunctionCoefficient, METH_VARARGS, (char *)"\n"
+		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::Vector &) F, Coefficient q=None)\n"
+		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::Vector &) F)\n"
+		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::Vector &) TDF, Coefficient q=None)\n"
+		"new_VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::Vector &) TDF) -> VectorFunctionCoefficient\n"
+		""},
+	 { (char *)"VectorFunctionCoefficient_Eval", _wrap_VectorFunctionCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"VectorFunctionCoefficient_Eval(VectorFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_VectorFunctionCoefficient", _wrap_delete_VectorFunctionCoefficient, METH_VARARGS, (char *)"delete_VectorFunctionCoefficient(VectorFunctionCoefficient self)"},
 	 { (char *)"VectorFunctionCoefficient_swigregister", VectorFunctionCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorArrayCoefficient", _wrap_new_VectorArrayCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorArrayCoefficient_GetCoeff", _wrap_VectorArrayCoefficient_GetCoeff, METH_VARARGS, NULL},
-	 { (char *)"VectorArrayCoefficient_GetCoeffs", _wrap_VectorArrayCoefficient_GetCoeffs, METH_VARARGS, NULL},
-	 { (char *)"VectorArrayCoefficient_Set", _wrap_VectorArrayCoefficient_Set, METH_VARARGS, NULL},
-	 { (char *)"VectorArrayCoefficient_Eval", _wrap_VectorArrayCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorArrayCoefficient", _wrap_delete_VectorArrayCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_VectorArrayCoefficient", _wrap_new_VectorArrayCoefficient, METH_VARARGS, (char *)"new_VectorArrayCoefficient(int dim) -> VectorArrayCoefficient"},
+	 { (char *)"VectorArrayCoefficient_GetCoeff", _wrap_VectorArrayCoefficient_GetCoeff, METH_VARARGS, (char *)"VectorArrayCoefficient_GetCoeff(VectorArrayCoefficient self, int i) -> Coefficient"},
+	 { (char *)"VectorArrayCoefficient_GetCoeffs", _wrap_VectorArrayCoefficient_GetCoeffs, METH_VARARGS, (char *)"VectorArrayCoefficient_GetCoeffs(VectorArrayCoefficient self) -> mfem::Coefficient **"},
+	 { (char *)"VectorArrayCoefficient_Set", _wrap_VectorArrayCoefficient_Set, METH_VARARGS, (char *)"VectorArrayCoefficient_Set(VectorArrayCoefficient self, int i, Coefficient c)"},
+	 { (char *)"VectorArrayCoefficient_Eval", _wrap_VectorArrayCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(int i, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"VectorArrayCoefficient_Eval(VectorArrayCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_VectorArrayCoefficient", _wrap_delete_VectorArrayCoefficient, METH_VARARGS, (char *)"delete_VectorArrayCoefficient(VectorArrayCoefficient self)"},
 	 { (char *)"VectorArrayCoefficient_swigregister", VectorArrayCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorGridFunctionCoefficient", _wrap_new_VectorGridFunctionCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorGridFunctionCoefficient_SetGridFunction", _wrap_VectorGridFunctionCoefficient_SetGridFunction, METH_VARARGS, NULL},
-	 { (char *)"VectorGridFunctionCoefficient_GetGridFunction", _wrap_VectorGridFunctionCoefficient_GetGridFunction, METH_VARARGS, NULL},
-	 { (char *)"VectorGridFunctionCoefficient_Eval", _wrap_VectorGridFunctionCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorGridFunctionCoefficient", _wrap_delete_VectorGridFunctionCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_VectorGridFunctionCoefficient", _wrap_new_VectorGridFunctionCoefficient, METH_VARARGS, (char *)"new_VectorGridFunctionCoefficient(mfem::GridFunction * gf) -> VectorGridFunctionCoefficient"},
+	 { (char *)"VectorGridFunctionCoefficient_SetGridFunction", _wrap_VectorGridFunctionCoefficient_SetGridFunction, METH_VARARGS, (char *)"VectorGridFunctionCoefficient_SetGridFunction(VectorGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { (char *)"VectorGridFunctionCoefficient_GetGridFunction", _wrap_VectorGridFunctionCoefficient_GetGridFunction, METH_VARARGS, (char *)"VectorGridFunctionCoefficient_GetGridFunction(VectorGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { (char *)"VectorGridFunctionCoefficient_Eval", _wrap_VectorGridFunctionCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"VectorGridFunctionCoefficient_Eval(VectorGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_VectorGridFunctionCoefficient", _wrap_delete_VectorGridFunctionCoefficient, METH_VARARGS, (char *)"delete_VectorGridFunctionCoefficient(VectorGridFunctionCoefficient self)"},
 	 { (char *)"VectorGridFunctionCoefficient_swigregister", VectorGridFunctionCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorDeltaCoefficient", _wrap_new_VectorDeltaCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorDeltaCoefficient_SetDeltaCoefficient", _wrap_VectorDeltaCoefficient_SetDeltaCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorDeltaCoefficient_GetDeltaCoefficient", _wrap_VectorDeltaCoefficient_GetDeltaCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorDeltaCoefficient_SetDirection", _wrap_VectorDeltaCoefficient_SetDirection, METH_VARARGS, NULL},
-	 { (char *)"VectorDeltaCoefficient_GetDeltaCenter", _wrap_VectorDeltaCoefficient_GetDeltaCenter, METH_VARARGS, NULL},
-	 { (char *)"VectorDeltaCoefficient_EvalDelta", _wrap_VectorDeltaCoefficient_EvalDelta, METH_VARARGS, NULL},
-	 { (char *)"VectorDeltaCoefficient_Eval", _wrap_VectorDeltaCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorDeltaCoefficient", _wrap_delete_VectorDeltaCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_VectorDeltaCoefficient", _wrap_new_VectorDeltaCoefficient, METH_VARARGS, (char *)"\n"
+		"VectorDeltaCoefficient(int _vdim)\n"
+		"VectorDeltaCoefficient(Vector _dir)\n"
+		"VectorDeltaCoefficient(Vector _dir, double x, double s)\n"
+		"VectorDeltaCoefficient(Vector _dir, double x, double y, double s)\n"
+		"new_VectorDeltaCoefficient(Vector _dir, double x, double y, double z, double s) -> VectorDeltaCoefficient\n"
+		""},
+	 { (char *)"VectorDeltaCoefficient_SetDeltaCoefficient", _wrap_VectorDeltaCoefficient_SetDeltaCoefficient, METH_VARARGS, (char *)"VectorDeltaCoefficient_SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient _d)"},
+	 { (char *)"VectorDeltaCoefficient_GetDeltaCoefficient", _wrap_VectorDeltaCoefficient_GetDeltaCoefficient, METH_VARARGS, (char *)"VectorDeltaCoefficient_GetDeltaCoefficient(VectorDeltaCoefficient self) -> DeltaCoefficient"},
+	 { (char *)"VectorDeltaCoefficient_SetDirection", _wrap_VectorDeltaCoefficient_SetDirection, METH_VARARGS, (char *)"VectorDeltaCoefficient_SetDirection(VectorDeltaCoefficient self, Vector _d)"},
+	 { (char *)"VectorDeltaCoefficient_GetDeltaCenter", _wrap_VectorDeltaCoefficient_GetDeltaCenter, METH_VARARGS, (char *)"VectorDeltaCoefficient_GetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
+	 { (char *)"VectorDeltaCoefficient_EvalDelta", _wrap_VectorDeltaCoefficient_EvalDelta, METH_VARARGS, (char *)"VectorDeltaCoefficient_EvalDelta(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"VectorDeltaCoefficient_Eval", _wrap_VectorDeltaCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"VectorDeltaCoefficient_Eval(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_VectorDeltaCoefficient", _wrap_delete_VectorDeltaCoefficient, METH_VARARGS, (char *)"delete_VectorDeltaCoefficient(VectorDeltaCoefficient self)"},
 	 { (char *)"VectorDeltaCoefficient_swigregister", VectorDeltaCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorRestrictedCoefficient", _wrap_new_VectorRestrictedCoefficient, METH_VARARGS, NULL},
-	 { (char *)"VectorRestrictedCoefficient_Eval", _wrap_VectorRestrictedCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorRestrictedCoefficient", _wrap_delete_VectorRestrictedCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_VectorRestrictedCoefficient", _wrap_new_VectorRestrictedCoefficient, METH_VARARGS, (char *)"new_VectorRestrictedCoefficient(VectorCoefficient vc, intArray attr) -> VectorRestrictedCoefficient"},
+	 { (char *)"VectorRestrictedCoefficient_Eval", _wrap_VectorRestrictedCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"VectorRestrictedCoefficient_Eval(VectorRestrictedCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_VectorRestrictedCoefficient", _wrap_delete_VectorRestrictedCoefficient, METH_VARARGS, (char *)"delete_VectorRestrictedCoefficient(VectorRestrictedCoefficient self)"},
 	 { (char *)"VectorRestrictedCoefficient_swigregister", VectorRestrictedCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"MatrixCoefficient_SetTime", _wrap_MatrixCoefficient_SetTime, METH_VARARGS, NULL},
-	 { (char *)"MatrixCoefficient_GetTime", _wrap_MatrixCoefficient_GetTime, METH_VARARGS, NULL},
-	 { (char *)"MatrixCoefficient_GetHeight", _wrap_MatrixCoefficient_GetHeight, METH_VARARGS, NULL},
-	 { (char *)"MatrixCoefficient_GetWidth", _wrap_MatrixCoefficient_GetWidth, METH_VARARGS, NULL},
-	 { (char *)"MatrixCoefficient_GetVDim", _wrap_MatrixCoefficient_GetVDim, METH_VARARGS, NULL},
-	 { (char *)"MatrixCoefficient_Eval", _wrap_MatrixCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_MatrixCoefficient", _wrap_delete_MatrixCoefficient, METH_VARARGS, NULL},
+	 { (char *)"MatrixCoefficient_SetTime", _wrap_MatrixCoefficient_SetTime, METH_VARARGS, (char *)"MatrixCoefficient_SetTime(MatrixCoefficient self, double t)"},
+	 { (char *)"MatrixCoefficient_GetTime", _wrap_MatrixCoefficient_GetTime, METH_VARARGS, (char *)"MatrixCoefficient_GetTime(MatrixCoefficient self) -> double"},
+	 { (char *)"MatrixCoefficient_GetHeight", _wrap_MatrixCoefficient_GetHeight, METH_VARARGS, (char *)"MatrixCoefficient_GetHeight(MatrixCoefficient self) -> int"},
+	 { (char *)"MatrixCoefficient_GetWidth", _wrap_MatrixCoefficient_GetWidth, METH_VARARGS, (char *)"MatrixCoefficient_GetWidth(MatrixCoefficient self) -> int"},
+	 { (char *)"MatrixCoefficient_GetVDim", _wrap_MatrixCoefficient_GetVDim, METH_VARARGS, (char *)"MatrixCoefficient_GetVDim(MatrixCoefficient self) -> int"},
+	 { (char *)"MatrixCoefficient_Eval", _wrap_MatrixCoefficient_Eval, METH_VARARGS, (char *)"MatrixCoefficient_Eval(MatrixCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_MatrixCoefficient", _wrap_delete_MatrixCoefficient, METH_VARARGS, (char *)"delete_MatrixCoefficient(MatrixCoefficient self)"},
 	 { (char *)"MatrixCoefficient_swigregister", MatrixCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"MatrixConstantCoefficient_Eval", _wrap_MatrixConstantCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_MatrixConstantCoefficient", _wrap_delete_MatrixConstantCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_MatrixConstantCoefficient", _wrap_new_MatrixConstantCoefficient, METH_VARARGS, (char *)"new_MatrixConstantCoefficient(DenseMatrix m) -> MatrixConstantCoefficient"},
+	 { (char *)"MatrixConstantCoefficient_Eval", _wrap_MatrixConstantCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
+		"MatrixConstantCoefficient_Eval(MatrixConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_MatrixConstantCoefficient", _wrap_delete_MatrixConstantCoefficient, METH_VARARGS, (char *)"delete_MatrixConstantCoefficient(MatrixConstantCoefficient self)"},
 	 { (char *)"MatrixConstantCoefficient_swigregister", MatrixConstantCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_MatrixFunctionCoefficient", _wrap_new_MatrixFunctionCoefficient, METH_VARARGS, NULL},
-	 { (char *)"MatrixFunctionCoefficient_Eval", _wrap_MatrixFunctionCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_MatrixFunctionCoefficient", _wrap_delete_MatrixFunctionCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_MatrixFunctionCoefficient", _wrap_new_MatrixFunctionCoefficient, METH_VARARGS, (char *)"\n"
+		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::DenseMatrix &) F, Coefficient q=None)\n"
+		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::DenseMatrix &) F)\n"
+		"MatrixFunctionCoefficient(DenseMatrix m, Coefficient q)\n"
+		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::DenseMatrix &) TDF, Coefficient q=None)\n"
+		"new_MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::DenseMatrix &) TDF) -> MatrixFunctionCoefficient\n"
+		""},
+	 { (char *)"MatrixFunctionCoefficient_Eval", _wrap_MatrixFunctionCoefficient_Eval, METH_VARARGS, (char *)"MatrixFunctionCoefficient_Eval(MatrixFunctionCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_MatrixFunctionCoefficient", _wrap_delete_MatrixFunctionCoefficient, METH_VARARGS, (char *)"delete_MatrixFunctionCoefficient(MatrixFunctionCoefficient self)"},
 	 { (char *)"MatrixFunctionCoefficient_swigregister", MatrixFunctionCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_MatrixArrayCoefficient", _wrap_new_MatrixArrayCoefficient, METH_VARARGS, NULL},
-	 { (char *)"MatrixArrayCoefficient_GetCoeff", _wrap_MatrixArrayCoefficient_GetCoeff, METH_VARARGS, NULL},
-	 { (char *)"MatrixArrayCoefficient_Set", _wrap_MatrixArrayCoefficient_Set, METH_VARARGS, NULL},
-	 { (char *)"MatrixArrayCoefficient_Eval", _wrap_MatrixArrayCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_MatrixArrayCoefficient", _wrap_delete_MatrixArrayCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_MatrixArrayCoefficient", _wrap_new_MatrixArrayCoefficient, METH_VARARGS, (char *)"new_MatrixArrayCoefficient(int dim) -> MatrixArrayCoefficient"},
+	 { (char *)"MatrixArrayCoefficient_GetCoeff", _wrap_MatrixArrayCoefficient_GetCoeff, METH_VARARGS, (char *)"MatrixArrayCoefficient_GetCoeff(MatrixArrayCoefficient self, int i, int j) -> Coefficient"},
+	 { (char *)"MatrixArrayCoefficient_Set", _wrap_MatrixArrayCoefficient_Set, METH_VARARGS, (char *)"MatrixArrayCoefficient_Set(MatrixArrayCoefficient self, int i, int j, Coefficient c)"},
+	 { (char *)"MatrixArrayCoefficient_Eval", _wrap_MatrixArrayCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(int i, int j, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"MatrixArrayCoefficient_Eval(MatrixArrayCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_MatrixArrayCoefficient", _wrap_delete_MatrixArrayCoefficient, METH_VARARGS, (char *)"delete_MatrixArrayCoefficient(MatrixArrayCoefficient self)"},
 	 { (char *)"MatrixArrayCoefficient_swigregister", MatrixArrayCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_MatrixRestrictedCoefficient", _wrap_new_MatrixRestrictedCoefficient, METH_VARARGS, NULL},
-	 { (char *)"MatrixRestrictedCoefficient_Eval", _wrap_MatrixRestrictedCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_MatrixRestrictedCoefficient", _wrap_delete_MatrixRestrictedCoefficient, METH_VARARGS, NULL},
+	 { (char *)"new_MatrixRestrictedCoefficient", _wrap_new_MatrixRestrictedCoefficient, METH_VARARGS, (char *)"new_MatrixRestrictedCoefficient(MatrixCoefficient mc, intArray attr) -> MatrixRestrictedCoefficient"},
+	 { (char *)"MatrixRestrictedCoefficient_Eval", _wrap_MatrixRestrictedCoefficient_Eval, METH_VARARGS, (char *)"MatrixRestrictedCoefficient_Eval(MatrixRestrictedCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_MatrixRestrictedCoefficient", _wrap_delete_MatrixRestrictedCoefficient, METH_VARARGS, (char *)"delete_MatrixRestrictedCoefficient(MatrixRestrictedCoefficient self)"},
 	 { (char *)"MatrixRestrictedCoefficient_swigregister", MatrixRestrictedCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"ComputeLpNorm", _wrap_ComputeLpNorm, METH_VARARGS, NULL},
-	 { (char *)"ComputeGlobalLpNorm", _wrap_ComputeGlobalLpNorm, METH_VARARGS, NULL},
-	 { (char *)"fake_func", _wrap_fake_func, METH_VARARGS, NULL},
-	 { (char *)"fake_func_vec", _wrap_fake_func_vec, METH_VARARGS, NULL},
-	 { (char *)"fake_func_mat", _wrap_fake_func_mat, METH_VARARGS, NULL},
-	 { (char *)"new_PyCoefficientBase", _wrap_new_PyCoefficientBase, METH_VARARGS, NULL},
-	 { (char *)"PyCoefficientBase_Eval", _wrap_PyCoefficientBase_Eval, METH_VARARGS, NULL},
-	 { (char *)"PyCoefficientBase__EvalPy", _wrap_PyCoefficientBase__EvalPy, METH_VARARGS, NULL},
-	 { (char *)"PyCoefficientBase__EvalPyT", _wrap_PyCoefficientBase__EvalPyT, METH_VARARGS, NULL},
-	 { (char *)"delete_PyCoefficientBase", _wrap_delete_PyCoefficientBase, METH_VARARGS, NULL},
+	 { (char *)"ComputeLpNorm", _wrap_ComputeLpNorm, METH_VARARGS, (char *)"\n"
+		"ComputeLpNorm(double p, Coefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		"ComputeLpNorm(double p, VectorCoefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		""},
+	 { (char *)"ComputeGlobalLpNorm", _wrap_ComputeGlobalLpNorm, METH_VARARGS, (char *)"\n"
+		"ComputeGlobalLpNorm(double p, Coefficient coeff, mfem::ParMesh & pmesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		"ComputeGlobalLpNorm(double p, VectorCoefficient coeff, mfem::ParMesh & pmesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		""},
+	 { (char *)"fake_func", _wrap_fake_func, METH_VARARGS, (char *)"fake_func(Vector x) -> double"},
+	 { (char *)"fake_func_vec", _wrap_fake_func_vec, METH_VARARGS, (char *)"fake_func_vec(Vector x, Vector Ht)"},
+	 { (char *)"fake_func_mat", _wrap_fake_func_mat, METH_VARARGS, (char *)"fake_func_mat(Vector x, DenseMatrix Kt)"},
+	 { (char *)"new_PyCoefficientBase", _wrap_new_PyCoefficientBase, METH_VARARGS, (char *)"new_PyCoefficientBase(PyObject * arg2, int tdep) -> PyCoefficientBase"},
+	 { (char *)"PyCoefficientBase_Eval", _wrap_PyCoefficientBase_Eval, METH_VARARGS, (char *)"PyCoefficientBase_Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"PyCoefficientBase__EvalPy", _wrap_PyCoefficientBase__EvalPy, METH_VARARGS, (char *)"PyCoefficientBase__EvalPy(PyCoefficientBase self, Vector arg0) -> double"},
+	 { (char *)"PyCoefficientBase__EvalPyT", _wrap_PyCoefficientBase__EvalPyT, METH_VARARGS, (char *)"PyCoefficientBase__EvalPyT(PyCoefficientBase self, Vector arg0, double arg1) -> double"},
+	 { (char *)"delete_PyCoefficientBase", _wrap_delete_PyCoefficientBase, METH_VARARGS, (char *)"delete_PyCoefficientBase(PyCoefficientBase self)"},
 	 { (char *)"disown_PyCoefficientBase", _wrap_disown_PyCoefficientBase, METH_VARARGS, NULL},
 	 { (char *)"PyCoefficientBase_swigregister", PyCoefficientBase_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorPyCoefficientBase", _wrap_new_VectorPyCoefficientBase, METH_VARARGS, NULL},
-	 { (char *)"VectorPyCoefficientBase_Eval", _wrap_VectorPyCoefficientBase_Eval, METH_VARARGS, NULL},
-	 { (char *)"VectorPyCoefficientBase__EvalPy", _wrap_VectorPyCoefficientBase__EvalPy, METH_VARARGS, NULL},
-	 { (char *)"VectorPyCoefficientBase__EvalPyT", _wrap_VectorPyCoefficientBase__EvalPyT, METH_VARARGS, NULL},
-	 { (char *)"delete_VectorPyCoefficientBase", _wrap_delete_VectorPyCoefficientBase, METH_VARARGS, NULL},
+	 { (char *)"new_VectorPyCoefficientBase", _wrap_new_VectorPyCoefficientBase, METH_VARARGS, (char *)"\n"
+		"VectorPyCoefficientBase(int dim, int tdep, Coefficient q=None)\n"
+		"new_VectorPyCoefficientBase(PyObject * arg2, int dim, int tdep) -> VectorPyCoefficientBase\n"
+		""},
+	 { (char *)"VectorPyCoefficientBase_Eval", _wrap_VectorPyCoefficientBase_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"VectorPyCoefficientBase_Eval(VectorPyCoefficientBase self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"VectorPyCoefficientBase__EvalPy", _wrap_VectorPyCoefficientBase__EvalPy, METH_VARARGS, (char *)"VectorPyCoefficientBase__EvalPy(VectorPyCoefficientBase self, Vector arg0, Vector arg1)"},
+	 { (char *)"VectorPyCoefficientBase__EvalPyT", _wrap_VectorPyCoefficientBase__EvalPyT, METH_VARARGS, (char *)"VectorPyCoefficientBase__EvalPyT(VectorPyCoefficientBase self, Vector arg0, double arg1, Vector arg2)"},
+	 { (char *)"delete_VectorPyCoefficientBase", _wrap_delete_VectorPyCoefficientBase, METH_VARARGS, (char *)"delete_VectorPyCoefficientBase(VectorPyCoefficientBase self)"},
 	 { (char *)"disown_VectorPyCoefficientBase", _wrap_disown_VectorPyCoefficientBase, METH_VARARGS, NULL},
 	 { (char *)"VectorPyCoefficientBase_swigregister", VectorPyCoefficientBase_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_MatrixPyCoefficientBase", _wrap_new_MatrixPyCoefficientBase, METH_VARARGS, NULL},
-	 { (char *)"MatrixPyCoefficientBase_Eval", _wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS, NULL},
-	 { (char *)"MatrixPyCoefficientBase__EvalPy", _wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS, NULL},
-	 { (char *)"MatrixPyCoefficientBase__EvalPyT", _wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS, NULL},
-	 { (char *)"delete_MatrixPyCoefficientBase", _wrap_delete_MatrixPyCoefficientBase, METH_VARARGS, NULL},
+	 { (char *)"new_MatrixPyCoefficientBase", _wrap_new_MatrixPyCoefficientBase, METH_VARARGS, (char *)"new_MatrixPyCoefficientBase(PyObject * arg2, int dim, int tdep) -> MatrixPyCoefficientBase"},
+	 { (char *)"MatrixPyCoefficientBase_Eval", _wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS, (char *)"MatrixPyCoefficientBase_Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"MatrixPyCoefficientBase__EvalPy", _wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS, (char *)"MatrixPyCoefficientBase__EvalPy(MatrixPyCoefficientBase self, Vector arg0, DenseMatrix arg1)"},
+	 { (char *)"MatrixPyCoefficientBase__EvalPyT", _wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS, (char *)"MatrixPyCoefficientBase__EvalPyT(MatrixPyCoefficientBase self, Vector arg0, double arg1, DenseMatrix arg2)"},
+	 { (char *)"delete_MatrixPyCoefficientBase", _wrap_delete_MatrixPyCoefficientBase, METH_VARARGS, (char *)"delete_MatrixPyCoefficientBase(MatrixPyCoefficientBase self)"},
 	 { (char *)"disown_MatrixPyCoefficientBase", _wrap_disown_MatrixPyCoefficientBase, METH_VARARGS, NULL},
 	 { (char *)"MatrixPyCoefficientBase_swigregister", MatrixPyCoefficientBase_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
