@@ -3917,6 +3917,34 @@ SWIGINTERN void mfem_DenseMatrix_Assign__SWIG_0(mfem::DenseMatrix *self,double c
 SWIGINTERN void mfem_DenseMatrix_Assign__SWIG_1(mfem::DenseMatrix *self,mfem::DenseMatrix const &m){
     (* self) = m;
   }
+SWIGINTERN void mfem_DenseMatrix_Assign__SWIG_2(mfem::DenseMatrix *self,PyObject *numpymat){
+    /* note that these error does not raise error in python
+       type check is actually done in wrapper layer */
+    if (!PyArray_Check(numpymat)){
+       PyErr_SetString(PyExc_ValueError, "Input data must be ndarray");
+       return;
+    }
+    int typ = PyArray_TYPE(numpymat);
+    if (typ != NPY_DOUBLE){
+        PyErr_SetString(PyExc_ValueError, "Input data must be float64");
+	return;
+    }
+    int ndim = PyArray_NDIM(numpymat);
+    if (ndim != 2){
+      PyErr_SetString(PyExc_ValueError, "Input data NDIM must be two");
+      return ;
+    }
+    npy_intp *shape = PyArray_DIMS(numpymat);    
+    int len = self->Size();
+    if (shape[0] != len){    
+      PyErr_SetString(PyExc_ValueError, "input data length does not match");
+      return ;
+    }
+    PyArrayObject * tmp = 
+      PyArray_GETCONTIGUOUS((PyArrayObject *)PyArray_Transpose((PyArrayObject *)numpymat, NULL));
+    (* self) = (double *) PyArray_DATA(tmp);
+    Py_XDECREF(tmp);
+  }
 SWIGINTERN double const mfem_DenseMatrix___getitem__(mfem::DenseMatrix const *self,int const i,int const j){
     return (* self)(i, j);
   }
@@ -10783,6 +10811,42 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_DenseMatrix_Assign__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DenseMatrix *arg1 = (mfem::DenseMatrix *) 0 ;
+  PyObject *arg2 = (PyObject *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DenseMatrix_Assign",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DenseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DenseMatrix_Assign" "', argument " "1"" of type '" "mfem::DenseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  arg2 = obj1;
+  {
+    try {
+      mfem_DenseMatrix_Assign__SWIG_2(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_DenseMatrix_Assign(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
@@ -10823,12 +10887,25 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Assign(PyObject *self, PyObject *args) {
       }
     }
   }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      _v = (argv[1] != 0);
+      if (_v) {
+        return _wrap_DenseMatrix_Assign__SWIG_2(self, args);
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'DenseMatrix_Assign'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DenseMatrix::Assign(double const)\n"
-    "    mfem::DenseMatrix::Assign(mfem::DenseMatrix const &)\n");
+    "    mfem::DenseMatrix::Assign(mfem::DenseMatrix const &)\n"
+    "    mfem::DenseMatrix::Assign(PyObject *)\n");
   return 0;
 }
 
@@ -15833,173 +15910,279 @@ SWIGINTERN PyObject *DenseTensor_swigregister(PyObject *SWIGUNUSEDPARM(self), Py
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_DenseMatrix", _wrap_new_DenseMatrix, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_UseExternalData", _wrap_DenseMatrix_UseExternalData, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Reset", _wrap_DenseMatrix_Reset, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_ClearExternalData", _wrap_DenseMatrix_ClearExternalData, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Clear", _wrap_DenseMatrix_Clear, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Size", _wrap_DenseMatrix_Size, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_SetSize", _wrap_DenseMatrix_SetSize, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Data", _wrap_DenseMatrix_Data, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetData", _wrap_DenseMatrix_GetData, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_OwnsData", _wrap_DenseMatrix_OwnsData, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix___call__", _wrap_DenseMatrix___call__, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix___mul__", _wrap_DenseMatrix___mul__, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Trace", _wrap_DenseMatrix_Trace, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Elem", _wrap_DenseMatrix_Elem, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Mult", _wrap_DenseMatrix_Mult, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_MultTranspose", _wrap_DenseMatrix_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_AddMult", _wrap_DenseMatrix_AddMult, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_AddMultTranspose", _wrap_DenseMatrix_AddMultTranspose, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_AddMult_a", _wrap_DenseMatrix_AddMult_a, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_AddMultTranspose_a", _wrap_DenseMatrix_AddMultTranspose_a, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_LeftScaling", _wrap_DenseMatrix_LeftScaling, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_InvLeftScaling", _wrap_DenseMatrix_InvLeftScaling, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_RightScaling", _wrap_DenseMatrix_RightScaling, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_InvRightScaling", _wrap_DenseMatrix_InvRightScaling, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_SymmetricScaling", _wrap_DenseMatrix_SymmetricScaling, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_InvSymmetricScaling", _wrap_DenseMatrix_InvSymmetricScaling, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_InnerProduct", _wrap_DenseMatrix_InnerProduct, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Inverse", _wrap_DenseMatrix_Inverse, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Invert", _wrap_DenseMatrix_Invert, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_SquareRootInverse", _wrap_DenseMatrix_SquareRootInverse, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Det", _wrap_DenseMatrix_Det, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Weight", _wrap_DenseMatrix_Weight, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Set", _wrap_DenseMatrix_Set, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Add", _wrap_DenseMatrix_Add, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix___iadd__", _wrap_DenseMatrix___iadd__, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix___isub__", _wrap_DenseMatrix___isub__, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix___imul__", _wrap_DenseMatrix___imul__, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Neg", _wrap_DenseMatrix_Neg, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Norm2", _wrap_DenseMatrix_Norm2, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_MaxMaxNorm", _wrap_DenseMatrix_MaxMaxNorm, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_FNorm", _wrap_DenseMatrix_FNorm, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_FNorm2", _wrap_DenseMatrix_FNorm2, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Eigenvalues", _wrap_DenseMatrix_Eigenvalues, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Eigensystem", _wrap_DenseMatrix_Eigensystem, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_SingularValues", _wrap_DenseMatrix_SingularValues, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Rank", _wrap_DenseMatrix_Rank, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CalcSingularvalue", _wrap_DenseMatrix_CalcSingularvalue, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CalcEigenvalues", _wrap_DenseMatrix_CalcEigenvalues, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetRow", _wrap_DenseMatrix_GetRow, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetColumn", _wrap_DenseMatrix_GetColumn, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetColumnReference", _wrap_DenseMatrix_GetColumnReference, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_SetRow", _wrap_DenseMatrix_SetRow, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_SetCol", _wrap_DenseMatrix_SetCol, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetDiag", _wrap_DenseMatrix_GetDiag, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Getl1Diag", _wrap_DenseMatrix_Getl1Diag, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetRowSums", _wrap_DenseMatrix_GetRowSums, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Diag", _wrap_DenseMatrix_Diag, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Transpose", _wrap_DenseMatrix_Transpose, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Symmetrize", _wrap_DenseMatrix_Symmetrize, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Lump", _wrap_DenseMatrix_Lump, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GradToCurl", _wrap_DenseMatrix_GradToCurl, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GradToDiv", _wrap_DenseMatrix_GradToDiv, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CopyRows", _wrap_DenseMatrix_CopyRows, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CopyCols", _wrap_DenseMatrix_CopyCols, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CopyMNt", _wrap_DenseMatrix_CopyMNt, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CopyMN", _wrap_DenseMatrix_CopyMN, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CopyMNDiag", _wrap_DenseMatrix_CopyMNDiag, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CopyExceptMN", _wrap_DenseMatrix_CopyExceptMN, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_AddMatrix", _wrap_DenseMatrix_AddMatrix, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_AddToVector", _wrap_DenseMatrix_AddToVector, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetFromVector", _wrap_DenseMatrix_GetFromVector, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_AdjustDofDirection", _wrap_DenseMatrix_AdjustDofDirection, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Threshold", _wrap_DenseMatrix_Threshold, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_CheckFinite", _wrap_DenseMatrix_CheckFinite, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Print", _wrap_DenseMatrix_Print, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_PrintMatlab", _wrap_DenseMatrix_PrintMatlab, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_PrintT", _wrap_DenseMatrix_PrintT, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_TestInversion", _wrap_DenseMatrix_TestInversion, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_MemoryUsage", _wrap_DenseMatrix_MemoryUsage, METH_VARARGS, NULL},
-	 { (char *)"delete_DenseMatrix", _wrap_delete_DenseMatrix, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_Assign", _wrap_DenseMatrix_Assign, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix___getitem__", _wrap_DenseMatrix___getitem__, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix___setitem__", _wrap_DenseMatrix___setitem__, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrix_GetDataArray", _wrap_DenseMatrix_GetDataArray, METH_VARARGS, NULL},
+	 { (char *)"new_DenseMatrix", _wrap_new_DenseMatrix, METH_VARARGS, (char *)"\n"
+		"DenseMatrix()\n"
+		"DenseMatrix(DenseMatrix arg2)\n"
+		"DenseMatrix(int s)\n"
+		"DenseMatrix(int m, int n)\n"
+		"DenseMatrix(DenseMatrix mat, char ch)\n"
+		"new_DenseMatrix(double * d, int h, int w) -> DenseMatrix\n"
+		""},
+	 { (char *)"DenseMatrix_UseExternalData", _wrap_DenseMatrix_UseExternalData, METH_VARARGS, (char *)"DenseMatrix_UseExternalData(DenseMatrix self, double * d, int h, int w)"},
+	 { (char *)"DenseMatrix_Reset", _wrap_DenseMatrix_Reset, METH_VARARGS, (char *)"DenseMatrix_Reset(DenseMatrix self, double * d, int h, int w)"},
+	 { (char *)"DenseMatrix_ClearExternalData", _wrap_DenseMatrix_ClearExternalData, METH_VARARGS, (char *)"DenseMatrix_ClearExternalData(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_Clear", _wrap_DenseMatrix_Clear, METH_VARARGS, (char *)"DenseMatrix_Clear(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_Size", _wrap_DenseMatrix_Size, METH_VARARGS, (char *)"DenseMatrix_Size(DenseMatrix self) -> int"},
+	 { (char *)"DenseMatrix_SetSize", _wrap_DenseMatrix_SetSize, METH_VARARGS, (char *)"\n"
+		"SetSize(int s)\n"
+		"DenseMatrix_SetSize(DenseMatrix self, int h, int w)\n"
+		""},
+	 { (char *)"DenseMatrix_Data", _wrap_DenseMatrix_Data, METH_VARARGS, (char *)"DenseMatrix_Data(DenseMatrix self) -> double *"},
+	 { (char *)"DenseMatrix_GetData", _wrap_DenseMatrix_GetData, METH_VARARGS, (char *)"DenseMatrix_GetData(DenseMatrix self) -> double *"},
+	 { (char *)"DenseMatrix_OwnsData", _wrap_DenseMatrix_OwnsData, METH_VARARGS, (char *)"DenseMatrix_OwnsData(DenseMatrix self) -> bool"},
+	 { (char *)"DenseMatrix___call__", _wrap_DenseMatrix___call__, METH_VARARGS, (char *)"\n"
+		"__call__(int i, int j) -> double\n"
+		"DenseMatrix___call__(DenseMatrix self, int i, int j) -> double const &\n"
+		""},
+	 { (char *)"DenseMatrix___mul__", _wrap_DenseMatrix___mul__, METH_VARARGS, (char *)"DenseMatrix___mul__(DenseMatrix self, DenseMatrix m) -> double"},
+	 { (char *)"DenseMatrix_Trace", _wrap_DenseMatrix_Trace, METH_VARARGS, (char *)"DenseMatrix_Trace(DenseMatrix self) -> double"},
+	 { (char *)"DenseMatrix_Elem", _wrap_DenseMatrix_Elem, METH_VARARGS, (char *)"\n"
+		"Elem(int i, int j) -> double\n"
+		"DenseMatrix_Elem(DenseMatrix self, int i, int j) -> double const &\n"
+		""},
+	 { (char *)"DenseMatrix_Mult", _wrap_DenseMatrix_Mult, METH_VARARGS, (char *)"\n"
+		"Mult(double const * x, double * y)\n"
+		"DenseMatrix_Mult(DenseMatrix self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"DenseMatrix_MultTranspose", _wrap_DenseMatrix_MultTranspose, METH_VARARGS, (char *)"\n"
+		"MultTranspose(double const * x, double * y)\n"
+		"DenseMatrix_MultTranspose(DenseMatrix self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"DenseMatrix_AddMult", _wrap_DenseMatrix_AddMult, METH_VARARGS, (char *)"DenseMatrix_AddMult(DenseMatrix self, Vector x, Vector y)"},
+	 { (char *)"DenseMatrix_AddMultTranspose", _wrap_DenseMatrix_AddMultTranspose, METH_VARARGS, (char *)"DenseMatrix_AddMultTranspose(DenseMatrix self, Vector x, Vector y)"},
+	 { (char *)"DenseMatrix_AddMult_a", _wrap_DenseMatrix_AddMult_a, METH_VARARGS, (char *)"DenseMatrix_AddMult_a(DenseMatrix self, double a, Vector x, Vector y)"},
+	 { (char *)"DenseMatrix_AddMultTranspose_a", _wrap_DenseMatrix_AddMultTranspose_a, METH_VARARGS, (char *)"DenseMatrix_AddMultTranspose_a(DenseMatrix self, double a, Vector x, Vector y)"},
+	 { (char *)"DenseMatrix_LeftScaling", _wrap_DenseMatrix_LeftScaling, METH_VARARGS, (char *)"DenseMatrix_LeftScaling(DenseMatrix self, Vector s)"},
+	 { (char *)"DenseMatrix_InvLeftScaling", _wrap_DenseMatrix_InvLeftScaling, METH_VARARGS, (char *)"DenseMatrix_InvLeftScaling(DenseMatrix self, Vector s)"},
+	 { (char *)"DenseMatrix_RightScaling", _wrap_DenseMatrix_RightScaling, METH_VARARGS, (char *)"DenseMatrix_RightScaling(DenseMatrix self, Vector s)"},
+	 { (char *)"DenseMatrix_InvRightScaling", _wrap_DenseMatrix_InvRightScaling, METH_VARARGS, (char *)"DenseMatrix_InvRightScaling(DenseMatrix self, Vector s)"},
+	 { (char *)"DenseMatrix_SymmetricScaling", _wrap_DenseMatrix_SymmetricScaling, METH_VARARGS, (char *)"DenseMatrix_SymmetricScaling(DenseMatrix self, Vector s)"},
+	 { (char *)"DenseMatrix_InvSymmetricScaling", _wrap_DenseMatrix_InvSymmetricScaling, METH_VARARGS, (char *)"DenseMatrix_InvSymmetricScaling(DenseMatrix self, Vector s)"},
+	 { (char *)"DenseMatrix_InnerProduct", _wrap_DenseMatrix_InnerProduct, METH_VARARGS, (char *)"\n"
+		"InnerProduct(double const * x, double const * y) -> double\n"
+		"DenseMatrix_InnerProduct(DenseMatrix self, Vector x, Vector y) -> double\n"
+		""},
+	 { (char *)"DenseMatrix_Inverse", _wrap_DenseMatrix_Inverse, METH_VARARGS, (char *)"DenseMatrix_Inverse(DenseMatrix self) -> MatrixInverse"},
+	 { (char *)"DenseMatrix_Invert", _wrap_DenseMatrix_Invert, METH_VARARGS, (char *)"DenseMatrix_Invert(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_SquareRootInverse", _wrap_DenseMatrix_SquareRootInverse, METH_VARARGS, (char *)"DenseMatrix_SquareRootInverse(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_Det", _wrap_DenseMatrix_Det, METH_VARARGS, (char *)"DenseMatrix_Det(DenseMatrix self) -> double"},
+	 { (char *)"DenseMatrix_Weight", _wrap_DenseMatrix_Weight, METH_VARARGS, (char *)"DenseMatrix_Weight(DenseMatrix self) -> double"},
+	 { (char *)"DenseMatrix_Set", _wrap_DenseMatrix_Set, METH_VARARGS, (char *)"\n"
+		"Set(double alpha, double const * A)\n"
+		"DenseMatrix_Set(DenseMatrix self, double alpha, DenseMatrix A)\n"
+		""},
+	 { (char *)"DenseMatrix_Add", _wrap_DenseMatrix_Add, METH_VARARGS, (char *)"DenseMatrix_Add(DenseMatrix self, double const c, DenseMatrix A)"},
+	 { (char *)"DenseMatrix___iadd__", _wrap_DenseMatrix___iadd__, METH_VARARGS, (char *)"\n"
+		"__iadd__(double const * m) -> DenseMatrix\n"
+		"DenseMatrix___iadd__(DenseMatrix self, DenseMatrix m) -> DenseMatrix\n"
+		""},
+	 { (char *)"DenseMatrix___isub__", _wrap_DenseMatrix___isub__, METH_VARARGS, (char *)"DenseMatrix___isub__(DenseMatrix self, DenseMatrix m) -> DenseMatrix"},
+	 { (char *)"DenseMatrix___imul__", _wrap_DenseMatrix___imul__, METH_VARARGS, (char *)"DenseMatrix___imul__(DenseMatrix self, double c) -> DenseMatrix"},
+	 { (char *)"DenseMatrix_Neg", _wrap_DenseMatrix_Neg, METH_VARARGS, (char *)"DenseMatrix_Neg(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_Norm2", _wrap_DenseMatrix_Norm2, METH_VARARGS, (char *)"DenseMatrix_Norm2(DenseMatrix self, double * v)"},
+	 { (char *)"DenseMatrix_MaxMaxNorm", _wrap_DenseMatrix_MaxMaxNorm, METH_VARARGS, (char *)"DenseMatrix_MaxMaxNorm(DenseMatrix self) -> double"},
+	 { (char *)"DenseMatrix_FNorm", _wrap_DenseMatrix_FNorm, METH_VARARGS, (char *)"DenseMatrix_FNorm(DenseMatrix self) -> double"},
+	 { (char *)"DenseMatrix_FNorm2", _wrap_DenseMatrix_FNorm2, METH_VARARGS, (char *)"DenseMatrix_FNorm2(DenseMatrix self) -> double"},
+	 { (char *)"DenseMatrix_Eigenvalues", _wrap_DenseMatrix_Eigenvalues, METH_VARARGS, (char *)"\n"
+		"Eigenvalues(Vector ev)\n"
+		"DenseMatrix_Eigenvalues(DenseMatrix self, Vector ev, DenseMatrix evect)\n"
+		""},
+	 { (char *)"DenseMatrix_Eigensystem", _wrap_DenseMatrix_Eigensystem, METH_VARARGS, (char *)"DenseMatrix_Eigensystem(DenseMatrix self, Vector ev, DenseMatrix evect)"},
+	 { (char *)"DenseMatrix_SingularValues", _wrap_DenseMatrix_SingularValues, METH_VARARGS, (char *)"DenseMatrix_SingularValues(DenseMatrix self, Vector sv)"},
+	 { (char *)"DenseMatrix_Rank", _wrap_DenseMatrix_Rank, METH_VARARGS, (char *)"DenseMatrix_Rank(DenseMatrix self, double tol) -> int"},
+	 { (char *)"DenseMatrix_CalcSingularvalue", _wrap_DenseMatrix_CalcSingularvalue, METH_VARARGS, (char *)"DenseMatrix_CalcSingularvalue(DenseMatrix self, int const i) -> double"},
+	 { (char *)"DenseMatrix_CalcEigenvalues", _wrap_DenseMatrix_CalcEigenvalues, METH_VARARGS, (char *)"DenseMatrix_CalcEigenvalues(DenseMatrix self, double * arg3, double * vec)"},
+	 { (char *)"DenseMatrix_GetRow", _wrap_DenseMatrix_GetRow, METH_VARARGS, (char *)"DenseMatrix_GetRow(DenseMatrix self, int r, Vector row)"},
+	 { (char *)"DenseMatrix_GetColumn", _wrap_DenseMatrix_GetColumn, METH_VARARGS, (char *)"\n"
+		"GetColumn(int c, Vector col)\n"
+		"GetColumn(int col) -> double\n"
+		"DenseMatrix_GetColumn(DenseMatrix self, int col) -> double const *\n"
+		""},
+	 { (char *)"DenseMatrix_GetColumnReference", _wrap_DenseMatrix_GetColumnReference, METH_VARARGS, (char *)"DenseMatrix_GetColumnReference(DenseMatrix self, int c, Vector col)"},
+	 { (char *)"DenseMatrix_SetRow", _wrap_DenseMatrix_SetRow, METH_VARARGS, (char *)"\n"
+		"SetRow(int r, Vector row)\n"
+		"DenseMatrix_SetRow(DenseMatrix self, int row, double value)\n"
+		""},
+	 { (char *)"DenseMatrix_SetCol", _wrap_DenseMatrix_SetCol, METH_VARARGS, (char *)"\n"
+		"SetCol(int c, Vector col)\n"
+		"DenseMatrix_SetCol(DenseMatrix self, int col, double value)\n"
+		""},
+	 { (char *)"DenseMatrix_GetDiag", _wrap_DenseMatrix_GetDiag, METH_VARARGS, (char *)"DenseMatrix_GetDiag(DenseMatrix self, Vector d)"},
+	 { (char *)"DenseMatrix_Getl1Diag", _wrap_DenseMatrix_Getl1Diag, METH_VARARGS, (char *)"DenseMatrix_Getl1Diag(DenseMatrix self, Vector l)"},
+	 { (char *)"DenseMatrix_GetRowSums", _wrap_DenseMatrix_GetRowSums, METH_VARARGS, (char *)"DenseMatrix_GetRowSums(DenseMatrix self, Vector l)"},
+	 { (char *)"DenseMatrix_Diag", _wrap_DenseMatrix_Diag, METH_VARARGS, (char *)"\n"
+		"Diag(double c, int n)\n"
+		"DenseMatrix_Diag(DenseMatrix self, double * diag, int n)\n"
+		""},
+	 { (char *)"DenseMatrix_Transpose", _wrap_DenseMatrix_Transpose, METH_VARARGS, (char *)"\n"
+		"Transpose()\n"
+		"DenseMatrix_Transpose(DenseMatrix self, DenseMatrix A)\n"
+		""},
+	 { (char *)"DenseMatrix_Symmetrize", _wrap_DenseMatrix_Symmetrize, METH_VARARGS, (char *)"DenseMatrix_Symmetrize(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_Lump", _wrap_DenseMatrix_Lump, METH_VARARGS, (char *)"DenseMatrix_Lump(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_GradToCurl", _wrap_DenseMatrix_GradToCurl, METH_VARARGS, (char *)"DenseMatrix_GradToCurl(DenseMatrix self, DenseMatrix curl)"},
+	 { (char *)"DenseMatrix_GradToDiv", _wrap_DenseMatrix_GradToDiv, METH_VARARGS, (char *)"DenseMatrix_GradToDiv(DenseMatrix self, Vector div)"},
+	 { (char *)"DenseMatrix_CopyRows", _wrap_DenseMatrix_CopyRows, METH_VARARGS, (char *)"DenseMatrix_CopyRows(DenseMatrix self, DenseMatrix A, int row1, int row2)"},
+	 { (char *)"DenseMatrix_CopyCols", _wrap_DenseMatrix_CopyCols, METH_VARARGS, (char *)"DenseMatrix_CopyCols(DenseMatrix self, DenseMatrix A, int col1, int col2)"},
+	 { (char *)"DenseMatrix_CopyMNt", _wrap_DenseMatrix_CopyMNt, METH_VARARGS, (char *)"DenseMatrix_CopyMNt(DenseMatrix self, DenseMatrix A, int row_offset, int col_offset)"},
+	 { (char *)"DenseMatrix_CopyMN", _wrap_DenseMatrix_CopyMN, METH_VARARGS, (char *)"\n"
+		"CopyMN(DenseMatrix A, int m, int n, int Aro, int Aco)\n"
+		"CopyMN(DenseMatrix A, int row_offset, int col_offset)\n"
+		"DenseMatrix_CopyMN(DenseMatrix self, DenseMatrix A, int m, int n, int Aro, int Aco, int row_offset, int col_offset)\n"
+		""},
+	 { (char *)"DenseMatrix_CopyMNDiag", _wrap_DenseMatrix_CopyMNDiag, METH_VARARGS, (char *)"\n"
+		"CopyMNDiag(double c, int n, int row_offset, int col_offset)\n"
+		"DenseMatrix_CopyMNDiag(DenseMatrix self, double * diag, int n, int row_offset, int col_offset)\n"
+		""},
+	 { (char *)"DenseMatrix_CopyExceptMN", _wrap_DenseMatrix_CopyExceptMN, METH_VARARGS, (char *)"DenseMatrix_CopyExceptMN(DenseMatrix self, DenseMatrix A, int m, int n)"},
+	 { (char *)"DenseMatrix_AddMatrix", _wrap_DenseMatrix_AddMatrix, METH_VARARGS, (char *)"\n"
+		"AddMatrix(DenseMatrix A, int ro, int co)\n"
+		"DenseMatrix_AddMatrix(DenseMatrix self, double a, DenseMatrix A, int ro, int co)\n"
+		""},
+	 { (char *)"DenseMatrix_AddToVector", _wrap_DenseMatrix_AddToVector, METH_VARARGS, (char *)"DenseMatrix_AddToVector(DenseMatrix self, int offset, Vector v)"},
+	 { (char *)"DenseMatrix_GetFromVector", _wrap_DenseMatrix_GetFromVector, METH_VARARGS, (char *)"DenseMatrix_GetFromVector(DenseMatrix self, int offset, Vector v)"},
+	 { (char *)"DenseMatrix_AdjustDofDirection", _wrap_DenseMatrix_AdjustDofDirection, METH_VARARGS, (char *)"DenseMatrix_AdjustDofDirection(DenseMatrix self, intArray dofs)"},
+	 { (char *)"DenseMatrix_Threshold", _wrap_DenseMatrix_Threshold, METH_VARARGS, (char *)"DenseMatrix_Threshold(DenseMatrix self, double eps)"},
+	 { (char *)"DenseMatrix_CheckFinite", _wrap_DenseMatrix_CheckFinite, METH_VARARGS, (char *)"DenseMatrix_CheckFinite(DenseMatrix self) -> int"},
+	 { (char *)"DenseMatrix_Print", _wrap_DenseMatrix_Print, METH_VARARGS, (char *)"\n"
+		"Print(std::ostream & out, int width_=4)\n"
+		"Print(std::ostream & out)\n"
+		"DenseMatrix_Print(DenseMatrix self)\n"
+		""},
+	 { (char *)"DenseMatrix_PrintMatlab", _wrap_DenseMatrix_PrintMatlab, METH_VARARGS, (char *)"\n"
+		"PrintMatlab(std::ostream & out)\n"
+		"DenseMatrix_PrintMatlab(DenseMatrix self)\n"
+		""},
+	 { (char *)"DenseMatrix_PrintT", _wrap_DenseMatrix_PrintT, METH_VARARGS, (char *)"\n"
+		"PrintT(std::ostream & out, int width_=4)\n"
+		"PrintT(std::ostream & out)\n"
+		"DenseMatrix_PrintT(DenseMatrix self)\n"
+		""},
+	 { (char *)"DenseMatrix_TestInversion", _wrap_DenseMatrix_TestInversion, METH_VARARGS, (char *)"DenseMatrix_TestInversion(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_MemoryUsage", _wrap_DenseMatrix_MemoryUsage, METH_VARARGS, (char *)"DenseMatrix_MemoryUsage(DenseMatrix self) -> long"},
+	 { (char *)"delete_DenseMatrix", _wrap_delete_DenseMatrix, METH_VARARGS, (char *)"delete_DenseMatrix(DenseMatrix self)"},
+	 { (char *)"DenseMatrix_Assign", _wrap_DenseMatrix_Assign, METH_VARARGS, (char *)"\n"
+		"Assign(double const v)\n"
+		"Assign(DenseMatrix m)\n"
+		"DenseMatrix_Assign(DenseMatrix self, PyObject * numpymat)\n"
+		""},
+	 { (char *)"DenseMatrix___getitem__", _wrap_DenseMatrix___getitem__, METH_VARARGS, (char *)"DenseMatrix___getitem__(DenseMatrix self, int const i, int const j) -> double const"},
+	 { (char *)"DenseMatrix___setitem__", _wrap_DenseMatrix___setitem__, METH_VARARGS, (char *)"DenseMatrix___setitem__(DenseMatrix self, int i, int j, double const v)"},
+	 { (char *)"DenseMatrix_GetDataArray", _wrap_DenseMatrix_GetDataArray, METH_VARARGS, (char *)"DenseMatrix_GetDataArray(DenseMatrix self) -> PyObject *"},
 	 { (char *)"DenseMatrix_swigregister", DenseMatrix_swigregister, METH_VARARGS, NULL},
-	 { (char *)"AddMult", _wrap_AddMult, METH_VARARGS, NULL},
-	 { (char *)"CalcAdjugate", _wrap_CalcAdjugate, METH_VARARGS, NULL},
-	 { (char *)"CalcAdjugateTranspose", _wrap_CalcAdjugateTranspose, METH_VARARGS, NULL},
-	 { (char *)"CalcInverse", _wrap_CalcInverse, METH_VARARGS, NULL},
-	 { (char *)"CalcInverseTranspose", _wrap_CalcInverseTranspose, METH_VARARGS, NULL},
-	 { (char *)"CalcOrtho", _wrap_CalcOrtho, METH_VARARGS, NULL},
-	 { (char *)"MultAAt", _wrap_MultAAt, METH_VARARGS, NULL},
-	 { (char *)"MultADAt", _wrap_MultADAt, METH_VARARGS, NULL},
-	 { (char *)"AddMultADAt", _wrap_AddMultADAt, METH_VARARGS, NULL},
-	 { (char *)"MultABt", _wrap_MultABt, METH_VARARGS, NULL},
-	 { (char *)"MultADBt", _wrap_MultADBt, METH_VARARGS, NULL},
-	 { (char *)"AddMultABt", _wrap_AddMultABt, METH_VARARGS, NULL},
-	 { (char *)"AddMultADBt", _wrap_AddMultADBt, METH_VARARGS, NULL},
-	 { (char *)"AddMult_a_ABt", _wrap_AddMult_a_ABt, METH_VARARGS, NULL},
-	 { (char *)"MultAtB", _wrap_MultAtB, METH_VARARGS, NULL},
-	 { (char *)"AddMult_a_AAt", _wrap_AddMult_a_AAt, METH_VARARGS, NULL},
-	 { (char *)"Mult_a_AAt", _wrap_Mult_a_AAt, METH_VARARGS, NULL},
-	 { (char *)"MultVVt", _wrap_MultVVt, METH_VARARGS, NULL},
-	 { (char *)"MultVWt", _wrap_MultVWt, METH_VARARGS, NULL},
-	 { (char *)"AddMultVWt", _wrap_AddMultVWt, METH_VARARGS, NULL},
-	 { (char *)"AddMultVVt", _wrap_AddMultVVt, METH_VARARGS, NULL},
-	 { (char *)"AddMult_a_VWt", _wrap_AddMult_a_VWt, METH_VARARGS, NULL},
-	 { (char *)"AddMult_a_VVt", _wrap_AddMult_a_VVt, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_data_set", _wrap_LUFactors_data_set, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_data_get", _wrap_LUFactors_data_get, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_ipiv_set", _wrap_LUFactors_ipiv_set, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_ipiv_get", _wrap_LUFactors_ipiv_get, METH_VARARGS, NULL},
-	 { (char *)"new_LUFactors", _wrap_new_LUFactors, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_Factor", _wrap_LUFactors_Factor, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_Det", _wrap_LUFactors_Det, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_Mult", _wrap_LUFactors_Mult, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_LSolve", _wrap_LUFactors_LSolve, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_USolve", _wrap_LUFactors_USolve, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_Solve", _wrap_LUFactors_Solve, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_GetInverseMatrix", _wrap_LUFactors_GetInverseMatrix, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_SubMult", _wrap_LUFactors_SubMult, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_BlockFactor", _wrap_LUFactors_BlockFactor, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_BlockForwSolve", _wrap_LUFactors_BlockForwSolve, METH_VARARGS, NULL},
-	 { (char *)"LUFactors_BlockBackSolve", _wrap_LUFactors_BlockBackSolve, METH_VARARGS, NULL},
-	 { (char *)"delete_LUFactors", _wrap_delete_LUFactors, METH_VARARGS, NULL},
+	 { (char *)"AddMult", _wrap_AddMult, METH_VARARGS, (char *)"AddMult(DenseMatrix b, DenseMatrix c, DenseMatrix a)"},
+	 { (char *)"CalcAdjugate", _wrap_CalcAdjugate, METH_VARARGS, (char *)"CalcAdjugate(DenseMatrix a, DenseMatrix adja)"},
+	 { (char *)"CalcAdjugateTranspose", _wrap_CalcAdjugateTranspose, METH_VARARGS, (char *)"CalcAdjugateTranspose(DenseMatrix a, DenseMatrix adjat)"},
+	 { (char *)"CalcInverse", _wrap_CalcInverse, METH_VARARGS, (char *)"CalcInverse(DenseMatrix a, DenseMatrix inva)"},
+	 { (char *)"CalcInverseTranspose", _wrap_CalcInverseTranspose, METH_VARARGS, (char *)"CalcInverseTranspose(DenseMatrix a, DenseMatrix inva)"},
+	 { (char *)"CalcOrtho", _wrap_CalcOrtho, METH_VARARGS, (char *)"CalcOrtho(DenseMatrix J, Vector n)"},
+	 { (char *)"MultAAt", _wrap_MultAAt, METH_VARARGS, (char *)"MultAAt(DenseMatrix a, DenseMatrix aat)"},
+	 { (char *)"MultADAt", _wrap_MultADAt, METH_VARARGS, (char *)"MultADAt(DenseMatrix A, Vector D, DenseMatrix ADAt)"},
+	 { (char *)"AddMultADAt", _wrap_AddMultADAt, METH_VARARGS, (char *)"AddMultADAt(DenseMatrix A, Vector D, DenseMatrix ADAt)"},
+	 { (char *)"MultABt", _wrap_MultABt, METH_VARARGS, (char *)"MultABt(DenseMatrix A, DenseMatrix B, DenseMatrix ABt)"},
+	 { (char *)"MultADBt", _wrap_MultADBt, METH_VARARGS, (char *)"MultADBt(DenseMatrix A, Vector D, DenseMatrix B, DenseMatrix ADBt)"},
+	 { (char *)"AddMultABt", _wrap_AddMultABt, METH_VARARGS, (char *)"AddMultABt(DenseMatrix A, DenseMatrix B, DenseMatrix ABt)"},
+	 { (char *)"AddMultADBt", _wrap_AddMultADBt, METH_VARARGS, (char *)"AddMultADBt(DenseMatrix A, Vector D, DenseMatrix B, DenseMatrix ADBt)"},
+	 { (char *)"AddMult_a_ABt", _wrap_AddMult_a_ABt, METH_VARARGS, (char *)"AddMult_a_ABt(double a, DenseMatrix A, DenseMatrix B, DenseMatrix ABt)"},
+	 { (char *)"MultAtB", _wrap_MultAtB, METH_VARARGS, (char *)"MultAtB(DenseMatrix A, DenseMatrix B, DenseMatrix AtB)"},
+	 { (char *)"AddMult_a_AAt", _wrap_AddMult_a_AAt, METH_VARARGS, (char *)"AddMult_a_AAt(double a, DenseMatrix A, DenseMatrix AAt)"},
+	 { (char *)"Mult_a_AAt", _wrap_Mult_a_AAt, METH_VARARGS, (char *)"Mult_a_AAt(double a, DenseMatrix A, DenseMatrix AAt)"},
+	 { (char *)"MultVVt", _wrap_MultVVt, METH_VARARGS, (char *)"MultVVt(Vector v, DenseMatrix vvt)"},
+	 { (char *)"MultVWt", _wrap_MultVWt, METH_VARARGS, (char *)"MultVWt(Vector v, Vector w, DenseMatrix VWt)"},
+	 { (char *)"AddMultVWt", _wrap_AddMultVWt, METH_VARARGS, (char *)"AddMultVWt(Vector v, Vector w, DenseMatrix VWt)"},
+	 { (char *)"AddMultVVt", _wrap_AddMultVVt, METH_VARARGS, (char *)"AddMultVVt(Vector v, DenseMatrix VWt)"},
+	 { (char *)"AddMult_a_VWt", _wrap_AddMult_a_VWt, METH_VARARGS, (char *)"AddMult_a_VWt(double const a, Vector v, Vector w, DenseMatrix VWt)"},
+	 { (char *)"AddMult_a_VVt", _wrap_AddMult_a_VVt, METH_VARARGS, (char *)"AddMult_a_VVt(double const a, Vector v, DenseMatrix VVt)"},
+	 { (char *)"LUFactors_data_set", _wrap_LUFactors_data_set, METH_VARARGS, (char *)"LUFactors_data_set(LUFactors self, double * data)"},
+	 { (char *)"LUFactors_data_get", _wrap_LUFactors_data_get, METH_VARARGS, (char *)"LUFactors_data_get(LUFactors self) -> double *"},
+	 { (char *)"LUFactors_ipiv_set", _wrap_LUFactors_ipiv_set, METH_VARARGS, (char *)"LUFactors_ipiv_set(LUFactors self, int * ipiv)"},
+	 { (char *)"LUFactors_ipiv_get", _wrap_LUFactors_ipiv_get, METH_VARARGS, (char *)"LUFactors_ipiv_get(LUFactors self) -> int *"},
+	 { (char *)"new_LUFactors", _wrap_new_LUFactors, METH_VARARGS, (char *)"\n"
+		"LUFactors()\n"
+		"new_LUFactors(double * data_, int * ipiv_) -> LUFactors\n"
+		""},
+	 { (char *)"LUFactors_Factor", _wrap_LUFactors_Factor, METH_VARARGS, (char *)"LUFactors_Factor(LUFactors self, int m)"},
+	 { (char *)"LUFactors_Det", _wrap_LUFactors_Det, METH_VARARGS, (char *)"LUFactors_Det(LUFactors self, int m) -> double"},
+	 { (char *)"LUFactors_Mult", _wrap_LUFactors_Mult, METH_VARARGS, (char *)"LUFactors_Mult(LUFactors self, int m, int n, double * X)"},
+	 { (char *)"LUFactors_LSolve", _wrap_LUFactors_LSolve, METH_VARARGS, (char *)"LUFactors_LSolve(LUFactors self, int m, int n, double * X)"},
+	 { (char *)"LUFactors_USolve", _wrap_LUFactors_USolve, METH_VARARGS, (char *)"LUFactors_USolve(LUFactors self, int m, int n, double * X)"},
+	 { (char *)"LUFactors_Solve", _wrap_LUFactors_Solve, METH_VARARGS, (char *)"LUFactors_Solve(LUFactors self, int m, int n, double * X)"},
+	 { (char *)"LUFactors_GetInverseMatrix", _wrap_LUFactors_GetInverseMatrix, METH_VARARGS, (char *)"LUFactors_GetInverseMatrix(LUFactors self, int m, double * X)"},
+	 { (char *)"LUFactors_SubMult", _wrap_LUFactors_SubMult, METH_VARARGS, (char *)"LUFactors_SubMult(int m, int n, int r, double const * A21, double const * X1, double * X2)"},
+	 { (char *)"LUFactors_BlockFactor", _wrap_LUFactors_BlockFactor, METH_VARARGS, (char *)"LUFactors_BlockFactor(LUFactors self, int m, int n, double * A12, double * A21, double * A22)"},
+	 { (char *)"LUFactors_BlockForwSolve", _wrap_LUFactors_BlockForwSolve, METH_VARARGS, (char *)"LUFactors_BlockForwSolve(LUFactors self, int m, int n, int r, double const * L21, double * B1, double * B2)"},
+	 { (char *)"LUFactors_BlockBackSolve", _wrap_LUFactors_BlockBackSolve, METH_VARARGS, (char *)"LUFactors_BlockBackSolve(LUFactors self, int m, int n, int r, double const * U12, double const * X2, double * Y1)"},
+	 { (char *)"delete_LUFactors", _wrap_delete_LUFactors, METH_VARARGS, (char *)"delete_LUFactors(LUFactors self)"},
 	 { (char *)"LUFactors_swigregister", LUFactors_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_DenseMatrixInverse", _wrap_new_DenseMatrixInverse, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixInverse_Size", _wrap_DenseMatrixInverse_Size, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixInverse_Factor", _wrap_DenseMatrixInverse_Factor, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixInverse_SetOperator", _wrap_DenseMatrixInverse_SetOperator, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixInverse_Mult", _wrap_DenseMatrixInverse_Mult, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixInverse_GetInverseMatrix", _wrap_DenseMatrixInverse_GetInverseMatrix, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixInverse_Det", _wrap_DenseMatrixInverse_Det, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixInverse_TestInversion", _wrap_DenseMatrixInverse_TestInversion, METH_VARARGS, NULL},
-	 { (char *)"delete_DenseMatrixInverse", _wrap_delete_DenseMatrixInverse, METH_VARARGS, NULL},
+	 { (char *)"new_DenseMatrixInverse", _wrap_new_DenseMatrixInverse, METH_VARARGS, (char *)"\n"
+		"DenseMatrixInverse()\n"
+		"DenseMatrixInverse(DenseMatrix mat)\n"
+		"new_DenseMatrixInverse(DenseMatrix mat) -> DenseMatrixInverse\n"
+		""},
+	 { (char *)"DenseMatrixInverse_Size", _wrap_DenseMatrixInverse_Size, METH_VARARGS, (char *)"DenseMatrixInverse_Size(DenseMatrixInverse self) -> int"},
+	 { (char *)"DenseMatrixInverse_Factor", _wrap_DenseMatrixInverse_Factor, METH_VARARGS, (char *)"\n"
+		"Factor()\n"
+		"DenseMatrixInverse_Factor(DenseMatrixInverse self, DenseMatrix mat)\n"
+		""},
+	 { (char *)"DenseMatrixInverse_SetOperator", _wrap_DenseMatrixInverse_SetOperator, METH_VARARGS, (char *)"DenseMatrixInverse_SetOperator(DenseMatrixInverse self, Operator op)"},
+	 { (char *)"DenseMatrixInverse_Mult", _wrap_DenseMatrixInverse_Mult, METH_VARARGS, (char *)"\n"
+		"Mult(Vector x, Vector y)\n"
+		"DenseMatrixInverse_Mult(DenseMatrixInverse self, DenseMatrix B, DenseMatrix X)\n"
+		""},
+	 { (char *)"DenseMatrixInverse_GetInverseMatrix", _wrap_DenseMatrixInverse_GetInverseMatrix, METH_VARARGS, (char *)"DenseMatrixInverse_GetInverseMatrix(DenseMatrixInverse self, DenseMatrix Ainv)"},
+	 { (char *)"DenseMatrixInverse_Det", _wrap_DenseMatrixInverse_Det, METH_VARARGS, (char *)"DenseMatrixInverse_Det(DenseMatrixInverse self) -> double"},
+	 { (char *)"DenseMatrixInverse_TestInversion", _wrap_DenseMatrixInverse_TestInversion, METH_VARARGS, (char *)"DenseMatrixInverse_TestInversion(DenseMatrixInverse self)"},
+	 { (char *)"delete_DenseMatrixInverse", _wrap_delete_DenseMatrixInverse, METH_VARARGS, (char *)"delete_DenseMatrixInverse(DenseMatrixInverse self)"},
 	 { (char *)"DenseMatrixInverse_swigregister", DenseMatrixInverse_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_DenseMatrixEigensystem", _wrap_new_DenseMatrixEigensystem, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixEigensystem_Eval", _wrap_DenseMatrixEigensystem_Eval, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixEigensystem_Eigenvalues", _wrap_DenseMatrixEigensystem_Eigenvalues, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixEigensystem_Eigenvectors", _wrap_DenseMatrixEigensystem_Eigenvectors, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixEigensystem_Eigenvalue", _wrap_DenseMatrixEigensystem_Eigenvalue, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixEigensystem_Eigenvector", _wrap_DenseMatrixEigensystem_Eigenvector, METH_VARARGS, NULL},
-	 { (char *)"delete_DenseMatrixEigensystem", _wrap_delete_DenseMatrixEigensystem, METH_VARARGS, NULL},
+	 { (char *)"new_DenseMatrixEigensystem", _wrap_new_DenseMatrixEigensystem, METH_VARARGS, (char *)"\n"
+		"DenseMatrixEigensystem(DenseMatrix m)\n"
+		"new_DenseMatrixEigensystem(DenseMatrixEigensystem other) -> DenseMatrixEigensystem\n"
+		""},
+	 { (char *)"DenseMatrixEigensystem_Eval", _wrap_DenseMatrixEigensystem_Eval, METH_VARARGS, (char *)"DenseMatrixEigensystem_Eval(DenseMatrixEigensystem self)"},
+	 { (char *)"DenseMatrixEigensystem_Eigenvalues", _wrap_DenseMatrixEigensystem_Eigenvalues, METH_VARARGS, (char *)"DenseMatrixEigensystem_Eigenvalues(DenseMatrixEigensystem self) -> Vector"},
+	 { (char *)"DenseMatrixEigensystem_Eigenvectors", _wrap_DenseMatrixEigensystem_Eigenvectors, METH_VARARGS, (char *)"DenseMatrixEigensystem_Eigenvectors(DenseMatrixEigensystem self) -> DenseMatrix"},
+	 { (char *)"DenseMatrixEigensystem_Eigenvalue", _wrap_DenseMatrixEigensystem_Eigenvalue, METH_VARARGS, (char *)"DenseMatrixEigensystem_Eigenvalue(DenseMatrixEigensystem self, int i) -> double"},
+	 { (char *)"DenseMatrixEigensystem_Eigenvector", _wrap_DenseMatrixEigensystem_Eigenvector, METH_VARARGS, (char *)"DenseMatrixEigensystem_Eigenvector(DenseMatrixEigensystem self, int i) -> Vector"},
+	 { (char *)"delete_DenseMatrixEigensystem", _wrap_delete_DenseMatrixEigensystem, METH_VARARGS, (char *)"delete_DenseMatrixEigensystem(DenseMatrixEigensystem self)"},
 	 { (char *)"DenseMatrixEigensystem_swigregister", DenseMatrixEigensystem_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_DenseMatrixSVD", _wrap_new_DenseMatrixSVD, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixSVD_Eval", _wrap_DenseMatrixSVD_Eval, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixSVD_Singularvalues", _wrap_DenseMatrixSVD_Singularvalues, METH_VARARGS, NULL},
-	 { (char *)"DenseMatrixSVD_Singularvalue", _wrap_DenseMatrixSVD_Singularvalue, METH_VARARGS, NULL},
-	 { (char *)"delete_DenseMatrixSVD", _wrap_delete_DenseMatrixSVD, METH_VARARGS, NULL},
+	 { (char *)"new_DenseMatrixSVD", _wrap_new_DenseMatrixSVD, METH_VARARGS, (char *)"\n"
+		"DenseMatrixSVD(DenseMatrix M)\n"
+		"new_DenseMatrixSVD(int h, int w) -> DenseMatrixSVD\n"
+		""},
+	 { (char *)"DenseMatrixSVD_Eval", _wrap_DenseMatrixSVD_Eval, METH_VARARGS, (char *)"DenseMatrixSVD_Eval(DenseMatrixSVD self, DenseMatrix M)"},
+	 { (char *)"DenseMatrixSVD_Singularvalues", _wrap_DenseMatrixSVD_Singularvalues, METH_VARARGS, (char *)"DenseMatrixSVD_Singularvalues(DenseMatrixSVD self) -> Vector"},
+	 { (char *)"DenseMatrixSVD_Singularvalue", _wrap_DenseMatrixSVD_Singularvalue, METH_VARARGS, (char *)"DenseMatrixSVD_Singularvalue(DenseMatrixSVD self, int i) -> double"},
+	 { (char *)"delete_DenseMatrixSVD", _wrap_delete_DenseMatrixSVD, METH_VARARGS, (char *)"delete_DenseMatrixSVD(DenseMatrixSVD self)"},
 	 { (char *)"DenseMatrixSVD_swigregister", DenseMatrixSVD_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_SizeI", _wrap_DenseTensor_SizeI, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_SizeJ", _wrap_DenseTensor_SizeJ, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_SizeK", _wrap_DenseTensor_SizeK, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_SetSize", _wrap_DenseTensor_SetSize, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_UseExternalData", _wrap_DenseTensor_UseExternalData, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor___call__", _wrap_DenseTensor___call__, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_GetData", _wrap_DenseTensor_GetData, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_Data", _wrap_DenseTensor_Data, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_AddMult", _wrap_DenseTensor_AddMult, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_Clear", _wrap_DenseTensor_Clear, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_MemoryUsage", _wrap_DenseTensor_MemoryUsage, METH_VARARGS, NULL},
-	 { (char *)"delete_DenseTensor", _wrap_delete_DenseTensor, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_Assign", _wrap_DenseTensor_Assign, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor___getitem__", _wrap_DenseTensor___getitem__, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor___setitem__", _wrap_DenseTensor___setitem__, METH_VARARGS, NULL},
-	 { (char *)"DenseTensor_GetDataArray", _wrap_DenseTensor_GetDataArray, METH_VARARGS, NULL},
+	 { (char *)"new_DenseTensor", _wrap_new_DenseTensor, METH_VARARGS, (char *)"\n"
+		"DenseTensor()\n"
+		"DenseTensor(int i, int j, int k)\n"
+		"new_DenseTensor(DenseTensor other) -> DenseTensor\n"
+		""},
+	 { (char *)"DenseTensor_SizeI", _wrap_DenseTensor_SizeI, METH_VARARGS, (char *)"DenseTensor_SizeI(DenseTensor self) -> int"},
+	 { (char *)"DenseTensor_SizeJ", _wrap_DenseTensor_SizeJ, METH_VARARGS, (char *)"DenseTensor_SizeJ(DenseTensor self) -> int"},
+	 { (char *)"DenseTensor_SizeK", _wrap_DenseTensor_SizeK, METH_VARARGS, (char *)"DenseTensor_SizeK(DenseTensor self) -> int"},
+	 { (char *)"DenseTensor_SetSize", _wrap_DenseTensor_SetSize, METH_VARARGS, (char *)"DenseTensor_SetSize(DenseTensor self, int i, int j, int k)"},
+	 { (char *)"DenseTensor_UseExternalData", _wrap_DenseTensor_UseExternalData, METH_VARARGS, (char *)"DenseTensor_UseExternalData(DenseTensor self, double * ext_data, int i, int j, int k)"},
+	 { (char *)"DenseTensor___call__", _wrap_DenseTensor___call__, METH_VARARGS, (char *)"\n"
+		"__call__(int k) -> DenseMatrix\n"
+		"__call__(int k) -> DenseMatrix\n"
+		"__call__(int i, int j, int k) -> double\n"
+		"DenseTensor___call__(DenseTensor self, int i, int j, int k) -> double const &\n"
+		""},
+	 { (char *)"DenseTensor_GetData", _wrap_DenseTensor_GetData, METH_VARARGS, (char *)"DenseTensor_GetData(DenseTensor self, int k) -> double *"},
+	 { (char *)"DenseTensor_Data", _wrap_DenseTensor_Data, METH_VARARGS, (char *)"DenseTensor_Data(DenseTensor self) -> double *"},
+	 { (char *)"DenseTensor_AddMult", _wrap_DenseTensor_AddMult, METH_VARARGS, (char *)"DenseTensor_AddMult(DenseTensor self, mfem::Table const & elem_dof, Vector x, Vector y)"},
+	 { (char *)"DenseTensor_Clear", _wrap_DenseTensor_Clear, METH_VARARGS, (char *)"DenseTensor_Clear(DenseTensor self)"},
+	 { (char *)"DenseTensor_MemoryUsage", _wrap_DenseTensor_MemoryUsage, METH_VARARGS, (char *)"DenseTensor_MemoryUsage(DenseTensor self) -> long"},
+	 { (char *)"delete_DenseTensor", _wrap_delete_DenseTensor, METH_VARARGS, (char *)"delete_DenseTensor(DenseTensor self)"},
+	 { (char *)"DenseTensor_Assign", _wrap_DenseTensor_Assign, METH_VARARGS, (char *)"DenseTensor_Assign(DenseTensor self, double const c)"},
+	 { (char *)"DenseTensor___getitem__", _wrap_DenseTensor___getitem__, METH_VARARGS, (char *)"\n"
+		"__getitem__(int const i, int const j, int const k) -> double const\n"
+		"DenseTensor___getitem__(DenseTensor self, int const k) -> DenseMatrix\n"
+		""},
+	 { (char *)"DenseTensor___setitem__", _wrap_DenseTensor___setitem__, METH_VARARGS, (char *)"DenseTensor___setitem__(DenseTensor self, int i, int j, int k, double const v)"},
+	 { (char *)"DenseTensor_GetDataArray", _wrap_DenseTensor_GetDataArray, METH_VARARGS, (char *)"DenseTensor_GetDataArray(DenseTensor self) -> PyObject *"},
 	 { (char *)"DenseTensor_swigregister", DenseTensor_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };

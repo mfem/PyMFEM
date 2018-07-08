@@ -8449,62 +8449,118 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"add_vector", _wrap_add_vector, METH_VARARGS, NULL},
-	 { (char *)"subtract_vector", _wrap_subtract_vector, METH_VARARGS, NULL},
-	 { (char *)"CheckFinite", _wrap_CheckFinite, METH_VARARGS, NULL},
-	 { (char *)"infinity", _wrap_infinity, METH_VARARGS, NULL},
-	 { (char *)"Vector_Load", _wrap_Vector_Load, METH_VARARGS, NULL},
-	 { (char *)"Vector_SetSize", _wrap_Vector_SetSize, METH_VARARGS, NULL},
-	 { (char *)"Vector_SetData", _wrap_Vector_SetData, METH_VARARGS, NULL},
-	 { (char *)"Vector_SetDataAndSize", _wrap_Vector_SetDataAndSize, METH_VARARGS, NULL},
-	 { (char *)"Vector_NewDataAndSize", _wrap_Vector_NewDataAndSize, METH_VARARGS, NULL},
-	 { (char *)"Vector_MakeDataOwner", _wrap_Vector_MakeDataOwner, METH_VARARGS, NULL},
-	 { (char *)"Vector_Destroy", _wrap_Vector_Destroy, METH_VARARGS, NULL},
-	 { (char *)"Vector_Size", _wrap_Vector_Size, METH_VARARGS, NULL},
-	 { (char *)"Vector_Capacity", _wrap_Vector_Capacity, METH_VARARGS, NULL},
-	 { (char *)"Vector_GetData", _wrap_Vector_GetData, METH_VARARGS, NULL},
-	 { (char *)"Vector_OwnsData", _wrap_Vector_OwnsData, METH_VARARGS, NULL},
-	 { (char *)"Vector_StealData", _wrap_Vector_StealData, METH_VARARGS, NULL},
-	 { (char *)"Vector_Elem", _wrap_Vector_Elem, METH_VARARGS, NULL},
-	 { (char *)"Vector___call__", _wrap_Vector___call__, METH_VARARGS, NULL},
-	 { (char *)"Vector___mul__", _wrap_Vector___mul__, METH_VARARGS, NULL},
-	 { (char *)"Vector___imul__", _wrap_Vector___imul__, METH_VARARGS, NULL},
-	 { (char *)"Vector___itruediv__", _wrap_Vector___itruediv__, METH_VARARGS, NULL},
-	 { (char *)"Vector___isub__", _wrap_Vector___isub__, METH_VARARGS, NULL},
-	 { (char *)"Vector___iadd__", _wrap_Vector___iadd__, METH_VARARGS, NULL},
-	 { (char *)"Vector_Add", _wrap_Vector_Add, METH_VARARGS, NULL},
-	 { (char *)"Vector_Set", _wrap_Vector_Set, METH_VARARGS, NULL},
-	 { (char *)"Vector_SetVector", _wrap_Vector_SetVector, METH_VARARGS, NULL},
-	 { (char *)"Vector_Neg", _wrap_Vector_Neg, METH_VARARGS, NULL},
-	 { (char *)"Vector_Swap", _wrap_Vector_Swap, METH_VARARGS, NULL},
-	 { (char *)"Vector_median", _wrap_Vector_median, METH_VARARGS, NULL},
-	 { (char *)"Vector_GetSubVector", _wrap_Vector_GetSubVector, METH_VARARGS, NULL},
-	 { (char *)"Vector_SetSubVector", _wrap_Vector_SetSubVector, METH_VARARGS, NULL},
-	 { (char *)"Vector_AddElementVector", _wrap_Vector_AddElementVector, METH_VARARGS, NULL},
-	 { (char *)"Vector_SetSubVectorComplement", _wrap_Vector_SetSubVectorComplement, METH_VARARGS, NULL},
-	 { (char *)"Vector_Print_HYPRE", _wrap_Vector_Print_HYPRE, METH_VARARGS, NULL},
-	 { (char *)"Vector_Randomize", _wrap_Vector_Randomize, METH_VARARGS, NULL},
-	 { (char *)"Vector_Norml2", _wrap_Vector_Norml2, METH_VARARGS, NULL},
-	 { (char *)"Vector_Normlinf", _wrap_Vector_Normlinf, METH_VARARGS, NULL},
-	 { (char *)"Vector_Norml1", _wrap_Vector_Norml1, METH_VARARGS, NULL},
-	 { (char *)"Vector_Normlp", _wrap_Vector_Normlp, METH_VARARGS, NULL},
-	 { (char *)"Vector_Max", _wrap_Vector_Max, METH_VARARGS, NULL},
-	 { (char *)"Vector_Min", _wrap_Vector_Min, METH_VARARGS, NULL},
-	 { (char *)"Vector_Sum", _wrap_Vector_Sum, METH_VARARGS, NULL},
-	 { (char *)"Vector_DistanceSquaredTo", _wrap_Vector_DistanceSquaredTo, METH_VARARGS, NULL},
-	 { (char *)"Vector_DistanceTo", _wrap_Vector_DistanceTo, METH_VARARGS, NULL},
-	 { (char *)"Vector_CheckFinite", _wrap_Vector_CheckFinite, METH_VARARGS, NULL},
-	 { (char *)"delete_Vector", _wrap_delete_Vector, METH_VARARGS, NULL},
-	 { (char *)"new_Vector", _wrap_new_Vector, METH_VARARGS, NULL},
-	 { (char *)"Vector_Assign", _wrap_Vector_Assign, METH_VARARGS, NULL},
-	 { (char *)"Vector_Print", _wrap_Vector_Print, METH_VARARGS, NULL},
-	 { (char *)"Vector___setitem__", _wrap_Vector___setitem__, METH_VARARGS, NULL},
-	 { (char *)"Vector___getitem__", _wrap_Vector___getitem__, METH_VARARGS, NULL},
-	 { (char *)"Vector_GetDataArray", _wrap_Vector_GetDataArray, METH_VARARGS, NULL},
+	 { (char *)"add_vector", _wrap_add_vector, METH_VARARGS, (char *)"\n"
+		"add_vector(Vector v1, Vector v2, Vector v)\n"
+		"add_vector(Vector v1, double alpha, Vector v2, Vector v)\n"
+		"add_vector(double const a, Vector x, Vector y, Vector z)\n"
+		"add_vector(double const a, Vector x, double const b, Vector y, Vector z)\n"
+		""},
+	 { (char *)"subtract_vector", _wrap_subtract_vector, METH_VARARGS, (char *)"\n"
+		"subtract_vector(Vector v1, Vector v2, Vector v)\n"
+		"subtract_vector(double const a, Vector x, Vector y, Vector z)\n"
+		""},
+	 { (char *)"CheckFinite", _wrap_CheckFinite, METH_VARARGS, (char *)"CheckFinite(double const * v, int const n) -> int"},
+	 { (char *)"infinity", _wrap_infinity, METH_VARARGS, (char *)"infinity() -> double"},
+	 { (char *)"Vector_Load", _wrap_Vector_Load, METH_VARARGS, (char *)"\n"
+		"Load(std::istream ** arg2, int np, int * dim)\n"
+		"Load(std::istream & arg2, int Size)\n"
+		"Vector_Load(Vector self, std::istream & arg3)\n"
+		""},
+	 { (char *)"Vector_SetSize", _wrap_Vector_SetSize, METH_VARARGS, (char *)"Vector_SetSize(Vector self, int s)"},
+	 { (char *)"Vector_SetData", _wrap_Vector_SetData, METH_VARARGS, (char *)"Vector_SetData(Vector self, double * d)"},
+	 { (char *)"Vector_SetDataAndSize", _wrap_Vector_SetDataAndSize, METH_VARARGS, (char *)"Vector_SetDataAndSize(Vector self, double * d, int s)"},
+	 { (char *)"Vector_NewDataAndSize", _wrap_Vector_NewDataAndSize, METH_VARARGS, (char *)"Vector_NewDataAndSize(Vector self, double * d, int s)"},
+	 { (char *)"Vector_MakeDataOwner", _wrap_Vector_MakeDataOwner, METH_VARARGS, (char *)"Vector_MakeDataOwner(Vector self)"},
+	 { (char *)"Vector_Destroy", _wrap_Vector_Destroy, METH_VARARGS, (char *)"Vector_Destroy(Vector self)"},
+	 { (char *)"Vector_Size", _wrap_Vector_Size, METH_VARARGS, (char *)"Vector_Size(Vector self) -> int"},
+	 { (char *)"Vector_Capacity", _wrap_Vector_Capacity, METH_VARARGS, (char *)"Vector_Capacity(Vector self) -> int"},
+	 { (char *)"Vector_GetData", _wrap_Vector_GetData, METH_VARARGS, (char *)"Vector_GetData(Vector self) -> double *"},
+	 { (char *)"Vector_OwnsData", _wrap_Vector_OwnsData, METH_VARARGS, (char *)"Vector_OwnsData(Vector self) -> bool"},
+	 { (char *)"Vector_StealData", _wrap_Vector_StealData, METH_VARARGS, (char *)"\n"
+		"StealData(double ** p)\n"
+		"Vector_StealData(Vector self) -> double *\n"
+		""},
+	 { (char *)"Vector_Elem", _wrap_Vector_Elem, METH_VARARGS, (char *)"\n"
+		"Elem(int i) -> double\n"
+		"Vector_Elem(Vector self, int i) -> double const &\n"
+		""},
+	 { (char *)"Vector___call__", _wrap_Vector___call__, METH_VARARGS, (char *)"\n"
+		"__call__(int i) -> double\n"
+		"Vector___call__(Vector self, int i) -> double const &\n"
+		""},
+	 { (char *)"Vector___mul__", _wrap_Vector___mul__, METH_VARARGS, (char *)"\n"
+		"__mul__(double const * arg2) -> double\n"
+		"Vector___mul__(Vector self, Vector v) -> double\n"
+		""},
+	 { (char *)"Vector___imul__", _wrap_Vector___imul__, METH_VARARGS, (char *)"Vector___imul__(Vector self, double c) -> Vector"},
+	 { (char *)"Vector___itruediv__", _wrap_Vector___itruediv__, METH_VARARGS, (char *)"Vector___itruediv__(Vector self, double c) -> Vector"},
+	 { (char *)"Vector___isub__", _wrap_Vector___isub__, METH_VARARGS, (char *)"\n"
+		"__isub__(double c) -> Vector\n"
+		"Vector___isub__(Vector self, Vector v) -> Vector\n"
+		""},
+	 { (char *)"Vector___iadd__", _wrap_Vector___iadd__, METH_VARARGS, (char *)"Vector___iadd__(Vector self, Vector v) -> Vector"},
+	 { (char *)"Vector_Add", _wrap_Vector_Add, METH_VARARGS, (char *)"Vector_Add(Vector self, double const a, Vector Va) -> Vector"},
+	 { (char *)"Vector_Set", _wrap_Vector_Set, METH_VARARGS, (char *)"Vector_Set(Vector self, double const a, Vector x) -> Vector"},
+	 { (char *)"Vector_SetVector", _wrap_Vector_SetVector, METH_VARARGS, (char *)"Vector_SetVector(Vector self, Vector v, int offset)"},
+	 { (char *)"Vector_Neg", _wrap_Vector_Neg, METH_VARARGS, (char *)"Vector_Neg(Vector self)"},
+	 { (char *)"Vector_Swap", _wrap_Vector_Swap, METH_VARARGS, (char *)"Vector_Swap(Vector self, Vector other)"},
+	 { (char *)"Vector_median", _wrap_Vector_median, METH_VARARGS, (char *)"Vector_median(Vector self, Vector lo, Vector hi)"},
+	 { (char *)"Vector_GetSubVector", _wrap_Vector_GetSubVector, METH_VARARGS, (char *)"\n"
+		"GetSubVector(intArray dofs, Vector elemvect)\n"
+		"Vector_GetSubVector(Vector self, intArray dofs, double * elem_data)\n"
+		""},
+	 { (char *)"Vector_SetSubVector", _wrap_Vector_SetSubVector, METH_VARARGS, (char *)"\n"
+		"SetSubVector(intArray dofs, double const value)\n"
+		"SetSubVector(intArray dofs, Vector elemvect)\n"
+		"Vector_SetSubVector(Vector self, intArray dofs, double * elem_data)\n"
+		""},
+	 { (char *)"Vector_AddElementVector", _wrap_Vector_AddElementVector, METH_VARARGS, (char *)"\n"
+		"AddElementVector(intArray dofs, Vector elemvect)\n"
+		"AddElementVector(intArray dofs, double * elem_data)\n"
+		"Vector_AddElementVector(Vector self, intArray dofs, double const a, Vector elemvect)\n"
+		""},
+	 { (char *)"Vector_SetSubVectorComplement", _wrap_Vector_SetSubVectorComplement, METH_VARARGS, (char *)"Vector_SetSubVectorComplement(Vector self, intArray dofs, double const val)"},
+	 { (char *)"Vector_Print_HYPRE", _wrap_Vector_Print_HYPRE, METH_VARARGS, (char *)"Vector_Print_HYPRE(Vector self, std::ostream & out)"},
+	 { (char *)"Vector_Randomize", _wrap_Vector_Randomize, METH_VARARGS, (char *)"\n"
+		"Randomize(int seed=0)\n"
+		"Vector_Randomize(Vector self)\n"
+		""},
+	 { (char *)"Vector_Norml2", _wrap_Vector_Norml2, METH_VARARGS, (char *)"Vector_Norml2(Vector self) -> double"},
+	 { (char *)"Vector_Normlinf", _wrap_Vector_Normlinf, METH_VARARGS, (char *)"Vector_Normlinf(Vector self) -> double"},
+	 { (char *)"Vector_Norml1", _wrap_Vector_Norml1, METH_VARARGS, (char *)"Vector_Norml1(Vector self) -> double"},
+	 { (char *)"Vector_Normlp", _wrap_Vector_Normlp, METH_VARARGS, (char *)"Vector_Normlp(Vector self, double p) -> double"},
+	 { (char *)"Vector_Max", _wrap_Vector_Max, METH_VARARGS, (char *)"Vector_Max(Vector self) -> double"},
+	 { (char *)"Vector_Min", _wrap_Vector_Min, METH_VARARGS, (char *)"Vector_Min(Vector self) -> double"},
+	 { (char *)"Vector_Sum", _wrap_Vector_Sum, METH_VARARGS, (char *)"Vector_Sum(Vector self) -> double"},
+	 { (char *)"Vector_DistanceSquaredTo", _wrap_Vector_DistanceSquaredTo, METH_VARARGS, (char *)"Vector_DistanceSquaredTo(Vector self, double const * p) -> double"},
+	 { (char *)"Vector_DistanceTo", _wrap_Vector_DistanceTo, METH_VARARGS, (char *)"Vector_DistanceTo(Vector self, double const * p) -> double"},
+	 { (char *)"Vector_CheckFinite", _wrap_Vector_CheckFinite, METH_VARARGS, (char *)"Vector_CheckFinite(Vector self) -> int"},
+	 { (char *)"delete_Vector", _wrap_delete_Vector, METH_VARARGS, (char *)"delete_Vector(Vector self)"},
+	 { (char *)"new_Vector", _wrap_new_Vector, METH_VARARGS, (char *)"\n"
+		"Vector()\n"
+		"Vector(Vector arg2)\n"
+		"Vector(int s)\n"
+		"Vector(double * _data, int _size)\n"
+		"new_Vector(Vector v, int offset, int size) -> Vector\n"
+		""},
+	 { (char *)"Vector_Assign", _wrap_Vector_Assign, METH_VARARGS, (char *)"\n"
+		"Assign(double const v)\n"
+		"Assign(Vector v)\n"
+		"Vector_Assign(Vector self, PyObject * param)\n"
+		""},
+	 { (char *)"Vector_Print", _wrap_Vector_Print, METH_VARARGS, (char *)"\n"
+		"Print(std::ostream & out, int width=8)\n"
+		"Print(std::ostream & out)\n"
+		"Print()\n"
+		"Vector_Print(Vector self, char const * file)\n"
+		""},
+	 { (char *)"Vector___setitem__", _wrap_Vector___setitem__, METH_VARARGS, (char *)"Vector___setitem__(Vector self, int i, double const v)"},
+	 { (char *)"Vector___getitem__", _wrap_Vector___getitem__, METH_VARARGS, (char *)"Vector___getitem__(Vector self, PyObject * param) -> PyObject *"},
+	 { (char *)"Vector_GetDataArray", _wrap_Vector_GetDataArray, METH_VARARGS, (char *)"Vector_GetDataArray(Vector self) -> PyObject *"},
 	 { (char *)"Vector_swigregister", Vector_swigregister, METH_VARARGS, NULL},
-	 { (char *)"IsFinite", _wrap_IsFinite, METH_VARARGS, NULL},
-	 { (char *)"DistanceSquared", _wrap_DistanceSquared, METH_VARARGS, NULL},
-	 { (char *)"Distance", _wrap_Distance, METH_VARARGS, NULL},
+	 { (char *)"IsFinite", _wrap_IsFinite, METH_VARARGS, (char *)"IsFinite(double const & val) -> bool"},
+	 { (char *)"DistanceSquared", _wrap_DistanceSquared, METH_VARARGS, (char *)"DistanceSquared(double const * x, double const * y, int const n) -> double"},
+	 { (char *)"Distance", _wrap_Distance, METH_VARARGS, (char *)"Distance(double const * x, double const * y, int const n) -> double"},
 	 { NULL, NULL, 0, NULL }
 };
 

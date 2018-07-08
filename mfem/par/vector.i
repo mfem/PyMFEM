@@ -1,5 +1,10 @@
-%module vector
+/*
 
+   vector.i
+
+*/
+%module vector
+%feature("autodoc", "1");
 %{
 #include "linalg/vector.hpp"
 #include <sstream>
