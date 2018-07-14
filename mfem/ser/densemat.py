@@ -325,7 +325,7 @@ class DenseMatrix(matrix.Matrix):
         ret = _densmat.DenseMatrix___iadd__(self, v)
         ret.thisown = self.thisown
         self.thisown = 0                  
-          return ret
+        return ret
 
 
 
