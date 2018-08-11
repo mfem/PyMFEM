@@ -42,6 +42,11 @@ modules= ["cpointers",
           "hypre", 
           "ostream_typemap", "istream_typemap"]
 
+extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM']
+if add_strumpack:
+    modules.append("strumpack")
+    extra_compile_args.append('-std=c++11')
+
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 #sources['solvers'] = ['solvers_p_wrap.cxx']
 
@@ -64,7 +69,7 @@ library_dirs = [mfemlnkdir, hyprelib, metis5lib, boostlib]
 
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
-                        extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'],                            
+                        extra_compile_args = extra_compile_args,
                         extra_link_args = [],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
@@ -73,7 +78,7 @@ ext_modules = [Extension(proxy_names[modules[0]],
 
 ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],
-                        extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM'], 
+                        extra_compile_args = extra_compile_args,                              
                         extra_link_args = [],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,

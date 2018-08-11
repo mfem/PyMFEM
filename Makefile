@@ -26,6 +26,7 @@ SWIGFLAG = -Wall -c++ -python
 #   MFEMINCDIR : include files
 #   MFEMLNKDIR : path to mfem.so
 
+
 MFEM ?=/usr/local
 MFEMLIB = mfem
 MFEMBUILDDIR ?= $(HOME)/src/mfem/cmbuild_par
@@ -68,6 +69,8 @@ HYPREINCFLAG = -I$(HYPREINC)
 HYPRELNKFLAG = -L$(HYPRELIB) -lHYPRE
 MPIINCFLAG  = -I$(MPIINC)
 MPI4PYINCFLAG  = -I$(MPI4PYINC)
+
+ADD_STRUMPACK ?= $(ENABLE_STRUMPACK)
 
 # export everything so that it is avaialbe in setup.py
 export

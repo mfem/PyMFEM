@@ -39,7 +39,7 @@ num_procs = MPI.COMM_WORLD.size
 myid      = MPI.COMM_WORLD.rank
 
 
-parser = ArgParser(description='Ex2 (linear elastisity)')
+parser = ArgParser(description='Ex11 ')
 parser.add_argument('-m', '--mesh',
                     default = 'star.mesh',
                     action = 'store', type = str,
@@ -59,6 +59,9 @@ parser.add_argument('-o', '--order',
 parser.add_argument("-n", "--num-eigs",
                    action = 'store', default = 5, type=int,                   
                  help =  "Number of desired eigenmodes.");
+parser.add_argument("-sp", "--strumpack",
+                   action = 'store_true', default = False,
+                   help =  "Use the STRUMPACK Solver.")
 parser.add_argument('-vis', '--visualization',
                     action = 'store_true', default=True,
                     help='Enable GLVis visualization')
@@ -70,6 +73,7 @@ par_ref_levels = args.refine_parallel
 order = args.order
 nev = args.num_eigs
 visualization = args.visualization
+use_strumpack = args.strumpack
 if (myid == 0): parser.print_options(args)
 
 # 3. Read the mesh from the given mesh file on all processors. We can handle
@@ -148,14 +152,32 @@ m.Finalize();
 A = a.ParallelAssemble();
 M = m.ParallelAssemble();
 
+if use_strumpack:
+  import mfem.par.strumpack as strmpk
+  Arow = strmpk.STRUMPACKRowLocMatrix(A)
+  
+
 # 8. Define and configure the LOBPCG eigensolver and the BoomerAMG
 #    preconditioner for A to be used within the solver. Set the matrices
 #    which define the generalized eigenproblem A x = lambda M x.
 #    We don't support SuperLU
 
-amg = mfem.HypreBoomerAMG(A)
-amg.SetPrintLevel(0);
-precond = amg
+if use_strumpack:
+    #strumpack = strmpk.STRUMPACKSolver(argc, argv, MPI.COMM_WORLD)
+    strumpack = strmpk.STRUMPACKSolver(Arow)
+    strumpack.SetPrintFactorStatistics(True)
+    strumpack.SetPrintSolveStatistics(False)
+    strumpack.SetKrylovSolver(strmpk.KrylovSolver_DIRECT);
+    strumpack.SetReorderingStrategy(strmpk.ReorderingStrategy_METIS)
+    strumpack.SetMC64Job(strmpk.MC64Job_NONE)
+    # strumpack.SetSymmetricPattern(True)
+    strumpack.SetOperator(Arow)
+    strumpack.SetFromCommandLine()
+    precond = strumpack
+else:
+    amg = mfem.HypreBoomerAMG(A)
+    amg.SetPrintLevel(0);
+    precond = amg
 
 lobpcg = mfem.HypreLOBPCG(MPI.COMM_WORLD)
 lobpcg.SetNumModes(nev);
