@@ -43,9 +43,6 @@ modules= ["cpointers",
           "ostream_typemap", "istream_typemap"]
 
 extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM']
-if add_strumpack:
-    modules.append("strumpack")
-    extra_compile_args.append('-std=c++11')
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 #sources['solvers'] = ['solvers_p_wrap.cxx']
@@ -66,7 +63,14 @@ include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
                 mpichinc, hypreinc, boostinc]
 library_dirs = [mfemlnkdir, hyprelib, metis5lib, boostlib]
 
-
+if add_strumpack:
+    modules.append("strumpack")
+    extra_compile_args.append('-std=c++11')
+    sources["strumpack"] = ["strumpack_wrap.cxx"]
+    proxy_names["strumpack"] = "_strumpack"
+    if strumpack_include != "":
+        include_dirs.append(strumpack_include)
+        
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
                         extra_compile_args = extra_compile_args,

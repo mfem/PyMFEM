@@ -71,6 +71,7 @@ MPIINCFLAG  = -I$(MPIINC)
 MPI4PYINCFLAG  = -I$(MPI4PYINC)
 
 ADD_STRUMPACK ?= $(ENABLE_STRUMPACK)
+STRUMPACK_INCLUDE ?= 
 
 # export everything so that it is avaialbe in setup.py
 export

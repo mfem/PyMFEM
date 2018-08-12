@@ -209,6 +209,10 @@ import linearform
 import handle
 import communication
 import sets
+
+def argv_obj(input):
+    """argv_obj(PyObject * input) -> char **"""
+    return _strumpack.argv_obj(input)
 ReorderingStrategy_NATURAL = _strumpack.ReorderingStrategy_NATURAL
 ReorderingStrategy_METIS = _strumpack.ReorderingStrategy_METIS
 ReorderingStrategy_PARMETIS = _strumpack.ReorderingStrategy_PARMETIS
@@ -304,11 +308,28 @@ class STRUMPACKSolver(operators.Solver):
         __init__(mfem::STRUMPACKSolver self, int argc, char *[] argv, MPI_Comm comm) -> STRUMPACKSolver
         __init__(mfem::STRUMPACKSolver self, STRUMPACKRowLocMatrix A) -> STRUMPACKSolver
         """
+
+        attach_argv = False
+        if isinstance(args[0], list):
+            aa = [""]+args[0]  
+            num = len(aa)
+            ptr = argv_obj(aa)
+            args = (num, ptr, args[1])
+            attach_argv = True
+
+
+
         this = _strumpack.new_STRUMPACKSolver(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+        if attach_argv:
+            self._argv = ptr
+
+
+
     __swig_destroy__ = _strumpack.delete_STRUMPACKSolver
     __del__ = lambda self: None
 

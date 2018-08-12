@@ -3884,6 +3884,28 @@ SWIGINTERN doublep *doublep_frompointer(double *t){
     return (doublep *) t;
   }
 
+char **argv_obj(PyObject* input){
+  int i;
+  if (!PyList_Check(input)) {
+    PyErr_SetString(PyExc_ValueError, "Expecting a list");
+    return NULL;
+  }
+  int num = PyList_Size(input);
+  char **out = (char **) malloc((num+1)*sizeof(char *));
+  for (i = 0; i < num; i++) {
+    PyObject *s = PyList_GetItem(input,i);
+    if (!PyString_Check(s)) {
+        free(out);
+        PyErr_SetString(PyExc_ValueError, "List items must be strings");
+        return NULL;
+    }
+    out[i] = PyString_AsString(s);
+  }
+  out[i] = 0;
+  return out;
+ };
+ 
+
 SWIGINTERNINLINE PyObject*
   SWIG_From_bool  (bool value)
 {
@@ -4213,6 +4235,29 @@ SWIGINTERN PyObject *doublep_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObje
   SWIG_TypeNewClientData(SWIGTYPE_p_doublep, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
+
+SWIGINTERN PyObject *_wrap_argv_obj(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PyObject *arg1 = (PyObject *) 0 ;
+  PyObject * obj0 = 0 ;
+  char **result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:argv_obj",&obj0)) SWIG_fail;
+  arg1 = obj0;
+  {
+    try {
+      result = (char **)argv_obj(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_p_char, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_MC64_job_number(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -5220,6 +5265,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, NULL},
 	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, NULL},
 	 { (char *)"doublep_swigregister", doublep_swigregister, METH_VARARGS, NULL},
+	 { (char *)"argv_obj", _wrap_argv_obj, METH_VARARGS, (char *)"argv_obj(PyObject * input) -> char **"},
 	 { (char *)"MC64_job_number", _wrap_MC64_job_number, METH_VARARGS, (char *)"MC64_job_number(strumpack::MC64Job job) -> int"},
 	 { (char *)"get_name", _wrap_get_name, METH_VARARGS, (char *)"get_name(strumpack::ReorderingStrategy method) -> std::string"},
 	 { (char *)"is_parallel", _wrap_is_parallel, METH_VARARGS, (char *)"is_parallel(strumpack::ReorderingStrategy method) -> bool"},

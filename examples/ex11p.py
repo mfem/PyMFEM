@@ -163,8 +163,8 @@ if use_strumpack:
 #    We don't support SuperLU
 
 if use_strumpack:
-    #strumpack = strmpk.STRUMPACKSolver(argc, argv, MPI.COMM_WORLD)
-    strumpack = strmpk.STRUMPACKSolver(Arow)
+    args = ["--sp_hss_min_sep_size", "128", "--sp_enable_hss"]
+    strumpack = strmpk.STRUMPACKSolver(args, MPI.COMM_WORLD)
     strumpack.SetPrintFactorStatistics(True)
     strumpack.SetPrintSolveStatistics(False)
     strumpack.SetKrylovSolver(strmpk.KrylovSolver_DIRECT);
