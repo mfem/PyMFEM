@@ -8,12 +8,6 @@ debug_print = mfem.debug_print
 
 from mpi4py import MPI
 
-## libmfem.a is linked only with _array.so
-## this make sure that symbols are resovled
-import sys, ctypes
-rtld_now = sys.getdlopenflags()
-sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
-
 from  cpointers import *
 from  point import *
 from  segment import *
@@ -60,4 +54,4 @@ from  pnonlinearform import *
 from  pgridfunc import *
 from  hypre import *
 
-sys.setdlopenflags(rtld_now)
+
