@@ -7381,69 +7381,95 @@ SWIGINTERN PyObject *ConformingProlongationOperator_swigregister(PyObject *SWIGU
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"ParFiniteElementSpace_num_face_nbr_dofs_set", _wrap_ParFiniteElementSpace_num_face_nbr_dofs_set, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_num_face_nbr_dofs_get", _wrap_ParFiniteElementSpace_num_face_nbr_dofs_get, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_face_nbr_element_dof_set", _wrap_ParFiniteElementSpace_face_nbr_element_dof_set, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_face_nbr_element_dof_get", _wrap_ParFiniteElementSpace_face_nbr_element_dof_get, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_face_nbr_ldof_set, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_face_nbr_ldof_get, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_face_nbr_glob_dof_map_get", _wrap_ParFiniteElementSpace_face_nbr_glob_dof_map_get, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_send_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_set, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_send_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_get, METH_VARARGS, NULL},
-	 { (char *)"new_ParFiniteElementSpace", _wrap_new_ParFiniteElementSpace, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetComm", _wrap_ParFiniteElementSpace_GetComm, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetNRanks", _wrap_ParFiniteElementSpace_GetNRanks, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetMyRank", _wrap_ParFiniteElementSpace_GetMyRank, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetParMesh", _wrap_ParFiniteElementSpace_GetParMesh, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetDofSign", _wrap_ParFiniteElementSpace_GetDofSign, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetDofOffsets", _wrap_ParFiniteElementSpace_GetDofOffsets, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetTrueDofOffsets", _wrap_ParFiniteElementSpace_GetTrueDofOffsets, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GlobalVSize", _wrap_ParFiniteElementSpace_GlobalVSize, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GlobalTrueVSize", _wrap_ParFiniteElementSpace_GlobalTrueVSize, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetTrueVSize", _wrap_ParFiniteElementSpace_GetTrueVSize, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetElementDofs", _wrap_ParFiniteElementSpace_GetElementDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetBdrElementDofs", _wrap_ParFiniteElementSpace_GetBdrElementDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetFaceDofs", _wrap_ParFiniteElementSpace_GetFaceDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetSharedEdgeDofs", _wrap_ParFiniteElementSpace_GetSharedEdgeDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetSharedFaceDofs", _wrap_ParFiniteElementSpace_GetSharedFaceDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Dof_TrueDof_Matrix, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetPartialConformingInterpolation", _wrap_ParFiniteElementSpace_GetPartialConformingInterpolation, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_NewTrueDofVector", _wrap_ParFiniteElementSpace_NewTrueDofVector, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_DivideByGroupSize", _wrap_ParFiniteElementSpace_DivideByGroupSize, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GroupComm", _wrap_ParFiniteElementSpace_GroupComm, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_ScalarGroupComm", _wrap_ParFiniteElementSpace_ScalarGroupComm, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_Synchronize", _wrap_ParFiniteElementSpace_Synchronize, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetEssentialVDofs", _wrap_ParFiniteElementSpace_GetEssentialVDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetEssentialTrueDofs", _wrap_ParFiniteElementSpace_GetEssentialTrueDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetLocalTDofNumber", _wrap_ParFiniteElementSpace_GetLocalTDofNumber, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetGlobalTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalTDofNumber, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetGlobalScalarTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetMyDofOffset", _wrap_ParFiniteElementSpace_GetMyDofOffset, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetMyTDofOffset", _wrap_ParFiniteElementSpace_GetMyTDofOffset, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetProlongationMatrix", _wrap_ParFiniteElementSpace_GetProlongationMatrix, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetRestrictionMatrix", _wrap_ParFiniteElementSpace_GetRestrictionMatrix, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_ExchangeFaceNbrData", _wrap_ParFiniteElementSpace_ExchangeFaceNbrData, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetFaceNbrVSize", _wrap_ParFiniteElementSpace_GetFaceNbrVSize, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetFaceNbrElementVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetFaceNbrFaceVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetFaceNbrFE", _wrap_ParFiniteElementSpace_GetFaceNbrFE, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetFaceNbrFaceFE", _wrap_ParFiniteElementSpace_GetFaceNbrFaceFE, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetFaceNbrGlobalDofMap", _wrap_ParFiniteElementSpace_GetFaceNbrGlobalDofMap, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_LoseDofOffsets", _wrap_ParFiniteElementSpace_LoseDofOffsets, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_LoseTrueDofOffsets", _wrap_ParFiniteElementSpace_LoseTrueDofOffsets, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_Conforming", _wrap_ParFiniteElementSpace_Conforming, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_Nonconforming", _wrap_ParFiniteElementSpace_Nonconforming, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_GetTrueTransferOperator", _wrap_ParFiniteElementSpace_GetTrueTransferOperator, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_Update", _wrap_ParFiniteElementSpace_Update, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_UpdatesFinished", _wrap_ParFiniteElementSpace_UpdatesFinished, METH_VARARGS, NULL},
-	 { (char *)"delete_ParFiniteElementSpace", _wrap_delete_ParFiniteElementSpace, METH_VARARGS, NULL},
-	 { (char *)"ParFiniteElementSpace_TrueVSize", _wrap_ParFiniteElementSpace_TrueVSize, METH_VARARGS, NULL},
+	 { (char *)"ParFiniteElementSpace_num_face_nbr_dofs_set", _wrap_ParFiniteElementSpace_num_face_nbr_dofs_set, METH_VARARGS, (char *)"ParFiniteElementSpace_num_face_nbr_dofs_set(ParFiniteElementSpace self, int num_face_nbr_dofs)"},
+	 { (char *)"ParFiniteElementSpace_num_face_nbr_dofs_get", _wrap_ParFiniteElementSpace_num_face_nbr_dofs_get, METH_VARARGS, (char *)"ParFiniteElementSpace_num_face_nbr_dofs_get(ParFiniteElementSpace self) -> int"},
+	 { (char *)"ParFiniteElementSpace_face_nbr_element_dof_set", _wrap_ParFiniteElementSpace_face_nbr_element_dof_set, METH_VARARGS, (char *)"ParFiniteElementSpace_face_nbr_element_dof_set(ParFiniteElementSpace self, Table face_nbr_element_dof)"},
+	 { (char *)"ParFiniteElementSpace_face_nbr_element_dof_get", _wrap_ParFiniteElementSpace_face_nbr_element_dof_get, METH_VARARGS, (char *)"ParFiniteElementSpace_face_nbr_element_dof_get(ParFiniteElementSpace self) -> Table"},
+	 { (char *)"ParFiniteElementSpace_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_face_nbr_ldof_set, METH_VARARGS, (char *)"ParFiniteElementSpace_face_nbr_ldof_set(ParFiniteElementSpace self, Table face_nbr_ldof)"},
+	 { (char *)"ParFiniteElementSpace_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_face_nbr_ldof_get, METH_VARARGS, (char *)"ParFiniteElementSpace_face_nbr_ldof_get(ParFiniteElementSpace self) -> Table"},
+	 { (char *)"ParFiniteElementSpace_face_nbr_glob_dof_map_get", _wrap_ParFiniteElementSpace_face_nbr_glob_dof_map_get, METH_VARARGS, (char *)"ParFiniteElementSpace_face_nbr_glob_dof_map_get(ParFiniteElementSpace self) -> intArray"},
+	 { (char *)"ParFiniteElementSpace_send_face_nbr_ldof_set", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_set, METH_VARARGS, (char *)"ParFiniteElementSpace_send_face_nbr_ldof_set(ParFiniteElementSpace self, Table send_face_nbr_ldof)"},
+	 { (char *)"ParFiniteElementSpace_send_face_nbr_ldof_get", _wrap_ParFiniteElementSpace_send_face_nbr_ldof_get, METH_VARARGS, (char *)"ParFiniteElementSpace_send_face_nbr_ldof_get(ParFiniteElementSpace self) -> Table"},
+	 { (char *)"new_ParFiniteElementSpace", _wrap_new_ParFiniteElementSpace, METH_VARARGS, (char *)"\n"
+		"ParFiniteElementSpace(ParFiniteElementSpace orig, ParMesh pmesh=None, FiniteElementCollection fec=None)\n"
+		"ParFiniteElementSpace(ParFiniteElementSpace orig, ParMesh pmesh=None)\n"
+		"ParFiniteElementSpace(ParFiniteElementSpace orig)\n"
+		"ParFiniteElementSpace(FiniteElementSpace orig, ParMesh pmesh, FiniteElementCollection fec=None)\n"
+		"ParFiniteElementSpace(FiniteElementSpace orig, ParMesh pmesh)\n"
+		"ParFiniteElementSpace(ParMesh pm, FiniteElementSpace global_fes, int const * partitioning, FiniteElementCollection f=None)\n"
+		"ParFiniteElementSpace(ParMesh pm, FiniteElementSpace global_fes, int const * partitioning)\n"
+		"ParFiniteElementSpace(ParMesh pm, FiniteElementCollection f, int dim=1, int ordering)\n"
+		"ParFiniteElementSpace(ParMesh pm, FiniteElementCollection f, int dim=1)\n"
+		"ParFiniteElementSpace(ParMesh pm, FiniteElementCollection f)\n"
+		"ParFiniteElementSpace(ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1, int ordering)\n"
+		"ParFiniteElementSpace(ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1)\n"
+		"new_ParFiniteElementSpace(ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f) -> ParFiniteElementSpace\n"
+		""},
+	 { (char *)"ParFiniteElementSpace_GetComm", _wrap_ParFiniteElementSpace_GetComm, METH_VARARGS, (char *)"ParFiniteElementSpace_GetComm(ParFiniteElementSpace self) -> MPI_Comm"},
+	 { (char *)"ParFiniteElementSpace_GetNRanks", _wrap_ParFiniteElementSpace_GetNRanks, METH_VARARGS, (char *)"ParFiniteElementSpace_GetNRanks(ParFiniteElementSpace self) -> int"},
+	 { (char *)"ParFiniteElementSpace_GetMyRank", _wrap_ParFiniteElementSpace_GetMyRank, METH_VARARGS, (char *)"ParFiniteElementSpace_GetMyRank(ParFiniteElementSpace self) -> int"},
+	 { (char *)"ParFiniteElementSpace_GetParMesh", _wrap_ParFiniteElementSpace_GetParMesh, METH_VARARGS, (char *)"ParFiniteElementSpace_GetParMesh(ParFiniteElementSpace self) -> ParMesh"},
+	 { (char *)"ParFiniteElementSpace_GetDofSign", _wrap_ParFiniteElementSpace_GetDofSign, METH_VARARGS, (char *)"ParFiniteElementSpace_GetDofSign(ParFiniteElementSpace self, int i) -> int"},
+	 { (char *)"ParFiniteElementSpace_GetDofOffsets", _wrap_ParFiniteElementSpace_GetDofOffsets, METH_VARARGS, (char *)"ParFiniteElementSpace_GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"},
+	 { (char *)"ParFiniteElementSpace_GetTrueDofOffsets", _wrap_ParFiniteElementSpace_GetTrueDofOffsets, METH_VARARGS, (char *)"ParFiniteElementSpace_GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"},
+	 { (char *)"ParFiniteElementSpace_GlobalVSize", _wrap_ParFiniteElementSpace_GlobalVSize, METH_VARARGS, (char *)"ParFiniteElementSpace_GlobalVSize(ParFiniteElementSpace self) -> HYPRE_Int"},
+	 { (char *)"ParFiniteElementSpace_GlobalTrueVSize", _wrap_ParFiniteElementSpace_GlobalTrueVSize, METH_VARARGS, (char *)"ParFiniteElementSpace_GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_Int"},
+	 { (char *)"ParFiniteElementSpace_GetTrueVSize", _wrap_ParFiniteElementSpace_GetTrueVSize, METH_VARARGS, (char *)"ParFiniteElementSpace_GetTrueVSize(ParFiniteElementSpace self) -> int"},
+	 { (char *)"ParFiniteElementSpace_GetElementDofs", _wrap_ParFiniteElementSpace_GetElementDofs, METH_VARARGS, (char *)"ParFiniteElementSpace_GetElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { (char *)"ParFiniteElementSpace_GetBdrElementDofs", _wrap_ParFiniteElementSpace_GetBdrElementDofs, METH_VARARGS, (char *)"ParFiniteElementSpace_GetBdrElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { (char *)"ParFiniteElementSpace_GetFaceDofs", _wrap_ParFiniteElementSpace_GetFaceDofs, METH_VARARGS, (char *)"ParFiniteElementSpace_GetFaceDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { (char *)"ParFiniteElementSpace_GetSharedEdgeDofs", _wrap_ParFiniteElementSpace_GetSharedEdgeDofs, METH_VARARGS, (char *)"ParFiniteElementSpace_GetSharedEdgeDofs(ParFiniteElementSpace self, int group, int ei, intArray dofs)"},
+	 { (char *)"ParFiniteElementSpace_GetSharedFaceDofs", _wrap_ParFiniteElementSpace_GetSharedFaceDofs, METH_VARARGS, (char *)"ParFiniteElementSpace_GetSharedFaceDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
+	 { (char *)"ParFiniteElementSpace_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Dof_TrueDof_Matrix, METH_VARARGS, (char *)"ParFiniteElementSpace_Dof_TrueDof_Matrix(ParFiniteElementSpace self) -> HypreParMatrix"},
+	 { (char *)"ParFiniteElementSpace_GetPartialConformingInterpolation", _wrap_ParFiniteElementSpace_GetPartialConformingInterpolation, METH_VARARGS, (char *)"ParFiniteElementSpace_GetPartialConformingInterpolation(ParFiniteElementSpace self) -> HypreParMatrix"},
+	 { (char *)"ParFiniteElementSpace_NewTrueDofVector", _wrap_ParFiniteElementSpace_NewTrueDofVector, METH_VARARGS, (char *)"ParFiniteElementSpace_NewTrueDofVector(ParFiniteElementSpace self) -> HypreParVector"},
+	 { (char *)"ParFiniteElementSpace_DivideByGroupSize", _wrap_ParFiniteElementSpace_DivideByGroupSize, METH_VARARGS, (char *)"ParFiniteElementSpace_DivideByGroupSize(ParFiniteElementSpace self, double * vec)"},
+	 { (char *)"ParFiniteElementSpace_GroupComm", _wrap_ParFiniteElementSpace_GroupComm, METH_VARARGS, (char *)"\n"
+		"GroupComm() -> GroupCommunicator\n"
+		"ParFiniteElementSpace_GroupComm(ParFiniteElementSpace self) -> GroupCommunicator\n"
+		""},
+	 { (char *)"ParFiniteElementSpace_ScalarGroupComm", _wrap_ParFiniteElementSpace_ScalarGroupComm, METH_VARARGS, (char *)"ParFiniteElementSpace_ScalarGroupComm(ParFiniteElementSpace self) -> GroupCommunicator"},
+	 { (char *)"ParFiniteElementSpace_Synchronize", _wrap_ParFiniteElementSpace_Synchronize, METH_VARARGS, (char *)"ParFiniteElementSpace_Synchronize(ParFiniteElementSpace self, intArray ldof_marker)"},
+	 { (char *)"ParFiniteElementSpace_GetEssentialVDofs", _wrap_ParFiniteElementSpace_GetEssentialVDofs, METH_VARARGS, (char *)"\n"
+		"GetEssentialVDofs(intArray bdr_attr_is_ess, intArray ess_dofs, int component=-1)\n"
+		"ParFiniteElementSpace_GetEssentialVDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_dofs)\n"
+		""},
+	 { (char *)"ParFiniteElementSpace_GetEssentialTrueDofs", _wrap_ParFiniteElementSpace_GetEssentialTrueDofs, METH_VARARGS, (char *)"\n"
+		"GetEssentialTrueDofs(intArray bdr_attr_is_ess, intArray ess_tdof_list, int component=-1)\n"
+		"ParFiniteElementSpace_GetEssentialTrueDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list)\n"
+		""},
+	 { (char *)"ParFiniteElementSpace_GetLocalTDofNumber", _wrap_ParFiniteElementSpace_GetLocalTDofNumber, METH_VARARGS, (char *)"ParFiniteElementSpace_GetLocalTDofNumber(ParFiniteElementSpace self, int ldof) -> int"},
+	 { (char *)"ParFiniteElementSpace_GetGlobalTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalTDofNumber, METH_VARARGS, (char *)"ParFiniteElementSpace_GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"},
+	 { (char *)"ParFiniteElementSpace_GetGlobalScalarTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber, METH_VARARGS, (char *)"ParFiniteElementSpace_GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"},
+	 { (char *)"ParFiniteElementSpace_GetMyDofOffset", _wrap_ParFiniteElementSpace_GetMyDofOffset, METH_VARARGS, (char *)"ParFiniteElementSpace_GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"},
+	 { (char *)"ParFiniteElementSpace_GetMyTDofOffset", _wrap_ParFiniteElementSpace_GetMyTDofOffset, METH_VARARGS, (char *)"ParFiniteElementSpace_GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"},
+	 { (char *)"ParFiniteElementSpace_GetProlongationMatrix", _wrap_ParFiniteElementSpace_GetProlongationMatrix, METH_VARARGS, (char *)"ParFiniteElementSpace_GetProlongationMatrix(ParFiniteElementSpace self) -> Operator"},
+	 { (char *)"ParFiniteElementSpace_GetRestrictionMatrix", _wrap_ParFiniteElementSpace_GetRestrictionMatrix, METH_VARARGS, (char *)"ParFiniteElementSpace_GetRestrictionMatrix(ParFiniteElementSpace self) -> SparseMatrix"},
+	 { (char *)"ParFiniteElementSpace_ExchangeFaceNbrData", _wrap_ParFiniteElementSpace_ExchangeFaceNbrData, METH_VARARGS, (char *)"ParFiniteElementSpace_ExchangeFaceNbrData(ParFiniteElementSpace self)"},
+	 { (char *)"ParFiniteElementSpace_GetFaceNbrVSize", _wrap_ParFiniteElementSpace_GetFaceNbrVSize, METH_VARARGS, (char *)"ParFiniteElementSpace_GetFaceNbrVSize(ParFiniteElementSpace self) -> int"},
+	 { (char *)"ParFiniteElementSpace_GetFaceNbrElementVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs, METH_VARARGS, (char *)"ParFiniteElementSpace_GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
+	 { (char *)"ParFiniteElementSpace_GetFaceNbrFaceVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs, METH_VARARGS, (char *)"ParFiniteElementSpace_GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
+	 { (char *)"ParFiniteElementSpace_GetFaceNbrFE", _wrap_ParFiniteElementSpace_GetFaceNbrFE, METH_VARARGS, (char *)"ParFiniteElementSpace_GetFaceNbrFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
+	 { (char *)"ParFiniteElementSpace_GetFaceNbrFaceFE", _wrap_ParFiniteElementSpace_GetFaceNbrFaceFE, METH_VARARGS, (char *)"ParFiniteElementSpace_GetFaceNbrFaceFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
+	 { (char *)"ParFiniteElementSpace_GetFaceNbrGlobalDofMap", _wrap_ParFiniteElementSpace_GetFaceNbrGlobalDofMap, METH_VARARGS, (char *)"ParFiniteElementSpace_GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_Int const *"},
+	 { (char *)"ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix, METH_VARARGS, (char *)"ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix(ParFiniteElementSpace self)"},
+	 { (char *)"ParFiniteElementSpace_LoseDofOffsets", _wrap_ParFiniteElementSpace_LoseDofOffsets, METH_VARARGS, (char *)"ParFiniteElementSpace_LoseDofOffsets(ParFiniteElementSpace self)"},
+	 { (char *)"ParFiniteElementSpace_LoseTrueDofOffsets", _wrap_ParFiniteElementSpace_LoseTrueDofOffsets, METH_VARARGS, (char *)"ParFiniteElementSpace_LoseTrueDofOffsets(ParFiniteElementSpace self)"},
+	 { (char *)"ParFiniteElementSpace_Conforming", _wrap_ParFiniteElementSpace_Conforming, METH_VARARGS, (char *)"ParFiniteElementSpace_Conforming(ParFiniteElementSpace self) -> bool"},
+	 { (char *)"ParFiniteElementSpace_Nonconforming", _wrap_ParFiniteElementSpace_Nonconforming, METH_VARARGS, (char *)"ParFiniteElementSpace_Nonconforming(ParFiniteElementSpace self) -> bool"},
+	 { (char *)"ParFiniteElementSpace_GetTrueTransferOperator", _wrap_ParFiniteElementSpace_GetTrueTransferOperator, METH_VARARGS, (char *)"ParFiniteElementSpace_GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"},
+	 { (char *)"ParFiniteElementSpace_Update", _wrap_ParFiniteElementSpace_Update, METH_VARARGS, (char *)"\n"
+		"Update(bool want_transform=True)\n"
+		"ParFiniteElementSpace_Update(ParFiniteElementSpace self)\n"
+		""},
+	 { (char *)"ParFiniteElementSpace_UpdatesFinished", _wrap_ParFiniteElementSpace_UpdatesFinished, METH_VARARGS, (char *)"ParFiniteElementSpace_UpdatesFinished(ParFiniteElementSpace self)"},
+	 { (char *)"delete_ParFiniteElementSpace", _wrap_delete_ParFiniteElementSpace, METH_VARARGS, (char *)"delete_ParFiniteElementSpace(ParFiniteElementSpace self)"},
+	 { (char *)"ParFiniteElementSpace_TrueVSize", _wrap_ParFiniteElementSpace_TrueVSize, METH_VARARGS, (char *)"ParFiniteElementSpace_TrueVSize(ParFiniteElementSpace self) -> int"},
 	 { (char *)"ParFiniteElementSpace_swigregister", ParFiniteElementSpace_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_ConformingProlongationOperator", _wrap_new_ConformingProlongationOperator, METH_VARARGS, NULL},
-	 { (char *)"ConformingProlongationOperator_Mult", _wrap_ConformingProlongationOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"ConformingProlongationOperator_MultTranspose", _wrap_ConformingProlongationOperator_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"delete_ConformingProlongationOperator", _wrap_delete_ConformingProlongationOperator, METH_VARARGS, NULL},
+	 { (char *)"new_ConformingProlongationOperator", _wrap_new_ConformingProlongationOperator, METH_VARARGS, (char *)"new_ConformingProlongationOperator(ParFiniteElementSpace pfes) -> ConformingProlongationOperator"},
+	 { (char *)"ConformingProlongationOperator_Mult", _wrap_ConformingProlongationOperator_Mult, METH_VARARGS, (char *)"ConformingProlongationOperator_Mult(ConformingProlongationOperator self, Vector x, Vector y)"},
+	 { (char *)"ConformingProlongationOperator_MultTranspose", _wrap_ConformingProlongationOperator_MultTranspose, METH_VARARGS, (char *)"ConformingProlongationOperator_MultTranspose(ConformingProlongationOperator self, Vector x, Vector y)"},
+	 { (char *)"delete_ConformingProlongationOperator", _wrap_delete_ConformingProlongationOperator, METH_VARARGS, (char *)"delete_ConformingProlongationOperator(ConformingProlongationOperator self)"},
 	 { (char *)"ConformingProlongationOperator_swigregister", ConformingProlongationOperator_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };

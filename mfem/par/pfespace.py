@@ -142,6 +142,8 @@ import pncmesh
 import communication
 import sets
 class ParFiniteElementSpace(fespace.FiniteElementSpace):
+    """Proxy of C++ mfem::ParFiniteElementSpace class."""
+
     __swig_setmethods__ = {}
     for _s in [fespace.FiniteElementSpace]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -172,6 +174,21 @@ class ParFiniteElementSpace(fespace.FiniteElementSpace):
         send_face_nbr_ldof = _swig_property(_pfespace.ParFiniteElementSpace_send_face_nbr_ldof_get, _pfespace.ParFiniteElementSpace_send_face_nbr_ldof_set)
 
     def __init__(self, *args):
+        """
+        __init__(mfem::ParFiniteElementSpace self, ParFiniteElementSpace orig, ParMesh pmesh=None, FiniteElementCollection fec=None) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParFiniteElementSpace orig, ParMesh pmesh=None) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParFiniteElementSpace orig) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, FiniteElementSpace orig, ParMesh pmesh, FiniteElementCollection fec=None) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, FiniteElementSpace orig, ParMesh pmesh) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, FiniteElementSpace global_fes, int const * partitioning, FiniteElementCollection f=None) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, FiniteElementSpace global_fes, int const * partitioning) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, FiniteElementCollection f, int dim=1, int ordering) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, FiniteElementCollection f, int dim=1) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, FiniteElementCollection f) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1, int ordering) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1) -> ParFiniteElementSpace
+        __init__(mfem::ParFiniteElementSpace self, ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f) -> ParFiniteElementSpace
+        """
         this = _pfespace.new_ParFiniteElementSpace(*args)
         try:
             self.this.append(this)
@@ -179,34 +196,54 @@ class ParFiniteElementSpace(fespace.FiniteElementSpace):
             self.this = this
 
     def GetComm(self):
+        """GetComm(ParFiniteElementSpace self) -> MPI_Comm"""
         return _pfespace.ParFiniteElementSpace_GetComm(self)
 
+
     def GetNRanks(self):
+        """GetNRanks(ParFiniteElementSpace self) -> int"""
         return _pfespace.ParFiniteElementSpace_GetNRanks(self)
 
+
     def GetMyRank(self):
+        """GetMyRank(ParFiniteElementSpace self) -> int"""
         return _pfespace.ParFiniteElementSpace_GetMyRank(self)
 
+
     def GetParMesh(self):
+        """GetParMesh(ParFiniteElementSpace self) -> ParMesh"""
         return _pfespace.ParFiniteElementSpace_GetParMesh(self)
 
+
     def GetDofSign(self, i):
+        """GetDofSign(ParFiniteElementSpace self, int i) -> int"""
         return _pfespace.ParFiniteElementSpace_GetDofSign(self, i)
 
+
     def GetDofOffsets(self):
+        """GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"""
         return _pfespace.ParFiniteElementSpace_GetDofOffsets(self)
 
+
     def GetTrueDofOffsets(self):
+        """GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"""
         return _pfespace.ParFiniteElementSpace_GetTrueDofOffsets(self)
 
+
     def GlobalVSize(self):
+        """GlobalVSize(ParFiniteElementSpace self) -> HYPRE_Int"""
         return _pfespace.ParFiniteElementSpace_GlobalVSize(self)
 
+
     def GlobalTrueVSize(self):
+        """GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_Int"""
         return _pfespace.ParFiniteElementSpace_GlobalTrueVSize(self)
 
+
     def GetTrueVSize(self):
+        """GetTrueVSize(ParFiniteElementSpace self) -> int"""
         return _pfespace.ParFiniteElementSpace_GetTrueVSize(self)
+
 
     def GetElementDofs(self, i):
         from  .array import intArray
@@ -232,113 +269,201 @@ class ParFiniteElementSpace(fespace.FiniteElementSpace):
 
 
 
-    def GetSharedEdgeDofs(self, group, ei, dofs):
-        return _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
+    def GetSharedEdgeDofs(self, group, ei):
+      from  .array import intArray
+      dofs = intArray()      
+      _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
+      return dofs.ToList()      
 
-    def GetSharedFaceDofs(self, group, fi, dofs):
-        return _pfespace.ParFiniteElementSpace_GetSharedFaceDofs(self, group, fi, dofs)
+
+
+    def GetSharedFaceDofs(self, group, fi):
+      from  .array import intArray
+      dofs = intArray()      
+      _pfespace.ParFiniteElementSpace_GetSharedFaceDofs(self, group, fi, dofs)
+      return dofs.ToList()      
+
+
 
     def Dof_TrueDof_Matrix(self):
+        """Dof_TrueDof_Matrix(ParFiniteElementSpace self) -> HypreParMatrix"""
         return _pfespace.ParFiniteElementSpace_Dof_TrueDof_Matrix(self)
 
+
     def GetPartialConformingInterpolation(self):
+        """GetPartialConformingInterpolation(ParFiniteElementSpace self) -> HypreParMatrix"""
         return _pfespace.ParFiniteElementSpace_GetPartialConformingInterpolation(self)
 
+
     def NewTrueDofVector(self):
+        """NewTrueDofVector(ParFiniteElementSpace self) -> HypreParVector"""
         return _pfespace.ParFiniteElementSpace_NewTrueDofVector(self)
 
+
     def DivideByGroupSize(self, vec):
+        """DivideByGroupSize(ParFiniteElementSpace self, double * vec)"""
         return _pfespace.ParFiniteElementSpace_DivideByGroupSize(self, vec)
 
+
     def GroupComm(self, *args):
+        """
+        GroupComm(ParFiniteElementSpace self) -> GroupCommunicator
+        GroupComm(ParFiniteElementSpace self) -> GroupCommunicator
+        """
         return _pfespace.ParFiniteElementSpace_GroupComm(self, *args)
 
+
     def ScalarGroupComm(self):
+        """ScalarGroupComm(ParFiniteElementSpace self) -> GroupCommunicator"""
         return _pfespace.ParFiniteElementSpace_ScalarGroupComm(self)
 
+
     def Synchronize(self, ldof_marker):
+        """Synchronize(ParFiniteElementSpace self, intArray ldof_marker)"""
         return _pfespace.ParFiniteElementSpace_Synchronize(self, ldof_marker)
 
+
     def GetEssentialVDofs(self, bdr_attr_is_ess, ess_dofs, component=-1):
+        """
+        GetEssentialVDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_dofs, int component=-1)
+        GetEssentialVDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_dofs)
+        """
         return _pfespace.ParFiniteElementSpace_GetEssentialVDofs(self, bdr_attr_is_ess, ess_dofs, component)
 
+
     def GetEssentialTrueDofs(self, bdr_attr_is_ess, ess_tdof_list, component=-1):
+        """
+        GetEssentialTrueDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list, int component=-1)
+        GetEssentialTrueDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list)
+        """
         return _pfespace.ParFiniteElementSpace_GetEssentialTrueDofs(self, bdr_attr_is_ess, ess_tdof_list, component)
 
+
     def GetLocalTDofNumber(self, ldof):
+        """GetLocalTDofNumber(ParFiniteElementSpace self, int ldof) -> int"""
         return _pfespace.ParFiniteElementSpace_GetLocalTDofNumber(self, ldof)
 
+
     def GetGlobalTDofNumber(self, ldof):
+        """GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"""
         return _pfespace.ParFiniteElementSpace_GetGlobalTDofNumber(self, ldof)
 
+
     def GetGlobalScalarTDofNumber(self, sldof):
+        """GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"""
         return _pfespace.ParFiniteElementSpace_GetGlobalScalarTDofNumber(self, sldof)
 
+
     def GetMyDofOffset(self):
+        """GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"""
         return _pfespace.ParFiniteElementSpace_GetMyDofOffset(self)
 
+
     def GetMyTDofOffset(self):
+        """GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"""
         return _pfespace.ParFiniteElementSpace_GetMyTDofOffset(self)
 
+
     def GetProlongationMatrix(self):
+        """GetProlongationMatrix(ParFiniteElementSpace self) -> Operator"""
         return _pfespace.ParFiniteElementSpace_GetProlongationMatrix(self)
 
+
     def GetRestrictionMatrix(self):
+        """GetRestrictionMatrix(ParFiniteElementSpace self) -> SparseMatrix"""
         return _pfespace.ParFiniteElementSpace_GetRestrictionMatrix(self)
 
+
     def ExchangeFaceNbrData(self):
+        """ExchangeFaceNbrData(ParFiniteElementSpace self)"""
         return _pfespace.ParFiniteElementSpace_ExchangeFaceNbrData(self)
 
+
     def GetFaceNbrVSize(self):
+        """GetFaceNbrVSize(ParFiniteElementSpace self) -> int"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrVSize(self)
 
+
     def GetFaceNbrElementVDofs(self, i, vdofs):
+        """GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrElementVDofs(self, i, vdofs)
 
+
     def GetFaceNbrFaceVDofs(self, i, vdofs):
+        """GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrFaceVDofs(self, i, vdofs)
 
+
     def GetFaceNbrFE(self, i):
+        """GetFaceNbrFE(ParFiniteElementSpace self, int i) -> FiniteElement"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrFE(self, i)
 
+
     def GetFaceNbrFaceFE(self, i):
+        """GetFaceNbrFaceFE(ParFiniteElementSpace self, int i) -> FiniteElement"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrFaceFE(self, i)
 
+
     def GetFaceNbrGlobalDofMap(self):
+        """GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_Int const *"""
         return _pfespace.ParFiniteElementSpace_GetFaceNbrGlobalDofMap(self)
 
+
     def Lose_Dof_TrueDof_Matrix(self):
+        """Lose_Dof_TrueDof_Matrix(ParFiniteElementSpace self)"""
         return _pfespace.ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix(self)
 
+
     def LoseDofOffsets(self):
+        """LoseDofOffsets(ParFiniteElementSpace self)"""
         return _pfespace.ParFiniteElementSpace_LoseDofOffsets(self)
 
+
     def LoseTrueDofOffsets(self):
+        """LoseTrueDofOffsets(ParFiniteElementSpace self)"""
         return _pfespace.ParFiniteElementSpace_LoseTrueDofOffsets(self)
 
+
     def Conforming(self):
+        """Conforming(ParFiniteElementSpace self) -> bool"""
         return _pfespace.ParFiniteElementSpace_Conforming(self)
 
+
     def Nonconforming(self):
+        """Nonconforming(ParFiniteElementSpace self) -> bool"""
         return _pfespace.ParFiniteElementSpace_Nonconforming(self)
 
+
     def GetTrueTransferOperator(self, coarse_fes, T):
+        """GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"""
         return _pfespace.ParFiniteElementSpace_GetTrueTransferOperator(self, coarse_fes, T)
 
+
     def Update(self, want_transform=True):
+        """
+        Update(ParFiniteElementSpace self, bool want_transform=True)
+        Update(ParFiniteElementSpace self)
+        """
         return _pfespace.ParFiniteElementSpace_Update(self, want_transform)
 
+
     def UpdatesFinished(self):
+        """UpdatesFinished(ParFiniteElementSpace self)"""
         return _pfespace.ParFiniteElementSpace_UpdatesFinished(self)
+
     __swig_destroy__ = _pfespace.delete_ParFiniteElementSpace
     __del__ = lambda self: None
 
     def TrueVSize(self):
+        """TrueVSize(ParFiniteElementSpace self) -> int"""
         return _pfespace.ParFiniteElementSpace_TrueVSize(self)
+
 ParFiniteElementSpace_swigregister = _pfespace.ParFiniteElementSpace_swigregister
 ParFiniteElementSpace_swigregister(ParFiniteElementSpace)
 
 class ConformingProlongationOperator(operators.Operator):
+    """Proxy of C++ mfem::ConformingProlongationOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [operators.Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -350,6 +475,7 @@ class ConformingProlongationOperator(operators.Operator):
     __repr__ = _swig_repr
 
     def __init__(self, pfes):
+        """__init__(mfem::ConformingProlongationOperator self, ParFiniteElementSpace pfes) -> ConformingProlongationOperator"""
         this = _pfespace.new_ConformingProlongationOperator(pfes)
         try:
             self.this.append(this)
@@ -357,10 +483,14 @@ class ConformingProlongationOperator(operators.Operator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(ConformingProlongationOperator self, Vector x, Vector y)"""
         return _pfespace.ConformingProlongationOperator_Mult(self, x, y)
 
+
     def MultTranspose(self, x, y):
+        """MultTranspose(ConformingProlongationOperator self, Vector x, Vector y)"""
         return _pfespace.ConformingProlongationOperator_MultTranspose(self, x, y)
+
     __swig_destroy__ = _pfespace.delete_ConformingProlongationOperator
     __del__ = lambda self: None
 ConformingProlongationOperator_swigregister = _pfespace.ConformingProlongationOperator_swigregister

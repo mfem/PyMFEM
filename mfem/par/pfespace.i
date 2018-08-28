@@ -72,5 +72,19 @@ def GetFaceDofs(self, i):
     _pfespace.ParFiniteElementSpace_GetFaceDofs(self, i, vdofs)
     return vdofs.ToList()
 %}
+%feature("shadow") mfem::ParFiniteElementSpace::GetSharedEdgeDofs %{
+  def GetSharedEdgeDofs(self, group, ei):
+    from  .array import intArray
+    dofs = intArray()      
+    _pfespace.ParFiniteElementSpace_GetSharedEdgeDofs(self, group, ei, dofs)
+    return dofs.ToList()      
+%}
+%feature("shadow") mfem::ParFiniteElementSpace::GetSharedFaceDofs %{
+  def GetSharedFaceDofs(self, group, fi):
+    from  .array import intArray
+    dofs = intArray()      
+    _pfespace.ParFiniteElementSpace_GetSharedFaceDofs(self, group, fi, dofs)
+    return dofs.ToList()      
+%}
 
 %include "fem/pfespace.hpp"
