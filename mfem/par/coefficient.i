@@ -32,12 +32,12 @@
 #include "numpy/arrayobject.h"
 %}
 
+%include "../common/mfem_config.i"
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
 %}
-%include  "config/config.hpp" // need to read macro such as MFEM_USE_MPI
-//%import "general/array.hpp"
+
 %include "exception.i"
 %import "array.i"
 %import "matrix.i"
@@ -200,6 +200,7 @@ void VectorPyCoefficientBase::Eval(DenseMatrix &M, ElementTransformation &T,
       Eval(Mi, T, ip);
    }
 }
+
 void MatrixPyCoefficientBase::Eval(DenseMatrix &K, ElementTransformation &T,
                                      const IntegrationPoint &ip)
 {
@@ -268,7 +269,7 @@ class VectorPyCoefficientT(VectorPyCoefficientBase):
        V.Assign(v)	 	 	 
 
    def EvalValue(self, x, t):
-       return [0,0,0]
+       return [0.0,0.0,0.0]
 
 class MatrixPyCoefficient(MatrixPyCoefficientBase):
    def __init__(self, dim):
@@ -290,7 +291,7 @@ class MatrixPyCoefficientT(MatrixPyCoefficientBase):
        K.Assign(k)	 	 	 	 	 	 
 
    def EvalValue(self, x, t):
-       return np.array([[0,0,0], [0,0,0] [0,0,0]])
+       return np.array([[0.0,0.0,0.0], [0.0,0.0,0.0] [0.0,0.0,0.0]])
 	 
 %}
 

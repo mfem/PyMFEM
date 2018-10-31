@@ -6609,34 +6609,74 @@ SWIGINTERN PyObject *ParDiscreteLinearOperator_swigregister(PyObject *SWIGUNUSED
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_ParBilinearForm", _wrap_new_ParBilinearForm, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_KeepNbrBlock", _wrap_ParBilinearForm_KeepNbrBlock, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_SetOperatorType", _wrap_ParBilinearForm_SetOperatorType, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_Assemble", _wrap_ParBilinearForm_Assemble, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_ParallelAssembleElim", _wrap_ParBilinearForm_ParallelAssembleElim, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_ParallelAssemble", _wrap_ParBilinearForm_ParallelAssemble, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_ParallelEliminateEssentialBC", _wrap_ParBilinearForm_ParallelEliminateEssentialBC, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_ParallelEliminateTDofs", _wrap_ParBilinearForm_ParallelEliminateTDofs, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_TrueAddMult", _wrap_ParBilinearForm_TrueAddMult, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_ParFESpace", _wrap_ParBilinearForm_ParFESpace, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_SCParFESpace", _wrap_ParBilinearForm_SCParFESpace, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_GetProlongation", _wrap_ParBilinearForm_GetProlongation, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_GetRestriction", _wrap_ParBilinearForm_GetRestriction, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_RecoverFEMSolution", _wrap_ParBilinearForm_RecoverFEMSolution, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_Update", _wrap_ParBilinearForm_Update, METH_VARARGS, NULL},
-	 { (char *)"delete_ParBilinearForm", _wrap_delete_ParBilinearForm, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_FormLinearSystem", _wrap_ParBilinearForm_FormLinearSystem, METH_VARARGS, NULL},
-	 { (char *)"ParBilinearForm_FormSystemMatrix", _wrap_ParBilinearForm_FormSystemMatrix, METH_VARARGS, NULL},
+	 { (char *)"new_ParBilinearForm", _wrap_new_ParBilinearForm, METH_VARARGS, (char *)"\n"
+		"ParBilinearForm(ParFiniteElementSpace pf)\n"
+		"new_ParBilinearForm(ParFiniteElementSpace pf, ParBilinearForm bf) -> ParBilinearForm\n"
+		""},
+	 { (char *)"ParBilinearForm_KeepNbrBlock", _wrap_ParBilinearForm_KeepNbrBlock, METH_VARARGS, (char *)"\n"
+		"KeepNbrBlock(bool knb=True)\n"
+		"ParBilinearForm_KeepNbrBlock(ParBilinearForm self)\n"
+		""},
+	 { (char *)"ParBilinearForm_SetOperatorType", _wrap_ParBilinearForm_SetOperatorType, METH_VARARGS, (char *)"ParBilinearForm_SetOperatorType(ParBilinearForm self, mfem::Operator::Type tid)"},
+	 { (char *)"ParBilinearForm_Assemble", _wrap_ParBilinearForm_Assemble, METH_VARARGS, (char *)"\n"
+		"Assemble(int skip_zeros=1)\n"
+		"ParBilinearForm_Assemble(ParBilinearForm self)\n"
+		""},
+	 { (char *)"ParBilinearForm_ParallelAssembleElim", _wrap_ParBilinearForm_ParallelAssembleElim, METH_VARARGS, (char *)"\n"
+		"ParallelAssembleElim() -> HypreParMatrix\n"
+		"ParBilinearForm_ParallelAssembleElim(ParBilinearForm self, OperatorHandle A_elim)\n"
+		""},
+	 { (char *)"ParBilinearForm_ParallelAssemble", _wrap_ParBilinearForm_ParallelAssemble, METH_VARARGS, (char *)"\n"
+		"ParallelAssemble() -> HypreParMatrix\n"
+		"ParallelAssemble(SparseMatrix m) -> HypreParMatrix\n"
+		"ParallelAssemble(OperatorHandle A)\n"
+		"ParBilinearForm_ParallelAssemble(ParBilinearForm self, OperatorHandle A, SparseMatrix A_local)\n"
+		""},
+	 { (char *)"ParBilinearForm_ParallelEliminateEssentialBC", _wrap_ParBilinearForm_ParallelEliminateEssentialBC, METH_VARARGS, (char *)"\n"
+		"ParallelEliminateEssentialBC(intArray bdr_attr_is_ess, HypreParMatrix A, HypreParVector X, HypreParVector B)\n"
+		"ParBilinearForm_ParallelEliminateEssentialBC(ParBilinearForm self, intArray bdr_attr_is_ess, HypreParMatrix A) -> HypreParMatrix\n"
+		""},
+	 { (char *)"ParBilinearForm_ParallelEliminateTDofs", _wrap_ParBilinearForm_ParallelEliminateTDofs, METH_VARARGS, (char *)"ParBilinearForm_ParallelEliminateTDofs(ParBilinearForm self, intArray tdofs_list, HypreParMatrix A) -> HypreParMatrix"},
+	 { (char *)"ParBilinearForm_TrueAddMult", _wrap_ParBilinearForm_TrueAddMult, METH_VARARGS, (char *)"\n"
+		"TrueAddMult(Vector x, Vector y, double const a=1.0)\n"
+		"ParBilinearForm_TrueAddMult(ParBilinearForm self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"ParBilinearForm_ParFESpace", _wrap_ParBilinearForm_ParFESpace, METH_VARARGS, (char *)"ParBilinearForm_ParFESpace(ParBilinearForm self) -> ParFiniteElementSpace"},
+	 { (char *)"ParBilinearForm_SCParFESpace", _wrap_ParBilinearForm_SCParFESpace, METH_VARARGS, (char *)"ParBilinearForm_SCParFESpace(ParBilinearForm self) -> ParFiniteElementSpace"},
+	 { (char *)"ParBilinearForm_GetProlongation", _wrap_ParBilinearForm_GetProlongation, METH_VARARGS, (char *)"ParBilinearForm_GetProlongation(ParBilinearForm self) -> Operator"},
+	 { (char *)"ParBilinearForm_GetRestriction", _wrap_ParBilinearForm_GetRestriction, METH_VARARGS, (char *)"ParBilinearForm_GetRestriction(ParBilinearForm self) -> Operator"},
+	 { (char *)"ParBilinearForm_RecoverFEMSolution", _wrap_ParBilinearForm_RecoverFEMSolution, METH_VARARGS, (char *)"ParBilinearForm_RecoverFEMSolution(ParBilinearForm self, Vector X, Vector b, Vector x)"},
+	 { (char *)"ParBilinearForm_Update", _wrap_ParBilinearForm_Update, METH_VARARGS, (char *)"\n"
+		"Update(FiniteElementSpace nfes=None)\n"
+		"ParBilinearForm_Update(ParBilinearForm self)\n"
+		""},
+	 { (char *)"delete_ParBilinearForm", _wrap_delete_ParBilinearForm, METH_VARARGS, (char *)"delete_ParBilinearForm(ParBilinearForm self)"},
+	 { (char *)"ParBilinearForm_FormLinearSystem", _wrap_ParBilinearForm_FormLinearSystem, METH_VARARGS, (char *)"\n"
+		"FormLinearSystem(intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)\n"
+		"FormLinearSystem(intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)\n"
+		"FormLinearSystem(intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B, int copy_interior=0)\n"
+		"ParBilinearForm_FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B)\n"
+		""},
+	 { (char *)"ParBilinearForm_FormSystemMatrix", _wrap_ParBilinearForm_FormSystemMatrix, METH_VARARGS, (char *)"\n"
+		"FormSystemMatrix(intArray ess_tdof_list, OperatorHandle A)\n"
+		"ParBilinearForm_FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, HypreParMatrix A)\n"
+		""},
 	 { (char *)"ParBilinearForm_swigregister", ParBilinearForm_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_ParMixedBilinearForm", _wrap_new_ParMixedBilinearForm, METH_VARARGS, NULL},
-	 { (char *)"ParMixedBilinearForm_ParallelAssemble", _wrap_ParMixedBilinearForm_ParallelAssemble, METH_VARARGS, NULL},
-	 { (char *)"ParMixedBilinearForm_TrueAddMult", _wrap_ParMixedBilinearForm_TrueAddMult, METH_VARARGS, NULL},
-	 { (char *)"delete_ParMixedBilinearForm", _wrap_delete_ParMixedBilinearForm, METH_VARARGS, NULL},
+	 { (char *)"new_ParMixedBilinearForm", _wrap_new_ParMixedBilinearForm, METH_VARARGS, (char *)"new_ParMixedBilinearForm(ParFiniteElementSpace trial_fes, ParFiniteElementSpace test_fes) -> ParMixedBilinearForm"},
+	 { (char *)"ParMixedBilinearForm_ParallelAssemble", _wrap_ParMixedBilinearForm_ParallelAssemble, METH_VARARGS, (char *)"\n"
+		"ParallelAssemble() -> HypreParMatrix\n"
+		"ParMixedBilinearForm_ParallelAssemble(ParMixedBilinearForm self, OperatorHandle A)\n"
+		""},
+	 { (char *)"ParMixedBilinearForm_TrueAddMult", _wrap_ParMixedBilinearForm_TrueAddMult, METH_VARARGS, (char *)"\n"
+		"TrueAddMult(Vector x, Vector y, double const a=1.0)\n"
+		"ParMixedBilinearForm_TrueAddMult(ParMixedBilinearForm self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"delete_ParMixedBilinearForm", _wrap_delete_ParMixedBilinearForm, METH_VARARGS, (char *)"delete_ParMixedBilinearForm(ParMixedBilinearForm self)"},
 	 { (char *)"ParMixedBilinearForm_swigregister", ParMixedBilinearForm_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_ParDiscreteLinearOperator", _wrap_new_ParDiscreteLinearOperator, METH_VARARGS, NULL},
-	 { (char *)"ParDiscreteLinearOperator_ParallelAssemble", _wrap_ParDiscreteLinearOperator_ParallelAssemble, METH_VARARGS, NULL},
-	 { (char *)"ParDiscreteLinearOperator_GetParBlocks", _wrap_ParDiscreteLinearOperator_GetParBlocks, METH_VARARGS, NULL},
-	 { (char *)"delete_ParDiscreteLinearOperator", _wrap_delete_ParDiscreteLinearOperator, METH_VARARGS, NULL},
+	 { (char *)"new_ParDiscreteLinearOperator", _wrap_new_ParDiscreteLinearOperator, METH_VARARGS, (char *)"new_ParDiscreteLinearOperator(ParFiniteElementSpace dfes, ParFiniteElementSpace rfes) -> ParDiscreteLinearOperator"},
+	 { (char *)"ParDiscreteLinearOperator_ParallelAssemble", _wrap_ParDiscreteLinearOperator_ParallelAssemble, METH_VARARGS, (char *)"ParDiscreteLinearOperator_ParallelAssemble(ParDiscreteLinearOperator self) -> HypreParMatrix"},
+	 { (char *)"ParDiscreteLinearOperator_GetParBlocks", _wrap_ParDiscreteLinearOperator_GetParBlocks, METH_VARARGS, (char *)"ParDiscreteLinearOperator_GetParBlocks(ParDiscreteLinearOperator self, mfem::Array2D< mfem::HypreParMatrix * > & blocks)"},
+	 { (char *)"delete_ParDiscreteLinearOperator", _wrap_delete_ParDiscreteLinearOperator, METH_VARARGS, (char *)"delete_ParDiscreteLinearOperator(ParDiscreteLinearOperator self)"},
 	 { (char *)"ParDiscreteLinearOperator_swigregister", ParDiscreteLinearOperator_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -7735,7 +7775,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30400)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30400)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30400)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
   
   if (import_mpi4py() < 0)
