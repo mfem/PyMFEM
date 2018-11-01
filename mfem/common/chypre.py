@@ -1101,11 +1101,11 @@ def IdentityPyMat(m, col_starts = None, diag=1.0):
            col_starts = get_assumed_patitioning(m)
         rows =  col_starts[1] - col_starts[0]
 
-        try:
+        if np.iscomplexobj(diag):
             real = diag.real
             imag = diag.imag
-        except:
-            real = diag
+        else:
+            real = float(np.real(diag))
             imag = 0.0
         if real != 0.0:
             m1 = lil_matrix((rows, m))
