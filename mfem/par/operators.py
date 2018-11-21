@@ -106,6 +106,8 @@ import vector
 import array
 import ostream_typemap
 class Operator(_object):
+    """Proxy of C++ mfem::Operator class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Operator, name, value)
     __swig_getmethods__ = {}
@@ -113,6 +115,11 @@ class Operator(_object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::Operator self, int s=0) -> Operator
+        __init__(mfem::Operator self) -> Operator
+        __init__(mfem::Operator self, int h, int w) -> Operator
+        """
         if self.__class__ == Operator:
             _self = None
         else:
@@ -124,40 +131,71 @@ class Operator(_object):
             self.this = this
 
     def Height(self):
+        """Height(Operator self) -> int"""
         return _operators.Operator_Height(self)
 
+
     def NumRows(self):
+        """NumRows(Operator self) -> int"""
         return _operators.Operator_NumRows(self)
 
+
     def Width(self):
+        """Width(Operator self) -> int"""
         return _operators.Operator_Width(self)
 
+
     def NumCols(self):
+        """NumCols(Operator self) -> int"""
         return _operators.Operator_NumCols(self)
 
+
     def Mult(self, x, y):
+        """Mult(Operator self, Vector x, Vector y)"""
         return _operators.Operator_Mult(self, x, y)
 
+
     def MultTranspose(self, x, y):
+        """MultTranspose(Operator self, Vector x, Vector y)"""
         return _operators.Operator_MultTranspose(self, x, y)
 
+
     def GetGradient(self, x):
+        """GetGradient(Operator self, Vector x) -> Operator"""
         return _operators.Operator_GetGradient(self, x)
 
+
     def GetProlongation(self):
+        """GetProlongation(Operator self) -> Operator"""
         return _operators.Operator_GetProlongation(self)
 
+
     def GetRestriction(self):
+        """GetRestriction(Operator self) -> Operator"""
         return _operators.Operator_GetRestriction(self)
 
+
     def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
+        """
+        FormLinearSystem(Operator self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(Operator self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)
+        """
         return _operators.Operator_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
 
+
     def RecoverFEMSolution(self, X, b, x):
+        """RecoverFEMSolution(Operator self, Vector X, Vector b, Vector x)"""
         return _operators.Operator_RecoverFEMSolution(self, X, b, x)
 
+
     def PrintMatlab(self, out, n=0, m=0):
+        """
+        PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
+        PrintMatlab(Operator self, std::ostream & out, int n=0)
+        PrintMatlab(Operator self, std::ostream & out)
+        """
         return _operators.Operator_PrintMatlab(self, out, n, m)
+
     __swig_destroy__ = _operators.delete_Operator
     __del__ = lambda self: None
     ANY_TYPE = _operators.Operator_ANY_TYPE
@@ -171,7 +209,9 @@ class Operator(_object):
     PETSC_MATGENERIC = _operators.Operator_PETSC_MATGENERIC
 
     def GetType(self):
+        """GetType(Operator self) -> mfem::Operator::Type"""
         return _operators.Operator_GetType(self)
+
     def __disown__(self):
         self.this.disown()
         _operators.disown_Operator(self)
@@ -180,6 +220,8 @@ Operator_swigregister = _operators.Operator_swigregister
 Operator_swigregister(Operator)
 
 class TimeDependentOperator(Operator):
+    """Proxy of C++ mfem::TimeDependentOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -194,6 +236,15 @@ class TimeDependentOperator(Operator):
     HOMOGENEOUS = _operators.TimeDependentOperator_HOMOGENEOUS
 
     def __init__(self, *args):
+        """
+        __init__(mfem::TimeDependentOperator self, int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_) -> TimeDependentOperator
+        __init__(mfem::TimeDependentOperator self, int n=0, double t_=0.0) -> TimeDependentOperator
+        __init__(mfem::TimeDependentOperator self, int n=0) -> TimeDependentOperator
+        __init__(mfem::TimeDependentOperator self) -> TimeDependentOperator
+        __init__(mfem::TimeDependentOperator self, int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_) -> TimeDependentOperator
+        __init__(mfem::TimeDependentOperator self, int h, int w, double t_=0.0) -> TimeDependentOperator
+        __init__(mfem::TimeDependentOperator self, int h, int w) -> TimeDependentOperator
+        """
         if self.__class__ == TimeDependentOperator:
             _self = None
         else:
@@ -205,37 +256,59 @@ class TimeDependentOperator(Operator):
             self.this = this
 
     def GetTime(self):
+        """GetTime(TimeDependentOperator self) -> double"""
         return _operators.TimeDependentOperator_GetTime(self)
 
+
     def SetTime(self, _t):
+        """SetTime(TimeDependentOperator self, double const _t)"""
         return _operators.TimeDependentOperator_SetTime(self, _t)
 
+
     def isExplicit(self):
+        """isExplicit(TimeDependentOperator self) -> bool"""
         return _operators.TimeDependentOperator_isExplicit(self)
 
+
     def isImplicit(self):
+        """isImplicit(TimeDependentOperator self) -> bool"""
         return _operators.TimeDependentOperator_isImplicit(self)
 
+
     def isHomogeneous(self):
+        """isHomogeneous(TimeDependentOperator self) -> bool"""
         return _operators.TimeDependentOperator_isHomogeneous(self)
 
+
     def ExplicitMult(self, x, y):
+        """ExplicitMult(TimeDependentOperator self, Vector x, Vector y)"""
         return _operators.TimeDependentOperator_ExplicitMult(self, x, y)
 
+
     def ImplicitMult(self, x, k, y):
+        """ImplicitMult(TimeDependentOperator self, Vector x, Vector k, Vector y)"""
         return _operators.TimeDependentOperator_ImplicitMult(self, x, k, y)
 
+
     def Mult(self, x, y):
+        """Mult(TimeDependentOperator self, Vector x, Vector y)"""
         return _operators.TimeDependentOperator_Mult(self, x, y)
 
+
     def ImplicitSolve(self, dt, x, k):
+        """ImplicitSolve(TimeDependentOperator self, double const dt, Vector x, Vector k)"""
         return _operators.TimeDependentOperator_ImplicitSolve(self, dt, x, k)
 
+
     def GetImplicitGradient(self, x, k, shift):
+        """GetImplicitGradient(TimeDependentOperator self, Vector x, Vector k, double shift) -> Operator"""
         return _operators.TimeDependentOperator_GetImplicitGradient(self, x, k, shift)
 
+
     def GetExplicitGradient(self, x):
+        """GetExplicitGradient(TimeDependentOperator self, Vector x) -> Operator"""
         return _operators.TimeDependentOperator_GetExplicitGradient(self, x)
+
     __swig_destroy__ = _operators.delete_TimeDependentOperator
     __del__ = lambda self: None
     def __disown__(self):
@@ -246,6 +319,8 @@ TimeDependentOperator_swigregister = _operators.TimeDependentOperator_swigregist
 TimeDependentOperator_swigregister(TimeDependentOperator)
 
 class Solver(Operator):
+    """Proxy of C++ mfem::Solver class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -261,6 +336,13 @@ class Solver(Operator):
         iterative_mode = _swig_property(_operators.Solver_iterative_mode_get, _operators.Solver_iterative_mode_set)
 
     def __init__(self, *args):
+        """
+        __init__(mfem::Solver self, int s=0, bool iter_mode=False) -> Solver
+        __init__(mfem::Solver self, int s=0) -> Solver
+        __init__(mfem::Solver self) -> Solver
+        __init__(mfem::Solver self, int h, int w, bool iter_mode=False) -> Solver
+        __init__(mfem::Solver self, int h, int w) -> Solver
+        """
         if self.__class__ == Solver:
             _self = None
         else:
@@ -272,7 +354,9 @@ class Solver(Operator):
             self.this = this
 
     def SetOperator(self, op):
+        """SetOperator(Solver self, Operator op)"""
         return _operators.Solver_SetOperator(self, op)
+
     __swig_destroy__ = _operators.delete_Solver
     __del__ = lambda self: None
     def __disown__(self):
@@ -283,6 +367,8 @@ Solver_swigregister = _operators.Solver_swigregister
 Solver_swigregister(Solver)
 
 class IdentityOperator(Operator):
+    """Proxy of C++ mfem::IdentityOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -294,6 +380,7 @@ class IdentityOperator(Operator):
     __repr__ = _swig_repr
 
     def __init__(self, n):
+        """__init__(mfem::IdentityOperator self, int n) -> IdentityOperator"""
         this = _operators.new_IdentityOperator(n)
         try:
             self.this.append(this)
@@ -301,13 +388,17 @@ class IdentityOperator(Operator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(IdentityOperator self, Vector x, Vector y)"""
         return _operators.IdentityOperator_Mult(self, x, y)
+
     __swig_destroy__ = _operators.delete_IdentityOperator
     __del__ = lambda self: None
 IdentityOperator_swigregister = _operators.IdentityOperator_swigregister
 IdentityOperator_swigregister(IdentityOperator)
 
 class TransposeOperator(Operator):
+    """Proxy of C++ mfem::TransposeOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -319,6 +410,10 @@ class TransposeOperator(Operator):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::TransposeOperator self, Operator a) -> TransposeOperator
+        __init__(mfem::TransposeOperator self, Operator a) -> TransposeOperator
+        """
         this = _operators.new_TransposeOperator(*args)
         try:
             self.this.append(this)
@@ -326,16 +421,22 @@ class TransposeOperator(Operator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(TransposeOperator self, Vector x, Vector y)"""
         return _operators.TransposeOperator_Mult(self, x, y)
 
+
     def MultTranspose(self, x, y):
+        """MultTranspose(TransposeOperator self, Vector x, Vector y)"""
         return _operators.TransposeOperator_MultTranspose(self, x, y)
+
     __swig_destroy__ = _operators.delete_TransposeOperator
     __del__ = lambda self: None
 TransposeOperator_swigregister = _operators.TransposeOperator_swigregister
 TransposeOperator_swigregister(TransposeOperator)
 
 class ProductOperator(Operator):
+    """Proxy of C++ mfem::ProductOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -347,6 +448,7 @@ class ProductOperator(Operator):
     __repr__ = _swig_repr
 
     def __init__(self, A, B, ownA, ownB):
+        """__init__(mfem::ProductOperator self, Operator A, Operator B, bool ownA, bool ownB) -> ProductOperator"""
         this = _operators.new_ProductOperator(A, B, ownA, ownB)
         try:
             self.this.append(this)
@@ -354,16 +456,22 @@ class ProductOperator(Operator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(ProductOperator self, Vector x, Vector y)"""
         return _operators.ProductOperator_Mult(self, x, y)
 
+
     def MultTranspose(self, x, y):
+        """MultTranspose(ProductOperator self, Vector x, Vector y)"""
         return _operators.ProductOperator_MultTranspose(self, x, y)
+
     __swig_destroy__ = _operators.delete_ProductOperator
     __del__ = lambda self: None
 ProductOperator_swigregister = _operators.ProductOperator_swigregister
 ProductOperator_swigregister(ProductOperator)
 
 class RAPOperator(Operator):
+    """Proxy of C++ mfem::RAPOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -375,6 +483,7 @@ class RAPOperator(Operator):
     __repr__ = _swig_repr
 
     def __init__(self, Rt_, A_, P_):
+        """__init__(mfem::RAPOperator self, Operator Rt_, Operator A_, Operator P_) -> RAPOperator"""
         this = _operators.new_RAPOperator(Rt_, A_, P_)
         try:
             self.this.append(this)
@@ -382,16 +491,22 @@ class RAPOperator(Operator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(RAPOperator self, Vector x, Vector y)"""
         return _operators.RAPOperator_Mult(self, x, y)
 
+
     def MultTranspose(self, x, y):
+        """MultTranspose(RAPOperator self, Vector x, Vector y)"""
         return _operators.RAPOperator_MultTranspose(self, x, y)
+
     __swig_destroy__ = _operators.delete_RAPOperator
     __del__ = lambda self: None
 RAPOperator_swigregister = _operators.RAPOperator_swigregister
 RAPOperator_swigregister(RAPOperator)
 
 class TripleProductOperator(Operator):
+    """Proxy of C++ mfem::TripleProductOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -403,6 +518,7 @@ class TripleProductOperator(Operator):
     __repr__ = _swig_repr
 
     def __init__(self, A, B, C, ownA, ownB, ownC):
+        """__init__(mfem::TripleProductOperator self, Operator A, Operator B, Operator C, bool ownA, bool ownB, bool ownC) -> TripleProductOperator"""
         this = _operators.new_TripleProductOperator(A, B, C, ownA, ownB, ownC)
         try:
             self.this.append(this)
@@ -410,16 +526,22 @@ class TripleProductOperator(Operator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(TripleProductOperator self, Vector x, Vector y)"""
         return _operators.TripleProductOperator_Mult(self, x, y)
 
+
     def MultTranspose(self, x, y):
+        """MultTranspose(TripleProductOperator self, Vector x, Vector y)"""
         return _operators.TripleProductOperator_MultTranspose(self, x, y)
+
     __swig_destroy__ = _operators.delete_TripleProductOperator
     __del__ = lambda self: None
 TripleProductOperator_swigregister = _operators.TripleProductOperator_swigregister
 TripleProductOperator_swigregister(TripleProductOperator)
 
 class ConstrainedOperator(Operator):
+    """Proxy of C++ mfem::ConstrainedOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -431,6 +553,10 @@ class ConstrainedOperator(Operator):
     __repr__ = _swig_repr
 
     def __init__(self, A, list, own_A=False):
+        """
+        __init__(mfem::ConstrainedOperator self, Operator A, intArray list, bool own_A=False) -> ConstrainedOperator
+        __init__(mfem::ConstrainedOperator self, Operator A, intArray list) -> ConstrainedOperator
+        """
         this = _operators.new_ConstrainedOperator(A, list, own_A)
         try:
             self.this.append(this)
@@ -438,16 +564,22 @@ class ConstrainedOperator(Operator):
             self.this = this
 
     def EliminateRHS(self, x, b):
+        """EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"""
         return _operators.ConstrainedOperator_EliminateRHS(self, x, b)
 
+
     def Mult(self, x, y):
+        """Mult(ConstrainedOperator self, Vector x, Vector y)"""
         return _operators.ConstrainedOperator_Mult(self, x, y)
+
     __swig_destroy__ = _operators.delete_ConstrainedOperator
     __del__ = lambda self: None
 ConstrainedOperator_swigregister = _operators.ConstrainedOperator_swigregister
 ConstrainedOperator_swigregister(ConstrainedOperator)
 
 class PyOperatorBase(Operator):
+    """Proxy of C++ mfem::PyOperatorBase class."""
+
     __swig_setmethods__ = {}
     for _s in [Operator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -459,6 +591,11 @@ class PyOperatorBase(Operator):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::PyOperatorBase self, int s=0) -> PyOperatorBase
+        __init__(mfem::PyOperatorBase self) -> PyOperatorBase
+        __init__(mfem::PyOperatorBase self, int h, int w) -> PyOperatorBase
+        """
         if self.__class__ == PyOperatorBase:
             _self = None
         else:
@@ -470,10 +607,14 @@ class PyOperatorBase(Operator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(PyOperatorBase self, Vector x, Vector y)"""
         return _operators.PyOperatorBase_Mult(self, x, y)
 
+
     def _EvalMult(self, arg0):
+        """_EvalMult(PyOperatorBase self, Vector arg0) -> Vector"""
         return _operators.PyOperatorBase__EvalMult(self, arg0)
+
     __swig_destroy__ = _operators.delete_PyOperatorBase
     __del__ = lambda self: None
     def __disown__(self):
@@ -484,6 +625,8 @@ PyOperatorBase_swigregister = _operators.PyOperatorBase_swigregister
 PyOperatorBase_swigregister(PyOperatorBase)
 
 class PyTimeDependentOperatorBase(TimeDependentOperator):
+    """Proxy of C++ mfem::PyTimeDependentOperatorBase class."""
+
     __swig_setmethods__ = {}
     for _s in [TimeDependentOperator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -495,6 +638,13 @@ class PyTimeDependentOperatorBase(TimeDependentOperator):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::PyTimeDependentOperatorBase self, int n=0, double _t=0.0) -> PyTimeDependentOperatorBase
+        __init__(mfem::PyTimeDependentOperatorBase self, int n=0) -> PyTimeDependentOperatorBase
+        __init__(mfem::PyTimeDependentOperatorBase self) -> PyTimeDependentOperatorBase
+        __init__(mfem::PyTimeDependentOperatorBase self, int h, int w, double _t=0.0) -> PyTimeDependentOperatorBase
+        __init__(mfem::PyTimeDependentOperatorBase self, int h, int w) -> PyTimeDependentOperatorBase
+        """
         if self.__class__ == PyTimeDependentOperatorBase:
             _self = None
         else:
@@ -506,10 +656,14 @@ class PyTimeDependentOperatorBase(TimeDependentOperator):
             self.this = this
 
     def Mult(self, x, y):
+        """Mult(PyTimeDependentOperatorBase self, Vector x, Vector y)"""
         return _operators.PyTimeDependentOperatorBase_Mult(self, x, y)
 
+
     def _EvalMult(self, arg0):
+        """_EvalMult(PyTimeDependentOperatorBase self, Vector arg0) -> Vector"""
         return _operators.PyTimeDependentOperatorBase__EvalMult(self, arg0)
+
     __swig_destroy__ = _operators.delete_PyTimeDependentOperatorBase
     __del__ = lambda self: None
     def __disown__(self):

@@ -10963,84 +10963,125 @@ SWIGINTERN PyObject *PyTimeDependentOperatorBase_swigregister(PyObject *SWIGUNUS
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_Operator", _wrap_new_Operator, METH_VARARGS, NULL},
-	 { (char *)"Operator_Height", _wrap_Operator_Height, METH_VARARGS, NULL},
-	 { (char *)"Operator_NumRows", _wrap_Operator_NumRows, METH_VARARGS, NULL},
-	 { (char *)"Operator_Width", _wrap_Operator_Width, METH_VARARGS, NULL},
-	 { (char *)"Operator_NumCols", _wrap_Operator_NumCols, METH_VARARGS, NULL},
-	 { (char *)"Operator_Mult", _wrap_Operator_Mult, METH_VARARGS, NULL},
-	 { (char *)"Operator_MultTranspose", _wrap_Operator_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"Operator_GetGradient", _wrap_Operator_GetGradient, METH_VARARGS, NULL},
-	 { (char *)"Operator_GetProlongation", _wrap_Operator_GetProlongation, METH_VARARGS, NULL},
-	 { (char *)"Operator_GetRestriction", _wrap_Operator_GetRestriction, METH_VARARGS, NULL},
-	 { (char *)"Operator_FormLinearSystem", _wrap_Operator_FormLinearSystem, METH_VARARGS, NULL},
-	 { (char *)"Operator_RecoverFEMSolution", _wrap_Operator_RecoverFEMSolution, METH_VARARGS, NULL},
-	 { (char *)"Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, NULL},
-	 { (char *)"delete_Operator", _wrap_delete_Operator, METH_VARARGS, NULL},
-	 { (char *)"Operator_GetType", _wrap_Operator_GetType, METH_VARARGS, NULL},
+	 { (char *)"new_Operator", _wrap_new_Operator, METH_VARARGS, (char *)"\n"
+		"Operator(int s=0)\n"
+		"Operator()\n"
+		"new_Operator(PyObject * arg2, int h, int w) -> Operator\n"
+		""},
+	 { (char *)"Operator_Height", _wrap_Operator_Height, METH_VARARGS, (char *)"Operator_Height(Operator self) -> int"},
+	 { (char *)"Operator_NumRows", _wrap_Operator_NumRows, METH_VARARGS, (char *)"Operator_NumRows(Operator self) -> int"},
+	 { (char *)"Operator_Width", _wrap_Operator_Width, METH_VARARGS, (char *)"Operator_Width(Operator self) -> int"},
+	 { (char *)"Operator_NumCols", _wrap_Operator_NumCols, METH_VARARGS, (char *)"Operator_NumCols(Operator self) -> int"},
+	 { (char *)"Operator_Mult", _wrap_Operator_Mult, METH_VARARGS, (char *)"Operator_Mult(Operator self, Vector x, Vector y)"},
+	 { (char *)"Operator_MultTranspose", _wrap_Operator_MultTranspose, METH_VARARGS, (char *)"Operator_MultTranspose(Operator self, Vector x, Vector y)"},
+	 { (char *)"Operator_GetGradient", _wrap_Operator_GetGradient, METH_VARARGS, (char *)"Operator_GetGradient(Operator self, Vector x) -> Operator"},
+	 { (char *)"Operator_GetProlongation", _wrap_Operator_GetProlongation, METH_VARARGS, (char *)"Operator_GetProlongation(Operator self) -> Operator"},
+	 { (char *)"Operator_GetRestriction", _wrap_Operator_GetRestriction, METH_VARARGS, (char *)"Operator_GetRestriction(Operator self) -> Operator"},
+	 { (char *)"Operator_FormLinearSystem", _wrap_Operator_FormLinearSystem, METH_VARARGS, (char *)"\n"
+		"FormLinearSystem(intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)\n"
+		"Operator_FormLinearSystem(Operator self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)\n"
+		""},
+	 { (char *)"Operator_RecoverFEMSolution", _wrap_Operator_RecoverFEMSolution, METH_VARARGS, (char *)"Operator_RecoverFEMSolution(Operator self, Vector X, Vector b, Vector x)"},
+	 { (char *)"Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, (char *)"\n"
+		"PrintMatlab(std::ostream & out, int n=0, int m=0)\n"
+		"PrintMatlab(std::ostream & out, int n=0)\n"
+		"Operator_PrintMatlab(Operator self, std::ostream & out)\n"
+		""},
+	 { (char *)"delete_Operator", _wrap_delete_Operator, METH_VARARGS, (char *)"delete_Operator(Operator self)"},
+	 { (char *)"Operator_GetType", _wrap_Operator_GetType, METH_VARARGS, (char *)"Operator_GetType(Operator self) -> mfem::Operator::Type"},
 	 { (char *)"disown_Operator", _wrap_disown_Operator, METH_VARARGS, NULL},
 	 { (char *)"Operator_swigregister", Operator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_TimeDependentOperator", _wrap_new_TimeDependentOperator, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_GetTime", _wrap_TimeDependentOperator_GetTime, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_SetTime", _wrap_TimeDependentOperator_SetTime, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_isExplicit", _wrap_TimeDependentOperator_isExplicit, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_isImplicit", _wrap_TimeDependentOperator_isImplicit, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_isHomogeneous", _wrap_TimeDependentOperator_isHomogeneous, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_ExplicitMult", _wrap_TimeDependentOperator_ExplicitMult, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_ImplicitMult", _wrap_TimeDependentOperator_ImplicitMult, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_Mult", _wrap_TimeDependentOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_ImplicitSolve", _wrap_TimeDependentOperator_ImplicitSolve, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_GetImplicitGradient", _wrap_TimeDependentOperator_GetImplicitGradient, METH_VARARGS, NULL},
-	 { (char *)"TimeDependentOperator_GetExplicitGradient", _wrap_TimeDependentOperator_GetExplicitGradient, METH_VARARGS, NULL},
-	 { (char *)"delete_TimeDependentOperator", _wrap_delete_TimeDependentOperator, METH_VARARGS, NULL},
+	 { (char *)"new_TimeDependentOperator", _wrap_new_TimeDependentOperator, METH_VARARGS, (char *)"\n"
+		"TimeDependentOperator(int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_)\n"
+		"TimeDependentOperator(int n=0, double t_=0.0)\n"
+		"TimeDependentOperator(int n=0)\n"
+		"TimeDependentOperator()\n"
+		"TimeDependentOperator(int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_)\n"
+		"TimeDependentOperator(int h, int w, double t_=0.0)\n"
+		"new_TimeDependentOperator(PyObject * arg2, int h, int w) -> TimeDependentOperator\n"
+		""},
+	 { (char *)"TimeDependentOperator_GetTime", _wrap_TimeDependentOperator_GetTime, METH_VARARGS, (char *)"TimeDependentOperator_GetTime(TimeDependentOperator self) -> double"},
+	 { (char *)"TimeDependentOperator_SetTime", _wrap_TimeDependentOperator_SetTime, METH_VARARGS, (char *)"TimeDependentOperator_SetTime(TimeDependentOperator self, double const _t)"},
+	 { (char *)"TimeDependentOperator_isExplicit", _wrap_TimeDependentOperator_isExplicit, METH_VARARGS, (char *)"TimeDependentOperator_isExplicit(TimeDependentOperator self) -> bool"},
+	 { (char *)"TimeDependentOperator_isImplicit", _wrap_TimeDependentOperator_isImplicit, METH_VARARGS, (char *)"TimeDependentOperator_isImplicit(TimeDependentOperator self) -> bool"},
+	 { (char *)"TimeDependentOperator_isHomogeneous", _wrap_TimeDependentOperator_isHomogeneous, METH_VARARGS, (char *)"TimeDependentOperator_isHomogeneous(TimeDependentOperator self) -> bool"},
+	 { (char *)"TimeDependentOperator_ExplicitMult", _wrap_TimeDependentOperator_ExplicitMult, METH_VARARGS, (char *)"TimeDependentOperator_ExplicitMult(TimeDependentOperator self, Vector x, Vector y)"},
+	 { (char *)"TimeDependentOperator_ImplicitMult", _wrap_TimeDependentOperator_ImplicitMult, METH_VARARGS, (char *)"TimeDependentOperator_ImplicitMult(TimeDependentOperator self, Vector x, Vector k, Vector y)"},
+	 { (char *)"TimeDependentOperator_Mult", _wrap_TimeDependentOperator_Mult, METH_VARARGS, (char *)"TimeDependentOperator_Mult(TimeDependentOperator self, Vector x, Vector y)"},
+	 { (char *)"TimeDependentOperator_ImplicitSolve", _wrap_TimeDependentOperator_ImplicitSolve, METH_VARARGS, (char *)"TimeDependentOperator_ImplicitSolve(TimeDependentOperator self, double const dt, Vector x, Vector k)"},
+	 { (char *)"TimeDependentOperator_GetImplicitGradient", _wrap_TimeDependentOperator_GetImplicitGradient, METH_VARARGS, (char *)"TimeDependentOperator_GetImplicitGradient(TimeDependentOperator self, Vector x, Vector k, double shift) -> Operator"},
+	 { (char *)"TimeDependentOperator_GetExplicitGradient", _wrap_TimeDependentOperator_GetExplicitGradient, METH_VARARGS, (char *)"TimeDependentOperator_GetExplicitGradient(TimeDependentOperator self, Vector x) -> Operator"},
+	 { (char *)"delete_TimeDependentOperator", _wrap_delete_TimeDependentOperator, METH_VARARGS, (char *)"delete_TimeDependentOperator(TimeDependentOperator self)"},
 	 { (char *)"disown_TimeDependentOperator", _wrap_disown_TimeDependentOperator, METH_VARARGS, NULL},
 	 { (char *)"TimeDependentOperator_swigregister", TimeDependentOperator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Solver_iterative_mode_set", _wrap_Solver_iterative_mode_set, METH_VARARGS, NULL},
-	 { (char *)"Solver_iterative_mode_get", _wrap_Solver_iterative_mode_get, METH_VARARGS, NULL},
-	 { (char *)"new_Solver", _wrap_new_Solver, METH_VARARGS, NULL},
-	 { (char *)"Solver_SetOperator", _wrap_Solver_SetOperator, METH_VARARGS, NULL},
-	 { (char *)"delete_Solver", _wrap_delete_Solver, METH_VARARGS, NULL},
+	 { (char *)"Solver_iterative_mode_set", _wrap_Solver_iterative_mode_set, METH_VARARGS, (char *)"Solver_iterative_mode_set(Solver self, bool iterative_mode)"},
+	 { (char *)"Solver_iterative_mode_get", _wrap_Solver_iterative_mode_get, METH_VARARGS, (char *)"Solver_iterative_mode_get(Solver self) -> bool"},
+	 { (char *)"new_Solver", _wrap_new_Solver, METH_VARARGS, (char *)"\n"
+		"Solver(int s=0, bool iter_mode=False)\n"
+		"Solver(int s=0)\n"
+		"Solver()\n"
+		"Solver(int h, int w, bool iter_mode=False)\n"
+		"new_Solver(PyObject * arg2, int h, int w) -> Solver\n"
+		""},
+	 { (char *)"Solver_SetOperator", _wrap_Solver_SetOperator, METH_VARARGS, (char *)"Solver_SetOperator(Solver self, Operator op)"},
+	 { (char *)"delete_Solver", _wrap_delete_Solver, METH_VARARGS, (char *)"delete_Solver(Solver self)"},
 	 { (char *)"disown_Solver", _wrap_disown_Solver, METH_VARARGS, NULL},
 	 { (char *)"Solver_swigregister", Solver_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_IdentityOperator", _wrap_new_IdentityOperator, METH_VARARGS, NULL},
-	 { (char *)"IdentityOperator_Mult", _wrap_IdentityOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"delete_IdentityOperator", _wrap_delete_IdentityOperator, METH_VARARGS, NULL},
+	 { (char *)"new_IdentityOperator", _wrap_new_IdentityOperator, METH_VARARGS, (char *)"new_IdentityOperator(int n) -> IdentityOperator"},
+	 { (char *)"IdentityOperator_Mult", _wrap_IdentityOperator_Mult, METH_VARARGS, (char *)"IdentityOperator_Mult(IdentityOperator self, Vector x, Vector y)"},
+	 { (char *)"delete_IdentityOperator", _wrap_delete_IdentityOperator, METH_VARARGS, (char *)"delete_IdentityOperator(IdentityOperator self)"},
 	 { (char *)"IdentityOperator_swigregister", IdentityOperator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_TransposeOperator", _wrap_new_TransposeOperator, METH_VARARGS, NULL},
-	 { (char *)"TransposeOperator_Mult", _wrap_TransposeOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"TransposeOperator_MultTranspose", _wrap_TransposeOperator_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"delete_TransposeOperator", _wrap_delete_TransposeOperator, METH_VARARGS, NULL},
+	 { (char *)"new_TransposeOperator", _wrap_new_TransposeOperator, METH_VARARGS, (char *)"\n"
+		"TransposeOperator(Operator a)\n"
+		"new_TransposeOperator(Operator a) -> TransposeOperator\n"
+		""},
+	 { (char *)"TransposeOperator_Mult", _wrap_TransposeOperator_Mult, METH_VARARGS, (char *)"TransposeOperator_Mult(TransposeOperator self, Vector x, Vector y)"},
+	 { (char *)"TransposeOperator_MultTranspose", _wrap_TransposeOperator_MultTranspose, METH_VARARGS, (char *)"TransposeOperator_MultTranspose(TransposeOperator self, Vector x, Vector y)"},
+	 { (char *)"delete_TransposeOperator", _wrap_delete_TransposeOperator, METH_VARARGS, (char *)"delete_TransposeOperator(TransposeOperator self)"},
 	 { (char *)"TransposeOperator_swigregister", TransposeOperator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_ProductOperator", _wrap_new_ProductOperator, METH_VARARGS, NULL},
-	 { (char *)"ProductOperator_Mult", _wrap_ProductOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"ProductOperator_MultTranspose", _wrap_ProductOperator_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"delete_ProductOperator", _wrap_delete_ProductOperator, METH_VARARGS, NULL},
+	 { (char *)"new_ProductOperator", _wrap_new_ProductOperator, METH_VARARGS, (char *)"new_ProductOperator(Operator A, Operator B, bool ownA, bool ownB) -> ProductOperator"},
+	 { (char *)"ProductOperator_Mult", _wrap_ProductOperator_Mult, METH_VARARGS, (char *)"ProductOperator_Mult(ProductOperator self, Vector x, Vector y)"},
+	 { (char *)"ProductOperator_MultTranspose", _wrap_ProductOperator_MultTranspose, METH_VARARGS, (char *)"ProductOperator_MultTranspose(ProductOperator self, Vector x, Vector y)"},
+	 { (char *)"delete_ProductOperator", _wrap_delete_ProductOperator, METH_VARARGS, (char *)"delete_ProductOperator(ProductOperator self)"},
 	 { (char *)"ProductOperator_swigregister", ProductOperator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_RAPOperator", _wrap_new_RAPOperator, METH_VARARGS, NULL},
-	 { (char *)"RAPOperator_Mult", _wrap_RAPOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"RAPOperator_MultTranspose", _wrap_RAPOperator_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"delete_RAPOperator", _wrap_delete_RAPOperator, METH_VARARGS, NULL},
+	 { (char *)"new_RAPOperator", _wrap_new_RAPOperator, METH_VARARGS, (char *)"new_RAPOperator(Operator Rt_, Operator A_, Operator P_) -> RAPOperator"},
+	 { (char *)"RAPOperator_Mult", _wrap_RAPOperator_Mult, METH_VARARGS, (char *)"RAPOperator_Mult(RAPOperator self, Vector x, Vector y)"},
+	 { (char *)"RAPOperator_MultTranspose", _wrap_RAPOperator_MultTranspose, METH_VARARGS, (char *)"RAPOperator_MultTranspose(RAPOperator self, Vector x, Vector y)"},
+	 { (char *)"delete_RAPOperator", _wrap_delete_RAPOperator, METH_VARARGS, (char *)"delete_RAPOperator(RAPOperator self)"},
 	 { (char *)"RAPOperator_swigregister", RAPOperator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_TripleProductOperator", _wrap_new_TripleProductOperator, METH_VARARGS, NULL},
-	 { (char *)"TripleProductOperator_Mult", _wrap_TripleProductOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"TripleProductOperator_MultTranspose", _wrap_TripleProductOperator_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"delete_TripleProductOperator", _wrap_delete_TripleProductOperator, METH_VARARGS, NULL},
+	 { (char *)"new_TripleProductOperator", _wrap_new_TripleProductOperator, METH_VARARGS, (char *)"new_TripleProductOperator(Operator A, Operator B, Operator C, bool ownA, bool ownB, bool ownC) -> TripleProductOperator"},
+	 { (char *)"TripleProductOperator_Mult", _wrap_TripleProductOperator_Mult, METH_VARARGS, (char *)"TripleProductOperator_Mult(TripleProductOperator self, Vector x, Vector y)"},
+	 { (char *)"TripleProductOperator_MultTranspose", _wrap_TripleProductOperator_MultTranspose, METH_VARARGS, (char *)"TripleProductOperator_MultTranspose(TripleProductOperator self, Vector x, Vector y)"},
+	 { (char *)"delete_TripleProductOperator", _wrap_delete_TripleProductOperator, METH_VARARGS, (char *)"delete_TripleProductOperator(TripleProductOperator self)"},
 	 { (char *)"TripleProductOperator_swigregister", TripleProductOperator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_ConstrainedOperator", _wrap_new_ConstrainedOperator, METH_VARARGS, NULL},
-	 { (char *)"ConstrainedOperator_EliminateRHS", _wrap_ConstrainedOperator_EliminateRHS, METH_VARARGS, NULL},
-	 { (char *)"ConstrainedOperator_Mult", _wrap_ConstrainedOperator_Mult, METH_VARARGS, NULL},
-	 { (char *)"delete_ConstrainedOperator", _wrap_delete_ConstrainedOperator, METH_VARARGS, NULL},
+	 { (char *)"new_ConstrainedOperator", _wrap_new_ConstrainedOperator, METH_VARARGS, (char *)"\n"
+		"ConstrainedOperator(Operator A, intArray list, bool own_A=False)\n"
+		"new_ConstrainedOperator(Operator A, intArray list) -> ConstrainedOperator\n"
+		""},
+	 { (char *)"ConstrainedOperator_EliminateRHS", _wrap_ConstrainedOperator_EliminateRHS, METH_VARARGS, (char *)"ConstrainedOperator_EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"},
+	 { (char *)"ConstrainedOperator_Mult", _wrap_ConstrainedOperator_Mult, METH_VARARGS, (char *)"ConstrainedOperator_Mult(ConstrainedOperator self, Vector x, Vector y)"},
+	 { (char *)"delete_ConstrainedOperator", _wrap_delete_ConstrainedOperator, METH_VARARGS, (char *)"delete_ConstrainedOperator(ConstrainedOperator self)"},
 	 { (char *)"ConstrainedOperator_swigregister", ConstrainedOperator_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_PyOperatorBase", _wrap_new_PyOperatorBase, METH_VARARGS, NULL},
-	 { (char *)"PyOperatorBase_Mult", _wrap_PyOperatorBase_Mult, METH_VARARGS, NULL},
-	 { (char *)"PyOperatorBase__EvalMult", _wrap_PyOperatorBase__EvalMult, METH_VARARGS, NULL},
-	 { (char *)"delete_PyOperatorBase", _wrap_delete_PyOperatorBase, METH_VARARGS, NULL},
+	 { (char *)"new_PyOperatorBase", _wrap_new_PyOperatorBase, METH_VARARGS, (char *)"\n"
+		"PyOperatorBase(int s=0)\n"
+		"PyOperatorBase()\n"
+		"new_PyOperatorBase(PyObject * arg2, int h, int w) -> PyOperatorBase\n"
+		""},
+	 { (char *)"PyOperatorBase_Mult", _wrap_PyOperatorBase_Mult, METH_VARARGS, (char *)"PyOperatorBase_Mult(PyOperatorBase self, Vector x, Vector y)"},
+	 { (char *)"PyOperatorBase__EvalMult", _wrap_PyOperatorBase__EvalMult, METH_VARARGS, (char *)"PyOperatorBase__EvalMult(PyOperatorBase self, Vector arg0) -> Vector"},
+	 { (char *)"delete_PyOperatorBase", _wrap_delete_PyOperatorBase, METH_VARARGS, (char *)"delete_PyOperatorBase(PyOperatorBase self)"},
 	 { (char *)"disown_PyOperatorBase", _wrap_disown_PyOperatorBase, METH_VARARGS, NULL},
 	 { (char *)"PyOperatorBase_swigregister", PyOperatorBase_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_PyTimeDependentOperatorBase", _wrap_new_PyTimeDependentOperatorBase, METH_VARARGS, NULL},
-	 { (char *)"PyTimeDependentOperatorBase_Mult", _wrap_PyTimeDependentOperatorBase_Mult, METH_VARARGS, NULL},
-	 { (char *)"PyTimeDependentOperatorBase__EvalMult", _wrap_PyTimeDependentOperatorBase__EvalMult, METH_VARARGS, NULL},
-	 { (char *)"delete_PyTimeDependentOperatorBase", _wrap_delete_PyTimeDependentOperatorBase, METH_VARARGS, NULL},
+	 { (char *)"new_PyTimeDependentOperatorBase", _wrap_new_PyTimeDependentOperatorBase, METH_VARARGS, (char *)"\n"
+		"PyTimeDependentOperatorBase(int n=0, double _t=0.0)\n"
+		"PyTimeDependentOperatorBase(int n=0)\n"
+		"PyTimeDependentOperatorBase()\n"
+		"PyTimeDependentOperatorBase(int h, int w, double _t=0.0)\n"
+		"new_PyTimeDependentOperatorBase(PyObject * arg2, int h, int w) -> PyTimeDependentOperatorBase\n"
+		""},
+	 { (char *)"PyTimeDependentOperatorBase_Mult", _wrap_PyTimeDependentOperatorBase_Mult, METH_VARARGS, (char *)"PyTimeDependentOperatorBase_Mult(PyTimeDependentOperatorBase self, Vector x, Vector y)"},
+	 { (char *)"PyTimeDependentOperatorBase__EvalMult", _wrap_PyTimeDependentOperatorBase__EvalMult, METH_VARARGS, (char *)"PyTimeDependentOperatorBase__EvalMult(PyTimeDependentOperatorBase self, Vector arg0) -> Vector"},
+	 { (char *)"delete_PyTimeDependentOperatorBase", _wrap_delete_PyTimeDependentOperatorBase, METH_VARARGS, (char *)"delete_PyTimeDependentOperatorBase(PyTimeDependentOperatorBase self)"},
 	 { (char *)"disown_PyTimeDependentOperatorBase", _wrap_disown_PyTimeDependentOperatorBase, METH_VARARGS, NULL},
 	 { (char *)"PyTimeDependentOperatorBase_swigregister", PyTimeDependentOperatorBase_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

@@ -1100,16 +1100,31 @@ def IdentityPyMat(m, col_starts = None, diag=1.0):
         if col_starts is None:
            col_starts = get_assumed_patitioning(m)
         rows =  col_starts[1] - col_starts[0]
+
+        if np.iscomplexobj(diag):
+            real = diag.real
+            imag = diag.imag
+        else:
+            real = float(np.real(diag))
+            imag = 0.0
+        #if real != 0.0:
         m1 = lil_matrix((rows, m))
         for i in range(rows):
-           m1[i, i+col_starts[0]] = diag
+            m1[i, i+col_starts[0]] = real
         m1 = m1.tocsr() 
-        return CHypreMat(m1, None, )
+
+        if imag != 0.0:
+            m2 = lil_matrix((rows, m))
+            for i in range(rows):
+                m2[i, i+col_starts[0]] = imag
+            m2 = m2.tocsr() 
+        else:
+            m2 = None
+        return CHypreMat(m1, m2, )
     else:
         m1 = coo_matrix((m, m))
         m1.setdiag(np.zeros(m)+diag)
         return m1.tocsr()
-     
 
 def HStackPyVec(vecs, col_starts = None):
     '''

@@ -33,7 +33,7 @@ if len(args) == 1 and isinstance(args[0], ndarray):
         if args[0].dtype != 'float64':
             raise ValueError('Must be float64 array')
         elif args[0].ndim != 2:
-            raise ValueError('Ndim must be one') 
+            raise ValueError('Ndim must be two') 
         elif args[0].shape[0] != _densemat.DenseMatrix_Size(self):
             raise ValueError('Length does not match')
         else:

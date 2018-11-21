@@ -144,6 +144,8 @@ import communication
 import sets
 import bilinearform
 class ParBilinearForm(bilinearform.BilinearForm):
+    """Proxy of C++ mfem::ParBilinearForm class."""
+
     __swig_setmethods__ = {}
     for _s in [bilinearform.BilinearForm]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -155,6 +157,10 @@ class ParBilinearForm(bilinearform.BilinearForm):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::ParBilinearForm self, ParFiniteElementSpace pf) -> ParBilinearForm
+        __init__(mfem::ParBilinearForm self, ParFiniteElementSpace pf, ParBilinearForm bf) -> ParBilinearForm
+        """
         this = _pbilinearform.new_ParBilinearForm(*args)
         try:
             self.this.append(this)
@@ -162,58 +168,123 @@ class ParBilinearForm(bilinearform.BilinearForm):
             self.this = this
 
     def KeepNbrBlock(self, knb=True):
+        """
+        KeepNbrBlock(ParBilinearForm self, bool knb=True)
+        KeepNbrBlock(ParBilinearForm self)
+        """
         return _pbilinearform.ParBilinearForm_KeepNbrBlock(self, knb)
 
+
     def SetOperatorType(self, tid):
+        """SetOperatorType(ParBilinearForm self, mfem::Operator::Type tid)"""
         return _pbilinearform.ParBilinearForm_SetOperatorType(self, tid)
 
+
     def Assemble(self, skip_zeros=1):
+        """
+        Assemble(ParBilinearForm self, int skip_zeros=1)
+        Assemble(ParBilinearForm self)
+        """
         return _pbilinearform.ParBilinearForm_Assemble(self, skip_zeros)
 
+
     def ParallelAssembleElim(self, *args):
+        """
+        ParallelAssembleElim(ParBilinearForm self) -> HypreParMatrix
+        ParallelAssembleElim(ParBilinearForm self, OperatorHandle A_elim)
+        """
         return _pbilinearform.ParBilinearForm_ParallelAssembleElim(self, *args)
 
+
     def ParallelAssemble(self, *args):
+        """
+        ParallelAssemble(ParBilinearForm self) -> HypreParMatrix
+        ParallelAssemble(ParBilinearForm self, SparseMatrix m) -> HypreParMatrix
+        ParallelAssemble(ParBilinearForm self, OperatorHandle A)
+        ParallelAssemble(ParBilinearForm self, OperatorHandle A, SparseMatrix A_local)
+        """
         return _pbilinearform.ParBilinearForm_ParallelAssemble(self, *args)
 
+
     def ParallelEliminateEssentialBC(self, *args):
+        """
+        ParallelEliminateEssentialBC(ParBilinearForm self, intArray bdr_attr_is_ess, HypreParMatrix A, HypreParVector X, HypreParVector B)
+        ParallelEliminateEssentialBC(ParBilinearForm self, intArray bdr_attr_is_ess, HypreParMatrix A) -> HypreParMatrix
+        """
         return _pbilinearform.ParBilinearForm_ParallelEliminateEssentialBC(self, *args)
 
+
     def ParallelEliminateTDofs(self, tdofs_list, A):
+        """ParallelEliminateTDofs(ParBilinearForm self, intArray tdofs_list, HypreParMatrix A) -> HypreParMatrix"""
         return _pbilinearform.ParBilinearForm_ParallelEliminateTDofs(self, tdofs_list, A)
 
+
     def TrueAddMult(self, x, y, a=1.0):
+        """
+        TrueAddMult(ParBilinearForm self, Vector x, Vector y, double const a=1.0)
+        TrueAddMult(ParBilinearForm self, Vector x, Vector y)
+        """
         return _pbilinearform.ParBilinearForm_TrueAddMult(self, x, y, a)
 
+
     def ParFESpace(self):
+        """ParFESpace(ParBilinearForm self) -> ParFiniteElementSpace"""
         return _pbilinearform.ParBilinearForm_ParFESpace(self)
 
+
     def SCParFESpace(self):
+        """SCParFESpace(ParBilinearForm self) -> ParFiniteElementSpace"""
         return _pbilinearform.ParBilinearForm_SCParFESpace(self)
 
+
     def GetProlongation(self):
+        """GetProlongation(ParBilinearForm self) -> Operator"""
         return _pbilinearform.ParBilinearForm_GetProlongation(self)
 
+
     def GetRestriction(self):
+        """GetRestriction(ParBilinearForm self) -> Operator"""
         return _pbilinearform.ParBilinearForm_GetRestriction(self)
 
+
     def RecoverFEMSolution(self, X, b, x):
+        """RecoverFEMSolution(ParBilinearForm self, Vector X, Vector b, Vector x)"""
         return _pbilinearform.ParBilinearForm_RecoverFEMSolution(self, X, b, x)
 
+
     def Update(self, nfes=None):
+        """
+        Update(ParBilinearForm self, FiniteElementSpace nfes=None)
+        Update(ParBilinearForm self)
+        """
         return _pbilinearform.ParBilinearForm_Update(self, nfes)
+
     __swig_destroy__ = _pbilinearform.delete_ParBilinearForm
     __del__ = lambda self: None
 
     def FormLinearSystem(self, *args):
+        """
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B)
+        """
         return _pbilinearform.ParBilinearForm_FormLinearSystem(self, *args)
 
+
     def FormSystemMatrix(self, *args):
+        """
+        FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, OperatorHandle A)
+        FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, HypreParMatrix A)
+        """
         return _pbilinearform.ParBilinearForm_FormSystemMatrix(self, *args)
+
 ParBilinearForm_swigregister = _pbilinearform.ParBilinearForm_swigregister
 ParBilinearForm_swigregister(ParBilinearForm)
 
 class ParMixedBilinearForm(bilinearform.MixedBilinearForm):
+    """Proxy of C++ mfem::ParMixedBilinearForm class."""
+
     __swig_setmethods__ = {}
     for _s in [bilinearform.MixedBilinearForm]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -225,6 +296,7 @@ class ParMixedBilinearForm(bilinearform.MixedBilinearForm):
     __repr__ = _swig_repr
 
     def __init__(self, trial_fes, test_fes):
+        """__init__(mfem::ParMixedBilinearForm self, ParFiniteElementSpace trial_fes, ParFiniteElementSpace test_fes) -> ParMixedBilinearForm"""
         this = _pbilinearform.new_ParMixedBilinearForm(trial_fes, test_fes)
         try:
             self.this.append(this)
@@ -232,16 +304,28 @@ class ParMixedBilinearForm(bilinearform.MixedBilinearForm):
             self.this = this
 
     def ParallelAssemble(self, *args):
+        """
+        ParallelAssemble(ParMixedBilinearForm self) -> HypreParMatrix
+        ParallelAssemble(ParMixedBilinearForm self, OperatorHandle A)
+        """
         return _pbilinearform.ParMixedBilinearForm_ParallelAssemble(self, *args)
 
+
     def TrueAddMult(self, x, y, a=1.0):
+        """
+        TrueAddMult(ParMixedBilinearForm self, Vector x, Vector y, double const a=1.0)
+        TrueAddMult(ParMixedBilinearForm self, Vector x, Vector y)
+        """
         return _pbilinearform.ParMixedBilinearForm_TrueAddMult(self, x, y, a)
+
     __swig_destroy__ = _pbilinearform.delete_ParMixedBilinearForm
     __del__ = lambda self: None
 ParMixedBilinearForm_swigregister = _pbilinearform.ParMixedBilinearForm_swigregister
 ParMixedBilinearForm_swigregister(ParMixedBilinearForm)
 
 class ParDiscreteLinearOperator(bilinearform.DiscreteLinearOperator):
+    """Proxy of C++ mfem::ParDiscreteLinearOperator class."""
+
     __swig_setmethods__ = {}
     for _s in [bilinearform.DiscreteLinearOperator]:
         __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
@@ -253,6 +337,7 @@ class ParDiscreteLinearOperator(bilinearform.DiscreteLinearOperator):
     __repr__ = _swig_repr
 
     def __init__(self, dfes, rfes):
+        """__init__(mfem::ParDiscreteLinearOperator self, ParFiniteElementSpace dfes, ParFiniteElementSpace rfes) -> ParDiscreteLinearOperator"""
         this = _pbilinearform.new_ParDiscreteLinearOperator(dfes, rfes)
         try:
             self.this.append(this)
@@ -260,10 +345,14 @@ class ParDiscreteLinearOperator(bilinearform.DiscreteLinearOperator):
             self.this = this
 
     def ParallelAssemble(self):
+        """ParallelAssemble(ParDiscreteLinearOperator self) -> HypreParMatrix"""
         return _pbilinearform.ParDiscreteLinearOperator_ParallelAssemble(self)
 
+
     def GetParBlocks(self, blocks):
+        """GetParBlocks(ParDiscreteLinearOperator self, mfem::Array2D< mfem::HypreParMatrix * > & blocks)"""
         return _pbilinearform.ParDiscreteLinearOperator_GetParBlocks(self, blocks)
+
     __swig_destroy__ = _pbilinearform.delete_ParDiscreteLinearOperator
     __del__ = lambda self: None
 ParDiscreteLinearOperator_swigregister = _pbilinearform.ParDiscreteLinearOperator_swigregister

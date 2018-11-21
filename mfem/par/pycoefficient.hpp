@@ -25,7 +25,7 @@ private:
 public:
  VectorPyCoefficientBase(int dim,  int tdep, Coefficient *q=NULL): VectorFunctionCoefficient(dim, fake_func_vec, q), isTimeDependent(tdep) { }
    virtual void Eval(DenseMatrix &M, ElementTransformation &T,
-                     const IntegrationRule &ir);
+      const IntegrationRule &ir);
    virtual void Eval(Vector &V, ElementTransformation &T,
                      const IntegrationPoint &ip);
    virtual void _EvalPy(Vector &, Vector &){};

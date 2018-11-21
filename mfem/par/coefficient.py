@@ -110,7 +110,6 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _coefficient.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _coefficient.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _coefficient.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _coefficient.MFEM_VERSION_PATCH
-MFEM_GIT_STRING = _coefficient.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _coefficient.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _coefficient.MFEM_HYPRE_VERSION
 import array
@@ -1213,7 +1212,7 @@ class VectorPyCoefficientT(VectorPyCoefficientBase):
        V.Assign(v)	 	 	 
 
    def EvalValue(self, x, t):
-       return [0,0,0]
+       return [0.0,0.0,0.0]
 
 class MatrixPyCoefficient(MatrixPyCoefficientBase):
    def __init__(self, dim):
@@ -1235,7 +1234,7 @@ class MatrixPyCoefficientT(MatrixPyCoefficientBase):
        K.Assign(k)	 	 	 	 	 	 
 
    def EvalValue(self, x, t):
-       return np.array([[0,0,0], [0,0,0] [0,0,0]])
+       return np.array([[0.0,0.0,0.0], [0.0,0.0,0.0] [0.0,0.0,0.0]])
 
 
 # This file is compatible with both classic and new-style classes.

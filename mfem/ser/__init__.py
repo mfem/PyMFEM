@@ -7,12 +7,6 @@ if mfem.mfem_mode == 'parallel':
    raise ImportError("MFEM parallel mode is already loaded")
 debug_print = mfem.debug_print
 
-import sys, ctypes
-## libmfem.a is linked only with _array.so
-## this make sure that symbols are resovled
-rtld_now = sys.getdlopenflags()
-sys.setdlopenflags(ctypes.RTLD_GLOBAL|sys.getdlopenflags())
-
 from  array import *
 from  point import *
 from  segment import *
@@ -50,5 +44,5 @@ from  element import *
 from  nonlininteg import *
 from  nonlinearform import *
 
-sys.setdlopenflags(rtld_now)
+
 

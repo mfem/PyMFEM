@@ -10,7 +10,7 @@ def nicePrint(*s):
     comm.Barrier() 
     for i in range(nproc):
         comm.Barrier()        
-        if i == myid: print("[ID:"+str(myid)+"]" + ''.join([str(ss) for ss in s]))
+        if i == myid: print("[ID:"+str(myid)+"]" + ' '.join([str(ss) for ss in s]))
         comm.Barrier()
     
 def niceCall(m, *args, **kargs):        
