@@ -1107,13 +1107,12 @@ def IdentityPyMat(m, col_starts = None, diag=1.0):
         else:
             real = float(np.real(diag))
             imag = 0.0
-        if real != 0.0:
-            m1 = lil_matrix((rows, m))
-            for i in range(rows):
-                m1[i, i+col_starts[0]] = real
-            m1 = m1.tocsr() 
-        else:
-            m1 = None
+        #if real != 0.0:
+        m1 = lil_matrix((rows, m))
+        for i in range(rows):
+            m1[i, i+col_starts[0]] = real
+        m1 = m1.tocsr() 
+
         if imag != 0.0:
             m2 = lil_matrix((rows, m))
             for i in range(rows):
@@ -1126,7 +1125,6 @@ def IdentityPyMat(m, col_starts = None, diag=1.0):
         m1 = coo_matrix((m, m))
         m1.setdiag(np.zeros(m)+diag)
         return m1.tocsr()
-     
 
 def HStackPyVec(vecs, col_starts = None):
     '''
