@@ -26,6 +26,16 @@ def run_test():
     print(mesh.GetFaceElements(1))
     
     assert mesh.GetBdrElementAdjacentElement(1) == (1, 0), "GetBdrElementadjacentElement failed"
+
+    i = 0
+    Tr = mesh.GetElementTransformation(i)
+    print(Tr.Weight())
+    Tr = mesh.GetBdrElementTransformation(i)
+    print(Tr.Weight())    
+    Tr = mesh.GetFaceTransformation(i)
+    print(Tr.Weight())    
+    Tr = mesh.GetEdgeTransformation(i)
+    print(Tr.Weight())
     
 if __name__=='__main__':
     if len(sys.argv) > 1 and sys.argv[1] == '-p':   

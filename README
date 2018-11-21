@@ -132,6 +132,13 @@ to find more detail of the MFEM libirary.
             GetFaceVertices(i)
             GetElementFaces(i)
 	    GetBdrElementAdjacentElement()
+
+         These methods returns an IsoparametricTransformation object
+	 
+            GetElementTransformation(i)
+            GetBdrElementTransformation(i)
+            GetFaceTransformation(i)
+            GetEdgeTransformation(i)
 	    
 	 pointer passing in following methos are returned
 	 as tuple

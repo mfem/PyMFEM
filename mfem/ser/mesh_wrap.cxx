@@ -27244,177 +27244,432 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, NULL},
 	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, NULL},
 	 { (char *)"doublep_swigregister", doublep_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Mesh_attributes_get", _wrap_Mesh_attributes_get, METH_VARARGS, NULL},
-	 { (char *)"Mesh_bdr_attributes_get", _wrap_Mesh_bdr_attributes_get, METH_VARARGS, NULL},
-	 { (char *)"Mesh_NURBSext_set", _wrap_Mesh_NURBSext_set, METH_VARARGS, NULL},
-	 { (char *)"Mesh_NURBSext_get", _wrap_Mesh_NURBSext_get, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ncmesh_set", _wrap_Mesh_ncmesh_set, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ncmesh_get", _wrap_Mesh_ncmesh_get, METH_VARARGS, NULL},
+	 { (char *)"Mesh_attributes_get", _wrap_Mesh_attributes_get, METH_VARARGS, (char *)"Mesh_attributes_get(Mesh self) -> intArray"},
+	 { (char *)"Mesh_bdr_attributes_get", _wrap_Mesh_bdr_attributes_get, METH_VARARGS, (char *)"Mesh_bdr_attributes_get(Mesh self) -> intArray"},
+	 { (char *)"Mesh_NURBSext_set", _wrap_Mesh_NURBSext_set, METH_VARARGS, (char *)"Mesh_NURBSext_set(Mesh self, mfem::NURBSExtension * NURBSext)"},
+	 { (char *)"Mesh_NURBSext_get", _wrap_Mesh_NURBSext_get, METH_VARARGS, (char *)"Mesh_NURBSext_get(Mesh self) -> mfem::NURBSExtension *"},
+	 { (char *)"Mesh_ncmesh_set", _wrap_Mesh_ncmesh_set, METH_VARARGS, (char *)"Mesh_ncmesh_set(Mesh self, NCMesh ncmesh)"},
+	 { (char *)"Mesh_ncmesh_get", _wrap_Mesh_ncmesh_get, METH_VARARGS, (char *)"Mesh_ncmesh_get(Mesh self) -> NCMesh"},
 	 { (char *)"Mesh_remove_unused_vertices_get", _wrap_Mesh_remove_unused_vertices_get, METH_VARARGS, NULL},
 	 { (char *)"Mesh_remove_unused_vertices_set", _wrap_Mesh_remove_unused_vertices_set, METH_VARARGS, NULL},
-	 { (char *)"Mesh_NewElement", _wrap_Mesh_NewElement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddVertex", _wrap_Mesh_AddVertex, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddTri", _wrap_Mesh_AddTri, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddTriangle", _wrap_Mesh_AddTriangle, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddQuad", _wrap_Mesh_AddQuad, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddTet", _wrap_Mesh_AddTet, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddHex", _wrap_Mesh_AddHex, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddHexAsTets", _wrap_Mesh_AddHexAsTets, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddElement", _wrap_Mesh_AddElement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddBdrElement", _wrap_Mesh_AddBdrElement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddBdrSegment", _wrap_Mesh_AddBdrSegment, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddBdrTriangle", _wrap_Mesh_AddBdrTriangle, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddBdrQuad", _wrap_Mesh_AddBdrQuad, METH_VARARGS, NULL},
-	 { (char *)"Mesh_AddBdrQuadAsTriangles", _wrap_Mesh_AddBdrQuadAsTriangles, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GenerateBoundaryElements", _wrap_Mesh_GenerateBoundaryElements, METH_VARARGS, NULL},
-	 { (char *)"Mesh_FinalizeTriMesh", _wrap_Mesh_FinalizeTriMesh, METH_VARARGS, NULL},
-	 { (char *)"Mesh_FinalizeQuadMesh", _wrap_Mesh_FinalizeQuadMesh, METH_VARARGS, NULL},
-	 { (char *)"Mesh_FinalizeTetMesh", _wrap_Mesh_FinalizeTetMesh, METH_VARARGS, NULL},
-	 { (char *)"Mesh_FinalizeHexMesh", _wrap_Mesh_FinalizeHexMesh, METH_VARARGS, NULL},
-	 { (char *)"Mesh_FinalizeTopology", _wrap_Mesh_FinalizeTopology, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Finalize", _wrap_Mesh_Finalize, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetAttributes", _wrap_Mesh_SetAttributes, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ReorderElements", _wrap_Mesh_ReorderElements, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Load", _wrap_Mesh_Load, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Clear", _wrap_Mesh_Clear, METH_VARARGS, NULL},
-	 { (char *)"Mesh_MeshGenerator", _wrap_Mesh_MeshGenerator, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNV", _wrap_Mesh_GetNV, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNE", _wrap_Mesh_GetNE, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNBE", _wrap_Mesh_GetNBE, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNEdges", _wrap_Mesh_GetNEdges, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNFaces", _wrap_Mesh_GetNFaces, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNumFaces", _wrap_Mesh_GetNumFaces, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ReduceInt", _wrap_Mesh_ReduceInt, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_VARARGS, NULL},
-	 { (char *)"Mesh_EulerNumber", _wrap_Mesh_EulerNumber, METH_VARARGS, NULL},
-	 { (char *)"Mesh_EulerNumber2D", _wrap_Mesh_EulerNumber2D, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Dimension", _wrap_Mesh_Dimension, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SpaceDimension", _wrap_Mesh_SpaceDimension, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetVertex", _wrap_Mesh_GetVertex, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementData", _wrap_Mesh_GetElementData, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementData", _wrap_Mesh_GetBdrElementData, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ChangeVertexDataOwnership", _wrap_Mesh_ChangeVertexDataOwnership, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementsArray", _wrap_Mesh_GetElementsArray, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElement", _wrap_Mesh_GetElement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElement", _wrap_Mesh_GetBdrElement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFace", _wrap_Mesh_GetFace, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceBaseGeometry", _wrap_Mesh_GetFaceBaseGeometry, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementBaseGeometry", _wrap_Mesh_GetElementBaseGeometry, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementBaseGeometry", _wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementVertices", _wrap_Mesh_GetElementVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementVertices", _wrap_Mesh_GetBdrElementVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementEdges", _wrap_Mesh_GetElementEdges, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementEdges", _wrap_Mesh_GetBdrElementEdges, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceEdges", _wrap_Mesh_GetFaceEdges, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceVertices", _wrap_Mesh_GetFaceVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetEdgeVertices", _wrap_Mesh_GetEdgeVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceEdgeTable", _wrap_Mesh_GetFaceEdgeTable, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetEdgeVertexTable", _wrap_Mesh_GetEdgeVertexTable, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementFaces", _wrap_Mesh_GetElementFaces, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementEdgeIndex", _wrap_Mesh_GetBdrElementEdgeIndex, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementAdjacentElement", _wrap_Mesh_GetBdrElementAdjacentElement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementType", _wrap_Mesh_GetElementType, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementType", _wrap_Mesh_GetBdrElementType, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetPointMatrix", _wrap_Mesh_GetPointMatrix, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrPointMatrix", _wrap_Mesh_GetBdrPointMatrix, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetTransformationFEforElementType", _wrap_Mesh_GetTransformationFEforElementType, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementTransformation", _wrap_Mesh_GetElementTransformation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementTransformation", _wrap_Mesh_GetBdrElementTransformation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetLocalFaceTransformation", _wrap_Mesh_GetLocalFaceTransformation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceTransformation", _wrap_Mesh_GetFaceTransformation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetEdgeTransformation", _wrap_Mesh_GetEdgeTransformation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceElementTransformations", _wrap_Mesh_GetFaceElementTransformations, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetInteriorFaceTransformations", _wrap_Mesh_GetInteriorFaceTransformations, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrFaceTransformations", _wrap_Mesh_GetBdrFaceTransformations, METH_VARARGS, NULL},
-	 { (char *)"Mesh_FaceIsInterior", _wrap_Mesh_FaceIsInterior, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceElements", _wrap_Mesh_GetFaceElements, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceInfos", _wrap_Mesh_GetFaceInfos, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceGeometryType", _wrap_Mesh_GetFaceGeometryType, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceElementType", _wrap_Mesh_GetFaceElementType, METH_VARARGS, NULL},
-	 { (char *)"Mesh_CheckElementOrientation", _wrap_Mesh_CheckElementOrientation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_CheckBdrElementOrientation", _wrap_Mesh_CheckBdrElementOrientation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetAttribute", _wrap_Mesh_GetAttribute, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetAttribute", _wrap_Mesh_SetAttribute, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrAttribute", _wrap_Mesh_GetBdrAttribute, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ElementToElementTable", _wrap_Mesh_ElementToElementTable, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ElementToFaceTable", _wrap_Mesh_ElementToFaceTable, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ElementToEdgeTable", _wrap_Mesh_ElementToEdgeTable, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetVertexToElementTable", _wrap_Mesh_GetVertexToElementTable, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetFaceToElementTable", _wrap_Mesh_GetFaceToElementTable, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ReorientTetMesh", _wrap_Mesh_ReorientTetMesh, METH_VARARGS, NULL},
-	 { (char *)"Mesh_CartesianPartitioning", _wrap_Mesh_CartesianPartitioning, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GeneratePartitioning", _wrap_Mesh_GeneratePartitioning, METH_VARARGS, NULL},
-	 { (char *)"Mesh_CheckPartitioning", _wrap_Mesh_CheckPartitioning, METH_VARARGS, NULL},
-	 { (char *)"Mesh_CheckDisplacements", _wrap_Mesh_CheckDisplacements, METH_VARARGS, NULL},
-	 { (char *)"Mesh_MoveVertices", _wrap_Mesh_MoveVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetVertices", _wrap_Mesh_GetVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetVertices", _wrap_Mesh_SetVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNode", _wrap_Mesh_GetNode, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetNode", _wrap_Mesh_SetNode, METH_VARARGS, NULL},
-	 { (char *)"Mesh_MoveNodes", _wrap_Mesh_MoveNodes, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetNodes", _wrap_Mesh_SetNodes, METH_VARARGS, NULL},
-	 { (char *)"Mesh_OwnsNodes", _wrap_Mesh_OwnsNodes, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetNodesOwner", _wrap_Mesh_SetNodesOwner, METH_VARARGS, NULL},
-	 { (char *)"Mesh_NewNodes", _wrap_Mesh_NewNodes, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SwapNodes", _wrap_Mesh_SwapNodes, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNodes", _wrap_Mesh_GetNodes, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetNodalFESpace", _wrap_Mesh_SetNodalFESpace, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetNodalGridFunction", _wrap_Mesh_SetNodalGridFunction, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetNodalFESpace", _wrap_Mesh_GetNodalFESpace, METH_VARARGS, NULL},
-	 { (char *)"Mesh_SetCurvature", _wrap_Mesh_SetCurvature, METH_VARARGS, NULL},
-	 { (char *)"Mesh_UniformRefinement", _wrap_Mesh_UniformRefinement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GeneralRefinement", _wrap_Mesh_GeneralRefinement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_RandomRefinement", _wrap_Mesh_RandomRefinement, METH_VARARGS, NULL},
-	 { (char *)"Mesh_RefineAtVertex", _wrap_Mesh_RefineAtVertex, METH_VARARGS, NULL},
-	 { (char *)"Mesh_RefineByError", _wrap_Mesh_RefineByError, METH_VARARGS, NULL},
-	 { (char *)"Mesh_DerefineByError", _wrap_Mesh_DerefineByError, METH_VARARGS, NULL},
-	 { (char *)"Mesh_KnotInsert", _wrap_Mesh_KnotInsert, METH_VARARGS, NULL},
-	 { (char *)"Mesh_DegreeElevate", _wrap_Mesh_DegreeElevate, METH_VARARGS, NULL},
-	 { (char *)"Mesh_EnsureNCMesh", _wrap_Mesh_EnsureNCMesh, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Conforming", _wrap_Mesh_Conforming, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Nonconforming", _wrap_Mesh_Nonconforming, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetRefinementTransforms", _wrap_Mesh_GetRefinementTransforms, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetLastOperation", _wrap_Mesh_GetLastOperation, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetSequence", _wrap_Mesh_GetSequence, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementColoring", _wrap_Mesh_GetElementColoring, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintWithPartitioning", _wrap_Mesh_PrintWithPartitioning, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintElementsWithPartitioning", _wrap_Mesh_PrintElementsWithPartitioning, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintSurfaces", _wrap_Mesh_PrintSurfaces, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ScaleSubdomains", _wrap_Mesh_ScaleSubdomains, METH_VARARGS, NULL},
-	 { (char *)"Mesh_ScaleElements", _wrap_Mesh_ScaleElements, METH_VARARGS, NULL},
-	 { (char *)"Mesh_Transform", _wrap_Mesh_Transform, METH_VARARGS, NULL},
-	 { (char *)"Mesh_RemoveUnusedVertices", _wrap_Mesh_RemoveUnusedVertices, METH_VARARGS, NULL},
-	 { (char *)"Mesh_RemoveInternalBoundaries", _wrap_Mesh_RemoveInternalBoundaries, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementSize", _wrap_Mesh_GetElementSize, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetElementVolume", _wrap_Mesh_GetElementVolume, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBoundingBox", _wrap_Mesh_GetBoundingBox, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetCharacteristics", _wrap_Mesh_GetCharacteristics, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintCharacteristics", _wrap_Mesh_PrintCharacteristics, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, NULL},
-	 { (char *)"Mesh_FindPoints", _wrap_Mesh_FindPoints, METH_VARARGS, NULL},
-	 { (char *)"delete_Mesh", _wrap_delete_Mesh, METH_VARARGS, NULL},
-	 { (char *)"new_Mesh", _wrap_new_Mesh, METH_VARARGS, NULL},
-	 { (char *)"Mesh_PrintToFile", _wrap_Mesh_PrintToFile, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetAttributeArray", _wrap_Mesh_GetAttributeArray, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetVertexArray", _wrap_Mesh_GetVertexArray, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrElementFace", _wrap_Mesh_GetBdrElementFace, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrAttributeArray", _wrap_Mesh_GetBdrAttributeArray, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetBdrArray", _wrap_Mesh_GetBdrArray, METH_VARARGS, NULL},
-	 { (char *)"Mesh_GetDomainArray", _wrap_Mesh_GetDomainArray, METH_VARARGS, NULL},
+	 { (char *)"Mesh_NewElement", _wrap_Mesh_NewElement, METH_VARARGS, (char *)"Mesh_NewElement(Mesh self, int geom) -> Element"},
+	 { (char *)"Mesh_AddVertex", _wrap_Mesh_AddVertex, METH_VARARGS, (char *)"Mesh_AddVertex(Mesh self, double const * arg3)"},
+	 { (char *)"Mesh_AddTri", _wrap_Mesh_AddTri, METH_VARARGS, (char *)"\n"
+		"AddTri(int const * vi, int attr=1)\n"
+		"Mesh_AddTri(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddTriangle", _wrap_Mesh_AddTriangle, METH_VARARGS, (char *)"\n"
+		"AddTriangle(int const * vi, int attr=1)\n"
+		"Mesh_AddTriangle(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddQuad", _wrap_Mesh_AddQuad, METH_VARARGS, (char *)"\n"
+		"AddQuad(int const * vi, int attr=1)\n"
+		"Mesh_AddQuad(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddTet", _wrap_Mesh_AddTet, METH_VARARGS, (char *)"\n"
+		"AddTet(int const * vi, int attr=1)\n"
+		"Mesh_AddTet(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddHex", _wrap_Mesh_AddHex, METH_VARARGS, (char *)"\n"
+		"AddHex(int const * vi, int attr=1)\n"
+		"Mesh_AddHex(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddHexAsTets", _wrap_Mesh_AddHexAsTets, METH_VARARGS, (char *)"\n"
+		"AddHexAsTets(int const * vi, int attr=1)\n"
+		"Mesh_AddHexAsTets(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddElement", _wrap_Mesh_AddElement, METH_VARARGS, (char *)"Mesh_AddElement(Mesh self, Element elem)"},
+	 { (char *)"Mesh_AddBdrElement", _wrap_Mesh_AddBdrElement, METH_VARARGS, (char *)"Mesh_AddBdrElement(Mesh self, Element elem)"},
+	 { (char *)"Mesh_AddBdrSegment", _wrap_Mesh_AddBdrSegment, METH_VARARGS, (char *)"\n"
+		"AddBdrSegment(int const * vi, int attr=1)\n"
+		"Mesh_AddBdrSegment(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddBdrTriangle", _wrap_Mesh_AddBdrTriangle, METH_VARARGS, (char *)"\n"
+		"AddBdrTriangle(int const * vi, int attr=1)\n"
+		"Mesh_AddBdrTriangle(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddBdrQuad", _wrap_Mesh_AddBdrQuad, METH_VARARGS, (char *)"\n"
+		"AddBdrQuad(int const * vi, int attr=1)\n"
+		"Mesh_AddBdrQuad(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddBdrQuadAsTriangles", _wrap_Mesh_AddBdrQuadAsTriangles, METH_VARARGS, (char *)"\n"
+		"AddBdrQuadAsTriangles(int const * vi, int attr=1)\n"
+		"Mesh_AddBdrQuadAsTriangles(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_GenerateBoundaryElements", _wrap_Mesh_GenerateBoundaryElements, METH_VARARGS, (char *)"Mesh_GenerateBoundaryElements(Mesh self)"},
+	 { (char *)"Mesh_FinalizeTriMesh", _wrap_Mesh_FinalizeTriMesh, METH_VARARGS, (char *)"\n"
+		"FinalizeTriMesh(int generate_edges=0, int refine=0, bool fix_orientation=True)\n"
+		"FinalizeTriMesh(int generate_edges=0, int refine=0)\n"
+		"FinalizeTriMesh(int generate_edges=0)\n"
+		"Mesh_FinalizeTriMesh(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_FinalizeQuadMesh", _wrap_Mesh_FinalizeQuadMesh, METH_VARARGS, (char *)"\n"
+		"FinalizeQuadMesh(int generate_edges=0, int refine=0, bool fix_orientation=True)\n"
+		"FinalizeQuadMesh(int generate_edges=0, int refine=0)\n"
+		"FinalizeQuadMesh(int generate_edges=0)\n"
+		"Mesh_FinalizeQuadMesh(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_FinalizeTetMesh", _wrap_Mesh_FinalizeTetMesh, METH_VARARGS, (char *)"\n"
+		"FinalizeTetMesh(int generate_edges=0, int refine=0, bool fix_orientation=True)\n"
+		"FinalizeTetMesh(int generate_edges=0, int refine=0)\n"
+		"FinalizeTetMesh(int generate_edges=0)\n"
+		"Mesh_FinalizeTetMesh(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_FinalizeHexMesh", _wrap_Mesh_FinalizeHexMesh, METH_VARARGS, (char *)"\n"
+		"FinalizeHexMesh(int generate_edges=0, int refine=0, bool fix_orientation=True)\n"
+		"FinalizeHexMesh(int generate_edges=0, int refine=0)\n"
+		"FinalizeHexMesh(int generate_edges=0)\n"
+		"Mesh_FinalizeHexMesh(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_FinalizeTopology", _wrap_Mesh_FinalizeTopology, METH_VARARGS, (char *)"Mesh_FinalizeTopology(Mesh self)"},
+	 { (char *)"Mesh_Finalize", _wrap_Mesh_Finalize, METH_VARARGS, (char *)"\n"
+		"Finalize(bool refine=False, bool fix_orientation=False)\n"
+		"Finalize(bool refine=False)\n"
+		"Mesh_Finalize(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_SetAttributes", _wrap_Mesh_SetAttributes, METH_VARARGS, (char *)"Mesh_SetAttributes(Mesh self)"},
+	 { (char *)"Mesh_ReorderElements", _wrap_Mesh_ReorderElements, METH_VARARGS, (char *)"\n"
+		"ReorderElements(intArray ordering, bool reorder_vertices=True)\n"
+		"Mesh_ReorderElements(Mesh self, intArray ordering)\n"
+		""},
+	 { (char *)"Mesh_Load", _wrap_Mesh_Load, METH_VARARGS, (char *)"\n"
+		"Load(std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
+		"Load(std::istream & input, int generate_edges=0, int refine=1)\n"
+		"Load(std::istream & input, int generate_edges=0)\n"
+		"Mesh_Load(Mesh self, std::istream & input)\n"
+		""},
+	 { (char *)"Mesh_Clear", _wrap_Mesh_Clear, METH_VARARGS, (char *)"Mesh_Clear(Mesh self)"},
+	 { (char *)"Mesh_MeshGenerator", _wrap_Mesh_MeshGenerator, METH_VARARGS, (char *)"Mesh_MeshGenerator(Mesh self) -> int"},
+	 { (char *)"Mesh_GetNV", _wrap_Mesh_GetNV, METH_VARARGS, (char *)"Mesh_GetNV(Mesh self) -> int"},
+	 { (char *)"Mesh_GetNE", _wrap_Mesh_GetNE, METH_VARARGS, (char *)"Mesh_GetNE(Mesh self) -> int"},
+	 { (char *)"Mesh_GetNBE", _wrap_Mesh_GetNBE, METH_VARARGS, (char *)"Mesh_GetNBE(Mesh self) -> int"},
+	 { (char *)"Mesh_GetNEdges", _wrap_Mesh_GetNEdges, METH_VARARGS, (char *)"Mesh_GetNEdges(Mesh self) -> int"},
+	 { (char *)"Mesh_GetNFaces", _wrap_Mesh_GetNFaces, METH_VARARGS, (char *)"Mesh_GetNFaces(Mesh self) -> int"},
+	 { (char *)"Mesh_GetNumFaces", _wrap_Mesh_GetNumFaces, METH_VARARGS, (char *)"Mesh_GetNumFaces(Mesh self) -> int"},
+	 { (char *)"Mesh_ReduceInt", _wrap_Mesh_ReduceInt, METH_VARARGS, (char *)"Mesh_ReduceInt(Mesh self, int value) -> long"},
+	 { (char *)"Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_VARARGS, (char *)"Mesh_GetGlobalNE(Mesh self) -> long"},
+	 { (char *)"Mesh_EulerNumber", _wrap_Mesh_EulerNumber, METH_VARARGS, (char *)"Mesh_EulerNumber(Mesh self) -> int"},
+	 { (char *)"Mesh_EulerNumber2D", _wrap_Mesh_EulerNumber2D, METH_VARARGS, (char *)"Mesh_EulerNumber2D(Mesh self) -> int"},
+	 { (char *)"Mesh_Dimension", _wrap_Mesh_Dimension, METH_VARARGS, (char *)"Mesh_Dimension(Mesh self) -> int"},
+	 { (char *)"Mesh_SpaceDimension", _wrap_Mesh_SpaceDimension, METH_VARARGS, (char *)"Mesh_SpaceDimension(Mesh self) -> int"},
+	 { (char *)"Mesh_GetVertex", _wrap_Mesh_GetVertex, METH_VARARGS, (char *)"\n"
+		"GetVertex(int i) -> double const\n"
+		"Mesh_GetVertex(Mesh self, int i) -> double *\n"
+		""},
+	 { (char *)"Mesh_GetElementData", _wrap_Mesh_GetElementData, METH_VARARGS, (char *)"Mesh_GetElementData(Mesh self, int geom, intArray elem_vtx, intArray attr)"},
+	 { (char *)"Mesh_GetBdrElementData", _wrap_Mesh_GetBdrElementData, METH_VARARGS, (char *)"Mesh_GetBdrElementData(Mesh self, int geom, intArray bdr_elem_vtx, intArray bdr_attr)"},
+	 { (char *)"Mesh_ChangeVertexDataOwnership", _wrap_Mesh_ChangeVertexDataOwnership, METH_VARARGS, (char *)"\n"
+		"ChangeVertexDataOwnership(double * vertices, int len_vertices, bool zerocopy=False)\n"
+		"Mesh_ChangeVertexDataOwnership(Mesh self, double * vertices, int len_vertices)\n"
+		""},
+	 { (char *)"Mesh_GetElementsArray", _wrap_Mesh_GetElementsArray, METH_VARARGS, (char *)"Mesh_GetElementsArray(Mesh self) -> mfem::Element const *const *"},
+	 { (char *)"Mesh_GetElement", _wrap_Mesh_GetElement, METH_VARARGS, (char *)"\n"
+		"GetElement(int i) -> Element\n"
+		"Mesh_GetElement(Mesh self, int i) -> Element\n"
+		""},
+	 { (char *)"Mesh_GetBdrElement", _wrap_Mesh_GetBdrElement, METH_VARARGS, (char *)"\n"
+		"GetBdrElement(int i) -> Element\n"
+		"Mesh_GetBdrElement(Mesh self, int i) -> Element\n"
+		""},
+	 { (char *)"Mesh_GetFace", _wrap_Mesh_GetFace, METH_VARARGS, (char *)"Mesh_GetFace(Mesh self, int i) -> Element"},
+	 { (char *)"Mesh_GetFaceBaseGeometry", _wrap_Mesh_GetFaceBaseGeometry, METH_VARARGS, (char *)"Mesh_GetFaceBaseGeometry(Mesh self, int i) -> int"},
+	 { (char *)"Mesh_GetElementBaseGeometry", _wrap_Mesh_GetElementBaseGeometry, METH_VARARGS, (char *)"\n"
+		"GetElementBaseGeometry(int i=0) -> int\n"
+		"Mesh_GetElementBaseGeometry(Mesh self) -> int\n"
+		""},
+	 { (char *)"Mesh_GetBdrElementBaseGeometry", _wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS, (char *)"\n"
+		"GetBdrElementBaseGeometry(int i=0) -> int\n"
+		"Mesh_GetBdrElementBaseGeometry(Mesh self) -> int\n"
+		""},
+	 { (char *)"Mesh_GetElementVertices", _wrap_Mesh_GetElementVertices, METH_VARARGS, (char *)"Mesh_GetElementVertices(Mesh self, int i, intArray v)"},
+	 { (char *)"Mesh_GetBdrElementVertices", _wrap_Mesh_GetBdrElementVertices, METH_VARARGS, (char *)"Mesh_GetBdrElementVertices(Mesh self, int i, intArray v)"},
+	 { (char *)"Mesh_GetElementEdges", _wrap_Mesh_GetElementEdges, METH_VARARGS, (char *)"Mesh_GetElementEdges(Mesh self, int i, intArray edges, intArray cor)"},
+	 { (char *)"Mesh_GetBdrElementEdges", _wrap_Mesh_GetBdrElementEdges, METH_VARARGS, (char *)"Mesh_GetBdrElementEdges(Mesh self, int i, intArray edges, intArray cor)"},
+	 { (char *)"Mesh_GetFaceEdges", _wrap_Mesh_GetFaceEdges, METH_VARARGS, (char *)"Mesh_GetFaceEdges(Mesh self, int i, intArray arg4, intArray arg5)"},
+	 { (char *)"Mesh_GetFaceVertices", _wrap_Mesh_GetFaceVertices, METH_VARARGS, (char *)"Mesh_GetFaceVertices(Mesh self, int i, intArray vert)"},
+	 { (char *)"Mesh_GetEdgeVertices", _wrap_Mesh_GetEdgeVertices, METH_VARARGS, (char *)"Mesh_GetEdgeVertices(Mesh self, int i, intArray vert)"},
+	 { (char *)"Mesh_GetFaceEdgeTable", _wrap_Mesh_GetFaceEdgeTable, METH_VARARGS, (char *)"Mesh_GetFaceEdgeTable(Mesh self) -> Table"},
+	 { (char *)"Mesh_GetEdgeVertexTable", _wrap_Mesh_GetEdgeVertexTable, METH_VARARGS, (char *)"Mesh_GetEdgeVertexTable(Mesh self) -> Table"},
+	 { (char *)"Mesh_GetElementFaces", _wrap_Mesh_GetElementFaces, METH_VARARGS, (char *)"Mesh_GetElementFaces(Mesh self, int i, intArray arg4, intArray arg5)"},
+	 { (char *)"Mesh_GetBdrElementEdgeIndex", _wrap_Mesh_GetBdrElementEdgeIndex, METH_VARARGS, (char *)"Mesh_GetBdrElementEdgeIndex(Mesh self, int i) -> int"},
+	 { (char *)"Mesh_GetBdrElementAdjacentElement", _wrap_Mesh_GetBdrElementAdjacentElement, METH_VARARGS, (char *)"Mesh_GetBdrElementAdjacentElement(Mesh self, int bdr_el, int & el, int & info)"},
+	 { (char *)"Mesh_GetElementType", _wrap_Mesh_GetElementType, METH_VARARGS, (char *)"Mesh_GetElementType(Mesh self, int i) -> int"},
+	 { (char *)"Mesh_GetBdrElementType", _wrap_Mesh_GetBdrElementType, METH_VARARGS, (char *)"Mesh_GetBdrElementType(Mesh self, int i) -> int"},
+	 { (char *)"Mesh_GetPointMatrix", _wrap_Mesh_GetPointMatrix, METH_VARARGS, (char *)"Mesh_GetPointMatrix(Mesh self, int i, DenseMatrix pointmat)"},
+	 { (char *)"Mesh_GetBdrPointMatrix", _wrap_Mesh_GetBdrPointMatrix, METH_VARARGS, (char *)"Mesh_GetBdrPointMatrix(Mesh self, int i, DenseMatrix pointmat)"},
+	 { (char *)"Mesh_GetTransformationFEforElementType", _wrap_Mesh_GetTransformationFEforElementType, METH_VARARGS, (char *)"Mesh_GetTransformationFEforElementType(int arg2) -> FiniteElement"},
+	 { (char *)"Mesh_GetElementTransformation", _wrap_Mesh_GetElementTransformation, METH_VARARGS, (char *)"\n"
+		"GetElementTransformation(int i, IsoparametricTransformation ElTr)\n"
+		"GetElementTransformation(int i) -> ElementTransformation\n"
+		"Mesh_GetElementTransformation(Mesh self, int i, Vector nodes, IsoparametricTransformation ElTr)\n"
+		""},
+	 { (char *)"Mesh_GetBdrElementTransformation", _wrap_Mesh_GetBdrElementTransformation, METH_VARARGS, (char *)"\n"
+		"GetBdrElementTransformation(int i) -> ElementTransformation\n"
+		"Mesh_GetBdrElementTransformation(Mesh self, int i, IsoparametricTransformation ElTr)\n"
+		""},
+	 { (char *)"Mesh_GetLocalFaceTransformation", _wrap_Mesh_GetLocalFaceTransformation, METH_VARARGS, (char *)"Mesh_GetLocalFaceTransformation(Mesh self, int face_type, int elem_type, IsoparametricTransformation Transf, int info)"},
+	 { (char *)"Mesh_GetFaceTransformation", _wrap_Mesh_GetFaceTransformation, METH_VARARGS, (char *)"\n"
+		"GetFaceTransformation(int i, IsoparametricTransformation FTr)\n"
+		"Mesh_GetFaceTransformation(Mesh self, int FaceNo) -> ElementTransformation\n"
+		""},
+	 { (char *)"Mesh_GetEdgeTransformation", _wrap_Mesh_GetEdgeTransformation, METH_VARARGS, (char *)"\n"
+		"GetEdgeTransformation(int i, IsoparametricTransformation EdTr)\n"
+		"Mesh_GetEdgeTransformation(Mesh self, int EdgeNo) -> ElementTransformation\n"
+		""},
+	 { (char *)"Mesh_GetFaceElementTransformations", _wrap_Mesh_GetFaceElementTransformations, METH_VARARGS, (char *)"\n"
+		"GetFaceElementTransformations(int FaceNo, int mask=31) -> FaceElementTransformations\n"
+		"Mesh_GetFaceElementTransformations(Mesh self, int FaceNo) -> FaceElementTransformations\n"
+		""},
+	 { (char *)"Mesh_GetInteriorFaceTransformations", _wrap_Mesh_GetInteriorFaceTransformations, METH_VARARGS, (char *)"Mesh_GetInteriorFaceTransformations(Mesh self, int FaceNo) -> FaceElementTransformations"},
+	 { (char *)"Mesh_GetBdrFaceTransformations", _wrap_Mesh_GetBdrFaceTransformations, METH_VARARGS, (char *)"Mesh_GetBdrFaceTransformations(Mesh self, int BdrElemNo) -> FaceElementTransformations"},
+	 { (char *)"Mesh_FaceIsInterior", _wrap_Mesh_FaceIsInterior, METH_VARARGS, (char *)"Mesh_FaceIsInterior(Mesh self, int FaceNo) -> bool"},
+	 { (char *)"Mesh_GetFaceElements", _wrap_Mesh_GetFaceElements, METH_VARARGS, (char *)"Mesh_GetFaceElements(Mesh self, int Face, int * Elem1, int * Elem2)"},
+	 { (char *)"Mesh_GetFaceInfos", _wrap_Mesh_GetFaceInfos, METH_VARARGS, (char *)"Mesh_GetFaceInfos(Mesh self, int Face, int * Inf1, int * Inf2)"},
+	 { (char *)"Mesh_GetFaceGeometryType", _wrap_Mesh_GetFaceGeometryType, METH_VARARGS, (char *)"Mesh_GetFaceGeometryType(Mesh self, int Face) -> int"},
+	 { (char *)"Mesh_GetFaceElementType", _wrap_Mesh_GetFaceElementType, METH_VARARGS, (char *)"Mesh_GetFaceElementType(Mesh self, int Face) -> int"},
+	 { (char *)"Mesh_CheckElementOrientation", _wrap_Mesh_CheckElementOrientation, METH_VARARGS, (char *)"\n"
+		"CheckElementOrientation(bool fix_it=True) -> int\n"
+		"Mesh_CheckElementOrientation(Mesh self) -> int\n"
+		""},
+	 { (char *)"Mesh_CheckBdrElementOrientation", _wrap_Mesh_CheckBdrElementOrientation, METH_VARARGS, (char *)"\n"
+		"CheckBdrElementOrientation(bool fix_it=True) -> int\n"
+		"Mesh_CheckBdrElementOrientation(Mesh self) -> int\n"
+		""},
+	 { (char *)"Mesh_GetAttribute", _wrap_Mesh_GetAttribute, METH_VARARGS, (char *)"Mesh_GetAttribute(Mesh self, int i) -> int"},
+	 { (char *)"Mesh_SetAttribute", _wrap_Mesh_SetAttribute, METH_VARARGS, (char *)"Mesh_SetAttribute(Mesh self, int i, int attr)"},
+	 { (char *)"Mesh_GetBdrAttribute", _wrap_Mesh_GetBdrAttribute, METH_VARARGS, (char *)"Mesh_GetBdrAttribute(Mesh self, int i) -> int"},
+	 { (char *)"Mesh_ElementToElementTable", _wrap_Mesh_ElementToElementTable, METH_VARARGS, (char *)"Mesh_ElementToElementTable(Mesh self) -> Table"},
+	 { (char *)"Mesh_ElementToFaceTable", _wrap_Mesh_ElementToFaceTable, METH_VARARGS, (char *)"Mesh_ElementToFaceTable(Mesh self) -> Table"},
+	 { (char *)"Mesh_ElementToEdgeTable", _wrap_Mesh_ElementToEdgeTable, METH_VARARGS, (char *)"Mesh_ElementToEdgeTable(Mesh self) -> Table"},
+	 { (char *)"Mesh_GetVertexToElementTable", _wrap_Mesh_GetVertexToElementTable, METH_VARARGS, (char *)"Mesh_GetVertexToElementTable(Mesh self) -> Table"},
+	 { (char *)"Mesh_GetFaceToElementTable", _wrap_Mesh_GetFaceToElementTable, METH_VARARGS, (char *)"Mesh_GetFaceToElementTable(Mesh self) -> Table"},
+	 { (char *)"Mesh_ReorientTetMesh", _wrap_Mesh_ReorientTetMesh, METH_VARARGS, (char *)"Mesh_ReorientTetMesh(Mesh self)"},
+	 { (char *)"Mesh_CartesianPartitioning", _wrap_Mesh_CartesianPartitioning, METH_VARARGS, (char *)"Mesh_CartesianPartitioning(Mesh self, int [] nxyz) -> int *"},
+	 { (char *)"Mesh_GeneratePartitioning", _wrap_Mesh_GeneratePartitioning, METH_VARARGS, (char *)"\n"
+		"GeneratePartitioning(int nparts, int part_method=1) -> int\n"
+		"Mesh_GeneratePartitioning(Mesh self, int nparts) -> int *\n"
+		""},
+	 { (char *)"Mesh_CheckPartitioning", _wrap_Mesh_CheckPartitioning, METH_VARARGS, (char *)"Mesh_CheckPartitioning(Mesh self, int * partitioning)"},
+	 { (char *)"Mesh_CheckDisplacements", _wrap_Mesh_CheckDisplacements, METH_VARARGS, (char *)"Mesh_CheckDisplacements(Mesh self, Vector displacements, double & tmax)"},
+	 { (char *)"Mesh_MoveVertices", _wrap_Mesh_MoveVertices, METH_VARARGS, (char *)"Mesh_MoveVertices(Mesh self, Vector displacements)"},
+	 { (char *)"Mesh_GetVertices", _wrap_Mesh_GetVertices, METH_VARARGS, (char *)"Mesh_GetVertices(Mesh self, Vector vert_coord)"},
+	 { (char *)"Mesh_SetVertices", _wrap_Mesh_SetVertices, METH_VARARGS, (char *)"Mesh_SetVertices(Mesh self, Vector vert_coord)"},
+	 { (char *)"Mesh_GetNode", _wrap_Mesh_GetNode, METH_VARARGS, (char *)"Mesh_GetNode(Mesh self, int i, double * coord)"},
+	 { (char *)"Mesh_SetNode", _wrap_Mesh_SetNode, METH_VARARGS, (char *)"Mesh_SetNode(Mesh self, int i, double const * coord)"},
+	 { (char *)"Mesh_MoveNodes", _wrap_Mesh_MoveNodes, METH_VARARGS, (char *)"Mesh_MoveNodes(Mesh self, Vector displacements)"},
+	 { (char *)"Mesh_SetNodes", _wrap_Mesh_SetNodes, METH_VARARGS, (char *)"Mesh_SetNodes(Mesh self, Vector node_coord)"},
+	 { (char *)"Mesh_OwnsNodes", _wrap_Mesh_OwnsNodes, METH_VARARGS, (char *)"Mesh_OwnsNodes(Mesh self) -> bool"},
+	 { (char *)"Mesh_SetNodesOwner", _wrap_Mesh_SetNodesOwner, METH_VARARGS, (char *)"Mesh_SetNodesOwner(Mesh self, bool nodes_owner)"},
+	 { (char *)"Mesh_NewNodes", _wrap_Mesh_NewNodes, METH_VARARGS, (char *)"\n"
+		"NewNodes(GridFunction nodes, bool make_owner=False)\n"
+		"Mesh_NewNodes(Mesh self, GridFunction nodes)\n"
+		""},
+	 { (char *)"Mesh_SwapNodes", _wrap_Mesh_SwapNodes, METH_VARARGS, (char *)"Mesh_SwapNodes(Mesh self, mfem::GridFunction *& nodes, int & own_nodes_)"},
+	 { (char *)"Mesh_GetNodes", _wrap_Mesh_GetNodes, METH_VARARGS, (char *)"\n"
+		"GetNodes(Vector node_coord)\n"
+		"GetNodes() -> GridFunction\n"
+		"GetNodes() -> GridFunction\n"
+		"Mesh_GetNodes(Mesh self, GridFunction nodes)\n"
+		""},
+	 { (char *)"Mesh_SetNodalFESpace", _wrap_Mesh_SetNodalFESpace, METH_VARARGS, (char *)"Mesh_SetNodalFESpace(Mesh self, FiniteElementSpace nfes)"},
+	 { (char *)"Mesh_SetNodalGridFunction", _wrap_Mesh_SetNodalGridFunction, METH_VARARGS, (char *)"\n"
+		"SetNodalGridFunction(GridFunction nodes, bool make_owner=False)\n"
+		"Mesh_SetNodalGridFunction(Mesh self, GridFunction nodes)\n"
+		""},
+	 { (char *)"Mesh_GetNodalFESpace", _wrap_Mesh_GetNodalFESpace, METH_VARARGS, (char *)"Mesh_GetNodalFESpace(Mesh self) -> FiniteElementSpace"},
+	 { (char *)"Mesh_SetCurvature", _wrap_Mesh_SetCurvature, METH_VARARGS, (char *)"\n"
+		"SetCurvature(int order, bool discont=False, int space_dim=-1, int ordering=1)\n"
+		"SetCurvature(int order, bool discont=False, int space_dim=-1)\n"
+		"SetCurvature(int order, bool discont=False)\n"
+		"Mesh_SetCurvature(Mesh self, int order)\n"
+		""},
+	 { (char *)"Mesh_UniformRefinement", _wrap_Mesh_UniformRefinement, METH_VARARGS, (char *)"Mesh_UniformRefinement(Mesh self)"},
+	 { (char *)"Mesh_GeneralRefinement", _wrap_Mesh_GeneralRefinement, METH_VARARGS, (char *)"\n"
+		"GeneralRefinement(mfem::Array< mfem::Refinement > const & refinements, int nonconforming=-1, int nc_limit=0)\n"
+		"GeneralRefinement(mfem::Array< mfem::Refinement > const & refinements, int nonconforming=-1)\n"
+		"GeneralRefinement(mfem::Array< mfem::Refinement > const & refinements)\n"
+		"GeneralRefinement(intArray el_to_refine, int nonconforming=-1, int nc_limit=0)\n"
+		"GeneralRefinement(intArray el_to_refine, int nonconforming=-1)\n"
+		"Mesh_GeneralRefinement(Mesh self, intArray el_to_refine)\n"
+		""},
+	 { (char *)"Mesh_RandomRefinement", _wrap_Mesh_RandomRefinement, METH_VARARGS, (char *)"\n"
+		"RandomRefinement(double prob, bool aniso=False, int nonconforming=-1, int nc_limit=0)\n"
+		"RandomRefinement(double prob, bool aniso=False, int nonconforming=-1)\n"
+		"RandomRefinement(double prob, bool aniso=False)\n"
+		"Mesh_RandomRefinement(Mesh self, double prob)\n"
+		""},
+	 { (char *)"Mesh_RefineAtVertex", _wrap_Mesh_RefineAtVertex, METH_VARARGS, (char *)"\n"
+		"RefineAtVertex(Vertex vert, double eps=0.0, int nonconforming=-1)\n"
+		"RefineAtVertex(Vertex vert, double eps=0.0)\n"
+		"Mesh_RefineAtVertex(Mesh self, Vertex vert)\n"
+		""},
+	 { (char *)"Mesh_RefineByError", _wrap_Mesh_RefineByError, METH_VARARGS, (char *)"\n"
+		"RefineByError(doubleArray elem_error, double threshold, int nonconforming=-1, int nc_limit=0) -> bool\n"
+		"RefineByError(doubleArray elem_error, double threshold, int nonconforming=-1) -> bool\n"
+		"RefineByError(doubleArray elem_error, double threshold) -> bool\n"
+		"RefineByError(Vector elem_error, double threshold, int nonconforming=-1, int nc_limit=0) -> bool\n"
+		"RefineByError(Vector elem_error, double threshold, int nonconforming=-1) -> bool\n"
+		"Mesh_RefineByError(Mesh self, Vector elem_error, double threshold) -> bool\n"
+		""},
+	 { (char *)"Mesh_DerefineByError", _wrap_Mesh_DerefineByError, METH_VARARGS, (char *)"\n"
+		"DerefineByError(doubleArray elem_error, double threshold, int nc_limit=0, int op=1) -> bool\n"
+		"DerefineByError(doubleArray elem_error, double threshold, int nc_limit=0) -> bool\n"
+		"DerefineByError(doubleArray elem_error, double threshold) -> bool\n"
+		"DerefineByError(Vector elem_error, double threshold, int nc_limit=0, int op=1) -> bool\n"
+		"DerefineByError(Vector elem_error, double threshold, int nc_limit=0) -> bool\n"
+		"Mesh_DerefineByError(Mesh self, Vector elem_error, double threshold) -> bool\n"
+		""},
+	 { (char *)"Mesh_KnotInsert", _wrap_Mesh_KnotInsert, METH_VARARGS, (char *)"Mesh_KnotInsert(Mesh self, mfem::Array< mfem::KnotVector * > & kv)"},
+	 { (char *)"Mesh_DegreeElevate", _wrap_Mesh_DegreeElevate, METH_VARARGS, (char *)"\n"
+		"DegreeElevate(int rel_degree, int degree=16)\n"
+		"Mesh_DegreeElevate(Mesh self, int rel_degree)\n"
+		""},
+	 { (char *)"Mesh_EnsureNCMesh", _wrap_Mesh_EnsureNCMesh, METH_VARARGS, (char *)"\n"
+		"EnsureNCMesh(bool triangles_nonconforming=False)\n"
+		"Mesh_EnsureNCMesh(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_Conforming", _wrap_Mesh_Conforming, METH_VARARGS, (char *)"Mesh_Conforming(Mesh self) -> bool"},
+	 { (char *)"Mesh_Nonconforming", _wrap_Mesh_Nonconforming, METH_VARARGS, (char *)"Mesh_Nonconforming(Mesh self) -> bool"},
+	 { (char *)"Mesh_GetRefinementTransforms", _wrap_Mesh_GetRefinementTransforms, METH_VARARGS, (char *)"Mesh_GetRefinementTransforms(Mesh self) -> CoarseFineTransformations"},
+	 { (char *)"Mesh_GetLastOperation", _wrap_Mesh_GetLastOperation, METH_VARARGS, (char *)"Mesh_GetLastOperation(Mesh self) -> mfem::Mesh::Operation"},
+	 { (char *)"Mesh_GetSequence", _wrap_Mesh_GetSequence, METH_VARARGS, (char *)"Mesh_GetSequence(Mesh self) -> long"},
+	 { (char *)"Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, (char *)"\n"
+		"PrintXG(std::ostream & out)\n"
+		"Mesh_PrintXG(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, (char *)"\n"
+		"Print(std::ostream & out)\n"
+		"Mesh_Print(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, (char *)"\n"
+		"PrintVTK(std::ostream & out)\n"
+		"PrintVTK(std::ostream & out, int ref, int field_data=0)\n"
+		"Mesh_PrintVTK(Mesh self, std::ostream & out, int ref)\n"
+		""},
+	 { (char *)"Mesh_GetElementColoring", _wrap_Mesh_GetElementColoring, METH_VARARGS, (char *)"\n"
+		"GetElementColoring(intArray colors, int el0=0)\n"
+		"Mesh_GetElementColoring(Mesh self, intArray colors)\n"
+		""},
+	 { (char *)"Mesh_PrintWithPartitioning", _wrap_Mesh_PrintWithPartitioning, METH_VARARGS, (char *)"\n"
+		"PrintWithPartitioning(int * partitioning, std::ostream & out, int elem_attr=0)\n"
+		"Mesh_PrintWithPartitioning(Mesh self, int * partitioning, std::ostream & out)\n"
+		""},
+	 { (char *)"Mesh_PrintElementsWithPartitioning", _wrap_Mesh_PrintElementsWithPartitioning, METH_VARARGS, (char *)"\n"
+		"PrintElementsWithPartitioning(int * partitioning, std::ostream & out, int interior_faces=0)\n"
+		"Mesh_PrintElementsWithPartitioning(Mesh self, int * partitioning, std::ostream & out)\n"
+		""},
+	 { (char *)"Mesh_PrintSurfaces", _wrap_Mesh_PrintSurfaces, METH_VARARGS, (char *)"Mesh_PrintSurfaces(Mesh self, Table Aface_face, std::ostream & out)"},
+	 { (char *)"Mesh_ScaleSubdomains", _wrap_Mesh_ScaleSubdomains, METH_VARARGS, (char *)"Mesh_ScaleSubdomains(Mesh self, double sf)"},
+	 { (char *)"Mesh_ScaleElements", _wrap_Mesh_ScaleElements, METH_VARARGS, (char *)"Mesh_ScaleElements(Mesh self, double sf)"},
+	 { (char *)"Mesh_Transform", _wrap_Mesh_Transform, METH_VARARGS, (char *)"\n"
+		"Transform(void (*)(mfem::Vector const &,mfem::Vector &) f)\n"
+		"Mesh_Transform(Mesh self, VectorCoefficient deformation)\n"
+		""},
+	 { (char *)"Mesh_RemoveUnusedVertices", _wrap_Mesh_RemoveUnusedVertices, METH_VARARGS, (char *)"Mesh_RemoveUnusedVertices(Mesh self)"},
+	 { (char *)"Mesh_RemoveInternalBoundaries", _wrap_Mesh_RemoveInternalBoundaries, METH_VARARGS, (char *)"Mesh_RemoveInternalBoundaries(Mesh self)"},
+	 { (char *)"Mesh_GetElementSize", _wrap_Mesh_GetElementSize, METH_VARARGS, (char *)"\n"
+		"GetElementSize(int i, int type=0) -> double\n"
+		"GetElementSize(int i) -> double\n"
+		"Mesh_GetElementSize(Mesh self, int i, Vector dir) -> double\n"
+		""},
+	 { (char *)"Mesh_GetElementVolume", _wrap_Mesh_GetElementVolume, METH_VARARGS, (char *)"Mesh_GetElementVolume(Mesh self, int i) -> double"},
+	 { (char *)"Mesh_GetBoundingBox", _wrap_Mesh_GetBoundingBox, METH_VARARGS, (char *)"\n"
+		"GetBoundingBox(Vector min, Vector max, int ref=2)\n"
+		"Mesh_GetBoundingBox(Mesh self, Vector min, Vector max)\n"
+		""},
+	 { (char *)"Mesh_GetCharacteristics", _wrap_Mesh_GetCharacteristics, METH_VARARGS, (char *)"\n"
+		"GetCharacteristics(double & h_min, double & h_max, double & kappa_min, double & kappa_max, Vector Vh=None, Vector Vk=None)\n"
+		"GetCharacteristics(double & h_min, double & h_max, double & kappa_min, double & kappa_max, Vector Vh=None)\n"
+		"Mesh_GetCharacteristics(Mesh self, double & h_min, double & h_max, double & kappa_min, double & kappa_max)\n"
+		""},
+	 { (char *)"Mesh_PrintCharacteristics", _wrap_Mesh_PrintCharacteristics, METH_VARARGS, (char *)"\n"
+		"PrintCharacteristics(Vector Vh=None, Vector Vk=None, std::ostream & out)\n"
+		"PrintCharacteristics(Vector Vh=None, Vector Vk=None)\n"
+		"PrintCharacteristics(Vector Vh=None)\n"
+		"Mesh_PrintCharacteristics(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, (char *)"\n"
+		"PrintInfo(std::ostream & out)\n"
+		"Mesh_PrintInfo(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_FindPoints", _wrap_Mesh_FindPoints, METH_VARARGS, (char *)"\n"
+		"FindPoints(DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int\n"
+		"FindPoints(DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True) -> int\n"
+		"Mesh_FindPoints(Mesh self, DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips) -> int\n"
+		""},
+	 { (char *)"delete_Mesh", _wrap_delete_Mesh, METH_VARARGS, (char *)"delete_Mesh(Mesh self)"},
+	 { (char *)"new_Mesh", _wrap_new_Mesh, METH_VARARGS, (char *)"\n"
+		"Mesh()\n"
+		"Mesh(Mesh mesh, bool copy_nodes=True)\n"
+		"Mesh(Mesh mesh)\n"
+		"Mesh(double * vertices, int num_vertices, int * element_indices, mfem::Geometry::Type element_type, int * element_attributes, int num_elements, int * boundary_indices, mfem::Geometry::Type boundary_type, int * boundary_attributes, int num_boundary_elements, int dimension, int space_dimension=-1)\n"
+		"Mesh(double * vertices, int num_vertices, int * element_indices, mfem::Geometry::Type element_type, int * element_attributes, int num_elements, int * boundary_indices, mfem::Geometry::Type boundary_type, int * boundary_attributes, int num_boundary_elements, int dimension)\n"
+		"Mesh(int _Dim, int NVert, int NElem, int NBdrElem=0, int _spaceDim=-1)\n"
+		"Mesh(int _Dim, int NVert, int NElem, int NBdrElem=0)\n"
+		"Mesh(int _Dim, int NVert, int NElem)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0, double sz=1.0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type, int generate_edges=0, double sx=1.0)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type, int generate_edges=0)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type)\n"
+		"Mesh(int n, double sx=1.0)\n"
+		"Mesh(int n)\n"
+		"Mesh(char const * filename, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
+		"Mesh(char const * filename, int generate_edges=0, int refine=1)\n"
+		"Mesh(char const * filename, int generate_edges=0)\n"
+		"Mesh(char const * filename)\n"
+		"Mesh(std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
+		"Mesh(std::istream & input, int generate_edges=0, int refine=1)\n"
+		"Mesh(std::istream & input, int generate_edges=0)\n"
+		"Mesh(std::istream & input)\n"
+		"Mesh(mfem::Mesh *[] mesh_array, int num_pieces)\n"
+		"Mesh(Mesh orig_mesh, int ref_factor, int ref_type)\n"
+		"Mesh(int nx, int ny, int nz, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0, double sz=1.0)\n"
+		"Mesh(int nx, int ny, int nz, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0)\n"
+		"Mesh(int nx, int ny, int nz, char const * type, int generate_edges=0, double sx=1.0)\n"
+		"Mesh(int nx, int ny, int nz, char const * type, int generate_edges=0)\n"
+		"Mesh(int nx, int ny, int nz, char const * type)\n"
+		"Mesh(int nx, int ny, char const * type, int generate_edges=0, double sx=1.0, double sy=1.0)\n"
+		"Mesh(int nx, int ny, char const * type, int generate_edges=0, double sx=1.0)\n"
+		"Mesh(int nx, int ny, char const * type, int generate_edges=0)\n"
+		"new_Mesh(int nx, int ny, char const * type) -> Mesh\n"
+		""},
+	 { (char *)"Mesh_PrintToFile", _wrap_Mesh_PrintToFile, METH_VARARGS, (char *)"Mesh_PrintToFile(Mesh self, char const * mesh_file, int const precision)"},
+	 { (char *)"Mesh_GetAttributeArray", _wrap_Mesh_GetAttributeArray, METH_VARARGS, (char *)"Mesh_GetAttributeArray(Mesh self) -> PyObject *"},
+	 { (char *)"Mesh_GetVertexArray", _wrap_Mesh_GetVertexArray, METH_VARARGS, (char *)"Mesh_GetVertexArray(Mesh self, int i) -> PyObject *"},
+	 { (char *)"Mesh_GetBdrElementFace", _wrap_Mesh_GetBdrElementFace, METH_VARARGS, (char *)"\n"
+		"GetBdrElementFace(int i, int * arg3, int * arg4)\n"
+		"Mesh_GetBdrElementFace(Mesh self, int i) -> PyObject *\n"
+		""},
+	 { (char *)"Mesh_GetBdrAttributeArray", _wrap_Mesh_GetBdrAttributeArray, METH_VARARGS, (char *)"Mesh_GetBdrAttributeArray(Mesh self) -> PyObject *"},
+	 { (char *)"Mesh_GetBdrArray", _wrap_Mesh_GetBdrArray, METH_VARARGS, (char *)"Mesh_GetBdrArray(Mesh self, int idx) -> PyObject *"},
+	 { (char *)"Mesh_GetDomainArray", _wrap_Mesh_GetDomainArray, METH_VARARGS, (char *)"Mesh_GetDomainArray(Mesh self, int idx) -> PyObject *"},
 	 { (char *)"Mesh_swigregister", Mesh_swigregister, METH_VARARGS, NULL},
-	 { (char *)"__lshift__", _wrap___lshift__, METH_VARARGS, NULL},
-	 { (char *)"NodeExtrudeCoefficient_SetLayer", _wrap_NodeExtrudeCoefficient_SetLayer, METH_VARARGS, NULL},
-	 { (char *)"NodeExtrudeCoefficient_Eval", _wrap_NodeExtrudeCoefficient_Eval, METH_VARARGS, NULL},
-	 { (char *)"delete_NodeExtrudeCoefficient", _wrap_delete_NodeExtrudeCoefficient, METH_VARARGS, NULL},
+	 { (char *)"__lshift__", _wrap___lshift__, METH_VARARGS, (char *)"\n"
+		"__lshift__(std::ostream & out, GridFunction sol) -> std::ostream\n"
+		"__lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream\n"
+		"__lshift__(std::ostream & out, Mesh mesh) -> std::ostream &\n"
+		""},
+	 { (char *)"NodeExtrudeCoefficient_SetLayer", _wrap_NodeExtrudeCoefficient_SetLayer, METH_VARARGS, (char *)"NodeExtrudeCoefficient_SetLayer(NodeExtrudeCoefficient self, int const l)"},
+	 { (char *)"NodeExtrudeCoefficient_Eval", _wrap_NodeExtrudeCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"NodeExtrudeCoefficient_Eval(NodeExtrudeCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_NodeExtrudeCoefficient", _wrap_delete_NodeExtrudeCoefficient, METH_VARARGS, (char *)"delete_NodeExtrudeCoefficient(NodeExtrudeCoefficient self)"},
 	 { (char *)"NodeExtrudeCoefficient_swigregister", NodeExtrudeCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Extrude1D", _wrap_Extrude1D, METH_VARARGS, NULL},
-	 { (char *)"named_ifgzstream_filename_set", _wrap_named_ifgzstream_filename_set, METH_VARARGS, NULL},
-	 { (char *)"named_ifgzstream_filename_get", _wrap_named_ifgzstream_filename_get, METH_VARARGS, NULL},
-	 { (char *)"new_named_ifgzstream", _wrap_new_named_ifgzstream, METH_VARARGS, NULL},
-	 { (char *)"delete_named_ifgzstream", _wrap_delete_named_ifgzstream, METH_VARARGS, NULL},
+	 { (char *)"Extrude1D", _wrap_Extrude1D, METH_VARARGS, (char *)"\n"
+		"Extrude1D(Mesh mesh, int const ny, double const sy, bool const closed=False) -> Mesh\n"
+		"Extrude1D(Mesh mesh, int const ny, double const sy) -> Mesh\n"
+		""},
+	 { (char *)"named_ifgzstream_filename_set", _wrap_named_ifgzstream_filename_set, METH_VARARGS, (char *)"named_ifgzstream_filename_set(named_ifgzstream self, char const * filename)"},
+	 { (char *)"named_ifgzstream_filename_get", _wrap_named_ifgzstream_filename_get, METH_VARARGS, (char *)"named_ifgzstream_filename_get(named_ifgzstream self) -> char const *"},
+	 { (char *)"new_named_ifgzstream", _wrap_new_named_ifgzstream, METH_VARARGS, (char *)"new_named_ifgzstream(char const * mesh_name) -> named_ifgzstream"},
+	 { (char *)"delete_named_ifgzstream", _wrap_delete_named_ifgzstream, METH_VARARGS, (char *)"delete_named_ifgzstream(named_ifgzstream self)"},
 	 { (char *)"named_ifgzstream_swigregister", named_ifgzstream_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -27855,10 +28110,10 @@ static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0
 static swig_type_info _swigt__p_mfem__NCMesh = {"_p_mfem__NCMesh", "mfem::NCMesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NURBSExtension = {"_p_mfem__NURBSExtension", "mfem::NURBSExtension *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", "mfem::NodeExtrudeCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", "mfem::QuadratureFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
@@ -28143,9 +28398,9 @@ static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 
 static swig_cast_info _swigc__p_mfem__NCMesh[] = {  {&_swigt__p_mfem__NCMesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBSExtension[] = {  {&_swigt__p_mfem__NURBSExtension, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {  {&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {  {&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};

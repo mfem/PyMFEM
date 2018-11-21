@@ -232,6 +232,34 @@ def GetFaceElements(self, Face):
     val = _mesh.Mesh_GetFaceElements(self, Face, Elem1, Elem2)
     return Elem1.value(), Elem2.value()
 %}
+%feature("shadow") mfem::Mesh::GetElementTransformation %{
+def GetElementTransformation(self, i):
+    from mfem.par import IsoparametricTransformation
+    Tr = IsoparametricTransformation()
+    _mesh.Mesh_GetElementTransformation(self, i, Tr)
+    return Tr
+%}
+%feature("shadow") mfem::Mesh::GetBdrElementTransformation %{
+def GetBdrElementTransformation(self, i):
+    from mfem.par import IsoparametricTransformation
+    Tr = IsoparametricTransformation()
+    _mesh.Mesh_GetBdrElementTransformation(self, i, Tr)
+    return Tr
+%}
+%feature("shadow") mfem::Mesh::GetFaceTransformation %{
+def GetFaceTransformation(self, i):
+    from mfem.par import IsoparametricTransformation
+    Tr = IsoparametricTransformation()
+    _mesh.Mesh_GetFaceTransformation(self, i, Tr)
+    return Tr
+%}
+%feature("shadow") mfem::Mesh::GetEdgeTransformation %{
+def GetEdgeTransformation(self, i):
+    from mfem.par import IsoparametricTransformation
+    Tr = IsoparametricTransformation()
+    _mesh.Mesh_GetEdgeTransformation(self, i, Tr)
+    return Tr
+%}
 
 %immutable attributes;
 %immutable bdr_attributes;
