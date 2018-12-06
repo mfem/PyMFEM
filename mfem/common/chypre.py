@@ -147,7 +147,9 @@ class CHypreVec(list):
         rr = rdata*r - idata*i
         ii = rdata*i + idata*r
 
-        rr = ToHypreParVec(rr) if np.count_nonzero(rr) != 0 else None
+        # note: for the real part we keep it even if it is zero
+        #       so that it conservs vector size information
+        rr = ToHypreParVec(rr) 
         ii = ToHypreParVec(ii) if np.count_nonzero(ii) != 0 else None           
               
         return CHypreVec(rr, ii, horizontal=self._horizontal)
