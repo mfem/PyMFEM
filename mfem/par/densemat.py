@@ -611,7 +611,7 @@ class DenseMatrix(matrix.Matrix):
                     raise ValueError('Must be float64 array')
                 elif args[0].ndim != 2:
                     raise ValueError('Ndim must be two') 
-                elif args[0].shape[0] != _densemat.DenseMatrix_Size(self):
+                elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
                     raise ValueError('Length does not match')
                 else:
           	    args = (ascontiguousarray(args[0]),)

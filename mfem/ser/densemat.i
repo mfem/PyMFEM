@@ -37,7 +37,7 @@ if len(args) == 1 and isinstance(args[0], ndarray):
             raise ValueError('Must be float64 array')
         elif args[0].ndim != 2:
             raise ValueError('Ndim must be two') 
-        elif args[0].shape[0] != _densemat.DenseMatrix_Size(self):
+        elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
             raise ValueError('Length does not match')
         else:
   	    args = (ascontiguousarray(args[0]),)
@@ -128,8 +128,8 @@ def __getitem__(self, *args):
       return ;
     }
     npy_intp *shape = PyArray_DIMS(numpymat);    
-    int len = self->Size();
-    if (shape[0] != len){    
+    int len = self->Width()*self->Height();
+    if (shape[1]*shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }

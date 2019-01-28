@@ -3934,9 +3934,9 @@ SWIGINTERN void mfem_DenseMatrix_Assign__SWIG_2(mfem::DenseMatrix *self,PyObject
       PyErr_SetString(PyExc_ValueError, "Input data NDIM must be two");
       return ;
     }
-    npy_intp *shape = PyArray_DIMS(numpymat);    
-    int len = self->Size();
-    if (shape[0] != len){    
+    npy_intp *shape = PyArray_DIMS(numpymat);
+    int len = self->Width()*self->Height();
+    if (shape[1]*shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }

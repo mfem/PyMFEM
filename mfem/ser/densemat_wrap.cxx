@@ -3938,8 +3938,8 @@ SWIGINTERN void mfem_DenseMatrix_Assign__SWIG_2(mfem::DenseMatrix *self,PyObject
       return ;
     }
     npy_intp *shape = PyArray_DIMS(numpymat);    
-    int len = self->Size();
-    if (shape[0] != len){    
+    int len = self->Width()*self->Height();
+    if (shape[1]*shape[0] != len){    
       PyErr_SetString(PyExc_ValueError, "input data length does not match");
       return ;
     }
