@@ -20,7 +20,15 @@ def run_test():
     m.Assign(np.arange(9.).reshape(3,3))
     m.Print()
     print(np.arange(9.).reshape(3,3))
-
+    
+    x = np.zeros(5)+1
+    y = np.zeros(5)+2
+    z = np.zeros(5)+3
+    mm = mfem.DenseMatrix(3, 5)
+    mm.Assign(np.vstack([x, y, z]))
+    mm.Print()
+    mfem.Vector(mm.GetData(), 15).Print()
+    
 if __name__=='__main__':
     run_test()
  
