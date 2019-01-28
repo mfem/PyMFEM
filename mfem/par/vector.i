@@ -1,3 +1,4 @@
+
 /*
 
    vector.i
@@ -42,7 +43,7 @@ if len(args) == 1:
         own_data = True	  
     elif isinstance(args[0], ndarray):
         if args[0].dtype != 'float64':
-            raise ValueError('Must be float64 array')
+            raise ValueError('Must be float64 array ' + args[0].dtype + ' is given')  
         else:
   	    args = (ascontiguousarray(args[0]), args[0].shape[0])
              # in this case, args[0] need to be maintained
@@ -90,7 +91,7 @@ def __itruediv__(self, v):
 from numpy import ndarray, ascontiguousarray
 if len(args) == 1 and isinstance(args[0], ndarray):
         if args[0].dtype != 'float64':
-            raise ValueError('Must be float64 array')
+            raise ValueError('Must be float64 array ' + args[0].dtype + ' is given')    
         elif args[0].ndim != 1:
             raise ValueError('Ndim must be one') 
         elif args[0].shape[0] != _vector.Vector_Size(self):
