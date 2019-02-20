@@ -13159,94 +13159,183 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, NULL},
 	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, NULL},
 	 { (char *)"doublep_swigregister", doublep_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_BilinearForm", _wrap_new_BilinearForm, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_Size", _wrap_BilinearForm_Size, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EnableStaticCondensation", _wrap_BilinearForm_EnableStaticCondensation, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_StaticCondensationIsEnabled", _wrap_BilinearForm_StaticCondensationIsEnabled, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_SCFESpace", _wrap_BilinearForm_SCFESpace, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EnableHybridization", _wrap_BilinearForm_EnableHybridization, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_UsePrecomputedSparsity", _wrap_BilinearForm_UsePrecomputedSparsity, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_UseSparsity", _wrap_BilinearForm_UseSparsity, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AllocateMatrix", _wrap_BilinearForm_AllocateMatrix, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_GetDBFI", _wrap_BilinearForm_GetDBFI, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_GetBBFI", _wrap_BilinearForm_GetBBFI, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_GetFBFI", _wrap_BilinearForm_GetFBFI, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_GetBFBFI", _wrap_BilinearForm_GetBFBFI, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm___call__", _wrap_BilinearForm___call__, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_Elem", _wrap_BilinearForm_Elem, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_Mult", _wrap_BilinearForm_Mult, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FullMult", _wrap_BilinearForm_FullMult, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AddMult", _wrap_BilinearForm_AddMult, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FullAddMult", _wrap_BilinearForm_FullAddMult, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AddMultTranspose", _wrap_BilinearForm_AddMultTranspose, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FullAddMultTranspose", _wrap_BilinearForm_FullAddMultTranspose, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_MultTranspose", _wrap_BilinearForm_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_InnerProduct", _wrap_BilinearForm_InnerProduct, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_Inverse", _wrap_BilinearForm_Inverse, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_Finalize", _wrap_BilinearForm_Finalize, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_SpMat", _wrap_BilinearForm_SpMat, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_LoseMat", _wrap_BilinearForm_LoseMat, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_SpMatElim", _wrap_BilinearForm_SpMatElim, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AddDomainIntegrator", _wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AddBoundaryIntegrator", _wrap_BilinearForm_AddBoundaryIntegrator, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AddInteriorFaceIntegrator", _wrap_BilinearForm_AddInteriorFaceIntegrator, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AddBdrFaceIntegrator", _wrap_BilinearForm_AddBdrFaceIntegrator, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_Assemble", _wrap_BilinearForm_Assemble, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_GetProlongation", _wrap_BilinearForm_GetProlongation, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_GetRestriction", _wrap_BilinearForm_GetRestriction, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FormLinearSystem", _wrap_BilinearForm_FormLinearSystem, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FormSystemMatrix", _wrap_BilinearForm_FormSystemMatrix, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_RecoverFEMSolution", _wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_ComputeElementMatrices", _wrap_BilinearForm_ComputeElementMatrices, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FreeElementMatrices", _wrap_BilinearForm_FreeElementMatrices, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_ComputeElementMatrix", _wrap_BilinearForm_ComputeElementMatrix, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AssembleElementMatrix", _wrap_BilinearForm_AssembleElementMatrix, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_AssembleBdrElementMatrix", _wrap_BilinearForm_AssembleBdrElementMatrix, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EliminateEssentialBC", _wrap_BilinearForm_EliminateEssentialBC, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EliminateEssentialBCDiag", _wrap_BilinearForm_EliminateEssentialBCDiag, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EliminateVDofs", _wrap_BilinearForm_EliminateVDofs, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EliminateEssentialBCFromDofs", _wrap_BilinearForm_EliminateEssentialBCFromDofs, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EliminateEssentialBCFromDofsDiag", _wrap_BilinearForm_EliminateEssentialBCFromDofsDiag, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_EliminateVDofsInRHS", _wrap_BilinearForm_EliminateVDofsInRHS, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FullInnerProduct", _wrap_BilinearForm_FullInnerProduct, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_Update", _wrap_BilinearForm_Update, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_GetFES", _wrap_BilinearForm_GetFES, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_FESpace", _wrap_BilinearForm_FESpace, METH_VARARGS, NULL},
-	 { (char *)"BilinearForm_SetDiagonalPolicy", _wrap_BilinearForm_SetDiagonalPolicy, METH_VARARGS, NULL},
-	 { (char *)"delete_BilinearForm", _wrap_delete_BilinearForm, METH_VARARGS, NULL},
+	 { (char *)"new_BilinearForm", _wrap_new_BilinearForm, METH_VARARGS, (char *)"\n"
+		"BilinearForm()\n"
+		"BilinearForm(FiniteElementSpace f)\n"
+		"BilinearForm(FiniteElementSpace f, BilinearForm bf, int ps=0)\n"
+		"new_BilinearForm(PyObject * arg2, FiniteElementSpace f, BilinearForm bf) -> BilinearForm\n"
+		""},
+	 { (char *)"BilinearForm_Size", _wrap_BilinearForm_Size, METH_VARARGS, (char *)"BilinearForm_Size(BilinearForm self) -> int"},
+	 { (char *)"BilinearForm_EnableStaticCondensation", _wrap_BilinearForm_EnableStaticCondensation, METH_VARARGS, (char *)"BilinearForm_EnableStaticCondensation(BilinearForm self)"},
+	 { (char *)"BilinearForm_StaticCondensationIsEnabled", _wrap_BilinearForm_StaticCondensationIsEnabled, METH_VARARGS, (char *)"BilinearForm_StaticCondensationIsEnabled(BilinearForm self) -> bool"},
+	 { (char *)"BilinearForm_SCFESpace", _wrap_BilinearForm_SCFESpace, METH_VARARGS, (char *)"BilinearForm_SCFESpace(BilinearForm self) -> FiniteElementSpace"},
+	 { (char *)"BilinearForm_EnableHybridization", _wrap_BilinearForm_EnableHybridization, METH_VARARGS, (char *)"BilinearForm_EnableHybridization(BilinearForm self, FiniteElementSpace constr_space, BilinearFormIntegrator constr_integ, intArray ess_tdof_list)"},
+	 { (char *)"BilinearForm_UsePrecomputedSparsity", _wrap_BilinearForm_UsePrecomputedSparsity, METH_VARARGS, (char *)"\n"
+		"UsePrecomputedSparsity(int ps=1)\n"
+		"BilinearForm_UsePrecomputedSparsity(BilinearForm self)\n"
+		""},
+	 { (char *)"BilinearForm_UseSparsity", _wrap_BilinearForm_UseSparsity, METH_VARARGS, (char *)"\n"
+		"UseSparsity(int * I, int * J, bool isSorted)\n"
+		"BilinearForm_UseSparsity(BilinearForm self, SparseMatrix A)\n"
+		""},
+	 { (char *)"BilinearForm_AllocateMatrix", _wrap_BilinearForm_AllocateMatrix, METH_VARARGS, (char *)"BilinearForm_AllocateMatrix(BilinearForm self)"},
+	 { (char *)"BilinearForm_GetDBFI", _wrap_BilinearForm_GetDBFI, METH_VARARGS, (char *)"BilinearForm_GetDBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"BilinearForm_GetBBFI", _wrap_BilinearForm_GetBBFI, METH_VARARGS, (char *)"BilinearForm_GetBBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"BilinearForm_GetFBFI", _wrap_BilinearForm_GetFBFI, METH_VARARGS, (char *)"BilinearForm_GetFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"BilinearForm_GetBFBFI", _wrap_BilinearForm_GetBFBFI, METH_VARARGS, (char *)"BilinearForm_GetBFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"BilinearForm___call__", _wrap_BilinearForm___call__, METH_VARARGS, (char *)"BilinearForm___call__(BilinearForm self, int i, int j) -> double const &"},
+	 { (char *)"BilinearForm_Elem", _wrap_BilinearForm_Elem, METH_VARARGS, (char *)"\n"
+		"Elem(int i, int j) -> double\n"
+		"BilinearForm_Elem(BilinearForm self, int i, int j) -> double const &\n"
+		""},
+	 { (char *)"BilinearForm_Mult", _wrap_BilinearForm_Mult, METH_VARARGS, (char *)"BilinearForm_Mult(BilinearForm self, Vector x, Vector y)"},
+	 { (char *)"BilinearForm_FullMult", _wrap_BilinearForm_FullMult, METH_VARARGS, (char *)"BilinearForm_FullMult(BilinearForm self, Vector x, Vector y)"},
+	 { (char *)"BilinearForm_AddMult", _wrap_BilinearForm_AddMult, METH_VARARGS, (char *)"\n"
+		"AddMult(Vector x, Vector y, double const a=1.0)\n"
+		"BilinearForm_AddMult(BilinearForm self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"BilinearForm_FullAddMult", _wrap_BilinearForm_FullAddMult, METH_VARARGS, (char *)"BilinearForm_FullAddMult(BilinearForm self, Vector x, Vector y)"},
+	 { (char *)"BilinearForm_AddMultTranspose", _wrap_BilinearForm_AddMultTranspose, METH_VARARGS, (char *)"\n"
+		"AddMultTranspose(Vector x, Vector y, double const a=1.0)\n"
+		"BilinearForm_AddMultTranspose(BilinearForm self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"BilinearForm_FullAddMultTranspose", _wrap_BilinearForm_FullAddMultTranspose, METH_VARARGS, (char *)"BilinearForm_FullAddMultTranspose(BilinearForm self, Vector x, Vector y)"},
+	 { (char *)"BilinearForm_MultTranspose", _wrap_BilinearForm_MultTranspose, METH_VARARGS, (char *)"BilinearForm_MultTranspose(BilinearForm self, Vector x, Vector y)"},
+	 { (char *)"BilinearForm_InnerProduct", _wrap_BilinearForm_InnerProduct, METH_VARARGS, (char *)"BilinearForm_InnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
+	 { (char *)"BilinearForm_Inverse", _wrap_BilinearForm_Inverse, METH_VARARGS, (char *)"BilinearForm_Inverse(BilinearForm self) -> MatrixInverse"},
+	 { (char *)"BilinearForm_Finalize", _wrap_BilinearForm_Finalize, METH_VARARGS, (char *)"\n"
+		"Finalize(int skip_zeros=1)\n"
+		"BilinearForm_Finalize(BilinearForm self)\n"
+		""},
+	 { (char *)"BilinearForm_SpMat", _wrap_BilinearForm_SpMat, METH_VARARGS, (char *)"\n"
+		"SpMat() -> SparseMatrix\n"
+		"BilinearForm_SpMat(BilinearForm self) -> SparseMatrix\n"
+		""},
+	 { (char *)"BilinearForm_LoseMat", _wrap_BilinearForm_LoseMat, METH_VARARGS, (char *)"BilinearForm_LoseMat(BilinearForm self) -> SparseMatrix"},
+	 { (char *)"BilinearForm_SpMatElim", _wrap_BilinearForm_SpMatElim, METH_VARARGS, (char *)"\n"
+		"SpMatElim() -> SparseMatrix\n"
+		"BilinearForm_SpMatElim(BilinearForm self) -> SparseMatrix\n"
+		""},
+	 { (char *)"BilinearForm_AddDomainIntegrator", _wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS, (char *)"BilinearForm_AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
+	 { (char *)"BilinearForm_AddBoundaryIntegrator", _wrap_BilinearForm_AddBoundaryIntegrator, METH_VARARGS, (char *)"\n"
+		"AddBoundaryIntegrator(BilinearFormIntegrator bfi)\n"
+		"BilinearForm_AddBoundaryIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
+		""},
+	 { (char *)"BilinearForm_AddInteriorFaceIntegrator", _wrap_BilinearForm_AddInteriorFaceIntegrator, METH_VARARGS, (char *)"BilinearForm_AddInteriorFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
+	 { (char *)"BilinearForm_AddBdrFaceIntegrator", _wrap_BilinearForm_AddBdrFaceIntegrator, METH_VARARGS, (char *)"\n"
+		"AddBdrFaceIntegrator(BilinearFormIntegrator bfi)\n"
+		"BilinearForm_AddBdrFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
+		""},
+	 { (char *)"BilinearForm_Assemble", _wrap_BilinearForm_Assemble, METH_VARARGS, (char *)"\n"
+		"Assemble(int skip_zeros=1)\n"
+		"BilinearForm_Assemble(BilinearForm self)\n"
+		""},
+	 { (char *)"BilinearForm_GetProlongation", _wrap_BilinearForm_GetProlongation, METH_VARARGS, (char *)"BilinearForm_GetProlongation(BilinearForm self) -> Operator"},
+	 { (char *)"BilinearForm_GetRestriction", _wrap_BilinearForm_GetRestriction, METH_VARARGS, (char *)"BilinearForm_GetRestriction(BilinearForm self) -> Operator"},
+	 { (char *)"BilinearForm_FormLinearSystem", _wrap_BilinearForm_FormLinearSystem, METH_VARARGS, (char *)"\n"
+		"FormLinearSystem(intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B, int copy_interior=0)\n"
+		"BilinearForm_FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B)\n"
+		""},
+	 { (char *)"BilinearForm_FormSystemMatrix", _wrap_BilinearForm_FormSystemMatrix, METH_VARARGS, (char *)"BilinearForm_FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, SparseMatrix A)"},
+	 { (char *)"BilinearForm_RecoverFEMSolution", _wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS, (char *)"BilinearForm_RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"},
+	 { (char *)"BilinearForm_ComputeElementMatrices", _wrap_BilinearForm_ComputeElementMatrices, METH_VARARGS, (char *)"BilinearForm_ComputeElementMatrices(BilinearForm self)"},
+	 { (char *)"BilinearForm_FreeElementMatrices", _wrap_BilinearForm_FreeElementMatrices, METH_VARARGS, (char *)"BilinearForm_FreeElementMatrices(BilinearForm self)"},
+	 { (char *)"BilinearForm_ComputeElementMatrix", _wrap_BilinearForm_ComputeElementMatrix, METH_VARARGS, (char *)"BilinearForm_ComputeElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
+	 { (char *)"BilinearForm_AssembleElementMatrix", _wrap_BilinearForm_AssembleElementMatrix, METH_VARARGS, (char *)"\n"
+		"AssembleElementMatrix(int i, DenseMatrix elmat, intArray vdofs, int skip_zeros=1)\n"
+		"BilinearForm_AssembleElementMatrix(BilinearForm self, int i, DenseMatrix elmat, intArray vdofs)\n"
+		""},
+	 { (char *)"BilinearForm_AssembleBdrElementMatrix", _wrap_BilinearForm_AssembleBdrElementMatrix, METH_VARARGS, (char *)"\n"
+		"AssembleBdrElementMatrix(int i, DenseMatrix elmat, intArray vdofs, int skip_zeros=1)\n"
+		"BilinearForm_AssembleBdrElementMatrix(BilinearForm self, int i, DenseMatrix elmat, intArray vdofs)\n"
+		""},
+	 { (char *)"BilinearForm_EliminateEssentialBC", _wrap_BilinearForm_EliminateEssentialBC, METH_VARARGS, (char *)"\n"
+		"EliminateEssentialBC(intArray bdr_attr_is_ess, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy)\n"
+		"EliminateEssentialBC(intArray bdr_attr_is_ess, Vector sol, Vector rhs)\n"
+		"EliminateEssentialBC(intArray bdr_attr_is_ess, mfem::Matrix::DiagonalPolicy dpolicy)\n"
+		"BilinearForm_EliminateEssentialBC(BilinearForm self, intArray bdr_attr_is_ess)\n"
+		""},
+	 { (char *)"BilinearForm_EliminateEssentialBCDiag", _wrap_BilinearForm_EliminateEssentialBCDiag, METH_VARARGS, (char *)"BilinearForm_EliminateEssentialBCDiag(BilinearForm self, intArray bdr_attr_is_ess, double value)"},
+	 { (char *)"BilinearForm_EliminateVDofs", _wrap_BilinearForm_EliminateVDofs, METH_VARARGS, (char *)"\n"
+		"EliminateVDofs(intArray vdofs, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy)\n"
+		"EliminateVDofs(intArray vdofs, Vector sol, Vector rhs)\n"
+		"EliminateVDofs(intArray vdofs, mfem::Matrix::DiagonalPolicy dpolicy)\n"
+		"BilinearForm_EliminateVDofs(BilinearForm self, intArray vdofs)\n"
+		""},
+	 { (char *)"BilinearForm_EliminateEssentialBCFromDofs", _wrap_BilinearForm_EliminateEssentialBCFromDofs, METH_VARARGS, (char *)"\n"
+		"EliminateEssentialBCFromDofs(intArray ess_dofs, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy)\n"
+		"EliminateEssentialBCFromDofs(intArray ess_dofs, Vector sol, Vector rhs)\n"
+		"EliminateEssentialBCFromDofs(intArray ess_dofs, mfem::Matrix::DiagonalPolicy dpolicy)\n"
+		"BilinearForm_EliminateEssentialBCFromDofs(BilinearForm self, intArray ess_dofs)\n"
+		""},
+	 { (char *)"BilinearForm_EliminateEssentialBCFromDofsDiag", _wrap_BilinearForm_EliminateEssentialBCFromDofsDiag, METH_VARARGS, (char *)"BilinearForm_EliminateEssentialBCFromDofsDiag(BilinearForm self, intArray ess_dofs, double value)"},
+	 { (char *)"BilinearForm_EliminateVDofsInRHS", _wrap_BilinearForm_EliminateVDofsInRHS, METH_VARARGS, (char *)"BilinearForm_EliminateVDofsInRHS(BilinearForm self, intArray vdofs, Vector x, Vector b)"},
+	 { (char *)"BilinearForm_FullInnerProduct", _wrap_BilinearForm_FullInnerProduct, METH_VARARGS, (char *)"BilinearForm_FullInnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
+	 { (char *)"BilinearForm_Update", _wrap_BilinearForm_Update, METH_VARARGS, (char *)"\n"
+		"Update(FiniteElementSpace nfes=None)\n"
+		"BilinearForm_Update(BilinearForm self)\n"
+		""},
+	 { (char *)"BilinearForm_GetFES", _wrap_BilinearForm_GetFES, METH_VARARGS, (char *)"BilinearForm_GetFES(BilinearForm self) -> FiniteElementSpace"},
+	 { (char *)"BilinearForm_FESpace", _wrap_BilinearForm_FESpace, METH_VARARGS, (char *)"\n"
+		"FESpace() -> FiniteElementSpace\n"
+		"BilinearForm_FESpace(BilinearForm self) -> FiniteElementSpace\n"
+		""},
+	 { (char *)"BilinearForm_SetDiagonalPolicy", _wrap_BilinearForm_SetDiagonalPolicy, METH_VARARGS, (char *)"BilinearForm_SetDiagonalPolicy(BilinearForm self, mfem::Matrix::DiagonalPolicy policy)"},
+	 { (char *)"delete_BilinearForm", _wrap_delete_BilinearForm, METH_VARARGS, (char *)"delete_BilinearForm(BilinearForm self)"},
 	 { (char *)"disown_BilinearForm", _wrap_disown_BilinearForm, METH_VARARGS, NULL},
 	 { (char *)"BilinearForm_swigregister", BilinearForm_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_MixedBilinearForm", _wrap_new_MixedBilinearForm, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_Elem", _wrap_MixedBilinearForm_Elem, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_Mult", _wrap_MixedBilinearForm_Mult, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_AddMult", _wrap_MixedBilinearForm_AddMult, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_AddMultTranspose", _wrap_MixedBilinearForm_AddMultTranspose, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_MultTranspose", _wrap_MixedBilinearForm_MultTranspose, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_Inverse", _wrap_MixedBilinearForm_Inverse, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_Finalize", _wrap_MixedBilinearForm_Finalize, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_GetBlocks", _wrap_MixedBilinearForm_GetBlocks, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_SpMat", _wrap_MixedBilinearForm_SpMat, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_LoseMat", _wrap_MixedBilinearForm_LoseMat, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_AddDomainIntegrator", _wrap_MixedBilinearForm_AddDomainIntegrator, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_AddBoundaryIntegrator", _wrap_MixedBilinearForm_AddBoundaryIntegrator, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_AddTraceFaceIntegrator", _wrap_MixedBilinearForm_AddTraceFaceIntegrator, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_GetDBFI", _wrap_MixedBilinearForm_GetDBFI, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_GetBBFI", _wrap_MixedBilinearForm_GetBBFI, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_GetTFBFI", _wrap_MixedBilinearForm_GetTFBFI, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_Assemble", _wrap_MixedBilinearForm_Assemble, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_ConformingAssemble", _wrap_MixedBilinearForm_ConformingAssemble, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_EliminateTrialDofs", _wrap_MixedBilinearForm_EliminateTrialDofs, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_EliminateEssentialBCFromTrialDofs", _wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_EliminateTestDofs", _wrap_MixedBilinearForm_EliminateTestDofs, METH_VARARGS, NULL},
-	 { (char *)"MixedBilinearForm_Update", _wrap_MixedBilinearForm_Update, METH_VARARGS, NULL},
-	 { (char *)"delete_MixedBilinearForm", _wrap_delete_MixedBilinearForm, METH_VARARGS, NULL},
+	 { (char *)"new_MixedBilinearForm", _wrap_new_MixedBilinearForm, METH_VARARGS, (char *)"new_MixedBilinearForm(FiniteElementSpace tr_fes, FiniteElementSpace te_fes) -> MixedBilinearForm"},
+	 { (char *)"MixedBilinearForm_Elem", _wrap_MixedBilinearForm_Elem, METH_VARARGS, (char *)"\n"
+		"Elem(int i, int j) -> double\n"
+		"MixedBilinearForm_Elem(MixedBilinearForm self, int i, int j) -> double const &\n"
+		""},
+	 { (char *)"MixedBilinearForm_Mult", _wrap_MixedBilinearForm_Mult, METH_VARARGS, (char *)"MixedBilinearForm_Mult(MixedBilinearForm self, Vector x, Vector y)"},
+	 { (char *)"MixedBilinearForm_AddMult", _wrap_MixedBilinearForm_AddMult, METH_VARARGS, (char *)"\n"
+		"AddMult(Vector x, Vector y, double const a=1.0)\n"
+		"MixedBilinearForm_AddMult(MixedBilinearForm self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"MixedBilinearForm_AddMultTranspose", _wrap_MixedBilinearForm_AddMultTranspose, METH_VARARGS, (char *)"\n"
+		"AddMultTranspose(Vector x, Vector y, double const a=1.0)\n"
+		"MixedBilinearForm_AddMultTranspose(MixedBilinearForm self, Vector x, Vector y)\n"
+		""},
+	 { (char *)"MixedBilinearForm_MultTranspose", _wrap_MixedBilinearForm_MultTranspose, METH_VARARGS, (char *)"MixedBilinearForm_MultTranspose(MixedBilinearForm self, Vector x, Vector y)"},
+	 { (char *)"MixedBilinearForm_Inverse", _wrap_MixedBilinearForm_Inverse, METH_VARARGS, (char *)"MixedBilinearForm_Inverse(MixedBilinearForm self) -> MatrixInverse"},
+	 { (char *)"MixedBilinearForm_Finalize", _wrap_MixedBilinearForm_Finalize, METH_VARARGS, (char *)"\n"
+		"Finalize(int skip_zeros=1)\n"
+		"MixedBilinearForm_Finalize(MixedBilinearForm self)\n"
+		""},
+	 { (char *)"MixedBilinearForm_GetBlocks", _wrap_MixedBilinearForm_GetBlocks, METH_VARARGS, (char *)"MixedBilinearForm_GetBlocks(MixedBilinearForm self, mfem::Array2D< mfem::SparseMatrix * > & blocks)"},
+	 { (char *)"MixedBilinearForm_SpMat", _wrap_MixedBilinearForm_SpMat, METH_VARARGS, (char *)"\n"
+		"SpMat() -> SparseMatrix\n"
+		"MixedBilinearForm_SpMat(MixedBilinearForm self) -> SparseMatrix\n"
+		""},
+	 { (char *)"MixedBilinearForm_LoseMat", _wrap_MixedBilinearForm_LoseMat, METH_VARARGS, (char *)"MixedBilinearForm_LoseMat(MixedBilinearForm self) -> SparseMatrix"},
+	 { (char *)"MixedBilinearForm_AddDomainIntegrator", _wrap_MixedBilinearForm_AddDomainIntegrator, METH_VARARGS, (char *)"MixedBilinearForm_AddDomainIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
+	 { (char *)"MixedBilinearForm_AddBoundaryIntegrator", _wrap_MixedBilinearForm_AddBoundaryIntegrator, METH_VARARGS, (char *)"MixedBilinearForm_AddBoundaryIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
+	 { (char *)"MixedBilinearForm_AddTraceFaceIntegrator", _wrap_MixedBilinearForm_AddTraceFaceIntegrator, METH_VARARGS, (char *)"MixedBilinearForm_AddTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
+	 { (char *)"MixedBilinearForm_GetDBFI", _wrap_MixedBilinearForm_GetDBFI, METH_VARARGS, (char *)"MixedBilinearForm_GetDBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"MixedBilinearForm_GetBBFI", _wrap_MixedBilinearForm_GetBBFI, METH_VARARGS, (char *)"MixedBilinearForm_GetBBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"MixedBilinearForm_GetTFBFI", _wrap_MixedBilinearForm_GetTFBFI, METH_VARARGS, (char *)"MixedBilinearForm_GetTFBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"MixedBilinearForm_Assemble", _wrap_MixedBilinearForm_Assemble, METH_VARARGS, (char *)"\n"
+		"Assemble(int skip_zeros=1)\n"
+		"MixedBilinearForm_Assemble(MixedBilinearForm self)\n"
+		""},
+	 { (char *)"MixedBilinearForm_ConformingAssemble", _wrap_MixedBilinearForm_ConformingAssemble, METH_VARARGS, (char *)"MixedBilinearForm_ConformingAssemble(MixedBilinearForm self)"},
+	 { (char *)"MixedBilinearForm_EliminateTrialDofs", _wrap_MixedBilinearForm_EliminateTrialDofs, METH_VARARGS, (char *)"MixedBilinearForm_EliminateTrialDofs(MixedBilinearForm self, intArray bdr_attr_is_ess, Vector sol, Vector rhs)"},
+	 { (char *)"MixedBilinearForm_EliminateEssentialBCFromTrialDofs", _wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs, METH_VARARGS, (char *)"MixedBilinearForm_EliminateEssentialBCFromTrialDofs(MixedBilinearForm self, intArray marked_vdofs, Vector sol, Vector rhs)"},
+	 { (char *)"MixedBilinearForm_EliminateTestDofs", _wrap_MixedBilinearForm_EliminateTestDofs, METH_VARARGS, (char *)"MixedBilinearForm_EliminateTestDofs(MixedBilinearForm self, intArray bdr_attr_is_ess)"},
+	 { (char *)"MixedBilinearForm_Update", _wrap_MixedBilinearForm_Update, METH_VARARGS, (char *)"MixedBilinearForm_Update(MixedBilinearForm self)"},
+	 { (char *)"delete_MixedBilinearForm", _wrap_delete_MixedBilinearForm, METH_VARARGS, (char *)"delete_MixedBilinearForm(MixedBilinearForm self)"},
 	 { (char *)"MixedBilinearForm_swigregister", MixedBilinearForm_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_DiscreteLinearOperator", _wrap_new_DiscreteLinearOperator, METH_VARARGS, NULL},
-	 { (char *)"DiscreteLinearOperator_AddDomainInterpolator", _wrap_DiscreteLinearOperator_AddDomainInterpolator, METH_VARARGS, NULL},
-	 { (char *)"DiscreteLinearOperator_AddTraceFaceInterpolator", _wrap_DiscreteLinearOperator_AddTraceFaceInterpolator, METH_VARARGS, NULL},
-	 { (char *)"DiscreteLinearOperator_GetDI", _wrap_DiscreteLinearOperator_GetDI, METH_VARARGS, NULL},
-	 { (char *)"DiscreteLinearOperator_Assemble", _wrap_DiscreteLinearOperator_Assemble, METH_VARARGS, NULL},
-	 { (char *)"delete_DiscreteLinearOperator", _wrap_delete_DiscreteLinearOperator, METH_VARARGS, NULL},
+	 { (char *)"new_DiscreteLinearOperator", _wrap_new_DiscreteLinearOperator, METH_VARARGS, (char *)"new_DiscreteLinearOperator(FiniteElementSpace domain_fes, FiniteElementSpace range_fes) -> DiscreteLinearOperator"},
+	 { (char *)"DiscreteLinearOperator_AddDomainInterpolator", _wrap_DiscreteLinearOperator_AddDomainInterpolator, METH_VARARGS, (char *)"DiscreteLinearOperator_AddDomainInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
+	 { (char *)"DiscreteLinearOperator_AddTraceFaceInterpolator", _wrap_DiscreteLinearOperator_AddTraceFaceInterpolator, METH_VARARGS, (char *)"DiscreteLinearOperator_AddTraceFaceInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
+	 { (char *)"DiscreteLinearOperator_GetDI", _wrap_DiscreteLinearOperator_GetDI, METH_VARARGS, (char *)"DiscreteLinearOperator_GetDI(DiscreteLinearOperator self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
+	 { (char *)"DiscreteLinearOperator_Assemble", _wrap_DiscreteLinearOperator_Assemble, METH_VARARGS, (char *)"\n"
+		"Assemble(int skip_zeros=1)\n"
+		"DiscreteLinearOperator_Assemble(DiscreteLinearOperator self)\n"
+		""},
+	 { (char *)"delete_DiscreteLinearOperator", _wrap_delete_DiscreteLinearOperator, METH_VARARGS, (char *)"delete_DiscreteLinearOperator(DiscreteLinearOperator self)"},
 	 { (char *)"DiscreteLinearOperator_swigregister", DiscreteLinearOperator_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
