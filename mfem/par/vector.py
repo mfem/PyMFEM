@@ -425,16 +425,22 @@ class Vector(_object):
         Assign(Vector self, PyObject * param)
         """
 
-        from numpy import ndarray, ascontiguousarray
-        if len(args) == 1 and isinstance(args[0], ndarray):
+        from numpy import ndarray, ascontiguousarray, array
+        keep_link = False
+        if len(args) == 1:
+            if isinstance(args[0], ndarray):
                 if args[0].dtype != 'float64':
-                    raise ValueError('Must be float64 array ' + args[0].dtype + ' is given')    
+                    raise ValueError('Must be float64 array ' + args[0].dtype + ' is given')
                 elif args[0].ndim != 1:
                     raise ValueError('Ndim must be one') 
                 elif args[0].shape[0] != _vector.Vector_Size(self):
                     raise ValueError('Length does not match')
-                else:
-          	    args = (ascontiguousarray(args[0]),)
+            elif isinstance(args[0], tuple):
+                args = (array(args[0], dtype = float),)      
+            elif isinstance(args[0], list):	      
+                args = (array(args[0], dtype = float),)      
+            else:
+                pass
 
 
         val = _vector.Vector_Assign(self, *args)
