@@ -435,6 +435,8 @@ class Vector(_object):
                     raise ValueError('Ndim must be one') 
                 elif args[0].shape[0] != _vector.Vector_Size(self):
                     raise ValueError('Length does not match')
+                else:
+          	    args = (ascontiguousarray(args[0]),)
             elif isinstance(args[0], tuple):
                 args = (array(args[0], dtype = float),)      
             elif isinstance(args[0], list):	      
