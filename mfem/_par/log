@@ -1,0 +1,369 @@
+array.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+array.py:def _swig_setattr(self, class_type, name, value):
+array.py:def _swig_getattr(self, class_type, name):
+array.py:def _swig_repr(self):
+array.py:def doubleSwap(*args):
+array.py:def intSwap(*args):
+bilinearform.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+bilinearform.py:def _swig_setattr(self, class_type, name, value):
+bilinearform.py:def _swig_getattr(self, class_type, name):
+bilinearform.py:def _swig_repr(self):
+bilininteg.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+bilininteg.py:def _swig_setattr(self, class_type, name, value):
+bilininteg.py:def _swig_getattr(self, class_type, name):
+bilininteg.py:def _swig_repr(self):
+blockmatrix.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+blockmatrix.py:def _swig_setattr(self, class_type, name, value):
+blockmatrix.py:def _swig_getattr(self, class_type, name):
+blockmatrix.py:def _swig_repr(self):
+blockoperator.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+blockoperator.py:def _swig_setattr(self, class_type, name, value):
+blockoperator.py:def _swig_getattr(self, class_type, name):
+blockoperator.py:def _swig_repr(self):
+blockoperator.py:def Opr2BlockOpr(op):
+blockoperator.py:def Opr2SparseMat(op):
+blockoperator.py:def Opr2HypreParMat(op):
+blockvector.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+blockvector.py:def _swig_setattr(self, class_type, name, value):
+blockvector.py:def _swig_getattr(self, class_type, name):
+blockvector.py:def _swig_repr(self):
+coefficient.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+coefficient.py:def _swig_setattr(self, class_type, name, value):
+coefficient.py:def _swig_getattr(self, class_type, name):
+coefficient.py:def _swig_repr(self):
+coefficient.py:def ComputeLpNorm(*args):
+coefficient.py:def ComputeGlobalLpNorm(*args):
+coefficient.py:def fake_func(x):
+coefficient.py:def fake_func_vec(x, Ht):
+coefficient.py:def fake_func_mat(x, Kt):
+common_functions.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+common_functions.py:def _swig_setattr(self, class_type, name, value):
+common_functions.py:def _swig_getattr(self, class_type, name):
+common_functions.py:def _swig_repr(self):
+common_functions.py:def Transpose(*args):
+common_functions.py:def Mult(*args):
+common_functions.py:def InnerProduct(*args):
+common_functions.py:def Add(*args):
+common_functions.py:def RAP(*args):
+communication.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+communication.py:def _swig_setattr(self, class_type, name, value):
+communication.py:def _swig_getattr(self, class_type, name):
+communication.py:def _swig_repr(self):
+communication.py:def ReorderRanksZCurve(comm):
+complex_operator.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+complex_operator.py:def _swig_setattr(self, class_type, name, value):
+complex_operator.py:def _swig_getattr(self, class_type, name):
+complex_operator.py:def _swig_repr(self):
+config.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+config.py:def _swig_setattr(self, class_type, name, value):
+config.py:def _swig_getattr(self, class_type, name):
+config.py:def _swig_repr(self):
+cpointers.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+cpointers.py:def _swig_setattr(self, class_type, name, value):
+cpointers.py:def _swig_getattr(self, class_type, name):
+cpointers.py:def _swig_repr(self):
+cpointers.py:def intp_frompointer(t):
+cpointers.py:def doublep_frompointer(t):
+densemat.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+densemat.py:def _swig_setattr(self, class_type, name, value):
+densemat.py:def _swig_getattr(self, class_type, name):
+densemat.py:def _swig_repr(self):
+densemat.py:def AddMult(b, c, a):
+densemat.py:def CalcAdjugate(a, adja):
+densemat.py:def CalcAdjugateTranspose(a, adjat):
+densemat.py:def CalcInverse(a, inva):
+densemat.py:def CalcInverseTranspose(a, inva):
+densemat.py:def CalcOrtho(J, n):
+densemat.py:def MultAAt(a, aat):
+densemat.py:def MultADAt(A, D, ADAt):
+densemat.py:def AddMultADAt(A, D, ADAt):
+densemat.py:def MultABt(A, B, ABt):
+densemat.py:def MultADBt(A, D, B, ADBt):
+densemat.py:def AddMultABt(A, B, ABt):
+densemat.py:def AddMultADBt(A, D, B, ADBt):
+densemat.py:def AddMult_a_ABt(a, A, B, ABt):
+densemat.py:def MultAtB(A, B, AtB):
+densemat.py:def AddMult_a_AAt(a, A, AAt):
+densemat.py:def Mult_a_AAt(a, A, AAt):
+densemat.py:def MultVVt(v, vvt):
+densemat.py:def MultVWt(v, w, VWt):
+densemat.py:def AddMultVWt(v, w, VWt):
+densemat.py:def AddMultVVt(v, VWt):
+densemat.py:def AddMult_a_VWt(a, v, w, VWt):
+densemat.py:def AddMult_a_VVt(a, v, VVt):
+densemat.py:def LUFactors_SubMult(m, n, r, A21, X1, X2):
+element.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+element.py:def _swig_setattr(self, class_type, name, value):
+element.py:def _swig_getattr(self, class_type, name):
+element.py:def _swig_repr(self):
+eltrans.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+eltrans.py:def _swig_setattr(self, class_type, name, value):
+eltrans.py:def _swig_getattr(self, class_type, name):
+eltrans.py:def _swig_repr(self):
+error.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+error.py:def _swig_setattr(self, class_type, name, value):
+error.py:def _swig_getattr(self, class_type, name):
+error.py:def _swig_repr(self):
+error.py:def set_error_action(action):
+error.py:def get_error_action():
+error.py:def mfem_backtrace(mode=0, depth=-1):
+error.py:def mfem_error(msg=None):
+error.py:def mfem_warning(msg=None):
+estimators.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+estimators.py:def _swig_setattr(self, class_type, name, value):
+estimators.py:def _swig_getattr(self, class_type, name):
+estimators.py:def _swig_repr(self):
+fe.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+fe.py:def _swig_setattr(self, class_type, name, value):
+fe.py:def _swig_getattr(self, class_type, name):
+fe.py:def _swig_repr(self):
+fe.py:def BasisType_Check(b_type):
+fe.py:def BasisType_CheckNodal(b_type):
+fe.py:def BasisType_GetQuadrature1D(b_type):
+fe.py:def BasisType_GetNodalBasis(qpt_type):
+fe.py:def BasisType_Name(b_type):
+fe.py:def BasisType_GetChar(b_type):
+fe.py:def BasisType_GetType(b_ident):
+fe.py:def FiniteElement_IsClosedType(b_type):
+fe.py:def FiniteElement_IsOpenType(b_type):
+fe.py:def FiniteElement_VerifyClosed(b_type):
+fe.py:def FiniteElement_VerifyOpen(b_type):
+fe.py:def FiniteElement_VerifyNodal(b_type):
+fe.py:def Poly_1D_Binom(p):
+fe.py:def Poly_1D_CalcBasis(*args):
+fe.py:def Poly_1D_CalcDelta(p, x):
+fe.py:def Poly_1D_ChebyshevPoints(p, x):
+fe.py:def Poly_1D_CalcBinomTerms(*args):
+fe.py:def Poly_1D_CalcDBinomTerms(p, x, y, d):
+fe.py:def Poly_1D_CalcBernstein(*args):
+fe.py:def TensorBasisElement_GetTensorProductGeometry(dim):
+fe.py:def TensorBasisElement_Pow(base, dim):
+fe_coll.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+fe_coll.py:def _swig_setattr(self, class_type, name, value):
+fe_coll.py:def _swig_getattr(self, class_type, name):
+fe_coll.py:def _swig_repr(self):
+fe_coll.py:def FiniteElementCollection_New(name):
+fem.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+fem.py:def _swig_setattr(self, class_type, name, value):
+fem.py:def _swig_getattr_nondynamic(self, class_type, name, static=1):
+fem.py:def _swig_getattr(self, class_type, name):
+fem.py:def _swig_repr(self):
+fem.py:def FiniteElementSpace_AdjustVDofs(vdofs):
+fem.py:def FiniteElementSpace_MarkerToList(marker, list):
+fem.py:def FiniteElementSpace_ListToMarker(list, marker_size, marker, mark_val=-1):
+fespace.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+fespace.py:def _swig_setattr(self, class_type, name, value):
+fespace.py:def _swig_getattr(self, class_type, name):
+fespace.py:def _swig_repr(self):
+fespace.py:def FiniteElementSpace_AdjustVDofs(vdofs):
+fespace.py:def FiniteElementSpace_MarkerToList(marker, list):
+fespace.py:def FiniteElementSpace_ListToMarker(list, marker_size, marker, mark_val=-1):
+geom.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+geom.py:def _swig_setattr(self, class_type, name, value):
+geom.py:def _swig_getattr(self, class_type, name):
+geom.py:def _swig_repr(self):
+geom.py:def Geometry_GetRandomPoint(GeomType, ip):
+geom.py:def Geometry_CheckPoint(*args):
+geom.py:def Geometry_ProjectPoint(*args):
+gridfunc.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+gridfunc.py:def _swig_setattr(self, class_type, name, value):
+gridfunc.py:def _swig_getattr(self, class_type, name):
+gridfunc.py:def _swig_repr(self):
+gridfunc.py:def __lshift__(*args):
+gridfunc.py:def ZZErrorEstimator(blfi, u, flux, error_estimates, aniso_flags=None, with_subdomains=1):
+gridfunc.py:def ComputeElementLpDistance(p, i, gf1, gf2):
+gridfunc.py:def Extrude1DGridFunction(mesh, mesh2d, sol, ny):
+gridfunc.py:def __iadd__(self, v):
+gridfunc.py:def __isub__(self, v):
+gridfunc.py:def __idiv__(self, v):
+gridfunc.py:def __imul__(self, v):
+handle.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+handle.py:def _swig_setattr(self, class_type, name, value):
+handle.py:def _swig_getattr(self, class_type, name):
+handle.py:def _swig_repr(self):
+hybridization.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+hybridization.py:def _swig_setattr(self, class_type, name, value):
+hybridization.py:def _swig_getattr(self, class_type, name):
+hybridization.py:def _swig_repr(self):
+hypre.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+hypre.py:def _swig_setattr(self, class_type, name, value):
+hypre.py:def _swig_getattr(self, class_type, name):
+hypre.py:def _swig_repr(self):
+hypre.py:def sizeof_HYPRE_Int():
+hypre.py:def ParNormlp(vec, p, comm):
+hypre.py:def ParMult(A, B):
+hypre.py:def ParAdd(A, B):
+hypre.py:def EliminateBC(A, Ae, ess_dof_list, X, B):
+hypre.py:def parvec__repr__(self):
+hypre.py:def parvec__del__(self):
+hypre.py:def parmat__repr__(self):
+intrules.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+intrules.py:def _swig_setattr(self, class_type, name, value):
+intrules.py:def _swig_getattr(self, class_type, name):
+intrules.py:def _swig_repr(self):
+intrules.py:def Quadrature1D_CheckClosed(type):
+intrules.py:def Quadrature1D_CheckOpen(type):
+istream_typemap.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+istream_typemap.py:def _swig_setattr(self, class_type, name, value):
+istream_typemap.py:def _swig_getattr(self, class_type, name):
+istream_typemap.py:def _swig_repr(self):
+linearform.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+linearform.py:def _swig_setattr(self, class_type, name, value):
+linearform.py:def _swig_getattr(self, class_type, name):
+linearform.py:def _swig_repr(self):
+lininteg.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+lininteg.py:def _swig_setattr(self, class_type, name, value):
+lininteg.py:def _swig_getattr(self, class_type, name):
+lininteg.py:def _swig_repr(self):
+matrix.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+matrix.py:def _swig_setattr(self, class_type, name, value):
+matrix.py:def _swig_getattr(self, class_type, name):
+matrix.py:def _swig_repr(self):
+mesh.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+mesh.py:def _swig_setattr(self, class_type, name, value):
+mesh.py:def _swig_getattr(self, class_type, name):
+mesh.py:def _swig_repr(self):
+mesh.py:def Mesh_GetTransformationFEforElementType(arg2):
+mesh.py:def __lshift__(*args):
+mesh.py:def Extrude1D(mesh, ny, sy, closed=False):
+mesh_operators.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+mesh_operators.py:def _swig_setattr(self, class_type, name, value):
+mesh_operators.py:def _swig_getattr(self, class_type, name):
+mesh_operators.py:def _swig_repr(self):
+ncmesh.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+ncmesh.py:def _swig_setattr(self, class_type, name, value):
+ncmesh.py:def _swig_getattr(self, class_type, name):
+ncmesh.py:def _swig_repr(self):
+nonlinearform.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+nonlinearform.py:def _swig_setattr(self, class_type, name, value):
+nonlinearform.py:def _swig_getattr(self, class_type, name):
+nonlinearform.py:def _swig_repr(self):
+nonlininteg.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+nonlininteg.py:def _swig_setattr(self, class_type, name, value):
+nonlininteg.py:def _swig_getattr(self, class_type, name):
+nonlininteg.py:def _swig_repr(self):
+ode.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+ode.py:def _swig_setattr(self, class_type, name, value):
+ode.py:def _swig_getattr(self, class_type, name):
+ode.py:def _swig_repr(self):
+operators.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+operators.py:def _swig_setattr(self, class_type, name, value):
+operators.py:def _swig_getattr(self, class_type, name):
+operators.py:def _swig_repr(self):
+ostream_typemap.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+ostream_typemap.py:def _swig_setattr(self, class_type, name, value):
+ostream_typemap.py:def _swig_getattr(self, class_type, name):
+ostream_typemap.py:def _swig_repr(self):
+pbilinearform.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+pbilinearform.py:def _swig_setattr(self, class_type, name, value):
+pbilinearform.py:def _swig_getattr(self, class_type, name):
+pbilinearform.py:def _swig_repr(self):
+pfespace.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+pfespace.py:def _swig_setattr(self, class_type, name, value):
+pfespace.py:def _swig_getattr(self, class_type, name):
+pfespace.py:def _swig_repr(self):
+pgridfunc.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+pgridfunc.py:def _swig_setattr(self, class_type, name, value):
+pgridfunc.py:def _swig_getattr(self, class_type, name):
+pgridfunc.py:def _swig_repr(self):
+pgridfunc.py:def GlobalLpNorm(p, loc_norm, comm):
+pgridfunc.py:def L2ZZErrorEstimator(flux_integrator, x, smooth_flux_fes, flux_fes, errors, norm_p=2, solver_tol=1e-12, solver_max_it=200):
+plinearform.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+plinearform.py:def _swig_setattr(self, class_type, name, value):
+plinearform.py:def _swig_getattr(self, class_type, name):
+plinearform.py:def _swig_repr(self):
+pmesh.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+pmesh.py:def _swig_setattr(self, class_type, name, value):
+pmesh.py:def _swig_getattr(self, class_type, name):
+pmesh.py:def _swig_repr(self):
+pncmesh.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+pncmesh.py:def _swig_setattr(self, class_type, name, value):
+pncmesh.py:def _swig_getattr(self, class_type, name):
+pncmesh.py:def _swig_repr(self):
+pncmesh.py:def __lt__(a, b):
+pncmesh.py:def __eq__(a, b):
+pnonlinearform.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+pnonlinearform.py:def _swig_setattr(self, class_type, name, value):
+pnonlinearform.py:def _swig_getattr(self, class_type, name):
+pnonlinearform.py:def _swig_repr(self):
+point.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+point.py:def _swig_setattr(self, class_type, name, value):
+point.py:def _swig_getattr(self, class_type, name):
+point.py:def _swig_repr(self):
+segment.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+segment.py:def _swig_setattr(self, class_type, name, value):
+segment.py:def _swig_getattr(self, class_type, name):
+segment.py:def _swig_repr(self):
+sets.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+sets.py:def _swig_setattr(self, class_type, name, value):
+sets.py:def _swig_getattr(self, class_type, name):
+sets.py:def _swig_repr(self):
+socketstream.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+socketstream.py:def _swig_setattr(self, class_type, name, value):
+socketstream.py:def _swig_getattr(self, class_type, name):
+socketstream.py:def _swig_repr(self):
+solvers.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+solvers.py:def _swig_setattr(self, class_type, name, value):
+solvers.py:def _swig_getattr(self, class_type, name):
+solvers.py:def _swig_repr(self):
+solvers.py:def SLI(*args):
+solvers.py:def CG(A, b, x, print_iter=0, max_num_iter=1000, RTOLERANCE=1e-12, ATOLERANCE=1e-24):
+solvers.py:def PCG(A, B, b, x, print_iter=0, max_num_iter=1000, RTOLERANCE=1e-12, ATOLERANCE=1e-24):
+solvers.py:def GMRES(*args):
+solvers.py:def BiCGSTAB(*args):
+solvers.py:def MINRES(*args):
+solvers.py:def aGMRES(A, x, b, M, max_iter, m_max, m_min, m_step, cf, tol, atol, printit):
+solvers_p.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+solvers_p.py:def _swig_setattr(self, class_type, name, value):
+solvers_p.py:def _swig_getattr(self, class_type, name):
+solvers_p.py:def _swig_repr(self):
+solvers_p.py:def SLI(*args):
+solvers_p.py:def CG(A, b, x, print_iter=0, max_num_iter=1000, RTOLERANCE=1e-12, ATOLERANCE=1e-24):
+solvers_p.py:def PCG(A, B, b, x, print_iter=0, max_num_iter=1000, RTOLERANCE=1e-12, ATOLERANCE=1e-24):
+solvers_p.py:def GMRES(*args):
+solvers_p.py:def BiCGSTAB(*args):
+solvers_p.py:def MINRES(*args):
+solvers_p.py:def aGMRES(A, x, b, M, max_iter, m_max, m_min, m_step, cf, tol, atol, printit):
+sparsemat.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+sparsemat.py:def _swig_setattr(self, class_type, name, value):
+sparsemat.py:def _swig_getattr(self, class_type, name):
+sparsemat.py:def _swig_repr(self):
+sparsemat.py:def RAP_P(A, R, ORAP):
+sparsemat.py:def RAP_R(Rt, A, P):
+sparsemat.py:def SparseMatrixFunction(S, f):
+sparsemat.py:def TransposeAbstractSparseMatrix(A, useActualWidth):
+sparsemat.py:def MultAbstractSparseMatrix(A, B):
+sparsemat.py:def Mult_AtDA(A, D, OAtDA=None):
+sparsesmoothers.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+sparsesmoothers.py:def _swig_setattr(self, class_type, name, value):
+sparsesmoothers.py:def _swig_getattr(self, class_type, name):
+sparsesmoothers.py:def _swig_repr(self):
+strumpack.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+strumpack.py:def _swig_setattr(self, class_type, name, value):
+strumpack.py:def _swig_getattr(self, class_type, name):
+strumpack.py:def _swig_repr(self):
+strumpack.py:def intp_frompointer(t):
+strumpack.py:def doublep_frompointer(t):
+strumpack.py:def argv_obj(input):
+strumpack.py:def MC64_job_number(job):
+strumpack.py:def get_name(method):
+strumpack.py:def is_parallel(method):
+table.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+table.py:def _swig_setattr(self, class_type, name, value):
+table.py:def _swig_getattr(self, class_type, name):
+table.py:def _swig_repr(self):
+vector.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+vector.py:def _swig_setattr(self, class_type, name, value):
+vector.py:def _swig_getattr(self, class_type, name):
+vector.py:def _swig_repr(self):
+vector.py:def add_vector(*args):
+vector.py:def subtract_vector(*args):
+vector.py:def CheckFinite(v, n):
+vector.py:def infinity():
+vector.py:def IsFinite(val):
+vector.py:def DistanceSquared(x, y, n):
+vector.py:def Distance(x, y, n):
+vertex.py:def _swig_setattr_nondynamic(self, class_type, name, value, static=1):
+vertex.py:def _swig_setattr(self, class_type, name, value):
+vertex.py:def _swig_getattr(self, class_type, name):
+vertex.py:def _swig_repr(self):
