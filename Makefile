@@ -105,11 +105,15 @@ pyinstall:
 	$(PYTHON) setup.py install --prefix=$(PREFIX)
 cleancxx:
 	for dirs in $(SUBDIRS); do\
-		$(MAKE) -C $$dirs cleancxx;\
+	        if [ -d $$dirs ]; then \
+	           $(MAKE) -C $$dirs cleancxx;\
+		fi; \
 	done
 clean:
 	for dirs in $(SUBDIRS); do\
-		$(MAKE) -C $$dirs clean;\
+	        if [ -d $$dirs ]; then \
+	           $(MAKE) -C $$dirs clean;\
+		fi; \
 	done
 	rm -f setup_local.py
 
