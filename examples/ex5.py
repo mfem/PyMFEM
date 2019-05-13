@@ -31,8 +31,11 @@ class pFunc_ex(mfem.PyCoefficient):
        return  pFunc_exact(x)
    
 class fFunc(mfem.VectorPyCoefficient):
-   def EvalValue(self, x):    
-       return [0., 0., 0.]
+   def EvalValue(self, x):
+       if len(x) == 3:
+           return [0., 0., 0.]
+       else:
+           return [0., 0.]
 
 class gFunc(mfem.PyCoefficient):
    def EvalValue(self, x):

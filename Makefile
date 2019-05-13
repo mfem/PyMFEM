@@ -86,21 +86,21 @@ all: par ser
 cxx: parcxx sercxx
 par: 
 	$(PYTHON) write_setup_local.py
-	$(MAKE) -C mfem/par
+	$(MAKE) -C mfem/_par
 	cp setup_local.py mfem/.       
 ser: 
 	$(PYTHON) write_setup_local.py
-	$(MAKE) -C mfem/ser
+	$(MAKE) -C mfem/_ser
 	cp setup_local.py mfem/.       
 parcxx: setup_local.py
-	$(MAKE) -C mfem/par cxx
+	$(MAKE) -C mfem/_par cxx
 sercxx: setup_local.py
-	$(MAKE) -C mfem/ser cxx
+	$(MAKE) -C mfem/_ser cxx
 setup_local.py: Makefile.local
 	$(PYTHON) write_setup_local.py
 	cp setup_local.py mfem/.
 pyinstall:
-	$(PYTHON) clean_import.py -x
+	#$(PYTHON) clean_import.py -x
 	$(PYTHON) setup.py build
 	$(PYTHON) setup.py install --prefix=$(PREFIX)
 cleancxx:

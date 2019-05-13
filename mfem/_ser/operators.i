@@ -1,0 +1,73 @@
+%module (package="mfem._ser", directors="1") operators
+
+%{
+#include "iostream_typemap.hpp"        
+#include "linalg/operator.hpp"
+#include "pyoperator.hpp"
+#include "numpy/arrayobject.h"    
+%}
+
+%init %{
+import_array();
+%}
+%include "exception.i"
+%import "vector.i"
+%import "array.i"
+%import "ostream_typemap.i"
+%import "../common/exception_director.i"
+
+/*
+%feature("director:except") {
+    if ($error != NULL) {
+        throw Swig::DirectorMethodException();
+    }
+}
+*/
+
+%inline %{
+void mfem::PyOperatorBase::Mult(const mfem::Vector &x, mfem::Vector &y) const
+  {
+    y = _EvalMult(x);
+  }
+void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector &y) const
+  {
+    y = _EvalMult(x);
+  }
+%}
+
+%feature("director") mfem::PyTimeDependentOperatorBase;
+%feature("director") mfem::PyOperatorBase;
+//%feature("noabstract") mfem::Operator;
+//%feature("noabstract") mfem::TimeDependentOperator;
+%feature("director") mfem::TimeDependentOperator;
+%feature("director") mfem::Operator;
+%feature("director") mfem::Solver;
+
+//%feature("nodirector") mfem::Operator::GetGradient;
+//%feature("nodirector") mfem::Operator::GetProlongation;
+//%feature("nodirector") mfem::Operator::GetRestriction;
+//%feature("nodirector") mfem::TimeDependentOperator::GetImplicitGradient;
+//%feature("nodirector") mfem::TimeDependentOperator::GetExplicitGradient;
+
+%include "linalg/operator.hpp"
+%include "pyoperator.hpp"
+
+%pythoncode %{
+class PyOperator(PyOperatorBase):
+   def __init__(self, *args):
+       PyOperatorBase.__init__(self, *args)
+   def _EvalMult(self, x):
+       return self.EvalMult(x.GetDataArray())
+   def EvalMult(self, x):
+       raise NotImplementedError('you must specify this method')
+
+class PyTimeDependentOperator(PyTimeDependentOperatorBase):
+   def __init__(self, *args):  
+       PyTimeDependentOperatorBase.__init__(self, *args)
+   def _EvalMult(self, x):
+       return self.EvalMult(x.GetDataArray())
+   def EvalMult(self, x):
+       raise NotImplementedError('you must specify this method')
+			 
+%}
+  

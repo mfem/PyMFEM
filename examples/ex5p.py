@@ -32,13 +32,18 @@ class pFunc_ex(mfem.PyCoefficient):
        return  pFunc_exact(x)
    
 class fFunc(mfem.VectorPyCoefficient):
-   def EvalValue(self, x):    
-       return [0, 0, 0]
+   def EvalValue(self, x):
+       if len(x) == 3:
+           return [0., 0., 0.]
+       else:
+           return [0., 0.]
 
 class gFunc(mfem.PyCoefficient):
    def EvalValue(self, x):
-       if len(x) == 3: return  -pFunc_exact(x)       
-       return 0
+       if len(x) == 3:
+           return  -pFunc_exact(x)
+       else:
+           return 0.0
 class f_natural(mfem.PyCoefficient):
    def EvalValue(self, x):    
        return -pFunc_exact(x)
@@ -97,6 +102,7 @@ rhs = mfem.BlockVector(block_offsets)
 trueX = mfem.BlockVector(block_trueOffsets)
 
 trueRhs = mfem.BlockVector(block_trueOffsets)
+trueRhs.Assign(0.0)
 
 fform = mfem.ParLinearForm()
 fform.Update(R_space, rhs.GetBlock(0), 0)
