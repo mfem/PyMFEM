@@ -13,7 +13,8 @@ from numpy import sin, cos, exp
 def pFunc_exact(x):
     xi = float(x[0]); yi = float(x[1]); zi = 0.0
     if len(x) == 3: zi = x[2]
-    return exp(xi)*sin(yi)*cos(zi)
+    from numpy import sin, cos, exp    
+    return exp(xi)*sin(yi)*cos(zi) 
 
 class uFunc_ex(mfem.VectorPyCoefficient):
    def EvalValue(self, x):
@@ -30,15 +31,19 @@ class pFunc_ex(mfem.PyCoefficient):
        return  pFunc_exact(x)
    
 class fFunc(mfem.VectorPyCoefficient):
-   def EvalValue(self, x):    
-       return [0, 0, 0]
+   def EvalValue(self, x):
+       if len(x) == 3:
+           return [0., 0., 0.]
+       else:
+           return [0., 0.]
 
 class gFunc(mfem.PyCoefficient):
    def EvalValue(self, x):
        if len(x) == 3: return  -pFunc_exact(x)       
-       return 0
+       return 0.
+   
 class f_natural(mfem.PyCoefficient):
-   def EvalValue(self, x):    
+   def EvalValue(self, x):
        return -pFunc_exact(x)
 
 
