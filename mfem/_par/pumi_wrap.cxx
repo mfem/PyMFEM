@@ -3454,23 +3454,23 @@ namespace Swig {
 #define SWIGTYPE_p_CommGroup swig_types[0]
 #define SWIGTYPE_p_GroupId swig_types[1]
 #define SWIGTYPE_p_MPI_Comm swig_types[2]
-#define SWIGTYPE_p_ParGridFunction swig_types[3]
-#define SWIGTYPE_p_apf__Field swig_types[4]
-#define SWIGTYPE_p_apf__Mesh2 swig_types[5]
-#define SWIGTYPE_p_apf__Numbering swig_types[6]
-#define SWIGTYPE_p_char swig_types[7]
-#define SWIGTYPE_p_double swig_types[8]
-#define SWIGTYPE_p_doublep swig_types[9]
-#define SWIGTYPE_p_hex_t swig_types[10]
-#define SWIGTYPE_p_int swig_types[11]
-#define SWIGTYPE_p_intp swig_types[12]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__GridFunctionPumi swig_types[14]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[15]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[16]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[17]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[18]
-#define SWIGTYPE_p_mfem__Mesh swig_types[19]
+#define SWIGTYPE_p_apf__Field swig_types[3]
+#define SWIGTYPE_p_apf__Mesh2 swig_types[4]
+#define SWIGTYPE_p_apf__Numbering swig_types[5]
+#define SWIGTYPE_p_char swig_types[6]
+#define SWIGTYPE_p_double swig_types[7]
+#define SWIGTYPE_p_doublep swig_types[8]
+#define SWIGTYPE_p_hex_t swig_types[9]
+#define SWIGTYPE_p_int swig_types[10]
+#define SWIGTYPE_p_intp swig_types[11]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[12]
+#define SWIGTYPE_p_mfem__GridFunctionPumi swig_types[13]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[14]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[15]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[16]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[17]
+#define SWIGTYPE_p_mfem__Mesh swig_types[18]
+#define SWIGTYPE_p_mfem__ParGridFunction swig_types[19]
 #define SWIGTYPE_p_mfem__ParMesh swig_types[20]
 #define SWIGTYPE_p_mfem__ParPumiMesh swig_types[21]
 #define SWIGTYPE_p_mfem__PumiMesh swig_types[22]
@@ -3659,6 +3659,9 @@ SWIG_FromCharPtr(const char *cptr)
 { 
   return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
 }
+
+
+#include "mpi4py/mpi4py.h"
 
 
 typedef int intp;
@@ -5177,8 +5180,8 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldMFEMtoPUMI__SWIG_0(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::ParPumiMesh *arg1 = (mfem::ParPumiMesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
-  ParGridFunction *arg3 = (ParGridFunction *) 0 ;
-  ParGridFunction *arg4 = (ParGridFunction *) 0 ;
+  mfem::ParGridFunction *arg3 = (mfem::ParGridFunction *) 0 ;
+  mfem::ParGridFunction *arg4 = (mfem::ParGridFunction *) 0 ;
   apf::Field *arg5 = (apf::Field *) 0 ;
   apf::Field *arg6 = (apf::Field *) 0 ;
   apf::Field *arg7 = (apf::Field *) 0 ;
@@ -5215,16 +5218,16 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldMFEMtoPUMI__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
   arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_ParGridFunction, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "3"" of type '" "ParGridFunction *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "3"" of type '" "mfem::ParGridFunction *""'"); 
   }
-  arg3 = reinterpret_cast< ParGridFunction * >(argp3);
-  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_ParGridFunction, 0 |  0 );
+  arg3 = reinterpret_cast< mfem::ParGridFunction * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "4"" of type '" "ParGridFunction *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "4"" of type '" "mfem::ParGridFunction *""'"); 
   }
-  arg4 = reinterpret_cast< ParGridFunction * >(argp4);
+  arg4 = reinterpret_cast< mfem::ParGridFunction * >(argp4);
   res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_apf__Field, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "5"" of type '" "apf::Field *""'"); 
@@ -5259,7 +5262,7 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldMFEMtoPUMI__SWIG_1(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::ParPumiMesh *arg1 = (mfem::ParPumiMesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
-  ParGridFunction *arg3 = (ParGridFunction *) 0 ;
+  mfem::ParGridFunction *arg3 = (mfem::ParGridFunction *) 0 ;
   apf::Field *arg4 = (apf::Field *) 0 ;
   apf::Field *arg5 = (apf::Field *) 0 ;
   void *argp1 = 0 ;
@@ -5289,11 +5292,11 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldMFEMtoPUMI__SWIG_1(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
   arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_ParGridFunction, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "3"" of type '" "ParGridFunction *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "3"" of type '" "mfem::ParGridFunction *""'"); 
   }
-  arg3 = reinterpret_cast< ParGridFunction * >(argp3);
+  arg3 = reinterpret_cast< mfem::ParGridFunction * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_apf__Field, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_FieldMFEMtoPUMI" "', argument " "4"" of type '" "apf::Field *""'"); 
@@ -5342,7 +5345,7 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldMFEMtoPUMI(PyObject *self, PyObject 
       _v = SWIG_CheckState(res);
       if (_v) {
         void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_ParGridFunction, 0);
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
@@ -5371,11 +5374,11 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldMFEMtoPUMI(PyObject *self, PyObject 
       _v = SWIG_CheckState(res);
       if (_v) {
         void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_ParGridFunction, 0);
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
           void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_ParGridFunction, 0);
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
             void *vptr = 0;
@@ -5403,8 +5406,8 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldMFEMtoPUMI(PyObject *self, PyObject 
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParPumiMesh_FieldMFEMtoPUMI'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParPumiMesh::FieldMFEMtoPUMI(apf::Mesh2 *,ParGridFunction *,ParGridFunction *,apf::Field *,apf::Field *,apf::Field *)\n"
-    "    mfem::ParPumiMesh::FieldMFEMtoPUMI(apf::Mesh2 *,ParGridFunction *,apf::Field *,apf::Field *)\n");
+    "    mfem::ParPumiMesh::FieldMFEMtoPUMI(apf::Mesh2 *,mfem::ParGridFunction *,mfem::ParGridFunction *,apf::Field *,apf::Field *,apf::Field *)\n"
+    "    mfem::ParPumiMesh::FieldMFEMtoPUMI(apf::Mesh2 *,mfem::ParGridFunction *,apf::Field *,apf::Field *)\n");
   return 0;
 }
 
@@ -5413,7 +5416,7 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_VectorFieldMFEMtoPUMI(PyObject *SWIGUNUSE
   PyObject *resultobj = 0;
   mfem::ParPumiMesh *arg1 = (mfem::ParPumiMesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
-  ParGridFunction *arg3 = (ParGridFunction *) 0 ;
+  mfem::ParGridFunction *arg3 = (mfem::ParGridFunction *) 0 ;
   apf::Field *arg4 = (apf::Field *) 0 ;
   apf::Field *arg5 = (apf::Field *) 0 ;
   void *argp1 = 0 ;
@@ -5443,11 +5446,11 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_VectorFieldMFEMtoPUMI(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
   arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_ParGridFunction, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "3"" of type '" "ParGridFunction *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "3"" of type '" "mfem::ParGridFunction *""'"); 
   }
-  arg3 = reinterpret_cast< ParGridFunction * >(argp3);
+  arg3 = reinterpret_cast< mfem::ParGridFunction * >(argp3);
   res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_apf__Field, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "4"" of type '" "apf::Field *""'"); 
@@ -5515,7 +5518,7 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldPUMItoMFEM(PyObject *SWIGUNUSEDPARM(
   mfem::ParPumiMesh *arg1 = (mfem::ParPumiMesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
   apf::Field *arg3 = (apf::Field *) 0 ;
-  ParGridFunction *arg4 = (ParGridFunction *) 0 ;
+  mfem::ParGridFunction *arg4 = (mfem::ParGridFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -5545,11 +5548,11 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldPUMItoMFEM(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_FieldPUMItoMFEM" "', argument " "3"" of type '" "apf::Field *""'"); 
   }
   arg3 = reinterpret_cast< apf::Field * >(argp3);
-  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_ParGridFunction, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_FieldPUMItoMFEM" "', argument " "4"" of type '" "ParGridFunction *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_FieldPUMItoMFEM" "', argument " "4"" of type '" "mfem::ParGridFunction *""'"); 
   }
-  arg4 = reinterpret_cast< ParGridFunction * >(argp4);
+  arg4 = reinterpret_cast< mfem::ParGridFunction * >(argp4);
   {
     try {
       (arg1)->FieldPUMItoMFEM(arg2,arg3,arg4); 
@@ -5726,12 +5729,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"PumiMesh_swigregister", PumiMesh_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_ParPumiMesh", _wrap_new_ParPumiMesh, METH_VARARGS, (char *)"new_ParPumiMesh(MPI_Comm comm, apf::Mesh2 * apf_mesh) -> ParPumiMesh"},
 	 { (char *)"ParPumiMesh_FieldMFEMtoPUMI", _wrap_ParPumiMesh_FieldMFEMtoPUMI, METH_VARARGS, (char *)"\n"
-		"FieldMFEMtoPUMI(apf::Mesh2 * apf_mesh, ParGridFunction * Vel, ParGridFunction * Pr, apf::Field * VelField, apf::Field * PrField, apf::Field * VelMagField)\n"
-		"ParPumiMesh_FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction * Pr, apf::Field * PrField, apf::Field * PrMagField)\n"
+		"FieldMFEMtoPUMI(apf::Mesh2 * apf_mesh, ParGridFunction Vel, ParGridFunction Pr, apf::Field * VelField, apf::Field * PrField, apf::Field * VelMagField)\n"
+		"ParPumiMesh_FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Pr, apf::Field * PrField, apf::Field * PrMagField)\n"
 		""},
-	 { (char *)"ParPumiMesh_VectorFieldMFEMtoPUMI", _wrap_ParPumiMesh_VectorFieldMFEMtoPUMI, METH_VARARGS, (char *)"ParPumiMesh_VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction * Vel, apf::Field * VelField, apf::Field * VelMagField)"},
+	 { (char *)"ParPumiMesh_VectorFieldMFEMtoPUMI", _wrap_ParPumiMesh_VectorFieldMFEMtoPUMI, METH_VARARGS, (char *)"ParPumiMesh_VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, apf::Field * VelField, apf::Field * VelMagField)"},
 	 { (char *)"ParPumiMesh_UpdateMesh", _wrap_ParPumiMesh_UpdateMesh, METH_VARARGS, (char *)"ParPumiMesh_UpdateMesh(ParPumiMesh self, ParMesh AdaptedpMesh)"},
-	 { (char *)"ParPumiMesh_FieldPUMItoMFEM", _wrap_ParPumiMesh_FieldPUMItoMFEM, METH_VARARGS, (char *)"ParPumiMesh_FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction * Pr)"},
+	 { (char *)"ParPumiMesh_FieldPUMItoMFEM", _wrap_ParPumiMesh_FieldPUMItoMFEM, METH_VARARGS, (char *)"ParPumiMesh_FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction Pr)"},
 	 { (char *)"delete_ParPumiMesh", _wrap_delete_ParPumiMesh, METH_VARARGS, (char *)"delete_ParPumiMesh(ParPumiMesh self)"},
 	 { (char *)"ParPumiMesh_swigregister", ParPumiMesh_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_GridFunctionPumi", _wrap_new_GridFunctionPumi, METH_VARARGS, (char *)"new_GridFunctionPumi(Mesh m, apf::Mesh2 * PumiM, apf::Numbering * v_num_loc, int const mesh_order) -> GridFunctionPumi"},
@@ -5752,6 +5755,9 @@ static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM
 static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
 }
+static void *_p_mfem__ParGridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *) (mfem::GridFunction *) ((mfem::ParGridFunction *) x));
+}
 static void *_p_mfem__GridFunctionPumiTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Vector *) (mfem::GridFunction *) ((mfem::GridFunctionPumi *) x));
 }
@@ -5761,11 +5767,17 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
 static void *_p_mfem__ParPumiMeshTo_p_mfem__ParMesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ParMesh *)  ((mfem::ParPumiMesh *) x));
 }
+static void *_p_mfem__ParGridFunctionTo_p_mfem__GridFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GridFunction *)  ((mfem::ParGridFunction *) x));
+}
 static void *_p_mfem__GridFunctionPumiTo_p_mfem__GridFunction(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::GridFunction *)  ((mfem::GridFunctionPumi *) x));
 }
 static void *_p_intpTo_p_int(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((int *)  ((intp *) x));
+}
+static void *_p_mfem__ParMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Mesh *)  ((mfem::ParMesh *) x));
 }
 static void *_p_mfem__PumiMeshTo_p_mfem__Mesh(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Mesh *)  ((mfem::PumiMesh *) x));
@@ -5779,7 +5791,6 @@ static void *_p_doublepTo_p_double(void *x, int *SWIGUNUSEDPARM(newmemory)) {
 static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ParGridFunction = {"_p_ParGridFunction", "ParGridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Field = {"_p_apf__Field", "apf::Field *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Mesh2 = {"_p_apf__Mesh2", "apf::Mesh2 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Numbering = {"_p_apf__Numbering", "apf::Numbering *", 0, 0, (void*)0, 0};
@@ -5794,6 +5805,7 @@ static swig_type_info _swigt__p_mfem__GridFunctionPumi = {"_p_mfem__GridFunction
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ParGridFunction = {"_p_mfem__ParGridFunction", "mfem::ParGridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ParMesh = {"_p_mfem__ParMesh", "mfem::ParMesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ParPumiMesh = {"_p_mfem__ParPumiMesh", "mfem::ParPumiMesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PumiMesh = {"_p_mfem__PumiMesh", "mfem::PumiMesh *", 0, 0, (void*)0, 0};
@@ -5811,7 +5823,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CommGroup,
   &_swigt__p_GroupId,
   &_swigt__p_MPI_Comm,
-  &_swigt__p_ParGridFunction,
   &_swigt__p_apf__Field,
   &_swigt__p_apf__Mesh2,
   &_swigt__p_apf__Numbering,
@@ -5828,6 +5839,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__Mesh,
+  &_swigt__p_mfem__ParGridFunction,
   &_swigt__p_mfem__ParMesh,
   &_swigt__p_mfem__ParPumiMesh,
   &_swigt__p_mfem__PumiMesh,
@@ -5843,7 +5855,6 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ParGridFunction[] = {  {&_swigt__p_ParGridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Field[] = {  {&_swigt__p_apf__Field, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Mesh2[] = {  {&_swigt__p_apf__Mesh2, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Numbering[] = {  {&_swigt__p_apf__Numbering, 0, 0, 0},{0, 0, 0, 0}};
@@ -5853,18 +5864,19 @@ static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0,
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_intp, _p_intpTo_p_int, 0, 0},  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},  {&_swigt__p_mfem__GridFunctionPumi, _p_mfem__GridFunctionPumiTo_p_mfem__GridFunction, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},  {&_swigt__p_mfem__ParGridFunction, _p_mfem__ParGridFunctionTo_p_mfem__GridFunction, 0, 0},  {&_swigt__p_mfem__GridFunctionPumi, _p_mfem__GridFunctionPumiTo_p_mfem__GridFunction, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunctionPumi[] = {  {&_swigt__p_mfem__GridFunctionPumi, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__PumiMesh, _p_mfem__PumiMeshTo_p_mfem__Mesh, 0, 0},  {&_swigt__p_mfem__ParPumiMesh, _p_mfem__ParPumiMeshTo_p_mfem__Mesh, 0, 0},  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__ParMesh, _p_mfem__ParMeshTo_p_mfem__Mesh, 0, 0},  {&_swigt__p_mfem__ParPumiMesh, _p_mfem__ParPumiMeshTo_p_mfem__Mesh, 0, 0},  {&_swigt__p_mfem__PumiMesh, _p_mfem__PumiMeshTo_p_mfem__Mesh, 0, 0},  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ParGridFunction[] = {  {&_swigt__p_mfem__ParGridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParMesh[] = {  {&_swigt__p_mfem__ParMesh, 0, 0, 0},  {&_swigt__p_mfem__ParPumiMesh, _p_mfem__ParPumiMeshTo_p_mfem__ParMesh, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParPumiMesh[] = {  {&_swigt__p_mfem__ParPumiMesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PumiMesh[] = {  {&_swigt__p_mfem__PumiMesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__GridFunctionPumi, _p_mfem__GridFunctionPumiTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__ParGridFunction, _p_mfem__ParGridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__GridFunctionPumi, _p_mfem__GridFunctionPumiTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
@@ -5875,7 +5887,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CommGroup,
   _swigc__p_GroupId,
   _swigc__p_MPI_Comm,
-  _swigc__p_ParGridFunction,
   _swigc__p_apf__Field,
   _swigc__p_apf__Mesh2,
   _swigc__p_apf__Numbering,
@@ -5892,6 +5903,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__Mesh,
+  _swigc__p_mfem__ParGridFunction,
   _swigc__p_mfem__ParMesh,
   _swigc__p_mfem__ParPumiMesh,
   _swigc__p_mfem__PumiMesh,
@@ -6592,9 +6604,6 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  
-  import_array();
-  
   SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30400)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.4.0"));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30400)%2))));
@@ -6605,6 +6614,17 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30400)%100))));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
+  
+  if (import_mpi4py() < 0)
+#if PY_MAJOR_VERSION >= 3
+  return NULL;
+#else
+  return;
+#endif
+  
+  
+  import_array();
+  
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

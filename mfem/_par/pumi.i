@@ -1,4 +1,4 @@
-%module(directors="0")  pumi
+%module(package="mfem._par", directors="0")  pumi
 %{
 #include "mesh/mesh_headers.hpp"
 #include "pumi.hpp"
@@ -18,15 +18,22 @@
 
 %}
 
+%include "../common/mfem_config.i"
+
+#ifdef MFEM_USE_MPI
+%include mpi4py/mpi4py.i
+%mpi4py_typemap(Comm, MPI_Comm);
+#endif
+
 %init %{
 import_array();
 %}
 
-%include "../common/mfem_config.i"
 %include "../common/cpointers.i"
 %include "exception.i"
 %import "ostream_typemap.i"
 %import "../common/numpy_int_typemap.i"
+%import "pgridfunc.i"
 %import "mesh.i"
 %import "pmesh.i"
 
