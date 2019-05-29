@@ -73,3 +73,9 @@ import mfem._par.pgridfunc as pgridfunc
 import mfem._par.solvers as solvers
 import mfem._par.vector as vector
 import mfem._par.sparsemat as sparsemat
+
+try:
+   import mfem._par.pumi as pumi
+   from mfem._par.pumi import *
+except ImportError:
+   pass
