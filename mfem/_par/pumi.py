@@ -213,6 +213,10 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
+
+def ParMesh2ParPumiMesh(pmesh):
+    """ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"""
+    return _pumi.ParMesh2ParPumiMesh(pmesh)
 class PumiMesh(mfem._par.mesh.Mesh):
     """Proxy of C++ mfem::PumiMesh class."""
 

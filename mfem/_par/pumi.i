@@ -1,7 +1,7 @@
 %module(package="mfem._par", directors="0")  pumi
 %{
 #include "mesh/mesh_headers.hpp"
-#include "pumi.hpp"
+#include "mesh/pumi.hpp"
 #include "fem/fem.hpp"
 #include "general/array.hpp"
 
@@ -38,6 +38,14 @@ import_array();
 %import "pmesh.i"
 
 %include "../common/exception.i"
+
+%inline %{
+  mfem::ParPumiMesh *ParMesh2ParPumiMesh(mfem::ParMesh *pmesh) {
+    return dynamic_cast<mfem::ParPumiMesh*>(pmesh);
+  }
+%}
+  
 %include "mesh/pumi.hpp"
+
 
 

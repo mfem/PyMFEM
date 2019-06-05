@@ -3588,7 +3588,7 @@ namespace swig {
 
 
 #include "mesh/mesh_headers.hpp"
-#include "pumi.hpp"
+#include "mesh/pumi.hpp"
 #include "fem/fem.hpp"
 #include "general/array.hpp"
 
@@ -3859,6 +3859,11 @@ SWIGINTERN double *doublep_cast(doublep *self){
 SWIGINTERN doublep *doublep_frompointer(double *t){
     return (doublep *) t;
   }
+
+  mfem::ParPumiMesh *ParMesh2ParPumiMesh(mfem::ParMesh *pmesh) {
+    return dynamic_cast<mfem::ParPumiMesh*>(pmesh);
+  }
+
 
 SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
@@ -4176,6 +4181,35 @@ SWIGINTERN PyObject *doublep_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObje
   SWIG_TypeNewClientData(SWIGTYPE_p_doublep, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
+
+SWIGINTERN PyObject *_wrap_ParMesh2ParPumiMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::ParPumiMesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ParMesh2ParPumiMesh",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh2ParPumiMesh" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
+  {
+    try {
+      result = (mfem::ParPumiMesh *)ParMesh2ParPumiMesh(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParPumiMesh, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
 
 SWIGINTERN PyObject *_wrap_new_PumiMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -5709,6 +5743,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, NULL},
 	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, NULL},
 	 { (char *)"doublep_swigregister", doublep_swigregister, METH_VARARGS, NULL},
+	 { (char *)"ParMesh2ParPumiMesh", _wrap_ParMesh2ParPumiMesh, METH_VARARGS, (char *)"ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"},
 	 { (char *)"new_PumiMesh", _wrap_new_PumiMesh, METH_VARARGS, (char *)"\n"
 		"PumiMesh(apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
 		"PumiMesh(apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1)\n"
