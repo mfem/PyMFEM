@@ -76,7 +76,7 @@ STRUMPACK_INCLUDE ?=
 # export everything so that it is avaialbe in setup.py
 export
 
-SUBDIRS = mfem/par mfem/ser
+SUBDIRS = mfem/_par mfem/_ser
 
 .PHONEY:clean par ser  subdirs subdirs_cxx parcxx sercxx pyinstall
 
