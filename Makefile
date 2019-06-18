@@ -26,6 +26,7 @@ SWIGFLAG = -Wall -c++ -python
 #   MFEMINCDIR : include files
 #   MFEMLNKDIR : path to mfem.so
 
+
 MFEM ?=/usr/local
 MFEMLIB = mfem
 MFEMBUILDDIR ?= $(HOME)/src/mfem/cmbuild_par
@@ -69,10 +70,14 @@ HYPRELNKFLAG = -L$(HYPRELIB) -lHYPRE
 MPIINCFLAG  = -I$(MPIINC)
 MPI4PYINCFLAG  = -I$(MPI4PYINC)
 
+ADD_STRUMPACK ?= $(ENABLE_STRUMPACK)
+STRUMPACK_INCLUDE ?=
+ADD_PUMI ?= $(ENABLE_PUMI)
+
 # export everything so that it is avaialbe in setup.py
 export
 
-SUBDIRS = mfem/par mfem/ser
+SUBDIRS = mfem/_par mfem/_ser
 
 .PHONEY:clean par ser  subdirs subdirs_cxx parcxx sercxx pyinstall
 
@@ -82,30 +87,34 @@ all: par ser
 cxx: parcxx sercxx
 par: 
 	$(PYTHON) write_setup_local.py
-	$(MAKE) -C mfem/par
+	$(MAKE) -C mfem/_par
 	cp setup_local.py mfem/.       
 ser: 
 	$(PYTHON) write_setup_local.py
-	$(MAKE) -C mfem/ser
+	$(MAKE) -C mfem/_ser
 	cp setup_local.py mfem/.       
 parcxx: setup_local.py
-	$(MAKE) -C mfem/par cxx
+	$(MAKE) -C mfem/_par cxx
 sercxx: setup_local.py
-	$(MAKE) -C mfem/ser cxx
+	$(MAKE) -C mfem/_ser cxx
 setup_local.py: Makefile.local
 	$(PYTHON) write_setup_local.py
 	cp setup_local.py mfem/.
 pyinstall:
-	$(PYTHON) clean_import.py -x
+	#$(PYTHON) clean_import.py -x
 	$(PYTHON) setup.py build
 	$(PYTHON) setup.py install --prefix=$(PREFIX)
 cleancxx:
 	for dirs in $(SUBDIRS); do\
-		$(MAKE) -C $$dirs cleancxx;\
+	        if [ -d $$dirs ]; then \
+	           $(MAKE) -C $$dirs cleancxx;\
+		fi; \
 	done
 clean:
 	for dirs in $(SUBDIRS); do\
-		$(MAKE) -C $$dirs clean;\
+	        if [ -d $$dirs ]; then \
+	           $(MAKE) -C $$dirs clean;\
+		fi; \
 	done
 	rm -f setup_local.py
 

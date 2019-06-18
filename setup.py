@@ -52,7 +52,7 @@ setup(
     packages=find_packages(),
     install_requires=[],
     extras_require={},
-    package_data={'mfem.par':['*.so'], 'mfem.ser':['*.so']},
+    package_data={'mfem._par':['*.so'], 'mfem._ser':['*.so']},
     data_files=[('data', datafiles)],
     entry_points={},
 )

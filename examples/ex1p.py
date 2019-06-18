@@ -19,7 +19,8 @@ num_proc = MPI.COMM_WORLD.size
 myid     = MPI.COMM_WORLD.rank
 
 def run(order = 1, static_cond = False,
-        meshfile = def_meshfile, visualization = False):
+        meshfile = def_meshfile, visualization = False,
+        use_strumpack = False):
 
    mesh = mfem.Mesh(meshfile, 1,1)
    dim = mesh.Dimension()
@@ -80,13 +81,29 @@ def run(order = 1, static_cond = False,
       print("Size of linear system: " + str(x.Size()))
       print("Size of linear system: " + str(A.GetGlobalNumRows()))
 
-   amg = mfem.HypreBoomerAMG(A)
-   pcg = mfem.HyprePCG(A)
-   pcg.SetTol(1e-12)
-   pcg.SetMaxIter(200)
-   pcg.SetPrintLevel(2)
-   pcg.SetPreconditioner(amg)
-   pcg.Mult(B, X);
+   if use_strumpack:
+       import mfem.par.strumpack as strmpk
+       Arow = strmpk.STRUMPACKRowLocMatrix(A)
+       args = ["--sp_hss_min_sep_size", "128", "--sp_enable_hss"]
+       strumpack = strmpk.STRUMPACKSolver(args, MPI.COMM_WORLD)
+       strumpack.SetPrintFactorStatistics(True)
+       strumpack.SetPrintSolveStatistics(False)
+       strumpack.SetKrylovSolver(strmpk.KrylovSolver_DIRECT);
+       strumpack.SetReorderingStrategy(strmpk.ReorderingStrategy_METIS)
+       strumpack.SetMC64Job(strmpk.MC64Job_NONE)
+       # strumpack.SetSymmetricPattern(True)
+       strumpack.SetOperator(Arow)
+       strumpack.SetFromCommandLine()
+       strumpack.Mult(B, X);
+
+   else:
+       amg = mfem.HypreBoomerAMG(A)
+       pcg = mfem.HyprePCG(A)
+       pcg.SetTol(1e-12)
+       pcg.SetMaxIter(200)
+       pcg.SetPrintLevel(2)
+       pcg.SetPreconditioner(amg)
+       pcg.Mult(B, X);
 
 
    a.RecoverFEMSolution(X, b, x)
@@ -113,18 +130,22 @@ if __name__ == "__main__":
    parser.add_argument('-sc', '--static-condensation',
                        action = 'store_true', 
                        help = "Enable static condensation.")
+   parser.add_argument("-sp", "--strumpack",
+                   action = 'store_true', default = False,
+                   help =  "Use the STRUMPACK Solver.")
+   
    args = parser.parse_args()
 
    if myid == 0: parser.print_options(args)
-
 
    order = args.order
    static_cond = args.static_condensation
    meshfile =expanduser(join(path, 'data', args.mesh))
    visualization = args.visualization
-
+   use_strumpack = args.strumpack
    run(order = order, static_cond = static_cond,
-       meshfile = meshfile, visualization = visualization)
+       meshfile = meshfile, visualization = visualization,
+       use_strumpack = use_strumpack)
    
 
 

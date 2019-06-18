@@ -132,6 +132,13 @@ to find more detail of the MFEM libirary.
             GetFaceVertices(i)
             GetElementFaces(i)
 	    GetBdrElementAdjacentElement()
+
+         These methods returns an IsoparametricTransformation object
+	 
+            GetElementTransformation(i)
+            GetBdrElementTransformation(i)
+            GetFaceTransformation(i)
+            GetEdgeTransformation(i)
 	    
 	 pointer passing in following methos are returned
 	 as tuple
@@ -349,6 +356,30 @@ to find more detail of the MFEM libirary.
 	 so that Python does not garbage collect them.
 	 If thisown of real/imag operatros are 1, a user has an option to
 	 set ownReal, ownImag.
+
+    4-17) strumpack
+         if you have strumpack linked with MFEM, you can enable wrapper by
+	 ENABLE_STRUMPACK option in make
+
+	    make ENABLE_STRUMPACK=1
+	    make ENABLE_STRUMPACK=1 STRUMPACK_INCLUDE=${HOME}/sandbox/include
+
+
+         Here is sample script to use strumpack from PyMFEM (only in mfem.par)
+	 
+	    import mfem.par.strumpack as strmpk
+            Arow = strmpk.STRUMPACKRowLocMatrix(A)
+            args = ["--sp_hss_min_sep_size", "128", "--sp_enable_hss"]
+            strumpack = strmpk.STRUMPACKSolver(args, MPI.COMM_WORLD)
+            strumpack.SetPrintFactorStatistics(True)
+            strumpack.SetPrintSolveStatistics(False)
+            strumpack.SetKrylovSolver(strmpk.KrylovSolver_DIRECT);
+            strumpack.SetReorderingStrategy(strmpk.ReorderingStrategy_METIS)
+            strumpack.SetMC64Job(strmpk.MC64Job_NONE)
+            # strumpack.SetSymmetricPattern(True)
+            strumpack.SetOperator(Arow)
+            strumpack.SetFromCommandLine()
+            strumpack.Mult(B, X);
 	     
 -- Known issues --
 
