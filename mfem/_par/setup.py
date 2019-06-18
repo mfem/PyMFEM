@@ -17,6 +17,8 @@ from  setup_local import *
 if cc_par != '': os.environ['CC'] = cc_par
 if cxx_par != '': os.environ['CXX'] = cxx_par
 
+
+
 from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
@@ -42,6 +44,9 @@ modules= ["cpointers",
           "hypre", 
           "ostream_typemap", "istream_typemap"]
 
+if add_pumi != '':
+    modules.append("pumi")
+    
 extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM']
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}

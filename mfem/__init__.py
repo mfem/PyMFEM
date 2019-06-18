@@ -20,4 +20,4 @@ def debug_print(message):
     
     print(message)
 
-__version__ = '3.4.2'
+__version__ = '3.4.3'
