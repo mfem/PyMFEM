@@ -37,6 +37,10 @@ import_array();
 
 %include "linalg/handle.hpp"
 
+%pythoncode %{
+OperatorPtr=OperatorHandle  
+%}
+
 // instatitate template methods (step 1: Macro definition)
 %define OPERATORHANDLE_WRAP(T)
 %template(OperatorHandle) mfem::OperatorHandle::OperatorHandle<T >;

@@ -115,10 +115,10 @@ MFEM_INSTALL_DIR = _handle.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _handle.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _handle.MFEM_HYPRE_VERSION
 import mfem._par.operators
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.ostream_typemap
-import mfem._par.mem_manager
 import mfem._par.hypre
 import mfem._par.sparsemat
 import mfem._par.matrix
@@ -327,6 +327,9 @@ class OperatorHandle(_object):
 
 OperatorHandle_swigregister = _handle.OperatorHandle_swigregister
 OperatorHandle_swigregister(OperatorHandle)
+
+
+OperatorPtr=OperatorHandle  
 
 # This file is compatible with both classic and new-style classes.
 

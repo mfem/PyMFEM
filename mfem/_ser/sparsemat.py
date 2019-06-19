@@ -117,6 +117,14 @@ def RAP_P(A, R, ORAP):
 def RAP_R(Rt, A, P):
     """RAP_R(SparseMatrix Rt, SparseMatrix A, SparseMatrix P) -> SparseMatrix"""
     return _sparsemat.RAP_R(Rt, A, P)
+
+def OperatorPtr2SparseMatrix(op):
+    """OperatorPtr2SparseMatrix(mfem::OperatorPtr op) -> SparseMatrix"""
+    return _sparsemat.OperatorPtr2SparseMatrix(op)
+
+def OperatorHandle2SparseMatrix(op):
+    """OperatorHandle2SparseMatrix(mfem::OperatorHandle op) -> SparseMatrix"""
+    return _sparsemat.OperatorHandle2SparseMatrix(op)
 class RowNode(_object):
     """Proxy of C++ mfem::RowNode class."""
 

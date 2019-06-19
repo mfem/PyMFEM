@@ -28,6 +28,7 @@ import_array();
 %}
 
 %import operators.i
+
 #ifdef MFEM_USE_MPI
 %import hypre.i
 #endif
@@ -41,6 +42,10 @@ import_array();
 %import "mem_manager.i"
 
 %include "linalg/handle.hpp"
+
+%pythoncode %{
+OperatorPtr=OperatorHandle  
+%}
 
 // instatitate template methods (step 1: Macro definition)
 %define OPERATORHANDLE_WRAP(T)

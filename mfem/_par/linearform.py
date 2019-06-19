@@ -105,6 +105,7 @@ except __builtin__.Exception:
 import mfem._par.coefficient
 import mfem._par.array
 import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.operators
@@ -113,11 +114,12 @@ import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._ser.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.fespace
@@ -182,6 +184,7 @@ class LinearForm(mfem._par.vector.Vector):
         """
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        lfi = args[0]	     	     
         self._integrators.append(lfi)
         lfi.thisown=0 
 

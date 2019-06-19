@@ -9,6 +9,10 @@ debug_print = mfem.debug_print
 from mpi4py import MPI
 
 from  mfem._par.cpointers import *
+from  mfem._par.globals import *
+from  mfem._par.mem_manager import *
+from  mfem._par.device import *
+from  mfem._par.hash import *
 from  mfem._par.point import *
 from  mfem._par.segment import *
 from  mfem._par.array import *

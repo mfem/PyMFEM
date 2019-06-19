@@ -5,6 +5,7 @@
 #include <limits>
 #include <cmath>
 #include <cstring>
+#include "linalg/handle.hpp"  
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "iostream_typemap.hpp"  
@@ -74,6 +75,14 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
 			    const mfem::SparseMatrix &A,
                             const mfem::SparseMatrix &P){
     return RAP(Rt, A, P);
+  }
+
+  mfem::SparseMatrix &OperatorPtr2SparseMatrix(mfem::OperatorPtr op) {
+    return dynamic_cast<mfem::SparseMatrix &>(* op);
+  }
+  
+  mfem::SparseMatrix &OperatorHandle2SparseMatrix(mfem::OperatorHandle op) {
+    return dynamic_cast<mfem::SparseMatrix &>(* op);
   }
 %}
 

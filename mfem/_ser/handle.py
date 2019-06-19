@@ -114,10 +114,10 @@ MFEM_SOURCE_DIR = _handle.MFEM_SOURCE_DIR
 MFEM_INSTALL_DIR = _handle.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _handle.MFEM_TIMER_TYPE
 import mfem._ser.operators
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.array
 import mfem._ser.ostream_typemap
-import mfem._ser.mem_manager
 class OperatorHandle(_object):
     """Proxy of C++ mfem::OperatorHandle class."""
 
@@ -286,6 +286,9 @@ class OperatorHandle(_object):
 
 OperatorHandle_swigregister = _handle.OperatorHandle_swigregister
 OperatorHandle_swigregister(OperatorHandle)
+
+
+OperatorPtr=OperatorHandle  
 
 # This file is compatible with both classic and new-style classes.
 
