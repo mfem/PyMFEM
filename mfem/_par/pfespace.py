@@ -110,6 +110,8 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pfespace.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pfespace.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pfespace.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pfespace.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _pfespace.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _pfespace.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pfespace.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pfespace.MFEM_HYPRE_VERSION
 import mfem._par.operators
@@ -277,12 +279,14 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
 
 
 
-    def GetSharedFaceDofs(self, group, fi):
-      from  .array import intArray
-      dofs = intArray()      
-      _pfespace.ParFiniteElementSpace_GetSharedFaceDofs(self, group, fi, dofs)
-      return dofs.ToList()      
+    def GetSharedTriangleDofs(self, group, fi, dofs):
+        """GetSharedTriangleDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"""
+        return _pfespace.ParFiniteElementSpace_GetSharedTriangleDofs(self, group, fi, dofs)
 
+
+    def GetSharedQuadrilateralDofs(self, group, fi, dofs):
+        """GetSharedQuadrilateralDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"""
+        return _pfespace.ParFiniteElementSpace_GetSharedQuadrilateralDofs(self, group, fi, dofs)
 
 
     def Dof_TrueDof_Matrix(self):
@@ -453,6 +457,11 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
 
     __swig_destroy__ = _pfespace.delete_ParFiniteElementSpace
     __del__ = lambda self: None
+
+    def PrintPartitionStats(self):
+        """PrintPartitionStats(ParFiniteElementSpace self)"""
+        return _pfespace.ParFiniteElementSpace_PrintPartitionStats(self)
+
 
     def TrueVSize(self):
         """TrueVSize(ParFiniteElementSpace self) -> int"""

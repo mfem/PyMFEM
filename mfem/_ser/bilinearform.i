@@ -10,6 +10,9 @@ import_array();
 %}
 %include "../common/cpointers.i"
 %include "exception.i"
+
+%import "mem_manager.i"
+
 %import "array.i"
 %import "fespace.i"
 %import "fe_coll.i"

@@ -280,12 +280,13 @@ class GridFunctionCoefficient(Coefficient):
     __getattr__ = lambda self, name: _swig_getattr(self, GridFunctionCoefficient, name)
     __repr__ = _swig_repr
 
-    def __init__(self, gf, comp=1):
+    def __init__(self, *args):
         """
+        __init__(mfem::GridFunctionCoefficient self) -> GridFunctionCoefficient
         __init__(mfem::GridFunctionCoefficient self, mfem::GridFunction * gf, int comp=1) -> GridFunctionCoefficient
         __init__(mfem::GridFunctionCoefficient self, mfem::GridFunction * gf) -> GridFunctionCoefficient
         """
-        this = _coefficient.new_GridFunctionCoefficient(gf, comp)
+        this = _coefficient.new_GridFunctionCoefficient(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -615,13 +616,16 @@ class VectorArrayCoefficient(VectorCoefficient):
         return _coefficient.VectorArrayCoefficient_GetCoeffs(self)
 
 
-    def Set(self, i, c):
-        """Set(VectorArrayCoefficient self, int i, Coefficient c)"""
+    def Set(self, i, c, own=True):
+        """
+        Set(VectorArrayCoefficient self, int i, Coefficient c, bool own=True)
+        Set(VectorArrayCoefficient self, int i, Coefficient c)
+        """
 
         c.thisown=0 
 
 
-        return _coefficient.VectorArrayCoefficient_Set(self, i, c)
+        return _coefficient.VectorArrayCoefficient_Set(self, i, c, own)
 
 
     def Eval(self, *args):
@@ -651,9 +655,12 @@ class VectorGridFunctionCoefficient(VectorCoefficient):
     __getattr__ = lambda self, name: _swig_getattr(self, VectorGridFunctionCoefficient, name)
     __repr__ = _swig_repr
 
-    def __init__(self, gf):
-        """__init__(mfem::VectorGridFunctionCoefficient self, mfem::GridFunction * gf) -> VectorGridFunctionCoefficient"""
-        this = _coefficient.new_VectorGridFunctionCoefficient(gf)
+    def __init__(self, *args):
+        """
+        __init__(mfem::VectorGridFunctionCoefficient self) -> VectorGridFunctionCoefficient
+        __init__(mfem::VectorGridFunctionCoefficient self, mfem::GridFunction * gf) -> VectorGridFunctionCoefficient
+        """
+        this = _coefficient.new_VectorGridFunctionCoefficient(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -680,6 +687,128 @@ class VectorGridFunctionCoefficient(VectorCoefficient):
     __del__ = lambda self: None
 VectorGridFunctionCoefficient_swigregister = _coefficient.VectorGridFunctionCoefficient_swigregister
 VectorGridFunctionCoefficient_swigregister(VectorGridFunctionCoefficient)
+
+class GradientGridFunctionCoefficient(VectorCoefficient):
+    """Proxy of C++ mfem::GradientGridFunctionCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, GradientGridFunctionCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, GradientGridFunctionCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, gf):
+        """__init__(mfem::GradientGridFunctionCoefficient self, mfem::GridFunction * gf) -> GradientGridFunctionCoefficient"""
+        this = _coefficient.new_GradientGridFunctionCoefficient(gf)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def SetGridFunction(self, gf):
+        """SetGridFunction(GradientGridFunctionCoefficient self, mfem::GridFunction * gf)"""
+        return _coefficient.GradientGridFunctionCoefficient_SetGridFunction(self, gf)
+
+
+    def GetGridFunction(self):
+        """GetGridFunction(GradientGridFunctionCoefficient self) -> mfem::GridFunction *"""
+        return _coefficient.GradientGridFunctionCoefficient_GetGridFunction(self)
+
+
+    def Eval(self, *args):
+        """
+        Eval(GradientGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)
+        Eval(GradientGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)
+        """
+        return _coefficient.GradientGridFunctionCoefficient_Eval(self, *args)
+
+    __swig_destroy__ = _coefficient.delete_GradientGridFunctionCoefficient
+    __del__ = lambda self: None
+GradientGridFunctionCoefficient_swigregister = _coefficient.GradientGridFunctionCoefficient_swigregister
+GradientGridFunctionCoefficient_swigregister(GradientGridFunctionCoefficient)
+
+class CurlGridFunctionCoefficient(VectorCoefficient):
+    """Proxy of C++ mfem::CurlGridFunctionCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, CurlGridFunctionCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, CurlGridFunctionCoefficient, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+
+    def SetGridFunction(self, gf):
+        """SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction * gf)"""
+        return _coefficient.CurlGridFunctionCoefficient_SetGridFunction(self, gf)
+
+
+    def GetGridFunction(self):
+        """GetGridFunction(CurlGridFunctionCoefficient self) -> mfem::GridFunction *"""
+        return _coefficient.CurlGridFunctionCoefficient_GetGridFunction(self)
+
+
+    def Eval(self, *args):
+        """
+        Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)
+        Eval(CurlGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)
+        Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)
+        """
+        return _coefficient.CurlGridFunctionCoefficient_Eval(self, *args)
+
+    __swig_destroy__ = _coefficient.delete_CurlGridFunctionCoefficient
+    __del__ = lambda self: None
+CurlGridFunctionCoefficient_swigregister = _coefficient.CurlGridFunctionCoefficient_swigregister
+CurlGridFunctionCoefficient_swigregister(CurlGridFunctionCoefficient)
+
+class DivergenceGridFunctionCoefficient(Coefficient):
+    """Proxy of C++ mfem::DivergenceGridFunctionCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DivergenceGridFunctionCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, DivergenceGridFunctionCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, gf):
+        """__init__(mfem::DivergenceGridFunctionCoefficient self, mfem::GridFunction * gf) -> DivergenceGridFunctionCoefficient"""
+        this = _coefficient.new_DivergenceGridFunctionCoefficient(gf)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def SetGridFunction(self, gf):
+        """SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction * gf)"""
+        return _coefficient.DivergenceGridFunctionCoefficient_SetGridFunction(self, gf)
+
+
+    def GetGridFunction(self):
+        """GetGridFunction(DivergenceGridFunctionCoefficient self) -> mfem::GridFunction *"""
+        return _coefficient.DivergenceGridFunctionCoefficient_GetGridFunction(self)
+
+
+    def Eval(self, T, ip):
+        """Eval(DivergenceGridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
+        return _coefficient.DivergenceGridFunctionCoefficient_Eval(self, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_DivergenceGridFunctionCoefficient
+    __del__ = lambda self: None
+DivergenceGridFunctionCoefficient_swigregister = _coefficient.DivergenceGridFunctionCoefficient_swigregister
+DivergenceGridFunctionCoefficient_swigregister(DivergenceGridFunctionCoefficient)
 
 class VectorDeltaCoefficient(VectorCoefficient):
     """Proxy of C++ mfem::VectorDeltaCoefficient class."""
@@ -718,9 +847,19 @@ class VectorDeltaCoefficient(VectorCoefficient):
         return _coefficient.VectorDeltaCoefficient_GetDeltaCoefficient(self)
 
 
+    def SetScale(self, s):
+        """SetScale(VectorDeltaCoefficient self, double s)"""
+        return _coefficient.VectorDeltaCoefficient_SetScale(self, s)
+
+
     def SetDirection(self, _d):
         """SetDirection(VectorDeltaCoefficient self, Vector _d)"""
         return _coefficient.VectorDeltaCoefficient_SetDirection(self, _d)
+
+
+    def SetDeltaCenter(self, center):
+        """SetDeltaCenter(VectorDeltaCoefficient self, Vector center)"""
+        return _coefficient.VectorDeltaCoefficient_SetDeltaCenter(self, center)
 
 
     def GetDeltaCenter(self, center):
@@ -925,13 +1064,16 @@ class MatrixArrayCoefficient(MatrixCoefficient):
         return _coefficient.MatrixArrayCoefficient_GetCoeff(self, i, j)
 
 
-    def Set(self, i, j, c):
-        """Set(MatrixArrayCoefficient self, int i, int j, Coefficient c)"""
+    def Set(self, i, j, c, own=True):
+        """
+        Set(MatrixArrayCoefficient self, int i, int j, Coefficient c, bool own=True)
+        Set(MatrixArrayCoefficient self, int i, int j, Coefficient c)
+        """
 
         c.thisown=0 
 
 
-        return _coefficient.MatrixArrayCoefficient_Set(self, i, j, c)
+        return _coefficient.MatrixArrayCoefficient_Set(self, i, j, c, own)
 
 
     def Eval(self, *args):
@@ -980,6 +1122,510 @@ class MatrixRestrictedCoefficient(MatrixCoefficient):
     __del__ = lambda self: None
 MatrixRestrictedCoefficient_swigregister = _coefficient.MatrixRestrictedCoefficient_swigregister
 MatrixRestrictedCoefficient_swigregister(MatrixRestrictedCoefficient)
+
+class SumCoefficient(Coefficient):
+    """Proxy of C++ mfem::SumCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, SumCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, SumCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B, _alpha=1.0, _beta=1.0):
+        """
+        __init__(mfem::SumCoefficient self, Coefficient A, Coefficient B, double _alpha=1.0, double _beta=1.0) -> SumCoefficient
+        __init__(mfem::SumCoefficient self, Coefficient A, Coefficient B, double _alpha=1.0) -> SumCoefficient
+        __init__(mfem::SumCoefficient self, Coefficient A, Coefficient B) -> SumCoefficient
+        """
+        this = _coefficient.new_SumCoefficient(A, B, _alpha, _beta)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, T, ip):
+        """Eval(SumCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
+        return _coefficient.SumCoefficient_Eval(self, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_SumCoefficient
+    __del__ = lambda self: None
+SumCoefficient_swigregister = _coefficient.SumCoefficient_swigregister
+SumCoefficient_swigregister(SumCoefficient)
+
+class ProductCoefficient(Coefficient):
+    """Proxy of C++ mfem::ProductCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ProductCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ProductCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::ProductCoefficient self, Coefficient A, Coefficient B) -> ProductCoefficient"""
+        this = _coefficient.new_ProductCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, T, ip):
+        """Eval(ProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
+        return _coefficient.ProductCoefficient_Eval(self, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_ProductCoefficient
+    __del__ = lambda self: None
+ProductCoefficient_swigregister = _coefficient.ProductCoefficient_swigregister
+ProductCoefficient_swigregister(ProductCoefficient)
+
+class PowerCoefficient(Coefficient):
+    """Proxy of C++ mfem::PowerCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, PowerCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, PowerCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, _p):
+        """__init__(mfem::PowerCoefficient self, Coefficient A, double _p) -> PowerCoefficient"""
+        this = _coefficient.new_PowerCoefficient(A, _p)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, T, ip):
+        """Eval(PowerCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
+        return _coefficient.PowerCoefficient_Eval(self, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_PowerCoefficient
+    __del__ = lambda self: None
+PowerCoefficient_swigregister = _coefficient.PowerCoefficient_swigregister
+PowerCoefficient_swigregister(PowerCoefficient)
+
+class InnerProductCoefficient(Coefficient):
+    """Proxy of C++ mfem::InnerProductCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, InnerProductCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, InnerProductCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::InnerProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> InnerProductCoefficient"""
+        this = _coefficient.new_InnerProductCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, T, ip):
+        """Eval(InnerProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
+        return _coefficient.InnerProductCoefficient_Eval(self, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_InnerProductCoefficient
+    __del__ = lambda self: None
+InnerProductCoefficient_swigregister = _coefficient.InnerProductCoefficient_swigregister
+InnerProductCoefficient_swigregister(InnerProductCoefficient)
+
+class VectorRotProductCoefficient(Coefficient):
+    """Proxy of C++ mfem::VectorRotProductCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, VectorRotProductCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, VectorRotProductCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::VectorRotProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> VectorRotProductCoefficient"""
+        this = _coefficient.new_VectorRotProductCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, T, ip):
+        """Eval(VectorRotProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
+        return _coefficient.VectorRotProductCoefficient_Eval(self, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_VectorRotProductCoefficient
+    __del__ = lambda self: None
+VectorRotProductCoefficient_swigregister = _coefficient.VectorRotProductCoefficient_swigregister
+VectorRotProductCoefficient_swigregister(VectorRotProductCoefficient)
+
+class DeterminantCoefficient(Coefficient):
+    """Proxy of C++ mfem::DeterminantCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DeterminantCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [Coefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, DeterminantCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A):
+        """__init__(mfem::DeterminantCoefficient self, MatrixCoefficient A) -> DeterminantCoefficient"""
+        this = _coefficient.new_DeterminantCoefficient(A)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, T, ip):
+        """Eval(DeterminantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
+        return _coefficient.DeterminantCoefficient_Eval(self, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_DeterminantCoefficient
+    __del__ = lambda self: None
+DeterminantCoefficient_swigregister = _coefficient.DeterminantCoefficient_swigregister
+DeterminantCoefficient_swigregister(DeterminantCoefficient)
+
+class VectorSumCoefficient(VectorCoefficient):
+    """Proxy of C++ mfem::VectorSumCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, VectorSumCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, VectorSumCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B, _alpha=1.0, _beta=1.0):
+        """
+        __init__(mfem::VectorSumCoefficient self, VectorCoefficient A, VectorCoefficient B, double _alpha=1.0, double _beta=1.0) -> VectorSumCoefficient
+        __init__(mfem::VectorSumCoefficient self, VectorCoefficient A, VectorCoefficient B, double _alpha=1.0) -> VectorSumCoefficient
+        __init__(mfem::VectorSumCoefficient self, VectorCoefficient A, VectorCoefficient B) -> VectorSumCoefficient
+        """
+        this = _coefficient.new_VectorSumCoefficient(A, B, _alpha, _beta)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, *args):
+        """
+        Eval(VectorSumCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)
+        Eval(VectorSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)
+        """
+        return _coefficient.VectorSumCoefficient_Eval(self, *args)
+
+    __swig_destroy__ = _coefficient.delete_VectorSumCoefficient
+    __del__ = lambda self: None
+VectorSumCoefficient_swigregister = _coefficient.VectorSumCoefficient_swigregister
+VectorSumCoefficient_swigregister(VectorSumCoefficient)
+
+class ScalarVectorProductCoefficient(VectorCoefficient):
+    """Proxy of C++ mfem::ScalarVectorProductCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ScalarVectorProductCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ScalarVectorProductCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::ScalarVectorProductCoefficient self, Coefficient A, VectorCoefficient B) -> ScalarVectorProductCoefficient"""
+        this = _coefficient.new_ScalarVectorProductCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, *args):
+        """
+        Eval(ScalarVectorProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)
+        Eval(ScalarVectorProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)
+        """
+        return _coefficient.ScalarVectorProductCoefficient_Eval(self, *args)
+
+    __swig_destroy__ = _coefficient.delete_ScalarVectorProductCoefficient
+    __del__ = lambda self: None
+ScalarVectorProductCoefficient_swigregister = _coefficient.ScalarVectorProductCoefficient_swigregister
+ScalarVectorProductCoefficient_swigregister(ScalarVectorProductCoefficient)
+
+class VectorCrossProductCoefficient(VectorCoefficient):
+    """Proxy of C++ mfem::VectorCrossProductCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, VectorCrossProductCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, VectorCrossProductCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::VectorCrossProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> VectorCrossProductCoefficient"""
+        this = _coefficient.new_VectorCrossProductCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, *args):
+        """
+        Eval(VectorCrossProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)
+        Eval(VectorCrossProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)
+        """
+        return _coefficient.VectorCrossProductCoefficient_Eval(self, *args)
+
+    __swig_destroy__ = _coefficient.delete_VectorCrossProductCoefficient
+    __del__ = lambda self: None
+VectorCrossProductCoefficient_swigregister = _coefficient.VectorCrossProductCoefficient_swigregister
+VectorCrossProductCoefficient_swigregister(VectorCrossProductCoefficient)
+
+class MatVecCoefficient(VectorCoefficient):
+    """Proxy of C++ mfem::MatVecCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MatVecCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [VectorCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MatVecCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::MatVecCoefficient self, MatrixCoefficient A, VectorCoefficient B) -> MatVecCoefficient"""
+        this = _coefficient.new_MatVecCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, *args):
+        """
+        Eval(MatVecCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)
+        Eval(MatVecCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)
+        """
+        return _coefficient.MatVecCoefficient_Eval(self, *args)
+
+    __swig_destroy__ = _coefficient.delete_MatVecCoefficient
+    __del__ = lambda self: None
+MatVecCoefficient_swigregister = _coefficient.MatVecCoefficient_swigregister
+MatVecCoefficient_swigregister(MatVecCoefficient)
+
+class IdentityMatrixCoefficient(MatrixCoefficient):
+    """Proxy of C++ mfem::IdentityMatrixCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, IdentityMatrixCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, IdentityMatrixCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, d):
+        """__init__(mfem::IdentityMatrixCoefficient self, int d) -> IdentityMatrixCoefficient"""
+        this = _coefficient.new_IdentityMatrixCoefficient(d)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, M, T, ip):
+        """Eval(IdentityMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.IdentityMatrixCoefficient_Eval(self, M, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_IdentityMatrixCoefficient
+    __del__ = lambda self: None
+IdentityMatrixCoefficient_swigregister = _coefficient.IdentityMatrixCoefficient_swigregister
+IdentityMatrixCoefficient_swigregister(IdentityMatrixCoefficient)
+
+class MatrixSumCoefficient(MatrixCoefficient):
+    """Proxy of C++ mfem::MatrixSumCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, MatrixSumCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, MatrixSumCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B, _alpha=1.0, _beta=1.0):
+        """
+        __init__(mfem::MatrixSumCoefficient self, MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0, double _beta=1.0) -> MatrixSumCoefficient
+        __init__(mfem::MatrixSumCoefficient self, MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0) -> MatrixSumCoefficient
+        __init__(mfem::MatrixSumCoefficient self, MatrixCoefficient A, MatrixCoefficient B) -> MatrixSumCoefficient
+        """
+        this = _coefficient.new_MatrixSumCoefficient(A, B, _alpha, _beta)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, M, T, ip):
+        """Eval(MatrixSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.MatrixSumCoefficient_Eval(self, M, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_MatrixSumCoefficient
+    __del__ = lambda self: None
+MatrixSumCoefficient_swigregister = _coefficient.MatrixSumCoefficient_swigregister
+MatrixSumCoefficient_swigregister(MatrixSumCoefficient)
+
+class ScalarMatrixProductCoefficient(MatrixCoefficient):
+    """Proxy of C++ mfem::ScalarMatrixProductCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ScalarMatrixProductCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ScalarMatrixProductCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::ScalarMatrixProductCoefficient self, Coefficient A, MatrixCoefficient B) -> ScalarMatrixProductCoefficient"""
+        this = _coefficient.new_ScalarMatrixProductCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, M, T, ip):
+        """Eval(ScalarMatrixProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.ScalarMatrixProductCoefficient_Eval(self, M, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_ScalarMatrixProductCoefficient
+    __del__ = lambda self: None
+ScalarMatrixProductCoefficient_swigregister = _coefficient.ScalarMatrixProductCoefficient_swigregister
+ScalarMatrixProductCoefficient_swigregister(ScalarMatrixProductCoefficient)
+
+class TransposeMatrixCoefficient(MatrixCoefficient):
+    """Proxy of C++ mfem::TransposeMatrixCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, TransposeMatrixCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, TransposeMatrixCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A):
+        """__init__(mfem::TransposeMatrixCoefficient self, MatrixCoefficient A) -> TransposeMatrixCoefficient"""
+        this = _coefficient.new_TransposeMatrixCoefficient(A)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, M, T, ip):
+        """Eval(TransposeMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.TransposeMatrixCoefficient_Eval(self, M, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_TransposeMatrixCoefficient
+    __del__ = lambda self: None
+TransposeMatrixCoefficient_swigregister = _coefficient.TransposeMatrixCoefficient_swigregister
+TransposeMatrixCoefficient_swigregister(TransposeMatrixCoefficient)
+
+class InverseMatrixCoefficient(MatrixCoefficient):
+    """Proxy of C++ mfem::InverseMatrixCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, InverseMatrixCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, InverseMatrixCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A):
+        """__init__(mfem::InverseMatrixCoefficient self, MatrixCoefficient A) -> InverseMatrixCoefficient"""
+        this = _coefficient.new_InverseMatrixCoefficient(A)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, M, T, ip):
+        """Eval(InverseMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.InverseMatrixCoefficient_Eval(self, M, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_InverseMatrixCoefficient
+    __del__ = lambda self: None
+InverseMatrixCoefficient_swigregister = _coefficient.InverseMatrixCoefficient_swigregister
+InverseMatrixCoefficient_swigregister(InverseMatrixCoefficient)
+
+class OuterProductCoefficient(MatrixCoefficient):
+    """Proxy of C++ mfem::OuterProductCoefficient class."""
+
+    __swig_setmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, OuterProductCoefficient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [MatrixCoefficient]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, OuterProductCoefficient, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A, B):
+        """__init__(mfem::OuterProductCoefficient self, VectorCoefficient A, VectorCoefficient B) -> OuterProductCoefficient"""
+        this = _coefficient.new_OuterProductCoefficient(A, B)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Eval(self, M, T, ip):
+        """Eval(OuterProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"""
+        return _coefficient.OuterProductCoefficient_Eval(self, M, T, ip)
+
+    __swig_destroy__ = _coefficient.delete_OuterProductCoefficient
+    __del__ = lambda self: None
+OuterProductCoefficient_swigregister = _coefficient.OuterProductCoefficient_swigregister
+OuterProductCoefficient_swigregister(OuterProductCoefficient)
 
 
 def ComputeLpNorm(*args):

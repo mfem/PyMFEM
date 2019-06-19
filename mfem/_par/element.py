@@ -104,6 +104,7 @@ except __builtin__.Exception:
 
 import mfem._par.array
 import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.densemat
 import mfem._par.vector
 import mfem._par.operators
@@ -111,6 +112,7 @@ import mfem._par.matrix
 import mfem._par.geom
 import mfem._par.intrules
 import mfem._par.table
+import mfem._ser.hash
 class Element(_object):
     """Proxy of C++ mfem::Element class."""
 
@@ -128,14 +130,15 @@ class Element(_object):
     QUADRILATERAL = _element.Element_QUADRILATERAL
     TETRAHEDRON = _element.Element_TETRAHEDRON
     HEXAHEDRON = _element.Element_HEXAHEDRON
+    WEDGE = _element.Element_WEDGE
 
     def GetType(self):
-        """GetType(Element self) -> int"""
+        """GetType(Element self) -> mfem::Element::Type"""
         return _element.Element_GetType(self)
 
 
     def GetGeometryType(self):
-        """GetGeometryType(Element self) -> int"""
+        """GetGeometryType(Element self) -> mfem::Geometry::Type"""
         return _element.Element_GetGeometryType(self)
 
 
@@ -188,17 +191,14 @@ class Element(_object):
         return _element.Element_GetFaceVertices(self, fi)
 
 
-    def MarkEdge(self, *args):
-        """
-        MarkEdge(Element self, DenseMatrix pmat)
-        MarkEdge(Element self, DSTable v_to_v, int const * length)
-        """
-        return _element.Element_MarkEdge(self, *args)
+    def MarkEdge(self, v_to_v, length):
+        """MarkEdge(Element self, DSTable v_to_v, int const * length)"""
+        return _element.Element_MarkEdge(self, v_to_v, length)
 
 
-    def NeedRefinement(self, v_to_v, middle):
-        """NeedRefinement(Element self, DSTable v_to_v, int * middle) -> int"""
-        return _element.Element_NeedRefinement(self, v_to_v, middle)
+    def NeedRefinement(self, v_to_v):
+        """NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"""
+        return _element.Element_NeedRefinement(self, v_to_v)
 
 
     def ResetTransform(self, tr):
@@ -214,11 +214,6 @@ class Element(_object):
     def GetTransform(self):
         """GetTransform(Element self) -> unsigned int"""
         return _element.Element_GetTransform(self)
-
-
-    def GetRefinementFlag(self):
-        """GetRefinementFlag(Element self) -> int"""
-        return _element.Element_GetRefinementFlag(self)
 
 
     def Duplicate(self, m):

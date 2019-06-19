@@ -224,6 +224,11 @@ class ZienkiewiczZhuEstimator(AnisotropicErrorEstimator):
         return _estimators.ZienkiewiczZhuEstimator_SetAnisotropic(self, aniso)
 
 
+    def SetFluxAveraging(self, fa):
+        """SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"""
+        return _estimators.ZienkiewiczZhuEstimator_SetFluxAveraging(self, fa)
+
+
     def GetTotalError(self):
         """GetTotalError(ZienkiewiczZhuEstimator self) -> double"""
         return _estimators.ZienkiewiczZhuEstimator_GetTotalError(self)

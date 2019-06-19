@@ -3767,7 +3767,7 @@ SWIGINTERN PyObject *_wrap_Point_GetType(PyObject *SWIGUNUSEDPARM(self), PyObjec
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Point_GetType",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Point, 0 |  0 );
@@ -3777,7 +3777,7 @@ SWIGINTERN PyObject *_wrap_Point_GetType(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg1 = reinterpret_cast< mfem::Point * >(argp1);
   {
     try {
-      result = (int)((mfem::Point const *)arg1)->GetType();
+      result = (mfem::Element::Type)((mfem::Point const *)arg1)->GetType();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4299,7 +4299,7 @@ static PyMethodDef SwigMethods[] = {
 		"Point(int const * ind, int attr=-1)\n"
 		"new_Point(int const * ind) -> Point\n"
 		""},
-	 { (char *)"Point_GetType", _wrap_Point_GetType, METH_VARARGS, (char *)"Point_GetType(Point self) -> int"},
+	 { (char *)"Point_GetType", _wrap_Point_GetType, METH_VARARGS, (char *)"Point_GetType(Point self) -> mfem::Element::Type"},
 	 { (char *)"Point_GetVertices", _wrap_Point_GetVertices, METH_VARARGS, (char *)"\n"
 		"GetVertices(intArray v)\n"
 		"Point_GetVertices(Point self) -> int *\n"

@@ -3456,34 +3456,39 @@ namespace Swig {
 #define SWIGTYPE_p_hex_t swig_types[2]
 #define SWIGTYPE_p_intp swig_types[3]
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
-#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[5]
-#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[6]
-#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[7]
-#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[8]
-#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[9]
-#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[10]
-#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[11]
-#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[12]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[13]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[14]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[15]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[16]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[17]
-#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[18]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[19]
-#define SWIGTYPE_p_mfem__Vector swig_types[20]
-#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[21]
-#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[22]
-#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[23]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[24]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[25]
-#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[26]
-#define SWIGTYPE_p_quad_t swig_types[27]
-#define SWIGTYPE_p_seg_t swig_types[28]
-#define SWIGTYPE_p_tet_t swig_types[29]
-#define SWIGTYPE_p_tri_t swig_types[30]
-static swig_type_info *swig_types[32];
-static swig_module_info swig_module = {swig_types, 31, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t swig_types[5]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t swig_types[7]
+#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[8]
+#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[9]
+#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[11]
+#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[12]
+#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[13]
+#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[14]
+#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[15]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[16]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[17]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[18]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[19]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[20]
+#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[21]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[22]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[23]
+#define SWIGTYPE_p_mfem__Vector swig_types[24]
+#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[25]
+#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[26]
+#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[27]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[28]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[29]
+#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[30]
+#define SWIGTYPE_p_pri_t swig_types[31]
+#define SWIGTYPE_p_quad_t swig_types[32]
+#define SWIGTYPE_p_seg_t swig_types[33]
+#define SWIGTYPE_p_tet_t swig_types[34]
+#define SWIGTYPE_p_tri_t swig_types[35]
+static swig_type_info *swig_types[37];
+static swig_module_info swig_module = {swig_types, 36, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3661,6 +3666,55 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_LinearForm__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  mfem::LinearForm *arg2 = (mfem::LinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::LinearForm *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_LinearForm",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LinearForm" "', argument " "1"" of type '" "mfem::FiniteElementSpace *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_LinearForm" "', argument " "2"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::LinearForm * >(argp2);
+  {
+    try {
+      result = (mfem::LinearForm *)new mfem::LinearForm(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LinearForm, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_LinearForm__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
   mfem::LinearForm *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)":new_LinearForm")) SWIG_fail;
@@ -3692,18 +3746,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_LinearForm(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[2] = {
+  PyObject *argv[3] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 0) {
-    return _wrap_new_LinearForm__SWIG_1(self, args);
+    return _wrap_new_LinearForm__SWIG_2(self, args);
   }
   if (argc == 1) {
     int _v;
@@ -3714,11 +3768,26 @@ SWIGINTERN PyObject *_wrap_new_LinearForm(PyObject *self, PyObject *args) {
       return _wrap_new_LinearForm__SWIG_0(self, args);
     }
   }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__LinearForm, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_LinearForm__SWIG_1(self, args);
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_LinearForm'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::LinearForm::LinearForm(mfem::FiniteElementSpace *)\n"
+    "    mfem::LinearForm::LinearForm(mfem::FiniteElementSpace *,mfem::LinearForm *)\n"
     "    mfem::LinearForm::LinearForm()\n");
   return 0;
 }
@@ -3932,7 +4001,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LinearForm_AddBoundaryIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LinearForm_AddBoundaryIntegrator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
   mfem::LinearFormIntegrator *arg2 = (mfem::LinearFormIntegrator *) 0 ;
@@ -3977,6 +4046,121 @@ SWIGINTERN PyObject *_wrap_LinearForm_AddBoundaryIntegrator(PyObject *SWIGUNUSED
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearForm_AddBoundaryIntegrator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
+  mfem::LinearFormIntegrator *arg2 = (mfem::LinearFormIntegrator *) 0 ;
+  mfem::Array< int > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:LinearForm_AddBoundaryIntegrator",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_AddBoundaryIntegrator" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LinearForm_AddBoundaryIntegrator" "', argument " "2"" of type '" "mfem::LinearFormIntegrator *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::LinearFormIntegrator * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "LinearForm_AddBoundaryIntegrator" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "LinearForm_AddBoundaryIntegrator" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  {
+    try {
+      (arg1)->AddBoundaryIntegrator(arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearForm_AddBoundaryIntegrator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__LinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__LinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_LinearForm_AddBoundaryIntegrator__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__LinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__LinearFormIntegrator, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_LinearForm_AddBoundaryIntegrator__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'LinearForm_AddBoundaryIntegrator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::LinearForm::AddBoundaryIntegrator(mfem::LinearFormIntegrator *)\n"
+    "    mfem::LinearForm::AddBoundaryIntegrator(mfem::LinearFormIntegrator *,mfem::Array< int > &)\n");
+  return 0;
 }
 
 
@@ -4140,6 +4324,206 @@ fail:
     "    mfem::LinearForm::AddBdrFaceIntegrator(mfem::LinearFormIntegrator *)\n"
     "    mfem::LinearForm::AddBdrFaceIntegrator(mfem::LinearFormIntegrator *,mfem::Array< int > &)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearForm_GetDLFI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< mfem::LinearFormIntegrator * > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LinearForm_GetDLFI",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_GetDLFI" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< mfem::LinearFormIntegrator * > *)(arg1)->GetDLFI();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearForm_GetDLFI_Delta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< mfem::DeltaLFIntegrator * > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LinearForm_GetDLFI_Delta",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_GetDLFI_Delta" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< mfem::DeltaLFIntegrator * > *)(arg1)->GetDLFI_Delta();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearForm_GetBLFI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< mfem::LinearFormIntegrator * > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LinearForm_GetBLFI",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_GetBLFI" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< mfem::LinearFormIntegrator * > *)(arg1)->GetBLFI();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearForm_GetFLFI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< mfem::LinearFormIntegrator * > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LinearForm_GetFLFI",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_GetFLFI" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< mfem::LinearFormIntegrator * > *)(arg1)->GetFLFI();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_LinearForm_GetFLFI_Marker(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< mfem::Array< int > * > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:LinearForm_GetFLFI_Marker",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_GetFLFI_Marker" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
+  {
+    try {
+      result = (mfem::Array< mfem::Array< int > * > *)(arg1)->GetFLFI_Marker();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -4552,6 +4936,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"new_LinearForm", _wrap_new_LinearForm, METH_VARARGS, (char *)"\n"
 		"LinearForm(FiniteElementSpace f)\n"
+		"LinearForm(FiniteElementSpace f, LinearForm lf)\n"
 		"new_LinearForm() -> LinearForm\n"
 		""},
 	 { (char *)"LinearForm_GetFES", _wrap_LinearForm_GetFES, METH_VARARGS, (char *)"LinearForm_GetFES(LinearForm self) -> FiniteElementSpace"},
@@ -4560,11 +4945,19 @@ static PyMethodDef SwigMethods[] = {
 		"LinearForm_FESpace(LinearForm self) -> FiniteElementSpace\n"
 		""},
 	 { (char *)"LinearForm_AddDomainIntegrator", _wrap_LinearForm_AddDomainIntegrator, METH_VARARGS, (char *)"LinearForm_AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
-	 { (char *)"LinearForm_AddBoundaryIntegrator", _wrap_LinearForm_AddBoundaryIntegrator, METH_VARARGS, (char *)"LinearForm_AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
+	 { (char *)"LinearForm_AddBoundaryIntegrator", _wrap_LinearForm_AddBoundaryIntegrator, METH_VARARGS, (char *)"\n"
+		"AddBoundaryIntegrator(LinearFormIntegrator lfi)\n"
+		"LinearForm_AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
+		""},
 	 { (char *)"LinearForm_AddBdrFaceIntegrator", _wrap_LinearForm_AddBdrFaceIntegrator, METH_VARARGS, (char *)"\n"
 		"AddBdrFaceIntegrator(LinearFormIntegrator lfi)\n"
 		"LinearForm_AddBdrFaceIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
 		""},
+	 { (char *)"LinearForm_GetDLFI", _wrap_LinearForm_GetDLFI, METH_VARARGS, (char *)"LinearForm_GetDLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { (char *)"LinearForm_GetDLFI_Delta", _wrap_LinearForm_GetDLFI_Delta, METH_VARARGS, (char *)"LinearForm_GetDLFI_Delta(LinearForm self) -> mfem::Array< mfem::DeltaLFIntegrator * > *"},
+	 { (char *)"LinearForm_GetBLFI", _wrap_LinearForm_GetBLFI, METH_VARARGS, (char *)"LinearForm_GetBLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { (char *)"LinearForm_GetFLFI", _wrap_LinearForm_GetFLFI, METH_VARARGS, (char *)"LinearForm_GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { (char *)"LinearForm_GetFLFI_Marker", _wrap_LinearForm_GetFLFI_Marker, METH_VARARGS, (char *)"LinearForm_GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
 	 { (char *)"LinearForm_Assemble", _wrap_LinearForm_Assemble, METH_VARARGS, (char *)"LinearForm_Assemble(LinearForm self)"},
 	 { (char *)"LinearForm_AssembleDelta", _wrap_LinearForm_AssembleDelta, METH_VARARGS, (char *)"LinearForm_AssembleDelta(LinearForm self)"},
 	 { (char *)"LinearForm_Update", _wrap_LinearForm_Update, METH_VARARGS, (char *)"\n"
@@ -4637,6 +5030,9 @@ static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (voi
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_intp = {"_p_intp", "intp *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t = {"_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t", "mfem::Array< mfem::Array< int > * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t = {"_p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t", "mfem::Array< mfem::DeltaLFIntegrator * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t = {"_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t", "mfem::Array< mfem::LinearFormIntegrator * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
@@ -4657,8 +5053,10 @@ static swig_type_info _swigt__p_mfem__BoundaryNormalLFIntegrator = {"_p_mfem__Bo
 static swig_type_info _swigt__p_mfem__BoundaryLFIntegrator = {"_p_mfem__BoundaryLFIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DomainLFIntegrator = {"_p_mfem__DomainLFIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DeltaLFIntegrator = {"_p_mfem__DeltaLFIntegrator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -4670,6 +5068,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_hex_t,
   &_swigt__p_intp,
   &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t,
+  &_swigt__p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t,
+  &_swigt__p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t,
   &_swigt__p_mfem__BoundaryFlowIntegrator,
   &_swigt__p_mfem__BoundaryLFIntegrator,
   &_swigt__p_mfem__BoundaryNormalLFIntegrator,
@@ -4684,6 +5085,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__LinearForm,
   &_swigt__p_mfem__LinearFormIntegrator,
+  &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__VectorBoundaryFluxLFIntegrator,
@@ -4692,6 +5094,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__VectorFEBoundaryFluxLFIntegrator,
   &_swigt__p_mfem__VectorFEBoundaryTangentLFIntegrator,
   &_swigt__p_mfem__VectorFEDomainLFIntegrator,
+  &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -4703,6 +5106,9 @@ static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0,
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_intp[] = {  {&_swigt__p_intp, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
@@ -4723,8 +5129,10 @@ static swig_cast_info _swigc__p_mfem__BoundaryLFIntegrator[] = {{&_swigt__p_mfem
 static swig_cast_info _swigc__p_mfem__DomainLFIntegrator[] = {{&_swigt__p_mfem__DomainLFIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DeltaLFIntegrator[] = {{&_swigt__p_mfem__DeltaLFIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearFormIntegrator[] = {  {&_swigt__p_mfem__DGElasticityDirichletLFIntegrator, _p_mfem__DGElasticityDirichletLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGDirichletLFIntegrator, _p_mfem__DGDirichletLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryFlowIntegrator, _p_mfem__BoundaryFlowIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEBoundaryTangentLFIntegrator, _p_mfem__VectorFEBoundaryTangentLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEBoundaryFluxLFIntegrator, _p_mfem__VectorFEBoundaryFluxLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorBoundaryFluxLFIntegrator, _p_mfem__VectorBoundaryFluxLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEDomainLFIntegrator, _p_mfem__VectorFEDomainLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorBoundaryLFIntegrator, _p_mfem__VectorBoundaryLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorDomainLFIntegrator, _p_mfem__VectorDomainLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryTangentialLFIntegrator, _p_mfem__BoundaryTangentialLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryNormalLFIntegrator, _p_mfem__BoundaryNormalLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryLFIntegrator, _p_mfem__BoundaryLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DomainLFIntegrator, _p_mfem__DomainLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__LinearFormIntegrator, 0, 0, 0},  {&_swigt__p_mfem__DeltaLFIntegrator, _p_mfem__DeltaLFIntegratorTo_p_mfem__LinearFormIntegrator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -4736,6 +5144,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_hex_t,
   _swigc__p_intp,
   _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__ArrayT_mfem__ArrayT_int_t_p_t,
+  _swigc__p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t,
+  _swigc__p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t,
   _swigc__p_mfem__BoundaryFlowIntegrator,
   _swigc__p_mfem__BoundaryLFIntegrator,
   _swigc__p_mfem__BoundaryNormalLFIntegrator,
@@ -4750,6 +5161,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__LinearForm,
   _swigc__p_mfem__LinearFormIntegrator,
+  _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__Vector,
   _swigc__p_mfem__VectorBoundaryFluxLFIntegrator,
@@ -4758,6 +5170,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__VectorFEBoundaryFluxLFIntegrator,
   _swigc__p_mfem__VectorFEBoundaryTangentLFIntegrator,
   _swigc__p_mfem__VectorFEDomainLFIntegrator,
+  _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,

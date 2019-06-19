@@ -110,6 +110,8 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pgridfunc.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pgridfunc.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pgridfunc.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pgridfunc.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _pgridfunc.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _pgridfunc.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pgridfunc.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pgridfunc.MFEM_HYPRE_VERSION
 import mfem._par.pfespace
@@ -210,6 +212,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
 
     def Assign(self, *args):
         """
+        Assign(ParGridFunction self, ParGridFunction rhs) -> ParGridFunction
         Assign(ParGridFunction self, double value) -> ParGridFunction
         Assign(ParGridFunction self, Vector v) -> ParGridFunction
         Assign(ParGridFunction self, HypreParVector tv) -> ParGridFunction
@@ -300,6 +303,22 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_ProjectDiscCoefficient(self, *args)
 
 
+    def ProjectBdrCoefficient(self, *args):
+        """
+        ProjectBdrCoefficient(ParGridFunction self, Coefficient coeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, VectorCoefficient vcoeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, VectorCoefficient vcoeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff, intArray attr)
+        """
+        return _pgridfunc.ParGridFunction_ProjectBdrCoefficient(self, *args)
+
+
+    def ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr):
+        """ProjectBdrCoefficientTangent(ParGridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"""
+        return _pgridfunc.ParGridFunction_ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr)
+
+
     def ComputeL1Error(self, *args):
         """
         ComputeL1Error(ParGridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double
@@ -377,6 +396,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
     def __init__(self, *args):
         """
         __init__(mfem::ParGridFunction self) -> ParGridFunction
+        __init__(mfem::ParGridFunction self, ParGridFunction orig) -> ParGridFunction
         __init__(mfem::ParGridFunction self, ParFiniteElementSpace pf) -> ParGridFunction
         __init__(mfem::ParGridFunction self, ParFiniteElementSpace pf, double * data) -> ParGridFunction
         __init__(mfem::ParGridFunction self, ParFiniteElementSpace pf, GridFunction gf) -> ParGridFunction

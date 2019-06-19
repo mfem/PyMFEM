@@ -31,6 +31,8 @@ import_array();
 %import "../common/typemap_macros.i"
 %import "../common/exception.i"
 
+%import "mem_manager.i"
+
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 
 %pythonprepend mfem::Vector::Vector %{

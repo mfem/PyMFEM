@@ -145,7 +145,7 @@ class Segment(mfem._par.element.Element):
 
 
     def GetType(self):
-        """GetType(Segment self) -> int"""
+        """GetType(Segment self) -> mfem::Element::Type"""
         return _segment.Segment_GetType(self)
 
 

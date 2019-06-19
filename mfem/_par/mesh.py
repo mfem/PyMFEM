@@ -152,6 +152,10 @@ class Mesh(_object):
     __swig_getmethods__["ncmesh"] = _mesh.Mesh_ncmesh_get
     if _newclass:
         ncmesh = _swig_property(_mesh.Mesh_ncmesh_get, _mesh.Mesh_ncmesh_set)
+    __swig_setmethods__["geom_factors"] = _mesh.Mesh_geom_factors_set
+    __swig_getmethods__["geom_factors"] = _mesh.Mesh_geom_factors_get
+    if _newclass:
+        geom_factors = _swig_property(_mesh.Mesh_geom_factors_get, _mesh.Mesh_geom_factors_set)
     __swig_setmethods__["remove_unused_vertices"] = _mesh.Mesh_remove_unused_vertices_set
     __swig_getmethods__["remove_unused_vertices"] = _mesh.Mesh_remove_unused_vertices_get
     if _newclass:
@@ -199,6 +203,14 @@ class Mesh(_object):
         return _mesh.Mesh_AddTet(self, vi, attr)
 
 
+    def AddWedge(self, vi, attr=1):
+        """
+        AddWedge(Mesh self, int const * vi, int attr=1)
+        AddWedge(Mesh self, int const * vi)
+        """
+        return _mesh.Mesh_AddWedge(self, vi, attr)
+
+
     def AddHex(self, vi, attr=1):
         """
         AddHex(Mesh self, int const * vi, int attr=1)
@@ -213,6 +225,14 @@ class Mesh(_object):
         AddHexAsTets(Mesh self, int const * vi)
         """
         return _mesh.Mesh_AddHexAsTets(self, vi, attr)
+
+
+    def AddHexAsWedges(self, vi, attr=1):
+        """
+        AddHexAsWedges(Mesh self, int const * vi, int attr=1)
+        AddHexAsWedges(Mesh self, int const * vi)
+        """
+        return _mesh.Mesh_AddHexAsWedges(self, vi, attr)
 
 
     def AddElement(self, elem):
@@ -292,6 +312,16 @@ class Mesh(_object):
         return _mesh.Mesh_FinalizeTetMesh(self, generate_edges, refine, fix_orientation)
 
 
+    def FinalizeWedgeMesh(self, generate_edges=0, refine=0, fix_orientation=True):
+        """
+        FinalizeWedgeMesh(Mesh self, int generate_edges=0, int refine=0, bool fix_orientation=True)
+        FinalizeWedgeMesh(Mesh self, int generate_edges=0, int refine=0)
+        FinalizeWedgeMesh(Mesh self, int generate_edges=0)
+        FinalizeWedgeMesh(Mesh self)
+        """
+        return _mesh.Mesh_FinalizeWedgeMesh(self, generate_edges, refine, fix_orientation)
+
+
     def FinalizeHexMesh(self, generate_edges=0, refine=0, fix_orientation=True):
         """
         FinalizeHexMesh(Mesh self, int generate_edges=0, int refine=0, bool fix_orientation=True)
@@ -300,6 +330,15 @@ class Mesh(_object):
         FinalizeHexMesh(Mesh self)
         """
         return _mesh.Mesh_FinalizeHexMesh(self, generate_edges, refine, fix_orientation)
+
+
+    def FinalizeMesh(self, refine=0, fix_orientation=True):
+        """
+        FinalizeMesh(Mesh self, int refine=0, bool fix_orientation=True)
+        FinalizeMesh(Mesh self, int refine=0)
+        FinalizeMesh(Mesh self)
+        """
+        return _mesh.Mesh_FinalizeMesh(self, refine, fix_orientation)
 
 
     def FinalizeTopology(self):
@@ -389,6 +428,16 @@ class Mesh(_object):
         return _mesh.Mesh_GetGlobalNE(self)
 
 
+    def GetGeometricFactors(self, ir, flags):
+        """GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags) -> GeometricFactors"""
+        return _mesh.Mesh_GetGeometricFactors(self, ir, flags)
+
+
+    def DeleteGeometricFactors(self):
+        """DeleteGeometricFactors(Mesh self)"""
+        return _mesh.Mesh_DeleteGeometricFactors(self)
+
+
     def EulerNumber(self):
         """EulerNumber(Mesh self) -> int"""
         return _mesh.Mesh_EulerNumber(self)
@@ -462,24 +511,33 @@ class Mesh(_object):
 
 
     def GetFaceBaseGeometry(self, i):
-        """GetFaceBaseGeometry(Mesh self, int i) -> int"""
+        """GetFaceBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"""
         return _mesh.Mesh_GetFaceBaseGeometry(self, i)
 
 
-    def GetElementBaseGeometry(self, i=0):
-        """
-        GetElementBaseGeometry(Mesh self, int i=0) -> int
-        GetElementBaseGeometry(Mesh self) -> int
-        """
+    def GetElementBaseGeometry(self, i):
+        """GetElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"""
         return _mesh.Mesh_GetElementBaseGeometry(self, i)
 
 
-    def GetBdrElementBaseGeometry(self, i=0):
-        """
-        GetBdrElementBaseGeometry(Mesh self, int i=0) -> int
-        GetBdrElementBaseGeometry(Mesh self) -> int
-        """
+    def GetBdrElementBaseGeometry(self, i):
+        """GetBdrElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"""
         return _mesh.Mesh_GetBdrElementBaseGeometry(self, i)
+
+
+    def HasGeometry(self, geom):
+        """HasGeometry(Mesh self, mfem::Geometry::Type geom) -> bool"""
+        return _mesh.Mesh_HasGeometry(self, geom)
+
+
+    def GetNumGeometries(self, dim):
+        """GetNumGeometries(Mesh self, int dim) -> int"""
+        return _mesh.Mesh_GetNumGeometries(self, dim)
+
+
+    def GetGeometries(self, dim, el_geoms):
+        """GetGeometries(Mesh self, int dim, mfem::Array< mfem::Geometry::Type > & el_geoms)"""
+        return _mesh.Mesh_GetGeometries(self, dim, el_geoms)
 
 
     def GetElementVertices(self, i):
@@ -575,12 +633,12 @@ class Mesh(_object):
 
 
     def GetElementType(self, i):
-        """GetElementType(Mesh self, int i) -> int"""
+        """GetElementType(Mesh self, int i) -> mfem::Element::Type"""
         return _mesh.Mesh_GetElementType(self, i)
 
 
     def GetBdrElementType(self, i):
-        """GetBdrElementType(Mesh self, int i) -> int"""
+        """GetBdrElementType(Mesh self, int i) -> mfem::Element::Type"""
         return _mesh.Mesh_GetBdrElementType(self, i)
 
 
@@ -595,7 +653,7 @@ class Mesh(_object):
 
 
     def GetTransformationFEforElementType(arg1):
-        """GetTransformationFEforElementType(int arg1) -> FiniteElement"""
+        """GetTransformationFEforElementType(mfem::Element::Type arg1) -> FiniteElement"""
         return _mesh.Mesh_GetTransformationFEforElementType(arg1)
 
     GetTransformationFEforElementType = staticmethod(GetTransformationFEforElementType)
@@ -675,12 +733,12 @@ class Mesh(_object):
 
 
     def GetFaceGeometryType(self, Face):
-        """GetFaceGeometryType(Mesh self, int Face) -> int"""
+        """GetFaceGeometryType(Mesh self, int Face) -> mfem::Geometry::Type"""
         return _mesh.Mesh_GetFaceGeometryType(self, Face)
 
 
     def GetFaceElementType(self, Face):
-        """GetFaceElementType(Mesh self, int Face) -> int"""
+        """GetFaceElementType(Mesh self, int Face) -> mfem::Element::Type"""
         return _mesh.Mesh_GetFaceElementType(self, Face)
 
 
@@ -854,6 +912,11 @@ class Mesh(_object):
         return _mesh.Mesh_GetNodalFESpace(self)
 
 
+    def EnsureNodes(self):
+        """EnsureNodes(Mesh self)"""
+        return _mesh.Mesh_EnsureNodes(self)
+
+
     def SetCurvature(self, order, discont=False, space_dim=-1, ordering=1):
         """
         SetCurvature(Mesh self, int order, bool discont=False, int space_dim=-1, int ordering=1)
@@ -864,9 +927,12 @@ class Mesh(_object):
         return _mesh.Mesh_SetCurvature(self, order, discont, space_dim, ordering)
 
 
-    def UniformRefinement(self):
-        """UniformRefinement(Mesh self)"""
-        return _mesh.Mesh_UniformRefinement(self)
+    def UniformRefinement(self, ref_algo=0):
+        """
+        UniformRefinement(Mesh self, int ref_algo=0)
+        UniformRefinement(Mesh self)
+        """
+        return _mesh.Mesh_UniformRefinement(self, ref_algo)
 
 
     def GeneralRefinement(self, *args):
@@ -1084,6 +1150,12 @@ class Mesh(_object):
         return _mesh.Mesh_GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max, Vh, Vk)
 
 
+    def PrintElementsByGeometry(dim, num_elems_by_geom, out):
+        """PrintElementsByGeometry(int dim, intArray num_elems_by_geom, std::ostream & out)"""
+        return _mesh.Mesh_PrintElementsByGeometry(dim, num_elems_by_geom, out)
+
+    PrintElementsByGeometry = staticmethod(PrintElementsByGeometry)
+
     def PrintCharacteristics(self, *args):
         """
         PrintCharacteristics(Mesh self, Vector Vh=None, Vector Vk=None, std::ostream & out)
@@ -1123,14 +1195,16 @@ class Mesh(_object):
         __init__(mfem::Mesh self, int _Dim, int NVert, int NElem, int NBdrElem=0, int _spaceDim=-1) -> Mesh
         __init__(mfem::Mesh self, int _Dim, int NVert, int NElem, int NBdrElem=0) -> Mesh
         __init__(mfem::Mesh self, int _Dim, int NVert, int NElem) -> Mesh
-        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0, double sz=1.0) -> Mesh
-        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0) -> Mesh
-        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0) -> Mesh
-        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0, double sz=1.0, bool sfc_ordering=True) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0, double sz=1.0) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False) -> Mesh
         __init__(mfem::Mesh self, int nx, int ny, int nz, mfem::Element::Type type) -> Mesh
-        __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0) -> Mesh
-        __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type, int generate_edges=0, double sx=1.0) -> Mesh
-        __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type, int generate_edges=0) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0, bool sfc_ordering=True) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type, bool generate_edges=False, double sx=1.0) -> Mesh
+        __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type, bool generate_edges=False) -> Mesh
         __init__(mfem::Mesh self, int nx, int ny, mfem::Element::Type type) -> Mesh
         __init__(mfem::Mesh self, int n, double sx=1.0) -> Mesh
         __init__(mfem::Mesh self, int n) -> Mesh
@@ -1202,8 +1276,12 @@ Mesh_swigregister(Mesh)
 cvar = _mesh.cvar
 
 def Mesh_GetTransformationFEforElementType(arg2):
-    """Mesh_GetTransformationFEforElementType(int arg2) -> FiniteElement"""
+    """Mesh_GetTransformationFEforElementType(mfem::Element::Type arg2) -> FiniteElement"""
     return _mesh.Mesh_GetTransformationFEforElementType(arg2)
+
+def Mesh_PrintElementsByGeometry(dim, num_elems_by_geom, out):
+    """Mesh_PrintElementsByGeometry(int dim, intArray num_elems_by_geom, std::ostream & out)"""
+    return _mesh.Mesh_PrintElementsByGeometry(dim, num_elems_by_geom, out)
 
 
 def __lshift__(*args):
@@ -1213,6 +1291,54 @@ def __lshift__(*args):
     __lshift__(std::ostream & out, Mesh mesh) -> std::ostream &
     """
     return _mesh.__lshift__(*args)
+class GeometricFactors(_object):
+    """Proxy of C++ mfem::GeometricFactors class."""
+
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, GeometricFactors, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, GeometricFactors, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["mesh"] = _mesh.GeometricFactors_mesh_set
+    __swig_getmethods__["mesh"] = _mesh.GeometricFactors_mesh_get
+    if _newclass:
+        mesh = _swig_property(_mesh.GeometricFactors_mesh_get, _mesh.GeometricFactors_mesh_set)
+    __swig_setmethods__["IntRule"] = _mesh.GeometricFactors_IntRule_set
+    __swig_getmethods__["IntRule"] = _mesh.GeometricFactors_IntRule_get
+    if _newclass:
+        IntRule = _swig_property(_mesh.GeometricFactors_IntRule_get, _mesh.GeometricFactors_IntRule_set)
+    __swig_setmethods__["computed_factors"] = _mesh.GeometricFactors_computed_factors_set
+    __swig_getmethods__["computed_factors"] = _mesh.GeometricFactors_computed_factors_get
+    if _newclass:
+        computed_factors = _swig_property(_mesh.GeometricFactors_computed_factors_get, _mesh.GeometricFactors_computed_factors_set)
+    COORDINATES = _mesh.GeometricFactors_COORDINATES
+    JACOBIANS = _mesh.GeometricFactors_JACOBIANS
+    DETERMINANTS = _mesh.GeometricFactors_DETERMINANTS
+
+    def __init__(self, mesh, ir, flags):
+        """__init__(mfem::GeometricFactors self, Mesh mesh, IntegrationRule ir, int flags) -> GeometricFactors"""
+        this = _mesh.new_GeometricFactors(mesh, ir, flags)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_setmethods__["X"] = _mesh.GeometricFactors_X_set
+    __swig_getmethods__["X"] = _mesh.GeometricFactors_X_get
+    if _newclass:
+        X = _swig_property(_mesh.GeometricFactors_X_get, _mesh.GeometricFactors_X_set)
+    __swig_setmethods__["J"] = _mesh.GeometricFactors_J_set
+    __swig_getmethods__["J"] = _mesh.GeometricFactors_J_get
+    if _newclass:
+        J = _swig_property(_mesh.GeometricFactors_J_get, _mesh.GeometricFactors_J_set)
+    __swig_setmethods__["detJ"] = _mesh.GeometricFactors_detJ_set
+    __swig_getmethods__["detJ"] = _mesh.GeometricFactors_detJ_get
+    if _newclass:
+        detJ = _swig_property(_mesh.GeometricFactors_detJ_get, _mesh.GeometricFactors_detJ_set)
+    __swig_destroy__ = _mesh.delete_GeometricFactors
+    __del__ = lambda self: None
+GeometricFactors_swigregister = _mesh.GeometricFactors_swigregister
+GeometricFactors_swigregister(GeometricFactors)
+
 class NodeExtrudeCoefficient(mfem._par.coefficient.VectorCoefficient):
     """Proxy of C++ mfem::NodeExtrudeCoefficient class."""
 
@@ -1254,6 +1380,10 @@ def Extrude1D(mesh, ny, sy, closed=False):
     Extrude1D(Mesh mesh, int const ny, double const sy) -> Mesh
     """
     return _mesh.Extrude1D(mesh, ny, sy, closed)
+
+def Extrude2D(mesh, nz, sz):
+    """Extrude2D(Mesh mesh, int const nz, double const sz) -> Mesh"""
+    return _mesh.Extrude2D(mesh, nz, sz)
 class named_ifgzstream(_object):
     """Proxy of C++ mfem::named_ifgzstream class."""
 

@@ -3014,19 +3014,20 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 #define SWIGTYPE_p_mfem__HypreAMS swig_types[8]
 #define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[9]
 #define SWIGTYPE_p_mfem__HypreDiagScale swig_types[10]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[11]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[12]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[13]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[14]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[15]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[16]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[17]
-#define SWIGTYPE_p_mfem__STable swig_types[18]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[19]
-#define SWIGTYPE_p_mfem__Table swig_types[20]
-#define SWIGTYPE_p_mfem__Vector swig_types[21]
-static swig_type_info *swig_types[23];
-static swig_module_info swig_module = {swig_types, 22, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__HypreEuclid swig_types[11]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[12]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[13]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[14]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[15]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[16]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[17]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[18]
+#define SWIGTYPE_p_mfem__STable swig_types[19]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[20]
+#define SWIGTYPE_p_mfem__Table swig_types[21]
+#define SWIGTYPE_p_mfem__Vector swig_types[22]
+static swig_type_info *swig_types[24];
+static swig_module_info swig_module = {swig_types, 23, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4450,6 +4451,43 @@ fail:
 
 SWIGINTERN PyObject *_wrap_RAP__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
+  mfem::DenseMatrix *arg1 = 0 ;
+  mfem::SparseMatrix *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::DenseMatrix *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:RAP",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAP" "', argument " "1"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RAP" "', argument " "1"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RAP" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RAP" "', argument " "2"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
+  result = (mfem::DenseMatrix *)mfem::RAP(*arg1,(mfem::SparseMatrix const &)*arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RAP__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
   mfem::SparseMatrix *arg2 = 0 ;
   mfem::SparseMatrix *arg3 = (mfem::SparseMatrix *) 0 ;
@@ -4494,7 +4532,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RAP__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RAP__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
   mfem::SparseMatrix *arg2 = 0 ;
@@ -4531,7 +4569,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RAP__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RAP__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
   mfem::SparseMatrix *arg2 = 0 ;
@@ -4697,6 +4735,51 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Add__SWIG_6(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = 0 ;
+  double arg2 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Add",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Add" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Add" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Add" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Add" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  mfem::Add((mfem::SparseMatrix const &)*arg1,arg2,*arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_InnerProduct__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::HypreParVector *arg1 = 0 ;
@@ -4845,7 +4928,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Add__SWIG_6(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Add__SWIG_7(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   double arg1 ;
   mfem::HypreParMatrix *arg2 = 0 ;
@@ -4933,6 +5016,25 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_Add__SWIG_6(self, args);
+        }
+      }
+    }
+  }
   if (argc == 4) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__DenseMatrix, 0);
@@ -4998,7 +5100,36 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
           int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__HypreParMatrix, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_Add__SWIG_6(self, args);
+            return _wrap_Add__SWIG_7(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__DenseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__DenseMatrix, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_Add__SWIG_2(self, args);
+            }
           }
         }
       }
@@ -5035,35 +5166,6 @@ SWIGINTERN PyObject *_wrap_Add(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 5) {
-    int _v;
-    {
-      int res = SWIG_AsVal_double(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__DenseMatrix, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__DenseMatrix, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              return _wrap_Add__SWIG_2(self, args);
-            }
-          }
-        }
-      }
-    }
-  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Add'.\n"
@@ -5074,12 +5176,13 @@ fail:
     "    mfem::Add(mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n"
     "    mfem::Add(double,mfem::SparseMatrix const &,double,mfem::SparseMatrix const &)\n"
     "    mfem::Add(mfem::Array< mfem::SparseMatrix * > &)\n"
+    "    mfem::Add(mfem::SparseMatrix const &,double,mfem::DenseMatrix &)\n"
     "    mfem::Add(double,mfem::HypreParMatrix const &,double,mfem::HypreParMatrix const &)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_RAP__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RAP__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
   mfem::HypreParMatrix *arg2 = (mfem::HypreParMatrix *) 0 ;
@@ -5110,7 +5213,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RAP__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RAP__SWIG_6(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
   mfem::HypreParMatrix *arg2 = (mfem::HypreParMatrix *) 0 ;
@@ -5177,13 +5280,26 @@ SWIGINTERN PyObject *_wrap_RAP(PyObject *self, PyObject *args) {
   }
   if (argc == 2) {
     int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__SparseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_RAP__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__SparseMatrix, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_RAP__SWIG_2(self, args);
+        return _wrap_RAP__SWIG_3(self, args);
       }
     }
   }
@@ -5197,7 +5313,7 @@ SWIGINTERN PyObject *_wrap_RAP(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_RAP__SWIG_4(self, args);
+        return _wrap_RAP__SWIG_5(self, args);
       }
     }
   }
@@ -5212,7 +5328,7 @@ SWIGINTERN PyObject *_wrap_RAP(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__SparseMatrix, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_RAP__SWIG_3(self, args);
+          return _wrap_RAP__SWIG_4(self, args);
         }
       }
     }
@@ -5229,7 +5345,7 @@ SWIGINTERN PyObject *_wrap_RAP(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_RAP__SWIG_1(self, args);
+          return _wrap_RAP__SWIG_2(self, args);
         }
       }
     }
@@ -5248,7 +5364,7 @@ SWIGINTERN PyObject *_wrap_RAP(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_RAP__SWIG_5(self, args);
+          return _wrap_RAP__SWIG_6(self, args);
         }
       }
     }
@@ -5258,6 +5374,7 @@ fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'RAP'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::RAP(mfem::SparseMatrix const &,mfem::DenseMatrix &)\n"
+    "    mfem::RAP(mfem::DenseMatrix &,mfem::SparseMatrix const &)\n"
     "    mfem::RAP(mfem::SparseMatrix const &,mfem::SparseMatrix const &,mfem::SparseMatrix *)\n"
     "    mfem::RAP(mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n"
     "    mfem::RAP(mfem::SparseMatrix const &,mfem::SparseMatrix const &,mfem::SparseMatrix const &)\n"
@@ -5301,6 +5418,9 @@ static void *_p_mfem__HypreIdentityTo_p_mfem__HypreSolver(void *x, int *SWIGUNUS
 static void *_p_mfem__HypreAMSTo_p_mfem__HypreSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::HypreSolver *)  ((mfem::HypreAMS *) x));
 }
+static void *_p_mfem__HypreEuclidTo_p_mfem__HypreSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::HypreSolver *)  ((mfem::HypreEuclid *) x));
+}
 static void *_p_mfem__HypreGMRESTo_p_mfem__HypreSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::HypreSolver *)  ((mfem::HypreGMRES *) x));
 }
@@ -5326,6 +5446,7 @@ static swig_type_info _swigt__p_mfem__HypreBoomerAMG = {"_p_mfem__HypreBoomerAMG
 static swig_type_info _swigt__p_mfem__HypreADS = {"_p_mfem__HypreADS", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreIdentity = {"_p_mfem__HypreIdentity", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreAMS = {"_p_mfem__HypreAMS", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__HypreEuclid = {"_p_mfem__HypreEuclid", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreGMRES = {"_p_mfem__HypreGMRES", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__HypreParaSails = {"_p_mfem__HypreParaSails", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
@@ -5345,6 +5466,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__HypreAMS,
   &_swigt__p_mfem__HypreBoomerAMG,
   &_swigt__p_mfem__HypreDiagScale,
+  &_swigt__p_mfem__HypreEuclid,
   &_swigt__p_mfem__HypreGMRES,
   &_swigt__p_mfem__HypreIdentity,
   &_swigt__p_mfem__HyprePCG,
@@ -5373,9 +5495,10 @@ static swig_cast_info _swigc__p_mfem__HypreBoomerAMG[] = {{&_swigt__p_mfem__Hypr
 static swig_cast_info _swigc__p_mfem__HypreADS[] = {{&_swigt__p_mfem__HypreADS, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreIdentity[] = {{&_swigt__p_mfem__HypreIdentity, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreAMS[] = {{&_swigt__p_mfem__HypreAMS, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreEuclid[] = {{&_swigt__p_mfem__HypreEuclid, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreGMRES[] = {{&_swigt__p_mfem__HypreGMRES, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParaSails[] = {{&_swigt__p_mfem__HypreParaSails, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__HypreSolver[] = {  {&_swigt__p_mfem__HypreSolver, 0, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__HypreSolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HypreSolver[] = {  {&_swigt__p_mfem__HypreSolver, 0, 0, 0},  {&_swigt__p_mfem__HyprePCG, _p_mfem__HyprePCGTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreDiagScale, _p_mfem__HypreDiagScaleTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreBoomerAMG, _p_mfem__HypreBoomerAMGTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreADS, _p_mfem__HypreADSTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreIdentity, _p_mfem__HypreIdentityTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreAMS, _p_mfem__HypreAMSTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreEuclid, _p_mfem__HypreEuclidTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreGMRES, _p_mfem__HypreGMRESTo_p_mfem__HypreSolver, 0, 0},  {&_swigt__p_mfem__HypreParaSails, _p_mfem__HypreParaSailsTo_p_mfem__HypreSolver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
@@ -5393,6 +5516,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__HypreAMS,
   _swigc__p_mfem__HypreBoomerAMG,
   _swigc__p_mfem__HypreDiagScale,
+  _swigc__p_mfem__HypreEuclid,
   _swigc__p_mfem__HypreGMRES,
   _swigc__p_mfem__HypreIdentity,
   _swigc__p_mfem__HyprePCG,
@@ -6094,17 +6218,19 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30400)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("remotes/upstream/pumi-dev-101-g0715efbaf95990a4e76380ac69337096b1cd347d-dirty"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/src/mfem-git"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/mfem-git/par"));
+  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("tags/v4.0-0-g4d900b0c5fd6352c92173e74678bcbeeb11c8691"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

@@ -11,6 +11,7 @@
 import_array();
 %}
 %include "exception.i"
+%import "mem_manager.i"
 %import "vector.i"
 %import "array.i"
 %import "ostream_typemap.i"

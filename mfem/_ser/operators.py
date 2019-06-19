@@ -102,6 +102,7 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.array
 import mfem._ser.ostream_typemap
@@ -148,6 +149,11 @@ class Operator(_object):
     def NumCols(self):
         """NumCols(Operator self) -> int"""
         return _operators.Operator_NumCols(self)
+
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(Operator self) -> mfem::MemoryClass"""
+        return _operators.Operator_GetMemoryClass(self)
 
 
     def Mult(self, x, y):
@@ -391,6 +397,11 @@ class IdentityOperator(Operator):
         """Mult(IdentityOperator self, Vector x, Vector y)"""
         return _operators.IdentityOperator_Mult(self, x, y)
 
+
+    def MultTranspose(self, x, y):
+        """MultTranspose(IdentityOperator self, Vector x, Vector y)"""
+        return _operators.IdentityOperator_MultTranspose(self, x, y)
+
     __swig_destroy__ = _operators.delete_IdentityOperator
     __del__ = lambda self: None
 IdentityOperator_swigregister = _operators.IdentityOperator_swigregister
@@ -490,6 +501,11 @@ class RAPOperator(Operator):
         except __builtin__.Exception:
             self.this = this
 
+    def GetMemoryClass(self):
+        """GetMemoryClass(RAPOperator self) -> mfem::MemoryClass"""
+        return _operators.RAPOperator_GetMemoryClass(self)
+
+
     def Mult(self, x, y):
         """Mult(RAPOperator self, Vector x, Vector y)"""
         return _operators.RAPOperator_Mult(self, x, y)
@@ -524,6 +540,11 @@ class TripleProductOperator(Operator):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(TripleProductOperator self) -> mfem::MemoryClass"""
+        return _operators.TripleProductOperator_GetMemoryClass(self)
+
 
     def Mult(self, x, y):
         """Mult(TripleProductOperator self, Vector x, Vector y)"""
@@ -562,6 +583,11 @@ class ConstrainedOperator(Operator):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(ConstrainedOperator self) -> mfem::MemoryClass"""
+        return _operators.ConstrainedOperator_GetMemoryClass(self)
+
 
     def EliminateRHS(self, x, b):
         """EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"""

@@ -5508,16 +5508,18 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/src/mfem-git"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/mfem-git/par"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   import_array();
   

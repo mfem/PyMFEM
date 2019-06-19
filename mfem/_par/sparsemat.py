@@ -104,6 +104,7 @@ except __builtin__.Exception:
 
 import mfem._par.array
 import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.operators
 import mfem._par.matrix
@@ -172,6 +173,7 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         __init__(mfem::SparseMatrix self, int nrows, int ncols, int rowsize) -> SparseMatrix
         __init__(mfem::SparseMatrix self, SparseMatrix mat, bool copy_graph=True) -> SparseMatrix
         __init__(mfem::SparseMatrix self, SparseMatrix mat) -> SparseMatrix
+        __init__(mfem::SparseMatrix self, Vector v) -> SparseMatrix
         """
 
         import numpy as np  
@@ -224,19 +226,28 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_Empty(self)
 
 
-    def GetI(self):
-        """GetI(SparseMatrix self) -> int *"""
-        return _sparsemat.SparseMatrix_GetI(self)
+    def GetI(self, *args):
+        """
+        GetI(SparseMatrix self) -> int
+        GetI(SparseMatrix self) -> int const *
+        """
+        return _sparsemat.SparseMatrix_GetI(self, *args)
 
 
-    def GetJ(self):
-        """GetJ(SparseMatrix self) -> int *"""
-        return _sparsemat.SparseMatrix_GetJ(self)
+    def GetJ(self, *args):
+        """
+        GetJ(SparseMatrix self) -> int
+        GetJ(SparseMatrix self) -> int const *
+        """
+        return _sparsemat.SparseMatrix_GetJ(self, *args)
 
 
-    def GetData(self):
-        """GetData(SparseMatrix self) -> double *"""
-        return _sparsemat.SparseMatrix_GetData(self)
+    def GetData(self, *args):
+        """
+        GetData(SparseMatrix self) -> double
+        GetData(SparseMatrix self) -> double const *
+        """
+        return _sparsemat.SparseMatrix_GetData(self, *args)
 
 
     def RowSize(self, i):
@@ -309,6 +320,19 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_GetDiag(self, d)
 
 
+    def ToDenseMatrix(self, *args):
+        """
+        ToDenseMatrix(SparseMatrix self) -> DenseMatrix
+        ToDenseMatrix(SparseMatrix self, DenseMatrix B)
+        """
+        return _sparsemat.SparseMatrix_ToDenseMatrix(self, *args)
+
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(SparseMatrix self) -> mfem::MemoryClass"""
+        return _sparsemat.SparseMatrix_GetMemoryClass(self)
+
+
     def Mult(self, x, y):
         """Mult(SparseMatrix self, Vector x, Vector y)"""
         return _sparsemat.SparseMatrix_Mult(self, x, y)
@@ -333,6 +357,16 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
         AddMultTranspose(SparseMatrix self, Vector x, Vector y)
         """
         return _sparsemat.SparseMatrix_AddMultTranspose(self, x, y, a)
+
+
+    def BuildTranspose(self):
+        """BuildTranspose(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_BuildTranspose(self)
+
+
+    def ResetTranspose(self):
+        """ResetTranspose(SparseMatrix self)"""
+        return _sparsemat.SparseMatrix_ResetTranspose(self)
 
 
     def PartMult(self, rows, x, y):
@@ -503,6 +537,14 @@ class SparseMatrix(mfem._par.matrix.AbstractSparseMatrix):
     def areColumnsSorted(self):
         """areColumnsSorted(SparseMatrix self) -> bool"""
         return _sparsemat.SparseMatrix_areColumnsSorted(self)
+
+
+    def Threshold(self, tol, fix_empty_rows=False):
+        """
+        Threshold(SparseMatrix self, double tol, bool fix_empty_rows=False)
+        Threshold(SparseMatrix self, double tol)
+        """
+        return _sparsemat.SparseMatrix_Threshold(self, tol, fix_empty_rows)
 
 
     def GetBlocks(self, blocks):
@@ -782,6 +824,10 @@ def TransposeAbstractSparseMatrix(A, useActualWidth):
     """TransposeAbstractSparseMatrix(AbstractSparseMatrix A, int useActualWidth) -> SparseMatrix"""
     return _sparsemat.TransposeAbstractSparseMatrix(A, useActualWidth)
 
+def TransposeMult(A, B):
+    """TransposeMult(SparseMatrix A, SparseMatrix B) -> SparseMatrix"""
+    return _sparsemat.TransposeMult(A, B)
+
 def MultAbstractSparseMatrix(A, B):
     """MultAbstractSparseMatrix(AbstractSparseMatrix A, AbstractSparseMatrix B) -> SparseMatrix"""
     return _sparsemat.MultAbstractSparseMatrix(A, B)
@@ -792,6 +838,15 @@ def Mult_AtDA(A, D, OAtDA=None):
     Mult_AtDA(SparseMatrix A, Vector D) -> SparseMatrix
     """
     return _sparsemat.Mult_AtDA(A, D, OAtDA)
+
+def OuterProduct(*args):
+    """
+    OuterProduct(DenseMatrix A, DenseMatrix B) -> DenseMatrix
+    OuterProduct(DenseMatrix A, SparseMatrix B) -> SparseMatrix
+    OuterProduct(SparseMatrix A, DenseMatrix B) -> SparseMatrix
+    OuterProduct(SparseMatrix A, SparseMatrix B) -> SparseMatrix
+    """
+    return _sparsemat.OuterProduct(*args)
 # This file is compatible with both classic and new-style classes.
 
 

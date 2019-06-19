@@ -3525,31 +3525,33 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[71]
 #define SWIGTYPE_p_mfem__NormalInterpolator swig_types[72]
 #define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[73]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[74]
-#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[75]
-#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[76]
-#define SWIGTYPE_p_mfem__SumIntegrator swig_types[77]
-#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[78]
-#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[79]
-#define SWIGTYPE_p_mfem__Vector swig_types[80]
-#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[81]
-#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[82]
-#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[83]
-#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[84]
-#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[85]
-#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[86]
-#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[87]
-#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[88]
-#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[89]
-#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[90]
-#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[91]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[92]
-#define SWIGTYPE_p_quad_t swig_types[93]
-#define SWIGTYPE_p_seg_t swig_types[94]
-#define SWIGTYPE_p_tet_t swig_types[95]
-#define SWIGTYPE_p_tri_t swig_types[96]
-static swig_type_info *swig_types[98];
-static swig_module_info swig_module = {swig_types, 97, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[74]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[75]
+#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[76]
+#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[77]
+#define SWIGTYPE_p_mfem__SumIntegrator swig_types[78]
+#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[79]
+#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[80]
+#define SWIGTYPE_p_mfem__Vector swig_types[81]
+#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[82]
+#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[83]
+#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[84]
+#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[85]
+#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[86]
+#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[87]
+#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[88]
+#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[89]
+#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[90]
+#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[91]
+#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[92]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[93]
+#define SWIGTYPE_p_pri_t swig_types[94]
+#define SWIGTYPE_p_quad_t swig_types[95]
+#define SWIGTYPE_p_seg_t swig_types[96]
+#define SWIGTYPE_p_tet_t swig_types[97]
+#define SWIGTYPE_p_tri_t swig_types[98]
+static swig_type_info *swig_types[100];
+static swig_module_info swig_module = {swig_types, 99, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4238,6 +4240,53 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetFluxAveraging(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ZienkiewiczZhuEstimator *arg1 = (mfem::ZienkiewiczZhuEstimator *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ZienkiewiczZhuEstimator_SetFluxAveraging",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZienkiewiczZhuEstimator_SetFluxAveraging" "', argument " "1"" of type '" "mfem::ZienkiewiczZhuEstimator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ZienkiewiczZhuEstimator * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->SetFluxAveraging(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_GetTotalError(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ZienkiewiczZhuEstimator *arg1 = (mfem::ZienkiewiczZhuEstimator *) 0 ;
@@ -4662,6 +4711,7 @@ static PyMethodDef SwigMethods[] = {
 		"SetAnisotropic(bool aniso=True)\n"
 		"ZienkiewiczZhuEstimator_SetAnisotropic(ZienkiewiczZhuEstimator self)\n"
 		""},
+	 { (char *)"ZienkiewiczZhuEstimator_SetFluxAveraging", _wrap_ZienkiewiczZhuEstimator_SetFluxAveraging, METH_VARARGS, (char *)"ZienkiewiczZhuEstimator_SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"},
 	 { (char *)"ZienkiewiczZhuEstimator_GetTotalError", _wrap_ZienkiewiczZhuEstimator_GetTotalError, METH_VARARGS, (char *)"ZienkiewiczZhuEstimator_GetTotalError(ZienkiewiczZhuEstimator self) -> double"},
 	 { (char *)"ZienkiewiczZhuEstimator_GetLocalErrors", _wrap_ZienkiewiczZhuEstimator_GetLocalErrors, METH_VARARGS, (char *)"ZienkiewiczZhuEstimator_GetLocalErrors(ZienkiewiczZhuEstimator self) -> Vector"},
 	 { (char *)"ZienkiewiczZhuEstimator_GetAnisotropicFlags", _wrap_ZienkiewiczZhuEstimator_GetAnisotropicFlags, METH_VARARGS, (char *)"ZienkiewiczZhuEstimator_GetAnisotropicFlags(ZienkiewiczZhuEstimator self) -> intArray"},
@@ -5022,10 +5072,12 @@ static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElem
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ZienkiewiczZhuEstimator = {"_p_mfem__ZienkiewiczZhuEstimator", "mfem::ZienkiewiczZhuEstimator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -5106,6 +5158,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__MixedWeakGradDotIntegrator,
   &_swigt__p_mfem__NormalInterpolator,
   &_swigt__p_mfem__NormalTraceJumpIntegrator,
+  &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__QuadratureFunction,
   &_swigt__p_mfem__ScalarProductInterpolator,
   &_swigt__p_mfem__ScalarVectorProductInterpolator,
@@ -5125,6 +5178,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__VectorMassIntegrator,
   &_swigt__p_mfem__VectorScalarProductInterpolator,
   &_swigt__p_mfem__ZienkiewiczZhuEstimator,
+  &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -5220,10 +5274,12 @@ static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ZienkiewiczZhuEstimator[] = {  {&_swigt__p_mfem__ZienkiewiczZhuEstimator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5304,6 +5360,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__MixedWeakGradDotIntegrator,
   _swigc__p_mfem__NormalInterpolator,
   _swigc__p_mfem__NormalTraceJumpIntegrator,
+  _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__QuadratureFunction,
   _swigc__p_mfem__ScalarProductInterpolator,
   _swigc__p_mfem__ScalarVectorProductInterpolator,
@@ -5323,6 +5380,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__VectorMassIntegrator,
   _swigc__p_mfem__VectorScalarProductInterpolator,
   _swigc__p_mfem__ZienkiewiczZhuEstimator,
+  _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,

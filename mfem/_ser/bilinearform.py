@@ -172,6 +172,7 @@ def doublep_frompointer(t):
     return _bilinearform.doublep_frompointer(t)
 doublep_frompointer = _bilinearform.doublep_frompointer
 
+import mfem._ser.mem_manager
 import mfem._ser.array
 import mfem._ser.ostream_typemap
 import mfem._ser.fespace
@@ -184,6 +185,7 @@ import mfem._ser.sparsemat
 import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
+import mfem._ser.geom
 import mfem._ser.mesh
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
@@ -192,10 +194,14 @@ import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.linearform
 import mfem._ser.element
-import mfem._ser.geom
 import mfem._ser.table
+import mfem._ser.hash
 import mfem._ser.vertex
 import mfem._ser.handle
+AssemblyLevel_FULL = _bilinearform.AssemblyLevel_FULL
+AssemblyLevel_ELEMENT = _bilinearform.AssemblyLevel_ELEMENT
+AssemblyLevel_PARTIAL = _bilinearform.AssemblyLevel_PARTIAL
+AssemblyLevel_NONE = _bilinearform.AssemblyLevel_NONE
 class BilinearForm(mfem._ser.matrix.Matrix):
     """Proxy of C++ mfem::BilinearForm class."""
 
@@ -229,6 +235,11 @@ class BilinearForm(mfem._ser.matrix.Matrix):
     def Size(self):
         """Size(BilinearForm self) -> int"""
         return _bilinearform.BilinearForm_Size(self)
+
+
+    def SetAssemblyLevel(self, assembly_level):
+        """SetAssemblyLevel(BilinearForm self, mfem::AssemblyLevel assembly_level)"""
+        return _bilinearform.BilinearForm_SetAssemblyLevel(self, assembly_level)
 
 
     def EnableStaticCondensation(self):
@@ -289,6 +300,11 @@ class BilinearForm(mfem._ser.matrix.Matrix):
         return _bilinearform.BilinearForm_GetBBFI(self)
 
 
+    def GetBBFI_Marker(self):
+        """GetBBFI_Marker(BilinearForm self) -> mfem::Array< mfem::Array< int > * > *"""
+        return _bilinearform.BilinearForm_GetBBFI_Marker(self)
+
+
     def GetFBFI(self):
         """GetFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"""
         return _bilinearform.BilinearForm_GetFBFI(self)
@@ -297,6 +313,11 @@ class BilinearForm(mfem._ser.matrix.Matrix):
     def GetBFBFI(self):
         """GetBFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"""
         return _bilinearform.BilinearForm_GetBFBFI(self)
+
+
+    def GetBFBFI_Marker(self):
+        """GetBFBFI_Marker(BilinearForm self) -> mfem::Array< mfem::Array< int > * > *"""
+        return _bilinearform.BilinearForm_GetBFBFI_Marker(self)
 
 
     def __call__(self, i, j):
@@ -471,14 +492,14 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
     def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
         """
-        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B, int copy_interior=0)
-        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B)
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
         """
         return _bilinearform.BilinearForm_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
 
 
     def FormSystemMatrix(self, ess_tdof_list, A):
-        """FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, SparseMatrix A)"""
+        """FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, OperatorHandle A)"""
         return _bilinearform.BilinearForm_FormSystemMatrix(self, ess_tdof_list, A)
 
 
@@ -615,9 +636,12 @@ class MixedBilinearForm(mfem._ser.matrix.Matrix):
     __getattr__ = lambda self, name: _swig_getattr(self, MixedBilinearForm, name)
     __repr__ = _swig_repr
 
-    def __init__(self, tr_fes, te_fes):
-        """__init__(mfem::MixedBilinearForm self, FiniteElementSpace tr_fes, FiniteElementSpace te_fes) -> MixedBilinearForm"""
-        this = _bilinearform.new_MixedBilinearForm(tr_fes, te_fes)
+    def __init__(self, *args):
+        """
+        __init__(mfem::MixedBilinearForm self, FiniteElementSpace tr_fes, FiniteElementSpace te_fes) -> MixedBilinearForm
+        __init__(mfem::MixedBilinearForm self, FiniteElementSpace tr_fes, FiniteElementSpace te_fes, MixedBilinearForm mbf) -> MixedBilinearForm
+        """
+        this = _bilinearform.new_MixedBilinearForm(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:

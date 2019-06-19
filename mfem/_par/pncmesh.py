@@ -110,6 +110,8 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pncmesh.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pncmesh.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pncmesh.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pncmesh.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _pncmesh.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _pncmesh.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pncmesh.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pncmesh.MFEM_HYPRE_VERSION
 import mfem._par.mesh
@@ -152,9 +154,13 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     __getattr__ = lambda self, name: _swig_getattr(self, ParNCMesh, name)
     __repr__ = _swig_repr
 
-    def __init__(self, comm, ncmesh):
-        """__init__(mfem::ParNCMesh self, MPI_Comm comm, NCMesh ncmesh) -> ParNCMesh"""
-        this = _pncmesh.new_ParNCMesh(comm, ncmesh)
+    def __init__(self, *args):
+        """
+        __init__(mfem::ParNCMesh self, MPI_Comm comm, NCMesh ncmesh, int * part=None) -> ParNCMesh
+        __init__(mfem::ParNCMesh self, MPI_Comm comm, NCMesh ncmesh) -> ParNCMesh
+        __init__(mfem::ParNCMesh self, ParNCMesh other) -> ParNCMesh
+        """
+        this = _pncmesh.new_ParNCMesh(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -212,6 +218,11 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
         return _pncmesh.ParNCMesh_GetNGhostElements(self)
 
 
+    def GetGhostFaceGeometry(self, ghost_face_id):
+        """GetGhostFaceGeometry(ParNCMesh self, int ghost_face_id) -> mfem::Geometry::Type"""
+        return _pncmesh.ParNCMesh_GetGhostFaceGeometry(self, ghost_face_id)
+
+
     def GetSharedVertices(self):
         """GetSharedVertices(ParNCMesh self) -> mfem::NCMesh::NCList const &"""
         return _pncmesh.ParNCMesh_GetSharedVertices(self)
@@ -237,14 +248,14 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
         return _pncmesh.ParNCMesh_GetFaceOrientation(self, index)
 
 
-    def GetOwnerId(self, entity, index):
-        """GetOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"""
-        return _pncmesh.ParNCMesh_GetOwnerId(self, entity, index)
+    def GetEntityOwnerId(self, entity, index):
+        """GetEntityOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"""
+        return _pncmesh.ParNCMesh_GetEntityOwnerId(self, entity, index)
 
 
-    def GetGroupId(self, entity, index):
-        """GetGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"""
-        return _pncmesh.ParNCMesh_GetGroupId(self, entity, index)
+    def GetEntityGroupId(self, entity, index):
+        """GetEntityGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"""
+        return _pncmesh.ParNCMesh_GetEntityGroupId(self, entity, index)
 
 
     def GetGroup(self, id):
@@ -257,11 +268,6 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
         return _pncmesh.ParNCMesh_GroupContains(self, id, rank)
 
 
-    def AugmentMasterGroups(self):
-        """AugmentMasterGroups(ParNCMesh self)"""
-        return _pncmesh.ParNCMesh_AugmentMasterGroups(self)
-
-
     def IsGhost(self, entity, index):
         """IsGhost(ParNCMesh self, int entity, int index) -> bool"""
         return _pncmesh.ParNCMesh_IsGhost(self, entity, index)
@@ -270,11 +276,6 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     def ElementRank(self, index):
         """ElementRank(ParNCMesh self, int index) -> int"""
         return _pncmesh.ParNCMesh_ElementRank(self, index)
-
-
-    def GetFaceNeighbors(self, pmesh):
-        """GetFaceNeighbors(ParNCMesh self, mfem::ParMesh & pmesh)"""
-        return _pncmesh.ParNCMesh_GetFaceNeighbors(self, pmesh)
 
 
     def GetMyRank(self):

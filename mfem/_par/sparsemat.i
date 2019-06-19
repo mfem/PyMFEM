@@ -16,6 +16,8 @@
 import_array();
 %}
 %import "array.i"
+%import "mem_manager.i"
+
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
@@ -126,25 +128,25 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
 
 %extend mfem::SparseMatrix {
 PyObject* GetIArray(void) const{
-  int * I = self->GetI();
+  const int * I = self->GetI();
   int L = self->Size();
 
   npy_intp dims[] = { L+1 };
-  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, I);
+  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, (void *)I);
   }
 PyObject* GetJArray(void) const{
-  int * I = self->GetI();
-  int * J = self->GetJ();
+  const int * I = self->GetI();
+  const int * J = self->GetJ();
   int L = self->Size();
   npy_intp dims[] = { I[L]};
-  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, J);
+  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, (void *)J);
   }
 PyObject* GetDataArray(void) const{
-  int * I = self->GetI();
-  double * A = self->GetData();    
+  const int * I = self->GetI();
+  const double * A = self->GetData();    
   int L = self->Size();
   npy_intp dims[] = {I[L]};
-  return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, A);
+  return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void *)A);
   }
 void Print(const char *file){
   std::ofstream ofile(file);

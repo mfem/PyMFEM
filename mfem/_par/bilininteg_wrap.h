@@ -19,6 +19,9 @@ class SwigDirector_BilinearFormIntegrator : public mfem::BilinearFormIntegrator,
 
 public:
     SwigDirector_BilinearFormIntegrator(PyObject *self, mfem::IntegrationRule const *ir = NULL);
+    virtual void AssemblePA(mfem::FiniteElementSpace const &fes);
+    virtual void AddMultPA(mfem::Vector const &x, mfem::Vector &y) const;
+    virtual void AddMultTransposePA(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void AssembleElementMatrix(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::DenseMatrix &elmat);
     virtual void AssembleElementMatrix2(mfem::FiniteElement const &trial_fe, mfem::FiniteElement const &test_fe, mfem::ElementTransformation &Trans, mfem::DenseMatrix &elmat);
     virtual void AssembleFaceMatrix(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Trans, mfem::DenseMatrix &elmat);
@@ -59,7 +62,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[11];
+    mutable swig::SwigVar_PyObject vtable[14];
 #endif
 
 };

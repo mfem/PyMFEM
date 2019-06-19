@@ -1,5 +1,6 @@
 %module(package="mfem._par") handle
 %{
+#include "iostream_typemap.hpp"        
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
 #include "linalg/handle.hpp"  
@@ -32,6 +33,7 @@ import_array();
 //
 %pointer_class(int, intp);
 
+%import "mem_manager.i"
 
 %include "linalg/handle.hpp"
 

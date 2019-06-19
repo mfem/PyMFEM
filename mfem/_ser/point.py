@@ -138,7 +138,7 @@ class Point(mfem._ser.element.Element):
             self.this = this
 
     def GetType(self):
-        """GetType(Point self) -> int"""
+        """GetType(Point self) -> mfem::Element::Type"""
         return _point.Point_GetType(self)
 
 

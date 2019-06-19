@@ -149,6 +149,21 @@ class BilinearFormIntegrator(_object):
         except __builtin__.Exception:
             self.this = this
 
+    def AssemblePA(self, fes):
+        """AssemblePA(BilinearFormIntegrator self, FiniteElementSpace fes)"""
+        return _bilininteg.BilinearFormIntegrator_AssemblePA(self, fes)
+
+
+    def AddMultPA(self, x, y):
+        """AddMultPA(BilinearFormIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.BilinearFormIntegrator_AddMultPA(self, x, y)
+
+
+    def AddMultTransposePA(self, x, y):
+        """AddMultTransposePA(BilinearFormIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.BilinearFormIntegrator_AddMultTransposePA(self, x, y)
+
+
     def AssembleElementMatrix(self, el, Trans, elmat):
         """AssembleElementMatrix(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.BilinearFormIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
@@ -1845,10 +1860,30 @@ class DiffusionIntegrator(BilinearFormIntegrator):
         """
         return _bilininteg.DiffusionIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
 
+
+    def AssemblePA(self, arg2):
+        """AssemblePA(DiffusionIntegrator self, FiniteElementSpace arg2)"""
+        return _bilininteg.DiffusionIntegrator_AssemblePA(self, arg2)
+
+
+    def AddMultPA(self, arg2, arg3):
+        """AddMultPA(DiffusionIntegrator self, Vector arg2, Vector arg3)"""
+        return _bilininteg.DiffusionIntegrator_AddMultPA(self, arg2, arg3)
+
+
+    def GetRule(trial_fe, test_fe):
+        """GetRule(FiniteElement trial_fe, FiniteElement test_fe) -> IntegrationRule"""
+        return _bilininteg.DiffusionIntegrator_GetRule(trial_fe, test_fe)
+
+    GetRule = staticmethod(GetRule)
     __swig_destroy__ = _bilininteg.delete_DiffusionIntegrator
     __del__ = lambda self: None
 DiffusionIntegrator_swigregister = _bilininteg.DiffusionIntegrator_swigregister
 DiffusionIntegrator_swigregister(DiffusionIntegrator)
+
+def DiffusionIntegrator_GetRule(trial_fe, test_fe):
+    """DiffusionIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe) -> IntegrationRule"""
+    return _bilininteg.DiffusionIntegrator_GetRule(trial_fe, test_fe)
 
 class MassIntegrator(BilinearFormIntegrator):
     """Proxy of C++ mfem::MassIntegrator class."""
@@ -1890,10 +1925,30 @@ class MassIntegrator(BilinearFormIntegrator):
         """AssembleElementMatrix2(MassIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MassIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
 
+
+    def AssemblePA(self, arg2):
+        """AssemblePA(MassIntegrator self, FiniteElementSpace arg2)"""
+        return _bilininteg.MassIntegrator_AssemblePA(self, arg2)
+
+
+    def AddMultPA(self, arg2, arg3):
+        """AddMultPA(MassIntegrator self, Vector arg2, Vector arg3)"""
+        return _bilininteg.MassIntegrator_AddMultPA(self, arg2, arg3)
+
+
+    def GetRule(trial_fe, test_fe, Trans):
+        """GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
+        return _bilininteg.MassIntegrator_GetRule(trial_fe, test_fe, Trans)
+
+    GetRule = staticmethod(GetRule)
     __swig_destroy__ = _bilininteg.delete_MassIntegrator
     __del__ = lambda self: None
 MassIntegrator_swigregister = _bilininteg.MassIntegrator_swigregister
 MassIntegrator_swigregister(MassIntegrator)
+
+def MassIntegrator_GetRule(trial_fe, test_fe, Trans):
+    """MassIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
+    return _bilininteg.MassIntegrator_GetRule(trial_fe, test_fe, Trans)
 
 class BoundaryMassIntegrator(MassIntegrator):
     """Proxy of C++ mfem::BoundaryMassIntegrator class."""
@@ -2024,6 +2079,16 @@ class VectorMassIntegrator(BilinearFormIntegrator):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def GetVDim(self):
+        """GetVDim(VectorMassIntegrator self) -> int"""
+        return _bilininteg.VectorMassIntegrator_GetVDim(self)
+
+
+    def SetVDim(self, vdim):
+        """SetVDim(VectorMassIntegrator self, int vdim)"""
+        return _bilininteg.VectorMassIntegrator_SetVDim(self, vdim)
+
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         """AssembleElementMatrix(VectorMassIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
@@ -2458,6 +2523,22 @@ class ElasticityIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, arg2, arg3, arg4):
         """AssembleElementMatrix(ElasticityIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"""
         return _bilininteg.ElasticityIntegrator_AssembleElementMatrix(self, arg2, arg3, arg4)
+
+
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=1):
+        """
+        ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, int with_coef=1)
+        ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux)
+        """
+        return _bilininteg.ElasticityIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+
+
+    def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
+        """
+        ComputeFluxEnergy(ElasticityIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double
+        ComputeFluxEnergy(ElasticityIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux) -> double
+        """
+        return _bilininteg.ElasticityIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
 
     __swig_destroy__ = _bilininteg.delete_ElasticityIntegrator
     __del__ = lambda self: None

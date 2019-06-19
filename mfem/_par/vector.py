@@ -97,6 +97,7 @@ except __builtin__.Exception:
 
 import mfem._par.array
 import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 
 def add_vector(*args):
     """
@@ -130,6 +131,14 @@ class Vector(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, Vector, name)
     __repr__ = _swig_repr
 
+    def UseDevice(self, *args):
+        """
+        UseDevice(Vector self, bool use_dev)
+        UseDevice(Vector self) -> bool
+        """
+        return _vector.Vector_UseDevice(self, *args)
+
+
     def Load(self, *args):
         """
         Load(Vector self, std::istream ** arg2, int np, int * dim)
@@ -139,9 +148,13 @@ class Vector(_object):
         return _vector.Vector_Load(self, *args)
 
 
-    def SetSize(self, s):
-        """SetSize(Vector self, int s)"""
-        return _vector.Vector_SetSize(self, s)
+    def SetSize(self, *args):
+        """
+        SetSize(Vector self, int s)
+        SetSize(Vector self, int s, mfem::MemoryType mt)
+        SetSize(Vector self, int s, Vector v)
+        """
+        return _vector.Vector_SetSize(self, *args)
 
 
     def SetData(self, d):
@@ -157,6 +170,11 @@ class Vector(_object):
     def NewDataAndSize(self, d, s):
         """NewDataAndSize(Vector self, double * d, int s)"""
         return _vector.Vector_NewDataAndSize(self, d, s)
+
+
+    def NewMemoryAndSize(self, mem, s, own_mem):
+        """NewMemoryAndSize(Vector self, mfem::Memory< double > const & mem, int s, bool own_mem)"""
+        return _vector.Vector_NewMemoryAndSize(self, mem, s, own_mem)
 
 
     def MakeDataOwner(self):
@@ -182,6 +200,24 @@ class Vector(_object):
     def GetData(self):
         """GetData(Vector self) -> double *"""
         return _vector.Vector_GetData(self)
+
+
+    def GetMemory(self, *args):
+        """
+        GetMemory(Vector self) -> mfem::Memory< double >
+        GetMemory(Vector self) -> mfem::Memory< double > const &
+        """
+        return _vector.Vector_GetMemory(self, *args)
+
+
+    def SyncMemory(self, v):
+        """SyncMemory(Vector self, Vector v)"""
+        return _vector.Vector_SyncMemory(self, v)
+
+
+    def SyncAliasMemory(self, v):
+        """SyncAliasMemory(Vector self, Vector v)"""
+        return _vector.Vector_SyncAliasMemory(self, v)
 
 
     def OwnsData(self):
@@ -379,12 +415,52 @@ class Vector(_object):
     __swig_destroy__ = _vector.delete_Vector
     __del__ = lambda self: None
 
+    def Read(self, on_dev=True):
+        """
+        Read(Vector self, bool on_dev=True) -> double const
+        Read(Vector self) -> double const *
+        """
+        return _vector.Vector_Read(self, on_dev)
+
+
+    def HostRead(self):
+        """HostRead(Vector self) -> double const *"""
+        return _vector.Vector_HostRead(self)
+
+
+    def Write(self, on_dev=True):
+        """
+        Write(Vector self, bool on_dev=True) -> double
+        Write(Vector self) -> double *
+        """
+        return _vector.Vector_Write(self, on_dev)
+
+
+    def HostWrite(self):
+        """HostWrite(Vector self) -> double *"""
+        return _vector.Vector_HostWrite(self)
+
+
+    def ReadWrite(self, on_dev=True):
+        """
+        ReadWrite(Vector self, bool on_dev=True) -> double
+        ReadWrite(Vector self) -> double *
+        """
+        return _vector.Vector_ReadWrite(self, on_dev)
+
+
+    def HostReadWrite(self):
+        """HostReadWrite(Vector self) -> double *"""
+        return _vector.Vector_HostReadWrite(self)
+
+
     def __init__(self, *args):
         """
         __init__(mfem::Vector self) -> Vector
         __init__(mfem::Vector self, Vector arg2) -> Vector
         __init__(mfem::Vector self, int s) -> Vector
         __init__(mfem::Vector self, double * _data, int _size) -> Vector
+        __init__(mfem::Vector self, int size_, mfem::MemoryType mt) -> Vector
         __init__(mfem::Vector self, Vector v, int offset, int size) -> Vector
         """
 

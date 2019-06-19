@@ -97,6 +97,7 @@ except __builtin__.Exception:
 
 import mfem._ser.array
 import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 class Connection(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, Connection, name, value)
@@ -112,8 +113,8 @@ class Connection(_object):
     if _newclass:
         to = _swig_property(_table.Connection_to_get, _table.Connection_to_set)
 
-    def __init__(self, arg2, to):
-        this = _table.new_Connection(arg2, to)
+    def __init__(self, *args):
+        this = _table.new_Connection(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -190,6 +191,12 @@ class Table(_object):
 
     def GetJ(self, *args):
         return _table.Table_GetJ(self, *args)
+
+    def GetIMemory(self, *args):
+        return _table.Table_GetIMemory(self, *args)
+
+    def GetJMemory(self, *args):
+        return _table.Table_GetJMemory(self, *args)
 
     def SortRows(self):
         return _table.Table_SortRows(self)

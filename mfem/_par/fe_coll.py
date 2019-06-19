@@ -139,17 +139,17 @@ class FiniteElementCollection(_object):
     __repr__ = _swig_repr
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(FiniteElementCollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.FiniteElementCollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(FiniteElementCollection self, int GeomType) -> int"""
+        """DofForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.FiniteElementCollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(FiniteElementCollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(FiniteElementCollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.FiniteElementCollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -159,12 +159,12 @@ class FiniteElementCollection(_object):
 
 
     def HasFaceDofs(self, GeomType):
-        """HasFaceDofs(FiniteElementCollection self, int GeomType) -> int"""
+        """HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.FiniteElementCollection_HasFaceDofs(self, GeomType)
 
 
     def TraceFiniteElementForGeometry(self, GeomType):
-        """TraceFiniteElementForGeometry(FiniteElementCollection self, int GeomType) -> FiniteElement"""
+        """TraceFiniteElementForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.FiniteElementCollection_TraceFiniteElementForGeometry(self, GeomType)
 
 
@@ -182,7 +182,7 @@ class FiniteElementCollection(_object):
     New = staticmethod(New)
 
     def SubDofOrder(self, Geom, SDim, Info, dofs):
-        """SubDofOrder(FiniteElementCollection self, int Geom, int SDim, int Info, intArray dofs)"""
+        """SubDofOrder(FiniteElementCollection self, mfem::Geometry::Type Geom, int SDim, int Info, intArray dofs)"""
         return _fe_coll.FiniteElementCollection_SubDofOrder(self, Geom, SDim, Info, dofs)
 
 FiniteElementCollection_swigregister = _fe_coll.FiniteElementCollection_swigregister
@@ -218,17 +218,17 @@ class H1_FECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(H1_FECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(H1_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.H1_FECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(H1_FECollection self, int GeomType) -> int"""
+        """DofForGeometry(H1_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.H1_FECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(H1_FECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(H1_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.H1_FECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -248,7 +248,7 @@ class H1_FECollection(FiniteElementCollection):
 
 
     def GetDofMap(self, GeomType):
-        """GetDofMap(H1_FECollection self, int GeomType) -> int const *"""
+        """GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const *"""
         return _fe_coll.H1_FECollection_GetDofMap(self, GeomType)
 
     __swig_destroy__ = _fe_coll.delete_H1_FECollection
@@ -338,17 +338,17 @@ class L2_FECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(L2_FECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.L2_FECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(L2_FECollection self, int GeomType) -> int"""
+        """DofForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.L2_FECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(L2_FECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(L2_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.L2_FECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -358,7 +358,7 @@ class L2_FECollection(FiniteElementCollection):
 
 
     def TraceFiniteElementForGeometry(self, GeomType):
-        """TraceFiniteElementForGeometry(L2_FECollection self, int GeomType) -> FiniteElement"""
+        """TraceFiniteElementForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.L2_FECollection_TraceFiniteElementForGeometry(self, GeomType)
 
 
@@ -397,17 +397,17 @@ class RT_FECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(RT_FECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(RT_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT_FECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(RT_FECollection self, int GeomType) -> int"""
+        """DofForGeometry(RT_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT_FECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(RT_FECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(RT_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT_FECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -509,17 +509,17 @@ class ND_FECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(ND_FECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(ND_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.ND_FECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(ND_FECollection self, int GeomType) -> int"""
+        """DofForGeometry(ND_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.ND_FECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(ND_FECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(ND_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.ND_FECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -607,17 +607,17 @@ class NURBSFECollection(FiniteElementCollection):
 
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(NURBSFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(NURBSFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.NURBSFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(NURBSFECollection self, int GeomType) -> int"""
+        """DofForGeometry(NURBSFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.NURBSFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(NURBSFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(NURBSFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.NURBSFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -657,17 +657,17 @@ class LinearFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(LinearFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(LinearFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(LinearFECollection self, int GeomType) -> int"""
+        """DofForGeometry(LinearFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(LinearFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(LinearFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -702,17 +702,17 @@ class QuadraticFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(QuadraticFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(QuadraticFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(QuadraticFECollection self, int GeomType) -> int"""
+        """DofForGeometry(QuadraticFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(QuadraticFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(QuadraticFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -747,17 +747,17 @@ class QuadraticPosFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(QuadraticPosFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(QuadraticPosFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticPosFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(QuadraticPosFECollection self, int GeomType) -> int"""
+        """DofForGeometry(QuadraticPosFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticPosFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(QuadraticPosFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(QuadraticPosFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticPosFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -792,17 +792,17 @@ class CubicFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(CubicFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(CubicFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.CubicFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(CubicFECollection self, int GeomType) -> int"""
+        """DofForGeometry(CubicFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.CubicFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(CubicFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(CubicFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.CubicFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -837,17 +837,17 @@ class CrouzeixRaviartFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(CrouzeixRaviartFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(CrouzeixRaviartFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.CrouzeixRaviartFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(CrouzeixRaviartFECollection self, int GeomType) -> int"""
+        """DofForGeometry(CrouzeixRaviartFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.CrouzeixRaviartFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(CrouzeixRaviartFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(CrouzeixRaviartFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.CrouzeixRaviartFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -882,17 +882,17 @@ class LinearNonConf3DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(LinearNonConf3DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(LinearNonConf3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearNonConf3DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(LinearNonConf3DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(LinearNonConf3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearNonConf3DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(LinearNonConf3DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(LinearNonConf3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearNonConf3DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -927,17 +927,17 @@ class RT0_2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(RT0_2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(RT0_2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT0_2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(RT0_2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(RT0_2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT0_2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(RT0_2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(RT0_2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT0_2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -972,17 +972,17 @@ class RT1_2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(RT1_2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(RT1_2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT1_2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(RT1_2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(RT1_2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT1_2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(RT1_2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(RT1_2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT1_2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1017,17 +1017,17 @@ class RT2_2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(RT2_2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(RT2_2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT2_2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(RT2_2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(RT2_2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT2_2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(RT2_2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(RT2_2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT2_2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1062,17 +1062,17 @@ class Const2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(Const2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(Const2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.Const2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(Const2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(Const2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.Const2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(Const2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(Const2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.Const2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1107,17 +1107,17 @@ class LinearDiscont2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(LinearDiscont2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(LinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(LinearDiscont2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(LinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearDiscont2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(LinearDiscont2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(LinearDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1152,17 +1152,17 @@ class GaussLinearDiscont2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(GaussLinearDiscont2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(GaussLinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.GaussLinearDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(GaussLinearDiscont2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(GaussLinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.GaussLinearDiscont2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(GaussLinearDiscont2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(GaussLinearDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.GaussLinearDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1197,17 +1197,17 @@ class P1OnQuadFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(P1OnQuadFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(P1OnQuadFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.P1OnQuadFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(P1OnQuadFECollection self, int GeomType) -> int"""
+        """DofForGeometry(P1OnQuadFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.P1OnQuadFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(P1OnQuadFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(P1OnQuadFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.P1OnQuadFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1242,17 +1242,17 @@ class QuadraticDiscont2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(QuadraticDiscont2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(QuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(QuadraticDiscont2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(QuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticDiscont2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(QuadraticDiscont2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(QuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1287,17 +1287,17 @@ class QuadraticPosDiscont2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(QuadraticPosDiscont2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(QuadraticPosDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticPosDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(QuadraticPosDiscont2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(QuadraticPosDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticPosDiscont2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(QuadraticPosDiscont2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(QuadraticPosDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticPosDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1332,17 +1332,17 @@ class GaussQuadraticDiscont2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(GaussQuadraticDiscont2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(GaussQuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.GaussQuadraticDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(GaussQuadraticDiscont2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(GaussQuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.GaussQuadraticDiscont2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(GaussQuadraticDiscont2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(GaussQuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.GaussQuadraticDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1377,17 +1377,17 @@ class CubicDiscont2DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(CubicDiscont2DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(CubicDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.CubicDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(CubicDiscont2DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(CubicDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.CubicDiscont2DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(CubicDiscont2DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(CubicDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.CubicDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1422,17 +1422,17 @@ class Const3DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(Const3DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(Const3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.Const3DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(Const3DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(Const3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.Const3DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(Const3DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(Const3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.Const3DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1467,17 +1467,17 @@ class LinearDiscont3DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(LinearDiscont3DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(LinearDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearDiscont3DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(LinearDiscont3DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(LinearDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearDiscont3DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(LinearDiscont3DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(LinearDiscont3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearDiscont3DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1512,17 +1512,17 @@ class QuadraticDiscont3DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(QuadraticDiscont3DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(QuadraticDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticDiscont3DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(QuadraticDiscont3DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(QuadraticDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticDiscont3DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(QuadraticDiscont3DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(QuadraticDiscont3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticDiscont3DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1557,17 +1557,17 @@ class RefinedLinearFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(RefinedLinearFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(RefinedLinearFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RefinedLinearFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(RefinedLinearFECollection self, int GeomType) -> int"""
+        """DofForGeometry(RefinedLinearFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RefinedLinearFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(RefinedLinearFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(RefinedLinearFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RefinedLinearFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1602,17 +1602,17 @@ class ND1_3DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(ND1_3DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(ND1_3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.ND1_3DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(ND1_3DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(ND1_3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.ND1_3DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(ND1_3DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(ND1_3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.ND1_3DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1647,17 +1647,17 @@ class RT0_3DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(RT0_3DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(RT0_3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT0_3DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(RT0_3DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(RT0_3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT0_3DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(RT0_3DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(RT0_3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT0_3DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1692,17 +1692,17 @@ class RT1_3DFECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, GeomType):
-        """FiniteElementForGeometry(RT1_3DFECollection self, int GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(RT1_3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT1_3DFECollection_FiniteElementForGeometry(self, GeomType)
 
 
     def DofForGeometry(self, GeomType):
-        """DofForGeometry(RT1_3DFECollection self, int GeomType) -> int"""
+        """DofForGeometry(RT1_3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT1_3DFECollection_DofForGeometry(self, GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(RT1_3DFECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(RT1_3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT1_3DFECollection_DofOrderForOrientation(self, GeomType, Or)
 
 
@@ -1737,17 +1737,17 @@ class Local_FECollection(FiniteElementCollection):
             self.this = this
 
     def FiniteElementForGeometry(self, _GeomType):
-        """FiniteElementForGeometry(Local_FECollection self, int _GeomType) -> FiniteElement"""
+        """FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> FiniteElement"""
         return _fe_coll.Local_FECollection_FiniteElementForGeometry(self, _GeomType)
 
 
     def DofForGeometry(self, _GeomType):
-        """DofForGeometry(Local_FECollection self, int _GeomType) -> int"""
+        """DofForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> int"""
         return _fe_coll.Local_FECollection_DofForGeometry(self, _GeomType)
 
 
     def DofOrderForOrientation(self, GeomType, Or):
-        """DofOrderForOrientation(Local_FECollection self, int GeomType, int Or) -> int *"""
+        """DofOrderForOrientation(Local_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.Local_FECollection_DofOrderForOrientation(self, GeomType, Or)
 
 

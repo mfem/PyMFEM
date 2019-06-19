@@ -3595,11 +3595,14 @@ void mfem::PyTimeDependentOperatorBase::Mult(const mfem::Vector &x, mfem::Vector
   }
 
 
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
-}
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
 
 
 SWIGINTERN int
@@ -3646,19 +3649,6 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 #endif
   return res;
 }
-
-
-  #define SWIG_From_double   PyFloat_FromDouble 
-
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
 
 
 #include <float.h>
@@ -3757,6 +3747,16 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 
 
 SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
+
+
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
+SWIGINTERNINLINE PyObject*
   SWIG_From_bool  (bool value)
 {
   return PyBool_FromLong(value ? 1 : 0);
@@ -3798,6 +3798,37 @@ SwigDirector_Operator::SwigDirector_Operator(PyObject *self, int h, int w): mfem
 
 
 
+mfem::MemoryClass SwigDirector_Operator::GetMemoryClass() const {
+  mfem::MemoryClass c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "GetMemoryClass";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *) "GetMemoryClass", NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::MemoryClass""'");
+  }
+  c_result = static_cast< mfem::MemoryClass >(swig_val);
+  return (mfem::MemoryClass) c_result;
+}
+
+
 void SwigDirector_Operator::Mult(mfem::Vector const &x, mfem::Vector &y) const {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
@@ -3807,7 +3838,7 @@ void SwigDirector_Operator::Mult(mfem::Vector const &x, mfem::Vector &y) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 0;
+  const size_t swig_method_index = 1;
   const char *const swig_method_name = "Mult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -3834,7 +3865,7 @@ void SwigDirector_Operator::MultTranspose(mfem::Vector const &x, mfem::Vector &y
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char *const swig_method_name = "MultTranspose";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -3864,7 +3895,7 @@ mfem::Operator &SwigDirector_Operator::GetGradient(mfem::Vector const &x) const 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char *const swig_method_name = "GetGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -3902,7 +3933,7 @@ mfem::Operator const *SwigDirector_Operator::GetProlongation() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char *const swig_method_name = "GetProlongation";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -3937,7 +3968,7 @@ mfem::Operator const *SwigDirector_Operator::GetRestriction() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char *const swig_method_name = "GetRestriction";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -3973,7 +4004,7 @@ void SwigDirector_Operator::RecoverFEMSolution(mfem::Vector const &X, mfem::Vect
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -4008,6 +4039,37 @@ SwigDirector_TimeDependentOperator::SwigDirector_TimeDependentOperator(PyObject 
 
 
 
+mfem::MemoryClass SwigDirector_TimeDependentOperator::GetMemoryClass() const {
+  mfem::MemoryClass c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "GetMemoryClass";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *) "GetMemoryClass", NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::MemoryClass""'");
+  }
+  c_result = static_cast< mfem::MemoryClass >(swig_val);
+  return (mfem::MemoryClass) c_result;
+}
+
+
 void SwigDirector_TimeDependentOperator::Mult(mfem::Vector const &x, mfem::Vector &y) const {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
@@ -4017,7 +4079,7 @@ void SwigDirector_TimeDependentOperator::Mult(mfem::Vector const &x, mfem::Vecto
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 0;
+  const size_t swig_method_index = 1;
   const char *const swig_method_name = "Mult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4044,7 +4106,7 @@ void SwigDirector_TimeDependentOperator::MultTranspose(mfem::Vector const &x, mf
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char *const swig_method_name = "MultTranspose";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4074,7 +4136,7 @@ mfem::Operator &SwigDirector_TimeDependentOperator::GetGradient(mfem::Vector con
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char *const swig_method_name = "GetGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4112,7 +4174,7 @@ mfem::Operator const *SwigDirector_TimeDependentOperator::GetProlongation() cons
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char *const swig_method_name = "GetProlongation";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -4147,7 +4209,7 @@ mfem::Operator const *SwigDirector_TimeDependentOperator::GetRestriction() const
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char *const swig_method_name = "GetRestriction";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -4183,7 +4245,7 @@ void SwigDirector_TimeDependentOperator::RecoverFEMSolution(mfem::Vector const &
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -4210,7 +4272,7 @@ double SwigDirector_TimeDependentOperator::GetTime() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char *const swig_method_name = "GetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -4242,7 +4304,7 @@ void SwigDirector_TimeDependentOperator::SetTime(double const _t) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "SetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4269,7 +4331,7 @@ void SwigDirector_TimeDependentOperator::ExplicitMult(mfem::Vector const &x, mfe
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char *const swig_method_name = "ExplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4298,7 +4360,7 @@ void SwigDirector_TimeDependentOperator::ImplicitMult(mfem::Vector const &x, mfe
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char *const swig_method_name = "ImplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -4327,7 +4389,7 @@ void SwigDirector_TimeDependentOperator::ImplicitSolve(double const dt, mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char *const swig_method_name = "ImplicitSolve";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -4361,7 +4423,7 @@ mfem::Operator &SwigDirector_TimeDependentOperator::GetImplicitGradient(mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char *const swig_method_name = "GetImplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -4401,7 +4463,7 @@ mfem::Operator &SwigDirector_TimeDependentOperator::GetExplicitGradient(mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char *const swig_method_name = "GetExplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4443,6 +4505,37 @@ SwigDirector_Solver::SwigDirector_Solver(PyObject *self, int h, int w, bool iter
 
 
 
+mfem::MemoryClass SwigDirector_Solver::GetMemoryClass() const {
+  mfem::MemoryClass c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "GetMemoryClass";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *) "GetMemoryClass", NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::MemoryClass""'");
+  }
+  c_result = static_cast< mfem::MemoryClass >(swig_val);
+  return (mfem::MemoryClass) c_result;
+}
+
+
 void SwigDirector_Solver::Mult(mfem::Vector const &x, mfem::Vector &y) const {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
@@ -4452,7 +4545,7 @@ void SwigDirector_Solver::Mult(mfem::Vector const &x, mfem::Vector &y) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 0;
+  const size_t swig_method_index = 1;
   const char *const swig_method_name = "Mult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4479,7 +4572,7 @@ void SwigDirector_Solver::MultTranspose(mfem::Vector const &x, mfem::Vector &y) 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char *const swig_method_name = "MultTranspose";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4509,7 +4602,7 @@ mfem::Operator &SwigDirector_Solver::GetGradient(mfem::Vector const &x) const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char *const swig_method_name = "GetGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4547,7 +4640,7 @@ mfem::Operator const *SwigDirector_Solver::GetProlongation() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char *const swig_method_name = "GetProlongation";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -4582,7 +4675,7 @@ mfem::Operator const *SwigDirector_Solver::GetRestriction() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char *const swig_method_name = "GetRestriction";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -4618,7 +4711,7 @@ void SwigDirector_Solver::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -4646,7 +4739,7 @@ void SwigDirector_Solver::SetOperator(mfem::Operator const &op) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char *const swig_method_name = "SetOperator";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4678,6 +4771,37 @@ SwigDirector_PyOperatorBase::SwigDirector_PyOperatorBase(PyObject *self, int h, 
 
 
 
+mfem::MemoryClass SwigDirector_PyOperatorBase::GetMemoryClass() const {
+  mfem::MemoryClass c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "GetMemoryClass";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *) "GetMemoryClass", NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::MemoryClass""'");
+  }
+  c_result = static_cast< mfem::MemoryClass >(swig_val);
+  return (mfem::MemoryClass) c_result;
+}
+
+
 void SwigDirector_PyOperatorBase::Mult(mfem::Vector const &x, mfem::Vector &y) const {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
@@ -4687,7 +4811,7 @@ void SwigDirector_PyOperatorBase::Mult(mfem::Vector const &x, mfem::Vector &y) c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 0;
+  const size_t swig_method_index = 1;
   const char *const swig_method_name = "Mult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4714,7 +4838,7 @@ void SwigDirector_PyOperatorBase::MultTranspose(mfem::Vector const &x, mfem::Vec
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char *const swig_method_name = "MultTranspose";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4744,7 +4868,7 @@ mfem::Operator &SwigDirector_PyOperatorBase::GetGradient(mfem::Vector const &x) 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char *const swig_method_name = "GetGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4782,7 +4906,7 @@ mfem::Operator const *SwigDirector_PyOperatorBase::GetProlongation() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char *const swig_method_name = "GetProlongation";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -4817,7 +4941,7 @@ mfem::Operator const *SwigDirector_PyOperatorBase::GetRestriction() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char *const swig_method_name = "GetRestriction";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -4853,7 +4977,7 @@ void SwigDirector_PyOperatorBase::RecoverFEMSolution(mfem::Vector const &X, mfem
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -4886,7 +5010,7 @@ mfem::Vector &SwigDirector_PyOperatorBase::_EvalMult(mfem::Vector const &arg0) c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char *const swig_method_name = "_EvalMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -4928,6 +5052,37 @@ SwigDirector_PyTimeDependentOperatorBase::SwigDirector_PyTimeDependentOperatorBa
 
 
 
+mfem::MemoryClass SwigDirector_PyTimeDependentOperatorBase::GetMemoryClass() const {
+  mfem::MemoryClass c_result;
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 0;
+  const char *const swig_method_name = "GetMemoryClass";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
+#else
+  swig::SwigVar_PyObject result = PyObject_CallMethod(swig_get_self(), (char *) "GetMemoryClass", NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::MemoryClass""'");
+  }
+  c_result = static_cast< mfem::MemoryClass >(swig_val);
+  return (mfem::MemoryClass) c_result;
+}
+
+
 void SwigDirector_PyTimeDependentOperatorBase::Mult(mfem::Vector const &x, mfem::Vector &y) const {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
@@ -4937,7 +5092,7 @@ void SwigDirector_PyTimeDependentOperatorBase::Mult(mfem::Vector const &x, mfem:
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 0;
+  const size_t swig_method_index = 1;
   const char *const swig_method_name = "Mult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4964,7 +5119,7 @@ void SwigDirector_PyTimeDependentOperatorBase::MultTranspose(mfem::Vector const 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 1;
+  const size_t swig_method_index = 2;
   const char *const swig_method_name = "MultTranspose";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -4994,7 +5149,7 @@ mfem::Operator &SwigDirector_PyTimeDependentOperatorBase::GetGradient(mfem::Vect
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 2;
+  const size_t swig_method_index = 3;
   const char *const swig_method_name = "GetGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5032,7 +5187,7 @@ mfem::Operator const *SwigDirector_PyTimeDependentOperatorBase::GetProlongation(
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 3;
+  const size_t swig_method_index = 4;
   const char *const swig_method_name = "GetProlongation";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -5067,7 +5222,7 @@ mfem::Operator const *SwigDirector_PyTimeDependentOperatorBase::GetRestriction()
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 4;
+  const size_t swig_method_index = 5;
   const char *const swig_method_name = "GetRestriction";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -5103,7 +5258,7 @@ void SwigDirector_PyTimeDependentOperatorBase::RecoverFEMSolution(mfem::Vector c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 5;
+  const size_t swig_method_index = 6;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -5130,7 +5285,7 @@ double SwigDirector_PyTimeDependentOperatorBase::GetTime() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 7;
   const char *const swig_method_name = "GetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, NULL, NULL);
@@ -5162,7 +5317,7 @@ void SwigDirector_PyTimeDependentOperatorBase::SetTime(double const _t) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "SetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5189,7 +5344,7 @@ void SwigDirector_PyTimeDependentOperatorBase::ExplicitMult(mfem::Vector const &
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 9;
   const char *const swig_method_name = "ExplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OO)" ,(PyObject *)obj0,(PyObject *)obj1);
@@ -5218,7 +5373,7 @@ void SwigDirector_PyTimeDependentOperatorBase::ImplicitMult(mfem::Vector const &
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 10;
   const char *const swig_method_name = "ImplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -5247,7 +5402,7 @@ void SwigDirector_PyTimeDependentOperatorBase::ImplicitSolve(double const dt, mf
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 11;
   const char *const swig_method_name = "ImplicitSolve";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -5281,7 +5436,7 @@ mfem::Operator &SwigDirector_PyTimeDependentOperatorBase::GetImplicitGradient(mf
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 12;
   const char *const swig_method_name = "GetImplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(OOO)" ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2);
@@ -5321,7 +5476,7 @@ mfem::Operator &SwigDirector_PyTimeDependentOperatorBase::GetExplicitGradient(mf
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 13;
   const char *const swig_method_name = "GetExplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5361,7 +5516,7 @@ mfem::Vector &SwigDirector_PyTimeDependentOperatorBase::_EvalMult(mfem::Vector c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 14;
   const char *const swig_method_name = "_EvalMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunction(method, (char *)"(O)" ,(PyObject *)obj0);
@@ -5717,6 +5872,52 @@ SWIGINTERN PyObject *_wrap_Operator_NumCols(PyObject *SWIGUNUSEDPARM(self), PyOb
     //}
     //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
     //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Operator_GetMemoryClass(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  Swig::Director *director = 0;
+  bool upcall = false;
+  mfem::MemoryClass result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Operator_GetMemoryClass",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_GetMemoryClass" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (mfem::MemoryClass)((mfem::Operator const *)arg1)->mfem::Operator::GetMemoryClass();
+        } else {
+          result = (mfem::MemoryClass)((mfem::Operator const *)arg1)->GetMemoryClass();
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
@@ -8736,6 +8937,63 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_IdentityOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::IdentityOperator *arg1 = (mfem::IdentityOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:IdentityOperator_MultTranspose",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IdentityOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IdentityOperator_MultTranspose" "', argument " "1"" of type '" "mfem::IdentityOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::IdentityOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IdentityOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IdentityOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::IdentityOperator const *)arg1)->MultTranspose((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_IdentityOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::IdentityOperator *arg1 = (mfem::IdentityOperator *) 0 ;
@@ -9316,6 +9574,40 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_RAPOperator_GetMemoryClass(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RAPOperator *arg1 = (mfem::RAPOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::MemoryClass result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:RAPOperator_GetMemoryClass",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RAPOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAPOperator_GetMemoryClass" "', argument " "1"" of type '" "mfem::RAPOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RAPOperator * >(argp1);
+  {
+    try {
+      result = (mfem::MemoryClass)((mfem::RAPOperator const *)arg1)->GetMemoryClass(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_RAPOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::RAPOperator *arg1 = (mfem::RAPOperator *) 0 ;
@@ -9543,6 +9835,40 @@ SWIGINTERN PyObject *_wrap_new_TripleProductOperator(PyObject *SWIGUNUSEDPARM(se
     //    catch (std::exception &e) { SWIG_fail; }    
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TripleProductOperator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TripleProductOperator_GetMemoryClass(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::TripleProductOperator *arg1 = (mfem::TripleProductOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::MemoryClass result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:TripleProductOperator_GetMemoryClass",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TripleProductOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TripleProductOperator_GetMemoryClass" "', argument " "1"" of type '" "mfem::TripleProductOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TripleProductOperator * >(argp1);
+  {
+    try {
+      result = (mfem::MemoryClass)((mfem::TripleProductOperator const *)arg1)->GetMemoryClass(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -9855,6 +10181,40 @@ fail:
     "    mfem::ConstrainedOperator::ConstrainedOperator(mfem::Operator *,mfem::Array< int > const &,bool)\n"
     "    mfem::ConstrainedOperator::ConstrainedOperator(mfem::Operator *,mfem::Array< int > const &)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ConstrainedOperator_GetMemoryClass(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ConstrainedOperator *arg1 = (mfem::ConstrainedOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::MemoryClass result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ConstrainedOperator_GetMemoryClass",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ConstrainedOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConstrainedOperator_GetMemoryClass" "', argument " "1"" of type '" "mfem::ConstrainedOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ConstrainedOperator * >(argp1);
+  {
+    try {
+      result = (mfem::MemoryClass)((mfem::ConstrainedOperator const *)arg1)->GetMemoryClass(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -10972,6 +11332,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Operator_NumRows", _wrap_Operator_NumRows, METH_VARARGS, (char *)"Operator_NumRows(Operator self) -> int"},
 	 { (char *)"Operator_Width", _wrap_Operator_Width, METH_VARARGS, (char *)"Operator_Width(Operator self) -> int"},
 	 { (char *)"Operator_NumCols", _wrap_Operator_NumCols, METH_VARARGS, (char *)"Operator_NumCols(Operator self) -> int"},
+	 { (char *)"Operator_GetMemoryClass", _wrap_Operator_GetMemoryClass, METH_VARARGS, (char *)"Operator_GetMemoryClass(Operator self) -> mfem::MemoryClass"},
 	 { (char *)"Operator_Mult", _wrap_Operator_Mult, METH_VARARGS, (char *)"Operator_Mult(Operator self, Vector x, Vector y)"},
 	 { (char *)"Operator_MultTranspose", _wrap_Operator_MultTranspose, METH_VARARGS, (char *)"Operator_MultTranspose(Operator self, Vector x, Vector y)"},
 	 { (char *)"Operator_GetGradient", _wrap_Operator_GetGradient, METH_VARARGS, (char *)"Operator_GetGradient(Operator self, Vector x) -> Operator"},
@@ -11029,6 +11390,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Solver_swigregister", Solver_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_IdentityOperator", _wrap_new_IdentityOperator, METH_VARARGS, (char *)"new_IdentityOperator(int n) -> IdentityOperator"},
 	 { (char *)"IdentityOperator_Mult", _wrap_IdentityOperator_Mult, METH_VARARGS, (char *)"IdentityOperator_Mult(IdentityOperator self, Vector x, Vector y)"},
+	 { (char *)"IdentityOperator_MultTranspose", _wrap_IdentityOperator_MultTranspose, METH_VARARGS, (char *)"IdentityOperator_MultTranspose(IdentityOperator self, Vector x, Vector y)"},
 	 { (char *)"delete_IdentityOperator", _wrap_delete_IdentityOperator, METH_VARARGS, (char *)"delete_IdentityOperator(IdentityOperator self)"},
 	 { (char *)"IdentityOperator_swigregister", IdentityOperator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_TransposeOperator", _wrap_new_TransposeOperator, METH_VARARGS, (char *)"\n"
@@ -11045,11 +11407,13 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_ProductOperator", _wrap_delete_ProductOperator, METH_VARARGS, (char *)"delete_ProductOperator(ProductOperator self)"},
 	 { (char *)"ProductOperator_swigregister", ProductOperator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_RAPOperator", _wrap_new_RAPOperator, METH_VARARGS, (char *)"new_RAPOperator(Operator Rt_, Operator A_, Operator P_) -> RAPOperator"},
+	 { (char *)"RAPOperator_GetMemoryClass", _wrap_RAPOperator_GetMemoryClass, METH_VARARGS, (char *)"RAPOperator_GetMemoryClass(RAPOperator self) -> mfem::MemoryClass"},
 	 { (char *)"RAPOperator_Mult", _wrap_RAPOperator_Mult, METH_VARARGS, (char *)"RAPOperator_Mult(RAPOperator self, Vector x, Vector y)"},
 	 { (char *)"RAPOperator_MultTranspose", _wrap_RAPOperator_MultTranspose, METH_VARARGS, (char *)"RAPOperator_MultTranspose(RAPOperator self, Vector x, Vector y)"},
 	 { (char *)"delete_RAPOperator", _wrap_delete_RAPOperator, METH_VARARGS, (char *)"delete_RAPOperator(RAPOperator self)"},
 	 { (char *)"RAPOperator_swigregister", RAPOperator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_TripleProductOperator", _wrap_new_TripleProductOperator, METH_VARARGS, (char *)"new_TripleProductOperator(Operator A, Operator B, Operator C, bool ownA, bool ownB, bool ownC) -> TripleProductOperator"},
+	 { (char *)"TripleProductOperator_GetMemoryClass", _wrap_TripleProductOperator_GetMemoryClass, METH_VARARGS, (char *)"TripleProductOperator_GetMemoryClass(TripleProductOperator self) -> mfem::MemoryClass"},
 	 { (char *)"TripleProductOperator_Mult", _wrap_TripleProductOperator_Mult, METH_VARARGS, (char *)"TripleProductOperator_Mult(TripleProductOperator self, Vector x, Vector y)"},
 	 { (char *)"TripleProductOperator_MultTranspose", _wrap_TripleProductOperator_MultTranspose, METH_VARARGS, (char *)"TripleProductOperator_MultTranspose(TripleProductOperator self, Vector x, Vector y)"},
 	 { (char *)"delete_TripleProductOperator", _wrap_delete_TripleProductOperator, METH_VARARGS, (char *)"delete_TripleProductOperator(TripleProductOperator self)"},
@@ -11058,6 +11422,7 @@ static PyMethodDef SwigMethods[] = {
 		"ConstrainedOperator(Operator A, intArray list, bool own_A=False)\n"
 		"new_ConstrainedOperator(Operator A, intArray list) -> ConstrainedOperator\n"
 		""},
+	 { (char *)"ConstrainedOperator_GetMemoryClass", _wrap_ConstrainedOperator_GetMemoryClass, METH_VARARGS, (char *)"ConstrainedOperator_GetMemoryClass(ConstrainedOperator self) -> mfem::MemoryClass"},
 	 { (char *)"ConstrainedOperator_EliminateRHS", _wrap_ConstrainedOperator_EliminateRHS, METH_VARARGS, (char *)"ConstrainedOperator_EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"},
 	 { (char *)"ConstrainedOperator_Mult", _wrap_ConstrainedOperator_Mult, METH_VARARGS, (char *)"ConstrainedOperator_Mult(ConstrainedOperator self, Vector x, Vector y)"},
 	 { (char *)"delete_ConstrainedOperator", _wrap_delete_ConstrainedOperator, METH_VARARGS, (char *)"delete_ConstrainedOperator(ConstrainedOperator self)"},

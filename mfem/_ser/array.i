@@ -12,7 +12,11 @@
 import_array();
 %}
 
+%include "exception.i"
+%include "../common/exception.i"
+
 %import "ostream_typemap.i"
+%import "mem_manager.i"
 
 %typemap(in) (int *_data, int asize) {
   int i;

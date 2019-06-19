@@ -110,6 +110,8 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _estimators.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _estimators.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _estimators.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _estimators.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _estimators.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _estimators.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _estimators.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _estimators.MFEM_HYPRE_VERSION
 import mfem._par.array
@@ -233,6 +235,11 @@ class ZienkiewiczZhuEstimator(AnisotropicErrorEstimator):
         SetAnisotropic(ZienkiewiczZhuEstimator self)
         """
         return _estimators.ZienkiewiczZhuEstimator_SetAnisotropic(self, aniso)
+
+
+    def SetFluxAveraging(self, fa):
+        """SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"""
+        return _estimators.ZienkiewiczZhuEstimator_SetFluxAveraging(self, fa)
 
 
     def GetTotalError(self):

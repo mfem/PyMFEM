@@ -18,6 +18,8 @@ import_array();
 %import "../common/numpy_int_typemap.i"
 %import "../common/exception.i"
 
+%import "mem_manager.i"
+
 %include "general/table.hpp"
 
 %extend mfem::Table {

@@ -8,8 +8,11 @@ print('building paralel version')
 ## first load variables from PyMFEM_ROOT/setup_local.py
 import sys
 import os
-root =  os.path.abspath(os.path.join(os.path.realpath(__file__),
-                                     '..', '..', '..'))
+
+
+ddd = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
+root =  os.path.abspath(os.path.join(ddd, '..', '..'))
+
 sys.path.insert(0, root)
 from  setup_local import *
 
@@ -23,7 +26,8 @@ from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["cpointers",
+modules= ["globals", "mem_manager", "device", "hash",
+          "cpointers",
           "error", "array", "common_functions",
           "point", "segment", 
           "socketstream", "handle", 
@@ -44,13 +48,12 @@ modules= ["cpointers",
           "hypre", 
           "ostream_typemap", "istream_typemap"]
 
+
 if add_pumi != '':
     modules.append("pumi")
-    
-extra_compile_args = ['-DSWIG_TYPE_TABLE=PyMFEM']
+extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
-#sources['solvers'] = ['solvers_p_wrap.cxx']
 
 proxy_names = {name: '_'+name for name in modules}
 
@@ -95,8 +98,18 @@ ext_modules.extend([Extension(proxy_names[name],
                         libraries = libraries)
                for name in modules[1:]])
 
+### read version number from __init__.py
+path = os.path.join(os.path.dirname(os.path.abspath(os.path.realpath(__file__))),
+                    '..', '__init__.py')
+fid = open(path, 'r')
+lines=fid.readlines()
+fid.close()
+for x in lines:
+    if x.strip().startswith('__version__'):
+        version = eval(x.split('=')[-1].strip())
+
 setup (name = 'mfem_parallel',
-       version = '3.3.3',
+       version = version,
        author      = "S.Shiraiwa",
        description = """MFEM wrapper""",
        ext_modules = ext_modules,

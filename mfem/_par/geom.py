@@ -117,12 +117,15 @@ class Geometry(_object):
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, Geometry, name)
     __repr__ = _swig_repr
+    INVALID = _geom.Geometry_INVALID
     POINT = _geom.Geometry_POINT
     SEGMENT = _geom.Geometry_SEGMENT
     TRIANGLE = _geom.Geometry_TRIANGLE
     SQUARE = _geom.Geometry_SQUARE
     TETRAHEDRON = _geom.Geometry_TETRAHEDRON
     CUBE = _geom.Geometry_CUBE
+    PRISM = _geom.Geometry_PRISM
+    NUM_GEOMETRIES = _geom.Geometry_NUM_GEOMETRIES
     NumGeom = _geom.Geometry_NumGeom
     MaxDim = _geom.Geometry_MaxDim
     __swig_setmethods__["Name"] = _geom.Geometry_Name_set
@@ -204,6 +207,7 @@ cvar = _geom.cvar
 Geometry.NumBdrArray = _geom.cvar.Geometry_NumBdrArray
 Geometry.Volume = _geom.cvar.Geometry_Volume
 Geometry.Dimension = _geom.cvar.Geometry_Dimension
+Geometry.DimStart = _geom.cvar.Geometry_DimStart
 Geometry.NumVerts = _geom.cvar.Geometry_NumVerts
 Geometry.NumEdges = _geom.cvar.Geometry_NumEdges
 Geometry.NumFaces = _geom.cvar.Geometry_NumFaces
@@ -306,14 +310,14 @@ class GeometryRefiner(_object):
 
     def Refine(self, Geom, Times, ETimes=1):
         """
-        Refine(GeometryRefiner self, int Geom, int Times, int ETimes=1) -> RefinedGeometry
-        Refine(GeometryRefiner self, int Geom, int Times) -> RefinedGeometry
+        Refine(GeometryRefiner self, mfem::Geometry::Type Geom, int Times, int ETimes=1) -> RefinedGeometry
+        Refine(GeometryRefiner self, mfem::Geometry::Type Geom, int Times) -> RefinedGeometry
         """
         return _geom.GeometryRefiner_Refine(self, Geom, Times, ETimes)
 
 
     def RefineInterior(self, Geom, Times):
-        """RefineInterior(GeometryRefiner self, int Geom, int Times) -> IntegrationRule"""
+        """RefineInterior(GeometryRefiner self, mfem::Geometry::Type Geom, int Times) -> IntegrationRule"""
         return _geom.GeometryRefiner_RefineInterior(self, Geom, Times)
 
     __swig_destroy__ = _geom.delete_GeometryRefiner

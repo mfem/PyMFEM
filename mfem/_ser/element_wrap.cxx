@@ -3455,8 +3455,8 @@ namespace Swig {
 #define SWIGTYPE_p_int swig_types[1]
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[2]
 #define SWIGTYPE_p_mfem__DSTable swig_types[3]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[4]
-#define SWIGTYPE_p_mfem__Element swig_types[5]
+#define SWIGTYPE_p_mfem__Element swig_types[4]
+#define SWIGTYPE_p_mfem__HashTableT_mfem__Hashed2_t swig_types[5]
 #define SWIGTYPE_p_mfem__Mesh swig_types[6]
 #define SWIGTYPE_p_void swig_types[7]
 static swig_type_info *swig_types[9];
@@ -3614,7 +3614,7 @@ SWIGINTERN PyObject *_wrap_Element_GetType(PyObject *SWIGUNUSEDPARM(self), PyObj
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Element_GetType",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
@@ -3624,7 +3624,7 @@ SWIGINTERN PyObject *_wrap_Element_GetType(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
     try {
-      result = (int)((mfem::Element const *)arg1)->GetType();
+      result = (mfem::Element::Type)((mfem::Element const *)arg1)->GetType();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3654,7 +3654,7 @@ SWIGINTERN PyObject *_wrap_Element_GetGeometryType(PyObject *SWIGUNUSEDPARM(self
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  mfem::Geometry::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Element_GetGeometryType",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
@@ -3664,7 +3664,7 @@ SWIGINTERN PyObject *_wrap_Element_GetGeometryType(PyObject *SWIGUNUSEDPARM(self
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
     try {
-      result = (int)((mfem::Element const *)arg1)->GetGeometryType();
+      result = (mfem::Geometry::Type)((mfem::Element const *)arg1)->GetGeometryType();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4237,58 +4237,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_MarkEdge__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::Element *arg1 = (mfem::Element *) 0 ;
-  mfem::DenseMatrix *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:Element_MarkEdge",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_MarkEdge" "', argument " "1"" of type '" "mfem::Element *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Element * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Element_MarkEdge" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Element_MarkEdge" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  {
-    try {
-      (arg1)->MarkEdge(*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Element_MarkEdge__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_MarkEdge(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   mfem::DSTable *arg2 = 0 ;
@@ -4348,98 +4297,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_MarkEdge(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Element, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_Element_MarkEdge__SWIG_0(self, args);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Element, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__DSTable, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_int, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_Element_MarkEdge__SWIG_1(self, args);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Element_MarkEdge'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Element::MarkEdge(mfem::DenseMatrix &)\n"
-    "    mfem::Element::MarkEdge(mfem::DSTable const &,int const *)\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_Element_NeedRefinement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
-  mfem::DSTable *arg2 = 0 ;
-  int *arg3 = (int *) 0 ;
+  mfem::HashTable< mfem::Hashed2 > *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:Element_NeedRefinement",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:Element_NeedRefinement",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_NeedRefinement" "', argument " "1"" of type '" "mfem::Element const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DSTable,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__HashTableT_mfem__Hashed2_t,  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Element_NeedRefinement" "', argument " "2"" of type '" "mfem::DSTable &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Element_NeedRefinement" "', argument " "2"" of type '" "mfem::HashTable< mfem::Hashed2 > &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Element_NeedRefinement" "', argument " "2"" of type '" "mfem::DSTable &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Element_NeedRefinement" "', argument " "2"" of type '" "mfem::HashTable< mfem::Hashed2 > &""'"); 
   }
-  arg2 = reinterpret_cast< mfem::DSTable * >(argp2);
-  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Element_NeedRefinement" "', argument " "3"" of type '" "int *""'"); 
-  }
-  arg3 = reinterpret_cast< int * >(argp3);
+  arg2 = reinterpret_cast< mfem::HashTable< mfem::Hashed2 > * >(argp2);
   {
     try {
-      result = (int)((mfem::Element const *)arg1)->NeedRefinement(*arg2,arg3);
+      result = (int)((mfem::Element const *)arg1)->NeedRefinement(*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4597,46 +4483,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_GetRefinementFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::Element *arg1 = (mfem::Element *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Element_GetRefinementFlag",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_GetRefinementFlag" "', argument " "1"" of type '" "mfem::Element *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Element * >(argp1);
-  {
-    try {
-      result = (int)(arg1)->GetRefinementFlag();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Element_Duplicate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
@@ -4774,8 +4620,8 @@ SWIGINTERN PyObject *Element_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObje
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"Element_GetType", _wrap_Element_GetType, METH_VARARGS, (char *)"Element_GetType(Element self) -> int"},
-	 { (char *)"Element_GetGeometryType", _wrap_Element_GetGeometryType, METH_VARARGS, (char *)"Element_GetGeometryType(Element self) -> int"},
+	 { (char *)"Element_GetType", _wrap_Element_GetType, METH_VARARGS, (char *)"Element_GetType(Element self) -> mfem::Element::Type"},
+	 { (char *)"Element_GetGeometryType", _wrap_Element_GetGeometryType, METH_VARARGS, (char *)"Element_GetGeometryType(Element self) -> mfem::Geometry::Type"},
 	 { (char *)"Element_GetAttribute", _wrap_Element_GetAttribute, METH_VARARGS, (char *)"Element_GetAttribute(Element self) -> int"},
 	 { (char *)"Element_SetAttribute", _wrap_Element_SetAttribute, METH_VARARGS, (char *)"Element_SetAttribute(Element self, int const attr)"},
 	 { (char *)"Element_SetVertices", _wrap_Element_SetVertices, METH_VARARGS, (char *)"Element_SetVertices(Element self, int const * ind)"},
@@ -4789,15 +4635,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Element_GetEdgeVertices", _wrap_Element_GetEdgeVertices, METH_VARARGS, (char *)"Element_GetEdgeVertices(Element self, int arg3) -> int const *"},
 	 { (char *)"Element_GetNFaces", _wrap_Element_GetNFaces, METH_VARARGS, (char *)"Element_GetNFaces(Element self, int & nFaceVertices) -> int"},
 	 { (char *)"Element_GetFaceVertices", _wrap_Element_GetFaceVertices, METH_VARARGS, (char *)"Element_GetFaceVertices(Element self, int fi) -> int const *"},
-	 { (char *)"Element_MarkEdge", _wrap_Element_MarkEdge, METH_VARARGS, (char *)"\n"
-		"MarkEdge(DenseMatrix pmat)\n"
-		"Element_MarkEdge(Element self, DSTable v_to_v, int const * length)\n"
-		""},
-	 { (char *)"Element_NeedRefinement", _wrap_Element_NeedRefinement, METH_VARARGS, (char *)"Element_NeedRefinement(Element self, DSTable v_to_v, int * middle) -> int"},
+	 { (char *)"Element_MarkEdge", _wrap_Element_MarkEdge, METH_VARARGS, (char *)"Element_MarkEdge(Element self, DSTable v_to_v, int const * length)"},
+	 { (char *)"Element_NeedRefinement", _wrap_Element_NeedRefinement, METH_VARARGS, (char *)"Element_NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"},
 	 { (char *)"Element_ResetTransform", _wrap_Element_ResetTransform, METH_VARARGS, (char *)"Element_ResetTransform(Element self, int tr)"},
 	 { (char *)"Element_PushTransform", _wrap_Element_PushTransform, METH_VARARGS, (char *)"Element_PushTransform(Element self, int tr)"},
 	 { (char *)"Element_GetTransform", _wrap_Element_GetTransform, METH_VARARGS, (char *)"Element_GetTransform(Element self) -> unsigned int"},
-	 { (char *)"Element_GetRefinementFlag", _wrap_Element_GetRefinementFlag, METH_VARARGS, (char *)"Element_GetRefinementFlag(Element self) -> int"},
 	 { (char *)"Element_Duplicate", _wrap_Element_Duplicate, METH_VARARGS, (char *)"Element_Duplicate(Element self, mfem::Mesh * m) -> Element"},
 	 { (char *)"delete_Element", _wrap_delete_Element, METH_VARARGS, (char *)"delete_Element(Element self)"},
 	 { (char *)"Element_GetVerticesArray", _wrap_Element_GetVerticesArray, METH_VARARGS, (char *)"Element_GetVerticesArray(Element self) -> PyObject *"},
@@ -4812,8 +4654,8 @@ static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DSTable = {"_p_mfem__DSTable", "mfem::DSTable *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Element = {"_p_mfem__Element", "mfem::Element *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__HashTableT_mfem__Hashed2_t = {"_p_mfem__HashTableT_mfem__Hashed2_t", "mfem::HashTable< mfem::Hashed2 > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
@@ -4822,8 +4664,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__DSTable,
-  &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__Element,
+  &_swigt__p_mfem__HashTableT_mfem__Hashed2_t,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_void,
 };
@@ -4832,8 +4674,8 @@ static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0,
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DSTable[] = {  {&_swigt__p_mfem__DSTable, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Element[] = {  {&_swigt__p_mfem__Element, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HashTableT_mfem__Hashed2_t[] = {  {&_swigt__p_mfem__HashTableT_mfem__Hashed2_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -4842,8 +4684,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__DSTable,
-  _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__Element,
+  _swigc__p_mfem__HashTableT_mfem__Hashed2_t,
   _swigc__p_mfem__Mesh,
   _swigc__p_void,
 };
@@ -5545,6 +5387,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Element_QUADRILATERAL",SWIG_From_int(static_cast< int >(mfem::Element::QUADRILATERAL)));
   SWIG_Python_SetConstant(d, "Element_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::Element::TETRAHEDRON)));
   SWIG_Python_SetConstant(d, "Element_HEXAHEDRON",SWIG_From_int(static_cast< int >(mfem::Element::HEXAHEDRON)));
+  SWIG_Python_SetConstant(d, "Element_WEDGE",SWIG_From_int(static_cast< int >(mfem::Element::WEDGE)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

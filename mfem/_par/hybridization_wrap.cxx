@@ -3543,12 +3543,13 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[92]
 #define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[93]
 #define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[94]
-#define SWIGTYPE_p_quad_t swig_types[95]
-#define SWIGTYPE_p_seg_t swig_types[96]
-#define SWIGTYPE_p_tet_t swig_types[97]
-#define SWIGTYPE_p_tri_t swig_types[98]
-static swig_type_info *swig_types[100];
-static swig_module_info swig_module = {swig_types, 99, 0, 0, 0, 0};
+#define SWIGTYPE_p_pri_t swig_types[95]
+#define SWIGTYPE_p_quad_t swig_types[96]
+#define SWIGTYPE_p_seg_t swig_types[97]
+#define SWIGTYPE_p_tet_t swig_types[98]
+#define SWIGTYPE_p_tri_t swig_types[99]
+static swig_type_info *swig_types[101];
+static swig_module_info swig_module = {swig_types, 100, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4775,12 +4776,13 @@ static swig_type_info _swigt__p_mfem__Hybridization = {"_p_mfem__Hybridization",
 static swig_type_info _swigt__p_mfem__HypreParMatrix = {"_p_mfem__HypreParMatrix", "mfem::HypreParMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorHandle *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -4882,6 +4884,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__VectorInnerProductInterpolator,
   &_swigt__p_mfem__VectorMassIntegrator,
   &_swigt__p_mfem__VectorScalarProductInterpolator,
+  &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -4983,6 +4986,7 @@ static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__Hypr
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {{&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5084,6 +5088,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__VectorInnerProductInterpolator,
   _swigc__p_mfem__VectorMassIntegrator,
   _swigc__p_mfem__VectorScalarProductInterpolator,
+  _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,

@@ -3466,47 +3466,73 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[12]
 #define SWIGTYPE_p_mfem__Coefficient swig_types[13]
 #define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[14]
-#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[15]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[16]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[17]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[18]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[19]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[20]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[21]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[22]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[23]
-#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[24]
-#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[26]
-#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[27]
-#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[28]
-#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[29]
-#define SWIGTYPE_p_mfem__Mesh swig_types[30]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[31]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[32]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[33]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[34]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[35]
-#define SWIGTYPE_p_mfem__Vector swig_types[36]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[37]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[38]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[39]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[40]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[41]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[42]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[43]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[44]
-#define SWIGTYPE_p_p_mfem__Coefficient swig_types[45]
-#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[46]
-#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[47]
-#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[48]
-#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[49]
-#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[50]
-#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[51]
-#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[52]
-#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[53]
-static swig_type_info *swig_types[55];
-static swig_module_info swig_module = {swig_types, 54, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[15]
+#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[16]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[17]
+#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[18]
+#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[19]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[20]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[21]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[22]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[23]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[24]
+#define SWIGTYPE_p_mfem__IdentityMatrixCoefficient swig_types[25]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[26]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[27]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[28]
+#define SWIGTYPE_p_mfem__InverseMatrixCoefficient swig_types[29]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[30]
+#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[31]
+#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[32]
+#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[34]
+#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[35]
+#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[36]
+#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[37]
+#define SWIGTYPE_p_mfem__MatrixSumCoefficient swig_types[38]
+#define SWIGTYPE_p_mfem__Mesh swig_types[39]
+#define SWIGTYPE_p_mfem__OuterProductCoefficient swig_types[40]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[41]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[42]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[43]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[44]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[45]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[46]
+#define SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[48]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[49]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[50]
+#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[51]
+#define SWIGTYPE_p_mfem__Vector swig_types[52]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[53]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[54]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[56]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[57]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[58]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[59]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[60]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[61]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[62]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[63]
+#define SWIGTYPE_p_p_mfem__Coefficient swig_types[64]
+#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[65]
+#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[66]
+#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[67]
+#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[68]
+#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[69]
+#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[70]
+#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[71]
+#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[72]
+#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[73]
+#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[74]
+#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[75]
+#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[76]
+#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[77]
+#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[78]
+#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[79]
+static swig_type_info *swig_types[81];
+static swig_module_info swig_module = {swig_types, 80, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3734,6 +3760,99 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
 
 
 double fake_func(const mfem::Vector &x)
@@ -5377,6 +5496,31 @@ SWIGINTERN PyObject *FunctionCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(s
 
 SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
+  mfem::GridFunctionCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_GridFunctionCoefficient")) SWIG_fail;
+  {
+    try {
+      result = (mfem::GridFunctionCoefficient *)new mfem::GridFunctionCoefficient(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunctionCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
@@ -5417,7 +5561,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   void *argp1 = 0 ;
@@ -5463,13 +5607,16 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient(PyObject *self, PyObject 
   for (ii = 0; (ii < 2) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
+  if (argc == 0) {
+    return _wrap_new_GridFunctionCoefficient__SWIG_0(self, args);
+  }
   if (argc == 1) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_GridFunctionCoefficient__SWIG_1(self, args);
+      return _wrap_new_GridFunctionCoefficient__SWIG_2(self, args);
     }
   }
   if (argc == 2) {
@@ -5486,7 +5633,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient(PyObject *self, PyObject 
         }
       }
       if (_v) {
-        return _wrap_new_GridFunctionCoefficient__SWIG_0(self, args);
+        return _wrap_new_GridFunctionCoefficient__SWIG_1(self, args);
       }
     }
   }
@@ -5494,6 +5641,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient(PyObject *self, PyObject 
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_GridFunctionCoefficient'.\n"
     "  Possible C/C++ prototypes are:\n"
+    "    mfem::GridFunctionCoefficient::GridFunctionCoefficient()\n"
     "    mfem::GridFunctionCoefficient::GridFunctionCoefficient(mfem::GridFunction *,int)\n"
     "    mfem::GridFunctionCoefficient::GridFunctionCoefficient(mfem::GridFunction *)\n");
   return 0;
@@ -8358,7 +8506,66 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorArrayCoefficient *arg1 = (mfem::VectorArrayCoefficient *) 0 ;
+  int arg2 ;
+  mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:VectorArrayCoefficient_Set",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorArrayCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::VectorArrayCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorArrayCoefficient_Set" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "VectorArrayCoefficient_Set" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  {
+    try {
+      (arg1)->Set(arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::VectorArrayCoefficient *arg1 = (mfem::VectorArrayCoefficient *) 0 ;
   int arg2 ;
@@ -8405,6 +8612,80 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorArrayCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_VectorArrayCoefficient_Set__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorArrayCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_VectorArrayCoefficient_Set__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'VectorArrayCoefficient_Set'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::VectorArrayCoefficient::Set(int,mfem::Coefficient *,bool)\n"
+    "    mfem::VectorArrayCoefficient::Set(int,mfem::Coefficient *)\n");
+  return 0;
 }
 
 
@@ -8841,7 +9122,32 @@ SWIGINTERN PyObject *VectorArrayCoefficient_swigregister(PyObject *SWIGUNUSEDPAR
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_VectorGridFunctionCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorGridFunctionCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_VectorGridFunctionCoefficient")) SWIG_fail;
+  {
+    try {
+      result = (mfem::VectorGridFunctionCoefficient *)new mfem::VectorGridFunctionCoefficient(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorGridFunctionCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_VectorGridFunctionCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   void *argp1 = 0 ;
@@ -8872,6 +9178,40 @@ SWIGINTERN PyObject *_wrap_new_VectorGridFunctionCoefficient(PyObject *SWIGUNUSE
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_VectorGridFunctionCoefficient(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_VectorGridFunctionCoefficient__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_VectorGridFunctionCoefficient__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_VectorGridFunctionCoefficient'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::VectorGridFunctionCoefficient::VectorGridFunctionCoefficient()\n"
+    "    mfem::VectorGridFunctionCoefficient::VectorGridFunctionCoefficient(mfem::GridFunction *)\n");
+  return 0;
 }
 
 
@@ -9194,6 +9534,985 @@ SWIGINTERN PyObject *VectorGridFunctionCoefficient_swigregister(PyObject *SWIGUN
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_mfem__VectorGridFunctionCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_GradientGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::GradientGridFunctionCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_GradientGridFunctionCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GradientGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    try {
+      result = (mfem::GradientGridFunctionCoefficient *)new mfem::GradientGridFunctionCoefficient(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GradientGridFunctionCoefficient *arg1 = (mfem::GradientGridFunctionCoefficient *) 0 ;
+  mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GradientGridFunctionCoefficient_SetGridFunction",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GradientGridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::GradientGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GradientGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GradientGridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  {
+    try {
+      (arg1)->SetGridFunction(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_GetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GradientGridFunctionCoefficient *arg1 = (mfem::GradientGridFunctionCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::GridFunction *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GradientGridFunctionCoefficient_GetGridFunction",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GradientGridFunctionCoefficient_GetGridFunction" "', argument " "1"" of type '" "mfem::GradientGridFunctionCoefficient const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GradientGridFunctionCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::GridFunction *)((mfem::GradientGridFunctionCoefficient const *)arg1)->GetGridFunction(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_Eval__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GradientGridFunctionCoefficient *arg1 = (mfem::GradientGridFunctionCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:GradientGridFunctionCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::GradientGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GradientGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_Eval__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GradientGridFunctionCoefficient *arg1 = (mfem::GradientGridFunctionCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationRule *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:GradientGridFunctionCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::GradientGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GradientGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GradientGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationRule const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_Eval(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GradientGridFunctionCoefficient_Eval__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_GradientGridFunctionCoefficient_Eval__SWIG_1(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GradientGridFunctionCoefficient_Eval'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GradientGridFunctionCoefficient::Eval(mfem::Vector &,mfem::ElementTransformation &,mfem::IntegrationPoint const &)\n"
+    "    mfem::GradientGridFunctionCoefficient::Eval(mfem::DenseMatrix &,mfem::ElementTransformation &,mfem::IntegrationRule const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_GradientGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GradientGridFunctionCoefficient *arg1 = (mfem::GradientGridFunctionCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_GradientGridFunctionCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_GradientGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GradientGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GradientGridFunctionCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *GradientGridFunctionCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
+  mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:CurlGridFunctionCoefficient_SetGridFunction",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlGridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::CurlGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CurlGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CurlGridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  {
+    try {
+      (arg1)->SetGridFunction(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_GetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::GridFunction *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:CurlGridFunctionCoefficient_GetGridFunction",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlGridFunctionCoefficient_GetGridFunction" "', argument " "1"" of type '" "mfem::CurlGridFunctionCoefficient const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CurlGridFunctionCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::GridFunction *)((mfem::CurlGridFunctionCoefficient const *)arg1)->GetGridFunction(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_Eval__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:CurlGridFunctionCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::CurlGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CurlGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_Eval__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationRule *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:CurlGridFunctionCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::CurlGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CurlGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationRule const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_Eval__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:CurlGridFunctionCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::CurlGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CurlGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CurlGridFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_Eval(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_CurlGridFunctionCoefficient_Eval__SWIG_0_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_CurlGridFunctionCoefficient_Eval__SWIG_0_1(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_CurlGridFunctionCoefficient_Eval__SWIG_1(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'CurlGridFunctionCoefficient_Eval'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Eval(mfem::Vector &,mfem::ElementTransformation &,mfem::IntegrationPoint const &)\n"
+    "    Eval(mfem::DenseMatrix &,mfem::ElementTransformation &,mfem::IntegrationRule const &)\n"
+    "    mfem::CurlGridFunctionCoefficient::Eval(mfem::Vector &,mfem::ElementTransformation &,mfem::IntegrationPoint const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_CurlGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_CurlGridFunctionCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_CurlGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::CurlGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CurlGridFunctionCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *CurlGridFunctionCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_DivergenceGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::DivergenceGridFunctionCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_DivergenceGridFunctionCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DivergenceGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    try {
+      result = (mfem::DivergenceGridFunctionCoefficient *)new mfem::DivergenceGridFunctionCoefficient(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DivergenceGridFunctionCoefficient *arg1 = (mfem::DivergenceGridFunctionCoefficient *) 0 ;
+  mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DivergenceGridFunctionCoefficient_SetGridFunction",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DivergenceGridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::DivergenceGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DivergenceGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DivergenceGridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  {
+    try {
+      (arg1)->SetGridFunction(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_GetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DivergenceGridFunctionCoefficient *arg1 = (mfem::DivergenceGridFunctionCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::GridFunction *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DivergenceGridFunctionCoefficient_GetGridFunction",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DivergenceGridFunctionCoefficient_GetGridFunction" "', argument " "1"" of type '" "mfem::DivergenceGridFunctionCoefficient const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DivergenceGridFunctionCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::GridFunction *)((mfem::DivergenceGridFunctionCoefficient const *)arg1)->GetGridFunction(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DivergenceGridFunctionCoefficient *arg1 = (mfem::DivergenceGridFunctionCoefficient *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::IntegrationPoint *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DivergenceGridFunctionCoefficient_Eval",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::DivergenceGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DivergenceGridFunctionCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
+  {
+    try {
+      result = (double)(arg1)->Eval(*arg2,(mfem::IntegrationPoint const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_DivergenceGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DivergenceGridFunctionCoefficient *arg1 = (mfem::DivergenceGridFunctionCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_DivergenceGridFunctionCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DivergenceGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::DivergenceGridFunctionCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DivergenceGridFunctionCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *DivergenceGridFunctionCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -9662,6 +10981,48 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetScale(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:VectorDeltaCoefficient_SetScale",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_SetScale" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VectorDeltaCoefficient_SetScale" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      (arg1)->SetScale(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDirection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
@@ -9690,6 +11051,51 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDirection(PyObject *SWIGUNU
   {
     try {
       (arg1)->SetDirection((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:VectorDeltaCoefficient_SetDeltaCenter",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_SetDeltaCenter" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorDeltaCoefficient_SetDeltaCenter" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorDeltaCoefficient_SetDeltaCenter" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      (arg1)->SetDeltaCenter((mfem::Vector const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11568,7 +12974,74 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixArrayCoefficient *arg1 = (mfem::MatrixArrayCoefficient *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
+  bool arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:MatrixArrayCoefficient_Set",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::MatrixArrayCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixArrayCoefficient_Set" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
+  ecode5 = SWIG_AsVal_bool(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MatrixArrayCoefficient_Set" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
+  {
+    try {
+      (arg1)->Set(arg2,arg3,arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::MatrixArrayCoefficient *arg1 = (mfem::MatrixArrayCoefficient *) 0 ;
   int arg2 ;
@@ -11623,6 +13096,98 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(s
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[6] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 5) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_MatrixArrayCoefficient_Set__SWIG_1(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            {
+              int res = SWIG_AsVal_bool(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_MatrixArrayCoefficient_Set__SWIG_0(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MatrixArrayCoefficient_Set'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::MatrixArrayCoefficient::Set(int,int,mfem::Coefficient *,bool)\n"
+    "    mfem::MatrixArrayCoefficient::Set(int,int,mfem::Coefficient *)\n");
+  return 0;
 }
 
 
@@ -12045,6 +13610,3585 @@ SWIGINTERN PyObject *MatrixRestrictedCoefficient_swigregister(PyObject *SWIGUNUS
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_mfem__MatrixRestrictedCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  mfem::Coefficient *arg2 = 0 ;
+  double arg3 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  mfem::SumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_SumCoefficient",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SumCoefficient" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SumCoefficient" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    try {
+      result = (mfem::SumCoefficient *)new mfem::SumCoefficient(*arg1,*arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  mfem::Coefficient *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  mfem::SumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_SumCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SumCoefficient" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (mfem::SumCoefficient *)new mfem::SumCoefficient(*arg1,*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  mfem::Coefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::SumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_SumCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  {
+    try {
+      result = (mfem::SumCoefficient *)new mfem::SumCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SumCoefficient(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_SumCoefficient__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_SumCoefficient__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_SumCoefficient__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_SumCoefficient'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::SumCoefficient::SumCoefficient(mfem::Coefficient &,mfem::Coefficient &,double,double)\n"
+    "    mfem::SumCoefficient::SumCoefficient(mfem::Coefficient &,mfem::Coefficient &,double)\n"
+    "    mfem::SumCoefficient::SumCoefficient(mfem::Coefficient &,mfem::Coefficient &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SumCoefficient *arg1 = (mfem::SumCoefficient *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::IntegrationPoint *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SumCoefficient_Eval",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SumCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SumCoefficient_Eval" "', argument " "1"" of type '" "mfem::SumCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SumCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SumCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SumCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SumCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SumCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
+  {
+    try {
+      result = (double)(arg1)->Eval(*arg2,(mfem::IntegrationPoint const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SumCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SumCoefficient *arg1 = (mfem::SumCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_SumCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SumCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SumCoefficient" "', argument " "1"" of type '" "mfem::SumCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SumCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SumCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__SumCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_ProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  mfem::Coefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::ProductCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_ProductCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ProductCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ProductCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  {
+    try {
+      result = (mfem::ProductCoefficient *)new mfem::ProductCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ProductCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ProductCoefficient *arg1 = (mfem::ProductCoefficient *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::IntegrationPoint *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:ProductCoefficient_Eval",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::ProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
+  {
+    try {
+      result = (double)(arg1)->Eval(*arg2,(mfem::IntegrationPoint const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ProductCoefficient *arg1 = (mfem::ProductCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_ProductCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ProductCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ProductCoefficient" "', argument " "1"" of type '" "mfem::ProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ProductCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ProductCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ProductCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_PowerCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::PowerCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_PowerCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PowerCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PowerCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_PowerCoefficient" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (mfem::PowerCoefficient *)new mfem::PowerCoefficient(*arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PowerCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PowerCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PowerCoefficient *arg1 = (mfem::PowerCoefficient *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::IntegrationPoint *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:PowerCoefficient_Eval",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PowerCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PowerCoefficient_Eval" "', argument " "1"" of type '" "mfem::PowerCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PowerCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PowerCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PowerCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PowerCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PowerCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
+  {
+    try {
+      result = (double)(arg1)->Eval(*arg2,(mfem::IntegrationPoint const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_PowerCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::PowerCoefficient *arg1 = (mfem::PowerCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_PowerCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PowerCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_PowerCoefficient" "', argument " "1"" of type '" "mfem::PowerCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::PowerCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *PowerCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__PowerCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_InnerProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::InnerProductCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_InnerProductCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_InnerProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_InnerProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_InnerProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_InnerProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::InnerProductCoefficient *)new mfem::InnerProductCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__InnerProductCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_InnerProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::InnerProductCoefficient *arg1 = (mfem::InnerProductCoefficient *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::IntegrationPoint *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:InnerProductCoefficient_Eval",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InnerProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InnerProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::InnerProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::InnerProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InnerProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InnerProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InnerProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InnerProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
+  {
+    try {
+      result = (double)(arg1)->Eval(*arg2,(mfem::IntegrationPoint const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_InnerProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::InnerProductCoefficient *arg1 = (mfem::InnerProductCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_InnerProductCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InnerProductCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_InnerProductCoefficient" "', argument " "1"" of type '" "mfem::InnerProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::InnerProductCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *InnerProductCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__InnerProductCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_VectorRotProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::VectorRotProductCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_VectorRotProductCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorRotProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorRotProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorRotProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorRotProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::VectorRotProductCoefficient *)new mfem::VectorRotProductCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorRotProductCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorRotProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorRotProductCoefficient *arg1 = (mfem::VectorRotProductCoefficient *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::IntegrationPoint *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:VectorRotProductCoefficient_Eval",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorRotProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorRotProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::VectorRotProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorRotProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorRotProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorRotProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorRotProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorRotProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
+  {
+    try {
+      result = (double)(arg1)->Eval(*arg2,(mfem::IntegrationPoint const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_VectorRotProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorRotProductCoefficient *arg1 = (mfem::VectorRotProductCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_VectorRotProductCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorRotProductCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_VectorRotProductCoefficient" "', argument " "1"" of type '" "mfem::VectorRotProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorRotProductCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *VectorRotProductCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__VectorRotProductCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_DeterminantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixCoefficient *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::DeterminantCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_DeterminantCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DeterminantCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DeterminantCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::DeterminantCoefficient *)new mfem::DeterminantCoefficient(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DeterminantCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DeterminantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DeterminantCoefficient *arg1 = (mfem::DeterminantCoefficient *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::IntegrationPoint *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:DeterminantCoefficient_Eval",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeterminantCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeterminantCoefficient_Eval" "', argument " "1"" of type '" "mfem::DeterminantCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DeterminantCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeterminantCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DeterminantCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DeterminantCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DeterminantCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
+  {
+    try {
+      result = (double)(arg1)->Eval(*arg2,(mfem::IntegrationPoint const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_DeterminantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::DeterminantCoefficient *arg1 = (mfem::DeterminantCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_DeterminantCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeterminantCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DeterminantCoefficient" "', argument " "1"" of type '" "mfem::DeterminantCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::DeterminantCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *DeterminantCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__DeterminantCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  double arg3 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  mfem::VectorSumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_VectorSumCoefficient",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_VectorSumCoefficient" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_VectorSumCoefficient" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    try {
+      result = (mfem::VectorSumCoefficient *)new mfem::VectorSumCoefficient(*arg1,*arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorSumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  mfem::VectorSumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_VectorSumCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_VectorSumCoefficient" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (mfem::VectorSumCoefficient *)new mfem::VectorSumCoefficient(*arg1,*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorSumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::VectorSumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_VectorSumCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::VectorSumCoefficient *)new mfem::VectorSumCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorSumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_VectorSumCoefficient__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_VectorSumCoefficient__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_VectorSumCoefficient__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_VectorSumCoefficient'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::VectorSumCoefficient::VectorSumCoefficient(mfem::VectorCoefficient &,mfem::VectorCoefficient &,double,double)\n"
+    "    mfem::VectorSumCoefficient::VectorSumCoefficient(mfem::VectorCoefficient &,mfem::VectorCoefficient &,double)\n"
+    "    mfem::VectorSumCoefficient::VectorSumCoefficient(mfem::VectorCoefficient &,mfem::VectorCoefficient &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorSumCoefficient_Eval__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorSumCoefficient *arg1 = (mfem::VectorSumCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:VectorSumCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorSumCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorSumCoefficient_Eval" "', argument " "1"" of type '" "mfem::VectorSumCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorSumCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorSumCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorSumCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorSumCoefficient_Eval__SWIG_1_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorSumCoefficient *arg1 = (mfem::VectorSumCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationRule *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:VectorSumCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorSumCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorSumCoefficient_Eval" "', argument " "1"" of type '" "mfem::VectorSumCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorSumCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorSumCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorSumCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationRule const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorSumCoefficient_Eval(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorSumCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_VectorSumCoefficient_Eval__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorSumCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_VectorSumCoefficient_Eval__SWIG_1_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'VectorSumCoefficient_Eval'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::VectorSumCoefficient::Eval(mfem::Vector &,mfem::ElementTransformation &,mfem::IntegrationPoint const &)\n"
+    "    Eval(mfem::DenseMatrix &,mfem::ElementTransformation &,mfem::IntegrationRule const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_VectorSumCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorSumCoefficient *arg1 = (mfem::VectorSumCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_VectorSumCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorSumCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorSumCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorSumCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *VectorSumCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__VectorSumCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_ScalarVectorProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::ScalarVectorProductCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_ScalarVectorProductCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ScalarVectorProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ScalarVectorProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ScalarVectorProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ScalarVectorProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::ScalarVectorProductCoefficient *)new mfem::ScalarVectorProductCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ScalarVectorProductCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ScalarVectorProductCoefficient_Eval__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScalarVectorProductCoefficient *arg1 = (mfem::ScalarVectorProductCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ScalarVectorProductCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarVectorProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::ScalarVectorProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarVectorProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ScalarVectorProductCoefficient_Eval__SWIG_1_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScalarVectorProductCoefficient *arg1 = (mfem::ScalarVectorProductCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationRule *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ScalarVectorProductCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarVectorProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::ScalarVectorProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarVectorProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarVectorProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationRule const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ScalarVectorProductCoefficient_Eval(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ScalarVectorProductCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ScalarVectorProductCoefficient_Eval__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ScalarVectorProductCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_ScalarVectorProductCoefficient_Eval__SWIG_1_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ScalarVectorProductCoefficient_Eval'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ScalarVectorProductCoefficient::Eval(mfem::Vector &,mfem::ElementTransformation &,mfem::IntegrationPoint const &)\n"
+    "    Eval(mfem::DenseMatrix &,mfem::ElementTransformation &,mfem::IntegrationRule const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ScalarVectorProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScalarVectorProductCoefficient *arg1 = (mfem::ScalarVectorProductCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_ScalarVectorProductCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarVectorProductCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ScalarVectorProductCoefficient" "', argument " "1"" of type '" "mfem::ScalarVectorProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarVectorProductCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ScalarVectorProductCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ScalarVectorProductCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_VectorCrossProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::VectorCrossProductCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_VectorCrossProductCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorCrossProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorCrossProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorCrossProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorCrossProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::VectorCrossProductCoefficient *)new mfem::VectorCrossProductCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorCrossProductCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorCrossProductCoefficient_Eval__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCrossProductCoefficient *arg1 = (mfem::VectorCrossProductCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:VectorCrossProductCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorCrossProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::VectorCrossProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCrossProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorCrossProductCoefficient_Eval__SWIG_1_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCrossProductCoefficient *arg1 = (mfem::VectorCrossProductCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationRule *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:VectorCrossProductCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorCrossProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::VectorCrossProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCrossProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorCrossProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationRule const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorCrossProductCoefficient_Eval(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCrossProductCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_VectorCrossProductCoefficient_Eval__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCrossProductCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_VectorCrossProductCoefficient_Eval__SWIG_1_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'VectorCrossProductCoefficient_Eval'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::VectorCrossProductCoefficient::Eval(mfem::Vector &,mfem::ElementTransformation &,mfem::IntegrationPoint const &)\n"
+    "    Eval(mfem::DenseMatrix &,mfem::ElementTransformation &,mfem::IntegrationRule const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_VectorCrossProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCrossProductCoefficient *arg1 = (mfem::VectorCrossProductCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_VectorCrossProductCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorCrossProductCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_VectorCrossProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCrossProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCrossProductCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *VectorCrossProductCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__VectorCrossProductCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_MatVecCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::MatVecCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_MatVecCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatVecCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatVecCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatVecCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatVecCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::MatVecCoefficient *)new mfem::MatVecCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatVecCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatVecCoefficient_Eval__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatVecCoefficient *arg1 = (mfem::MatVecCoefficient *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:MatVecCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatVecCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatVecCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatVecCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatVecCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatVecCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatVecCoefficient_Eval" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatVecCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatVecCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatVecCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatVecCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatVecCoefficient_Eval__SWIG_1_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatVecCoefficient *arg1 = (mfem::MatVecCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationRule *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:MatVecCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatVecCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatVecCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatVecCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatVecCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatVecCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatVecCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatVecCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatVecCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatVecCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatVecCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationRule const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatVecCoefficient_Eval(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatVecCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationPoint, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_MatVecCoefficient_Eval__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatVecCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__DenseMatrix, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_MatVecCoefficient_Eval__SWIG_1_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'MatVecCoefficient_Eval'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::MatVecCoefficient::Eval(mfem::Vector &,mfem::ElementTransformation &,mfem::IntegrationPoint const &)\n"
+    "    Eval(mfem::DenseMatrix &,mfem::ElementTransformation &,mfem::IntegrationRule const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MatVecCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatVecCoefficient *arg1 = (mfem::MatVecCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_MatVecCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatVecCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MatVecCoefficient" "', argument " "1"" of type '" "mfem::MatVecCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatVecCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *MatVecCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__MatVecCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_IdentityMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject * obj0 = 0 ;
+  mfem::IdentityMatrixCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_IdentityMatrixCoefficient",&obj0)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    try {
+      result = (mfem::IdentityMatrixCoefficient *)new mfem::IdentityMatrixCoefficient(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__IdentityMatrixCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IdentityMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::IdentityMatrixCoefficient *arg1 = (mfem::IdentityMatrixCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:IdentityMatrixCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IdentityMatrixCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "1"" of type '" "mfem::IdentityMatrixCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::IdentityMatrixCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_IdentityMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::IdentityMatrixCoefficient *arg1 = (mfem::IdentityMatrixCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_IdentityMatrixCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IdentityMatrixCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_IdentityMatrixCoefficient" "', argument " "1"" of type '" "mfem::IdentityMatrixCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::IdentityMatrixCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *IdentityMatrixCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__IdentityMatrixCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixCoefficient *arg1 = 0 ;
+  mfem::MatrixCoefficient *arg2 = 0 ;
+  double arg3 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  mfem::MatrixSumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:new_MatrixSumCoefficient",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MatrixSumCoefficient" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_MatrixSumCoefficient" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  {
+    try {
+      result = (mfem::MatrixSumCoefficient *)new mfem::MatrixSumCoefficient(*arg1,*arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixSumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixCoefficient *arg1 = 0 ;
+  mfem::MatrixCoefficient *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  mfem::MatrixSumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_MatrixSumCoefficient",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MatrixSumCoefficient" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (mfem::MatrixSumCoefficient *)new mfem::MatrixSumCoefficient(*arg1,*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixSumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixCoefficient *arg1 = 0 ;
+  mfem::MatrixCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::MatrixSumCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_MatrixSumCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::MatrixSumCoefficient *)new mfem::MatrixSumCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixSumCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_MatrixSumCoefficient__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_MatrixSumCoefficient__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_MatrixSumCoefficient__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_MatrixSumCoefficient'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::MatrixSumCoefficient::MatrixSumCoefficient(mfem::MatrixCoefficient &,mfem::MatrixCoefficient &,double,double)\n"
+    "    mfem::MatrixSumCoefficient::MatrixSumCoefficient(mfem::MatrixCoefficient &,mfem::MatrixCoefficient &,double)\n"
+    "    mfem::MatrixSumCoefficient::MatrixSumCoefficient(mfem::MatrixCoefficient &,mfem::MatrixCoefficient &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_MatrixSumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixSumCoefficient *arg1 = (mfem::MatrixSumCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:MatrixSumCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixSumCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixSumCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatrixSumCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixSumCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixSumCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixSumCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_MatrixSumCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixSumCoefficient *arg1 = (mfem::MatrixSumCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_MatrixSumCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixSumCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixSumCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixSumCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *MatrixSumCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__MatrixSumCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_ScalarMatrixProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Coefficient *arg1 = 0 ;
+  mfem::MatrixCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::ScalarMatrixProductCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_ScalarMatrixProductCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ScalarMatrixProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ScalarMatrixProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ScalarMatrixProductCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ScalarMatrixProductCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::ScalarMatrixProductCoefficient *)new mfem::ScalarMatrixProductCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ScalarMatrixProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScalarMatrixProductCoefficient *arg1 = (mfem::ScalarMatrixProductCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:ScalarMatrixProductCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::ScalarMatrixProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarMatrixProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ScalarMatrixProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScalarMatrixProductCoefficient *arg1 = (mfem::ScalarMatrixProductCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_ScalarMatrixProductCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ScalarMatrixProductCoefficient" "', argument " "1"" of type '" "mfem::ScalarMatrixProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScalarMatrixProductCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ScalarMatrixProductCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_TransposeMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixCoefficient *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::TransposeMatrixCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_TransposeMatrixCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_TransposeMatrixCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_TransposeMatrixCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::TransposeMatrixCoefficient *)new mfem::TransposeMatrixCoefficient(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TransposeMatrixCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TransposeMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::TransposeMatrixCoefficient *arg1 = (mfem::TransposeMatrixCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:TransposeMatrixCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TransposeMatrixCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "1"" of type '" "mfem::TransposeMatrixCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TransposeMatrixCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_TransposeMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::TransposeMatrixCoefficient *arg1 = (mfem::TransposeMatrixCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_TransposeMatrixCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TransposeMatrixCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_TransposeMatrixCoefficient" "', argument " "1"" of type '" "mfem::TransposeMatrixCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TransposeMatrixCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *TransposeMatrixCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__TransposeMatrixCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_InverseMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MatrixCoefficient *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::InverseMatrixCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_InverseMatrixCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_InverseMatrixCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_InverseMatrixCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::InverseMatrixCoefficient *)new mfem::InverseMatrixCoefficient(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__InverseMatrixCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_InverseMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::InverseMatrixCoefficient *arg1 = (mfem::InverseMatrixCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:InverseMatrixCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseMatrixCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "1"" of type '" "mfem::InverseMatrixCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::InverseMatrixCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_InverseMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::InverseMatrixCoefficient *arg1 = (mfem::InverseMatrixCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_InverseMatrixCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseMatrixCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_InverseMatrixCoefficient" "', argument " "1"" of type '" "mfem::InverseMatrixCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::InverseMatrixCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *InverseMatrixCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__InverseMatrixCoefficient, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_OuterProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorCoefficient *arg1 = 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  mfem::OuterProductCoefficient *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:new_OuterProductCoefficient",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OuterProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OuterProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OuterProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OuterProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  {
+    try {
+      result = (mfem::OuterProductCoefficient *)new mfem::OuterProductCoefficient(*arg1,*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OuterProductCoefficient, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OuterProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OuterProductCoefficient *arg1 = (mfem::OuterProductCoefficient *) 0 ;
+  mfem::DenseMatrix *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::IntegrationPoint *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:OuterProductCoefficient_Eval",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OuterProductCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OuterProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::OuterProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OuterProductCoefficient * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OuterProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OuterProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OuterProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
+  {
+    try {
+      (arg1)->Eval(*arg2,*arg3,(mfem::IntegrationPoint const &)*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_OuterProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OuterProductCoefficient *arg1 = (mfem::OuterProductCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_OuterProductCoefficient",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OuterProductCoefficient, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OuterProductCoefficient" "', argument " "1"" of type '" "mfem::OuterProductCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OuterProductCoefficient * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *OuterProductCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__OuterProductCoefficient, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -13963,6 +19107,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_FunctionCoefficient", _wrap_delete_FunctionCoefficient, METH_VARARGS, (char *)"delete_FunctionCoefficient(FunctionCoefficient self)"},
 	 { (char *)"FunctionCoefficient_swigregister", FunctionCoefficient_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_GridFunctionCoefficient", _wrap_new_GridFunctionCoefficient, METH_VARARGS, (char *)"\n"
+		"GridFunctionCoefficient()\n"
 		"GridFunctionCoefficient(mfem::GridFunction * gf, int comp=1)\n"
 		"new_GridFunctionCoefficient(mfem::GridFunction * gf) -> GridFunctionCoefficient\n"
 		""},
@@ -14035,7 +19180,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_VectorArrayCoefficient", _wrap_new_VectorArrayCoefficient, METH_VARARGS, (char *)"new_VectorArrayCoefficient(int dim) -> VectorArrayCoefficient"},
 	 { (char *)"VectorArrayCoefficient_GetCoeff", _wrap_VectorArrayCoefficient_GetCoeff, METH_VARARGS, (char *)"VectorArrayCoefficient_GetCoeff(VectorArrayCoefficient self, int i) -> Coefficient"},
 	 { (char *)"VectorArrayCoefficient_GetCoeffs", _wrap_VectorArrayCoefficient_GetCoeffs, METH_VARARGS, (char *)"VectorArrayCoefficient_GetCoeffs(VectorArrayCoefficient self) -> mfem::Coefficient **"},
-	 { (char *)"VectorArrayCoefficient_Set", _wrap_VectorArrayCoefficient_Set, METH_VARARGS, (char *)"VectorArrayCoefficient_Set(VectorArrayCoefficient self, int i, Coefficient c)"},
+	 { (char *)"VectorArrayCoefficient_Set", _wrap_VectorArrayCoefficient_Set, METH_VARARGS, (char *)"\n"
+		"Set(int i, Coefficient c, bool own=True)\n"
+		"VectorArrayCoefficient_Set(VectorArrayCoefficient self, int i, Coefficient c)\n"
+		""},
 	 { (char *)"VectorArrayCoefficient_Eval", _wrap_VectorArrayCoefficient_Eval, METH_VARARGS, (char *)"\n"
 		"Eval(int i, ElementTransformation T, IntegrationPoint ip) -> double\n"
 		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -14044,7 +19192,10 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"delete_VectorArrayCoefficient", _wrap_delete_VectorArrayCoefficient, METH_VARARGS, (char *)"delete_VectorArrayCoefficient(VectorArrayCoefficient self)"},
 	 { (char *)"VectorArrayCoefficient_swigregister", VectorArrayCoefficient_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_VectorGridFunctionCoefficient", _wrap_new_VectorGridFunctionCoefficient, METH_VARARGS, (char *)"new_VectorGridFunctionCoefficient(mfem::GridFunction * gf) -> VectorGridFunctionCoefficient"},
+	 { (char *)"new_VectorGridFunctionCoefficient", _wrap_new_VectorGridFunctionCoefficient, METH_VARARGS, (char *)"\n"
+		"VectorGridFunctionCoefficient()\n"
+		"new_VectorGridFunctionCoefficient(mfem::GridFunction * gf) -> VectorGridFunctionCoefficient\n"
+		""},
 	 { (char *)"VectorGridFunctionCoefficient_SetGridFunction", _wrap_VectorGridFunctionCoefficient_SetGridFunction, METH_VARARGS, (char *)"VectorGridFunctionCoefficient_SetGridFunction(VectorGridFunctionCoefficient self, mfem::GridFunction * gf)"},
 	 { (char *)"VectorGridFunctionCoefficient_GetGridFunction", _wrap_VectorGridFunctionCoefficient_GetGridFunction, METH_VARARGS, (char *)"VectorGridFunctionCoefficient_GetGridFunction(VectorGridFunctionCoefficient self) -> mfem::GridFunction *"},
 	 { (char *)"VectorGridFunctionCoefficient_Eval", _wrap_VectorGridFunctionCoefficient_Eval, METH_VARARGS, (char *)"\n"
@@ -14053,6 +19204,30 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"delete_VectorGridFunctionCoefficient", _wrap_delete_VectorGridFunctionCoefficient, METH_VARARGS, (char *)"delete_VectorGridFunctionCoefficient(VectorGridFunctionCoefficient self)"},
 	 { (char *)"VectorGridFunctionCoefficient_swigregister", VectorGridFunctionCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_GradientGridFunctionCoefficient", _wrap_new_GradientGridFunctionCoefficient, METH_VARARGS, (char *)"new_GradientGridFunctionCoefficient(mfem::GridFunction * gf) -> GradientGridFunctionCoefficient"},
+	 { (char *)"GradientGridFunctionCoefficient_SetGridFunction", _wrap_GradientGridFunctionCoefficient_SetGridFunction, METH_VARARGS, (char *)"GradientGridFunctionCoefficient_SetGridFunction(GradientGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { (char *)"GradientGridFunctionCoefficient_GetGridFunction", _wrap_GradientGridFunctionCoefficient_GetGridFunction, METH_VARARGS, (char *)"GradientGridFunctionCoefficient_GetGridFunction(GradientGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { (char *)"GradientGridFunctionCoefficient_Eval", _wrap_GradientGridFunctionCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"GradientGridFunctionCoefficient_Eval(GradientGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_GradientGridFunctionCoefficient", _wrap_delete_GradientGridFunctionCoefficient, METH_VARARGS, (char *)"delete_GradientGridFunctionCoefficient(GradientGridFunctionCoefficient self)"},
+	 { (char *)"GradientGridFunctionCoefficient_swigregister", GradientGridFunctionCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"CurlGridFunctionCoefficient_SetGridFunction", _wrap_CurlGridFunctionCoefficient_SetGridFunction, METH_VARARGS, (char *)"CurlGridFunctionCoefficient_SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { (char *)"CurlGridFunctionCoefficient_GetGridFunction", _wrap_CurlGridFunctionCoefficient_GetGridFunction, METH_VARARGS, (char *)"CurlGridFunctionCoefficient_GetGridFunction(CurlGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { (char *)"CurlGridFunctionCoefficient_Eval", _wrap_CurlGridFunctionCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"CurlGridFunctionCoefficient_Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { (char *)"delete_CurlGridFunctionCoefficient", _wrap_delete_CurlGridFunctionCoefficient, METH_VARARGS, (char *)"delete_CurlGridFunctionCoefficient(CurlGridFunctionCoefficient self)"},
+	 { (char *)"CurlGridFunctionCoefficient_swigregister", CurlGridFunctionCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_DivergenceGridFunctionCoefficient", _wrap_new_DivergenceGridFunctionCoefficient, METH_VARARGS, (char *)"new_DivergenceGridFunctionCoefficient(mfem::GridFunction * gf) -> DivergenceGridFunctionCoefficient"},
+	 { (char *)"DivergenceGridFunctionCoefficient_SetGridFunction", _wrap_DivergenceGridFunctionCoefficient_SetGridFunction, METH_VARARGS, (char *)"DivergenceGridFunctionCoefficient_SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { (char *)"DivergenceGridFunctionCoefficient_GetGridFunction", _wrap_DivergenceGridFunctionCoefficient_GetGridFunction, METH_VARARGS, (char *)"DivergenceGridFunctionCoefficient_GetGridFunction(DivergenceGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { (char *)"DivergenceGridFunctionCoefficient_Eval", _wrap_DivergenceGridFunctionCoefficient_Eval, METH_VARARGS, (char *)"DivergenceGridFunctionCoefficient_Eval(DivergenceGridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_DivergenceGridFunctionCoefficient", _wrap_delete_DivergenceGridFunctionCoefficient, METH_VARARGS, (char *)"delete_DivergenceGridFunctionCoefficient(DivergenceGridFunctionCoefficient self)"},
+	 { (char *)"DivergenceGridFunctionCoefficient_swigregister", DivergenceGridFunctionCoefficient_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_VectorDeltaCoefficient", _wrap_new_VectorDeltaCoefficient, METH_VARARGS, (char *)"\n"
 		"VectorDeltaCoefficient(int _vdim)\n"
 		"VectorDeltaCoefficient(Vector _dir)\n"
@@ -14062,7 +19237,9 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"VectorDeltaCoefficient_SetDeltaCoefficient", _wrap_VectorDeltaCoefficient_SetDeltaCoefficient, METH_VARARGS, (char *)"VectorDeltaCoefficient_SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient _d)"},
 	 { (char *)"VectorDeltaCoefficient_GetDeltaCoefficient", _wrap_VectorDeltaCoefficient_GetDeltaCoefficient, METH_VARARGS, (char *)"VectorDeltaCoefficient_GetDeltaCoefficient(VectorDeltaCoefficient self) -> DeltaCoefficient"},
+	 { (char *)"VectorDeltaCoefficient_SetScale", _wrap_VectorDeltaCoefficient_SetScale, METH_VARARGS, (char *)"VectorDeltaCoefficient_SetScale(VectorDeltaCoefficient self, double s)"},
 	 { (char *)"VectorDeltaCoefficient_SetDirection", _wrap_VectorDeltaCoefficient_SetDirection, METH_VARARGS, (char *)"VectorDeltaCoefficient_SetDirection(VectorDeltaCoefficient self, Vector _d)"},
+	 { (char *)"VectorDeltaCoefficient_SetDeltaCenter", _wrap_VectorDeltaCoefficient_SetDeltaCenter, METH_VARARGS, (char *)"VectorDeltaCoefficient_SetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
 	 { (char *)"VectorDeltaCoefficient_GetDeltaCenter", _wrap_VectorDeltaCoefficient_GetDeltaCenter, METH_VARARGS, (char *)"VectorDeltaCoefficient_GetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
 	 { (char *)"VectorDeltaCoefficient_EvalDelta", _wrap_VectorDeltaCoefficient_EvalDelta, METH_VARARGS, (char *)"VectorDeltaCoefficient_EvalDelta(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)"},
 	 { (char *)"VectorDeltaCoefficient_Eval", _wrap_VectorDeltaCoefficient_Eval, METH_VARARGS, (char *)"\n"
@@ -14106,7 +19283,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MatrixFunctionCoefficient_swigregister", MatrixFunctionCoefficient_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_MatrixArrayCoefficient", _wrap_new_MatrixArrayCoefficient, METH_VARARGS, (char *)"new_MatrixArrayCoefficient(int dim) -> MatrixArrayCoefficient"},
 	 { (char *)"MatrixArrayCoefficient_GetCoeff", _wrap_MatrixArrayCoefficient_GetCoeff, METH_VARARGS, (char *)"MatrixArrayCoefficient_GetCoeff(MatrixArrayCoefficient self, int i, int j) -> Coefficient"},
-	 { (char *)"MatrixArrayCoefficient_Set", _wrap_MatrixArrayCoefficient_Set, METH_VARARGS, (char *)"MatrixArrayCoefficient_Set(MatrixArrayCoefficient self, int i, int j, Coefficient c)"},
+	 { (char *)"MatrixArrayCoefficient_Set", _wrap_MatrixArrayCoefficient_Set, METH_VARARGS, (char *)"\n"
+		"Set(int i, int j, Coefficient c, bool own=True)\n"
+		"MatrixArrayCoefficient_Set(MatrixArrayCoefficient self, int i, int j, Coefficient c)\n"
+		""},
 	 { (char *)"MatrixArrayCoefficient_Eval", _wrap_MatrixArrayCoefficient_Eval, METH_VARARGS, (char *)"\n"
 		"Eval(int i, int j, ElementTransformation T, IntegrationPoint ip) -> double\n"
 		"MatrixArrayCoefficient_Eval(MatrixArrayCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
@@ -14117,6 +19297,94 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"MatrixRestrictedCoefficient_Eval", _wrap_MatrixRestrictedCoefficient_Eval, METH_VARARGS, (char *)"MatrixRestrictedCoefficient_Eval(MatrixRestrictedCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { (char *)"delete_MatrixRestrictedCoefficient", _wrap_delete_MatrixRestrictedCoefficient, METH_VARARGS, (char *)"delete_MatrixRestrictedCoefficient(MatrixRestrictedCoefficient self)"},
 	 { (char *)"MatrixRestrictedCoefficient_swigregister", MatrixRestrictedCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_SumCoefficient", _wrap_new_SumCoefficient, METH_VARARGS, (char *)"\n"
+		"SumCoefficient(Coefficient A, Coefficient B, double _alpha=1.0, double _beta=1.0)\n"
+		"SumCoefficient(Coefficient A, Coefficient B, double _alpha=1.0)\n"
+		"new_SumCoefficient(Coefficient A, Coefficient B) -> SumCoefficient\n"
+		""},
+	 { (char *)"SumCoefficient_Eval", _wrap_SumCoefficient_Eval, METH_VARARGS, (char *)"SumCoefficient_Eval(SumCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_SumCoefficient", _wrap_delete_SumCoefficient, METH_VARARGS, (char *)"delete_SumCoefficient(SumCoefficient self)"},
+	 { (char *)"SumCoefficient_swigregister", SumCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_ProductCoefficient", _wrap_new_ProductCoefficient, METH_VARARGS, (char *)"new_ProductCoefficient(Coefficient A, Coefficient B) -> ProductCoefficient"},
+	 { (char *)"ProductCoefficient_Eval", _wrap_ProductCoefficient_Eval, METH_VARARGS, (char *)"ProductCoefficient_Eval(ProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_ProductCoefficient", _wrap_delete_ProductCoefficient, METH_VARARGS, (char *)"delete_ProductCoefficient(ProductCoefficient self)"},
+	 { (char *)"ProductCoefficient_swigregister", ProductCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_PowerCoefficient", _wrap_new_PowerCoefficient, METH_VARARGS, (char *)"new_PowerCoefficient(Coefficient A, double _p) -> PowerCoefficient"},
+	 { (char *)"PowerCoefficient_Eval", _wrap_PowerCoefficient_Eval, METH_VARARGS, (char *)"PowerCoefficient_Eval(PowerCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_PowerCoefficient", _wrap_delete_PowerCoefficient, METH_VARARGS, (char *)"delete_PowerCoefficient(PowerCoefficient self)"},
+	 { (char *)"PowerCoefficient_swigregister", PowerCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_InnerProductCoefficient", _wrap_new_InnerProductCoefficient, METH_VARARGS, (char *)"new_InnerProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> InnerProductCoefficient"},
+	 { (char *)"InnerProductCoefficient_Eval", _wrap_InnerProductCoefficient_Eval, METH_VARARGS, (char *)"InnerProductCoefficient_Eval(InnerProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_InnerProductCoefficient", _wrap_delete_InnerProductCoefficient, METH_VARARGS, (char *)"delete_InnerProductCoefficient(InnerProductCoefficient self)"},
+	 { (char *)"InnerProductCoefficient_swigregister", InnerProductCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_VectorRotProductCoefficient", _wrap_new_VectorRotProductCoefficient, METH_VARARGS, (char *)"new_VectorRotProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorRotProductCoefficient"},
+	 { (char *)"VectorRotProductCoefficient_Eval", _wrap_VectorRotProductCoefficient_Eval, METH_VARARGS, (char *)"VectorRotProductCoefficient_Eval(VectorRotProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_VectorRotProductCoefficient", _wrap_delete_VectorRotProductCoefficient, METH_VARARGS, (char *)"delete_VectorRotProductCoefficient(VectorRotProductCoefficient self)"},
+	 { (char *)"VectorRotProductCoefficient_swigregister", VectorRotProductCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_DeterminantCoefficient", _wrap_new_DeterminantCoefficient, METH_VARARGS, (char *)"new_DeterminantCoefficient(MatrixCoefficient A) -> DeterminantCoefficient"},
+	 { (char *)"DeterminantCoefficient_Eval", _wrap_DeterminantCoefficient_Eval, METH_VARARGS, (char *)"DeterminantCoefficient_Eval(DeterminantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { (char *)"delete_DeterminantCoefficient", _wrap_delete_DeterminantCoefficient, METH_VARARGS, (char *)"delete_DeterminantCoefficient(DeterminantCoefficient self)"},
+	 { (char *)"DeterminantCoefficient_swigregister", DeterminantCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_VectorSumCoefficient", _wrap_new_VectorSumCoefficient, METH_VARARGS, (char *)"\n"
+		"VectorSumCoefficient(VectorCoefficient A, VectorCoefficient B, double _alpha=1.0, double _beta=1.0)\n"
+		"VectorSumCoefficient(VectorCoefficient A, VectorCoefficient B, double _alpha=1.0)\n"
+		"new_VectorSumCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorSumCoefficient\n"
+		""},
+	 { (char *)"VectorSumCoefficient_Eval", _wrap_VectorSumCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"VectorSumCoefficient_Eval(VectorSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_VectorSumCoefficient", _wrap_delete_VectorSumCoefficient, METH_VARARGS, (char *)"delete_VectorSumCoefficient(VectorSumCoefficient self)"},
+	 { (char *)"VectorSumCoefficient_swigregister", VectorSumCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_ScalarVectorProductCoefficient", _wrap_new_ScalarVectorProductCoefficient, METH_VARARGS, (char *)"new_ScalarVectorProductCoefficient(Coefficient A, VectorCoefficient B) -> ScalarVectorProductCoefficient"},
+	 { (char *)"ScalarVectorProductCoefficient_Eval", _wrap_ScalarVectorProductCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"ScalarVectorProductCoefficient_Eval(ScalarVectorProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_ScalarVectorProductCoefficient", _wrap_delete_ScalarVectorProductCoefficient, METH_VARARGS, (char *)"delete_ScalarVectorProductCoefficient(ScalarVectorProductCoefficient self)"},
+	 { (char *)"ScalarVectorProductCoefficient_swigregister", ScalarVectorProductCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_VectorCrossProductCoefficient", _wrap_new_VectorCrossProductCoefficient, METH_VARARGS, (char *)"new_VectorCrossProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorCrossProductCoefficient"},
+	 { (char *)"VectorCrossProductCoefficient_Eval", _wrap_VectorCrossProductCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"VectorCrossProductCoefficient_Eval(VectorCrossProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_VectorCrossProductCoefficient", _wrap_delete_VectorCrossProductCoefficient, METH_VARARGS, (char *)"delete_VectorCrossProductCoefficient(VectorCrossProductCoefficient self)"},
+	 { (char *)"VectorCrossProductCoefficient_swigregister", VectorCrossProductCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_MatVecCoefficient", _wrap_new_MatVecCoefficient, METH_VARARGS, (char *)"new_MatVecCoefficient(MatrixCoefficient A, VectorCoefficient B) -> MatVecCoefficient"},
+	 { (char *)"MatVecCoefficient_Eval", _wrap_MatVecCoefficient_Eval, METH_VARARGS, (char *)"\n"
+		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"MatVecCoefficient_Eval(MatVecCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { (char *)"delete_MatVecCoefficient", _wrap_delete_MatVecCoefficient, METH_VARARGS, (char *)"delete_MatVecCoefficient(MatVecCoefficient self)"},
+	 { (char *)"MatVecCoefficient_swigregister", MatVecCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_IdentityMatrixCoefficient", _wrap_new_IdentityMatrixCoefficient, METH_VARARGS, (char *)"new_IdentityMatrixCoefficient(int d) -> IdentityMatrixCoefficient"},
+	 { (char *)"IdentityMatrixCoefficient_Eval", _wrap_IdentityMatrixCoefficient_Eval, METH_VARARGS, (char *)"IdentityMatrixCoefficient_Eval(IdentityMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_IdentityMatrixCoefficient", _wrap_delete_IdentityMatrixCoefficient, METH_VARARGS, (char *)"delete_IdentityMatrixCoefficient(IdentityMatrixCoefficient self)"},
+	 { (char *)"IdentityMatrixCoefficient_swigregister", IdentityMatrixCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_MatrixSumCoefficient", _wrap_new_MatrixSumCoefficient, METH_VARARGS, (char *)"\n"
+		"MatrixSumCoefficient(MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0, double _beta=1.0)\n"
+		"MatrixSumCoefficient(MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0)\n"
+		"new_MatrixSumCoefficient(MatrixCoefficient A, MatrixCoefficient B) -> MatrixSumCoefficient\n"
+		""},
+	 { (char *)"MatrixSumCoefficient_Eval", _wrap_MatrixSumCoefficient_Eval, METH_VARARGS, (char *)"MatrixSumCoefficient_Eval(MatrixSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_MatrixSumCoefficient", _wrap_delete_MatrixSumCoefficient, METH_VARARGS, (char *)"delete_MatrixSumCoefficient(MatrixSumCoefficient self)"},
+	 { (char *)"MatrixSumCoefficient_swigregister", MatrixSumCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_ScalarMatrixProductCoefficient", _wrap_new_ScalarMatrixProductCoefficient, METH_VARARGS, (char *)"new_ScalarMatrixProductCoefficient(Coefficient A, MatrixCoefficient B) -> ScalarMatrixProductCoefficient"},
+	 { (char *)"ScalarMatrixProductCoefficient_Eval", _wrap_ScalarMatrixProductCoefficient_Eval, METH_VARARGS, (char *)"ScalarMatrixProductCoefficient_Eval(ScalarMatrixProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_ScalarMatrixProductCoefficient", _wrap_delete_ScalarMatrixProductCoefficient, METH_VARARGS, (char *)"delete_ScalarMatrixProductCoefficient(ScalarMatrixProductCoefficient self)"},
+	 { (char *)"ScalarMatrixProductCoefficient_swigregister", ScalarMatrixProductCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_TransposeMatrixCoefficient", _wrap_new_TransposeMatrixCoefficient, METH_VARARGS, (char *)"new_TransposeMatrixCoefficient(MatrixCoefficient A) -> TransposeMatrixCoefficient"},
+	 { (char *)"TransposeMatrixCoefficient_Eval", _wrap_TransposeMatrixCoefficient_Eval, METH_VARARGS, (char *)"TransposeMatrixCoefficient_Eval(TransposeMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_TransposeMatrixCoefficient", _wrap_delete_TransposeMatrixCoefficient, METH_VARARGS, (char *)"delete_TransposeMatrixCoefficient(TransposeMatrixCoefficient self)"},
+	 { (char *)"TransposeMatrixCoefficient_swigregister", TransposeMatrixCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_InverseMatrixCoefficient", _wrap_new_InverseMatrixCoefficient, METH_VARARGS, (char *)"new_InverseMatrixCoefficient(MatrixCoefficient A) -> InverseMatrixCoefficient"},
+	 { (char *)"InverseMatrixCoefficient_Eval", _wrap_InverseMatrixCoefficient_Eval, METH_VARARGS, (char *)"InverseMatrixCoefficient_Eval(InverseMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_InverseMatrixCoefficient", _wrap_delete_InverseMatrixCoefficient, METH_VARARGS, (char *)"delete_InverseMatrixCoefficient(InverseMatrixCoefficient self)"},
+	 { (char *)"InverseMatrixCoefficient_swigregister", InverseMatrixCoefficient_swigregister, METH_VARARGS, NULL},
+	 { (char *)"new_OuterProductCoefficient", _wrap_new_OuterProductCoefficient, METH_VARARGS, (char *)"new_OuterProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> OuterProductCoefficient"},
+	 { (char *)"OuterProductCoefficient_Eval", _wrap_OuterProductCoefficient_Eval, METH_VARARGS, (char *)"OuterProductCoefficient_Eval(OuterProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { (char *)"delete_OuterProductCoefficient", _wrap_delete_OuterProductCoefficient, METH_VARARGS, (char *)"delete_OuterProductCoefficient(OuterProductCoefficient self)"},
+	 { (char *)"OuterProductCoefficient_swigregister", OuterProductCoefficient_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ComputeLpNorm", _wrap_ComputeLpNorm, METH_VARARGS, (char *)"\n"
 		"ComputeLpNorm(double p, Coefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
 		"ComputeLpNorm(double p, VectorCoefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
@@ -14161,29 +19429,38 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__ConstantCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *)  ((mfem::ConstantCoefficient *) x));
+static void *_p_mfem__MatrixConstantCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixConstantCoefficient *) x));
 }
-static void *_p_mfem__PWConstCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *)  ((mfem::PWConstCoefficient *) x));
+static void *_p_mfem__MatrixFunctionCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixFunctionCoefficient *) x));
 }
-static void *_p_mfem__FunctionCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *)  ((mfem::FunctionCoefficient *) x));
+static void *_p_mfem__MatrixArrayCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixArrayCoefficient *) x));
 }
-static void *_p_mfem__GridFunctionCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *)  ((mfem::GridFunctionCoefficient *) x));
+static void *_p_mfem__MatrixRestrictedCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixRestrictedCoefficient *) x));
 }
-static void *_p_mfem__TransformedCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *)  ((mfem::TransformedCoefficient *) x));
+static void *_p_mfem__IdentityMatrixCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::IdentityMatrixCoefficient *) x));
 }
-static void *_p_mfem__DeltaCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *)  ((mfem::DeltaCoefficient *) x));
+static void *_p_mfem__MatrixSumCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixSumCoefficient *) x));
 }
-static void *_p_mfem__RestrictedCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *)  ((mfem::RestrictedCoefficient *) x));
+static void *_p_mfem__ScalarMatrixProductCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::ScalarMatrixProductCoefficient *) x));
 }
-static void *_p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient *) (mfem::FunctionCoefficient *) ((mfem::PyCoefficientBase *) x));
+static void *_p_mfem__TransposeMatrixCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::TransposeMatrixCoefficient *) x));
+}
+static void *_p_mfem__InverseMatrixCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::InverseMatrixCoefficient *) x));
+}
+static void *_p_mfem__OuterProductCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *)  ((mfem::OuterProductCoefficient *) x));
+}
+static void *_p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixCoefficient *) (mfem::MatrixFunctionCoefficient *) ((mfem::MatrixPyCoefficientBase *) x));
 }
 static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
@@ -14197,62 +19474,131 @@ static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x
 static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
 }
+static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
+}
 static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
 }
 static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
 }
+static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
+}
+static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
+}
+static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
+}
+static void *_p_mfem__MatVecCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatVecCoefficient *) x));
+}
 static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
 }
-static void *_p_mfem__MatrixConstantCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixConstantCoefficient *) x));
+static void *_p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **) (mfem::FunctionCoefficient *) ((mfem::PyCoefficientBase **) x));
 }
-static void *_p_mfem__MatrixFunctionCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixFunctionCoefficient *) x));
+static void *_p_p_mfem__DeterminantCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::DeterminantCoefficient **) x));
 }
-static void *_p_mfem__MatrixArrayCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixArrayCoefficient *) x));
+static void *_p_p_mfem__VectorRotProductCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::VectorRotProductCoefficient **) x));
 }
-static void *_p_mfem__MatrixRestrictedCoefficientTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::MatrixCoefficient *)  ((mfem::MatrixRestrictedCoefficient *) x));
+static void *_p_p_mfem__InnerProductCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::InnerProductCoefficient **) x));
 }
-static void *_p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::MatrixCoefficient *) (mfem::MatrixFunctionCoefficient *) ((mfem::MatrixPyCoefficientBase *) x));
+static void *_p_p_mfem__PowerCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::PowerCoefficient **) x));
 }
-static void *_p_mfem__PyCoefficientBaseTo_p_mfem__FunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FunctionCoefficient *)  ((mfem::PyCoefficientBase *) x));
+static void *_p_p_mfem__ProductCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::ProductCoefficient **) x));
 }
-static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorFunctionCoefficient *)  ((mfem::VectorPyCoefficientBase *) x));
+static void *_p_p_mfem__SumCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::SumCoefficient **) x));
 }
-static void *_p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::MatrixFunctionCoefficient *)  ((mfem::MatrixPyCoefficientBase *) x));
-}
-static void *_p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient **)  ((mfem::ConstantCoefficient **) x));
-}
-static void *_p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient **)  ((mfem::PWConstCoefficient **) x));
-}
-static void *_p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient **)  ((mfem::FunctionCoefficient **) x));
-}
-static void *_p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient **)  ((mfem::GridFunctionCoefficient **) x));
-}
-static void *_p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient **)  ((mfem::TransformedCoefficient **) x));
-}
-static void *_p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient **)  ((mfem::DeltaCoefficient **) x));
+static void *_p_p_mfem__DivergenceGridFunctionCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::DivergenceGridFunctionCoefficient **) x));
 }
 static void *_p_p_mfem__RestrictedCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient **)  ((mfem::RestrictedCoefficient **) x));
 }
-static void *_p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Coefficient **) (mfem::FunctionCoefficient *) ((mfem::PyCoefficientBase **) x));
+static void *_p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::DeltaCoefficient **) x));
+}
+static void *_p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::TransformedCoefficient **) x));
+}
+static void *_p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::GridFunctionCoefficient **) x));
+}
+static void *_p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::FunctionCoefficient **) x));
+}
+static void *_p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::PWConstCoefficient **) x));
+}
+static void *_p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient **)  ((mfem::ConstantCoefficient **) x));
+}
+static void *_p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixFunctionCoefficient *)  ((mfem::MatrixPyCoefficientBase *) x));
+}
+static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFunctionCoefficient *)  ((mfem::VectorPyCoefficientBase *) x));
+}
+static void *_p_mfem__PyCoefficientBaseTo_p_mfem__FunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FunctionCoefficient *)  ((mfem::PyCoefficientBase *) x));
+}
+static void *_p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *) (mfem::FunctionCoefficient *) ((mfem::PyCoefficientBase *) x));
+}
+static void *_p_mfem__DeterminantCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::DeterminantCoefficient *) x));
+}
+static void *_p_mfem__VectorRotProductCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::VectorRotProductCoefficient *) x));
+}
+static void *_p_mfem__InnerProductCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::InnerProductCoefficient *) x));
+}
+static void *_p_mfem__PowerCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::PowerCoefficient *) x));
+}
+static void *_p_mfem__ProductCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::ProductCoefficient *) x));
+}
+static void *_p_mfem__SumCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::SumCoefficient *) x));
+}
+static void *_p_mfem__DivergenceGridFunctionCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::DivergenceGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__RestrictedCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::RestrictedCoefficient *) x));
+}
+static void *_p_mfem__DeltaCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::DeltaCoefficient *) x));
+}
+static void *_p_mfem__TransformedCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::TransformedCoefficient *) x));
+}
+static void *_p_mfem__GridFunctionCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::GridFunctionCoefficient *) x));
+}
+static void *_p_mfem__FunctionCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::FunctionCoefficient *) x));
+}
+static void *_p_mfem__PWConstCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::PWConstCoefficient *) x));
+}
+static void *_p_mfem__ConstantCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Coefficient *)  ((mfem::ConstantCoefficient *) x));
 }
 static void *_p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ElementTransformation *)  ((mfem::IsoparametricTransformation *) x));
@@ -14272,45 +19618,71 @@ static swig_type_info _swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void =
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Coefficient = {"_p_mfem__Coefficient", "mfem::Coefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ConstantCoefficient = {"_p_mfem__ConstantCoefficient", "mfem::ConstantCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", "mfem::CurlGridFunctionCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DeltaCoefficient = {"_p_mfem__DeltaCoefficient", "mfem::DeltaCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DeterminantCoefficient = {"_p_mfem__DeterminantCoefficient", "mfem::DeterminantCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__DivergenceGridFunctionCoefficient = {"_p_mfem__DivergenceGridFunctionCoefficient", "mfem::DivergenceGridFunctionCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ElementTransformation = {"_p_mfem__ElementTransformation", "mfem::ElementTransformation *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IsoparametricTransformation = {"_p_mfem__IsoparametricTransformation", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FunctionCoefficient = {"_p_mfem__FunctionCoefficient", "mfem::FunctionCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", "mfem::GradientGridFunctionCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunctionCoefficient = {"_p_mfem__GridFunctionCoefficient", "mfem::GridFunctionCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__IdentityMatrixCoefficient = {"_p_mfem__IdentityMatrixCoefficient", "mfem::IdentityMatrixCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__InnerProductCoefficient = {"_p_mfem__InnerProductCoefficient", "mfem::InnerProductCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__InverseMatrixCoefficient = {"_p_mfem__InverseMatrixCoefficient", "mfem::InverseMatrixCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__MatVecCoefficient = {"_p_mfem__MatVecCoefficient", "mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixArrayCoefficient = {"_p_mfem__MatrixArrayCoefficient", "mfem::MatrixArrayCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixCoefficient = {"_p_mfem__MatrixCoefficient", "mfem::MatrixCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixConstantCoefficient = {"_p_mfem__MatrixConstantCoefficient", "mfem::MatrixConstantCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixFunctionCoefficient = {"_p_mfem__MatrixFunctionCoefficient", "mfem::MatrixFunctionCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixPyCoefficientBase = {"_p_mfem__MatrixPyCoefficientBase", "mfem::MatrixPyCoefficientBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixRestrictedCoefficient = {"_p_mfem__MatrixRestrictedCoefficient", "mfem::MatrixRestrictedCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__MatrixSumCoefficient = {"_p_mfem__MatrixSumCoefficient", "mfem::MatrixSumCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OuterProductCoefficient = {"_p_mfem__OuterProductCoefficient", "mfem::OuterProductCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PWConstCoefficient = {"_p_mfem__PWConstCoefficient", "mfem::PWConstCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ParMesh = {"_p_mfem__ParMesh", "mfem::ParMesh *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PowerCoefficient = {"_p_mfem__PowerCoefficient", "mfem::PowerCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ProductCoefficient = {"_p_mfem__ProductCoefficient", "mfem::ProductCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PyCoefficientBase = {"_p_mfem__PyCoefficientBase", "mfem::PyCoefficientBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__RestrictedCoefficient = {"_p_mfem__RestrictedCoefficient", "mfem::RestrictedCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ScalarMatrixProductCoefficient = {"_p_mfem__ScalarMatrixProductCoefficient", "mfem::ScalarMatrixProductCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", "mfem::ScalarVectorProductCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__SumCoefficient = {"_p_mfem__SumCoefficient", "mfem::SumCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TransformedCoefficient = {"_p_mfem__TransformedCoefficient", "mfem::TransformedCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__TransposeMatrixCoefficient = {"_p_mfem__TransposeMatrixCoefficient", "mfem::TransposeMatrixCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", "mfem::VectorArrayCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", "mfem::VectorConstantCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", "mfem::VectorCrossProductCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", "mfem::VectorDeltaCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", "mfem::VectorFunctionCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", "mfem::VectorGridFunctionCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", "mfem::VectorPyCoefficientBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", "mfem::VectorRestrictedCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorRotProductCoefficient = {"_p_mfem__VectorRotProductCoefficient", "mfem::VectorRotProductCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", "mfem::VectorSumCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_mfem__Coefficient = {"_p_p_mfem__Coefficient", "mfem::Coefficient **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_mfem__ConstantCoefficient = {"_p_p_mfem__ConstantCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__PWConstCoefficient = {"_p_p_mfem__PWConstCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__FunctionCoefficient = {"_p_p_mfem__FunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__GridFunctionCoefficient = {"_p_p_mfem__GridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__TransformedCoefficient = {"_p_p_mfem__TransformedCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__DeltaCoefficient = {"_p_p_mfem__DeltaCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__RestrictedCoefficient = {"_p_p_mfem__RestrictedCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__PyCoefficientBase = {"_p_p_mfem__PyCoefficientBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DeterminantCoefficient = {"_p_p_mfem__DeterminantCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__VectorRotProductCoefficient = {"_p_p_mfem__VectorRotProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__InnerProductCoefficient = {"_p_p_mfem__InnerProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__PowerCoefficient = {"_p_p_mfem__PowerCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ProductCoefficient = {"_p_p_mfem__ProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__SumCoefficient = {"_p_p_mfem__SumCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DivergenceGridFunctionCoefficient = {"_p_p_mfem__DivergenceGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RestrictedCoefficient = {"_p_p_mfem__RestrictedCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__DeltaCoefficient = {"_p_p_mfem__DeltaCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__TransformedCoefficient = {"_p_p_mfem__TransformedCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__GridFunctionCoefficient = {"_p_p_mfem__GridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__FunctionCoefficient = {"_p_p_mfem__FunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__PWConstCoefficient = {"_p_p_mfem__PWConstCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ConstantCoefficient = {"_p_p_mfem__ConstantCoefficient", 0, 0, 0, 0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
@@ -14328,45 +19700,71 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__Coefficient,
   &_swigt__p_mfem__ConstantCoefficient,
+  &_swigt__p_mfem__CurlGridFunctionCoefficient,
   &_swigt__p_mfem__DeltaCoefficient,
   &_swigt__p_mfem__DenseMatrix,
+  &_swigt__p_mfem__DeterminantCoefficient,
+  &_swigt__p_mfem__DivergenceGridFunctionCoefficient,
   &_swigt__p_mfem__ElementTransformation,
   &_swigt__p_mfem__FunctionCoefficient,
+  &_swigt__p_mfem__GradientGridFunctionCoefficient,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__GridFunctionCoefficient,
+  &_swigt__p_mfem__IdentityMatrixCoefficient,
+  &_swigt__p_mfem__InnerProductCoefficient,
   &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__IntegrationRule,
+  &_swigt__p_mfem__InverseMatrixCoefficient,
   &_swigt__p_mfem__IsoparametricTransformation,
+  &_swigt__p_mfem__MatVecCoefficient,
   &_swigt__p_mfem__MatrixArrayCoefficient,
   &_swigt__p_mfem__MatrixCoefficient,
   &_swigt__p_mfem__MatrixConstantCoefficient,
   &_swigt__p_mfem__MatrixFunctionCoefficient,
   &_swigt__p_mfem__MatrixPyCoefficientBase,
   &_swigt__p_mfem__MatrixRestrictedCoefficient,
+  &_swigt__p_mfem__MatrixSumCoefficient,
   &_swigt__p_mfem__Mesh,
+  &_swigt__p_mfem__OuterProductCoefficient,
   &_swigt__p_mfem__PWConstCoefficient,
   &_swigt__p_mfem__ParMesh,
+  &_swigt__p_mfem__PowerCoefficient,
+  &_swigt__p_mfem__ProductCoefficient,
   &_swigt__p_mfem__PyCoefficientBase,
   &_swigt__p_mfem__RestrictedCoefficient,
+  &_swigt__p_mfem__ScalarMatrixProductCoefficient,
+  &_swigt__p_mfem__ScalarVectorProductCoefficient,
+  &_swigt__p_mfem__SumCoefficient,
   &_swigt__p_mfem__TransformedCoefficient,
+  &_swigt__p_mfem__TransposeMatrixCoefficient,
   &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__VectorArrayCoefficient,
   &_swigt__p_mfem__VectorCoefficient,
   &_swigt__p_mfem__VectorConstantCoefficient,
+  &_swigt__p_mfem__VectorCrossProductCoefficient,
   &_swigt__p_mfem__VectorDeltaCoefficient,
   &_swigt__p_mfem__VectorFunctionCoefficient,
   &_swigt__p_mfem__VectorGridFunctionCoefficient,
   &_swigt__p_mfem__VectorPyCoefficientBase,
   &_swigt__p_mfem__VectorRestrictedCoefficient,
+  &_swigt__p_mfem__VectorRotProductCoefficient,
+  &_swigt__p_mfem__VectorSumCoefficient,
   &_swigt__p_p_mfem__Coefficient,
   &_swigt__p_p_mfem__ConstantCoefficient,
   &_swigt__p_p_mfem__DeltaCoefficient,
+  &_swigt__p_p_mfem__DeterminantCoefficient,
+  &_swigt__p_p_mfem__DivergenceGridFunctionCoefficient,
   &_swigt__p_p_mfem__FunctionCoefficient,
   &_swigt__p_p_mfem__GridFunctionCoefficient,
+  &_swigt__p_p_mfem__InnerProductCoefficient,
   &_swigt__p_p_mfem__PWConstCoefficient,
+  &_swigt__p_p_mfem__PowerCoefficient,
+  &_swigt__p_p_mfem__ProductCoefficient,
   &_swigt__p_p_mfem__PyCoefficientBase,
   &_swigt__p_p_mfem__RestrictedCoefficient,
+  &_swigt__p_p_mfem__SumCoefficient,
   &_swigt__p_p_mfem__TransformedCoefficient,
+  &_swigt__p_p_mfem__VectorRotProductCoefficient,
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -14382,47 +19780,73 @@ static swig_cast_info _swigc__p_f_r_q_const__mfem__Vector_double_r_mfem__Vector_
 static swig_cast_info _swigc__p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void[] = {  {&_swigt__p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void[] = {  {&_swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Coefficient[] = {  {&_swigt__p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_mfem__ConstantCoefficient, _p_mfem__ConstantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__PWConstCoefficient, _p_mfem__PWConstCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__FunctionCoefficient, _p_mfem__FunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__PyCoefficientBase, _p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__GridFunctionCoefficient, _p_mfem__GridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__TransformedCoefficient, _p_mfem__TransformedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeltaCoefficient, _p_mfem__DeltaCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RestrictedCoefficient, _p_mfem__RestrictedCoefficientTo_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Coefficient[] = {  {&_swigt__p_mfem__PyCoefficientBase, _p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeterminantCoefficient, _p_mfem__DeterminantCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__VectorRotProductCoefficient, _p_mfem__VectorRotProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__InnerProductCoefficient, _p_mfem__InnerProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__PowerCoefficient, _p_mfem__PowerCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ProductCoefficient, _p_mfem__ProductCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__SumCoefficient, _p_mfem__SumCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DivergenceGridFunctionCoefficient, _p_mfem__DivergenceGridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__RestrictedCoefficient, _p_mfem__RestrictedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__DeltaCoefficient, _p_mfem__DeltaCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__TransformedCoefficient, _p_mfem__TransformedCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__GridFunctionCoefficient, _p_mfem__GridFunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__FunctionCoefficient, _p_mfem__FunctionCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_mfem__PWConstCoefficient, _p_mfem__PWConstCoefficientTo_p_mfem__Coefficient, 0, 0},  {&_swigt__p_mfem__ConstantCoefficient, _p_mfem__ConstantCoefficientTo_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstantCoefficient[] = {  {&_swigt__p_mfem__ConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {  {&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DeltaCoefficient[] = {  {&_swigt__p_mfem__DeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DeterminantCoefficient[] = {  {&_swigt__p_mfem__DeterminantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DivergenceGridFunctionCoefficient[] = {  {&_swigt__p_mfem__DivergenceGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IsoparametricTransformation[] = {{&_swigt__p_mfem__IsoparametricTransformation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ElementTransformation[] = {  {&_swigt__p_mfem__ElementTransformation, 0, 0, 0},  {&_swigt__p_mfem__IsoparametricTransformation, _p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FunctionCoefficient[] = {  {&_swigt__p_mfem__FunctionCoefficient, 0, 0, 0},  {&_swigt__p_mfem__PyCoefficientBase, _p_mfem__PyCoefficientBaseTo_p_mfem__FunctionCoefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {  {&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunctionCoefficient[] = {  {&_swigt__p_mfem__GridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IdentityMatrixCoefficient[] = {  {&_swigt__p_mfem__IdentityMatrixCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__InnerProductCoefficient[] = {  {&_swigt__p_mfem__InnerProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__InverseMatrixCoefficient[] = {  {&_swigt__p_mfem__InverseMatrixCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatVecCoefficient[] = {  {&_swigt__p_mfem__MatVecCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixArrayCoefficient[] = {  {&_swigt__p_mfem__MatrixArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MatrixCoefficient[] = {  {&_swigt__p_mfem__MatrixCoefficient, 0, 0, 0},  {&_swigt__p_mfem__MatrixConstantCoefficient, _p_mfem__MatrixConstantCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixFunctionCoefficient, _p_mfem__MatrixFunctionCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixPyCoefficientBase, _p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixArrayCoefficient, _p_mfem__MatrixArrayCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixRestrictedCoefficient, _p_mfem__MatrixRestrictedCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatrixCoefficient[] = {  {&_swigt__p_mfem__MatrixCoefficient, 0, 0, 0},  {&_swigt__p_mfem__MatrixConstantCoefficient, _p_mfem__MatrixConstantCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixFunctionCoefficient, _p_mfem__MatrixFunctionCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixPyCoefficientBase, _p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixArrayCoefficient, _p_mfem__MatrixArrayCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixRestrictedCoefficient, _p_mfem__MatrixRestrictedCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__IdentityMatrixCoefficient, _p_mfem__IdentityMatrixCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__MatrixSumCoefficient, _p_mfem__MatrixSumCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarMatrixProductCoefficient, _p_mfem__ScalarMatrixProductCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__TransposeMatrixCoefficient, _p_mfem__TransposeMatrixCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__InverseMatrixCoefficient, _p_mfem__InverseMatrixCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},  {&_swigt__p_mfem__OuterProductCoefficient, _p_mfem__OuterProductCoefficientTo_p_mfem__MatrixCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixConstantCoefficient[] = {  {&_swigt__p_mfem__MatrixConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixFunctionCoefficient[] = {  {&_swigt__p_mfem__MatrixFunctionCoefficient, 0, 0, 0},  {&_swigt__p_mfem__MatrixPyCoefficientBase, _p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixFunctionCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixPyCoefficientBase[] = {  {&_swigt__p_mfem__MatrixPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixRestrictedCoefficient[] = {  {&_swigt__p_mfem__MatrixRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatrixSumCoefficient[] = {  {&_swigt__p_mfem__MatrixSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OuterProductCoefficient[] = {  {&_swigt__p_mfem__OuterProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PWConstCoefficient[] = {  {&_swigt__p_mfem__PWConstCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParMesh[] = {  {&_swigt__p_mfem__ParMesh, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PowerCoefficient[] = {  {&_swigt__p_mfem__PowerCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ProductCoefficient[] = {  {&_swigt__p_mfem__ProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyCoefficientBase[] = {  {&_swigt__p_mfem__PyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RestrictedCoefficient[] = {  {&_swigt__p_mfem__RestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarMatrixProductCoefficient[] = {  {&_swigt__p_mfem__ScalarMatrixProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {  {&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SumCoefficient[] = {  {&_swigt__p_mfem__SumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransformedCoefficient[] = {  {&_swigt__p_mfem__TransformedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TransposeMatrixCoefficient[] = {  {&_swigt__p_mfem__TransposeMatrixCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {  {&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatVecCoefficient, _p_mfem__MatVecCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {  {&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {  {&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {  {&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {  {&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorFunctionCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {  {&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {  {&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__ConstantCoefficient[] = {{&_swigt__p_p_mfem__ConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__PWConstCoefficient[] = {{&_swigt__p_p_mfem__PWConstCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__FunctionCoefficient[] = {{&_swigt__p_p_mfem__FunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__GridFunctionCoefficient[] = {{&_swigt__p_p_mfem__GridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__TransformedCoefficient[] = {{&_swigt__p_p_mfem__TransformedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__DeltaCoefficient[] = {{&_swigt__p_p_mfem__DeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__RestrictedCoefficient[] = {{&_swigt__p_p_mfem__RestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorRotProductCoefficient[] = {  {&_swigt__p_mfem__VectorRotProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {  {&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__PyCoefficientBase[] = {{&_swigt__p_p_mfem__PyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Coefficient[] = {  {&_swigt__p_p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_p_mfem__ConstantCoefficient, _p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PWConstCoefficient, _p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__FunctionCoefficient, _p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__GridFunctionCoefficient, _p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__TransformedCoefficient, _p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeltaCoefficient, _p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RestrictedCoefficient, _p_p_mfem__RestrictedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PyCoefficientBase, _p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DeterminantCoefficient[] = {{&_swigt__p_p_mfem__DeterminantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__VectorRotProductCoefficient[] = {{&_swigt__p_p_mfem__VectorRotProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__InnerProductCoefficient[] = {{&_swigt__p_p_mfem__InnerProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PowerCoefficient[] = {{&_swigt__p_p_mfem__PowerCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ProductCoefficient[] = {{&_swigt__p_p_mfem__ProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__SumCoefficient[] = {{&_swigt__p_p_mfem__SumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DivergenceGridFunctionCoefficient[] = {{&_swigt__p_p_mfem__DivergenceGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RestrictedCoefficient[] = {{&_swigt__p_p_mfem__RestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__DeltaCoefficient[] = {{&_swigt__p_p_mfem__DeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__TransformedCoefficient[] = {{&_swigt__p_p_mfem__TransformedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__GridFunctionCoefficient[] = {{&_swigt__p_p_mfem__GridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__FunctionCoefficient[] = {{&_swigt__p_p_mfem__FunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PWConstCoefficient[] = {{&_swigt__p_p_mfem__PWConstCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ConstantCoefficient[] = {{&_swigt__p_p_mfem__ConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Coefficient[] = {  {&_swigt__p_p_mfem__PyCoefficientBase, _p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeterminantCoefficient, _p_p_mfem__DeterminantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__VectorRotProductCoefficient, _p_p_mfem__VectorRotProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__InnerProductCoefficient, _p_p_mfem__InnerProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PowerCoefficient, _p_p_mfem__PowerCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ProductCoefficient, _p_p_mfem__ProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__SumCoefficient, _p_p_mfem__SumCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DivergenceGridFunctionCoefficient, _p_p_mfem__DivergenceGridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RestrictedCoefficient, _p_p_mfem__RestrictedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeltaCoefficient, _p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__TransformedCoefficient, _p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__GridFunctionCoefficient, _p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__FunctionCoefficient, _p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_p_mfem__PWConstCoefficient, _p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ConstantCoefficient, _p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
@@ -14440,45 +19864,71 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__Coefficient,
   _swigc__p_mfem__ConstantCoefficient,
+  _swigc__p_mfem__CurlGridFunctionCoefficient,
   _swigc__p_mfem__DeltaCoefficient,
   _swigc__p_mfem__DenseMatrix,
+  _swigc__p_mfem__DeterminantCoefficient,
+  _swigc__p_mfem__DivergenceGridFunctionCoefficient,
   _swigc__p_mfem__ElementTransformation,
   _swigc__p_mfem__FunctionCoefficient,
+  _swigc__p_mfem__GradientGridFunctionCoefficient,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__GridFunctionCoefficient,
+  _swigc__p_mfem__IdentityMatrixCoefficient,
+  _swigc__p_mfem__InnerProductCoefficient,
   _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__IntegrationRule,
+  _swigc__p_mfem__InverseMatrixCoefficient,
   _swigc__p_mfem__IsoparametricTransformation,
+  _swigc__p_mfem__MatVecCoefficient,
   _swigc__p_mfem__MatrixArrayCoefficient,
   _swigc__p_mfem__MatrixCoefficient,
   _swigc__p_mfem__MatrixConstantCoefficient,
   _swigc__p_mfem__MatrixFunctionCoefficient,
   _swigc__p_mfem__MatrixPyCoefficientBase,
   _swigc__p_mfem__MatrixRestrictedCoefficient,
+  _swigc__p_mfem__MatrixSumCoefficient,
   _swigc__p_mfem__Mesh,
+  _swigc__p_mfem__OuterProductCoefficient,
   _swigc__p_mfem__PWConstCoefficient,
   _swigc__p_mfem__ParMesh,
+  _swigc__p_mfem__PowerCoefficient,
+  _swigc__p_mfem__ProductCoefficient,
   _swigc__p_mfem__PyCoefficientBase,
   _swigc__p_mfem__RestrictedCoefficient,
+  _swigc__p_mfem__ScalarMatrixProductCoefficient,
+  _swigc__p_mfem__ScalarVectorProductCoefficient,
+  _swigc__p_mfem__SumCoefficient,
   _swigc__p_mfem__TransformedCoefficient,
+  _swigc__p_mfem__TransposeMatrixCoefficient,
   _swigc__p_mfem__Vector,
   _swigc__p_mfem__VectorArrayCoefficient,
   _swigc__p_mfem__VectorCoefficient,
   _swigc__p_mfem__VectorConstantCoefficient,
+  _swigc__p_mfem__VectorCrossProductCoefficient,
   _swigc__p_mfem__VectorDeltaCoefficient,
   _swigc__p_mfem__VectorFunctionCoefficient,
   _swigc__p_mfem__VectorGridFunctionCoefficient,
   _swigc__p_mfem__VectorPyCoefficientBase,
   _swigc__p_mfem__VectorRestrictedCoefficient,
+  _swigc__p_mfem__VectorRotProductCoefficient,
+  _swigc__p_mfem__VectorSumCoefficient,
   _swigc__p_p_mfem__Coefficient,
   _swigc__p_p_mfem__ConstantCoefficient,
   _swigc__p_p_mfem__DeltaCoefficient,
+  _swigc__p_p_mfem__DeterminantCoefficient,
+  _swigc__p_p_mfem__DivergenceGridFunctionCoefficient,
   _swigc__p_p_mfem__FunctionCoefficient,
   _swigc__p_p_mfem__GridFunctionCoefficient,
+  _swigc__p_p_mfem__InnerProductCoefficient,
   _swigc__p_p_mfem__PWConstCoefficient,
+  _swigc__p_p_mfem__PowerCoefficient,
+  _swigc__p_p_mfem__ProductCoefficient,
   _swigc__p_p_mfem__PyCoefficientBase,
   _swigc__p_p_mfem__RestrictedCoefficient,
+  _swigc__p_p_mfem__SumCoefficient,
   _swigc__p_p_mfem__TransformedCoefficient,
+  _swigc__p_p_mfem__VectorRotProductCoefficient,
 };
 
 
@@ -15169,16 +20619,18 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/src/mfem-git"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/mfem-git/par"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   import_array();
   

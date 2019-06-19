@@ -3,9 +3,11 @@
 %{
 #include "fem/intrules.hpp"
 %}
+
 %include "exception.i"
-%import "array.i"
 %import "../common/exception.i"
+%import "array.i"
+%import "mem_manager.i"
 
 %immutable IntRules;
 %immutable RefinedIntRules;

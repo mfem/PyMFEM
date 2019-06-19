@@ -4034,7 +4034,7 @@ SWIGINTERN PyObject *_wrap_Segment_GetType(PyObject *SWIGUNUSEDPARM(self), PyObj
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Segment_GetType",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
@@ -4044,7 +4044,7 @@ SWIGINTERN PyObject *_wrap_Segment_GetType(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< mfem::Segment * >(argp1);
   {
     try {
-      result = (int)((mfem::Segment const *)arg1)->GetType();
+      result = (mfem::Element::Type)((mfem::Segment const *)arg1)->GetType();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4572,7 +4572,7 @@ static PyMethodDef SwigMethods[] = {
 		"new_Segment(int ind1, int ind2) -> Segment\n"
 		""},
 	 { (char *)"Segment_SetVertices", _wrap_Segment_SetVertices, METH_VARARGS, (char *)"Segment_SetVertices(Segment self, int const * ind)"},
-	 { (char *)"Segment_GetType", _wrap_Segment_GetType, METH_VARARGS, (char *)"Segment_GetType(Segment self) -> int"},
+	 { (char *)"Segment_GetType", _wrap_Segment_GetType, METH_VARARGS, (char *)"Segment_GetType(Segment self) -> mfem::Element::Type"},
 	 { (char *)"Segment_GetVertices", _wrap_Segment_GetVertices, METH_VARARGS, (char *)"\n"
 		"GetVertices(intArray v)\n"
 		"Segment_GetVertices(Segment self) -> int *\n"

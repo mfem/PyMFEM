@@ -17,6 +17,8 @@
 import_array();
 %}
 //%import "general/array.hpp"
+%import "mem_manager.i"
+
 %import "array.i"
 %import "vector.i"
 %import "operators.i"

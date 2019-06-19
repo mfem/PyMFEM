@@ -1,4 +1,3 @@
-
 /*
 
    vector.i
@@ -30,6 +29,8 @@ import_array();
 %import "../common/numpy_int_typemap.i"
 %import "../common/typemap_macros.i"
 %import "../common/exception.i"
+
+%import "mem_manager.i"
 
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 

@@ -18,7 +18,8 @@ import_array();
 %}
 
 %include "exception.i"
-%import "general/array.hpp"
+%import "mem_manager.i"
+
 %import "array.i"
 %import "vector.i"
 %import "operators.i"

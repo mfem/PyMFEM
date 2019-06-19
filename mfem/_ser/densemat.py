@@ -102,6 +102,7 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+import mfem._ser.mem_manager
 import mfem._ser.array
 import mfem._ser.ostream_typemap
 import mfem._ser.vector
@@ -374,13 +375,18 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
         """
         Eigenvalues(DenseMatrix self, Vector ev)
         Eigenvalues(DenseMatrix self, Vector ev, DenseMatrix evect)
+        Eigenvalues(DenseMatrix self, DenseMatrix b, Vector ev)
+        Eigenvalues(DenseMatrix self, DenseMatrix b, Vector ev, DenseMatrix evect)
         """
         return _densemat.DenseMatrix_Eigenvalues(self, *args)
 
 
-    def Eigensystem(self, ev, evect):
-        """Eigensystem(DenseMatrix self, Vector ev, DenseMatrix evect)"""
-        return _densemat.DenseMatrix_Eigensystem(self, ev, evect)
+    def Eigensystem(self, *args):
+        """
+        Eigensystem(DenseMatrix self, Vector ev, DenseMatrix evect)
+        Eigensystem(DenseMatrix self, DenseMatrix b, Vector ev, DenseMatrix evect)
+        """
+        return _densemat.DenseMatrix_Eigensystem(self, *args)
 
 
     def SingularValues(self, sv):
@@ -876,6 +882,7 @@ class DenseMatrixInverse(mfem._ser.matrix.MatrixInverse):
         """
         Mult(DenseMatrixInverse self, Vector x, Vector y)
         Mult(DenseMatrixInverse self, DenseMatrix B, DenseMatrix X)
+        Mult(DenseMatrixInverse self, DenseMatrix X)
         """
         return _densemat.DenseMatrixInverse_Mult(self, *args)
 
@@ -1023,6 +1030,11 @@ class DenseTensor(_object):
         return _densemat.DenseTensor_SizeK(self)
 
 
+    def TotalSize(self):
+        """TotalSize(DenseTensor self) -> int"""
+        return _densemat.DenseTensor_TotalSize(self)
+
+
     def SetSize(self, i, j, k):
         """SetSize(DenseTensor self, int i, int j, int k)"""
         return _densemat.DenseTensor_SetSize(self, i, j, k)
@@ -1048,9 +1060,20 @@ class DenseTensor(_object):
         return _densemat.DenseTensor_GetData(self, k)
 
 
-    def Data(self):
-        """Data(DenseTensor self) -> double *"""
-        return _densemat.DenseTensor_Data(self)
+    def Data(self, *args):
+        """
+        Data(DenseTensor self) -> double
+        Data(DenseTensor self) -> double const *
+        """
+        return _densemat.DenseTensor_Data(self, *args)
+
+
+    def GetMemory(self, *args):
+        """
+        GetMemory(DenseTensor self) -> mfem::Memory< double >
+        GetMemory(DenseTensor self) -> mfem::Memory< double > const &
+        """
+        return _densemat.DenseTensor_GetMemory(self, *args)
 
 
     def AddMult(self, elem_dof, x, y):

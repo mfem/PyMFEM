@@ -97,14 +97,11 @@ except __builtin__.Exception:
 
 import mfem._ser.array
 import mfem._ser.ostream_typemap
-class IntegrationPointArray(mfem._ser.array.BaseArray):
+import mfem._ser.mem_manager
+class IntegrationPointArray(_object):
     __swig_setmethods__ = {}
-    for _s in [mfem._ser.array.BaseArray]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, IntegrationPointArray, name, value)
     __swig_getmethods__ = {}
-    for _s in [mfem._ser.array.BaseArray]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, IntegrationPointArray, name)
     __repr__ = _swig_repr
 
@@ -125,6 +122,12 @@ class IntegrationPointArray(mfem._ser.array.BaseArray):
 
     def GetData(self, *args):
         return _intrules.IntegrationPointArray_GetData(self, *args)
+
+    def GetMemory(self, *args):
+        return _intrules.IntegrationPointArray_GetMemory(self, *args)
+
+    def UseDevice(self):
+        return _intrules.IntegrationPointArray_UseDevice(self)
 
     def OwnsData(self):
         return _intrules.IntegrationPointArray_OwnsData(self)
@@ -182,6 +185,24 @@ class IntegrationPointArray(mfem._ser.array.BaseArray):
 
     def MemoryUsage(self):
         return _intrules.IntegrationPointArray_MemoryUsage(self)
+
+    def Read(self, on_dev=True):
+        return _intrules.IntegrationPointArray_Read(self, on_dev)
+
+    def HostRead(self):
+        return _intrules.IntegrationPointArray_HostRead(self)
+
+    def Write(self, on_dev=True):
+        return _intrules.IntegrationPointArray_Write(self, on_dev)
+
+    def HostWrite(self):
+        return _intrules.IntegrationPointArray_HostWrite(self)
+
+    def ReadWrite(self, on_dev=True):
+        return _intrules.IntegrationPointArray_ReadWrite(self, on_dev)
+
+    def HostReadWrite(self):
+        return _intrules.IntegrationPointArray_HostReadWrite(self)
 
     def __setitem__(self, i, v):
         return _intrules.IntegrationPointArray___setitem__(self, i, v)
@@ -286,6 +307,9 @@ class IntegrationRule(IntegrationPointArray):
 
     def IntPoint(self, *args):
         return _intrules.IntegrationRule_IntPoint(self, *args)
+
+    def GetWeights(self):
+        return _intrules.IntegrationRule_GetWeights(self)
     __swig_destroy__ = _intrules.delete_IntegrationRule
     __del__ = lambda self: None
 IntegrationRule_swigregister = _intrules.IntegrationRule_swigregister

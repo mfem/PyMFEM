@@ -96,26 +96,11 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._par.ostream_typemap
-class BaseArray(_object):
+import mfem._par.mem_manager
+class intArray(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, BaseArray, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, BaseArray, name)
-
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined")
-    __repr__ = _swig_repr
-BaseArray_swigregister = _array.BaseArray_swigregister
-BaseArray_swigregister(BaseArray)
-
-class intArray(BaseArray):
-    __swig_setmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, intArray, name, value)
     __swig_getmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, intArray, name)
     __repr__ = _swig_repr
 
@@ -136,6 +121,12 @@ class intArray(BaseArray):
 
     def GetData(self, *args):
         return _array.intArray_GetData(self, *args)
+
+    def GetMemory(self, *args):
+        return _array.intArray_GetMemory(self, *args)
+
+    def UseDevice(self):
+        return _array.intArray_UseDevice(self)
 
     def OwnsData(self):
         return _array.intArray_OwnsData(self)
@@ -236,6 +227,24 @@ class intArray(BaseArray):
     def MemoryUsage(self):
         return _array.intArray_MemoryUsage(self)
 
+    def Read(self, on_dev=True):
+        return _array.intArray_Read(self, on_dev)
+
+    def HostRead(self):
+        return _array.intArray_HostRead(self)
+
+    def Write(self, on_dev=True):
+        return _array.intArray_Write(self, on_dev)
+
+    def HostWrite(self):
+        return _array.intArray_HostWrite(self)
+
+    def ReadWrite(self, on_dev=True):
+        return _array.intArray_ReadWrite(self, on_dev)
+
+    def HostReadWrite(self):
+        return _array.intArray_HostReadWrite(self)
+
     def __setitem__(self, i, v):
         return _array.intArray___setitem__(self, i, v)
 
@@ -252,14 +261,10 @@ class intArray(BaseArray):
 intArray_swigregister = _array.intArray_swigregister
 intArray_swigregister(intArray)
 
-class doubleArray(BaseArray):
+class doubleArray(_object):
     __swig_setmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, doubleArray, name, value)
     __swig_getmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, doubleArray, name)
     __repr__ = _swig_repr
 
@@ -280,6 +285,12 @@ class doubleArray(BaseArray):
 
     def GetData(self, *args):
         return _array.doubleArray_GetData(self, *args)
+
+    def GetMemory(self, *args):
+        return _array.doubleArray_GetMemory(self, *args)
+
+    def UseDevice(self):
+        return _array.doubleArray_UseDevice(self)
 
     def OwnsData(self):
         return _array.doubleArray_OwnsData(self)
@@ -379,6 +390,24 @@ class doubleArray(BaseArray):
 
     def MemoryUsage(self):
         return _array.doubleArray_MemoryUsage(self)
+
+    def Read(self, on_dev=True):
+        return _array.doubleArray_Read(self, on_dev)
+
+    def HostRead(self):
+        return _array.doubleArray_HostRead(self)
+
+    def Write(self, on_dev=True):
+        return _array.doubleArray_Write(self, on_dev)
+
+    def HostWrite(self):
+        return _array.doubleArray_HostWrite(self)
+
+    def ReadWrite(self, on_dev=True):
+        return _array.doubleArray_ReadWrite(self, on_dev)
+
+    def HostReadWrite(self):
+        return _array.doubleArray_HostReadWrite(self)
 
     def __setitem__(self, i, v):
         return _array.doubleArray___setitem__(self, i, v)
