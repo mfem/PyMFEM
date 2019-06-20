@@ -62,7 +62,7 @@ namespace mfem {
     lfi.thisown=0 
    %} 
    
-} 
+}
 %include "fem/linearform.hpp"
 
 

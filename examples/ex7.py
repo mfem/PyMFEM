@@ -120,14 +120,15 @@ a.AddDomainIntegrator(mfem.DiffusionIntegrator(one))
 a.AddDomainIntegrator(mfem.MassIntegrator(one))
 
 #  8. Assemble the linear system, apply conforming constraints, etc.
-a.Assemble();
-A = mfem.SparseMatrix()
+a.Assemble()
+A = mfem.OperatorPtr()     
 B = mfem.Vector(); X = mfem.Vector()
 empty_tdof_list = mfem.intArray()
 a.FormLinearSystem(empty_tdof_list, x, b, A, X, B)
 
-M = mfem.GSSmoother(A);
-mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0)
+AA = mfem.OperatorHandle2SparseMatrix(A)     
+M = mfem.GSSmoother(AA);
+mfem.PCG(AA, M, B, X, 1, 200, 1e-12, 0.0)
 
 # 10. Recover the solution as a finite element grid function.
 a.RecoverFEMSolution(X, b, x);

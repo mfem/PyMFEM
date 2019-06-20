@@ -116,6 +116,7 @@ MFEM_TIMER_TYPE = _pbilinearform.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pbilinearform.MFEM_HYPRE_VERSION
 import mfem._par.handle
 import mfem._par.operators
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.ostream_typemap
@@ -129,11 +130,12 @@ import mfem._par.coefficient
 import mfem._par.intrules
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -249,23 +251,6 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
         return _pbilinearform.ParBilinearForm_GetRestriction(self)
 
 
-    def FormLinearSystem(self, *args):
-        """
-        FormLinearSystem(ParBilinearForm self)
-        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)
-        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
-        """
-        return _pbilinearform.ParBilinearForm_FormLinearSystem(self, *args)
-
-
-    def FormSystemMatrix(self, *args):
-        """
-        FormSystemMatrix(ParBilinearForm self)
-        FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, OperatorHandle A)
-        """
-        return _pbilinearform.ParBilinearForm_FormSystemMatrix(self, *args)
-
-
     def RecoverFEMSolution(self, X, b, x):
         """RecoverFEMSolution(ParBilinearForm self, Vector X, Vector b, Vector x)"""
         return _pbilinearform.ParBilinearForm_RecoverFEMSolution(self, X, b, x)
@@ -280,6 +265,29 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
 
     __swig_destroy__ = _pbilinearform.delete_ParBilinearForm
     __del__ = lambda self: None
+
+    def FormLinearSystem(self, *args):
+        """
+        FormLinearSystem(ParBilinearForm self)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B)
+        """
+        return _pbilinearform.ParBilinearForm_FormLinearSystem(self, *args)
+
+
+    def FormSystemMatrix(self, *args):
+        """
+        FormSystemMatrix(ParBilinearForm self)
+        FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, OperatorHandle A)
+        FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, SparseMatrix A)
+        FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, HypreParMatrix A)
+        """
+        return _pbilinearform.ParBilinearForm_FormSystemMatrix(self, *args)
+
 ParBilinearForm_swigregister = _pbilinearform.ParBilinearForm_swigregister
 ParBilinearForm_swigregister(ParBilinearForm)
 

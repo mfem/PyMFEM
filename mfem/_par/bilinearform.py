@@ -120,6 +120,7 @@ import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -420,19 +421,6 @@ class BilinearForm(mfem._par.matrix.Matrix):
         return _bilinearform.BilinearForm_GetRestriction(self)
 
 
-    def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
-        """
-        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)
-        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
-        """
-        return _bilinearform.BilinearForm_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
-
-
-    def FormSystemMatrix(self, ess_tdof_list, A):
-        """FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, OperatorHandle A)"""
-        return _bilinearform.BilinearForm_FormSystemMatrix(self, ess_tdof_list, A)
-
-
     def RecoverFEMSolution(self, X, b, x):
         """RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"""
         return _bilinearform.BilinearForm_RecoverFEMSolution(self, X, b, x)
@@ -546,6 +534,27 @@ class BilinearForm(mfem._par.matrix.Matrix):
 
     __swig_destroy__ = _bilinearform.delete_BilinearForm
     __del__ = lambda self: None
+
+    def FormLinearSystem(self, *args):
+        """
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B)
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(BilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B)
+        """
+        return _bilinearform.BilinearForm_FormLinearSystem(self, *args)
+
+
+    def FormSystemMatrix(self, *args):
+        """
+        FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, OperatorHandle A)
+        FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, SparseMatrix A)
+        FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, HypreParMatrix A)
+        """
+        return _bilinearform.BilinearForm_FormSystemMatrix(self, *args)
+
     def __disown__(self):
         self.this.disown()
         _bilinearform.disown_BilinearForm(self)

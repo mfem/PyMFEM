@@ -112,7 +112,7 @@ import mfem._par.matrix
 import mfem._par.geom
 import mfem._par.intrules
 import mfem._par.table
-import mfem._ser.hash
+import mfem._par.hash
 class Element(_object):
     """Proxy of C++ mfem::Element class."""
 

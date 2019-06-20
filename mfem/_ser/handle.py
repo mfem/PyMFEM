@@ -193,11 +193,6 @@ class OperatorHandle(_object):
         return _handle.OperatorHandle_MakeRAP(self, Rt, A, P)
 
 
-    def ConvertFrom(self, A):
-        """ConvertFrom(OperatorHandle self, OperatorHandle A)"""
-        return _handle.OperatorHandle_ConvertFrom(self, A)
-
-
     def EliminateRowsCols(self, A, ess_dof_list):
         """EliminateRowsCols(OperatorHandle self, OperatorHandle A, intArray ess_dof_list)"""
         return _handle.OperatorHandle_EliminateRowsCols(self, A, ess_dof_list)
@@ -206,6 +201,37 @@ class OperatorHandle(_object):
     def EliminateBC(self, A_e, ess_dof_list, X, B):
         """EliminateBC(OperatorHandle self, OperatorHandle A_e, intArray ess_dof_list, Vector X, Vector B)"""
         return _handle.OperatorHandle_EliminateBC(self, A_e, ess_dof_list, X, B)
+
+
+    def As(self):
+        """As(OperatorHandle self) -> mfem::SparseMatrix *"""
+        return _handle.OperatorHandle_As(self)
+
+
+    def Is(self):
+        """Is(OperatorHandle self) -> mfem::SparseMatrix *"""
+        return _handle.OperatorHandle_Is(self)
+
+
+    def Get(self, A):
+        """Get(OperatorHandle self, mfem::SparseMatrix *& A)"""
+        return _handle.OperatorHandle_Get(self, A)
+
+
+    def Reset(self, A, own_A=True):
+        """
+        Reset(OperatorHandle self, mfem::SparseMatrix * A, bool own_A=True)
+        Reset(OperatorHandle self, mfem::SparseMatrix * A)
+        """
+        return _handle.OperatorHandle_Reset(self, A, own_A)
+
+
+    def ConvertFrom(self, *args):
+        """
+        ConvertFrom(OperatorHandle self, OperatorHandle A)
+        ConvertFrom(OperatorHandle self, mfem::SparseMatrix * A)
+        """
+        return _handle.OperatorHandle_ConvertFrom(self, *args)
 
 
     def Height(self):

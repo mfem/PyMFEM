@@ -82,4 +82,11 @@ IS_WRAP(mfem::PetscParMatrix)
 GET_WRAP(mfem::PetscParMatrix)
 RESET_WRAP(mfem::PetscParMatrix)          
 CONVERT_FROM_WRAP(mfem::PetscParMatrix)
-#endif     
+#endif
+
+AS_WRAP(mfem::SparseMatrix)
+IS_WRAP(mfem::SparseMatrix)
+GET_WRAP(mfem::SparseMatrix)
+RESET_WRAP(mfem::SparseMatrix)          
+CONVERT_FROM_WRAP(mfem::SparseMatrix)
+  

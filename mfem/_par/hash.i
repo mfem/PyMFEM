@@ -1,4 +1,4 @@
-%module(package="mfem._ser") hash
+%module(package="mfem._par") hash
 
 %{
 #include "general/hash.hpp"

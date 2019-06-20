@@ -119,7 +119,7 @@ import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
 import mfem._par.table
-import mfem._ser.hash
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.fespace
