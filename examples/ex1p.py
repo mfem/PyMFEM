@@ -98,12 +98,13 @@ def run(order = 1, static_cond = False,
 
    else:
        amg = mfem.HypreBoomerAMG(A)
-       pcg = mfem.HyprePCG(A)
-       pcg.SetTol(1e-12)
-       pcg.SetMaxIter(200)
-       pcg.SetPrintLevel(2)
-       pcg.SetPreconditioner(amg)
-       pcg.Mult(B, X);
+       cg = mfem.CGSolver(MPI.COMM_WORLD)
+       cg.SetRelTol(1e-12)
+       cg.SetMaxIter(200)
+       cg.SetPrintLevel(1)
+       cg.SetPreconditioner(amg)
+       cg.SetOperator(A)
+       cg.Mult(B, X);
 
 
    a.RecoverFEMSolution(X, b, x)
