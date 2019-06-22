@@ -7,11 +7,13 @@
 
 %feature("autodoc", "1");
 %{
+#include <fstream>
+#include <iostream>      
 #include "iostream_typemap.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
-  %}
+%}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
@@ -42,7 +44,7 @@ if len(args) == 1 and isinstance(args[0], ndarray):
         elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
             raise ValueError('Length does not match')
         else:
-  	    args = (ascontiguousarray(args[0]),)
+            args = (ascontiguousarray(args[0]),)
 %}
 %pythonappend mfem::DenseMatrix::Assign %{
     return self

@@ -1,11 +1,5 @@
 %module(package="mfem._par") fespace
 %{
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/coefficient.hpp"
-#include "fem/intrules.hpp"  
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -13,6 +7,12 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "fem/fem.hpp"
+#include "fem/fe_coll.hpp"
+#include "fem/fespace.hpp"
+#include "fem/eltrans.hpp"
+#include "fem/coefficient.hpp"
+#include "fem/intrules.hpp"  
 #include "iostream_typemap.hpp"      
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           

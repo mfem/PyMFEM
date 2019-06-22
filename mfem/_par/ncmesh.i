@@ -1,5 +1,8 @@
 %module(package="mfem._par") ncmesh
 %{
+#include <fstream>
+#include <iostream>
+  
 #include "iostream_typemap.hpp"         
 #include "mesh/ncmesh.hpp"
 #include "numpy/arrayobject.h"      

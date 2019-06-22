@@ -3124,6 +3124,7 @@ namespace swig {
 }
 
 
+#include <fstream>  
 #include <iostream>
 #include <stdio.h>
 #include "iostream_typemap.hpp"    
@@ -5284,7 +5285,7 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   int val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -5298,15 +5299,15 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   ecode3 = SWIG_AsVal_int(obj2, &val3);
@@ -5333,13 +5334,11 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -5351,7 +5350,7 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5362,15 +5361,15 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -5392,13 +5391,11 @@ SWIGINTERN PyObject *_wrap_intArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -5468,7 +5465,7 @@ SWIGINTERN PyObject *_wrap_intArray_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -5486,7 +5483,7 @@ SWIGINTERN PyObject *_wrap_intArray_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -5521,7 +5518,7 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   int val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -5535,15 +5532,15 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   ecode3 = SWIG_AsVal_int(obj2, &val3);
@@ -5570,13 +5567,11 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -5588,7 +5583,7 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5599,15 +5594,15 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -5629,13 +5624,11 @@ SWIGINTERN PyObject *_wrap_intArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -5660,7 +5653,7 @@ SWIGINTERN PyObject *_wrap_intArray_Save(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -5678,7 +5671,7 @@ SWIGINTERN PyObject *_wrap_intArray_Save(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -9041,7 +9034,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   int val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -9055,15 +9048,15 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   ecode3 = SWIG_AsVal_int(obj2, &val3);
@@ -9090,13 +9083,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -9108,7 +9099,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -9119,15 +9110,15 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -9149,13 +9140,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -9225,7 +9214,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -9243,7 +9232,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -9278,7 +9267,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   int val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -9292,15 +9281,15 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   ecode3 = SWIG_AsVal_int(obj2, &val3);
@@ -9327,13 +9316,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -9345,7 +9332,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -9356,15 +9343,15 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   }
   arg1 = reinterpret_cast< mfem::Array< double > * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -9386,13 +9373,11 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -9417,7 +9402,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -9435,7 +9420,7 @@ SWIGINTERN PyObject *_wrap_doubleArray_Save(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;

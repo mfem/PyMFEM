@@ -476,10 +476,10 @@ class Vector(_object):
                     raise ValueError('Must be float64 array ' + str(args[0].dtype) +
         			     ' is given')    
                 else:
-          	    args = (ascontiguousarray(args[0]), args[0].shape[0])
+                    args = (ascontiguousarray(args[0]), args[0].shape[0])
         # in this case, args[0] need to be maintained
         # in this object.
-        	    keep_link = True
+                    keep_link = True
 
 
         this = _vector.new_Vector(*args)
@@ -515,7 +515,7 @@ class Vector(_object):
                 elif args[0].shape[0] != _vector.Vector_Size(self):
                     raise ValueError('Length does not match')
                 else:
-          	    args = (ascontiguousarray(args[0]),)
+                    args = (ascontiguousarray(args[0]),)
             elif isinstance(args[0], tuple):
                 args = (array(args[0], dtype = float),)      
             elif isinstance(args[0], list):	      

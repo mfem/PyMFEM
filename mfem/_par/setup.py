@@ -78,6 +78,12 @@ if add_strumpack:
     proxy_names["strumpack"] = "_strumpack"
     if strumpack_include != "":
         include_dirs.append(strumpack_include)
+
+import six
+if six.PY3:
+    macros = [('TARGET_PY3', '1'),]
+else:
+    macros = []
         
 ext_modules = [Extension(proxy_names[modules[0]],
                         sources=sources[modules[0]],
@@ -86,16 +92,18 @@ ext_modules = [Extension(proxy_names[modules[0]],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
                         runtime_library_dirs = library_dirs,  
-                        libraries = ['metis']+libraries)]
+                         libraries = ['metis']+libraries,
+                         define_macros=macros),]
 
 ext_modules.extend([Extension(proxy_names[name],
                         sources=sources[name],
-                        extra_compile_args = extra_compile_args,                              
+                        extra_compile_args = extra_compile_args,
                         extra_link_args = [],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
-                        runtime_library_dirs = library_dirs,                                
-                        libraries = libraries)
+                        runtime_library_dirs = library_dirs,
+                        libraries = libraries,
+                        define_macros=macros)                 
                for name in modules[1:]])
 
 ### read version number from __init__.py

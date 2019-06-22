@@ -105,6 +105,7 @@ except __builtin__.Exception:
 import mfem._ser.vector
 import mfem._ser.array
 import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.operators
 import mfem._ser.sparsemat
 import mfem._ser.matrix

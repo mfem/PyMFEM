@@ -1,6 +1,9 @@
 %module (package="mfem._par", directors="1") operators
 
 %{
+#include <fstream>
+#include <iostream>  
+  
 #include "linalg/operator.hpp"
 #include "iostream_typemap.hpp"    
 #include "pyoperator.hpp"

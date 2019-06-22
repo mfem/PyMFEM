@@ -4578,6 +4578,7 @@ SWIGINTERN PyObject *_wrap_LinearForm_Update(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    

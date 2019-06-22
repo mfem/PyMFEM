@@ -1,5 +1,7 @@
 %module(package="mfem._ser") table
 %{
+#include <fstream>  
+#include <iostream>
 #include "iostream_typemap.hpp"      
 #include "general/table.hpp"
 #include <iostream>

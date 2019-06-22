@@ -1,6 +1,8 @@
 %module(package="mfem._ser") blockmatrix
 
 %{
+#include <fstream>  
+#include <iostream>
 #include "iostream_typemap.hpp"        
 #include "linalg/blockmatrix.hpp"
 #include "numpy/arrayobject.h"

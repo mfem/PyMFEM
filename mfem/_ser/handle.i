@@ -1,5 +1,7 @@
 %module(package="mfem._ser") handle
 %{
+#include <fstream>  
+#include <iostream>
 #include "iostream_typemap.hpp"      
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"

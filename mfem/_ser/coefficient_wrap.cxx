@@ -4986,6 +4986,7 @@ SWIGINTERN PyObject *_wrap_new_PWConstCoefficient(PyObject *self, PyObject *args
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5732,6 +5733,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8331,6 +8333,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -8349,6 +8352,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -8367,6 +8371,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -8390,6 +8395,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -9052,6 +9058,7 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9075,6 +9082,7 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9492,6 +9500,7 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Eval(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -11423,6 +11432,7 @@ SWIGINTERN PyObject *_wrap_new_VectorDeltaCoefficient(PyObject *self, PyObject *
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -13498,6 +13508,7 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -13516,6 +13527,7 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -13534,6 +13546,7 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -13557,6 +13570,7 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -13962,6 +13976,7 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13970,6 +13985,7 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -13994,6 +14010,7 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -14002,6 +14019,7 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -14232,6 +14250,7 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Eval(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -14240,6 +14259,7 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Eval(PyObject *self, PyObject 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -19290,6 +19310,7 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -19298,6 +19319,7 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *self, PyObject 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -19315,6 +19337,7 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -19323,6 +19346,7 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *self, PyObject 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    

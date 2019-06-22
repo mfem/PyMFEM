@@ -47,6 +47,12 @@ libraries    = [libboostiostreams, 'mfem']
 
 extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
 
+import six
+if six.PY3:
+    macros = [('TARGET_PY3', '1'),]
+else:
+    macros = []
+    
 ext_modules = [Extension(proxy_names[modules[0]],
                          sources=sources[modules[0]],
                          extra_compile_args = extra_compile_args,
@@ -54,16 +60,18 @@ ext_modules = [Extension(proxy_names[modules[0]],
                          include_dirs = include_dirs,
                          library_dirs = library_dirs,
                          runtime_library_dirs = library_dirs,
-                         libraries = libraries)]
+                         libraries = libraries,
+                         define_macros=macros),]
 
 ext_modules.extend([Extension(proxy_names[name],
                               sources=sources[name],
-                              extra_compile_args = extra_compile_args,                              
+                              extra_compile_args = extra_compile_args,
                               extra_link_args = [],
                               include_dirs = include_dirs,
-                              runtime_library_dirs = library_dirs,                              
+                              runtime_library_dirs = library_dirs,
                               library_dirs = library_dirs,
-                              libraries = libraries)
+                              libraries = libraries,
+                              define_macros=macros)
                for name in modules[1:]])
 
 ### read version number from __init__.py

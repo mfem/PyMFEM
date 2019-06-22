@@ -4017,6 +4017,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock(PyObject *self, PyObje
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4040,6 +4041,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock(PyObject *self, PyObje
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4228,6 +4230,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4236,6 +4239,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -4260,6 +4264,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4268,6 +4273,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    

@@ -3575,6 +3575,8 @@ namespace swig {
 }
 
 
+#include <fstream>
+#include <iostream>  
 #include "linalg/matrix.hpp"
 #include "iostream_typemap.hpp"      
 #include "pyoperator.hpp"
@@ -3779,6 +3781,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -3787,6 +3790,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -3806,6 +3810,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -3814,6 +3819,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -3929,7 +3935,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -3941,15 +3947,15 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Matrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -3980,13 +3986,11 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -3998,7 +4002,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4009,15 +4013,15 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Matrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -4042,13 +4046,11 @@ SWIGINTERN PyObject *_wrap_Matrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -4121,7 +4123,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -4139,7 +4141,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -4148,6 +4150,7 @@ SWIGINTERN PyObject *_wrap_Matrix_Print(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    

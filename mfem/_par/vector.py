@@ -96,7 +96,7 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
 import mfem._par.mem_manager
 
 def add_vector(*args):
@@ -476,10 +476,10 @@ class Vector(_object):
                     raise ValueError('Must be float64 array ' + str(args[0].dtype) +
         			     ' is given')  
                 else:
-          	    args = (ascontiguousarray(args[0]), args[0].shape[0])
+                    args = (ascontiguousarray(args[0]), args[0].shape[0])
         # in this case, args[0] need to be maintained
         # in this object.
-        	    keep_link = True
+                    keep_link = True
 
 
         this = _vector.new_Vector(*args)
@@ -508,13 +508,13 @@ class Vector(_object):
             if isinstance(args[0], ndarray):
                 if args[0].dtype != 'float64':
                      raise ValueError('Must be float64 array ' + str(args[0].dtype) +
-        	   		      ' is given')
+        			      ' is given')
                 elif args[0].ndim != 1:
                     raise ValueError('Ndim must be one') 
                 elif args[0].shape[0] != _vector.Vector_Size(self):
                     raise ValueError('Length does not match')
                 else:
-          	    args = (ascontiguousarray(args[0]),)
+                    args = (ascontiguousarray(args[0]),)
             elif isinstance(args[0], tuple):
                 args = (array(args[0], dtype = float),)      
             elif isinstance(args[0], list):	      

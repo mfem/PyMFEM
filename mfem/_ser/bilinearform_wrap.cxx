@@ -5029,6 +5029,7 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5444,6 +5445,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_UsePrecomputedSparsity(PyObject *self, P
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6139,6 +6141,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6147,6 +6150,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6166,6 +6170,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6174,6 +6179,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7244,6 +7250,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Finalize(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8081,6 +8088,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Assemble(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8934,6 +8942,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8961,6 +8970,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8976,6 +8986,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -9169,6 +9180,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9196,6 +9208,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9211,6 +9224,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -11373,6 +11387,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem(PyObject *self, PyObjec
                 if (_v) {
                   {
                     if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
+                      PyErr_Clear();
                       _v = 0;
                     } else {
                       _v = 1;    
@@ -11420,6 +11435,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem(PyObject *self, PyObjec
                 if (_v) {
                   {
                     if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
+                      PyErr_Clear();
                       _v = 0;
                     } else {
                       _v = 1;    
@@ -11895,6 +11911,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Elem(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -11903,6 +11920,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Elem(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -11922,6 +11940,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Elem(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -11930,6 +11949,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Elem(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -12636,6 +12656,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Finalize(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13246,6 +13267,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Assemble(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13891,6 +13913,7 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_Assemble(PyObject *self, PyObj
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    

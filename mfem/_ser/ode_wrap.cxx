@@ -5644,6 +5644,7 @@ SWIGINTERN PyObject *_wrap_new_SDIRK23Solver(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    

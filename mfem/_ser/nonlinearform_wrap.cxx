@@ -5060,6 +5060,7 @@ SWIGINTERN PyObject *_wrap_BlockNonlinearForm_FESpace(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5078,6 +5079,7 @@ SWIGINTERN PyObject *_wrap_BlockNonlinearForm_FESpace(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    

@@ -7,6 +7,7 @@
 }
 %typemap(typecheck,precedence=SWIG_TYPECHECK_INTEGER) int {
   if ((PyArray_PyIntAsInt($input) == -1) && PyErr_Occurred()) {
+    PyErr_Clear();
     $1 = 0;
   } else {
     $1 = 1;    

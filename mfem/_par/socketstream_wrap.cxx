@@ -4016,6 +4016,7 @@ SWIGINTERN PyObject *_wrap_new_socketbuf(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4032,6 +4033,7 @@ SWIGINTERN PyObject *_wrap_new_socketbuf(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4560,6 +4562,7 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4573,6 +4576,7 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4595,6 +4599,7 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4612,6 +4617,7 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4902,6 +4908,7 @@ SWIGINTERN PyObject *_wrap_socketstream_precision(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5248,6 +5255,7 @@ SWIGINTERN PyObject *_wrap_socketstream___lshift__(PyObject *self, PyObject *arg
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5394,6 +5402,7 @@ SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5407,6 +5416,7 @@ SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5415,6 +5425,7 @@ SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    

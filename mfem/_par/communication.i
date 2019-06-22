@@ -1,5 +1,7 @@
 %module(package="mfem._par") communication
 %{
+#include <fstream>
+#include <iostream>  
 #include <mpi.h>
 #include "iostream_typemap.hpp"      
 #include "config/config.hpp"    
@@ -21,10 +23,11 @@ import_array();
 import_array();
 %}
 */
-%import array.i
-%import table.i
-%import sets.i
+%include "exception.i"
+%import "array.i"
+%import "table.i"
+%import "sets.i"
 
-%import ostream_typemap.i
+%import "ostream_typemap.i"
 
 %include "general/communication.hpp"

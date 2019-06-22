@@ -1,5 +1,7 @@
 %module(package="mfem._par") hypre
 %{
+#include <fstream>
+#include <iostream>  
 #include <mpi.h>
 #include <Python.h>
 #include "fem/gridfunc.hpp"

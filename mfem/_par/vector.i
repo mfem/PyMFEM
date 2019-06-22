@@ -47,10 +47,10 @@ if len(args) == 1:
             raise ValueError('Must be float64 array ' + str(args[0].dtype) +
 			     ' is given')  
         else:
-  	    args = (ascontiguousarray(args[0]), args[0].shape[0])
-             # in this case, args[0] need to be maintained
-	     # in this object.
-	    keep_link = True
+            args = (ascontiguousarray(args[0]), args[0].shape[0])
+            # in this case, args[0] need to be maintained
+            # in this object.
+            keep_link = True
 %}
 
 %pythonappend mfem::Vector::Vector %{
@@ -96,13 +96,13 @@ if len(args) == 1:
     if isinstance(args[0], ndarray):
         if args[0].dtype != 'float64':
              raise ValueError('Must be float64 array ' + str(args[0].dtype) +
-	   		      ' is given')
+			      ' is given')
         elif args[0].ndim != 1:
             raise ValueError('Ndim must be one') 
         elif args[0].shape[0] != _vector.Vector_Size(self):
             raise ValueError('Length does not match')
         else:
-  	    args = (ascontiguousarray(args[0]),)
+            args = (ascontiguousarray(args[0]),)
     elif isinstance(args[0], tuple):
         args = (array(args[0], dtype = float),)      
     elif isinstance(args[0], list):	      
@@ -211,8 +211,15 @@ void subtract_vector(const double a, const mfem::Vector &x,
     if (PySlice_Check(param)) {
         long start = 0, stop = 0, step = 0, slicelength = 0;
         int check;
-	check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+
+	%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
 				     &slicelength);
+        %#else
+   	check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+				     &slicelength);
+	%#endif
+
 	if (check == -1) {
             PyErr_SetString(PyExc_ValueError, "Slicing mfem::Vector failed.");
             return NULL; 

@@ -1,8 +1,8 @@
 %module (package="mfem._par") sparsemat
 
 %{
+#include <fstream>  
 #include <sstream>
-#include <fstream>
 #include <limits>
 #include <cmath>
 #include <cstring>

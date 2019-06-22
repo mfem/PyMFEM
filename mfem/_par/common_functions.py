@@ -109,7 +109,8 @@ MFEM_GIT_STRING = _common_functions.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _common_functions.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _common_functions.MFEM_HYPRE_VERSION
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
+import mfem._par.mem_manager
 
 def Transpose(*args):
     return _common_functions.Transpose(*args)

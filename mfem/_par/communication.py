@@ -108,7 +108,8 @@ MFEM_INSTALL_DIR = _communication.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _communication.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _communication.MFEM_HYPRE_VERSION
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.table
 import mfem._par.sets
 class MPI_Session(_object):

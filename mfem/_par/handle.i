@@ -1,5 +1,7 @@
 %module(package="mfem._par") handle
 %{
+#include <fstream>  
+#include <iostream>
 #include "iostream_typemap.hpp"        
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
@@ -75,3 +77,4 @@ GET_WRAP(mfem::PetscParMatrix)
 RESET_WRAP(mfem::PetscParMatrix)          
 CONVERT_FROM_WRAP(mfem::PetscParMatrix)
 #endif     
+

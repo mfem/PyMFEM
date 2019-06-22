@@ -50,10 +50,10 @@ METIS5LIB ?= /usr/local/lib
 #MPI
 MPICHINC  ?= /usr/local/include/mpich-mp
 MPICHLIB  ?= /usr/local/lib/mpich-mp
-MPI4PYINC = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
+MPI4PYINC = $(shell $(PYTHON) -c "import mpi4py;print(mpi4py.get_include())")
 
 #numpy
-NUMPYINC = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
+NUMPYINC = $(shell $(PYTHON) -c "import numpy;print(numpy.get_include())")
 
 #Boost
 BOOSTINC ?= /usr/local/include

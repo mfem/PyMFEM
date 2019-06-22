@@ -9,7 +9,6 @@
 #include <ctime>
 
 #include "iostream_typemap.hpp"            
-  
 #include "numpy/arrayobject.h"
 #include "fem/fem.hpp"
 #include "fem/fe_coll.hpp"

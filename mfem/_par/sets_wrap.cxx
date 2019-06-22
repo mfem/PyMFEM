@@ -3001,6 +3001,9 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 
 
+  #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
+
+
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_char swig_types[0]
@@ -3134,7 +3137,22 @@ SWIGINTERN PyObject *_wrap_new_IntegerSet__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   mfem::IntegerSet *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)":new_IntegerSet")) SWIG_fail;
-  result = (mfem::IntegerSet *)new mfem::IntegerSet();
+  {
+    try {
+      result = (mfem::IntegerSet *)new mfem::IntegerSet();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__IntegerSet, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3159,7 +3177,22 @@ SWIGINTERN PyObject *_wrap_new_IntegerSet__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_IntegerSet" "', argument " "1"" of type '" "mfem::IntegerSet &""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
-  result = (mfem::IntegerSet *)new mfem::IntegerSet(*arg1);
+  {
+    try {
+      result = (mfem::IntegerSet *)new mfem::IntegerSet(*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__IntegerSet, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3189,7 +3222,22 @@ SWIGINTERN PyObject *_wrap_new_IntegerSet__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_IntegerSet" "', argument " "2"" of type '" "int const *""'"); 
   }
   arg2 = reinterpret_cast< int * >(argp2);
-  result = (mfem::IntegerSet *)new mfem::IntegerSet(arg1,(int const *)arg2);
+  {
+    try {
+      result = (mfem::IntegerSet *)new mfem::IntegerSet(arg1,(int const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__IntegerSet, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3225,6 +3273,7 @@ SWIGINTERN PyObject *_wrap_new_IntegerSet(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -3264,7 +3313,22 @@ SWIGINTERN PyObject *_wrap_IntegerSet_Size(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerSet_Size" "', argument " "1"" of type '" "mfem::IntegerSet *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
-  result = (int)(arg1)->Size();
+  {
+    try {
+      result = (int)(arg1)->Size();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3286,7 +3350,22 @@ SWIGINTERN PyObject *_wrap_IntegerSet_PickElement(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerSet_PickElement" "', argument " "1"" of type '" "mfem::IntegerSet *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
-  result = (int)(arg1)->PickElement();
+  {
+    try {
+      result = (int)(arg1)->PickElement();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3308,7 +3387,22 @@ SWIGINTERN PyObject *_wrap_IntegerSet_PickRandomElement(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerSet_PickRandomElement" "', argument " "1"" of type '" "mfem::IntegerSet *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
-  result = (int)(arg1)->PickRandomElement();
+  {
+    try {
+      result = (int)(arg1)->PickRandomElement();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3342,7 +3436,22 @@ SWIGINTERN PyObject *_wrap_IntegerSet___eq__(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IntegerSet___eq__" "', argument " "2"" of type '" "mfem::IntegerSet &""'"); 
   }
   arg2 = reinterpret_cast< mfem::IntegerSet * >(argp2);
-  result = (int)(arg1)->operator ==(*arg2);
+  {
+    try {
+      result = (int)(arg1)->operator ==(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3380,7 +3489,22 @@ SWIGINTERN PyObject *_wrap_IntegerSet_Recreate(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IntegerSet_Recreate" "', argument " "3"" of type '" "int const *""'"); 
   }
   arg3 = reinterpret_cast< int * >(argp3);
-  (arg1)->Recreate(arg2,(int const *)arg3);
+  {
+    try {
+      (arg1)->Recreate(arg2,(int const *)arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3401,7 +3525,22 @@ SWIGINTERN PyObject *_wrap_delete_IntegerSet(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_IntegerSet" "', argument " "1"" of type '" "mfem::IntegerSet *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3430,7 +3569,22 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Size(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListOfIntegerSets_Size" "', argument " "1"" of type '" "mfem::ListOfIntegerSets *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
-  result = (int)(arg1)->Size();
+  {
+    try {
+      result = (int)(arg1)->Size();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3460,7 +3614,22 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickElementInSet(PyObject *SWIGUNUS
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (int)(arg1)->PickElementInSet(arg2);
+  {
+    try {
+      result = (int)(arg1)->PickElementInSet(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3490,7 +3659,22 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickRandomElementInSet(PyObject *SW
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (int)(arg1)->PickRandomElementInSet(arg2);
+  {
+    try {
+      result = (int)(arg1)->PickRandomElementInSet(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3524,7 +3708,22 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Insert(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ListOfIntegerSets_Insert" "', argument " "2"" of type '" "mfem::IntegerSet &""'"); 
   }
   arg2 = reinterpret_cast< mfem::IntegerSet * >(argp2);
-  result = (int)(arg1)->Insert(*arg2);
+  {
+    try {
+      result = (int)(arg1)->Insert(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3558,7 +3757,22 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Lookup(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ListOfIntegerSets_Lookup" "', argument " "2"" of type '" "mfem::IntegerSet &""'"); 
   }
   arg2 = reinterpret_cast< mfem::IntegerSet * >(argp2);
-  result = (int)(arg1)->Lookup(*arg2);
+  {
+    try {
+      result = (int)(arg1)->Lookup(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3591,7 +3805,22 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_AsTable(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ListOfIntegerSets_AsTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Table * >(argp2);
-  (arg1)->AsTable(*arg2);
+  {
+    try {
+      (arg1)->AsTable(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3612,7 +3841,22 @@ SWIGINTERN PyObject *_wrap_delete_ListOfIntegerSets(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ListOfIntegerSets" "', argument " "1"" of type '" "mfem::ListOfIntegerSets *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3625,7 +3869,22 @@ SWIGINTERN PyObject *_wrap_new_ListOfIntegerSets(PyObject *SWIGUNUSEDPARM(self),
   mfem::ListOfIntegerSets *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)":new_ListOfIntegerSets")) SWIG_fail;
-  result = (mfem::ListOfIntegerSets *)new mfem::ListOfIntegerSets();
+  {
+    try {
+      result = (mfem::ListOfIntegerSets *)new mfem::ListOfIntegerSets();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ListOfIntegerSets, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:

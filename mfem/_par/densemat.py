@@ -104,7 +104,7 @@ except __builtin__.Exception:
 
 import mfem._par.mem_manager
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
 import mfem._par.vector
 import mfem._par.operators
 import mfem._par.matrix
@@ -620,7 +620,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
                 elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
                     raise ValueError('Length does not match')
                 else:
-          	    args = (ascontiguousarray(args[0]),)
+                    args = (ascontiguousarray(args[0]),)
 
 
         val = _densemat.DenseMatrix_Assign(self, *args)

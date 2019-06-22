@@ -3585,11 +3585,13 @@ namespace swig {
 }
 
 
+#include <fstream>
+#include <iostream>      
 #include "iostream_typemap.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"     
-  
+
 
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
@@ -4287,6 +4289,7 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4314,6 +4317,7 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4322,6 +4326,7 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4340,6 +4345,7 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4348,6 +4354,7 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrix(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -4741,6 +4748,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4759,6 +4767,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4767,6 +4776,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetSize(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5040,6 +5050,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call__(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5048,6 +5059,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call__(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5067,6 +5079,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call__(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5075,6 +5088,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix___call__(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5320,6 +5334,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5328,6 +5343,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5347,6 +5363,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5355,6 +5372,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -8378,6 +8396,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8396,6 +8415,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8414,6 +8434,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_GetColumn(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8693,6 +8714,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetRow(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8715,6 +8737,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetRow(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8817,6 +8840,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetCol(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8839,6 +8863,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_SetCol(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9154,6 +9179,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Diag(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9178,6 +9204,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Diag(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9986,6 +10013,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9994,6 +10022,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10017,6 +10046,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -10025,6 +10055,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10033,6 +10064,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10041,6 +10073,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -10066,6 +10099,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -10074,6 +10108,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10082,6 +10117,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10090,6 +10126,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -10098,6 +10135,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    
@@ -10106,6 +10144,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMN(PyObject *self, PyObject *args) {
                 if (_v) {
                   {
                     if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
+                      PyErr_Clear();
                       _v = 0;
                     } else {
                       _v = 1;    
@@ -10301,6 +10340,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -10309,6 +10349,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10317,6 +10358,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10343,6 +10385,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -10351,6 +10394,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10359,6 +10403,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_CopyMNDiag(PyObject *self, PyObject *args
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10616,6 +10661,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix(PyObject *self, PyObject *args)
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -10624,6 +10670,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix(PyObject *self, PyObject *args)
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10652,6 +10699,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix(PyObject *self, PyObject *args)
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10660,6 +10708,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_AddMatrix(PyObject *self, PyObject *args)
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10947,7 +10996,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -10959,15 +11008,15 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -10998,13 +11047,11 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -11016,7 +11063,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -11027,15 +11074,15 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -11060,13 +11107,11 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -11139,7 +11184,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -11157,7 +11202,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -11166,6 +11211,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_Print(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -11194,7 +11240,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -11205,15 +11251,15 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -11238,13 +11284,11 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -11317,7 +11361,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintMatlab(PyObject *self, PyObject *arg
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -11345,7 +11389,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -11357,15 +11401,15 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -11396,13 +11440,11 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -11414,7 +11456,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -11425,15 +11467,15 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::DenseMatrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -11458,13 +11500,11 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -11537,7 +11577,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -11555,7 +11595,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -11564,6 +11604,7 @@ SWIGINTERN PyObject *_wrap_DenseMatrix_PrintT(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -15858,6 +15899,7 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrixSVD(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -15866,6 +15908,7 @@ SWIGINTERN PyObject *_wrap_new_DenseMatrixSVD(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -16227,6 +16270,7 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -16235,6 +16279,7 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -16243,6 +16288,7 @@ SWIGINTERN PyObject *_wrap_new_DenseTensor(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -16804,6 +16850,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -16822,6 +16869,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -16840,6 +16888,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -16848,6 +16897,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -16856,6 +16906,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -16876,6 +16927,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -16884,6 +16936,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -16892,6 +16945,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___call__(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -17577,6 +17631,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem__(PyObject *self, PyObject *arg
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17595,6 +17650,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem__(PyObject *self, PyObject *arg
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17603,6 +17659,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem__(PyObject *self, PyObject *arg
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -17611,6 +17668,7 @@ SWIGINTERN PyObject *_wrap_DenseTensor___getitem__(PyObject *self, PyObject *arg
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    

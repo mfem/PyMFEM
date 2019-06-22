@@ -620,7 +620,7 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
                 elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
                     raise ValueError('Length does not match')
                 else:
-          	    args = (ascontiguousarray(args[0]),)
+                    args = (ascontiguousarray(args[0]),)
 
 
         val = _densemat.DenseMatrix_Assign(self, *args)

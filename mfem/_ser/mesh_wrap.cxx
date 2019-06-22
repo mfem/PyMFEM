@@ -3721,7 +3721,6 @@ namespace swig {
 #include "mesh/mesh_headers.hpp"
 #include "fem/fem.hpp"
 #include "general/array.hpp"
-
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -5659,6 +5658,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5844,6 +5844,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6029,6 +6030,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6214,6 +6216,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6399,6 +6402,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6584,6 +6588,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6769,6 +6774,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6954,6 +6960,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7235,6 +7242,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7420,6 +7428,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7605,6 +7614,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7790,6 +7800,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -8084,6 +8095,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8102,6 +8114,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8110,6 +8123,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -8129,6 +8143,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8137,6 +8152,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -8400,6 +8416,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8418,6 +8435,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8426,6 +8444,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -8445,6 +8464,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8453,6 +8473,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -8716,6 +8737,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8734,6 +8756,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8742,6 +8765,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -8761,6 +8785,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8769,6 +8794,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9032,6 +9058,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9050,6 +9077,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9058,6 +9086,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9077,6 +9106,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9085,6 +9115,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9348,6 +9379,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9366,6 +9398,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9374,6 +9407,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9393,6 +9427,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9401,6 +9436,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9601,6 +9637,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeMesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -9619,6 +9656,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeMesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -11914,6 +11952,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -11937,6 +11976,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -11945,6 +11985,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -11969,6 +12010,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -11977,6 +12019,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -12789,6 +12832,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetVertex(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12807,6 +12851,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetVertex(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13114,6 +13159,7 @@ SWIGINTERN PyObject *_wrap_Mesh_ChangeVertexDataOwnership(PyObject *self, PyObje
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -13137,6 +13183,7 @@ SWIGINTERN PyObject *_wrap_Mesh_ChangeVertexDataOwnership(PyObject *self, PyObje
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -13320,6 +13367,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13338,6 +13386,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13474,6 +13523,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13492,6 +13542,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15090,6 +15141,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementTransformation(PyObject *self, PyObjec
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15108,6 +15160,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementTransformation(PyObject *self, PyObjec
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15131,6 +15184,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementTransformation(PyObject *self, PyObjec
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15285,6 +15339,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementTransformation(PyObject *self, PyOb
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15303,6 +15358,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementTransformation(PyObject *self, PyOb
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15527,6 +15583,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15545,6 +15602,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15694,6 +15752,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetEdgeTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15712,6 +15771,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetEdgeTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15861,6 +15921,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementTransformations(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15879,6 +15940,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementTransformations(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15887,6 +15949,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementTransformations(PyObject *self, Py
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -17111,6 +17174,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneratePartitioning(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17129,6 +17193,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneratePartitioning(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17137,6 +17202,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneratePartitioning(PyObject *self, PyObject *a
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -18769,6 +18835,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -18787,6 +18854,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -18811,6 +18879,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -18824,6 +18893,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -18844,6 +18914,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -18857,6 +18928,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -18865,6 +18937,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -19005,6 +19078,7 @@ SWIGINTERN PyObject *_wrap_Mesh_UniformRefinement(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -19468,6 +19542,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneralRefinement(PyObject *self, PyObject *args
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -19495,6 +19570,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneralRefinement(PyObject *self, PyObject *args
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -19872,6 +19948,7 @@ SWIGINTERN PyObject *_wrap_Mesh_RandomRefinement(PyObject *self, PyObject *args)
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -20708,6 +20785,7 @@ SWIGINTERN PyObject *_wrap_Mesh_RefineByError(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -20744,6 +20822,7 @@ SWIGINTERN PyObject *_wrap_Mesh_RefineByError(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -21261,6 +21340,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -21293,6 +21373,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -21325,6 +21406,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -21333,6 +21415,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -21365,6 +21448,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -21373,6 +21457,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -21573,6 +21658,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DegreeElevate(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21591,6 +21677,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DegreeElevate(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21599,6 +21686,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DegreeElevate(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21959,7 +22047,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -21970,15 +22058,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -22003,13 +22091,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -22082,7 +22168,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -22109,7 +22195,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -22120,15 +22206,15 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -22153,13 +22239,11 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -22232,7 +22316,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -22259,7 +22343,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -22270,15 +22354,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -22303,13 +22387,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -22323,7 +22405,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22336,15 +22418,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -22381,13 +22463,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -22400,7 +22480,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22412,15 +22492,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -22451,13 +22531,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -22482,7 +22560,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -22500,7 +22578,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -22509,6 +22587,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -22527,7 +22606,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -22536,6 +22615,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -22544,6 +22624,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -22715,6 +22796,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementColoring(PyObject *self, PyObject *arg
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -22746,7 +22828,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  char const *filename3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22764,15 +22846,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    
+    if (!filename3) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      std::ofstream  out(filename3); 
+      arg3 = &out;
     }
   }
   {
@@ -22803,13 +22885,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   resultobj = SWIG_Py_Void();
   {
     delete arg3;
-    delete stream3;
   }
   return resultobj;
 fail:
   {
     delete arg3;
-    delete stream3;
   }
   return NULL;
 }
@@ -22824,7 +22904,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  char const *filename3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22841,15 +22921,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    
+    if (!filename3) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      std::ofstream  out(filename3); 
+      arg3 = &out;
     }
   }
   {
@@ -22874,13 +22954,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   resultobj = SWIG_Py_Void();
   {
     delete arg3;
-    delete stream3;
   }
   return resultobj;
 fail:
   {
     delete arg3;
-    delete stream3;
   }
   return NULL;
 }
@@ -22909,7 +22987,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
+          if (PyByteArray_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -22932,7 +23010,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
+          if (PyByteArray_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -22941,6 +23019,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -22973,7 +23052,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  char const *filename3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22991,15 +23070,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    
+    if (!filename3) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      std::ofstream  out(filename3); 
+      arg3 = &out;
     }
   }
   {
@@ -23030,13 +23109,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   resultobj = SWIG_Py_Void();
   {
     delete arg3;
-    delete stream3;
   }
   return resultobj;
 fail:
   {
     delete arg3;
-    delete stream3;
   }
   return NULL;
 }
@@ -23051,7 +23128,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  char const *filename3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -23068,15 +23145,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    
+    if (!filename3) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      std::ofstream  out(filename3); 
+      arg3 = &out;
     }
   }
   {
@@ -23101,13 +23178,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   resultobj = SWIG_Py_Void();
   {
     delete arg3;
-    delete stream3;
   }
   return resultobj;
 fail:
   {
     delete arg3;
-    delete stream3;
   }
   return NULL;
 }
@@ -23136,7 +23211,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
+          if (PyByteArray_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -23159,7 +23234,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
+          if (PyByteArray_Check(argv[2])){
             _v = 1;
           } else {
             _v = 0;
@@ -23168,6 +23243,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -23199,7 +23275,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  char const *filename3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -23219,15 +23295,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg2 = reinterpret_cast< mfem::Table * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    
+    if (!filename3) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      std::ofstream  out(filename3); 
+      arg3 = &out;
     }
   }
   {
@@ -23252,13 +23328,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   resultobj = SWIG_Py_Void();
   {
     delete arg3;
-    delete stream3;
   }
   return resultobj;
 fail:
   {
     delete arg3;
-    delete stream3;
   }
   return NULL;
 }
@@ -23770,6 +23844,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -23788,6 +23863,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -23810,6 +23886,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -23818,6 +23895,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -24069,6 +24147,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBoundingBox(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -24511,7 +24590,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   std::ostream *arg3 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  char const *filename3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -24532,15 +24611,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    
+    if (!filename3) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      std::ofstream  out(filename3); 
+      arg3 = &out;
     }
   }
   {
@@ -24565,13 +24644,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   resultobj = SWIG_Py_Void();
   {
     delete arg3;
-    delete stream3;
   }
   return resultobj;
 fail:
   {
     delete arg3;
-    delete stream3;
   }
   return NULL;
 }
@@ -24589,7 +24666,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  boost_ofdstream *stream4 = NULL ;
+  char const *filename4 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -24612,15 +24689,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
-    FILE *f=PyFile_AsFile(obj3); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename4 = PyByteArray_AsString(obj3); // Verify the semantics of this
+    
+    if (!filename4) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream4 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg4 = new std::ostream(stream4);
+      std::ofstream  out(filename4); 
+      arg4 = &out;
     }
   }
   {
@@ -24645,13 +24722,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   resultobj = SWIG_Py_Void();
   {
     delete arg4;
-    delete stream4;
   }
   return resultobj;
 fail:
   {
     delete arg4;
-    delete stream4;
   }
   return NULL;
 }
@@ -24870,7 +24945,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyFile_Check(argv[3])){
+            if (PyByteArray_Check(argv[3])){
               _v = 1;
             } else {
               _v = 0;
@@ -24901,7 +24976,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -24912,15 +24987,15 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -24945,13 +25020,11 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -25024,7 +25097,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -26195,6 +26268,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26220,6 +26294,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26252,6 +26327,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26266,6 +26342,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26291,6 +26368,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26309,6 +26387,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26317,6 +26396,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26336,6 +26416,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26344,6 +26425,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26359,6 +26441,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26367,6 +26450,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26375,6 +26459,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26390,6 +26475,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26398,6 +26484,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26419,6 +26506,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26427,6 +26515,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26455,6 +26544,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26463,6 +26553,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26484,6 +26575,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26492,6 +26584,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26500,6 +26593,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26508,6 +26602,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -26524,6 +26619,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26532,6 +26628,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26540,6 +26637,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26559,6 +26657,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26567,6 +26666,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26578,6 +26678,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -26597,6 +26698,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26605,6 +26707,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26650,6 +26753,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26658,6 +26762,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26666,6 +26771,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26674,6 +26780,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -26682,6 +26789,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -26699,6 +26807,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26707,6 +26816,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26715,6 +26825,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26726,6 +26837,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -26743,6 +26855,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26751,6 +26864,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26762,6 +26876,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -26826,6 +26941,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26834,6 +26950,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26842,6 +26959,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -26853,6 +26971,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -26879,6 +26998,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26887,6 +27007,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -26898,6 +27019,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -26989,6 +27111,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -26997,6 +27120,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -27005,6 +27129,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -27016,6 +27141,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -27123,6 +27249,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -27131,6 +27258,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -27139,6 +27267,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -27150,6 +27279,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -27288,6 +27418,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -27309,6 +27440,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -27330,6 +27462,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                     if (_v) {
                       {
                         if ((PyArray_PyIntAsInt(argv[9]) == -1) && PyErr_Occurred()) {
+                          PyErr_Clear();
                           _v = 0;
                         } else {
                           _v = 1;    
@@ -27338,6 +27471,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                       if (_v) {
                         {
                           if ((PyArray_PyIntAsInt(argv[10]) == -1) && PyErr_Occurred()) {
+                            PyErr_Clear();
                             _v = 0;
                           } else {
                             _v = 1;    
@@ -27365,6 +27499,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -27386,6 +27521,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -27407,6 +27543,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                     if (_v) {
                       {
                         if ((PyArray_PyIntAsInt(argv[9]) == -1) && PyErr_Occurred()) {
+                          PyErr_Clear();
                           _v = 0;
                         } else {
                           _v = 1;    
@@ -27415,6 +27552,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                       if (_v) {
                         {
                           if ((PyArray_PyIntAsInt(argv[10]) == -1) && PyErr_Occurred()) {
+                            PyErr_Clear();
                             _v = 0;
                           } else {
                             _v = 1;    
@@ -27423,6 +27561,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                         if (_v) {
                           {
                             if ((PyArray_PyIntAsInt(argv[11]) == -1) && PyErr_Occurred()) {
+                              PyErr_Clear();
                               _v = 0;
                             } else {
                               _v = 1;    
@@ -27706,6 +27845,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementFace(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -27724,6 +27864,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementFace(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -27901,7 +28042,7 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   std::ostream *arg1 = 0 ;
   mfem::Mesh *arg2 = 0 ;
-  boost_ofdstream *stream1 = NULL ;
+  char const *filename1 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -27910,15 +28051,15 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"OO:__lshift__",&obj0,&obj1)) SWIG_fail;
   {
-    FILE *f=PyFile_AsFile(obj0); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename1 = PyByteArray_AsString(obj0); // Verify the semantics of this
+    
+    if (!filename1) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream1 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg1 = new std::ostream(stream1);
+      std::ofstream  out(filename1); 
+      arg1 = &out;
     }
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
@@ -27951,13 +28092,11 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
     delete arg1;
-    delete stream1;
   }
   return resultobj;
 fail:
   {
     delete arg1;
-    delete stream1;
   }
   return NULL;
 }
@@ -27978,7 +28117,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyFile_Check(argv[0])){
+      if (PyByteArray_Check(argv[0])){
         _v = 1;
       } else {
         _v = 0;
@@ -28969,6 +29108,7 @@ SWIGINTERN PyObject *_wrap_Extrude1D(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -28996,6 +29136,7 @@ SWIGINTERN PyObject *_wrap_Extrude1D(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    

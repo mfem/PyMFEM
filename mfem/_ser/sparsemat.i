@@ -1,7 +1,7 @@
 %module (package="mfem._ser") sparsemat
 %{
+#include <fstream>  
 #include <sstream>
-#include <fstream>
 #include <limits>
 #include <cmath>
 #include <cstring>

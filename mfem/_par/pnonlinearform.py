@@ -116,7 +116,8 @@ MFEM_TIMER_TYPE = _pnonlinearform.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pnonlinearform.MFEM_HYPRE_VERSION
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.nonlinearform
 import mfem._par.operators
 import mfem._par.fespace
@@ -127,11 +128,12 @@ import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg

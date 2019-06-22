@@ -115,7 +115,8 @@ MFEM_INSTALL_DIR = _coefficient.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _coefficient.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _coefficient.MFEM_HYPRE_VERSION
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.operators
@@ -124,6 +125,7 @@ import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 class Coefficient(_object):
     """Proxy of C++ mfem::Coefficient class."""
 

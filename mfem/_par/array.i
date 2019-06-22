@@ -1,8 +1,9 @@
 %module(package="mfem._par") array
-
 %rename(Equal) mfem::Array <class T>::operator=;
 %{
+#include <fstream>  
 #include <iostream>
+#include <stdio.h>  
 #include "iostream_typemap.hpp"    
 #include "general/array.hpp"
 #include "numpy/arrayobject.h"

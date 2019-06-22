@@ -12,6 +12,9 @@
 import_array();
 %}
 
+%include "exception.i"
+%include "../common/exception.i"
+
 %import "array.i"
 %ignore "";
 %rename("%s") mfem;

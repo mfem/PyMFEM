@@ -4524,6 +4524,7 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4542,6 +4543,7 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4550,6 +4552,7 @@ SWIGINTERN PyObject *_wrap_new_DomainLFIntegrator(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5052,6 +5055,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5070,6 +5074,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5078,6 +5083,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryLFIntegrator(PyObject *self, PyObject *ar
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5510,6 +5516,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator(PyObject *self, PyObje
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5528,6 +5535,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator(PyObject *self, PyObje
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5536,6 +5544,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryNormalLFIntegrator(PyObject *self, PyObje
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5968,6 +5977,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5986,6 +5996,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5994,6 +6005,7 @@ SWIGINTERN PyObject *_wrap_new_BoundaryTangentialLFIntegrator(PyObject *self, Py
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    

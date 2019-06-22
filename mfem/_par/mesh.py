@@ -105,7 +105,8 @@ except __builtin__.Exception:
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.ncmesh
 import mfem._par.element
@@ -113,6 +114,7 @@ import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient

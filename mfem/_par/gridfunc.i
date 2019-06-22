@@ -1,8 +1,8 @@
 %module(package="mfem._par", directors="0")  gridfunc
 %{
+  #include <fstream>  
   #include <iostream>
   #include <sstream>
-  #include <fstream>
   #include <limits>
   #include <cmath>
   #include <cstring>

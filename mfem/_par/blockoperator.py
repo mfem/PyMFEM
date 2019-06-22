@@ -103,7 +103,8 @@ except __builtin__.Exception:
 
 
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._ser.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.operators
 

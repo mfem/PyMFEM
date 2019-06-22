@@ -1,6 +1,8 @@
 %module(package="mfem._par") blockmatrix
 
 %{
+#include <fstream>  
+#include <iostream>
 #include "linalg/blockmatrix.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"

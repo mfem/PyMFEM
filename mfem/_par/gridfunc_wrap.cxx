@@ -3749,9 +3749,9 @@ namespace swig {
 }
 
 
+  #include <fstream>  
   #include <iostream>
   #include <sstream>
-  #include <fstream>
   #include <limits>
   #include <cmath>
   #include <cstring>
@@ -4930,6 +4930,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4952,6 +4953,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4963,6 +4965,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *self, PyObject *args)
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5345,6 +5348,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5372,6 +5376,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5404,6 +5409,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5419,6 +5425,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5440,6 +5447,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5459,6 +5467,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -5675,6 +5684,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5683,6 +5693,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5716,6 +5727,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5724,6 +5736,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5743,6 +5756,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    
@@ -5947,6 +5961,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValues(PyObject *self, PyObject
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6314,6 +6329,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *self, PyO
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6346,6 +6362,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *self, PyO
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6365,6 +6382,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *self, PyO
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -6543,6 +6561,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6562,6 +6581,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6585,6 +6605,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6597,6 +6618,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -6795,6 +6817,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn(PyObject *self, PyO
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7184,6 +7207,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetGradients(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7568,6 +7592,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7590,6 +7615,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7618,6 +7644,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7648,6 +7675,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -8115,6 +8143,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient(PyObject *self, PyObj
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10053,6 +10082,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *self, PyObject
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10081,6 +10111,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *self, PyObject
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10114,6 +10145,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *self, PyObject
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -13093,6 +13125,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux(PyObject *self, PyObject *ar
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -13121,6 +13154,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux(PyObject *self, PyObject *ar
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -13129,6 +13163,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux(PyObject *self, PyObject *ar
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -13609,6 +13644,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeRef(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -13781,6 +13817,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeTRef(PyObject *self, PyObject *args)
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -13809,7 +13846,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *SWIGUNUSEDPARM(self), PyO
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13820,15 +13857,15 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -13842,13 +13879,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *SWIGUNUSEDPARM(self), PyO
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -13862,7 +13897,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -13877,15 +13912,15 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__string,  0  | 0);
@@ -13913,13 +13948,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -13932,7 +13965,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_0(PyObject *SWIGUNUSEDPARM
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -13944,15 +13977,15 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_0(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -13972,13 +14005,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_0(PyObject *SWIGUNUSEDPARM
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -13990,7 +14021,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_1(PyObject *SWIGUNUSEDPARM
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -14001,15 +14032,15 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_1(PyObject *SWIGUNUSEDPARM
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -14023,13 +14054,11 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_1(PyObject *SWIGUNUSEDPARM
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -14054,7 +14083,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -14072,7 +14101,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -14081,6 +14110,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -14305,6 +14335,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -14327,6 +14358,7 @@ SWIGINTERN PyObject *_wrap_new_GridFunction(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -14660,7 +14692,7 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   std::ostream *arg1 = 0 ;
   mfem::GridFunction *arg2 = 0 ;
-  boost_ofdstream *stream1 = NULL ;
+  char const *filename1 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -14669,15 +14701,15 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"OO:__lshift__",&obj0,&obj1)) SWIG_fail;
   {
-    FILE *f=PyFile_AsFile(obj0); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename1 = PyByteArray_AsString(obj0); // Verify the semantics of this
+    
+    if (!filename1) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream1 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg1 = new std::ostream(stream1);
+      std::ofstream  out(filename1); 
+      arg1 = &out;
     }
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
@@ -14699,13 +14731,11 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
     delete arg1;
-    delete stream1;
   }
   return resultobj;
 fail:
   {
     delete arg1;
-    delete stream1;
   }
   return NULL;
 }
@@ -15008,6 +15038,7 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15044,6 +15075,7 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction(PyObject *self, PyObject *args
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -15366,6 +15398,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -15393,6 +15426,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -15797,6 +15831,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues(PyObject *self, P
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15820,6 +15855,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues(PyObject *self, P
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15843,6 +15879,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues(PyObject *self, P
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15866,6 +15903,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementValues(PyObject *self, P
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15899,7 +15937,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *SWIGUNUSEDPARM(self
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -15910,15 +15948,15 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *SWIGUNUSEDPARM(self
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -15932,13 +15970,11 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *SWIGUNUSEDPARM(self
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -15955,7 +15991,7 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   std::ostream *arg1 = 0 ;
   mfem::QuadratureFunction *arg2 = 0 ;
-  boost_ofdstream *stream1 = NULL ;
+  char const *filename1 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -15964,15 +16000,15 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"OO:__lshift__",&obj0,&obj1)) SWIG_fail;
   {
-    FILE *f=PyFile_AsFile(obj0); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename1 = PyByteArray_AsString(obj0); // Verify the semantics of this
+    
+    if (!filename1) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream1 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg1 = new std::ostream(stream1);
+      std::ofstream  out(filename1); 
+      arg1 = &out;
     }
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__QuadratureFunction,  0  | 0);
@@ -15994,13 +16030,11 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
     delete arg1;
-    delete stream1;
   }
   return resultobj;
 fail:
   {
     delete arg1;
-    delete stream1;
   }
   return NULL;
 }
@@ -16021,7 +16055,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyFile_Check(argv[0])){
+      if (PyByteArray_Check(argv[0])){
         _v = 1;
       } else {
         _v = 0;
@@ -16038,7 +16072,7 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyFile_Check(argv[0])){
+      if (PyByteArray_Check(argv[0])){
         _v = 1;
       } else {
         _v = 0;
@@ -16378,6 +16412,7 @@ SWIGINTERN PyObject *_wrap_ZZErrorEstimator(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    

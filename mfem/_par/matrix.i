@@ -1,6 +1,8 @@
 %module(package="mfem._par") matrix
 
 %{
+#include <fstream>
+#include <iostream>  
 #include "linalg/matrix.hpp"
 #include "pyoperator.hpp"
 #include "iostream_typemap.hpp"

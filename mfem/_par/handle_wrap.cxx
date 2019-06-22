@@ -3619,6 +3619,8 @@ namespace swig {
 }
 
 
+#include <fstream>  
+#include <iostream>
 #include "iostream_typemap.hpp"        
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
@@ -3864,13 +3866,13 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 SWIGINTERN int
 SWIG_AsPtr_MPI_Comm (PyObject * input, MPI_Comm **p) {
   if (input == Py_None) {
-    if (p) *p = 0;
+    if (p) *p = NULL;
     return SWIG_OK;
   } else if (PyObject_TypeCheck(input,&PyMPIComm_Type)) {
     if (p) *p = PyMPIComm_Get(input);
     return SWIG_OK;
   } else {
-    void *argp = 0;
+    void *argp = NULL;
     int res = SWIG_ConvertPtr(input,&argp,SWIGTYPE_p_MPI_Comm, 0);
     if (!SWIG_IsOK(res)) return res;
     if (!argp) return SWIG_ValueError;
@@ -5900,6 +5902,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_FormLinearSystem(PyObject *self, PyObj
                 if (_v) {
                   {
                     if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
+                      PyErr_Clear();
                       _v = 0;
                     } else {
                       _v = 1;    
@@ -6003,7 +6006,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -6016,15 +6019,15 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -6055,13 +6058,11 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -6074,7 +6075,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -6086,15 +6087,15 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -6119,13 +6120,11 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -6137,7 +6136,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_2(PyObject *SWIGUNUS
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -6148,15 +6147,15 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_2(PyObject *SWIGUNUS
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -6175,13 +6174,11 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_2(PyObject *SWIGUNUS
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -6206,7 +6203,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -6224,7 +6221,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -6233,6 +6230,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6251,7 +6249,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -6260,6 +6258,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6268,6 +6267,7 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -7530,8 +7530,8 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/src/mfem-git"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617/mfem-git/par"));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617_py3/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617_py3/mfem/par"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
   SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   

@@ -104,6 +104,7 @@ except __builtin__.Exception:
 
 import mfem._ser.array
 import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.fespace
 import mfem._ser.coefficient
@@ -114,6 +115,7 @@ import mfem._ser.sparsemat
 import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
+import mfem._ser.geom
 import mfem._ser.mesh
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
@@ -122,8 +124,8 @@ import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.linearform
 import mfem._ser.element
-import mfem._ser.geom
 import mfem._ser.table
+import mfem._ser.hash
 import mfem._ser.vertex
 import mfem._ser.handle
 import mfem._ser.bilinearform

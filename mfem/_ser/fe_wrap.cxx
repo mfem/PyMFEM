@@ -9639,6 +9639,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -9652,6 +9653,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9660,6 +9662,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -9668,6 +9671,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -9685,6 +9689,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -9698,6 +9703,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9706,6 +9712,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -9714,6 +9721,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -9722,6 +9730,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFiniteElement(PyObject *self, PyObject *arg
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -16622,6 +16631,7 @@ SWIGINTERN PyObject *_wrap_new_P0SegmentFiniteElement(PyObject *self, PyObject *
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -28231,6 +28241,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_OpenPoints(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -28249,6 +28260,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_OpenPoints(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -28257,6 +28269,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_OpenPoints(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -28402,6 +28415,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_ClosedPoints(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -28420,6 +28434,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_ClosedPoints(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -28428,6 +28443,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_ClosedPoints(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -28716,6 +28732,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_CalcBasis(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -28740,6 +28757,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_CalcBasis(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -28769,6 +28787,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_CalcBasis(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -29060,6 +29079,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_CalcBinomTerms(PyObject *self, PyObject *args
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -29090,6 +29110,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_CalcBinomTerms(PyObject *self, PyObject *args
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -29333,6 +29354,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_CalcBernstein(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -29357,6 +29379,7 @@ SWIGINTERN PyObject *_wrap_Poly_1D_CalcBernstein(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -30070,6 +30093,7 @@ SWIGINTERN PyObject *_wrap_new_H1_SegmentElement(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -30083,6 +30107,7 @@ SWIGINTERN PyObject *_wrap_new_H1_SegmentElement(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -30091,6 +30116,7 @@ SWIGINTERN PyObject *_wrap_new_H1_SegmentElement(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -30444,6 +30470,7 @@ SWIGINTERN PyObject *_wrap_new_H1_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -30457,6 +30484,7 @@ SWIGINTERN PyObject *_wrap_new_H1_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -30465,6 +30493,7 @@ SWIGINTERN PyObject *_wrap_new_H1_QuadrilateralElement(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -30818,6 +30847,7 @@ SWIGINTERN PyObject *_wrap_new_H1_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -30831,6 +30861,7 @@ SWIGINTERN PyObject *_wrap_new_H1_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -30839,6 +30870,7 @@ SWIGINTERN PyObject *_wrap_new_H1_HexahedronElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -32002,6 +32034,7 @@ SWIGINTERN PyObject *_wrap_new_H1_TriangleElement(PyObject *self, PyObject *args
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -32015,6 +32048,7 @@ SWIGINTERN PyObject *_wrap_new_H1_TriangleElement(PyObject *self, PyObject *args
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -32023,6 +32057,7 @@ SWIGINTERN PyObject *_wrap_new_H1_TriangleElement(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -32380,6 +32415,7 @@ SWIGINTERN PyObject *_wrap_new_H1_TetrahedronElement(PyObject *self, PyObject *a
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -32393,6 +32429,7 @@ SWIGINTERN PyObject *_wrap_new_H1_TetrahedronElement(PyObject *self, PyObject *a
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -32401,6 +32438,7 @@ SWIGINTERN PyObject *_wrap_new_H1_TetrahedronElement(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -32931,6 +32969,7 @@ SWIGINTERN PyObject *_wrap_H1Pos_TriangleElement_CalcShape(PyObject *self, PyObj
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -33064,6 +33103,7 @@ SWIGINTERN PyObject *_wrap_H1Pos_TriangleElement_CalcDShape(PyObject *self, PyOb
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -33444,6 +33484,7 @@ SWIGINTERN PyObject *_wrap_H1Pos_TetrahedronElement_CalcShape(PyObject *self, Py
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -33583,6 +33624,7 @@ SWIGINTERN PyObject *_wrap_H1Pos_TetrahedronElement_CalcDShape(PyObject *self, P
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -33778,6 +33820,7 @@ SWIGINTERN PyObject *_wrap_new_H1_WedgeElement(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -33791,6 +33834,7 @@ SWIGINTERN PyObject *_wrap_new_H1_WedgeElement(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -33799,6 +33843,7 @@ SWIGINTERN PyObject *_wrap_new_H1_WedgeElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -34535,6 +34580,7 @@ SWIGINTERN PyObject *_wrap_new_L2_SegmentElement(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -34548,6 +34594,7 @@ SWIGINTERN PyObject *_wrap_new_L2_SegmentElement(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -34556,6 +34603,7 @@ SWIGINTERN PyObject *_wrap_new_L2_SegmentElement(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -35179,6 +35227,7 @@ SWIGINTERN PyObject *_wrap_new_L2_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -35192,6 +35241,7 @@ SWIGINTERN PyObject *_wrap_new_L2_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -35200,6 +35250,7 @@ SWIGINTERN PyObject *_wrap_new_L2_QuadrilateralElement(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -35898,6 +35949,7 @@ SWIGINTERN PyObject *_wrap_new_L2_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -35911,6 +35963,7 @@ SWIGINTERN PyObject *_wrap_new_L2_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -35919,6 +35972,7 @@ SWIGINTERN PyObject *_wrap_new_L2_HexahedronElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -36542,6 +36596,7 @@ SWIGINTERN PyObject *_wrap_new_L2_TriangleElement(PyObject *self, PyObject *args
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -36555,6 +36610,7 @@ SWIGINTERN PyObject *_wrap_new_L2_TriangleElement(PyObject *self, PyObject *args
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -36563,6 +36619,7 @@ SWIGINTERN PyObject *_wrap_new_L2_TriangleElement(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -37261,6 +37318,7 @@ SWIGINTERN PyObject *_wrap_new_L2_TetrahedronElement(PyObject *self, PyObject *a
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -37274,6 +37332,7 @@ SWIGINTERN PyObject *_wrap_new_L2_TetrahedronElement(PyObject *self, PyObject *a
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -37282,6 +37341,7 @@ SWIGINTERN PyObject *_wrap_new_L2_TetrahedronElement(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -37905,6 +37965,7 @@ SWIGINTERN PyObject *_wrap_new_L2_WedgeElement(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -37918,6 +37979,7 @@ SWIGINTERN PyObject *_wrap_new_L2_WedgeElement(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -37926,6 +37988,7 @@ SWIGINTERN PyObject *_wrap_new_L2_WedgeElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -38563,6 +38626,7 @@ SWIGINTERN PyObject *_wrap_new_RT_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -38576,6 +38640,7 @@ SWIGINTERN PyObject *_wrap_new_RT_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -38584,6 +38649,7 @@ SWIGINTERN PyObject *_wrap_new_RT_QuadrilateralElement(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -38598,6 +38664,7 @@ SWIGINTERN PyObject *_wrap_new_RT_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -38606,6 +38673,7 @@ SWIGINTERN PyObject *_wrap_new_RT_QuadrilateralElement(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -38614,6 +38682,7 @@ SWIGINTERN PyObject *_wrap_new_RT_QuadrilateralElement(PyObject *self, PyObject 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -40031,6 +40100,7 @@ SWIGINTERN PyObject *_wrap_new_RT_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -40044,6 +40114,7 @@ SWIGINTERN PyObject *_wrap_new_RT_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -40052,6 +40123,7 @@ SWIGINTERN PyObject *_wrap_new_RT_HexahedronElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -40066,6 +40138,7 @@ SWIGINTERN PyObject *_wrap_new_RT_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -40074,6 +40147,7 @@ SWIGINTERN PyObject *_wrap_new_RT_HexahedronElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -40082,6 +40156,7 @@ SWIGINTERN PyObject *_wrap_new_RT_HexahedronElement(PyObject *self, PyObject *ar
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -43903,6 +43978,7 @@ SWIGINTERN PyObject *_wrap_new_ND_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -43916,6 +43992,7 @@ SWIGINTERN PyObject *_wrap_new_ND_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -43924,6 +44001,7 @@ SWIGINTERN PyObject *_wrap_new_ND_HexahedronElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -43938,6 +44016,7 @@ SWIGINTERN PyObject *_wrap_new_ND_HexahedronElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -43946,6 +44025,7 @@ SWIGINTERN PyObject *_wrap_new_ND_HexahedronElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -43954,6 +44034,7 @@ SWIGINTERN PyObject *_wrap_new_ND_HexahedronElement(PyObject *self, PyObject *ar
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -45371,6 +45452,7 @@ SWIGINTERN PyObject *_wrap_new_ND_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -45384,6 +45466,7 @@ SWIGINTERN PyObject *_wrap_new_ND_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -45392,6 +45475,7 @@ SWIGINTERN PyObject *_wrap_new_ND_QuadrilateralElement(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -45406,6 +45490,7 @@ SWIGINTERN PyObject *_wrap_new_ND_QuadrilateralElement(PyObject *self, PyObject 
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -45414,6 +45499,7 @@ SWIGINTERN PyObject *_wrap_new_ND_QuadrilateralElement(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -45422,6 +45508,7 @@ SWIGINTERN PyObject *_wrap_new_ND_QuadrilateralElement(PyObject *self, PyObject 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -49188,6 +49275,7 @@ SWIGINTERN PyObject *_wrap_new_ND_SegmentElement(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -49201,6 +49289,7 @@ SWIGINTERN PyObject *_wrap_new_ND_SegmentElement(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -49209,6 +49298,7 @@ SWIGINTERN PyObject *_wrap_new_ND_SegmentElement(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -51170,6 +51260,7 @@ SWIGINTERN PyObject *_wrap_new_NURBS2DFiniteElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -51183,6 +51274,7 @@ SWIGINTERN PyObject *_wrap_new_NURBS2DFiniteElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -51191,6 +51283,7 @@ SWIGINTERN PyObject *_wrap_new_NURBS2DFiniteElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -51532,6 +51625,7 @@ SWIGINTERN PyObject *_wrap_new_NURBS3DFiniteElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -51545,6 +51639,7 @@ SWIGINTERN PyObject *_wrap_new_NURBS3DFiniteElement(PyObject *self, PyObject *ar
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -51553,6 +51648,7 @@ SWIGINTERN PyObject *_wrap_new_NURBS3DFiniteElement(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -51561,6 +51657,7 @@ SWIGINTERN PyObject *_wrap_new_NURBS3DFiniteElement(PyObject *self, PyObject *ar
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    

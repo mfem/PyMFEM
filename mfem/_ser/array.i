@@ -1,6 +1,7 @@
 %module(package="mfem._ser") array
 %rename(Equal) mfem::Array <class T>::operator=;
 %{
+#include <fstream>  
 #include <iostream>
 #include <stdio.h>
 #include "iostream_typemap.hpp"    
@@ -88,7 +89,4 @@ namespace mfem{
 %template(doubleSwap) Swap<double>;  
 %template(intSwap) Swap<int>;  
 }
-
-
-
 

@@ -3576,6 +3576,8 @@ namespace swig {
 }
 
 
+#include <fstream>  
+#include <iostream>
 #include "linalg/blockmatrix.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
@@ -4141,6 +4143,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetBlock(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4149,6 +4152,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetBlock(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -4168,6 +4172,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetBlock(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4176,6 +4181,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetBlock(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -4685,6 +4691,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4703,6 +4710,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol(PyObject *self, PyObject 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4907,6 +4915,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Finalize(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4925,6 +4934,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Finalize(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4992,7 +5002,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  char const *filename2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5003,15 +5013,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
+    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    
+    if (!filename2) {
+      SWIG_Error(SWIG_TypeError, "File name expected.");
       SWIG_fail;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      std::ofstream  out(filename2); 
+      arg2 = &out;
     }
   }
   {
@@ -5030,13 +5040,11 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDP
   resultobj = SWIG_Py_Void();
   {
     delete arg2;
-    delete stream2;
   }
   return resultobj;
 fail:
   {
     delete arg2;
-    delete stream2;
   }
   return NULL;
 }
@@ -5103,7 +5111,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab(PyObject *self, PyObject *arg
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyFile_Check(argv[1])){
+        if (PyByteArray_Check(argv[1])){
           _v = 1;
         } else {
           _v = 0;
@@ -5244,6 +5252,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5252,6 +5261,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5271,6 +5281,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Elem(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5279,6 +5290,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Elem(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    

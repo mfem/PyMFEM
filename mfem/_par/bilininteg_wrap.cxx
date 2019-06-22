@@ -5583,6 +5583,7 @@ SWIGINTERN PyObject *_wrap_BilinearFormIntegrator_ComputeElementFlux(PyObject *s
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    
@@ -5999,6 +6000,7 @@ SWIGINTERN PyObject *_wrap_new_TransposeIntegrator(PyObject *self, PyObject *arg
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6637,6 +6639,7 @@ SWIGINTERN PyObject *_wrap_new_LumpedIntegrator(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6851,6 +6854,7 @@ SWIGINTERN PyObject *_wrap_new_InverseIntegrator(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7037,6 +7041,7 @@ SWIGINTERN PyObject *_wrap_new_SumIntegrator(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -15586,6 +15591,7 @@ SWIGINTERN PyObject *_wrap_DiffusionIntegrator_ComputeElementFlux(PyObject *self
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    
@@ -17676,6 +17682,7 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17708,6 +17715,7 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17726,6 +17734,7 @@ SWIGINTERN PyObject *_wrap_new_VectorMassIntegrator(PyObject *self, PyObject *ar
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21388,6 +21397,7 @@ SWIGINTERN PyObject *_wrap_ElasticityIntegrator_ComputeElementFlux(PyObject *sel
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    

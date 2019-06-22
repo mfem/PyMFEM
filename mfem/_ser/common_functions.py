@@ -97,6 +97,7 @@ except __builtin__.Exception:
 
 import mfem._ser.array
 import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 
 def InnerProduct(x, y):
     return _common_functions.InnerProduct(x, y)
