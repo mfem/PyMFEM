@@ -95,7 +95,7 @@ except __builtin__.Exception:
         pass
     _newclass = 0
 
-import mfem._ser.ostream_typemap
+import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 class intArray(_object):
     __swig_setmethods__ = {}

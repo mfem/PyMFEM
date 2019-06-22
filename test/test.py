@@ -1,3 +1,6 @@
+from __future__ import print_function
+from __future__ import unicode_literals
+from __future__ import absolute_import
 '''
 
 Test for PyMFEM
@@ -60,14 +63,16 @@ ignore_txt_dict = {'ex15p':['seconds', 'residual',],
                    'ex10p':['iteration', 'seconds', 'residual',],
                    'ex13p':['iteration', 'seconds', 'residual',]}
 
+
 def run_file(command, num = 5):
     t1 = time.time()
     p = sp.Popen(command,stdout=sp.PIPE, stderr=sp.STDOUT, stdin=sp.PIPE)
-    p.stdin.write('q\n')
-    lines = p.stdout.readlines()
+    p.stdin.write(b'q\n')
+    lines, errs = p.communicate()
+    lines = lines.decode().split('\n')
     t2 = time.time()
     sys.stdout.flush()
-    lines = [l for l in lines if l.strip() != '']
+    lines = [l for l in lines if len(l.strip()) != 0]
     return t2-t1, lines[-num:]
 
 def pad_lines(lines):
@@ -124,8 +129,10 @@ def run_test(mfem_exes, pymfem_exes, serial=True, np=2, verbose=False):
         comm = comm_mpi + [e1]
         t1, l1 = run_file(comm, num = 5)
 
-        print("Running : " + os.path.basename(e2))        
-        comm = comm_mpi + [sys.executable,  e2]
+        print("Running : " + os.path.basename(e2))
+
+        # note -u is unbuffered option
+        comm = comm_mpi + [sys.executable,  "-u", e2]
         t2, l2 = run_file(comm, num = 5)
 
         flag = compare_results(l1, l2, case, verbose=verbose)
@@ -154,7 +161,7 @@ def find_mfem_examples(dir, serial = True, example='all'):
         names = [n for n in names if n == example]
     names = [n for n in names if not n in skip_test]    
 
-    nums = [long(''.join(re.findall(r'\d+', n))) for n in names]
+    nums = [int(''.join(re.findall(r'\d+', n))) for n in names]
     names = [os.path.join(example_dir, x) for x in names]    
     names = [x for x in names if os.access(x, os.X_OK)]
 
@@ -172,7 +179,7 @@ if __name__=="__main__":
     from mfem.common.arg_parser import ArgParser
     parser = ArgParser(description='test')
     parser.add_argument('-np', default = 2,
-                        action = 'store', type = long,
+                        action = 'store', type = int,
                     help='Number of processes for MPI')
     parser.add_argument('-verbose', 
                         action = 'store_true', default = False,

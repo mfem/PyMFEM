@@ -115,7 +115,7 @@ MFEM_INSTALL_DIR = _estimators.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _estimators.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _estimators.MFEM_HYPRE_VERSION
 import mfem._par.array
-import mfem._ser.ostream_typemap
+import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.fespace

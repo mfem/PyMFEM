@@ -247,7 +247,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         ref_density = 1.0
         
         self.ess_tdof_list = intArray()
-        self.z = mfem.Vector(self.Height()/2)
+        self.z = mfem.Vector(self.Height()//2)
         self.fespace =  fespace
         self.viscosity = visc
         self.newton_solver = mfem.NewtonSolver(fespace.GetComm())
@@ -322,7 +322,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         self.newton_solver = newton_solver
        
     def Mult(self, vx, vx_dt):    
-        sc = self.Height()/2
+        sc = self.Height()//2
         v = mfem.Vector(vx, 0,  sc)
         x = mfem.Vector(vx, sc,  sc)
         dv_dt = mfem.Vector(dvx_dt, 0, sc)
@@ -337,7 +337,7 @@ class HyperelasticOperator(mfem.PyTimeDependentOperator):
         dx_dt = v
         
     def ImplicitSolve(self, dt, vx, dvx_dt):
-        sc = self.Height()/2
+        sc = self.Height()//2
         v = mfem.Vector(vx, 0,  sc)
         x = mfem.Vector(vx, sc,  sc)
         dv_dt = mfem.Vector(dvx_dt, 0, sc)

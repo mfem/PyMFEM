@@ -115,17 +115,19 @@ a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
 ## Here, original version calls hegith, which is not
 ## defined in the header...!?
 print("Size of linear system: " + str(A.Size())) 
-
+import sys
+sys.stdout.flush()
 # 10. Solve 
 M = mfem.GSSmoother(A)
 mfem.PCG(A, M, B, X, 1, 500, 1e-12, 0.0);
+sys.stdout.flush()
 
 # 11. Recover the solution as a finite element grid function.
 a.RecoverFEMSolution(X, b, x);
 
 # 12. Compute and print the L^2 norm of the error.
-print("")
-print("|| E_h - E ||_{L^2} = " + str(x.ComputeL2Error(E)))
+import sys
+sys.stdout.write("|| E_h - E ||_{L^2} = " + str(x.ComputeL2Error(E))+"\n")
 
 mesh.PrintToFile('refined.mesh', 8)
 x.SaveToFile('sol.gf', 8)

@@ -1,4 +1,4 @@
-%module(package="mfem._ser") ostream_typemap
+%module(package="mfem._par") ostream_typemap
 
  // recipe for ostream
  /*

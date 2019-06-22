@@ -114,6 +114,7 @@ def run(order = 1, static_cond = False,
    AA = mfem.OperatorHandle2SparseMatrix(A)
    M = mfem.GSSmoother(AA)
    mfem.PCG(AA, M, B, X, 1, 200, 1e-12, 0.0);
+
    # 11. Recover the solution as a finite element grid function.
    a.RecoverFEMSolution(X, b, x)
    # 12. Save the refined mesh and the solution. This output can be viewed later

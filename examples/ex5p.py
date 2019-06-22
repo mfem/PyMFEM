@@ -11,6 +11,13 @@ from mpi4py import MPI
 import numpy as np
 from numpy import sin, cos, exp
 
+#### time.clock deprecated and removed in PY3.8
+import time
+try:
+    clock = time.process_time
+except AttributeError:
+    clock = time.clock
+
 def pFunc_exact(x):
     xi = float(x[0]); yi = float(x[1]); zi = 0.0
     if len(x) == 3: zi = x[2]
@@ -159,7 +166,7 @@ darcyPr.SetDiagonalBlock(1, invS);
 maxIter = 500; rtol = 1e-6; atol = 1e-10
 
 import time
-stime = time.clock()
+stime = clock()
 solver = mfem.MINRESSolver(MPI.COMM_WORLD)
 
 solver.SetAbsTol(atol)
@@ -171,7 +178,7 @@ solver.SetPrintLevel(1)
 trueX.Assign(0.0)
 solver.Mult(trueRhs, trueX)
 
-solve_time = time.clock() - stime
+solve_time = clock() - stime
 
 if verbose:
     if solver.GetConverged():

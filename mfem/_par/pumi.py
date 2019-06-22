@@ -184,7 +184,7 @@ def doublep_frompointer(t):
     return _pumi.doublep_frompointer(t)
 doublep_frompointer = _pumi.doublep_frompointer
 
-import mfem._ser.ostream_typemap
+import mfem._par.ostream_typemap
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.operators
