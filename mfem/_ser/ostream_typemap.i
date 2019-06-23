@@ -27,6 +27,7 @@
   delete stream$argnum;
 }
 */
+ /*
 %typemap(in) std::ostream& (const char *filename){
   filename = PyByteArray_AsString($input); // Verify the semantics of this
 
@@ -49,3 +50,4 @@
 %typemap(freearg) std::ostream& {
   delete $1;
 }
+*/

@@ -22,7 +22,8 @@ if cxx_ser != '': os.environ['CXX'] = cxx_ser
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["globals", "mem_manager", "device", "hash",
+modules= ["io_stream",
+          "globals", "mem_manager", "device", "hash",
           "error", "array", "common_functions", "socketstream", "handle",
           "segment", "point",
           "blockvector", "blockoperator", "blockmatrix",

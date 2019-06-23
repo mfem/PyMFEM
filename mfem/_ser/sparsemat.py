@@ -698,37 +698,6 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         return val
 
 
-    def PrintMatlab(self, *args):
-        """
-        PrintMatlab(SparseMatrix self, std::ostream & out)
-        PrintMatlab(SparseMatrix self)
-        """
-        return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
-
-
-    def PrintMM(self, *args):
-        """
-        PrintMM(SparseMatrix self, std::ostream & out)
-        PrintMM(SparseMatrix self)
-        """
-        return _sparsemat.SparseMatrix_PrintMM(self, *args)
-
-
-    def PrintCSR(self, out):
-        """PrintCSR(SparseMatrix self, std::ostream & out)"""
-        return _sparsemat.SparseMatrix_PrintCSR(self, out)
-
-
-    def PrintCSR2(self, out):
-        """PrintCSR2(SparseMatrix self, std::ostream & out)"""
-        return _sparsemat.SparseMatrix_PrintCSR2(self, out)
-
-
-    def PrintInfo(self, out):
-        """PrintInfo(SparseMatrix self, std::ostream & out)"""
-        return _sparsemat.SparseMatrix_PrintInfo(self, out)
-
-
     def IsSymmetric(self):
         """IsSymmetric(SparseMatrix self) -> double"""
         return _sparsemat.SparseMatrix_IsSymmetric(self)
@@ -817,8 +786,56 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         Print(SparseMatrix self, std::ostream & out)
         Print(SparseMatrix self)
         Print(SparseMatrix self, char const * file)
+        Print(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_Print(self, *args)
+
+
+    def PrintMatlab(self, *args):
+        """
+        PrintMatlab(SparseMatrix self, std::ostream & out)
+        PrintMatlab(SparseMatrix self)
+        PrintMatlab(SparseMatrix self, char const * file)
+        PrintMatlab(SparseMatrix self)
+        """
+        return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
+
+
+    def PrintMM(self, *args):
+        """
+        PrintMM(SparseMatrix self, std::ostream & out)
+        PrintMM(SparseMatrix self)
+        PrintMM(SparseMatrix self, char const * file)
+        PrintMM(SparseMatrix self)
+        """
+        return _sparsemat.SparseMatrix_PrintMM(self, *args)
+
+
+    def PrintCSR(self, *args):
+        """
+        PrintCSR(SparseMatrix self, std::ostream & out)
+        PrintCSR(SparseMatrix self, char const * file)
+        PrintCSR(SparseMatrix self)
+        """
+        return _sparsemat.SparseMatrix_PrintCSR(self, *args)
+
+
+    def PrintCSR2(self, *args):
+        """
+        PrintCSR2(SparseMatrix self, std::ostream & out)
+        PrintCSR2(SparseMatrix self, char const * file)
+        PrintCSR2(SparseMatrix self)
+        """
+        return _sparsemat.SparseMatrix_PrintCSR2(self, *args)
+
+
+    def PrintInfo(self, *args):
+        """
+        PrintInfo(SparseMatrix self, std::ostream & out)
+        PrintInfo(SparseMatrix self, char const * file)
+        PrintInfo(SparseMatrix self)
+        """
+        return _sparsemat.SparseMatrix_PrintInfo(self, *args)
 
 SparseMatrix_swigregister = _sparsemat.SparseMatrix_swigregister
 SparseMatrix_swigregister(SparseMatrix)

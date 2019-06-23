@@ -10,6 +10,7 @@
 #include "numpy/arrayobject.h"
 #include "iostream_typemap.hpp"  
 #include "pyoperator.hpp"
+#include "io_stream.hpp"  
 %}
 // initialization required to return numpy array from SWIG
 %init %{
@@ -23,9 +24,13 @@ import_array();
 %import "operators.i"
 %import "matrix.i"
 %import "densemat.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
+
+
 
 %ignore Walk;
 %pythonappend mfem::SparseMatrix::operator*= %{
@@ -36,6 +41,7 @@ import_array();
     val.thisown = 0
     return self
 %}
+
 %pythonprepend mfem::SparseMatrix::SparseMatrix %{
 import numpy as np  
 from scipy.sparse import csr_matrix
@@ -169,3 +175,18 @@ void Print(const char *file){
   ofile.close();
   }
 };
+/*
+linalg/sparsemat.hpp:   void Print(std::ostream &out = mfem::out, int width_ = 4) const;
+linalg/sparsemat.hpp:   void PrintMatlab(std::ostream &out = mfem::out) const;
+linalg/sparsemat.hpp:   void PrintMM(std::ostream &out = mfem::out) const;
+linalg/sparsemat.hpp:   void PrintCSR(std::ostream &out) const;
+linalg/sparsemat.hpp:   void PrintCSR2(std::ostream &out) const;
+linalg/sparsemat.hpp:   void PrintInfo(std::ostream &out) const;
+*/
+OSTREAM_ADD_DEFAULT_STDOUT(SparseMatrix, Print)
+OSTREAM_ADD_DEFAULT_STDOUT(SparseMatrix, PrintMatlab)
+OSTREAM_ADD_DEFAULT_STDOUT(SparseMatrix, PrintMM)
+OSTREAM_ADD_DEFAULT_STDOUT(SparseMatrix, PrintCSR)
+OSTREAM_ADD_DEFAULT_STDOUT(SparseMatrix, PrintCSR2)
+OSTREAM_ADD_DEFAULT_STDOUT(SparseMatrix, PrintInfo)
+
