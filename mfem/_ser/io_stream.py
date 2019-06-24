@@ -96,6 +96,8 @@ except __builtin__.Exception:
     _newclass = 0
 
 class wFILE(_object):
+    """Proxy of C++ PyMFEM::wFILE class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, wFILE, name, value)
     __swig_getmethods__ = {}
@@ -103,6 +105,11 @@ class wFILE(_object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(PyMFEM::wFILE self) -> wFILE
+        __init__(PyMFEM::wFILE self, char const * filename, int precision=8) -> wFILE
+        __init__(PyMFEM::wFILE self, char const * filename) -> wFILE
+        """
         this = _io_stream.new_wFILE(*args)
         try:
             self.this.append(this)
@@ -110,23 +117,31 @@ class wFILE(_object):
             self.this = this
 
     def isSTDOUT(self):
+        """isSTDOUT(wFILE self) -> int"""
         return _io_stream.wFILE_isSTDOUT(self)
 
+
     def getFilename(self):
+        """getFilename(wFILE self) -> char *"""
         return _io_stream.wFILE_getFilename(self)
 
+
     def getPrecision(self):
+        """getPrecision(wFILE self) -> int"""
         return _io_stream.wFILE_getPrecision(self)
 
+
     def setPrecision(self, precision):
+        """setPrecision(wFILE self, int precision)"""
         return _io_stream.wFILE_setPrecision(self, precision)
+
     __swig_destroy__ = _io_stream.delete_wFILE
     __del__ = lambda self: None
 wFILE_swigregister = _io_stream.wFILE_swigregister
 wFILE_swigregister(wFILE)
 
 
-STDOUT = wFILE('__stdout__', precision=8)
+STDOUT = wFILE('__stdout__', 8)
 
 # This file is compatible with both classic and new-style classes.
 

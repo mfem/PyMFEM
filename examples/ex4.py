@@ -113,5 +113,5 @@ a.RecoverFEMSolution(X, b, x);
 
 print("|| F_h - F ||_{L^2} = " + str(x.ComputeL2Error(F)))
 
-mesh.PrintToFile('refined.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+mesh.Print('refined.mesh', 8)
+x.Save('sol.gf', 8)

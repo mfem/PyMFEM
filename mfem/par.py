@@ -58,6 +58,8 @@ from  mfem._par.pbilinearform import *
 from  mfem._par.pnonlinearform import *
 from  mfem._par.pgridfunc import *
 from  mfem._par.hypre import *
+from  mfem._par.stable3d import *
+from  mfem._par.io_stream import wFILE, STDOUT
 
 import mfem._par.array as array
 import mfem._par.blockoperator as blockoperator

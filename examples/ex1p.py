@@ -113,8 +113,8 @@ def run(order = 1, static_cond = False,
    mesh_name  =  "mesh."+smyid
    sol_name   =  "sol."+smyid
 
-   pmesh.PrintToFile(mesh_name, 8)
-   x.SaveToFile(sol_name, 8)
+   pmesh.Print(mesh_name, 8)
+   x.Save(sol_name, 8)
 
 if __name__ == "__main__":
    parser = ArgParser(description='Ex1 (Laplace Problem)')

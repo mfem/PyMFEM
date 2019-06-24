@@ -202,12 +202,12 @@ x = mfem.ParGridFunction(fespace)
 
 smyid = '{:0>6d}'.format(myid)
 mesh_name  =  "mesh."+smyid
-pmesh.PrintToFile(mesh_name, 8)
+pmesh.Print(mesh_name, 8)
 
 for i in range(nev):
     x.Assign(lobpcg.GetEigenvector(i))
     sol_name   =  "mode_"+str(i)+"."+smyid    
-    x.SaveToFile(sol_name, 8)
+    x.Save(sol_name, 8)
     
 # 11. Send the solution by socket to a GLVis server.
 if (visualization):

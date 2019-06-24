@@ -122,8 +122,8 @@ if not mesh.NURBSext:
 nodes = mesh.GetNodes()
 nodes += x
 x *= -1
-mesh.PrintToFile('displaced.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+mesh.Print('displaced.mesh', 8)
+x.Save('sol.gf', 8)
 
 
 if (visualization):

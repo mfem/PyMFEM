@@ -27,7 +27,7 @@ from distutils.core import *
 from distutils      import sysconfig
 
 modules= ["io_stream",
-          "globals", "mem_manager", "device", "hash",
+          "globals", "mem_manager", "device", "hash", "stable3d",
           "cpointers",
           "error", "array", "common_functions",
           "point", "segment", 

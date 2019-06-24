@@ -136,5 +136,5 @@ a.RecoverFEMSolution(X, b, x);
 # 12. Compute and print the L^2 norm of the error.
 print("L2 norm of error = " + str(x.ComputeL2Error(sol_coef)))
 
-mesh.PrintToFile('sphere_refined.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+mesh.Print('sphere_refined.mesh', 8)
+x.Save('sol.gf', 8)

@@ -194,12 +194,12 @@ if not use_nodal_fespace:
 #     viewed later using GLVis: "glvis -np <np> -m mesh -g mode".
 smyid = '{:0>6d}'.format(myid)
 mesh_name  =  "mesh."+smyid
-pmesh.PrintToFile(mesh_name, 8)
+pmesh.Print(mesh_name, 8)
 
 for i in range(nev):
     x.Assign(lobpcg.GetEigenvector(i))
     sol_name   =  "mode_"+str(i)+"."+smyid    
-    x.SaveToFile(sol_name, 8)
+    x.Save(sol_name, 8)
 
 # 13. Send the above data by socket to a GLVis server. Use the "n" and "b"
 #     keys in GLVis to visualize the displacements.

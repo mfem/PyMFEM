@@ -93,7 +93,7 @@ smyid = '{:0>6d}'.format(myid)
 mesh_name  =  "ex13_mesh."+smyid
 
 
-pmesh.PrintToFile(mesh_name, 8)
+pmesh.Print(mesh_name, 8)
 
 for i in range(nev):
     if ( myid == 0 ):
@@ -102,7 +102,7 @@ for i in range(nev):
     
     sol_name   =  "ex13_mode_"+str(i)+"."+smyid    
     x.Assign(ame.GetEigenvector(i))
-    x.SaveToFile(sol_name, 8)    
+    x.Save(sol_name, 8)    
     c  = None
     if (myid == 0):
         c = raw_input("press (q)uit or (c)ontinue --> ")

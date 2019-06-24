@@ -1,5 +1,7 @@
 %module(package="mfem._ser") io_stream
 
+%feature("autodoc", "1");
+
 %{
 #include  "fstream"
 #include  "iostream"
@@ -10,6 +12,6 @@
 %include "io_stream.hpp"
 
 %pythoncode %{
-   STDOUT = wFILE('__stdout__', precision=8)
+  STDOUT = wFILE('__stdout__', 8)
 %}
 //

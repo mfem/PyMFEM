@@ -39,6 +39,9 @@ from  mfem._ser.table import *
 from  mfem._ser.element import *
 from  mfem._ser.nonlininteg import *
 from  mfem._ser.nonlinearform import *
+from  mfem._ser.stable3d import *
+from  mfem._ser.io_stream import wFILE, STDOUT
+
 
 import mfem._ser.array as array
 import mfem._ser.blockoperator as blockoperator

@@ -81,5 +81,5 @@ else:
 
 # 9. Save the refined mesh and the solution. This output can be viewed later
 #    using GLVis: "glvis -m refined.mesh -g sol.gf".
-mesh.PrintToFile('refined.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+mesh.Print('refined.mesh', 8)
+x.Save('sol.gf', 8)

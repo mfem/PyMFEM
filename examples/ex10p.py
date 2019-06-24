@@ -455,12 +455,12 @@ ee_name   =  "elastic_energy."+smyid
 nodes = x_gf
 owns_nodes = 0
 nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
-pmesh.PrintToFile(mesh_name, 8)
+pmesh.Print(mesh_name, 8)
 pmesh.SwapNodes(nodes, owns_nodes)
     
-v_gf.SaveToFile(velo_name, 8)
+v_gf.Save(velo_name, 8)
 oper.GetElasticEnergyDensity(x_gf, w_gf)
-w_gf.SaveToFile(ee_name,  8)
+w_gf.Save(ee_name,  8)
 
 
 

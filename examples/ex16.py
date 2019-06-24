@@ -201,8 +201,8 @@ u_gf.GetTrueDofs(u)
 oper = ConductionOperator(fespace, alpha, kappa, u)  
 u_gf.SetFromTrueDofs(u)
 
-mesh.PrintToFile('ex16.mesh', 8)
-u_gf.SaveToFile('ex16-init.gf', 8)
+mesh.Print('ex16.mesh', 8)
+u_gf.Save('ex16-init.gf', 8)
 
 if visualization:
     sout =  mfem.socketstream("localhost", 19916)
@@ -234,4 +234,4 @@ while not last_step:
 
 # 9. Save the final solution. This output can be viewed later using GLVis:
 #    "glvis -m ex16.mesh -g ex16-final.gf".
-u_gf.SaveToFile('ex16-final.gf', 8)
+u_gf.Save('ex16-final.gf', 8)

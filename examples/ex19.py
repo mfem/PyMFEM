@@ -149,9 +149,9 @@ def ex19_main(args):
     owns_nodes = 0
     nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 
-    mesh.PrintToFile('deformed.mesh', 8)
-    p_gf.SaveToFile('pressure.sol', 8)
-    x_def.SaveToFile("deformation.sol",  8)
+    mesh.Print('deformed.mesh', 8)
+    p_gf.Save('pressure.sol', 8)
+    x_def.Save("deformation.sol",  8)
 
 '''
  Custom block preconditioner for the Jacobian of the incompressible nonlinear

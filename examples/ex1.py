@@ -119,8 +119,8 @@ def run(order = 1, static_cond = False,
    a.RecoverFEMSolution(X, b, x)
    # 12. Save the refined mesh and the solution. This output can be viewed later
    #     using GLVis: "glvis -m refined.mesh -g sol.gf".
-   mesh.PrintToFile('refined.mesh', 8)
-   x.SaveToFile('sol.gf', 8)
+   mesh.Print('refined.mesh', 8)
+   x.Save('sol.gf', 8)
 
    #13. Send the solution by socket to a GLVis server.
    if (visualization):

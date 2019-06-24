@@ -355,11 +355,11 @@ while not last_step:
 nodes = x
 owns_nodes = 0
 nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
-mesh.PrintToFile('deformed.mesh', 8)
+mesh.Print('deformed.mesh', 8)
 mesh.SwapNodes(nodes, owns_nodes)
-v.SaveToFile('velocity.sol', 8)
+v.Save('velocity.sol', 8)
 oper.GetElasticEnergyDensity(x, w)
-w.SaveToFile('elastic_energy.sol',  8)
+w.Save('elastic_energy.sol',  8)
 
 
 
