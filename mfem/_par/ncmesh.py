@@ -106,7 +106,6 @@ import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.element
@@ -410,16 +409,6 @@ class NCMesh(_object):
         return _ncmesh.NCMesh_GetElementDepth(self, i)
 
 
-    def PrintVertexParents(self, out):
-        """PrintVertexParents(NCMesh self, std::ostream & out)"""
-        return _ncmesh.NCMesh_PrintVertexParents(self, out)
-
-
-    def PrintCoarseElements(self, out):
-        """PrintCoarseElements(NCMesh self, std::ostream & out)"""
-        return _ncmesh.NCMesh_PrintCoarseElements(self, out)
-
-
     def LoadVertexParents(self, input):
         """LoadVertexParents(NCMesh self, std::istream & input)"""
         return _ncmesh.NCMesh_LoadVertexParents(self, input)
@@ -450,10 +439,32 @@ class NCMesh(_object):
         return _ncmesh.NCMesh_PrintMemoryDetail(self)
 
 
+    def PrintVertexParents(self, *args):
+        """
+        PrintVertexParents(NCMesh self, std::ostream & out)
+        PrintVertexParents(NCMesh self, char const * file, int precision=8)
+        PrintVertexParents(NCMesh self, char const * file)
+        PrintVertexParents(NCMesh self)
+        """
+        return _ncmesh.NCMesh_PrintVertexParents(self, *args)
+
+
+    def PrintCoarseElements(self, *args):
+        """
+        PrintCoarseElements(NCMesh self, std::ostream & out)
+        PrintCoarseElements(NCMesh self, char const * file, int precision=8)
+        PrintCoarseElements(NCMesh self, char const * file)
+        PrintCoarseElements(NCMesh self)
+        """
+        return _ncmesh.NCMesh_PrintCoarseElements(self, *args)
+
+
     def PrintStats(self, *args):
         """
         PrintStats(NCMesh self, std::ostream & out)
         PrintStats(NCMesh self)
+        PrintStats(NCMesh self, char const * file, int precision=8)
+        PrintStats(NCMesh self, char const * file)
         """
         return _ncmesh.NCMesh_PrintStats(self, *args)
 

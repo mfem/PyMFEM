@@ -13,9 +13,9 @@
 mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
-#include "iostream_typemap.hpp"         
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp" 
+#include "pycoefficient.hpp"
+#include "io_stream.hpp"   
 %}
 
 %init %{
@@ -40,9 +40,10 @@ import_array();
 %feature("notabstract") VectorConstantCoefficient;
 %import "coefficient.i"
 %import "fe.i"
-%import "ostream_typemap.i"
 %import "../common/numpy_int_typemap.i"
 
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 // this prevent automatic conversion from int to double so
 // that it select collect overloaded method....
@@ -374,6 +375,7 @@ namespace mfem{
    }
    void PrintToFile(const char *mesh_file, const int precision) const
    {
+        std::cerr << "\nWarning Deprecated : Use Print(filename) insteead of SaveToFile \n";     
 	std::ofstream mesh_ofs(mesh_file);	
         mesh_ofs.precision(precision);
         self->Print(mesh_ofs);	
@@ -470,8 +472,17 @@ namespace mfem{
   };
 }
 
+/*
+virtual void PrintXG(std::ostream &out = mfem::out) const;
+virtual void Print(std::ostream &out = mfem::out) const { Printer(out); }
+void PrintVTK(std::ostream &out);
+virtual void PrintInfo(std::ostream &out = mfem::out)
+*/
 
-
+OSTREAM_ADD_DEFAULT_FILE(Mesh, PrintInfo)
+OSTREAM_ADD_DEFAULT_FILE(Mesh, Print)
+OSTREAM_ADD_DEFAULT_FILE(Mesh, PrintXG)
+OSTREAM_ADD_DEFAULT_FILE(Mesh, PrintVTK)
 
 
 

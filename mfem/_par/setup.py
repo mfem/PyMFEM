@@ -26,7 +26,8 @@ from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["globals", "mem_manager", "device", "hash",
+modules= ["io_stream",
+          "globals", "mem_manager", "device", "hash",
           "cpointers",
           "error", "array", "common_functions",
           "point", "segment", 
@@ -45,9 +46,7 @@ modules= ["globals", "mem_manager", "device", "hash",
           "pmesh", "pncmesh", "communication",
           "pfespace", "pgridfunc",
           "plinearform", "pbilinearform", "pnonlinearform",
-          "hypre", 
-          "ostream_typemap", "istream_typemap"]
-
+          "hypre", ]
 
 if add_pumi != '':
     modules.append("pumi")
@@ -61,15 +60,16 @@ proxy_names = {name: '_'+name for name in modules}
 #extra_text = [x for x in
 #              ['-Wl', whole_archive, metisliba, mfemlnkdir+'/libmfem.a',
 #               no_whole_archive] if x != '']
-#extra_link_args0 = []
-#extra_link_args =  []
-#libraries0 = [] if metisliba != '' else [metislib]
-#libraries0.extend([hyprelib, boostlib])
-libraries    = [libboostiostreams, 'HYPRE', 'mfem']
 
+
+#libraries    = [libboostiostreams, 'HYPRE', 'mfem']
+#include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
+#                mpichinc, hypreinc, boostinc]
+#library_dirs = [mfemlnkdir, hyprelib, metis5lib, boostlib]
+libraries    = ['mfem', 'HYPRE']
 include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
-                mpichinc, hypreinc, boostinc]
-library_dirs = [mfemlnkdir, hyprelib, metis5lib, boostlib]
+                mpichinc, hypreinc,]
+library_dirs = [mfemlnkdir, hyprelib, metis5lib,]
 
 if add_strumpack:
     modules.append("strumpack")

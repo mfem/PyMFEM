@@ -3454,160 +3454,161 @@ namespace Swig {
 #define SWIGTYPE_p_CommGroup swig_types[0]
 #define SWIGTYPE_p_GroupId swig_types[1]
 #define SWIGTYPE_p_MPI_Comm swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_double swig_types[4]
-#define SWIGTYPE_p_hex_t swig_types[5]
-#define SWIGTYPE_p_int swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
-#define SWIGTYPE_p_mfem__BilinearFormIntegrator swig_types[8]
-#define SWIGTYPE_p_mfem__BoundaryMassIntegrator swig_types[9]
-#define SWIGTYPE_p_mfem__Coefficient swig_types[10]
-#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[11]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[12]
-#define SWIGTYPE_p_mfem__CurlCurlIntegrator swig_types[13]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[14]
-#define SWIGTYPE_p_mfem__CurlInterpolator swig_types[15]
-#define SWIGTYPE_p_mfem__DGDiffusionIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__DGElasticityIntegrator swig_types[17]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[18]
-#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[19]
-#define SWIGTYPE_p_mfem__DerivativeIntegrator swig_types[20]
-#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[21]
-#define SWIGTYPE_p_mfem__DiffusionIntegrator swig_types[22]
-#define SWIGTYPE_p_mfem__DiscreteInterpolator swig_types[23]
-#define SWIGTYPE_p_mfem__DivDivIntegrator swig_types[24]
-#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__DivergenceInterpolator swig_types[26]
-#define SWIGTYPE_p_mfem__ElasticityIntegrator swig_types[27]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[28]
-#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[29]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[30]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[31]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[32]
-#define SWIGTYPE_p_mfem__GradientInterpolator swig_types[33]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[34]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[35]
-#define SWIGTYPE_p_mfem__GroupConvectionIntegrator swig_types[36]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[37]
-#define SWIGTYPE_p_mfem__IdentityInterpolator swig_types[38]
-#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[39]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[40]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[41]
-#define SWIGTYPE_p_mfem__InverseIntegrator swig_types[42]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[43]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[44]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[45]
-#define SWIGTYPE_p_mfem__LumpedIntegrator swig_types[46]
-#define SWIGTYPE_p_mfem__MassIntegrator swig_types[47]
-#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[48]
-#define SWIGTYPE_p_mfem__MixedCrossCurlCurlIntegrator swig_types[49]
-#define SWIGTYPE_p_mfem__MixedCrossCurlGradIntegrator swig_types[50]
-#define SWIGTYPE_p_mfem__MixedCrossCurlIntegrator swig_types[51]
-#define SWIGTYPE_p_mfem__MixedCrossGradCurlIntegrator swig_types[52]
-#define SWIGTYPE_p_mfem__MixedCrossGradGradIntegrator swig_types[53]
-#define SWIGTYPE_p_mfem__MixedCrossGradIntegrator swig_types[54]
-#define SWIGTYPE_p_mfem__MixedCrossProductIntegrator swig_types[55]
-#define SWIGTYPE_p_mfem__MixedCurlCurlIntegrator swig_types[56]
-#define SWIGTYPE_p_mfem__MixedDirectionalDerivativeIntegrator swig_types[57]
-#define SWIGTYPE_p_mfem__MixedDivGradIntegrator swig_types[58]
-#define SWIGTYPE_p_mfem__MixedDotProductIntegrator swig_types[59]
-#define SWIGTYPE_p_mfem__MixedGradDivIntegrator swig_types[60]
-#define SWIGTYPE_p_mfem__MixedGradGradIntegrator swig_types[61]
-#define SWIGTYPE_p_mfem__MixedScalarCrossCurlIntegrator swig_types[62]
-#define SWIGTYPE_p_mfem__MixedScalarCrossGradIntegrator swig_types[63]
-#define SWIGTYPE_p_mfem__MixedScalarCrossProductIntegrator swig_types[64]
-#define SWIGTYPE_p_mfem__MixedScalarCurlIntegrator swig_types[65]
-#define SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator swig_types[66]
-#define SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator swig_types[67]
-#define SWIGTYPE_p_mfem__MixedScalarIntegrator swig_types[68]
-#define SWIGTYPE_p_mfem__MixedScalarMassIntegrator swig_types[69]
-#define SWIGTYPE_p_mfem__MixedScalarVectorIntegrator swig_types[70]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCrossProductIntegrator swig_types[71]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCurlCrossIntegrator swig_types[72]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator swig_types[73]
-#define SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator swig_types[74]
-#define SWIGTYPE_p_mfem__MixedScalarWeakDivergenceIntegrator swig_types[75]
-#define SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator swig_types[76]
-#define SWIGTYPE_p_mfem__MixedVectorCurlIntegrator swig_types[77]
-#define SWIGTYPE_p_mfem__MixedVectorDivergenceIntegrator swig_types[78]
-#define SWIGTYPE_p_mfem__MixedVectorGradientIntegrator swig_types[79]
-#define SWIGTYPE_p_mfem__MixedVectorIntegrator swig_types[80]
-#define SWIGTYPE_p_mfem__MixedVectorMassIntegrator swig_types[81]
-#define SWIGTYPE_p_mfem__MixedVectorProductIntegrator swig_types[82]
-#define SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator swig_types[83]
-#define SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator swig_types[84]
-#define SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator swig_types[85]
-#define SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator swig_types[86]
-#define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[87]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[88]
-#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[89]
-#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[90]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[91]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[92]
-#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[93]
-#define SWIGTYPE_p_mfem__ParGridFunction swig_types[94]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[95]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[96]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[97]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[98]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[99]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[100]
-#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[101]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[102]
-#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[103]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[104]
-#define SWIGTYPE_p_mfem__SumIntegrator swig_types[105]
-#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[106]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[107]
-#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[108]
-#define SWIGTYPE_p_mfem__Vector swig_types[109]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[110]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[111]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[112]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[113]
-#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[114]
-#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[115]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[116]
-#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[117]
-#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[118]
-#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[119]
-#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[120]
-#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[121]
-#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[122]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[123]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[124]
-#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[125]
-#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[126]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[127]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[128]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[129]
-#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[130]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[131]
-#define SWIGTYPE_p_p_mfem__Coefficient swig_types[132]
-#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[133]
-#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[134]
-#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[135]
-#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[136]
-#define SWIGTYPE_p_p_mfem__ExtrudeCoefficient swig_types[137]
-#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[138]
-#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[139]
-#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[140]
-#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[141]
-#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[142]
-#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[143]
-#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[144]
-#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[145]
-#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[146]
-#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[147]
-#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[148]
-#define SWIGTYPE_p_pri_t swig_types[149]
-#define SWIGTYPE_p_quad_t swig_types[150]
-#define SWIGTYPE_p_seg_t swig_types[151]
-#define SWIGTYPE_p_std__istream swig_types[152]
-#define SWIGTYPE_p_tet_t swig_types[153]
-#define SWIGTYPE_p_tri_t swig_types[154]
-static swig_type_info *swig_types[156];
-static swig_module_info swig_module = {swig_types, 155, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
+#define SWIGTYPE_p_char swig_types[4]
+#define SWIGTYPE_p_double swig_types[5]
+#define SWIGTYPE_p_hex_t swig_types[6]
+#define SWIGTYPE_p_int swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
+#define SWIGTYPE_p_mfem__BilinearFormIntegrator swig_types[9]
+#define SWIGTYPE_p_mfem__BoundaryMassIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__Coefficient swig_types[11]
+#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[12]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[13]
+#define SWIGTYPE_p_mfem__CurlCurlIntegrator swig_types[14]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[15]
+#define SWIGTYPE_p_mfem__CurlInterpolator swig_types[16]
+#define SWIGTYPE_p_mfem__DGDiffusionIntegrator swig_types[17]
+#define SWIGTYPE_p_mfem__DGElasticityIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[19]
+#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[20]
+#define SWIGTYPE_p_mfem__DerivativeIntegrator swig_types[21]
+#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[22]
+#define SWIGTYPE_p_mfem__DiffusionIntegrator swig_types[23]
+#define SWIGTYPE_p_mfem__DiscreteInterpolator swig_types[24]
+#define SWIGTYPE_p_mfem__DivDivIntegrator swig_types[25]
+#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[26]
+#define SWIGTYPE_p_mfem__DivergenceInterpolator swig_types[27]
+#define SWIGTYPE_p_mfem__ElasticityIntegrator swig_types[28]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[29]
+#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[30]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[31]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[32]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__GradientInterpolator swig_types[34]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[35]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[36]
+#define SWIGTYPE_p_mfem__GroupConvectionIntegrator swig_types[37]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[38]
+#define SWIGTYPE_p_mfem__IdentityInterpolator swig_types[39]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[40]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[41]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[42]
+#define SWIGTYPE_p_mfem__InverseIntegrator swig_types[43]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[44]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[45]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[46]
+#define SWIGTYPE_p_mfem__LumpedIntegrator swig_types[47]
+#define SWIGTYPE_p_mfem__MassIntegrator swig_types[48]
+#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[49]
+#define SWIGTYPE_p_mfem__MixedCrossCurlCurlIntegrator swig_types[50]
+#define SWIGTYPE_p_mfem__MixedCrossCurlGradIntegrator swig_types[51]
+#define SWIGTYPE_p_mfem__MixedCrossCurlIntegrator swig_types[52]
+#define SWIGTYPE_p_mfem__MixedCrossGradCurlIntegrator swig_types[53]
+#define SWIGTYPE_p_mfem__MixedCrossGradGradIntegrator swig_types[54]
+#define SWIGTYPE_p_mfem__MixedCrossGradIntegrator swig_types[55]
+#define SWIGTYPE_p_mfem__MixedCrossProductIntegrator swig_types[56]
+#define SWIGTYPE_p_mfem__MixedCurlCurlIntegrator swig_types[57]
+#define SWIGTYPE_p_mfem__MixedDirectionalDerivativeIntegrator swig_types[58]
+#define SWIGTYPE_p_mfem__MixedDivGradIntegrator swig_types[59]
+#define SWIGTYPE_p_mfem__MixedDotProductIntegrator swig_types[60]
+#define SWIGTYPE_p_mfem__MixedGradDivIntegrator swig_types[61]
+#define SWIGTYPE_p_mfem__MixedGradGradIntegrator swig_types[62]
+#define SWIGTYPE_p_mfem__MixedScalarCrossCurlIntegrator swig_types[63]
+#define SWIGTYPE_p_mfem__MixedScalarCrossGradIntegrator swig_types[64]
+#define SWIGTYPE_p_mfem__MixedScalarCrossProductIntegrator swig_types[65]
+#define SWIGTYPE_p_mfem__MixedScalarCurlIntegrator swig_types[66]
+#define SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator swig_types[67]
+#define SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator swig_types[68]
+#define SWIGTYPE_p_mfem__MixedScalarIntegrator swig_types[69]
+#define SWIGTYPE_p_mfem__MixedScalarMassIntegrator swig_types[70]
+#define SWIGTYPE_p_mfem__MixedScalarVectorIntegrator swig_types[71]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCrossProductIntegrator swig_types[72]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCurlCrossIntegrator swig_types[73]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator swig_types[74]
+#define SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator swig_types[75]
+#define SWIGTYPE_p_mfem__MixedScalarWeakDivergenceIntegrator swig_types[76]
+#define SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator swig_types[77]
+#define SWIGTYPE_p_mfem__MixedVectorCurlIntegrator swig_types[78]
+#define SWIGTYPE_p_mfem__MixedVectorDivergenceIntegrator swig_types[79]
+#define SWIGTYPE_p_mfem__MixedVectorGradientIntegrator swig_types[80]
+#define SWIGTYPE_p_mfem__MixedVectorIntegrator swig_types[81]
+#define SWIGTYPE_p_mfem__MixedVectorMassIntegrator swig_types[82]
+#define SWIGTYPE_p_mfem__MixedVectorProductIntegrator swig_types[83]
+#define SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator swig_types[84]
+#define SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator swig_types[85]
+#define SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator swig_types[86]
+#define SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator swig_types[87]
+#define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[88]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[89]
+#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[90]
+#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[91]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[92]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[93]
+#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[94]
+#define SWIGTYPE_p_mfem__ParGridFunction swig_types[95]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[96]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[97]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[98]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[99]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[100]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[101]
+#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[102]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[103]
+#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[104]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[105]
+#define SWIGTYPE_p_mfem__SumIntegrator swig_types[106]
+#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[107]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[108]
+#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[109]
+#define SWIGTYPE_p_mfem__Vector swig_types[110]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[111]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[112]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[113]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[114]
+#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[115]
+#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[116]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[117]
+#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[118]
+#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[119]
+#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[120]
+#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[121]
+#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[122]
+#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[123]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[124]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[125]
+#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[126]
+#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[127]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[128]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[129]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[130]
+#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[131]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[132]
+#define SWIGTYPE_p_p_mfem__Coefficient swig_types[133]
+#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[134]
+#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[135]
+#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[136]
+#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[137]
+#define SWIGTYPE_p_p_mfem__ExtrudeCoefficient swig_types[138]
+#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[139]
+#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[140]
+#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[141]
+#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[142]
+#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[143]
+#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[144]
+#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[145]
+#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[146]
+#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[147]
+#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[148]
+#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[149]
+#define SWIGTYPE_p_pri_t swig_types[150]
+#define SWIGTYPE_p_quad_t swig_types[151]
+#define SWIGTYPE_p_seg_t swig_types[152]
+#define SWIGTYPE_p_std__istream swig_types[153]
+#define SWIGTYPE_p_tet_t swig_types[154]
+#define SWIGTYPE_p_tri_t swig_types[155]
+static swig_type_info *swig_types[157];
+static swig_module_info swig_module = {swig_types, 156, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3719,7 +3720,7 @@ namespace swig {
 #include <cmath>
 #include <cstring>  
 #include <mpi.h>
-#include "iostream_typemap.hpp"      
+#include "io_stream.hpp"      
 #include  "config/config.hpp"
 #include "mesh/pmesh.hpp"  
 #include "fem/pgridfunc.hpp"
@@ -3965,6 +3966,144 @@ SWIGINTERN mfem::ParGridFunction *new_mfem_ParGridFunction__SWIG_9(mfem::ParFini
    gf = new mfem::ParGridFunction(fes, v.GetData() + offset);
    return gf;
  }
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+  if (PyBytes_Check(obj))
+#else
+  if (PyUnicode_Check(obj))
+#endif
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+#if PY_VERSION_HEX>=0x03000000
+#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    if(alloc) *alloc = SWIG_NEWOBJ;
+#endif
+    PyBytes_AsStringAndSize(obj, &cstr, &len);
+#else
+    PyString_AsStringAndSize(obj, &cstr, &len);
+#endif
+    if (cptr) {
+      if (alloc) {
+	/* 
+	   In python the user should not be able to modify the inner
+	   string representation. To warranty that, if you define
+	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
+	   buffer is always returned.
+
+	   The default behavior is just to return the pointer value,
+	   so, be careful.
+	*/ 
+#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
+	if (*alloc != SWIG_OLDOBJ) 
+#else
+	if (*alloc == SWIG_NEWOBJ) 
+#endif
+	{
+	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+	  *alloc = SWIG_NEWOBJ;
+	} else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+	*cptr = PyBytes_AsString(obj);
+#else
+	assert(0); /* Should never reach here with Unicode strings in Python 3 */
+#endif
+#else
+	*cptr = SWIG_Python_str_AsChar(obj);
+#endif
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    Py_XDECREF(obj);
+#endif
+    return SWIG_OK;
+  } else {
+#if defined(SWIG_PYTHON_2_UNICODE)
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
+#endif
+#if PY_VERSION_HEX<0x03000000
+    if (PyUnicode_Check(obj)) {
+      char *cstr; Py_ssize_t len;
+      if (!alloc && cptr) {
+        return SWIG_RuntimeError;
+      }
+      obj = PyUnicode_AsUTF8String(obj);
+      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
+        if (cptr) {
+          if (alloc) *alloc = SWIG_NEWOBJ;
+          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+        }
+        if (psize) *psize = len + 1;
+
+        Py_XDECREF(obj);
+        return SWIG_OK;
+      } else {
+        Py_XDECREF(obj);
+      }
+    }
+#endif
+#endif
+
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+
+
+SWIGINTERN void mfem_ParGridFunction_Save__SWIG_1(mfem::ParGridFunction *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> Save(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_ParGridFunction_SaveAsOne__SWIG_2(mfem::ParGridFunction *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> SaveAsOne(ofile);
+  ofile.close();
+  }
 
 
 /* ---------------------------------------------------
@@ -10117,13 +10256,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParGridFunction_Save(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParGridFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -10134,15 +10274,18 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -10155,12 +10298,16 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_Save(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -10172,7 +10319,8 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_0(PyObject *SWIGUNUSE
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -10183,15 +10331,18 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_0(PyObject *SWIGUNUSE
   }
   arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -10204,12 +10355,16 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_0(PyObject *SWIGUNUSE
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -10240,55 +10395,6 @@ SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_1(PyObject *SWIGUNUSE
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ParGridFunction_SaveAsOne__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_ParGridFunction_SaveAsOne__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParGridFunction_SaveAsOne'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParGridFunction::SaveAsOne(std::ostream &)\n"
-    "    mfem::ParGridFunction::SaveAsOne()\n");
-  return 0;
 }
 
 
@@ -10527,6 +10633,350 @@ fail:
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParMesh *,mfem::GridFunction const *)\n"
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParMesh *,std::istream &)\n"
     "    mfem::ParGridFunction::ParGridFunction(mfem::ParFiniteElementSpace *,mfem::Vector const &,int)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:ParGridFunction_Save",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Save" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_Save" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_ParGridFunction_Save__SWIG_1(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Save__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParGridFunction_Save",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_Save" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_Save" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_ParGridFunction_Save__SWIG_1(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_Save(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ParGridFunction_Save__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_ParGridFunction_Save__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_ParGridFunction_Save__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParGridFunction_Save'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ParGridFunction::Save(std::ostream &) const\n"
+    "    mfem::ParGridFunction::Save(char const *,int)\n"
+    "    mfem::ParGridFunction::Save(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:ParGridFunction_SaveAsOne",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_SaveAsOne" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_SaveAsOne" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_ParGridFunction_SaveAsOne__SWIG_2(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ParGridFunction *arg1 = (mfem::ParGridFunction *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ParGridFunction_SaveAsOne",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParGridFunction_SaveAsOne" "', argument " "1"" of type '" "mfem::ParGridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParGridFunction * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParGridFunction_SaveAsOne" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_ParGridFunction_SaveAsOne__SWIG_2(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParGridFunction_SaveAsOne(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParGridFunction_SaveAsOne__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ParGridFunction_SaveAsOne__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_ParGridFunction_SaveAsOne__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParGridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_ParGridFunction_SaveAsOne__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'ParGridFunction_SaveAsOne'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ParGridFunction::SaveAsOne(std::ostream &)\n"
+    "    mfem::ParGridFunction::SaveAsOne()\n"
+    "    mfem::ParGridFunction::SaveAsOne(char const *,int)\n"
+    "    mfem::ParGridFunction::SaveAsOne(char const *)\n");
   return 0;
 }
 
@@ -11220,11 +11670,6 @@ static PyMethodDef SwigMethods[] = {
 		"ComputeFlux(BilinearFormIntegrator blfi, GridFunction flux, int wcoef=1)\n"
 		"ParGridFunction_ComputeFlux(ParGridFunction self, BilinearFormIntegrator blfi, GridFunction flux)\n"
 		""},
-	 { (char *)"ParGridFunction_Save", _wrap_ParGridFunction_Save, METH_VARARGS, (char *)"ParGridFunction_Save(ParGridFunction self, std::ostream & out)"},
-	 { (char *)"ParGridFunction_SaveAsOne", _wrap_ParGridFunction_SaveAsOne, METH_VARARGS, (char *)"\n"
-		"SaveAsOne(std::ostream & out)\n"
-		"ParGridFunction_SaveAsOne(ParGridFunction self)\n"
-		""},
 	 { (char *)"delete_ParGridFunction", _wrap_delete_ParGridFunction, METH_VARARGS, (char *)"delete_ParGridFunction(ParGridFunction self)"},
 	 { (char *)"new_ParGridFunction", _wrap_new_ParGridFunction, METH_VARARGS, (char *)"\n"
 		"ParGridFunction()\n"
@@ -11237,6 +11682,17 @@ static PyMethodDef SwigMethods[] = {
 		"ParGridFunction(ParMesh pmesh, GridFunction gf)\n"
 		"ParGridFunction(ParMesh pmesh, std::istream & input)\n"
 		"new_ParGridFunction(ParFiniteElementSpace fes, Vector v, int offset) -> ParGridFunction\n"
+		""},
+	 { (char *)"ParGridFunction_Save", _wrap_ParGridFunction_Save, METH_VARARGS, (char *)"\n"
+		"Save(std::ostream & out)\n"
+		"Save(char const * file, int precision=8)\n"
+		"ParGridFunction_Save(ParGridFunction self, char const * file)\n"
+		""},
+	 { (char *)"ParGridFunction_SaveAsOne", _wrap_ParGridFunction_SaveAsOne, METH_VARARGS, (char *)"\n"
+		"SaveAsOne(std::ostream & out)\n"
+		"SaveAsOne()\n"
+		"SaveAsOne(char const * file, int precision=8)\n"
+		"ParGridFunction_SaveAsOne(ParGridFunction self, char const * file)\n"
 		""},
 	 { (char *)"ParGridFunction_swigregister", ParGridFunction_swigregister, METH_VARARGS, NULL},
 	 { (char *)"L2ZZErrorEstimator", _wrap_L2ZZErrorEstimator, METH_VARARGS, (char *)"\n"
@@ -11644,6 +12100,7 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
 static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
@@ -11801,6 +12258,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CommGroup,
   &_swigt__p_GroupId,
   &_swigt__p_MPI_Comm,
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_hex_t,
@@ -11958,6 +12416,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -12115,6 +12574,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CommGroup,
   _swigc__p_GroupId,
   _swigc__p_MPI_Comm,
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_hex_t,

@@ -1,8 +1,9 @@
 %module(package="mfem._ser") handle
+%feature("autodoc", "1");
 %{
 #include <fstream>  
 #include <iostream>
-#include "iostream_typemap.hpp"      
+#include "io_stream.hpp"      
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
 #include "linalg/handle.hpp"  
@@ -29,13 +30,13 @@
 import_array();
 %}
 
-%import operators.i
+%import "operators.i"
 
 #ifdef MFEM_USE_MPI
-%import hypre.i
+%import "hypre.i"
 #endif
 #ifdef MFEM_USE_PETSC
-%include petsc.i
+%include "petsc.i"
 #endif
 
 //
@@ -91,4 +92,5 @@ IS_WRAP(mfem::SparseMatrix)
 GET_WRAP(mfem::SparseMatrix)
 RESET_WRAP(mfem::SparseMatrix)          
 CONVERT_FROM_WRAP(mfem::SparseMatrix)
-  
+
+

@@ -116,7 +116,6 @@ MFEM_TIMER_TYPE = _hypre.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _hypre.MFEM_HYPRE_VERSION
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.sparsemat
 import mfem._par.operators
@@ -516,14 +515,6 @@ class HypreParMatrix(mfem._par.operators.Operator):
         """Read_IJMatrix(HypreParMatrix self, MPI_Comm comm, char const * fname)"""
         return _hypre.HypreParMatrix_Read_IJMatrix(self, comm, fname)
 
-
-    def PrintCommPkg(self, *args):
-        """
-        PrintCommPkg(HypreParMatrix self, std::ostream & out)
-        PrintCommPkg(HypreParMatrix self)
-        """
-        return _hypre.HypreParMatrix_PrintCommPkg(self, *args)
-
     __swig_destroy__ = _hypre.delete_HypreParMatrix
     __del__ = lambda self: None
 
@@ -559,6 +550,16 @@ class HypreParMatrix(mfem._par.operators.Operator):
         GetCooDataArray(HypreParMatrix self) -> PyObject *
         """
         return _hypre.HypreParMatrix_GetCooDataArray(self, base_i, base_j)
+
+
+    def PrintCommPkg(self, *args):
+        """
+        PrintCommPkg(HypreParMatrix self, std::ostream & out)
+        PrintCommPkg(HypreParMatrix self)
+        PrintCommPkg(HypreParMatrix self, char const * file, int precision=8)
+        PrintCommPkg(HypreParMatrix self, char const * file)
+        """
+        return _hypre.HypreParMatrix_PrintCommPkg(self, *args)
 
 HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister
 HypreParMatrix_swigregister(HypreParMatrix)

@@ -3006,18 +3006,19 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_double swig_types[1]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[3]
-#define SWIGTYPE_p_mfem__BlockMatrix swig_types[4]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[5]
-#define SWIGTYPE_p_mfem__STable swig_types[6]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[7]
-#define SWIGTYPE_p_mfem__Table swig_types[8]
-#define SWIGTYPE_p_mfem__Vector swig_types[9]
-static swig_type_info *swig_types[11];
-static swig_module_info swig_module = {swig_types, 10, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__SparseMatrix_p_t swig_types[4]
+#define SWIGTYPE_p_mfem__BlockMatrix swig_types[5]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[6]
+#define SWIGTYPE_p_mfem__STable swig_types[7]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[8]
+#define SWIGTYPE_p_mfem__Table swig_types[9]
+#define SWIGTYPE_p_mfem__Vector swig_types[10]
+static swig_type_info *swig_types[12];
+static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3122,7 +3123,7 @@ namespace swig {
 }
 
 
-#include "iostream_typemap.hpp"          
+#include "io_stream.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"
 #include "linalg/blockmatrix.hpp"
@@ -5320,11 +5321,41 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"InnerProduct", _wrap_InnerProduct, METH_VARARGS, NULL},
-	 { (char *)"RAP", _wrap_RAP, METH_VARARGS, NULL},
-	 { (char *)"Add", _wrap_Add, METH_VARARGS, NULL},
-	 { (char *)"Transpose", _wrap_Transpose, METH_VARARGS, NULL},
-	 { (char *)"Mult", _wrap_Mult, METH_VARARGS, NULL},
+	 { (char *)"InnerProduct", _wrap_InnerProduct, METH_VARARGS, (char *)"InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double"},
+	 { (char *)"RAP", _wrap_RAP, METH_VARARGS, (char *)"\n"
+		"RAP(mfem::SparseMatrix const & A, mfem::DenseMatrix & P) -> mfem::DenseMatrix\n"
+		"RAP(mfem::DenseMatrix & A, mfem::SparseMatrix const & P) -> mfem::DenseMatrix\n"
+		"RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R, mfem::SparseMatrix * ORAP=None) -> mfem::SparseMatrix\n"
+		"RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R) -> mfem::SparseMatrix\n"
+		"RAP(mfem::SparseMatrix const & Rt, mfem::SparseMatrix const & A, mfem::SparseMatrix const & P) -> mfem::SparseMatrix *\n"
+		""},
+	 { (char *)"Add", _wrap_Add, METH_VARARGS, (char *)"\n"
+		"Add(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B, double alpha, mfem::DenseMatrix & C)\n"
+		"Add(double alpha, double const * A, double beta, double const * B, mfem::DenseMatrix & C)\n"
+		"Add(double alpha, mfem::DenseMatrix const & A, double beta, mfem::DenseMatrix const & B, mfem::DenseMatrix & C)\n"
+		"Add(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"Add(double a, mfem::SparseMatrix const & A, double b, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"Add(mfem::Array< mfem::SparseMatrix * > & Ai) -> mfem::SparseMatrix\n"
+		"Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)\n"
+		""},
+	 { (char *)"Transpose", _wrap_Transpose, METH_VARARGS, (char *)"\n"
+		"Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(mfem::Table const & A, mfem::Table & At)\n"
+		"Transpose(mfem::Table const & A) -> mfem::Table\n"
+		"Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(intArray A, mfem::Table & At)\n"
+		"Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix\n"
+		"Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *\n"
+		""},
+	 { (char *)"Mult", _wrap_Mult, METH_VARARGS, (char *)"\n"
+		"Mult(mfem::Table const & A, mfem::Table const & B, mfem::Table & C)\n"
+		"Mult(mfem::Table const & A, mfem::Table const & B) -> mfem::Table\n"
+		"Mult(mfem::DenseMatrix const & b, mfem::DenseMatrix const & c, mfem::DenseMatrix & a)\n"
+		"Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B, mfem::SparseMatrix * OAB=None) -> mfem::SparseMatrix\n"
+		"Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix\n"
+		"Mult(mfem::BlockMatrix const & A, mfem::BlockMatrix const & B) -> mfem::BlockMatrix *\n"
+		""},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5334,6 +5365,7 @@ static PyMethodDef SwigMethods[] = {
 static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
@@ -5346,6 +5378,7 @@ static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_mfem__ArrayT_int_t,
@@ -5358,6 +5391,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Vector,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5370,6 +5404,7 @@ static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_mfem__ArrayT_int_t,

@@ -103,6 +103,8 @@ except __builtin__.Exception:
 
 
 class intp(_object):
+    """Proxy of C++ intp class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
     __swig_getmethods__ = {}
@@ -110,6 +112,7 @@ class intp(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(intp self) -> intp"""
         this = _ncmesh.new_intp()
         try:
             self.this.append(this)
@@ -119,25 +122,35 @@ class intp(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(intp self, int value)"""
         return _ncmesh.intp_assign(self, value)
 
+
     def value(self):
+        """value(intp self) -> int"""
         return _ncmesh.intp_value(self)
 
+
     def cast(self):
+        """cast(intp self) -> int *"""
         return _ncmesh.intp_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_ncmesh.intp_frompointer)
-    else:
-        frompointer = _ncmesh.intp_frompointer
+
+
+    def frompointer(t):
+        """frompointer(int * t) -> intp"""
+        return _ncmesh.intp_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 intp_swigregister = _ncmesh.intp_swigregister
 intp_swigregister(intp)
 
 def intp_frompointer(t):
+    """intp_frompointer(int * t) -> intp"""
     return _ncmesh.intp_frompointer(t)
-intp_frompointer = _ncmesh.intp_frompointer
 
 class doublep(_object):
+    """Proxy of C++ doublep class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
     __swig_getmethods__ = {}
@@ -145,6 +158,7 @@ class doublep(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(doublep self) -> doublep"""
         this = _ncmesh.new_doublep()
         try:
             self.this.append(this)
@@ -154,29 +168,36 @@ class doublep(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(doublep self, double value)"""
         return _ncmesh.doublep_assign(self, value)
 
+
     def value(self):
+        """value(doublep self) -> double"""
         return _ncmesh.doublep_value(self)
 
+
     def cast(self):
+        """cast(doublep self) -> double *"""
         return _ncmesh.doublep_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_ncmesh.doublep_frompointer)
-    else:
-        frompointer = _ncmesh.doublep_frompointer
+
+
+    def frompointer(t):
+        """frompointer(double * t) -> doublep"""
+        return _ncmesh.doublep_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 doublep_swigregister = _ncmesh.doublep_swigregister
 doublep_swigregister(doublep)
 
 def doublep_frompointer(t):
+    """doublep_frompointer(double * t) -> doublep"""
     return _ncmesh.doublep_frompointer(t)
-doublep_frompointer = _ncmesh.doublep_frompointer
 
 import mfem._ser.mesh
 import mfem._ser.matrix
 import mfem._ser.vector
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.mem_manager
 import mfem._ser.operators
 import mfem._ser.gridfunc
@@ -479,16 +500,6 @@ class NCMesh(_object):
         return _ncmesh.NCMesh_GetElementDepth(self, i)
 
 
-    def PrintVertexParents(self, out):
-        """PrintVertexParents(NCMesh self, std::ostream & out)"""
-        return _ncmesh.NCMesh_PrintVertexParents(self, out)
-
-
-    def PrintCoarseElements(self, out):
-        """PrintCoarseElements(NCMesh self, std::ostream & out)"""
-        return _ncmesh.NCMesh_PrintCoarseElements(self, out)
-
-
     def LoadVertexParents(self, input):
         """LoadVertexParents(NCMesh self, std::istream & input)"""
         return _ncmesh.NCMesh_LoadVertexParents(self, input)
@@ -519,10 +530,32 @@ class NCMesh(_object):
         return _ncmesh.NCMesh_PrintMemoryDetail(self)
 
 
+    def PrintVertexParents(self, *args):
+        """
+        PrintVertexParents(NCMesh self, std::ostream & out)
+        PrintVertexParents(NCMesh self, char const * file, int precision=8)
+        PrintVertexParents(NCMesh self, char const * file)
+        PrintVertexParents(NCMesh self)
+        """
+        return _ncmesh.NCMesh_PrintVertexParents(self, *args)
+
+
+    def PrintCoarseElements(self, *args):
+        """
+        PrintCoarseElements(NCMesh self, std::ostream & out)
+        PrintCoarseElements(NCMesh self, char const * file, int precision=8)
+        PrintCoarseElements(NCMesh self, char const * file)
+        PrintCoarseElements(NCMesh self)
+        """
+        return _ncmesh.NCMesh_PrintCoarseElements(self, *args)
+
+
     def PrintStats(self, *args):
         """
         PrintStats(NCMesh self, std::ostream & out)
         PrintStats(NCMesh self)
+        PrintStats(NCMesh self, char const * file, int precision=8)
+        PrintStats(NCMesh self, char const * file)
         """
         return _ncmesh.NCMesh_PrintStats(self, *args)
 

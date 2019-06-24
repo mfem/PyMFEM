@@ -3451,35 +3451,35 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[1]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[2]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[3]
-#define SWIGTYPE_p_mfem__Operator swig_types[4]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[5]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[6]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[7]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[8]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[9]
-#define SWIGTYPE_p_mfem__Solver swig_types[10]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[11]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[12]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[13]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[14]
-#define SWIGTYPE_p_mfem__Vector swig_types[15]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[16]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[17]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[18]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[19]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[20]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[21]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[22]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[23]
-#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[24]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[25]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[26]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[27]
-#define SWIGTYPE_p_std__ostream swig_types[28]
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[2]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[3]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[4]
+#define SWIGTYPE_p_mfem__Operator swig_types[5]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[6]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[7]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[8]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[9]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[10]
+#define SWIGTYPE_p_mfem__Solver swig_types[11]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[12]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[13]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[14]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[15]
+#define SWIGTYPE_p_mfem__Vector swig_types[16]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[17]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[18]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[19]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[20]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[21]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[22]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[23]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[24]
+#define SWIGTYPE_p_p_mfem__SparseMatrix swig_types[25]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[26]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[27]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[28]
 static swig_type_info *swig_types[30];
 static swig_module_info swig_module = {swig_types, 29, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
@@ -3588,7 +3588,7 @@ namespace swig {
 
 #include <fstream>  
 #include <iostream>
-#include "iostream_typemap.hpp"      
+#include "io_stream.hpp"      
 #include "config/config.hpp"  
 #include "linalg/hypre.hpp"
 #include "linalg/handle.hpp"  
@@ -6012,8 +6012,8 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -6025,14 +6025,21 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_PrintMatlab" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_PrintMatlab" "', argument " "2"" of type '" "std::ostream &""'"); 
+  {
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
+    }
+    else {
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_PrintMatlab" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -6065,8 +6072,18 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_0(PyObject *SWIGUNUS
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
   return NULL;
 }
 
@@ -6078,8 +6095,8 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -6090,14 +6107,21 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_PrintMatlab" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_PrintMatlab" "', argument " "2"" of type '" "std::ostream &""'"); 
+  {
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
+    }
+    else {
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_PrintMatlab" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -6124,8 +6148,18 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_1(PyObject *SWIGUNUS
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
   return NULL;
 }
 
@@ -6136,8 +6170,8 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_2(PyObject *SWIGUNUS
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -6147,14 +6181,21 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_2(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorHandle_PrintMatlab" "', argument " "1"" of type '" "mfem::OperatorHandle const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OperatorHandle * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorHandle_PrintMatlab" "', argument " "2"" of type '" "std::ostream &""'"); 
+  {
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
+    }
+    else {
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
+    }
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorHandle_PrintMatlab" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     try {
       (*arg1)->PrintMatlab(*arg2);
@@ -6175,8 +6216,18 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab__SWIG_2(PyObject *SWIGUNUS
     }	 
   }
   resultobj = SWIG_Py_Void();
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
   return resultobj;
 fail:
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
   return NULL;
 }
 
@@ -6199,9 +6250,15 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
-      _v = SWIG_CheckState(res);
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
       if (_v) {
         return _wrap_OperatorHandle_PrintMatlab__SWIG_2(self, args);
       }
@@ -6213,9 +6270,15 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
-      _v = SWIG_CheckState(res);
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
@@ -6237,9 +6300,15 @@ SWIGINTERN PyObject *_wrap_OperatorHandle_PrintMatlab(PyObject *self, PyObject *
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__OperatorHandle, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, 0);
-      _v = SWIG_CheckState(res);
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
@@ -6444,6 +6513,7 @@ static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSED
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
@@ -6472,9 +6542,9 @@ static swig_type_info _swigt__p_p_mfem__ConstrainedOperator = {"_p_p_mfem__Const
 static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__SparseMatrix = {"_p_p_mfem__SparseMatrix", "mfem::SparseMatrix **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ConstrainedOperator,
@@ -6503,9 +6573,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__TimeDependentOperator,
   &_swigt__p_p_mfem__TransposeOperator,
   &_swigt__p_p_mfem__TripleProductOperator,
-  &_swigt__p_std__ostream,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {{&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
@@ -6534,9 +6604,9 @@ static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__
 static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__SparseMatrix[] = {  {&_swigt__p_p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ConstrainedOperator,
@@ -6565,7 +6635,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_mfem__TimeDependentOperator,
   _swigc__p_p_mfem__TransposeOperator,
   _swigc__p_p_mfem__TripleProductOperator,
-  _swigc__p_std__ostream,
 };
 
 

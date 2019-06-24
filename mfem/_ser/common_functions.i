@@ -1,7 +1,7 @@
 %module(package="mfem._ser") common_functions
 
 %{
-#include "iostream_typemap.hpp"          
+#include "io_stream.hpp"          
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"
 #include "linalg/blockmatrix.hpp"

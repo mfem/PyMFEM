@@ -118,6 +118,9 @@ to find more detail of the MFEM libirary.
       so that follwoing can be wrappeds
 	  GridFucntion(fes, vec.GetData() + sc)
       the same is used for ParGridFunction
+
+      GridFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)
+      QuadratureFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)      
 	     
   4-4) mfem::Mesh
          Wrapper of following methods are customized to
@@ -174,6 +177,14 @@ to find more detail of the MFEM libirary.
 	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 	    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
 
+         Following method filename
+	    virtual void PrintXG(std::ostream &out = mfem::out) const;
+            virtual void Print(std::ostream &out = mfem::out) const { Printer(out); }
+            void PrintVTK(std::ostream &out);	    
+         Following method accept empty argument (=std:cout) and filename
+            virtual void PrintInfo(std::ostream &out = mfem::out)
+
+
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.
@@ -184,8 +195,22 @@ to find more detail of the MFEM libirary.
 
          GetIArray, GetJArray, and GetDataArray. These methos gives numpy
 	 array of CSR matrix data. It borrows data from SparseMatrix.
-	 Therefore, be careful not to access after the matrix is freeed.	 
-	 
+	 Therefore, be careful not to access after the matrix is freeed.
+
+         Following method accept empty argument (=std:cout) and filename
+           void Print(std::ostream &out = mfem::out, int width_ = 4) const;
+           void PrintMatlab(std::ostream &out = mfem::out) const;
+           void PrintMM(std::ostream &out = mfem::out) const;
+           void PrintCSR(std::ostream &out) const;
+           void PrintCSR2(std::ostream &out) const;
+           void PrintInfo(std::ostream &out) const;
+
+        Constructor accept numpy array
+           indptr = np.array([0, 2, 3, 6], dtype=np.int32)
+           indices = np.array([0, 2, 2, 0, 1, 2], dtype=np.int32)
+           data = np.array([1, 2, 3, 4, 5, 6], dtype=float)
+           mat = mfem.SparseMatrix([indptr, indices, data, 3,3])
+
   4-6) densemat
          Add functions are accessed as add_dense.
 	 

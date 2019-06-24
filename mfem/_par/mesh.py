@@ -105,7 +105,6 @@ except __builtin__.Exception:
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.ncmesh
@@ -1038,31 +1037,6 @@ class Mesh(_object):
         return _mesh.Mesh_GetSequence(self)
 
 
-    def PrintXG(self, *args):
-        """
-        PrintXG(Mesh self, std::ostream & out)
-        PrintXG(Mesh self)
-        """
-        return _mesh.Mesh_PrintXG(self, *args)
-
-
-    def Print(self, *args):
-        """
-        Print(Mesh self, std::ostream & out)
-        Print(Mesh self)
-        """
-        return _mesh.Mesh_Print(self, *args)
-
-
-    def PrintVTK(self, *args):
-        """
-        PrintVTK(Mesh self, std::ostream & out)
-        PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)
-        PrintVTK(Mesh self, std::ostream & out, int ref)
-        """
-        return _mesh.Mesh_PrintVTK(self, *args)
-
-
     def GetElementColoring(self, colors, el0=0):
         """
         GetElementColoring(Mesh self, intArray colors, int el0=0)
@@ -1168,14 +1142,6 @@ class Mesh(_object):
         return _mesh.Mesh_PrintCharacteristics(self, *args)
 
 
-    def PrintInfo(self, *args):
-        """
-        PrintInfo(Mesh self, std::ostream & out)
-        PrintInfo(Mesh self)
-        """
-        return _mesh.Mesh_PrintInfo(self, *args)
-
-
     def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
         """
         FindPoints(Mesh self, DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int
@@ -1272,6 +1238,47 @@ class Mesh(_object):
     def GetDomainArray(self, idx):
         """GetDomainArray(Mesh self, int idx) -> PyObject *"""
         return _mesh.Mesh_GetDomainArray(self, idx)
+
+
+    def PrintInfo(self, *args):
+        """
+        PrintInfo(Mesh self, std::ostream & out)
+        PrintInfo(Mesh self)
+        PrintInfo(Mesh self, char const * file, int precision=8)
+        PrintInfo(Mesh self, char const * file)
+        """
+        return _mesh.Mesh_PrintInfo(self, *args)
+
+
+    def Print(self, *args):
+        """
+        Print(Mesh self, std::ostream & out)
+        Print(Mesh self)
+        Print(Mesh self, char const * file, int precision=8)
+        Print(Mesh self, char const * file)
+        """
+        return _mesh.Mesh_Print(self, *args)
+
+
+    def PrintXG(self, *args):
+        """
+        PrintXG(Mesh self, std::ostream & out)
+        PrintXG(Mesh self)
+        PrintXG(Mesh self, char const * file, int precision=8)
+        PrintXG(Mesh self, char const * file)
+        """
+        return _mesh.Mesh_PrintXG(self, *args)
+
+
+    def PrintVTK(self, *args):
+        """
+        PrintVTK(Mesh self, std::ostream & out)
+        PrintVTK(Mesh self, std::ostream & out, int ref, int field_data=0)
+        PrintVTK(Mesh self, std::ostream & out, int ref)
+        PrintVTK(Mesh self, char const * file, int precision=8)
+        PrintVTK(Mesh self, char const * file)
+        """
+        return _mesh.Mesh_PrintVTK(self, *args)
 
 Mesh_swigregister = _mesh.Mesh_swigregister
 Mesh_swigregister(Mesh)

@@ -105,7 +105,6 @@ except __builtin__.Exception:
 import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 class Operator(_object):
     """Proxy of C++ mfem::Operator class."""
 
@@ -193,15 +192,6 @@ class Operator(_object):
         """RecoverFEMSolution(Operator self, Vector X, Vector b, Vector x)"""
         return _operators.Operator_RecoverFEMSolution(self, X, b, x)
 
-
-    def PrintMatlab(self, out, n=0, m=0):
-        """
-        PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
-        PrintMatlab(Operator self, std::ostream & out, int n=0)
-        PrintMatlab(Operator self, std::ostream & out)
-        """
-        return _operators.Operator_PrintMatlab(self, out, n, m)
-
     __swig_destroy__ = _operators.delete_Operator
     __del__ = lambda self: None
     ANY_TYPE = _operators.Operator_ANY_TYPE
@@ -217,6 +207,17 @@ class Operator(_object):
     def GetType(self):
         """GetType(Operator self) -> mfem::Operator::Type"""
         return _operators.Operator_GetType(self)
+
+
+    def PrintMatlab(self, *args):
+        """
+        PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
+        PrintMatlab(Operator self, std::ostream & out, int n=0)
+        PrintMatlab(Operator self, std::ostream & out)
+        PrintMatlab(Operator self, char const * file, int precision=8)
+        PrintMatlab(Operator self, char const * file)
+        """
+        return _operators.Operator_PrintMatlab(self, *args)
 
     def __disown__(self):
         self.this.disown()

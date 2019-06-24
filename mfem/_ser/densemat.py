@@ -104,7 +104,6 @@ except __builtin__.Exception:
 
 import mfem._ser.mem_manager
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.vector
 import mfem._ser.operators
 import mfem._ser.matrix
@@ -565,32 +564,6 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
         return _densemat.DenseMatrix_CheckFinite(self)
 
 
-    def Print(self, *args):
-        """
-        Print(DenseMatrix self, std::ostream & out, int width_=4)
-        Print(DenseMatrix self, std::ostream & out)
-        Print(DenseMatrix self)
-        """
-        return _densemat.DenseMatrix_Print(self, *args)
-
-
-    def PrintMatlab(self, *args):
-        """
-        PrintMatlab(DenseMatrix self, std::ostream & out)
-        PrintMatlab(DenseMatrix self)
-        """
-        return _densemat.DenseMatrix_PrintMatlab(self, *args)
-
-
-    def PrintT(self, *args):
-        """
-        PrintT(DenseMatrix self, std::ostream & out, int width_=4)
-        PrintT(DenseMatrix self, std::ostream & out)
-        PrintT(DenseMatrix self)
-        """
-        return _densemat.DenseMatrix_PrintT(self, *args)
-
-
     def TestInversion(self):
         """TestInversion(DenseMatrix self)"""
         return _densemat.DenseMatrix_TestInversion(self)
@@ -646,6 +619,38 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
     def GetDataArray(self):
         """GetDataArray(DenseMatrix self) -> PyObject *"""
         return _densemat.DenseMatrix_GetDataArray(self)
+
+
+    def Print(self, *args):
+        """
+        Print(DenseMatrix self, std::ostream & out, int width_=4)
+        Print(DenseMatrix self, std::ostream & out)
+        Print(DenseMatrix self)
+        Print(DenseMatrix self, char const * file, int precision=8)
+        Print(DenseMatrix self, char const * file)
+        """
+        return _densemat.DenseMatrix_Print(self, *args)
+
+
+    def PrintT(self, *args):
+        """
+        PrintT(DenseMatrix self, std::ostream & out, int width_=4)
+        PrintT(DenseMatrix self, std::ostream & out)
+        PrintT(DenseMatrix self)
+        PrintT(DenseMatrix self, char const * file, int precision=8)
+        PrintT(DenseMatrix self, char const * file)
+        """
+        return _densemat.DenseMatrix_PrintT(self, *args)
+
+
+    def PrintMatlab(self, *args):
+        """
+        PrintMatlab(DenseMatrix self, std::ostream & out)
+        PrintMatlab(DenseMatrix self)
+        PrintMatlab(DenseMatrix self, char const * file, int precision=8)
+        PrintMatlab(DenseMatrix self, char const * file)
+        """
+        return _densemat.DenseMatrix_PrintMatlab(self, *args)
 
 DenseMatrix_swigregister = _densemat.DenseMatrix_swigregister
 DenseMatrix_swigregister(DenseMatrix)

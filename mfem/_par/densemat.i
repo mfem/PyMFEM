@@ -12,21 +12,25 @@
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "iostream_typemap.hpp"
+#include "io_stream.hpp"
 %}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
 %}
-//%import "general/array.hpp"
+
+%include "exception.i"
 %import "mem_manager.i"
 
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
+%import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %ignore mfem::DenseMatrix::operator=;
 %ignore mfem::DenseTensor::operator=;
@@ -179,3 +183,13 @@ def __getitem__(self, *args):
   }
 };
 
+/*
+  virtual void Print(std::ostream &out = mfem::out, int width_ = 4) const;
+  virtual void PrintMatlab(std::ostream &out = mfem::out) const;
+  virtual void PrintT(std::ostream &out = mfem::out, int width_ = 4) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(DenseMatrix, Print)
+OSTREAM_ADD_DEFAULT_FILE(DenseMatrix, PrintT)
+OSTREAM_ADD_DEFAULT_FILE(DenseMatrix, PrintMatlab)
+#endif

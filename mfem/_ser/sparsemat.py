@@ -104,7 +104,6 @@ except __builtin__.Exception:
 
 import mfem._ser.mem_manager
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.vector
 import mfem._ser.operators
 import mfem._ser.matrix
@@ -785,8 +784,8 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         Print(SparseMatrix self, std::ostream & out, int width_=4)
         Print(SparseMatrix self, std::ostream & out)
         Print(SparseMatrix self)
+        Print(SparseMatrix self, char const * file, int precision=8)
         Print(SparseMatrix self, char const * file)
-        Print(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_Print(self, *args)
 
@@ -795,8 +794,8 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         """
         PrintMatlab(SparseMatrix self, std::ostream & out)
         PrintMatlab(SparseMatrix self)
+        PrintMatlab(SparseMatrix self, char const * file, int precision=8)
         PrintMatlab(SparseMatrix self, char const * file)
-        PrintMatlab(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintMatlab(self, *args)
 
@@ -805,8 +804,8 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         """
         PrintMM(SparseMatrix self, std::ostream & out)
         PrintMM(SparseMatrix self)
+        PrintMM(SparseMatrix self, char const * file, int precision=8)
         PrintMM(SparseMatrix self, char const * file)
-        PrintMM(SparseMatrix self)
         """
         return _sparsemat.SparseMatrix_PrintMM(self, *args)
 
@@ -814,6 +813,7 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     def PrintCSR(self, *args):
         """
         PrintCSR(SparseMatrix self, std::ostream & out)
+        PrintCSR(SparseMatrix self, char const * file, int precision=8)
         PrintCSR(SparseMatrix self, char const * file)
         PrintCSR(SparseMatrix self)
         """
@@ -823,6 +823,7 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     def PrintCSR2(self, *args):
         """
         PrintCSR2(SparseMatrix self, std::ostream & out)
+        PrintCSR2(SparseMatrix self, char const * file, int precision=8)
         PrintCSR2(SparseMatrix self, char const * file)
         PrintCSR2(SparseMatrix self)
         """
@@ -832,6 +833,7 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     def PrintInfo(self, *args):
         """
         PrintInfo(SparseMatrix self, std::ostream & out)
+        PrintInfo(SparseMatrix self, char const * file, int precision=8)
         PrintInfo(SparseMatrix self, char const * file)
         PrintInfo(SparseMatrix self)
         """

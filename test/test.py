@@ -69,7 +69,7 @@ def run_file(command, num = 5):
     p = sp.Popen(command,stdout=sp.PIPE, stderr=sp.STDOUT, stdin=sp.PIPE)
     p.stdin.write(b'q\n')
     lines, errs = p.communicate()
-    lines = lines.decode().split('\n')
+    lines = lines.decode('utf-8').split('\n')
     t2 = time.time()
     sys.stdout.flush()
     lines = [l for l in lines if len(l.strip()) != 0]

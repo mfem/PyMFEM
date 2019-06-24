@@ -1,7 +1,6 @@
 %module(package="mfem._par") common_functions
 
 %{
-#include "iostream_typemap.hpp"
 #include "linalg/blockmatrix.hpp"
 #include "linalg/sparsemat.hpp"
 #include "linalg/densemat.hpp"

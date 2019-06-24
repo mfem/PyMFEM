@@ -3451,169 +3451,170 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_double swig_types[1]
-#define SWIGTYPE_p_doublep swig_types[2]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_intp swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t swig_types[9]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[11]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[12]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[13]
-#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[14]
-#define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[15]
-#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[16]
-#define SWIGTYPE_p_mfem__BiLinear3DFiniteElement swig_types[17]
-#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[18]
-#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[19]
-#define SWIGTYPE_p_mfem__BiQuadratic3DFiniteElement swig_types[20]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[21]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[22]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[23]
-#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[24]
-#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[25]
-#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[26]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[27]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[28]
-#define SWIGTYPE_p_mfem__Element swig_types[29]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[30]
-#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[31]
-#define SWIGTYPE_p_mfem__FiniteElement swig_types[32]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[33]
-#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[34]
-#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[35]
-#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[36]
-#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[37]
-#define SWIGTYPE_p_mfem__GeometricFactors swig_types[38]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[39]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[40]
-#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[41]
-#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[42]
-#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[43]
-#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[44]
-#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[45]
-#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[46]
-#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[47]
-#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[48]
-#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[49]
-#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[50]
-#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[51]
-#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[52]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[53]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[54]
-#define SWIGTYPE_p_mfem__InverseElementTransformation swig_types[55]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[56]
-#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[57]
-#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[58]
-#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[59]
-#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[60]
-#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[61]
-#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[62]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[63]
-#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[64]
-#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[65]
-#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[66]
-#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[67]
-#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[68]
-#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[69]
-#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[70]
-#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[71]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[72]
-#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[73]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[74]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[75]
-#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[76]
-#define SWIGTYPE_p_mfem__Mesh swig_types[77]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[78]
-#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[79]
-#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[80]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[81]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[82]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[83]
-#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[84]
-#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[85]
-#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[86]
-#define SWIGTYPE_p_mfem__NURBSExtension swig_types[87]
-#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[88]
-#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[89]
-#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[90]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[91]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[92]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[93]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[94]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[95]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[96]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[97]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[98]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[99]
-#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[100]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[101]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[102]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[103]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[104]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[105]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[106]
-#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[107]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[108]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[109]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[110]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[111]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[112]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[113]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[114]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[115]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[116]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[117]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[118]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[119]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[120]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[121]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[122]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[123]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[124]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[125]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[126]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[127]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[128]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[129]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[130]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[131]
-#define SWIGTYPE_p_mfem__STable swig_types[132]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[133]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[134]
-#define SWIGTYPE_p_mfem__Table swig_types[135]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[136]
-#define SWIGTYPE_p_mfem__Vector swig_types[137]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[138]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[139]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[140]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[141]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[142]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[143]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[144]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[145]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[146]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[147]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[148]
-#define SWIGTYPE_p_mfem__Vertex swig_types[149]
-#define SWIGTYPE_p_mfem__named_ifgzstream swig_types[150]
-#define SWIGTYPE_p_p_mfem__Element swig_types[151]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[152]
-#define SWIGTYPE_p_p_mfem__Mesh swig_types[153]
-#define SWIGTYPE_p_pri_t swig_types[154]
-#define SWIGTYPE_p_quad_t swig_types[155]
-#define SWIGTYPE_p_seg_t swig_types[156]
-#define SWIGTYPE_p_std__istream swig_types[157]
-#define SWIGTYPE_p_std__ostream swig_types[158]
-#define SWIGTYPE_p_tet_t swig_types[159]
-#define SWIGTYPE_p_tri_t swig_types[160]
-static swig_type_info *swig_types[162];
-static swig_module_info swig_module = {swig_types, 161, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_doublep swig_types[3]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[4]
+#define SWIGTYPE_p_hex_t swig_types[5]
+#define SWIGTYPE_p_int swig_types[6]
+#define SWIGTYPE_p_intp swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t swig_types[10]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[13]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[14]
+#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[15]
+#define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[16]
+#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[17]
+#define SWIGTYPE_p_mfem__BiLinear3DFiniteElement swig_types[18]
+#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[19]
+#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[20]
+#define SWIGTYPE_p_mfem__BiQuadratic3DFiniteElement swig_types[21]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[22]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[23]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[24]
+#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[25]
+#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[26]
+#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[27]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[28]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[29]
+#define SWIGTYPE_p_mfem__Element swig_types[30]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[31]
+#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[32]
+#define SWIGTYPE_p_mfem__FiniteElement swig_types[33]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[34]
+#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[35]
+#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[36]
+#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[37]
+#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[38]
+#define SWIGTYPE_p_mfem__GeometricFactors swig_types[39]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[40]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[41]
+#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[42]
+#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[43]
+#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[44]
+#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[45]
+#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[46]
+#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[47]
+#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[48]
+#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[49]
+#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[50]
+#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[51]
+#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[52]
+#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[53]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[54]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[55]
+#define SWIGTYPE_p_mfem__InverseElementTransformation swig_types[56]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[57]
+#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[58]
+#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[59]
+#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[60]
+#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[61]
+#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[62]
+#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[63]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[64]
+#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[65]
+#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[66]
+#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[67]
+#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[68]
+#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[69]
+#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[70]
+#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[71]
+#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[72]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[73]
+#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[74]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[75]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[76]
+#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[77]
+#define SWIGTYPE_p_mfem__Mesh swig_types[78]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[79]
+#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[80]
+#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[81]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[82]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[83]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[84]
+#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[85]
+#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[86]
+#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[87]
+#define SWIGTYPE_p_mfem__NURBSExtension swig_types[88]
+#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[89]
+#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[90]
+#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[91]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[92]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[93]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[94]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[95]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[96]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[97]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[98]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[99]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[100]
+#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[101]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[102]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[103]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[104]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[105]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[106]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[107]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[108]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[109]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[110]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[111]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[112]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[113]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[114]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[115]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[116]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[117]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[118]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[119]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[120]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[121]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[122]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[123]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[124]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[125]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[126]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[127]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[128]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[129]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[130]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[131]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[132]
+#define SWIGTYPE_p_mfem__STable swig_types[133]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[134]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[135]
+#define SWIGTYPE_p_mfem__Table swig_types[136]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[137]
+#define SWIGTYPE_p_mfem__Vector swig_types[138]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[139]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[140]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[141]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[142]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[143]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[144]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[145]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[146]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[147]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[148]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[149]
+#define SWIGTYPE_p_mfem__Vertex swig_types[150]
+#define SWIGTYPE_p_mfem__named_ifgzstream swig_types[151]
+#define SWIGTYPE_p_p_mfem__Element swig_types[152]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[153]
+#define SWIGTYPE_p_p_mfem__Mesh swig_types[154]
+#define SWIGTYPE_p_pri_t swig_types[155]
+#define SWIGTYPE_p_quad_t swig_types[156]
+#define SWIGTYPE_p_seg_t swig_types[157]
+#define SWIGTYPE_p_std__istream swig_types[158]
+#define SWIGTYPE_p_std__ostream swig_types[159]
+#define SWIGTYPE_p_tet_t swig_types[160]
+#define SWIGTYPE_p_tri_t swig_types[161]
+static swig_type_info *swig_types[163];
+static swig_module_info swig_module = {swig_types, 162, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3731,9 +3732,9 @@ namespace swig {
 mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
-#include "iostream_typemap.hpp"         
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp" 
+#include "pycoefficient.hpp"
+#include "io_stream.hpp"   
 
 
 typedef int intp;
@@ -4164,6 +4165,7 @@ SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_37(int nx,int ny,char const *type,int
      return mesh;       
    }
 SWIGINTERN void mfem_Mesh_PrintToFile(mfem::Mesh const *self,char const *mesh_file,int const precision){
+        std::cerr << "\nWarning Deprecated : Use Print(filename) insteead of SaveToFile \n";     
 	std::ofstream mesh_ofs(mesh_file);	
         mesh_ofs.precision(precision);
         self->Print(mesh_ofs);	
@@ -4250,6 +4252,50 @@ SWIGINTERN PyObject *mfem_Mesh_GetDomainArray(mfem::Mesh const *self,int idx){
      }
      return array;
    }
+SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintInfo(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_Print__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> Print(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_PrintXG__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintXG(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_3(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintVTK(ofile);
+  ofile.close();
+  }
 
 SWIGINTERNINLINE PyObject *
 SWIG_FromCharPtrAndSize(const char* carray, size_t size)
@@ -22047,7 +22093,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -22058,15 +22105,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -22090,12 +22140,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -22140,62 +22194,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_PrintXG__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_PrintXG__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintXG'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::PrintXG(std::ostream &) const\n"
-    "    mfem::Mesh::PrintXG() const\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -22206,15 +22212,18 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -22238,12 +22247,16 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -22288,62 +22301,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_Print__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_Print__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_Print'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::Print(std::ostream &) const\n"
-    "    mfem::Mesh::Print() const\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -22354,15 +22319,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -22386,12 +22354,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -22405,7 +22377,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22418,15 +22391,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -22462,12 +22438,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -22480,7 +22460,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22492,15 +22473,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -22530,121 +22514,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_PrintVTK__SWIG_0(self, args);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_Mesh_PrintVTK__SWIG_2(self, args);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            return _wrap_Mesh_PrintVTK__SWIG_1(self, args);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintVTK'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::PrintVTK(std::ostream &)\n"
-    "    mfem::Mesh::PrintVTK(std::ostream &,int,int)\n"
-    "    mfem::Mesh::PrintVTK(std::ostream &,int)\n");
-  return 0;
 }
 
 
@@ -22828,7 +22709,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  char const *filename3 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22846,15 +22728,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename3) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      std::ofstream  out(filename3); 
-      arg3 = &out;
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -22884,12 +22769,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -22904,7 +22793,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  char const *filename3 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -22921,15 +22811,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename3) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      std::ofstream  out(filename3); 
-      arg3 = &out;
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -22953,12 +22846,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -22987,10 +22884,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyByteArray_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -23010,10 +22909,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyByteArray_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -23052,7 +22953,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  char const *filename3 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -23070,15 +22972,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename3) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      std::ofstream  out(filename3); 
-      arg3 = &out;
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -23108,12 +23013,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -23128,7 +23037,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  char const *filename3 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -23145,15 +23055,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename3) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      std::ofstream  out(filename3); 
-      arg3 = &out;
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -23177,12 +23090,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -23211,10 +23128,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyByteArray_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -23234,10 +23153,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyByteArray_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -23275,7 +23196,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  char const *filename3 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -23295,15 +23217,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg2 = reinterpret_cast< mfem::Table * >(argp2);
   {
-    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename3) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      std::ofstream  out(filename3); 
-      arg3 = &out;
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -23327,12 +23252,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -24590,7 +24519,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   std::ostream *arg3 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  char const *filename3 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -24611,15 +24541,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
-    filename3 = PyByteArray_AsString(obj2); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename3) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      std::ofstream  out(filename3); 
-      arg3 = &out;
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -24643,12 +24576,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -24666,7 +24603,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  char const *filename4 ;
+  PyMFEM::wFILE *temp4 = 0 ;
+  std::ofstream out4 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -24689,15 +24627,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
-    filename4 = PyByteArray_AsString(obj3); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj3, (void **) &temp4, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename4) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp4->isSTDOUT() == 1) {
+      arg4 = &std::cout;
     }
     else {
-      std::ofstream  out(filename4); 
-      arg4 = &out;
+      out4.open(temp4->getFilename());
+      out4.precision(temp4->getPrecision());
+      arg4 = &out4;
     }
   }
   {
@@ -24721,12 +24662,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg4;
+    if (temp4->isSTDOUT() != 1) {
+      out4.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg4;
+    if (temp4->isSTDOUT() != 1) {
+      out4.close();
+    }
   }
   return NULL;
 }
@@ -24945,10 +24890,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyByteArray_Check(argv[3])){
-              _v = 1;
-            } else {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[3], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+              PyErr_Clear();
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -24976,7 +24923,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -24987,15 +24935,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -25019,12 +24970,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -25066,55 +25021,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_PrintInfo__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_PrintInfo__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintInfo'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::PrintInfo(std::ostream &)\n"
-    "    mfem::Mesh::PrintInfo()\n");
-  return 0;
 }
 
 
@@ -28031,6 +27937,864 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_PrintInfo",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintInfo" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintInfo" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_PrintInfo__SWIG_2(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_PrintInfo",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintInfo" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintInfo" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_PrintInfo__SWIG_2(arg1,(char const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_PrintInfo__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_PrintInfo__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_PrintInfo__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintInfo__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintInfo'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::PrintInfo(std::ostream &)\n"
+    "    mfem::Mesh::PrintInfo()\n"
+    "    mfem::Mesh::PrintInfo(char const *,int)\n"
+    "    mfem::Mesh::PrintInfo(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_Print",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_Print" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_Print__SWIG_2(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_Print",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_Print" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_Print__SWIG_2(arg1,(char const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_Print__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_Print__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_Print__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_Print__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_Print'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::Print(std::ostream &) const\n"
+    "    mfem::Mesh::Print() const\n"
+    "    mfem::Mesh::Print(char const *,int)\n"
+    "    mfem::Mesh::Print(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_PrintXG",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintXG" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintXG" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_PrintXG__SWIG_2(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_PrintXG",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintXG" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintXG" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_PrintXG__SWIG_2(arg1,(char const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_PrintXG__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_PrintXG__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_PrintXG__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintXG__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintXG'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::PrintXG(std::ostream &) const\n"
+    "    mfem::Mesh::PrintXG() const\n"
+    "    mfem::Mesh::PrintXG(char const *,int)\n"
+    "    mfem::Mesh::PrintXG(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_PrintVTK",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintVTK" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintVTK" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_PrintVTK__SWIG_3(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_PrintVTK",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintVTK" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintVTK" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_PrintVTK__SWIG_3(arg1,(char const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_PrintVTK__SWIG_4(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_PrintVTK__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintVTK__SWIG_3(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintVTK__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_Mesh_PrintVTK__SWIG_1(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintVTK'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::PrintVTK(std::ostream &)\n"
+    "    mfem::Mesh::PrintVTK(std::ostream &,int,int)\n"
+    "    mfem::Mesh::PrintVTK(std::ostream &,int)\n"
+    "    mfem::Mesh::PrintVTK(char const *,int)\n"
+    "    mfem::Mesh::PrintVTK(char const *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *Mesh_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
@@ -28042,7 +28806,8 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   std::ostream *arg1 = 0 ;
   mfem::Mesh *arg2 = 0 ;
-  char const *filename1 ;
+  PyMFEM::wFILE *temp1 = 0 ;
+  std::ofstream out1 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -28051,15 +28816,18 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"OO:__lshift__",&obj0,&obj1)) SWIG_fail;
   {
-    filename1 = PyByteArray_AsString(obj0); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj0, (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename1) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp1->isSTDOUT() == 1) {
+      arg1 = &std::cout;
     }
     else {
-      std::ofstream  out(filename1); 
-      arg1 = &out;
+      out1.open(temp1->getFilename());
+      out1.precision(temp1->getPrecision());
+      arg1 = &out1;
     }
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
@@ -28091,12 +28859,16 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
-    delete arg1;
+    if (temp1->isSTDOUT() != 1) {
+      out1.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg1;
+    if (temp1->isSTDOUT() != 1) {
+      out1.close();
+    }
   }
   return NULL;
 }
@@ -28117,10 +28889,12 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyByteArray_Check(argv[0])){
-        _v = 1;
-      } else {
+      void *ptr;
+      if (SWIG_ConvertPtr(argv[0], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+        PyErr_Clear();
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -29707,19 +30481,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_GetRefinementTransforms", _wrap_Mesh_GetRefinementTransforms, METH_VARARGS, (char *)"Mesh_GetRefinementTransforms(Mesh self) -> CoarseFineTransformations"},
 	 { (char *)"Mesh_GetLastOperation", _wrap_Mesh_GetLastOperation, METH_VARARGS, (char *)"Mesh_GetLastOperation(Mesh self) -> mfem::Mesh::Operation"},
 	 { (char *)"Mesh_GetSequence", _wrap_Mesh_GetSequence, METH_VARARGS, (char *)"Mesh_GetSequence(Mesh self) -> long"},
-	 { (char *)"Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, (char *)"\n"
-		"PrintXG(std::ostream & out)\n"
-		"Mesh_PrintXG(Mesh self)\n"
-		""},
-	 { (char *)"Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, (char *)"\n"
-		"Print(std::ostream & out)\n"
-		"Mesh_Print(Mesh self)\n"
-		""},
-	 { (char *)"Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, (char *)"\n"
-		"PrintVTK(std::ostream & out)\n"
-		"PrintVTK(std::ostream & out, int ref, int field_data=0)\n"
-		"Mesh_PrintVTK(Mesh self, std::ostream & out, int ref)\n"
-		""},
 	 { (char *)"Mesh_GetElementColoring", _wrap_Mesh_GetElementColoring, METH_VARARGS, (char *)"\n"
 		"GetElementColoring(intArray colors, int el0=0)\n"
 		"Mesh_GetElementColoring(Mesh self, intArray colors)\n"
@@ -29762,10 +30523,6 @@ static PyMethodDef SwigMethods[] = {
 		"PrintCharacteristics(Vector Vh=None, Vector Vk=None)\n"
 		"PrintCharacteristics(Vector Vh=None)\n"
 		"Mesh_PrintCharacteristics(Mesh self)\n"
-		""},
-	 { (char *)"Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, (char *)"\n"
-		"PrintInfo(std::ostream & out)\n"
-		"Mesh_PrintInfo(Mesh self)\n"
 		""},
 	 { (char *)"Mesh_FindPoints", _wrap_Mesh_FindPoints, METH_VARARGS, (char *)"\n"
 		"FindPoints(DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int\n"
@@ -29825,6 +30582,31 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_GetBdrAttributeArray", _wrap_Mesh_GetBdrAttributeArray, METH_VARARGS, (char *)"Mesh_GetBdrAttributeArray(Mesh self) -> PyObject *"},
 	 { (char *)"Mesh_GetBdrArray", _wrap_Mesh_GetBdrArray, METH_VARARGS, (char *)"Mesh_GetBdrArray(Mesh self, int idx) -> PyObject *"},
 	 { (char *)"Mesh_GetDomainArray", _wrap_Mesh_GetDomainArray, METH_VARARGS, (char *)"Mesh_GetDomainArray(Mesh self, int idx) -> PyObject *"},
+	 { (char *)"Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, (char *)"\n"
+		"PrintInfo(std::ostream & out)\n"
+		"PrintInfo()\n"
+		"PrintInfo(char const * file, int precision=8)\n"
+		"Mesh_PrintInfo(Mesh self, char const * file)\n"
+		""},
+	 { (char *)"Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, (char *)"\n"
+		"Print(std::ostream & out)\n"
+		"Print()\n"
+		"Print(char const * file, int precision=8)\n"
+		"Mesh_Print(Mesh self, char const * file)\n"
+		""},
+	 { (char *)"Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, (char *)"\n"
+		"PrintXG(std::ostream & out)\n"
+		"PrintXG()\n"
+		"PrintXG(char const * file, int precision=8)\n"
+		"Mesh_PrintXG(Mesh self, char const * file)\n"
+		""},
+	 { (char *)"Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, (char *)"\n"
+		"PrintVTK(std::ostream & out)\n"
+		"PrintVTK(std::ostream & out, int ref, int field_data=0)\n"
+		"PrintVTK(std::ostream & out, int ref)\n"
+		"PrintVTK(char const * file, int precision=8)\n"
+		"Mesh_PrintVTK(Mesh self, char const * file)\n"
+		""},
 	 { (char *)"Mesh_swigregister", Mesh_swigregister, METH_VARARGS, NULL},
 	 { (char *)"__lshift__", _wrap___lshift__, METH_VARARGS, (char *)"\n"
 		"__lshift__(std::ostream & out, GridFunction sol) -> std::ostream\n"
@@ -30227,6 +31009,7 @@ static void *_p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement(void *x, int 
 static void *_p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NURBSFiniteElement *) ((mfem::NURBS3DFiniteElement *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
@@ -30390,6 +31173,7 @@ static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_doublep,
@@ -30553,6 +31337,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_tri_t,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},  {&_swigt__p_doublep, _p_doublepTo_p_double, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
@@ -30716,6 +31501,7 @@ static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_doublep,

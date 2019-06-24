@@ -3594,7 +3594,6 @@ namespace swig {
 #include "linalg/handle.hpp"  
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
-#include "iostream_typemap.hpp"  
 #include "pyoperator.hpp"
 #include "io_stream.hpp"  
 
@@ -3951,82 +3950,79 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_SparseMatrix_Print__SWIG_3(mfem::SparseMatrix *self,char const *file){
+SWIGINTERN void mfem_SparseMatrix_Print__SWIG_3(mfem::SparseMatrix *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
-  {
-     std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-     return;
-  }
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
   self -> Print(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_Print__SWIG_4(mfem::SparseMatrix *self){
-  self -> Print(std::cout);
-  }
-SWIGINTERN void mfem_SparseMatrix_PrintMatlab__SWIG_2(mfem::SparseMatrix *self,char const *file){
+SWIGINTERN void mfem_SparseMatrix_PrintMatlab__SWIG_2(mfem::SparseMatrix *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
         std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
         return;
       }
+  ofile.precision(precision);  
   self -> PrintMatlab(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintMatlab__SWIG_3(mfem::SparseMatrix *self){
-  self -> PrintMatlab(std::cout);
-  }
-SWIGINTERN void mfem_SparseMatrix_PrintMM__SWIG_2(mfem::SparseMatrix *self,char const *file){
+SWIGINTERN void mfem_SparseMatrix_PrintMM__SWIG_2(mfem::SparseMatrix *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
         std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
         return;
       }
+  ofile.precision(precision);  
   self -> PrintMM(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintMM__SWIG_3(mfem::SparseMatrix *self){
-  self -> PrintMM(std::cout);
-  }
-SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_1(mfem::SparseMatrix *self,char const *file){
+SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
         std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
         return;
       }
+  ofile.precision(precision);    
   self -> PrintCSR(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_2(mfem::SparseMatrix *self){
+SWIGINTERN void mfem_SparseMatrix_PrintCSR__SWIG_3(mfem::SparseMatrix *self){
   self -> PrintCSR(std::cout);
   }
-SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_1(mfem::SparseMatrix *self,char const *file){
+SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
         std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
         return;
       }
+  ofile.precision(precision);    
   self -> PrintCSR2(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_2(mfem::SparseMatrix *self){
+SWIGINTERN void mfem_SparseMatrix_PrintCSR2__SWIG_3(mfem::SparseMatrix *self){
   self -> PrintCSR2(std::cout);
   }
-SWIGINTERN void mfem_SparseMatrix_PrintInfo__SWIG_1(mfem::SparseMatrix *self,char const *file){
+SWIGINTERN void mfem_SparseMatrix_PrintInfo__SWIG_1(mfem::SparseMatrix *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
         std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
         return;
       }
+  ofile.precision(precision);    
   self -> PrintInfo(ofile);
   ofile.close();
   }
-SWIGINTERN void mfem_SparseMatrix_PrintInfo__SWIG_2(mfem::SparseMatrix *self){
+SWIGINTERN void mfem_SparseMatrix_PrintInfo__SWIG_3(mfem::SparseMatrix *self){
   self -> PrintInfo(std::cout);
   }
 
@@ -13652,7 +13648,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(s
       arg2 = &std::cout;
     }
     else {
-      out2.open(temp2->getFilename()); 
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
       arg2 = &out2;
     }
   }
@@ -13725,7 +13722,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(s
       arg2 = &std::cout;
     }
     else {
-      out2.open(temp2->getFilename()); 
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
       arg2 = &out2;
     }
   }
@@ -13831,7 +13829,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSED
       arg2 = &std::cout;
     }
     else {
-      out2.open(temp2->getFilename()); 
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
       arg2 = &out2;
     }
   }
@@ -13937,7 +13936,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_0(PyObject *SWIGUNUSEDPARM
       arg2 = &std::cout;
     }
     else {
-      out2.open(temp2->getFilename()); 
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
       arg2 = &out2;
     }
   }
@@ -14043,7 +14043,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_0(PyObject *SWIGUNUSEDPAR
       arg2 = &std::cout;
     }
     else {
-      out2.open(temp2->getFilename()); 
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
       arg2 = &out2;
     }
   }
@@ -14110,7 +14111,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_0(PyObject *SWIGUNUSEDPA
       arg2 = &std::cout;
     }
     else {
-      out2.open(temp2->getFilename()); 
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
       arg2 = &out2;
     }
   }
@@ -14177,7 +14179,8 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPA
       arg2 = &std::cout;
     }
     else {
-      out2.open(temp2->getFilename()); 
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
       arg2 = &out2;
     }
   }
@@ -14934,6 +14937,65 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_3(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_Print",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Print" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_SparseMatrix_Print__SWIG_3(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
@@ -14981,45 +15043,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_Print__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:SparseMatrix_Print",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_Print" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    try {
-      mfem_SparseMatrix_Print__SWIG_4(arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[4] = {
@@ -15041,15 +15064,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
       return _wrap_SparseMatrix_Print__SWIG_2(self, args);
     }
   }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_SparseMatrix_Print__SWIG_4(self, args);
-    }
-  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -15059,7 +15073,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_SparseMatrix_Print__SWIG_3(self, args);
+        return _wrap_SparseMatrix_Print__SWIG_4(self, args);
       }
     }
   }
@@ -15080,6 +15094,29 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_Print(PyObject *self, PyObject *args) {
       }
       if (_v) {
         return _wrap_SparseMatrix_Print__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_Print__SWIG_3(self, args);
+        }
       }
     }
   }
@@ -15120,13 +15157,72 @@ fail:
     "    mfem::SparseMatrix::Print(std::ostream &,int) const\n"
     "    mfem::SparseMatrix::Print(std::ostream &) const\n"
     "    mfem::SparseMatrix::Print() const\n"
-    "    mfem::SparseMatrix::Print(char const *)\n"
-    "    mfem::SparseMatrix::Print()\n");
+    "    mfem::SparseMatrix::Print(char const *,int)\n"
+    "    mfem::SparseMatrix::Print(char const *)\n");
   return 0;
 }
 
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_PrintMatlab",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintMatlab" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_SparseMatrix_PrintMatlab__SWIG_2(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -15177,55 +15273,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:SparseMatrix_PrintMatlab",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintMatlab" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    try {
-      mfem_SparseMatrix_PrintMatlab__SWIG_3(arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -15237,15 +15294,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab(PyObject *self, PyObject *ar
       return _wrap_SparseMatrix_PrintMatlab__SWIG_1(self, args);
     }
   }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_SparseMatrix_PrintMatlab__SWIG_3(self, args);
-    }
-  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -15255,7 +15303,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab(PyObject *self, PyObject *ar
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_SparseMatrix_PrintMatlab__SWIG_2(self, args);
+        return _wrap_SparseMatrix_PrintMatlab__SWIG_3(self, args);
       }
     }
   }
@@ -15279,19 +15327,101 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMatlab(PyObject *self, PyObject *ar
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_PrintMatlab__SWIG_2(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_PrintMatlab'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::SparseMatrix::PrintMatlab(std::ostream &) const\n"
     "    mfem::SparseMatrix::PrintMatlab() const\n"
-    "    mfem::SparseMatrix::PrintMatlab(char const *)\n"
-    "    mfem::SparseMatrix::PrintMatlab()\n");
+    "    mfem::SparseMatrix::PrintMatlab(char const *,int)\n"
+    "    mfem::SparseMatrix::PrintMatlab(char const *)\n");
   return 0;
 }
 
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_PrintMM",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintMM" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_PrintMM" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_SparseMatrix_PrintMM__SWIG_2(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -15342,55 +15472,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:SparseMatrix_PrintMM",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintMM" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    try {
-      mfem_SparseMatrix_PrintMM__SWIG_3(arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -15402,15 +15493,6 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM(PyObject *self, PyObject *args) 
       return _wrap_SparseMatrix_PrintMM__SWIG_1(self, args);
     }
   }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_SparseMatrix_PrintMM__SWIG_3(self, args);
-    }
-  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -15420,7 +15502,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM(PyObject *self, PyObject *args) 
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_SparseMatrix_PrintMM__SWIG_2(self, args);
+        return _wrap_SparseMatrix_PrintMM__SWIG_3(self, args);
       }
     }
   }
@@ -15444,19 +15526,101 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintMM(PyObject *self, PyObject *args) 
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_PrintMM__SWIG_2(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_PrintMM'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::SparseMatrix::PrintMM(std::ostream &) const\n"
     "    mfem::SparseMatrix::PrintMM() const\n"
-    "    mfem::SparseMatrix::PrintMM(char const *)\n"
-    "    mfem::SparseMatrix::PrintMM()\n");
+    "    mfem::SparseMatrix::PrintMM(char const *,int)\n"
+    "    mfem::SparseMatrix::PrintMM(char const *)\n");
   return 0;
 }
 
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_PrintCSR",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintCSR" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_PrintCSR" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_SparseMatrix_PrintCSR__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -15507,7 +15671,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   void *argp1 = 0 ;
@@ -15522,7 +15686,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR__SWIG_2(PyObject *SWIGUNUSEDPAR
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
   {
     try {
-      mfem_SparseMatrix_PrintCSR__SWIG_2(arg1);
+      mfem_SparseMatrix_PrintCSR__SWIG_3(arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -15548,14 +15712,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -15564,7 +15728,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR(PyObject *self, PyObject *args)
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_SparseMatrix_PrintCSR__SWIG_2(self, args);
+      return _wrap_SparseMatrix_PrintCSR__SWIG_3(self, args);
     }
   }
   if (argc == 2) {
@@ -15576,7 +15740,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR(PyObject *self, PyObject *args)
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_SparseMatrix_PrintCSR__SWIG_1(self, args);
+        return _wrap_SparseMatrix_PrintCSR__SWIG_2(self, args);
       }
     }
   }
@@ -15600,11 +15764,35 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR(PyObject *self, PyObject *args)
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_PrintCSR__SWIG_1(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_PrintCSR'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::SparseMatrix::PrintCSR(std::ostream &) const\n"
+    "    mfem::SparseMatrix::PrintCSR(char const *,int)\n"
     "    mfem::SparseMatrix::PrintCSR(char const *)\n"
     "    mfem::SparseMatrix::PrintCSR()\n");
   return 0;
@@ -15612,6 +15800,65 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_PrintCSR2",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintCSR2" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_PrintCSR2" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_SparseMatrix_PrintCSR2__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -15662,7 +15909,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   void *argp1 = 0 ;
@@ -15677,7 +15924,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2__SWIG_2(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
   {
     try {
-      mfem_SparseMatrix_PrintCSR2__SWIG_2(arg1);
+      mfem_SparseMatrix_PrintCSR2__SWIG_3(arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -15703,14 +15950,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -15719,7 +15966,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2(PyObject *self, PyObject *args
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_SparseMatrix_PrintCSR2__SWIG_2(self, args);
+      return _wrap_SparseMatrix_PrintCSR2__SWIG_3(self, args);
     }
   }
   if (argc == 2) {
@@ -15731,7 +15978,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2(PyObject *self, PyObject *args
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_SparseMatrix_PrintCSR2__SWIG_1(self, args);
+        return _wrap_SparseMatrix_PrintCSR2__SWIG_2(self, args);
       }
     }
   }
@@ -15755,11 +16002,35 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintCSR2(PyObject *self, PyObject *args
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_PrintCSR2__SWIG_1(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_PrintCSR2'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::SparseMatrix::PrintCSR2(std::ostream &) const\n"
+    "    mfem::SparseMatrix::PrintCSR2(char const *,int)\n"
     "    mfem::SparseMatrix::PrintCSR2(char const *)\n"
     "    mfem::SparseMatrix::PrintCSR2()\n");
   return 0;
@@ -15767,6 +16038,65 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:SparseMatrix_PrintInfo",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseMatrix_PrintInfo" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseMatrix_PrintInfo" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_SparseMatrix_PrintInfo__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -15817,7 +16147,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   void *argp1 = 0 ;
@@ -15832,7 +16162,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo__SWIG_2(PyObject *SWIGUNUSEDPA
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
   {
     try {
-      mfem_SparseMatrix_PrintInfo__SWIG_2(arg1);
+      mfem_SparseMatrix_PrintInfo__SWIG_3(arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -15858,14 +16188,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
-  PyObject *argv[3] = {
+  PyObject *argv[4] = {
     0
   };
   Py_ssize_t ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -15874,7 +16204,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo(PyObject *self, PyObject *args
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_SparseMatrix_PrintInfo__SWIG_2(self, args);
+      return _wrap_SparseMatrix_PrintInfo__SWIG_3(self, args);
     }
   }
   if (argc == 2) {
@@ -15886,7 +16216,7 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo(PyObject *self, PyObject *args
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_SparseMatrix_PrintInfo__SWIG_1(self, args);
+        return _wrap_SparseMatrix_PrintInfo__SWIG_2(self, args);
       }
     }
   }
@@ -15910,11 +16240,35 @@ SWIGINTERN PyObject *_wrap_SparseMatrix_PrintInfo(PyObject *self, PyObject *args
       }
     }
   }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_SparseMatrix_PrintInfo__SWIG_1(self, args);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'SparseMatrix_PrintInfo'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::SparseMatrix::PrintInfo(std::ostream &) const\n"
+    "    mfem::SparseMatrix::PrintInfo(char const *,int)\n"
     "    mfem::SparseMatrix::PrintInfo(char const *)\n"
     "    mfem::SparseMatrix::PrintInfo()\n");
   return 0;
@@ -16820,33 +17174,36 @@ static PyMethodDef SwigMethods[] = {
 		"Print(std::ostream & out, int width_=4)\n"
 		"Print(std::ostream & out)\n"
 		"Print()\n"
-		"Print(char const * file)\n"
-		"SparseMatrix_Print(SparseMatrix self)\n"
+		"Print(char const * file, int precision=8)\n"
+		"SparseMatrix_Print(SparseMatrix self, char const * file)\n"
 		""},
 	 { (char *)"SparseMatrix_PrintMatlab", _wrap_SparseMatrix_PrintMatlab, METH_VARARGS, (char *)"\n"
 		"PrintMatlab(std::ostream & out)\n"
 		"PrintMatlab()\n"
-		"PrintMatlab(char const * file)\n"
-		"SparseMatrix_PrintMatlab(SparseMatrix self)\n"
+		"PrintMatlab(char const * file, int precision=8)\n"
+		"SparseMatrix_PrintMatlab(SparseMatrix self, char const * file)\n"
 		""},
 	 { (char *)"SparseMatrix_PrintMM", _wrap_SparseMatrix_PrintMM, METH_VARARGS, (char *)"\n"
 		"PrintMM(std::ostream & out)\n"
 		"PrintMM()\n"
-		"PrintMM(char const * file)\n"
-		"SparseMatrix_PrintMM(SparseMatrix self)\n"
+		"PrintMM(char const * file, int precision=8)\n"
+		"SparseMatrix_PrintMM(SparseMatrix self, char const * file)\n"
 		""},
 	 { (char *)"SparseMatrix_PrintCSR", _wrap_SparseMatrix_PrintCSR, METH_VARARGS, (char *)"\n"
 		"PrintCSR(std::ostream & out)\n"
+		"PrintCSR(char const * file, int precision=8)\n"
 		"PrintCSR(char const * file)\n"
 		"SparseMatrix_PrintCSR(SparseMatrix self)\n"
 		""},
 	 { (char *)"SparseMatrix_PrintCSR2", _wrap_SparseMatrix_PrintCSR2, METH_VARARGS, (char *)"\n"
 		"PrintCSR2(std::ostream & out)\n"
+		"PrintCSR2(char const * file, int precision=8)\n"
 		"PrintCSR2(char const * file)\n"
 		"SparseMatrix_PrintCSR2(SparseMatrix self)\n"
 		""},
 	 { (char *)"SparseMatrix_PrintInfo", _wrap_SparseMatrix_PrintInfo, METH_VARARGS, (char *)"\n"
 		"PrintInfo(std::ostream & out)\n"
+		"PrintInfo(char const * file, int precision=8)\n"
 		"PrintInfo(char const * file)\n"
 		"SparseMatrix_PrintInfo(SparseMatrix self)\n"
 		""},

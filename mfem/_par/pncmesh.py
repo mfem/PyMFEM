@@ -118,7 +118,6 @@ import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.ncmesh
@@ -143,6 +142,7 @@ import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.communication
 import mfem._par.sets
+import mfem._par.ostream_typemap
 class ParNCMesh(mfem._par.ncmesh.NCMesh):
     """Proxy of C++ mfem::ParNCMesh class."""
 

@@ -117,7 +117,6 @@ MFEM_HYPRE_VERSION = _plinearform.MFEM_HYPRE_VERSION
 import mfem._par.linearform
 import mfem._par.coefficient
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.matrix
 import mfem._par.vector
@@ -146,6 +145,7 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
+import mfem._par.ostream_typemap
 import mfem._par.pgridfunc
 class ParLinearForm(mfem._par.linearform.LinearForm):
     """Proxy of C++ mfem::ParLinearForm class."""

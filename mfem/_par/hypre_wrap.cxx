@@ -3454,53 +3454,54 @@ namespace Swig {
 #define SWIGTYPE_p_HYPRE_ParVector swig_types[0]
 #define SWIGTYPE_p_HYPRE_PtrToParSolverFcn swig_types[1]
 #define SWIGTYPE_p_MPI_Comm swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_double swig_types[4]
-#define SWIGTYPE_p_hypre_ParCSRMatrix swig_types[5]
-#define SWIGTYPE_p_hypre_ParVector swig_types[6]
-#define SWIGTYPE_p_int swig_types[7]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__Array2DT_mfem__HypreParMatrix_p_t swig_types[9]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[11]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[12]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[13]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[14]
-#define SWIGTYPE_p_mfem__HypreADS swig_types[15]
-#define SWIGTYPE_p_mfem__HypreAME swig_types[16]
-#define SWIGTYPE_p_mfem__HypreAMS swig_types[17]
-#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[18]
-#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[19]
-#define SWIGTYPE_p_mfem__HypreEuclid swig_types[20]
-#define SWIGTYPE_p_mfem__HypreGMRES swig_types[21]
-#define SWIGTYPE_p_mfem__HypreIdentity swig_types[22]
-#define SWIGTYPE_p_mfem__HypreLOBPCG swig_types[23]
-#define SWIGTYPE_p_mfem__HyprePCG swig_types[24]
-#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[25]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[26]
-#define SWIGTYPE_p_mfem__HypreParaSails swig_types[27]
-#define SWIGTYPE_p_mfem__HypreSmoother swig_types[28]
-#define SWIGTYPE_p_mfem__HypreSolver swig_types[29]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[30]
-#define SWIGTYPE_p_mfem__Matrix swig_types[31]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[32]
-#define SWIGTYPE_p_mfem__Operator swig_types[33]
-#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[34]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[35]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[36]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[37]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[38]
-#define SWIGTYPE_p_mfem__Solver swig_types[39]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[40]
-#define SWIGTYPE_p_mfem__Table swig_types[41]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[42]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[43]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[44]
-#define SWIGTYPE_p_mfem__Vector swig_types[45]
-#define SWIGTYPE_p_p_int swig_types[46]
-#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[47]
-static swig_type_info *swig_types[49];
-static swig_module_info swig_module = {swig_types, 48, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
+#define SWIGTYPE_p_char swig_types[4]
+#define SWIGTYPE_p_double swig_types[5]
+#define SWIGTYPE_p_hypre_ParCSRMatrix swig_types[6]
+#define SWIGTYPE_p_hypre_ParVector swig_types[7]
+#define SWIGTYPE_p_int swig_types[8]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[9]
+#define SWIGTYPE_p_mfem__Array2DT_mfem__HypreParMatrix_p_t swig_types[10]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[12]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[13]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[14]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[15]
+#define SWIGTYPE_p_mfem__HypreADS swig_types[16]
+#define SWIGTYPE_p_mfem__HypreAME swig_types[17]
+#define SWIGTYPE_p_mfem__HypreAMS swig_types[18]
+#define SWIGTYPE_p_mfem__HypreBoomerAMG swig_types[19]
+#define SWIGTYPE_p_mfem__HypreDiagScale swig_types[20]
+#define SWIGTYPE_p_mfem__HypreEuclid swig_types[21]
+#define SWIGTYPE_p_mfem__HypreGMRES swig_types[22]
+#define SWIGTYPE_p_mfem__HypreIdentity swig_types[23]
+#define SWIGTYPE_p_mfem__HypreLOBPCG swig_types[24]
+#define SWIGTYPE_p_mfem__HyprePCG swig_types[25]
+#define SWIGTYPE_p_mfem__HypreParMatrix swig_types[26]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[27]
+#define SWIGTYPE_p_mfem__HypreParaSails swig_types[28]
+#define SWIGTYPE_p_mfem__HypreSmoother swig_types[29]
+#define SWIGTYPE_p_mfem__HypreSolver swig_types[30]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[31]
+#define SWIGTYPE_p_mfem__Matrix swig_types[32]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[33]
+#define SWIGTYPE_p_mfem__Operator swig_types[34]
+#define SWIGTYPE_p_mfem__ParFiniteElementSpace swig_types[35]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[36]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[37]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[38]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[39]
+#define SWIGTYPE_p_mfem__Solver swig_types[40]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[41]
+#define SWIGTYPE_p_mfem__Table swig_types[42]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[43]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[44]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[45]
+#define SWIGTYPE_p_mfem__Vector swig_types[46]
+#define SWIGTYPE_p_p_int swig_types[47]
+#define SWIGTYPE_p_p_mfem__HypreParVector swig_types[48]
+static swig_type_info *swig_types[50];
+static swig_module_info swig_module = {swig_types, 49, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3616,7 +3617,7 @@ namespace swig {
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "iostream_typemap.hpp"    
+#include "io_stream.hpp"    
 
 
 SWIGINTERNINLINE PyObject*
@@ -4345,6 +4346,17 @@ SWIGINTERN PyObject *mfem_HypreParMatrix_GetCooDataArray__SWIG_0(mfem::HypreParM
      Py_XDECREF(o);     
      return Py_None;
 }
+SWIGINTERN void mfem_HypreParMatrix_PrintCommPkg__SWIG_2(mfem::HypreParMatrix *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintCommPkg(ofile);
+  ofile.close();
+  }
 
 SWIGINTERN int
 SWIG_AsVal_int (PyObject * obj, int *val)
@@ -10587,7 +10599,8 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_0(PyObject *SWIGUNU
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -10598,15 +10611,18 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_0(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -10624,12 +10640,16 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_0(PyObject *SWIGUNU
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -10665,55 +10685,6 @@ SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_1(PyObject *SWIGUNU
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_HypreParMatrix_PrintCommPkg__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_HypreParMatrix_PrintCommPkg__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'HypreParMatrix_PrintCommPkg'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::HypreParMatrix::PrintCommPkg(std::ostream &) const\n"
-    "    mfem::HypreParMatrix::PrintCommPkg() const\n");
-  return 0;
 }
 
 
@@ -11122,6 +11093,193 @@ fail:
     "    mfem::HypreParMatrix::GetCooDataArray(HYPRE_Int const,HYPRE_Int const)\n"
     "    mfem::HypreParMatrix::GetCooDataArray(HYPRE_Int const)\n"
     "    mfem::HypreParMatrix::GetCooDataArray()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:HypreParMatrix_PrintCommPkg",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_PrintCommPkg" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HypreParMatrix_PrintCommPkg" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_HypreParMatrix_PrintCommPkg__SWIG_2(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HypreParMatrix *arg1 = (mfem::HypreParMatrix *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:HypreParMatrix_PrintCommPkg",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__HypreParMatrix, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "HypreParMatrix_PrintCommPkg" "', argument " "1"" of type '" "mfem::HypreParMatrix *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HypreParMatrix * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "HypreParMatrix_PrintCommPkg" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_HypreParMatrix_PrintCommPkg__SWIG_2(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_HypreParMatrix_PrintCommPkg(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_HypreParMatrix_PrintCommPkg__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_HypreParMatrix_PrintCommPkg__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_HypreParMatrix_PrintCommPkg__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_HypreParMatrix_PrintCommPkg__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'HypreParMatrix_PrintCommPkg'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::HypreParMatrix::PrintCommPkg(std::ostream &) const\n"
+    "    mfem::HypreParMatrix::PrintCommPkg() const\n"
+    "    mfem::HypreParMatrix::PrintCommPkg(char const *,int)\n"
+    "    mfem::HypreParMatrix::PrintCommPkg(char const *)\n");
   return 0;
 }
 
@@ -17546,10 +17704,6 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { (char *)"HypreParMatrix_Read", _wrap_HypreParMatrix_Read, METH_VARARGS, (char *)"HypreParMatrix_Read(HypreParMatrix self, MPI_Comm comm, char const * fname)"},
 	 { (char *)"HypreParMatrix_Read_IJMatrix", _wrap_HypreParMatrix_Read_IJMatrix, METH_VARARGS, (char *)"HypreParMatrix_Read_IJMatrix(HypreParMatrix self, MPI_Comm comm, char const * fname)"},
-	 { (char *)"HypreParMatrix_PrintCommPkg", _wrap_HypreParMatrix_PrintCommPkg, METH_VARARGS, (char *)"\n"
-		"PrintCommPkg(std::ostream & out)\n"
-		"HypreParMatrix_PrintCommPkg(HypreParMatrix self)\n"
-		""},
 	 { (char *)"delete_HypreParMatrix", _wrap_delete_HypreParMatrix, METH_VARARGS, (char *)"delete_HypreParMatrix(HypreParMatrix self)"},
 	 { (char *)"HypreParMatrix_GetType", _wrap_HypreParMatrix_GetType, METH_VARARGS, (char *)"HypreParMatrix_GetType(HypreParMatrix self) -> mfem::Operator::Type"},
 	 { (char *)"HypreParMatrix_GetRowPartArray", _wrap_HypreParMatrix_GetRowPartArray, METH_VARARGS, (char *)"HypreParMatrix_GetRowPartArray(HypreParMatrix self) -> PyObject *"},
@@ -17560,6 +17714,12 @@ static PyMethodDef SwigMethods[] = {
 		"GetCooDataArray(HYPRE_Int const base_i=0, HYPRE_Int const base_j=0) -> PyObject\n"
 		"GetCooDataArray(HYPRE_Int const base_i=0) -> PyObject\n"
 		"HypreParMatrix_GetCooDataArray(HypreParMatrix self) -> PyObject *\n"
+		""},
+	 { (char *)"HypreParMatrix_PrintCommPkg", _wrap_HypreParMatrix_PrintCommPkg, METH_VARARGS, (char *)"\n"
+		"PrintCommPkg(std::ostream & out)\n"
+		"PrintCommPkg()\n"
+		"PrintCommPkg(char const * file, int precision=8)\n"
+		"HypreParMatrix_PrintCommPkg(HypreParMatrix self, char const * file)\n"
 		""},
 	 { (char *)"HypreParMatrix_swigregister", HypreParMatrix_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ParMult", _wrap_ParMult, METH_VARARGS, (char *)"ParMult(HypreParMatrix A, HypreParMatrix B) -> HypreParMatrix"},
@@ -17888,6 +18048,7 @@ static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPA
 static swig_type_info _swigt__p_HYPRE_ParVector = {"_p_HYPRE_ParVector", "HYPRE_ParVector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_HYPRE_PtrToParSolverFcn = {"_p_HYPRE_PtrToParSolverFcn", "HYPRE_PtrToParSolverFcn *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hypre_ParCSRMatrix = {"_p_hypre_ParCSRMatrix", "hypre_ParCSRMatrix *", 0, 0, (void*)0, 0};
@@ -17938,6 +18099,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_HYPRE_ParVector,
   &_swigt__p_HYPRE_PtrToParSolverFcn,
   &_swigt__p_MPI_Comm,
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_hypre_ParCSRMatrix,
@@ -17988,6 +18150,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_HYPRE_ParVector[] = {  {&_swigt__p_HYPRE_ParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_HYPRE_PtrToParSolverFcn[] = {  {&_swigt__p_HYPRE_PtrToParSolverFcn, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hypre_ParCSRMatrix[] = {  {&_swigt__p_hypre_ParCSRMatrix, 0, 0, 0},{0, 0, 0, 0}};
@@ -18038,6 +18201,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_HYPRE_ParVector,
   _swigc__p_HYPRE_PtrToParSolverFcn,
   _swigc__p_MPI_Comm,
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_hypre_ParCSRMatrix,

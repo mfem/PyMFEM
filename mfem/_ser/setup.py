@@ -36,15 +36,17 @@ modules= ["io_stream",
           "solvers", "estimators", "mesh_operators", "ode",
           "sparsesmoothers",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
-          "nonlininteg", "nonlinearform",
-          "ostream_typemap", "istream_typemap"]
+          "nonlininteg", "nonlinearform",]
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
 
-include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, boostinc]
-library_dirs = [mfemserlnkdir, boostlib]
-libraries    = [libboostiostreams, 'mfem']
+#include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, boostinc]
+#library_dirs = [mfemserlnkdir, boostlib]
+#libraries    = [libboostiostreams, 'mfem']
+include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, ]
+library_dirs = [mfemserlnkdir,]
+libraries    = ['mfem']
 
 extra_compile_args = [cxx11flag, '-DSWIG_TYPE_TABLE=PyMFEM']
 

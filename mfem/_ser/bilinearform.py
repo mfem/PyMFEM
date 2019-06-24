@@ -174,7 +174,6 @@ doublep_frompointer = _bilinearform.doublep_frompointer
 
 import mfem._ser.mem_manager
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.fespace
 import mfem._ser.vector
 import mfem._ser.coefficient

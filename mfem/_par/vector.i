@@ -6,15 +6,15 @@
 %module(package="mfem._par") vector
 %feature("autodoc", "1");
 %{
-#include "linalg/vector.hpp"
 #include <sstream>
 #include <fstream>
 #include <limits>
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "io_stream.hpp"             
 #include "numpy/arrayobject.h"
-#include "iostream_typemap.hpp"           
+#include "linalg/vector.hpp"  
 %}
 
 // initialization required to return numpy array from SWIG
@@ -24,13 +24,15 @@ import_array();
 
 %include "exception.i"
 %import "array.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/numpy_int_typemap.i"
 %import "../common/typemap_macros.i"
 %import "../common/exception.i"
 
 %import "mem_manager.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 
@@ -186,17 +188,6 @@ void subtract_vector(const double a, const mfem::Vector &x,
     }    
     (* self) = (double *) PyArray_DATA(param);
   }
-  
-  void Print(const char *file){
-        std::ofstream ofile(file);
-        if (!ofile)
-        {
-	  std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-   	  return;
-        }
-	self -> Print(ofile);
-        ofile.close();
-  }
 
   void __setitem__(int i, const double v) {
     int len = self->Size();        
@@ -266,4 +257,12 @@ void subtract_vector(const double a, const mfem::Vector &x,
    Vector.__idiv__ = Vector.__itruediv__
 %}
 
+/*
+linalg/vector.hpp:   void Print(std::ostream &out = mfem::out, int width = 8) const;
+linalg/vector.hpp:   void Print_HYPRE(std::ostream &out) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(Vector, Print)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(Vector, Print_HYPRE)
+#endif
 

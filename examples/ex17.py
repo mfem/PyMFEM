@@ -270,8 +270,9 @@ if (visualization):
 nodes = mesh.GetNodes()
 nodes += x
 x.Neg()
-mesh.PrintToFile('displaced.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+mesh.PrintInfo()
+mesh.Print('displaced.mesh', 8)
+x.Save('sol.gf', 8)
 
 # 15. Visualization: send data by socket to a GLVis server.
 if (visualization):    

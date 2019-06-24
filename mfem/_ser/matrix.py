@@ -104,7 +104,6 @@ except __builtin__.Exception:
 
 import mfem._ser.vector
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.mem_manager
 import mfem._ser.operators
 class Matrix(mfem._ser.operators.Operator):
@@ -143,17 +142,19 @@ class Matrix(mfem._ser.operators.Operator):
         """Finalize(Matrix self, int arg2)"""
         return _matrix.Matrix_Finalize(self, arg2)
 
+    __swig_destroy__ = _matrix.delete_Matrix
+    __del__ = lambda self: None
 
     def Print(self, *args):
         """
         Print(Matrix self, std::ostream & out, int width_=4)
         Print(Matrix self, std::ostream & out)
         Print(Matrix self)
+        Print(Matrix self, char const * file, int precision=8)
+        Print(Matrix self, char const * file)
         """
         return _matrix.Matrix_Print(self, *args)
 
-    __swig_destroy__ = _matrix.delete_Matrix
-    __del__ = lambda self: None
 Matrix_swigregister = _matrix.Matrix_swigregister
 Matrix_swigregister(Matrix)
 

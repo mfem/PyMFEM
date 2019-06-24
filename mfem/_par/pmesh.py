@@ -118,7 +118,6 @@ import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.ncmesh
@@ -144,6 +143,7 @@ import mfem._par.linearform
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
+import mfem._par.ostream_typemap
 class ParMesh(mfem._par.mesh.Mesh):
     """Proxy of C++ mfem::ParMesh class."""
 
@@ -338,38 +338,6 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_Rebalance(self)
 
 
-    def Print(self, *args):
-        """
-        Print(ParMesh self, std::ostream & out)
-        Print(ParMesh self)
-        """
-        return _pmesh.ParMesh_Print(self, *args)
-
-
-    def PrintXG(self, *args):
-        """
-        PrintXG(ParMesh self, std::ostream & out)
-        PrintXG(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintXG(self, *args)
-
-
-    def PrintAsOne(self, *args):
-        """
-        PrintAsOne(ParMesh self, std::ostream & out)
-        PrintAsOne(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintAsOne(self, *args)
-
-
-    def PrintAsOneXG(self, *args):
-        """
-        PrintAsOneXG(ParMesh self, std::ostream & out)
-        PrintAsOneXG(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintAsOneXG(self, *args)
-
-
     def GetBoundingBox(self, ref = 2):
         from  .vector import Vector
         min = Vector()
@@ -382,19 +350,6 @@ class ParMesh(mfem._par.mesh.Mesh):
     def GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max):
         """GetCharacteristics(ParMesh self, double & h_min, double & h_max, double & kappa_min, double & kappa_max)"""
         return _pmesh.ParMesh_GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max)
-
-
-    def PrintInfo(self, *args):
-        """
-        PrintInfo(ParMesh self, std::ostream & out)
-        PrintInfo(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintInfo(self, *args)
-
-
-    def ParPrint(self, out):
-        """ParPrint(ParMesh self, std::ostream & out)"""
-        return _pmesh.ParMesh_ParPrint(self, out)
 
 
     def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
@@ -434,6 +389,66 @@ class ParMesh(mfem._par.mesh.Mesh):
     def ParPrintToFile(self, mesh_file, precision):
         """ParPrintToFile(ParMesh self, char const * mesh_file, int const precision)"""
         return _pmesh.ParMesh_ParPrintToFile(self, mesh_file, precision)
+
+
+    def Print(self, *args):
+        """
+        Print(ParMesh self, std::ostream & out)
+        Print(ParMesh self)
+        Print(ParMesh self, char const * file, int precision=8)
+        Print(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_Print(self, *args)
+
+
+    def PrintXG(self, *args):
+        """
+        PrintXG(ParMesh self, std::ostream & out)
+        PrintXG(ParMesh self)
+        PrintXG(ParMesh self, char const * file, int precision=8)
+        PrintXG(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintXG(self, *args)
+
+
+    def PrintAsOne(self, *args):
+        """
+        PrintAsOne(ParMesh self, std::ostream & out)
+        PrintAsOne(ParMesh self)
+        PrintAsOne(ParMesh self, char const * file, int precision=8)
+        PrintAsOne(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintAsOne(self, *args)
+
+
+    def PrintAsOneXG(self, *args):
+        """
+        PrintAsOneXG(ParMesh self, std::ostream & out)
+        PrintAsOneXG(ParMesh self)
+        PrintAsOneXG(ParMesh self, char const * file, int precision=8)
+        PrintAsOneXG(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintAsOneXG(self, *args)
+
+
+    def PrintInfo(self, *args):
+        """
+        PrintInfo(ParMesh self, std::ostream & out)
+        PrintInfo(ParMesh self)
+        PrintInfo(ParMesh self, char const * file, int precision=8)
+        PrintInfo(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintInfo(self, *args)
+
+
+    def ParPrint(self, *args):
+        """
+        ParPrint(ParMesh self, std::ostream & out)
+        ParPrint(ParMesh self, char const * file, int precision=8)
+        ParPrint(ParMesh self, char const * file)
+        ParPrint(ParMesh self)
+        """
+        return _pmesh.ParMesh_ParPrint(self, *args)
 
 ParMesh_swigregister = _pmesh.ParMesh_swigregister
 ParMesh_swigregister(ParMesh)

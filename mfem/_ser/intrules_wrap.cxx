@@ -3006,19 +3006,20 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_double swig_types[1]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[3]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[4]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[5]
-#define SWIGTYPE_p_mfem__IntegrationRules swig_types[6]
-#define SWIGTYPE_p_mfem__MemoryT_mfem__IntegrationPoint_t swig_types[7]
-#define SWIGTYPE_p_mfem__Quadrature1D swig_types[8]
-#define SWIGTYPE_p_mfem__QuadratureFunctions1D swig_types[9]
-#define SWIGTYPE_p_p_mfem__IntegrationPoint swig_types[10]
-static swig_type_info *swig_types[12];
-static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[4]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[5]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[6]
+#define SWIGTYPE_p_mfem__IntegrationRules swig_types[7]
+#define SWIGTYPE_p_mfem__MemoryT_mfem__IntegrationPoint_t swig_types[8]
+#define SWIGTYPE_p_mfem__Quadrature1D swig_types[9]
+#define SWIGTYPE_p_mfem__QuadratureFunctions1D swig_types[10]
+#define SWIGTYPE_p_p_mfem__IntegrationPoint swig_types[11]
+static swig_type_info *swig_types[13];
+static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -8786,87 +8787,151 @@ SWIGINTERN PyObject *Swig_var_RefinedIntRules_get(void) {
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_IntegrationPointArray", _wrap_new_IntegrationPointArray, METH_VARARGS, NULL},
-	 { (char *)"delete_IntegrationPointArray", _wrap_delete_IntegrationPointArray, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_GetData", _wrap_IntegrationPointArray_GetData, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_GetMemory", _wrap_IntegrationPointArray_GetMemory, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_UseDevice", _wrap_IntegrationPointArray_UseDevice, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_OwnsData", _wrap_IntegrationPointArray_OwnsData, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_StealData", _wrap_IntegrationPointArray_StealData, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_LoseData", _wrap_IntegrationPointArray_LoseData, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_MakeDataOwner", _wrap_IntegrationPointArray_MakeDataOwner, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Size", _wrap_IntegrationPointArray_Size, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_SetSize", _wrap_IntegrationPointArray_SetSize, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Capacity", _wrap_IntegrationPointArray_Capacity, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Reserve", _wrap_IntegrationPointArray_Reserve, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Append", _wrap_IntegrationPointArray_Append, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Prepend", _wrap_IntegrationPointArray_Prepend, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Last", _wrap_IntegrationPointArray_Last, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_DeleteLast", _wrap_IntegrationPointArray_DeleteLast, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_DeleteAll", _wrap_IntegrationPointArray_DeleteAll, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Copy", _wrap_IntegrationPointArray_Copy, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_MakeRef", _wrap_IntegrationPointArray_MakeRef, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_GetSubArray", _wrap_IntegrationPointArray_GetSubArray, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_begin", _wrap_IntegrationPointArray_begin, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_end", _wrap_IntegrationPointArray_end, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_MemoryUsage", _wrap_IntegrationPointArray_MemoryUsage, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Read", _wrap_IntegrationPointArray_Read, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_HostRead", _wrap_IntegrationPointArray_HostRead, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Write", _wrap_IntegrationPointArray_Write, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_HostWrite", _wrap_IntegrationPointArray_HostWrite, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_ReadWrite", _wrap_IntegrationPointArray_ReadWrite, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_HostReadWrite", _wrap_IntegrationPointArray_HostReadWrite, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray___setitem__", _wrap_IntegrationPointArray___setitem__, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray___getitem__", _wrap_IntegrationPointArray___getitem__, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_Assign", _wrap_IntegrationPointArray_Assign, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPointArray_FakeToList", _wrap_IntegrationPointArray_FakeToList, METH_VARARGS, NULL},
+	 { (char *)"new_IntegrationPointArray", _wrap_new_IntegrationPointArray, METH_VARARGS, (char *)"\n"
+		"IntegrationPointArray(int asize=0)\n"
+		"IntegrationPointArray()\n"
+		"IntegrationPointArray(IntegrationPoint _data, int asize)\n"
+		"new_IntegrationPointArray(IntegrationPointArray src) -> IntegrationPointArray\n"
+		""},
+	 { (char *)"delete_IntegrationPointArray", _wrap_delete_IntegrationPointArray, METH_VARARGS, (char *)"delete_IntegrationPointArray(IntegrationPointArray self)"},
+	 { (char *)"IntegrationPointArray_GetData", _wrap_IntegrationPointArray_GetData, METH_VARARGS, (char *)"\n"
+		"GetData() -> IntegrationPoint\n"
+		"IntegrationPointArray_GetData(IntegrationPointArray self) -> IntegrationPoint\n"
+		""},
+	 { (char *)"IntegrationPointArray_GetMemory", _wrap_IntegrationPointArray_GetMemory, METH_VARARGS, (char *)"\n"
+		"GetMemory() -> mfem::Memory< mfem::IntegrationPoint >\n"
+		"IntegrationPointArray_GetMemory(IntegrationPointArray self) -> mfem::Memory< mfem::IntegrationPoint > const &\n"
+		""},
+	 { (char *)"IntegrationPointArray_UseDevice", _wrap_IntegrationPointArray_UseDevice, METH_VARARGS, (char *)"IntegrationPointArray_UseDevice(IntegrationPointArray self) -> bool"},
+	 { (char *)"IntegrationPointArray_OwnsData", _wrap_IntegrationPointArray_OwnsData, METH_VARARGS, (char *)"IntegrationPointArray_OwnsData(IntegrationPointArray self) -> bool"},
+	 { (char *)"IntegrationPointArray_StealData", _wrap_IntegrationPointArray_StealData, METH_VARARGS, (char *)"IntegrationPointArray_StealData(IntegrationPointArray self, mfem::IntegrationPoint ** p)"},
+	 { (char *)"IntegrationPointArray_LoseData", _wrap_IntegrationPointArray_LoseData, METH_VARARGS, (char *)"IntegrationPointArray_LoseData(IntegrationPointArray self)"},
+	 { (char *)"IntegrationPointArray_MakeDataOwner", _wrap_IntegrationPointArray_MakeDataOwner, METH_VARARGS, (char *)"IntegrationPointArray_MakeDataOwner(IntegrationPointArray self)"},
+	 { (char *)"IntegrationPointArray_Size", _wrap_IntegrationPointArray_Size, METH_VARARGS, (char *)"IntegrationPointArray_Size(IntegrationPointArray self) -> int"},
+	 { (char *)"IntegrationPointArray_SetSize", _wrap_IntegrationPointArray_SetSize, METH_VARARGS, (char *)"\n"
+		"SetSize(int nsize)\n"
+		"SetSize(int nsize, IntegrationPoint initval)\n"
+		"IntegrationPointArray_SetSize(IntegrationPointArray self, int nsize, mfem::MemoryType mt)\n"
+		""},
+	 { (char *)"IntegrationPointArray_Capacity", _wrap_IntegrationPointArray_Capacity, METH_VARARGS, (char *)"IntegrationPointArray_Capacity(IntegrationPointArray self) -> int"},
+	 { (char *)"IntegrationPointArray_Reserve", _wrap_IntegrationPointArray_Reserve, METH_VARARGS, (char *)"IntegrationPointArray_Reserve(IntegrationPointArray self, int capacity)"},
+	 { (char *)"IntegrationPointArray_Append", _wrap_IntegrationPointArray_Append, METH_VARARGS, (char *)"\n"
+		"Append(IntegrationPoint el) -> int\n"
+		"Append(IntegrationPoint els, int nels) -> int\n"
+		"IntegrationPointArray_Append(IntegrationPointArray self, IntegrationPointArray els) -> int\n"
+		""},
+	 { (char *)"IntegrationPointArray_Prepend", _wrap_IntegrationPointArray_Prepend, METH_VARARGS, (char *)"IntegrationPointArray_Prepend(IntegrationPointArray self, IntegrationPoint el) -> int"},
+	 { (char *)"IntegrationPointArray_Last", _wrap_IntegrationPointArray_Last, METH_VARARGS, (char *)"\n"
+		"Last() -> IntegrationPoint\n"
+		"IntegrationPointArray_Last(IntegrationPointArray self) -> IntegrationPoint\n"
+		""},
+	 { (char *)"IntegrationPointArray_DeleteLast", _wrap_IntegrationPointArray_DeleteLast, METH_VARARGS, (char *)"IntegrationPointArray_DeleteLast(IntegrationPointArray self)"},
+	 { (char *)"IntegrationPointArray_DeleteAll", _wrap_IntegrationPointArray_DeleteAll, METH_VARARGS, (char *)"IntegrationPointArray_DeleteAll(IntegrationPointArray self)"},
+	 { (char *)"IntegrationPointArray_Copy", _wrap_IntegrationPointArray_Copy, METH_VARARGS, (char *)"IntegrationPointArray_Copy(IntegrationPointArray self, IntegrationPointArray copy)"},
+	 { (char *)"IntegrationPointArray_MakeRef", _wrap_IntegrationPointArray_MakeRef, METH_VARARGS, (char *)"\n"
+		"MakeRef(IntegrationPoint arg2, int arg3)\n"
+		"IntegrationPointArray_MakeRef(IntegrationPointArray self, IntegrationPointArray master)\n"
+		""},
+	 { (char *)"IntegrationPointArray_GetSubArray", _wrap_IntegrationPointArray_GetSubArray, METH_VARARGS, (char *)"IntegrationPointArray_GetSubArray(IntegrationPointArray self, int offset, int sa_size, IntegrationPointArray sa)"},
+	 { (char *)"IntegrationPointArray_begin", _wrap_IntegrationPointArray_begin, METH_VARARGS, (char *)"IntegrationPointArray_begin(IntegrationPointArray self) -> IntegrationPoint"},
+	 { (char *)"IntegrationPointArray_end", _wrap_IntegrationPointArray_end, METH_VARARGS, (char *)"IntegrationPointArray_end(IntegrationPointArray self) -> IntegrationPoint"},
+	 { (char *)"IntegrationPointArray_MemoryUsage", _wrap_IntegrationPointArray_MemoryUsage, METH_VARARGS, (char *)"IntegrationPointArray_MemoryUsage(IntegrationPointArray self) -> long"},
+	 { (char *)"IntegrationPointArray_Read", _wrap_IntegrationPointArray_Read, METH_VARARGS, (char *)"\n"
+		"Read(bool on_dev=True) -> IntegrationPoint\n"
+		"IntegrationPointArray_Read(IntegrationPointArray self) -> IntegrationPoint\n"
+		""},
+	 { (char *)"IntegrationPointArray_HostRead", _wrap_IntegrationPointArray_HostRead, METH_VARARGS, (char *)"IntegrationPointArray_HostRead(IntegrationPointArray self) -> IntegrationPoint"},
+	 { (char *)"IntegrationPointArray_Write", _wrap_IntegrationPointArray_Write, METH_VARARGS, (char *)"\n"
+		"Write(bool on_dev=True) -> IntegrationPoint\n"
+		"IntegrationPointArray_Write(IntegrationPointArray self) -> IntegrationPoint\n"
+		""},
+	 { (char *)"IntegrationPointArray_HostWrite", _wrap_IntegrationPointArray_HostWrite, METH_VARARGS, (char *)"IntegrationPointArray_HostWrite(IntegrationPointArray self) -> IntegrationPoint"},
+	 { (char *)"IntegrationPointArray_ReadWrite", _wrap_IntegrationPointArray_ReadWrite, METH_VARARGS, (char *)"\n"
+		"ReadWrite(bool on_dev=True) -> IntegrationPoint\n"
+		"IntegrationPointArray_ReadWrite(IntegrationPointArray self) -> IntegrationPoint\n"
+		""},
+	 { (char *)"IntegrationPointArray_HostReadWrite", _wrap_IntegrationPointArray_HostReadWrite, METH_VARARGS, (char *)"IntegrationPointArray_HostReadWrite(IntegrationPointArray self) -> IntegrationPoint"},
+	 { (char *)"IntegrationPointArray___setitem__", _wrap_IntegrationPointArray___setitem__, METH_VARARGS, (char *)"IntegrationPointArray___setitem__(IntegrationPointArray self, int i, IntegrationPoint v)"},
+	 { (char *)"IntegrationPointArray___getitem__", _wrap_IntegrationPointArray___getitem__, METH_VARARGS, (char *)"IntegrationPointArray___getitem__(IntegrationPointArray self, int const i) -> IntegrationPoint"},
+	 { (char *)"IntegrationPointArray_Assign", _wrap_IntegrationPointArray_Assign, METH_VARARGS, (char *)"\n"
+		"Assign(IntegrationPoint arg2)\n"
+		"IntegrationPointArray_Assign(IntegrationPointArray self, IntegrationPoint a)\n"
+		""},
+	 { (char *)"IntegrationPointArray_FakeToList", _wrap_IntegrationPointArray_FakeToList, METH_VARARGS, (char *)"IntegrationPointArray_FakeToList(IntegrationPointArray self)"},
 	 { (char *)"IntegrationPointArray_swigregister", IntegrationPointArray_swigregister, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_x_set", _wrap_IntegrationPoint_x_set, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_x_get", _wrap_IntegrationPoint_x_get, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_y_set", _wrap_IntegrationPoint_y_set, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_y_get", _wrap_IntegrationPoint_y_get, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_z_set", _wrap_IntegrationPoint_z_set, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_z_get", _wrap_IntegrationPoint_z_get, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_weight_set", _wrap_IntegrationPoint_weight_set, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_weight_get", _wrap_IntegrationPoint_weight_get, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Init", _wrap_IntegrationPoint_Init, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Get", _wrap_IntegrationPoint_Get, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Set", _wrap_IntegrationPoint_Set, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Set3w", _wrap_IntegrationPoint_Set3w, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Set3", _wrap_IntegrationPoint_Set3, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Set2w", _wrap_IntegrationPoint_Set2w, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Set2", _wrap_IntegrationPoint_Set2, METH_VARARGS, NULL},
-	 { (char *)"IntegrationPoint_Set1w", _wrap_IntegrationPoint_Set1w, METH_VARARGS, NULL},
-	 { (char *)"new_IntegrationPoint", _wrap_new_IntegrationPoint, METH_VARARGS, NULL},
-	 { (char *)"delete_IntegrationPoint", _wrap_delete_IntegrationPoint, METH_VARARGS, NULL},
+	 { (char *)"IntegrationPoint_x_set", _wrap_IntegrationPoint_x_set, METH_VARARGS, (char *)"IntegrationPoint_x_set(IntegrationPoint self, double x)"},
+	 { (char *)"IntegrationPoint_x_get", _wrap_IntegrationPoint_x_get, METH_VARARGS, (char *)"IntegrationPoint_x_get(IntegrationPoint self) -> double"},
+	 { (char *)"IntegrationPoint_y_set", _wrap_IntegrationPoint_y_set, METH_VARARGS, (char *)"IntegrationPoint_y_set(IntegrationPoint self, double y)"},
+	 { (char *)"IntegrationPoint_y_get", _wrap_IntegrationPoint_y_get, METH_VARARGS, (char *)"IntegrationPoint_y_get(IntegrationPoint self) -> double"},
+	 { (char *)"IntegrationPoint_z_set", _wrap_IntegrationPoint_z_set, METH_VARARGS, (char *)"IntegrationPoint_z_set(IntegrationPoint self, double z)"},
+	 { (char *)"IntegrationPoint_z_get", _wrap_IntegrationPoint_z_get, METH_VARARGS, (char *)"IntegrationPoint_z_get(IntegrationPoint self) -> double"},
+	 { (char *)"IntegrationPoint_weight_set", _wrap_IntegrationPoint_weight_set, METH_VARARGS, (char *)"IntegrationPoint_weight_set(IntegrationPoint self, double weight)"},
+	 { (char *)"IntegrationPoint_weight_get", _wrap_IntegrationPoint_weight_get, METH_VARARGS, (char *)"IntegrationPoint_weight_get(IntegrationPoint self) -> double"},
+	 { (char *)"IntegrationPoint_Init", _wrap_IntegrationPoint_Init, METH_VARARGS, (char *)"IntegrationPoint_Init(IntegrationPoint self)"},
+	 { (char *)"IntegrationPoint_Get", _wrap_IntegrationPoint_Get, METH_VARARGS, (char *)"IntegrationPoint_Get(IntegrationPoint self, double * p, int const dim)"},
+	 { (char *)"IntegrationPoint_Set", _wrap_IntegrationPoint_Set, METH_VARARGS, (char *)"\n"
+		"Set(double const * p, int const dim)\n"
+		"IntegrationPoint_Set(IntegrationPoint self, double const x1, double const x2, double const x3, double const w)\n"
+		""},
+	 { (char *)"IntegrationPoint_Set3w", _wrap_IntegrationPoint_Set3w, METH_VARARGS, (char *)"IntegrationPoint_Set3w(IntegrationPoint self, double const * p)"},
+	 { (char *)"IntegrationPoint_Set3", _wrap_IntegrationPoint_Set3, METH_VARARGS, (char *)"\n"
+		"Set3(double const x1, double const x2, double const x3)\n"
+		"IntegrationPoint_Set3(IntegrationPoint self, double const * p)\n"
+		""},
+	 { (char *)"IntegrationPoint_Set2w", _wrap_IntegrationPoint_Set2w, METH_VARARGS, (char *)"\n"
+		"Set2w(double const x1, double const x2, double const w)\n"
+		"IntegrationPoint_Set2w(IntegrationPoint self, double const * p)\n"
+		""},
+	 { (char *)"IntegrationPoint_Set2", _wrap_IntegrationPoint_Set2, METH_VARARGS, (char *)"\n"
+		"Set2(double const x1, double const x2)\n"
+		"IntegrationPoint_Set2(IntegrationPoint self, double const * p)\n"
+		""},
+	 { (char *)"IntegrationPoint_Set1w", _wrap_IntegrationPoint_Set1w, METH_VARARGS, (char *)"\n"
+		"Set1w(double const x1, double const w)\n"
+		"IntegrationPoint_Set1w(IntegrationPoint self, double const * p)\n"
+		""},
+	 { (char *)"new_IntegrationPoint", _wrap_new_IntegrationPoint, METH_VARARGS, (char *)"new_IntegrationPoint() -> IntegrationPoint"},
+	 { (char *)"delete_IntegrationPoint", _wrap_delete_IntegrationPoint, METH_VARARGS, (char *)"delete_IntegrationPoint(IntegrationPoint self)"},
 	 { (char *)"IntegrationPoint_swigregister", IntegrationPoint_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_IntegrationRule", _wrap_new_IntegrationRule, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRule_GetOrder", _wrap_IntegrationRule_GetOrder, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRule_SetOrder", _wrap_IntegrationRule_SetOrder, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRule_GetNPoints", _wrap_IntegrationRule_GetNPoints, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRule_IntPoint", _wrap_IntegrationRule_IntPoint, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRule_GetWeights", _wrap_IntegrationRule_GetWeights, METH_VARARGS, NULL},
-	 { (char *)"delete_IntegrationRule", _wrap_delete_IntegrationRule, METH_VARARGS, NULL},
+	 { (char *)"new_IntegrationRule", _wrap_new_IntegrationRule, METH_VARARGS, (char *)"\n"
+		"IntegrationRule()\n"
+		"IntegrationRule(int NP)\n"
+		"IntegrationRule(IntegrationRule irx, IntegrationRule iry)\n"
+		"new_IntegrationRule(IntegrationRule irx, IntegrationRule iry, IntegrationRule irz) -> IntegrationRule\n"
+		""},
+	 { (char *)"IntegrationRule_GetOrder", _wrap_IntegrationRule_GetOrder, METH_VARARGS, (char *)"IntegrationRule_GetOrder(IntegrationRule self) -> int"},
+	 { (char *)"IntegrationRule_SetOrder", _wrap_IntegrationRule_SetOrder, METH_VARARGS, (char *)"IntegrationRule_SetOrder(IntegrationRule self, int const order)"},
+	 { (char *)"IntegrationRule_GetNPoints", _wrap_IntegrationRule_GetNPoints, METH_VARARGS, (char *)"IntegrationRule_GetNPoints(IntegrationRule self) -> int"},
+	 { (char *)"IntegrationRule_IntPoint", _wrap_IntegrationRule_IntPoint, METH_VARARGS, (char *)"\n"
+		"IntPoint(int i) -> IntegrationPoint\n"
+		"IntegrationRule_IntPoint(IntegrationRule self, int i) -> IntegrationPoint\n"
+		""},
+	 { (char *)"IntegrationRule_GetWeights", _wrap_IntegrationRule_GetWeights, METH_VARARGS, (char *)"IntegrationRule_GetWeights(IntegrationRule self) -> doubleArray"},
+	 { (char *)"delete_IntegrationRule", _wrap_delete_IntegrationRule, METH_VARARGS, (char *)"delete_IntegrationRule(IntegrationRule self)"},
 	 { (char *)"IntegrationRule_swigregister", IntegrationRule_swigregister, METH_VARARGS, NULL},
-	 { (char *)"QuadratureFunctions1D_GaussLegendre", _wrap_QuadratureFunctions1D_GaussLegendre, METH_VARARGS, NULL},
-	 { (char *)"QuadratureFunctions1D_GaussLobatto", _wrap_QuadratureFunctions1D_GaussLobatto, METH_VARARGS, NULL},
-	 { (char *)"QuadratureFunctions1D_OpenUniform", _wrap_QuadratureFunctions1D_OpenUniform, METH_VARARGS, NULL},
-	 { (char *)"QuadratureFunctions1D_ClosedUniform", _wrap_QuadratureFunctions1D_ClosedUniform, METH_VARARGS, NULL},
-	 { (char *)"QuadratureFunctions1D_OpenHalfUniform", _wrap_QuadratureFunctions1D_OpenHalfUniform, METH_VARARGS, NULL},
-	 { (char *)"QuadratureFunctions1D_GivePolyPoints", _wrap_QuadratureFunctions1D_GivePolyPoints, METH_VARARGS, NULL},
-	 { (char *)"new_QuadratureFunctions1D", _wrap_new_QuadratureFunctions1D, METH_VARARGS, NULL},
-	 { (char *)"delete_QuadratureFunctions1D", _wrap_delete_QuadratureFunctions1D, METH_VARARGS, NULL},
+	 { (char *)"QuadratureFunctions1D_GaussLegendre", _wrap_QuadratureFunctions1D_GaussLegendre, METH_VARARGS, (char *)"QuadratureFunctions1D_GaussLegendre(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
+	 { (char *)"QuadratureFunctions1D_GaussLobatto", _wrap_QuadratureFunctions1D_GaussLobatto, METH_VARARGS, (char *)"QuadratureFunctions1D_GaussLobatto(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
+	 { (char *)"QuadratureFunctions1D_OpenUniform", _wrap_QuadratureFunctions1D_OpenUniform, METH_VARARGS, (char *)"QuadratureFunctions1D_OpenUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
+	 { (char *)"QuadratureFunctions1D_ClosedUniform", _wrap_QuadratureFunctions1D_ClosedUniform, METH_VARARGS, (char *)"QuadratureFunctions1D_ClosedUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
+	 { (char *)"QuadratureFunctions1D_OpenHalfUniform", _wrap_QuadratureFunctions1D_OpenHalfUniform, METH_VARARGS, (char *)"QuadratureFunctions1D_OpenHalfUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"},
+	 { (char *)"QuadratureFunctions1D_GivePolyPoints", _wrap_QuadratureFunctions1D_GivePolyPoints, METH_VARARGS, (char *)"QuadratureFunctions1D_GivePolyPoints(QuadratureFunctions1D self, int const np, double * pts, int const type)"},
+	 { (char *)"new_QuadratureFunctions1D", _wrap_new_QuadratureFunctions1D, METH_VARARGS, (char *)"new_QuadratureFunctions1D() -> QuadratureFunctions1D"},
+	 { (char *)"delete_QuadratureFunctions1D", _wrap_delete_QuadratureFunctions1D, METH_VARARGS, (char *)"delete_QuadratureFunctions1D(QuadratureFunctions1D self)"},
 	 { (char *)"QuadratureFunctions1D_swigregister", QuadratureFunctions1D_swigregister, METH_VARARGS, NULL},
-	 { (char *)"Quadrature1D_CheckClosed", _wrap_Quadrature1D_CheckClosed, METH_VARARGS, NULL},
-	 { (char *)"Quadrature1D_CheckOpen", _wrap_Quadrature1D_CheckOpen, METH_VARARGS, NULL},
-	 { (char *)"new_Quadrature1D", _wrap_new_Quadrature1D, METH_VARARGS, NULL},
-	 { (char *)"delete_Quadrature1D", _wrap_delete_Quadrature1D, METH_VARARGS, NULL},
+	 { (char *)"Quadrature1D_CheckClosed", _wrap_Quadrature1D_CheckClosed, METH_VARARGS, (char *)"Quadrature1D_CheckClosed(int type) -> int"},
+	 { (char *)"Quadrature1D_CheckOpen", _wrap_Quadrature1D_CheckOpen, METH_VARARGS, (char *)"Quadrature1D_CheckOpen(int type) -> int"},
+	 { (char *)"new_Quadrature1D", _wrap_new_Quadrature1D, METH_VARARGS, (char *)"new_Quadrature1D() -> Quadrature1D"},
+	 { (char *)"delete_Quadrature1D", _wrap_delete_Quadrature1D, METH_VARARGS, (char *)"delete_Quadrature1D(Quadrature1D self)"},
 	 { (char *)"Quadrature1D_swigregister", Quadrature1D_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_IntegrationRules", _wrap_new_IntegrationRules, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRules_Get", _wrap_IntegrationRules_Get, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRules_Set", _wrap_IntegrationRules_Set, METH_VARARGS, NULL},
-	 { (char *)"IntegrationRules_SetOwnRules", _wrap_IntegrationRules_SetOwnRules, METH_VARARGS, NULL},
-	 { (char *)"delete_IntegrationRules", _wrap_delete_IntegrationRules, METH_VARARGS, NULL},
+	 { (char *)"new_IntegrationRules", _wrap_new_IntegrationRules, METH_VARARGS, (char *)"\n"
+		"IntegrationRules(int Ref=0, int type)\n"
+		"IntegrationRules(int Ref=0)\n"
+		"new_IntegrationRules() -> IntegrationRules\n"
+		""},
+	 { (char *)"IntegrationRules_Get", _wrap_IntegrationRules_Get, METH_VARARGS, (char *)"IntegrationRules_Get(IntegrationRules self, int GeomType, int Order) -> IntegrationRule"},
+	 { (char *)"IntegrationRules_Set", _wrap_IntegrationRules_Set, METH_VARARGS, (char *)"IntegrationRules_Set(IntegrationRules self, int GeomType, int Order, IntegrationRule IntRule)"},
+	 { (char *)"IntegrationRules_SetOwnRules", _wrap_IntegrationRules_SetOwnRules, METH_VARARGS, (char *)"IntegrationRules_SetOwnRules(IntegrationRules self, int o)"},
+	 { (char *)"delete_IntegrationRules", _wrap_delete_IntegrationRules, METH_VARARGS, (char *)"delete_IntegrationRules(IntegrationRules self)"},
 	 { (char *)"IntegrationRules_swigregister", IntegrationRules_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -8877,6 +8942,7 @@ static PyMethodDef SwigMethods[] = {
 static void *_p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Array< mfem::IntegrationPoint > *)  ((mfem::IntegrationRule *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_double_t = {"_p_mfem__ArrayT_double_t", "mfem::Array< double > *", 0, 0, (void*)0, 0};
@@ -8890,6 +8956,7 @@ static swig_type_info _swigt__p_mfem__QuadratureFunctions1D = {"_p_mfem__Quadrat
 static swig_type_info _swigt__p_p_mfem__IntegrationPoint = {"_p_p_mfem__IntegrationPoint", "mfem::IntegrationPoint **", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_mfem__ArrayT_double_t,
@@ -8903,6 +8970,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__IntegrationPoint,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_double_t[] = {  {&_swigt__p_mfem__ArrayT_double_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -8916,6 +8984,7 @@ static swig_cast_info _swigc__p_mfem__QuadratureFunctions1D[] = {  {&_swigt__p_m
 static swig_cast_info _swigc__p_p_mfem__IntegrationPoint[] = {  {&_swigt__p_p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_mfem__ArrayT_double_t,

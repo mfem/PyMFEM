@@ -115,6 +115,8 @@ MFEM_INSTALL_DIR = _pumi.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pumi.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pumi.MFEM_HYPRE_VERSION
 class intp(_object):
+    """Proxy of C++ intp class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
     __swig_getmethods__ = {}
@@ -122,6 +124,7 @@ class intp(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(intp self) -> intp"""
         this = _pumi.new_intp()
         try:
             self.this.append(this)
@@ -131,25 +134,35 @@ class intp(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(intp self, int value)"""
         return _pumi.intp_assign(self, value)
 
+
     def value(self):
+        """value(intp self) -> int"""
         return _pumi.intp_value(self)
 
+
     def cast(self):
+        """cast(intp self) -> int *"""
         return _pumi.intp_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_pumi.intp_frompointer)
-    else:
-        frompointer = _pumi.intp_frompointer
+
+
+    def frompointer(t):
+        """frompointer(int * t) -> intp"""
+        return _pumi.intp_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 intp_swigregister = _pumi.intp_swigregister
 intp_swigregister(intp)
 
 def intp_frompointer(t):
+    """intp_frompointer(int * t) -> intp"""
     return _pumi.intp_frompointer(t)
-intp_frompointer = _pumi.intp_frompointer
 
 class doublep(_object):
+    """Proxy of C++ doublep class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
     __swig_getmethods__ = {}
@@ -157,6 +170,7 @@ class doublep(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(doublep self) -> doublep"""
         this = _pumi.new_doublep()
         try:
             self.this.append(this)
@@ -166,25 +180,32 @@ class doublep(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(doublep self, double value)"""
         return _pumi.doublep_assign(self, value)
 
+
     def value(self):
+        """value(doublep self) -> double"""
         return _pumi.doublep_value(self)
 
+
     def cast(self):
+        """cast(doublep self) -> double *"""
         return _pumi.doublep_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_pumi.doublep_frompointer)
-    else:
-        frompointer = _pumi.doublep_frompointer
+
+
+    def frompointer(t):
+        """frompointer(double * t) -> doublep"""
+        return _pumi.doublep_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 doublep_swigregister = _pumi.doublep_swigregister
 doublep_swigregister(doublep)
 
 def doublep_frompointer(t):
+    """doublep_frompointer(double * t) -> doublep"""
     return _pumi.doublep_frompointer(t)
-doublep_frompointer = _pumi.doublep_frompointer
 
-import mfem._par.ostream_typemap
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.operators
@@ -217,6 +238,7 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
+import mfem._par.ostream_typemap
 
 def ParMesh2ParPumiMesh(pmesh):
     """ParMesh2ParPumiMesh(ParMesh pmesh) -> mfem::ParPumiMesh *"""

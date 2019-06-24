@@ -119,7 +119,6 @@ import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.matrix
@@ -146,6 +145,7 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
+import mfem._par.ostream_typemap
 
 def GlobalLpNorm(p, loc_norm, comm):
     """GlobalLpNorm(double const p, double loc_norm, MPI_Comm comm) -> double"""
@@ -379,19 +379,6 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         """
         return _pgridfunc.ParGridFunction_ComputeFlux(self, blfi, flux, wcoef, subdomain)
 
-
-    def Save(self, out):
-        """Save(ParGridFunction self, std::ostream & out)"""
-        return _pgridfunc.ParGridFunction_Save(self, out)
-
-
-    def SaveAsOne(self, *args):
-        """
-        SaveAsOne(ParGridFunction self, std::ostream & out)
-        SaveAsOne(ParGridFunction self)
-        """
-        return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
-
     __swig_destroy__ = _pgridfunc.delete_ParGridFunction
     __del__ = lambda self: None
 
@@ -432,6 +419,25 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def Save(self, *args):
+        """
+        Save(ParGridFunction self, std::ostream & out)
+        Save(ParGridFunction self, char const * file, int precision=8)
+        Save(ParGridFunction self, char const * file)
+        """
+        return _pgridfunc.ParGridFunction_Save(self, *args)
+
+
+    def SaveAsOne(self, *args):
+        """
+        SaveAsOne(ParGridFunction self, std::ostream & out)
+        SaveAsOne(ParGridFunction self)
+        SaveAsOne(ParGridFunction self, char const * file, int precision=8)
+        SaveAsOne(ParGridFunction self, char const * file)
+        """
+        return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
+
 ParGridFunction_swigregister = _pgridfunc.ParGridFunction_swigregister
 ParGridFunction_swigregister(ParGridFunction)
 

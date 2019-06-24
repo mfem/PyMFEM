@@ -118,7 +118,6 @@ import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.matrix
@@ -145,6 +144,7 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
+import mfem._par.ostream_typemap
 class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     """Proxy of C++ mfem::ParFiniteElementSpace class."""
 

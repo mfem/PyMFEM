@@ -96,7 +96,6 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.mem_manager
 import mfem._ser.vector
 class Hashed2(_object):

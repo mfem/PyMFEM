@@ -96,7 +96,6 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 
 def add_vector(*args):
@@ -350,11 +349,6 @@ class Vector(_object):
         return _vector.Vector_SetSubVectorComplement(self, dofs, val)
 
 
-    def Print_HYPRE(self, out):
-        """Print_HYPRE(Vector self, std::ostream & out)"""
-        return _vector.Vector_Print_HYPRE(self, out)
-
-
     def Randomize(self, seed=0):
         """
         Randomize(Vector self, int seed=0)
@@ -531,16 +525,6 @@ class Vector(_object):
         return val
 
 
-    def Print(self, *args):
-        """
-        Print(Vector self, std::ostream & out, int width=8)
-        Print(Vector self, std::ostream & out)
-        Print(Vector self)
-        Print(Vector self, char const * file)
-        """
-        return _vector.Vector_Print(self, *args)
-
-
     def __setitem__(self, i, v):
         """__setitem__(Vector self, int i, double const v)"""
         return _vector.Vector___setitem__(self, i, v)
@@ -554,6 +538,27 @@ class Vector(_object):
     def GetDataArray(self):
         """GetDataArray(Vector self) -> PyObject *"""
         return _vector.Vector_GetDataArray(self)
+
+
+    def Print(self, *args):
+        """
+        Print(Vector self, std::ostream & out, int width=8)
+        Print(Vector self, std::ostream & out)
+        Print(Vector self)
+        Print(Vector self, char const * file, int precision=8)
+        Print(Vector self, char const * file)
+        """
+        return _vector.Vector_Print(self, *args)
+
+
+    def Print_HYPRE(self, *args):
+        """
+        Print_HYPRE(Vector self, std::ostream & out)
+        Print_HYPRE(Vector self, char const * file, int precision=8)
+        Print_HYPRE(Vector self, char const * file)
+        Print_HYPRE(Vector self)
+        """
+        return _vector.Vector_Print_HYPRE(self, *args)
 
 Vector_swigregister = _vector.Vector_swigregister
 Vector_swigregister(Vector)

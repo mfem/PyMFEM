@@ -10,7 +10,8 @@
       $1 = &std::cout;
   }
   else {
-    out.open(temp->getFilename()); 
+    out.open(temp->getFilename());
+    out.precision(temp->getPrecision());
     $1 = &out;
   }
 }
@@ -31,15 +32,16 @@
 %enddef
 
 //This macro extend class to write file and stdout (no argument)
-%define OSTREAM_ADD_DEFAULT_STDOUT(class, method)
+%define OSTREAM_ADD_DEFAULT_STDOUT_FILE(class, method)
 %extend mfem::class {
-void method(const char *file){
+void method(const char *file, int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
         std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
         return;
       }
+  ofile.precision(precision);    
   self -> method(ofile);
   ofile.close();
   }
@@ -47,6 +49,22 @@ void method(void){
   self -> method(std::cout);
   }
  
+};
+%enddef
+
+%define OSTREAM_ADD_DEFAULT_FILE(class, method)
+%extend mfem::class {
+void method(const char *file, int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> method(ofile);
+  ofile.close();
+  }
 };
 %enddef
 

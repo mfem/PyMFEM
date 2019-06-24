@@ -8,14 +8,15 @@
 #include <cstring>
 #include "linalg/handle.hpp"    
 #include "linalg/sparsemat.hpp"  
-#include "iostream_typemap.hpp"  
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"               
+#include "pyoperator.hpp"
+#include "io_stream.hpp"    
   %}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
 %}
+%include "exception.i"
 %import "array.i"
 %import "mem_manager.i"
 
@@ -23,8 +24,12 @@ import_array();
 %import "operators.i"
 %import "matrix.i"
 %import "densemat.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
+%import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
+
 %ignore Walk;
 
 %pythonappend mfem::SparseMatrix::operator*= %{
@@ -157,14 +162,22 @@ PyObject* GetDataArray(void) const{
   npy_intp dims[] = {I[L]};
   return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void *)A);
   }
-void Print(const char *file){
-  std::ofstream ofile(file);
-  if (!ofile)
-  {
-     std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-     return;
-  }
-  self -> Print(ofile);
-  ofile.close();
-  }
 };
+/*
+linalg/sparsemat.hpp:   void Print(std::ostream &out = mfem::out, int width_ = 4) const;
+linalg/sparsemat.hpp:   void PrintMatlab(std::ostream &out = mfem::out) const;
+linalg/sparsemat.hpp:   void PrintMM(std::ostream &out = mfem::out) const;
+linalg/sparsemat.hpp:   void PrintCSR(std::ostream &out) const;
+linalg/sparsemat.hpp:   void PrintCSR2(std::ostream &out) const;
+linalg/sparsemat.hpp:   void PrintInfo(std::ostream &out) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(SparseMatrix, Print)
+OSTREAM_ADD_DEFAULT_FILE(SparseMatrix, PrintMatlab)
+OSTREAM_ADD_DEFAULT_FILE(SparseMatrix, PrintMM)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(SparseMatrix, PrintCSR)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(SparseMatrix, PrintCSR2)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(SparseMatrix, PrintInfo)
+#endif
+
+

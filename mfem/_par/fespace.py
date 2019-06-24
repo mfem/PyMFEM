@@ -103,7 +103,6 @@ except __builtin__.Exception:
 
 
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.coefficient
@@ -693,17 +692,22 @@ class FiniteElementSpace(_object):
         return _fespace.FiniteElementSpace_GetSequence(self)
 
 
-    def Save(self, out):
-        """Save(FiniteElementSpace self, std::ostream & out)"""
-        return _fespace.FiniteElementSpace_Save(self, out)
-
-
     def Load(self, m, input):
         """Load(FiniteElementSpace self, Mesh m, std::istream & input) -> FiniteElementCollection"""
         return _fespace.FiniteElementSpace_Load(self, m, input)
 
     __swig_destroy__ = _fespace.delete_FiniteElementSpace
     __del__ = lambda self: None
+
+    def Save(self, *args):
+        """
+        Save(FiniteElementSpace self, std::ostream & out)
+        Save(FiniteElementSpace self, char const * file, int precision=8)
+        Save(FiniteElementSpace self, char const * file)
+        Save(FiniteElementSpace self)
+        """
+        return _fespace.FiniteElementSpace_Save(self, *args)
+
 FiniteElementSpace_swigregister = _fespace.FiniteElementSpace_swigregister
 FiniteElementSpace_swigregister(FiniteElementSpace)
 
@@ -754,9 +758,14 @@ class QuadratureSpace(_object):
         return _fespace.QuadratureSpace_GetElementIntRule(self, idx)
 
 
-    def Save(self, out):
-        """Save(QuadratureSpace self, std::ostream & out)"""
-        return _fespace.QuadratureSpace_Save(self, out)
+    def Save(self, *args):
+        """
+        Save(QuadratureSpace self, std::ostream & out)
+        Save(QuadratureSpace self, char const * file, int precision=8)
+        Save(QuadratureSpace self, char const * file)
+        Save(QuadratureSpace self)
+        """
+        return _fespace.QuadratureSpace_Save(self, *args)
 
 QuadratureSpace_swigregister = _fespace.QuadratureSpace_swigregister
 QuadratureSpace_swigregister(QuadratureSpace)

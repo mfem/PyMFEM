@@ -107,7 +107,6 @@ import mfem._par.operators
 import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 class IterativeSolver(mfem._par.operators.Solver):
     """Proxy of C++ mfem::IterativeSolver class."""
 

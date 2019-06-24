@@ -115,7 +115,6 @@ MFEM_INSTALL_DIR = _coefficient.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _coefficient.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _coefficient.MFEM_HYPRE_VERSION
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.mem_manager
 import mfem._par.matrix
 import mfem._par.vector

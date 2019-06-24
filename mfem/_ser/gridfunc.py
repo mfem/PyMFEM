@@ -173,7 +173,6 @@ def doublep_frompointer(t):
 doublep_frompointer = _gridfunc.doublep_frompointer
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.coefficient
@@ -601,11 +600,6 @@ class GridFunction(mfem._ser.vector.Vector):
         return _gridfunc.GridFunction_MakeTRef(self, *args)
 
 
-    def Save(self, out):
-        """Save(GridFunction self, std::ostream & out)"""
-        return _gridfunc.GridFunction_Save(self, out)
-
-
     def SaveVTK(self, out, field_name, ref):
         """SaveVTK(GridFunction self, std::ostream & out, std::string const & field_name, int ref)"""
         return _gridfunc.GridFunction_SaveVTK(self, out, field_name, ref)
@@ -664,6 +658,15 @@ class GridFunction(mfem._ser.vector.Vector):
     def idiv(self, c):
         """idiv(GridFunction self, double c) -> GridFunction"""
         return _gridfunc.GridFunction_idiv(self, c)
+
+
+    def Save(self, *args):
+        """
+        Save(GridFunction self, std::ostream & out)
+        Save(GridFunction self, char const * file, int precision=8)
+        Save(GridFunction self, char const * file)
+        """
+        return _gridfunc.GridFunction_Save(self, *args)
 
 GridFunction_swigregister = _gridfunc.GridFunction_swigregister
 GridFunction_swigregister(GridFunction)
@@ -749,9 +752,13 @@ class QuadratureFunction(mfem._ser.vector.Vector):
         return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
 
 
-    def Save(self, out):
-        """Save(QuadratureFunction self, std::ostream & out)"""
-        return _gridfunc.QuadratureFunction_Save(self, out)
+    def Save(self, *args):
+        """
+        Save(QuadratureFunction self, std::ostream & out)
+        Save(QuadratureFunction self, char const * file, int precision=8)
+        Save(QuadratureFunction self, char const * file)
+        """
+        return _gridfunc.QuadratureFunction_Save(self, *args)
 
 QuadratureFunction_swigregister = _gridfunc.QuadratureFunction_swigregister
 QuadratureFunction_swigregister(QuadratureFunction)

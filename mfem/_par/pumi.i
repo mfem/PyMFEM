@@ -1,4 +1,7 @@
 %module(package="mfem._par", directors="0")  pumi
+
+%feature("autodoc", "1");
+
 %{
 #include "mesh/mesh_headers.hpp"
 #include "mesh/pumi.hpp"
@@ -12,7 +15,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "iostream_typemap.hpp"         
+#include "io_stream.hpp"         
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
 
@@ -31,7 +34,6 @@ import_array();
 
 %include "../common/cpointers.i"
 %include "exception.i"
-%import "ostream_typemap.i"
 %import "../common/numpy_int_typemap.i"
 %import "pgridfunc.i"
 %import "mesh.i"

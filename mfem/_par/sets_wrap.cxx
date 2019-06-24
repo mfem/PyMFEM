@@ -3006,14 +3006,15 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_int swig_types[1]
-#define SWIGTYPE_p_mfem__IntegerSet swig_types[2]
-#define SWIGTYPE_p_mfem__ListOfIntegerSets swig_types[3]
-#define SWIGTYPE_p_mfem__STable swig_types[4]
-#define SWIGTYPE_p_mfem__Table swig_types[5]
-static swig_type_info *swig_types[7];
-static swig_module_info swig_module = {swig_types, 6, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_int swig_types[2]
+#define SWIGTYPE_p_mfem__IntegerSet swig_types[3]
+#define SWIGTYPE_p_mfem__ListOfIntegerSets swig_types[4]
+#define SWIGTYPE_p_mfem__STable swig_types[5]
+#define SWIGTYPE_p_mfem__Table swig_types[6]
+static swig_type_info *swig_types[8];
+static swig_module_info swig_module = {swig_types, 7, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3901,22 +3902,26 @@ SWIGINTERN PyObject *ListOfIntegerSets_swigregister(PyObject *SWIGUNUSEDPARM(sel
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_IntegerSet", _wrap_new_IntegerSet, METH_VARARGS, NULL},
-	 { (char *)"IntegerSet_Size", _wrap_IntegerSet_Size, METH_VARARGS, NULL},
-	 { (char *)"IntegerSet_PickElement", _wrap_IntegerSet_PickElement, METH_VARARGS, NULL},
-	 { (char *)"IntegerSet_PickRandomElement", _wrap_IntegerSet_PickRandomElement, METH_VARARGS, NULL},
-	 { (char *)"IntegerSet___eq__", _wrap_IntegerSet___eq__, METH_VARARGS, NULL},
-	 { (char *)"IntegerSet_Recreate", _wrap_IntegerSet_Recreate, METH_VARARGS, NULL},
-	 { (char *)"delete_IntegerSet", _wrap_delete_IntegerSet, METH_VARARGS, NULL},
+	 { (char *)"new_IntegerSet", _wrap_new_IntegerSet, METH_VARARGS, (char *)"\n"
+		"IntegerSet()\n"
+		"IntegerSet(IntegerSet s)\n"
+		"new_IntegerSet(int const n, int const * p) -> IntegerSet\n"
+		""},
+	 { (char *)"IntegerSet_Size", _wrap_IntegerSet_Size, METH_VARARGS, (char *)"IntegerSet_Size(IntegerSet self) -> int"},
+	 { (char *)"IntegerSet_PickElement", _wrap_IntegerSet_PickElement, METH_VARARGS, (char *)"IntegerSet_PickElement(IntegerSet self) -> int"},
+	 { (char *)"IntegerSet_PickRandomElement", _wrap_IntegerSet_PickRandomElement, METH_VARARGS, (char *)"IntegerSet_PickRandomElement(IntegerSet self) -> int"},
+	 { (char *)"IntegerSet___eq__", _wrap_IntegerSet___eq__, METH_VARARGS, (char *)"IntegerSet___eq__(IntegerSet self, IntegerSet s) -> int"},
+	 { (char *)"IntegerSet_Recreate", _wrap_IntegerSet_Recreate, METH_VARARGS, (char *)"IntegerSet_Recreate(IntegerSet self, int const n, int const * p)"},
+	 { (char *)"delete_IntegerSet", _wrap_delete_IntegerSet, METH_VARARGS, (char *)"delete_IntegerSet(IntegerSet self)"},
 	 { (char *)"IntegerSet_swigregister", IntegerSet_swigregister, METH_VARARGS, NULL},
-	 { (char *)"ListOfIntegerSets_Size", _wrap_ListOfIntegerSets_Size, METH_VARARGS, NULL},
-	 { (char *)"ListOfIntegerSets_PickElementInSet", _wrap_ListOfIntegerSets_PickElementInSet, METH_VARARGS, NULL},
-	 { (char *)"ListOfIntegerSets_PickRandomElementInSet", _wrap_ListOfIntegerSets_PickRandomElementInSet, METH_VARARGS, NULL},
-	 { (char *)"ListOfIntegerSets_Insert", _wrap_ListOfIntegerSets_Insert, METH_VARARGS, NULL},
-	 { (char *)"ListOfIntegerSets_Lookup", _wrap_ListOfIntegerSets_Lookup, METH_VARARGS, NULL},
-	 { (char *)"ListOfIntegerSets_AsTable", _wrap_ListOfIntegerSets_AsTable, METH_VARARGS, NULL},
-	 { (char *)"delete_ListOfIntegerSets", _wrap_delete_ListOfIntegerSets, METH_VARARGS, NULL},
-	 { (char *)"new_ListOfIntegerSets", _wrap_new_ListOfIntegerSets, METH_VARARGS, NULL},
+	 { (char *)"ListOfIntegerSets_Size", _wrap_ListOfIntegerSets_Size, METH_VARARGS, (char *)"ListOfIntegerSets_Size(ListOfIntegerSets self) -> int"},
+	 { (char *)"ListOfIntegerSets_PickElementInSet", _wrap_ListOfIntegerSets_PickElementInSet, METH_VARARGS, (char *)"ListOfIntegerSets_PickElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { (char *)"ListOfIntegerSets_PickRandomElementInSet", _wrap_ListOfIntegerSets_PickRandomElementInSet, METH_VARARGS, (char *)"ListOfIntegerSets_PickRandomElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { (char *)"ListOfIntegerSets_Insert", _wrap_ListOfIntegerSets_Insert, METH_VARARGS, (char *)"ListOfIntegerSets_Insert(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { (char *)"ListOfIntegerSets_Lookup", _wrap_ListOfIntegerSets_Lookup, METH_VARARGS, (char *)"ListOfIntegerSets_Lookup(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { (char *)"ListOfIntegerSets_AsTable", _wrap_ListOfIntegerSets_AsTable, METH_VARARGS, (char *)"ListOfIntegerSets_AsTable(ListOfIntegerSets self, Table t)"},
+	 { (char *)"delete_ListOfIntegerSets", _wrap_delete_ListOfIntegerSets, METH_VARARGS, (char *)"delete_ListOfIntegerSets(ListOfIntegerSets self)"},
+	 { (char *)"new_ListOfIntegerSets", _wrap_new_ListOfIntegerSets, METH_VARARGS, (char *)"new_ListOfIntegerSets() -> ListOfIntegerSets"},
 	 { (char *)"ListOfIntegerSets_swigregister", ListOfIntegerSets_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -3927,6 +3932,7 @@ static PyMethodDef SwigMethods[] = {
 static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegerSet = {"_p_mfem__IntegerSet", "mfem::IntegerSet *", 0, 0, (void*)0, 0};
@@ -3935,6 +3941,7 @@ static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *"
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_int,
   &_swigt__p_mfem__IntegerSet,
@@ -3943,6 +3950,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Table,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegerSet[] = {  {&_swigt__p_mfem__IntegerSet, 0, 0, 0},{0, 0, 0, 0}};
@@ -3951,6 +3959,7 @@ static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_int,
   _swigc__p_mfem__IntegerSet,

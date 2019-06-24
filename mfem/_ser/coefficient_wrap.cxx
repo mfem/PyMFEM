@@ -3451,87 +3451,88 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_double swig_types[1]
-#define SWIGTYPE_p_f_double__double swig_types[2]
-#define SWIGTYPE_p_f_double_double__double swig_types[3]
-#define SWIGTYPE_p_f_r_mfem__Vector__double swig_types[4]
-#define SWIGTYPE_p_f_r_mfem__Vector_double__double swig_types[5]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector__double swig_types[6]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_double__double swig_types[7]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__DenseMatrix__void swig_types[8]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void swig_types[9]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void swig_types[10]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[11]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[12]
-#define SWIGTYPE_p_mfem__Coefficient swig_types[13]
-#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[14]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[15]
-#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[16]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[17]
-#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[18]
-#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[19]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[20]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[21]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[22]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[23]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[24]
-#define SWIGTYPE_p_mfem__IdentityMatrixCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[26]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[27]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[28]
-#define SWIGTYPE_p_mfem__InverseMatrixCoefficient swig_types[29]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[30]
-#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[31]
-#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[32]
-#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[33]
-#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[34]
-#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[35]
-#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[36]
-#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[37]
-#define SWIGTYPE_p_mfem__MatrixSumCoefficient swig_types[38]
-#define SWIGTYPE_p_mfem__Mesh swig_types[39]
-#define SWIGTYPE_p_mfem__OuterProductCoefficient swig_types[40]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[41]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[42]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[43]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[44]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[45]
-#define SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient swig_types[46]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[47]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[48]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[49]
-#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[50]
-#define SWIGTYPE_p_mfem__Vector swig_types[51]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[52]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[53]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[54]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[55]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[56]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[57]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[58]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[59]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[60]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[61]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[62]
-#define SWIGTYPE_p_p_mfem__Coefficient swig_types[63]
-#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[64]
-#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[65]
-#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[66]
-#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[67]
-#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[68]
-#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[69]
-#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[70]
-#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[71]
-#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[72]
-#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[73]
-#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[74]
-#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[75]
-#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[76]
-#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[77]
-#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[78]
-static swig_type_info *swig_types[80];
-static swig_module_info swig_module = {swig_types, 79, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_f_double__double swig_types[3]
+#define SWIGTYPE_p_f_double_double__double swig_types[4]
+#define SWIGTYPE_p_f_r_mfem__Vector__double swig_types[5]
+#define SWIGTYPE_p_f_r_mfem__Vector_double__double swig_types[6]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector__double swig_types[7]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_double__double swig_types[8]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__DenseMatrix__void swig_types[9]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void swig_types[10]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void swig_types[11]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[13]
+#define SWIGTYPE_p_mfem__Coefficient swig_types[14]
+#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[15]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[16]
+#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[17]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[18]
+#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[19]
+#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[20]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[21]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[22]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[23]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[24]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[25]
+#define SWIGTYPE_p_mfem__IdentityMatrixCoefficient swig_types[26]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[27]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[28]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[29]
+#define SWIGTYPE_p_mfem__InverseMatrixCoefficient swig_types[30]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[31]
+#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[32]
+#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[34]
+#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[35]
+#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[36]
+#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[37]
+#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[38]
+#define SWIGTYPE_p_mfem__MatrixSumCoefficient swig_types[39]
+#define SWIGTYPE_p_mfem__Mesh swig_types[40]
+#define SWIGTYPE_p_mfem__OuterProductCoefficient swig_types[41]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[42]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[43]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[44]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[45]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[46]
+#define SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[48]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[49]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[50]
+#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[51]
+#define SWIGTYPE_p_mfem__Vector swig_types[52]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[53]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[54]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[56]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[57]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[58]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[59]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[60]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[61]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[62]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[63]
+#define SWIGTYPE_p_p_mfem__Coefficient swig_types[64]
+#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[65]
+#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[66]
+#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[67]
+#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[68]
+#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[69]
+#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[70]
+#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[71]
+#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[72]
+#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[73]
+#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[74]
+#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[75]
+#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[76]
+#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[77]
+#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[78]
+#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[79]
+static swig_type_info *swig_types[81];
+static swig_module_info swig_module = {swig_types, 80, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -20750,6 +20751,7 @@ static void *_p_mfem__ConstantCoefficientTo_p_mfem__Coefficient(void *x, int *SW
 static void *_p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ElementTransformation *)  ((mfem::IsoparametricTransformation *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_double__double = {"_p_f_double__double", "double (*)(double)", 0, 0, (void*)0, 0};
@@ -20831,6 +20833,7 @@ static swig_type_info _swigt__p_p_mfem__PWConstCoefficient = {"_p_p_mfem__PWCons
 static swig_type_info _swigt__p_p_mfem__ConstantCoefficient = {"_p_p_mfem__ConstantCoefficient", 0, 0, 0, 0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_f_double__double,
@@ -20912,6 +20915,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__VectorRotProductCoefficient,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_double__double[] = {  {&_swigt__p_f_double__double, 0, 0, 0},{0, 0, 0, 0}};
@@ -20993,6 +20997,7 @@ static swig_cast_info _swigc__p_p_mfem__ConstantCoefficient[] = {{&_swigt__p_p_m
 static swig_cast_info _swigc__p_p_mfem__Coefficient[] = {  {&_swigt__p_p_mfem__PyCoefficientBase, _p_p_mfem__PyCoefficientBaseTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeterminantCoefficient, _p_p_mfem__DeterminantCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__VectorRotProductCoefficient, _p_p_mfem__VectorRotProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__InnerProductCoefficient, _p_p_mfem__InnerProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__PowerCoefficient, _p_p_mfem__PowerCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ProductCoefficient, _p_p_mfem__ProductCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__SumCoefficient, _p_p_mfem__SumCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DivergenceGridFunctionCoefficient, _p_p_mfem__DivergenceGridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__RestrictedCoefficient, _p_p_mfem__RestrictedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__DeltaCoefficient, _p_p_mfem__DeltaCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__TransformedCoefficient, _p_p_mfem__TransformedCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__GridFunctionCoefficient, _p_p_mfem__GridFunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__FunctionCoefficient, _p_p_mfem__FunctionCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__Coefficient, 0, 0, 0},  {&_swigt__p_p_mfem__PWConstCoefficient, _p_p_mfem__PWConstCoefficientTo_p_p_mfem__Coefficient, 0, 0},  {&_swigt__p_p_mfem__ConstantCoefficient, _p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_f_double__double,

@@ -3454,26 +3454,27 @@ namespace Swig {
 #define SWIGTYPE_p_CommGroup swig_types[0]
 #define SWIGTYPE_p_GroupId swig_types[1]
 #define SWIGTYPE_p_MPI_Comm swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_double swig_types[4]
-#define SWIGTYPE_p_doublep swig_types[5]
-#define SWIGTYPE_p_hex_t swig_types[6]
-#define SWIGTYPE_p_int swig_types[7]
-#define SWIGTYPE_p_intp swig_types[8]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[9]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[10]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[11]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[12]
-#define SWIGTYPE_p_mfem__ParGridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[14]
-#define SWIGTYPE_p_mfem__ParPumiMesh swig_types[15]
-#define SWIGTYPE_p_pri_t swig_types[16]
-#define SWIGTYPE_p_quad_t swig_types[17]
-#define SWIGTYPE_p_seg_t swig_types[18]
-#define SWIGTYPE_p_tet_t swig_types[19]
-#define SWIGTYPE_p_tri_t swig_types[20]
-static swig_type_info *swig_types[22];
-static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
+#define SWIGTYPE_p_char swig_types[4]
+#define SWIGTYPE_p_double swig_types[5]
+#define SWIGTYPE_p_doublep swig_types[6]
+#define SWIGTYPE_p_hex_t swig_types[7]
+#define SWIGTYPE_p_int swig_types[8]
+#define SWIGTYPE_p_intp swig_types[9]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[10]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[11]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[12]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[13]
+#define SWIGTYPE_p_mfem__ParGridFunction swig_types[14]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[15]
+#define SWIGTYPE_p_mfem__ParPumiMesh swig_types[16]
+#define SWIGTYPE_p_pri_t swig_types[17]
+#define SWIGTYPE_p_quad_t swig_types[18]
+#define SWIGTYPE_p_seg_t swig_types[19]
+#define SWIGTYPE_p_tet_t swig_types[20]
+#define SWIGTYPE_p_tri_t swig_types[21]
+static swig_type_info *swig_types[23];
+static swig_module_info swig_module = {swig_types, 22, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3590,7 +3591,7 @@ namespace swig {
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "iostream_typemap.hpp"         
+#include "io_stream.hpp"         
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
 
@@ -4171,19 +4172,19 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"new_intp", _wrap_new_intp, METH_VARARGS, NULL},
-	 { (char *)"delete_intp", _wrap_delete_intp, METH_VARARGS, NULL},
-	 { (char *)"intp_assign", _wrap_intp_assign, METH_VARARGS, NULL},
-	 { (char *)"intp_value", _wrap_intp_value, METH_VARARGS, NULL},
-	 { (char *)"intp_cast", _wrap_intp_cast, METH_VARARGS, NULL},
-	 { (char *)"intp_frompointer", _wrap_intp_frompointer, METH_VARARGS, NULL},
+	 { (char *)"new_intp", _wrap_new_intp, METH_VARARGS, (char *)"new_intp() -> intp"},
+	 { (char *)"delete_intp", _wrap_delete_intp, METH_VARARGS, (char *)"delete_intp(intp self)"},
+	 { (char *)"intp_assign", _wrap_intp_assign, METH_VARARGS, (char *)"intp_assign(intp self, int value)"},
+	 { (char *)"intp_value", _wrap_intp_value, METH_VARARGS, (char *)"intp_value(intp self) -> int"},
+	 { (char *)"intp_cast", _wrap_intp_cast, METH_VARARGS, (char *)"intp_cast(intp self) -> int *"},
+	 { (char *)"intp_frompointer", _wrap_intp_frompointer, METH_VARARGS, (char *)"intp_frompointer(int * t) -> intp"},
 	 { (char *)"intp_swigregister", intp_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_doublep", _wrap_new_doublep, METH_VARARGS, NULL},
-	 { (char *)"delete_doublep", _wrap_delete_doublep, METH_VARARGS, NULL},
-	 { (char *)"doublep_assign", _wrap_doublep_assign, METH_VARARGS, NULL},
-	 { (char *)"doublep_value", _wrap_doublep_value, METH_VARARGS, NULL},
-	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, NULL},
-	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, NULL},
+	 { (char *)"new_doublep", _wrap_new_doublep, METH_VARARGS, (char *)"new_doublep() -> doublep"},
+	 { (char *)"delete_doublep", _wrap_delete_doublep, METH_VARARGS, (char *)"delete_doublep(doublep self)"},
+	 { (char *)"doublep_assign", _wrap_doublep_assign, METH_VARARGS, (char *)"doublep_assign(doublep self, double value)"},
+	 { (char *)"doublep_value", _wrap_doublep_value, METH_VARARGS, (char *)"doublep_value(doublep self) -> double"},
+	 { (char *)"doublep_cast", _wrap_doublep_cast, METH_VARARGS, (char *)"doublep_cast(doublep self) -> double *"},
+	 { (char *)"doublep_frompointer", _wrap_doublep_frompointer, METH_VARARGS, (char *)"doublep_frompointer(double * t) -> doublep"},
 	 { (char *)"doublep_swigregister", doublep_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ParMesh2ParPumiMesh", _wrap_ParMesh2ParPumiMesh, METH_VARARGS, (char *)"ParMesh2ParPumiMesh(ParMesh pmesh) -> mfem::ParPumiMesh *"},
 	 { NULL, NULL, 0, NULL }
@@ -4204,6 +4205,7 @@ static void *_p_doublepTo_p_double(void *x, int *SWIGUNUSEDPARM(newmemory)) {
 static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
@@ -4227,6 +4229,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CommGroup,
   &_swigt__p_GroupId,
   &_swigt__p_MPI_Comm,
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_doublep,
@@ -4250,6 +4253,7 @@ static swig_type_info *swig_type_initial[] = {
 static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},  {&_swigt__p_doublep, _p_doublepTo_p_double, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
@@ -4273,6 +4277,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CommGroup,
   _swigc__p_GroupId,
   _swigc__p_MPI_Comm,
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_doublep,
