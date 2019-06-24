@@ -270,7 +270,7 @@ if (visualization):
 nodes = mesh.GetNodes()
 nodes += x
 x.Neg()
-mesh.PrintInfo()
+
 mesh.Print('displaced.mesh', 8)
 x.Save('sol.gf', 8)
 

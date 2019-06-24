@@ -229,7 +229,8 @@ if (visualization):
                             
         c  = None
         if (myid == 0):
-            c = raw_input("press (q)uit or (c)ontinue --> ")
+            from builtins import input
+            c = input("press (q)uit or (c)ontinue --> ")
         c = MPI.COMM_WORLD.bcast(c, root=0)
         if (c != 'c'): break
 

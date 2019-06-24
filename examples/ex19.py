@@ -30,7 +30,7 @@ from scipy.special import erfc
 
 parser = ArgParser(description='Ex19')
 parser.add_argument('-m', '--mesh',
-                    default = 'beam-hex.mesh', 
+                    default = 'beam-tet.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-r', '--refine',
