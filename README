@@ -1,10 +1,12 @@
 '''''
 PyMFEM
-built on mfem 3.4 (commit 0715efbaf95990a4e76380ac69337096b1cd347d)
+built on mfem 4.0 (commit SHA=4d900b0c5fd6352c92173e74678bcbeeb11c8691)
 '''''
 
-PyMFEM is a python2.7 wrapper for MFEM, ligith-weight FEM (finite element
+PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
+PyMFEM is tested with python = 2.7, 3.7
+
 This wrapper is meant for a rapid-prototyping of FEM program, and
 is built using SWIG 3.0.12
 With PyMFEM, a user can create c++ MFEM objects and call their
@@ -324,13 +326,14 @@ to find more detail of the MFEM libirary.
 	   
    4-12) std::ostream&
 
-         methods which takes std::ostream& are wrapped so that one can
-	 pass python file object. Note that you may want to flush
-	 sys.stdout first.
+         methods which takes std::ostream& are wrapped so that it acccept
+	 either empty argument (stdout) or filename.
+	 Not all methos are wrapped yet. Look for OSTREAM_ADD_DEFAULT_FILE
+	 (or OSTREAM_ADD_DEFAULT_STDOUT_FILE) macros in the SWIG interface
+	 file to find which method is wrapped.
 
          (example)
-	    sys.stdout.flush()
-	    sparsmat.PrintInfo(sys.stdout)
+	    sparsmat.PrintInfo()
        
    4-13) mfem::table
            GetRowList returns a version of GetRow which returns Python
