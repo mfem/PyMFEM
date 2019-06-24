@@ -36,7 +36,7 @@ myid      = MPI.COMM_WORLD.rank
 
 parser = ArgParser(description='Ex19p')
 parser.add_argument('-m', '--mesh',
-                    default = 'beam-hex.mesh', 
+                    default = 'beam-tet.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-rs', '--refine-serial',
