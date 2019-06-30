@@ -5567,12 +5567,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5632,12 +5635,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5753,12 +5759,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5818,12 +5827,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5939,12 +5951,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6004,12 +6019,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6125,12 +6143,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6190,12 +6211,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6311,12 +6335,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6376,12 +6403,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6497,12 +6527,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6562,12 +6595,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6683,12 +6719,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6748,12 +6787,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6869,12 +6911,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges__SWIG_0(PyObject *SWIGUNUSEDPARM(
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6934,12 +6979,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges__SWIG_1(PyObject *SWIGUNUSEDPARM(
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7151,12 +7199,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7216,12 +7267,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7337,12 +7391,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_0(PyObject *SWIGUNUSEDPARM(
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7402,12 +7459,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7523,12 +7583,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_0(PyObject *SWIGUNUSEDPARM(self
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7588,12 +7651,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7709,12 +7775,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles__SWIG_0(PyObject *SWIGUNUS
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7774,12 +7843,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles__SWIG_1(PyObject *SWIGUNUS
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {

@@ -3602,12 +3602,15 @@ SWIGINTERN PyObject *_wrap_new_intArray__SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
     arg1 = (int *) malloc((arg2)*sizeof(int));
     for (i = 0; i < arg2; i++) {
       PyObject *s = PyList_GetItem(obj0,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg1[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg1[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg1);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg1[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -7715,12 +7718,15 @@ SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_2(PyObject *SWIGUNUSEDPARM(self
     arg1 = (double *) malloc((arg2)*sizeof(int));
     for (i = 0; i < arg2; i++) {
       PyObject *s = PyList_GetItem(obj0,i);
-      if (!PyFloat_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg1[i] = (double)PyFloat_AsDouble(s);
+      } else if (PyFloat_Check(s)) {
+        arg1[i] = (double)PyFloat_AsDouble(s);
+      } else {
         free(arg1);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg1[i] = (double)PyFloat_AsDouble(s);
     }
   }
   {

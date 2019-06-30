@@ -35,12 +35,15 @@ OSTREAM_TYPEMAP(std::ostream&)
   $1 = (int *) malloc(($2)*sizeof(int));
   for (i = 0; i < $2; i++) {
     PyObject *s = PyList_GetItem($input,i);
-    if (!PyInt_Check(s)) {
+    if (PyInt_Check(s)) {
+        $1[i] = (int)PyInt_AsLong(s);
+    } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        $1[i] = PyArray_PyIntAsInt(s);
+    } else {    
         free($1);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
     }
-    $1[i] = (int)PyInt_AsLong(s);
   }
 }
 %typemap(typecheck) (int *_data, int asize) {
@@ -62,12 +65,15 @@ OSTREAM_TYPEMAP(std::ostream&)
   $1 = (double *) malloc(($2)*sizeof(int));
   for (i = 0; i < $2; i++) {
     PyObject *s = PyList_GetItem($input,i);
-    if (!PyFloat_Check(s)) {
+    if (PyInt_Check(s)) {
+        $1[i] = (double)PyFloat_AsDouble(s);
+    } else if (PyFloat_Check(s)) {
+        $1[i] = (double)PyFloat_AsDouble(s);
+    } else {
         free($1);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
     }
-    $1[i] = (double)PyFloat_AsDouble(s);
   }
 }
 %typemap(typecheck) (double *_data, int asize) {
