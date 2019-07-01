@@ -365,7 +365,7 @@ class CHypreVec(list):
         is too small so that some node does not have data.
         '''
         def gather_allvector(data):
-            from mpi_dtype import get_mpi_datatype
+            from mfem.common.mpi_dtype import get_mpi_datatype
             from mpi4py import MPI
        
             mpi_data_type = get_mpi_datatype(data)

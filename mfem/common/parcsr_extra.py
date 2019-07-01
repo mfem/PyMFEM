@@ -16,7 +16,7 @@ def get_assumed_patitioning(m):
     num_proc = MPI.COMM_WORLD.size
     myid     = MPI.COMM_WORLD.rank
    
-    min_nrows  = m / num_proc
+    min_nrows  = m // num_proc
     extra_rows = m % num_proc
     start_row  = min_nrows * myid + (extra_rows if extra_rows < myid else myid)
     end_row    = start_row + min_nrows + (1 if extra_rows > myid else 0)
