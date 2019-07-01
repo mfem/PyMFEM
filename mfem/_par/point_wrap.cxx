@@ -3626,6 +3626,8 @@ SWIGINTERN PyObject *_wrap_new_Point__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     if (PyInt_Check(obj0)) {
       temp1 = PyInt_AsLong(obj0);
+    } else if ((PyArray_PyIntAsInt(obj0) != -1) || !PyErr_Occurred()) {
+      temp1 = PyArray_PyIntAsInt(obj0);
     } else {
       PyErr_SetString(PyExc_ValueError, "Expecting a integer");
       return NULL;
@@ -3633,10 +3635,14 @@ SWIGINTERN PyObject *_wrap_new_Point__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyO
     arg1 = &temp1;
   }
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    if (PyInt_Check(obj1)) {
+      arg2 = PyInt_AsLong(obj1);
+    } else if ((PyArray_PyIntAsInt(obj1) != -1) || !PyErr_Occurred()) {
+      arg2 = PyArray_PyIntAsInt(obj1);
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+      return NULL;
+    }
   }
   {
     try {
@@ -3669,6 +3675,8 @@ SWIGINTERN PyObject *_wrap_new_Point__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     if (PyInt_Check(obj0)) {
       temp1 = PyInt_AsLong(obj0);
+    } else if ((PyArray_PyIntAsInt(obj0) != -1) || !PyErr_Occurred()) {
+      temp1 = PyArray_PyIntAsInt(obj0);
     } else {
       PyErr_SetString(PyExc_ValueError, "Expecting a integer");
       return NULL;
@@ -3713,7 +3721,13 @@ SWIGINTERN PyObject *_wrap_new_Point(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      _v = PyInt_Check(argv[0]) ? 1 : 0;  
+      if (PyInt_Check(argv[0])) {
+        _v = 1;
+      } else if ((PyArray_PyIntAsInt(argv[0]) != -1) || !PyErr_Occurred()) {
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       return _wrap_new_Point__SWIG_2(self, args);
@@ -3722,11 +3736,23 @@ SWIGINTERN PyObject *_wrap_new_Point(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      _v = PyInt_Check(argv[0]) ? 1 : 0;  
+      if (PyInt_Check(argv[0])) {
+        _v = 1;
+      } else if ((PyArray_PyIntAsInt(argv[0]) != -1) || !PyErr_Occurred()) {
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       {
-        _v = PyInt_Check(argv[1]) ? 1 : 0;
+        if (PyInt_Check(argv[1])) {
+          _v = 1;
+        } else if ((PyArray_PyIntAsInt(argv[1]) != -1) || !PyErr_Occurred()) {
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_Point__SWIG_1(self, args);

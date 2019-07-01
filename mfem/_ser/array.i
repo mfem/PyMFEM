@@ -69,7 +69,7 @@ OSTREAM_TYPEMAP(std::ostream&)
         $1[i] = (double)PyFloat_AsDouble(s);
     } else if (PyFloat_Check(s)) {
         $1[i] = (double)PyFloat_AsDouble(s);
-    } else  
+    } else {
         free($1);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;

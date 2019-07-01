@@ -7722,10 +7722,11 @@ SWIGINTERN PyObject *_wrap_new_doubleArray__SWIG_2(PyObject *SWIGUNUSEDPARM(self
         arg1[i] = (double)PyFloat_AsDouble(s);
       } else if (PyFloat_Check(s)) {
         arg1[i] = (double)PyFloat_AsDouble(s);
-      } else  
-      free(arg1);
-      PyErr_SetString(PyExc_ValueError, "List items must be integer");
-      return NULL;
+      } else {
+        free(arg1);
+        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+        return NULL;
+      }
     }
   }
   {
