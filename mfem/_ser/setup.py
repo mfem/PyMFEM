@@ -41,9 +41,10 @@ modules= ["io_stream",
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}
 
-#include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, boostinc]
-#library_dirs = [mfemserlnkdir, boostlib]
-#libraries    = [libboostiostreams, 'mfem']
+import numpy
+numpyinc = numpy.get_include()
+print("numpy inc", numpyinc)
+
 include_dirs = [mfemserbuilddir, mfemserincdir, numpyinc, ]
 library_dirs = [mfemserlnkdir,]
 libraries    = ['mfem']

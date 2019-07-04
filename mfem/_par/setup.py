@@ -62,13 +62,15 @@ proxy_names = {name: '_'+name for name in modules}
 #               no_whole_archive] if x != '']
 
 
-#libraries    = [libboostiostreams, 'HYPRE', 'mfem']
-#include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
-#                mpichinc, hypreinc, boostinc]
-#library_dirs = [mfemlnkdir, hyprelib, metis5lib, boostlib]
+import numpy
+numpyinc = numpy.get_include()
+import mpi4py
+mpi4pyinc = mpi4py.get_include()
+print(mpi4pyinc, numpyinc)
+
 libraries    = ['mfem', 'HYPRE']
-include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc,
-                mpichinc, hypreinc,]
+include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc, hypreinc,]
+#                mpichinc, hypreinc,]
 library_dirs = [mfemlnkdir, hyprelib, metis5lib,]
 
 if add_strumpack:

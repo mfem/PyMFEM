@@ -6830,10 +6830,14 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofsToVDofs__SWIG_0(PyObject *SWIG
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
-    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(obj2);
+    if (PyInt_Check(obj2)) {
+      arg3 = PyInt_AsLong(obj2);
+    } else if ((PyArray_PyIntAsInt(obj2) != -1) || !PyErr_Occurred()) {
+      arg3 = PyArray_PyIntAsInt(obj2);
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+      return NULL;
+    }
   }
   {
     try {
@@ -6926,10 +6930,14 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofsToVDofs__SWIG_2(PyObject *SWIG
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
+    if (PyInt_Check(obj3)) {
+      arg4 = PyInt_AsLong(obj3);
+    } else if ((PyArray_PyIntAsInt(obj3) != -1) || !PyErr_Occurred()) {
+      arg4 = PyArray_PyIntAsInt(obj3);
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+      return NULL;
+    }
   }
   {
     try {
@@ -7031,7 +7039,13 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofsToVDofs(PyObject *self, PyObje
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          _v = PyInt_Check(argv[2]) ? 1 : 0;
+          if (PyInt_Check(argv[2])) {
+            _v = 1;
+          } else if ((PyArray_PyIntAsInt(argv[2]) != -1) || !PyErr_Occurred()) {
+            _v = 1;
+          } else {
+            _v = 0;
+          }
         }
         if (_v) {
           return _wrap_FiniteElementSpace_DofsToVDofs__SWIG_0(self, args);
@@ -7083,7 +7097,13 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofsToVDofs(PyObject *self, PyObje
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            _v = PyInt_Check(argv[3]) ? 1 : 0;
+            if (PyInt_Check(argv[3])) {
+              _v = 1;
+            } else if ((PyArray_PyIntAsInt(argv[3]) != -1) || !PyErr_Occurred()) {
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_FiniteElementSpace_DofsToVDofs__SWIG_2(self, args);
@@ -7137,10 +7157,14 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofToVDof__SWIG_0(PyObject *SWIGUN
     arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
+    if (PyInt_Check(obj3)) {
+      arg4 = PyInt_AsLong(obj3);
+    } else if ((PyArray_PyIntAsInt(obj3) != -1) || !PyErr_Occurred()) {
+      arg4 = PyArray_PyIntAsInt(obj3);
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+      return NULL;
+    }
   }
   {
     try {
@@ -7268,7 +7292,13 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_DofToVDof(PyObject *self, PyObject
         }
         if (_v) {
           {
-            _v = PyInt_Check(argv[3]) ? 1 : 0;
+            if (PyInt_Check(argv[3])) {
+              _v = 1;
+            } else if ((PyArray_PyIntAsInt(argv[3]) != -1) || !PyErr_Occurred()) {
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_FiniteElementSpace_DofToVDof__SWIG_0(self, args);
@@ -8141,10 +8171,14 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetEssentialVDofs__SWIG_0(PyObject
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
+    if (PyInt_Check(obj3)) {
+      arg4 = PyInt_AsLong(obj3);
+    } else if ((PyArray_PyIntAsInt(obj3) != -1) || !PyErr_Occurred()) {
+      arg4 = PyArray_PyIntAsInt(obj3);
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+      return NULL;
+    }
   }
   {
     try {
@@ -8257,7 +8291,13 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetEssentialVDofs(PyObject *self, 
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            _v = PyInt_Check(argv[3]) ? 1 : 0;
+            if (PyInt_Check(argv[3])) {
+              _v = 1;
+            } else if ((PyArray_PyIntAsInt(argv[3]) != -1) || !PyErr_Occurred()) {
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_FiniteElementSpace_GetEssentialVDofs__SWIG_0(self, args);
@@ -8316,10 +8356,14 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetEssentialTrueDofs__SWIG_0(PyObj
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
+    if (PyInt_Check(obj3)) {
+      arg4 = PyInt_AsLong(obj3);
+    } else if ((PyArray_PyIntAsInt(obj3) != -1) || !PyErr_Occurred()) {
+      arg4 = PyArray_PyIntAsInt(obj3);
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+      return NULL;
+    }
   }
   {
     try {
@@ -8432,7 +8476,13 @@ SWIGINTERN PyObject *_wrap_FiniteElementSpace_GetEssentialTrueDofs(PyObject *sel
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            _v = PyInt_Check(argv[3]) ? 1 : 0;
+            if (PyInt_Check(argv[3])) {
+              _v = 1;
+            } else if ((PyArray_PyIntAsInt(argv[3]) != -1) || !PyErr_Occurred()) {
+              _v = 1;
+            } else {
+              _v = 0;
+            }
           }
           if (_v) {
             return _wrap_FiniteElementSpace_GetEssentialTrueDofs__SWIG_0(self, args);
