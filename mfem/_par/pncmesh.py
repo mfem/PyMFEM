@@ -142,7 +142,6 @@ import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.communication
 import mfem._par.sets
-import mfem._par.ostream_typemap
 class ParNCMesh(mfem._par.ncmesh.NCMesh):
     """Proxy of C++ mfem::ParNCMesh class."""
 

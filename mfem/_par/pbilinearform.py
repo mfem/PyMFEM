@@ -146,7 +146,6 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
-import mfem._par.ostream_typemap
 class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
     """Proxy of C++ mfem::ParBilinearForm class."""
 

@@ -148,7 +148,6 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
-import mfem._par.ostream_typemap
 import mfem._par.pgridfunc
 class ParNonlinearForm(mfem._par.nonlinearform.NonlinearForm):
     """Proxy of C++ mfem::ParNonlinearForm class."""

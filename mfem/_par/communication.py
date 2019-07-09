@@ -111,7 +111,6 @@ import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.table
 import mfem._par.sets
-import mfem._par.ostream_typemap
 class MPI_Session(_object):
     """Proxy of C++ mfem::MPI_Session class."""
 

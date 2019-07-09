@@ -33,8 +33,6 @@ import_array();
 %import "table.i"
 %import "sets.i"
 
-%import "ostream_typemap.i"
-
 %include "general/communication.hpp"
 
 /*

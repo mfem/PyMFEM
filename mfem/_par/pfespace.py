@@ -144,7 +144,6 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
-import mfem._par.ostream_typemap
 class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
     """Proxy of C++ mfem::ParFiniteElementSpace class."""
 

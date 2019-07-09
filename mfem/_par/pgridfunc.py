@@ -145,7 +145,6 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
-import mfem._par.ostream_typemap
 
 def GlobalLpNorm(p, loc_norm, comm):
     """GlobalLpNorm(double const p, double loc_norm, MPI_Comm comm) -> double"""

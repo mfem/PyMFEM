@@ -4548,7 +4548,8 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4559,15 +4560,18 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -4588,12 +4592,16 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -4867,10 +4875,12 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save(PyObject *self, PyObject *args) {
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {
@@ -5420,7 +5430,8 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNU
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  char const *filename2 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5431,15 +5442,18 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNU
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
   {
-    filename2 = PyByteArray_AsString(obj1); // Verify the semantics of this
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
     
-    if (!filename2) {
-      SWIG_Error(SWIG_TypeError, "File name expected.");
-      SWIG_fail;
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      std::ofstream  out(filename2); 
-      arg2 = &out;
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -5460,12 +5474,16 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNU
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -5688,10 +5706,12 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo(PyObject *self, PyObject 
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if (PyByteArray_Check(argv[1])){
-          _v = 1;
-        } else {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
           _v = 0;
+        } else {
+          _v = 1;    
         }
       }
       if (_v) {

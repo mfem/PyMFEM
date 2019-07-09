@@ -145,7 +145,6 @@ import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
-import mfem._par.ostream_typemap
 import mfem._par.pgridfunc
 class ParLinearForm(mfem._par.linearform.LinearForm):
     """Proxy of C++ mfem::ParLinearForm class."""

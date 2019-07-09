@@ -143,7 +143,6 @@ import mfem._par.linearform
 import mfem._par.pncmesh
 import mfem._par.communication
 import mfem._par.sets
-import mfem._par.ostream_typemap
 class ParMesh(mfem._par.mesh.Mesh):
     """Proxy of C++ mfem::ParMesh class."""
 
