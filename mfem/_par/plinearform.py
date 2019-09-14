@@ -110,12 +110,14 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _plinearform.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _plinearform.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _plinearform.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _plinearform.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _plinearform.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _plinearform.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _plinearform.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _plinearform.MFEM_HYPRE_VERSION
 import mfem._par.linearform
 import mfem._par.coefficient
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.operators
@@ -124,11 +126,12 @@ import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.fespace
@@ -160,6 +163,7 @@ class ParLinearForm(mfem._par.linearform.LinearForm):
         """
         __init__(mfem::ParLinearForm self) -> ParLinearForm
         __init__(mfem::ParLinearForm self, ParFiniteElementSpace pf) -> ParLinearForm
+        __init__(mfem::ParLinearForm self, ParFiniteElementSpace pf, ParLinearForm plf) -> ParLinearForm
         """
         this = _plinearform.new_ParLinearForm(*args)
         try:

@@ -110,13 +110,15 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pgridfunc.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pgridfunc.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pgridfunc.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pgridfunc.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _pgridfunc.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _pgridfunc.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pgridfunc.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pgridfunc.MFEM_HYPRE_VERSION
 import mfem._par.pfespace
 import mfem._par.operators
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.fespace
 import mfem._par.coefficient
 import mfem._par.matrix
@@ -125,11 +127,12 @@ import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -210,6 +213,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
 
     def Assign(self, *args):
         """
+        Assign(ParGridFunction self, ParGridFunction rhs) -> ParGridFunction
         Assign(ParGridFunction self, double value) -> ParGridFunction
         Assign(ParGridFunction self, Vector v) -> ParGridFunction
         Assign(ParGridFunction self, HypreParVector tv) -> ParGridFunction
@@ -300,6 +304,22 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         return _pgridfunc.ParGridFunction_ProjectDiscCoefficient(self, *args)
 
 
+    def ProjectBdrCoefficient(self, *args):
+        """
+        ProjectBdrCoefficient(ParGridFunction self, Coefficient coeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, VectorCoefficient vcoeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, VectorCoefficient vcoeff, intArray attr)
+        ProjectBdrCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff, intArray attr)
+        """
+        return _pgridfunc.ParGridFunction_ProjectBdrCoefficient(self, *args)
+
+
+    def ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr):
+        """ProjectBdrCoefficientTangent(ParGridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"""
+        return _pgridfunc.ParGridFunction_ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr)
+
+
     def ComputeL1Error(self, *args):
         """
         ComputeL1Error(ParGridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double
@@ -358,25 +378,13 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         """
         return _pgridfunc.ParGridFunction_ComputeFlux(self, blfi, flux, wcoef, subdomain)
 
-
-    def Save(self, out):
-        """Save(ParGridFunction self, std::ostream & out)"""
-        return _pgridfunc.ParGridFunction_Save(self, out)
-
-
-    def SaveAsOne(self, *args):
-        """
-        SaveAsOne(ParGridFunction self, std::ostream & out)
-        SaveAsOne(ParGridFunction self)
-        """
-        return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
-
     __swig_destroy__ = _pgridfunc.delete_ParGridFunction
     __del__ = lambda self: None
 
     def __init__(self, *args):
         """
         __init__(mfem::ParGridFunction self) -> ParGridFunction
+        __init__(mfem::ParGridFunction self, ParGridFunction orig) -> ParGridFunction
         __init__(mfem::ParGridFunction self, ParFiniteElementSpace pf) -> ParGridFunction
         __init__(mfem::ParGridFunction self, ParFiniteElementSpace pf, double * data) -> ParGridFunction
         __init__(mfem::ParGridFunction self, ParFiniteElementSpace pf, GridFunction gf) -> ParGridFunction
@@ -410,6 +418,25 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def Save(self, *args):
+        """
+        Save(ParGridFunction self, std::ostream & out)
+        Save(ParGridFunction self, char const * file, int precision=8)
+        Save(ParGridFunction self, char const * file)
+        """
+        return _pgridfunc.ParGridFunction_Save(self, *args)
+
+
+    def SaveAsOne(self, *args):
+        """
+        SaveAsOne(ParGridFunction self, std::ostream & out)
+        SaveAsOne(ParGridFunction self)
+        SaveAsOne(ParGridFunction self, char const * file, int precision=8)
+        SaveAsOne(ParGridFunction self, char const * file)
+        """
+        return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
+
 ParGridFunction_swigregister = _pgridfunc.ParGridFunction_swigregister
 ParGridFunction_swigregister(ParGridFunction)
 

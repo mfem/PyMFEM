@@ -21,6 +21,7 @@ public:
     SwigDirector_BilinearForm(PyObject *self);
     SwigDirector_BilinearForm(PyObject *self, mfem::FiniteElementSpace *f);
     SwigDirector_BilinearForm(PyObject *self, mfem::FiniteElementSpace *f, mfem::BilinearForm *bf, int ps = 0);
+    virtual mfem::MemoryClass GetMemoryClass() const;
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
@@ -35,6 +36,8 @@ public:
     virtual void Print(std::ostream &out = mfem::out, int width_ = 4) const;
     virtual void AddMult(mfem::Vector const &x, mfem::Vector &y, double const a = 1.0) const;
     virtual void AddMultTranspose(mfem::Vector const &x, mfem::Vector &y, double const a = 1.0) const;
+    virtual void FormLinearSystem(mfem::Array< int > const &ess_tdof_list, mfem::Vector &x, mfem::Vector &b, mfem::OperatorHandle &A, mfem::Vector &X, mfem::Vector &B, int copy_interior = 0);
+    virtual void FormSystemMatrix(mfem::Array< int > const &ess_tdof_list, mfem::OperatorHandle &A);
     virtual void Update(mfem::FiniteElementSpace *nfes = NULL);
 
 /* Internal director utilities */
@@ -66,7 +69,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[20];
+    mutable swig::SwigVar_PyObject vtable[24];
 #endif
 
 };

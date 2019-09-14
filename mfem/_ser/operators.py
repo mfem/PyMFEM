@@ -102,9 +102,9 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 class Operator(_object):
     """Proxy of C++ mfem::Operator class."""
 
@@ -150,6 +150,11 @@ class Operator(_object):
         return _operators.Operator_NumCols(self)
 
 
+    def GetMemoryClass(self):
+        """GetMemoryClass(Operator self) -> mfem::MemoryClass"""
+        return _operators.Operator_GetMemoryClass(self)
+
+
     def Mult(self, x, y):
         """Mult(Operator self, Vector x, Vector y)"""
         return _operators.Operator_Mult(self, x, y)
@@ -187,15 +192,6 @@ class Operator(_object):
         """RecoverFEMSolution(Operator self, Vector X, Vector b, Vector x)"""
         return _operators.Operator_RecoverFEMSolution(self, X, b, x)
 
-
-    def PrintMatlab(self, out, n=0, m=0):
-        """
-        PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
-        PrintMatlab(Operator self, std::ostream & out, int n=0)
-        PrintMatlab(Operator self, std::ostream & out)
-        """
-        return _operators.Operator_PrintMatlab(self, out, n, m)
-
     __swig_destroy__ = _operators.delete_Operator
     __del__ = lambda self: None
     ANY_TYPE = _operators.Operator_ANY_TYPE
@@ -211,6 +207,17 @@ class Operator(_object):
     def GetType(self):
         """GetType(Operator self) -> mfem::Operator::Type"""
         return _operators.Operator_GetType(self)
+
+
+    def PrintMatlab(self, *args):
+        """
+        PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)
+        PrintMatlab(Operator self, std::ostream & out, int n=0)
+        PrintMatlab(Operator self, std::ostream & out)
+        PrintMatlab(Operator self, char const * file, int precision=8)
+        PrintMatlab(Operator self, char const * file)
+        """
+        return _operators.Operator_PrintMatlab(self, *args)
 
     def __disown__(self):
         self.this.disown()
@@ -391,6 +398,11 @@ class IdentityOperator(Operator):
         """Mult(IdentityOperator self, Vector x, Vector y)"""
         return _operators.IdentityOperator_Mult(self, x, y)
 
+
+    def MultTranspose(self, x, y):
+        """MultTranspose(IdentityOperator self, Vector x, Vector y)"""
+        return _operators.IdentityOperator_MultTranspose(self, x, y)
+
     __swig_destroy__ = _operators.delete_IdentityOperator
     __del__ = lambda self: None
 IdentityOperator_swigregister = _operators.IdentityOperator_swigregister
@@ -490,6 +502,11 @@ class RAPOperator(Operator):
         except __builtin__.Exception:
             self.this = this
 
+    def GetMemoryClass(self):
+        """GetMemoryClass(RAPOperator self) -> mfem::MemoryClass"""
+        return _operators.RAPOperator_GetMemoryClass(self)
+
+
     def Mult(self, x, y):
         """Mult(RAPOperator self, Vector x, Vector y)"""
         return _operators.RAPOperator_Mult(self, x, y)
@@ -524,6 +541,11 @@ class TripleProductOperator(Operator):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(TripleProductOperator self) -> mfem::MemoryClass"""
+        return _operators.TripleProductOperator_GetMemoryClass(self)
+
 
     def Mult(self, x, y):
         """Mult(TripleProductOperator self, Vector x, Vector y)"""
@@ -562,6 +584,11 @@ class ConstrainedOperator(Operator):
             self.this.append(this)
         except __builtin__.Exception:
             self.this = this
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(ConstrainedOperator self) -> mfem::MemoryClass"""
+        return _operators.ConstrainedOperator_GetMemoryClass(self)
+
 
     def EliminateRHS(self, x, b):
         """EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"""

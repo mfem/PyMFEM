@@ -1,4 +1,7 @@
 %module(package="mfem._par") pgridfunc
+
+%feature("autodoc", "1");
+
 %{
 #include <iostream>
 #include <sstream>
@@ -7,7 +10,7 @@
 #include <cmath>
 #include <cstring>  
 #include <mpi.h>
-#include "iostream_typemap.hpp"      
+#include "io_stream.hpp"      
 #include  "config/config.hpp"
 #include "mesh/pmesh.hpp"  
 #include "fem/pgridfunc.hpp"
@@ -36,8 +39,10 @@ import_array();
 %import "hypre.i"
 %import "pmesh.i"
 %import "linearform.i"
-%import "ostream_typemap.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %pointer_class(int, intp);
 
@@ -117,3 +122,10 @@ ParGridFunction(ParMesh *pmesh, const char *gf_file){
 */ 
 };  //end of extend
 }  // end of namespace  
+
+/*
+   virtual void Save(std::ostream &out) const;
+   void SaveAsOne(std::ostream &out = mfem::out);
+*/
+OSTREAM_ADD_DEFAULT_FILE(ParGridFunction, Save)
+OSTREAM_ADD_DEFAULT_FILE(ParGridFunction, SaveAsOne)

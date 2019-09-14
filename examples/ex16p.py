@@ -227,8 +227,8 @@ u_gf.SetFromTrueDofs(u)
 smyid = '{:0>6d}'.format(myid)
 mesh_name  =  "ex16-mesh."+smyid
 sol_name   =  "ex16-init."+smyid
-pmesh.PrintToFile(mesh_name, 8)
-u_gf.SaveToFile(sol_name, 8)
+pmesh.Print(mesh_name, 8)
+u_gf.Save(sol_name, 8)
 
 if visualization:
     sout =  mfem.socketstream("localhost", 19916)
@@ -265,4 +265,4 @@ while not last_step:
 # 11. Save the final solution in parallel. This output can be viewed later
 #     using GLVis: "glvis -np <np> -m ex16-mesh -g ex16-final".
 sol_name   =  "ex16-final."+smyid
-u_gf.SaveToFile(sol_name, 8)
+u_gf.Save(sol_name, 8)

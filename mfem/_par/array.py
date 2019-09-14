@@ -95,31 +95,23 @@ except __builtin__.Exception:
         pass
     _newclass = 0
 
-import mfem._par.ostream_typemap
-class BaseArray(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, BaseArray, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, BaseArray, name)
+import mfem._par.mem_manager
+class intArray(_object):
+    """Proxy of C++ mfem::Array<(int)> class."""
 
-    def __init__(self, *args, **kwargs):
-        raise AttributeError("No constructor defined")
-    __repr__ = _swig_repr
-BaseArray_swigregister = _array.BaseArray_swigregister
-BaseArray_swigregister(BaseArray)
-
-class intArray(BaseArray):
     __swig_setmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, intArray, name, value)
     __swig_getmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, intArray, name)
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::Array<(int)> self, int asize=0) -> intArray
+        __init__(mfem::Array<(int)> self) -> intArray
+        __init__(mfem::Array<(int)> self, int * _data) -> intArray
+        __init__(mfem::Array<(int)> self, intArray src) -> intArray
+        """
         this = _array.new_intArray(*args)
         try:
             self.this.append(this)
@@ -135,135 +127,301 @@ class intArray(BaseArray):
     __del__ = lambda self: None
 
     def GetData(self, *args):
+        """
+        GetData(intArray self) -> int
+        GetData(intArray self) -> int const *
+        """
         return _array.intArray_GetData(self, *args)
 
+
+    def GetMemory(self, *args):
+        """
+        GetMemory(intArray self) -> mfem::Memory< int >
+        GetMemory(intArray self) -> mfem::Memory< int > const &
+        """
+        return _array.intArray_GetMemory(self, *args)
+
+
+    def UseDevice(self):
+        """UseDevice(intArray self) -> bool"""
+        return _array.intArray_UseDevice(self)
+
+
     def OwnsData(self):
+        """OwnsData(intArray self) -> bool"""
         return _array.intArray_OwnsData(self)
 
+
     def StealData(self, p):
+        """StealData(intArray self, int ** p)"""
         return _array.intArray_StealData(self, p)
 
+
     def LoseData(self):
+        """LoseData(intArray self)"""
         return _array.intArray_LoseData(self)
 
+
     def MakeDataOwner(self):
+        """MakeDataOwner(intArray self)"""
         return _array.intArray_MakeDataOwner(self)
 
+
     def Size(self):
+        """Size(intArray self) -> int"""
         return _array.intArray_Size(self)
 
+
     def SetSize(self, *args):
+        """
+        SetSize(intArray self, int nsize)
+        SetSize(intArray self, int nsize, int const & initval)
+        SetSize(intArray self, int nsize, mfem::MemoryType mt)
+        """
         return _array.intArray_SetSize(self, *args)
 
+
     def Capacity(self):
+        """Capacity(intArray self) -> int"""
         return _array.intArray_Capacity(self)
 
+
     def Reserve(self, capacity):
+        """Reserve(intArray self, int capacity)"""
         return _array.intArray_Reserve(self, capacity)
 
+
     def Append(self, *args):
+        """
+        Append(intArray self, int const & el) -> int
+        Append(intArray self, int const * els, int nels) -> int
+        Append(intArray self, intArray els) -> int
+        """
         return _array.intArray_Append(self, *args)
 
+
     def Prepend(self, el):
+        """Prepend(intArray self, int const & el) -> int"""
         return _array.intArray_Prepend(self, el)
 
+
     def Last(self, *args):
+        """
+        Last(intArray self) -> int
+        Last(intArray self) -> int const &
+        """
         return _array.intArray_Last(self, *args)
 
+
     def Union(self, el):
+        """Union(intArray self, int const & el) -> int"""
         return _array.intArray_Union(self, el)
 
+
     def Find(self, el):
+        """Find(intArray self, int const & el) -> int"""
         return _array.intArray_Find(self, el)
 
+
     def FindSorted(self, el):
+        """FindSorted(intArray self, int const & el) -> int"""
         return _array.intArray_FindSorted(self, el)
 
+
     def DeleteLast(self):
+        """DeleteLast(intArray self)"""
         return _array.intArray_DeleteLast(self)
 
+
     def DeleteFirst(self, el):
+        """DeleteFirst(intArray self, int const & el)"""
         return _array.intArray_DeleteFirst(self, el)
 
+
     def DeleteAll(self):
+        """DeleteAll(intArray self)"""
         return _array.intArray_DeleteAll(self)
 
+
     def Copy(self, copy):
+        """Copy(intArray self, intArray copy)"""
         return _array.intArray_Copy(self, copy)
 
+
     def MakeRef(self, *args):
+        """
+        MakeRef(intArray self, int * arg2, int arg3)
+        MakeRef(intArray self, intArray master)
+        """
         return _array.intArray_MakeRef(self, *args)
 
+
     def GetSubArray(self, offset, sa_size, sa):
+        """GetSubArray(intArray self, int offset, int sa_size, intArray sa)"""
         return _array.intArray_GetSubArray(self, offset, sa_size, sa)
 
-    def Print(self, *args):
-        return _array.intArray_Print(self, *args)
-
-    def Save(self, out, fmt=0):
-        return _array.intArray_Save(self, out, fmt)
 
     def Load(self, *args):
+        """
+        Load(intArray self, std::istream & arg2, int fmt=0)
+        Load(intArray self, std::istream & arg2)
+        Load(intArray self, int new_size, std::istream & arg3)
+        """
         return _array.intArray_Load(self, *args)
 
+
     def Max(self):
+        """Max(intArray self) -> int"""
         return _array.intArray_Max(self)
 
+
     def Min(self):
+        """Min(intArray self) -> int"""
         return _array.intArray_Min(self)
 
+
     def Sort(self):
+        """Sort(intArray self)"""
         return _array.intArray_Sort(self)
 
+
     def Unique(self):
+        """Unique(intArray self)"""
         return _array.intArray_Unique(self)
 
+
     def IsSorted(self):
+        """IsSorted(intArray self) -> int"""
         return _array.intArray_IsSorted(self)
 
+
     def PartialSum(self):
+        """PartialSum(intArray self)"""
         return _array.intArray_PartialSum(self)
 
+
     def Sum(self):
+        """Sum(intArray self) -> int"""
         return _array.intArray_Sum(self)
 
+
     def begin(self):
+        """begin(intArray self) -> int *"""
         return _array.intArray_begin(self)
 
+
     def end(self):
+        """end(intArray self) -> int *"""
         return _array.intArray_end(self)
 
+
     def MemoryUsage(self):
+        """MemoryUsage(intArray self) -> long"""
         return _array.intArray_MemoryUsage(self)
 
+
+    def Read(self, on_dev=True):
+        """
+        Read(intArray self, bool on_dev=True) -> int const
+        Read(intArray self) -> int const *
+        """
+        return _array.intArray_Read(self, on_dev)
+
+
+    def HostRead(self):
+        """HostRead(intArray self) -> int const *"""
+        return _array.intArray_HostRead(self)
+
+
+    def Write(self, on_dev=True):
+        """
+        Write(intArray self, bool on_dev=True) -> int
+        Write(intArray self) -> int *
+        """
+        return _array.intArray_Write(self, on_dev)
+
+
+    def HostWrite(self):
+        """HostWrite(intArray self) -> int *"""
+        return _array.intArray_HostWrite(self)
+
+
+    def ReadWrite(self, on_dev=True):
+        """
+        ReadWrite(intArray self, bool on_dev=True) -> int
+        ReadWrite(intArray self) -> int *
+        """
+        return _array.intArray_ReadWrite(self, on_dev)
+
+
+    def HostReadWrite(self):
+        """HostReadWrite(intArray self) -> int *"""
+        return _array.intArray_HostReadWrite(self)
+
+
     def __setitem__(self, i, v):
+        """__setitem__(intArray self, int i, int const v)"""
         return _array.intArray___setitem__(self, i, v)
 
+
     def __getitem__(self, i):
+        """__getitem__(intArray self, int const i) -> int const &"""
         return _array.intArray___getitem__(self, i)
 
+
     def Assign(self, *args):
+        """
+        Assign(intArray self, int const * arg2)
+        Assign(intArray self, int const & a)
+        """
         return _array.intArray_Assign(self, *args)
+
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
 
 
+
+    def Print(self, *args):
+        """
+        Print(intArray self, std::ostream & out, int width=4)
+        Print(intArray self, std::ostream & out)
+        Print(intArray self)
+        Print(intArray self, char const * file, int precision=8)
+        Print(intArray self, char const * file)
+        """
+        return _array.intArray_Print(self, *args)
+
+
+    def Save(self, *args):
+        """
+        Save(intArray self, std::ostream & out, int fmt=0)
+        Save(intArray self, std::ostream & out)
+        Save(intArray self, char const * file, int precision=8)
+        Save(intArray self, char const * file)
+        Save(intArray self)
+        """
+        return _array.intArray_Save(self, *args)
+
 intArray_swigregister = _array.intArray_swigregister
 intArray_swigregister(intArray)
 
-class doubleArray(BaseArray):
+class doubleArray(_object):
+    """Proxy of C++ mfem::Array<(double)> class."""
+
     __swig_setmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, doubleArray, name, value)
     __swig_getmethods__ = {}
-    for _s in [BaseArray]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, doubleArray, name)
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::Array<(double)> self, int asize=0) -> doubleArray
+        __init__(mfem::Array<(double)> self) -> doubleArray
+        __init__(mfem::Array<(double)> self, double * _data) -> doubleArray
+        __init__(mfem::Array<(double)> self, doubleArray src) -> doubleArray
+        """
         this = _array.new_doubleArray(*args)
         try:
             self.this.append(this)
@@ -279,131 +437,301 @@ class doubleArray(BaseArray):
     __del__ = lambda self: None
 
     def GetData(self, *args):
+        """
+        GetData(doubleArray self) -> double
+        GetData(doubleArray self) -> double const *
+        """
         return _array.doubleArray_GetData(self, *args)
 
+
+    def GetMemory(self, *args):
+        """
+        GetMemory(doubleArray self) -> mfem::Memory< double >
+        GetMemory(doubleArray self) -> mfem::Memory< double > const &
+        """
+        return _array.doubleArray_GetMemory(self, *args)
+
+
+    def UseDevice(self):
+        """UseDevice(doubleArray self) -> bool"""
+        return _array.doubleArray_UseDevice(self)
+
+
     def OwnsData(self):
+        """OwnsData(doubleArray self) -> bool"""
         return _array.doubleArray_OwnsData(self)
 
+
     def StealData(self, p):
+        """StealData(doubleArray self, double ** p)"""
         return _array.doubleArray_StealData(self, p)
 
+
     def LoseData(self):
+        """LoseData(doubleArray self)"""
         return _array.doubleArray_LoseData(self)
 
+
     def MakeDataOwner(self):
+        """MakeDataOwner(doubleArray self)"""
         return _array.doubleArray_MakeDataOwner(self)
 
+
     def Size(self):
+        """Size(doubleArray self) -> int"""
         return _array.doubleArray_Size(self)
 
+
     def SetSize(self, *args):
+        """
+        SetSize(doubleArray self, int nsize)
+        SetSize(doubleArray self, int nsize, double const & initval)
+        SetSize(doubleArray self, int nsize, mfem::MemoryType mt)
+        """
         return _array.doubleArray_SetSize(self, *args)
 
+
     def Capacity(self):
+        """Capacity(doubleArray self) -> int"""
         return _array.doubleArray_Capacity(self)
 
+
     def Reserve(self, capacity):
+        """Reserve(doubleArray self, int capacity)"""
         return _array.doubleArray_Reserve(self, capacity)
 
+
     def Append(self, *args):
+        """
+        Append(doubleArray self, double const & el) -> int
+        Append(doubleArray self, double const * els, int nels) -> int
+        Append(doubleArray self, doubleArray els) -> int
+        """
         return _array.doubleArray_Append(self, *args)
 
+
     def Prepend(self, el):
+        """Prepend(doubleArray self, double const & el) -> int"""
         return _array.doubleArray_Prepend(self, el)
 
+
     def Last(self, *args):
+        """
+        Last(doubleArray self) -> double
+        Last(doubleArray self) -> double const &
+        """
         return _array.doubleArray_Last(self, *args)
 
+
     def Union(self, el):
+        """Union(doubleArray self, double const & el) -> int"""
         return _array.doubleArray_Union(self, el)
 
+
     def Find(self, el):
+        """Find(doubleArray self, double const & el) -> int"""
         return _array.doubleArray_Find(self, el)
 
+
     def FindSorted(self, el):
+        """FindSorted(doubleArray self, double const & el) -> int"""
         return _array.doubleArray_FindSorted(self, el)
 
+
     def DeleteLast(self):
+        """DeleteLast(doubleArray self)"""
         return _array.doubleArray_DeleteLast(self)
 
+
     def DeleteFirst(self, el):
+        """DeleteFirst(doubleArray self, double const & el)"""
         return _array.doubleArray_DeleteFirst(self, el)
 
+
     def DeleteAll(self):
+        """DeleteAll(doubleArray self)"""
         return _array.doubleArray_DeleteAll(self)
 
+
     def Copy(self, copy):
+        """Copy(doubleArray self, doubleArray copy)"""
         return _array.doubleArray_Copy(self, copy)
 
+
     def MakeRef(self, *args):
+        """
+        MakeRef(doubleArray self, double * arg2, int arg3)
+        MakeRef(doubleArray self, doubleArray master)
+        """
         return _array.doubleArray_MakeRef(self, *args)
 
+
     def GetSubArray(self, offset, sa_size, sa):
+        """GetSubArray(doubleArray self, int offset, int sa_size, doubleArray sa)"""
         return _array.doubleArray_GetSubArray(self, offset, sa_size, sa)
 
-    def Print(self, *args):
-        return _array.doubleArray_Print(self, *args)
-
-    def Save(self, out, fmt=0):
-        return _array.doubleArray_Save(self, out, fmt)
 
     def Load(self, *args):
+        """
+        Load(doubleArray self, std::istream & arg2, int fmt=0)
+        Load(doubleArray self, std::istream & arg2)
+        Load(doubleArray self, int new_size, std::istream & arg3)
+        """
         return _array.doubleArray_Load(self, *args)
 
+
     def Max(self):
+        """Max(doubleArray self) -> double"""
         return _array.doubleArray_Max(self)
 
+
     def Min(self):
+        """Min(doubleArray self) -> double"""
         return _array.doubleArray_Min(self)
 
+
     def Sort(self):
+        """Sort(doubleArray self)"""
         return _array.doubleArray_Sort(self)
 
+
     def Unique(self):
+        """Unique(doubleArray self)"""
         return _array.doubleArray_Unique(self)
 
+
     def IsSorted(self):
+        """IsSorted(doubleArray self) -> int"""
         return _array.doubleArray_IsSorted(self)
 
+
     def PartialSum(self):
+        """PartialSum(doubleArray self)"""
         return _array.doubleArray_PartialSum(self)
 
+
     def Sum(self):
+        """Sum(doubleArray self) -> double"""
         return _array.doubleArray_Sum(self)
 
+
     def begin(self):
+        """begin(doubleArray self) -> double *"""
         return _array.doubleArray_begin(self)
 
+
     def end(self):
+        """end(doubleArray self) -> double *"""
         return _array.doubleArray_end(self)
 
+
     def MemoryUsage(self):
+        """MemoryUsage(doubleArray self) -> long"""
         return _array.doubleArray_MemoryUsage(self)
 
+
+    def Read(self, on_dev=True):
+        """
+        Read(doubleArray self, bool on_dev=True) -> double const
+        Read(doubleArray self) -> double const *
+        """
+        return _array.doubleArray_Read(self, on_dev)
+
+
+    def HostRead(self):
+        """HostRead(doubleArray self) -> double const *"""
+        return _array.doubleArray_HostRead(self)
+
+
+    def Write(self, on_dev=True):
+        """
+        Write(doubleArray self, bool on_dev=True) -> double
+        Write(doubleArray self) -> double *
+        """
+        return _array.doubleArray_Write(self, on_dev)
+
+
+    def HostWrite(self):
+        """HostWrite(doubleArray self) -> double *"""
+        return _array.doubleArray_HostWrite(self)
+
+
+    def ReadWrite(self, on_dev=True):
+        """
+        ReadWrite(doubleArray self, bool on_dev=True) -> double
+        ReadWrite(doubleArray self) -> double *
+        """
+        return _array.doubleArray_ReadWrite(self, on_dev)
+
+
+    def HostReadWrite(self):
+        """HostReadWrite(doubleArray self) -> double *"""
+        return _array.doubleArray_HostReadWrite(self)
+
+
     def __setitem__(self, i, v):
+        """__setitem__(doubleArray self, int i, double const v)"""
         return _array.doubleArray___setitem__(self, i, v)
 
+
     def __getitem__(self, i):
+        """__getitem__(doubleArray self, int const i) -> double const &"""
         return _array.doubleArray___getitem__(self, i)
 
+
     def Assign(self, *args):
+        """
+        Assign(doubleArray self, double const * arg2)
+        Assign(doubleArray self, double const & a)
+        """
         return _array.doubleArray_Assign(self, *args)
+
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
 
+
+
+    def Print(self, *args):
+        """
+        Print(doubleArray self, std::ostream & out, int width=4)
+        Print(doubleArray self, std::ostream & out)
+        Print(doubleArray self)
+        Print(doubleArray self, char const * file, int precision=8)
+        Print(doubleArray self, char const * file)
+        """
+        return _array.doubleArray_Print(self, *args)
+
+
+    def Save(self, *args):
+        """
+        Save(doubleArray self, std::ostream & out, int fmt=0)
+        Save(doubleArray self, std::ostream & out)
+        Save(doubleArray self, char const * file, int precision=8)
+        Save(doubleArray self, char const * file)
+        Save(doubleArray self)
+        """
+        return _array.doubleArray_Save(self, *args)
 
 doubleArray_swigregister = _array.doubleArray_swigregister
 doubleArray_swigregister(doubleArray)
 
 
 def doubleSwap(*args):
+    """
+    doubleSwap(doubleArray arg1, doubleArray arg2)
+    doubleSwap(mfem::Array2D< double > & arg1, mfem::Array2D< double > & arg2)
+    doubleSwap(double & a, double & b)
+    """
     return _array.doubleSwap(*args)
-doubleSwap = _array.doubleSwap
 
 def intSwap(*args):
+    """
+    intSwap(intArray arg1, intArray arg2)
+    intSwap(mfem::Array2D< int > & arg1, mfem::Array2D< int > & arg2)
+    intSwap(int & a, int & b)
+    """
     return _array.intSwap(*args)
-intSwap = _array.intSwap
 # This file is compatible with both classic and new-style classes.
 
 

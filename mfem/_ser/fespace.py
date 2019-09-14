@@ -103,7 +103,7 @@ except __builtin__.Exception:
 
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.coefficient
 import mfem._ser.matrix
@@ -113,6 +113,7 @@ import mfem._ser.sparsemat
 import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
+import mfem._ser.geom
 import mfem._ser.mesh
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
@@ -121,8 +122,8 @@ import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.linearform
 import mfem._ser.element
-import mfem._ser.geom
 import mfem._ser.table
+import mfem._ser.hash
 import mfem._ser.vertex
 import mfem._ser.handle
 class Ordering(_object):
@@ -148,6 +149,8 @@ class Ordering(_object):
 Ordering_swigregister = _fespace.Ordering_swigregister
 Ordering_swigregister(Ordering)
 
+ElementDofOrdering_NATIVE = _fespace.ElementDofOrdering_NATIVE
+ElementDofOrdering_LEXICOGRAPHIC = _fespace.ElementDofOrdering_LEXICOGRAPHIC
 class FiniteElementSpace(_object):
     """Proxy of C++ mfem::FiniteElementSpace class."""
 
@@ -237,6 +240,19 @@ class FiniteElementSpace(_object):
     def GetRestrictionMatrix(self):
         """GetRestrictionMatrix(FiniteElementSpace self) -> SparseMatrix"""
         return _fespace.FiniteElementSpace_GetRestrictionMatrix(self)
+
+
+    def GetElementRestriction(self, e_ordering):
+        """GetElementRestriction(FiniteElementSpace self, mfem::ElementDofOrdering e_ordering) -> Operator"""
+        return _fespace.FiniteElementSpace_GetElementRestriction(self, e_ordering)
+
+
+    def GetQuadratureInterpolator(self, *args):
+        """
+        GetQuadratureInterpolator(FiniteElementSpace self, IntegrationRule ir) -> QuadratureInterpolator
+        GetQuadratureInterpolator(FiniteElementSpace self, QuadratureSpace qs) -> QuadratureInterpolator
+        """
+        return _fespace.FiniteElementSpace_GetQuadratureInterpolator(self, *args)
 
 
     def GetVDim(self):
@@ -569,7 +585,7 @@ class FiniteElementSpace(_object):
 
 
     def GetTraceElement(self, i, geom_type):
-        """GetTraceElement(FiniteElementSpace self, int i, int geom_type) -> FiniteElement"""
+        """GetTraceElement(FiniteElementSpace self, int i, mfem::Geometry::Type geom_type) -> FiniteElement"""
         return _fespace.FiniteElementSpace_GetTraceElement(self, i, geom_type)
 
 
@@ -675,17 +691,22 @@ class FiniteElementSpace(_object):
         return _fespace.FiniteElementSpace_GetSequence(self)
 
 
-    def Save(self, out):
-        """Save(FiniteElementSpace self, std::ostream & out)"""
-        return _fespace.FiniteElementSpace_Save(self, out)
-
-
     def Load(self, m, input):
         """Load(FiniteElementSpace self, Mesh m, std::istream & input) -> FiniteElementCollection"""
         return _fespace.FiniteElementSpace_Load(self, m, input)
 
     __swig_destroy__ = _fespace.delete_FiniteElementSpace
     __del__ = lambda self: None
+
+    def Save(self, *args):
+        """
+        Save(FiniteElementSpace self, std::ostream & out)
+        Save(FiniteElementSpace self, char const * file, int precision=8)
+        Save(FiniteElementSpace self, char const * file)
+        Save(FiniteElementSpace self)
+        """
+        return _fespace.FiniteElementSpace_Save(self, *args)
+
 FiniteElementSpace_swigregister = _fespace.FiniteElementSpace_swigregister
 FiniteElementSpace_swigregister(FiniteElementSpace)
 
@@ -736,12 +757,216 @@ class QuadratureSpace(_object):
         return _fespace.QuadratureSpace_GetElementIntRule(self, idx)
 
 
-    def Save(self, out):
-        """Save(QuadratureSpace self, std::ostream & out)"""
-        return _fespace.QuadratureSpace_Save(self, out)
+    def Save(self, *args):
+        """
+        Save(QuadratureSpace self, std::ostream & out)
+        Save(QuadratureSpace self, char const * file, int precision=8)
+        Save(QuadratureSpace self, char const * file)
+        Save(QuadratureSpace self)
+        """
+        return _fespace.QuadratureSpace_Save(self, *args)
 
 QuadratureSpace_swigregister = _fespace.QuadratureSpace_swigregister
 QuadratureSpace_swigregister(QuadratureSpace)
+
+class GridTransfer(_object):
+    """Proxy of C++ mfem::GridTransfer class."""
+
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, GridTransfer, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, GridTransfer, name)
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _fespace.delete_GridTransfer
+    __del__ = lambda self: None
+
+    def SetOperatorType(self, type):
+        """SetOperatorType(GridTransfer self, mfem::Operator::Type type)"""
+        return _fespace.GridTransfer_SetOperatorType(self, type)
+
+
+    def ForwardOperator(self):
+        """ForwardOperator(GridTransfer self) -> Operator"""
+        return _fespace.GridTransfer_ForwardOperator(self)
+
+
+    def BackwardOperator(self):
+        """BackwardOperator(GridTransfer self) -> Operator"""
+        return _fespace.GridTransfer_BackwardOperator(self)
+
+
+    def TrueForwardOperator(self):
+        """TrueForwardOperator(GridTransfer self) -> Operator"""
+        return _fespace.GridTransfer_TrueForwardOperator(self)
+
+
+    def TrueBackwardOperator(self):
+        """TrueBackwardOperator(GridTransfer self) -> Operator"""
+        return _fespace.GridTransfer_TrueBackwardOperator(self)
+
+GridTransfer_swigregister = _fespace.GridTransfer_swigregister
+GridTransfer_swigregister(GridTransfer)
+
+class InterpolationGridTransfer(GridTransfer):
+    """Proxy of C++ mfem::InterpolationGridTransfer class."""
+
+    __swig_setmethods__ = {}
+    for _s in [GridTransfer]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, InterpolationGridTransfer, name, value)
+    __swig_getmethods__ = {}
+    for _s in [GridTransfer]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, InterpolationGridTransfer, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, coarse_fes, fine_fes):
+        """__init__(mfem::InterpolationGridTransfer self, FiniteElementSpace coarse_fes, FiniteElementSpace fine_fes) -> InterpolationGridTransfer"""
+        this = _fespace.new_InterpolationGridTransfer(coarse_fes, fine_fes)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fespace.delete_InterpolationGridTransfer
+    __del__ = lambda self: None
+
+    def SetMassIntegrator(self, mass_integ_, own_mass_integ_=True):
+        """
+        SetMassIntegrator(InterpolationGridTransfer self, BilinearFormIntegrator mass_integ_, bool own_mass_integ_=True)
+        SetMassIntegrator(InterpolationGridTransfer self, BilinearFormIntegrator mass_integ_)
+        """
+        return _fespace.InterpolationGridTransfer_SetMassIntegrator(self, mass_integ_, own_mass_integ_)
+
+
+    def ForwardOperator(self):
+        """ForwardOperator(InterpolationGridTransfer self) -> Operator"""
+        return _fespace.InterpolationGridTransfer_ForwardOperator(self)
+
+
+    def BackwardOperator(self):
+        """BackwardOperator(InterpolationGridTransfer self) -> Operator"""
+        return _fespace.InterpolationGridTransfer_BackwardOperator(self)
+
+InterpolationGridTransfer_swigregister = _fespace.InterpolationGridTransfer_swigregister
+InterpolationGridTransfer_swigregister(InterpolationGridTransfer)
+
+class L2ProjectionGridTransfer(GridTransfer):
+    """Proxy of C++ mfem::L2ProjectionGridTransfer class."""
+
+    __swig_setmethods__ = {}
+    for _s in [GridTransfer]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, L2ProjectionGridTransfer, name, value)
+    __swig_getmethods__ = {}
+    for _s in [GridTransfer]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, L2ProjectionGridTransfer, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, coarse_fes, fine_fes):
+        """__init__(mfem::L2ProjectionGridTransfer self, FiniteElementSpace coarse_fes, FiniteElementSpace fine_fes) -> L2ProjectionGridTransfer"""
+        this = _fespace.new_L2ProjectionGridTransfer(coarse_fes, fine_fes)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def ForwardOperator(self):
+        """ForwardOperator(L2ProjectionGridTransfer self) -> Operator"""
+        return _fespace.L2ProjectionGridTransfer_ForwardOperator(self)
+
+
+    def BackwardOperator(self):
+        """BackwardOperator(L2ProjectionGridTransfer self) -> Operator"""
+        return _fespace.L2ProjectionGridTransfer_BackwardOperator(self)
+
+    __swig_destroy__ = _fespace.delete_L2ProjectionGridTransfer
+    __del__ = lambda self: None
+L2ProjectionGridTransfer_swigregister = _fespace.L2ProjectionGridTransfer_swigregister
+L2ProjectionGridTransfer_swigregister(L2ProjectionGridTransfer)
+
+class ElementRestriction(mfem._ser.operators.Operator):
+    """Proxy of C++ mfem::ElementRestriction class."""
+
+    __swig_setmethods__ = {}
+    for _s in [mfem._ser.operators.Operator]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, ElementRestriction, name, value)
+    __swig_getmethods__ = {}
+    for _s in [mfem._ser.operators.Operator]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, ElementRestriction, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, arg2, arg3):
+        """__init__(mfem::ElementRestriction self, FiniteElementSpace arg2, mfem::ElementDofOrdering arg3) -> ElementRestriction"""
+        this = _fespace.new_ElementRestriction(arg2, arg3)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def Mult(self, x, y):
+        """Mult(ElementRestriction self, Vector x, Vector y)"""
+        return _fespace.ElementRestriction_Mult(self, x, y)
+
+
+    def MultTranspose(self, x, y):
+        """MultTranspose(ElementRestriction self, Vector x, Vector y)"""
+        return _fespace.ElementRestriction_MultTranspose(self, x, y)
+
+    __swig_destroy__ = _fespace.delete_ElementRestriction
+    __del__ = lambda self: None
+ElementRestriction_swigregister = _fespace.ElementRestriction_swigregister
+ElementRestriction_swigregister(ElementRestriction)
+
+class QuadratureInterpolator(_object):
+    """Proxy of C++ mfem::QuadratureInterpolator class."""
+
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, QuadratureInterpolator, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, QuadratureInterpolator, name)
+    __repr__ = _swig_repr
+    VALUES = _fespace.QuadratureInterpolator_VALUES
+    DERIVATIVES = _fespace.QuadratureInterpolator_DERIVATIVES
+    DETERMINANTS = _fespace.QuadratureInterpolator_DETERMINANTS
+
+    def __init__(self, *args):
+        """
+        __init__(mfem::QuadratureInterpolator self, FiniteElementSpace fes, IntegrationRule ir) -> QuadratureInterpolator
+        __init__(mfem::QuadratureInterpolator self, FiniteElementSpace fes, QuadratureSpace qs) -> QuadratureInterpolator
+        """
+        this = _fespace.new_QuadratureInterpolator(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def DisableTensorProducts(self, disable=True):
+        """
+        DisableTensorProducts(QuadratureInterpolator self, bool disable=True)
+        DisableTensorProducts(QuadratureInterpolator self)
+        """
+        return _fespace.QuadratureInterpolator_DisableTensorProducts(self, disable)
+
+
+    def Mult(self, e_vec, eval_flags, q_val, q_der, q_det):
+        """Mult(QuadratureInterpolator self, Vector e_vec, unsigned int eval_flags, Vector q_val, Vector q_der, Vector q_det)"""
+        return _fespace.QuadratureInterpolator_Mult(self, e_vec, eval_flags, q_val, q_der, q_det)
+
+
+    def MultTranspose(self, eval_flags, q_val, q_der, e_vec):
+        """MultTranspose(QuadratureInterpolator self, unsigned int eval_flags, Vector q_val, Vector q_der, Vector e_vec)"""
+        return _fespace.QuadratureInterpolator_MultTranspose(self, eval_flags, q_val, q_der, e_vec)
+
+    __swig_destroy__ = _fespace.delete_QuadratureInterpolator
+    __del__ = lambda self: None
+QuadratureInterpolator_swigregister = _fespace.QuadratureInterpolator_swigregister
+QuadratureInterpolator_swigregister(QuadratureInterpolator)
 
 # This file is compatible with both classic and new-style classes.
 

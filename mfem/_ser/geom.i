@@ -15,4 +15,5 @@ import_array();
 
 %immutable RefPts;
 %immutable GlobGeometryRefiner;
+
 %include "fem/geom.hpp"

@@ -104,7 +104,7 @@ except __builtin__.Exception:
 
 import mfem._ser.element
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.densemat
 import mfem._ser.vector
 import mfem._ser.operators
@@ -112,6 +112,7 @@ import mfem._ser.matrix
 import mfem._ser.geom
 import mfem._ser.intrules
 import mfem._ser.table
+import mfem._ser.hash
 class Segment(mfem._ser.element.Element):
     """Proxy of C++ mfem::Segment class."""
 
@@ -145,7 +146,7 @@ class Segment(mfem._ser.element.Element):
 
 
     def GetType(self):
-        """GetType(Segment self) -> int"""
+        """GetType(Segment self) -> mfem::Element::Type"""
         return _segment.Segment_GetType(self)
 
 

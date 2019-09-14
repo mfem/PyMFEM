@@ -96,9 +96,11 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.table
 class IntegerSet(_object):
+    """Proxy of C++ mfem::IntegerSet class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, IntegerSet, name, value)
     __swig_getmethods__ = {}
@@ -106,6 +108,11 @@ class IntegerSet(_object):
     __repr__ = _swig_repr
 
     def __init__(self, *args):
+        """
+        __init__(mfem::IntegerSet self) -> IntegerSet
+        __init__(mfem::IntegerSet self, IntegerSet s) -> IntegerSet
+        __init__(mfem::IntegerSet self, int const n, int const * p) -> IntegerSet
+        """
         this = _sets.new_IntegerSet(*args)
         try:
             self.this.append(this)
@@ -113,25 +120,37 @@ class IntegerSet(_object):
             self.this = this
 
     def Size(self):
+        """Size(IntegerSet self) -> int"""
         return _sets.IntegerSet_Size(self)
 
+
     def PickElement(self):
+        """PickElement(IntegerSet self) -> int"""
         return _sets.IntegerSet_PickElement(self)
 
+
     def PickRandomElement(self):
+        """PickRandomElement(IntegerSet self) -> int"""
         return _sets.IntegerSet_PickRandomElement(self)
 
+
     def __eq__(self, s):
+        """__eq__(IntegerSet self, IntegerSet s) -> int"""
         return _sets.IntegerSet___eq__(self, s)
 
+
     def Recreate(self, n, p):
+        """Recreate(IntegerSet self, int const n, int const * p)"""
         return _sets.IntegerSet_Recreate(self, n, p)
+
     __swig_destroy__ = _sets.delete_IntegerSet
     __del__ = lambda self: None
 IntegerSet_swigregister = _sets.IntegerSet_swigregister
 IntegerSet_swigregister(IntegerSet)
 
 class ListOfIntegerSets(_object):
+    """Proxy of C++ mfem::ListOfIntegerSets class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, ListOfIntegerSets, name, value)
     __swig_getmethods__ = {}
@@ -139,26 +158,39 @@ class ListOfIntegerSets(_object):
     __repr__ = _swig_repr
 
     def Size(self):
+        """Size(ListOfIntegerSets self) -> int"""
         return _sets.ListOfIntegerSets_Size(self)
 
+
     def PickElementInSet(self, i):
+        """PickElementInSet(ListOfIntegerSets self, int i) -> int"""
         return _sets.ListOfIntegerSets_PickElementInSet(self, i)
 
+
     def PickRandomElementInSet(self, i):
+        """PickRandomElementInSet(ListOfIntegerSets self, int i) -> int"""
         return _sets.ListOfIntegerSets_PickRandomElementInSet(self, i)
 
+
     def Insert(self, s):
+        """Insert(ListOfIntegerSets self, IntegerSet s) -> int"""
         return _sets.ListOfIntegerSets_Insert(self, s)
 
+
     def Lookup(self, s):
+        """Lookup(ListOfIntegerSets self, IntegerSet s) -> int"""
         return _sets.ListOfIntegerSets_Lookup(self, s)
 
+
     def AsTable(self, t):
+        """AsTable(ListOfIntegerSets self, Table t)"""
         return _sets.ListOfIntegerSets_AsTable(self, t)
+
     __swig_destroy__ = _sets.delete_ListOfIntegerSets
     __del__ = lambda self: None
 
     def __init__(self):
+        """__init__(mfem::ListOfIntegerSets self) -> ListOfIntegerSets"""
         this = _sets.new_ListOfIntegerSets()
         try:
             self.this.append(this)

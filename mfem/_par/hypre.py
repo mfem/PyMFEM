@@ -110,11 +110,13 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _hypre.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _hypre.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _hypre.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _hypre.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _hypre.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _hypre.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _hypre.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _hypre.MFEM_HYPRE_VERSION
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.sparsemat
 import mfem._par.operators
 import mfem._par.matrix
@@ -426,12 +428,12 @@ class HypreParMatrix(mfem._par.operators.Operator):
 
 
     def BooleanMult(self, alpha, x, beta, y):
-        """BooleanMult(HypreParMatrix self, int alpha, int * x, int beta, int * y)"""
+        """BooleanMult(HypreParMatrix self, int alpha, int const * x, int beta, int * y)"""
         return _hypre.HypreParMatrix_BooleanMult(self, alpha, x, beta, y)
 
 
     def BooleanMultTranspose(self, alpha, x, beta, y):
-        """BooleanMultTranspose(HypreParMatrix self, int alpha, int * x, int beta, int * y)"""
+        """BooleanMultTranspose(HypreParMatrix self, int alpha, int const * x, int beta, int * y)"""
         return _hypre.HypreParMatrix_BooleanMultTranspose(self, alpha, x, beta, y)
 
 
@@ -513,14 +515,6 @@ class HypreParMatrix(mfem._par.operators.Operator):
         """Read_IJMatrix(HypreParMatrix self, MPI_Comm comm, char const * fname)"""
         return _hypre.HypreParMatrix_Read_IJMatrix(self, comm, fname)
 
-
-    def PrintCommPkg(self, *args):
-        """
-        PrintCommPkg(HypreParMatrix self, std::ostream & out)
-        PrintCommPkg(HypreParMatrix self)
-        """
-        return _hypre.HypreParMatrix_PrintCommPkg(self, *args)
-
     __swig_destroy__ = _hypre.delete_HypreParMatrix
     __del__ = lambda self: None
 
@@ -556,6 +550,16 @@ class HypreParMatrix(mfem._par.operators.Operator):
         GetCooDataArray(HypreParMatrix self) -> PyObject *
         """
         return _hypre.HypreParMatrix_GetCooDataArray(self, base_i, base_j)
+
+
+    def PrintCommPkg(self, *args):
+        """
+        PrintCommPkg(HypreParMatrix self, std::ostream & out)
+        PrintCommPkg(HypreParMatrix self)
+        PrintCommPkg(HypreParMatrix self, char const * file, int precision=8)
+        PrintCommPkg(HypreParMatrix self, char const * file)
+        """
+        return _hypre.HypreParMatrix_PrintCommPkg(self, *args)
 
 HypreParMatrix_swigregister = _hypre.HypreParMatrix_swigregister
 HypreParMatrix_swigregister(HypreParMatrix)
@@ -999,6 +1003,41 @@ class HypreParaSails(HypreSolver):
     __del__ = lambda self: None
 HypreParaSails_swigregister = _hypre.HypreParaSails_swigregister
 HypreParaSails_swigregister(HypreParaSails)
+
+class HypreEuclid(HypreSolver):
+    """Proxy of C++ mfem::HypreEuclid class."""
+
+    __swig_setmethods__ = {}
+    for _s in [HypreSolver]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, HypreEuclid, name, value)
+    __swig_getmethods__ = {}
+    for _s in [HypreSolver]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, HypreEuclid, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, A):
+        """__init__(mfem::HypreEuclid self, HypreParMatrix A) -> HypreEuclid"""
+        this = _hypre.new_HypreEuclid(A)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def SetupFcn(self):
+        """SetupFcn(HypreEuclid self) -> HYPRE_PtrToParSolverFcn"""
+        return _hypre.HypreEuclid_SetupFcn(self)
+
+
+    def SolveFcn(self):
+        """SolveFcn(HypreEuclid self) -> HYPRE_PtrToParSolverFcn"""
+        return _hypre.HypreEuclid_SolveFcn(self)
+
+    __swig_destroy__ = _hypre.delete_HypreEuclid
+    __del__ = lambda self: None
+HypreEuclid_swigregister = _hypre.HypreEuclid_swigregister
+HypreEuclid_swigregister(HypreEuclid)
 
 class HypreBoomerAMG(HypreSolver):
     """Proxy of C++ mfem::HypreBoomerAMG class."""

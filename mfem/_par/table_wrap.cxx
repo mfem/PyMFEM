@@ -3001,19 +3001,25 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 
 
+  #define SWIG_exception(code, msg) do { SWIG_Error(code, msg); SWIG_fail;; } while(0) 
+
+
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_int swig_types[1]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Connection_t swig_types[3]
-#define SWIGTYPE_p_mfem__Connection swig_types[4]
-#define SWIGTYPE_p_mfem__DSTable swig_types[5]
-#define SWIGTYPE_p_mfem__STable swig_types[6]
-#define SWIGTYPE_p_mfem__Table swig_types[7]
-#define SWIGTYPE_p_std__istream swig_types[8]
-static swig_type_info *swig_types[10];
-static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_int swig_types[2]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Connection_t swig_types[4]
+#define SWIGTYPE_p_mfem__Connection swig_types[5]
+#define SWIGTYPE_p_mfem__DSTable swig_types[6]
+#define SWIGTYPE_p_mfem__MemoryT_int_t swig_types[7]
+#define SWIGTYPE_p_mfem__STable swig_types[8]
+#define SWIGTYPE_p_mfem__Table swig_types[9]
+#define SWIGTYPE_p_std__istream swig_types[10]
+#define SWIGTYPE_p_void swig_types[11]
+static swig_type_info *swig_types[13];
+static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3118,10 +3124,11 @@ namespace swig {
 }
 
 
-#include "iostream_typemap.hpp"    
-#include "general/table.hpp"
+#include <fstream>  
 #include <iostream>
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"      
+#include "io_stream.hpp"
+#include "general/table.hpp"
 
 
 SWIGINTERNINLINE PyObject*
@@ -3150,6 +3157,171 @@ SWIGINTERN PyObject *mfem_Table_GetRowList(mfem::Table const *self,int i){
        PyList_SetItem(o, kk, PyLong_FromLong((long) *(row + kk)));
      }
      return o;
+  }
+
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+  if (PyBytes_Check(obj))
+#else
+  if (PyUnicode_Check(obj))
+#endif
+#else  
+  if (PyString_Check(obj))
+#endif
+  {
+    char *cstr; Py_ssize_t len;
+#if PY_VERSION_HEX>=0x03000000
+#if !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    if (!alloc && cptr) {
+        /* We can't allow converting without allocation, since the internal
+           representation of string in Python 3 is UCS-2/UCS-4 but we require
+           a UTF-8 representation.
+           TODO(bhy) More detailed explanation */
+        return SWIG_RuntimeError;
+    }
+    obj = PyUnicode_AsUTF8String(obj);
+    if(alloc) *alloc = SWIG_NEWOBJ;
+#endif
+    PyBytes_AsStringAndSize(obj, &cstr, &len);
+#else
+    PyString_AsStringAndSize(obj, &cstr, &len);
+#endif
+    if (cptr) {
+      if (alloc) {
+	/* 
+	   In python the user should not be able to modify the inner
+	   string representation. To warranty that, if you define
+	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
+	   buffer is always returned.
+
+	   The default behavior is just to return the pointer value,
+	   so, be careful.
+	*/ 
+#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
+	if (*alloc != SWIG_OLDOBJ) 
+#else
+	if (*alloc == SWIG_NEWOBJ) 
+#endif
+	{
+	  *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+	  *alloc = SWIG_NEWOBJ;
+	} else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+#if PY_VERSION_HEX>=0x03000000
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+	*cptr = PyBytes_AsString(obj);
+#else
+	assert(0); /* Should never reach here with Unicode strings in Python 3 */
+#endif
+#else
+	*cptr = SWIG_Python_str_AsChar(obj);
+#endif
+      }
+    }
+    if (psize) *psize = len + 1;
+#if PY_VERSION_HEX>=0x03000000 && !defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+    Py_XDECREF(obj);
+#endif
+    return SWIG_OK;
+  } else {
+#if defined(SWIG_PYTHON_2_UNICODE)
+#if defined(SWIG_PYTHON_STRICT_BYTE_CHAR)
+#error "Cannot use both SWIG_PYTHON_2_UNICODE and SWIG_PYTHON_STRICT_BYTE_CHAR at once"
+#endif
+#if PY_VERSION_HEX<0x03000000
+    if (PyUnicode_Check(obj)) {
+      char *cstr; Py_ssize_t len;
+      if (!alloc && cptr) {
+        return SWIG_RuntimeError;
+      }
+      obj = PyUnicode_AsUTF8String(obj);
+      if (PyString_AsStringAndSize(obj, &cstr, &len) != -1) {
+        if (cptr) {
+          if (alloc) *alloc = SWIG_NEWOBJ;
+          *cptr = reinterpret_cast< char* >(memcpy(new char[len + 1], cstr, sizeof(char)*(len + 1)));
+        }
+        if (psize) *psize = len + 1;
+
+        Py_XDECREF(obj);
+        return SWIG_OK;
+      } else {
+        Py_XDECREF(obj);
+      }
+    }
+#endif
+#endif
+
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+
+
+SWIGINTERN void mfem_Table_Print__SWIG_3(mfem::Table *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> Print(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Table_PrintMatlab__SWIG_1(mfem::Table *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintMatlab(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Table_Save__SWIG_1(mfem::Table *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);    
+  self -> Save(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Table_Save__SWIG_3(mfem::Table *self){
+  self -> Save(std::cout);
   }
 #ifdef __cplusplus
 extern "C" {
@@ -3256,7 +3428,35 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Connection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Connection__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Connection *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_Connection")) SWIG_fail;
+  {
+    try {
+      result = (mfem::Connection *)new mfem::Connection();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Connection, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Connection__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -3277,11 +3477,75 @@ SWIGINTERN PyObject *_wrap_new_Connection(PyObject *SWIGUNUSEDPARM(self), PyObje
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (mfem::Connection *)new mfem::Connection(arg1,arg2);
+  {
+    try {
+      result = (mfem::Connection *)new mfem::Connection(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Connection, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Connection(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_Connection__SWIG_0(self, args);
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_Connection__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_Connection'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Connection::Connection()\n"
+    "    mfem::Connection::Connection(int,int)\n");
+  return 0;
 }
 
 
@@ -3311,7 +3575,22 @@ SWIGINTERN PyObject *_wrap_Connection___eq__(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Connection___eq__" "', argument " "2"" of type '" "mfem::Connection const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Connection * >(argp2);
-  result = (bool)((mfem::Connection const *)arg1)->operator ==((mfem::Connection const &)*arg2);
+  {
+    try {
+      result = (bool)((mfem::Connection const *)arg1)->operator ==((mfem::Connection const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -3345,7 +3624,22 @@ SWIGINTERN PyObject *_wrap_Connection___lt__(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Connection___lt__" "', argument " "2"" of type '" "mfem::Connection const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Connection * >(argp2);
-  result = (bool)((mfem::Connection const *)arg1)->operator <((mfem::Connection const &)*arg2);
+  {
+    try {
+      result = (bool)((mfem::Connection const *)arg1)->operator <((mfem::Connection const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
@@ -3366,7 +3660,22 @@ SWIGINTERN PyObject *_wrap_delete_Connection(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Connection" "', argument " "1"" of type '" "mfem::Connection *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Connection * >(argp1);
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3386,7 +3695,22 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyO
   mfem::Table *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)":new_Table")) SWIG_fail;
-  result = (mfem::Table *)new mfem::Table();
+  {
+    try {
+      result = (mfem::Table *)new mfem::Table();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3411,7 +3735,22 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Table" "', argument " "1"" of type '" "mfem::Table const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (mfem::Table *)new mfem::Table((mfem::Table const &)*arg1);
+  {
+    try {
+      result = (mfem::Table *)new mfem::Table((mfem::Table const &)*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3440,7 +3779,22 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyO
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (mfem::Table *)new mfem::Table(arg1,arg2);
+  {
+    try {
+      result = (mfem::Table *)new mfem::Table(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3461,7 +3815,22 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyO
     };  
     arg1 = PyArray_PyIntAsInt(obj0);
   }
-  result = (mfem::Table *)new mfem::Table(arg1);
+  {
+    try {
+      result = (mfem::Table *)new mfem::Table(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3494,7 +3863,22 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Table" "', argument " "2"" of type '" "mfem::Array< mfem::Connection > &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< mfem::Connection > * >(argp2);
-  result = (mfem::Table *)new mfem::Table(arg1,*arg2);
+  {
+    try {
+      result = (mfem::Table *)new mfem::Table(arg1,*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3524,7 +3908,22 @@ SWIGINTERN PyObject *_wrap_new_Table__SWIG_5(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Table" "', argument " "2"" of type '" "int *""'"); 
   }
   arg2 = reinterpret_cast< int * >(argp2);
-  result = (mfem::Table *)new mfem::Table(arg1,arg2);
+  {
+    try {
+      result = (mfem::Table *)new mfem::Table(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Table, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -3559,6 +3958,7 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -3572,6 +3972,7 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -3590,6 +3991,7 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -3608,6 +4010,7 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -3616,6 +4019,7 @@ SWIGINTERN PyObject *_wrap_new_Table(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -3661,7 +4065,22 @@ SWIGINTERN PyObject *_wrap_Table_MakeI(PyObject *SWIGUNUSEDPARM(self), PyObject 
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  (arg1)->MakeI(arg2);
+  {
+    try {
+      (arg1)->MakeI(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3690,7 +4109,22 @@ SWIGINTERN PyObject *_wrap_Table_AddAColumnInRow(PyObject *SWIGUNUSEDPARM(self),
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  (arg1)->AddAColumnInRow(arg2);
+  {
+    try {
+      (arg1)->AddAColumnInRow(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3727,7 +4161,22 @@ SWIGINTERN PyObject *_wrap_Table_AddColumnsInRow(PyObject *SWIGUNUSEDPARM(self),
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  (arg1)->AddColumnsInRow(arg2,arg3);
+  {
+    try {
+      (arg1)->AddColumnsInRow(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3748,7 +4197,22 @@ SWIGINTERN PyObject *_wrap_Table_MakeJ(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_MakeJ" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  (arg1)->MakeJ();
+  {
+    try {
+      (arg1)->MakeJ();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3785,7 +4249,22 @@ SWIGINTERN PyObject *_wrap_Table_AddConnection(PyObject *SWIGUNUSEDPARM(self), P
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  (arg1)->AddConnection(arg2,arg3);
+  {
+    try {
+      (arg1)->AddConnection(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3831,7 +4310,22 @@ SWIGINTERN PyObject *_wrap_Table_AddConnections(PyObject *SWIGUNUSEDPARM(self), 
     };  
     arg4 = PyArray_PyIntAsInt(obj3);
   }
-  (arg1)->AddConnections(arg2,(int const *)arg3,arg4);
+  {
+    try {
+      (arg1)->AddConnections(arg2,(int const *)arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3852,7 +4346,22 @@ SWIGINTERN PyObject *_wrap_Table_ShiftUpI(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_ShiftUpI" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  (arg1)->ShiftUpI();
+  {
+    try {
+      (arg1)->ShiftUpI();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3889,7 +4398,22 @@ SWIGINTERN PyObject *_wrap_Table_SetSize(PyObject *SWIGUNUSEDPARM(self), PyObjec
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  (arg1)->SetSize(arg2,arg3);
+  {
+    try {
+      (arg1)->SetSize(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3926,7 +4450,22 @@ SWIGINTERN PyObject *_wrap_Table_SetDims(PyObject *SWIGUNUSEDPARM(self), PyObjec
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  (arg1)->SetDims(arg2,arg3);
+  {
+    try {
+      (arg1)->SetDims(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3948,7 +4487,22 @@ SWIGINTERN PyObject *_wrap_Table_Size(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Size" "', argument " "1"" of type '" "mfem::Table const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (int)((mfem::Table const *)arg1)->Size();
+  {
+    try {
+      result = (int)((mfem::Table const *)arg1)->Size();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -3970,7 +4524,22 @@ SWIGINTERN PyObject *_wrap_Table_Size_of_connections(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Size_of_connections" "', argument " "1"" of type '" "mfem::Table const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (int)((mfem::Table const *)arg1)->Size_of_connections();
+  {
+    try {
+      result = (int)((mfem::Table const *)arg1)->Size_of_connections();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -4008,7 +4577,22 @@ SWIGINTERN PyObject *_wrap_Table___call__(PyObject *SWIGUNUSEDPARM(self), PyObje
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  result = (int)((mfem::Table const *)arg1)->operator ()(arg2,arg3);
+  {
+    try {
+      result = (int)((mfem::Table const *)arg1)->operator ()(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -4049,7 +4633,22 @@ SWIGINTERN PyObject *_wrap_Table_GetRow__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Table_GetRow" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  ((mfem::Table const *)arg1)->GetRow(arg2,*arg3);
+  {
+    try {
+      ((mfem::Table const *)arg1)->GetRow(arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4079,7 +4678,22 @@ SWIGINTERN PyObject *_wrap_Table_RowSize(PyObject *SWIGUNUSEDPARM(self), PyObjec
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (int)((mfem::Table const *)arg1)->RowSize(arg2);
+  {
+    try {
+      result = (int)((mfem::Table const *)arg1)->RowSize(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -4109,7 +4723,22 @@ SWIGINTERN PyObject *_wrap_Table_GetRow__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (int *)((mfem::Table const *)arg1)->GetRow(arg2);
+  {
+    try {
+      result = (int *)((mfem::Table const *)arg1)->GetRow(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
@@ -4139,7 +4768,22 @@ SWIGINTERN PyObject *_wrap_Table_GetRow__SWIG_2(PyObject *SWIGUNUSEDPARM(self), 
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (int *)(arg1)->GetRow(arg2);
+  {
+    try {
+      result = (int *)(arg1)->GetRow(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
@@ -4167,6 +4811,7 @@ SWIGINTERN PyObject *_wrap_Table_GetRow(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4185,6 +4830,7 @@ SWIGINTERN PyObject *_wrap_Table_GetRow(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4203,6 +4849,7 @@ SWIGINTERN PyObject *_wrap_Table_GetRow(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -4243,7 +4890,22 @@ SWIGINTERN PyObject *_wrap_Table_GetI__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetI" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (int *)(arg1)->GetI();
+  {
+    try {
+      result = (int *)(arg1)->GetI();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
@@ -4265,7 +4927,22 @@ SWIGINTERN PyObject *_wrap_Table_GetJ__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetJ" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (int *)(arg1)->GetJ();
+  {
+    try {
+      result = (int *)(arg1)->GetJ();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
@@ -4287,7 +4964,22 @@ SWIGINTERN PyObject *_wrap_Table_GetI__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetI" "', argument " "1"" of type '" "mfem::Table const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (int *)((mfem::Table const *)arg1)->GetI();
+  {
+    try {
+      result = (int *)((mfem::Table const *)arg1)->GetI();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
@@ -4349,7 +5041,22 @@ SWIGINTERN PyObject *_wrap_Table_GetJ__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetJ" "', argument " "1"" of type '" "mfem::Table const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (int *)((mfem::Table const *)arg1)->GetJ();
+  {
+    try {
+      result = (int *)((mfem::Table const *)arg1)->GetJ();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
@@ -4397,6 +5104,234 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Table_GetIMemory__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Memory< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Table_GetIMemory",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetIMemory" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< int > *) &(arg1)->GetIMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_GetJMemory__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Memory< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Table_GetJMemory",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetJMemory" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< int > *) &(arg1)->GetJMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_GetIMemory__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Memory< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Table_GetIMemory",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetIMemory" "', argument " "1"" of type '" "mfem::Table const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< int > *) &((mfem::Table const *)arg1)->GetIMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_GetIMemory(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Table_GetIMemory__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Table_GetIMemory__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Table_GetIMemory'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Table::GetIMemory()\n"
+    "    mfem::Table::GetIMemory() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_GetJMemory__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Memory< int > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Table_GetJMemory",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_GetJMemory" "', argument " "1"" of type '" "mfem::Table const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< int > *) &((mfem::Table const *)arg1)->GetJMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_int_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_GetJMemory(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Table_GetJMemory__SWIG_0(self, args);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Table_GetJMemory__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Table_GetJMemory'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Table::GetJMemory()\n"
+    "    mfem::Table::GetJMemory() const\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_Table_SortRows(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
@@ -4410,7 +5345,22 @@ SWIGINTERN PyObject *_wrap_Table_SortRows(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_SortRows" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  (arg1)->SortRows();
+  {
+    try {
+      (arg1)->SortRows();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4457,7 +5407,22 @@ SWIGINTERN PyObject *_wrap_Table_SetIJ__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     };  
     arg4 = PyArray_PyIntAsInt(obj3);
   }
-  (arg1)->SetIJ(arg2,arg3,arg4);
+  {
+    try {
+      (arg1)->SetIJ(arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4496,7 +5461,22 @@ SWIGINTERN PyObject *_wrap_Table_SetIJ__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Table_SetIJ" "', argument " "3"" of type '" "int *""'"); 
   }
   arg3 = reinterpret_cast< int * >(argp3);
-  (arg1)->SetIJ(arg2,arg3);
+  {
+    try {
+      (arg1)->SetIJ(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4551,6 +5531,7 @@ SWIGINTERN PyObject *_wrap_Table_SetIJ(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -4603,7 +5584,22 @@ SWIGINTERN PyObject *_wrap_Table_Push(PyObject *SWIGUNUSEDPARM(self), PyObject *
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  result = (int)(arg1)->Push(arg2,arg3);
+  {
+    try {
+      result = (int)(arg1)->Push(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -4624,7 +5620,22 @@ SWIGINTERN PyObject *_wrap_Table_Finalize(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Finalize" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  (arg1)->Finalize();
+  {
+    try {
+      (arg1)->Finalize();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4665,7 +5676,22 @@ SWIGINTERN PyObject *_wrap_Table_MakeFromList(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Table_MakeFromList" "', argument " "3"" of type '" "mfem::Array< mfem::Connection > const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< mfem::Connection > * >(argp3);
-  (arg1)->MakeFromList(arg2,(mfem::Array< mfem::Connection > const &)*arg3);
+  {
+    try {
+      (arg1)->MakeFromList(arg2,(mfem::Array< mfem::Connection > const &)*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4687,7 +5713,22 @@ SWIGINTERN PyObject *_wrap_Table_Width(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Width" "', argument " "1"" of type '" "mfem::Table const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (int)((mfem::Table const *)arg1)->Width();
+  {
+    try {
+      result = (int)((mfem::Table const *)arg1)->Width();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -4708,7 +5749,22 @@ SWIGINTERN PyObject *_wrap_Table_LoseData(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_LoseData" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  (arg1)->LoseData();
+  {
+    try {
+      (arg1)->LoseData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4723,7 +5779,8 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -4735,15 +5792,18 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -4752,17 +5812,34 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  ((mfem::Table const *)arg1)->Print(*arg2,arg3);
+  {
+    try {
+      ((mfem::Table const *)arg1)->Print(*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -4774,7 +5851,8 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4785,28 +5863,48 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
-  ((mfem::Table const *)arg1)->Print(*arg2);
+  {
+    try {
+      ((mfem::Table const *)arg1)->Print(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -4825,7 +5923,22 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_2(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Print" "', argument " "1"" of type '" "mfem::Table const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  ((mfem::Table const *)arg1)->Print();
+  {
+    try {
+      ((mfem::Table const *)arg1)->Print();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4833,90 +5946,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Table_Print(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Table_Print__SWIG_2(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Table_Print__SWIG_1(self, args);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_Table_Print__SWIG_0(self, args);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Table_Print'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Table::Print(std::ostream &,int) const\n"
-    "    mfem::Table::Print(std::ostream &) const\n"
-    "    mfem::Table::Print() const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Table_PrintMatlab(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4927,40 +5964,61 @@ SWIGINTERN PyObject *_wrap_Table_PrintMatlab(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
-  ((mfem::Table const *)arg1)->PrintMatlab(*arg2);
+  {
+    try {
+      ((mfem::Table const *)arg1)->PrintMatlab(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_Table_Save(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Table_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Table *arg1 = (mfem::Table *) 0 ;
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4971,28 +6029,48 @@ SWIGINTERN PyObject *_wrap_Table_Save(PyObject *SWIGUNUSEDPARM(self), PyObject *
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
-  ((mfem::Table const *)arg1)->Save(*arg2);
+  {
+    try {
+      ((mfem::Table const *)arg1)->Save(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -5023,7 +6101,22 @@ SWIGINTERN PyObject *_wrap_Table_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Table_Load" "', argument " "2"" of type '" "std::istream &""'"); 
   }
   arg2 = reinterpret_cast< std::istream * >(argp2);
-  (arg1)->Load(*arg2);
+  {
+    try {
+      (arg1)->Load(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5056,7 +6149,22 @@ SWIGINTERN PyObject *_wrap_Table_Copy(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Table_Copy" "', argument " "2"" of type '" "mfem::Table &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Table * >(argp2);
-  ((mfem::Table const *)arg1)->Copy(*arg2);
+  {
+    try {
+      ((mfem::Table const *)arg1)->Copy(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5089,7 +6197,22 @@ SWIGINTERN PyObject *_wrap_Table_Swap(PyObject *SWIGUNUSEDPARM(self), PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Table_Swap" "', argument " "2"" of type '" "mfem::Table &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Table * >(argp2);
-  (arg1)->Swap(*arg2);
+  {
+    try {
+      (arg1)->Swap(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5110,7 +6233,22 @@ SWIGINTERN PyObject *_wrap_Table_Clear(PyObject *SWIGUNUSEDPARM(self), PyObject 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Clear" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  (arg1)->Clear();
+  {
+    try {
+      (arg1)->Clear();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5132,7 +6270,22 @@ SWIGINTERN PyObject *_wrap_Table_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_MemoryUsage" "', argument " "1"" of type '" "mfem::Table const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  result = (long)((mfem::Table const *)arg1)->MemoryUsage();
+  {
+    try {
+      result = (long)((mfem::Table const *)arg1)->MemoryUsage();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_long(static_cast< long >(result));
   return resultobj;
 fail:
@@ -5153,7 +6306,22 @@ SWIGINTERN PyObject *_wrap_delete_Table(PyObject *SWIGUNUSEDPARM(self), PyObject
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Table" "', argument " "1"" of type '" "mfem::Table *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Table * >(argp1);
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5183,11 +6351,662 @@ SWIGINTERN PyObject *_wrap_Table_GetRowList(PyObject *SWIGUNUSEDPARM(self), PyOb
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (PyObject *)mfem_Table_GetRowList((mfem::Table const *)arg1,arg2);
+  {
+    try {
+      result = (PyObject *)mfem_Table_GetRowList((mfem::Table const *)arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = result;
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_Print__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Table_Print",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Print" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Table_Print__SWIG_3(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_Print__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Table_Print",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Print" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Table_Print__SWIG_3(arg1,(char const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_Print(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Table_Print__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Table_Print__SWIG_4(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Table_Print__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Table_Print__SWIG_3(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Table_Print__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Table_Print'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Table::Print(std::ostream &,int) const\n"
+    "    mfem::Table::Print(std::ostream &) const\n"
+    "    mfem::Table::Print() const\n"
+    "    mfem::Table::Print(char const *,int)\n"
+    "    mfem::Table::Print(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Table_PrintMatlab",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_PrintMatlab" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Table_PrintMatlab__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Table_PrintMatlab",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_PrintMatlab" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Table_PrintMatlab__SWIG_1(arg1,(char const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_PrintMatlab(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Table_PrintMatlab__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Table_PrintMatlab__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Table_PrintMatlab__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Table_PrintMatlab'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Table::PrintMatlab(std::ostream &) const\n"
+    "    mfem::Table::PrintMatlab(char const *,int)\n"
+    "    mfem::Table::PrintMatlab(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Table_Save",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Save" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_Save" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Table_Save__SWIG_1(arg1,(char const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_Save__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Table_Save",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Save" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Table_Save" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Table_Save__SWIG_1(arg1,(char const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_Save__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Table *arg1 = (mfem::Table *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Table_Save",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Table, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Table_Save" "', argument " "1"" of type '" "mfem::Table *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Table * >(argp1);
+  {
+    try {
+      mfem_Table_Save__SWIG_3(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Table_Save(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Table_Save__SWIG_3(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Table_Save__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Table_Save__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Table, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Table_Save__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Table_Save'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Table::Save(std::ostream &) const\n"
+    "    mfem::Table::Save(char const *,int)\n"
+    "    mfem::Table::Save(char const *)\n"
+    "    mfem::Table::Save()\n");
+  return 0;
 }
 
 
@@ -5219,7 +7038,22 @@ SWIGINTERN PyObject *_wrap_new_STable__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
     };  
     arg2 = PyArray_PyIntAsInt(obj1);
   }
-  result = (mfem::STable *)new mfem::STable(arg1,arg2);
+  {
+    try {
+      result = (mfem::STable *)new mfem::STable(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__STable, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -5240,7 +7074,22 @@ SWIGINTERN PyObject *_wrap_new_STable__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
     };  
     arg1 = PyArray_PyIntAsInt(obj0);
   }
-  result = (mfem::STable *)new mfem::STable(arg1);
+  {
+    try {
+      result = (mfem::STable *)new mfem::STable(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__STable, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -5264,6 +7113,7 @@ SWIGINTERN PyObject *_wrap_new_STable(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5277,6 +7127,7 @@ SWIGINTERN PyObject *_wrap_new_STable(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5285,6 +7136,7 @@ SWIGINTERN PyObject *_wrap_new_STable(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5335,7 +7187,22 @@ SWIGINTERN PyObject *_wrap_STable___call__(PyObject *SWIGUNUSEDPARM(self), PyObj
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  result = (int)((mfem::STable const *)arg1)->operator ()(arg2,arg3);
+  {
+    try {
+      result = (int)((mfem::STable const *)arg1)->operator ()(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -5373,7 +7240,22 @@ SWIGINTERN PyObject *_wrap_STable_Push(PyObject *SWIGUNUSEDPARM(self), PyObject 
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  result = (int)(arg1)->Push(arg2,arg3);
+  {
+    try {
+      result = (int)(arg1)->Push(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -5394,7 +7276,22 @@ SWIGINTERN PyObject *_wrap_delete_STable(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_STable" "', argument " "1"" of type '" "mfem::STable *""'"); 
   }
   arg1 = reinterpret_cast< mfem::STable * >(argp1);
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5422,7 +7319,22 @@ SWIGINTERN PyObject *_wrap_new_DSTable(PyObject *SWIGUNUSEDPARM(self), PyObject 
     };  
     arg1 = PyArray_PyIntAsInt(obj0);
   }
-  result = (mfem::DSTable *)new mfem::DSTable(arg1);
+  {
+    try {
+      result = (mfem::DSTable *)new mfem::DSTable(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSTable, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
@@ -5444,7 +7356,22 @@ SWIGINTERN PyObject *_wrap_DSTable_NumberOfRows(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DSTable_NumberOfRows" "', argument " "1"" of type '" "mfem::DSTable const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DSTable * >(argp1);
-  result = (int)((mfem::DSTable const *)arg1)->NumberOfRows();
+  {
+    try {
+      result = (int)((mfem::DSTable const *)arg1)->NumberOfRows();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -5466,7 +7393,22 @@ SWIGINTERN PyObject *_wrap_DSTable_NumberOfEntries(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DSTable_NumberOfEntries" "', argument " "1"" of type '" "mfem::DSTable const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DSTable * >(argp1);
-  result = (int)((mfem::DSTable const *)arg1)->NumberOfEntries();
+  {
+    try {
+      result = (int)((mfem::DSTable const *)arg1)->NumberOfEntries();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -5504,7 +7446,22 @@ SWIGINTERN PyObject *_wrap_DSTable_Push(PyObject *SWIGUNUSEDPARM(self), PyObject
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  result = (int)(arg1)->Push(arg2,arg3);
+  {
+    try {
+      result = (int)(arg1)->Push(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -5542,7 +7499,22 @@ SWIGINTERN PyObject *_wrap_DSTable___call__(PyObject *SWIGUNUSEDPARM(self), PyOb
     };  
     arg3 = PyArray_PyIntAsInt(obj2);
   }
-  result = (int)((mfem::DSTable const *)arg1)->operator ()(arg2,arg3);
+  {
+    try {
+      result = (int)((mfem::DSTable const *)arg1)->operator ()(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -5563,7 +7535,22 @@ SWIGINTERN PyObject *_wrap_delete_DSTable(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DSTable" "', argument " "1"" of type '" "mfem::DSTable *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DSTable * >(argp1);
-  delete arg1;
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5580,61 +7567,110 @@ SWIGINTERN PyObject *DSTable_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObje
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"Connection__from_set", _wrap_Connection__from_set, METH_VARARGS, NULL},
-	 { (char *)"Connection__from_get", _wrap_Connection__from_get, METH_VARARGS, NULL},
-	 { (char *)"Connection_to_set", _wrap_Connection_to_set, METH_VARARGS, NULL},
-	 { (char *)"Connection_to_get", _wrap_Connection_to_get, METH_VARARGS, NULL},
-	 { (char *)"new_Connection", _wrap_new_Connection, METH_VARARGS, NULL},
-	 { (char *)"Connection___eq__", _wrap_Connection___eq__, METH_VARARGS, NULL},
-	 { (char *)"Connection___lt__", _wrap_Connection___lt__, METH_VARARGS, NULL},
-	 { (char *)"delete_Connection", _wrap_delete_Connection, METH_VARARGS, NULL},
+	 { (char *)"Connection__from_set", _wrap_Connection__from_set, METH_VARARGS, (char *)"Connection__from_set(Connection self, int arg3)"},
+	 { (char *)"Connection__from_get", _wrap_Connection__from_get, METH_VARARGS, (char *)"Connection__from_get(Connection self) -> int"},
+	 { (char *)"Connection_to_set", _wrap_Connection_to_set, METH_VARARGS, (char *)"Connection_to_set(Connection self, int to)"},
+	 { (char *)"Connection_to_get", _wrap_Connection_to_get, METH_VARARGS, (char *)"Connection_to_get(Connection self) -> int"},
+	 { (char *)"new_Connection", _wrap_new_Connection, METH_VARARGS, (char *)"\n"
+		"Connection()\n"
+		"new_Connection(int arg2, int to) -> Connection\n"
+		""},
+	 { (char *)"Connection___eq__", _wrap_Connection___eq__, METH_VARARGS, (char *)"Connection___eq__(Connection self, Connection rhs) -> bool"},
+	 { (char *)"Connection___lt__", _wrap_Connection___lt__, METH_VARARGS, (char *)"Connection___lt__(Connection self, Connection rhs) -> bool"},
+	 { (char *)"delete_Connection", _wrap_delete_Connection, METH_VARARGS, (char *)"delete_Connection(Connection self)"},
 	 { (char *)"Connection_swigregister", Connection_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_Table", _wrap_new_Table, METH_VARARGS, NULL},
-	 { (char *)"Table_MakeI", _wrap_Table_MakeI, METH_VARARGS, NULL},
-	 { (char *)"Table_AddAColumnInRow", _wrap_Table_AddAColumnInRow, METH_VARARGS, NULL},
-	 { (char *)"Table_AddColumnsInRow", _wrap_Table_AddColumnsInRow, METH_VARARGS, NULL},
-	 { (char *)"Table_MakeJ", _wrap_Table_MakeJ, METH_VARARGS, NULL},
-	 { (char *)"Table_AddConnection", _wrap_Table_AddConnection, METH_VARARGS, NULL},
-	 { (char *)"Table_AddConnections", _wrap_Table_AddConnections, METH_VARARGS, NULL},
-	 { (char *)"Table_ShiftUpI", _wrap_Table_ShiftUpI, METH_VARARGS, NULL},
-	 { (char *)"Table_SetSize", _wrap_Table_SetSize, METH_VARARGS, NULL},
-	 { (char *)"Table_SetDims", _wrap_Table_SetDims, METH_VARARGS, NULL},
-	 { (char *)"Table_Size", _wrap_Table_Size, METH_VARARGS, NULL},
-	 { (char *)"Table_Size_of_connections", _wrap_Table_Size_of_connections, METH_VARARGS, NULL},
-	 { (char *)"Table___call__", _wrap_Table___call__, METH_VARARGS, NULL},
-	 { (char *)"Table_RowSize", _wrap_Table_RowSize, METH_VARARGS, NULL},
-	 { (char *)"Table_GetRow", _wrap_Table_GetRow, METH_VARARGS, NULL},
-	 { (char *)"Table_GetI", _wrap_Table_GetI, METH_VARARGS, NULL},
-	 { (char *)"Table_GetJ", _wrap_Table_GetJ, METH_VARARGS, NULL},
-	 { (char *)"Table_SortRows", _wrap_Table_SortRows, METH_VARARGS, NULL},
-	 { (char *)"Table_SetIJ", _wrap_Table_SetIJ, METH_VARARGS, NULL},
-	 { (char *)"Table_Push", _wrap_Table_Push, METH_VARARGS, NULL},
-	 { (char *)"Table_Finalize", _wrap_Table_Finalize, METH_VARARGS, NULL},
-	 { (char *)"Table_MakeFromList", _wrap_Table_MakeFromList, METH_VARARGS, NULL},
-	 { (char *)"Table_Width", _wrap_Table_Width, METH_VARARGS, NULL},
-	 { (char *)"Table_LoseData", _wrap_Table_LoseData, METH_VARARGS, NULL},
-	 { (char *)"Table_Print", _wrap_Table_Print, METH_VARARGS, NULL},
-	 { (char *)"Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, NULL},
-	 { (char *)"Table_Save", _wrap_Table_Save, METH_VARARGS, NULL},
-	 { (char *)"Table_Load", _wrap_Table_Load, METH_VARARGS, NULL},
-	 { (char *)"Table_Copy", _wrap_Table_Copy, METH_VARARGS, NULL},
-	 { (char *)"Table_Swap", _wrap_Table_Swap, METH_VARARGS, NULL},
-	 { (char *)"Table_Clear", _wrap_Table_Clear, METH_VARARGS, NULL},
-	 { (char *)"Table_MemoryUsage", _wrap_Table_MemoryUsage, METH_VARARGS, NULL},
-	 { (char *)"delete_Table", _wrap_delete_Table, METH_VARARGS, NULL},
-	 { (char *)"Table_GetRowList", _wrap_Table_GetRowList, METH_VARARGS, NULL},
+	 { (char *)"new_Table", _wrap_new_Table, METH_VARARGS, (char *)"\n"
+		"Table()\n"
+		"Table(Table arg2)\n"
+		"Table(int dim, int connections_per_row=3)\n"
+		"Table(int dim)\n"
+		"Table(int nrows, mfem::Array< mfem::Connection > & list)\n"
+		"new_Table(int nrows, int * partitioning) -> Table\n"
+		""},
+	 { (char *)"Table_MakeI", _wrap_Table_MakeI, METH_VARARGS, (char *)"Table_MakeI(Table self, int nrows)"},
+	 { (char *)"Table_AddAColumnInRow", _wrap_Table_AddAColumnInRow, METH_VARARGS, (char *)"Table_AddAColumnInRow(Table self, int r)"},
+	 { (char *)"Table_AddColumnsInRow", _wrap_Table_AddColumnsInRow, METH_VARARGS, (char *)"Table_AddColumnsInRow(Table self, int r, int ncol)"},
+	 { (char *)"Table_MakeJ", _wrap_Table_MakeJ, METH_VARARGS, (char *)"Table_MakeJ(Table self)"},
+	 { (char *)"Table_AddConnection", _wrap_Table_AddConnection, METH_VARARGS, (char *)"Table_AddConnection(Table self, int r, int c)"},
+	 { (char *)"Table_AddConnections", _wrap_Table_AddConnections, METH_VARARGS, (char *)"Table_AddConnections(Table self, int r, int const * c, int nc)"},
+	 { (char *)"Table_ShiftUpI", _wrap_Table_ShiftUpI, METH_VARARGS, (char *)"Table_ShiftUpI(Table self)"},
+	 { (char *)"Table_SetSize", _wrap_Table_SetSize, METH_VARARGS, (char *)"Table_SetSize(Table self, int dim, int connections_per_row)"},
+	 { (char *)"Table_SetDims", _wrap_Table_SetDims, METH_VARARGS, (char *)"Table_SetDims(Table self, int rows, int nnz)"},
+	 { (char *)"Table_Size", _wrap_Table_Size, METH_VARARGS, (char *)"Table_Size(Table self) -> int"},
+	 { (char *)"Table_Size_of_connections", _wrap_Table_Size_of_connections, METH_VARARGS, (char *)"Table_Size_of_connections(Table self) -> int"},
+	 { (char *)"Table___call__", _wrap_Table___call__, METH_VARARGS, (char *)"Table___call__(Table self, int i, int j) -> int"},
+	 { (char *)"Table_RowSize", _wrap_Table_RowSize, METH_VARARGS, (char *)"Table_RowSize(Table self, int i) -> int"},
+	 { (char *)"Table_GetRow", _wrap_Table_GetRow, METH_VARARGS, (char *)"\n"
+		"GetRow(int i, intArray row)\n"
+		"GetRow(int i) -> int const\n"
+		"Table_GetRow(Table self, int i) -> int *\n"
+		""},
+	 { (char *)"Table_GetI", _wrap_Table_GetI, METH_VARARGS, (char *)"\n"
+		"GetI() -> int\n"
+		"Table_GetI(Table self) -> int const *\n"
+		""},
+	 { (char *)"Table_GetJ", _wrap_Table_GetJ, METH_VARARGS, (char *)"\n"
+		"GetJ() -> int\n"
+		"Table_GetJ(Table self) -> int const *\n"
+		""},
+	 { (char *)"Table_GetIMemory", _wrap_Table_GetIMemory, METH_VARARGS, (char *)"\n"
+		"GetIMemory() -> mfem::Memory< int >\n"
+		"Table_GetIMemory(Table self) -> mfem::Memory< int > const &\n"
+		""},
+	 { (char *)"Table_GetJMemory", _wrap_Table_GetJMemory, METH_VARARGS, (char *)"\n"
+		"GetJMemory() -> mfem::Memory< int >\n"
+		"Table_GetJMemory(Table self) -> mfem::Memory< int > const &\n"
+		""},
+	 { (char *)"Table_SortRows", _wrap_Table_SortRows, METH_VARARGS, (char *)"Table_SortRows(Table self)"},
+	 { (char *)"Table_SetIJ", _wrap_Table_SetIJ, METH_VARARGS, (char *)"\n"
+		"SetIJ(int * newI, int * newJ, int newsize=-1)\n"
+		"Table_SetIJ(Table self, int * newI, int * newJ)\n"
+		""},
+	 { (char *)"Table_Push", _wrap_Table_Push, METH_VARARGS, (char *)"Table_Push(Table self, int i, int j) -> int"},
+	 { (char *)"Table_Finalize", _wrap_Table_Finalize, METH_VARARGS, (char *)"Table_Finalize(Table self)"},
+	 { (char *)"Table_MakeFromList", _wrap_Table_MakeFromList, METH_VARARGS, (char *)"Table_MakeFromList(Table self, int nrows, mfem::Array< mfem::Connection > const & list)"},
+	 { (char *)"Table_Width", _wrap_Table_Width, METH_VARARGS, (char *)"Table_Width(Table self) -> int"},
+	 { (char *)"Table_LoseData", _wrap_Table_LoseData, METH_VARARGS, (char *)"Table_LoseData(Table self)"},
+	 { (char *)"Table_Load", _wrap_Table_Load, METH_VARARGS, (char *)"Table_Load(Table self, std::istream & arg3)"},
+	 { (char *)"Table_Copy", _wrap_Table_Copy, METH_VARARGS, (char *)"Table_Copy(Table self, Table copy)"},
+	 { (char *)"Table_Swap", _wrap_Table_Swap, METH_VARARGS, (char *)"Table_Swap(Table self, Table other)"},
+	 { (char *)"Table_Clear", _wrap_Table_Clear, METH_VARARGS, (char *)"Table_Clear(Table self)"},
+	 { (char *)"Table_MemoryUsage", _wrap_Table_MemoryUsage, METH_VARARGS, (char *)"Table_MemoryUsage(Table self) -> long"},
+	 { (char *)"delete_Table", _wrap_delete_Table, METH_VARARGS, (char *)"delete_Table(Table self)"},
+	 { (char *)"Table_GetRowList", _wrap_Table_GetRowList, METH_VARARGS, (char *)"Table_GetRowList(Table self, int i) -> PyObject *"},
+	 { (char *)"Table_Print", _wrap_Table_Print, METH_VARARGS, (char *)"\n"
+		"Print(std::ostream & out, int width=4)\n"
+		"Print(std::ostream & out)\n"
+		"Print()\n"
+		"Print(char const * file, int precision=8)\n"
+		"Table_Print(Table self, char const * file)\n"
+		""},
+	 { (char *)"Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, (char *)"\n"
+		"PrintMatlab(std::ostream & out)\n"
+		"PrintMatlab(char const * file, int precision=8)\n"
+		"Table_PrintMatlab(Table self, char const * file)\n"
+		""},
+	 { (char *)"Table_Save", _wrap_Table_Save, METH_VARARGS, (char *)"\n"
+		"Save(std::ostream & out)\n"
+		"Save(char const * file, int precision=8)\n"
+		"Save(char const * file)\n"
+		"Table_Save(Table self)\n"
+		""},
 	 { (char *)"Table_swigregister", Table_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_STable", _wrap_new_STable, METH_VARARGS, NULL},
-	 { (char *)"STable___call__", _wrap_STable___call__, METH_VARARGS, NULL},
-	 { (char *)"STable_Push", _wrap_STable_Push, METH_VARARGS, NULL},
-	 { (char *)"delete_STable", _wrap_delete_STable, METH_VARARGS, NULL},
+	 { (char *)"new_STable", _wrap_new_STable, METH_VARARGS, (char *)"\n"
+		"STable(int dim, int connections_per_row=3)\n"
+		"new_STable(int dim) -> STable\n"
+		""},
+	 { (char *)"STable___call__", _wrap_STable___call__, METH_VARARGS, (char *)"STable___call__(STable self, int i, int j) -> int"},
+	 { (char *)"STable_Push", _wrap_STable_Push, METH_VARARGS, (char *)"STable_Push(STable self, int i, int j) -> int"},
+	 { (char *)"delete_STable", _wrap_delete_STable, METH_VARARGS, (char *)"delete_STable(STable self)"},
 	 { (char *)"STable_swigregister", STable_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_DSTable", _wrap_new_DSTable, METH_VARARGS, NULL},
-	 { (char *)"DSTable_NumberOfRows", _wrap_DSTable_NumberOfRows, METH_VARARGS, NULL},
-	 { (char *)"DSTable_NumberOfEntries", _wrap_DSTable_NumberOfEntries, METH_VARARGS, NULL},
-	 { (char *)"DSTable_Push", _wrap_DSTable_Push, METH_VARARGS, NULL},
-	 { (char *)"DSTable___call__", _wrap_DSTable___call__, METH_VARARGS, NULL},
-	 { (char *)"delete_DSTable", _wrap_delete_DSTable, METH_VARARGS, NULL},
+	 { (char *)"new_DSTable", _wrap_new_DSTable, METH_VARARGS, (char *)"new_DSTable(int nrows) -> DSTable"},
+	 { (char *)"DSTable_NumberOfRows", _wrap_DSTable_NumberOfRows, METH_VARARGS, (char *)"DSTable_NumberOfRows(DSTable self) -> int"},
+	 { (char *)"DSTable_NumberOfEntries", _wrap_DSTable_NumberOfEntries, METH_VARARGS, (char *)"DSTable_NumberOfEntries(DSTable self) -> int"},
+	 { (char *)"DSTable_Push", _wrap_DSTable_Push, METH_VARARGS, (char *)"DSTable_Push(DSTable self, int a, int b) -> int"},
+	 { (char *)"DSTable___call__", _wrap_DSTable___call__, METH_VARARGS, (char *)"DSTable___call__(DSTable self, int a, int b) -> int"},
+	 { (char *)"delete_DSTable", _wrap_delete_DSTable, METH_VARARGS, (char *)"delete_DSTable(DSTable self)"},
 	 { (char *)"DSTable_swigregister", DSTable_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -5645,48 +7681,60 @@ static PyMethodDef SwigMethods[] = {
 static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Table *)  ((mfem::STable *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Connection_t = {"_p_mfem__ArrayT_mfem__Connection_t", "mfem::Array< mfem::Connection > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Connection = {"_p_mfem__Connection", "mfem::Connection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DSTable = {"_p_mfem__DSTable", "mfem::DSTable *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__MemoryT_int_t = {"_p_mfem__MemoryT_int_t", "mfem::Memory< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", "mfem::STable *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__Connection_t,
   &_swigt__p_mfem__Connection,
   &_swigt__p_mfem__DSTable,
+  &_swigt__p_mfem__MemoryT_int_t,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__Table,
   &_swigt__p_std__istream,
+  &_swigt__p_void,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Connection_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Connection_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Connection[] = {  {&_swigt__p_mfem__Connection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DSTable[] = {  {&_swigt__p_mfem__DSTable, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MemoryT_int_t[] = {  {&_swigt__p_mfem__MemoryT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {  {&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__Connection_t,
   _swigc__p_mfem__Connection,
   _swigc__p_mfem__DSTable,
+  _swigc__p_mfem__MemoryT_int_t,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__Table,
   _swigc__p_std__istream,
+  _swigc__p_void,
 };
 
 

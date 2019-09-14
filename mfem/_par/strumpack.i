@@ -1,4 +1,6 @@
 %module(package="mfem._par", directors="0")  strumpack
+%feature("autodoc", "1");
+
 %{
 #include "mesh/mesh_headers.hpp"
 #include "fem/fem.hpp"
@@ -11,7 +13,7 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "iostream_typemap.hpp"         
+#include "io_stream.hpp"         
 #include "numpy/arrayobject.h"
 #include "pycoefficient.hpp"
 #include "pyoperator.hpp"
@@ -31,7 +33,6 @@ import_array();
 
 %include "../common/cpointers.i"
 %include "exception.i"
-%import "ostream_typemap.i"
 %import "../common/numpy_int_typemap.i"
 
 %include "../common/exception.i"

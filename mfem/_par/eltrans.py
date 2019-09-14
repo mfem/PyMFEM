@@ -103,12 +103,13 @@ except __builtin__.Exception:
 
 
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.densemat
 import mfem._par.operators
 import mfem._par.matrix
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.intrules
 import mfem._par.sparsemat
 class ElementTransformation(_object):
@@ -195,7 +196,7 @@ class ElementTransformation(_object):
 
 
     def GetGeometryType(self):
-        """GetGeometryType(ElementTransformation self) -> int"""
+        """GetGeometryType(ElementTransformation self) -> mfem::Geometry::Type"""
         return _eltrans.ElementTransformation_GetGeometryType(self)
 
 
@@ -356,7 +357,7 @@ class IsoparametricTransformation(ElementTransformation):
 
 
     def SetIdentityTransformation(self, GeomType):
-        """SetIdentityTransformation(IsoparametricTransformation self, int GeomType)"""
+        """SetIdentityTransformation(IsoparametricTransformation self, mfem::Geometry::Type GeomType)"""
         return _eltrans.IsoparametricTransformation_SetIdentityTransformation(self, GeomType)
 
 

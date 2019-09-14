@@ -20,6 +20,7 @@ class SwigDirector_Operator : public mfem::Operator, public Swig::Director {
 public:
     SwigDirector_Operator(PyObject *self, int s = 0);
     SwigDirector_Operator(PyObject *self, int h, int w);
+    virtual mfem::MemoryClass GetMemoryClass() const;
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
@@ -57,7 +58,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[6];
+    mutable swig::SwigVar_PyObject vtable[7];
 #endif
 
 };
@@ -68,6 +69,7 @@ class SwigDirector_TimeDependentOperator : public mfem::TimeDependentOperator, p
 public:
     SwigDirector_TimeDependentOperator(PyObject *self, int n = 0, double t_ = 0.0, mfem::TimeDependentOperator::Type type_ = mfem::TimeDependentOperator::EXPLICIT);
     SwigDirector_TimeDependentOperator(PyObject *self, int h, int w, double t_ = 0.0, mfem::TimeDependentOperator::Type type_ = mfem::TimeDependentOperator::EXPLICIT);
+    virtual mfem::MemoryClass GetMemoryClass() const;
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
@@ -112,7 +114,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[13];
+    mutable swig::SwigVar_PyObject vtable[14];
 #endif
 
 };
@@ -123,6 +125,7 @@ class SwigDirector_Solver : public mfem::Solver, public Swig::Director {
 public:
     SwigDirector_Solver(PyObject *self, int s = 0, bool iter_mode = false);
     SwigDirector_Solver(PyObject *self, int h, int w, bool iter_mode = false);
+    virtual mfem::MemoryClass GetMemoryClass() const;
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
@@ -161,7 +164,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[7];
+    mutable swig::SwigVar_PyObject vtable[8];
 #endif
 
 };
@@ -172,6 +175,7 @@ class SwigDirector_PyOperatorBase : public mfem::PyOperatorBase, public Swig::Di
 public:
     SwigDirector_PyOperatorBase(PyObject *self, int s = 0);
     SwigDirector_PyOperatorBase(PyObject *self, int h, int w);
+    virtual mfem::MemoryClass GetMemoryClass() const;
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
@@ -210,7 +214,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[7];
+    mutable swig::SwigVar_PyObject vtable[8];
 #endif
 
 };
@@ -221,6 +225,7 @@ class SwigDirector_PyTimeDependentOperatorBase : public mfem::PyTimeDependentOpe
 public:
     SwigDirector_PyTimeDependentOperatorBase(PyObject *self, int n = 0, double _t = 0.0);
     SwigDirector_PyTimeDependentOperatorBase(PyObject *self, int h, int w, double _t = 0.0);
+    virtual mfem::MemoryClass GetMemoryClass() const;
     virtual void Mult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void MultTranspose(mfem::Vector const &x, mfem::Vector &y) const;
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
@@ -266,7 +271,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[14];
+    mutable swig::SwigVar_PyObject vtable[15];
 #endif
 
 };

@@ -104,8 +104,9 @@ except __builtin__.Exception:
 
 import mfem._par.fe
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.vector
+import mfem._par.geom
 import mfem._par.intrules
 import mfem._par.densemat
 import mfem._par.operators

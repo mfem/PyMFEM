@@ -3451,19 +3451,20 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_double swig_types[1]
-#define SWIGTYPE_p_int swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[4]
-#define SWIGTYPE_p_mfem__Geometry swig_types[5]
-#define SWIGTYPE_p_mfem__GeometryRefiner swig_types[6]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[7]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[8]
-#define SWIGTYPE_p_mfem__RefinedGeometry swig_types[9]
-#define SWIGTYPE_p_p_char swig_types[10]
-static swig_type_info *swig_types[12];
-static swig_module_info swig_module = {swig_types, 11, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[5]
+#define SWIGTYPE_p_mfem__Geometry swig_types[6]
+#define SWIGTYPE_p_mfem__GeometryRefiner swig_types[7]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[8]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[9]
+#define SWIGTYPE_p_mfem__RefinedGeometry swig_types[10]
+#define SWIGTYPE_p_p_char swig_types[11]
+static swig_type_info *swig_types[13];
+static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3632,6 +3633,111 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 }
 
 
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
 
 /* ---------------------------------------------------
  * C++ director class methods
@@ -3722,6 +3828,20 @@ SWIGINTERN PyObject *Swig_var_Geometry_Dimension_get(void) {
   PyObject *pyobj = 0;
   
   pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::Geometry::Dimension), SWIGTYPE_p_int,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_Geometry_DimStart_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable Geometry_DimStart is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_Geometry_DimStart_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::Geometry::DimStart), SWIGTYPE_p_int,  0 );
   return pyobj;
 }
 
@@ -4111,6 +4231,7 @@ SWIGINTERN PyObject *_wrap_Geometry_CheckPoint(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4128,6 +4249,7 @@ SWIGINTERN PyObject *_wrap_Geometry_CheckPoint(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4287,6 +4409,7 @@ SWIGINTERN PyObject *_wrap_Geometry_ProjectPoint(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -4305,6 +4428,7 @@ SWIGINTERN PyObject *_wrap_Geometry_ProjectPoint(PyObject *self, PyObject *args)
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5108,6 +5232,7 @@ SWIGINTERN PyObject *_wrap_new_RefinedGeometry(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5116,6 +5241,7 @@ SWIGINTERN PyObject *_wrap_new_RefinedGeometry(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5124,6 +5250,7 @@ SWIGINTERN PyObject *_wrap_new_RefinedGeometry(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5139,6 +5266,7 @@ SWIGINTERN PyObject *_wrap_new_RefinedGeometry(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -5147,6 +5275,7 @@ SWIGINTERN PyObject *_wrap_new_RefinedGeometry(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -5155,6 +5284,7 @@ SWIGINTERN PyObject *_wrap_new_RefinedGeometry(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5163,6 +5293,7 @@ SWIGINTERN PyObject *_wrap_new_RefinedGeometry(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5352,11 +5483,13 @@ fail:
 SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GeometryRefiner *arg1 = (mfem::GeometryRefiner *) 0 ;
-  int arg2 ;
+  mfem::Geometry::Type arg2 ;
   int arg3 ;
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -5369,12 +5502,11 @@ SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine__SWIG_0(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometryRefiner_Refine" "', argument " "1"" of type '" "mfem::GeometryRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GeometryRefiner * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeometryRefiner_Refine" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
   {
     if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -5416,10 +5548,12 @@ fail:
 SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GeometryRefiner *arg1 = (mfem::GeometryRefiner *) 0 ;
-  int arg2 ;
+  mfem::Geometry::Type arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -5431,12 +5565,11 @@ SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine__SWIG_1(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometryRefiner_Refine" "', argument " "1"" of type '" "mfem::GeometryRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GeometryRefiner * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeometryRefiner_Refine" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
   {
     if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -5488,15 +5621,13 @@ SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5515,15 +5646,13 @@ SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine(PyObject *self, PyObject *args
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5532,6 +5661,7 @@ SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine(PyObject *self, PyObject *args
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5548,8 +5678,8 @@ SWIGINTERN PyObject *_wrap_GeometryRefiner_Refine(PyObject *self, PyObject *args
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'GeometryRefiner_Refine'.\n"
     "  Possible C/C++ prototypes are:\n"
-    "    mfem::GeometryRefiner::Refine(int,int,int)\n"
-    "    mfem::GeometryRefiner::Refine(int,int)\n");
+    "    mfem::GeometryRefiner::Refine(mfem::Geometry::Type,int,int)\n"
+    "    mfem::GeometryRefiner::Refine(mfem::Geometry::Type,int)\n");
   return 0;
 }
 
@@ -5557,10 +5687,12 @@ fail:
 SWIGINTERN PyObject *_wrap_GeometryRefiner_RefineInterior(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::GeometryRefiner *arg1 = (mfem::GeometryRefiner *) 0 ;
-  int arg2 ;
+  mfem::Geometry::Type arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -5572,12 +5704,11 @@ SWIGINTERN PyObject *_wrap_GeometryRefiner_RefineInterior(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometryRefiner_RefineInterior" "', argument " "1"" of type '" "mfem::GeometryRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GeometryRefiner * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GeometryRefiner_RefineInterior" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
   {
     if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -5716,10 +5847,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"GeometryRefiner_SetType", _wrap_GeometryRefiner_SetType, METH_VARARGS, (char *)"GeometryRefiner_SetType(GeometryRefiner self, int const t)"},
 	 { (char *)"GeometryRefiner_GetType", _wrap_GeometryRefiner_GetType, METH_VARARGS, (char *)"GeometryRefiner_GetType(GeometryRefiner self) -> int"},
 	 { (char *)"GeometryRefiner_Refine", _wrap_GeometryRefiner_Refine, METH_VARARGS, (char *)"\n"
-		"Refine(int Geom, int Times, int ETimes=1) -> RefinedGeometry\n"
-		"GeometryRefiner_Refine(GeometryRefiner self, int Geom, int Times) -> RefinedGeometry\n"
+		"Refine(mfem::Geometry::Type Geom, int Times, int ETimes=1) -> RefinedGeometry\n"
+		"GeometryRefiner_Refine(GeometryRefiner self, mfem::Geometry::Type Geom, int Times) -> RefinedGeometry\n"
 		""},
-	 { (char *)"GeometryRefiner_RefineInterior", _wrap_GeometryRefiner_RefineInterior, METH_VARARGS, (char *)"GeometryRefiner_RefineInterior(GeometryRefiner self, int Geom, int Times) -> IntegrationRule"},
+	 { (char *)"GeometryRefiner_RefineInterior", _wrap_GeometryRefiner_RefineInterior, METH_VARARGS, (char *)"GeometryRefiner_RefineInterior(GeometryRefiner self, mfem::Geometry::Type Geom, int Times) -> IntegrationRule"},
 	 { (char *)"delete_GeometryRefiner", _wrap_delete_GeometryRefiner, METH_VARARGS, (char *)"delete_GeometryRefiner(GeometryRefiner self)"},
 	 { (char *)"GeometryRefiner_swigregister", GeometryRefiner_swigregister, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -5728,6 +5859,7 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -5741,6 +5873,7 @@ static swig_type_info _swigt__p_mfem__RefinedGeometry = {"_p_mfem__RefinedGeomet
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_int,
@@ -5754,6 +5887,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_char,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -5767,6 +5901,7 @@ static swig_cast_info _swigc__p_mfem__RefinedGeometry[] = {  {&_swigt__p_mfem__R
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_int,
@@ -6471,12 +6606,15 @@ SWIG_init(void) {
   
   import_array();
   
+  SWIG_Python_SetConstant(d, "Geometry_INVALID",SWIG_From_int(static_cast< int >(mfem::Geometry::INVALID)));
   SWIG_Python_SetConstant(d, "Geometry_POINT",SWIG_From_int(static_cast< int >(mfem::Geometry::POINT)));
   SWIG_Python_SetConstant(d, "Geometry_SEGMENT",SWIG_From_int(static_cast< int >(mfem::Geometry::SEGMENT)));
   SWIG_Python_SetConstant(d, "Geometry_TRIANGLE",SWIG_From_int(static_cast< int >(mfem::Geometry::TRIANGLE)));
   SWIG_Python_SetConstant(d, "Geometry_SQUARE",SWIG_From_int(static_cast< int >(mfem::Geometry::SQUARE)));
   SWIG_Python_SetConstant(d, "Geometry_TETRAHEDRON",SWIG_From_int(static_cast< int >(mfem::Geometry::TETRAHEDRON)));
   SWIG_Python_SetConstant(d, "Geometry_CUBE",SWIG_From_int(static_cast< int >(mfem::Geometry::CUBE)));
+  SWIG_Python_SetConstant(d, "Geometry_PRISM",SWIG_From_int(static_cast< int >(mfem::Geometry::PRISM)));
+  SWIG_Python_SetConstant(d, "Geometry_NUM_GEOMETRIES",SWIG_From_int(static_cast< int >(mfem::Geometry::NUM_GEOMETRIES)));
   SWIG_Python_SetConstant(d, "Geometry_NumGeom",SWIG_From_int(static_cast< int >(mfem::Geometry::NumGeom)));
   SWIG_Python_SetConstant(d, "Geometry_MaxDim",SWIG_From_int(static_cast< int >(mfem::Geometry::MaxDim)));
   PyDict_SetItemString(md,(char *)"cvar", SWIG_globals());
@@ -6484,6 +6622,7 @@ SWIG_init(void) {
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_Name",Swig_var_Geometry_Name_get, Swig_var_Geometry_Name_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_Volume",Swig_var_Geometry_Volume_get, Swig_var_Geometry_Volume_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_Dimension",Swig_var_Geometry_Dimension_get, Swig_var_Geometry_Dimension_set);
+  SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_DimStart",Swig_var_Geometry_DimStart_get, Swig_var_Geometry_DimStart_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_NumVerts",Swig_var_Geometry_NumVerts_get, Swig_var_Geometry_NumVerts_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_NumEdges",Swig_var_Geometry_NumEdges_get, Swig_var_Geometry_NumEdges_set);
   SWIG_addvarlink(SWIG_globals(),(char *)"Geometry_NumFaces",Swig_var_Geometry_NumFaces_get, Swig_var_Geometry_NumFaces_set);

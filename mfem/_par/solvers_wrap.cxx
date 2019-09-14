@@ -3452,38 +3452,39 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[4]
-#define SWIGTYPE_p_mfem__BiCGSTABSolver swig_types[5]
-#define SWIGTYPE_p_mfem__CGSolver swig_types[6]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[7]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[8]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[9]
-#define SWIGTYPE_p_mfem__FGMRESSolver swig_types[10]
-#define SWIGTYPE_p_mfem__GMRESSolver swig_types[11]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[12]
-#define SWIGTYPE_p_mfem__IterativeSolver swig_types[13]
-#define SWIGTYPE_p_mfem__MINRESSolver swig_types[14]
-#define SWIGTYPE_p_mfem__Matrix swig_types[15]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[16]
-#define SWIGTYPE_p_mfem__NewtonSolver swig_types[17]
-#define SWIGTYPE_p_mfem__Operator swig_types[18]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[19]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[20]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[21]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[22]
-#define SWIGTYPE_p_mfem__SLBQPOptimizer swig_types[23]
-#define SWIGTYPE_p_mfem__SLISolver swig_types[24]
-#define SWIGTYPE_p_mfem__Solver swig_types[25]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[26]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[27]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[28]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[29]
-#define SWIGTYPE_p_mfem__Vector swig_types[30]
-static swig_type_info *swig_types[32];
-static swig_module_info swig_module = {swig_types, 31, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[5]
+#define SWIGTYPE_p_mfem__BiCGSTABSolver swig_types[6]
+#define SWIGTYPE_p_mfem__CGSolver swig_types[7]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[8]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[9]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[10]
+#define SWIGTYPE_p_mfem__FGMRESSolver swig_types[11]
+#define SWIGTYPE_p_mfem__GMRESSolver swig_types[12]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[13]
+#define SWIGTYPE_p_mfem__IterativeSolver swig_types[14]
+#define SWIGTYPE_p_mfem__MINRESSolver swig_types[15]
+#define SWIGTYPE_p_mfem__Matrix swig_types[16]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[17]
+#define SWIGTYPE_p_mfem__NewtonSolver swig_types[18]
+#define SWIGTYPE_p_mfem__Operator swig_types[19]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[20]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[21]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[22]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[23]
+#define SWIGTYPE_p_mfem__SLBQPOptimizer swig_types[24]
+#define SWIGTYPE_p_mfem__SLISolver swig_types[25]
+#define SWIGTYPE_p_mfem__Solver swig_types[26]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[27]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[28]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[29]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[30]
+#define SWIGTYPE_p_mfem__Vector swig_types[31]
+static swig_type_info *swig_types[33];
+static swig_module_info swig_module = {swig_types, 32, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3708,13 +3709,13 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 SWIGINTERN int
 SWIG_AsPtr_MPI_Comm (PyObject * input, MPI_Comm **p) {
   if (input == Py_None) {
-    if (p) *p = 0;
+    if (p) *p = NULL;
     return SWIG_OK;
   } else if (PyObject_TypeCheck(input,&PyMPIComm_Type)) {
     if (p) *p = PyMPIComm_Get(input);
     return SWIG_OK;
   } else {
-    void *argp = 0;
+    void *argp = NULL;
     int res = SWIG_ConvertPtr(input,&argp,SWIGTYPE_p_MPI_Comm, 0);
     if (!SWIG_IsOK(res)) return res;
     if (!argp) return SWIG_ValueError;
@@ -5237,6 +5238,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5289,6 +5291,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5316,6 +5319,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5324,6 +5328,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5351,6 +5356,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5359,6 +5365,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5396,6 +5403,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5404,6 +5412,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -5436,6 +5445,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5444,6 +5454,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -5478,6 +5489,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -5486,6 +5498,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5529,6 +5542,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -5537,6 +5551,7 @@ SWIGINTERN PyObject *_wrap_SLI(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -6243,6 +6258,7 @@ SWIGINTERN PyObject *_wrap_CG(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -6269,6 +6285,7 @@ SWIGINTERN PyObject *_wrap_CG(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -6277,6 +6294,7 @@ SWIGINTERN PyObject *_wrap_CG(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -6304,6 +6322,7 @@ SWIGINTERN PyObject *_wrap_CG(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -6312,6 +6331,7 @@ SWIGINTERN PyObject *_wrap_CG(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -6345,6 +6365,7 @@ SWIGINTERN PyObject *_wrap_CG(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -6353,6 +6374,7 @@ SWIGINTERN PyObject *_wrap_CG(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -6886,6 +6908,7 @@ SWIGINTERN PyObject *_wrap_PCG(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -6917,6 +6940,7 @@ SWIGINTERN PyObject *_wrap_PCG(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -6925,6 +6949,7 @@ SWIGINTERN PyObject *_wrap_PCG(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -6957,6 +6982,7 @@ SWIGINTERN PyObject *_wrap_PCG(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -6965,6 +6991,7 @@ SWIGINTERN PyObject *_wrap_PCG(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -7003,6 +7030,7 @@ SWIGINTERN PyObject *_wrap_PCG(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -7011,6 +7039,7 @@ SWIGINTERN PyObject *_wrap_PCG(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -8243,6 +8272,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -8274,6 +8304,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -8282,6 +8313,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -8314,6 +8346,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -8322,6 +8355,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -8330,6 +8364,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    
@@ -8363,6 +8398,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -8371,6 +8407,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -8379,6 +8416,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    
@@ -8418,6 +8456,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -8426,6 +8465,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -8434,6 +8474,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
               if (_v) {
                 {
                   if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
+                    PyErr_Clear();
                     _v = 0;
                   } else {
                     _v = 1;    
@@ -8483,6 +8524,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -8500,6 +8542,7 @@ SWIGINTERN PyObject *_wrap_GMRES(PyObject *self, PyObject *args) {
                   if (_v) {
                     {
                       if ((PyArray_PyIntAsInt(argv[8]) == -1) && PyErr_Occurred()) {
+                        PyErr_Clear();
                         _v = 0;
                       } else {
                         _v = 1;    
@@ -9377,6 +9420,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -9408,6 +9452,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -9416,6 +9461,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -9448,6 +9494,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -9456,6 +9503,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -9507,6 +9555,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
                 if (_v) {
                   {
                     if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
+                      PyErr_Clear();
                       _v = 0;
                     } else {
                       _v = 1;    
@@ -9541,6 +9590,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -9549,6 +9599,7 @@ SWIGINTERN PyObject *_wrap_BiCGSTAB(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -10739,6 +10790,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10791,6 +10843,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10818,6 +10871,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10826,6 +10880,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10853,6 +10908,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10861,6 +10917,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10898,6 +10955,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10906,6 +10964,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -10938,6 +10997,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -10946,6 +11006,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -10980,6 +11041,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -10988,6 +11050,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -11031,6 +11094,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -11039,6 +11103,7 @@ SWIGINTERN PyObject *_wrap_MINRES(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -12242,6 +12307,7 @@ static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWI
     return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
 }
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -12275,6 +12341,7 @@ static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_int,
@@ -12308,6 +12375,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -12341,6 +12409,7 @@ static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0,
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_int,
@@ -13064,16 +13133,18 @@ SWIG_init(void) {
   
   import_array();
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(30400)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("3.4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((30400)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((30400)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((30400)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((30400)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617_py3/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/Users/shiraiwa/twopi_roots/20190617_py3/mfem/par"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21102)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

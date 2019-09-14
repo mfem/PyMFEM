@@ -110,12 +110,14 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _handle.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _handle.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _handle.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _handle.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _handle.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _handle.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _handle.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _handle.MFEM_HYPRE_VERSION
 import mfem._par.operators
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.hypre
 import mfem._par.sparsemat
 import mfem._par.matrix
@@ -145,6 +147,16 @@ class OperatorHandle(_object):
     def Ptr(self):
         """Ptr(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_Ptr(self)
+
+
+    def __deref__(self):
+        """__deref__(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle___deref__(self)
+
+
+    def __ref__(self):
+        """__ref__(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle___ref__(self)
 
 
     def Type(self):
@@ -235,8 +247,88 @@ class OperatorHandle(_object):
         """
         return _handle.OperatorHandle_ConvertFrom(self, *args)
 
+
+    def Height(self):
+        """Height(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_Height(self)
+
+
+    def NumRows(self):
+        """NumRows(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_NumRows(self)
+
+
+    def Width(self):
+        """Width(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_Width(self)
+
+
+    def NumCols(self):
+        """NumCols(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_NumCols(self)
+
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(OperatorHandle self) -> mfem::MemoryClass"""
+        return _handle.OperatorHandle_GetMemoryClass(self)
+
+
+    def Mult(self, x, y):
+        """Mult(OperatorHandle self, Vector x, Vector y)"""
+        return _handle.OperatorHandle_Mult(self, x, y)
+
+
+    def MultTranspose(self, x, y):
+        """MultTranspose(OperatorHandle self, Vector x, Vector y)"""
+        return _handle.OperatorHandle_MultTranspose(self, x, y)
+
+
+    def GetGradient(self, x):
+        """GetGradient(OperatorHandle self, Vector x) -> Operator"""
+        return _handle.OperatorHandle_GetGradient(self, x)
+
+
+    def GetProlongation(self):
+        """GetProlongation(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetProlongation(self)
+
+
+    def GetRestriction(self):
+        """GetRestriction(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetRestriction(self)
+
+
+    def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
+        """
+        FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)
+        """
+        return _handle.OperatorHandle_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
+
+
+    def RecoverFEMSolution(self, X, b, x):
+        """RecoverFEMSolution(OperatorHandle self, Vector X, Vector b, Vector x)"""
+        return _handle.OperatorHandle_RecoverFEMSolution(self, X, b, x)
+
+
+    def PrintMatlab(self, out, n=0, m=0):
+        """
+        PrintMatlab(OperatorHandle self, std::ostream & out, int n=0, int m=0)
+        PrintMatlab(OperatorHandle self, std::ostream & out, int n=0)
+        PrintMatlab(OperatorHandle self, std::ostream & out)
+        """
+        return _handle.OperatorHandle_PrintMatlab(self, out, n, m)
+
+
+    def GetType(self):
+        """GetType(OperatorHandle self) -> mfem::Operator::Type"""
+        return _handle.OperatorHandle_GetType(self)
+
 OperatorHandle_swigregister = _handle.OperatorHandle_swigregister
 OperatorHandle_swigregister(OperatorHandle)
+
+
+OperatorPtr=OperatorHandle  
 
 # This file is compatible with both classic and new-style classes.
 

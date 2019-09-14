@@ -3451,16 +3451,17 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_geom_t swig_types[1]
-#define SWIGTYPE_p_int swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
-#define SWIGTYPE_p_mfem__Element swig_types[4]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[5]
-#define SWIGTYPE_p_mfem__Mesh swig_types[6]
-#define SWIGTYPE_p_mfem__Segment swig_types[7]
-static swig_type_info *swig_types[9];
-static swig_module_info swig_module = {swig_types, 8, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_geom_t swig_types[2]
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
+#define SWIGTYPE_p_mfem__Element swig_types[5]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[6]
+#define SWIGTYPE_p_mfem__Mesh swig_types[7]
+#define SWIGTYPE_p_mfem__Segment swig_types[8]
+static swig_type_info *swig_types[10];
+static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3860,6 +3861,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -3874,6 +3876,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -3882,6 +3885,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -3896,6 +3900,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -3904,6 +3909,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -3912,6 +3918,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -3998,7 +4005,7 @@ SWIGINTERN PyObject *_wrap_Segment_GetType(PyObject *SWIGUNUSEDPARM(self), PyObj
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Segment_GetType",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
@@ -4008,7 +4015,7 @@ SWIGINTERN PyObject *_wrap_Segment_GetType(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< mfem::Segment * >(argp1);
   {
     try {
-      result = (int)((mfem::Segment const *)arg1)->GetType(); 
+      result = (mfem::Element::Type)((mfem::Segment const *)arg1)->GetType(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4476,7 +4483,7 @@ static PyMethodDef SwigMethods[] = {
 		"new_Segment(int ind1, int ind2) -> Segment\n"
 		""},
 	 { (char *)"Segment_SetVertices", _wrap_Segment_SetVertices, METH_VARARGS, (char *)"Segment_SetVertices(Segment self, int const * ind)"},
-	 { (char *)"Segment_GetType", _wrap_Segment_GetType, METH_VARARGS, (char *)"Segment_GetType(Segment self) -> int"},
+	 { (char *)"Segment_GetType", _wrap_Segment_GetType, METH_VARARGS, (char *)"Segment_GetType(Segment self) -> mfem::Element::Type"},
 	 { (char *)"Segment_GetVertices", _wrap_Segment_GetVertices, METH_VARARGS, (char *)"\n"
 		"GetVertices(intArray v)\n"
 		"Segment_GetVertices(Segment self) -> int *\n"
@@ -4498,6 +4505,7 @@ static PyMethodDef SwigMethods[] = {
 static void *_p_mfem__SegmentTo_p_mfem__Element(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Element *)  ((mfem::Segment *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_geom_t = {"_p_geom_t", "geom_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -4508,6 +4516,7 @@ static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0
 static swig_type_info _swigt__p_mfem__Segment = {"_p_mfem__Segment", "mfem::Segment *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_geom_t,
   &_swigt__p_int,
@@ -4518,6 +4527,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Segment,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_geom_t[] = {  {&_swigt__p_geom_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -4528,6 +4538,7 @@ static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 
 static swig_cast_info _swigc__p_mfem__Segment[] = {  {&_swigt__p_mfem__Segment, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_geom_t,
   _swigc__p_int,

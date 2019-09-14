@@ -10,6 +10,13 @@ from os.path import expanduser, join
 import numpy as np
 from numpy import sin, cos, exp
 
+#### time.clock deprecated and removed in PY3.8
+import time
+try:
+    clock = time.process_time
+except AttributeError:
+    clock = time.clock
+
 def pFunc_exact(x):
     xi = float(x[0]); yi = float(x[1]); zi = 0.0
     if len(x) == 3: zi = x[2]
@@ -136,8 +143,7 @@ darcyPrec.SetDiagonalBlock(1, invS);
 
 maxIter = 500; rtol = 1e-6; atol = 1e-10
 
-import time
-stime = time.clock()
+stime = clock()
 solver = mfem.MINRESSolver()
 solver.SetAbsTol(atol)
 solver.SetRelTol(rtol)
@@ -148,7 +154,7 @@ solver.SetPrintLevel(1)
 x.Assign(0.0)
 solver.Mult(rhs, x)
 
-solve_time = time.clock() - stime
+solve_time = clock() - stime
 
 if solver.GetConverged():
    print("MINRES converged in " + str(solver.GetNumIterations()) + 

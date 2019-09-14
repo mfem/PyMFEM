@@ -104,7 +104,7 @@ except __builtin__.Exception:
 
 import mfem._par.coefficient
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.operators
@@ -113,11 +113,12 @@ import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.fespace
@@ -142,6 +143,7 @@ class LinearForm(mfem._par.vector.Vector):
     def __init__(self, *args):
         """
         __init__(mfem::LinearForm self, FiniteElementSpace f) -> LinearForm
+        __init__(mfem::LinearForm self, FiniteElementSpace f, LinearForm lf) -> LinearForm
         __init__(mfem::LinearForm self) -> LinearForm
         """
         this = _linearform.new_LinearForm(*args)
@@ -174,15 +176,19 @@ class LinearForm(mfem._par.vector.Vector):
         return _linearform.LinearForm_AddDomainIntegrator(self, lfi)
 
 
-    def AddBoundaryIntegrator(self, lfi):
-        """AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)"""
+    def AddBoundaryIntegrator(self, *args):
+        """
+        AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)
+        AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)
+        """
 
         if not hasattr(self, "_integrators"): self._integrators = []
+        lfi = args[0]	     	     
         self._integrators.append(lfi)
         lfi.thisown=0 
 
 
-        return _linearform.LinearForm_AddBoundaryIntegrator(self, lfi)
+        return _linearform.LinearForm_AddBoundaryIntegrator(self, *args)
 
 
     def AddBdrFaceIntegrator(self, *args):
@@ -198,6 +204,31 @@ class LinearForm(mfem._par.vector.Vector):
 
 
         return _linearform.LinearForm_AddBdrFaceIntegrator(self, *args)
+
+
+    def GetDLFI(self):
+        """GetDLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
+        return _linearform.LinearForm_GetDLFI(self)
+
+
+    def GetDLFI_Delta(self):
+        """GetDLFI_Delta(LinearForm self) -> mfem::Array< mfem::DeltaLFIntegrator * > *"""
+        return _linearform.LinearForm_GetDLFI_Delta(self)
+
+
+    def GetBLFI(self):
+        """GetBLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
+        return _linearform.LinearForm_GetBLFI(self)
+
+
+    def GetFLFI(self):
+        """GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
+        return _linearform.LinearForm_GetFLFI(self)
+
+
+    def GetFLFI_Marker(self):
+        """GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"""
+        return _linearform.LinearForm_GetFLFI_Marker(self)
 
 
     def Assemble(self):

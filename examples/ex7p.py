@@ -172,5 +172,5 @@ smyid = '{:0>6d}'.format(myid)
 mesh_name  =  "sphere_refined."+smyid
 sol_name   =  "sol."+smyid
 
-pmesh.PrintToFile(mesh_name, 8)
-x.SaveToFile(sol_name, 8)
+pmesh.Print(mesh_name, 8)
+x.Save(sol_name, 8)

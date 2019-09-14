@@ -103,8 +103,9 @@ except __builtin__.Exception:
 
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.vector
+import mfem._ser.geom
 import mfem._ser.intrules
 import mfem._ser.densemat
 import mfem._ser.operators
@@ -209,6 +210,61 @@ def BasisType_GetType(b_ident):
     """BasisType_GetType(char b_ident) -> int"""
     return _fe.BasisType_GetType(b_ident)
 
+class DofToQuad(_object):
+    """Proxy of C++ mfem::DofToQuad class."""
+
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, DofToQuad, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, DofToQuad, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["IntRule"] = _fe.DofToQuad_IntRule_set
+    __swig_getmethods__["IntRule"] = _fe.DofToQuad_IntRule_get
+    if _newclass:
+        IntRule = _swig_property(_fe.DofToQuad_IntRule_get, _fe.DofToQuad_IntRule_set)
+    FULL = _fe.DofToQuad_FULL
+    TENSOR = _fe.DofToQuad_TENSOR
+    __swig_setmethods__["mode"] = _fe.DofToQuad_mode_set
+    __swig_getmethods__["mode"] = _fe.DofToQuad_mode_get
+    if _newclass:
+        mode = _swig_property(_fe.DofToQuad_mode_get, _fe.DofToQuad_mode_set)
+    __swig_setmethods__["ndof"] = _fe.DofToQuad_ndof_set
+    __swig_getmethods__["ndof"] = _fe.DofToQuad_ndof_get
+    if _newclass:
+        ndof = _swig_property(_fe.DofToQuad_ndof_get, _fe.DofToQuad_ndof_set)
+    __swig_setmethods__["nqpt"] = _fe.DofToQuad_nqpt_set
+    __swig_getmethods__["nqpt"] = _fe.DofToQuad_nqpt_get
+    if _newclass:
+        nqpt = _swig_property(_fe.DofToQuad_nqpt_get, _fe.DofToQuad_nqpt_set)
+    __swig_setmethods__["B"] = _fe.DofToQuad_B_set
+    __swig_getmethods__["B"] = _fe.DofToQuad_B_get
+    if _newclass:
+        B = _swig_property(_fe.DofToQuad_B_get, _fe.DofToQuad_B_set)
+    __swig_setmethods__["Bt"] = _fe.DofToQuad_Bt_set
+    __swig_getmethods__["Bt"] = _fe.DofToQuad_Bt_get
+    if _newclass:
+        Bt = _swig_property(_fe.DofToQuad_Bt_get, _fe.DofToQuad_Bt_set)
+    __swig_setmethods__["G"] = _fe.DofToQuad_G_set
+    __swig_getmethods__["G"] = _fe.DofToQuad_G_get
+    if _newclass:
+        G = _swig_property(_fe.DofToQuad_G_get, _fe.DofToQuad_G_set)
+    __swig_setmethods__["Gt"] = _fe.DofToQuad_Gt_set
+    __swig_getmethods__["Gt"] = _fe.DofToQuad_Gt_get
+    if _newclass:
+        Gt = _swig_property(_fe.DofToQuad_Gt_get, _fe.DofToQuad_Gt_set)
+
+    def __init__(self):
+        """__init__(mfem::DofToQuad self) -> DofToQuad"""
+        this = _fe.new_DofToQuad()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe.delete_DofToQuad
+    __del__ = lambda self: None
+DofToQuad_swigregister = _fe.DofToQuad_swigregister
+DofToQuad_swigregister(DofToQuad)
+
 class FunctionSpace(_object):
     """Proxy of C++ mfem::FunctionSpace class."""
 
@@ -261,7 +317,7 @@ class FiniteElement(_object):
 
 
     def GetGeomType(self):
-        """GetGeomType(FiniteElement self) -> int"""
+        """GetGeomType(FiniteElement self) -> mfem::Geometry::Type"""
         return _fe.FiniteElement_GetGeomType(self)
 
 
@@ -388,6 +444,11 @@ class FiniteElement(_object):
         return _fe.FiniteElement_GetLocalInterpolation(self, Trans, I)
 
 
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.FiniteElement_GetLocalRestriction(self, Trans, R)
+
+
     def GetTransferMatrix(self, fe, Trans, I):
         """GetTransferMatrix(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.FiniteElement_GetTransferMatrix(self, fe, Trans, I)
@@ -425,6 +486,11 @@ class FiniteElement(_object):
     def ProjectDiv(self, fe, Trans, div):
         """ProjectDiv(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"""
         return _fe.FiniteElement_ProjectDiv(self, fe, Trans, div)
+
+
+    def GetDofToQuad(self, ir, mode):
+        """GetDofToQuad(FiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
+        return _fe.FiniteElement_GetDofToQuad(self, ir, mode)
 
     __swig_destroy__ = _fe.delete_FiniteElement
     __del__ = lambda self: None
@@ -511,6 +577,11 @@ class ScalarFiniteElement(FiniteElement):
         """ScalarLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"""
         return _fe.ScalarFiniteElement_ScalarLocalInterpolation(self, Trans, I, fine_fe)
 
+
+    def GetDofToQuad(self, ir, mode):
+        """GetDofToQuad(ScalarFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
+        return _fe.ScalarFiniteElement_GetDofToQuad(self, ir, mode)
+
     __swig_destroy__ = _fe.delete_ScalarFiniteElement
     __del__ = lambda self: None
 ScalarFiniteElement_swigregister = _fe.ScalarFiniteElement_swigregister
@@ -535,6 +606,11 @@ class NodalFiniteElement(ScalarFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         """GetLocalInterpolation(NodalFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.NodalFiniteElement_GetLocalInterpolation(self, Trans, I)
+
+
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(NodalFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.NodalFiniteElement_GetLocalRestriction(self, Trans, R)
 
 
     def GetTransferMatrix(self, fe, Trans, I):
@@ -602,6 +678,7 @@ class PositiveFiniteElement(ScalarFiniteElement):
         Project(PositiveFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         Project(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         Project(PositiveFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(PositiveFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         Project(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.PositiveFiniteElement_Project(self, *args)
@@ -626,8 +703,8 @@ class VectorFiniteElement(FiniteElement):
 
     def __init__(self, *args):
         """
-        __init__(mfem::VectorFiniteElement self, int D, int G, int Do, int O, int M, int F) -> VectorFiniteElement
-        __init__(mfem::VectorFiniteElement self, int D, int G, int Do, int O, int M) -> VectorFiniteElement
+        __init__(mfem::VectorFiniteElement self, int D, mfem::Geometry::Type G, int Do, int O, int M, int F) -> VectorFiniteElement
+        __init__(mfem::VectorFiniteElement self, int D, mfem::Geometry::Type G, int Do, int O, int M) -> VectorFiniteElement
         """
         this = _fe.new_VectorFiniteElement(*args)
         try:
@@ -2748,6 +2825,7 @@ class Poly_1D(_object):
         """
         CalcBasis(int const p, double const x, double * u)
         CalcBasis(int const p, double const x, double * u, double * d)
+        CalcBasis(int const p, double const x, double * u, double * d, double * dd)
         """
         return _fe.Poly_1D_CalcBasis(*args)
 
@@ -2800,7 +2878,8 @@ def Poly_1D_Binom(p):
 def Poly_1D_CalcBasis(*args):
     """
     CalcBasis(int const p, double const x, double * u)
-    Poly_1D_CalcBasis(int const p, double const x, double * u, double * d)
+    CalcBasis(int const p, double const x, double * u, double * d)
+    Poly_1D_CalcBasis(int const p, double const x, double * u, double * d, double * dd)
     """
     return _fe.Poly_1D_CalcBasis(*args)
 
@@ -2865,7 +2944,7 @@ class TensorBasisElement(_object):
 
 
     def GetTensorProductGeometry(dim):
-        """GetTensorProductGeometry(int dim) -> int"""
+        """GetTensorProductGeometry(int dim) -> mfem::Geometry::Type"""
         return _fe.TensorBasisElement_GetTensorProductGeometry(dim)
 
     GetTensorProductGeometry = staticmethod(GetTensorProductGeometry)
@@ -2881,7 +2960,7 @@ TensorBasisElement_swigregister = _fe.TensorBasisElement_swigregister
 TensorBasisElement_swigregister(TensorBasisElement)
 
 def TensorBasisElement_GetTensorProductGeometry(dim):
-    """TensorBasisElement_GetTensorProductGeometry(int dim) -> int"""
+    """TensorBasisElement_GetTensorProductGeometry(int dim) -> mfem::Geometry::Type"""
     return _fe.TensorBasisElement_GetTensorProductGeometry(dim)
 
 def TensorBasisElement_Pow(base, dim):
@@ -2903,6 +2982,11 @@ class NodalTensorFiniteElement(NodalFiniteElement, TensorBasisElement):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def GetDofToQuad(self, ir, mode):
+        """GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
+        return _fe.NodalTensorFiniteElement_GetDofToQuad(self, ir, mode)
+
     __swig_destroy__ = _fe.delete_NodalTensorFiniteElement
     __del__ = lambda self: None
 NodalTensorFiniteElement_swigregister = _fe.NodalTensorFiniteElement_swigregister
@@ -2923,6 +3007,11 @@ class PositiveTensorFiniteElement(PositiveFiniteElement, TensorBasisElement):
     def __init__(self, *args, **kwargs):
         raise AttributeError("No constructor defined - class is abstract")
     __repr__ = _swig_repr
+
+    def GetDofToQuad(self, ir, mode):
+        """GetDofToQuad(PositiveTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
+        return _fe.PositiveTensorFiniteElement_GetDofToQuad(self, ir, mode)
+
     __swig_destroy__ = _fe.delete_PositiveTensorFiniteElement
     __del__ = lambda self: None
 PositiveTensorFiniteElement_swigregister = _fe.PositiveTensorFiniteElement_swigregister
@@ -3210,6 +3299,11 @@ class H1_TriangleElement(NodalFiniteElement):
         """CalcDShape(H1_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_TriangleElement_CalcDShape(self, ip, dshape)
 
+
+    def CalcHessian(self, ip, ddshape):
+        """CalcHessian(H1_TriangleElement self, IntegrationPoint ip, DenseMatrix ddshape)"""
+        return _fe.H1_TriangleElement_CalcHessian(self, ip, ddshape)
+
     __swig_destroy__ = _fe.delete_H1_TriangleElement
     __del__ = lambda self: None
 H1_TriangleElement_swigregister = _fe.H1_TriangleElement_swigregister
@@ -3247,6 +3341,11 @@ class H1_TetrahedronElement(NodalFiniteElement):
     def CalcDShape(self, ip, dshape):
         """CalcDShape(H1_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_TetrahedronElement_CalcDShape(self, ip, dshape)
+
+
+    def CalcHessian(self, ip, ddshape):
+        """CalcHessian(H1_TetrahedronElement self, IntegrationPoint ip, DenseMatrix ddshape)"""
+        return _fe.H1_TetrahedronElement_CalcHessian(self, ip, ddshape)
 
     __swig_destroy__ = _fe.delete_H1_TetrahedronElement
     __del__ = lambda self: None
@@ -3334,6 +3433,154 @@ class H1Pos_TetrahedronElement(PositiveFiniteElement):
     __del__ = lambda self: None
 H1Pos_TetrahedronElement_swigregister = _fe.H1Pos_TetrahedronElement_swigregister
 H1Pos_TetrahedronElement_swigregister(H1Pos_TetrahedronElement)
+
+class H1_WedgeElement(NodalFiniteElement):
+    """Proxy of C++ mfem::H1_WedgeElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [NodalFiniteElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, H1_WedgeElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [NodalFiniteElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, H1_WedgeElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+        __init__(mfem::H1_WedgeElement self, int const p, int const btype) -> H1_WedgeElement
+        __init__(mfem::H1_WedgeElement self, int const p) -> H1_WedgeElement
+        """
+        this = _fe.new_H1_WedgeElement(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def CalcShape(self, ip, shape):
+        """CalcShape(H1_WedgeElement self, IntegrationPoint ip, Vector shape)"""
+        return _fe.H1_WedgeElement_CalcShape(self, ip, shape)
+
+
+    def CalcDShape(self, ip, dshape):
+        """CalcDShape(H1_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
+        return _fe.H1_WedgeElement_CalcDShape(self, ip, dshape)
+
+    __swig_destroy__ = _fe.delete_H1_WedgeElement
+    __del__ = lambda self: None
+H1_WedgeElement_swigregister = _fe.H1_WedgeElement_swigregister
+H1_WedgeElement_swigregister(H1_WedgeElement)
+
+class BiLinear3DFiniteElement(H1_WedgeElement):
+    """Proxy of C++ mfem::BiLinear3DFiniteElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [H1_WedgeElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BiLinear3DFiniteElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [H1_WedgeElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, BiLinear3DFiniteElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        """__init__(mfem::BiLinear3DFiniteElement self) -> BiLinear3DFiniteElement"""
+        this = _fe.new_BiLinear3DFiniteElement()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe.delete_BiLinear3DFiniteElement
+    __del__ = lambda self: None
+BiLinear3DFiniteElement_swigregister = _fe.BiLinear3DFiniteElement_swigregister
+BiLinear3DFiniteElement_swigregister(BiLinear3DFiniteElement)
+
+class BiQuadratic3DFiniteElement(H1_WedgeElement):
+    """Proxy of C++ mfem::BiQuadratic3DFiniteElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [H1_WedgeElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BiQuadratic3DFiniteElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [H1_WedgeElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, BiQuadratic3DFiniteElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        """__init__(mfem::BiQuadratic3DFiniteElement self) -> BiQuadratic3DFiniteElement"""
+        this = _fe.new_BiQuadratic3DFiniteElement()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe.delete_BiQuadratic3DFiniteElement
+    __del__ = lambda self: None
+BiQuadratic3DFiniteElement_swigregister = _fe.BiQuadratic3DFiniteElement_swigregister
+BiQuadratic3DFiniteElement_swigregister(BiQuadratic3DFiniteElement)
+
+class BiCubic3DFiniteElement(H1_WedgeElement):
+    """Proxy of C++ mfem::BiCubic3DFiniteElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [H1_WedgeElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, BiCubic3DFiniteElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [H1_WedgeElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, BiCubic3DFiniteElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        """__init__(mfem::BiCubic3DFiniteElement self) -> BiCubic3DFiniteElement"""
+        this = _fe.new_BiCubic3DFiniteElement()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe.delete_BiCubic3DFiniteElement
+    __del__ = lambda self: None
+BiCubic3DFiniteElement_swigregister = _fe.BiCubic3DFiniteElement_swigregister
+BiCubic3DFiniteElement_swigregister(BiCubic3DFiniteElement)
+
+class H1Pos_WedgeElement(PositiveFiniteElement):
+    """Proxy of C++ mfem::H1Pos_WedgeElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [PositiveFiniteElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, H1Pos_WedgeElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [PositiveFiniteElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, H1Pos_WedgeElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, p):
+        """__init__(mfem::H1Pos_WedgeElement self, int const p) -> H1Pos_WedgeElement"""
+        this = _fe.new_H1Pos_WedgeElement(p)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def CalcShape(self, ip, shape):
+        """CalcShape(H1Pos_WedgeElement self, IntegrationPoint ip, Vector shape)"""
+        return _fe.H1Pos_WedgeElement_CalcShape(self, ip, shape)
+
+
+    def CalcDShape(self, ip, dshape):
+        """CalcDShape(H1Pos_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
+        return _fe.H1Pos_WedgeElement_CalcDShape(self, ip, dshape)
+
+    __swig_destroy__ = _fe.delete_H1Pos_WedgeElement
+    __del__ = lambda self: None
+H1Pos_WedgeElement_swigregister = _fe.H1Pos_WedgeElement_swigregister
+H1Pos_WedgeElement_swigregister(H1Pos_WedgeElement)
 
 class L2_SegmentElement(NodalTensorFiniteElement):
     """Proxy of C++ mfem::L2_SegmentElement class."""
@@ -3760,6 +4007,104 @@ class L2Pos_TetrahedronElement(PositiveFiniteElement):
 L2Pos_TetrahedronElement_swigregister = _fe.L2Pos_TetrahedronElement_swigregister
 L2Pos_TetrahedronElement_swigregister(L2Pos_TetrahedronElement)
 
+class L2_WedgeElement(NodalFiniteElement):
+    """Proxy of C++ mfem::L2_WedgeElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [NodalFiniteElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, L2_WedgeElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [NodalFiniteElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, L2_WedgeElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        """
+        __init__(mfem::L2_WedgeElement self, int const p, int const btype) -> L2_WedgeElement
+        __init__(mfem::L2_WedgeElement self, int const p) -> L2_WedgeElement
+        """
+        this = _fe.new_L2_WedgeElement(*args)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def CalcShape(self, ip, shape):
+        """CalcShape(L2_WedgeElement self, IntegrationPoint ip, Vector shape)"""
+        return _fe.L2_WedgeElement_CalcShape(self, ip, shape)
+
+
+    def CalcDShape(self, ip, dshape):
+        """CalcDShape(L2_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
+        return _fe.L2_WedgeElement_CalcDShape(self, ip, dshape)
+
+    __swig_destroy__ = _fe.delete_L2_WedgeElement
+    __del__ = lambda self: None
+L2_WedgeElement_swigregister = _fe.L2_WedgeElement_swigregister
+L2_WedgeElement_swigregister(L2_WedgeElement)
+
+class P0WedgeFiniteElement(L2_WedgeElement):
+    """Proxy of C++ mfem::P0WedgeFiniteElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [L2_WedgeElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, P0WedgeFiniteElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [L2_WedgeElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, P0WedgeFiniteElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        """__init__(mfem::P0WedgeFiniteElement self) -> P0WedgeFiniteElement"""
+        this = _fe.new_P0WedgeFiniteElement()
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+    __swig_destroy__ = _fe.delete_P0WedgeFiniteElement
+    __del__ = lambda self: None
+P0WedgeFiniteElement_swigregister = _fe.P0WedgeFiniteElement_swigregister
+P0WedgeFiniteElement_swigregister(P0WedgeFiniteElement)
+
+class L2Pos_WedgeElement(PositiveFiniteElement):
+    """Proxy of C++ mfem::L2Pos_WedgeElement class."""
+
+    __swig_setmethods__ = {}
+    for _s in [PositiveFiniteElement]:
+        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, L2Pos_WedgeElement, name, value)
+    __swig_getmethods__ = {}
+    for _s in [PositiveFiniteElement]:
+        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
+    __getattr__ = lambda self, name: _swig_getattr(self, L2Pos_WedgeElement, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, p):
+        """__init__(mfem::L2Pos_WedgeElement self, int const p) -> L2Pos_WedgeElement"""
+        this = _fe.new_L2Pos_WedgeElement(p)
+        try:
+            self.this.append(this)
+        except __builtin__.Exception:
+            self.this = this
+
+    def CalcShape(self, ip, shape):
+        """CalcShape(L2Pos_WedgeElement self, IntegrationPoint ip, Vector shape)"""
+        return _fe.L2Pos_WedgeElement_CalcShape(self, ip, shape)
+
+
+    def CalcDShape(self, ip, dshape):
+        """CalcDShape(L2Pos_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
+        return _fe.L2Pos_WedgeElement_CalcDShape(self, ip, dshape)
+
+    __swig_destroy__ = _fe.delete_L2Pos_WedgeElement
+    __del__ = lambda self: None
+L2Pos_WedgeElement_swigregister = _fe.L2Pos_WedgeElement_swigregister
+L2Pos_WedgeElement_swigregister(L2Pos_WedgeElement)
+
 class RT_QuadrilateralElement(VectorFiniteElement):
     """Proxy of C++ mfem::RT_QuadrilateralElement class."""
 
@@ -3801,6 +4146,11 @@ class RT_QuadrilateralElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         """GetLocalInterpolation(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
+
+
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.RT_QuadrilateralElement_GetLocalRestriction(self, Trans, R)
 
 
     def GetTransferMatrix(self, fe, Trans, I):
@@ -3881,6 +4231,11 @@ class RT_HexahedronElement(VectorFiniteElement):
         return _fe.RT_HexahedronElement_GetLocalInterpolation(self, Trans, I)
 
 
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(RT_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.RT_HexahedronElement_GetLocalRestriction(self, Trans, R)
+
+
     def GetTransferMatrix(self, fe, Trans, I):
         """GetTransferMatrix(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_HexahedronElement_GetTransferMatrix(self, fe, Trans, I)
@@ -3948,6 +4303,11 @@ class RT_TriangleElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         """GetLocalInterpolation(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_TriangleElement_GetLocalInterpolation(self, Trans, I)
+
+
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.RT_TriangleElement_GetLocalRestriction(self, Trans, R)
 
 
     def GetTransferMatrix(self, fe, Trans, I):
@@ -4024,6 +4384,11 @@ class RT_TetrahedronElement(VectorFiniteElement):
         return _fe.RT_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
 
 
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(RT_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.RT_TetrahedronElement_GetLocalRestriction(self, Trans, R)
+
+
     def GetTransferMatrix(self, fe, Trans, I):
         """GetTransferMatrix(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_TetrahedronElement_GetTransferMatrix(self, fe, Trans, I)
@@ -4095,6 +4460,11 @@ class ND_HexahedronElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         """GetLocalInterpolation(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_HexahedronElement_GetLocalInterpolation(self, Trans, I)
+
+
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.ND_HexahedronElement_GetLocalRestriction(self, Trans, R)
 
 
     def GetTransferMatrix(self, fe, Trans, I):
@@ -4175,6 +4545,11 @@ class ND_QuadrilateralElement(VectorFiniteElement):
         return _fe.ND_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
 
 
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(ND_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.ND_QuadrilateralElement_GetLocalRestriction(self, Trans, R)
+
+
     def GetTransferMatrix(self, fe, Trans, I):
         """GetTransferMatrix(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_QuadrilateralElement_GetTransferMatrix(self, fe, Trans, I)
@@ -4242,6 +4617,11 @@ class ND_TetrahedronElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         """GetLocalInterpolation(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
+
+
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.ND_TetrahedronElement_GetLocalRestriction(self, Trans, R)
 
 
     def GetTransferMatrix(self, fe, Trans, I):
@@ -4318,6 +4698,11 @@ class ND_TriangleElement(VectorFiniteElement):
         return _fe.ND_TriangleElement_GetLocalInterpolation(self, Trans, I)
 
 
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(ND_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.ND_TriangleElement_GetLocalRestriction(self, Trans, R)
+
+
     def GetTransferMatrix(self, fe, Trans, I):
         """GetTransferMatrix(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_TriangleElement_GetTransferMatrix(self, fe, Trans, I)
@@ -4388,6 +4773,11 @@ class ND_SegmentElement(VectorFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         """GetLocalInterpolation(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_SegmentElement_GetLocalInterpolation(self, Trans, I)
+
+
+    def GetLocalRestriction(self, Trans, R):
+        """GetLocalRestriction(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
+        return _fe.ND_SegmentElement_GetLocalRestriction(self, Trans, R)
 
 
     def GetTransferMatrix(self, fe, Trans, I):

@@ -96,27 +96,57 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 
 def InnerProduct(x, y):
+    """InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double"""
     return _common_functions.InnerProduct(x, y)
-InnerProduct = _common_functions.InnerProduct
 
 def RAP(*args):
+    """
+    RAP(mfem::SparseMatrix const & A, mfem::DenseMatrix & P) -> mfem::DenseMatrix
+    RAP(mfem::DenseMatrix & A, mfem::SparseMatrix const & P) -> mfem::DenseMatrix
+    RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R, mfem::SparseMatrix * ORAP=None) -> mfem::SparseMatrix
+    RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R) -> mfem::SparseMatrix
+    RAP(mfem::SparseMatrix const & Rt, mfem::SparseMatrix const & A, mfem::SparseMatrix const & P) -> mfem::SparseMatrix *
+    """
     return _common_functions.RAP(*args)
-RAP = _common_functions.RAP
 
 def Add(*args):
+    """
+    Add(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B, double alpha, mfem::DenseMatrix & C)
+    Add(double alpha, double const * A, double beta, double const * B, mfem::DenseMatrix & C)
+    Add(double alpha, mfem::DenseMatrix const & A, double beta, mfem::DenseMatrix const & B, mfem::DenseMatrix & C)
+    Add(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    Add(double a, mfem::SparseMatrix const & A, double b, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    Add(mfem::Array< mfem::SparseMatrix * > & Ai) -> mfem::SparseMatrix
+    Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)
+    """
     return _common_functions.Add(*args)
-Add = _common_functions.Add
 
 def Transpose(*args):
+    """
+    Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(mfem::Table const & A, mfem::Table & At)
+    Transpose(mfem::Table const & A) -> mfem::Table
+    Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(intArray A, mfem::Table & At)
+    Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix
+    Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *
+    """
     return _common_functions.Transpose(*args)
-Transpose = _common_functions.Transpose
 
 def Mult(*args):
+    """
+    Mult(mfem::Table const & A, mfem::Table const & B, mfem::Table & C)
+    Mult(mfem::Table const & A, mfem::Table const & B) -> mfem::Table
+    Mult(mfem::DenseMatrix const & b, mfem::DenseMatrix const & c, mfem::DenseMatrix & a)
+    Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B, mfem::SparseMatrix * OAB=None) -> mfem::SparseMatrix
+    Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix
+    Mult(mfem::BlockMatrix const & A, mfem::BlockMatrix const & B) -> mfem::BlockMatrix *
+    """
     return _common_functions.Mult(*args)
-Mult = _common_functions.Mult
 # This file is compatible with both classic and new-style classes.
 
 

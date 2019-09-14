@@ -173,7 +173,7 @@ def doublep_frompointer(t):
 doublep_frompointer = _gridfunc.doublep_frompointer
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.coefficient
 import mfem._ser.matrix
@@ -183,11 +183,12 @@ import mfem._ser.sparsemat
 import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
+import mfem._ser.geom
 import mfem._ser.mesh
 import mfem._ser.ncmesh
 import mfem._ser.element
-import mfem._ser.geom
 import mfem._ser.table
+import mfem._ser.hash
 import mfem._ser.vertex
 import mfem._ser.fespace
 import mfem._ser.fe_coll
@@ -367,9 +368,12 @@ class GridFunction(mfem._ser.vector.Vector):
         return _gridfunc.GridFunction_GetGradient(self, tr, grad)
 
 
-    def GetGradients(self, elem, ir, grad):
-        """GetGradients(GridFunction self, int const elem, IntegrationRule ir, DenseMatrix grad)"""
-        return _gridfunc.GridFunction_GetGradients(self, elem, ir, grad)
+    def GetGradients(self, *args):
+        """
+        GetGradients(GridFunction self, ElementTransformation tr, IntegrationRule ir, DenseMatrix grad)
+        GetGradients(GridFunction self, int const elem, IntegrationRule ir, DenseMatrix grad)
+        """
+        return _gridfunc.GridFunction_GetGradients(self, *args)
 
 
     def GetVectorGradient(self, tr, grad):
@@ -423,6 +427,7 @@ class GridFunction(mfem._ser.vector.Vector):
     def ProjectBdrCoefficient(self, *args):
         """
         ProjectBdrCoefficient(GridFunction self, Coefficient coeff, intArray attr)
+        ProjectBdrCoefficient(GridFunction self, VectorCoefficient vcoeff, intArray attr)
         ProjectBdrCoefficient(GridFunction self, mfem::Coefficient *[] coeff, intArray attr)
         """
         return _gridfunc.GridFunction_ProjectBdrCoefficient(self, *args)
@@ -500,6 +505,49 @@ class GridFunction(mfem._ser.vector.Vector):
         return _gridfunc.GridFunction_ComputeLpError(self, *args)
 
 
+    def ComputeElementLpErrors(self, *args):
+        """
+        ComputeElementLpErrors(GridFunction self, double const p, Coefficient exsol, GridFunction error, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementLpErrors(GridFunction self, double const p, Coefficient exsol, GridFunction error, Coefficient weight=None)
+        ComputeElementLpErrors(GridFunction self, double const p, Coefficient exsol, GridFunction error)
+        ComputeElementLpErrors(GridFunction self, double const p, VectorCoefficient exsol, GridFunction error, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementLpErrors(GridFunction self, double const p, VectorCoefficient exsol, GridFunction error, Coefficient weight=None, VectorCoefficient v_weight=None)
+        ComputeElementLpErrors(GridFunction self, double const p, VectorCoefficient exsol, GridFunction error, Coefficient weight=None)
+        ComputeElementLpErrors(GridFunction self, double const p, VectorCoefficient exsol, GridFunction error)
+        """
+        return _gridfunc.GridFunction_ComputeElementLpErrors(self, *args)
+
+
+    def ComputeElementL1Errors(self, *args):
+        """
+        ComputeElementL1Errors(GridFunction self, Coefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementL1Errors(GridFunction self, Coefficient exsol, GridFunction error)
+        ComputeElementL1Errors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementL1Errors(GridFunction self, VectorCoefficient exsol, GridFunction error)
+        """
+        return _gridfunc.GridFunction_ComputeElementL1Errors(self, *args)
+
+
+    def ComputeElementL2Errors(self, *args):
+        """
+        ComputeElementL2Errors(GridFunction self, Coefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementL2Errors(GridFunction self, Coefficient exsol, GridFunction error)
+        ComputeElementL2Errors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementL2Errors(GridFunction self, VectorCoefficient exsol, GridFunction error)
+        """
+        return _gridfunc.GridFunction_ComputeElementL2Errors(self, *args)
+
+
+    def ComputeElementMaxErrors(self, *args):
+        """
+        ComputeElementMaxErrors(GridFunction self, Coefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementMaxErrors(GridFunction self, Coefficient exsol, GridFunction error)
+        ComputeElementMaxErrors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
+        ComputeElementMaxErrors(GridFunction self, VectorCoefficient exsol, GridFunction error)
+        """
+        return _gridfunc.GridFunction_ComputeElementMaxErrors(self, *args)
+
+
     def ComputeFlux(self, blfi, flux, wcoef=1, subdomain=-1):
         """
         ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, int wcoef=1, int subdomain=-1)
@@ -511,9 +559,9 @@ class GridFunction(mfem._ser.vector.Vector):
 
     def Assign(self, *args):
         """
+        Assign(GridFunction self, GridFunction rhs) -> GridFunction
         Assign(GridFunction self, double value) -> GridFunction
         Assign(GridFunction self, Vector v) -> GridFunction
-        Assign(GridFunction self, GridFunction v) -> GridFunction
         """
         return _gridfunc.GridFunction_Assign(self, *args)
 
@@ -550,11 +598,6 @@ class GridFunction(mfem._ser.vector.Vector):
         MakeTRef(GridFunction self, FiniteElementSpace f, Vector tv, int tv_offset)
         """
         return _gridfunc.GridFunction_MakeTRef(self, *args)
-
-
-    def Save(self, out):
-        """Save(GridFunction self, std::ostream & out)"""
-        return _gridfunc.GridFunction_Save(self, out)
 
 
     def SaveVTK(self, out, field_name, ref):
@@ -616,6 +659,15 @@ class GridFunction(mfem._ser.vector.Vector):
         """idiv(GridFunction self, double c) -> GridFunction"""
         return _gridfunc.GridFunction_idiv(self, c)
 
+
+    def Save(self, *args):
+        """
+        Save(GridFunction self, std::ostream & out)
+        Save(GridFunction self, char const * file, int precision=8)
+        Save(GridFunction self, char const * file)
+        """
+        return _gridfunc.GridFunction_Save(self, *args)
+
 GridFunction_swigregister = _gridfunc.GridFunction_swigregister
 GridFunction_swigregister(GridFunction)
 
@@ -635,6 +687,7 @@ class QuadratureFunction(mfem._ser.vector.Vector):
     def __init__(self, *args):
         """
         __init__(mfem::QuadratureFunction self) -> QuadratureFunction
+        __init__(mfem::QuadratureFunction self, QuadratureFunction orig) -> QuadratureFunction
         __init__(mfem::QuadratureFunction self, QuadratureSpace qspace_, int vdim_=1) -> QuadratureFunction
         __init__(mfem::QuadratureFunction self, QuadratureSpace qspace_) -> QuadratureFunction
         __init__(mfem::QuadratureFunction self, QuadratureSpace qspace_, double * qf_data, int vdim_=1) -> QuadratureFunction
@@ -699,9 +752,13 @@ class QuadratureFunction(mfem._ser.vector.Vector):
         return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
 
 
-    def Save(self, out):
-        """Save(QuadratureFunction self, std::ostream & out)"""
-        return _gridfunc.QuadratureFunction_Save(self, out)
+    def Save(self, *args):
+        """
+        Save(QuadratureFunction self, std::ostream & out)
+        Save(QuadratureFunction self, char const * file, int precision=8)
+        Save(QuadratureFunction self, char const * file)
+        """
+        return _gridfunc.QuadratureFunction_Save(self, *args)
 
 QuadratureFunction_swigregister = _gridfunc.QuadratureFunction_swigregister
 QuadratureFunction_swigregister(QuadratureFunction)

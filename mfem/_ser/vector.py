@@ -96,7 +96,7 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 
 def add_vector(*args):
     """
@@ -130,6 +130,14 @@ class Vector(_object):
     __getattr__ = lambda self, name: _swig_getattr(self, Vector, name)
     __repr__ = _swig_repr
 
+    def UseDevice(self, *args):
+        """
+        UseDevice(Vector self, bool use_dev)
+        UseDevice(Vector self) -> bool
+        """
+        return _vector.Vector_UseDevice(self, *args)
+
+
     def Load(self, *args):
         """
         Load(Vector self, std::istream ** arg2, int np, int * dim)
@@ -139,9 +147,13 @@ class Vector(_object):
         return _vector.Vector_Load(self, *args)
 
 
-    def SetSize(self, s):
-        """SetSize(Vector self, int s)"""
-        return _vector.Vector_SetSize(self, s)
+    def SetSize(self, *args):
+        """
+        SetSize(Vector self, int s)
+        SetSize(Vector self, int s, mfem::MemoryType mt)
+        SetSize(Vector self, int s, Vector v)
+        """
+        return _vector.Vector_SetSize(self, *args)
 
 
     def SetData(self, d):
@@ -157,6 +169,11 @@ class Vector(_object):
     def NewDataAndSize(self, d, s):
         """NewDataAndSize(Vector self, double * d, int s)"""
         return _vector.Vector_NewDataAndSize(self, d, s)
+
+
+    def NewMemoryAndSize(self, mem, s, own_mem):
+        """NewMemoryAndSize(Vector self, mfem::Memory< double > const & mem, int s, bool own_mem)"""
+        return _vector.Vector_NewMemoryAndSize(self, mem, s, own_mem)
 
 
     def MakeDataOwner(self):
@@ -182,6 +199,24 @@ class Vector(_object):
     def GetData(self):
         """GetData(Vector self) -> double *"""
         return _vector.Vector_GetData(self)
+
+
+    def GetMemory(self, *args):
+        """
+        GetMemory(Vector self) -> mfem::Memory< double >
+        GetMemory(Vector self) -> mfem::Memory< double > const &
+        """
+        return _vector.Vector_GetMemory(self, *args)
+
+
+    def SyncMemory(self, v):
+        """SyncMemory(Vector self, Vector v)"""
+        return _vector.Vector_SyncMemory(self, v)
+
+
+    def SyncAliasMemory(self, v):
+        """SyncAliasMemory(Vector self, Vector v)"""
+        return _vector.Vector_SyncAliasMemory(self, v)
 
 
     def OwnsData(self):
@@ -314,11 +349,6 @@ class Vector(_object):
         return _vector.Vector_SetSubVectorComplement(self, dofs, val)
 
 
-    def Print_HYPRE(self, out):
-        """Print_HYPRE(Vector self, std::ostream & out)"""
-        return _vector.Vector_Print_HYPRE(self, out)
-
-
     def Randomize(self, seed=0):
         """
         Randomize(Vector self, int seed=0)
@@ -379,12 +409,52 @@ class Vector(_object):
     __swig_destroy__ = _vector.delete_Vector
     __del__ = lambda self: None
 
+    def Read(self, on_dev=True):
+        """
+        Read(Vector self, bool on_dev=True) -> double const
+        Read(Vector self) -> double const *
+        """
+        return _vector.Vector_Read(self, on_dev)
+
+
+    def HostRead(self):
+        """HostRead(Vector self) -> double const *"""
+        return _vector.Vector_HostRead(self)
+
+
+    def Write(self, on_dev=True):
+        """
+        Write(Vector self, bool on_dev=True) -> double
+        Write(Vector self) -> double *
+        """
+        return _vector.Vector_Write(self, on_dev)
+
+
+    def HostWrite(self):
+        """HostWrite(Vector self) -> double *"""
+        return _vector.Vector_HostWrite(self)
+
+
+    def ReadWrite(self, on_dev=True):
+        """
+        ReadWrite(Vector self, bool on_dev=True) -> double
+        ReadWrite(Vector self) -> double *
+        """
+        return _vector.Vector_ReadWrite(self, on_dev)
+
+
+    def HostReadWrite(self):
+        """HostReadWrite(Vector self) -> double *"""
+        return _vector.Vector_HostReadWrite(self)
+
+
     def __init__(self, *args):
         """
         __init__(mfem::Vector self) -> Vector
         __init__(mfem::Vector self, Vector arg2) -> Vector
         __init__(mfem::Vector self, int s) -> Vector
         __init__(mfem::Vector self, double * _data, int _size) -> Vector
+        __init__(mfem::Vector self, int size_, mfem::MemoryType mt) -> Vector
         __init__(mfem::Vector self, Vector v, int offset, int size) -> Vector
         """
 
@@ -400,10 +470,10 @@ class Vector(_object):
                     raise ValueError('Must be float64 array ' + str(args[0].dtype) +
         			     ' is given')    
                 else:
-          	    args = (ascontiguousarray(args[0]), args[0].shape[0])
+                    args = (ascontiguousarray(args[0]), args[0].shape[0])
         # in this case, args[0] need to be maintained
         # in this object.
-        	    keep_link = True
+                    keep_link = True
 
 
         this = _vector.new_Vector(*args)
@@ -439,7 +509,7 @@ class Vector(_object):
                 elif args[0].shape[0] != _vector.Vector_Size(self):
                     raise ValueError('Length does not match')
                 else:
-          	    args = (ascontiguousarray(args[0]),)
+                    args = (ascontiguousarray(args[0]),)
             elif isinstance(args[0], tuple):
                 args = (array(args[0], dtype = float),)      
             elif isinstance(args[0], list):	      
@@ -456,16 +526,6 @@ class Vector(_object):
         return val
 
 
-    def Print(self, *args):
-        """
-        Print(Vector self, std::ostream & out, int width=8)
-        Print(Vector self, std::ostream & out)
-        Print(Vector self)
-        Print(Vector self, char const * file)
-        """
-        return _vector.Vector_Print(self, *args)
-
-
     def __setitem__(self, i, v):
         """__setitem__(Vector self, int i, double const v)"""
         return _vector.Vector___setitem__(self, i, v)
@@ -479,6 +539,27 @@ class Vector(_object):
     def GetDataArray(self):
         """GetDataArray(Vector self) -> PyObject *"""
         return _vector.Vector_GetDataArray(self)
+
+
+    def Print(self, *args):
+        """
+        Print(Vector self, std::ostream & out, int width=8)
+        Print(Vector self, std::ostream & out)
+        Print(Vector self)
+        Print(Vector self, char const * file, int precision=8)
+        Print(Vector self, char const * file)
+        """
+        return _vector.Vector_Print(self, *args)
+
+
+    def Print_HYPRE(self, *args):
+        """
+        Print_HYPRE(Vector self, std::ostream & out)
+        Print_HYPRE(Vector self, char const * file, int precision=8)
+        Print_HYPRE(Vector self, char const * file)
+        Print_HYPRE(Vector self)
+        """
+        return _vector.Vector_Print_HYPRE(self, *args)
 
 Vector_swigregister = _vector.Vector_swigregister
 Vector_swigregister(Vector)

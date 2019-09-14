@@ -102,8 +102,8 @@ except __builtin__.Exception:
     weakref_proxy = lambda x: x
 
 
+import mfem._ser.mem_manager
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 import mfem._ser.vector
 import mfem._ser.operators
 import mfem._ser.matrix
@@ -374,13 +374,18 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
         """
         Eigenvalues(DenseMatrix self, Vector ev)
         Eigenvalues(DenseMatrix self, Vector ev, DenseMatrix evect)
+        Eigenvalues(DenseMatrix self, DenseMatrix b, Vector ev)
+        Eigenvalues(DenseMatrix self, DenseMatrix b, Vector ev, DenseMatrix evect)
         """
         return _densemat.DenseMatrix_Eigenvalues(self, *args)
 
 
-    def Eigensystem(self, ev, evect):
-        """Eigensystem(DenseMatrix self, Vector ev, DenseMatrix evect)"""
-        return _densemat.DenseMatrix_Eigensystem(self, ev, evect)
+    def Eigensystem(self, *args):
+        """
+        Eigensystem(DenseMatrix self, Vector ev, DenseMatrix evect)
+        Eigensystem(DenseMatrix self, DenseMatrix b, Vector ev, DenseMatrix evect)
+        """
+        return _densemat.DenseMatrix_Eigensystem(self, *args)
 
 
     def SingularValues(self, sv):
@@ -559,32 +564,6 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
         return _densemat.DenseMatrix_CheckFinite(self)
 
 
-    def Print(self, *args):
-        """
-        Print(DenseMatrix self, std::ostream & out, int width_=4)
-        Print(DenseMatrix self, std::ostream & out)
-        Print(DenseMatrix self)
-        """
-        return _densemat.DenseMatrix_Print(self, *args)
-
-
-    def PrintMatlab(self, *args):
-        """
-        PrintMatlab(DenseMatrix self, std::ostream & out)
-        PrintMatlab(DenseMatrix self)
-        """
-        return _densemat.DenseMatrix_PrintMatlab(self, *args)
-
-
-    def PrintT(self, *args):
-        """
-        PrintT(DenseMatrix self, std::ostream & out, int width_=4)
-        PrintT(DenseMatrix self, std::ostream & out)
-        PrintT(DenseMatrix self)
-        """
-        return _densemat.DenseMatrix_PrintT(self, *args)
-
-
     def TestInversion(self):
         """TestInversion(DenseMatrix self)"""
         return _densemat.DenseMatrix_TestInversion(self)
@@ -614,7 +593,7 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
                 elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
                     raise ValueError('Length does not match')
                 else:
-          	    args = (ascontiguousarray(args[0]),)
+                    args = (ascontiguousarray(args[0]),)
 
 
         val = _densemat.DenseMatrix_Assign(self, *args)
@@ -640,6 +619,38 @@ class DenseMatrix(mfem._ser.matrix.Matrix):
     def GetDataArray(self):
         """GetDataArray(DenseMatrix self) -> PyObject *"""
         return _densemat.DenseMatrix_GetDataArray(self)
+
+
+    def Print(self, *args):
+        """
+        Print(DenseMatrix self, std::ostream & out, int width_=4)
+        Print(DenseMatrix self, std::ostream & out)
+        Print(DenseMatrix self)
+        Print(DenseMatrix self, char const * file, int precision=8)
+        Print(DenseMatrix self, char const * file)
+        """
+        return _densemat.DenseMatrix_Print(self, *args)
+
+
+    def PrintT(self, *args):
+        """
+        PrintT(DenseMatrix self, std::ostream & out, int width_=4)
+        PrintT(DenseMatrix self, std::ostream & out)
+        PrintT(DenseMatrix self)
+        PrintT(DenseMatrix self, char const * file, int precision=8)
+        PrintT(DenseMatrix self, char const * file)
+        """
+        return _densemat.DenseMatrix_PrintT(self, *args)
+
+
+    def PrintMatlab(self, *args):
+        """
+        PrintMatlab(DenseMatrix self, std::ostream & out)
+        PrintMatlab(DenseMatrix self)
+        PrintMatlab(DenseMatrix self, char const * file, int precision=8)
+        PrintMatlab(DenseMatrix self, char const * file)
+        """
+        return _densemat.DenseMatrix_PrintMatlab(self, *args)
 
 DenseMatrix_swigregister = _densemat.DenseMatrix_swigregister
 DenseMatrix_swigregister(DenseMatrix)
@@ -876,6 +887,7 @@ class DenseMatrixInverse(mfem._ser.matrix.MatrixInverse):
         """
         Mult(DenseMatrixInverse self, Vector x, Vector y)
         Mult(DenseMatrixInverse self, DenseMatrix B, DenseMatrix X)
+        Mult(DenseMatrixInverse self, DenseMatrix X)
         """
         return _densemat.DenseMatrixInverse_Mult(self, *args)
 
@@ -1023,6 +1035,11 @@ class DenseTensor(_object):
         return _densemat.DenseTensor_SizeK(self)
 
 
+    def TotalSize(self):
+        """TotalSize(DenseTensor self) -> int"""
+        return _densemat.DenseTensor_TotalSize(self)
+
+
     def SetSize(self, i, j, k):
         """SetSize(DenseTensor self, int i, int j, int k)"""
         return _densemat.DenseTensor_SetSize(self, i, j, k)
@@ -1048,9 +1065,20 @@ class DenseTensor(_object):
         return _densemat.DenseTensor_GetData(self, k)
 
 
-    def Data(self):
-        """Data(DenseTensor self) -> double *"""
-        return _densemat.DenseTensor_Data(self)
+    def Data(self, *args):
+        """
+        Data(DenseTensor self) -> double
+        Data(DenseTensor self) -> double const *
+        """
+        return _densemat.DenseTensor_Data(self, *args)
+
+
+    def GetMemory(self, *args):
+        """
+        GetMemory(DenseTensor self) -> mfem::Memory< double >
+        GetMemory(DenseTensor self) -> mfem::Memory< double > const &
+        """
+        return _densemat.DenseTensor_GetMemory(self, *args)
 
 
     def AddMult(self, elem_dof, x, y):

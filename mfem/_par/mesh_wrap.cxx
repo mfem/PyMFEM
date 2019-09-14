@@ -3452,149 +3452,169 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[9]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[10]
-#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[11]
-#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[12]
-#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[13]
-#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[14]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[15]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[16]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[17]
-#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[18]
-#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[19]
-#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[20]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[21]
-#define SWIGTYPE_p_mfem__Element swig_types[22]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[23]
-#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[24]
-#define SWIGTYPE_p_mfem__FiniteElement swig_types[25]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[26]
-#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[27]
-#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[28]
-#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[29]
-#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[30]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[31]
-#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[32]
-#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[33]
-#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[34]
-#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[35]
-#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[36]
-#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[37]
-#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[38]
-#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[39]
-#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[40]
-#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[41]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[42]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[43]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[44]
-#define SWIGTYPE_p_mfem__InverseElementTransformation swig_types[45]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[46]
-#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[47]
-#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[48]
-#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[49]
-#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[50]
-#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[51]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[52]
-#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[53]
-#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[54]
-#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[55]
-#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[56]
-#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[57]
-#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[58]
-#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[59]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[60]
-#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[61]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[62]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[63]
-#define SWIGTYPE_p_mfem__Mesh swig_types[64]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[65]
-#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[66]
-#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[67]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[68]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[69]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[70]
-#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[71]
-#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[72]
-#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[73]
-#define SWIGTYPE_p_mfem__NURBSExtension swig_types[74]
-#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[75]
-#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[76]
-#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[77]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[78]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[79]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[80]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[81]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[82]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[83]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[84]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[85]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[86]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[87]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[88]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[89]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[90]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[91]
-#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[92]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[93]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[94]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[95]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[96]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[97]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[98]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[99]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[100]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[101]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[102]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[103]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[104]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[105]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[106]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[107]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[108]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[109]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[110]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[111]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[112]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[113]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[114]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[115]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[116]
-#define SWIGTYPE_p_mfem__STable swig_types[117]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[118]
-#define SWIGTYPE_p_mfem__Table swig_types[119]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[120]
-#define SWIGTYPE_p_mfem__Vector swig_types[121]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[122]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[123]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[124]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[125]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[126]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[127]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[128]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[129]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[130]
-#define SWIGTYPE_p_mfem__Vertex swig_types[131]
-#define SWIGTYPE_p_mfem__named_ifgzstream swig_types[132]
-#define SWIGTYPE_p_p_mfem__Element swig_types[133]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[134]
-#define SWIGTYPE_p_p_mfem__Mesh swig_types[135]
-#define SWIGTYPE_p_quad_t swig_types[136]
-#define SWIGTYPE_p_seg_t swig_types[137]
-#define SWIGTYPE_p_std__istream swig_types[138]
-#define SWIGTYPE_p_std__ostream swig_types[139]
-#define SWIGTYPE_p_tet_t swig_types[140]
-#define SWIGTYPE_p_tri_t swig_types[141]
-static swig_type_info *swig_types[143];
-static swig_module_info swig_module = {swig_types, 142, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[4]
+#define SWIGTYPE_p_hex_t swig_types[5]
+#define SWIGTYPE_p_int swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[10]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[13]
+#define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[14]
+#define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[15]
+#define SWIGTYPE_p_mfem__BiLinear2DFiniteElement swig_types[16]
+#define SWIGTYPE_p_mfem__BiLinear3DFiniteElement swig_types[17]
+#define SWIGTYPE_p_mfem__BiQuad2DFiniteElement swig_types[18]
+#define SWIGTYPE_p_mfem__BiQuadPos2DFiniteElement swig_types[19]
+#define SWIGTYPE_p_mfem__BiQuadratic3DFiniteElement swig_types[20]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[21]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFiniteElement swig_types[22]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartQuadFiniteElement swig_types[23]
+#define SWIGTYPE_p_mfem__Cubic1DFiniteElement swig_types[24]
+#define SWIGTYPE_p_mfem__Cubic2DFiniteElement swig_types[25]
+#define SWIGTYPE_p_mfem__Cubic3DFiniteElement swig_types[26]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[27]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[28]
+#define SWIGTYPE_p_mfem__Element swig_types[29]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[30]
+#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[31]
+#define SWIGTYPE_p_mfem__FiniteElement swig_types[32]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[33]
+#define SWIGTYPE_p_mfem__GaussBiLinear2DFiniteElement swig_types[34]
+#define SWIGTYPE_p_mfem__GaussBiQuad2DFiniteElement swig_types[35]
+#define SWIGTYPE_p_mfem__GaussLinear2DFiniteElement swig_types[36]
+#define SWIGTYPE_p_mfem__GaussQuad2DFiniteElement swig_types[37]
+#define SWIGTYPE_p_mfem__GeometricFactors swig_types[38]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[39]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[40]
+#define SWIGTYPE_p_mfem__H1Pos_HexahedronElement swig_types[41]
+#define SWIGTYPE_p_mfem__H1Pos_QuadrilateralElement swig_types[42]
+#define SWIGTYPE_p_mfem__H1Pos_SegmentElement swig_types[43]
+#define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[44]
+#define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[45]
+#define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[46]
+#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[47]
+#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[48]
+#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[49]
+#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[50]
+#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[51]
+#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[52]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[53]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[54]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[55]
+#define SWIGTYPE_p_mfem__InverseElementTransformation swig_types[56]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[57]
+#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[58]
+#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[59]
+#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[60]
+#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[61]
+#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[62]
+#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[63]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[64]
+#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[65]
+#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[66]
+#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[67]
+#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[68]
+#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[69]
+#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[70]
+#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[71]
+#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[72]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[73]
+#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[74]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[75]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[76]
+#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[77]
+#define SWIGTYPE_p_mfem__Mesh swig_types[78]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[79]
+#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[80]
+#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[81]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[82]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[83]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[84]
+#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[85]
+#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[86]
+#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[87]
+#define SWIGTYPE_p_mfem__NURBSExtension swig_types[88]
+#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[89]
+#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[90]
+#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[91]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[92]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[93]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[94]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[95]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[96]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[97]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[98]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[99]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[100]
+#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[101]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[102]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[103]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[104]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[105]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[106]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[107]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[108]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[109]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[110]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[111]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[112]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[113]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[114]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[115]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[116]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[117]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[118]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[119]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[120]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[121]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[122]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[123]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[124]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[125]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[126]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[127]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[128]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[129]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[130]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[131]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[132]
+#define SWIGTYPE_p_mfem__STable swig_types[133]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[134]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[135]
+#define SWIGTYPE_p_mfem__Table swig_types[136]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[137]
+#define SWIGTYPE_p_mfem__Vector swig_types[138]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[139]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[140]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[141]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[142]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[143]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[144]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[145]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[146]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[147]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[148]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[149]
+#define SWIGTYPE_p_mfem__Vertex swig_types[150]
+#define SWIGTYPE_p_mfem__named_ifgzstream swig_types[151]
+#define SWIGTYPE_p_p_mfem__Element swig_types[152]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[153]
+#define SWIGTYPE_p_p_mfem__Mesh swig_types[154]
+#define SWIGTYPE_p_pri_t swig_types[155]
+#define SWIGTYPE_p_quad_t swig_types[156]
+#define SWIGTYPE_p_seg_t swig_types[157]
+#define SWIGTYPE_p_std__istream swig_types[158]
+#define SWIGTYPE_p_std__ostream swig_types[159]
+#define SWIGTYPE_p_tet_t swig_types[160]
+#define SWIGTYPE_p_tri_t swig_types[161]
+static swig_type_info *swig_types[163];
+static swig_module_info swig_module = {swig_types, 162, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3714,9 +3734,10 @@ namespace swig {
 mfem::Mesh * MeshFromFile(const char *mesh_file, int generate_edges, int refine,
 		      bool fix_orientation = true);
 // void mfem:PrintToFile(const char *mesh_file,  const int precision) const;
-#include "iostream_typemap.hpp"   
 #include "numpy/arrayobject.h"
-#include "pycoefficient.hpp" 
+#include "pycoefficient.hpp"
+
+#include "io_stream.hpp"   
 
 
 SWIGINTERNINLINE PyObject*
@@ -4032,7 +4053,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
-SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_30(int nx,int ny,int nz,char const *type,int generate_edges=0,double sx=1.0,double sy=1.0,double sz=1.0){
+SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_32(int nx,int ny,int nz,char const *type,int generate_edges=0,double sx=1.0,double sy=1.0,double sz=1.0){
      mfem::Mesh *mesh;     
      if (std::strcmp(type, "POINT")) {
 	 mesh = new mfem::Mesh(nx, ny, nz, mfem::Element::POINT,
@@ -4068,7 +4089,7 @@ SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_30(int nx,int ny,int nz,char const *t
      }
      return mesh;       
    }
-SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_35(int nx,int ny,char const *type,int generate_edges=0,double sx=1.0,double sy=1.0){
+SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_37(int nx,int ny,char const *type,int generate_edges=0,double sx=1.0,double sy=1.0){
      mfem::Mesh *mesh;     
      if (std::strcmp(type, "POINT")) {
 	 mesh = new mfem::Mesh(nx, ny, mfem::Element::POINT,
@@ -4105,6 +4126,7 @@ SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_35(int nx,int ny,char const *type,int
      return mesh;       
    }
 SWIGINTERN void mfem_Mesh_PrintToFile(mfem::Mesh const *self,char const *mesh_file,int const precision){
+        std::cerr << "\nWarning Deprecated : Use Print(filename) insteead of SaveToFile \n";          
 	std::ofstream mesh_ofs(mesh_file);	
         mesh_ofs.precision(precision);
         self->Print(mesh_ofs);	
@@ -4190,6 +4212,50 @@ SWIGINTERN PyObject *mfem_Mesh_GetDomainArray(mfem::Mesh const *self,int idx){
      }
      return array;
    }
+SWIGINTERN void mfem_Mesh_PrintInfo__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintInfo(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_Print__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> Print(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_PrintXG__SWIG_2(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintXG(ofile);
+  ofile.close();
+  }
+SWIGINTERN void mfem_Mesh_PrintVTK__SWIG_3(mfem::Mesh *self,char const *file,int precision=8){
+  std::ofstream ofile(file);
+  if (!ofile)
+     {
+        std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
+        return;
+      }
+  ofile.precision(precision);  
+  self -> PrintVTK(ofile);
+  ofile.close();
+  }
 
 SWIGINTERNINLINE PyObject *
 SWIG_FromCharPtrAndSize(const char* carray, size_t size)
@@ -4379,6 +4445,58 @@ SWIGINTERN PyObject *_wrap_Mesh_ncmesh_get(PyObject *SWIGUNUSEDPARM(self), PyObj
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   result = (mfem::NCMesh *) ((arg1)->ncmesh);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_geom_factors_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  mfem::Array< mfem::GeometricFactors * > *arg2 = (mfem::Array< mfem::GeometricFactors * > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_geom_factors_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_geom_factors_set" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_geom_factors_set" "', argument " "2"" of type '" "mfem::Array< mfem::GeometricFactors * > *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< mfem::GeometricFactors * > * >(argp2);
+  if (arg1) (arg1)->geom_factors = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_geom_factors_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Array< mfem::GeometricFactors * > *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_geom_factors_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_geom_factors_get" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  result = (mfem::Array< mfem::GeometricFactors * > *)& ((arg1)->geom_factors);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5025,12 +5143,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5079,12 +5200,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5140,6 +5264,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTri(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5188,12 +5313,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5242,12 +5370,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(sel
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5303,6 +5434,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTriangle(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5351,12 +5483,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5405,12 +5540,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self), 
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5466,6 +5604,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddQuad(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5514,12 +5653,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5568,12 +5710,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5629,6 +5774,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddTet(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5646,6 +5792,176 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Mesh::AddTet(int const *,int)\n"
     "    mfem::Mesh::AddTet(int const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int *arg2 = (int *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_AddWedge",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_AddWedge" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    int i;
+    if (!PyList_Check(obj1)) {
+      PyErr_SetString(PyExc_ValueError, "Expecting a list");
+      return NULL;
+    }
+    int l = PyList_Size(obj1);
+    arg2 = (int *) malloc((l)*sizeof(int));
+    for (i = 0; i < l; i++) {
+      PyObject *s = PyList_GetItem(obj1,i);
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
+        free(arg2);
+        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+        return NULL;
+      }
+    }
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      (arg1)->AddWedge((int const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_AddWedge__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int *arg2 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_AddWedge",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_AddWedge" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    int i;
+    if (!PyList_Check(obj1)) {
+      PyErr_SetString(PyExc_ValueError, "Expecting a list");
+      return NULL;
+    }
+    int l = PyList_Size(obj1);
+    arg2 = (int *) malloc((l)*sizeof(int));
+    for (i = 0; i < l; i++) {
+      PyObject *s = PyList_GetItem(obj1,i);
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
+        free(arg2);
+        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+        return NULL;
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->AddWedge((int const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_AddWedge(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PyList_Check(argv[1]) ? 1 : 0;
+      }
+      if (_v) {
+        return _wrap_Mesh_AddWedge__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PyList_Check(argv[1]) ? 1 : 0;
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_AddWedge__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_AddWedge'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::AddWedge(int const *,int)\n"
+    "    mfem::Mesh::AddWedge(int const *)\n");
   return 0;
 }
 
@@ -5677,12 +5993,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5731,12 +6050,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5792,6 +6114,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHex(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5840,12 +6163,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets__SWIG_0(PyObject *SWIGUNUSEDPARM(se
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5894,12 +6220,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -5955,6 +6284,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddHexAsTets(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -5972,6 +6302,176 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Mesh::AddHexAsTets(int const *,int)\n"
     "    mfem::Mesh::AddHexAsTets(int const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int *arg2 = (int *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_AddHexAsWedges",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_AddHexAsWedges" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    int i;
+    if (!PyList_Check(obj1)) {
+      PyErr_SetString(PyExc_ValueError, "Expecting a list");
+      return NULL;
+    }
+    int l = PyList_Size(obj1);
+    arg2 = (int *) malloc((l)*sizeof(int));
+    for (i = 0; i < l; i++) {
+      PyObject *s = PyList_GetItem(obj1,i);
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
+        free(arg2);
+        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+        return NULL;
+      }
+    }
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      (arg1)->AddHexAsWedges((int const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int *arg2 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_AddHexAsWedges",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_AddHexAsWedges" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    int i;
+    if (!PyList_Check(obj1)) {
+      PyErr_SetString(PyExc_ValueError, "Expecting a list");
+      return NULL;
+    }
+    int l = PyList_Size(obj1);
+    arg2 = (int *) malloc((l)*sizeof(int));
+    for (i = 0; i < l; i++) {
+      PyObject *s = PyList_GetItem(obj1,i);
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
+        free(arg2);
+        PyErr_SetString(PyExc_ValueError, "List items must be integer");
+        return NULL;
+      }
+    }
+  }
+  {
+    try {
+      (arg1)->AddHexAsWedges((int const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_AddHexAsWedges(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PyList_Check(argv[1]) ? 1 : 0;
+      }
+      if (_v) {
+        return _wrap_Mesh_AddHexAsWedges__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        _v = PyList_Check(argv[1]) ? 1 : 0;
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_AddHexAsWedges__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_AddHexAsWedges'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::AddHexAsWedges(int const *,int)\n"
+    "    mfem::Mesh::AddHexAsWedges(int const *)\n");
   return 0;
 }
 
@@ -6077,12 +6577,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6131,12 +6634,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6192,6 +6698,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrSegment(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6240,12 +6747,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_0(PyObject *SWIGUNUSEDPARM(
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6294,12 +6804,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle__SWIG_1(PyObject *SWIGUNUSEDPARM(
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6355,6 +6868,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrTriangle(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6403,12 +6917,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_0(PyObject *SWIGUNUSEDPARM(self
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6457,12 +6974,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad__SWIG_1(PyObject *SWIGUNUSEDPARM(self
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6518,6 +7038,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuad(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6566,12 +7087,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles__SWIG_0(PyObject *SWIGUNUS
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6620,12 +7144,15 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles__SWIG_1(PyObject *SWIGUNUS
     arg2 = (int *) malloc((l)*sizeof(int));
     for (i = 0; i < l; i++) {
       PyObject *s = PyList_GetItem(obj1,i);
-      if (!PyInt_Check(s)) {
+      if (PyInt_Check(s)) {
+        arg2[i] = (int)PyInt_AsLong(s);
+      } else if ((PyArray_PyIntAsInt(s) != -1) || !PyErr_Occurred()) {
+        arg2[i] = PyArray_PyIntAsInt(s);
+      } else {
         free(arg2);
         PyErr_SetString(PyExc_ValueError, "List items must be integer");
         return NULL;
       }
-      arg2[i] = (int)PyInt_AsLong(s);
     }
   }
   {
@@ -6681,6 +7208,7 @@ SWIGINTERN PyObject *_wrap_Mesh_AddBdrQuadAsTriangles(PyObject *self, PyObject *
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6920,6 +7448,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6938,6 +7467,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6946,6 +7476,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -6965,6 +7496,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -6973,6 +7505,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTriMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7192,6 +7725,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7210,6 +7744,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7218,6 +7753,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7237,6 +7773,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7245,6 +7782,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeQuadMesh(PyObject *self, PyObject *args)
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7464,6 +8002,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7482,6 +8021,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7490,6 +8030,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7509,6 +8050,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7517,6 +8059,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeTetMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7542,6 +8085,283 @@ fail:
     "    mfem::Mesh::FinalizeTetMesh(int,int)\n"
     "    mfem::Mesh::FinalizeTetMesh(int)\n"
     "    mfem::Mesh::FinalizeTetMesh()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:Mesh_FinalizeWedgeMesh",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_FinalizeWedgeMesh" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "Mesh_FinalizeWedgeMesh" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  {
+    try {
+      (arg1)->FinalizeWedgeMesh(arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_FinalizeWedgeMesh",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_FinalizeWedgeMesh" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      (arg1)->FinalizeWedgeMesh(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_FinalizeWedgeMesh",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_FinalizeWedgeMesh" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->FinalizeWedgeMesh(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_FinalizeWedgeMesh",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_FinalizeWedgeMesh" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    try {
+      (arg1)->FinalizeWedgeMesh(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeWedgeMesh(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_FinalizeWedgeMesh__SWIG_3(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_FinalizeWedgeMesh__SWIG_2(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_FinalizeWedgeMesh__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_bool(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_Mesh_FinalizeWedgeMesh__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_FinalizeWedgeMesh'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::FinalizeWedgeMesh(int,int,bool)\n"
+    "    mfem::Mesh::FinalizeWedgeMesh(int,int)\n"
+    "    mfem::Mesh::FinalizeWedgeMesh(int)\n"
+    "    mfem::Mesh::FinalizeWedgeMesh()\n");
   return 0;
 }
 
@@ -7736,6 +8556,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7754,6 +8575,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7762,6 +8584,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7781,6 +8604,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -7789,6 +8613,7 @@ SWIGINTERN PyObject *_wrap_Mesh_FinalizeHexMesh(PyObject *self, PyObject *args) 
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -7814,6 +8639,191 @@ fail:
     "    mfem::Mesh::FinalizeHexMesh(int,int)\n"
     "    mfem::Mesh::FinalizeHexMesh(int)\n"
     "    mfem::Mesh::FinalizeHexMesh()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  bool arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_FinalizeMesh",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_FinalizeMesh" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Mesh_FinalizeMesh" "', argument " "3"" of type '" "bool""'");
+  } 
+  arg3 = static_cast< bool >(val3);
+  {
+    try {
+      (arg1)->FinalizeMesh(arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeMesh__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_FinalizeMesh",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_FinalizeMesh" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->FinalizeMesh(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeMesh__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_FinalizeMesh",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_FinalizeMesh" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    try {
+      (arg1)->FinalizeMesh(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_FinalizeMesh(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_FinalizeMesh__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_FinalizeMesh__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_bool(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_Mesh_FinalizeMesh__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_FinalizeMesh'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::FinalizeMesh(int,bool)\n"
+    "    mfem::Mesh::FinalizeMesh(int)\n"
+    "    mfem::Mesh::FinalizeMesh()\n");
   return 0;
 }
 
@@ -8202,12 +9212,112 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), PyOb
   int arg2 ;
   int arg3 ;
   mfem::Element::Type arg4 ;
-  int arg5 ;
+  bool arg5 ;
+  double arg6 ;
+  double arg7 ;
+  double arg8 ;
+  bool arg9 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  double val7 ;
+  int ecode7 = 0 ;
+  double val8 ;
+  int ecode8 = 0 ;
+  bool val9 ;
+  int ecode9 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  PyObject * obj8 = 0 ;
+  mfem::Mesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7,&obj8)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "mfem::Element::Type""'");
+  } 
+  arg4 = static_cast< mfem::Element::Type >(val4);
+  ecode5 = SWIG_AsVal_bool(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
+  ecode6 = SWIG_AsVal_double(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Mesh" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  ecode7 = SWIG_AsVal_double(obj6, &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_Mesh" "', argument " "7"" of type '" "double""'");
+  } 
+  arg7 = static_cast< double >(val7);
+  ecode8 = SWIG_AsVal_double(obj7, &val8);
+  if (!SWIG_IsOK(ecode8)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "new_Mesh" "', argument " "8"" of type '" "double""'");
+  } 
+  arg8 = static_cast< double >(val8);
+  ecode9 = SWIG_AsVal_bool(obj8, &val9);
+  if (!SWIG_IsOK(ecode9)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "new_Mesh" "', argument " "9"" of type '" "bool""'");
+  } 
+  arg9 = static_cast< bool >(val9);
+  {
+    try {
+      result = (mfem::Mesh *)new mfem::Mesh(arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_10(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::Element::Type arg4 ;
+  bool arg5 ;
   double arg6 ;
   double arg7 ;
   double arg8 ;
   int val4 ;
   int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
   double val7 ;
@@ -8248,12 +9358,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_9(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "mfem::Element::Type""'");
   } 
   arg4 = static_cast< mfem::Element::Type >(val4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
+  ecode5 = SWIG_AsVal_bool(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
   ecode6 = SWIG_AsVal_double(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Mesh" "', argument " "6"" of type '" "double""'");
@@ -8284,17 +9393,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_10(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_11(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
   int arg3 ;
   mfem::Element::Type arg4 ;
-  int arg5 ;
+  bool arg5 ;
   double arg6 ;
   double arg7 ;
   int val4 ;
   int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
   double val7 ;
@@ -8332,12 +9443,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_10(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "mfem::Element::Type""'");
   } 
   arg4 = static_cast< mfem::Element::Type >(val4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
+  ecode5 = SWIG_AsVal_bool(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
   ecode6 = SWIG_AsVal_double(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Mesh" "', argument " "6"" of type '" "double""'");
@@ -8363,16 +9473,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_11(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_12(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
   int arg3 ;
   mfem::Element::Type arg4 ;
-  int arg5 ;
+  bool arg5 ;
   double arg6 ;
   int val4 ;
   int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
   double val6 ;
   int ecode6 = 0 ;
   PyObject * obj0 = 0 ;
@@ -8407,12 +9519,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_11(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "mfem::Element::Type""'");
   } 
   arg4 = static_cast< mfem::Element::Type >(val4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
+  ecode5 = SWIG_AsVal_bool(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
   ecode6 = SWIG_AsVal_double(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Mesh" "', argument " "6"" of type '" "double""'");
@@ -8421,67 +9532,6 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_11(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (mfem::Mesh *)new mfem::Mesh(arg1,arg2,arg3,arg4,arg5,arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_12(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::Element::Type arg4 ;
-  int arg5 ;
-  int val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  mfem::Mesh *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(obj0);
-  }
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(obj2);
-  }
-  ecode4 = SWIG_AsVal_int(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "mfem::Element::Type""'");
-  } 
-  arg4 = static_cast< mfem::Element::Type >(val4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
-  {
-    try {
-      result = (mfem::Mesh *)new mfem::Mesh(arg1,arg2,arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8500,6 +9550,68 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_13(PyObject *SWIGUNUSEDPARM(self), PyO
   int arg2 ;
   int arg3 ;
   mfem::Element::Type arg4 ;
+  bool arg5 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  bool val5 ;
+  int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  mfem::Mesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "mfem::Element::Type""'");
+  } 
+  arg4 = static_cast< mfem::Element::Type >(val4);
+  ecode5 = SWIG_AsVal_bool(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "bool""'");
+  } 
+  arg5 = static_cast< bool >(val5);
+  {
+    try {
+      result = (mfem::Mesh *)new mfem::Mesh(arg1,arg2,arg3,arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_14(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::Element::Type arg4 ;
   int val4 ;
   int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -8547,16 +9659,99 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_14(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_15(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
   mfem::Element::Type arg3 ;
-  int arg4 ;
+  bool arg4 ;
+  double arg5 ;
+  double arg6 ;
+  bool arg7 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  double val5 ;
+  int ecode5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  bool val7 ;
+  int ecode7 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  mfem::Mesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Mesh" "', argument " "3"" of type '" "mfem::Element::Type""'");
+  } 
+  arg3 = static_cast< mfem::Element::Type >(val3);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  ecode5 = SWIG_AsVal_double(obj4, &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "double""'");
+  } 
+  arg5 = static_cast< double >(val5);
+  ecode6 = SWIG_AsVal_double(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Mesh" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  ecode7 = SWIG_AsVal_bool(obj6, &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_Mesh" "', argument " "7"" of type '" "bool""'");
+  } 
+  arg7 = static_cast< bool >(val7);
+  {
+    try {
+      result = (mfem::Mesh *)new mfem::Mesh(arg1,arg2,arg3,arg4,arg5,arg6,arg7); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_16(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  mfem::Element::Type arg3 ;
+  bool arg4 ;
   double arg5 ;
   double arg6 ;
   int val3 ;
   int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
   double val6 ;
@@ -8587,12 +9782,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_14(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Mesh" "', argument " "3"" of type '" "mfem::Element::Type""'");
   } 
   arg3 = static_cast< mfem::Element::Type >(val3);
-  {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
-  }
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
   ecode5 = SWIG_AsVal_double(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "double""'");
@@ -8618,15 +9812,17 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_15(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_17(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
   mfem::Element::Type arg3 ;
-  int arg4 ;
+  bool arg4 ;
   double arg5 ;
   int val3 ;
   int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
   PyObject * obj0 = 0 ;
@@ -8654,12 +9850,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_15(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Mesh" "', argument " "3"" of type '" "mfem::Element::Type""'");
   } 
   arg3 = static_cast< mfem::Element::Type >(val3);
-  {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
-  }
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
   ecode5 = SWIG_AsVal_double(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_Mesh" "', argument " "5"" of type '" "double""'");
@@ -8680,14 +9875,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_16(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_18(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
   mfem::Element::Type arg3 ;
-  int arg4 ;
+  bool arg4 ;
   int val3 ;
   int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -8712,12 +9909,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_16(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Mesh" "', argument " "3"" of type '" "mfem::Element::Type""'");
   } 
   arg3 = static_cast< mfem::Element::Type >(val3);
-  {
-    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(obj3);
-  }
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Mesh" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
   {
     try {
       result = (mfem::Mesh *)new mfem::Mesh(arg1,arg2,arg3,arg4); 
@@ -8733,7 +9929,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_17(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_19(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -8778,7 +9974,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_18(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_20(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   double arg2 ;
@@ -8815,7 +10011,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_19(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_21(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   PyObject * obj0 = 0 ;
@@ -8843,7 +10039,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_20(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_22(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   int arg2 ;
@@ -8900,7 +10096,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_21(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_23(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   int arg2 ;
@@ -8948,7 +10144,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_22(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_24(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   int arg2 ;
@@ -8988,7 +10184,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_23(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_25(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
   int res1 ;
@@ -9020,7 +10216,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_24(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_26(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::istream *arg1 = 0 ;
   int arg2 ;
@@ -9077,7 +10273,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_25(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_27(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::istream *arg1 = 0 ;
   int arg2 ;
@@ -9125,7 +10321,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_26(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_28(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::istream *arg1 = 0 ;
   int arg2 ;
@@ -9165,7 +10361,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_27(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_29(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   std::istream *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -9197,7 +10393,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_28(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_30(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh **arg1 ;
   int arg2 ;
@@ -9234,7 +10430,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_29(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_31(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   int arg2 ;
@@ -9526,6 +10722,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9549,6 +10746,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9557,6 +10755,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -9581,6 +10780,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -9589,6 +10789,7 @@ SWIGINTERN PyObject *_wrap_Mesh_Load(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -9916,6 +11117,83 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_GetGeometricFactors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  mfem::IntegrationRule *arg2 = 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  mfem::GeometricFactors *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_GetGeometricFactors",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetGeometricFactors" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_GetGeometricFactors" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_GetGeometricFactors" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      result = (mfem::GeometricFactors *)(arg1)->GetGeometricFactors((mfem::IntegrationRule const &)*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_DeleteGeometricFactors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_DeleteGeometricFactors",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_DeleteGeometricFactors" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    try {
+      (arg1)->DeleteGeometricFactors(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_EulerNumber(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -10126,6 +11404,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetVertex(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -10144,6 +11423,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetVertex(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -10407,6 +11687,7 @@ SWIGINTERN PyObject *_wrap_Mesh_ChangeVertexDataOwnership(PyObject *self, PyObje
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -10430,6 +11711,7 @@ SWIGINTERN PyObject *_wrap_Mesh_ChangeVertexDataOwnership(PyObject *self, PyObje
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -10580,6 +11862,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -10598,6 +11881,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -10712,6 +11996,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -10730,6 +12015,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElement(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -10795,7 +12081,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceBaseGeometry(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  int result;
+  mfem::Geometry::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetFaceBaseGeometry",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -10811,7 +12097,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceBaseGeometry(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetFaceBaseGeometry(arg2); 
+      result = (mfem::Geometry::Type)((mfem::Mesh const *)arg1)->GetFaceBaseGeometry(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10824,7 +12110,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_GetElementBaseGeometry__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Mesh_GetElementBaseGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   int arg2 ;
@@ -10832,7 +12118,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementBaseGeometry__SWIG_0(PyObject *SWIGUNU
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  int result;
+  mfem::Geometry::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetElementBaseGeometry",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -10848,7 +12134,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementBaseGeometry__SWIG_0(PyObject *SWIGUNU
   }
   {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetElementBaseGeometry(arg2); 
+      result = (mfem::Geometry::Type)((mfem::Mesh const *)arg1)->GetElementBaseGeometry(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10861,85 +12147,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_GetElementBaseGeometry__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_GetElementBaseGeometry",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetElementBaseGeometry" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  {
-    try {
-      result = (int)((mfem::Mesh const *)arg1)->GetElementBaseGeometry(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Mesh_GetElementBaseGeometry(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_GetElementBaseGeometry__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_GetElementBaseGeometry__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_GetElementBaseGeometry'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::GetElementBaseGeometry(int) const\n"
-    "    mfem::Mesh::GetElementBaseGeometry() const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementBaseGeometry__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementBaseGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   int arg2 ;
@@ -10947,7 +12155,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementBaseGeometry__SWIG_0(PyObject *SWIG
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  int result;
+  mfem::Geometry::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetBdrElementBaseGeometry",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -10963,7 +12171,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementBaseGeometry__SWIG_0(PyObject *SWIG
   }
   {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetBdrElementBaseGeometry(arg2); 
+      result = (mfem::Geometry::Type)((mfem::Mesh const *)arg1)->GetBdrElementBaseGeometry(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10976,23 +12184,69 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementBaseGeometry__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Mesh_HasGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  mfem::Geometry::Type arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  bool result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_HasGeometry",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_HasGeometry" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Mesh_HasGeometry" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
+  } 
+  arg2 = static_cast< mfem::Geometry::Type >(val2);
+  {
+    try {
+      result = (bool)((mfem::Mesh const *)arg1)->HasGeometry(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_GetNumGeometries(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_GetBdrElementBaseGeometry",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetNumGeometries",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetBdrElementBaseGeometry" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetNumGeometries" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetBdrElementBaseGeometry(); 
+      result = (int)((mfem::Mesh const *)arg1)->GetNumGeometries(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11005,52 +12259,51 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementBaseGeometry(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
+SWIGINTERN PyObject *_wrap_Mesh_GetGeometries(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  mfem::Array< mfem::Geometry::Type > *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
   
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_GetGeometries",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetGeometries" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
   }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_GetBdrElementBaseGeometry__SWIG_1(self, args);
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Mesh_GetGeometries" "', argument " "3"" of type '" "mfem::Array< mfem::Geometry::Type > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_GetGeometries" "', argument " "3"" of type '" "mfem::Array< mfem::Geometry::Type > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< mfem::Geometry::Type > * >(argp3);
+  {
+    try {
+      ((mfem::Mesh const *)arg1)->GetGeometries(arg2,*arg3); 
     }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
   }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_GetBdrElementBaseGeometry__SWIG_0(self, args);
-      }
-    }
-  }
-  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
 fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_GetBdrElementBaseGeometry'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::GetBdrElementBaseGeometry(int) const\n"
-    "    mfem::Mesh::GetBdrElementBaseGeometry() const\n");
-  return 0;
+  return NULL;
 }
 
 
@@ -11703,7 +12956,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementType(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetElementType",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -11719,7 +12972,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementType(PyObject *SWIGUNUSEDPARM(self), P
   }
   {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetElementType(arg2); 
+      result = (mfem::Element::Type)((mfem::Mesh const *)arg1)->GetElementType(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11740,7 +12993,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementType(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetBdrElementType",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -11756,7 +13009,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementType(PyObject *SWIGUNUSEDPARM(self)
   }
   {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetBdrElementType(arg2); 
+      result = (mfem::Element::Type)((mfem::Mesh const *)arg1)->GetBdrElementType(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11867,17 +13120,18 @@ fail:
 
 SWIGINTERN PyObject *_wrap_Mesh_GetTransformationFEforElementType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  int arg1 ;
+  mfem::Element::Type arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   mfem::FiniteElement *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Mesh_GetTransformationFEforElementType",&obj0)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(obj0);
-  }
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Mesh_GetTransformationFEforElementType" "', argument " "1"" of type '" "mfem::Element::Type""'");
+  } 
+  arg1 = static_cast< mfem::Element::Type >(val1);
   {
     try {
       result = (mfem::FiniteElement *)mfem::Mesh::GetTransformationFEforElementType(arg1); 
@@ -12052,6 +13306,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementTransformation(PyObject *self, PyObjec
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12070,6 +13325,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementTransformation(PyObject *self, PyObjec
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12093,6 +13349,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementTransformation(PyObject *self, PyObjec
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12225,6 +13482,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementTransformation(PyObject *self, PyOb
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12243,6 +13501,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementTransformation(PyObject *self, PyOb
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12434,6 +13693,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12452,6 +13712,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12579,6 +13840,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetEdgeTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12597,6 +13859,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetEdgeTransformation(PyObject *self, PyObject *
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12724,6 +13987,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementTransformations(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12742,6 +14006,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementTransformations(PyObject *self, Py
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -12750,6 +14015,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementTransformations(PyObject *self, Py
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -12902,7 +14168,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElements(PyObject *SWIGUNUSEDPARM(self), 
   if (!PyArg_ParseTuple(args,(char *)"OOOO:Mesh_GetFaceElements",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetFaceElements" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetFaceElements" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
@@ -12923,7 +14189,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElements(PyObject *SWIGUNUSEDPARM(self), 
   arg4 = reinterpret_cast< int * >(argp4);
   {
     try {
-      (arg1)->GetFaceElements(arg2,arg3,arg4); 
+      ((mfem::Mesh const *)arg1)->GetFaceElements(arg2,arg3,arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12956,7 +14222,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceInfos(PyObject *SWIGUNUSEDPARM(self), PyO
   if (!PyArg_ParseTuple(args,(char *)"OOOO:Mesh_GetFaceInfos",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetFaceInfos" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_GetFaceInfos" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
@@ -12977,7 +14243,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceInfos(PyObject *SWIGUNUSEDPARM(self), PyO
   arg4 = reinterpret_cast< int * >(argp4);
   {
     try {
-      (arg1)->GetFaceInfos(arg2,arg3,arg4); 
+      ((mfem::Mesh const *)arg1)->GetFaceInfos(arg2,arg3,arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12998,7 +14264,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceGeometryType(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  int result;
+  mfem::Geometry::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetFaceGeometryType",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -13014,7 +14280,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceGeometryType(PyObject *SWIGUNUSEDPARM(sel
   }
   {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetFaceGeometryType(arg2); 
+      result = (mfem::Geometry::Type)((mfem::Mesh const *)arg1)->GetFaceGeometryType(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13035,7 +14301,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementType(PyObject *SWIGUNUSEDPARM(self
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_GetFaceElementType",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
@@ -13051,7 +14317,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetFaceElementType(PyObject *SWIGUNUSEDPARM(self
   }
   {
     try {
-      result = (int)((mfem::Mesh const *)arg1)->GetFaceElementType(arg2); 
+      result = (mfem::Element::Type)((mfem::Mesh const *)arg1)->GetFaceElementType(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13721,6 +14987,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneratePartitioning(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13739,6 +15006,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneratePartitioning(PyObject *self, PyObject *a
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -13747,6 +15015,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneratePartitioning(PyObject *self, PyObject *a
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -14839,6 +16108,34 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_EnsureNodes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:Mesh_EnsureNodes",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_EnsureNodes" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    try {
+      (arg1)->EnsureNodes(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_SetCurvature__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -15054,6 +16351,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15072,6 +16370,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15096,6 +16395,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15109,6 +16409,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -15129,6 +16430,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -15142,6 +16444,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -15150,6 +16453,7 @@ SWIGINTERN PyObject *_wrap_Mesh_SetCurvature(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -15175,7 +16479,43 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_UniformRefinement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Mesh_UniformRefinement__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_UniformRefinement",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_UniformRefinement" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->UniformRefinement(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_UniformRefinement__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   void *argp1 = 0 ;
@@ -15200,6 +16540,56 @@ SWIGINTERN PyObject *_wrap_Mesh_UniformRefinement(PyObject *SWIGUNUSEDPARM(self)
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_UniformRefinement(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_UniformRefinement__SWIG_2(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_UniformRefinement__SWIG_1(self, args);
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_UniformRefinement'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::UniformRefinement(int)\n"
+    "    mfem::Mesh::UniformRefinement()\n");
+  return 0;
 }
 
 
@@ -15580,6 +16970,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneralRefinement(PyObject *self, PyObject *args
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -15607,6 +16998,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GeneralRefinement(PyObject *self, PyObject *args
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -15928,6 +17320,7 @@ SWIGINTERN PyObject *_wrap_Mesh_RandomRefinement(PyObject *self, PyObject *args)
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -16644,6 +18037,7 @@ SWIGINTERN PyObject *_wrap_Mesh_RefineByError(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -16677,6 +18071,7 @@ SWIGINTERN PyObject *_wrap_Mesh_RefineByError(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -17119,6 +18514,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -17148,6 +18544,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -17177,6 +18574,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -17185,6 +18583,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -17214,6 +18613,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -17222,6 +18622,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DerefineByError(PyObject *self, PyObject *args) 
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -17389,6 +18790,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DegreeElevate(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17407,6 +18809,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DegreeElevate(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -17415,6 +18818,7 @@ SWIGINTERN PyObject *_wrap_Mesh_DegreeElevate(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -17698,7 +19102,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -17709,15 +19114,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -17730,14 +19138,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -17771,62 +19181,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_PrintXG__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_PrintXG__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintXG'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::PrintXG(std::ostream &) const\n"
-    "    mfem::Mesh::PrintXG() const\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -17837,15 +19199,18 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -17858,14 +19223,16 @@ SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -17899,62 +19266,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_Print__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_Print__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_Print'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::Print(std::ostream &) const\n"
-    "    mfem::Mesh::Print() const\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -17965,15 +19284,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -17986,14 +19308,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -18007,7 +19331,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -18020,15 +19345,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -18053,14 +19381,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -18073,7 +19403,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -18085,15 +19416,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -18112,120 +19446,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_2(PyObject *SWIGUNUSEDPARM(self),
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_PrintVTK__SWIG_0(self, args);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_Mesh_PrintVTK__SWIG_2(self, args);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            return _wrap_Mesh_PrintVTK__SWIG_1(self, args);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintVTK'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::PrintVTK(std::ostream &)\n"
-    "    mfem::Mesh::PrintVTK(std::ostream &,int,int)\n"
-    "    mfem::Mesh::PrintVTK(std::ostream &,int)\n");
-  return 0;
 }
 
 
@@ -18355,6 +19587,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementColoring(PyObject *self, PyObject *arg
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -18386,7 +19619,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -18404,15 +19638,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -18431,14 +19668,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_0(PyObject *SWIGUNUS
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -18453,7 +19692,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -18470,15 +19710,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -18491,14 +19734,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning__SWIG_1(PyObject *SWIGUNUS
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -18527,10 +19772,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -18550,15 +19797,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintWithPartitioning(PyObject *self, PyObject *
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -18591,7 +19841,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -18609,15 +19860,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -18636,14 +19890,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_0(PyObject *
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -18658,7 +19914,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -18675,15 +19932,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   }
   arg2 = reinterpret_cast< int * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -18696,14 +19956,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning__SWIG_1(PyObject *
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -18732,10 +19994,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
@@ -18755,15 +20019,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintElementsWithPartitioning(PyObject *self, Py
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          if (PyFile_Check(argv[2])){
-            _v = 1;
-          } else {
+          void *ptr;
+          if (SWIG_ConvertPtr(argv[2], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+            PyErr_Clear();
             _v = 0;
+          } else {
+            _v = 1;    
           }
         }
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -18795,7 +20062,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  boost_ofdstream *stream3 = NULL ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -18815,15 +20083,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg2 = reinterpret_cast< mfem::Table * >(argp2);
   {
-    FILE *f=PyFile_AsFile(obj2); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream3 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg3 = new std::ostream(stream3);
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
     }
   }
   {
@@ -18836,14 +20107,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintSurfaces(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg3;
-    delete stream3;
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
   }
   return NULL;
 }
@@ -19256,6 +20529,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -19274,6 +20548,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -19296,6 +20571,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -19304,6 +20580,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetElementSize(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -19522,6 +20799,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBoundingBox(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -19924,6 +21202,74 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_PrintElementsByGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  mfem::Array< int > *arg2 = 0 ;
+  std::ostream *arg3 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyMFEM::wFILE *temp3 = 0 ;
+  std::ofstream out3 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_PrintElementsByGeometry",&obj0,&obj1,&obj2)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintElementsByGeometry" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_PrintElementsByGeometry" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    if (SWIG_ConvertPtr(obj2, (void **) &temp3, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp3->isSTDOUT() == 1) {
+      arg3 = &std::cout;
+    }
+    else {
+      out3.open(temp3->getFilename());
+      out3.precision(temp3->getPrecision());
+      arg3 = &out3;
+    }
+  }
+  {
+    try {
+      mfem::Mesh::PrintElementsByGeometry(arg1,(mfem::Array< int > const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (temp3->isSTDOUT() != 1) {
+      out3.close();
+    }
+  }
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
@@ -19936,7 +21282,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  boost_ofdstream *stream4 = NULL ;
+  PyMFEM::wFILE *temp4 = 0 ;
+  std::ofstream out4 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -19959,15 +21306,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   {
-    FILE *f=PyFile_AsFile(obj3); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj3, (void **) &temp4, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp4->isSTDOUT() == 1) {
+      arg4 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream4 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg4 = new std::ostream(stream4);
+      out4.open(temp4->getFilename());
+      out4.precision(temp4->getPrecision());
+      arg4 = &out4;
     }
   }
   {
@@ -19980,14 +21330,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics__SWIG_0(PyObject *SWIGUNUSE
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg4;
-    delete stream4;
+    if (temp4->isSTDOUT() != 1) {
+      out4.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg4;
-    delete stream4;
+    if (temp4->isSTDOUT() != 1) {
+      out4.close();
+    }
   }
   return NULL;
 }
@@ -20173,10 +21525,12 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintCharacteristics(PyObject *self, PyObject *a
         _v = SWIG_CheckState(res);
         if (_v) {
           {
-            if (PyFile_Check(argv[3])){
-              _v = 1;
-            } else {
+            void *ptr;
+            if (SWIG_ConvertPtr(argv[3], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+              PyErr_Clear();
               _v = 0;
+            } else {
+              _v = 1;    
             }
           }
           if (_v) {
@@ -20204,7 +21558,8 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   std::ostream *arg2 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  boost_ofdstream *stream2 = NULL ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -20215,15 +21570,18 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    FILE *f=PyFile_AsFile(obj1); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream2 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg2 = new std::ostream(stream2);
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
     }
   }
   {
@@ -20236,14 +21594,16 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
   }
   resultobj = SWIG_Py_Void();
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg2;
-    delete stream2;
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
   }
   return NULL;
 }
@@ -20274,55 +21634,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  Py_ssize_t ii;
-  
-  if (!PyTuple_Check(args)) SWIG_fail;
-  argc = args ? PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
-    argv[ii] = PyTuple_GET_ITEM(args,ii);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Mesh_PrintInfo__SWIG_1(self, args);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFile_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_Mesh_PrintInfo__SWIG_0(self, args);
-      }
-    }
-  }
-  
-fail:
-  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintInfo'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Mesh::PrintInfo(std::ostream &)\n"
-    "    mfem::Mesh::PrintInfo()\n");
-  return 0;
 }
 
 
@@ -20688,7 +21999,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_30(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_32(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -20764,7 +22075,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_30(PyObject *SWIGUNUSEDPARM(self), PyO
   arg8 = static_cast< double >(val8);
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_30(arg1,arg2,arg3,(char const *)arg4,arg5,arg6,arg7,arg8); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_32(arg1,arg2,arg3,(char const *)arg4,arg5,arg6,arg7,arg8); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -20779,7 +22090,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_31(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_33(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -20846,144 +22157,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_31(PyObject *SWIGUNUSEDPARM(self), PyO
   arg7 = static_cast< double >(val7);
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_30(arg1,arg2,arg3,(char const *)arg4,arg5,arg6,arg7); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
-  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
-  return resultobj;
-fail:
-  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_32(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  int arg3 ;
-  char *arg4 = (char *) 0 ;
-  int arg5 ;
-  double arg6 ;
-  int res4 ;
-  char *buf4 = 0 ;
-  int alloc4 = 0 ;
-  double val6 ;
-  int ecode6 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
-  mfem::Mesh *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(obj0);
-  }
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(obj2);
-  }
-  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_Mesh" "', argument " "4"" of type '" "char const *""'");
-  }
-  arg4 = reinterpret_cast< char * >(buf4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
-  ecode6 = SWIG_AsVal_double(obj5, &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Mesh" "', argument " "6"" of type '" "double""'");
-  } 
-  arg6 = static_cast< double >(val6);
-  {
-    try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_30(arg1,arg2,arg3,(char const *)arg4,arg5,arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
-  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
-  return resultobj;
-fail:
-  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_33(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  int arg3 ;
-  char *arg4 = (char *) 0 ;
-  int arg5 ;
-  int res4 ;
-  char *buf4 = 0 ;
-  int alloc4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  mfem::Mesh *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(obj0);
-  }
-  {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
-  }
-  {
-    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(obj2);
-  }
-  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_Mesh" "', argument " "4"" of type '" "char const *""'");
-  }
-  arg4 = reinterpret_cast< char * >(buf4);
-  {
-    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(obj4);
-  }
-  {
-    try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_30(arg1,arg2,arg3,(char const *)arg4,arg5); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_32(arg1,arg2,arg3,(char const *)arg4,arg5,arg6,arg7); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -21004,6 +22178,143 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_34(PyObject *SWIGUNUSEDPARM(self), PyO
   int arg2 ;
   int arg3 ;
   char *arg4 = (char *) 0 ;
+  int arg5 ;
+  double arg6 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  mfem::Mesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_Mesh" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  {
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg5 = PyArray_PyIntAsInt(obj4);
+  }
+  ecode6 = SWIG_AsVal_double(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_Mesh" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  {
+    try {
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_32(arg1,arg2,arg3,(char const *)arg4,arg5,arg6); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_35(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int arg5 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  mfem::Mesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:new_Mesh",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_Mesh" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  {
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg5 = PyArray_PyIntAsInt(obj4);
+  }
+  {
+    try {
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_32(arg1,arg2,arg3,(char const *)arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_NEW |  0 );
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_36(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
   int res4 ;
   char *buf4 = 0 ;
   int alloc4 = 0 ;
@@ -21039,7 +22350,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_34(PyObject *SWIGUNUSEDPARM(self), PyO
   arg4 = reinterpret_cast< char * >(buf4);
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_30(arg1,arg2,arg3,(char const *)arg4); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_32(arg1,arg2,arg3,(char const *)arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -21054,7 +22365,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_35(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_37(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -21113,7 +22424,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_35(PyObject *SWIGUNUSEDPARM(self), PyO
   arg6 = static_cast< double >(val6);
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_35(arg1,arg2,(char const *)arg3,arg4,arg5,arg6); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_37(arg1,arg2,(char const *)arg3,arg4,arg5,arg6); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -21128,7 +22439,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_36(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_38(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -21178,7 +22489,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_36(PyObject *SWIGUNUSEDPARM(self), PyO
   arg5 = static_cast< double >(val5);
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_35(arg1,arg2,(char const *)arg3,arg4,arg5); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_37(arg1,arg2,(char const *)arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -21193,7 +22504,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_37(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_39(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -21234,7 +22545,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_37(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_35(arg1,arg2,(char const *)arg3,arg4); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_37(arg1,arg2,(char const *)arg3,arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -21249,7 +22560,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_38(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_40(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -21282,7 +22593,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh__SWIG_38(PyObject *SWIGUNUSEDPARM(self), PyO
   arg3 = reinterpret_cast< char * >(buf3);
   {
     try {
-      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_35(arg1,arg2,(char const *)arg3); 
+      result = (mfem::Mesh *)new_mfem_Mesh__SWIG_37(arg1,arg2,(char const *)arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -21326,20 +22637,21 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_std__istream, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_Mesh__SWIG_27(self, args);
+      return _wrap_new_Mesh__SWIG_29(self, args);
     }
   }
   if (argc == 1) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
       }
     }
     if (_v) {
-      return _wrap_new_Mesh__SWIG_19(self, args);
+      return _wrap_new_Mesh__SWIG_21(self, args);
     }
   }
   if (argc == 1) {
@@ -21347,7 +22659,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_Mesh__SWIG_23(self, args);
+      return _wrap_new_Mesh__SWIG_25(self, args);
     }
   }
   if (argc == 2) {
@@ -21358,13 +22670,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
         }
       }
       if (_v) {
-        return _wrap_new_Mesh__SWIG_26(self, args);
+        return _wrap_new_Mesh__SWIG_28(self, args);
       }
     }
   }
@@ -21390,13 +22703,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
         }
       }
       if (_v) {
-        return _wrap_new_Mesh__SWIG_28(self, args);
+        return _wrap_new_Mesh__SWIG_30(self, args);
       }
     }
   }
@@ -21404,6 +22718,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21415,7 +22730,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_Mesh__SWIG_18(self, args);
+        return _wrap_new_Mesh__SWIG_20(self, args);
       }
     }
   }
@@ -21426,13 +22741,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
         }
       }
       if (_v) {
-        return _wrap_new_Mesh__SWIG_22(self, args);
+        return _wrap_new_Mesh__SWIG_24(self, args);
       }
     }
   }
@@ -21444,6 +22760,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21452,13 +22769,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
           }
         }
         if (_v) {
-          return _wrap_new_Mesh__SWIG_25(self, args);
+          return _wrap_new_Mesh__SWIG_27(self, args);
         }
       }
     }
@@ -21471,6 +22789,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21479,13 +22798,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
           }
         }
         if (_v) {
-          return _wrap_new_Mesh__SWIG_29(self, args);
+          return _wrap_new_Mesh__SWIG_31(self, args);
         }
       }
     }
@@ -21494,6 +22814,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21502,6 +22823,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21510,6 +22832,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21525,6 +22848,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21533,6 +22857,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21542,7 +22867,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_new_Mesh__SWIG_38(self, args);
+          return _wrap_new_Mesh__SWIG_40(self, args);
         }
       }
     }
@@ -21554,6 +22879,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21562,13 +22888,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
           }
         }
         if (_v) {
-          return _wrap_new_Mesh__SWIG_21(self, args);
+          return _wrap_new_Mesh__SWIG_23(self, args);
         }
       }
     }
@@ -21579,7 +22906,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       _v = 0; // ignore this pattern
     }
     if (_v) {
-      return _wrap_new_Mesh__SWIG_17(self, args);
+      return _wrap_new_Mesh__SWIG_19(self, args);
     }
   }
   if (argc == 4) {
@@ -21590,6 +22917,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21598,6 +22926,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21609,7 +22938,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_Mesh__SWIG_24(self, args);
+            return _wrap_new_Mesh__SWIG_26(self, args);
           }
         }
       }
@@ -21619,6 +22948,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21627,6 +22957,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21635,6 +22966,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21643,6 +22975,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -21659,6 +22992,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21667,6 +23001,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21675,6 +23010,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21684,7 +23020,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_new_Mesh__SWIG_34(self, args);
+            return _wrap_new_Mesh__SWIG_36(self, args);
           }
         }
       }
@@ -21694,6 +23030,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21702,6 +23039,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21713,13 +23051,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
             }
           }
           if (_v) {
-            return _wrap_new_Mesh__SWIG_37(self, args);
+            return _wrap_new_Mesh__SWIG_39(self, args);
           }
         }
       }
@@ -21732,6 +23071,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21740,6 +23080,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21751,7 +23092,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_Mesh__SWIG_20(self, args);
+            return _wrap_new_Mesh__SWIG_22(self, args);
           }
         }
       }
@@ -21763,7 +23104,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       _v = 0; // ignore this pattern
     }
     if (_v) {
-      return _wrap_new_Mesh__SWIG_13(self, args);
+      return _wrap_new_Mesh__SWIG_14(self, args);
     }
   }
   if (argc == 4) {
@@ -21773,14 +23114,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     }
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_bool(argv[3], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_Mesh__SWIG_16(self, args);
+        return _wrap_new_Mesh__SWIG_18(self, args);
       }
     }
   }
@@ -21788,6 +23126,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21796,6 +23135,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21804,6 +23144,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21812,6 +23153,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -21820,6 +23162,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -21837,6 +23180,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21845,6 +23189,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21853,6 +23198,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21864,13 +23210,14 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
               }
             }
             if (_v) {
-              return _wrap_new_Mesh__SWIG_33(self, args);
+              return _wrap_new_Mesh__SWIG_35(self, args);
             }
           }
         }
@@ -21881,6 +23228,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21889,6 +23237,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21900,6 +23249,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -21911,7 +23261,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
               _v = SWIG_CheckState(res);
             }
             if (_v) {
-              return _wrap_new_Mesh__SWIG_36(self, args);
+              return _wrap_new_Mesh__SWIG_38(self, args);
             }
           }
         }
@@ -21925,14 +23275,11 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     }
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_bool(argv[4], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_Mesh__SWIG_12(self, args);
+        return _wrap_new_Mesh__SWIG_13(self, args);
       }
     }
   }
@@ -21943,11 +23290,8 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     }
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_bool(argv[3], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         {
@@ -21955,7 +23299,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_new_Mesh__SWIG_15(self, args);
+          return _wrap_new_Mesh__SWIG_17(self, args);
         }
       }
     }
@@ -21964,6 +23308,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -21972,6 +23317,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -21980,6 +23326,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -21991,6 +23338,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -22002,7 +23350,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                 _v = SWIG_CheckState(res);
               }
               if (_v) {
-                return _wrap_new_Mesh__SWIG_32(self, args);
+                return _wrap_new_Mesh__SWIG_34(self, args);
               }
             }
           }
@@ -22014,6 +23362,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -22022,6 +23371,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -22033,6 +23383,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
         if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
               _v = 0;
             } else {
               _v = 1;    
@@ -22049,7 +23400,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                 _v = SWIG_CheckState(res);
               }
               if (_v) {
-                return _wrap_new_Mesh__SWIG_35(self, args);
+                return _wrap_new_Mesh__SWIG_37(self, args);
               }
             }
           }
@@ -22064,11 +23415,8 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     }
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_bool(argv[3], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         {
@@ -22081,7 +23429,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_Mesh__SWIG_14(self, args);
+            return _wrap_new_Mesh__SWIG_16(self, args);
           }
         }
       }
@@ -22094,11 +23442,8 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     }
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_bool(argv[4], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         {
@@ -22106,7 +23451,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_new_Mesh__SWIG_11(self, args);
+          return _wrap_new_Mesh__SWIG_12(self, args);
         }
       }
     }
@@ -22115,6 +23460,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -22123,6 +23469,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -22131,6 +23478,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -22142,6 +23490,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -22158,7 +23507,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                   _v = SWIG_CheckState(res);
                 }
                 if (_v) {
-                  return _wrap_new_Mesh__SWIG_31(self, args);
+                  return _wrap_new_Mesh__SWIG_33(self, args);
                 }
               }
             }
@@ -22174,11 +23523,41 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     }
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
+        int res = SWIG_AsVal_bool(argv[3], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[4], NULL);
+          _v = SWIG_CheckState(res);
         }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[5], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_bool(argv[6], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_new_Mesh__SWIG_15(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 7) {
+    int _v;
+    {
+      _v = 0; // ignore this pattern
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[4], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         {
@@ -22191,7 +23570,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_Mesh__SWIG_10(self, args);
+            return _wrap_new_Mesh__SWIG_11(self, args);
           }
         }
       }
@@ -22201,6 +23580,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
         _v = 0;
       } else {
         _v = 1;    
@@ -22209,6 +23589,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -22217,6 +23598,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
       if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
             _v = 0;
           } else {
             _v = 1;    
@@ -22228,6 +23610,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
           if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
                 _v = 0;
               } else {
                 _v = 1;    
@@ -22249,7 +23632,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                     _v = SWIG_CheckState(res);
                   }
                   if (_v) {
-                    return _wrap_new_Mesh__SWIG_30(self, args);
+                    return _wrap_new_Mesh__SWIG_32(self, args);
                   }
                 }
               }
@@ -22266,11 +23649,8 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     }
     if (_v) {
       {
-        if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+        int res = SWIG_AsVal_bool(argv[4], NULL);
+        _v = SWIG_CheckState(res);
       }
       if (_v) {
         {
@@ -22288,7 +23668,46 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
               _v = SWIG_CheckState(res);
             }
             if (_v) {
-              return _wrap_new_Mesh__SWIG_9(self, args);
+              return _wrap_new_Mesh__SWIG_10(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 9) {
+    int _v;
+    {
+      _v = 0; // ignore this pattern
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_bool(argv[4], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[5], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_double(argv[6], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            {
+              int res = SWIG_AsVal_double(argv[7], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              {
+                int res = SWIG_AsVal_bool(argv[8], NULL);
+                _v = SWIG_CheckState(res);
+              }
+              if (_v) {
+                return _wrap_new_Mesh__SWIG_9(self, args);
+              }
             }
           }
         }
@@ -22303,6 +23722,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -22324,6 +23744,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -22345,6 +23766,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                     if (_v) {
                       {
                         if ((PyArray_PyIntAsInt(argv[9]) == -1) && PyErr_Occurred()) {
+                          PyErr_Clear();
                           _v = 0;
                         } else {
                           _v = 1;    
@@ -22353,6 +23775,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                       if (_v) {
                         {
                           if ((PyArray_PyIntAsInt(argv[10]) == -1) && PyErr_Occurred()) {
+                            PyErr_Clear();
                             _v = 0;
                           } else {
                             _v = 1;    
@@ -22380,6 +23803,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -22401,6 +23825,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
             if (_v) {
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
                   _v = 0;
                 } else {
                   _v = 1;    
@@ -22422,6 +23847,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                     if (_v) {
                       {
                         if ((PyArray_PyIntAsInt(argv[9]) == -1) && PyErr_Occurred()) {
+                          PyErr_Clear();
                           _v = 0;
                         } else {
                           _v = 1;    
@@ -22430,6 +23856,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                       if (_v) {
                         {
                           if ((PyArray_PyIntAsInt(argv[10]) == -1) && PyErr_Occurred()) {
+                            PyErr_Clear();
                             _v = 0;
                           } else {
                             _v = 1;    
@@ -22438,6 +23865,7 @@ SWIGINTERN PyObject *_wrap_new_Mesh(PyObject *self, PyObject *args) {
                         if (_v) {
                           {
                             if ((PyArray_PyIntAsInt(argv[11]) == -1) && PyErr_Occurred()) {
+                              PyErr_Clear();
                               _v = 0;
                             } else {
                               _v = 1;    
@@ -22470,14 +23898,16 @@ fail:
     "    mfem::Mesh::Mesh(int,int,int,int,int)\n"
     "    mfem::Mesh::Mesh(int,int,int,int)\n"
     "    mfem::Mesh::Mesh(int,int,int)\n"
-    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,int,double,double,double)\n"
-    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,int,double,double)\n"
-    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,int,double)\n"
-    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,int)\n"
+    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,bool,double,double,double,bool)\n"
+    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,bool,double,double,double)\n"
+    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,bool,double,double)\n"
+    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,bool,double)\n"
+    "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type,bool)\n"
     "    mfem::Mesh::Mesh(int,int,int,mfem::Element::Type)\n"
-    "    mfem::Mesh::Mesh(int,int,mfem::Element::Type,int,double,double)\n"
-    "    mfem::Mesh::Mesh(int,int,mfem::Element::Type,int,double)\n"
-    "    mfem::Mesh::Mesh(int,int,mfem::Element::Type,int)\n"
+    "    mfem::Mesh::Mesh(int,int,mfem::Element::Type,bool,double,double,bool)\n"
+    "    mfem::Mesh::Mesh(int,int,mfem::Element::Type,bool,double,double)\n"
+    "    mfem::Mesh::Mesh(int,int,mfem::Element::Type,bool,double)\n"
+    "    mfem::Mesh::Mesh(int,int,mfem::Element::Type,bool)\n"
     "    mfem::Mesh::Mesh(int,int,mfem::Element::Type)\n"
     "    mfem::Mesh::Mesh(int,double)\n"
     "    mfem::Mesh::Mesh(int)\n"
@@ -22675,6 +24105,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementFace(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -22693,6 +24124,7 @@ SWIGINTERN PyObject *_wrap_Mesh_GetBdrElementFace(PyObject *self, PyObject *args
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -22826,6 +24258,776 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_PrintInfo",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintInfo" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintInfo" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_PrintInfo__SWIG_2(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintInfo__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_PrintInfo",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintInfo" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintInfo" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_PrintInfo__SWIG_2(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintInfo(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_PrintInfo__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_PrintInfo__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_PrintInfo__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintInfo__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintInfo'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::PrintInfo(std::ostream &)\n"
+    "    mfem::Mesh::PrintInfo()\n"
+    "    mfem::Mesh::PrintInfo(char const *,int)\n"
+    "    mfem::Mesh::PrintInfo(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_Print",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_Print" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_Print__SWIG_2(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_Print__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_Print",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_Print" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_Print" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_Print__SWIG_2(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_Print(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_Print__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_Print__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_Print__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_Print__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_Print'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::Print(std::ostream &) const\n"
+    "    mfem::Mesh::Print() const\n"
+    "    mfem::Mesh::Print(char const *,int)\n"
+    "    mfem::Mesh::Print(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_PrintXG",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintXG" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintXG" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_PrintXG__SWIG_2(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintXG__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_PrintXG",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintXG" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintXG" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_PrintXG__SWIG_2(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintXG(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Mesh_PrintXG__SWIG_1(self, args);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_PrintXG__SWIG_3(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_PrintXG__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintXG__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintXG'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::PrintXG(std::ostream &) const\n"
+    "    mfem::Mesh::PrintXG() const\n"
+    "    mfem::Mesh::PrintXG(char const *,int)\n"
+    "    mfem::Mesh::PrintXG(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Mesh_PrintVTK",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintVTK" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintVTK" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      mfem_Mesh_PrintVTK__SWIG_3(arg1,(char const *)arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintVTK__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Mesh_PrintVTK",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_PrintVTK" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintVTK" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  {
+    try {
+      mfem_Mesh_PrintVTK__SWIG_3(arg1,(char const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Mesh_PrintVTK(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Mesh_PrintVTK__SWIG_4(self, args);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_Mesh_PrintVTK__SWIG_0(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintVTK__SWIG_3(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Mesh_PrintVTK__SWIG_2(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_Mesh_PrintVTK__SWIG_1(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'Mesh_PrintVTK'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Mesh::PrintVTK(std::ostream &)\n"
+    "    mfem::Mesh::PrintVTK(std::ostream &,int,int)\n"
+    "    mfem::Mesh::PrintVTK(std::ostream &,int)\n"
+    "    mfem::Mesh::PrintVTK(char const *,int)\n"
+    "    mfem::Mesh::PrintVTK(char const *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *Mesh_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
@@ -22837,7 +25039,8 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   std::ostream *arg1 = 0 ;
   mfem::Mesh *arg2 = 0 ;
-  boost_ofdstream *stream1 = NULL ;
+  PyMFEM::wFILE *temp1 = 0 ;
+  std::ofstream out1 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
@@ -22846,15 +25049,18 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   
   if (!PyArg_ParseTuple(args,(char *)"OO:__lshift__",&obj0,&obj1)) SWIG_fail;
   {
-    FILE *f=PyFile_AsFile(obj0); // Verify the semantics of this
-    if (!f) {
-      SWIG_Error(SWIG_TypeError, "File object expected.");
-      SWIG_fail;
+    if (SWIG_ConvertPtr(obj0, (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp1->isSTDOUT() == 1) {
+      arg1 = &std::cout;
     }
     else {
-      // If threaded incrment the use count
-      stream1 = new boost_ofdstream(fileno(f), io::never_close_handle);
-      arg1 = new std::ostream(stream1);
+      out1.open(temp1->getFilename());
+      out1.precision(temp1->getPrecision());
+      arg1 = &out1;
     }
   }
   res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
@@ -22875,14 +25081,16 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
-    delete arg1;
-    delete stream1;
+    if (temp1->isSTDOUT() != 1) {
+      out1.close();
+    }
   }
   return resultobj;
 fail:
   {
-    delete arg1;
-    delete stream1;
+    if (temp1->isSTDOUT() != 1) {
+      out1.close();
+    }
   }
   return NULL;
 }
@@ -22903,10 +25111,12 @@ SWIGINTERN PyObject *_wrap___lshift__(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      if (PyFile_Check(argv[0])){
-        _v = 1;
-      } else {
+      void *ptr;
+      if (SWIG_ConvertPtr(argv[0], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+        PyErr_Clear();
         _v = 0;
+      } else {
+        _v = 1;    
       }
     }
     if (_v) {
@@ -22923,6 +25133,401 @@ fail:
   return Py_NotImplemented;
 }
 
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_mesh_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  mfem::Mesh *arg2 = (mfem::Mesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeometricFactors_mesh_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_mesh_set" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Mesh, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeometricFactors_mesh_set" "', argument " "2"" of type '" "mfem::Mesh const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
+  if (arg1) (arg1)->mesh = (mfem::Mesh const *)arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_mesh_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Mesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeometricFactors_mesh_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_mesh_get" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  result = (mfem::Mesh *) ((arg1)->mesh);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_IntRule_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  mfem::IntegrationRule *arg2 = (mfem::IntegrationRule *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeometricFactors_IntRule_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_IntRule_set" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeometricFactors_IntRule_set" "', argument " "2"" of type '" "mfem::IntegrationRule const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  if (arg1) (arg1)->IntRule = (mfem::IntegrationRule const *)arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_IntRule_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::IntegrationRule *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeometricFactors_IntRule_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_IntRule_get" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  result = (mfem::IntegrationRule *) ((arg1)->IntRule);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_computed_factors_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeometricFactors_computed_factors_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_computed_factors_set" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  if (arg1) (arg1)->computed_factors = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_computed_factors_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeometricFactors_computed_factors_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_computed_factors_get" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  result = (int) ((arg1)->computed_factors);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GeometricFactors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  mfem::IntegrationRule *arg2 = 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  mfem::GeometricFactors *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:new_GeometricFactors",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GeometricFactors" "', argument " "1"" of type '" "mfem::Mesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_GeometricFactors" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GeometricFactors" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  {
+    try {
+      result = (mfem::GeometricFactors *)new mfem::GeometricFactors((mfem::Mesh const *)arg1,(mfem::IntegrationRule const &)*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GeometricFactors, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_X_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  mfem::Vector *arg2 = (mfem::Vector *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeometricFactors_X_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_X_set" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeometricFactors_X_set" "', argument " "2"" of type '" "mfem::Vector *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  if (arg1) (arg1)->X = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_X_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Vector *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeometricFactors_X_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_X_get" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  result = (mfem::Vector *)& ((arg1)->X);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_J_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  mfem::Vector *arg2 = (mfem::Vector *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeometricFactors_J_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_J_set" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeometricFactors_J_set" "', argument " "2"" of type '" "mfem::Vector *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  if (arg1) (arg1)->J = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_J_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Vector *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeometricFactors_J_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_J_get" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  result = (mfem::Vector *)& ((arg1)->J);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_detJ_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  mfem::Vector *arg2 = (mfem::Vector *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:GeometricFactors_detJ_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_detJ_set" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeometricFactors_detJ_set" "', argument " "2"" of type '" "mfem::Vector *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  if (arg1) (arg1)->detJ = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeometricFactors_detJ_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  mfem::Vector *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:GeometricFactors_detJ_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeometricFactors_detJ_get" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  result = (mfem::Vector *)& ((arg1)->detJ);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_GeometricFactors(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeometricFactors *arg1 = (mfem::GeometricFactors *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_GeometricFactors",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GeometricFactors, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_GeometricFactors" "', argument " "1"" of type '" "mfem::GeometricFactors *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeometricFactors * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *GeometricFactors_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char *)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__GeometricFactors, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
 
 SWIGINTERN PyObject *_wrap_NodeExtrudeCoefficient_SetLayer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -23410,6 +26015,7 @@ SWIGINTERN PyObject *_wrap_Extrude1D(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -23434,6 +26040,7 @@ SWIGINTERN PyObject *_wrap_Extrude1D(PyObject *self, PyObject *args) {
     if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
           _v = 0;
         } else {
           _v = 1;    
@@ -23463,6 +26070,52 @@ fail:
     "    mfem::Extrude1D(mfem::Mesh *,int const,double const,bool const)\n"
     "    mfem::Extrude1D(mfem::Mesh *,int const,double const)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Extrude2D(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
+  int arg2 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  mfem::Mesh *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:Extrude2D",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Extrude2D" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Extrude2D" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (mfem::Mesh *)mfem::Extrude2D(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -23601,6 +26254,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_NURBSext_get", _wrap_Mesh_NURBSext_get, METH_VARARGS, (char *)"Mesh_NURBSext_get(Mesh self) -> mfem::NURBSExtension *"},
 	 { (char *)"Mesh_ncmesh_set", _wrap_Mesh_ncmesh_set, METH_VARARGS, (char *)"Mesh_ncmesh_set(Mesh self, NCMesh ncmesh)"},
 	 { (char *)"Mesh_ncmesh_get", _wrap_Mesh_ncmesh_get, METH_VARARGS, (char *)"Mesh_ncmesh_get(Mesh self) -> NCMesh"},
+	 { (char *)"Mesh_geom_factors_set", _wrap_Mesh_geom_factors_set, METH_VARARGS, (char *)"Mesh_geom_factors_set(Mesh self, mfem::Array< mfem::GeometricFactors * > * geom_factors)"},
+	 { (char *)"Mesh_geom_factors_get", _wrap_Mesh_geom_factors_get, METH_VARARGS, (char *)"Mesh_geom_factors_get(Mesh self) -> mfem::Array< mfem::GeometricFactors * > *"},
 	 { (char *)"Mesh_remove_unused_vertices_get", _wrap_Mesh_remove_unused_vertices_get, METH_VARARGS, NULL},
 	 { (char *)"Mesh_remove_unused_vertices_set", _wrap_Mesh_remove_unused_vertices_set, METH_VARARGS, NULL},
 	 { (char *)"Mesh_NewElement", _wrap_Mesh_NewElement, METH_VARARGS, (char *)"Mesh_NewElement(Mesh self, int geom) -> Element"},
@@ -23621,6 +26276,10 @@ static PyMethodDef SwigMethods[] = {
 		"AddTet(int const * vi, int attr=1)\n"
 		"Mesh_AddTet(Mesh self, int const * vi)\n"
 		""},
+	 { (char *)"Mesh_AddWedge", _wrap_Mesh_AddWedge, METH_VARARGS, (char *)"\n"
+		"AddWedge(int const * vi, int attr=1)\n"
+		"Mesh_AddWedge(Mesh self, int const * vi)\n"
+		""},
 	 { (char *)"Mesh_AddHex", _wrap_Mesh_AddHex, METH_VARARGS, (char *)"\n"
 		"AddHex(int const * vi, int attr=1)\n"
 		"Mesh_AddHex(Mesh self, int const * vi)\n"
@@ -23628,6 +26287,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_AddHexAsTets", _wrap_Mesh_AddHexAsTets, METH_VARARGS, (char *)"\n"
 		"AddHexAsTets(int const * vi, int attr=1)\n"
 		"Mesh_AddHexAsTets(Mesh self, int const * vi)\n"
+		""},
+	 { (char *)"Mesh_AddHexAsWedges", _wrap_Mesh_AddHexAsWedges, METH_VARARGS, (char *)"\n"
+		"AddHexAsWedges(int const * vi, int attr=1)\n"
+		"Mesh_AddHexAsWedges(Mesh self, int const * vi)\n"
 		""},
 	 { (char *)"Mesh_AddElement", _wrap_Mesh_AddElement, METH_VARARGS, (char *)"Mesh_AddElement(Mesh self, Element elem)"},
 	 { (char *)"Mesh_AddBdrElement", _wrap_Mesh_AddBdrElement, METH_VARARGS, (char *)"Mesh_AddBdrElement(Mesh self, Element elem)"},
@@ -23666,11 +26329,22 @@ static PyMethodDef SwigMethods[] = {
 		"FinalizeTetMesh(int generate_edges=0)\n"
 		"Mesh_FinalizeTetMesh(Mesh self)\n"
 		""},
+	 { (char *)"Mesh_FinalizeWedgeMesh", _wrap_Mesh_FinalizeWedgeMesh, METH_VARARGS, (char *)"\n"
+		"FinalizeWedgeMesh(int generate_edges=0, int refine=0, bool fix_orientation=True)\n"
+		"FinalizeWedgeMesh(int generate_edges=0, int refine=0)\n"
+		"FinalizeWedgeMesh(int generate_edges=0)\n"
+		"Mesh_FinalizeWedgeMesh(Mesh self)\n"
+		""},
 	 { (char *)"Mesh_FinalizeHexMesh", _wrap_Mesh_FinalizeHexMesh, METH_VARARGS, (char *)"\n"
 		"FinalizeHexMesh(int generate_edges=0, int refine=0, bool fix_orientation=True)\n"
 		"FinalizeHexMesh(int generate_edges=0, int refine=0)\n"
 		"FinalizeHexMesh(int generate_edges=0)\n"
 		"Mesh_FinalizeHexMesh(Mesh self)\n"
+		""},
+	 { (char *)"Mesh_FinalizeMesh", _wrap_Mesh_FinalizeMesh, METH_VARARGS, (char *)"\n"
+		"FinalizeMesh(int refine=0, bool fix_orientation=True)\n"
+		"FinalizeMesh(int refine=0)\n"
+		"Mesh_FinalizeMesh(Mesh self)\n"
 		""},
 	 { (char *)"Mesh_FinalizeTopology", _wrap_Mesh_FinalizeTopology, METH_VARARGS, (char *)"Mesh_FinalizeTopology(Mesh self)"},
 	 { (char *)"Mesh_Finalize", _wrap_Mesh_Finalize, METH_VARARGS, (char *)"\n"
@@ -23699,6 +26373,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_GetNumFaces", _wrap_Mesh_GetNumFaces, METH_VARARGS, (char *)"Mesh_GetNumFaces(Mesh self) -> int"},
 	 { (char *)"Mesh_ReduceInt", _wrap_Mesh_ReduceInt, METH_VARARGS, (char *)"Mesh_ReduceInt(Mesh self, int value) -> long"},
 	 { (char *)"Mesh_GetGlobalNE", _wrap_Mesh_GetGlobalNE, METH_VARARGS, (char *)"Mesh_GetGlobalNE(Mesh self) -> long"},
+	 { (char *)"Mesh_GetGeometricFactors", _wrap_Mesh_GetGeometricFactors, METH_VARARGS, (char *)"Mesh_GetGeometricFactors(Mesh self, IntegrationRule ir, int const flags) -> GeometricFactors"},
+	 { (char *)"Mesh_DeleteGeometricFactors", _wrap_Mesh_DeleteGeometricFactors, METH_VARARGS, (char *)"Mesh_DeleteGeometricFactors(Mesh self)"},
 	 { (char *)"Mesh_EulerNumber", _wrap_Mesh_EulerNumber, METH_VARARGS, (char *)"Mesh_EulerNumber(Mesh self) -> int"},
 	 { (char *)"Mesh_EulerNumber2D", _wrap_Mesh_EulerNumber2D, METH_VARARGS, (char *)"Mesh_EulerNumber2D(Mesh self) -> int"},
 	 { (char *)"Mesh_Dimension", _wrap_Mesh_Dimension, METH_VARARGS, (char *)"Mesh_Dimension(Mesh self) -> int"},
@@ -23723,15 +26399,12 @@ static PyMethodDef SwigMethods[] = {
 		"Mesh_GetBdrElement(Mesh self, int i) -> Element\n"
 		""},
 	 { (char *)"Mesh_GetFace", _wrap_Mesh_GetFace, METH_VARARGS, (char *)"Mesh_GetFace(Mesh self, int i) -> Element"},
-	 { (char *)"Mesh_GetFaceBaseGeometry", _wrap_Mesh_GetFaceBaseGeometry, METH_VARARGS, (char *)"Mesh_GetFaceBaseGeometry(Mesh self, int i) -> int"},
-	 { (char *)"Mesh_GetElementBaseGeometry", _wrap_Mesh_GetElementBaseGeometry, METH_VARARGS, (char *)"\n"
-		"GetElementBaseGeometry(int i=0) -> int\n"
-		"Mesh_GetElementBaseGeometry(Mesh self) -> int\n"
-		""},
-	 { (char *)"Mesh_GetBdrElementBaseGeometry", _wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS, (char *)"\n"
-		"GetBdrElementBaseGeometry(int i=0) -> int\n"
-		"Mesh_GetBdrElementBaseGeometry(Mesh self) -> int\n"
-		""},
+	 { (char *)"Mesh_GetFaceBaseGeometry", _wrap_Mesh_GetFaceBaseGeometry, METH_VARARGS, (char *)"Mesh_GetFaceBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"},
+	 { (char *)"Mesh_GetElementBaseGeometry", _wrap_Mesh_GetElementBaseGeometry, METH_VARARGS, (char *)"Mesh_GetElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"},
+	 { (char *)"Mesh_GetBdrElementBaseGeometry", _wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS, (char *)"Mesh_GetBdrElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"},
+	 { (char *)"Mesh_HasGeometry", _wrap_Mesh_HasGeometry, METH_VARARGS, (char *)"Mesh_HasGeometry(Mesh self, mfem::Geometry::Type geom) -> bool"},
+	 { (char *)"Mesh_GetNumGeometries", _wrap_Mesh_GetNumGeometries, METH_VARARGS, (char *)"Mesh_GetNumGeometries(Mesh self, int dim) -> int"},
+	 { (char *)"Mesh_GetGeometries", _wrap_Mesh_GetGeometries, METH_VARARGS, (char *)"Mesh_GetGeometries(Mesh self, int dim, mfem::Array< mfem::Geometry::Type > & el_geoms)"},
 	 { (char *)"Mesh_GetElementVertices", _wrap_Mesh_GetElementVertices, METH_VARARGS, (char *)"Mesh_GetElementVertices(Mesh self, int i, intArray v)"},
 	 { (char *)"Mesh_GetBdrElementVertices", _wrap_Mesh_GetBdrElementVertices, METH_VARARGS, (char *)"Mesh_GetBdrElementVertices(Mesh self, int i, intArray v)"},
 	 { (char *)"Mesh_GetElementEdges", _wrap_Mesh_GetElementEdges, METH_VARARGS, (char *)"Mesh_GetElementEdges(Mesh self, int i, intArray edges, intArray cor)"},
@@ -23744,11 +26417,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_GetElementFaces", _wrap_Mesh_GetElementFaces, METH_VARARGS, (char *)"Mesh_GetElementFaces(Mesh self, int i, intArray arg4, intArray arg5)"},
 	 { (char *)"Mesh_GetBdrElementEdgeIndex", _wrap_Mesh_GetBdrElementEdgeIndex, METH_VARARGS, (char *)"Mesh_GetBdrElementEdgeIndex(Mesh self, int i) -> int"},
 	 { (char *)"Mesh_GetBdrElementAdjacentElement", _wrap_Mesh_GetBdrElementAdjacentElement, METH_VARARGS, (char *)"Mesh_GetBdrElementAdjacentElement(Mesh self, int bdr_el, int & el, int & info)"},
-	 { (char *)"Mesh_GetElementType", _wrap_Mesh_GetElementType, METH_VARARGS, (char *)"Mesh_GetElementType(Mesh self, int i) -> int"},
-	 { (char *)"Mesh_GetBdrElementType", _wrap_Mesh_GetBdrElementType, METH_VARARGS, (char *)"Mesh_GetBdrElementType(Mesh self, int i) -> int"},
+	 { (char *)"Mesh_GetElementType", _wrap_Mesh_GetElementType, METH_VARARGS, (char *)"Mesh_GetElementType(Mesh self, int i) -> mfem::Element::Type"},
+	 { (char *)"Mesh_GetBdrElementType", _wrap_Mesh_GetBdrElementType, METH_VARARGS, (char *)"Mesh_GetBdrElementType(Mesh self, int i) -> mfem::Element::Type"},
 	 { (char *)"Mesh_GetPointMatrix", _wrap_Mesh_GetPointMatrix, METH_VARARGS, (char *)"Mesh_GetPointMatrix(Mesh self, int i, DenseMatrix pointmat)"},
 	 { (char *)"Mesh_GetBdrPointMatrix", _wrap_Mesh_GetBdrPointMatrix, METH_VARARGS, (char *)"Mesh_GetBdrPointMatrix(Mesh self, int i, DenseMatrix pointmat)"},
-	 { (char *)"Mesh_GetTransformationFEforElementType", _wrap_Mesh_GetTransformationFEforElementType, METH_VARARGS, (char *)"Mesh_GetTransformationFEforElementType(int arg2) -> FiniteElement"},
+	 { (char *)"Mesh_GetTransformationFEforElementType", _wrap_Mesh_GetTransformationFEforElementType, METH_VARARGS, (char *)"Mesh_GetTransformationFEforElementType(mfem::Element::Type arg2) -> FiniteElement"},
 	 { (char *)"Mesh_GetElementTransformation", _wrap_Mesh_GetElementTransformation, METH_VARARGS, (char *)"\n"
 		"GetElementTransformation(int i, IsoparametricTransformation ElTr)\n"
 		"GetElementTransformation(int i) -> ElementTransformation\n"
@@ -23776,8 +26449,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_FaceIsInterior", _wrap_Mesh_FaceIsInterior, METH_VARARGS, (char *)"Mesh_FaceIsInterior(Mesh self, int FaceNo) -> bool"},
 	 { (char *)"Mesh_GetFaceElements", _wrap_Mesh_GetFaceElements, METH_VARARGS, (char *)"Mesh_GetFaceElements(Mesh self, int Face, int * Elem1, int * Elem2)"},
 	 { (char *)"Mesh_GetFaceInfos", _wrap_Mesh_GetFaceInfos, METH_VARARGS, (char *)"Mesh_GetFaceInfos(Mesh self, int Face, int * Inf1, int * Inf2)"},
-	 { (char *)"Mesh_GetFaceGeometryType", _wrap_Mesh_GetFaceGeometryType, METH_VARARGS, (char *)"Mesh_GetFaceGeometryType(Mesh self, int Face) -> int"},
-	 { (char *)"Mesh_GetFaceElementType", _wrap_Mesh_GetFaceElementType, METH_VARARGS, (char *)"Mesh_GetFaceElementType(Mesh self, int Face) -> int"},
+	 { (char *)"Mesh_GetFaceGeometryType", _wrap_Mesh_GetFaceGeometryType, METH_VARARGS, (char *)"Mesh_GetFaceGeometryType(Mesh self, int Face) -> mfem::Geometry::Type"},
+	 { (char *)"Mesh_GetFaceElementType", _wrap_Mesh_GetFaceElementType, METH_VARARGS, (char *)"Mesh_GetFaceElementType(Mesh self, int Face) -> mfem::Element::Type"},
 	 { (char *)"Mesh_CheckElementOrientation", _wrap_Mesh_CheckElementOrientation, METH_VARARGS, (char *)"\n"
 		"CheckElementOrientation(bool fix_it=True) -> int\n"
 		"Mesh_CheckElementOrientation(Mesh self) -> int\n"
@@ -23828,13 +26501,17 @@ static PyMethodDef SwigMethods[] = {
 		"Mesh_SetNodalGridFunction(Mesh self, GridFunction nodes)\n"
 		""},
 	 { (char *)"Mesh_GetNodalFESpace", _wrap_Mesh_GetNodalFESpace, METH_VARARGS, (char *)"Mesh_GetNodalFESpace(Mesh self) -> FiniteElementSpace"},
+	 { (char *)"Mesh_EnsureNodes", _wrap_Mesh_EnsureNodes, METH_VARARGS, (char *)"Mesh_EnsureNodes(Mesh self)"},
 	 { (char *)"Mesh_SetCurvature", _wrap_Mesh_SetCurvature, METH_VARARGS, (char *)"\n"
 		"SetCurvature(int order, bool discont=False, int space_dim=-1, int ordering=1)\n"
 		"SetCurvature(int order, bool discont=False, int space_dim=-1)\n"
 		"SetCurvature(int order, bool discont=False)\n"
 		"Mesh_SetCurvature(Mesh self, int order)\n"
 		""},
-	 { (char *)"Mesh_UniformRefinement", _wrap_Mesh_UniformRefinement, METH_VARARGS, (char *)"Mesh_UniformRefinement(Mesh self)"},
+	 { (char *)"Mesh_UniformRefinement", _wrap_Mesh_UniformRefinement, METH_VARARGS, (char *)"\n"
+		"UniformRefinement(int ref_algo=0)\n"
+		"Mesh_UniformRefinement(Mesh self)\n"
+		""},
 	 { (char *)"Mesh_GeneralRefinement", _wrap_Mesh_GeneralRefinement, METH_VARARGS, (char *)"\n"
 		"GeneralRefinement(mfem::Array< mfem::Refinement > const & refinements, int nonconforming=-1, int nc_limit=0)\n"
 		"GeneralRefinement(mfem::Array< mfem::Refinement > const & refinements, int nonconforming=-1)\n"
@@ -23884,19 +26561,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_GetRefinementTransforms", _wrap_Mesh_GetRefinementTransforms, METH_VARARGS, (char *)"Mesh_GetRefinementTransforms(Mesh self) -> CoarseFineTransformations"},
 	 { (char *)"Mesh_GetLastOperation", _wrap_Mesh_GetLastOperation, METH_VARARGS, (char *)"Mesh_GetLastOperation(Mesh self) -> mfem::Mesh::Operation"},
 	 { (char *)"Mesh_GetSequence", _wrap_Mesh_GetSequence, METH_VARARGS, (char *)"Mesh_GetSequence(Mesh self) -> long"},
-	 { (char *)"Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, (char *)"\n"
-		"PrintXG(std::ostream & out)\n"
-		"Mesh_PrintXG(Mesh self)\n"
-		""},
-	 { (char *)"Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, (char *)"\n"
-		"Print(std::ostream & out)\n"
-		"Mesh_Print(Mesh self)\n"
-		""},
-	 { (char *)"Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, (char *)"\n"
-		"PrintVTK(std::ostream & out)\n"
-		"PrintVTK(std::ostream & out, int ref, int field_data=0)\n"
-		"Mesh_PrintVTK(Mesh self, std::ostream & out, int ref)\n"
-		""},
 	 { (char *)"Mesh_GetElementColoring", _wrap_Mesh_GetElementColoring, METH_VARARGS, (char *)"\n"
 		"GetElementColoring(intArray colors, int el0=0)\n"
 		"Mesh_GetElementColoring(Mesh self, intArray colors)\n"
@@ -23933,15 +26597,12 @@ static PyMethodDef SwigMethods[] = {
 		"GetCharacteristics(double & h_min, double & h_max, double & kappa_min, double & kappa_max, Vector Vh=None)\n"
 		"Mesh_GetCharacteristics(Mesh self, double & h_min, double & h_max, double & kappa_min, double & kappa_max)\n"
 		""},
+	 { (char *)"Mesh_PrintElementsByGeometry", _wrap_Mesh_PrintElementsByGeometry, METH_VARARGS, (char *)"Mesh_PrintElementsByGeometry(int dim, intArray num_elems_by_geom, std::ostream & out)"},
 	 { (char *)"Mesh_PrintCharacteristics", _wrap_Mesh_PrintCharacteristics, METH_VARARGS, (char *)"\n"
 		"PrintCharacteristics(Vector Vh=None, Vector Vk=None, std::ostream & out)\n"
 		"PrintCharacteristics(Vector Vh=None, Vector Vk=None)\n"
 		"PrintCharacteristics(Vector Vh=None)\n"
 		"Mesh_PrintCharacteristics(Mesh self)\n"
-		""},
-	 { (char *)"Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, (char *)"\n"
-		"PrintInfo(std::ostream & out)\n"
-		"Mesh_PrintInfo(Mesh self)\n"
 		""},
 	 { (char *)"Mesh_FindPoints", _wrap_Mesh_FindPoints, METH_VARARGS, (char *)"\n"
 		"FindPoints(DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int\n"
@@ -23958,14 +26619,16 @@ static PyMethodDef SwigMethods[] = {
 		"Mesh(int _Dim, int NVert, int NElem, int NBdrElem=0, int _spaceDim=-1)\n"
 		"Mesh(int _Dim, int NVert, int NElem, int NBdrElem=0)\n"
 		"Mesh(int _Dim, int NVert, int NElem)\n"
-		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0, double sz=1.0)\n"
-		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0)\n"
-		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0, double sx=1.0)\n"
-		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, int generate_edges=0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0, double sz=1.0, bool sfc_ordering=True)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0, double sz=1.0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False, double sx=1.0)\n"
+		"Mesh(int nx, int ny, int nz, mfem::Element::Type type, bool generate_edges=False)\n"
 		"Mesh(int nx, int ny, int nz, mfem::Element::Type type)\n"
-		"Mesh(int nx, int ny, mfem::Element::Type type, int generate_edges=0, double sx=1.0, double sy=1.0)\n"
-		"Mesh(int nx, int ny, mfem::Element::Type type, int generate_edges=0, double sx=1.0)\n"
-		"Mesh(int nx, int ny, mfem::Element::Type type, int generate_edges=0)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0, bool sfc_ordering=True)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type, bool generate_edges=False, double sx=1.0, double sy=1.0)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type, bool generate_edges=False, double sx=1.0)\n"
+		"Mesh(int nx, int ny, mfem::Element::Type type, bool generate_edges=False)\n"
 		"Mesh(int nx, int ny, mfem::Element::Type type)\n"
 		"Mesh(int n, double sx=1.0)\n"
 		"Mesh(int n)\n"
@@ -23999,12 +26662,52 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Mesh_GetBdrAttributeArray", _wrap_Mesh_GetBdrAttributeArray, METH_VARARGS, (char *)"Mesh_GetBdrAttributeArray(Mesh self) -> PyObject *"},
 	 { (char *)"Mesh_GetBdrArray", _wrap_Mesh_GetBdrArray, METH_VARARGS, (char *)"Mesh_GetBdrArray(Mesh self, int idx) -> PyObject *"},
 	 { (char *)"Mesh_GetDomainArray", _wrap_Mesh_GetDomainArray, METH_VARARGS, (char *)"Mesh_GetDomainArray(Mesh self, int idx) -> PyObject *"},
+	 { (char *)"Mesh_PrintInfo", _wrap_Mesh_PrintInfo, METH_VARARGS, (char *)"\n"
+		"PrintInfo(std::ostream & out)\n"
+		"PrintInfo()\n"
+		"PrintInfo(char const * file, int precision=8)\n"
+		"Mesh_PrintInfo(Mesh self, char const * file)\n"
+		""},
+	 { (char *)"Mesh_Print", _wrap_Mesh_Print, METH_VARARGS, (char *)"\n"
+		"Print(std::ostream & out)\n"
+		"Print()\n"
+		"Print(char const * file, int precision=8)\n"
+		"Mesh_Print(Mesh self, char const * file)\n"
+		""},
+	 { (char *)"Mesh_PrintXG", _wrap_Mesh_PrintXG, METH_VARARGS, (char *)"\n"
+		"PrintXG(std::ostream & out)\n"
+		"PrintXG()\n"
+		"PrintXG(char const * file, int precision=8)\n"
+		"Mesh_PrintXG(Mesh self, char const * file)\n"
+		""},
+	 { (char *)"Mesh_PrintVTK", _wrap_Mesh_PrintVTK, METH_VARARGS, (char *)"\n"
+		"PrintVTK(std::ostream & out)\n"
+		"PrintVTK(std::ostream & out, int ref, int field_data=0)\n"
+		"PrintVTK(std::ostream & out, int ref)\n"
+		"PrintVTK(char const * file, int precision=8)\n"
+		"Mesh_PrintVTK(Mesh self, char const * file)\n"
+		""},
 	 { (char *)"Mesh_swigregister", Mesh_swigregister, METH_VARARGS, NULL},
 	 { (char *)"__lshift__", _wrap___lshift__, METH_VARARGS, (char *)"\n"
 		"__lshift__(std::ostream & out, GridFunction sol) -> std::ostream\n"
 		"__lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream\n"
 		"__lshift__(std::ostream & out, Mesh mesh) -> std::ostream &\n"
 		""},
+	 { (char *)"GeometricFactors_mesh_set", _wrap_GeometricFactors_mesh_set, METH_VARARGS, (char *)"GeometricFactors_mesh_set(GeometricFactors self, Mesh mesh)"},
+	 { (char *)"GeometricFactors_mesh_get", _wrap_GeometricFactors_mesh_get, METH_VARARGS, (char *)"GeometricFactors_mesh_get(GeometricFactors self) -> Mesh"},
+	 { (char *)"GeometricFactors_IntRule_set", _wrap_GeometricFactors_IntRule_set, METH_VARARGS, (char *)"GeometricFactors_IntRule_set(GeometricFactors self, IntegrationRule IntRule)"},
+	 { (char *)"GeometricFactors_IntRule_get", _wrap_GeometricFactors_IntRule_get, METH_VARARGS, (char *)"GeometricFactors_IntRule_get(GeometricFactors self) -> IntegrationRule"},
+	 { (char *)"GeometricFactors_computed_factors_set", _wrap_GeometricFactors_computed_factors_set, METH_VARARGS, (char *)"GeometricFactors_computed_factors_set(GeometricFactors self, int computed_factors)"},
+	 { (char *)"GeometricFactors_computed_factors_get", _wrap_GeometricFactors_computed_factors_get, METH_VARARGS, (char *)"GeometricFactors_computed_factors_get(GeometricFactors self) -> int"},
+	 { (char *)"new_GeometricFactors", _wrap_new_GeometricFactors, METH_VARARGS, (char *)"new_GeometricFactors(Mesh mesh, IntegrationRule ir, int flags) -> GeometricFactors"},
+	 { (char *)"GeometricFactors_X_set", _wrap_GeometricFactors_X_set, METH_VARARGS, (char *)"GeometricFactors_X_set(GeometricFactors self, Vector X)"},
+	 { (char *)"GeometricFactors_X_get", _wrap_GeometricFactors_X_get, METH_VARARGS, (char *)"GeometricFactors_X_get(GeometricFactors self) -> Vector"},
+	 { (char *)"GeometricFactors_J_set", _wrap_GeometricFactors_J_set, METH_VARARGS, (char *)"GeometricFactors_J_set(GeometricFactors self, Vector J)"},
+	 { (char *)"GeometricFactors_J_get", _wrap_GeometricFactors_J_get, METH_VARARGS, (char *)"GeometricFactors_J_get(GeometricFactors self) -> Vector"},
+	 { (char *)"GeometricFactors_detJ_set", _wrap_GeometricFactors_detJ_set, METH_VARARGS, (char *)"GeometricFactors_detJ_set(GeometricFactors self, Vector detJ)"},
+	 { (char *)"GeometricFactors_detJ_get", _wrap_GeometricFactors_detJ_get, METH_VARARGS, (char *)"GeometricFactors_detJ_get(GeometricFactors self) -> Vector"},
+	 { (char *)"delete_GeometricFactors", _wrap_delete_GeometricFactors, METH_VARARGS, (char *)"delete_GeometricFactors(GeometricFactors self)"},
+	 { (char *)"GeometricFactors_swigregister", GeometricFactors_swigregister, METH_VARARGS, NULL},
 	 { (char *)"NodeExtrudeCoefficient_SetLayer", _wrap_NodeExtrudeCoefficient_SetLayer, METH_VARARGS, (char *)"NodeExtrudeCoefficient_SetLayer(NodeExtrudeCoefficient self, int const l)"},
 	 { (char *)"NodeExtrudeCoefficient_Eval", _wrap_NodeExtrudeCoefficient_Eval, METH_VARARGS, (char *)"\n"
 		"Eval(Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -24017,6 +26720,7 @@ static PyMethodDef SwigMethods[] = {
 		"Extrude1D(Mesh mesh, int const ny, double const sy, bool const closed=False) -> Mesh\n"
 		"Extrude1D(Mesh mesh, int const ny, double const sy) -> Mesh\n"
 		""},
+	 { (char *)"Extrude2D", _wrap_Extrude2D, METH_VARARGS, (char *)"Extrude2D(Mesh mesh, int const nz, double const sz) -> Mesh"},
 	 { (char *)"named_ifgzstream_filename_set", _wrap_named_ifgzstream_filename_set, METH_VARARGS, (char *)"named_ifgzstream_filename_set(named_ifgzstream self, char const * filename)"},
 	 { (char *)"named_ifgzstream_filename_get", _wrap_named_ifgzstream_filename_get, METH_VARARGS, (char *)"named_ifgzstream_filename_get(named_ifgzstream self) -> char const *"},
 	 { (char *)"new_named_ifgzstream", _wrap_new_named_ifgzstream, METH_VARARGS, (char *)"new_named_ifgzstream(char const * mesh_name) -> named_ifgzstream"},
@@ -24028,44 +26732,68 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
-}
-static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
-}
-static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
-}
-static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
-}
-static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
-}
 static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorCoefficient *) (mfem::VectorFunctionCoefficient *) ((mfem::VectorPyCoefficientBase *) x));
 }
 static void *_p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorCoefficient *)  ((mfem::NodeExtrudeCoefficient *) x));
 }
-static void *_p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TriangleElement *) x));
+static void *_p_mfem__MatVecCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::MatVecCoefficient *) x));
 }
-static void *_p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TriangleElement *) x));
+static void *_p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorCrossProductCoefficient *) x));
 }
-static void *_p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
+static void *_p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::ScalarVectorProductCoefficient *) x));
 }
-static void *_p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_HexahedronElement *) x));
+static void *_p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorSumCoefficient *) x));
 }
-static void *_p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_QuadrilateralElement *) x));
+static void *_p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorRestrictedCoefficient *) x));
+}
+static void *_p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorDeltaCoefficient *) x));
+}
+static void *_p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::CurlGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::GradientGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorGridFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorArrayCoefficient *) x));
+}
+static void *_p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorFunctionCoefficient *) x));
+}
+static void *_p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorCoefficient *)  ((mfem::VectorConstantCoefficient *) x));
+}
+static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
+}
+static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
+}
+static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
+}
+static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
+}
+static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Table *)  ((mfem::STable *) x));
+}
+static void *_p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ElementTransformation *)  ((mfem::IsoparametricTransformation *) x));
+}
+static void *_p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Array< mfem::IntegrationPoint > *)  ((mfem::IntegrationRule *) x));
 }
 static void *_p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_QuadrilateralElement *) x));
@@ -24075,6 +26803,21 @@ static void *_p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int 
 }
 static void *_p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_SegmentElement *) x));
+}
+static void *_p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_WedgeElement *) x));
+}
+static void *_p_mfem__BiCubic3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::H1_WedgeElement *) ((mfem::BiCubic3DFiniteElement *) x));
+}
+static void *_p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::H1_WedgeElement *) ((mfem::BiQuadratic3DFiniteElement *) x));
+}
+static void *_p_mfem__BiLinear3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::H1_WedgeElement *) ((mfem::BiLinear3DFiniteElement *) x));
+}
+static void *_p_mfem__H1_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::H1_WedgeElement *) x));
 }
 static void *_p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::H1Pos_TetrahedronElement *) x));
@@ -24274,11 +27017,35 @@ static void *_p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement(void *x, 
 static void *_p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT1QuadFiniteElement *) x));
 }
+static void *_p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_QuadrilateralElement *) x));
+}
+static void *_p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_HexahedronElement *) x));
+}
+static void *_p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
+}
+static void *_p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TriangleElement *) x));
+}
+static void *_p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TriangleElement *) x));
+}
 static void *_p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_TetrahedronElement *) x));
 }
 static void *_p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_TetrahedronElement *) x));
+}
+static void *_p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *) ((mfem::L2_WedgeElement *) x));
+}
+static void *_p_mfem__P0WedgeFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::L2_WedgeElement *) ((mfem::P0WedgeFiniteElement *) x));
+}
+static void *_p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::L2Pos_WedgeElement *) x));
 }
 static void *_p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_QuadrilateralElement *) x));
@@ -24319,28 +27086,8 @@ static void *_p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement(void *x, int 
 static void *_p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NURBSFiniteElement *) ((mfem::NURBS3DFiniteElement *) x));
 }
-static void *_p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ElementTransformation *)  ((mfem::IsoparametricTransformation *) x));
-}
-static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Table *)  ((mfem::STable *) x));
-}
-static void *_p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Array< mfem::IntegrationPoint > *)  ((mfem::IntegrationRule *) x));
-}
-static void *_p_mfem__HypreParVectorTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::HypreParVector *) x));
-}
-static void *_p_mfem__GridFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::GridFunction *) x));
-}
-static void *_p_mfem__QuadratureFunctionTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::QuadratureFunction *) x));
-}
-static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Vector *)  ((mfem::LinearForm *) x));
-}
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void = {"_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void", "void (*)(mfem::Vector const &,mfem::Vector &)", 0, 0, (void*)0, 0};
@@ -24348,6 +27095,8 @@ static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_double_t = {"_p_mfem__ArrayT_double_t", "mfem::Array< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__GeometricFactors_p_t = {"_p_mfem__ArrayT_mfem__GeometricFactors_p_t", "mfem::Array< mfem::GeometricFactors * > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__Geometry__Type_t = {"_p_mfem__ArrayT_mfem__Geometry__Type_t", "mfem::Array< enum mfem::Geometry::Type > *|mfem::Array< mfem::Geometry::Type > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t = {"_p_mfem__ArrayT_mfem__IntegrationPoint_t", "mfem::Array< mfem::IntegrationPoint > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__KnotVector_p_t = {"_p_mfem__ArrayT_mfem__KnotVector_p_t", "mfem::Array< mfem::KnotVector * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Refinement_t = {"_p_mfem__ArrayT_mfem__Refinement_t", "mfem::Array< mfem::Refinement > *", 0, 0, (void*)0, 0};
@@ -24377,14 +27126,14 @@ static swig_type_info _swigt__p_mfem__H1_QuadrilateralElement = {"_p_mfem__H1_Qu
 static swig_type_info _swigt__p_mfem__H1_HexahedronElement = {"_p_mfem__H1_HexahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_SegmentElement = {"_p_mfem__H1Pos_SegmentElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_QuadrilateralElement = {"_p_mfem__H1Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_TriangleElement = {"_p_mfem__L2Pos_TriangleElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_TriangleElement = {"_p_mfem__L2_TriangleElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_HexahedronElement = {"_p_mfem__L2Pos_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2_HexahedronElement = {"_p_mfem__L2_HexahedronElement", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__L2Pos_QuadrilateralElement = {"_p_mfem__L2Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2_QuadrilateralElement = {"_p_mfem__L2_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2Pos_SegmentElement = {"_p_mfem__L2Pos_SegmentElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2_SegmentElement = {"_p_mfem__L2_SegmentElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Pos_WedgeElement = {"_p_mfem__H1Pos_WedgeElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__BiCubic3DFiniteElement = {"_p_mfem__BiCubic3DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__BiQuadratic3DFiniteElement = {"_p_mfem__BiQuadratic3DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__BiLinear3DFiniteElement = {"_p_mfem__BiLinear3DFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1_WedgeElement = {"_p_mfem__H1_WedgeElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_TetrahedronElement = {"_p_mfem__H1Pos_TetrahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_TriangleElement = {"_p_mfem__H1Pos_TriangleElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_TetrahedronElement = {"_p_mfem__H1_TetrahedronElement", 0, 0, 0, 0, 0};
@@ -24431,8 +27180,16 @@ static swig_type_info _swigt__p_mfem__Quad1DFiniteElement = {"_p_mfem__Quad1DFin
 static swig_type_info _swigt__p_mfem__QuadPos1DFiniteElement = {"_p_mfem__QuadPos1DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Quad2DFiniteElement = {"_p_mfem__Quad2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT1QuadFiniteElement = {"_p_mfem__RT1QuadFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_QuadrilateralElement = {"_p_mfem__L2Pos_QuadrilateralElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_HexahedronElement = {"_p_mfem__L2_HexahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_HexahedronElement = {"_p_mfem__L2Pos_HexahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_TriangleElement = {"_p_mfem__L2_TriangleElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_TriangleElement = {"_p_mfem__L2Pos_TriangleElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2_TetrahedronElement = {"_p_mfem__L2_TetrahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__L2Pos_TetrahedronElement = {"_p_mfem__L2Pos_TetrahedronElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2_WedgeElement = {"_p_mfem__L2_WedgeElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__P0WedgeFiniteElement = {"_p_mfem__P0WedgeFiniteElement", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__L2Pos_WedgeElement = {"_p_mfem__L2Pos_WedgeElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_QuadrilateralElement = {"_p_mfem__RT_QuadrilateralElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_HexahedronElement = {"_p_mfem__RT_HexahedronElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_TriangleElement = {"_p_mfem__RT_TriangleElement", 0, 0, 0, 0, 0};
@@ -24447,6 +27204,7 @@ static swig_type_info _swigt__p_mfem__NURBS1DFiniteElement = {"_p_mfem__NURBS1DF
 static swig_type_info _swigt__p_mfem__NURBS2DFiniteElement = {"_p_mfem__NURBS2DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NURBS3DFiniteElement = {"_p_mfem__NURBS3DFiniteElement", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GeometricFactors = {"_p_mfem__GeometricFactors", "mfem::GeometricFactors *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationPoint = {"_p_mfem__IntegrationPoint", "mfem::IntegrationPoint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
@@ -24457,6 +27215,7 @@ static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0
 static swig_type_info _swigt__p_mfem__NCMesh = {"_p_mfem__NCMesh", "mfem::NCMesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NURBSExtension = {"_p_mfem__NURBSExtension", "mfem::NURBSExtension *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NodeExtrudeCoefficient = {"_p_mfem__NodeExtrudeCoefficient", "mfem::NodeExtrudeCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__QuadratureFunction = {"_p_mfem__QuadratureFunction", "mfem::QuadratureFunction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
@@ -24464,18 +27223,25 @@ static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector
 static swig_type_info _swigt__p_mfem__HypreParVector = {"_p_mfem__HypreParVector", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearForm = {"_p_mfem__LinearForm", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorPyCoefficientBase = {"_p_mfem__VectorPyCoefficientBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__MatVecCoefficient = {"_p_mfem__MatVecCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorCrossProductCoefficient = {"_p_mfem__VectorCrossProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScalarVectorProductCoefficient = {"_p_mfem__ScalarVectorProductCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorSumCoefficient = {"_p_mfem__VectorSumCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorRestrictedCoefficient = {"_p_mfem__VectorRestrictedCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorDeltaCoefficient = {"_p_mfem__VectorDeltaCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__CurlGridFunctionCoefficient = {"_p_mfem__CurlGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__GradientGridFunctionCoefficient = {"_p_mfem__GradientGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorGridFunctionCoefficient = {"_p_mfem__VectorGridFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorArrayCoefficient = {"_p_mfem__VectorArrayCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorFunctionCoefficient = {"_p_mfem__VectorFunctionCoefficient", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorConstantCoefficient = {"_p_mfem__VectorConstantCoefficient", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Vertex = {"_p_mfem__Vertex", "mfem::Vertex *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__named_ifgzstream = {"_p_mfem__named_ifgzstream", "mfem::named_ifgzstream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_mfem__Element = {"_p_p_mfem__Element", "mfem::Element **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_mfem__GridFunction = {"_p_p_mfem__GridFunction", "mfem::GridFunction **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_mfem__Mesh = {"_p_p_mfem__Mesh", "mfem::Mesh **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
@@ -24485,6 +27251,7 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void,
@@ -24492,19 +27259,25 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_double_t,
   &_swigt__p_mfem__ArrayT_int_t,
+  &_swigt__p_mfem__ArrayT_mfem__GeometricFactors_p_t,
+  &_swigt__p_mfem__ArrayT_mfem__Geometry__Type_t,
   &_swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t,
   &_swigt__p_mfem__ArrayT_mfem__KnotVector_p_t,
   &_swigt__p_mfem__ArrayT_mfem__Refinement_t,
   &_swigt__p_mfem__BiCubic2DFiniteElement,
+  &_swigt__p_mfem__BiCubic3DFiniteElement,
   &_swigt__p_mfem__BiLinear2DFiniteElement,
+  &_swigt__p_mfem__BiLinear3DFiniteElement,
   &_swigt__p_mfem__BiQuad2DFiniteElement,
   &_swigt__p_mfem__BiQuadPos2DFiniteElement,
+  &_swigt__p_mfem__BiQuadratic3DFiniteElement,
   &_swigt__p_mfem__CoarseFineTransformations,
   &_swigt__p_mfem__CrouzeixRaviartFiniteElement,
   &_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement,
   &_swigt__p_mfem__Cubic1DFiniteElement,
   &_swigt__p_mfem__Cubic2DFiniteElement,
   &_swigt__p_mfem__Cubic3DFiniteElement,
+  &_swigt__p_mfem__CurlGridFunctionCoefficient,
   &_swigt__p_mfem__DenseMatrix,
   &_swigt__p_mfem__Element,
   &_swigt__p_mfem__ElementTransformation,
@@ -24515,17 +27288,21 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__GaussBiQuad2DFiniteElement,
   &_swigt__p_mfem__GaussLinear2DFiniteElement,
   &_swigt__p_mfem__GaussQuad2DFiniteElement,
+  &_swigt__p_mfem__GeometricFactors,
+  &_swigt__p_mfem__GradientGridFunctionCoefficient,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__H1Pos_HexahedronElement,
   &_swigt__p_mfem__H1Pos_QuadrilateralElement,
   &_swigt__p_mfem__H1Pos_SegmentElement,
   &_swigt__p_mfem__H1Pos_TetrahedronElement,
   &_swigt__p_mfem__H1Pos_TriangleElement,
+  &_swigt__p_mfem__H1Pos_WedgeElement,
   &_swigt__p_mfem__H1_HexahedronElement,
   &_swigt__p_mfem__H1_QuadrilateralElement,
   &_swigt__p_mfem__H1_SegmentElement,
   &_swigt__p_mfem__H1_TetrahedronElement,
   &_swigt__p_mfem__H1_TriangleElement,
+  &_swigt__p_mfem__H1_WedgeElement,
   &_swigt__p_mfem__HypreParVector,
   &_swigt__p_mfem__IntegrationPoint,
   &_swigt__p_mfem__IntegrationRule,
@@ -24536,18 +27313,21 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__L2Pos_SegmentElement,
   &_swigt__p_mfem__L2Pos_TetrahedronElement,
   &_swigt__p_mfem__L2Pos_TriangleElement,
+  &_swigt__p_mfem__L2Pos_WedgeElement,
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__L2_HexahedronElement,
   &_swigt__p_mfem__L2_QuadrilateralElement,
   &_swigt__p_mfem__L2_SegmentElement,
   &_swigt__p_mfem__L2_TetrahedronElement,
   &_swigt__p_mfem__L2_TriangleElement,
+  &_swigt__p_mfem__L2_WedgeElement,
   &_swigt__p_mfem__Lagrange1DFiniteElement,
   &_swigt__p_mfem__LagrangeHexFiniteElement,
   &_swigt__p_mfem__Linear1DFiniteElement,
   &_swigt__p_mfem__Linear2DFiniteElement,
   &_swigt__p_mfem__Linear3DFiniteElement,
   &_swigt__p_mfem__LinearForm,
+  &_swigt__p_mfem__MatVecCoefficient,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__NCMesh,
   &_swigt__p_mfem__ND_HexahedronElement,
@@ -24565,11 +27345,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__NodalFiniteElement,
   &_swigt__p_mfem__NodalTensorFiniteElement,
   &_swigt__p_mfem__NodeExtrudeCoefficient,
+  &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__P0HexFiniteElement,
   &_swigt__p_mfem__P0QuadFiniteElement,
   &_swigt__p_mfem__P0SegmentFiniteElement,
   &_swigt__p_mfem__P0TetFiniteElement,
   &_swigt__p_mfem__P0TriangleFiniteElement,
+  &_swigt__p_mfem__P0WedgeFiniteElement,
   &_swigt__p_mfem__P1OnQuadFiniteElement,
   &_swigt__p_mfem__P1SegmentFiniteElement,
   &_swigt__p_mfem__P1TetNonConfFiniteElement,
@@ -24603,23 +27385,27 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__RotTriLinearHexFiniteElement,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__ScalarFiniteElement,
+  &_swigt__p_mfem__ScalarVectorProductCoefficient,
   &_swigt__p_mfem__Table,
   &_swigt__p_mfem__TriLinear3DFiniteElement,
   &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__VectorArrayCoefficient,
   &_swigt__p_mfem__VectorCoefficient,
   &_swigt__p_mfem__VectorConstantCoefficient,
+  &_swigt__p_mfem__VectorCrossProductCoefficient,
   &_swigt__p_mfem__VectorDeltaCoefficient,
   &_swigt__p_mfem__VectorFiniteElement,
   &_swigt__p_mfem__VectorFunctionCoefficient,
   &_swigt__p_mfem__VectorGridFunctionCoefficient,
   &_swigt__p_mfem__VectorPyCoefficientBase,
   &_swigt__p_mfem__VectorRestrictedCoefficient,
+  &_swigt__p_mfem__VectorSumCoefficient,
   &_swigt__p_mfem__Vertex,
   &_swigt__p_mfem__named_ifgzstream,
   &_swigt__p_p_mfem__Element,
   &_swigt__p_p_mfem__GridFunction,
   &_swigt__p_p_mfem__Mesh,
+  &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_std__istream,
@@ -24629,6 +27415,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void[] = {  {&_swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void, 0, 0, 0},{0, 0, 0, 0}};
@@ -24636,6 +27423,8 @@ static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_double_t[] = {  {&_swigt__p_mfem__ArrayT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__GeometricFactors_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__GeometricFactors_p_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Geometry__Type_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Geometry__Type_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__IntegrationPoint_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t, 0, 0, 0},  {&_swigt__p_mfem__IntegrationRule, _p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__KnotVector_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__KnotVector_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Refinement_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Refinement_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -24664,14 +27453,14 @@ static swig_cast_info _swigc__p_mfem__H1_QuadrilateralElement[] = {{&_swigt__p_m
 static swig_cast_info _swigc__p_mfem__H1_HexahedronElement[] = {{&_swigt__p_mfem__H1_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_SegmentElement[] = {{&_swigt__p_mfem__H1Pos_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__H1Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_TriangleElement[] = {{&_swigt__p_mfem__L2Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_TriangleElement[] = {{&_swigt__p_mfem__L2_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_HexahedronElement[] = {{&_swigt__p_mfem__L2Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2_HexahedronElement[] = {{&_swigt__p_mfem__L2_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__L2Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__L2Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_QuadrilateralElement[] = {{&_swigt__p_mfem__L2_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2Pos_SegmentElement[] = {{&_swigt__p_mfem__L2Pos_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_SegmentElement[] = {{&_swigt__p_mfem__L2_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Pos_WedgeElement[] = {{&_swigt__p_mfem__H1Pos_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BiCubic3DFiniteElement[] = {{&_swigt__p_mfem__BiCubic3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BiQuadratic3DFiniteElement[] = {{&_swigt__p_mfem__BiQuadratic3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BiLinear3DFiniteElement[] = {{&_swigt__p_mfem__BiLinear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1_WedgeElement[] = {{&_swigt__p_mfem__H1_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_TetrahedronElement[] = {{&_swigt__p_mfem__H1Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_TriangleElement[] = {{&_swigt__p_mfem__H1Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_TetrahedronElement[] = {{&_swigt__p_mfem__H1_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -24718,8 +27507,16 @@ static swig_cast_info _swigc__p_mfem__Quad1DFiniteElement[] = {{&_swigt__p_mfem_
 static swig_cast_info _swigc__p_mfem__QuadPos1DFiniteElement[] = {{&_swigt__p_mfem__QuadPos1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Quad2DFiniteElement[] = {{&_swigt__p_mfem__Quad2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT1QuadFiniteElement[] = {{&_swigt__p_mfem__RT1QuadFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_QuadrilateralElement[] = {{&_swigt__p_mfem__L2Pos_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_HexahedronElement[] = {{&_swigt__p_mfem__L2_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_HexahedronElement[] = {{&_swigt__p_mfem__L2Pos_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_TriangleElement[] = {{&_swigt__p_mfem__L2_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_TriangleElement[] = {{&_swigt__p_mfem__L2Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_TetrahedronElement[] = {{&_swigt__p_mfem__L2_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2Pos_TetrahedronElement[] = {{&_swigt__p_mfem__L2Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2_WedgeElement[] = {{&_swigt__p_mfem__L2_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__P0WedgeFiniteElement[] = {{&_swigt__p_mfem__P0WedgeFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__L2Pos_WedgeElement[] = {{&_swigt__p_mfem__L2Pos_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_QuadrilateralElement[] = {{&_swigt__p_mfem__RT_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_HexahedronElement[] = {{&_swigt__p_mfem__RT_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_TriangleElement[] = {{&_swigt__p_mfem__RT_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -24733,8 +27530,9 @@ static swig_cast_info _swigc__p_mfem__NURBSFiniteElement[] = {{&_swigt__p_mfem__
 static swig_cast_info _swigc__p_mfem__NURBS1DFiniteElement[] = {{&_swigt__p_mfem__NURBS1DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBS2DFiniteElement[] = {{&_swigt__p_mfem__NURBS2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBS3DFiniteElement[] = {{&_swigt__p_mfem__NURBS3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_WedgeElement, _p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic3DFiniteElement, _p_mfem__BiCubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadratic3DFiniteElement, _p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear3DFiniteElement, _p_mfem__BiLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_WedgeElement, _p_mfem__H1_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_WedgeElement, _p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0WedgeFiniteElement, _p_mfem__P0WedgeFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_WedgeElement, _p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GeometricFactors[] = {  {&_swigt__p_mfem__GeometricFactors, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
@@ -24745,25 +27543,33 @@ static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 
 static swig_cast_info _swigc__p_mfem__NCMesh[] = {  {&_swigt__p_mfem__NCMesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBSExtension[] = {  {&_swigt__p_mfem__NURBSExtension, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NodeExtrudeCoefficient[] = {  {&_swigt__p_mfem__NodeExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadratureFunction[] = {  {&_swigt__p_mfem__QuadratureFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParVector[] = {{&_swigt__p_mfem__HypreParVector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearForm[] = {{&_swigt__p_mfem__LinearForm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__HypreParVector, _p_mfem__HypreParVectorTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__Vector, 0, 0, 0},  {&_swigt__p_mfem__GridFunction, _p_mfem__GridFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__QuadratureFunction, _p_mfem__QuadratureFunctionTo_p_mfem__Vector, 0, 0},  {&_swigt__p_mfem__LinearForm, _p_mfem__LinearFormTo_p_mfem__Vector, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorPyCoefficientBase[] = {{&_swigt__p_mfem__VectorPyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MatVecCoefficient[] = {{&_swigt__p_mfem__MatVecCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCrossProductCoefficient[] = {{&_swigt__p_mfem__VectorCrossProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarVectorProductCoefficient[] = {{&_swigt__p_mfem__ScalarVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorSumCoefficient[] = {{&_swigt__p_mfem__VectorSumCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorRestrictedCoefficient[] = {{&_swigt__p_mfem__VectorRestrictedCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorDeltaCoefficient[] = {{&_swigt__p_mfem__VectorDeltaCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CurlGridFunctionCoefficient[] = {{&_swigt__p_mfem__CurlGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GradientGridFunctionCoefficient[] = {{&_swigt__p_mfem__GradientGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorGridFunctionCoefficient[] = {{&_swigt__p_mfem__VectorGridFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorArrayCoefficient[] = {{&_swigt__p_mfem__VectorArrayCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorFunctionCoefficient[] = {{&_swigt__p_mfem__VectorFunctionCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorConstantCoefficient[] = {{&_swigt__p_mfem__VectorConstantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorPyCoefficientBase, _p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__NodeExtrudeCoefficient, _p_mfem__NodeExtrudeCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__MatVecCoefficient, _p_mfem__MatVecCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCrossProductCoefficient, _p_mfem__VectorCrossProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductCoefficient, _p_mfem__ScalarVectorProductCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorSumCoefficient, _p_mfem__VectorSumCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorRestrictedCoefficient, _p_mfem__VectorRestrictedCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorDeltaCoefficient, _p_mfem__VectorDeltaCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__CurlGridFunctionCoefficient, _p_mfem__CurlGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__GradientGridFunctionCoefficient, _p_mfem__GradientGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorGridFunctionCoefficient, _p_mfem__VectorGridFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorArrayCoefficient, _p_mfem__VectorArrayCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorFunctionCoefficient, _p_mfem__VectorFunctionCoefficientTo_p_mfem__VectorCoefficient, 0, 0},  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},  {&_swigt__p_mfem__VectorConstantCoefficient, _p_mfem__VectorConstantCoefficientTo_p_mfem__VectorCoefficient, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vertex[] = {  {&_swigt__p_mfem__Vertex, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__named_ifgzstream[] = {  {&_swigt__p_mfem__named_ifgzstream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Element[] = {  {&_swigt__p_p_mfem__Element, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__GridFunction[] = {  {&_swigt__p_p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Mesh[] = {  {&_swigt__p_p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
@@ -24773,6 +27579,7 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void,
@@ -24780,19 +27587,25 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_int,
   _swigc__p_mfem__ArrayT_double_t,
   _swigc__p_mfem__ArrayT_int_t,
+  _swigc__p_mfem__ArrayT_mfem__GeometricFactors_p_t,
+  _swigc__p_mfem__ArrayT_mfem__Geometry__Type_t,
   _swigc__p_mfem__ArrayT_mfem__IntegrationPoint_t,
   _swigc__p_mfem__ArrayT_mfem__KnotVector_p_t,
   _swigc__p_mfem__ArrayT_mfem__Refinement_t,
   _swigc__p_mfem__BiCubic2DFiniteElement,
+  _swigc__p_mfem__BiCubic3DFiniteElement,
   _swigc__p_mfem__BiLinear2DFiniteElement,
+  _swigc__p_mfem__BiLinear3DFiniteElement,
   _swigc__p_mfem__BiQuad2DFiniteElement,
   _swigc__p_mfem__BiQuadPos2DFiniteElement,
+  _swigc__p_mfem__BiQuadratic3DFiniteElement,
   _swigc__p_mfem__CoarseFineTransformations,
   _swigc__p_mfem__CrouzeixRaviartFiniteElement,
   _swigc__p_mfem__CrouzeixRaviartQuadFiniteElement,
   _swigc__p_mfem__Cubic1DFiniteElement,
   _swigc__p_mfem__Cubic2DFiniteElement,
   _swigc__p_mfem__Cubic3DFiniteElement,
+  _swigc__p_mfem__CurlGridFunctionCoefficient,
   _swigc__p_mfem__DenseMatrix,
   _swigc__p_mfem__Element,
   _swigc__p_mfem__ElementTransformation,
@@ -24803,17 +27616,21 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__GaussBiQuad2DFiniteElement,
   _swigc__p_mfem__GaussLinear2DFiniteElement,
   _swigc__p_mfem__GaussQuad2DFiniteElement,
+  _swigc__p_mfem__GeometricFactors,
+  _swigc__p_mfem__GradientGridFunctionCoefficient,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__H1Pos_HexahedronElement,
   _swigc__p_mfem__H1Pos_QuadrilateralElement,
   _swigc__p_mfem__H1Pos_SegmentElement,
   _swigc__p_mfem__H1Pos_TetrahedronElement,
   _swigc__p_mfem__H1Pos_TriangleElement,
+  _swigc__p_mfem__H1Pos_WedgeElement,
   _swigc__p_mfem__H1_HexahedronElement,
   _swigc__p_mfem__H1_QuadrilateralElement,
   _swigc__p_mfem__H1_SegmentElement,
   _swigc__p_mfem__H1_TetrahedronElement,
   _swigc__p_mfem__H1_TriangleElement,
+  _swigc__p_mfem__H1_WedgeElement,
   _swigc__p_mfem__HypreParVector,
   _swigc__p_mfem__IntegrationPoint,
   _swigc__p_mfem__IntegrationRule,
@@ -24824,18 +27641,21 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__L2Pos_SegmentElement,
   _swigc__p_mfem__L2Pos_TetrahedronElement,
   _swigc__p_mfem__L2Pos_TriangleElement,
+  _swigc__p_mfem__L2Pos_WedgeElement,
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__L2_HexahedronElement,
   _swigc__p_mfem__L2_QuadrilateralElement,
   _swigc__p_mfem__L2_SegmentElement,
   _swigc__p_mfem__L2_TetrahedronElement,
   _swigc__p_mfem__L2_TriangleElement,
+  _swigc__p_mfem__L2_WedgeElement,
   _swigc__p_mfem__Lagrange1DFiniteElement,
   _swigc__p_mfem__LagrangeHexFiniteElement,
   _swigc__p_mfem__Linear1DFiniteElement,
   _swigc__p_mfem__Linear2DFiniteElement,
   _swigc__p_mfem__Linear3DFiniteElement,
   _swigc__p_mfem__LinearForm,
+  _swigc__p_mfem__MatVecCoefficient,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__NCMesh,
   _swigc__p_mfem__ND_HexahedronElement,
@@ -24853,11 +27673,13 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__NodalFiniteElement,
   _swigc__p_mfem__NodalTensorFiniteElement,
   _swigc__p_mfem__NodeExtrudeCoefficient,
+  _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__P0HexFiniteElement,
   _swigc__p_mfem__P0QuadFiniteElement,
   _swigc__p_mfem__P0SegmentFiniteElement,
   _swigc__p_mfem__P0TetFiniteElement,
   _swigc__p_mfem__P0TriangleFiniteElement,
+  _swigc__p_mfem__P0WedgeFiniteElement,
   _swigc__p_mfem__P1OnQuadFiniteElement,
   _swigc__p_mfem__P1SegmentFiniteElement,
   _swigc__p_mfem__P1TetNonConfFiniteElement,
@@ -24891,23 +27713,27 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__RotTriLinearHexFiniteElement,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__ScalarFiniteElement,
+  _swigc__p_mfem__ScalarVectorProductCoefficient,
   _swigc__p_mfem__Table,
   _swigc__p_mfem__TriLinear3DFiniteElement,
   _swigc__p_mfem__Vector,
   _swigc__p_mfem__VectorArrayCoefficient,
   _swigc__p_mfem__VectorCoefficient,
   _swigc__p_mfem__VectorConstantCoefficient,
+  _swigc__p_mfem__VectorCrossProductCoefficient,
   _swigc__p_mfem__VectorDeltaCoefficient,
   _swigc__p_mfem__VectorFiniteElement,
   _swigc__p_mfem__VectorFunctionCoefficient,
   _swigc__p_mfem__VectorGridFunctionCoefficient,
   _swigc__p_mfem__VectorPyCoefficientBase,
   _swigc__p_mfem__VectorRestrictedCoefficient,
+  _swigc__p_mfem__VectorSumCoefficient,
   _swigc__p_mfem__Vertex,
   _swigc__p_mfem__named_ifgzstream,
   _swigc__p_p_mfem__Element,
   _swigc__p_p_mfem__GridFunction,
   _swigc__p_p_mfem__Mesh,
+  _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_std__istream,
@@ -25613,6 +28439,9 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Mesh_REBALANCE",SWIG_From_int(static_cast< int >(mfem::Mesh::REBALANCE)));
   PyDict_SetItemString(md,(char *)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char *)"Mesh_remove_unused_vertices",Swig_var_Mesh_remove_unused_vertices_get, Swig_var_Mesh_remove_unused_vertices_set);
+  SWIG_Python_SetConstant(d, "GeometricFactors_COORDINATES",SWIG_From_int(static_cast< int >(mfem::GeometricFactors::COORDINATES)));
+  SWIG_Python_SetConstant(d, "GeometricFactors_JACOBIANS",SWIG_From_int(static_cast< int >(mfem::GeometricFactors::JACOBIANS)));
+  SWIG_Python_SetConstant(d, "GeometricFactors_DETERMINANTS",SWIG_From_int(static_cast< int >(mfem::GeometricFactors::DETERMINANTS)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

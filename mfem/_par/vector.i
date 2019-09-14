@@ -1,4 +1,3 @@
-
 /*
 
    vector.i
@@ -7,15 +6,15 @@
 %module(package="mfem._par") vector
 %feature("autodoc", "1");
 %{
-#include "linalg/vector.hpp"
 #include <sstream>
 #include <fstream>
 #include <limits>
 #include <cmath>
 #include <cstring>
 #include <ctime>
+#include "io_stream.hpp"             
 #include "numpy/arrayobject.h"
-#include "iostream_typemap.hpp"           
+#include "linalg/vector.hpp"  
 %}
 
 // initialization required to return numpy array from SWIG
@@ -25,11 +24,15 @@ import_array();
 
 %include "exception.i"
 %import "array.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/numpy_int_typemap.i"
 %import "../common/typemap_macros.i"
 %import "../common/exception.i"
+
+%import "mem_manager.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 ARRAY_TO_DOUBLEARRAY_IN(double *_data)
 
@@ -46,10 +49,10 @@ if len(args) == 1:
             raise ValueError('Must be float64 array ' + str(args[0].dtype) +
 			     ' is given')  
         else:
-  	    args = (ascontiguousarray(args[0]), args[0].shape[0])
-             # in this case, args[0] need to be maintained
-	     # in this object.
-	    keep_link = True
+            args = (ascontiguousarray(args[0]), args[0].shape[0])
+            # in this case, args[0] need to be maintained
+            # in this object.
+            keep_link = True
 %}
 
 %pythonappend mfem::Vector::Vector %{
@@ -95,13 +98,13 @@ if len(args) == 1:
     if isinstance(args[0], ndarray):
         if args[0].dtype != 'float64':
              raise ValueError('Must be float64 array ' + str(args[0].dtype) +
-	   		      ' is given')
+			      ' is given')
         elif args[0].ndim != 1:
             raise ValueError('Ndim must be one') 
         elif args[0].shape[0] != _vector.Vector_Size(self):
             raise ValueError('Length does not match')
         else:
-  	    args = (ascontiguousarray(args[0]),)
+            args = (ascontiguousarray(args[0]),)
     elif isinstance(args[0], tuple):
         args = (array(args[0], dtype = float),)      
     elif isinstance(args[0], list):	      
@@ -185,17 +188,6 @@ void subtract_vector(const double a, const mfem::Vector &x,
     }    
     (* self) = (double *) PyArray_DATA(param);
   }
-  
-  void Print(const char *file){
-        std::ofstream ofile(file);
-        if (!ofile)
-        {
-	  std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-   	  return;
-        }
-	self -> Print(ofile);
-        ofile.close();
-  }
 
   void __setitem__(int i, const double v) {
     int len = self->Size();        
@@ -210,8 +202,15 @@ void subtract_vector(const double a, const mfem::Vector &x,
     if (PySlice_Check(param)) {
         long start = 0, stop = 0, step = 0, slicelength = 0;
         int check;
-	check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+
+	%#ifdef TARGET_PY3
+   	check = PySlice_GetIndicesEx(param, len, &start, &stop, &step,
 				     &slicelength);
+        %#else
+   	check = PySlice_GetIndicesEx((PySliceObject*)param, len, &start, &stop, &step,
+				     &slicelength);
+	%#endif
+
 	if (check == -1) {
             PyErr_SetString(PyExc_ValueError, "Slicing mfem::Vector failed.");
             return NULL; 
@@ -258,4 +257,12 @@ void subtract_vector(const double a, const mfem::Vector &x,
    Vector.__idiv__ = Vector.__itruediv__
 %}
 
+/*
+linalg/vector.hpp:   void Print(std::ostream &out = mfem::out, int width = 8) const;
+linalg/vector.hpp:   void Print_HYPRE(std::ostream &out) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(Vector, Print)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(Vector, Print_HYPRE)
+#endif
 

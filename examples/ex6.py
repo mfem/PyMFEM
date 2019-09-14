@@ -98,15 +98,16 @@ while True:
      # 14. Create the linear system: eliminate boundary conditions, constrain
      #     hanging nodes and possibly apply other transformations. The system
      #     will be solved for true (unconstrained) DOFs only.
-     A = mfem.SparseMatrix()
+     A = mfem.OperatorPtr()     
      B = mfem.Vector();  X = mfem.Vector()
      copy_interior = 1
      a.FormLinearSystem(ess_tdof_list, x, b, A, X, B, copy_interior)
 
      #  15. Define a simple symmetric Gauss-Seidel preconditioner and use it to
      #     solve the linear system with PCG.
-     M = mfem.GSSmoother(A);
-     mfem.PCG(A, M, B, X, 3, 200, 1e-12, 0.0)
+     AA = mfem.OperatorHandle2SparseMatrix(A)     
+     M = mfem.GSSmoother(AA);
+     mfem.PCG(AA, M, B, X, 3, 200, 1e-12, 0.0)
 
      # 16. After solving the linear system, reconstruct the solution as a
      #     finite element GridFunction. Constrained nodes are interpolated

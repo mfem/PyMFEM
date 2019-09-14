@@ -103,31 +103,71 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _common_functions.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _common_functions.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _common_functions.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _common_functions.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _common_functions.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _common_functions.MFEM_INSTALL_DIR
 MFEM_GIT_STRING = _common_functions.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _common_functions.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _common_functions.MFEM_HYPRE_VERSION
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 
 def Transpose(*args):
+    """
+    Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(mfem::Table const & A, mfem::Table & At)
+    Transpose(mfem::Table const & A) -> mfem::Table
+    Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)
+    Transpose(intArray A, mfem::Table & At)
+    Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix
+    Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix *
+    """
     return _common_functions.Transpose(*args)
-Transpose = _common_functions.Transpose
 
 def Mult(*args):
+    """
+    Mult(mfem::Table const & A, mfem::Table const & B, mfem::Table & C)
+    Mult(mfem::Table const & A, mfem::Table const & B) -> mfem::Table
+    Mult(mfem::BlockMatrix const & A, mfem::BlockMatrix const & B) -> mfem::BlockMatrix
+    Mult(mfem::DenseMatrix const & b, mfem::DenseMatrix const & c, mfem::DenseMatrix & a)
+    Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B, mfem::SparseMatrix * OAB=None) -> mfem::SparseMatrix
+    Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix *
+    """
     return _common_functions.Mult(*args)
-Mult = _common_functions.Mult
 
 def InnerProduct(*args):
+    """
+    InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double
+    InnerProduct(MPI_Comm comm, mfem::Vector const & x, mfem::Vector const & y) -> double
+    InnerProduct(mfem::HypreParVector & x, mfem::HypreParVector & y) -> double
+    InnerProduct(mfem::HypreParVector * x, mfem::HypreParVector * y) -> double
+    """
     return _common_functions.InnerProduct(*args)
-InnerProduct = _common_functions.InnerProduct
 
 def Add(*args):
+    """
+    Add(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B, double alpha, mfem::DenseMatrix & C)
+    Add(double alpha, double const * A, double beta, double const * B, mfem::DenseMatrix & C)
+    Add(double alpha, mfem::DenseMatrix const & A, double beta, mfem::DenseMatrix const & B, mfem::DenseMatrix & C)
+    Add(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    Add(double a, mfem::SparseMatrix const & A, double b, mfem::SparseMatrix const & B) -> mfem::SparseMatrix
+    Add(mfem::Array< mfem::SparseMatrix * > & Ai) -> mfem::SparseMatrix
+    Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)
+    Add(double alpha, mfem::HypreParMatrix const & A, double beta, mfem::HypreParMatrix const & B) -> mfem::HypreParMatrix *
+    """
     return _common_functions.Add(*args)
-Add = _common_functions.Add
 
 def RAP(*args):
+    """
+    RAP(mfem::SparseMatrix const & A, mfem::DenseMatrix & P) -> mfem::DenseMatrix
+    RAP(mfem::DenseMatrix & A, mfem::SparseMatrix const & P) -> mfem::DenseMatrix
+    RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R, mfem::SparseMatrix * ORAP=None) -> mfem::SparseMatrix
+    RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R) -> mfem::SparseMatrix
+    RAP(mfem::SparseMatrix const & Rt, mfem::SparseMatrix const & A, mfem::SparseMatrix const & P) -> mfem::SparseMatrix
+    RAP(mfem::HypreParMatrix const * A, mfem::HypreParMatrix const * P) -> mfem::HypreParMatrix
+    RAP(mfem::HypreParMatrix const * Rt, mfem::HypreParMatrix const * A, mfem::HypreParMatrix const * P) -> mfem::HypreParMatrix *
+    """
     return _common_functions.RAP(*args)
-RAP = _common_functions.RAP
 # This file is compatible with both classic and new-style classes.
 
 

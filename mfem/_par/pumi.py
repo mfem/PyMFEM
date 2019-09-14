@@ -110,9 +110,13 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pumi.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pumi.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pumi.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pumi.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _pumi.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _pumi.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pumi.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pumi.MFEM_HYPRE_VERSION
 class intp(_object):
+    """Proxy of C++ intp class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
     __swig_getmethods__ = {}
@@ -120,6 +124,7 @@ class intp(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(intp self) -> intp"""
         this = _pumi.new_intp()
         try:
             self.this.append(this)
@@ -129,25 +134,35 @@ class intp(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(intp self, int value)"""
         return _pumi.intp_assign(self, value)
 
+
     def value(self):
+        """value(intp self) -> int"""
         return _pumi.intp_value(self)
 
+
     def cast(self):
+        """cast(intp self) -> int *"""
         return _pumi.intp_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_pumi.intp_frompointer)
-    else:
-        frompointer = _pumi.intp_frompointer
+
+
+    def frompointer(t):
+        """frompointer(int * t) -> intp"""
+        return _pumi.intp_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 intp_swigregister = _pumi.intp_swigregister
 intp_swigregister(intp)
 
 def intp_frompointer(t):
+    """intp_frompointer(int * t) -> intp"""
     return _pumi.intp_frompointer(t)
-intp_frompointer = _pumi.intp_frompointer
 
 class doublep(_object):
+    """Proxy of C++ doublep class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
     __swig_getmethods__ = {}
@@ -155,6 +170,7 @@ class doublep(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(doublep self) -> doublep"""
         this = _pumi.new_doublep()
         try:
             self.this.append(this)
@@ -164,28 +180,36 @@ class doublep(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(doublep self, double value)"""
         return _pumi.doublep_assign(self, value)
 
+
     def value(self):
+        """value(doublep self) -> double"""
         return _pumi.doublep_value(self)
 
+
     def cast(self):
+        """cast(doublep self) -> double *"""
         return _pumi.doublep_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_pumi.doublep_frompointer)
-    else:
-        frompointer = _pumi.doublep_frompointer
+
+
+    def frompointer(t):
+        """frompointer(double * t) -> doublep"""
+        return _pumi.doublep_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 doublep_swigregister = _pumi.doublep_swigregister
 doublep_swigregister(doublep)
 
 def doublep_frompointer(t):
+    """doublep_frompointer(double * t) -> doublep"""
     return _pumi.doublep_frompointer(t)
-doublep_frompointer = _pumi.doublep_frompointer
 
-import mfem._par.ostream_typemap
 import mfem._par.pgridfunc
 import mfem._par.pfespace
 import mfem._par.operators
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.fespace
@@ -196,11 +220,12 @@ import mfem._par.sparsemat
 import mfem._par.densemat
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -215,125 +240,8 @@ import mfem._par.communication
 import mfem._par.sets
 
 def ParMesh2ParPumiMesh(pmesh):
-    """ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"""
+    """ParMesh2ParPumiMesh(ParMesh pmesh) -> mfem::ParPumiMesh *"""
     return _pumi.ParMesh2ParPumiMesh(pmesh)
-class PumiMesh(mfem._par.mesh.Mesh):
-    """Proxy of C++ mfem::PumiMesh class."""
-
-    __swig_setmethods__ = {}
-    for _s in [mfem._par.mesh.Mesh]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, PumiMesh, name, value)
-    __swig_getmethods__ = {}
-    for _s in [mfem._par.mesh.Mesh]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
-    __getattr__ = lambda self, name: _swig_getattr(self, PumiMesh, name)
-    __repr__ = _swig_repr
-
-    def __init__(self, apf_mesh, generate_edges=0, refine=1, fix_orientation=True):
-        """
-        __init__(mfem::PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True) -> PumiMesh
-        __init__(mfem::PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1) -> PumiMesh
-        __init__(mfem::PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0) -> PumiMesh
-        __init__(mfem::PumiMesh self, apf::Mesh2 * apf_mesh) -> PumiMesh
-        """
-        this = _pumi.new_PumiMesh(apf_mesh, generate_edges, refine, fix_orientation)
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-
-    def Load(self, *args):
-        """
-        Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)
-        Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1)
-        Load(PumiMesh self, std::istream & input, int generate_edges=0)
-        Load(PumiMesh self, std::istream & input)
-        Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)
-        Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1)
-        Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0)
-        Load(PumiMesh self, apf::Mesh2 * apf_mesh)
-        """
-        return _pumi.PumiMesh_Load(self, *args)
-
-    __swig_destroy__ = _pumi.delete_PumiMesh
-    __del__ = lambda self: None
-PumiMesh_swigregister = _pumi.PumiMesh_swigregister
-PumiMesh_swigregister(PumiMesh)
-
-class ParPumiMesh(mfem._par.pmesh.ParMesh):
-    """Proxy of C++ mfem::ParPumiMesh class."""
-
-    __swig_setmethods__ = {}
-    for _s in [mfem._par.pmesh.ParMesh]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, ParPumiMesh, name, value)
-    __swig_getmethods__ = {}
-    for _s in [mfem._par.pmesh.ParMesh]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
-    __getattr__ = lambda self, name: _swig_getattr(self, ParPumiMesh, name)
-    __repr__ = _swig_repr
-
-    def __init__(self, comm, apf_mesh):
-        """__init__(mfem::ParPumiMesh self, MPI_Comm comm, apf::Mesh2 * apf_mesh) -> ParPumiMesh"""
-        this = _pumi.new_ParPumiMesh(comm, apf_mesh)
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-
-    def FieldMFEMtoPUMI(self, *args):
-        """
-        FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, ParGridFunction Pr, apf::Field * VelField, apf::Field * PrField, apf::Field * VelMagField)
-        FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Pr, apf::Field * PrField, apf::Field * PrMagField)
-        """
-        return _pumi.ParPumiMesh_FieldMFEMtoPUMI(self, *args)
-
-
-    def VectorFieldMFEMtoPUMI(self, apf_mesh, Vel, VelField, VelMagField):
-        """VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, apf::Field * VelField, apf::Field * VelMagField)"""
-        return _pumi.ParPumiMesh_VectorFieldMFEMtoPUMI(self, apf_mesh, Vel, VelField, VelMagField)
-
-
-    def UpdateMesh(self, AdaptedpMesh):
-        """UpdateMesh(ParPumiMesh self, ParMesh AdaptedpMesh)"""
-        return _pumi.ParPumiMesh_UpdateMesh(self, AdaptedpMesh)
-
-
-    def FieldPUMItoMFEM(self, apf_mesh, ScalarField, Pr):
-        """FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction Pr)"""
-        return _pumi.ParPumiMesh_FieldPUMItoMFEM(self, apf_mesh, ScalarField, Pr)
-
-    __swig_destroy__ = _pumi.delete_ParPumiMesh
-    __del__ = lambda self: None
-ParPumiMesh_swigregister = _pumi.ParPumiMesh_swigregister
-ParPumiMesh_swigregister(ParPumiMesh)
-
-class GridFunctionPumi(mfem._par.gridfunc.GridFunction):
-    """Proxy of C++ mfem::GridFunctionPumi class."""
-
-    __swig_setmethods__ = {}
-    for _s in [mfem._par.gridfunc.GridFunction]:
-        __swig_setmethods__.update(getattr(_s, '__swig_setmethods__', {}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, GridFunctionPumi, name, value)
-    __swig_getmethods__ = {}
-    for _s in [mfem._par.gridfunc.GridFunction]:
-        __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
-    __getattr__ = lambda self, name: _swig_getattr(self, GridFunctionPumi, name)
-    __repr__ = _swig_repr
-
-    def __init__(self, m, PumiM, v_num_loc, mesh_order):
-        """__init__(mfem::GridFunctionPumi self, Mesh m, apf::Mesh2 * PumiM, apf::Numbering * v_num_loc, int const mesh_order) -> GridFunctionPumi"""
-        this = _pumi.new_GridFunctionPumi(m, PumiM, v_num_loc, mesh_order)
-        try:
-            self.this.append(this)
-        except __builtin__.Exception:
-            self.this = this
-    __swig_destroy__ = _pumi.delete_GridFunctionPumi
-    __del__ = lambda self: None
-GridFunctionPumi_swigregister = _pumi.GridFunctionPumi_swigregister
-GridFunctionPumi_swigregister(GridFunctionPumi)
-
 # This file is compatible with both classic and new-style classes.
 
 

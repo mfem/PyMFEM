@@ -1,28 +1,33 @@
 %module (package="mfem._ser") sparsemat
 %{
+#include <fstream>  
 #include <sstream>
-#include <fstream>
 #include <limits>
 #include <cmath>
 #include <cstring>
+#include "linalg/handle.hpp"  
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
-#include "iostream_typemap.hpp"  
 #include "pyoperator.hpp"
+#include "io_stream.hpp"  
 %}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
 %}
 %include "exception.i"
+%import "mem_manager.i"
+
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
 %import "densemat.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %ignore Walk;
 %pythonappend mfem::SparseMatrix::operator*= %{
@@ -33,6 +38,7 @@ import_array();
     val.thisown = 0
     return self
 %}
+
 %pythonprepend mfem::SparseMatrix::SparseMatrix %{
 import numpy as np  
 from scipy.sparse import csr_matrix
@@ -72,6 +78,14 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
 			    const mfem::SparseMatrix &A,
                             const mfem::SparseMatrix &P){
     return RAP(Rt, A, P);
+  }
+
+  mfem::SparseMatrix &OperatorPtr2SparseMatrix(mfem::OperatorPtr op) {
+    return dynamic_cast<mfem::SparseMatrix &>(* op);
+  }
+  
+  mfem::SparseMatrix &OperatorHandle2SparseMatrix(mfem::OperatorHandle op) {
+    return dynamic_cast<mfem::SparseMatrix &>(* op);
   }
 %}
 
@@ -127,34 +141,43 @@ if len(args) == 1 and isinstance(args[0], csr_matrix):
 
 %extend mfem::SparseMatrix {
 PyObject* GetIArray(void) const{
-  int * I = self->GetI();
+  const int * I = self->GetI();
   int L = self->Size();
 
   npy_intp dims[] = { L+1 };
-  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, I);
+  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, (void *)I);
   }
 PyObject* GetJArray(void) const{
-  int * I = self->GetI();
-  int * J = self->GetJ();
+  const int * I = self->GetI();
+  const int * J = self->GetJ();
   int L = self->Size();
   npy_intp dims[] = { I[L]};
-  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, J);
+  return  PyArray_SimpleNewFromData(1, dims, NPY_INT, (void *)J);
   }
 PyObject* GetDataArray(void) const{
-  int * I = self->GetI();
-  double * A = self->GetData();    
+  const int * I = self->GetI();
+  const double * A = self->GetData();    
   int L = self->Size();
   npy_intp dims[] = {I[L]};
-  return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, A);
-  }
-void Print(const char *file){
-  std::ofstream ofile(file);
-  if (!ofile)
-  {
-     std::cerr << "\nCan not produce output file: " << file << '\n' << std::endl;
-     return;
-  }
-  self -> Print(ofile);
-  ofile.close();
+  return  PyArray_SimpleNewFromData(1, dims, NPY_DOUBLE, (void *)A);
   }
 };
+
+/*
+linalg/sparsemat.hpp:   void Print(std::ostream &out = mfem::out, int width_ = 4) const;
+linalg/sparsemat.hpp:   void PrintMatlab(std::ostream &out = mfem::out) const;
+linalg/sparsemat.hpp:   void PrintMM(std::ostream &out = mfem::out) const;
+linalg/sparsemat.hpp:   void PrintCSR(std::ostream &out) const;
+linalg/sparsemat.hpp:   void PrintCSR2(std::ostream &out) const;
+linalg/sparsemat.hpp:   void PrintInfo(std::ostream &out) const;
+*/
+
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(SparseMatrix, Print)
+OSTREAM_ADD_DEFAULT_FILE(SparseMatrix, PrintMatlab)
+OSTREAM_ADD_DEFAULT_FILE(SparseMatrix, PrintMM)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(SparseMatrix, PrintCSR)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(SparseMatrix, PrintCSR2)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(SparseMatrix, PrintInfo)
+#endif
+

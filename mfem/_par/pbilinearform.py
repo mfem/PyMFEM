@@ -110,13 +110,15 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pbilinearform.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pbilinearform.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pbilinearform.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pbilinearform.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _pbilinearform.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _pbilinearform.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pbilinearform.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pbilinearform.MFEM_HYPRE_VERSION
 import mfem._par.handle
 import mfem._par.operators
+import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
 import mfem._par.hypre
 import mfem._par.sparsemat
 import mfem._par.matrix
@@ -127,11 +129,12 @@ import mfem._par.coefficient
 import mfem._par.intrules
 import mfem._par.eltrans
 import mfem._par.fe
+import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
 import mfem._par.element
-import mfem._par.geom
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.bilininteg
@@ -264,8 +267,11 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
 
     def FormLinearSystem(self, *args):
         """
+        FormLinearSystem(ParBilinearForm self)
         FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B, int copy_interior=0)
         FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, SparseMatrix A, Vector X, Vector B)
         FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B, int copy_interior=0)
         FormLinearSystem(ParBilinearForm self, intArray ess_tdof_list, Vector x, Vector b, HypreParMatrix A, Vector X, Vector B)
         """
@@ -274,7 +280,9 @@ class ParBilinearForm(mfem._par.bilinearform.BilinearForm):
 
     def FormSystemMatrix(self, *args):
         """
+        FormSystemMatrix(ParBilinearForm self)
         FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, OperatorHandle A)
+        FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, SparseMatrix A)
         FormSystemMatrix(ParBilinearForm self, intArray ess_tdof_list, HypreParMatrix A)
         """
         return _pbilinearform.ParBilinearForm_FormSystemMatrix(self, *args)
@@ -295,9 +303,12 @@ class ParMixedBilinearForm(mfem._par.bilinearform.MixedBilinearForm):
     __getattr__ = lambda self, name: _swig_getattr(self, ParMixedBilinearForm, name)
     __repr__ = _swig_repr
 
-    def __init__(self, trial_fes, test_fes):
-        """__init__(mfem::ParMixedBilinearForm self, ParFiniteElementSpace trial_fes, ParFiniteElementSpace test_fes) -> ParMixedBilinearForm"""
-        this = _pbilinearform.new_ParMixedBilinearForm(trial_fes, test_fes)
+    def __init__(self, *args):
+        """
+        __init__(mfem::ParMixedBilinearForm self, ParFiniteElementSpace trial_fes, ParFiniteElementSpace test_fes) -> ParMixedBilinearForm
+        __init__(mfem::ParMixedBilinearForm self, ParFiniteElementSpace trial_fes, ParFiniteElementSpace test_fes, ParMixedBilinearForm mbf) -> ParMixedBilinearForm
+        """
+        this = _pbilinearform.new_ParMixedBilinearForm(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:

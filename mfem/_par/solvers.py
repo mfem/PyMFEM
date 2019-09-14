@@ -110,11 +110,13 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _solvers.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _solvers.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _solvers.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _solvers.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _solvers.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _solvers.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _solvers.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _solvers.MFEM_HYPRE_VERSION
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.matrix
 import mfem._par.sparsemat

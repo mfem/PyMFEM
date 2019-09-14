@@ -103,7 +103,7 @@ except __builtin__.Exception:
 
 
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.matrix
 import mfem._ser.operators
@@ -224,14 +224,6 @@ class BlockMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         return _blockmatrix.BlockMatrix_CreateMonolithic(self)
 
 
-    def PrintMatlab(self, *args):
-        """
-        PrintMatlab(BlockMatrix self, std::ostream & os)
-        PrintMatlab(BlockMatrix self)
-        """
-        return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)
-
-
     def Elem(self, *args):
         """
         Elem(BlockMatrix self, int i, int j) -> double
@@ -294,6 +286,16 @@ class BlockMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     __swig_getmethods__["owns_blocks"] = _blockmatrix.BlockMatrix_owns_blocks_get
     if _newclass:
         owns_blocks = _swig_property(_blockmatrix.BlockMatrix_owns_blocks_get, _blockmatrix.BlockMatrix_owns_blocks_set)
+
+    def PrintMatlab(self, *args):
+        """
+        PrintMatlab(BlockMatrix self, std::ostream & os)
+        PrintMatlab(BlockMatrix self)
+        PrintMatlab(BlockMatrix self, char const * file, int precision=8)
+        PrintMatlab(BlockMatrix self, char const * file)
+        """
+        return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)
+
 BlockMatrix_swigregister = _blockmatrix.BlockMatrix_swigregister
 BlockMatrix_swigregister(BlockMatrix)
 

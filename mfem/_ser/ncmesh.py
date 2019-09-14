@@ -103,6 +103,8 @@ except __builtin__.Exception:
 
 
 class intp(_object):
+    """Proxy of C++ intp class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, intp, name, value)
     __swig_getmethods__ = {}
@@ -110,6 +112,7 @@ class intp(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(intp self) -> intp"""
         this = _ncmesh.new_intp()
         try:
             self.this.append(this)
@@ -119,25 +122,35 @@ class intp(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(intp self, int value)"""
         return _ncmesh.intp_assign(self, value)
 
+
     def value(self):
+        """value(intp self) -> int"""
         return _ncmesh.intp_value(self)
 
+
     def cast(self):
+        """cast(intp self) -> int *"""
         return _ncmesh.intp_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_ncmesh.intp_frompointer)
-    else:
-        frompointer = _ncmesh.intp_frompointer
+
+
+    def frompointer(t):
+        """frompointer(int * t) -> intp"""
+        return _ncmesh.intp_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 intp_swigregister = _ncmesh.intp_swigregister
 intp_swigregister(intp)
 
 def intp_frompointer(t):
+    """intp_frompointer(int * t) -> intp"""
     return _ncmesh.intp_frompointer(t)
-intp_frompointer = _ncmesh.intp_frompointer
 
 class doublep(_object):
+    """Proxy of C++ doublep class."""
+
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, doublep, name, value)
     __swig_getmethods__ = {}
@@ -145,6 +158,7 @@ class doublep(_object):
     __repr__ = _swig_repr
 
     def __init__(self):
+        """__init__(doublep self) -> doublep"""
         this = _ncmesh.new_doublep()
         try:
             self.this.append(this)
@@ -154,29 +168,37 @@ class doublep(_object):
     __del__ = lambda self: None
 
     def assign(self, value):
+        """assign(doublep self, double value)"""
         return _ncmesh.doublep_assign(self, value)
 
+
     def value(self):
+        """value(doublep self) -> double"""
         return _ncmesh.doublep_value(self)
 
+
     def cast(self):
+        """cast(doublep self) -> double *"""
         return _ncmesh.doublep_cast(self)
-    if _newclass:
-        frompointer = staticmethod(_ncmesh.doublep_frompointer)
-    else:
-        frompointer = _ncmesh.doublep_frompointer
+
+
+    def frompointer(t):
+        """frompointer(double * t) -> doublep"""
+        return _ncmesh.doublep_frompointer(t)
+
+    frompointer = staticmethod(frompointer)
 doublep_swigregister = _ncmesh.doublep_swigregister
 doublep_swigregister(doublep)
 
 def doublep_frompointer(t):
+    """doublep_frompointer(double * t) -> doublep"""
     return _ncmesh.doublep_frompointer(t)
-doublep_frompointer = _ncmesh.doublep_frompointer
 
 import mfem._ser.mesh
 import mfem._ser.matrix
 import mfem._ser.vector
 import mfem._ser.array
-import mfem._ser.ostream_typemap
+import mfem._ser.mem_manager
 import mfem._ser.operators
 import mfem._ser.gridfunc
 import mfem._ser.coefficient
@@ -185,6 +207,7 @@ import mfem._ser.sparsemat
 import mfem._ser.densemat
 import mfem._ser.eltrans
 import mfem._ser.fe
+import mfem._ser.geom
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
@@ -192,8 +215,8 @@ import mfem._ser.handle
 import mfem._ser.bilininteg
 import mfem._ser.linearform
 import mfem._ser.element
-import mfem._ser.geom
 import mfem._ser.table
+import mfem._ser.hash
 import mfem._ser.vertex
 class Refinement(_object):
     """Proxy of C++ mfem::Refinement class."""
@@ -212,12 +235,13 @@ class Refinement(_object):
     if _newclass:
         ref_type = _swig_property(_ncmesh.Refinement_ref_type_get, _ncmesh.Refinement_ref_type_set)
 
-    def __init__(self, index, type=7):
+    def __init__(self, *args):
         """
+        __init__(mfem::Refinement self) -> Refinement
         __init__(mfem::Refinement self, int index, int type=7) -> Refinement
         __init__(mfem::Refinement self, int index) -> Refinement
         """
-        this = _ncmesh.new_Refinement(index, type)
+        this = _ncmesh.new_Refinement(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -244,12 +268,13 @@ class Embedding(_object):
     if _newclass:
         matrix = _swig_property(_ncmesh.Embedding_matrix_get, _ncmesh.Embedding_matrix_set)
 
-    def __init__(self, elem, matrix=0):
+    def __init__(self, *args):
         """
+        __init__(mfem::Embedding self) -> Embedding
         __init__(mfem::Embedding self, int elem, int matrix=0) -> Embedding
         __init__(mfem::Embedding self, int elem) -> Embedding
         """
-        this = _ncmesh.new_Embedding(elem, matrix)
+        this = _ncmesh.new_Embedding(*args)
         try:
             self.this.append(this)
         except __builtin__.Exception:
@@ -274,6 +299,16 @@ class CoarseFineTransformations(_object):
     __swig_getmethods__["embeddings"] = _ncmesh.CoarseFineTransformations_embeddings_get
     if _newclass:
         embeddings = _swig_property(_ncmesh.CoarseFineTransformations_embeddings_get)
+
+    def GetPointMatrices(self, geom):
+        """GetPointMatrices(CoarseFineTransformations self, mfem::Geometry::Type geom) -> DenseTensor"""
+        return _ncmesh.CoarseFineTransformations_GetPointMatrices(self, geom)
+
+
+    def GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom):
+        """GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, mfem::Array< mfem::Geometry::Type > & ref_type_to_geom)"""
+        return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom)
+
 
     def Clear(self):
         """Clear(CoarseFineTransformations self)"""
@@ -410,9 +445,24 @@ class NCMesh(_object):
         return _ncmesh.NCMesh_ClearTransforms(self)
 
 
-    def GetEdgeVertices(self, edge_id, vert_index):
-        """GetEdgeVertices(NCMesh self, mfem::NCMesh::MeshId const & edge_id, int [2] vert_index)"""
-        return _ncmesh.NCMesh_GetEdgeVertices(self, edge_id, vert_index)
+    def GridSfcOrdering2D(width, height, coords):
+        """GridSfcOrdering2D(int width, int height, intArray coords)"""
+        return _ncmesh.NCMesh_GridSfcOrdering2D(width, height, coords)
+
+    GridSfcOrdering2D = staticmethod(GridSfcOrdering2D)
+
+    def GridSfcOrdering3D(width, height, depth, coords):
+        """GridSfcOrdering3D(int width, int height, int depth, intArray coords)"""
+        return _ncmesh.NCMesh_GridSfcOrdering3D(width, height, depth, coords)
+
+    GridSfcOrdering3D = staticmethod(GridSfcOrdering3D)
+
+    def GetEdgeVertices(self, edge_id, vert_index, oriented=True):
+        """
+        GetEdgeVertices(NCMesh self, mfem::NCMesh::MeshId const & edge_id, int [2] vert_index, bool oriented=True)
+        GetEdgeVertices(NCMesh self, mfem::NCMesh::MeshId const & edge_id, int [2] vert_index)
+        """
+        return _ncmesh.NCMesh_GetEdgeVertices(self, edge_id, vert_index, oriented)
 
 
     def GetEdgeNCOrientation(self, edge_id):
@@ -436,28 +486,18 @@ class NCMesh(_object):
 
 
     def GetElementGeometry(self):
-        """GetElementGeometry(NCMesh self) -> int"""
+        """GetElementGeometry(NCMesh self) -> mfem::Geometry::Type"""
         return _ncmesh.NCMesh_GetElementGeometry(self)
 
 
     def GetFaceGeometry(self):
-        """GetFaceGeometry(NCMesh self) -> int"""
+        """GetFaceGeometry(NCMesh self) -> mfem::Geometry::Type"""
         return _ncmesh.NCMesh_GetFaceGeometry(self)
 
 
     def GetElementDepth(self, i):
         """GetElementDepth(NCMesh self, int i) -> int"""
         return _ncmesh.NCMesh_GetElementDepth(self, i)
-
-
-    def PrintVertexParents(self, out):
-        """PrintVertexParents(NCMesh self, std::ostream & out)"""
-        return _ncmesh.NCMesh_PrintVertexParents(self, out)
-
-
-    def PrintCoarseElements(self, out):
-        """PrintCoarseElements(NCMesh self, std::ostream & out)"""
-        return _ncmesh.NCMesh_PrintCoarseElements(self, out)
 
 
     def LoadVertexParents(self, input):
@@ -490,15 +530,45 @@ class NCMesh(_object):
         return _ncmesh.NCMesh_PrintMemoryDetail(self)
 
 
+    def PrintVertexParents(self, *args):
+        """
+        PrintVertexParents(NCMesh self, std::ostream & out)
+        PrintVertexParents(NCMesh self, char const * file, int precision=8)
+        PrintVertexParents(NCMesh self, char const * file)
+        PrintVertexParents(NCMesh self)
+        """
+        return _ncmesh.NCMesh_PrintVertexParents(self, *args)
+
+
+    def PrintCoarseElements(self, *args):
+        """
+        PrintCoarseElements(NCMesh self, std::ostream & out)
+        PrintCoarseElements(NCMesh self, char const * file, int precision=8)
+        PrintCoarseElements(NCMesh self, char const * file)
+        PrintCoarseElements(NCMesh self)
+        """
+        return _ncmesh.NCMesh_PrintCoarseElements(self, *args)
+
+
     def PrintStats(self, *args):
         """
         PrintStats(NCMesh self, std::ostream & out)
         PrintStats(NCMesh self)
+        PrintStats(NCMesh self, char const * file, int precision=8)
+        PrintStats(NCMesh self, char const * file)
         """
         return _ncmesh.NCMesh_PrintStats(self, *args)
 
 NCMesh_swigregister = _ncmesh.NCMesh_swigregister
 NCMesh_swigregister(NCMesh)
+
+def NCMesh_GridSfcOrdering2D(width, height, coords):
+    """NCMesh_GridSfcOrdering2D(int width, int height, intArray coords)"""
+    return _ncmesh.NCMesh_GridSfcOrdering2D(width, height, coords)
+
+def NCMesh_GridSfcOrdering3D(width, height, depth, coords):
+    """NCMesh_GridSfcOrdering3D(int width, int height, int depth, intArray coords)"""
+    return _ncmesh.NCMesh_GridSfcOrdering3D(width, height, depth, coords)
 
 # This file is compatible with both classic and new-style classes.
 

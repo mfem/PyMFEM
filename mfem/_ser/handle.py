@@ -110,11 +110,13 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _handle.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _handle.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _handle.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _handle.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _handle.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _handle.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _handle.MFEM_TIMER_TYPE
 import mfem._ser.operators
+import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.array
-import mfem._ser.ostream_typemap
 class OperatorHandle(_object):
     """Proxy of C++ mfem::OperatorHandle class."""
 
@@ -140,6 +142,16 @@ class OperatorHandle(_object):
     def Ptr(self):
         """Ptr(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_Ptr(self)
+
+
+    def __deref__(self):
+        """__deref__(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle___deref__(self)
+
+
+    def __ref__(self):
+        """__ref__(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle___ref__(self)
 
 
     def Type(self):
@@ -180,11 +192,6 @@ class OperatorHandle(_object):
         return _handle.OperatorHandle_MakeRAP(self, Rt, A, P)
 
 
-    def ConvertFrom(self, A):
-        """ConvertFrom(OperatorHandle self, OperatorHandle A)"""
-        return _handle.OperatorHandle_ConvertFrom(self, A)
-
-
     def EliminateRowsCols(self, A, ess_dof_list):
         """EliminateRowsCols(OperatorHandle self, OperatorHandle A, intArray ess_dof_list)"""
         return _handle.OperatorHandle_EliminateRowsCols(self, A, ess_dof_list)
@@ -194,8 +201,119 @@ class OperatorHandle(_object):
         """EliminateBC(OperatorHandle self, OperatorHandle A_e, intArray ess_dof_list, Vector X, Vector B)"""
         return _handle.OperatorHandle_EliminateBC(self, A_e, ess_dof_list, X, B)
 
+
+    def As(self):
+        """As(OperatorHandle self) -> mfem::SparseMatrix *"""
+        return _handle.OperatorHandle_As(self)
+
+
+    def Is(self):
+        """Is(OperatorHandle self) -> mfem::SparseMatrix *"""
+        return _handle.OperatorHandle_Is(self)
+
+
+    def Get(self, A):
+        """Get(OperatorHandle self, mfem::SparseMatrix *& A)"""
+        return _handle.OperatorHandle_Get(self, A)
+
+
+    def Reset(self, A, own_A=True):
+        """
+        Reset(OperatorHandle self, mfem::SparseMatrix * A, bool own_A=True)
+        Reset(OperatorHandle self, mfem::SparseMatrix * A)
+        """
+        return _handle.OperatorHandle_Reset(self, A, own_A)
+
+
+    def ConvertFrom(self, *args):
+        """
+        ConvertFrom(OperatorHandle self, OperatorHandle A)
+        ConvertFrom(OperatorHandle self, mfem::SparseMatrix * A)
+        """
+        return _handle.OperatorHandle_ConvertFrom(self, *args)
+
+
+    def Height(self):
+        """Height(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_Height(self)
+
+
+    def NumRows(self):
+        """NumRows(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_NumRows(self)
+
+
+    def Width(self):
+        """Width(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_Width(self)
+
+
+    def NumCols(self):
+        """NumCols(OperatorHandle self) -> int"""
+        return _handle.OperatorHandle_NumCols(self)
+
+
+    def GetMemoryClass(self):
+        """GetMemoryClass(OperatorHandle self) -> mfem::MemoryClass"""
+        return _handle.OperatorHandle_GetMemoryClass(self)
+
+
+    def Mult(self, x, y):
+        """Mult(OperatorHandle self, Vector x, Vector y)"""
+        return _handle.OperatorHandle_Mult(self, x, y)
+
+
+    def MultTranspose(self, x, y):
+        """MultTranspose(OperatorHandle self, Vector x, Vector y)"""
+        return _handle.OperatorHandle_MultTranspose(self, x, y)
+
+
+    def GetGradient(self, x):
+        """GetGradient(OperatorHandle self, Vector x) -> Operator"""
+        return _handle.OperatorHandle_GetGradient(self, x)
+
+
+    def GetProlongation(self):
+        """GetProlongation(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetProlongation(self)
+
+
+    def GetRestriction(self):
+        """GetRestriction(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetRestriction(self)
+
+
+    def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
+        """
+        FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)
+        FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)
+        """
+        return _handle.OperatorHandle_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
+
+
+    def RecoverFEMSolution(self, X, b, x):
+        """RecoverFEMSolution(OperatorHandle self, Vector X, Vector b, Vector x)"""
+        return _handle.OperatorHandle_RecoverFEMSolution(self, X, b, x)
+
+
+    def PrintMatlab(self, out, n=0, m=0):
+        """
+        PrintMatlab(OperatorHandle self, std::ostream & out, int n=0, int m=0)
+        PrintMatlab(OperatorHandle self, std::ostream & out, int n=0)
+        PrintMatlab(OperatorHandle self, std::ostream & out)
+        """
+        return _handle.OperatorHandle_PrintMatlab(self, out, n, m)
+
+
+    def GetType(self):
+        """GetType(OperatorHandle self) -> mfem::Operator::Type"""
+        return _handle.OperatorHandle_GetType(self)
+
 OperatorHandle_swigregister = _handle.OperatorHandle_swigregister
 OperatorHandle_swigregister(OperatorHandle)
+
+
+OperatorPtr=OperatorHandle  
 
 # This file is compatible with both classic and new-style classes.
 

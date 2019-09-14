@@ -3449,29 +3449,32 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_hex_t swig_types[2]
-#define SWIGTYPE_p_int swig_types[3]
-#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[4]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[5]
-#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[6]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[7]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[8]
-#define SWIGTYPE_p_mfem__L2ZienkiewiczZhuEstimator swig_types[9]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[10]
-#define SWIGTYPE_p_mfem__Mesh swig_types[11]
-#define SWIGTYPE_p_mfem__MeshOperator swig_types[12]
-#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[13]
-#define SWIGTYPE_p_mfem__Rebalancer swig_types[14]
-#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[15]
-#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[16]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[17]
-#define SWIGTYPE_p_quad_t swig_types[18]
-#define SWIGTYPE_p_seg_t swig_types[19]
-#define SWIGTYPE_p_tet_t swig_types[20]
-#define SWIGTYPE_p_tri_t swig_types[21]
-static swig_type_info *swig_types[23];
-static swig_module_info swig_module = {swig_types, 22, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_hex_t swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[5]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[6]
+#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[7]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[8]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[9]
+#define SWIGTYPE_p_mfem__L2ZienkiewiczZhuEstimator swig_types[10]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[11]
+#define SWIGTYPE_p_mfem__Mesh swig_types[12]
+#define SWIGTYPE_p_mfem__MeshOperator swig_types[13]
+#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[14]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[15]
+#define SWIGTYPE_p_mfem__Rebalancer swig_types[16]
+#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[17]
+#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[18]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[19]
+#define SWIGTYPE_p_pri_t swig_types[20]
+#define SWIGTYPE_p_quad_t swig_types[21]
+#define SWIGTYPE_p_seg_t swig_types[22]
+#define SWIGTYPE_p_tet_t swig_types[23]
+#define SWIGTYPE_p_tri_t swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5081,6 +5084,7 @@ static void *_p_mfem__RebalancerTo_p_mfem__MeshOperator(void *x, int *SWIGUNUSED
     return (void *)((mfem::MeshOperator *)  ((mfem::Rebalancer *) x));
 }
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
@@ -5095,9 +5099,11 @@ static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollecti
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MeshOperator = {"_p_mfem__MeshOperator", "mfem::MeshOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MeshOperatorSequence = {"_p_mfem__MeshOperatorSequence", "mfem::MeshOperatorSequence *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle", "mfem::OperatorPtr *|mfem::OperatorHandle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Rebalancer = {"_p_mfem__Rebalancer", "mfem::Rebalancer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ThresholdDerefiner = {"_p_mfem__ThresholdDerefiner", "mfem::ThresholdDerefiner *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ThresholdRefiner = {"_p_mfem__ThresholdRefiner", "mfem::ThresholdRefiner *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
@@ -5105,6 +5111,7 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -5118,10 +5125,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__MeshOperator,
   &_swigt__p_mfem__MeshOperatorSequence,
+  &_swigt__p_mfem__OperatorHandle,
   &_swigt__p_mfem__Rebalancer,
   &_swigt__p_mfem__ThresholdDerefiner,
   &_swigt__p_mfem__ThresholdRefiner,
   &_swigt__p_mfem__ZienkiewiczZhuEstimator,
+  &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_tet_t,
@@ -5129,6 +5138,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -5143,9 +5153,11 @@ static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MeshOperator[] = {  {&_swigt__p_mfem__ThresholdRefiner, _p_mfem__ThresholdRefinerTo_p_mfem__MeshOperator, 0, 0},  {&_swigt__p_mfem__ThresholdDerefiner, _p_mfem__ThresholdDerefinerTo_p_mfem__MeshOperator, 0, 0},  {&_swigt__p_mfem__MeshOperator, 0, 0, 0},  {&_swigt__p_mfem__MeshOperatorSequence, _p_mfem__MeshOperatorSequenceTo_p_mfem__MeshOperator, 0, 0},  {&_swigt__p_mfem__Rebalancer, _p_mfem__RebalancerTo_p_mfem__MeshOperator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MeshOperatorSequence[] = {  {&_swigt__p_mfem__MeshOperatorSequence, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__OperatorHandle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Rebalancer[] = {  {&_swigt__p_mfem__Rebalancer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ThresholdDerefiner[] = {  {&_swigt__p_mfem__ThresholdDerefiner, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ThresholdRefiner[] = {  {&_swigt__p_mfem__ThresholdRefiner, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5153,6 +5165,7 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_hex_t,
   _swigc__p_int,
@@ -5166,10 +5179,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__MeshOperator,
   _swigc__p_mfem__MeshOperatorSequence,
+  _swigc__p_mfem__OperatorHandle,
   _swigc__p_mfem__Rebalancer,
   _swigc__p_mfem__ThresholdDerefiner,
   _swigc__p_mfem__ThresholdRefiner,
   _swigc__p_mfem__ZienkiewiczZhuEstimator,
+  _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_tet_t,

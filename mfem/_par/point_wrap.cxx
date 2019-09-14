@@ -3451,16 +3451,17 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_geom_t swig_types[1]
-#define SWIGTYPE_p_int swig_types[2]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
-#define SWIGTYPE_p_mfem__Element swig_types[4]
-#define SWIGTYPE_p_mfem__Mesh swig_types[5]
-#define SWIGTYPE_p_mfem__Point swig_types[6]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[7]
-static swig_type_info *swig_types[9];
-static swig_module_info swig_module = {swig_types, 8, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_geom_t swig_types[2]
+#define SWIGTYPE_p_int swig_types[3]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[4]
+#define SWIGTYPE_p_mfem__Element swig_types[5]
+#define SWIGTYPE_p_mfem__Mesh swig_types[6]
+#define SWIGTYPE_p_mfem__Point swig_types[7]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[8]
+static swig_type_info *swig_types[10];
+static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3625,6 +3626,8 @@ SWIGINTERN PyObject *_wrap_new_Point__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     if (PyInt_Check(obj0)) {
       temp1 = PyInt_AsLong(obj0);
+    } else if ((PyArray_PyIntAsInt(obj0) != -1) || !PyErr_Occurred()) {
+      temp1 = PyArray_PyIntAsInt(obj0);
     } else {
       PyErr_SetString(PyExc_ValueError, "Expecting a integer");
       return NULL;
@@ -3632,10 +3635,14 @@ SWIGINTERN PyObject *_wrap_new_Point__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyO
     arg1 = &temp1;
   }
   {
-    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(obj1);
+    if (PyInt_Check(obj1)) {
+      arg2 = PyInt_AsLong(obj1);
+    } else if ((PyArray_PyIntAsInt(obj1) != -1) || !PyErr_Occurred()) {
+      arg2 = PyArray_PyIntAsInt(obj1);
+    } else {
+      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+      return NULL;
+    }
   }
   {
     try {
@@ -3668,6 +3675,8 @@ SWIGINTERN PyObject *_wrap_new_Point__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     if (PyInt_Check(obj0)) {
       temp1 = PyInt_AsLong(obj0);
+    } else if ((PyArray_PyIntAsInt(obj0) != -1) || !PyErr_Occurred()) {
+      temp1 = PyArray_PyIntAsInt(obj0);
     } else {
       PyErr_SetString(PyExc_ValueError, "Expecting a integer");
       return NULL;
@@ -3712,7 +3721,13 @@ SWIGINTERN PyObject *_wrap_new_Point(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      _v = PyInt_Check(argv[0]) ? 1 : 0;  
+      if (PyInt_Check(argv[0])) {
+        _v = 1;
+      } else if ((PyArray_PyIntAsInt(argv[0]) != -1) || !PyErr_Occurred()) {
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       return _wrap_new_Point__SWIG_2(self, args);
@@ -3721,11 +3736,23 @@ SWIGINTERN PyObject *_wrap_new_Point(PyObject *self, PyObject *args) {
   if (argc == 2) {
     int _v;
     {
-      _v = PyInt_Check(argv[0]) ? 1 : 0;  
+      if (PyInt_Check(argv[0])) {
+        _v = 1;
+      } else if ((PyArray_PyIntAsInt(argv[0]) != -1) || !PyErr_Occurred()) {
+        _v = 1;
+      } else {
+        _v = 0;
+      }
     }
     if (_v) {
       {
-        _v = PyInt_Check(argv[1]) ? 1 : 0;
+        if (PyInt_Check(argv[1])) {
+          _v = 1;
+        } else if ((PyArray_PyIntAsInt(argv[1]) != -1) || !PyErr_Occurred()) {
+          _v = 1;
+        } else {
+          _v = 0;
+        }
       }
       if (_v) {
         return _wrap_new_Point__SWIG_1(self, args);
@@ -3749,7 +3776,7 @@ SWIGINTERN PyObject *_wrap_Point_GetType(PyObject *SWIGUNUSEDPARM(self), PyObjec
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  int result;
+  mfem::Element::Type result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:Point_GetType",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Point, 0 |  0 );
@@ -3759,7 +3786,7 @@ SWIGINTERN PyObject *_wrap_Point_GetType(PyObject *SWIGUNUSEDPARM(self), PyObjec
   arg1 = reinterpret_cast< mfem::Point * >(argp1);
   {
     try {
-      result = (int)((mfem::Point const *)arg1)->GetType(); 
+      result = (mfem::Element::Type)((mfem::Point const *)arg1)->GetType(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4221,7 +4248,7 @@ static PyMethodDef SwigMethods[] = {
 		"Point(int const * ind, int attr=-1)\n"
 		"new_Point(int const * ind) -> Point\n"
 		""},
-	 { (char *)"Point_GetType", _wrap_Point_GetType, METH_VARARGS, (char *)"Point_GetType(Point self) -> int"},
+	 { (char *)"Point_GetType", _wrap_Point_GetType, METH_VARARGS, (char *)"Point_GetType(Point self) -> mfem::Element::Type"},
 	 { (char *)"Point_GetVertices", _wrap_Point_GetVertices, METH_VARARGS, (char *)"\n"
 		"GetVertices(intArray v)\n"
 		"Point_GetVertices(Point self) -> int *\n"
@@ -4243,6 +4270,7 @@ static PyMethodDef SwigMethods[] = {
 static void *_p_mfem__PointTo_p_mfem__Element(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Element *)  ((mfem::Point *) x));
 }
+static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_geom_t = {"_p_geom_t", "geom_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
@@ -4253,6 +4281,7 @@ static swig_type_info _swigt__p_mfem__Point = {"_p_mfem__Point", "mfem::Point *"
 static swig_type_info _swigt__p_mfem__PointFiniteElement = {"_p_mfem__PointFiniteElement", "mfem::PointFiniteElement *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_geom_t,
   &_swigt__p_int,
@@ -4263,6 +4292,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__PointFiniteElement,
 };
 
+static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_geom_t[] = {  {&_swigt__p_geom_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -4273,6 +4303,7 @@ static swig_cast_info _swigc__p_mfem__Point[] = {  {&_swigt__p_mfem__Point, 0, 0
 static swig_cast_info _swigc__p_mfem__PointFiniteElement[] = {  {&_swigt__p_mfem__PointFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_geom_t,
   _swigc__p_int,

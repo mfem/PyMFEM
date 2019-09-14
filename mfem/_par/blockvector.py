@@ -96,7 +96,7 @@ except __builtin__.Exception:
     _newclass = 0
 
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.vector
 class BlockVector(mfem._par.vector.Vector):
     """Proxy of C++ mfem::BlockVector class."""
@@ -115,6 +115,7 @@ class BlockVector(mfem._par.vector.Vector):
         """
         __init__(mfem::BlockVector self) -> BlockVector
         __init__(mfem::BlockVector self, intArray bOffsets) -> BlockVector
+        __init__(mfem::BlockVector self, intArray bOffsets, mfem::MemoryType mt) -> BlockVector
         __init__(mfem::BlockVector self, BlockVector block) -> BlockVector
         __init__(mfem::BlockVector self, double * data, intArray bOffsets) -> BlockVector
         """
@@ -148,6 +149,7 @@ class BlockVector(mfem._par.vector.Vector):
         """
         Update(BlockVector self, double * data, intArray bOffsets)
         Update(BlockVector self, intArray bOffsets)
+        Update(BlockVector self, intArray bOffsets, mfem::MemoryType mt)
         """
         return _blockvector.BlockVector_Update(self, *args)
 

@@ -110,13 +110,15 @@ MFEM_VERSION_TYPE_DEVELOPMENT = _pmesh.MFEM_VERSION_TYPE_DEVELOPMENT
 MFEM_VERSION_MAJOR = _pmesh.MFEM_VERSION_MAJOR
 MFEM_VERSION_MINOR = _pmesh.MFEM_VERSION_MINOR
 MFEM_VERSION_PATCH = _pmesh.MFEM_VERSION_PATCH
+MFEM_SOURCE_DIR = _pmesh.MFEM_SOURCE_DIR
+MFEM_INSTALL_DIR = _pmesh.MFEM_INSTALL_DIR
 MFEM_TIMER_TYPE = _pmesh.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _pmesh.MFEM_HYPRE_VERSION
 import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.vector
 import mfem._par.array
-import mfem._par.ostream_typemap
+import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.ncmesh
 import mfem._par.element
@@ -124,6 +126,7 @@ import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules
 import mfem._par.table
+import mfem._par.hash
 import mfem._par.vertex
 import mfem._par.gridfunc
 import mfem._par.coefficient
@@ -152,6 +155,15 @@ class ParMesh(mfem._par.mesh.Mesh):
         __swig_getmethods__.update(getattr(_s, '__swig_getmethods__', {}))
     __getattr__ = lambda self, name: _swig_getattr(self, ParMesh, name)
     __repr__ = _swig_repr
+
+    def Finalize(self, refine=False, fix_orientation=False):
+        """
+        Finalize(ParMesh self, bool refine=False, bool fix_orientation=False)
+        Finalize(ParMesh self, bool refine=False)
+        Finalize(ParMesh self)
+        """
+        return _pmesh.ParMesh_Finalize(self, refine, fix_orientation)
+
 
     def GetComm(self):
         """GetComm(ParMesh self) -> MPI_Comm"""
@@ -220,9 +232,14 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_GroupNEdges(self, group)
 
 
-    def GroupNFaces(self, group):
-        """GroupNFaces(ParMesh self, int group) -> int"""
-        return _pmesh.ParMesh_GroupNFaces(self, group)
+    def GroupNTriangles(self, group):
+        """GroupNTriangles(ParMesh self, int group) -> int"""
+        return _pmesh.ParMesh_GroupNTriangles(self, group)
+
+
+    def GroupNQuadrilaterals(self, group):
+        """GroupNQuadrilaterals(ParMesh self, int group) -> int"""
+        return _pmesh.ParMesh_GroupNQuadrilaterals(self, group)
 
 
     def GroupVertex(self, group, i):
@@ -242,16 +259,14 @@ class ParMesh(mfem._par.mesh.Mesh):
 
 
 
-    def GroupFace(self, group, i, *args):
-        if len(args) == 0:
-            from mfem.par import intp    
-            face = intp()
-            o = intp()
-            _pmesh.Mesh_ParGroupFace(self, group, i, face, o)      
-            return face.value(), o.value()
-        else:
-            return _pmesh.ParMesh_GroupFace(self, group, i, *args)            
+    def GroupTriangle(self, group, i, face, o):
+        """GroupTriangle(ParMesh self, int group, int i, int & face, int & o)"""
+        return _pmesh.ParMesh_GroupTriangle(self, group, i, face, o)
 
+
+    def GroupQuadrilateral(self, group, i, face, o):
+        """GroupQuadrilateral(ParMesh self, int group, int i, int & face, int & o)"""
+        return _pmesh.ParMesh_GroupQuadrilateral(self, group, i, face, o)
 
 
     def GenerateOffsets(self, N, loc_sizes, offsets):
@@ -317,46 +332,9 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_ReduceInt(self, value)
 
 
-    def RefineGroups(self, v_to_v, middle):
-        """RefineGroups(ParMesh self, DSTable v_to_v, int * middle)"""
-        return _pmesh.ParMesh_RefineGroups(self, v_to_v, middle)
-
-
     def Rebalance(self):
         """Rebalance(ParMesh self)"""
         return _pmesh.ParMesh_Rebalance(self)
-
-
-    def Print(self, *args):
-        """
-        Print(ParMesh self, std::ostream & out)
-        Print(ParMesh self)
-        """
-        return _pmesh.ParMesh_Print(self, *args)
-
-
-    def PrintXG(self, *args):
-        """
-        PrintXG(ParMesh self, std::ostream & out)
-        PrintXG(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintXG(self, *args)
-
-
-    def PrintAsOne(self, *args):
-        """
-        PrintAsOne(ParMesh self, std::ostream & out)
-        PrintAsOne(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintAsOne(self, *args)
-
-
-    def PrintAsOneXG(self, *args):
-        """
-        PrintAsOneXG(ParMesh self, std::ostream & out)
-        PrintAsOneXG(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintAsOneXG(self, *args)
 
 
     def GetBoundingBox(self, ref = 2):
@@ -373,19 +351,6 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max)
 
 
-    def PrintInfo(self, *args):
-        """
-        PrintInfo(ParMesh self, std::ostream & out)
-        PrintInfo(ParMesh self)
-        """
-        return _pmesh.ParMesh_PrintInfo(self, *args)
-
-
-    def ParPrint(self, out):
-        """ParPrint(ParMesh self, std::ostream & out)"""
-        return _pmesh.ParMesh_ParPrint(self, out)
-
-
     def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
         """
         FindPoints(ParMesh self, DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int
@@ -393,6 +358,11 @@ class ParMesh(mfem._par.mesh.Mesh):
         FindPoints(ParMesh self, DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips) -> int
         """
         return _pmesh.ParMesh_FindPoints(self, point_mat, elem_ids, ips, warn, inv_trans)
+
+
+    def PrintSharedEntities(self, fname_prefix):
+        """PrintSharedEntities(ParMesh self, char const * fname_prefix)"""
+        return _pmesh.ParMesh_PrintSharedEntities(self, fname_prefix)
 
     __swig_destroy__ = _pmesh.delete_ParMesh
     __del__ = lambda self: None
@@ -404,6 +374,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         __init__(mfem::ParMesh self, MPI_Comm comm, Mesh mesh, int * partitioning_=None, int part_method=1) -> ParMesh
         __init__(mfem::ParMesh self, MPI_Comm comm, Mesh mesh, int * partitioning_=None) -> ParMesh
         __init__(mfem::ParMesh self, MPI_Comm comm, Mesh mesh) -> ParMesh
+        __init__(mfem::ParMesh self, MPI_Comm comm, std::istream & input, bool refine=True) -> ParMesh
         __init__(mfem::ParMesh self, MPI_Comm comm, std::istream & input) -> ParMesh
         __init__(mfem::ParMesh self, ParMesh orig_mesh, int ref_factor, int ref_type) -> ParMesh
         __init__(mfem::ParMesh self, MPI_Comm comm, char const * mesh_file) -> ParMesh
@@ -417,6 +388,66 @@ class ParMesh(mfem._par.mesh.Mesh):
     def ParPrintToFile(self, mesh_file, precision):
         """ParPrintToFile(ParMesh self, char const * mesh_file, int const precision)"""
         return _pmesh.ParMesh_ParPrintToFile(self, mesh_file, precision)
+
+
+    def Print(self, *args):
+        """
+        Print(ParMesh self, std::ostream & out)
+        Print(ParMesh self)
+        Print(ParMesh self, char const * file, int precision=8)
+        Print(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_Print(self, *args)
+
+
+    def PrintXG(self, *args):
+        """
+        PrintXG(ParMesh self, std::ostream & out)
+        PrintXG(ParMesh self)
+        PrintXG(ParMesh self, char const * file, int precision=8)
+        PrintXG(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintXG(self, *args)
+
+
+    def PrintAsOne(self, *args):
+        """
+        PrintAsOne(ParMesh self, std::ostream & out)
+        PrintAsOne(ParMesh self)
+        PrintAsOne(ParMesh self, char const * file, int precision=8)
+        PrintAsOne(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintAsOne(self, *args)
+
+
+    def PrintAsOneXG(self, *args):
+        """
+        PrintAsOneXG(ParMesh self, std::ostream & out)
+        PrintAsOneXG(ParMesh self)
+        PrintAsOneXG(ParMesh self, char const * file, int precision=8)
+        PrintAsOneXG(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintAsOneXG(self, *args)
+
+
+    def PrintInfo(self, *args):
+        """
+        PrintInfo(ParMesh self, std::ostream & out)
+        PrintInfo(ParMesh self)
+        PrintInfo(ParMesh self, char const * file, int precision=8)
+        PrintInfo(ParMesh self, char const * file)
+        """
+        return _pmesh.ParMesh_PrintInfo(self, *args)
+
+
+    def ParPrint(self, *args):
+        """
+        ParPrint(ParMesh self, std::ostream & out)
+        ParPrint(ParMesh self, char const * file, int precision=8)
+        ParPrint(ParMesh self, char const * file)
+        ParPrint(ParMesh self)
+        """
+        return _pmesh.ParMesh_ParPrint(self, *args)
 
 ParMesh_swigregister = _pmesh.ParMesh_swigregister
 ParMesh_swigregister(ParMesh)

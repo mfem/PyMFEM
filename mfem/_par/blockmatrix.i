@@ -1,21 +1,27 @@
 %module(package="mfem._par") blockmatrix
 
 %{
+#include <fstream>  
+#include <iostream>
 #include "linalg/blockmatrix.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "iostream_typemap.hpp"    
+#include "io_stream.hpp"      
 %}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
 %}
+
+%include "exception.i"
 %import "array.i"
 %import "vector.i"
 %import "matrix.i"
 %import "sparsemat.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %pythonappend mfem::BlockMatrix::BlockMatrix %{
 from mfem.par import intArray  
@@ -35,3 +41,10 @@ if len(args) == 2:
 %}
 
 %include "linalg/blockmatrix.hpp"
+
+ /*
+void PrintMatlab(std::ostream & os = mfem::out) const;
+ */
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(BlockMatrix, PrintMatlab)
+#endif
