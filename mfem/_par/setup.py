@@ -68,7 +68,7 @@ import mpi4py
 mpi4pyinc = mpi4py.get_include()
 print(mpi4pyinc, numpyinc)
 
-libraries    = ['mfem', 'HYPRE']
+libraries    = ['mfem', 'HYPRE', 'metis']
 include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc, hypreinc,]
 #                mpichinc, hypreinc,]
 library_dirs = [mfemlnkdir, hyprelib, metis5lib,]
@@ -94,7 +94,7 @@ ext_modules = [Extension(proxy_names[modules[0]],
                         include_dirs = include_dirs,
                         library_dirs = library_dirs,
                         runtime_library_dirs = library_dirs,  
-                         libraries = ['metis']+libraries,
+                         libraries = libraries,
                          define_macros=macros),]
 
 ext_modules.extend([Extension(proxy_names[name],
