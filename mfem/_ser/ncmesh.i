@@ -10,6 +10,10 @@
 #include "numpy/arrayobject.h"    
 %}
 
+%init %{
+   import_array();
+%}
+
 %include "exception.i"
 %include "../common/cpointers.i"
 %import "mesh.i"
