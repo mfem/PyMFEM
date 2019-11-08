@@ -15,11 +15,10 @@
 %mpi4py_typemap(Comm, MPI_Comm);
 #endif
 
-/*
 %init %{
-import_array();
+   import_array();
 %}
-*/
+
 %include "exception.i"
 %import "vector.i"
 %import "nonlinearform.i"

@@ -50,6 +50,8 @@ in $MFEM_PREFIX
 
 1-2c) instlal serial MFEM to $MFEM_PREFIX/mfem/ser
 
+   Set CXX11FLAG to use c++11 and run make install
+   > export CXX11FLAG=-std=c++11
    > make install
 
 
@@ -92,6 +94,8 @@ Then run make.
 
 1-3d) instlal parallel MFEM
 
+   Set CXX11FLAG to use c++11 and run make install
+   > export CXX11FLAG=-std=c++11
    > make install
 
 

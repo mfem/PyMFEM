@@ -117,4 +117,5 @@ clean:
 		fi; \
 	done
 	rm -f setup_local.py
+	rm -rf build
 

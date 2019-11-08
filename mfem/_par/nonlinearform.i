@@ -8,11 +8,12 @@
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"               
 %}
-/*
+
+
 %init %{
 import_array();
 %}
-*/
+
 %include "exception.i"
 %import "operators.i"
 %import "fespace.i"
