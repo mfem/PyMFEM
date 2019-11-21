@@ -73,6 +73,10 @@ include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc, hypreinc,]
 #                mpichinc, hypreinc,]
 library_dirs = [mfemlnkdir, hyprelib, metis5lib,]
 
+if add_pumi != '':
+   include_dirs.append(pumiinc)
+   library_dirs.append(pumilib)
+   
 if add_strumpack:
     modules.append("strumpack")
     extra_compile_args.append('-std=c++11')

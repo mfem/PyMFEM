@@ -55,11 +55,6 @@ MPI4PYINC = $(shell $(PYTHON) -c "import mpi4py;print(mpi4py.get_include())")
 #numpy
 #NUMPYINC = $(shell $(PYTHON) -c "import numpy;print(numpy.get_include())")
 
-#Boost
-#BOOSTINC ?= /usr/local/include
-#BOOSTLIB ?= /usr/local/lib
-#LIBBOOSTIOSTREAMS ?= boost_iostreams
-
 NOCOMPACTUNWIND = 
 include ./Makefile.local
 
