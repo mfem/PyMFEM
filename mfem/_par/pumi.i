@@ -23,6 +23,14 @@
 
 %include "../common/mfem_config.i"
 
+#ifndef MFEM_USE_MPI
+   #define MFEM_USE_MPI  YES
+#endif
+
+#ifndef MFEM_USE_PUMI
+   #define MFEM_USE_PUMI YES
+#endif
+
 #ifdef MFEM_USE_MPI
 %include mpi4py/mpi4py.i
 %mpi4py_typemap(Comm, MPI_Comm);
