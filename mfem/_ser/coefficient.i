@@ -49,13 +49,36 @@ import_array();
 
 %ignore Function;
 //%ignore DeltaCoefficient;
-%feature("notabstract") VectorFunctionCoefficient;
-%feature("notabstract") VectorConstantCoefficient;
-%feature("notabstract") VectorDeltaCoefficient;
-%feature("notabstract") MatrixFunctionCoefficient;
-%feature("notabstract") MatrixConstantCoefficient;
+namespace mfem {
+%pythonprepend MatrixConstantCoefficient::MatrixConstantCoefficient(const DenseMatrix &m) %{
+   try:
+      import numpy as np
+      value = np.array(m, copy=False, dtype=float)
+      can_np_array = True
+   except:
+      can_np_array = False
 
-namespace mfem { 
+   if can_np_array:
+      v = mfem._ser.vector.Vector(np.transpose(value).flatten())
+      m = mfem._ser.densemat.DenseMatrix(v.GetData(), value.shape[0], value.shape[1])       
+      self._value = (v,m)
+   else:
+      pass 
+%}
+%pythonprepend VectorConstantCoefficient::VectorConstantCoefficient(const Vector &v) %{
+   try:
+      import numpy as np
+      value = np.array(v, copy=False, dtype=float).flatten()
+      can_np_array = True
+   except:
+      can_np_array = False
+
+   if can_np_array:
+      v = mfem._ser.vector.Vector(value)
+      self._value = v
+   else:
+      pass 
+%}
 %pythonprepend DeltaCoefficient::SetWeight %{
     w.thisown=0 
 %}
@@ -76,6 +99,13 @@ namespace mfem {
 %}
   
 }
+
+%feature("notabstract") mfem::VectorFunctionCoefficient;
+%feature("notabstract") mfem::VectorConstantCoefficient;
+%feature("notabstract") mfem::VectorDeltaCoefficient;
+%feature("notabstract") mfem::MatrixFunctionCoefficient;
+%feature("notabstract") mfem::MatrixConstantCoefficient;
+
 
 /*
 %exception {

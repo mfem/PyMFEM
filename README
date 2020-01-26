@@ -102,6 +102,13 @@ to find more detail of the MFEM libirary.
        Therefore, if one overwrite Eval method, SWIG reroute the
        call to the Python side.
 
+       V/M ConstantCoefficeint supports natrual python object as input
+          MatrixConstantCoefficient([[1,2], [2,3]])
+          VecotrConstantCoefficient([1,2,3])
+
+          Note: thie argument is first tested if it can be converted using
+	        np.array(x,  dtype=float)
+
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
        return numpy array of Vector()
