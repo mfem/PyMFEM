@@ -386,6 +386,21 @@ class VectorConstantCoefficient(VectorCoefficient):
 
     def __init__(self, v):
         r"""__init__(VectorConstantCoefficient self, Vector v) -> VectorConstantCoefficient"""
+
+        try:
+           import numpy as np
+           value = np.array(v, copy=False, dtype=float).flatten()
+           can_np_array = True
+        except:
+           can_np_array = False
+
+        if can_np_array:
+           v = mfem._par.vector.Vector(value)
+           self._value = v
+        else:
+           pass 
+
+
         _coefficient.VectorConstantCoefficient_swiginit(self, _coefficient.new_VectorConstantCoefficient(v))
 
     def Eval(self, *args):
@@ -708,6 +723,22 @@ class MatrixConstantCoefficient(MatrixCoefficient):
 
     def __init__(self, m):
         r"""__init__(MatrixConstantCoefficient self, DenseMatrix m) -> MatrixConstantCoefficient"""
+
+        try:
+           import numpy as np
+           value = np.array(m, copy=False, dtype=float)
+           can_np_array = True
+        except:
+           can_np_array = False
+
+        if can_np_array:
+           v = mfem._par.vector.Vector(np.transpose(value).flatten())
+           m = mfem._par.densemat.DenseMatrix(v.GetData(), value.shape[0], value.shape[1])       
+           self._value = (v,m)
+        else:
+           pass 
+
+
         _coefficient.MatrixConstantCoefficient_swiginit(self, _coefficient.new_MatrixConstantCoefficient(m))
 
     def Eval(self, *args):

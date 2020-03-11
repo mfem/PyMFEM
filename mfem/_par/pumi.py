@@ -191,7 +191,78 @@ import mfem._par.communication
 import mfem._par.sets
 
 def ParMesh2ParPumiMesh(pmesh):
-    r"""ParMesh2ParPumiMesh(ParMesh pmesh) -> mfem::ParPumiMesh *"""
+    r"""ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"""
     return _pumi.ParMesh2ParPumiMesh(pmesh)
+class PumiMesh(mfem._par.mesh.Mesh):
+    r"""Proxy of C++ mfem::PumiMesh class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, apf_mesh, generate_edges=0, refine=1, fix_orientation=True):
+        r"""__init__(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True) -> PumiMesh"""
+        _pumi.PumiMesh_swiginit(self, _pumi.new_PumiMesh(apf_mesh, generate_edges, refine, fix_orientation))
+
+    def Load(self, *args):
+        r"""
+        Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)
+        Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1)
+        Load(PumiMesh self, std::istream & input, int generate_edges=0)
+        Load(PumiMesh self, std::istream & input)
+        Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)
+        """
+        return _pumi.PumiMesh_Load(self, *args)
+    __swig_destroy__ = _pumi.delete_PumiMesh
+
+# Register PumiMesh in _pumi:
+_pumi.PumiMesh_swigregister(PumiMesh)
+
+class ParPumiMesh(mfem._par.pmesh.ParMesh):
+    r"""Proxy of C++ mfem::ParPumiMesh class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, comm, apf_mesh):
+        r"""__init__(ParPumiMesh self, MPI_Comm comm, apf::Mesh2 * apf_mesh) -> ParPumiMesh"""
+        _pumi.ParPumiMesh_swiginit(self, _pumi.new_ParPumiMesh(comm, apf_mesh))
+
+    def FieldMFEMtoPUMI(self, *args):
+        r"""
+        FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, ParGridFunction Pr, apf::Field * VelField, apf::Field * PrField, apf::Field * VelMagField)
+        FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Pr, apf::Field * PrField, apf::Field * PrMagField)
+        """
+        return _pumi.ParPumiMesh_FieldMFEMtoPUMI(self, *args)
+
+    def VectorFieldMFEMtoPUMI(self, apf_mesh, Vel, VelField, VelMagField):
+        r"""VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, apf::Field * VelField, apf::Field * VelMagField)"""
+        return _pumi.ParPumiMesh_VectorFieldMFEMtoPUMI(self, apf_mesh, Vel, VelField, VelMagField)
+
+    def UpdateMesh(self, AdaptedpMesh):
+        r"""UpdateMesh(ParPumiMesh self, ParMesh AdaptedpMesh)"""
+        return _pumi.ParPumiMesh_UpdateMesh(self, AdaptedpMesh)
+
+    def FieldPUMItoMFEM(self, apf_mesh, ScalarField, Pr):
+        r"""FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction Pr)"""
+        return _pumi.ParPumiMesh_FieldPUMItoMFEM(self, apf_mesh, ScalarField, Pr)
+    __swig_destroy__ = _pumi.delete_ParPumiMesh
+
+# Register ParPumiMesh in _pumi:
+_pumi.ParPumiMesh_swigregister(ParPumiMesh)
+
+class GridFunctionPumi(mfem._par.gridfunc.GridFunction):
+    r"""Proxy of C++ mfem::GridFunctionPumi class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, m, PumiM, v_num_loc, mesh_order):
+        r"""__init__(GridFunctionPumi self, Mesh m, apf::Mesh2 * PumiM, apf::Numbering * v_num_loc, int const mesh_order) -> GridFunctionPumi"""
+        _pumi.GridFunctionPumi_swiginit(self, _pumi.new_GridFunctionPumi(m, PumiM, v_num_loc, mesh_order))
+    __swig_destroy__ = _pumi.delete_GridFunctionPumi
+
+# Register GridFunctionPumi in _pumi:
+_pumi.GridFunctionPumi_swigregister(GridFunctionPumi)
+
 
 
