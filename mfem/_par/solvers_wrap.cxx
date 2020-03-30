@@ -3071,34 +3071,43 @@ namespace Swig {
 #define SWIGTYPE_p_double swig_types[3]
 #define SWIGTYPE_p_int swig_types[4]
 #define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[5]
-#define SWIGTYPE_p_mfem__BiCGSTABSolver swig_types[6]
-#define SWIGTYPE_p_mfem__CGSolver swig_types[7]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[8]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[9]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[10]
-#define SWIGTYPE_p_mfem__FGMRESSolver swig_types[11]
-#define SWIGTYPE_p_mfem__GMRESSolver swig_types[12]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[13]
-#define SWIGTYPE_p_mfem__IterativeSolver swig_types[14]
-#define SWIGTYPE_p_mfem__MINRESSolver swig_types[15]
-#define SWIGTYPE_p_mfem__Matrix swig_types[16]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[17]
-#define SWIGTYPE_p_mfem__NewtonSolver swig_types[18]
-#define SWIGTYPE_p_mfem__Operator swig_types[19]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[20]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[21]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[22]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[23]
-#define SWIGTYPE_p_mfem__SLBQPOptimizer swig_types[24]
-#define SWIGTYPE_p_mfem__SLISolver swig_types[25]
-#define SWIGTYPE_p_mfem__Solver swig_types[26]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[27]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[28]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[29]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[30]
-#define SWIGTYPE_p_mfem__Vector swig_types[31]
-static swig_type_info *swig_types[33];
-static swig_module_info swig_module = {swig_types, 32, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
+#define SWIGTYPE_p_mfem__BiCGSTABSolver swig_types[7]
+#define SWIGTYPE_p_mfem__BilinearForm swig_types[8]
+#define SWIGTYPE_p_mfem__BlockILU swig_types[9]
+#define SWIGTYPE_p_mfem__CGSolver swig_types[10]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[11]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[12]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[13]
+#define SWIGTYPE_p_mfem__FGMRESSolver swig_types[14]
+#define SWIGTYPE_p_mfem__GMRESSolver swig_types[15]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[16]
+#define SWIGTYPE_p_mfem__IterativeSolver swig_types[17]
+#define SWIGTYPE_p_mfem__MINRESSolver swig_types[18]
+#define SWIGTYPE_p_mfem__Matrix swig_types[19]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[20]
+#define SWIGTYPE_p_mfem__NewtonSolver swig_types[21]
+#define SWIGTYPE_p_mfem__Operator swig_types[22]
+#define SWIGTYPE_p_mfem__OperatorJacobiSmoother swig_types[23]
+#define SWIGTYPE_p_mfem__OptimizationProblem swig_types[24]
+#define SWIGTYPE_p_mfem__OptimizationSolver swig_types[25]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[26]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[27]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[28]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[29]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[30]
+#define SWIGTYPE_p_mfem__SLBQPOptimizer swig_types[31]
+#define SWIGTYPE_p_mfem__SLISolver swig_types[32]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[33]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[34]
+#define SWIGTYPE_p_mfem__Solver swig_types[35]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[36]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[37]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[38]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[39]
+#define SWIGTYPE_p_mfem__Vector swig_types[40]
+static swig_type_info *swig_types[42];
+static swig_module_info swig_module = {swig_types, 41, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3331,6 +3340,111 @@ SWIG_AsPtr_MPI_Comm (PyObject * input, MPI_Comm **p) {
     if (p) *p = static_cast< MPI_Comm* >(argp);
     return SWIG_OK;
   }
+}
+
+
+#include <limits.h>
+#if !defined(SWIG_NO_LLONG_MAX)
+# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
+#   define LLONG_MAX __LONG_LONG_MAX__
+#   define LLONG_MIN (-LLONG_MAX - 1LL)
+#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
+# endif
+#endif
+
+
+#include <float.h>
+
+
+#include <math.h>
+
+
+SWIGINTERNINLINE int
+SWIG_CanCastAsInteger(double *d, double min, double max) {
+  double x = *d;
+  if ((min <= x && x <= max)) {
+   double fx = floor(x);
+   double cx = ceil(x);
+   double rd =  ((x - fx) < 0.5) ? fx : cx; /* simple rint */
+   if ((errno == EDOM) || (errno == ERANGE)) {
+     errno = 0;
+   } else {
+     double summ, reps, diff;
+     if (rd < x) {
+       diff = x - rd;
+     } else if (rd > x) {
+       diff = rd - x;
+     } else {
+       return 1;
+     }
+     summ = rd + x;
+     reps = diff/summ;
+     if (reps < 8*DBL_EPSILON) {
+       *d = rd;
+       return 1;
+     }
+   }
+  }
+  return 0;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long (PyObject *obj, long* val)
+{
+#if PY_VERSION_HEX < 0x03000000
+  if (PyInt_Check(obj)) {
+    if (val) *val = PyInt_AsLong(obj);
+    return SWIG_OK;
+  } else
+#endif
+  if (PyLong_Check(obj)) {
+    long v = PyLong_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+      return SWIG_OverflowError;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    int dispatch = 0;
+    long v = PyInt_AsLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_AddCast(SWIG_OK);
+    } else {
+      PyErr_Clear();
+    }
+    if (!dispatch) {
+      double d;
+      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
+      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
+	if (val) *val = (long)(d);
+	return res;
+      }
+    }
+  }
+#endif
+  return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
 }
 
 
@@ -3738,6 +3852,478 @@ SWIGINTERN PyObject *IterativeSolver_swigregister(PyObject *SWIGUNUSEDPARM(self)
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_mfem__IterativeSolver, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_OperatorJacobiSmoother__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::BilinearForm *arg1 = 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  mfem::OperatorJacobiSmoother *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__BilinearForm,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::BilinearForm const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::BilinearForm const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_OperatorJacobiSmoother" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (mfem::OperatorJacobiSmoother *)new mfem::OperatorJacobiSmoother((mfem::BilinearForm const &)*arg1,(mfem::Array< int > const &)*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OperatorJacobiSmoother, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_OperatorJacobiSmoother__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::BilinearForm *arg1 = 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::OperatorJacobiSmoother *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__BilinearForm,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::BilinearForm const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::BilinearForm const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    try {
+      result = (mfem::OperatorJacobiSmoother *)new mfem::OperatorJacobiSmoother((mfem::BilinearForm const &)*arg1,(mfem::Array< int > const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OperatorJacobiSmoother, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_OperatorJacobiSmoother__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  double arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  mfem::OperatorJacobiSmoother *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_OperatorJacobiSmoother" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  {
+    try {
+      result = (mfem::OperatorJacobiSmoother *)new mfem::OperatorJacobiSmoother((mfem::Vector const &)*arg1,(mfem::Array< int > const &)*arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OperatorJacobiSmoother, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_OperatorJacobiSmoother__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::OperatorJacobiSmoother *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OperatorJacobiSmoother" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    try {
+      result = (mfem::OperatorJacobiSmoother *)new mfem::OperatorJacobiSmoother((mfem::Vector const &)*arg1,(mfem::Array< int > const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OperatorJacobiSmoother, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_OperatorJacobiSmoother(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_OperatorJacobiSmoother", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__BilinearForm, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_OperatorJacobiSmoother__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_OperatorJacobiSmoother__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_OperatorJacobiSmoother__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__BilinearForm, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_OperatorJacobiSmoother__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_OperatorJacobiSmoother'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::OperatorJacobiSmoother::OperatorJacobiSmoother(mfem::BilinearForm const &,mfem::Array< int > const &,double const)\n"
+    "    mfem::OperatorJacobiSmoother::OperatorJacobiSmoother(mfem::BilinearForm const &,mfem::Array< int > const &)\n"
+    "    mfem::OperatorJacobiSmoother::OperatorJacobiSmoother(mfem::Vector const &,mfem::Array< int > const &,double const)\n"
+    "    mfem::OperatorJacobiSmoother::OperatorJacobiSmoother(mfem::Vector const &,mfem::Array< int > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_OperatorJacobiSmoother(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorJacobiSmoother *arg1 = (mfem::OperatorJacobiSmoother *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorJacobiSmoother, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OperatorJacobiSmoother" "', argument " "1"" of type '" "mfem::OperatorJacobiSmoother *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorJacobiSmoother * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorJacobiSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorJacobiSmoother *arg1 = (mfem::OperatorJacobiSmoother *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OperatorJacobiSmoother_Mult", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorJacobiSmoother, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorJacobiSmoother_Mult" "', argument " "1"" of type '" "mfem::OperatorJacobiSmoother const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorJacobiSmoother * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorJacobiSmoother_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorJacobiSmoother_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OperatorJacobiSmoother_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorJacobiSmoother_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::OperatorJacobiSmoother const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorJacobiSmoother_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorJacobiSmoother *arg1 = (mfem::OperatorJacobiSmoother *) 0 ;
+  mfem::Operator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OperatorJacobiSmoother_SetOperator", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorJacobiSmoother, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorJacobiSmoother_SetOperator" "', argument " "1"" of type '" "mfem::OperatorJacobiSmoother *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorJacobiSmoother * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorJacobiSmoother_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorJacobiSmoother_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
+  {
+    try {
+      (arg1)->SetOperator((mfem::Operator const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OperatorJacobiSmoother_Setup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OperatorJacobiSmoother *arg1 = (mfem::OperatorJacobiSmoother *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OperatorJacobiSmoother_Setup", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OperatorJacobiSmoother, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OperatorJacobiSmoother_Setup" "', argument " "1"" of type '" "mfem::OperatorJacobiSmoother *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OperatorJacobiSmoother * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OperatorJacobiSmoother_Setup" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OperatorJacobiSmoother_Setup" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      (arg1)->Setup((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *OperatorJacobiSmoother_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__OperatorJacobiSmoother, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *OperatorJacobiSmoother_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_new_SLISolver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
@@ -10749,6 +11335,50 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NewtonSolver_ProcessNewState(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NewtonSolver *arg1 = (mfem::NewtonSolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NewtonSolver_ProcessNewState", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewtonSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewtonSolver_ProcessNewState" "', argument " "1"" of type '" "mfem::NewtonSolver const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NewtonSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NewtonSolver_ProcessNewState" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NewtonSolver_ProcessNewState" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      ((mfem::NewtonSolver const *)arg1)->ProcessNewState((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_NewtonSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::NewtonSolver *arg1 = (mfem::NewtonSolver *) 0 ;
@@ -10933,6 +11563,832 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_OptimizationProblem_input_size_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_input_size_get" "', argument " "1"" of type '" "mfem::OptimizationProblem *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  result = (int)(int) ((arg1)->input_size);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_CalcObjective(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  double result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationProblem_CalcObjective", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_CalcObjective" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationProblem_CalcObjective" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_CalcObjective" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      result = (double)((mfem::OptimizationProblem const *)arg1)->CalcObjective((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_CalcObjectiveGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationProblem_CalcObjectiveGrad", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_CalcObjectiveGrad" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationProblem_CalcObjectiveGrad" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_CalcObjectiveGrad" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OptimizationProblem_CalcObjectiveGrad" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_CalcObjectiveGrad" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::OptimizationProblem const *)arg1)->CalcObjectiveGrad((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_SetEqualityConstraint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationProblem_SetEqualityConstraint", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_SetEqualityConstraint" "', argument " "1"" of type '" "mfem::OptimizationProblem *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationProblem_SetEqualityConstraint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_SetEqualityConstraint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    try {
+      (arg1)->SetEqualityConstraint((mfem::Vector const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_SetInequalityConstraint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationProblem_SetInequalityConstraint", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_SetInequalityConstraint" "', argument " "1"" of type '" "mfem::OptimizationProblem *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationProblem_SetInequalityConstraint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_SetInequalityConstraint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OptimizationProblem_SetInequalityConstraint" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_SetInequalityConstraint" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      (arg1)->SetInequalityConstraint((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_SetSolutionBounds(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationProblem_SetSolutionBounds", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_SetSolutionBounds" "', argument " "1"" of type '" "mfem::OptimizationProblem *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationProblem_SetSolutionBounds" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_SetSolutionBounds" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OptimizationProblem_SetSolutionBounds" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationProblem_SetSolutionBounds" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      (arg1)->SetSolutionBounds((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetC(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Operator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetC" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *)((mfem::OptimizationProblem const *)arg1)->GetC(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetD(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Operator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetD" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (mfem::Operator *)((mfem::OptimizationProblem const *)arg1)->GetD(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetEqualityVec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetEqualityVec" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *)((mfem::OptimizationProblem const *)arg1)->GetEqualityVec(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetInequalityVec_Lo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetInequalityVec_Lo" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *)((mfem::OptimizationProblem const *)arg1)->GetInequalityVec_Lo(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetInequalityVec_Hi(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetInequalityVec_Hi" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *)((mfem::OptimizationProblem const *)arg1)->GetInequalityVec_Hi(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetBoundsVec_Lo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetBoundsVec_Lo" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *)((mfem::OptimizationProblem const *)arg1)->GetBoundsVec_Lo(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetBoundsVec_Hi(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetBoundsVec_Hi" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *)((mfem::OptimizationProblem const *)arg1)->GetBoundsVec_Hi(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationProblem_GetNumConstraints(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationProblem_GetNumConstraints" "', argument " "1"" of type '" "mfem::OptimizationProblem const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      result = (int)((mfem::OptimizationProblem const *)arg1)->GetNumConstraints(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_OptimizationProblem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationProblem *arg1 = (mfem::OptimizationProblem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationProblem, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OptimizationProblem" "', argument " "1"" of type '" "mfem::OptimizationProblem *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationProblem * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *OptimizationProblem_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__OptimizationProblem, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_delete_OptimizationSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationSolver *arg1 = (mfem::OptimizationSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OptimizationSolver" "', argument " "1"" of type '" "mfem::OptimizationSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationSolver * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationSolver_SetOptimizationProblem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationSolver *arg1 = (mfem::OptimizationSolver *) 0 ;
+  mfem::OptimizationProblem *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationSolver_SetOptimizationProblem", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationSolver_SetOptimizationProblem" "', argument " "1"" of type '" "mfem::OptimizationSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__OptimizationProblem,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationSolver_SetOptimizationProblem" "', argument " "2"" of type '" "mfem::OptimizationProblem const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationSolver_SetOptimizationProblem" "', argument " "2"" of type '" "mfem::OptimizationProblem const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::OptimizationProblem * >(argp2);
+  {
+    try {
+      (arg1)->SetOptimizationProblem((mfem::OptimizationProblem const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationSolver_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationSolver *arg1 = (mfem::OptimizationSolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationSolver_Mult", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationSolver_Mult" "', argument " "1"" of type '" "mfem::OptimizationSolver const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationSolver_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationSolver_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OptimizationSolver_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationSolver_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::OptimizationSolver const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationSolver_SetPreconditioner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationSolver *arg1 = (mfem::OptimizationSolver *) 0 ;
+  mfem::Solver *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationSolver_SetPreconditioner", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationSolver_SetPreconditioner" "', argument " "1"" of type '" "mfem::OptimizationSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Solver,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationSolver_SetPreconditioner" "', argument " "2"" of type '" "mfem::Solver &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationSolver_SetPreconditioner" "', argument " "2"" of type '" "mfem::Solver &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Solver * >(argp2);
+  {
+    try {
+      (arg1)->SetPreconditioner(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_OptimizationSolver_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::OptimizationSolver *arg1 = (mfem::OptimizationSolver *) 0 ;
+  mfem::Operator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "OptimizationSolver_SetOperator", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OptimizationSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OptimizationSolver_SetOperator" "', argument " "1"" of type '" "mfem::OptimizationSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::OptimizationSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OptimizationSolver_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OptimizationSolver_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
+  {
+    try {
+      (arg1)->SetOperator((mfem::Operator const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *OptimizationSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__OptimizationSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_new_SLBQPOptimizer__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
   PyObject *resultobj = 0;
   mfem::SLBQPOptimizer *result = 0 ;
@@ -11019,6 +12475,50 @@ fail:
     "    mfem::SLBQPOptimizer::SLBQPOptimizer()\n"
     "    mfem::SLBQPOptimizer::SLBQPOptimizer(MPI_Comm)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SLBQPOptimizer_SetOptimizationProblem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SLBQPOptimizer *arg1 = (mfem::SLBQPOptimizer *) 0 ;
+  mfem::OptimizationProblem *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SLBQPOptimizer_SetOptimizationProblem", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SLBQPOptimizer, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SLBQPOptimizer_SetOptimizationProblem" "', argument " "1"" of type '" "mfem::SLBQPOptimizer *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SLBQPOptimizer * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__OptimizationProblem,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SLBQPOptimizer_SetOptimizationProblem" "', argument " "2"" of type '" "mfem::OptimizationProblem const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SLBQPOptimizer_SetOptimizationProblem" "', argument " "2"" of type '" "mfem::OptimizationProblem const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::OptimizationProblem * >(argp2);
+  {
+    try {
+      (arg1)->SetOptimizationProblem((mfem::OptimizationProblem const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -11184,94 +12684,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_SLBQPOptimizer_SetPreconditioner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::SLBQPOptimizer *arg1 = (mfem::SLBQPOptimizer *) 0 ;
-  mfem::Solver *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "SLBQPOptimizer_SetPreconditioner", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SLBQPOptimizer, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SLBQPOptimizer_SetPreconditioner" "', argument " "1"" of type '" "mfem::SLBQPOptimizer *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SLBQPOptimizer * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Solver,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SLBQPOptimizer_SetPreconditioner" "', argument " "2"" of type '" "mfem::Solver &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SLBQPOptimizer_SetPreconditioner" "', argument " "2"" of type '" "mfem::Solver &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Solver * >(argp2);
-  {
-    try {
-      (arg1)->SetPreconditioner(*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SLBQPOptimizer_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::SLBQPOptimizer *arg1 = (mfem::SLBQPOptimizer *) 0 ;
-  mfem::Operator *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject *swig_obj[2] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "SLBQPOptimizer_SetOperator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SLBQPOptimizer, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SLBQPOptimizer_SetOperator" "', argument " "1"" of type '" "mfem::SLBQPOptimizer *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SLBQPOptimizer * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SLBQPOptimizer_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SLBQPOptimizer_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  {
-    try {
-      (arg1)->SetOperator((mfem::Operator const &)*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_delete_SLBQPOptimizer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::SLBQPOptimizer *arg1 = (mfem::SLBQPOptimizer *) 0 ;
@@ -11317,8 +12729,740 @@ SWIGINTERN PyObject *SLBQPOptimizer_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  mfem::BlockILU::Reordering arg2 ;
+  int arg3 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  mfem::BlockILU *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlockILU" "', argument " "2"" of type '" "mfem::BlockILU::Reordering""'");
+  } 
+  arg2 = static_cast< mfem::BlockILU::Reordering >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      result = (mfem::BlockILU *)new mfem::BlockILU(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  mfem::BlockILU::Reordering arg2 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  mfem::BlockILU *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_BlockILU" "', argument " "2"" of type '" "mfem::BlockILU::Reordering""'");
+  } 
+  arg2 = static_cast< mfem::BlockILU::Reordering >(val2);
+  {
+    try {
+      result = (mfem::BlockILU *)new mfem::BlockILU(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  mfem::BlockILU *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  {
+    try {
+      result = (mfem::BlockILU *)new mfem::BlockILU(arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = 0 ;
+  int arg2 ;
+  mfem::BlockILU::Reordering arg3 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  mfem::BlockILU *result = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlockILU" "', argument " "3"" of type '" "mfem::BlockILU::Reordering""'");
+  } 
+  arg3 = static_cast< mfem::BlockILU::Reordering >(val3);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  }
+  {
+    try {
+      result = (mfem::BlockILU *)new mfem::BlockILU(*arg1,arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = 0 ;
+  int arg2 ;
+  mfem::BlockILU::Reordering arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  mfem::BlockILU *result = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_BlockILU" "', argument " "3"" of type '" "mfem::BlockILU::Reordering""'");
+  } 
+  arg3 = static_cast< mfem::BlockILU::Reordering >(val3);
+  {
+    try {
+      result = (mfem::BlockILU *)new mfem::BlockILU(*arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::BlockILU *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    try {
+      result = (mfem::BlockILU *)new mfem::BlockILU(*arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockILU__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::BlockILU *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_BlockILU" "', argument " "1"" of type '" "mfem::Operator &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  {
+    try {
+      result = (mfem::BlockILU *)new mfem::BlockILU(*arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_BlockILU(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_BlockILU", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_BlockILU__SWIG_6(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      return _wrap_new_BlockILU__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_BlockILU__SWIG_5(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_BlockILU__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_BlockILU__SWIG_4(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_new_BlockILU__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_new_BlockILU__SWIG_3(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_BlockILU'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::BlockILU::BlockILU(int,mfem::BlockILU::Reordering,int)\n"
+    "    mfem::BlockILU::BlockILU(int,mfem::BlockILU::Reordering)\n"
+    "    mfem::BlockILU::BlockILU(int)\n"
+    "    mfem::BlockILU::BlockILU(mfem::Operator &,int,mfem::BlockILU::Reordering,int)\n"
+    "    mfem::BlockILU::BlockILU(mfem::Operator &,int,mfem::BlockILU::Reordering)\n"
+    "    mfem::BlockILU::BlockILU(mfem::Operator &,int)\n"
+    "    mfem::BlockILU::BlockILU(mfem::Operator &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockILU_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockILU *arg1 = (mfem::BlockILU *) 0 ;
+  mfem::Operator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "BlockILU_SetOperator", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockILU, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockILU_SetOperator" "', argument " "1"" of type '" "mfem::BlockILU *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockILU * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockILU_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockILU_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
+  {
+    try {
+      (arg1)->SetOperator((mfem::Operator const &)*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockILU_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockILU *arg1 = (mfem::BlockILU *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "BlockILU_Mult", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockILU, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockILU_Mult" "', argument " "1"" of type '" "mfem::BlockILU const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockILU * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockILU_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockILU_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockILU_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockILU_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::BlockILU const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockILU_GetBlockI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockILU *arg1 = (mfem::BlockILU *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockILU, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockILU_GetBlockI" "', argument " "1"" of type '" "mfem::BlockILU *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockILU * >(argp1);
+  {
+    try {
+      result = (int *)(arg1)->GetBlockI(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockILU_GetBlockJ(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockILU *arg1 = (mfem::BlockILU *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockILU, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockILU_GetBlockJ" "', argument " "1"" of type '" "mfem::BlockILU *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockILU * >(argp1);
+  {
+    try {
+      result = (int *)(arg1)->GetBlockJ(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_BlockILU_GetBlockData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockILU *arg1 = (mfem::BlockILU *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  double *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockILU, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockILU_GetBlockData" "', argument " "1"" of type '" "mfem::BlockILU *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockILU * >(argp1);
+  {
+    try {
+      result = (double *)(arg1)->GetBlockData(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_BlockILU(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::BlockILU *arg1 = (mfem::BlockILU *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockILU, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_BlockILU" "', argument " "1"" of type '" "mfem::BlockILU *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BlockILU * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *BlockILU_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__BlockILU, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *BlockILU_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "IterativeSolver_SetRelTol", _wrap_IterativeSolver_SetRelTol, METH_VARARGS, "IterativeSolver_SetRelTol(IterativeSolver self, double rtol)"},
 	 { "IterativeSolver_SetAbsTol", _wrap_IterativeSolver_SetAbsTol, METH_VARARGS, "IterativeSolver_SetAbsTol(IterativeSolver self, double atol)"},
 	 { "IterativeSolver_SetMaxIter", _wrap_IterativeSolver_SetMaxIter, METH_VARARGS, "IterativeSolver_SetMaxIter(IterativeSolver self, int max_it)"},
@@ -11330,6 +13474,16 @@ static PyMethodDef SwigMethods[] = {
 	 { "IterativeSolver_SetOperator", _wrap_IterativeSolver_SetOperator, METH_VARARGS, "IterativeSolver_SetOperator(IterativeSolver self, Operator op)"},
 	 { "delete_IterativeSolver", _wrap_delete_IterativeSolver, METH_O, "delete_IterativeSolver(IterativeSolver self)"},
 	 { "IterativeSolver_swigregister", IterativeSolver_swigregister, METH_O, NULL},
+	 { "new_OperatorJacobiSmoother", _wrap_new_OperatorJacobiSmoother, METH_VARARGS, "\n"
+		"OperatorJacobiSmoother(mfem::BilinearForm const & a, intArray ess_tdof_list, double const damping=1.0)\n"
+		"OperatorJacobiSmoother(Vector d, intArray ess_tdof_list, double const damping=1.0)\n"
+		""},
+	 { "delete_OperatorJacobiSmoother", _wrap_delete_OperatorJacobiSmoother, METH_O, "delete_OperatorJacobiSmoother(OperatorJacobiSmoother self)"},
+	 { "OperatorJacobiSmoother_Mult", _wrap_OperatorJacobiSmoother_Mult, METH_VARARGS, "OperatorJacobiSmoother_Mult(OperatorJacobiSmoother self, Vector x, Vector y)"},
+	 { "OperatorJacobiSmoother_SetOperator", _wrap_OperatorJacobiSmoother_SetOperator, METH_VARARGS, "OperatorJacobiSmoother_SetOperator(OperatorJacobiSmoother self, Operator op)"},
+	 { "OperatorJacobiSmoother_Setup", _wrap_OperatorJacobiSmoother_Setup, METH_VARARGS, "OperatorJacobiSmoother_Setup(OperatorJacobiSmoother self, Vector diag)"},
+	 { "OperatorJacobiSmoother_swigregister", OperatorJacobiSmoother_swigregister, METH_O, NULL},
+	 { "OperatorJacobiSmoother_swiginit", OperatorJacobiSmoother_swiginit, METH_VARARGS, NULL},
 	 { "new_SLISolver", _wrap_new_SLISolver, METH_VARARGS, "\n"
 		"SLISolver()\n"
 		"new_SLISolver(MPI_Comm _comm) -> SLISolver\n"
@@ -11411,26 +13565,214 @@ static PyMethodDef SwigMethods[] = {
 	 { "NewtonSolver_SetSolver", _wrap_NewtonSolver_SetSolver, METH_VARARGS, "NewtonSolver_SetSolver(NewtonSolver self, Solver solver)"},
 	 { "NewtonSolver_Mult", _wrap_NewtonSolver_Mult, METH_VARARGS, "NewtonSolver_Mult(NewtonSolver self, Vector b, Vector x)"},
 	 { "NewtonSolver_ComputeScalingFactor", _wrap_NewtonSolver_ComputeScalingFactor, METH_VARARGS, "NewtonSolver_ComputeScalingFactor(NewtonSolver self, Vector x, Vector b) -> double"},
+	 { "NewtonSolver_ProcessNewState", _wrap_NewtonSolver_ProcessNewState, METH_VARARGS, "NewtonSolver_ProcessNewState(NewtonSolver self, Vector x)"},
 	 { "delete_NewtonSolver", _wrap_delete_NewtonSolver, METH_O, "delete_NewtonSolver(NewtonSolver self)"},
 	 { "NewtonSolver_swigregister", NewtonSolver_swigregister, METH_O, NULL},
 	 { "NewtonSolver_swiginit", NewtonSolver_swiginit, METH_VARARGS, NULL},
 	 { "aGMRES", _wrap_aGMRES, METH_VARARGS, "aGMRES(Operator A, Vector x, Vector b, Operator M, int & max_iter, int m_max, int m_min, int m_step, double cf, double & tol, double & atol, int printit) -> int"},
+	 { "OptimizationProblem_input_size_get", _wrap_OptimizationProblem_input_size_get, METH_O, "OptimizationProblem_input_size_get(OptimizationProblem self) -> int const"},
+	 { "OptimizationProblem_CalcObjective", _wrap_OptimizationProblem_CalcObjective, METH_VARARGS, "OptimizationProblem_CalcObjective(OptimizationProblem self, Vector x) -> double"},
+	 { "OptimizationProblem_CalcObjectiveGrad", _wrap_OptimizationProblem_CalcObjectiveGrad, METH_VARARGS, "OptimizationProblem_CalcObjectiveGrad(OptimizationProblem self, Vector x, Vector grad)"},
+	 { "OptimizationProblem_SetEqualityConstraint", _wrap_OptimizationProblem_SetEqualityConstraint, METH_VARARGS, "OptimizationProblem_SetEqualityConstraint(OptimizationProblem self, Vector c)"},
+	 { "OptimizationProblem_SetInequalityConstraint", _wrap_OptimizationProblem_SetInequalityConstraint, METH_VARARGS, "OptimizationProblem_SetInequalityConstraint(OptimizationProblem self, Vector dl, Vector dh)"},
+	 { "OptimizationProblem_SetSolutionBounds", _wrap_OptimizationProblem_SetSolutionBounds, METH_VARARGS, "OptimizationProblem_SetSolutionBounds(OptimizationProblem self, Vector xl, Vector xh)"},
+	 { "OptimizationProblem_GetC", _wrap_OptimizationProblem_GetC, METH_O, "OptimizationProblem_GetC(OptimizationProblem self) -> Operator"},
+	 { "OptimizationProblem_GetD", _wrap_OptimizationProblem_GetD, METH_O, "OptimizationProblem_GetD(OptimizationProblem self) -> Operator"},
+	 { "OptimizationProblem_GetEqualityVec", _wrap_OptimizationProblem_GetEqualityVec, METH_O, "OptimizationProblem_GetEqualityVec(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetInequalityVec_Lo", _wrap_OptimizationProblem_GetInequalityVec_Lo, METH_O, "OptimizationProblem_GetInequalityVec_Lo(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetInequalityVec_Hi", _wrap_OptimizationProblem_GetInequalityVec_Hi, METH_O, "OptimizationProblem_GetInequalityVec_Hi(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetBoundsVec_Lo", _wrap_OptimizationProblem_GetBoundsVec_Lo, METH_O, "OptimizationProblem_GetBoundsVec_Lo(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetBoundsVec_Hi", _wrap_OptimizationProblem_GetBoundsVec_Hi, METH_O, "OptimizationProblem_GetBoundsVec_Hi(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetNumConstraints", _wrap_OptimizationProblem_GetNumConstraints, METH_O, "OptimizationProblem_GetNumConstraints(OptimizationProblem self) -> int"},
+	 { "delete_OptimizationProblem", _wrap_delete_OptimizationProblem, METH_O, "delete_OptimizationProblem(OptimizationProblem self)"},
+	 { "OptimizationProblem_swigregister", OptimizationProblem_swigregister, METH_O, NULL},
+	 { "delete_OptimizationSolver", _wrap_delete_OptimizationSolver, METH_O, "delete_OptimizationSolver(OptimizationSolver self)"},
+	 { "OptimizationSolver_SetOptimizationProblem", _wrap_OptimizationSolver_SetOptimizationProblem, METH_VARARGS, "OptimizationSolver_SetOptimizationProblem(OptimizationSolver self, OptimizationProblem prob)"},
+	 { "OptimizationSolver_Mult", _wrap_OptimizationSolver_Mult, METH_VARARGS, "OptimizationSolver_Mult(OptimizationSolver self, Vector xt, Vector x)"},
+	 { "OptimizationSolver_SetPreconditioner", _wrap_OptimizationSolver_SetPreconditioner, METH_VARARGS, "OptimizationSolver_SetPreconditioner(OptimizationSolver self, Solver pr)"},
+	 { "OptimizationSolver_SetOperator", _wrap_OptimizationSolver_SetOperator, METH_VARARGS, "OptimizationSolver_SetOperator(OptimizationSolver self, Operator op)"},
+	 { "OptimizationSolver_swigregister", OptimizationSolver_swigregister, METH_O, NULL},
 	 { "new_SLBQPOptimizer", _wrap_new_SLBQPOptimizer, METH_VARARGS, "\n"
 		"SLBQPOptimizer()\n"
 		"new_SLBQPOptimizer(MPI_Comm _comm) -> SLBQPOptimizer\n"
 		""},
+	 { "SLBQPOptimizer_SetOptimizationProblem", _wrap_SLBQPOptimizer_SetOptimizationProblem, METH_VARARGS, "SLBQPOptimizer_SetOptimizationProblem(SLBQPOptimizer self, OptimizationProblem prob)"},
 	 { "SLBQPOptimizer_SetBounds", _wrap_SLBQPOptimizer_SetBounds, METH_VARARGS, "SLBQPOptimizer_SetBounds(SLBQPOptimizer self, Vector _lo, Vector _hi)"},
 	 { "SLBQPOptimizer_SetLinearConstraint", _wrap_SLBQPOptimizer_SetLinearConstraint, METH_VARARGS, "SLBQPOptimizer_SetLinearConstraint(SLBQPOptimizer self, Vector _w, double _a)"},
 	 { "SLBQPOptimizer_Mult", _wrap_SLBQPOptimizer_Mult, METH_VARARGS, "SLBQPOptimizer_Mult(SLBQPOptimizer self, Vector xt, Vector x)"},
-	 { "SLBQPOptimizer_SetPreconditioner", _wrap_SLBQPOptimizer_SetPreconditioner, METH_VARARGS, "SLBQPOptimizer_SetPreconditioner(SLBQPOptimizer self, Solver pr)"},
-	 { "SLBQPOptimizer_SetOperator", _wrap_SLBQPOptimizer_SetOperator, METH_VARARGS, "SLBQPOptimizer_SetOperator(SLBQPOptimizer self, Operator op)"},
 	 { "delete_SLBQPOptimizer", _wrap_delete_SLBQPOptimizer, METH_O, "delete_SLBQPOptimizer(SLBQPOptimizer self)"},
 	 { "SLBQPOptimizer_swigregister", SLBQPOptimizer_swigregister, METH_O, NULL},
 	 { "SLBQPOptimizer_swiginit", SLBQPOptimizer_swiginit, METH_VARARGS, NULL},
+	 { "new_BlockILU", _wrap_new_BlockILU, METH_VARARGS, "\n"
+		"BlockILU(int block_size_, mfem::BlockILU::Reordering reordering_=MINIMUM_DISCARDED_FILL, int k_fill_=0)\n"
+		"BlockILU(Operator op, int block_size_=1, mfem::BlockILU::Reordering reordering_=MINIMUM_DISCARDED_FILL, int k_fill_=0)\n"
+		""},
+	 { "BlockILU_SetOperator", _wrap_BlockILU_SetOperator, METH_VARARGS, "BlockILU_SetOperator(BlockILU self, Operator op)"},
+	 { "BlockILU_Mult", _wrap_BlockILU_Mult, METH_VARARGS, "BlockILU_Mult(BlockILU self, Vector b, Vector x)"},
+	 { "BlockILU_GetBlockI", _wrap_BlockILU_GetBlockI, METH_O, "BlockILU_GetBlockI(BlockILU self) -> int *"},
+	 { "BlockILU_GetBlockJ", _wrap_BlockILU_GetBlockJ, METH_O, "BlockILU_GetBlockJ(BlockILU self) -> int *"},
+	 { "BlockILU_GetBlockData", _wrap_BlockILU_GetBlockData, METH_O, "BlockILU_GetBlockData(BlockILU self) -> double *"},
+	 { "delete_BlockILU", _wrap_delete_BlockILU, METH_O, "delete_BlockILU(BlockILU self)"},
+	 { "BlockILU_swigregister", BlockILU_swigregister, METH_O, NULL},
+	 { "BlockILU_swiginit", BlockILU_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "IterativeSolver_SetRelTol", _wrap_IterativeSolver_SetRelTol, METH_VARARGS, "SetRelTol(IterativeSolver self, double rtol)"},
+	 { "IterativeSolver_SetAbsTol", _wrap_IterativeSolver_SetAbsTol, METH_VARARGS, "SetAbsTol(IterativeSolver self, double atol)"},
+	 { "IterativeSolver_SetMaxIter", _wrap_IterativeSolver_SetMaxIter, METH_VARARGS, "SetMaxIter(IterativeSolver self, int max_it)"},
+	 { "IterativeSolver_SetPrintLevel", _wrap_IterativeSolver_SetPrintLevel, METH_VARARGS, "SetPrintLevel(IterativeSolver self, int print_lvl)"},
+	 { "IterativeSolver_GetNumIterations", _wrap_IterativeSolver_GetNumIterations, METH_O, "GetNumIterations(IterativeSolver self) -> int"},
+	 { "IterativeSolver_GetConverged", _wrap_IterativeSolver_GetConverged, METH_O, "GetConverged(IterativeSolver self) -> int"},
+	 { "IterativeSolver_GetFinalNorm", _wrap_IterativeSolver_GetFinalNorm, METH_O, "GetFinalNorm(IterativeSolver self) -> double"},
+	 { "IterativeSolver_SetPreconditioner", _wrap_IterativeSolver_SetPreconditioner, METH_VARARGS, "SetPreconditioner(IterativeSolver self, Solver pr)"},
+	 { "IterativeSolver_SetOperator", _wrap_IterativeSolver_SetOperator, METH_VARARGS, "SetOperator(IterativeSolver self, Operator op)"},
+	 { "delete_IterativeSolver", _wrap_delete_IterativeSolver, METH_O, "delete_IterativeSolver(IterativeSolver self)"},
+	 { "IterativeSolver_swigregister", IterativeSolver_swigregister, METH_O, NULL},
+	 { "new_OperatorJacobiSmoother", _wrap_new_OperatorJacobiSmoother, METH_VARARGS, "\n"
+		"OperatorJacobiSmoother(mfem::BilinearForm const & a, intArray ess_tdof_list, double const damping=1.0)\n"
+		"OperatorJacobiSmoother(Vector d, intArray ess_tdof_list, double const damping=1.0)\n"
+		""},
+	 { "delete_OperatorJacobiSmoother", _wrap_delete_OperatorJacobiSmoother, METH_O, "delete_OperatorJacobiSmoother(OperatorJacobiSmoother self)"},
+	 { "OperatorJacobiSmoother_Mult", _wrap_OperatorJacobiSmoother_Mult, METH_VARARGS, "Mult(OperatorJacobiSmoother self, Vector x, Vector y)"},
+	 { "OperatorJacobiSmoother_SetOperator", _wrap_OperatorJacobiSmoother_SetOperator, METH_VARARGS, "SetOperator(OperatorJacobiSmoother self, Operator op)"},
+	 { "OperatorJacobiSmoother_Setup", _wrap_OperatorJacobiSmoother_Setup, METH_VARARGS, "Setup(OperatorJacobiSmoother self, Vector diag)"},
+	 { "OperatorJacobiSmoother_swigregister", OperatorJacobiSmoother_swigregister, METH_O, NULL},
+	 { "OperatorJacobiSmoother_swiginit", OperatorJacobiSmoother_swiginit, METH_VARARGS, NULL},
+	 { "new_SLISolver", _wrap_new_SLISolver, METH_VARARGS, "\n"
+		"SLISolver()\n"
+		"new_SLISolver(MPI_Comm _comm) -> SLISolver\n"
+		""},
+	 { "SLISolver_SetOperator", _wrap_SLISolver_SetOperator, METH_VARARGS, "SetOperator(SLISolver self, Operator op)"},
+	 { "SLISolver_Mult", _wrap_SLISolver_Mult, METH_VARARGS, "Mult(SLISolver self, Vector b, Vector x)"},
+	 { "delete_SLISolver", _wrap_delete_SLISolver, METH_O, "delete_SLISolver(SLISolver self)"},
+	 { "SLISolver_swigregister", SLISolver_swigregister, METH_O, NULL},
+	 { "SLISolver_swiginit", SLISolver_swiginit, METH_VARARGS, NULL},
+	 { "SLI", _wrap_SLI, METH_VARARGS, "\n"
+		"SLI(Operator A, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double RTOLERANCE=1e-12, double ATOLERANCE=1e-24)\n"
+		"SLI(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double RTOLERANCE=1e-12, double ATOLERANCE=1e-24)\n"
+		""},
+	 { "new_CGSolver", _wrap_new_CGSolver, METH_VARARGS, "\n"
+		"CGSolver()\n"
+		"new_CGSolver(MPI_Comm _comm) -> CGSolver\n"
+		""},
+	 { "CGSolver_SetOperator", _wrap_CGSolver_SetOperator, METH_VARARGS, "SetOperator(CGSolver self, Operator op)"},
+	 { "CGSolver_Mult", _wrap_CGSolver_Mult, METH_VARARGS, "Mult(CGSolver self, Vector b, Vector x)"},
+	 { "delete_CGSolver", _wrap_delete_CGSolver, METH_O, "delete_CGSolver(CGSolver self)"},
+	 { "CGSolver_swigregister", CGSolver_swigregister, METH_O, NULL},
+	 { "CGSolver_swiginit", CGSolver_swiginit, METH_VARARGS, NULL},
+	 { "CG", _wrap_CG, METH_VARARGS, "CG(Operator A, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double RTOLERANCE=1e-12, double ATOLERANCE=1e-24)"},
+	 { "PCG", _wrap_PCG, METH_VARARGS, "PCG(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double RTOLERANCE=1e-12, double ATOLERANCE=1e-24)"},
+	 { "new_GMRESSolver", _wrap_new_GMRESSolver, METH_VARARGS, "\n"
+		"GMRESSolver()\n"
+		"new_GMRESSolver(MPI_Comm _comm) -> GMRESSolver\n"
+		""},
+	 { "GMRESSolver_SetKDim", _wrap_GMRESSolver_SetKDim, METH_VARARGS, "SetKDim(GMRESSolver self, int dim)"},
+	 { "GMRESSolver_Mult", _wrap_GMRESSolver_Mult, METH_VARARGS, "Mult(GMRESSolver self, Vector b, Vector x)"},
+	 { "delete_GMRESSolver", _wrap_delete_GMRESSolver, METH_O, "delete_GMRESSolver(GMRESSolver self)"},
+	 { "GMRESSolver_swigregister", GMRESSolver_swigregister, METH_O, NULL},
+	 { "GMRESSolver_swiginit", GMRESSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_FGMRESSolver", _wrap_new_FGMRESSolver, METH_VARARGS, "\n"
+		"FGMRESSolver()\n"
+		"new_FGMRESSolver(MPI_Comm _comm) -> FGMRESSolver\n"
+		""},
+	 { "FGMRESSolver_SetKDim", _wrap_FGMRESSolver_SetKDim, METH_VARARGS, "SetKDim(FGMRESSolver self, int dim)"},
+	 { "FGMRESSolver_Mult", _wrap_FGMRESSolver_Mult, METH_VARARGS, "Mult(FGMRESSolver self, Vector b, Vector x)"},
+	 { "delete_FGMRESSolver", _wrap_delete_FGMRESSolver, METH_O, "delete_FGMRESSolver(FGMRESSolver self)"},
+	 { "FGMRESSolver_swigregister", FGMRESSolver_swigregister, METH_O, NULL},
+	 { "FGMRESSolver_swiginit", FGMRESSolver_swiginit, METH_VARARGS, NULL},
+	 { "GMRES", _wrap_GMRES, METH_VARARGS, "\n"
+		"GMRES(Operator A, Vector x, Vector b, Solver M, int & max_iter, int m, double & tol, double atol, int printit) -> int\n"
+		"GMRES(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, int m=50, double rtol=1e-12, double atol=1e-24)\n"
+		""},
+	 { "new_BiCGSTABSolver", _wrap_new_BiCGSTABSolver, METH_VARARGS, "\n"
+		"BiCGSTABSolver()\n"
+		"new_BiCGSTABSolver(MPI_Comm _comm) -> BiCGSTABSolver\n"
+		""},
+	 { "BiCGSTABSolver_SetOperator", _wrap_BiCGSTABSolver_SetOperator, METH_VARARGS, "SetOperator(BiCGSTABSolver self, Operator op)"},
+	 { "BiCGSTABSolver_Mult", _wrap_BiCGSTABSolver_Mult, METH_VARARGS, "Mult(BiCGSTABSolver self, Vector b, Vector x)"},
+	 { "delete_BiCGSTABSolver", _wrap_delete_BiCGSTABSolver, METH_O, "delete_BiCGSTABSolver(BiCGSTABSolver self)"},
+	 { "BiCGSTABSolver_swigregister", BiCGSTABSolver_swigregister, METH_O, NULL},
+	 { "BiCGSTABSolver_swiginit", BiCGSTABSolver_swiginit, METH_VARARGS, NULL},
+	 { "BiCGSTAB", _wrap_BiCGSTAB, METH_VARARGS, "\n"
+		"BiCGSTAB(Operator A, Vector x, Vector b, Solver M, int & max_iter, double & tol, double atol, int printit) -> int\n"
+		"BiCGSTAB(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double rtol=1e-12, double atol=1e-24)\n"
+		""},
+	 { "new_MINRESSolver", _wrap_new_MINRESSolver, METH_VARARGS, "\n"
+		"MINRESSolver()\n"
+		"new_MINRESSolver(MPI_Comm _comm) -> MINRESSolver\n"
+		""},
+	 { "MINRESSolver_SetPreconditioner", _wrap_MINRESSolver_SetPreconditioner, METH_VARARGS, "SetPreconditioner(MINRESSolver self, Solver pr)"},
+	 { "MINRESSolver_SetOperator", _wrap_MINRESSolver_SetOperator, METH_VARARGS, "SetOperator(MINRESSolver self, Operator op)"},
+	 { "MINRESSolver_Mult", _wrap_MINRESSolver_Mult, METH_VARARGS, "Mult(MINRESSolver self, Vector b, Vector x)"},
+	 { "delete_MINRESSolver", _wrap_delete_MINRESSolver, METH_O, "delete_MINRESSolver(MINRESSolver self)"},
+	 { "MINRESSolver_swigregister", MINRESSolver_swigregister, METH_O, NULL},
+	 { "MINRESSolver_swiginit", MINRESSolver_swiginit, METH_VARARGS, NULL},
+	 { "MINRES", _wrap_MINRES, METH_VARARGS, "\n"
+		"MINRES(Operator A, Vector b, Vector x, int print_it=0, int max_it=1000, double rtol=1e-12, double atol=1e-24)\n"
+		"MINRES(Operator A, Solver B, Vector b, Vector x, int print_it=0, int max_it=1000, double rtol=1e-12, double atol=1e-24)\n"
+		""},
+	 { "new_NewtonSolver", _wrap_new_NewtonSolver, METH_VARARGS, "\n"
+		"NewtonSolver()\n"
+		"new_NewtonSolver(MPI_Comm _comm) -> NewtonSolver\n"
+		""},
+	 { "NewtonSolver_SetOperator", _wrap_NewtonSolver_SetOperator, METH_VARARGS, "SetOperator(NewtonSolver self, Operator op)"},
+	 { "NewtonSolver_SetSolver", _wrap_NewtonSolver_SetSolver, METH_VARARGS, "SetSolver(NewtonSolver self, Solver solver)"},
+	 { "NewtonSolver_Mult", _wrap_NewtonSolver_Mult, METH_VARARGS, "Mult(NewtonSolver self, Vector b, Vector x)"},
+	 { "NewtonSolver_ComputeScalingFactor", _wrap_NewtonSolver_ComputeScalingFactor, METH_VARARGS, "ComputeScalingFactor(NewtonSolver self, Vector x, Vector b) -> double"},
+	 { "NewtonSolver_ProcessNewState", _wrap_NewtonSolver_ProcessNewState, METH_VARARGS, "ProcessNewState(NewtonSolver self, Vector x)"},
+	 { "delete_NewtonSolver", _wrap_delete_NewtonSolver, METH_O, "delete_NewtonSolver(NewtonSolver self)"},
+	 { "NewtonSolver_swigregister", NewtonSolver_swigregister, METH_O, NULL},
+	 { "NewtonSolver_swiginit", NewtonSolver_swiginit, METH_VARARGS, NULL},
+	 { "aGMRES", _wrap_aGMRES, METH_VARARGS, "aGMRES(Operator A, Vector x, Vector b, Operator M, int & max_iter, int m_max, int m_min, int m_step, double cf, double & tol, double & atol, int printit) -> int"},
+	 { "OptimizationProblem_input_size_get", _wrap_OptimizationProblem_input_size_get, METH_O, "OptimizationProblem_input_size_get(OptimizationProblem self) -> int const"},
+	 { "OptimizationProblem_CalcObjective", _wrap_OptimizationProblem_CalcObjective, METH_VARARGS, "CalcObjective(OptimizationProblem self, Vector x) -> double"},
+	 { "OptimizationProblem_CalcObjectiveGrad", _wrap_OptimizationProblem_CalcObjectiveGrad, METH_VARARGS, "CalcObjectiveGrad(OptimizationProblem self, Vector x, Vector grad)"},
+	 { "OptimizationProblem_SetEqualityConstraint", _wrap_OptimizationProblem_SetEqualityConstraint, METH_VARARGS, "SetEqualityConstraint(OptimizationProblem self, Vector c)"},
+	 { "OptimizationProblem_SetInequalityConstraint", _wrap_OptimizationProblem_SetInequalityConstraint, METH_VARARGS, "SetInequalityConstraint(OptimizationProblem self, Vector dl, Vector dh)"},
+	 { "OptimizationProblem_SetSolutionBounds", _wrap_OptimizationProblem_SetSolutionBounds, METH_VARARGS, "SetSolutionBounds(OptimizationProblem self, Vector xl, Vector xh)"},
+	 { "OptimizationProblem_GetC", _wrap_OptimizationProblem_GetC, METH_O, "GetC(OptimizationProblem self) -> Operator"},
+	 { "OptimizationProblem_GetD", _wrap_OptimizationProblem_GetD, METH_O, "GetD(OptimizationProblem self) -> Operator"},
+	 { "OptimizationProblem_GetEqualityVec", _wrap_OptimizationProblem_GetEqualityVec, METH_O, "GetEqualityVec(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetInequalityVec_Lo", _wrap_OptimizationProblem_GetInequalityVec_Lo, METH_O, "GetInequalityVec_Lo(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetInequalityVec_Hi", _wrap_OptimizationProblem_GetInequalityVec_Hi, METH_O, "GetInequalityVec_Hi(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetBoundsVec_Lo", _wrap_OptimizationProblem_GetBoundsVec_Lo, METH_O, "GetBoundsVec_Lo(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetBoundsVec_Hi", _wrap_OptimizationProblem_GetBoundsVec_Hi, METH_O, "GetBoundsVec_Hi(OptimizationProblem self) -> Vector"},
+	 { "OptimizationProblem_GetNumConstraints", _wrap_OptimizationProblem_GetNumConstraints, METH_O, "GetNumConstraints(OptimizationProblem self) -> int"},
+	 { "delete_OptimizationProblem", _wrap_delete_OptimizationProblem, METH_O, "delete_OptimizationProblem(OptimizationProblem self)"},
+	 { "OptimizationProblem_swigregister", OptimizationProblem_swigregister, METH_O, NULL},
+	 { "delete_OptimizationSolver", _wrap_delete_OptimizationSolver, METH_O, "delete_OptimizationSolver(OptimizationSolver self)"},
+	 { "OptimizationSolver_SetOptimizationProblem", _wrap_OptimizationSolver_SetOptimizationProblem, METH_VARARGS, "SetOptimizationProblem(OptimizationSolver self, OptimizationProblem prob)"},
+	 { "OptimizationSolver_Mult", _wrap_OptimizationSolver_Mult, METH_VARARGS, "Mult(OptimizationSolver self, Vector xt, Vector x)"},
+	 { "OptimizationSolver_SetPreconditioner", _wrap_OptimizationSolver_SetPreconditioner, METH_VARARGS, "SetPreconditioner(OptimizationSolver self, Solver pr)"},
+	 { "OptimizationSolver_SetOperator", _wrap_OptimizationSolver_SetOperator, METH_VARARGS, "SetOperator(OptimizationSolver self, Operator op)"},
+	 { "OptimizationSolver_swigregister", OptimizationSolver_swigregister, METH_O, NULL},
+	 { "new_SLBQPOptimizer", _wrap_new_SLBQPOptimizer, METH_VARARGS, "\n"
+		"SLBQPOptimizer()\n"
+		"new_SLBQPOptimizer(MPI_Comm _comm) -> SLBQPOptimizer\n"
+		""},
+	 { "SLBQPOptimizer_SetOptimizationProblem", _wrap_SLBQPOptimizer_SetOptimizationProblem, METH_VARARGS, "SetOptimizationProblem(SLBQPOptimizer self, OptimizationProblem prob)"},
+	 { "SLBQPOptimizer_SetBounds", _wrap_SLBQPOptimizer_SetBounds, METH_VARARGS, "SetBounds(SLBQPOptimizer self, Vector _lo, Vector _hi)"},
+	 { "SLBQPOptimizer_SetLinearConstraint", _wrap_SLBQPOptimizer_SetLinearConstraint, METH_VARARGS, "SetLinearConstraint(SLBQPOptimizer self, Vector _w, double _a)"},
+	 { "SLBQPOptimizer_Mult", _wrap_SLBQPOptimizer_Mult, METH_VARARGS, "Mult(SLBQPOptimizer self, Vector xt, Vector x)"},
+	 { "delete_SLBQPOptimizer", _wrap_delete_SLBQPOptimizer, METH_O, "delete_SLBQPOptimizer(SLBQPOptimizer self)"},
+	 { "SLBQPOptimizer_swigregister", SLBQPOptimizer_swigregister, METH_O, NULL},
+	 { "SLBQPOptimizer_swiginit", SLBQPOptimizer_swiginit, METH_VARARGS, NULL},
+	 { "new_BlockILU", _wrap_new_BlockILU, METH_VARARGS, "\n"
+		"BlockILU(int block_size_, mfem::BlockILU::Reordering reordering_=MINIMUM_DISCARDED_FILL, int k_fill_=0)\n"
+		"BlockILU(Operator op, int block_size_=1, mfem::BlockILU::Reordering reordering_=MINIMUM_DISCARDED_FILL, int k_fill_=0)\n"
+		""},
+	 { "BlockILU_SetOperator", _wrap_BlockILU_SetOperator, METH_VARARGS, "SetOperator(BlockILU self, Operator op)"},
+	 { "BlockILU_Mult", _wrap_BlockILU_Mult, METH_VARARGS, "Mult(BlockILU self, Vector b, Vector x)"},
+	 { "BlockILU_GetBlockI", _wrap_BlockILU_GetBlockI, METH_O, "GetBlockI(BlockILU self) -> int *"},
+	 { "BlockILU_GetBlockJ", _wrap_BlockILU_GetBlockJ, METH_O, "GetBlockJ(BlockILU self) -> int *"},
+	 { "BlockILU_GetBlockData", _wrap_BlockILU_GetBlockData, METH_O, "GetBlockData(BlockILU self) -> double *"},
+	 { "delete_BlockILU", _wrap_delete_BlockILU, METH_O, "delete_BlockILU(BlockILU self)"},
+	 { "BlockILU_swigregister", BlockILU_swigregister, METH_O, NULL},
+	 { "BlockILU_swiginit", BlockILU_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -11442,6 +13784,9 @@ static void *_p_mfem__BiCGSTABSolverTo_p_mfem__IterativeSolver(void *x, int *SWI
 }
 static void *_p_mfem__NewtonSolverTo_p_mfem__IterativeSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::IterativeSolver *)  ((mfem::NewtonSolver *) x));
+}
+static void *_p_mfem__OptimizationSolverTo_p_mfem__IterativeSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::IterativeSolver *)  ((mfem::OptimizationSolver *) x));
 }
 static void *_p_mfem__SLISolverTo_p_mfem__IterativeSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::IterativeSolver *)  ((mfem::SLISolver *) x));
@@ -11459,40 +13804,52 @@ static void *_p_mfem__MINRESSolverTo_p_mfem__IterativeSolver(void *x, int *SWIGU
     return (void *)((mfem::IterativeSolver *)  ((mfem::MINRESSolver *) x));
 }
 static void *_p_mfem__SLBQPOptimizerTo_p_mfem__IterativeSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::IterativeSolver *)  ((mfem::SLBQPOptimizer *) x));
-}
-static void *_p_mfem__BiCGSTABSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::BiCGSTABSolver *) x));
-}
-static void *_p_mfem__NewtonSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::NewtonSolver *) x));
-}
-static void *_p_mfem__IterativeSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::IterativeSolver *) x));
-}
-static void *_p_mfem__SLISolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::SLISolver *) x));
-}
-static void *_p_mfem__CGSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::CGSolver *) x));
-}
-static void *_p_mfem__GMRESSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::GMRESSolver *) x));
-}
-static void *_p_mfem__FGMRESSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::FGMRESSolver *) x));
+    return (void *)((mfem::IterativeSolver *) (mfem::OptimizationSolver *) ((mfem::SLBQPOptimizer *) x));
 }
 static void *_p_mfem__MINRESSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::MINRESSolver *) x));
 }
-static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
+static void *_p_mfem__FGMRESSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::FGMRESSolver *) x));
+}
+static void *_p_mfem__GMRESSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::GMRESSolver *) x));
+}
+static void *_p_mfem__CGSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::CGSolver *) x));
+}
+static void *_p_mfem__SLISolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::SLISolver *) x));
+}
+static void *_p_mfem__IterativeSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::IterativeSolver *) x));
 }
 static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *) (mfem::MatrixInverse *) ((mfem::DenseMatrixInverse *) x));
 }
+static void *_p_mfem__MatrixInverseTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::MatrixInverse *) x));
+}
+static void *_p_mfem__OptimizationSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::OptimizationSolver *) x));
+}
+static void *_p_mfem__NewtonSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::NewtonSolver *) x));
+}
+static void *_p_mfem__BiCGSTABSolverTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::BiCGSTABSolver *) x));
+}
 static void *_p_mfem__SLBQPOptimizerTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Solver *) (mfem::IterativeSolver *) ((mfem::SLBQPOptimizer *) x));
+    return (void *)((mfem::Solver *) (mfem::IterativeSolver *)(mfem::OptimizationSolver *) ((mfem::SLBQPOptimizer *) x));
+}
+static void *_p_mfem__BlockILUTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::BlockILU *) x));
+}
+static void *_p_mfem__OperatorJacobiSmootherTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Solver *)  ((mfem::OperatorJacobiSmoother *) x));
+}
+static void *_p_mfem__SLBQPOptimizerTo_p_mfem__OptimizationSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::OptimizationSolver *)  ((mfem::SLBQPOptimizer *) x));
 }
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
@@ -11533,20 +13890,29 @@ static void *_p_mfem__BiCGSTABSolverTo_p_mfem__Operator(void *x, int *SWIGUNUSED
 static void *_p_mfem__NewtonSolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::IterativeSolver *) ((mfem::NewtonSolver *) x));
 }
-static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
+static void *_p_mfem__OptimizationSolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::IterativeSolver *) ((mfem::OptimizationSolver *) x));
 }
 static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
+}
+static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
 }
 static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
 }
 static void *_p_mfem__SLBQPOptimizerTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::IterativeSolver *) ((mfem::SLBQPOptimizer *) x));
+    return (void *)((mfem::Operator *) (mfem::Solver *)(mfem::IterativeSolver *)(mfem::OptimizationSolver *) ((mfem::SLBQPOptimizer *) x));
+}
+static void *_p_mfem__BlockILUTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::BlockILU *) x));
 }
 static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
+}
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
 }
 static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
@@ -11563,18 +13929,30 @@ static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSE
 static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
 }
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
+}
 static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
 }
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
+}
 static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
+}
+static void *_p_mfem__OperatorJacobiSmootherTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::OperatorJacobiSmoother *) x));
 }
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BiCGSTABSolver = {"_p_mfem__BiCGSTABSolver", "mfem::BiCGSTABSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__BilinearForm = {"_p_mfem__BilinearForm", "mfem::BilinearForm *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__BlockILU = {"_p_mfem__BlockILU", "mfem::BlockILU *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__CGSolver = {"_p_mfem__CGSolver", "mfem::CGSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FGMRESSolver = {"_p_mfem__FGMRESSolver", "mfem::FGMRESSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GMRESSolver = {"_p_mfem__GMRESSolver", "mfem::GMRESSolver *", 0, 0, (void*)0, 0};
@@ -11586,17 +13964,23 @@ static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__P
 static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MatrixInverse = {"_p_mfem__MatrixInverse", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatrixInverse", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__OperatorJacobiSmoother = {"_p_mfem__OperatorJacobiSmoother", "mfem::OperatorJacobiSmoother *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OptimizationProblem = {"_p_mfem__OptimizationProblem", "mfem::OptimizationProblem *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__OptimizationSolver = {"_p_mfem__OptimizationSolver", "mfem::OptimizationSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SLBQPOptimizer = {"_p_mfem__SLBQPOptimizer", "mfem::SLBQPOptimizer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SLISolver = {"_p_mfem__SLISolver", "mfem::SLISolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
@@ -11609,7 +13993,10 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_double,
   &_swigt__p_int,
   &_swigt__p_mfem__AbstractSparseMatrix,
+  &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__BiCGSTABSolver,
+  &_swigt__p_mfem__BilinearForm,
+  &_swigt__p_mfem__BlockILU,
   &_swigt__p_mfem__CGSolver,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__DenseMatrix,
@@ -11623,12 +14010,18 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__MatrixInverse,
   &_swigt__p_mfem__NewtonSolver,
   &_swigt__p_mfem__Operator,
+  &_swigt__p_mfem__OperatorJacobiSmoother,
+  &_swigt__p_mfem__OptimizationProblem,
+  &_swigt__p_mfem__OptimizationSolver,
   &_swigt__p_mfem__ProductOperator,
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__RAPOperator,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
   &_swigt__p_mfem__SLBQPOptimizer,
   &_swigt__p_mfem__SLISolver,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_mfem__Solver,
   &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__TimeDependentOperator,
@@ -11642,32 +14035,41 @@ static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BiCGSTABSolver[] = {  {&_swigt__p_mfem__BiCGSTABSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BilinearForm[] = {  {&_swigt__p_mfem__BilinearForm, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BlockILU[] = {  {&_swigt__p_mfem__BlockILU, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CGSolver[] = {  {&_swigt__p_mfem__CGSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FGMRESSolver[] = {  {&_swigt__p_mfem__FGMRESSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GMRESSolver[] = {  {&_swigt__p_mfem__GMRESSolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IterativeSolver[] = {  {&_swigt__p_mfem__BiCGSTABSolver, _p_mfem__BiCGSTABSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__NewtonSolver, _p_mfem__NewtonSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__IterativeSolver, 0, 0, 0},  {&_swigt__p_mfem__SLISolver, _p_mfem__SLISolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__CGSolver, _p_mfem__CGSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__GMRESSolver, _p_mfem__GMRESSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__FGMRESSolver, _p_mfem__FGMRESSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__MINRESSolver, _p_mfem__MINRESSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__SLBQPOptimizer, _p_mfem__SLBQPOptimizerTo_p_mfem__IterativeSolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IterativeSolver[] = {  {&_swigt__p_mfem__BiCGSTABSolver, _p_mfem__BiCGSTABSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__NewtonSolver, _p_mfem__NewtonSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__OptimizationSolver, _p_mfem__OptimizationSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__IterativeSolver, 0, 0, 0},  {&_swigt__p_mfem__SLISolver, _p_mfem__SLISolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__CGSolver, _p_mfem__CGSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__GMRESSolver, _p_mfem__GMRESSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__FGMRESSolver, _p_mfem__FGMRESSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__MINRESSolver, _p_mfem__MINRESSolverTo_p_mfem__IterativeSolver, 0, 0},  {&_swigt__p_mfem__SLBQPOptimizer, _p_mfem__SLBQPOptimizerTo_p_mfem__IterativeSolver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MINRESSolver[] = {  {&_swigt__p_mfem__MINRESSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NewtonSolver[] = {  {&_swigt__p_mfem__NewtonSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {{&_swigt__p_mfem__MatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__DenseMatrixInverse, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {{&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MINRESSolver, _p_mfem__MINRESSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FGMRESSolver, _p_mfem__FGMRESSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GMRESSolver, _p_mfem__GMRESSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__CGSolver, _p_mfem__CGSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SLISolver, _p_mfem__SLISolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IterativeSolver, _p_mfem__IterativeSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NewtonSolver, _p_mfem__NewtonSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BiCGSTABSolver, _p_mfem__BiCGSTABSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SLBQPOptimizer, _p_mfem__SLBQPOptimizerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MINRESSolver, _p_mfem__MINRESSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__FGMRESSolver, _p_mfem__FGMRESSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GMRESSolver, _p_mfem__GMRESSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__CGSolver, _p_mfem__CGSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SLISolver, _p_mfem__SLISolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IterativeSolver, _p_mfem__IterativeSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__OptimizationSolver, _p_mfem__OptimizationSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__NewtonSolver, _p_mfem__NewtonSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BiCGSTABSolver, _p_mfem__BiCGSTABSolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SLBQPOptimizer, _p_mfem__SLBQPOptimizerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockILU, _p_mfem__BlockILUTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__OperatorJacobiSmoother, _p_mfem__OperatorJacobiSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OperatorJacobiSmoother[] = {  {&_swigt__p_mfem__OperatorJacobiSmoother, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OptimizationProblem[] = {  {&_swigt__p_mfem__OptimizationProblem, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__OptimizationSolver[] = {  {&_swigt__p_mfem__OptimizationSolver, 0, 0, 0},  {&_swigt__p_mfem__SLBQPOptimizer, _p_mfem__SLBQPOptimizerTo_p_mfem__OptimizationSolver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SLBQPOptimizer[] = {  {&_swigt__p_mfem__SLBQPOptimizer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SLISolver[] = {  {&_swigt__p_mfem__SLISolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__BiCGSTABSolver, _p_mfem__BiCGSTABSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__NewtonSolver, _p_mfem__NewtonSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__IterativeSolver, _p_mfem__IterativeSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__SLISolver, _p_mfem__SLISolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__CGSolver, _p_mfem__CGSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GMRESSolver, _p_mfem__GMRESSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__FGMRESSolver, _p_mfem__FGMRESSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MINRESSolver, _p_mfem__MINRESSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__SLBQPOptimizer, _p_mfem__SLBQPOptimizerTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__MINRESSolver, _p_mfem__MINRESSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__FGMRESSolver, _p_mfem__FGMRESSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GMRESSolver, _p_mfem__GMRESSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__CGSolver, _p_mfem__CGSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__SLISolver, _p_mfem__SLISolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__IterativeSolver, _p_mfem__IterativeSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__OptimizationSolver, _p_mfem__OptimizationSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__NewtonSolver, _p_mfem__NewtonSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__BiCGSTABSolver, _p_mfem__BiCGSTABSolverTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__SLBQPOptimizer, _p_mfem__SLBQPOptimizerTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__BlockILU, _p_mfem__BlockILUTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__OperatorJacobiSmoother, _p_mfem__OperatorJacobiSmootherTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -11677,7 +14079,10 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_double,
   _swigc__p_int,
   _swigc__p_mfem__AbstractSparseMatrix,
+  _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__BiCGSTABSolver,
+  _swigc__p_mfem__BilinearForm,
+  _swigc__p_mfem__BlockILU,
   _swigc__p_mfem__CGSolver,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__DenseMatrix,
@@ -11691,12 +14096,18 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__MatrixInverse,
   _swigc__p_mfem__NewtonSolver,
   _swigc__p_mfem__Operator,
+  _swigc__p_mfem__OperatorJacobiSmoother,
+  _swigc__p_mfem__OptimizationProblem,
+  _swigc__p_mfem__OptimizationSolver,
   _swigc__p_mfem__ProductOperator,
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__RAPOperator,
+  _swigc__p_mfem__RectangularConstrainedOperator,
   _swigc__p_mfem__SLBQPOptimizer,
   _swigc__p_mfem__SLISolver,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_mfem__Solver,
   _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__TimeDependentOperator,
@@ -12435,18 +14846,18 @@ SWIG_init(void) {
   
   import_array();
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40100)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.1.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40100)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3
@@ -12455,6 +14866,8 @@ SWIG_init(void) {
   return;
 #endif
   
+  SWIG_Python_SetConstant(d, "BlockILU_Reordering_MINIMUM_DISCARDED_FILL",SWIG_From_int(static_cast< int >(mfem::BlockILU::Reordering::MINIMUM_DISCARDED_FILL)));
+  SWIG_Python_SetConstant(d, "BlockILU_Reordering_NONE",SWIG_From_int(static_cast< int >(mfem::BlockILU::Reordering::NONE)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

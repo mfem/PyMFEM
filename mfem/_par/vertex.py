@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _vertex.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _vertex.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -96,6 +99,7 @@ class Vertex(object):
         __call__(Vertex self, int i) -> double const &
         """
         return _vertex.Vertex___call__(self, *args)
+    __call__ = _swig_new_instance_method(_vertex.Vertex___call__)
 
     def SetCoords(self, *args):
         r"""
@@ -103,6 +107,7 @@ class Vertex(object):
         SetCoords(Vertex self, int dim, double const * p)
         """
         return _vertex.Vertex_SetCoords(self, *args)
+    SetCoords = _swig_new_instance_method(_vertex.Vertex_SetCoords)
     __swig_destroy__ = _vertex.delete_Vertex
 
 # Register Vertex in _vertex:

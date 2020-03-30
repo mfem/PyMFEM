@@ -4898,6 +4898,195 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Vector_MakeRef__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  int arg3 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_MakeRef" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Vector_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Vector_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  }
+  {
+    try {
+      (arg1)->MakeRef(*arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Vector_MakeRef__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Vector *arg1 = (mfem::Vector *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Vector_MakeRef" "', argument " "1"" of type '" "mfem::Vector *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Vector * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Vector_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Vector_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      (arg1)->MakeRef(*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Vector_MakeRef(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Vector_MakeRef", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_Vector_MakeRef__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_Vector_MakeRef__SWIG_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Vector_MakeRef'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Vector::MakeRef(mfem::Vector &,int,int)\n"
+    "    mfem::Vector::MakeRef(mfem::Vector &,int)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_Vector_MakeDataOwner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = (mfem::Vector *) 0 ;
@@ -9455,6 +9644,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "add_vector", _wrap_add_vector, METH_VARARGS, "\n"
 		"add_vector(Vector v1, Vector v2, Vector v)\n"
 		"add_vector(Vector v1, double alpha, Vector v2, Vector v)\n"
@@ -9485,6 +9675,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "Vector_SetDataAndSize", _wrap_Vector_SetDataAndSize, METH_VARARGS, "Vector_SetDataAndSize(Vector self, double * d, int s)"},
 	 { "Vector_NewDataAndSize", _wrap_Vector_NewDataAndSize, METH_VARARGS, "Vector_NewDataAndSize(Vector self, double * d, int s)"},
 	 { "Vector_NewMemoryAndSize", _wrap_Vector_NewMemoryAndSize, METH_VARARGS, "Vector_NewMemoryAndSize(Vector self, mfem::Memory< double > const & mem, int s, bool own_mem)"},
+	 { "Vector_MakeRef", _wrap_Vector_MakeRef, METH_VARARGS, "\n"
+		"Vector_MakeRef(Vector self, Vector base, int offset, int size)\n"
+		"Vector_MakeRef(Vector self, Vector base, int offset)\n"
+		""},
 	 { "Vector_MakeDataOwner", _wrap_Vector_MakeDataOwner, METH_O, "Vector_MakeDataOwner(Vector self)"},
 	 { "Vector_Destroy", _wrap_Vector_Destroy, METH_O, "Vector_Destroy(Vector self)"},
 	 { "Vector_Size", _wrap_Vector_Size, METH_O, "Vector_Size(Vector self) -> int"},
@@ -9592,6 +9786,145 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "add_vector", _wrap_add_vector, METH_VARARGS, "\n"
+		"add_vector(Vector v1, Vector v2, Vector v)\n"
+		"add_vector(Vector v1, double alpha, Vector v2, Vector v)\n"
+		"add_vector(double const a, Vector x, Vector y, Vector z)\n"
+		"add_vector(double const a, Vector x, double const b, Vector y, Vector z)\n"
+		""},
+	 { "subtract_vector", _wrap_subtract_vector, METH_VARARGS, "\n"
+		"subtract_vector(Vector v1, Vector v2, Vector v)\n"
+		"subtract_vector(double const a, Vector x, Vector y, Vector z)\n"
+		""},
+	 { "CheckFinite", _wrap_CheckFinite, METH_VARARGS, "CheckFinite(double const * v, int const n) -> int"},
+	 { "infinity", _wrap_infinity, METH_NOARGS, "infinity() -> double"},
+	 { "Vector_UseDevice", _wrap_Vector_UseDevice, METH_VARARGS, "\n"
+		"UseDevice(Vector self, bool use_dev)\n"
+		"UseDevice(Vector self) -> bool\n"
+		""},
+	 { "Vector_Load", _wrap_Vector_Load, METH_VARARGS, "\n"
+		"Load(Vector self, std::istream ** _in, int np, int * dim)\n"
+		"Load(Vector self, std::istream & _in, int Size)\n"
+		"Load(Vector self, std::istream & _in)\n"
+		""},
+	 { "Vector_SetSize", _wrap_Vector_SetSize, METH_VARARGS, "\n"
+		"SetSize(Vector self, int s)\n"
+		"SetSize(Vector self, int s, mfem::MemoryType mt)\n"
+		"SetSize(Vector self, int s, Vector v)\n"
+		""},
+	 { "Vector_SetData", _wrap_Vector_SetData, METH_VARARGS, "SetData(Vector self, double * d)"},
+	 { "Vector_SetDataAndSize", _wrap_Vector_SetDataAndSize, METH_VARARGS, "SetDataAndSize(Vector self, double * d, int s)"},
+	 { "Vector_NewDataAndSize", _wrap_Vector_NewDataAndSize, METH_VARARGS, "NewDataAndSize(Vector self, double * d, int s)"},
+	 { "Vector_NewMemoryAndSize", _wrap_Vector_NewMemoryAndSize, METH_VARARGS, "NewMemoryAndSize(Vector self, mfem::Memory< double > const & mem, int s, bool own_mem)"},
+	 { "Vector_MakeRef", _wrap_Vector_MakeRef, METH_VARARGS, "\n"
+		"MakeRef(Vector self, Vector base, int offset, int size)\n"
+		"MakeRef(Vector self, Vector base, int offset)\n"
+		""},
+	 { "Vector_MakeDataOwner", _wrap_Vector_MakeDataOwner, METH_O, "MakeDataOwner(Vector self)"},
+	 { "Vector_Destroy", _wrap_Vector_Destroy, METH_O, "Destroy(Vector self)"},
+	 { "Vector_Size", _wrap_Vector_Size, METH_O, "Size(Vector self) -> int"},
+	 { "Vector_Capacity", _wrap_Vector_Capacity, METH_O, "Capacity(Vector self) -> int"},
+	 { "Vector_GetData", _wrap_Vector_GetData, METH_O, "GetData(Vector self) -> double *"},
+	 { "Vector_GetMemory", _wrap_Vector_GetMemory, METH_VARARGS, "\n"
+		"GetMemory(Vector self) -> mfem::Memory< double >\n"
+		"GetMemory(Vector self) -> mfem::Memory< double > const &\n"
+		""},
+	 { "Vector_SyncMemory", _wrap_Vector_SyncMemory, METH_VARARGS, "SyncMemory(Vector self, Vector v)"},
+	 { "Vector_SyncAliasMemory", _wrap_Vector_SyncAliasMemory, METH_VARARGS, "SyncAliasMemory(Vector self, Vector v)"},
+	 { "Vector_OwnsData", _wrap_Vector_OwnsData, METH_O, "OwnsData(Vector self) -> bool"},
+	 { "Vector_StealData", _wrap_Vector_StealData, METH_VARARGS, "\n"
+		"StealData(Vector self, double ** p)\n"
+		"StealData(Vector self) -> double *\n"
+		""},
+	 { "Vector_Elem", _wrap_Vector_Elem, METH_VARARGS, "\n"
+		"Elem(Vector self, int i) -> double\n"
+		"Elem(Vector self, int i) -> double const &\n"
+		""},
+	 { "Vector___call__", _wrap_Vector___call__, METH_VARARGS, "\n"
+		"__call__(Vector self, int i) -> double\n"
+		"__call__(Vector self, int i) -> double const &\n"
+		""},
+	 { "Vector___mul__", _wrap_Vector___mul__, METH_VARARGS, "\n"
+		"__mul__(Vector self, double const * arg2) -> double\n"
+		"__mul__(Vector self, Vector v) -> double\n"
+		""},
+	 { "Vector___imul__", _wrap_Vector___imul__, METH_VARARGS, "__imul__(Vector self, double c) -> Vector"},
+	 { "Vector___itruediv__", _wrap_Vector___itruediv__, METH_VARARGS, "__itruediv__(Vector self, double c) -> Vector"},
+	 { "Vector___isub__", _wrap_Vector___isub__, METH_VARARGS, "\n"
+		"__isub__(Vector self, double c) -> Vector\n"
+		"__isub__(Vector self, Vector v) -> Vector\n"
+		""},
+	 { "Vector___iadd__", _wrap_Vector___iadd__, METH_VARARGS, "__iadd__(Vector self, Vector v) -> Vector"},
+	 { "Vector_Add", _wrap_Vector_Add, METH_VARARGS, "Add(Vector self, double const a, Vector Va) -> Vector"},
+	 { "Vector_Set", _wrap_Vector_Set, METH_VARARGS, "Set(Vector self, double const a, Vector x) -> Vector"},
+	 { "Vector_SetVector", _wrap_Vector_SetVector, METH_VARARGS, "SetVector(Vector self, Vector v, int offset)"},
+	 { "Vector_Neg", _wrap_Vector_Neg, METH_O, "Neg(Vector self)"},
+	 { "Vector_Swap", _wrap_Vector_Swap, METH_VARARGS, "Swap(Vector self, Vector other)"},
+	 { "Vector_median", _wrap_Vector_median, METH_VARARGS, "median(Vector self, Vector lo, Vector hi)"},
+	 { "Vector_GetSubVector", _wrap_Vector_GetSubVector, METH_VARARGS, "\n"
+		"GetSubVector(Vector self, intArray dofs, Vector elemvect)\n"
+		"GetSubVector(Vector self, intArray dofs, double * elem_data)\n"
+		""},
+	 { "Vector_SetSubVector", _wrap_Vector_SetSubVector, METH_VARARGS, "\n"
+		"SetSubVector(Vector self, intArray dofs, double const value)\n"
+		"SetSubVector(Vector self, intArray dofs, Vector elemvect)\n"
+		"SetSubVector(Vector self, intArray dofs, double * elem_data)\n"
+		""},
+	 { "Vector_AddElementVector", _wrap_Vector_AddElementVector, METH_VARARGS, "\n"
+		"AddElementVector(Vector self, intArray dofs, Vector elemvect)\n"
+		"AddElementVector(Vector self, intArray dofs, double * elem_data)\n"
+		"AddElementVector(Vector self, intArray dofs, double const a, Vector elemvect)\n"
+		""},
+	 { "Vector_SetSubVectorComplement", _wrap_Vector_SetSubVectorComplement, METH_VARARGS, "SetSubVectorComplement(Vector self, intArray dofs, double const val)"},
+	 { "Vector_Randomize", _wrap_Vector_Randomize, METH_VARARGS, "Randomize(Vector self, int seed=0)"},
+	 { "Vector_Norml2", _wrap_Vector_Norml2, METH_O, "Norml2(Vector self) -> double"},
+	 { "Vector_Normlinf", _wrap_Vector_Normlinf, METH_O, "Normlinf(Vector self) -> double"},
+	 { "Vector_Norml1", _wrap_Vector_Norml1, METH_O, "Norml1(Vector self) -> double"},
+	 { "Vector_Normlp", _wrap_Vector_Normlp, METH_VARARGS, "Normlp(Vector self, double p) -> double"},
+	 { "Vector_Max", _wrap_Vector_Max, METH_O, "Max(Vector self) -> double"},
+	 { "Vector_Min", _wrap_Vector_Min, METH_O, "Min(Vector self) -> double"},
+	 { "Vector_Sum", _wrap_Vector_Sum, METH_O, "Sum(Vector self) -> double"},
+	 { "Vector_DistanceSquaredTo", _wrap_Vector_DistanceSquaredTo, METH_VARARGS, "DistanceSquaredTo(Vector self, double const * p) -> double"},
+	 { "Vector_DistanceTo", _wrap_Vector_DistanceTo, METH_VARARGS, "DistanceTo(Vector self, double const * p) -> double"},
+	 { "Vector_CheckFinite", _wrap_Vector_CheckFinite, METH_O, "CheckFinite(Vector self) -> int"},
+	 { "delete_Vector", _wrap_delete_Vector, METH_O, "delete_Vector(Vector self)"},
+	 { "Vector_Read", _wrap_Vector_Read, METH_VARARGS, "Read(Vector self, bool on_dev=True) -> double const"},
+	 { "Vector_HostRead", _wrap_Vector_HostRead, METH_O, "HostRead(Vector self) -> double const *"},
+	 { "Vector_Write", _wrap_Vector_Write, METH_VARARGS, "Write(Vector self, bool on_dev=True) -> double"},
+	 { "Vector_HostWrite", _wrap_Vector_HostWrite, METH_O, "HostWrite(Vector self) -> double *"},
+	 { "Vector_ReadWrite", _wrap_Vector_ReadWrite, METH_VARARGS, "ReadWrite(Vector self, bool on_dev=True) -> double"},
+	 { "Vector_HostReadWrite", _wrap_Vector_HostReadWrite, METH_O, "HostReadWrite(Vector self) -> double *"},
+	 { "new_Vector", _wrap_new_Vector, METH_VARARGS, "\n"
+		"Vector()\n"
+		"Vector(Vector arg1)\n"
+		"Vector(int s)\n"
+		"Vector(double * _data, int _size)\n"
+		"Vector(int size_, mfem::MemoryType mt)\n"
+		"new_Vector(Vector v, int offset, int size) -> Vector\n"
+		""},
+	 { "Vector_Assign", _wrap_Vector_Assign, METH_VARARGS, "\n"
+		"Assign(Vector self, double const v)\n"
+		"Assign(Vector self, PyObject * param)\n"
+		""},
+	 { "Vector___setitem__", _wrap_Vector___setitem__, METH_VARARGS, "__setitem__(Vector self, int i, double const v)"},
+	 { "Vector___getitem__", _wrap_Vector___getitem__, METH_VARARGS, "__getitem__(Vector self, PyObject * param) -> PyObject *"},
+	 { "Vector_GetDataArray", _wrap_Vector_GetDataArray, METH_O, "GetDataArray(Vector self) -> PyObject *"},
+	 { "Vector_Print", _wrap_Vector_Print, METH_VARARGS, "\n"
+		"Print(Vector self, std::ostream & out=mfem::out, int width=8)\n"
+		"Print(Vector self, char const * file, int precision=8)\n"
+		""},
+	 { "Vector_Print_HYPRE", _wrap_Vector_Print_HYPRE, METH_VARARGS, "\n"
+		"Print_HYPRE(Vector self, std::ostream & out)\n"
+		"Print_HYPRE(Vector self, char const * file, int precision=8)\n"
+		"Print_HYPRE(Vector self)\n"
+		""},
+	 { "Vector_swigregister", Vector_swigregister, METH_O, NULL},
+	 { "Vector_swiginit", Vector_swiginit, METH_VARARGS, NULL},
+	 { "IsFinite", _wrap_IsFinite, METH_O, "IsFinite(double const & val) -> bool"},
+	 { "DistanceSquared", _wrap_DistanceSquared, METH_VARARGS, "DistanceSquared(double const * x, double const * y, int const n) -> double"},
+	 { "Distance", _wrap_Distance, METH_VARARGS, "Distance(double const * x, double const * y, int const n) -> double"},
 	 { NULL, NULL, 0, NULL }
 };
 

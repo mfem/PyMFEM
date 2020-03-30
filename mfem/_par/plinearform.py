@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _plinearform.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _plinearform.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -90,6 +93,7 @@ import mfem._par.fe
 import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
+import mfem._par.vtk
 import mfem._par.element
 import mfem._par.table
 import mfem._par.hash
@@ -100,6 +104,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.handle
 import mfem._par.hypre
+import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.pfespace
 import mfem._par.pmesh
@@ -117,6 +122,7 @@ class ParLinearForm(mfem._par.linearform.LinearForm):
         r"""
         __init__(ParLinearForm self) -> ParLinearForm
         __init__(ParLinearForm self, ParFiniteElementSpace pf) -> ParLinearForm
+        __init__(ParLinearForm self, ParFiniteElementSpace pf, double * data) -> ParLinearForm
         __init__(ParLinearForm self, ParFiniteElementSpace pf, ParLinearForm plf) -> ParLinearForm
         """
         _plinearform.ParLinearForm_swiginit(self, _plinearform.new_ParLinearForm(*args))
@@ -124,6 +130,7 @@ class ParLinearForm(mfem._par.linearform.LinearForm):
     def ParFESpace(self):
         r"""ParFESpace(ParLinearForm self) -> ParFiniteElementSpace"""
         return _plinearform.ParLinearForm_ParFESpace(self)
+    ParFESpace = _swig_new_instance_method(_plinearform.ParLinearForm_ParFESpace)
 
     def Update(self, *args):
         r"""
@@ -131,6 +138,7 @@ class ParLinearForm(mfem._par.linearform.LinearForm):
         Update(ParLinearForm self, ParFiniteElementSpace pf, Vector v, int v_offset)
         """
         return _plinearform.ParLinearForm_Update(self, *args)
+    Update = _swig_new_instance_method(_plinearform.ParLinearForm_Update)
 
     def ParallelAssemble(self, *args):
         r"""
@@ -138,10 +146,12 @@ class ParLinearForm(mfem._par.linearform.LinearForm):
         ParallelAssemble(ParLinearForm self) -> HypreParVector
         """
         return _plinearform.ParLinearForm_ParallelAssemble(self, *args)
+    ParallelAssemble = _swig_new_instance_method(_plinearform.ParLinearForm_ParallelAssemble)
 
     def __call__(self, gf):
         r"""__call__(ParLinearForm self, ParGridFunction gf) -> double"""
         return _plinearform.ParLinearForm___call__(self, gf)
+    __call__ = _swig_new_instance_method(_plinearform.ParLinearForm___call__)
     __swig_destroy__ = _plinearform.delete_ParLinearForm
 
 # Register ParLinearForm in _plinearform:

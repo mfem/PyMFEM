@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _sparsesmoothers.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _sparsesmoothers.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -82,6 +85,7 @@ class SparseSmoother(mfem._par.matrix.MatrixInverse):
     def SetOperator(self, a):
         r"""SetOperator(SparseSmoother self, Operator a)"""
         return _sparsesmoothers.SparseSmoother_SetOperator(self, a)
+    SetOperator = _swig_new_instance_method(_sparsesmoothers.SparseSmoother_SetOperator)
     __swig_destroy__ = _sparsesmoothers.delete_SparseSmoother
 
 # Register SparseSmoother in _sparsesmoothers:
@@ -103,6 +107,7 @@ class GSSmoother(SparseSmoother):
     def Mult(self, x, y):
         r"""Mult(GSSmoother self, Vector x, Vector y)"""
         return _sparsesmoothers.GSSmoother_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_sparsesmoothers.GSSmoother_Mult)
     __swig_destroy__ = _sparsesmoothers.delete_GSSmoother
 
 # Register GSSmoother in _sparsesmoothers:
@@ -124,6 +129,7 @@ class DSmoother(SparseSmoother):
     def Mult(self, x, y):
         r"""Mult(DSmoother self, Vector x, Vector y)"""
         return _sparsesmoothers.DSmoother_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_sparsesmoothers.DSmoother_Mult)
     __swig_destroy__ = _sparsesmoothers.delete_DSmoother
 
 # Register DSmoother in _sparsesmoothers:

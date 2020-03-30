@@ -20,6 +20,10 @@ class SwigDirector_BilinearFormIntegrator : public mfem::BilinearFormIntegrator,
 public:
     SwigDirector_BilinearFormIntegrator(PyObject *self, mfem::IntegrationRule const *ir = NULL);
     virtual void AssemblePA(mfem::FiniteElementSpace const &fes);
+    virtual void AssemblePA(mfem::FiniteElementSpace const &trial_fes, mfem::FiniteElementSpace const &test_fes);
+    virtual void AssemblePAInteriorFaces(mfem::FiniteElementSpace const &fes);
+    virtual void AssemblePABoundaryFaces(mfem::FiniteElementSpace const &fes);
+    virtual void AssembleDiagonalPA(mfem::Vector &diag);
     virtual void AddMultPA(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void AddMultTransposePA(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void AssembleElementMatrix(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::DenseMatrix &elmat);
@@ -29,7 +33,7 @@ public:
     virtual void AssembleElementVector(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::Vector &elvect);
     virtual void AssembleElementGrad(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat);
     virtual void AssembleFaceGrad(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat);
-    virtual void ComputeElementFlux(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::Vector &u, mfem::FiniteElement const &fluxelem, mfem::Vector &flux, int with_coef = 1);
+    virtual void ComputeElementFlux(mfem::FiniteElement const &el, mfem::ElementTransformation &Trans, mfem::Vector &u, mfem::FiniteElement const &fluxelem, mfem::Vector &flux, bool with_coef = true);
     virtual double ComputeFluxEnergy(mfem::FiniteElement const &fluxelem, mfem::ElementTransformation &Trans, mfem::Vector &flux, mfem::Vector *d_energy = NULL);
     virtual ~SwigDirector_BilinearFormIntegrator();
 
@@ -62,7 +66,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[14];
+    mutable swig::SwigVar_PyObject vtable[18];
 #endif
 
 };

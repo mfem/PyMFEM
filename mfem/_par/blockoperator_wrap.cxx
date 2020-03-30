@@ -3076,14 +3076,17 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__PyOperatorBase swig_types[11]
 #define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[12]
 #define SWIGTYPE_p_mfem__RAPOperator swig_types[13]
-#define SWIGTYPE_p_mfem__Solver swig_types[14]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[15]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[16]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[17]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[18]
-#define SWIGTYPE_p_mfem__Vector swig_types[19]
-static swig_type_info *swig_types[21];
-static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[14]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[15]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[16]
+#define SWIGTYPE_p_mfem__Solver swig_types[17]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[18]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[19]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[20]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[21]
+#define SWIGTYPE_p_mfem__Vector swig_types[22]
+static swig_type_info *swig_types[24];
+static swig_module_info swig_module = {swig_types, 23, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5384,6 +5387,7 @@ SWIGINTERN PyObject *BlockLowerTriangularPreconditioner_swiginit(PyObject *SWIGU
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Opr2BlockOpr", _wrap_Opr2BlockOpr, METH_O, "Opr2BlockOpr(Operator op) -> BlockOperator"},
 	 { "Opr2SparseMat", _wrap_Opr2SparseMat, METH_O, "Opr2SparseMat(Operator op) -> mfem::SparseMatrix *"},
 	 { "Opr2HypreParMat", _wrap_Opr2HypreParMat, METH_O, "Opr2HypreParMat(Operator op) -> mfem::HypreParMatrix *"},
@@ -5439,6 +5443,59 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Opr2BlockOpr", _wrap_Opr2BlockOpr, METH_O, "Opr2BlockOpr(Operator op) -> BlockOperator"},
+	 { "Opr2SparseMat", _wrap_Opr2SparseMat, METH_O, "Opr2SparseMat(Operator op) -> mfem::SparseMatrix *"},
+	 { "Opr2HypreParMat", _wrap_Opr2HypreParMat, METH_O, "Opr2HypreParMat(Operator op) -> mfem::HypreParMatrix *"},
+	 { "new_BlockOperator", _wrap_new_BlockOperator, METH_VARARGS, "\n"
+		"BlockOperator(intArray offsets)\n"
+		"new_BlockOperator(intArray row_offsets, intArray col_offsets) -> BlockOperator\n"
+		""},
+	 { "BlockOperator_SetDiagonalBlock", _wrap_BlockOperator_SetDiagonalBlock, METH_VARARGS, "SetDiagonalBlock(BlockOperator self, int iblock, Operator op, double c=1.0)"},
+	 { "BlockOperator_SetBlock", _wrap_BlockOperator_SetBlock, METH_VARARGS, "SetBlock(BlockOperator self, int iRow, int iCol, Operator op, double c=1.0)"},
+	 { "BlockOperator_NumRowBlocks", _wrap_BlockOperator_NumRowBlocks, METH_O, "NumRowBlocks(BlockOperator self) -> int"},
+	 { "BlockOperator_NumColBlocks", _wrap_BlockOperator_NumColBlocks, METH_O, "NumColBlocks(BlockOperator self) -> int"},
+	 { "BlockOperator_IsZeroBlock", _wrap_BlockOperator_IsZeroBlock, METH_VARARGS, "IsZeroBlock(BlockOperator self, int i, int j) -> int"},
+	 { "BlockOperator_GetBlock", _wrap_BlockOperator_GetBlock, METH_VARARGS, "GetBlock(BlockOperator self, int i, int j) -> Operator"},
+	 { "BlockOperator_GetBlockCoef", _wrap_BlockOperator_GetBlockCoef, METH_VARARGS, "GetBlockCoef(BlockOperator self, int i, int j) -> double"},
+	 { "BlockOperator_SetBlockCoef", _wrap_BlockOperator_SetBlockCoef, METH_VARARGS, "SetBlockCoef(BlockOperator self, int i, int j, double c)"},
+	 { "BlockOperator_RowOffsets", _wrap_BlockOperator_RowOffsets, METH_O, "RowOffsets(BlockOperator self) -> intArray"},
+	 { "BlockOperator_ColOffsets", _wrap_BlockOperator_ColOffsets, METH_O, "ColOffsets(BlockOperator self) -> intArray"},
+	 { "BlockOperator_Mult", _wrap_BlockOperator_Mult, METH_VARARGS, "Mult(BlockOperator self, Vector x, Vector y)"},
+	 { "BlockOperator_MultTranspose", _wrap_BlockOperator_MultTranspose, METH_VARARGS, "MultTranspose(BlockOperator self, Vector x, Vector y)"},
+	 { "delete_BlockOperator", _wrap_delete_BlockOperator, METH_O, "delete_BlockOperator(BlockOperator self)"},
+	 { "BlockOperator_owns_blocks_set", _wrap_BlockOperator_owns_blocks_set, METH_VARARGS, "BlockOperator_owns_blocks_set(BlockOperator self, int owns_blocks)"},
+	 { "BlockOperator_owns_blocks_get", _wrap_BlockOperator_owns_blocks_get, METH_O, "BlockOperator_owns_blocks_get(BlockOperator self) -> int"},
+	 { "BlockOperator_swigregister", BlockOperator_swigregister, METH_O, NULL},
+	 { "BlockOperator_swiginit", BlockOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_BlockDiagonalPreconditioner", _wrap_new_BlockDiagonalPreconditioner, METH_O, "new_BlockDiagonalPreconditioner(intArray offsets) -> BlockDiagonalPreconditioner"},
+	 { "BlockDiagonalPreconditioner_SetDiagonalBlock", _wrap_BlockDiagonalPreconditioner_SetDiagonalBlock, METH_VARARGS, "SetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock, Operator op)"},
+	 { "BlockDiagonalPreconditioner_SetOperator", _wrap_BlockDiagonalPreconditioner_SetOperator, METH_VARARGS, "SetOperator(BlockDiagonalPreconditioner self, Operator op)"},
+	 { "BlockDiagonalPreconditioner_NumBlocks", _wrap_BlockDiagonalPreconditioner_NumBlocks, METH_O, "NumBlocks(BlockDiagonalPreconditioner self) -> int"},
+	 { "BlockDiagonalPreconditioner_GetDiagonalBlock", _wrap_BlockDiagonalPreconditioner_GetDiagonalBlock, METH_VARARGS, "GetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock) -> Operator"},
+	 { "BlockDiagonalPreconditioner_Offsets", _wrap_BlockDiagonalPreconditioner_Offsets, METH_O, "Offsets(BlockDiagonalPreconditioner self) -> intArray"},
+	 { "BlockDiagonalPreconditioner_Mult", _wrap_BlockDiagonalPreconditioner_Mult, METH_VARARGS, "Mult(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
+	 { "BlockDiagonalPreconditioner_MultTranspose", _wrap_BlockDiagonalPreconditioner_MultTranspose, METH_VARARGS, "MultTranspose(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
+	 { "delete_BlockDiagonalPreconditioner", _wrap_delete_BlockDiagonalPreconditioner, METH_O, "delete_BlockDiagonalPreconditioner(BlockDiagonalPreconditioner self)"},
+	 { "BlockDiagonalPreconditioner_owns_blocks_set", _wrap_BlockDiagonalPreconditioner_owns_blocks_set, METH_VARARGS, "BlockDiagonalPreconditioner_owns_blocks_set(BlockDiagonalPreconditioner self, int owns_blocks)"},
+	 { "BlockDiagonalPreconditioner_owns_blocks_get", _wrap_BlockDiagonalPreconditioner_owns_blocks_get, METH_O, "BlockDiagonalPreconditioner_owns_blocks_get(BlockDiagonalPreconditioner self) -> int"},
+	 { "BlockDiagonalPreconditioner_swigregister", BlockDiagonalPreconditioner_swigregister, METH_O, NULL},
+	 { "BlockDiagonalPreconditioner_swiginit", BlockDiagonalPreconditioner_swiginit, METH_VARARGS, NULL},
+	 { "new_BlockLowerTriangularPreconditioner", _wrap_new_BlockLowerTriangularPreconditioner, METH_O, "new_BlockLowerTriangularPreconditioner(intArray offsets) -> BlockLowerTriangularPreconditioner"},
+	 { "BlockLowerTriangularPreconditioner_SetDiagonalBlock", _wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock, METH_VARARGS, "SetDiagonalBlock(BlockLowerTriangularPreconditioner self, int iblock, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_SetBlock", _wrap_BlockLowerTriangularPreconditioner_SetBlock, METH_VARARGS, "SetBlock(BlockLowerTriangularPreconditioner self, int iRow, int iCol, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_SetOperator", _wrap_BlockLowerTriangularPreconditioner_SetOperator, METH_VARARGS, "SetOperator(BlockLowerTriangularPreconditioner self, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_NumBlocks", _wrap_BlockLowerTriangularPreconditioner_NumBlocks, METH_O, "NumBlocks(BlockLowerTriangularPreconditioner self) -> int"},
+	 { "BlockLowerTriangularPreconditioner_GetBlock", _wrap_BlockLowerTriangularPreconditioner_GetBlock, METH_VARARGS, "GetBlock(BlockLowerTriangularPreconditioner self, int iblock, int jblock) -> Operator"},
+	 { "BlockLowerTriangularPreconditioner_Offsets", _wrap_BlockLowerTriangularPreconditioner_Offsets, METH_O, "Offsets(BlockLowerTriangularPreconditioner self) -> intArray"},
+	 { "BlockLowerTriangularPreconditioner_Mult", _wrap_BlockLowerTriangularPreconditioner_Mult, METH_VARARGS, "Mult(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
+	 { "BlockLowerTriangularPreconditioner_MultTranspose", _wrap_BlockLowerTriangularPreconditioner_MultTranspose, METH_VARARGS, "MultTranspose(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
+	 { "delete_BlockLowerTriangularPreconditioner", _wrap_delete_BlockLowerTriangularPreconditioner, METH_O, "delete_BlockLowerTriangularPreconditioner(BlockLowerTriangularPreconditioner self)"},
+	 { "BlockLowerTriangularPreconditioner_owns_blocks_set", _wrap_BlockLowerTriangularPreconditioner_owns_blocks_set, METH_VARARGS, "BlockLowerTriangularPreconditioner_owns_blocks_set(BlockLowerTriangularPreconditioner self, int owns_blocks)"},
+	 { "BlockLowerTriangularPreconditioner_owns_blocks_get", _wrap_BlockLowerTriangularPreconditioner_owns_blocks_get, METH_O, "BlockLowerTriangularPreconditioner_owns_blocks_get(BlockLowerTriangularPreconditioner self) -> int"},
+	 { "BlockLowerTriangularPreconditioner_swigregister", BlockLowerTriangularPreconditioner_swigregister, METH_O, NULL},
+	 { "BlockLowerTriangularPreconditioner_swiginit", BlockLowerTriangularPreconditioner_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5451,6 +5508,12 @@ static void *_p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Solver(void *x, int 
 static void *_p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *)  ((mfem::BlockLowerTriangularPreconditioner *) x));
 }
+static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
+}
+static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+}
 static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
 }
@@ -5460,35 +5523,38 @@ static void *_p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Operator(void *x, in
 static void *_p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::BlockLowerTriangularPreconditioner *) x));
 }
-static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
+static void *_p_mfem__BlockOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::BlockOperator *) x));
 }
-static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
-}
-static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
-}
-static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
-}
-static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
-}
-static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
 }
 static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
 }
-static void *_p_mfem__BlockOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::BlockOperator *) x));
+static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
 }
-static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
 }
-static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
+static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
+}
+static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
+}
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
+}
+static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
+}
+static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
 }
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -5498,15 +5564,18 @@ static swig_type_info _swigt__p_mfem__BlockLowerTriangularPreconditioner = {"_p_
 static swig_type_info _swigt__p_mfem__BlockOperator = {"_p_mfem__BlockOperator", "mfem::BlockOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__HypreParMatrix = {"_p_mfem__HypreParMatrix", "mfem::HypreParMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
@@ -5526,6 +5595,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__RAPOperator,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_mfem__Solver,
   &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__TimeDependentOperator,
@@ -5541,16 +5613,19 @@ static swig_cast_info _swigc__p_mfem__BlockDiagonalPreconditioner[] = {  {&_swig
 static swig_cast_info _swigc__p_mfem__BlockLowerTriangularPreconditioner[] = {  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BlockOperator[] = {  {&_swigt__p_mfem__BlockOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__HypreParMatrix[] = {  {&_swigt__p_mfem__HypreParMatrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, _p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockDiagonalPreconditioner, _p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockOperator, _p_mfem__BlockOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, _p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockDiagonalPreconditioner, _p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockOperator, _p_mfem__BlockOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__BlockDiagonalPreconditioner, _p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, _p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
@@ -5570,6 +5645,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__RAPOperator,
+  _swigc__p_mfem__RectangularConstrainedOperator,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_mfem__Solver,
   _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__TimeDependentOperator,

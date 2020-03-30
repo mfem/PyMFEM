@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _point.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _point.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -90,6 +93,7 @@ class Point(mfem._par.element.Element):
     def GetType(self):
         r"""GetType(Point self) -> mfem::Element::Type"""
         return _point.Point_GetType(self)
+    GetType = _swig_new_instance_method(_point.Point_GetType)
 
     def GetVertices(self, *args):
         r"""
@@ -97,30 +101,45 @@ class Point(mfem._par.element.Element):
         GetVertices(Point self) -> int *
         """
         return _point.Point_GetVertices(self, *args)
+    GetVertices = _swig_new_instance_method(_point.Point_GetVertices)
 
     def GetNVertices(self):
         r"""GetNVertices(Point self) -> int"""
         return _point.Point_GetNVertices(self)
+    GetNVertices = _swig_new_instance_method(_point.Point_GetNVertices)
 
     def GetNEdges(self):
         r"""GetNEdges(Point self) -> int"""
         return _point.Point_GetNEdges(self)
+    GetNEdges = _swig_new_instance_method(_point.Point_GetNEdges)
 
     def GetEdgeVertices(self, ei):
         r"""GetEdgeVertices(Point self, int ei) -> int const *"""
         return _point.Point_GetEdgeVertices(self, ei)
+    GetEdgeVertices = _swig_new_instance_method(_point.Point_GetEdgeVertices)
 
-    def GetNFaces(self, nFaceVertices):
-        r"""GetNFaces(Point self, int & nFaceVertices) -> int"""
-        return _point.Point_GetNFaces(self, nFaceVertices)
+    def GetNFaces(self, *args):
+        r"""
+        GetNFaces(Point self, int & nFaceVertices) -> int
+        GetNFaces(Point self) -> int
+        """
+        return _point.Point_GetNFaces(self, *args)
+    GetNFaces = _swig_new_instance_method(_point.Point_GetNFaces)
+
+    def GetNFaceVertices(self, arg2):
+        r"""GetNFaceVertices(Point self, int arg2) -> int"""
+        return _point.Point_GetNFaceVertices(self, arg2)
+    GetNFaceVertices = _swig_new_instance_method(_point.Point_GetNFaceVertices)
 
     def GetFaceVertices(self, fi):
         r"""GetFaceVertices(Point self, int fi) -> int const *"""
         return _point.Point_GetFaceVertices(self, fi)
+    GetFaceVertices = _swig_new_instance_method(_point.Point_GetFaceVertices)
 
     def Duplicate(self, m):
         r"""Duplicate(Point self, mfem::Mesh * m) -> Element"""
         return _point.Point_Duplicate(self, m)
+    Duplicate = _swig_new_instance_method(_point.Point_Duplicate)
     __swig_destroy__ = _point.delete_Point
 
 # Register Point in _point:

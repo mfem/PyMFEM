@@ -3069,32 +3069,33 @@ namespace Swig {
 #define SWIGTYPE_p_GroupId swig_types[1]
 #define SWIGTYPE_p_MPI_Comm swig_types[2]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
-#define SWIGTYPE_p_char swig_types[4]
-#define SWIGTYPE_p_hex_t swig_types[5]
-#define SWIGTYPE_p_int swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_long_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[9]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[10]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[11]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[12]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[13]
-#define SWIGTYPE_p_mfem__Mesh swig_types[14]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[15]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[16]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[17]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[18]
-#define SWIGTYPE_p_mfem__ParNCMesh swig_types[19]
-#define SWIGTYPE_p_mfem__STable swig_types[20]
-#define SWIGTYPE_p_mfem__Table swig_types[21]
-#define SWIGTYPE_p_pri_t swig_types[22]
-#define SWIGTYPE_p_quad_t swig_types[23]
-#define SWIGTYPE_p_seg_t swig_types[24]
-#define SWIGTYPE_p_std__vectorT_int_t swig_types[25]
-#define SWIGTYPE_p_tet_t swig_types[26]
-#define SWIGTYPE_p_tri_t swig_types[27]
-static swig_type_info *swig_types[29];
-static swig_module_info swig_module = {swig_types, 28, 0, 0, 0, 0};
+#define SWIGTYPE_p_RefCoord swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_hex_t swig_types[6]
+#define SWIGTYPE_p_int swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_long_t swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[10]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[11]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[12]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[13]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[14]
+#define SWIGTYPE_p_mfem__Mesh swig_types[15]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[16]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[17]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[18]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[19]
+#define SWIGTYPE_p_mfem__ParNCMesh swig_types[20]
+#define SWIGTYPE_p_mfem__STable swig_types[21]
+#define SWIGTYPE_p_mfem__Table swig_types[22]
+#define SWIGTYPE_p_pri_t swig_types[23]
+#define SWIGTYPE_p_quad_t swig_types[24]
+#define SWIGTYPE_p_seg_t swig_types[25]
+#define SWIGTYPE_p_std__vectorT_int_t swig_types[26]
+#define SWIGTYPE_p_tet_t swig_types[27]
+#define SWIGTYPE_p_tri_t swig_types[28]
+static swig_type_info *swig_types[30];
+static swig_module_info swig_module = {swig_types, 29, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3849,15 +3850,48 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
+  mfem::Array< int > *arg2 = (mfem::Array< int > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_Rebalance" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_Rebalance" "', argument " "2"" of type '" "mfem::Array< int > const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  {
+    try {
+      (arg1)->Rebalance((mfem::Array< int > const *)arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_Rebalance" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
@@ -3875,6 +3909,47 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance(PyObject *SWIGUNUSEDPARM(self), P
   return resultobj;
 fail:
   return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "ParNCMesh_Rebalance", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_ParNCMesh_Rebalance__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_ParNCMesh_Rebalance__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParNCMesh_Rebalance'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::ParNCMesh::Rebalance(mfem::Array< int > const *)\n"
+    "    mfem::ParNCMesh::Rebalance()\n");
+  return 0;
 }
 
 
@@ -4016,42 +4091,6 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_GetNGhostElements(PyObject *SWIGUNUSEDPARM(
   {
     try {
       result = (int)((mfem::ParNCMesh const *)arg1)->GetNGhostElements(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetGhostFaceGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[2] ;
-  mfem::Geometry::Type result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetGhostFaceGeometry", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetGhostFaceGeometry" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::Geometry::Type)((mfem::ParNCMesh const *)arg1)->GetGhostFaceGeometry(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5118,6 +5157,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_ParNCMesh", _wrap_new_ParNCMesh, METH_VARARGS, "\n"
 		"ParNCMesh(MPI_Comm comm, NCMesh ncmesh, int * part=None)\n"
 		"new_ParNCMesh(ParNCMesh other) -> ParNCMesh\n"
@@ -5127,13 +5167,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParNCMesh_LimitNCLevel", _wrap_ParNCMesh_LimitNCLevel, METH_VARARGS, "ParNCMesh_LimitNCLevel(ParNCMesh self, int max_nc_level)"},
 	 { "ParNCMesh_CheckDerefinementNCLevel", _wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS, "ParNCMesh_CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
 	 { "ParNCMesh_Derefine", _wrap_ParNCMesh_Derefine, METH_VARARGS, "ParNCMesh_Derefine(ParNCMesh self, intArray derefs)"},
-	 { "ParNCMesh_Rebalance", _wrap_ParNCMesh_Rebalance, METH_O, "ParNCMesh_Rebalance(ParNCMesh self)"},
+	 { "ParNCMesh_Rebalance", _wrap_ParNCMesh_Rebalance, METH_VARARGS, "ParNCMesh_Rebalance(ParNCMesh self, intArray custom_partition=None)"},
 	 { "ParNCMesh_GetNElements", _wrap_ParNCMesh_GetNElements, METH_O, "ParNCMesh_GetNElements(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostVertices", _wrap_ParNCMesh_GetNGhostVertices, METH_O, "ParNCMesh_GetNGhostVertices(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostEdges", _wrap_ParNCMesh_GetNGhostEdges, METH_O, "ParNCMesh_GetNGhostEdges(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostFaces", _wrap_ParNCMesh_GetNGhostFaces, METH_O, "ParNCMesh_GetNGhostFaces(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostElements", _wrap_ParNCMesh_GetNGhostElements, METH_O, "ParNCMesh_GetNGhostElements(ParNCMesh self) -> int"},
-	 { "ParNCMesh_GetGhostFaceGeometry", _wrap_ParNCMesh_GetGhostFaceGeometry, METH_VARARGS, "ParNCMesh_GetGhostFaceGeometry(ParNCMesh self, int ghost_face_id) -> mfem::Geometry::Type"},
 	 { "ParNCMesh_GetSharedVertices", _wrap_ParNCMesh_GetSharedVertices, METH_O, "ParNCMesh_GetSharedVertices(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
 	 { "ParNCMesh_GetSharedEdges", _wrap_ParNCMesh_GetSharedEdges, METH_O, "ParNCMesh_GetSharedEdges(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
 	 { "ParNCMesh_GetSharedFaces", _wrap_ParNCMesh_GetSharedFaces, METH_O, "ParNCMesh_GetSharedFaces(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
@@ -5163,6 +5202,48 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_ParNCMesh", _wrap_new_ParNCMesh, METH_VARARGS, "\n"
+		"ParNCMesh(MPI_Comm comm, NCMesh ncmesh, int * part=None)\n"
+		"new_ParNCMesh(ParNCMesh other) -> ParNCMesh\n"
+		""},
+	 { "delete_ParNCMesh", _wrap_delete_ParNCMesh, METH_O, "delete_ParNCMesh(ParNCMesh self)"},
+	 { "ParNCMesh_Refine", _wrap_ParNCMesh_Refine, METH_VARARGS, "Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "ParNCMesh_LimitNCLevel", _wrap_ParNCMesh_LimitNCLevel, METH_VARARGS, "LimitNCLevel(ParNCMesh self, int max_nc_level)"},
+	 { "ParNCMesh_CheckDerefinementNCLevel", _wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS, "CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
+	 { "ParNCMesh_Derefine", _wrap_ParNCMesh_Derefine, METH_VARARGS, "Derefine(ParNCMesh self, intArray derefs)"},
+	 { "ParNCMesh_Rebalance", _wrap_ParNCMesh_Rebalance, METH_VARARGS, "Rebalance(ParNCMesh self, intArray custom_partition=None)"},
+	 { "ParNCMesh_GetNElements", _wrap_ParNCMesh_GetNElements, METH_O, "GetNElements(ParNCMesh self) -> int"},
+	 { "ParNCMesh_GetNGhostVertices", _wrap_ParNCMesh_GetNGhostVertices, METH_O, "GetNGhostVertices(ParNCMesh self) -> int"},
+	 { "ParNCMesh_GetNGhostEdges", _wrap_ParNCMesh_GetNGhostEdges, METH_O, "GetNGhostEdges(ParNCMesh self) -> int"},
+	 { "ParNCMesh_GetNGhostFaces", _wrap_ParNCMesh_GetNGhostFaces, METH_O, "GetNGhostFaces(ParNCMesh self) -> int"},
+	 { "ParNCMesh_GetNGhostElements", _wrap_ParNCMesh_GetNGhostElements, METH_O, "GetNGhostElements(ParNCMesh self) -> int"},
+	 { "ParNCMesh_GetSharedVertices", _wrap_ParNCMesh_GetSharedVertices, METH_O, "GetSharedVertices(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
+	 { "ParNCMesh_GetSharedEdges", _wrap_ParNCMesh_GetSharedEdges, METH_O, "GetSharedEdges(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
+	 { "ParNCMesh_GetSharedFaces", _wrap_ParNCMesh_GetSharedFaces, METH_O, "GetSharedFaces(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
+	 { "ParNCMesh_GetSharedList", _wrap_ParNCMesh_GetSharedList, METH_VARARGS, "GetSharedList(ParNCMesh self, int entity) -> mfem::NCMesh::NCList const &"},
+	 { "ParNCMesh_GetFaceOrientation", _wrap_ParNCMesh_GetFaceOrientation, METH_VARARGS, "GetFaceOrientation(ParNCMesh self, int index) -> int"},
+	 { "ParNCMesh_GetEntityOwnerId", _wrap_ParNCMesh_GetEntityOwnerId, METH_VARARGS, "GetEntityOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
+	 { "ParNCMesh_GetEntityGroupId", _wrap_ParNCMesh_GetEntityGroupId, METH_VARARGS, "GetEntityGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
+	 { "ParNCMesh_GetGroup", _wrap_ParNCMesh_GetGroup, METH_VARARGS, "GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"},
+	 { "ParNCMesh_GroupContains", _wrap_ParNCMesh_GroupContains, METH_VARARGS, "GroupContains(ParNCMesh self, mfem::ParNCMesh::GroupId id, int rank) -> bool"},
+	 { "ParNCMesh_IsGhost", _wrap_ParNCMesh_IsGhost, METH_VARARGS, "IsGhost(ParNCMesh self, int entity, int index) -> bool"},
+	 { "ParNCMesh_ElementRank", _wrap_ParNCMesh_ElementRank, METH_VARARGS, "ElementRank(ParNCMesh self, int index) -> int"},
+	 { "ParNCMesh_GetMyRank", _wrap_ParNCMesh_GetMyRank, METH_O, "GetMyRank(ParNCMesh self) -> int"},
+	 { "ParNCMesh_SendRebalanceDofs", _wrap_ParNCMesh_SendRebalanceDofs, METH_VARARGS, "SendRebalanceDofs(ParNCMesh self, int old_ndofs, Table old_element_dofs, long old_global_offset, FiniteElementSpace space)"},
+	 { "ParNCMesh_RecvRebalanceDofs", _wrap_ParNCMesh_RecvRebalanceDofs, METH_VARARGS, "RecvRebalanceDofs(ParNCMesh self, intArray elements, mfem::Array< long > & dofs)"},
+	 { "ParNCMesh_GetRebalanceOldIndex", _wrap_ParNCMesh_GetRebalanceOldIndex, METH_O, "GetRebalanceOldIndex(ParNCMesh self) -> intArray"},
+	 { "ParNCMesh_GetDerefineOldRanks", _wrap_ParNCMesh_GetDerefineOldRanks, METH_O, "GetDerefineOldRanks(ParNCMesh self) -> intArray"},
+	 { "ParNCMesh_GetBoundaryClosure", _wrap_ParNCMesh_GetBoundaryClosure, METH_VARARGS, "GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
+	 { "ParNCMesh_Trim", _wrap_ParNCMesh_Trim, METH_O, "Trim(ParNCMesh self)"},
+	 { "ParNCMesh_MemoryUsage", _wrap_ParNCMesh_MemoryUsage, METH_VARARGS, "MemoryUsage(ParNCMesh self, bool with_base=True) -> long"},
+	 { "ParNCMesh_PrintMemoryDetail", _wrap_ParNCMesh_PrintMemoryDetail, METH_VARARGS, "PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"},
+	 { "ParNCMesh_GetDebugMesh", _wrap_ParNCMesh_GetDebugMesh, METH_VARARGS, "GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"},
+	 { "ParNCMesh_swigregister", ParNCMesh_swigregister, METH_O, NULL},
+	 { "ParNCMesh_swiginit", ParNCMesh_swiginit, METH_VARARGS, NULL},
+	 { "__lt__", _wrap___lt__, METH_VARARGS, "__lt__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
+	 { "__eq__", _wrap___eq__, METH_VARARGS, "__eq__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5179,6 +5260,7 @@ static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
@@ -5209,6 +5291,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_GroupId,
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_char,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -5239,6 +5322,7 @@ static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0}
 static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -5269,6 +5353,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_GroupId,
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_char,
   _swigc__p_hex_t,
   _swigc__p_int,
@@ -6022,18 +6107,18 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40100)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.1.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40100)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

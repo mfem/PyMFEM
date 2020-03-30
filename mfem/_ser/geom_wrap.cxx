@@ -5377,6 +5377,7 @@ SWIGINTERN PyObject *Swig_var_GlobGeometryRefiner_get(void) {
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Geometry_Name_get", _wrap_Geometry_Name_get, METH_VARARGS, NULL},
 	 { "Geometry_Name_set", _wrap_Geometry_Name_set, METH_O, NULL},
 	 { "new_Geometry", _wrap_new_Geometry, METH_NOARGS, "new_Geometry() -> Geometry"},
@@ -5428,6 +5429,55 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Geometry_Name_get", _wrap_Geometry_Name_get, METH_VARARGS, NULL},
+	 { "Geometry_Name_set", _wrap_Geometry_Name_set, METH_O, NULL},
+	 { "new_Geometry", _wrap_new_Geometry, METH_NOARGS, "new_Geometry() -> Geometry"},
+	 { "delete_Geometry", _wrap_delete_Geometry, METH_O, "delete_Geometry(Geometry self)"},
+	 { "Geometry_GetVertices", _wrap_Geometry_GetVertices, METH_VARARGS, "GetVertices(Geometry self, int GeomType) -> IntegrationRule"},
+	 { "Geometry_GetCenter", _wrap_Geometry_GetCenter, METH_VARARGS, "GetCenter(Geometry self, int GeomType) -> IntegrationPoint"},
+	 { "Geometry_GetRandomPoint", _wrap_Geometry_GetRandomPoint, METH_VARARGS, "GetRandomPoint(int GeomType, IntegrationPoint ip)"},
+	 { "Geometry_CheckPoint", _wrap_Geometry_CheckPoint, METH_VARARGS, "\n"
+		"CheckPoint(int GeomType, IntegrationPoint ip) -> bool\n"
+		"CheckPoint(int GeomType, IntegrationPoint ip, double eps) -> bool\n"
+		""},
+	 { "Geometry_ProjectPoint", _wrap_Geometry_ProjectPoint, METH_VARARGS, "\n"
+		"ProjectPoint(int GeomType, IntegrationPoint beg, IntegrationPoint end) -> bool\n"
+		"ProjectPoint(int GeomType, IntegrationPoint ip) -> bool\n"
+		""},
+	 { "Geometry_GetGeomToPerfGeomJac", _wrap_Geometry_GetGeomToPerfGeomJac, METH_VARARGS, "GetGeomToPerfGeomJac(Geometry self, int GeomType) -> DenseMatrix"},
+	 { "Geometry_GetPerfGeomToGeomJac", _wrap_Geometry_GetPerfGeomToGeomJac, METH_VARARGS, "GetPerfGeomToGeomJac(Geometry self, int GeomType) -> DenseMatrix"},
+	 { "Geometry_GetPerfPointMat", _wrap_Geometry_GetPerfPointMat, METH_VARARGS, "GetPerfPointMat(Geometry self, int GeomType, DenseMatrix pm)"},
+	 { "Geometry_JacToPerfJac", _wrap_Geometry_JacToPerfJac, METH_VARARGS, "JacToPerfJac(Geometry self, int GeomType, DenseMatrix J, DenseMatrix PJ)"},
+	 { "Geometry_NumBdr", _wrap_Geometry_NumBdr, METH_VARARGS, "NumBdr(Geometry self, int GeomType) -> int"},
+	 { "Geometry_swigregister", Geometry_swigregister, METH_O, NULL},
+	 { "Geometry_swiginit", Geometry_swiginit, METH_VARARGS, NULL},
+	 { "RefinedGeometry_Times_set", _wrap_RefinedGeometry_Times_set, METH_VARARGS, "RefinedGeometry_Times_set(RefinedGeometry self, int Times)"},
+	 { "RefinedGeometry_Times_get", _wrap_RefinedGeometry_Times_get, METH_O, "RefinedGeometry_Times_get(RefinedGeometry self) -> int"},
+	 { "RefinedGeometry_ETimes_set", _wrap_RefinedGeometry_ETimes_set, METH_VARARGS, "RefinedGeometry_ETimes_set(RefinedGeometry self, int ETimes)"},
+	 { "RefinedGeometry_ETimes_get", _wrap_RefinedGeometry_ETimes_get, METH_O, "RefinedGeometry_ETimes_get(RefinedGeometry self) -> int"},
+	 { "RefinedGeometry_RefPts_get", _wrap_RefinedGeometry_RefPts_get, METH_O, "RefinedGeometry_RefPts_get(RefinedGeometry self) -> IntegrationRule"},
+	 { "RefinedGeometry_RefGeoms_set", _wrap_RefinedGeometry_RefGeoms_set, METH_VARARGS, "RefinedGeometry_RefGeoms_set(RefinedGeometry self, intArray RefGeoms)"},
+	 { "RefinedGeometry_RefGeoms_get", _wrap_RefinedGeometry_RefGeoms_get, METH_O, "RefinedGeometry_RefGeoms_get(RefinedGeometry self) -> intArray"},
+	 { "RefinedGeometry_RefEdges_set", _wrap_RefinedGeometry_RefEdges_set, METH_VARARGS, "RefinedGeometry_RefEdges_set(RefinedGeometry self, intArray RefEdges)"},
+	 { "RefinedGeometry_RefEdges_get", _wrap_RefinedGeometry_RefEdges_get, METH_O, "RefinedGeometry_RefEdges_get(RefinedGeometry self) -> intArray"},
+	 { "RefinedGeometry_NumBdrEdges_set", _wrap_RefinedGeometry_NumBdrEdges_set, METH_VARARGS, "RefinedGeometry_NumBdrEdges_set(RefinedGeometry self, int NumBdrEdges)"},
+	 { "RefinedGeometry_NumBdrEdges_get", _wrap_RefinedGeometry_NumBdrEdges_get, METH_O, "RefinedGeometry_NumBdrEdges_get(RefinedGeometry self) -> int"},
+	 { "RefinedGeometry_Type_set", _wrap_RefinedGeometry_Type_set, METH_VARARGS, "RefinedGeometry_Type_set(RefinedGeometry self, int Type)"},
+	 { "RefinedGeometry_Type_get", _wrap_RefinedGeometry_Type_get, METH_O, "RefinedGeometry_Type_get(RefinedGeometry self) -> int"},
+	 { "new_RefinedGeometry", _wrap_new_RefinedGeometry, METH_VARARGS, "RefinedGeometry(int NPts, int NRefG, int NRefE, int NBdrE=0)"},
+	 { "delete_RefinedGeometry", _wrap_delete_RefinedGeometry, METH_O, "delete_RefinedGeometry(RefinedGeometry self)"},
+	 { "RefinedGeometry_swigregister", RefinedGeometry_swigregister, METH_O, NULL},
+	 { "RefinedGeometry_swiginit", RefinedGeometry_swiginit, METH_VARARGS, NULL},
+	 { "new_GeometryRefiner", _wrap_new_GeometryRefiner, METH_NOARGS, "new_GeometryRefiner() -> GeometryRefiner"},
+	 { "GeometryRefiner_SetType", _wrap_GeometryRefiner_SetType, METH_VARARGS, "SetType(GeometryRefiner self, int const t)"},
+	 { "GeometryRefiner_GetType", _wrap_GeometryRefiner_GetType, METH_O, "GetType(GeometryRefiner self) -> int"},
+	 { "GeometryRefiner_Refine", _wrap_GeometryRefiner_Refine, METH_VARARGS, "Refine(GeometryRefiner self, mfem::Geometry::Type Geom, int Times, int ETimes=1) -> RefinedGeometry"},
+	 { "GeometryRefiner_RefineInterior", _wrap_GeometryRefiner_RefineInterior, METH_VARARGS, "RefineInterior(GeometryRefiner self, mfem::Geometry::Type Geom, int Times) -> IntegrationRule"},
+	 { "delete_GeometryRefiner", _wrap_delete_GeometryRefiner, METH_O, "delete_GeometryRefiner(GeometryRefiner self)"},
+	 { "GeometryRefiner_swigregister", GeometryRefiner_swigregister, METH_O, NULL},
+	 { "GeometryRefiner_swiginit", GeometryRefiner_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

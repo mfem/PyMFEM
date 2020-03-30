@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _pncmesh.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _pncmesh.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -94,6 +97,7 @@ import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.ncmesh
+import mfem._par.vtk
 import mfem._par.element
 import mfem._par.densemat
 import mfem._par.geom
@@ -111,6 +115,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.handle
 import mfem._par.hypre
+import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.communication
@@ -132,130 +137,157 @@ class ParNCMesh(mfem._par.ncmesh.NCMesh):
     def Refine(self, refinements):
         r"""Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"""
         return _pncmesh.ParNCMesh_Refine(self, refinements)
+    Refine = _swig_new_instance_method(_pncmesh.ParNCMesh_Refine)
 
     def LimitNCLevel(self, max_nc_level):
         r"""LimitNCLevel(ParNCMesh self, int max_nc_level)"""
         return _pncmesh.ParNCMesh_LimitNCLevel(self, max_nc_level)
+    LimitNCLevel = _swig_new_instance_method(_pncmesh.ParNCMesh_LimitNCLevel)
 
     def CheckDerefinementNCLevel(self, deref_table, level_ok, max_nc_level):
         r"""CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"""
         return _pncmesh.ParNCMesh_CheckDerefinementNCLevel(self, deref_table, level_ok, max_nc_level)
+    CheckDerefinementNCLevel = _swig_new_instance_method(_pncmesh.ParNCMesh_CheckDerefinementNCLevel)
 
     def Derefine(self, derefs):
         r"""Derefine(ParNCMesh self, intArray derefs)"""
         return _pncmesh.ParNCMesh_Derefine(self, derefs)
+    Derefine = _swig_new_instance_method(_pncmesh.ParNCMesh_Derefine)
 
-    def Rebalance(self):
-        r"""Rebalance(ParNCMesh self)"""
-        return _pncmesh.ParNCMesh_Rebalance(self)
+    def Rebalance(self, custom_partition=None):
+        r"""Rebalance(ParNCMesh self, intArray custom_partition=None)"""
+        return _pncmesh.ParNCMesh_Rebalance(self, custom_partition)
+    Rebalance = _swig_new_instance_method(_pncmesh.ParNCMesh_Rebalance)
 
     def GetNElements(self):
         r"""GetNElements(ParNCMesh self) -> int"""
         return _pncmesh.ParNCMesh_GetNElements(self)
+    GetNElements = _swig_new_instance_method(_pncmesh.ParNCMesh_GetNElements)
 
     def GetNGhostVertices(self):
         r"""GetNGhostVertices(ParNCMesh self) -> int"""
         return _pncmesh.ParNCMesh_GetNGhostVertices(self)
+    GetNGhostVertices = _swig_new_instance_method(_pncmesh.ParNCMesh_GetNGhostVertices)
 
     def GetNGhostEdges(self):
         r"""GetNGhostEdges(ParNCMesh self) -> int"""
         return _pncmesh.ParNCMesh_GetNGhostEdges(self)
+    GetNGhostEdges = _swig_new_instance_method(_pncmesh.ParNCMesh_GetNGhostEdges)
 
     def GetNGhostFaces(self):
         r"""GetNGhostFaces(ParNCMesh self) -> int"""
         return _pncmesh.ParNCMesh_GetNGhostFaces(self)
+    GetNGhostFaces = _swig_new_instance_method(_pncmesh.ParNCMesh_GetNGhostFaces)
 
     def GetNGhostElements(self):
         r"""GetNGhostElements(ParNCMesh self) -> int"""
         return _pncmesh.ParNCMesh_GetNGhostElements(self)
-
-    def GetGhostFaceGeometry(self, ghost_face_id):
-        r"""GetGhostFaceGeometry(ParNCMesh self, int ghost_face_id) -> mfem::Geometry::Type"""
-        return _pncmesh.ParNCMesh_GetGhostFaceGeometry(self, ghost_face_id)
+    GetNGhostElements = _swig_new_instance_method(_pncmesh.ParNCMesh_GetNGhostElements)
 
     def GetSharedVertices(self):
         r"""GetSharedVertices(ParNCMesh self) -> mfem::NCMesh::NCList const &"""
         return _pncmesh.ParNCMesh_GetSharedVertices(self)
+    GetSharedVertices = _swig_new_instance_method(_pncmesh.ParNCMesh_GetSharedVertices)
 
     def GetSharedEdges(self):
         r"""GetSharedEdges(ParNCMesh self) -> mfem::NCMesh::NCList const &"""
         return _pncmesh.ParNCMesh_GetSharedEdges(self)
+    GetSharedEdges = _swig_new_instance_method(_pncmesh.ParNCMesh_GetSharedEdges)
 
     def GetSharedFaces(self):
         r"""GetSharedFaces(ParNCMesh self) -> mfem::NCMesh::NCList const &"""
         return _pncmesh.ParNCMesh_GetSharedFaces(self)
+    GetSharedFaces = _swig_new_instance_method(_pncmesh.ParNCMesh_GetSharedFaces)
 
     def GetSharedList(self, entity):
         r"""GetSharedList(ParNCMesh self, int entity) -> mfem::NCMesh::NCList const &"""
         return _pncmesh.ParNCMesh_GetSharedList(self, entity)
+    GetSharedList = _swig_new_instance_method(_pncmesh.ParNCMesh_GetSharedList)
 
     def GetFaceOrientation(self, index):
         r"""GetFaceOrientation(ParNCMesh self, int index) -> int"""
         return _pncmesh.ParNCMesh_GetFaceOrientation(self, index)
+    GetFaceOrientation = _swig_new_instance_method(_pncmesh.ParNCMesh_GetFaceOrientation)
 
     def GetEntityOwnerId(self, entity, index):
         r"""GetEntityOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"""
         return _pncmesh.ParNCMesh_GetEntityOwnerId(self, entity, index)
+    GetEntityOwnerId = _swig_new_instance_method(_pncmesh.ParNCMesh_GetEntityOwnerId)
 
     def GetEntityGroupId(self, entity, index):
         r"""GetEntityGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"""
         return _pncmesh.ParNCMesh_GetEntityGroupId(self, entity, index)
+    GetEntityGroupId = _swig_new_instance_method(_pncmesh.ParNCMesh_GetEntityGroupId)
 
     def GetGroup(self, id):
         r"""GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"""
         return _pncmesh.ParNCMesh_GetGroup(self, id)
+    GetGroup = _swig_new_instance_method(_pncmesh.ParNCMesh_GetGroup)
 
     def GroupContains(self, id, rank):
         r"""GroupContains(ParNCMesh self, mfem::ParNCMesh::GroupId id, int rank) -> bool"""
         return _pncmesh.ParNCMesh_GroupContains(self, id, rank)
+    GroupContains = _swig_new_instance_method(_pncmesh.ParNCMesh_GroupContains)
 
     def IsGhost(self, entity, index):
         r"""IsGhost(ParNCMesh self, int entity, int index) -> bool"""
         return _pncmesh.ParNCMesh_IsGhost(self, entity, index)
+    IsGhost = _swig_new_instance_method(_pncmesh.ParNCMesh_IsGhost)
 
     def ElementRank(self, index):
         r"""ElementRank(ParNCMesh self, int index) -> int"""
         return _pncmesh.ParNCMesh_ElementRank(self, index)
+    ElementRank = _swig_new_instance_method(_pncmesh.ParNCMesh_ElementRank)
 
     def GetMyRank(self):
         r"""GetMyRank(ParNCMesh self) -> int"""
         return _pncmesh.ParNCMesh_GetMyRank(self)
+    GetMyRank = _swig_new_instance_method(_pncmesh.ParNCMesh_GetMyRank)
 
     def SendRebalanceDofs(self, old_ndofs, old_element_dofs, old_global_offset, space):
         r"""SendRebalanceDofs(ParNCMesh self, int old_ndofs, Table old_element_dofs, long old_global_offset, FiniteElementSpace space)"""
         return _pncmesh.ParNCMesh_SendRebalanceDofs(self, old_ndofs, old_element_dofs, old_global_offset, space)
+    SendRebalanceDofs = _swig_new_instance_method(_pncmesh.ParNCMesh_SendRebalanceDofs)
 
     def RecvRebalanceDofs(self, elements, dofs):
         r"""RecvRebalanceDofs(ParNCMesh self, intArray elements, mfem::Array< long > & dofs)"""
         return _pncmesh.ParNCMesh_RecvRebalanceDofs(self, elements, dofs)
+    RecvRebalanceDofs = _swig_new_instance_method(_pncmesh.ParNCMesh_RecvRebalanceDofs)
 
     def GetRebalanceOldIndex(self):
         r"""GetRebalanceOldIndex(ParNCMesh self) -> intArray"""
         return _pncmesh.ParNCMesh_GetRebalanceOldIndex(self)
+    GetRebalanceOldIndex = _swig_new_instance_method(_pncmesh.ParNCMesh_GetRebalanceOldIndex)
 
     def GetDerefineOldRanks(self):
         r"""GetDerefineOldRanks(ParNCMesh self) -> intArray"""
         return _pncmesh.ParNCMesh_GetDerefineOldRanks(self)
+    GetDerefineOldRanks = _swig_new_instance_method(_pncmesh.ParNCMesh_GetDerefineOldRanks)
 
     def GetBoundaryClosure(self, bdr_attr_is_ess, bdr_vertices, bdr_edges):
         r"""GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"""
         return _pncmesh.ParNCMesh_GetBoundaryClosure(self, bdr_attr_is_ess, bdr_vertices, bdr_edges)
+    GetBoundaryClosure = _swig_new_instance_method(_pncmesh.ParNCMesh_GetBoundaryClosure)
 
     def Trim(self):
         r"""Trim(ParNCMesh self)"""
         return _pncmesh.ParNCMesh_Trim(self)
+    Trim = _swig_new_instance_method(_pncmesh.ParNCMesh_Trim)
 
     def MemoryUsage(self, with_base=True):
         r"""MemoryUsage(ParNCMesh self, bool with_base=True) -> long"""
         return _pncmesh.ParNCMesh_MemoryUsage(self, with_base)
+    MemoryUsage = _swig_new_instance_method(_pncmesh.ParNCMesh_MemoryUsage)
 
     def PrintMemoryDetail(self, with_base=True):
         r"""PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"""
         return _pncmesh.ParNCMesh_PrintMemoryDetail(self, with_base)
+    PrintMemoryDetail = _swig_new_instance_method(_pncmesh.ParNCMesh_PrintMemoryDetail)
 
     def GetDebugMesh(self, debug_mesh):
         r"""GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"""
         return _pncmesh.ParNCMesh_GetDebugMesh(self, debug_mesh)
+    GetDebugMesh = _swig_new_instance_method(_pncmesh.ParNCMesh_GetDebugMesh)
 
 # Register ParNCMesh in _pncmesh:
 _pncmesh.ParNCMesh_swigregister(ParNCMesh)
@@ -264,9 +296,11 @@ _pncmesh.ParNCMesh_swigregister(ParNCMesh)
 def __lt__(a, b):
     r"""__lt__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"""
     return _pncmesh.__lt__(a, b)
+__lt__ = _pncmesh.__lt__
 
 def __eq__(a, b):
     r"""__eq__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"""
     return _pncmesh.__eq__(a, b)
+__eq__ = _pncmesh.__eq__
 
 

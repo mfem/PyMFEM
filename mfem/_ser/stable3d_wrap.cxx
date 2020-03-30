@@ -4470,6 +4470,7 @@ SWIGINTERN PyObject *STable3D_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject 
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "STable3DNode_Prev_set", _wrap_STable3DNode_Prev_set, METH_VARARGS, "STable3DNode_Prev_set(STable3DNode self, STable3DNode Prev)"},
 	 { "STable3DNode_Prev_get", _wrap_STable3DNode_Prev_get, METH_O, "STable3DNode_Prev_get(STable3DNode self) -> STable3DNode"},
 	 { "STable3DNode_Column_set", _wrap_STable3DNode_Column_set, METH_VARARGS, "STable3DNode_Column_set(STable3DNode self, int Column)"},
@@ -4502,6 +4503,36 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "STable3DNode_Prev_set", _wrap_STable3DNode_Prev_set, METH_VARARGS, "STable3DNode_Prev_set(STable3DNode self, STable3DNode Prev)"},
+	 { "STable3DNode_Prev_get", _wrap_STable3DNode_Prev_get, METH_O, "STable3DNode_Prev_get(STable3DNode self) -> STable3DNode"},
+	 { "STable3DNode_Column_set", _wrap_STable3DNode_Column_set, METH_VARARGS, "STable3DNode_Column_set(STable3DNode self, int Column)"},
+	 { "STable3DNode_Column_get", _wrap_STable3DNode_Column_get, METH_O, "STable3DNode_Column_get(STable3DNode self) -> int"},
+	 { "STable3DNode_Floor_set", _wrap_STable3DNode_Floor_set, METH_VARARGS, "STable3DNode_Floor_set(STable3DNode self, int Floor)"},
+	 { "STable3DNode_Floor_get", _wrap_STable3DNode_Floor_get, METH_O, "STable3DNode_Floor_get(STable3DNode self) -> int"},
+	 { "STable3DNode_Number_set", _wrap_STable3DNode_Number_set, METH_VARARGS, "STable3DNode_Number_set(STable3DNode self, int Number)"},
+	 { "STable3DNode_Number_get", _wrap_STable3DNode_Number_get, METH_O, "STable3DNode_Number_get(STable3DNode self) -> int"},
+	 { "new_STable3DNode", _wrap_new_STable3DNode, METH_NOARGS, "new_STable3DNode() -> STable3DNode"},
+	 { "delete_STable3DNode", _wrap_delete_STable3DNode, METH_O, "delete_STable3DNode(STable3DNode self)"},
+	 { "STable3DNode_swigregister", STable3DNode_swigregister, METH_O, NULL},
+	 { "STable3DNode_swiginit", STable3DNode_swiginit, METH_VARARGS, NULL},
+	 { "new_STable3D", _wrap_new_STable3D, METH_O, "new_STable3D(int nr) -> STable3D"},
+	 { "STable3D_Push", _wrap_STable3D_Push, METH_VARARGS, "Push(STable3D self, int r, int c, int f) -> int"},
+	 { "STable3D_Index", _wrap_STable3D_Index, METH_VARARGS, "Index(STable3D self, int r, int c, int f) -> int"},
+	 { "STable3D_Push4", _wrap_STable3D_Push4, METH_VARARGS, "Push4(STable3D self, int r, int c, int f, int t) -> int"},
+	 { "STable3D___call__", _wrap_STable3D___call__, METH_VARARGS, "\n"
+		"__call__(STable3D self, int r, int c, int f) -> int\n"
+		"__call__(STable3D self, int r, int c, int f, int t) -> int\n"
+		""},
+	 { "STable3D_NumberOfElements", _wrap_STable3D_NumberOfElements, METH_O, "NumberOfElements(STable3D self) -> int"},
+	 { "delete_STable3D", _wrap_delete_STable3D, METH_O, "delete_STable3D(STable3D self)"},
+	 { "STable3D_Print", _wrap_STable3D_Print, METH_VARARGS, "\n"
+		"Print(STable3D self, std::ostream & out=mfem::out)\n"
+		"Print(STable3D self, char const * file, int precision=8)\n"
+		""},
+	 { "STable3D_swigregister", STable3D_swigregister, METH_O, NULL},
+	 { "STable3D_swiginit", STable3D_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

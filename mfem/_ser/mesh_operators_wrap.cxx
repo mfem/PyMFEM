@@ -3066,31 +3066,32 @@ namespace Swig {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_doublep swig_types[2]
-#define SWIGTYPE_p_hex_t swig_types[3]
-#define SWIGTYPE_p_intp swig_types[4]
-#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[6]
-#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[7]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[8]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[9]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[10]
-#define SWIGTYPE_p_mfem__Mesh swig_types[11]
-#define SWIGTYPE_p_mfem__MeshOperator swig_types[12]
-#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[13]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[14]
-#define SWIGTYPE_p_mfem__Rebalancer swig_types[15]
-#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[16]
-#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[17]
-#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[18]
-#define SWIGTYPE_p_pri_t swig_types[19]
-#define SWIGTYPE_p_quad_t swig_types[20]
-#define SWIGTYPE_p_seg_t swig_types[21]
-#define SWIGTYPE_p_tet_t swig_types[22]
-#define SWIGTYPE_p_tri_t swig_types[23]
-static swig_type_info *swig_types[25];
-static swig_module_info swig_module = {swig_types, 24, 0, 0, 0, 0};
+#define SWIGTYPE_p_RefCoord swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_doublep swig_types[3]
+#define SWIGTYPE_p_hex_t swig_types[4]
+#define SWIGTYPE_p_intp swig_types[5]
+#define SWIGTYPE_p_mfem__AnisotropicErrorEstimator swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__MeshOperator_p_t swig_types[7]
+#define SWIGTYPE_p_mfem__ErrorEstimator swig_types[8]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[9]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[10]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[11]
+#define SWIGTYPE_p_mfem__Mesh swig_types[12]
+#define SWIGTYPE_p_mfem__MeshOperator swig_types[13]
+#define SWIGTYPE_p_mfem__MeshOperatorSequence swig_types[14]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[15]
+#define SWIGTYPE_p_mfem__Rebalancer swig_types[16]
+#define SWIGTYPE_p_mfem__ThresholdDerefiner swig_types[17]
+#define SWIGTYPE_p_mfem__ThresholdRefiner swig_types[18]
+#define SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator swig_types[19]
+#define SWIGTYPE_p_pri_t swig_types[20]
+#define SWIGTYPE_p_quad_t swig_types[21]
+#define SWIGTYPE_p_seg_t swig_types[22]
+#define SWIGTYPE_p_tet_t swig_types[23]
+#define SWIGTYPE_p_tri_t swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5066,6 +5067,7 @@ SWIGINTERN PyObject *Rebalancer_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "MeshOperator_Apply", _wrap_MeshOperator_Apply, METH_VARARGS, "MeshOperator_Apply(MeshOperator self, Mesh mesh) -> bool"},
 	 { "MeshOperator_Stop", _wrap_MeshOperator_Stop, METH_O, "MeshOperator_Stop(MeshOperator self) -> bool"},
 	 { "MeshOperator_Repeat", _wrap_MeshOperator_Repeat, METH_O, "MeshOperator_Repeat(MeshOperator self) -> bool"},
@@ -5116,6 +5118,54 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "MeshOperator_Apply", _wrap_MeshOperator_Apply, METH_VARARGS, "Apply(MeshOperator self, Mesh mesh) -> bool"},
+	 { "MeshOperator_Stop", _wrap_MeshOperator_Stop, METH_O, "Stop(MeshOperator self) -> bool"},
+	 { "MeshOperator_Repeat", _wrap_MeshOperator_Repeat, METH_O, "Repeat(MeshOperator self) -> bool"},
+	 { "MeshOperator_Continue", _wrap_MeshOperator_Continue, METH_O, "Continue(MeshOperator self) -> bool"},
+	 { "MeshOperator_Refined", _wrap_MeshOperator_Refined, METH_O, "Refined(MeshOperator self) -> bool"},
+	 { "MeshOperator_Derefined", _wrap_MeshOperator_Derefined, METH_O, "Derefined(MeshOperator self) -> bool"},
+	 { "MeshOperator_Rebalanced", _wrap_MeshOperator_Rebalanced, METH_O, "Rebalanced(MeshOperator self) -> bool"},
+	 { "MeshOperator_GetActionInfo", _wrap_MeshOperator_GetActionInfo, METH_O, "GetActionInfo(MeshOperator self) -> int"},
+	 { "MeshOperator_Reset", _wrap_MeshOperator_Reset, METH_O, "Reset(MeshOperator self)"},
+	 { "delete_MeshOperator", _wrap_delete_MeshOperator, METH_O, "delete_MeshOperator(MeshOperator self)"},
+	 { "MeshOperator_swigregister", MeshOperator_swigregister, METH_O, NULL},
+	 { "new_MeshOperatorSequence", _wrap_new_MeshOperatorSequence, METH_VARARGS, NULL},
+	 { "delete_MeshOperatorSequence", _wrap_delete_MeshOperatorSequence, METH_O, "delete_MeshOperatorSequence(MeshOperatorSequence self)"},
+	 { "MeshOperatorSequence_Append", _wrap_MeshOperatorSequence_Append, METH_VARARGS, "Append(MeshOperatorSequence self, MeshOperator mc)"},
+	 { "MeshOperatorSequence_GetSequence", _wrap_MeshOperatorSequence_GetSequence, METH_O, "GetSequence(MeshOperatorSequence self) -> mfem::Array< mfem::MeshOperator * > &"},
+	 { "MeshOperatorSequence_Reset", _wrap_MeshOperatorSequence_Reset, METH_O, "Reset(MeshOperatorSequence self)"},
+	 { "MeshOperatorSequence_swigregister", MeshOperatorSequence_swigregister, METH_O, NULL},
+	 { "MeshOperatorSequence_swiginit", MeshOperatorSequence_swiginit, METH_VARARGS, NULL},
+	 { "new_ThresholdRefiner", _wrap_new_ThresholdRefiner, METH_O, "new_ThresholdRefiner(ErrorEstimator est) -> ThresholdRefiner"},
+	 { "ThresholdRefiner_SetTotalErrorNormP", _wrap_ThresholdRefiner_SetTotalErrorNormP, METH_VARARGS, "SetTotalErrorNormP(ThresholdRefiner self, double norm_p=mfem::infinity())"},
+	 { "ThresholdRefiner_SetTotalErrorGoal", _wrap_ThresholdRefiner_SetTotalErrorGoal, METH_VARARGS, "SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"},
+	 { "ThresholdRefiner_SetTotalErrorFraction", _wrap_ThresholdRefiner_SetTotalErrorFraction, METH_VARARGS, "SetTotalErrorFraction(ThresholdRefiner self, double fraction)"},
+	 { "ThresholdRefiner_SetLocalErrorGoal", _wrap_ThresholdRefiner_SetLocalErrorGoal, METH_VARARGS, "SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"},
+	 { "ThresholdRefiner_SetMaxElements", _wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS, "SetMaxElements(ThresholdRefiner self, long max_elem)"},
+	 { "ThresholdRefiner_PreferNonconformingRefinement", _wrap_ThresholdRefiner_PreferNonconformingRefinement, METH_O, "PreferNonconformingRefinement(ThresholdRefiner self)"},
+	 { "ThresholdRefiner_PreferConformingRefinement", _wrap_ThresholdRefiner_PreferConformingRefinement, METH_O, "PreferConformingRefinement(ThresholdRefiner self)"},
+	 { "ThresholdRefiner_SetNCLimit", _wrap_ThresholdRefiner_SetNCLimit, METH_VARARGS, "SetNCLimit(ThresholdRefiner self, int nc_limit)"},
+	 { "ThresholdRefiner_GetNumMarkedElements", _wrap_ThresholdRefiner_GetNumMarkedElements, METH_O, "GetNumMarkedElements(ThresholdRefiner self) -> long"},
+	 { "ThresholdRefiner_GetThreshold", _wrap_ThresholdRefiner_GetThreshold, METH_O, "GetThreshold(ThresholdRefiner self) -> double"},
+	 { "ThresholdRefiner_Reset", _wrap_ThresholdRefiner_Reset, METH_O, "Reset(ThresholdRefiner self)"},
+	 { "delete_ThresholdRefiner", _wrap_delete_ThresholdRefiner, METH_O, "delete_ThresholdRefiner(ThresholdRefiner self)"},
+	 { "ThresholdRefiner_swigregister", ThresholdRefiner_swigregister, METH_O, NULL},
+	 { "ThresholdRefiner_swiginit", ThresholdRefiner_swiginit, METH_VARARGS, NULL},
+	 { "new_ThresholdDerefiner", _wrap_new_ThresholdDerefiner, METH_O, "new_ThresholdDerefiner(ErrorEstimator est) -> ThresholdDerefiner"},
+	 { "ThresholdDerefiner_SetThreshold", _wrap_ThresholdDerefiner_SetThreshold, METH_VARARGS, "SetThreshold(ThresholdDerefiner self, double thresh)"},
+	 { "ThresholdDerefiner_SetOp", _wrap_ThresholdDerefiner_SetOp, METH_VARARGS, "SetOp(ThresholdDerefiner self, int op)"},
+	 { "ThresholdDerefiner_SetNCLimit", _wrap_ThresholdDerefiner_SetNCLimit, METH_VARARGS, "SetNCLimit(ThresholdDerefiner self, int nc_limit)"},
+	 { "ThresholdDerefiner_Reset", _wrap_ThresholdDerefiner_Reset, METH_O, "Reset(ThresholdDerefiner self)"},
+	 { "delete_ThresholdDerefiner", _wrap_delete_ThresholdDerefiner, METH_O, "delete_ThresholdDerefiner(ThresholdDerefiner self)"},
+	 { "ThresholdDerefiner_swigregister", ThresholdDerefiner_swigregister, METH_O, NULL},
+	 { "ThresholdDerefiner_swiginit", ThresholdDerefiner_swiginit, METH_VARARGS, NULL},
+	 { "Rebalancer_Reset", _wrap_Rebalancer_Reset, METH_O, "Reset(Rebalancer self)"},
+	 { "new_Rebalancer", _wrap_new_Rebalancer, METH_NOARGS, "new_Rebalancer() -> Rebalancer"},
+	 { "delete_Rebalancer", _wrap_delete_Rebalancer, METH_O, "delete_Rebalancer(Rebalancer self)"},
+	 { "Rebalancer_swigregister", Rebalancer_swigregister, METH_O, NULL},
+	 { "Rebalancer_swiginit", Rebalancer_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5141,6 +5191,7 @@ static void *_p_mfem__RebalancerTo_p_mfem__MeshOperator(void *x, int *SWIGUNUSED
     return (void *)((mfem::MeshOperator *)  ((mfem::Rebalancer *) x));
 }
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_doublep = {"_p_doublep", "doublep *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
@@ -5167,6 +5218,7 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_char,
   &_swigt__p_doublep,
   &_swigt__p_hex_t,
@@ -5193,6 +5245,7 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_doublep[] = {  {&_swigt__p_doublep, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -5219,6 +5272,7 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_char,
   _swigc__p_doublep,
   _swigc__p_hex_t,

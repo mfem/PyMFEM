@@ -3262,6 +3262,7 @@ SWIGINTERN PyObject *doublep_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_intp", _wrap_new_intp, METH_NOARGS, NULL},
 	 { "delete_intp", _wrap_delete_intp, METH_O, NULL},
 	 { "intp_assign", _wrap_intp_assign, METH_VARARGS, NULL},
@@ -3282,6 +3283,24 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_intp", _wrap_new_intp, METH_NOARGS, NULL},
+	 { "delete_intp", _wrap_delete_intp, METH_O, NULL},
+	 { "intp_assign", _wrap_intp_assign, METH_VARARGS, NULL},
+	 { "intp_value", _wrap_intp_value, METH_O, NULL},
+	 { "intp_cast", _wrap_intp_cast, METH_O, NULL},
+	 { "intp_frompointer", _wrap_intp_frompointer, METH_O, NULL},
+	 { "intp_swigregister", intp_swigregister, METH_O, NULL},
+	 { "intp_swiginit", intp_swiginit, METH_VARARGS, NULL},
+	 { "new_doublep", _wrap_new_doublep, METH_NOARGS, NULL},
+	 { "delete_doublep", _wrap_delete_doublep, METH_O, NULL},
+	 { "doublep_assign", _wrap_doublep_assign, METH_VARARGS, NULL},
+	 { "doublep_value", _wrap_doublep_value, METH_O, NULL},
+	 { "doublep_cast", _wrap_doublep_cast, METH_O, NULL},
+	 { "doublep_frompointer", _wrap_doublep_frompointer, METH_O, NULL},
+	 { "doublep_swigregister", doublep_swigregister, METH_O, NULL},
+	 { "doublep_swiginit", doublep_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

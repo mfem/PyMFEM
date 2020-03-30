@@ -3067,33 +3067,33 @@ namespace Swig {
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_hex_t swig_types[3]
-#define SWIGTYPE_p_int swig_types[4]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Vertex_t swig_types[9]
-#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[10]
-#define SWIGTYPE_p_mfem__DenseTensor swig_types[11]
-#define SWIGTYPE_p_mfem__Embedding swig_types[12]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[14]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[15]
-#define SWIGTYPE_p_mfem__Mesh swig_types[16]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[17]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[18]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[19]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[20]
-#define SWIGTYPE_p_mfem__Refinement swig_types[21]
-#define SWIGTYPE_p_mfem__STable swig_types[22]
-#define SWIGTYPE_p_mfem__Table swig_types[23]
-#define SWIGTYPE_p_pri_t swig_types[24]
-#define SWIGTYPE_p_quad_t swig_types[25]
-#define SWIGTYPE_p_seg_t swig_types[26]
-#define SWIGTYPE_p_std__istream swig_types[27]
-#define SWIGTYPE_p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t swig_types[28]
+#define SWIGTYPE_p_RefCoord swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_hex_t swig_types[4]
+#define SWIGTYPE_p_int swig_types[5]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Vertex_t swig_types[10]
+#define SWIGTYPE_p_mfem__CoarseFineTransformations swig_types[11]
+#define SWIGTYPE_p_mfem__DenseTensor swig_types[12]
+#define SWIGTYPE_p_mfem__Embedding swig_types[13]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[14]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[15]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[16]
+#define SWIGTYPE_p_mfem__Mesh swig_types[17]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[18]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[19]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[20]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[21]
+#define SWIGTYPE_p_mfem__Refinement swig_types[22]
+#define SWIGTYPE_p_mfem__STable swig_types[23]
+#define SWIGTYPE_p_mfem__Table swig_types[24]
+#define SWIGTYPE_p_pri_t swig_types[25]
+#define SWIGTYPE_p_quad_t swig_types[26]
+#define SWIGTYPE_p_seg_t swig_types[27]
+#define SWIGTYPE_p_std__istream swig_types[28]
 #define SWIGTYPE_p_tet_t swig_types[29]
 #define SWIGTYPE_p_tri_t swig_types[30]
 #define SWIGTYPE_p_void swig_types[31]
@@ -3548,19 +3548,10 @@ SWIG_From_char  (char c)
 }
 
 
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
 {
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
+  return PyBool_FromLong(value ? 1 : 0);
 }
 
 
@@ -4203,7 +4194,7 @@ SWIGINTERN PyObject *Embedding_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject
 SWIGINTERN PyObject *_wrap_CoarseFineTransformations_point_matrices_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::CoarseFineTransformations *arg1 = (mfem::CoarseFineTransformations *) 0 ;
-  std::map< mfem::Geometry::Type,mfem::DenseTensor > *arg2 = (std::map< mfem::Geometry::Type,mfem::DenseTensor > *) 0 ;
+  mfem::DenseTensor *arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4216,12 +4207,19 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_point_matrices_set(PyObject
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoarseFineTransformations_point_matrices_set" "', argument " "1"" of type '" "mfem::CoarseFineTransformations *""'"); 
   }
   arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__DenseTensor, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CoarseFineTransformations_point_matrices_set" "', argument " "2"" of type '" "std::map< mfem::Geometry::Type,mfem::DenseTensor > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CoarseFineTransformations_point_matrices_set" "', argument " "2"" of type '" "mfem::DenseTensor [mfem::Geometry::NumGeom]""'"); 
+  } 
+  arg2 = reinterpret_cast< mfem::DenseTensor * >(argp2);
+  {
+    if (arg2) {
+      size_t ii = 0;
+      for (; ii < (size_t)mfem::Geometry::NumGeom; ++ii) *(mfem::DenseTensor *)&arg1->point_matrices[ii] = *((mfem::DenseTensor *)arg2 + ii);
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""point_matrices""' of type '""mfem::DenseTensor [mfem::Geometry::NumGeom]""'");
+    }
   }
-  arg2 = reinterpret_cast< std::map< mfem::Geometry::Type,mfem::DenseTensor > * >(argp2);
-  if (arg1) (arg1)->point_matrices = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4235,7 +4233,7 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_point_matrices_get(PyObject
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  std::map< mfem::Geometry::Type,mfem::DenseTensor > *result = 0 ;
+  mfem::DenseTensor *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -4244,8 +4242,8 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_point_matrices_get(PyObject
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoarseFineTransformations_point_matrices_get" "', argument " "1"" of type '" "mfem::CoarseFineTransformations *""'"); 
   }
   arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
-  result = (std::map< mfem::Geometry::Type,mfem::DenseTensor > *)& ((arg1)->point_matrices);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t, 0 |  0 );
+  result = (mfem::DenseTensor *)(mfem::DenseTensor *) ((arg1)->point_matrices);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseTensor, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4269,43 +4267,6 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_embeddings_get(PyObject *SW
   arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
   result = (mfem::Array< mfem::Embedding > *)& ((arg1)->embeddings);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Embedding_t, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_CoarseFineTransformations_GetPointMatrices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::CoarseFineTransformations *arg1 = (mfem::CoarseFineTransformations *) 0 ;
-  mfem::Geometry::Type arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
-  mfem::DenseTensor *result = 0 ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "CoarseFineTransformations_GetPointMatrices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CoarseFineTransformations, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoarseFineTransformations_GetPointMatrices" "', argument " "1"" of type '" "mfem::CoarseFineTransformations const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CoarseFineTransformations_GetPointMatrices" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
-  } 
-  arg2 = static_cast< mfem::Geometry::Type >(val2);
-  {
-    try {
-      result = (mfem::DenseTensor *) &((mfem::CoarseFineTransformations const *)arg1)->GetPointMatrices(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DenseTensor, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4418,6 +4379,36 @@ SWIGINTERN PyObject *_wrap_CoarseFineTransformations_Clear(PyObject *SWIGUNUSEDP
     }    
   }
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_CoarseFineTransformations_IsInitialized(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CoarseFineTransformations *arg1 = (mfem::CoarseFineTransformations *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CoarseFineTransformations, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CoarseFineTransformations_IsInitialized" "', argument " "1"" of type '" "mfem::CoarseFineTransformations const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CoarseFineTransformations * >(argp1);
+  {
+    try {
+      result = (bool)((mfem::CoarseFineTransformations const *)arg1)->IsInitialized(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5597,6 +5588,7 @@ SWIGINTERN PyObject *_wrap_NCMesh_GetFaceVerticesEdges(PyObject *SWIGUNUSEDPARM(
   void *argp5 = 0 ;
   int res5 = 0 ;
   PyObject *swig_obj[5] ;
+  int result;
   
   if (!SWIG_Python_UnpackTuple(args, "NCMesh_GetFaceVerticesEdges", 5, 5, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
@@ -5629,13 +5621,13 @@ SWIGINTERN PyObject *_wrap_NCMesh_GetFaceVerticesEdges(PyObject *SWIGUNUSEDPARM(
   arg5 = reinterpret_cast< int * >(argp5);
   {
     try {
-      ((mfem::NCMesh const *)arg1)->GetFaceVerticesEdges((mfem::NCMesh::MeshId const &)*arg2,arg3,arg4,arg5); 
+      result = (int)((mfem::NCMesh const *)arg1)->GetFaceVerticesEdges((mfem::NCMesh::MeshId const &)*arg2,arg3,arg4,arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
     }    
   }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -5749,21 +5741,27 @@ fail:
 SWIGINTERN PyObject *_wrap_NCMesh_GetElementGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject *swig_obj[2] ;
   mfem::Geometry::Type result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!SWIG_Python_UnpackTuple(args, "NCMesh_GetElementGeometry", 2, 2, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_GetElementGeometry" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
   {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
     try {
-      result = (mfem::Geometry::Type)((mfem::NCMesh const *)arg1)->GetElementGeometry(); 
+      result = (mfem::Geometry::Type)((mfem::NCMesh const *)arg1)->GetElementGeometry(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5779,21 +5777,57 @@ fail:
 SWIGINTERN PyObject *_wrap_NCMesh_GetFaceGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject *swig_obj[2] ;
   mfem::Geometry::Type result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!SWIG_Python_UnpackTuple(args, "NCMesh_GetFaceGeometry", 2, 2, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_GetFaceGeometry" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
   {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
     try {
-      result = (mfem::Geometry::Type)((mfem::NCMesh const *)arg1)->GetFaceGeometry(); 
+      result = (mfem::Geometry::Type)((mfem::NCMesh const *)arg1)->GetFaceGeometry(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NCMesh_GetNumRootElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_GetNumRootElements" "', argument " "1"" of type '" "mfem::NCMesh *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
+  {
+    try {
+      result = (int)(arg1)->GetNumRootElements(); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5836,6 +5870,99 @@ SWIGINTERN PyObject *_wrap_NCMesh_GetElementDepth(PyObject *SWIGUNUSEDPARM(self)
     }    
   }
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NCMesh_GetElementSizeReduction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NCMesh_GetElementSizeReduction", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_GetElementSizeReduction" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    try {
+      result = (int)((mfem::NCMesh const *)arg1)->GetElementSizeReduction(arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NCMesh_GetElementFacesAttributes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NCMesh *arg1 = (mfem::NCMesh *) 0 ;
+  int arg2 ;
+  mfem::Array< int > *arg3 = 0 ;
+  mfem::Array< int > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NCMesh_GetElementFacesAttributes", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NCMesh, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NCMesh_GetElementFacesAttributes" "', argument " "1"" of type '" "mfem::NCMesh const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NCMesh * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NCMesh_GetElementFacesAttributes" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NCMesh_GetElementFacesAttributes" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "NCMesh_GetElementFacesAttributes" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NCMesh_GetElementFacesAttributes" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
+  {
+    try {
+      ((mfem::NCMesh const *)arg1)->GetElementFacesAttributes(arg2,*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -6811,6 +6938,7 @@ SWIGINTERN PyObject *NCMesh_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *a
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Refinement_index_set", _wrap_Refinement_index_set, METH_VARARGS, "Refinement_index_set(Refinement self, int index)"},
 	 { "Refinement_index_get", _wrap_Refinement_index_get, METH_O, "Refinement_index_get(Refinement self) -> int"},
 	 { "Refinement_ref_type_set", _wrap_Refinement_ref_type_set, METH_VARARGS, "Refinement_ref_type_set(Refinement self, char ref_type)"},
@@ -6833,12 +6961,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_Embedding", _wrap_delete_Embedding, METH_O, "delete_Embedding(Embedding self)"},
 	 { "Embedding_swigregister", Embedding_swigregister, METH_O, NULL},
 	 { "Embedding_swiginit", Embedding_swiginit, METH_VARARGS, NULL},
-	 { "CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, "CoarseFineTransformations_point_matrices_set(CoarseFineTransformations self, std::map< mfem::Geometry::Type,mfem::DenseTensor > * point_matrices)"},
-	 { "CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_O, "CoarseFineTransformations_point_matrices_get(CoarseFineTransformations self) -> std::map< mfem::Geometry::Type,mfem::DenseTensor > *"},
+	 { "CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, "CoarseFineTransformations_point_matrices_set(CoarseFineTransformations self, DenseTensor point_matrices)"},
+	 { "CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_O, "CoarseFineTransformations_point_matrices_get(CoarseFineTransformations self) -> DenseTensor"},
 	 { "CoarseFineTransformations_embeddings_get", _wrap_CoarseFineTransformations_embeddings_get, METH_O, "CoarseFineTransformations_embeddings_get(CoarseFineTransformations self) -> mfem::Array< mfem::Embedding > *"},
-	 { "CoarseFineTransformations_GetPointMatrices", _wrap_CoarseFineTransformations_GetPointMatrices, METH_VARARGS, "CoarseFineTransformations_GetPointMatrices(CoarseFineTransformations self, mfem::Geometry::Type geom) -> DenseTensor"},
 	 { "CoarseFineTransformations_GetCoarseToFineMap", _wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS, "CoarseFineTransformations_GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, mfem::Array< mfem::Geometry::Type > & ref_type_to_geom)"},
 	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "CoarseFineTransformations_Clear(CoarseFineTransformations self)"},
+	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "CoarseFineTransformations_IsInitialized(CoarseFineTransformations self) -> bool"},
 	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "CoarseFineTransformations_MemoryUsage(CoarseFineTransformations self) -> long"},
 	 { "new_CoarseFineTransformations", _wrap_new_CoarseFineTransformations, METH_NOARGS, "new_CoarseFineTransformations() -> CoarseFineTransformations"},
 	 { "delete_CoarseFineTransformations", _wrap_delete_CoarseFineTransformations, METH_O, "delete_CoarseFineTransformations(CoarseFineTransformations self)"},
@@ -6871,12 +6999,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "NCMesh_GridSfcOrdering3D", _wrap_NCMesh_GridSfcOrdering3D, METH_VARARGS, "NCMesh_GridSfcOrdering3D(int width, int height, int depth, intArray coords)"},
 	 { "NCMesh_GetEdgeVertices", _wrap_NCMesh_GetEdgeVertices, METH_VARARGS, "NCMesh_GetEdgeVertices(NCMesh self, mfem::NCMesh::MeshId const & edge_id, int [2] vert_index, bool oriented=True)"},
 	 { "NCMesh_GetEdgeNCOrientation", _wrap_NCMesh_GetEdgeNCOrientation, METH_VARARGS, "NCMesh_GetEdgeNCOrientation(NCMesh self, mfem::NCMesh::MeshId const & edge_id) -> int"},
-	 { "NCMesh_GetFaceVerticesEdges", _wrap_NCMesh_GetFaceVerticesEdges, METH_VARARGS, "NCMesh_GetFaceVerticesEdges(NCMesh self, mfem::NCMesh::MeshId const & face_id, int [4] vert_index, int [4] edge_index, int [4] edge_orientation)"},
+	 { "NCMesh_GetFaceVerticesEdges", _wrap_NCMesh_GetFaceVerticesEdges, METH_VARARGS, "NCMesh_GetFaceVerticesEdges(NCMesh self, mfem::NCMesh::MeshId const & face_id, int [4] vert_index, int [4] edge_index, int [4] edge_orientation) -> int"},
 	 { "NCMesh_GetEdgeMaster", _wrap_NCMesh_GetEdgeMaster, METH_VARARGS, "NCMesh_GetEdgeMaster(NCMesh self, int v1, int v2) -> int"},
 	 { "NCMesh_GetBoundaryClosure", _wrap_NCMesh_GetBoundaryClosure, METH_VARARGS, "NCMesh_GetBoundaryClosure(NCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
-	 { "NCMesh_GetElementGeometry", _wrap_NCMesh_GetElementGeometry, METH_O, "NCMesh_GetElementGeometry(NCMesh self) -> mfem::Geometry::Type"},
-	 { "NCMesh_GetFaceGeometry", _wrap_NCMesh_GetFaceGeometry, METH_O, "NCMesh_GetFaceGeometry(NCMesh self) -> mfem::Geometry::Type"},
+	 { "NCMesh_GetElementGeometry", _wrap_NCMesh_GetElementGeometry, METH_VARARGS, "NCMesh_GetElementGeometry(NCMesh self, int index) -> mfem::Geometry::Type"},
+	 { "NCMesh_GetFaceGeometry", _wrap_NCMesh_GetFaceGeometry, METH_VARARGS, "NCMesh_GetFaceGeometry(NCMesh self, int index) -> mfem::Geometry::Type"},
+	 { "NCMesh_GetNumRootElements", _wrap_NCMesh_GetNumRootElements, METH_O, "NCMesh_GetNumRootElements(NCMesh self) -> int"},
 	 { "NCMesh_GetElementDepth", _wrap_NCMesh_GetElementDepth, METH_VARARGS, "NCMesh_GetElementDepth(NCMesh self, int i) -> int"},
+	 { "NCMesh_GetElementSizeReduction", _wrap_NCMesh_GetElementSizeReduction, METH_VARARGS, "NCMesh_GetElementSizeReduction(NCMesh self, int i) -> int"},
+	 { "NCMesh_GetElementFacesAttributes", _wrap_NCMesh_GetElementFacesAttributes, METH_VARARGS, "NCMesh_GetElementFacesAttributes(NCMesh self, int i, intArray faces, intArray fattr)"},
 	 { "NCMesh_LoadVertexParents", _wrap_NCMesh_LoadVertexParents, METH_VARARGS, "NCMesh_LoadVertexParents(NCMesh self, std::istream & input)"},
 	 { "NCMesh_LoadCoarseElements", _wrap_NCMesh_LoadCoarseElements, METH_VARARGS, "NCMesh_LoadCoarseElements(NCMesh self, std::istream & input)"},
 	 { "NCMesh_SetVertexPositions", _wrap_NCMesh_SetVertexPositions, METH_VARARGS, "NCMesh_SetVertexPositions(NCMesh self, mfem::Array< mfem::Vertex > const & vertices)"},
@@ -6903,6 +7034,99 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Refinement_index_set", _wrap_Refinement_index_set, METH_VARARGS, "Refinement_index_set(Refinement self, int index)"},
+	 { "Refinement_index_get", _wrap_Refinement_index_get, METH_O, "Refinement_index_get(Refinement self) -> int"},
+	 { "Refinement_ref_type_set", _wrap_Refinement_ref_type_set, METH_VARARGS, "Refinement_ref_type_set(Refinement self, char ref_type)"},
+	 { "Refinement_ref_type_get", _wrap_Refinement_ref_type_get, METH_O, "Refinement_ref_type_get(Refinement self) -> char"},
+	 { "new_Refinement", _wrap_new_Refinement, METH_VARARGS, "\n"
+		"Refinement()\n"
+		"Refinement(int index, int type=7)\n"
+		""},
+	 { "delete_Refinement", _wrap_delete_Refinement, METH_O, "delete_Refinement(Refinement self)"},
+	 { "Refinement_swigregister", Refinement_swigregister, METH_O, NULL},
+	 { "Refinement_swiginit", Refinement_swiginit, METH_VARARGS, NULL},
+	 { "Embedding_parent_set", _wrap_Embedding_parent_set, METH_VARARGS, "Embedding_parent_set(Embedding self, int parent)"},
+	 { "Embedding_parent_get", _wrap_Embedding_parent_get, METH_O, "Embedding_parent_get(Embedding self) -> int"},
+	 { "Embedding_matrix_set", _wrap_Embedding_matrix_set, METH_VARARGS, "Embedding_matrix_set(Embedding self, int matrix)"},
+	 { "Embedding_matrix_get", _wrap_Embedding_matrix_get, METH_O, "Embedding_matrix_get(Embedding self) -> int"},
+	 { "new_Embedding", _wrap_new_Embedding, METH_VARARGS, "\n"
+		"Embedding()\n"
+		"Embedding(int elem, int matrix=0)\n"
+		""},
+	 { "delete_Embedding", _wrap_delete_Embedding, METH_O, "delete_Embedding(Embedding self)"},
+	 { "Embedding_swigregister", Embedding_swigregister, METH_O, NULL},
+	 { "Embedding_swiginit", Embedding_swiginit, METH_VARARGS, NULL},
+	 { "CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, "CoarseFineTransformations_point_matrices_set(CoarseFineTransformations self, DenseTensor point_matrices)"},
+	 { "CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_O, "CoarseFineTransformations_point_matrices_get(CoarseFineTransformations self) -> DenseTensor"},
+	 { "CoarseFineTransformations_embeddings_get", _wrap_CoarseFineTransformations_embeddings_get, METH_O, "CoarseFineTransformations_embeddings_get(CoarseFineTransformations self) -> mfem::Array< mfem::Embedding > *"},
+	 { "CoarseFineTransformations_GetCoarseToFineMap", _wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS, "GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, mfem::Array< mfem::Geometry::Type > & ref_type_to_geom)"},
+	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "Clear(CoarseFineTransformations self)"},
+	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "IsInitialized(CoarseFineTransformations self) -> bool"},
+	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "MemoryUsage(CoarseFineTransformations self) -> long"},
+	 { "new_CoarseFineTransformations", _wrap_new_CoarseFineTransformations, METH_NOARGS, "new_CoarseFineTransformations() -> CoarseFineTransformations"},
+	 { "delete_CoarseFineTransformations", _wrap_delete_CoarseFineTransformations, METH_O, "delete_CoarseFineTransformations(CoarseFineTransformations self)"},
+	 { "CoarseFineTransformations_swigregister", CoarseFineTransformations_swigregister, METH_O, NULL},
+	 { "CoarseFineTransformations_swiginit", CoarseFineTransformations_swiginit, METH_VARARGS, NULL},
+	 { "new_NCMesh", _wrap_new_NCMesh, METH_VARARGS, "\n"
+		"NCMesh(Mesh mesh, std::istream * vertex_parents=None)\n"
+		"new_NCMesh(NCMesh other) -> NCMesh\n"
+		""},
+	 { "delete_NCMesh", _wrap_delete_NCMesh, METH_O, "delete_NCMesh(NCMesh self)"},
+	 { "NCMesh_Dimension", _wrap_NCMesh_Dimension, METH_O, "Dimension(NCMesh self) -> int"},
+	 { "NCMesh_SpaceDimension", _wrap_NCMesh_SpaceDimension, METH_O, "SpaceDimension(NCMesh self) -> int"},
+	 { "NCMesh_GetNVertices", _wrap_NCMesh_GetNVertices, METH_O, "GetNVertices(NCMesh self) -> int"},
+	 { "NCMesh_GetNEdges", _wrap_NCMesh_GetNEdges, METH_O, "GetNEdges(NCMesh self) -> int"},
+	 { "NCMesh_GetNFaces", _wrap_NCMesh_GetNFaces, METH_O, "GetNFaces(NCMesh self) -> int"},
+	 { "NCMesh_Refine", _wrap_NCMesh_Refine, METH_VARARGS, "Refine(NCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "NCMesh_LimitNCLevel", _wrap_NCMesh_LimitNCLevel, METH_VARARGS, "LimitNCLevel(NCMesh self, int max_nc_level)"},
+	 { "NCMesh_GetDerefinementTable", _wrap_NCMesh_GetDerefinementTable, METH_O, "GetDerefinementTable(NCMesh self) -> Table"},
+	 { "NCMesh_CheckDerefinementNCLevel", _wrap_NCMesh_CheckDerefinementNCLevel, METH_VARARGS, "CheckDerefinementNCLevel(NCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
+	 { "NCMesh_Derefine", _wrap_NCMesh_Derefine, METH_VARARGS, "Derefine(NCMesh self, intArray derefs)"},
+	 { "NCMesh_GetFaceList", _wrap_NCMesh_GetFaceList, METH_O, "GetFaceList(NCMesh self) -> mfem::NCMesh::NCList const &"},
+	 { "NCMesh_GetEdgeList", _wrap_NCMesh_GetEdgeList, METH_O, "GetEdgeList(NCMesh self) -> mfem::NCMesh::NCList const &"},
+	 { "NCMesh_GetVertexList", _wrap_NCMesh_GetVertexList, METH_O, "GetVertexList(NCMesh self) -> mfem::NCMesh::NCList const &"},
+	 { "NCMesh_GetNCList", _wrap_NCMesh_GetNCList, METH_VARARGS, "GetNCList(NCMesh self, int entity) -> mfem::NCMesh::NCList const &"},
+	 { "NCMesh_MarkCoarseLevel", _wrap_NCMesh_MarkCoarseLevel, METH_O, "MarkCoarseLevel(NCMesh self)"},
+	 { "NCMesh_GetRefinementTransforms", _wrap_NCMesh_GetRefinementTransforms, METH_O, "GetRefinementTransforms(NCMesh self) -> CoarseFineTransformations"},
+	 { "NCMesh_GetDerefinementTransforms", _wrap_NCMesh_GetDerefinementTransforms, METH_O, "GetDerefinementTransforms(NCMesh self) -> CoarseFineTransformations"},
+	 { "NCMesh_ClearTransforms", _wrap_NCMesh_ClearTransforms, METH_O, "ClearTransforms(NCMesh self)"},
+	 { "NCMesh_GridSfcOrdering2D", _wrap_NCMesh_GridSfcOrdering2D, METH_VARARGS, "GridSfcOrdering2D(int width, int height, intArray coords)"},
+	 { "NCMesh_GridSfcOrdering3D", _wrap_NCMesh_GridSfcOrdering3D, METH_VARARGS, "GridSfcOrdering3D(int width, int height, int depth, intArray coords)"},
+	 { "NCMesh_GetEdgeVertices", _wrap_NCMesh_GetEdgeVertices, METH_VARARGS, "GetEdgeVertices(NCMesh self, mfem::NCMesh::MeshId const & edge_id, int [2] vert_index, bool oriented=True)"},
+	 { "NCMesh_GetEdgeNCOrientation", _wrap_NCMesh_GetEdgeNCOrientation, METH_VARARGS, "GetEdgeNCOrientation(NCMesh self, mfem::NCMesh::MeshId const & edge_id) -> int"},
+	 { "NCMesh_GetFaceVerticesEdges", _wrap_NCMesh_GetFaceVerticesEdges, METH_VARARGS, "GetFaceVerticesEdges(NCMesh self, mfem::NCMesh::MeshId const & face_id, int [4] vert_index, int [4] edge_index, int [4] edge_orientation) -> int"},
+	 { "NCMesh_GetEdgeMaster", _wrap_NCMesh_GetEdgeMaster, METH_VARARGS, "GetEdgeMaster(NCMesh self, int v1, int v2) -> int"},
+	 { "NCMesh_GetBoundaryClosure", _wrap_NCMesh_GetBoundaryClosure, METH_VARARGS, "GetBoundaryClosure(NCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
+	 { "NCMesh_GetElementGeometry", _wrap_NCMesh_GetElementGeometry, METH_VARARGS, "GetElementGeometry(NCMesh self, int index) -> mfem::Geometry::Type"},
+	 { "NCMesh_GetFaceGeometry", _wrap_NCMesh_GetFaceGeometry, METH_VARARGS, "GetFaceGeometry(NCMesh self, int index) -> mfem::Geometry::Type"},
+	 { "NCMesh_GetNumRootElements", _wrap_NCMesh_GetNumRootElements, METH_O, "GetNumRootElements(NCMesh self) -> int"},
+	 { "NCMesh_GetElementDepth", _wrap_NCMesh_GetElementDepth, METH_VARARGS, "GetElementDepth(NCMesh self, int i) -> int"},
+	 { "NCMesh_GetElementSizeReduction", _wrap_NCMesh_GetElementSizeReduction, METH_VARARGS, "GetElementSizeReduction(NCMesh self, int i) -> int"},
+	 { "NCMesh_GetElementFacesAttributes", _wrap_NCMesh_GetElementFacesAttributes, METH_VARARGS, "GetElementFacesAttributes(NCMesh self, int i, intArray faces, intArray fattr)"},
+	 { "NCMesh_LoadVertexParents", _wrap_NCMesh_LoadVertexParents, METH_VARARGS, "LoadVertexParents(NCMesh self, std::istream & input)"},
+	 { "NCMesh_LoadCoarseElements", _wrap_NCMesh_LoadCoarseElements, METH_VARARGS, "LoadCoarseElements(NCMesh self, std::istream & input)"},
+	 { "NCMesh_SetVertexPositions", _wrap_NCMesh_SetVertexPositions, METH_VARARGS, "SetVertexPositions(NCMesh self, mfem::Array< mfem::Vertex > const & vertices)"},
+	 { "NCMesh_Trim", _wrap_NCMesh_Trim, METH_O, "Trim(NCMesh self)"},
+	 { "NCMesh_MemoryUsage", _wrap_NCMesh_MemoryUsage, METH_O, "MemoryUsage(NCMesh self) -> long"},
+	 { "NCMesh_PrintMemoryDetail", _wrap_NCMesh_PrintMemoryDetail, METH_O, "PrintMemoryDetail(NCMesh self) -> int"},
+	 { "NCMesh_PrintVertexParents", _wrap_NCMesh_PrintVertexParents, METH_VARARGS, "\n"
+		"PrintVertexParents(NCMesh self, std::ostream & out)\n"
+		"PrintVertexParents(NCMesh self, char const * file, int precision=8)\n"
+		"PrintVertexParents(NCMesh self)\n"
+		""},
+	 { "NCMesh_PrintCoarseElements", _wrap_NCMesh_PrintCoarseElements, METH_VARARGS, "\n"
+		"PrintCoarseElements(NCMesh self, std::ostream & out)\n"
+		"PrintCoarseElements(NCMesh self, char const * file, int precision=8)\n"
+		"PrintCoarseElements(NCMesh self)\n"
+		""},
+	 { "NCMesh_PrintStats", _wrap_NCMesh_PrintStats, METH_VARARGS, "\n"
+		"PrintStats(NCMesh self, std::ostream & out=mfem::out)\n"
+		"PrintStats(NCMesh self, char const * file, int precision=8)\n"
+		""},
+	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
+	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -6914,6 +7138,7 @@ static void *_p_mfem__STableTo_p_mfem__Table(void *x, int *SWIGUNUSEDPARM(newmem
 }
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
@@ -6940,7 +7165,6 @@ static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t = {"_p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t", "std::map< mfem::Geometry::Type,mfem::DenseTensor > *|std::map< enum mfem::Geometry::Type,mfem::DenseTensor > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
@@ -6948,6 +7172,7 @@ static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_char,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -6974,7 +7199,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
   &_swigt__p_std__istream,
-  &_swigt__p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
   &_swigt__p_void,
@@ -6982,6 +7206,7 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -7008,7 +7233,6 @@ static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t[] = {  {&_swigt__p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
@@ -7016,6 +7240,7 @@ static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0,
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_char,
   _swigc__p_hex_t,
   _swigc__p_int,
@@ -7042,7 +7267,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_quad_t,
   _swigc__p_seg_t,
   _swigc__p_std__istream,
-  _swigc__p_std__mapT_mfem__Geometry__Type_mfem__DenseTensor_t,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
   _swigc__p_void,

@@ -3463,6 +3463,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "set_error_action", _wrap_set_error_action, METH_O, NULL},
 	 { "get_error_action", _wrap_get_error_action, METH_NOARGS, NULL},
 	 { "mfem_backtrace", _wrap_mfem_backtrace, METH_VARARGS, NULL},
@@ -3472,6 +3473,13 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "set_error_action", _wrap_set_error_action, METH_O, NULL},
+	 { "get_error_action", _wrap_get_error_action, METH_NOARGS, NULL},
+	 { "mfem_backtrace", _wrap_mfem_backtrace, METH_VARARGS, NULL},
+	 { "mfem_error", _wrap_mfem_error, METH_VARARGS, NULL},
+	 { "mfem_warning", _wrap_mfem_warning, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

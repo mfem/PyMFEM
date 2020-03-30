@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _socketstream.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _socketstream.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -82,12 +85,14 @@ import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.handle
-import mfem._ser.bilininteg
-import mfem._ser.linearform
+import mfem._ser.restriction
 import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
+import mfem._ser.bilininteg
+import mfem._ser.linearform
 import mfem._ser.vertex
+import mfem._ser.vtk
 class socketbuf(object):
     r"""Proxy of C++ mfem::socketbuf class."""
 
@@ -105,26 +110,32 @@ class socketbuf(object):
     def attach(self, sd):
         r"""attach(socketbuf self, int sd) -> int"""
         return _socketstream.socketbuf_attach(self, sd)
+    attach = _swig_new_instance_method(_socketstream.socketbuf_attach)
 
     def detach(self):
         r"""detach(socketbuf self) -> int"""
         return _socketstream.socketbuf_detach(self)
+    detach = _swig_new_instance_method(_socketstream.socketbuf_detach)
 
     def open(self, hostname, port):
         r"""open(socketbuf self, char const [] hostname, int port) -> int"""
         return _socketstream.socketbuf_open(self, hostname, port)
+    open = _swig_new_instance_method(_socketstream.socketbuf_open)
 
     def close(self):
         r"""close(socketbuf self) -> int"""
         return _socketstream.socketbuf_close(self)
+    close = _swig_new_instance_method(_socketstream.socketbuf_close)
 
     def getsocketdescriptor(self):
         r"""getsocketdescriptor(socketbuf self) -> int"""
         return _socketstream.socketbuf_getsocketdescriptor(self)
+    getsocketdescriptor = _swig_new_instance_method(_socketstream.socketbuf_getsocketdescriptor)
 
     def is_open(self):
         r"""is_open(socketbuf self) -> bool"""
         return _socketstream.socketbuf_is_open(self)
+    is_open = _swig_new_instance_method(_socketstream.socketbuf_is_open)
     __swig_destroy__ = _socketstream.delete_socketbuf
 
 # Register socketbuf in _socketstream:
@@ -150,18 +161,22 @@ class socketstream(object):
     def rdbuf(self):
         r"""rdbuf(socketstream self) -> socketbuf"""
         return _socketstream.socketstream_rdbuf(self)
+    rdbuf = _swig_new_instance_method(_socketstream.socketstream_rdbuf)
 
     def open(self, hostname, port):
         r"""open(socketstream self, char const [] hostname, int port) -> int"""
         return _socketstream.socketstream_open(self, hostname, port)
+    open = _swig_new_instance_method(_socketstream.socketstream_open)
 
     def close(self):
         r"""close(socketstream self) -> int"""
         return _socketstream.socketstream_close(self)
+    close = _swig_new_instance_method(_socketstream.socketstream_close)
 
     def is_open(self):
         r"""is_open(socketstream self) -> bool"""
         return _socketstream.socketstream_is_open(self)
+    is_open = _swig_new_instance_method(_socketstream.socketstream_is_open)
     __swig_destroy__ = _socketstream.delete_socketstream
 
     def precision(self, *args):
@@ -170,18 +185,22 @@ class socketstream(object):
         precision(socketstream self) -> int
         """
         return _socketstream.socketstream_precision(self, *args)
+    precision = _swig_new_instance_method(_socketstream.socketstream_precision)
 
     def send_solution(self, mesh, gf):
         r"""send_solution(socketstream self, Mesh mesh, GridFunction gf)"""
         return _socketstream.socketstream_send_solution(self, mesh, gf)
+    send_solution = _swig_new_instance_method(_socketstream.socketstream_send_solution)
 
     def send_text(self, ostr):
         r"""send_text(socketstream self, char const [] ostr)"""
         return _socketstream.socketstream_send_text(self, ostr)
+    send_text = _swig_new_instance_method(_socketstream.socketstream_send_text)
 
     def flush(self):
         r"""flush(socketstream self)"""
         return _socketstream.socketstream_flush(self)
+    flush = _swig_new_instance_method(_socketstream.socketstream_flush)
 
     def __lshift__(self, *args):
         r"""
@@ -191,10 +210,12 @@ class socketstream(object):
         __lshift__(socketstream self, GridFunction gf) -> socketstream
         """
         return _socketstream.socketstream___lshift__(self, *args)
+    __lshift__ = _swig_new_instance_method(_socketstream.socketstream___lshift__)
 
     def endline(self):
         r"""endline(socketstream self) -> socketstream"""
         return _socketstream.socketstream_endline(self)
+    endline = _swig_new_instance_method(_socketstream.socketstream_endline)
 
 # Register socketstream in _socketstream:
 _socketstream.socketstream_swigregister(socketstream)
@@ -212,10 +233,12 @@ class socketserver(object):
     def good(self):
         r"""good(socketserver self) -> bool"""
         return _socketstream.socketserver_good(self)
+    good = _swig_new_instance_method(_socketstream.socketserver_good)
 
     def close(self):
         r"""close(socketserver self) -> int"""
         return _socketstream.socketserver_close(self)
+    close = _swig_new_instance_method(_socketstream.socketserver_close)
 
     def accept(self, *args):
         r"""
@@ -223,6 +246,7 @@ class socketserver(object):
         accept(socketserver self, socketstream sockstr) -> int
         """
         return _socketstream.socketserver_accept(self, *args)
+    accept = _swig_new_instance_method(_socketstream.socketserver_accept)
     __swig_destroy__ = _socketstream.delete_socketserver
 
 # Register socketserver in _socketstream:

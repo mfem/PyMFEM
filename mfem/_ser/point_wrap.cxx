@@ -3695,7 +3695,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Point_GetNFaces(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Point_GetNFaces__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Point *arg1 = (mfem::Point *) 0 ;
   int *arg2 = 0 ;
@@ -3703,10 +3703,9 @@ SWIGINTERN PyObject *_wrap_Point_GetNFaces(PyObject *SWIGUNUSEDPARM(self), PyObj
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Point_GetNFaces", 2, 2, swig_obj)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Point, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point_GetNFaces" "', argument " "1"" of type '" "mfem::Point const *""'"); 
@@ -3723,6 +3722,133 @@ SWIGINTERN PyObject *_wrap_Point_GetNFaces(PyObject *SWIGUNUSEDPARM(self), PyObj
   {
     try {
       result = (int)((mfem::Point const *)arg1)->GetNFaces(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point_GetNFaces__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Point *arg1 = (mfem::Point *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Point, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point_GetNFaces" "', argument " "1"" of type '" "mfem::Point const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Point * >(argp1);
+  {
+    try {
+      result = (int)((mfem::Point const *)arg1)->GetNFaces();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point_GetNFaces(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Point_GetNFaces", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Point, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Point_GetNFaces__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Point, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Point_GetNFaces__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Point_GetNFaces'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Point::GetNFaces(int &) const\n"
+    "    mfem::Point::GetNFaces() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Point_GetNFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Point *arg1 = (mfem::Point *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Point_GetNFaceVertices", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Point, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Point_GetNFaceVertices" "', argument " "1"" of type '" "mfem::Point const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Point * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    try {
+      result = (int)((mfem::Point const *)arg1)->GetNFaceVertices(arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3924,6 +4050,7 @@ SWIGINTERN PyObject *Swig_var_PointFE_get(void) {
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_Point", _wrap_new_Point, METH_VARARGS, "\n"
 		"Point()\n"
 		"Point(int const * ind, int attr=-1)\n"
@@ -3936,7 +4063,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "Point_GetNVertices", _wrap_Point_GetNVertices, METH_O, "Point_GetNVertices(Point self) -> int"},
 	 { "Point_GetNEdges", _wrap_Point_GetNEdges, METH_O, "Point_GetNEdges(Point self) -> int"},
 	 { "Point_GetEdgeVertices", _wrap_Point_GetEdgeVertices, METH_VARARGS, "Point_GetEdgeVertices(Point self, int ei) -> int const *"},
-	 { "Point_GetNFaces", _wrap_Point_GetNFaces, METH_VARARGS, "Point_GetNFaces(Point self, int & nFaceVertices) -> int"},
+	 { "Point_GetNFaces", _wrap_Point_GetNFaces, METH_VARARGS, "\n"
+		"Point_GetNFaces(Point self, int & nFaceVertices) -> int\n"
+		"Point_GetNFaces(Point self) -> int\n"
+		""},
+	 { "Point_GetNFaceVertices", _wrap_Point_GetNFaceVertices, METH_VARARGS, "Point_GetNFaceVertices(Point self, int arg2) -> int"},
 	 { "Point_GetFaceVertices", _wrap_Point_GetFaceVertices, METH_VARARGS, "Point_GetFaceVertices(Point self, int fi) -> int const *"},
 	 { "Point_Duplicate", _wrap_Point_Duplicate, METH_VARARGS, "Point_Duplicate(Point self, mfem::Mesh * m) -> Element"},
 	 { "delete_Point", _wrap_delete_Point, METH_O, "delete_Point(Point self)"},
@@ -3946,6 +4077,30 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_Point", _wrap_new_Point, METH_VARARGS, "\n"
+		"Point()\n"
+		"Point(int const * ind, int attr=-1)\n"
+		""},
+	 { "Point_GetType", _wrap_Point_GetType, METH_O, "GetType(Point self) -> mfem::Element::Type"},
+	 { "Point_GetVertices", _wrap_Point_GetVertices, METH_VARARGS, "\n"
+		"GetVertices(Point self, intArray v)\n"
+		"GetVertices(Point self) -> int *\n"
+		""},
+	 { "Point_GetNVertices", _wrap_Point_GetNVertices, METH_O, "GetNVertices(Point self) -> int"},
+	 { "Point_GetNEdges", _wrap_Point_GetNEdges, METH_O, "GetNEdges(Point self) -> int"},
+	 { "Point_GetEdgeVertices", _wrap_Point_GetEdgeVertices, METH_VARARGS, "GetEdgeVertices(Point self, int ei) -> int const *"},
+	 { "Point_GetNFaces", _wrap_Point_GetNFaces, METH_VARARGS, "\n"
+		"GetNFaces(Point self, int & nFaceVertices) -> int\n"
+		"GetNFaces(Point self) -> int\n"
+		""},
+	 { "Point_GetNFaceVertices", _wrap_Point_GetNFaceVertices, METH_VARARGS, "GetNFaceVertices(Point self, int arg2) -> int"},
+	 { "Point_GetFaceVertices", _wrap_Point_GetFaceVertices, METH_VARARGS, "GetFaceVertices(Point self, int fi) -> int const *"},
+	 { "Point_Duplicate", _wrap_Point_Duplicate, METH_VARARGS, "Duplicate(Point self, mfem::Mesh * m) -> Element"},
+	 { "delete_Point", _wrap_delete_Point, METH_O, "delete_Point(Point self)"},
+	 { "Point_swigregister", Point_swigregister, METH_O, NULL},
+	 { "Point_swiginit", Point_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

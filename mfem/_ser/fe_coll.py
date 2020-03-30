@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _fe_coll.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _fe_coll.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -73,22 +76,27 @@ class intp(object):
 
     def assign(self, value):
         return _fe_coll.intp_assign(self, value)
+    assign = _swig_new_instance_method(_fe_coll.intp_assign)
 
     def value(self):
         return _fe_coll.intp_value(self)
+    value = _swig_new_instance_method(_fe_coll.intp_value)
 
     def cast(self):
         return _fe_coll.intp_cast(self)
+    cast = _swig_new_instance_method(_fe_coll.intp_cast)
 
     @staticmethod
     def frompointer(t):
         return _fe_coll.intp_frompointer(t)
+    frompointer = _swig_new_static_method(_fe_coll.intp_frompointer)
 
 # Register intp in _fe_coll:
 _fe_coll.intp_swigregister(intp)
 
 def intp_frompointer(t):
     return _fe_coll.intp_frompointer(t)
+intp_frompointer = _fe_coll.intp_frompointer
 
 class doublep(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -100,22 +108,27 @@ class doublep(object):
 
     def assign(self, value):
         return _fe_coll.doublep_assign(self, value)
+    assign = _swig_new_instance_method(_fe_coll.doublep_assign)
 
     def value(self):
         return _fe_coll.doublep_value(self)
+    value = _swig_new_instance_method(_fe_coll.doublep_value)
 
     def cast(self):
         return _fe_coll.doublep_cast(self)
+    cast = _swig_new_instance_method(_fe_coll.doublep_cast)
 
     @staticmethod
     def frompointer(t):
         return _fe_coll.doublep_frompointer(t)
+    frompointer = _swig_new_static_method(_fe_coll.doublep_frompointer)
 
 # Register doublep in _fe_coll:
 _fe_coll.doublep_swigregister(doublep)
 
 def doublep_frompointer(t):
     return _fe_coll.doublep_frompointer(t)
+doublep_frompointer = _fe_coll.doublep_frompointer
 
 import mfem._ser.mesh
 import mfem._ser.matrix
@@ -135,12 +148,14 @@ import mfem._ser.geom
 import mfem._ser.fespace
 import mfem._ser.lininteg
 import mfem._ser.handle
-import mfem._ser.bilininteg
-import mfem._ser.linearform
+import mfem._ser.restriction
 import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
+import mfem._ser.bilininteg
+import mfem._ser.linearform
 import mfem._ser.vertex
+import mfem._ser.vtk
 class FiniteElementCollection(object):
     r"""Proxy of C++ mfem::FiniteElementCollection class."""
 
@@ -153,40 +168,49 @@ class FiniteElementCollection(object):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.FiniteElementCollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.FiniteElementCollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.FiniteElementCollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.FiniteElementCollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(FiniteElementCollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.FiniteElementCollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.FiniteElementCollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(FiniteElementCollection self) -> char const *"""
         return _fe_coll.FiniteElementCollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.FiniteElementCollection_Name)
 
     def HasFaceDofs(self, GeomType):
         r"""HasFaceDofs(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.FiniteElementCollection_HasFaceDofs(self, GeomType)
+    HasFaceDofs = _swig_new_instance_method(_fe_coll.FiniteElementCollection_HasFaceDofs)
 
     def TraceFiniteElementForGeometry(self, GeomType):
         r"""TraceFiniteElementForGeometry(FiniteElementCollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.FiniteElementCollection_TraceFiniteElementForGeometry(self, GeomType)
+    TraceFiniteElementForGeometry = _swig_new_instance_method(_fe_coll.FiniteElementCollection_TraceFiniteElementForGeometry)
 
     def GetTraceCollection(self):
         r"""GetTraceCollection(FiniteElementCollection self) -> FiniteElementCollection"""
         return _fe_coll.FiniteElementCollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.FiniteElementCollection_GetTraceCollection)
     __swig_destroy__ = _fe_coll.delete_FiniteElementCollection
 
     @staticmethod
     def New(name):
         r"""New(char const * name) -> FiniteElementCollection"""
         return _fe_coll.FiniteElementCollection_New(name)
+    New = _swig_new_static_method(_fe_coll.FiniteElementCollection_New)
 
     def SubDofOrder(self, Geom, SDim, Info, dofs):
         r"""SubDofOrder(FiniteElementCollection self, mfem::Geometry::Type Geom, int SDim, int Info, intArray dofs)"""
         return _fe_coll.FiniteElementCollection_SubDofOrder(self, Geom, SDim, Info, dofs)
+    SubDofOrder = _swig_new_instance_method(_fe_coll.FiniteElementCollection_SubDofOrder)
 
 # Register FiniteElementCollection in _fe_coll:
 _fe_coll.FiniteElementCollection_swigregister(FiniteElementCollection)
@@ -194,6 +218,7 @@ _fe_coll.FiniteElementCollection_swigregister(FiniteElementCollection)
 def FiniteElementCollection_New(name):
     r"""FiniteElementCollection_New(char const * name) -> FiniteElementCollection"""
     return _fe_coll.FiniteElementCollection_New(name)
+FiniteElementCollection_New = _fe_coll.FiniteElementCollection_New
 
 class H1_FECollection(FiniteElementCollection):
     r"""Proxy of C++ mfem::H1_FECollection class."""
@@ -208,30 +233,37 @@ class H1_FECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(H1_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.H1_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.H1_FECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(H1_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.H1_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.H1_FECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(H1_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.H1_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.H1_FECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(H1_FECollection self) -> char const *"""
         return _fe_coll.H1_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.H1_FECollection_Name)
 
     def GetTraceCollection(self):
         r"""GetTraceCollection(H1_FECollection self) -> FiniteElementCollection"""
         return _fe_coll.H1_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.H1_FECollection_GetTraceCollection)
 
     def GetBasisType(self):
         r"""GetBasisType(H1_FECollection self) -> int"""
         return _fe_coll.H1_FECollection_GetBasisType(self)
+    GetBasisType = _swig_new_instance_method(_fe_coll.H1_FECollection_GetBasisType)
 
     def GetDofMap(self, GeomType):
         r"""GetDofMap(H1_FECollection self, mfem::Geometry::Type GeomType) -> int const *"""
         return _fe_coll.H1_FECollection_GetDofMap(self, GeomType)
+    GetDofMap = _swig_new_instance_method(_fe_coll.H1_FECollection_GetDofMap)
     __swig_destroy__ = _fe_coll.delete_H1_FECollection
 
 # Register H1_FECollection in _fe_coll:
@@ -250,6 +282,20 @@ class H1Pos_FECollection(H1_FECollection):
 
 # Register H1Pos_FECollection in _fe_coll:
 _fe_coll.H1Pos_FECollection_swigregister(H1Pos_FECollection)
+
+class H1Ser_FECollection(H1_FECollection):
+    r"""Proxy of C++ mfem::H1Ser_FECollection class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, p, dim=2):
+        r"""__init__(H1Ser_FECollection self, int const p, int const dim=2) -> H1Ser_FECollection"""
+        _fe_coll.H1Ser_FECollection_swiginit(self, _fe_coll.new_H1Ser_FECollection(p, dim))
+    __swig_destroy__ = _fe_coll.delete_H1Ser_FECollection
+
+# Register H1Ser_FECollection in _fe_coll:
+_fe_coll.H1Ser_FECollection_swigregister(H1Ser_FECollection)
 
 class H1_Trace_FECollection(H1_FECollection):
     r"""Proxy of C++ mfem::H1_Trace_FECollection class."""
@@ -278,26 +324,32 @@ class L2_FECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.L2_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.L2_FECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.L2_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.L2_FECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(L2_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.L2_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.L2_FECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(L2_FECollection self) -> char const *"""
         return _fe_coll.L2_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.L2_FECollection_Name)
 
     def TraceFiniteElementForGeometry(self, GeomType):
         r"""TraceFiniteElementForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.L2_FECollection_TraceFiniteElementForGeometry(self, GeomType)
+    TraceFiniteElementForGeometry = _swig_new_instance_method(_fe_coll.L2_FECollection_TraceFiniteElementForGeometry)
 
     def GetBasisType(self):
         r"""GetBasisType(L2_FECollection self) -> int"""
         return _fe_coll.L2_FECollection_GetBasisType(self)
+    GetBasisType = _swig_new_instance_method(_fe_coll.L2_FECollection_GetBasisType)
     __swig_destroy__ = _fe_coll.delete_L2_FECollection
 
 # Register L2_FECollection in _fe_coll:
@@ -316,22 +368,27 @@ class RT_FECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(RT_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT_FECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(RT_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT_FECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(RT_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT_FECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(RT_FECollection self) -> char const *"""
         return _fe_coll.RT_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT_FECollection_Name)
 
     def GetTraceCollection(self):
         r"""GetTraceCollection(RT_FECollection self) -> FiniteElementCollection"""
         return _fe_coll.RT_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.RT_FECollection_GetTraceCollection)
     __swig_destroy__ = _fe_coll.delete_RT_FECollection
 
 # Register RT_FECollection in _fe_coll:
@@ -378,22 +435,27 @@ class ND_FECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(ND_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.ND_FECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.ND_FECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(ND_FECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.ND_FECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.ND_FECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(ND_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.ND_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.ND_FECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(ND_FECollection self) -> char const *"""
         return _fe_coll.ND_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.ND_FECollection_Name)
 
     def GetTraceCollection(self):
         r"""GetTraceCollection(ND_FECollection self) -> FiniteElementCollection"""
         return _fe_coll.ND_FECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.ND_FECollection_GetTraceCollection)
     __swig_destroy__ = _fe_coll.delete_ND_FECollection
 
 # Register ND_FECollection in _fe_coll:
@@ -428,34 +490,42 @@ class NURBSFECollection(FiniteElementCollection):
     def Reset(self):
         r"""Reset(NURBSFECollection self)"""
         return _fe_coll.NURBSFECollection_Reset(self)
+    Reset = _swig_new_instance_method(_fe_coll.NURBSFECollection_Reset)
 
     def GetOrder(self):
         r"""GetOrder(NURBSFECollection self) -> int"""
         return _fe_coll.NURBSFECollection_GetOrder(self)
+    GetOrder = _swig_new_instance_method(_fe_coll.NURBSFECollection_GetOrder)
 
     def SetOrder(self, Order):
         r"""SetOrder(NURBSFECollection self, int Order)"""
         return _fe_coll.NURBSFECollection_SetOrder(self, Order)
+    SetOrder = _swig_new_instance_method(_fe_coll.NURBSFECollection_SetOrder)
 
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(NURBSFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.NURBSFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.NURBSFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(NURBSFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.NURBSFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.NURBSFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(NURBSFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.NURBSFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.NURBSFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(NURBSFECollection self) -> char const *"""
         return _fe_coll.NURBSFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.NURBSFECollection_Name)
 
     def GetTraceCollection(self):
         r"""GetTraceCollection(NURBSFECollection self) -> FiniteElementCollection"""
         return _fe_coll.NURBSFECollection_GetTraceCollection(self)
+    GetTraceCollection = _swig_new_instance_method(_fe_coll.NURBSFECollection_GetTraceCollection)
     __swig_destroy__ = _fe_coll.delete_NURBSFECollection
 
 # Register NURBSFECollection in _fe_coll:
@@ -474,18 +544,22 @@ class LinearFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(LinearFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.LinearFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(LinearFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.LinearFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(LinearFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.LinearFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(LinearFECollection self) -> char const *"""
         return _fe_coll.LinearFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.LinearFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_LinearFECollection
 
 # Register LinearFECollection in _fe_coll:
@@ -504,18 +578,22 @@ class QuadraticFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(QuadraticFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.QuadraticFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(QuadraticFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.QuadraticFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(QuadraticFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.QuadraticFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(QuadraticFECollection self) -> char const *"""
         return _fe_coll.QuadraticFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.QuadraticFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_QuadraticFECollection
 
 # Register QuadraticFECollection in _fe_coll:
@@ -534,18 +612,22 @@ class QuadraticPosFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(QuadraticPosFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticPosFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.QuadraticPosFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(QuadraticPosFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticPosFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.QuadraticPosFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(QuadraticPosFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticPosFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.QuadraticPosFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(QuadraticPosFECollection self) -> char const *"""
         return _fe_coll.QuadraticPosFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.QuadraticPosFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_QuadraticPosFECollection
 
 # Register QuadraticPosFECollection in _fe_coll:
@@ -564,18 +646,22 @@ class CubicFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(CubicFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.CubicFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.CubicFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(CubicFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.CubicFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.CubicFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(CubicFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.CubicFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.CubicFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(CubicFECollection self) -> char const *"""
         return _fe_coll.CubicFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.CubicFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_CubicFECollection
 
 # Register CubicFECollection in _fe_coll:
@@ -594,18 +680,22 @@ class CrouzeixRaviartFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(CrouzeixRaviartFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.CrouzeixRaviartFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.CrouzeixRaviartFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(CrouzeixRaviartFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.CrouzeixRaviartFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.CrouzeixRaviartFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(CrouzeixRaviartFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.CrouzeixRaviartFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.CrouzeixRaviartFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(CrouzeixRaviartFECollection self) -> char const *"""
         return _fe_coll.CrouzeixRaviartFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.CrouzeixRaviartFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_CrouzeixRaviartFECollection
 
 # Register CrouzeixRaviartFECollection in _fe_coll:
@@ -624,18 +714,22 @@ class LinearNonConf3DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(LinearNonConf3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearNonConf3DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.LinearNonConf3DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(LinearNonConf3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearNonConf3DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.LinearNonConf3DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(LinearNonConf3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearNonConf3DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.LinearNonConf3DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(LinearNonConf3DFECollection self) -> char const *"""
         return _fe_coll.LinearNonConf3DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.LinearNonConf3DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_LinearNonConf3DFECollection
 
 # Register LinearNonConf3DFECollection in _fe_coll:
@@ -654,18 +748,22 @@ class RT0_2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(RT0_2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT0_2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT0_2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(RT0_2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT0_2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT0_2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(RT0_2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT0_2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT0_2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(RT0_2DFECollection self) -> char const *"""
         return _fe_coll.RT0_2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT0_2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_RT0_2DFECollection
 
 # Register RT0_2DFECollection in _fe_coll:
@@ -684,18 +782,22 @@ class RT1_2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(RT1_2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT1_2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT1_2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(RT1_2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT1_2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT1_2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(RT1_2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT1_2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT1_2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(RT1_2DFECollection self) -> char const *"""
         return _fe_coll.RT1_2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT1_2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_RT1_2DFECollection
 
 # Register RT1_2DFECollection in _fe_coll:
@@ -714,18 +816,22 @@ class RT2_2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(RT2_2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT2_2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT2_2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(RT2_2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT2_2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT2_2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(RT2_2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT2_2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT2_2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(RT2_2DFECollection self) -> char const *"""
         return _fe_coll.RT2_2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT2_2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_RT2_2DFECollection
 
 # Register RT2_2DFECollection in _fe_coll:
@@ -744,18 +850,22 @@ class Const2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(Const2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.Const2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.Const2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(Const2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.Const2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.Const2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(Const2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.Const2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.Const2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(Const2DFECollection self) -> char const *"""
         return _fe_coll.Const2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.Const2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_Const2DFECollection
 
 # Register Const2DFECollection in _fe_coll:
@@ -774,18 +884,22 @@ class LinearDiscont2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(LinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.LinearDiscont2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(LinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearDiscont2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.LinearDiscont2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(LinearDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.LinearDiscont2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(LinearDiscont2DFECollection self) -> char const *"""
         return _fe_coll.LinearDiscont2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.LinearDiscont2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_LinearDiscont2DFECollection
 
 # Register LinearDiscont2DFECollection in _fe_coll:
@@ -804,18 +918,22 @@ class GaussLinearDiscont2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(GaussLinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.GaussLinearDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.GaussLinearDiscont2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(GaussLinearDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.GaussLinearDiscont2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.GaussLinearDiscont2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(GaussLinearDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.GaussLinearDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.GaussLinearDiscont2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(GaussLinearDiscont2DFECollection self) -> char const *"""
         return _fe_coll.GaussLinearDiscont2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.GaussLinearDiscont2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_GaussLinearDiscont2DFECollection
 
 # Register GaussLinearDiscont2DFECollection in _fe_coll:
@@ -834,18 +952,22 @@ class P1OnQuadFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(P1OnQuadFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.P1OnQuadFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.P1OnQuadFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(P1OnQuadFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.P1OnQuadFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.P1OnQuadFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(P1OnQuadFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.P1OnQuadFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.P1OnQuadFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(P1OnQuadFECollection self) -> char const *"""
         return _fe_coll.P1OnQuadFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.P1OnQuadFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_P1OnQuadFECollection
 
 # Register P1OnQuadFECollection in _fe_coll:
@@ -864,18 +986,22 @@ class QuadraticDiscont2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(QuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.QuadraticDiscont2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(QuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticDiscont2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.QuadraticDiscont2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(QuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.QuadraticDiscont2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(QuadraticDiscont2DFECollection self) -> char const *"""
         return _fe_coll.QuadraticDiscont2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.QuadraticDiscont2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_QuadraticDiscont2DFECollection
 
 # Register QuadraticDiscont2DFECollection in _fe_coll:
@@ -894,18 +1020,22 @@ class QuadraticPosDiscont2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(QuadraticPosDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticPosDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.QuadraticPosDiscont2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(QuadraticPosDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticPosDiscont2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.QuadraticPosDiscont2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(QuadraticPosDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticPosDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.QuadraticPosDiscont2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(QuadraticPosDiscont2DFECollection self) -> char const *"""
         return _fe_coll.QuadraticPosDiscont2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.QuadraticPosDiscont2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_QuadraticPosDiscont2DFECollection
 
 # Register QuadraticPosDiscont2DFECollection in _fe_coll:
@@ -924,18 +1054,22 @@ class GaussQuadraticDiscont2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(GaussQuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.GaussQuadraticDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.GaussQuadraticDiscont2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(GaussQuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.GaussQuadraticDiscont2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.GaussQuadraticDiscont2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(GaussQuadraticDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.GaussQuadraticDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.GaussQuadraticDiscont2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(GaussQuadraticDiscont2DFECollection self) -> char const *"""
         return _fe_coll.GaussQuadraticDiscont2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.GaussQuadraticDiscont2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_GaussQuadraticDiscont2DFECollection
 
 # Register GaussQuadraticDiscont2DFECollection in _fe_coll:
@@ -954,18 +1088,22 @@ class CubicDiscont2DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(CubicDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.CubicDiscont2DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.CubicDiscont2DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(CubicDiscont2DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.CubicDiscont2DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.CubicDiscont2DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(CubicDiscont2DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.CubicDiscont2DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.CubicDiscont2DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(CubicDiscont2DFECollection self) -> char const *"""
         return _fe_coll.CubicDiscont2DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.CubicDiscont2DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_CubicDiscont2DFECollection
 
 # Register CubicDiscont2DFECollection in _fe_coll:
@@ -984,18 +1122,22 @@ class Const3DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(Const3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.Const3DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.Const3DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(Const3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.Const3DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.Const3DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(Const3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.Const3DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.Const3DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(Const3DFECollection self) -> char const *"""
         return _fe_coll.Const3DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.Const3DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_Const3DFECollection
 
 # Register Const3DFECollection in _fe_coll:
@@ -1014,18 +1156,22 @@ class LinearDiscont3DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(LinearDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.LinearDiscont3DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.LinearDiscont3DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(LinearDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.LinearDiscont3DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.LinearDiscont3DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(LinearDiscont3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.LinearDiscont3DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.LinearDiscont3DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(LinearDiscont3DFECollection self) -> char const *"""
         return _fe_coll.LinearDiscont3DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.LinearDiscont3DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_LinearDiscont3DFECollection
 
 # Register LinearDiscont3DFECollection in _fe_coll:
@@ -1044,18 +1190,22 @@ class QuadraticDiscont3DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(QuadraticDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.QuadraticDiscont3DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.QuadraticDiscont3DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(QuadraticDiscont3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.QuadraticDiscont3DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.QuadraticDiscont3DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(QuadraticDiscont3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.QuadraticDiscont3DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.QuadraticDiscont3DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(QuadraticDiscont3DFECollection self) -> char const *"""
         return _fe_coll.QuadraticDiscont3DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.QuadraticDiscont3DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_QuadraticDiscont3DFECollection
 
 # Register QuadraticDiscont3DFECollection in _fe_coll:
@@ -1074,18 +1224,22 @@ class RefinedLinearFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(RefinedLinearFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RefinedLinearFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RefinedLinearFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(RefinedLinearFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RefinedLinearFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RefinedLinearFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(RefinedLinearFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RefinedLinearFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RefinedLinearFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(RefinedLinearFECollection self) -> char const *"""
         return _fe_coll.RefinedLinearFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RefinedLinearFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_RefinedLinearFECollection
 
 # Register RefinedLinearFECollection in _fe_coll:
@@ -1104,18 +1258,22 @@ class ND1_3DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(ND1_3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.ND1_3DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.ND1_3DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(ND1_3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.ND1_3DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.ND1_3DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(ND1_3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.ND1_3DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.ND1_3DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(ND1_3DFECollection self) -> char const *"""
         return _fe_coll.ND1_3DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.ND1_3DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_ND1_3DFECollection
 
 # Register ND1_3DFECollection in _fe_coll:
@@ -1134,18 +1292,22 @@ class RT0_3DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(RT0_3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT0_3DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT0_3DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(RT0_3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT0_3DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT0_3DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(RT0_3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT0_3DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT0_3DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(RT0_3DFECollection self) -> char const *"""
         return _fe_coll.RT0_3DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT0_3DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_RT0_3DFECollection
 
 # Register RT0_3DFECollection in _fe_coll:
@@ -1164,18 +1326,22 @@ class RT1_3DFECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(RT1_3DFECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
         return _fe_coll.RT1_3DFECollection_FiniteElementForGeometry(self, GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.RT1_3DFECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, GeomType):
         r"""DofForGeometry(RT1_3DFECollection self, mfem::Geometry::Type GeomType) -> int"""
         return _fe_coll.RT1_3DFECollection_DofForGeometry(self, GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.RT1_3DFECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(RT1_3DFECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.RT1_3DFECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.RT1_3DFECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(RT1_3DFECollection self) -> char const *"""
         return _fe_coll.RT1_3DFECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.RT1_3DFECollection_Name)
     __swig_destroy__ = _fe_coll.delete_RT1_3DFECollection
 
 # Register RT1_3DFECollection in _fe_coll:
@@ -1194,18 +1360,22 @@ class Local_FECollection(FiniteElementCollection):
     def FiniteElementForGeometry(self, _GeomType):
         r"""FiniteElementForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> FiniteElement"""
         return _fe_coll.Local_FECollection_FiniteElementForGeometry(self, _GeomType)
+    FiniteElementForGeometry = _swig_new_instance_method(_fe_coll.Local_FECollection_FiniteElementForGeometry)
 
     def DofForGeometry(self, _GeomType):
         r"""DofForGeometry(Local_FECollection self, mfem::Geometry::Type _GeomType) -> int"""
         return _fe_coll.Local_FECollection_DofForGeometry(self, _GeomType)
+    DofForGeometry = _swig_new_instance_method(_fe_coll.Local_FECollection_DofForGeometry)
 
     def DofOrderForOrientation(self, GeomType, Or):
         r"""DofOrderForOrientation(Local_FECollection self, mfem::Geometry::Type GeomType, int Or) -> int const *"""
         return _fe_coll.Local_FECollection_DofOrderForOrientation(self, GeomType, Or)
+    DofOrderForOrientation = _swig_new_instance_method(_fe_coll.Local_FECollection_DofOrderForOrientation)
 
     def Name(self):
         r"""Name(Local_FECollection self) -> char const *"""
         return _fe_coll.Local_FECollection_Name(self)
+    Name = _swig_new_instance_method(_fe_coll.Local_FECollection_Name)
     __swig_destroy__ = _fe_coll.delete_Local_FECollection
 
 # Register Local_FECollection in _fe_coll:

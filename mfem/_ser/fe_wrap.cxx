@@ -3101,92 +3101,94 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__H1Pos_TetrahedronElement swig_types[33]
 #define SWIGTYPE_p_mfem__H1Pos_TriangleElement swig_types[34]
 #define SWIGTYPE_p_mfem__H1Pos_WedgeElement swig_types[35]
-#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[36]
-#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[37]
-#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[38]
-#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[39]
-#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[40]
-#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[41]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[42]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[43]
-#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[44]
-#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[45]
-#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[46]
-#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[47]
-#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[48]
-#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[49]
-#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[50]
-#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[51]
-#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[52]
-#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[53]
-#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[54]
-#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[55]
-#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[56]
-#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[57]
-#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[58]
-#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[59]
-#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[60]
-#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[61]
-#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[62]
-#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[63]
-#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[64]
-#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[65]
-#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[66]
-#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[67]
-#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[68]
-#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[69]
-#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[70]
-#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[71]
-#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[72]
-#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[73]
-#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[74]
-#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[75]
-#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[76]
-#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[77]
-#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[78]
-#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[79]
-#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[80]
-#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[81]
-#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[82]
-#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[83]
-#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[84]
-#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[85]
-#define SWIGTYPE_p_mfem__Poly_1D swig_types[86]
-#define SWIGTYPE_p_mfem__Poly_1D__Basis swig_types[87]
-#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[88]
-#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[89]
-#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[90]
-#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[91]
-#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[92]
-#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[93]
-#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[94]
-#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[95]
-#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[96]
-#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[97]
-#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[98]
-#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[99]
-#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[100]
-#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[101]
-#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[102]
-#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[103]
-#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[104]
-#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[105]
-#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[106]
-#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[107]
-#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[108]
-#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[109]
-#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[110]
-#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[111]
-#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[112]
-#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[113]
-#define SWIGTYPE_p_mfem__TensorBasisElement swig_types[114]
-#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[115]
-#define SWIGTYPE_p_mfem__Vector swig_types[116]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[117]
-#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[118]
-#define SWIGTYPE_p_p_int swig_types[119]
-static swig_type_info *swig_types[121];
-static swig_module_info swig_module = {swig_types, 120, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement swig_types[36]
+#define SWIGTYPE_p_mfem__H1_HexahedronElement swig_types[37]
+#define SWIGTYPE_p_mfem__H1_QuadrilateralElement swig_types[38]
+#define SWIGTYPE_p_mfem__H1_SegmentElement swig_types[39]
+#define SWIGTYPE_p_mfem__H1_TetrahedronElement swig_types[40]
+#define SWIGTYPE_p_mfem__H1_TriangleElement swig_types[41]
+#define SWIGTYPE_p_mfem__H1_WedgeElement swig_types[42]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[43]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[44]
+#define SWIGTYPE_p_mfem__L2Pos_HexahedronElement swig_types[45]
+#define SWIGTYPE_p_mfem__L2Pos_QuadrilateralElement swig_types[46]
+#define SWIGTYPE_p_mfem__L2Pos_SegmentElement swig_types[47]
+#define SWIGTYPE_p_mfem__L2Pos_TetrahedronElement swig_types[48]
+#define SWIGTYPE_p_mfem__L2Pos_TriangleElement swig_types[49]
+#define SWIGTYPE_p_mfem__L2Pos_WedgeElement swig_types[50]
+#define SWIGTYPE_p_mfem__L2_HexahedronElement swig_types[51]
+#define SWIGTYPE_p_mfem__L2_QuadrilateralElement swig_types[52]
+#define SWIGTYPE_p_mfem__L2_SegmentElement swig_types[53]
+#define SWIGTYPE_p_mfem__L2_TetrahedronElement swig_types[54]
+#define SWIGTYPE_p_mfem__L2_TriangleElement swig_types[55]
+#define SWIGTYPE_p_mfem__L2_WedgeElement swig_types[56]
+#define SWIGTYPE_p_mfem__Lagrange1DFiniteElement swig_types[57]
+#define SWIGTYPE_p_mfem__LagrangeHexFiniteElement swig_types[58]
+#define SWIGTYPE_p_mfem__Linear1DFiniteElement swig_types[59]
+#define SWIGTYPE_p_mfem__Linear2DFiniteElement swig_types[60]
+#define SWIGTYPE_p_mfem__Linear3DFiniteElement swig_types[61]
+#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[62]
+#define SWIGTYPE_p_mfem__ND_HexahedronElement swig_types[63]
+#define SWIGTYPE_p_mfem__ND_QuadrilateralElement swig_types[64]
+#define SWIGTYPE_p_mfem__ND_SegmentElement swig_types[65]
+#define SWIGTYPE_p_mfem__ND_TetrahedronElement swig_types[66]
+#define SWIGTYPE_p_mfem__ND_TriangleElement swig_types[67]
+#define SWIGTYPE_p_mfem__NURBS1DFiniteElement swig_types[68]
+#define SWIGTYPE_p_mfem__NURBS2DFiniteElement swig_types[69]
+#define SWIGTYPE_p_mfem__NURBS3DFiniteElement swig_types[70]
+#define SWIGTYPE_p_mfem__NURBSFiniteElement swig_types[71]
+#define SWIGTYPE_p_mfem__Nedelec1HexFiniteElement swig_types[72]
+#define SWIGTYPE_p_mfem__Nedelec1TetFiniteElement swig_types[73]
+#define SWIGTYPE_p_mfem__NodalFiniteElement swig_types[74]
+#define SWIGTYPE_p_mfem__NodalTensorFiniteElement swig_types[75]
+#define SWIGTYPE_p_mfem__P0HexFiniteElement swig_types[76]
+#define SWIGTYPE_p_mfem__P0QuadFiniteElement swig_types[77]
+#define SWIGTYPE_p_mfem__P0SegmentFiniteElement swig_types[78]
+#define SWIGTYPE_p_mfem__P0TetFiniteElement swig_types[79]
+#define SWIGTYPE_p_mfem__P0TriangleFiniteElement swig_types[80]
+#define SWIGTYPE_p_mfem__P0WedgeFiniteElement swig_types[81]
+#define SWIGTYPE_p_mfem__P1OnQuadFiniteElement swig_types[82]
+#define SWIGTYPE_p_mfem__P1SegmentFiniteElement swig_types[83]
+#define SWIGTYPE_p_mfem__P1TetNonConfFiniteElement swig_types[84]
+#define SWIGTYPE_p_mfem__P2SegmentFiniteElement swig_types[85]
+#define SWIGTYPE_p_mfem__PointFiniteElement swig_types[86]
+#define SWIGTYPE_p_mfem__Poly_1D swig_types[87]
+#define SWIGTYPE_p_mfem__Poly_1D__Basis swig_types[88]
+#define SWIGTYPE_p_mfem__PositiveFiniteElement swig_types[89]
+#define SWIGTYPE_p_mfem__PositiveTensorFiniteElement swig_types[90]
+#define SWIGTYPE_p_mfem__Quad1DFiniteElement swig_types[91]
+#define SWIGTYPE_p_mfem__Quad2DFiniteElement swig_types[92]
+#define SWIGTYPE_p_mfem__QuadPos1DFiniteElement swig_types[93]
+#define SWIGTYPE_p_mfem__Quadratic3DFiniteElement swig_types[94]
+#define SWIGTYPE_p_mfem__RT0HexFiniteElement swig_types[95]
+#define SWIGTYPE_p_mfem__RT0QuadFiniteElement swig_types[96]
+#define SWIGTYPE_p_mfem__RT0TetFiniteElement swig_types[97]
+#define SWIGTYPE_p_mfem__RT0TriangleFiniteElement swig_types[98]
+#define SWIGTYPE_p_mfem__RT1HexFiniteElement swig_types[99]
+#define SWIGTYPE_p_mfem__RT1QuadFiniteElement swig_types[100]
+#define SWIGTYPE_p_mfem__RT1TriangleFiniteElement swig_types[101]
+#define SWIGTYPE_p_mfem__RT2QuadFiniteElement swig_types[102]
+#define SWIGTYPE_p_mfem__RT2TriangleFiniteElement swig_types[103]
+#define SWIGTYPE_p_mfem__RT_HexahedronElement swig_types[104]
+#define SWIGTYPE_p_mfem__RT_QuadrilateralElement swig_types[105]
+#define SWIGTYPE_p_mfem__RT_TetrahedronElement swig_types[106]
+#define SWIGTYPE_p_mfem__RT_TriangleElement swig_types[107]
+#define SWIGTYPE_p_mfem__RefinedBiLinear2DFiniteElement swig_types[108]
+#define SWIGTYPE_p_mfem__RefinedLinear1DFiniteElement swig_types[109]
+#define SWIGTYPE_p_mfem__RefinedLinear2DFiniteElement swig_types[110]
+#define SWIGTYPE_p_mfem__RefinedLinear3DFiniteElement swig_types[111]
+#define SWIGTYPE_p_mfem__RefinedTriLinear3DFiniteElement swig_types[112]
+#define SWIGTYPE_p_mfem__RotTriLinearHexFiniteElement swig_types[113]
+#define SWIGTYPE_p_mfem__ScalarFiniteElement swig_types[114]
+#define SWIGTYPE_p_mfem__TensorBasisElement swig_types[115]
+#define SWIGTYPE_p_mfem__TriLinear3DFiniteElement swig_types[116]
+#define SWIGTYPE_p_mfem__Vector swig_types[117]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[118]
+#define SWIGTYPE_p_mfem__VectorFiniteElement swig_types[119]
+#define SWIGTYPE_p_mfem__VectorTensorFiniteElement swig_types[120]
+#define SWIGTYPE_p_p_int swig_types[121]
+static swig_type_info *swig_types[123];
+static swig_module_info swig_module = {swig_types, 122, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3666,6 +3668,20 @@ SWIGINTERNINLINE PyObject*
 
 
   #define SWIG_From_double   PyFloat_FromDouble 
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
 
 
 
@@ -5976,6 +5992,189 @@ SWIGINTERN PyObject *_wrap_FiniteElement_CalcHessian(PyObject *SWIGUNUSEDPARM(se
   {
     try {
       ((mfem::FiniteElement const *)arg1)->CalcHessian((mfem::IntegrationPoint const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElement_CalcPhysHessian(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "FiniteElement_CalcPhysHessian", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElement_CalcPhysHessian" "', argument " "1"" of type '" "mfem::FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FiniteElement_CalcPhysHessian" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_CalcPhysHessian" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FiniteElement_CalcPhysHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_CalcPhysHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::FiniteElement const *)arg1)->CalcPhysHessian(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElement_CalcPhysLaplacian(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "FiniteElement_CalcPhysLaplacian", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElement_CalcPhysLaplacian" "', argument " "1"" of type '" "mfem::FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FiniteElement_CalcPhysLaplacian" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_CalcPhysLaplacian" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FiniteElement_CalcPhysLaplacian" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_CalcPhysLaplacian" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::FiniteElement const *)arg1)->CalcPhysLaplacian(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FiniteElement_CalcPhysLinLaplacian(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElement *arg1 = (mfem::FiniteElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "FiniteElement_CalcPhysLinLaplacian", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FiniteElement_CalcPhysLinLaplacian" "', argument " "1"" of type '" "mfem::FiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FiniteElement_CalcPhysLinLaplacian" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_CalcPhysLinLaplacian" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FiniteElement_CalcPhysLinLaplacian" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FiniteElement_CalcPhysLinLaplacian" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::FiniteElement const *)arg1)->CalcPhysLinLaplacian(*arg2,*arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -28513,6 +28712,193 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Poly_1D_CalcLegendre__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double arg2 ;
+  double *arg3 = (double *) 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Poly_1D_CalcLegendre" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Poly_1D_CalcLegendre" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  {
+    try {
+      mfem::Poly_1D::CalcLegendre(arg1,arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Poly_1D_CalcLegendre__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double arg2 ;
+  double *arg3 = (double *) 0 ;
+  double *arg4 = (double *) 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Poly_1D_CalcLegendre" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Poly_1D_CalcLegendre" "', argument " "3"" of type '" "double *""'"); 
+  }
+  arg3 = reinterpret_cast< double * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Poly_1D_CalcLegendre" "', argument " "4"" of type '" "double *""'"); 
+  }
+  arg4 = reinterpret_cast< double * >(argp4);
+  {
+    try {
+      mfem::Poly_1D::CalcLegendre(arg1,arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Poly_1D_CalcLegendre(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Poly_1D_CalcLegendre", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_double, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_Poly_1D_CalcLegendre__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_double, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_double, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_Poly_1D_CalcLegendre__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Poly_1D_CalcLegendre'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Poly_1D::CalcLegendre(int const,double const,double *)\n"
+    "    mfem::Poly_1D::CalcLegendre(int const,double const,double *,double *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_Poly_1D(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Poly_1D *arg1 = (mfem::Poly_1D *) 0 ;
@@ -29095,6 +29481,324 @@ SWIGINTERN PyObject *PositiveTensorFiniteElement_swigregister(PyObject *SWIGUNUS
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_mfem__PositiveTensorFiniteElement, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_VectorTensorFiniteElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  mfem::TensorBasisElement::DofMapType arg7 ;
+  int val7 ;
+  int ecode7 = 0 ;
+  PyObject *swig_obj[7] ;
+  mfem::VectorTensorFiniteElement *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_VectorTensorFiniteElement", 7, 7, swig_obj)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+  }
+  ecode7 = SWIG_AsVal_int(swig_obj[6], &val7);
+  if (!SWIG_IsOK(ecode7)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "new_VectorTensorFiniteElement" "', argument " "7"" of type '" "mfem::TensorBasisElement::DofMapType""'");
+  } 
+  arg7 = static_cast< mfem::TensorBasisElement::DofMapType >(val7);
+  {
+    try {
+      result = (mfem::VectorTensorFiniteElement *)new mfem::VectorTensorFiniteElement(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorTensorFiniteElement, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorTensorFiniteElement_GetDofToQuad(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorTensorFiniteElement *arg1 = (mfem::VectorTensorFiniteElement *) 0 ;
+  mfem::IntegrationRule *arg2 = 0 ;
+  mfem::DofToQuad::Mode arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  mfem::DofToQuad *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "VectorTensorFiniteElement_GetDofToQuad", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorTensorFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorTensorFiniteElement_GetDofToQuad" "', argument " "1"" of type '" "mfem::VectorTensorFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorTensorFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorTensorFiniteElement_GetDofToQuad" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorTensorFiniteElement_GetDofToQuad" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "VectorTensorFiniteElement_GetDofToQuad" "', argument " "3"" of type '" "mfem::DofToQuad::Mode""'");
+  } 
+  arg3 = static_cast< mfem::DofToQuad::Mode >(val3);
+  {
+    try {
+      result = (mfem::DofToQuad *) &((mfem::VectorTensorFiniteElement const *)arg1)->GetDofToQuad((mfem::IntegrationRule const &)*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofToQuad, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorTensorFiniteElement_GetDofToQuadOpen(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorTensorFiniteElement *arg1 = (mfem::VectorTensorFiniteElement *) 0 ;
+  mfem::IntegrationRule *arg2 = 0 ;
+  mfem::DofToQuad::Mode arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[3] ;
+  mfem::DofToQuad *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "VectorTensorFiniteElement_GetDofToQuadOpen", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorTensorFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorTensorFiniteElement_GetDofToQuadOpen" "', argument " "1"" of type '" "mfem::VectorTensorFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorTensorFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorTensorFiniteElement_GetDofToQuadOpen" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorTensorFiniteElement_GetDofToQuadOpen" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "VectorTensorFiniteElement_GetDofToQuadOpen" "', argument " "3"" of type '" "mfem::DofToQuad::Mode""'");
+  } 
+  arg3 = static_cast< mfem::DofToQuad::Mode >(val3);
+  {
+    try {
+      result = (mfem::DofToQuad *) &((mfem::VectorTensorFiniteElement const *)arg1)->GetDofToQuadOpen((mfem::IntegrationRule const &)*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofToQuad, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_VectorTensorFiniteElement_GetTensorDofToQuad(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorTensorFiniteElement *arg1 = (mfem::VectorTensorFiniteElement *) 0 ;
+  mfem::IntegrationRule *arg2 = 0 ;
+  mfem::DofToQuad::Mode arg3 ;
+  bool arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[4] ;
+  mfem::DofToQuad *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "VectorTensorFiniteElement_GetTensorDofToQuad", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorTensorFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorTensorFiniteElement_GetTensorDofToQuad" "', argument " "1"" of type '" "mfem::VectorTensorFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorTensorFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorTensorFiniteElement_GetTensorDofToQuad" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorTensorFiniteElement_GetTensorDofToQuad" "', argument " "2"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationRule * >(argp2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "VectorTensorFiniteElement_GetTensorDofToQuad" "', argument " "3"" of type '" "mfem::DofToQuad::Mode""'");
+  } 
+  arg3 = static_cast< mfem::DofToQuad::Mode >(val3);
+  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "VectorTensorFiniteElement_GetTensorDofToQuad" "', argument " "4"" of type '" "bool""'");
+  } 
+  arg4 = static_cast< bool >(val4);
+  {
+    try {
+      result = (mfem::DofToQuad *) &((mfem::VectorTensorFiniteElement const *)arg1)->GetTensorDofToQuad((mfem::IntegrationRule const &)*arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DofToQuad, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_VectorTensorFiniteElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorTensorFiniteElement *arg1 = (mfem::VectorTensorFiniteElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorTensorFiniteElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_VectorTensorFiniteElement" "', argument " "1"" of type '" "mfem::VectorTensorFiniteElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorTensorFiniteElement * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *VectorTensorFiniteElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__VectorTensorFiniteElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *VectorTensorFiniteElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
 }
 
 SWIGINTERN PyObject *_wrap_new_H1_SegmentElement__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
@@ -30741,6 +31445,583 @@ SWIGINTERN PyObject *H1Pos_QuadrilateralElement_swigregister(PyObject *SWIGUNUSE
 }
 
 SWIGINTERN PyObject *H1Pos_QuadrilateralElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_H1Ser_QuadrilateralElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  PyObject *swig_obj[1] ;
+  mfem::H1Ser_QuadrilateralElement *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  {
+    try {
+      result = (mfem::H1Ser_QuadrilateralElement *)new mfem::H1Ser_QuadrilateralElement(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1Ser_QuadrilateralElement_CalcShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::H1Ser_QuadrilateralElement *arg1 = (mfem::H1Ser_QuadrilateralElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "H1Ser_QuadrilateralElement_CalcShape", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1Ser_QuadrilateralElement_CalcShape" "', argument " "1"" of type '" "mfem::H1Ser_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1Ser_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1Ser_QuadrilateralElement_CalcShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_CalcShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1Ser_QuadrilateralElement_CalcShape" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_CalcShape" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::H1Ser_QuadrilateralElement const *)arg1)->CalcShape((mfem::IntegrationPoint const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1Ser_QuadrilateralElement_CalcDShape(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::H1Ser_QuadrilateralElement *arg1 = (mfem::H1Ser_QuadrilateralElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "H1Ser_QuadrilateralElement_CalcDShape", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1Ser_QuadrilateralElement_CalcDShape" "', argument " "1"" of type '" "mfem::H1Ser_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1Ser_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1Ser_QuadrilateralElement_CalcDShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_CalcDShape" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1Ser_QuadrilateralElement_CalcDShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_CalcDShape" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::H1Ser_QuadrilateralElement const *)arg1)->CalcDShape((mfem::IntegrationPoint const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1Ser_QuadrilateralElement_GetLocalInterpolation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::H1Ser_QuadrilateralElement *arg1 = (mfem::H1Ser_QuadrilateralElement *) 0 ;
+  mfem::ElementTransformation *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "H1Ser_QuadrilateralElement_GetLocalInterpolation", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1Ser_QuadrilateralElement_GetLocalInterpolation" "', argument " "1"" of type '" "mfem::H1Ser_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1Ser_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1Ser_QuadrilateralElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_GetLocalInterpolation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1Ser_QuadrilateralElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_GetLocalInterpolation" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::H1Ser_QuadrilateralElement const *)arg1)->GetLocalInterpolation(*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1Ser_QuadrilateralElement_Project_SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::H1Ser_QuadrilateralElement *arg1 = (mfem::H1Ser_QuadrilateralElement *) 0 ;
+  mfem::Coefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "1"" of type '" "mfem::H1Ser_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1Ser_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::H1Ser_QuadrilateralElement const *)arg1)->Project(*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1Ser_QuadrilateralElement_Project_SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::H1Ser_QuadrilateralElement *arg1 = (mfem::H1Ser_QuadrilateralElement *) 0 ;
+  mfem::VectorCoefficient *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "1"" of type '" "mfem::H1Ser_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1Ser_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::H1Ser_QuadrilateralElement const *)arg1)->Project(*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1Ser_QuadrilateralElement_Project_SWIG_0_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::H1Ser_QuadrilateralElement *arg1 = (mfem::H1Ser_QuadrilateralElement *) 0 ;
+  mfem::FiniteElement *arg2 = 0 ;
+  mfem::ElementTransformation *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "1"" of type '" "mfem::H1Ser_QuadrilateralElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1Ser_QuadrilateralElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "2"" of type '" "mfem::FiniteElement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::FiniteElement * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1Ser_QuadrilateralElement_Project" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  {
+    try {
+      ((mfem::H1Ser_QuadrilateralElement const *)arg1)->Project((mfem::FiniteElement const &)*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_H1Ser_QuadrilateralElement_Project(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "H1Ser_QuadrilateralElement_Project", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_H1Ser_QuadrilateralElement_Project_SWIG_0_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_H1Ser_QuadrilateralElement_Project_SWIG_0_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__FiniteElement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ElementTransformation, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_H1Ser_QuadrilateralElement_Project_SWIG_0_2(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'H1Ser_QuadrilateralElement_Project'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Project(mfem::Coefficient &,mfem::ElementTransformation &,mfem::Vector &) const\n"
+    "    Project(mfem::VectorCoefficient &,mfem::ElementTransformation &,mfem::Vector &) const\n"
+    "    Project(mfem::FiniteElement const &,mfem::ElementTransformation &,mfem::DenseMatrix &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_H1Ser_QuadrilateralElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::H1Ser_QuadrilateralElement *arg1 = (mfem::H1Ser_QuadrilateralElement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_H1Ser_QuadrilateralElement" "', argument " "1"" of type '" "mfem::H1Ser_QuadrilateralElement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::H1Ser_QuadrilateralElement * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *H1Ser_QuadrilateralElement_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__H1Ser_QuadrilateralElement, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *H1Ser_QuadrilateralElement_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -49659,6 +50940,67 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NURBS1DFiniteElement_CalcHessian(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NURBS1DFiniteElement *arg1 = (mfem::NURBS1DFiniteElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NURBS1DFiniteElement_CalcHessian", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NURBS1DFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NURBS1DFiniteElement_CalcHessian" "', argument " "1"" of type '" "mfem::NURBS1DFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NURBS1DFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NURBS1DFiniteElement_CalcHessian" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NURBS1DFiniteElement_CalcHessian" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NURBS1DFiniteElement_CalcHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NURBS1DFiniteElement_CalcHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::NURBS1DFiniteElement const *)arg1)->CalcHessian((mfem::IntegrationPoint const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_NURBS1DFiniteElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::NURBS1DFiniteElement *arg1 = (mfem::NURBS1DFiniteElement *) 0 ;
@@ -49988,6 +51330,67 @@ SWIGINTERN PyObject *_wrap_NURBS2DFiniteElement_CalcDShape(PyObject *SWIGUNUSEDP
   {
     try {
       ((mfem::NURBS2DFiniteElement const *)arg1)->CalcDShape((mfem::IntegrationPoint const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NURBS2DFiniteElement_CalcHessian(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NURBS2DFiniteElement *arg1 = (mfem::NURBS2DFiniteElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NURBS2DFiniteElement_CalcHessian", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NURBS2DFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NURBS2DFiniteElement_CalcHessian" "', argument " "1"" of type '" "mfem::NURBS2DFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NURBS2DFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NURBS2DFiniteElement_CalcHessian" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NURBS2DFiniteElement_CalcHessian" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NURBS2DFiniteElement_CalcHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NURBS2DFiniteElement_CalcHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::NURBS2DFiniteElement const *)arg1)->CalcHessian((mfem::IntegrationPoint const &)*arg2,*arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -50380,6 +51783,67 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_NURBS3DFiniteElement_CalcHessian(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NURBS3DFiniteElement *arg1 = (mfem::NURBS3DFiniteElement *) 0 ;
+  mfem::IntegrationPoint *arg2 = 0 ;
+  mfem::DenseMatrix *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NURBS3DFiniteElement_CalcHessian", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NURBS3DFiniteElement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NURBS3DFiniteElement_CalcHessian" "', argument " "1"" of type '" "mfem::NURBS3DFiniteElement const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NURBS3DFiniteElement * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NURBS3DFiniteElement_CalcHessian" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NURBS3DFiniteElement_CalcHessian" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NURBS3DFiniteElement_CalcHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NURBS3DFiniteElement_CalcHessian" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
+  {
+    try {
+      ((mfem::NURBS3DFiniteElement const *)arg1)->CalcHessian((mfem::IntegrationPoint const &)*arg2,*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_NURBS3DFiniteElement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::NURBS3DFiniteElement *arg1 = (mfem::NURBS3DFiniteElement *) 0 ;
@@ -50433,6 +51897,7 @@ SWIGINTERN PyObject *NURBS3DFiniteElement_swiginit(PyObject *SWIGUNUSEDPARM(self
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "BasisType_Check", _wrap_BasisType_Check, METH_O, "BasisType_Check(int b_type) -> int"},
 	 { "BasisType_CheckNodal", _wrap_BasisType_CheckNodal, METH_O, "BasisType_CheckNodal(int b_type) -> int"},
 	 { "BasisType_GetQuadrature1D", _wrap_BasisType_GetQuadrature1D, METH_O, "BasisType_GetQuadrature1D(int b_type) -> int"},
@@ -50495,7 +51960,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "FiniteElement_CalcCurlShape", _wrap_FiniteElement_CalcCurlShape, METH_VARARGS, "FiniteElement_CalcCurlShape(FiniteElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
 	 { "FiniteElement_CalcPhysCurlShape", _wrap_FiniteElement_CalcPhysCurlShape, METH_VARARGS, "FiniteElement_CalcPhysCurlShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"},
 	 { "FiniteElement_GetFaceDofs", _wrap_FiniteElement_GetFaceDofs, METH_VARARGS, "FiniteElement_GetFaceDofs(FiniteElement self, int face, int ** dofs, int * ndofs)"},
-	 { "FiniteElement_CalcHessian", _wrap_FiniteElement_CalcHessian, METH_VARARGS, "FiniteElement_CalcHessian(FiniteElement self, IntegrationPoint ip, DenseMatrix h)"},
+	 { "FiniteElement_CalcHessian", _wrap_FiniteElement_CalcHessian, METH_VARARGS, "FiniteElement_CalcHessian(FiniteElement self, IntegrationPoint ip, DenseMatrix Hessian)"},
+	 { "FiniteElement_CalcPhysHessian", _wrap_FiniteElement_CalcPhysHessian, METH_VARARGS, "FiniteElement_CalcPhysHessian(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix Hessian)"},
+	 { "FiniteElement_CalcPhysLaplacian", _wrap_FiniteElement_CalcPhysLaplacian, METH_VARARGS, "FiniteElement_CalcPhysLaplacian(FiniteElement self, mfem::ElementTransformation & Trans, Vector Laplacian)"},
+	 { "FiniteElement_CalcPhysLinLaplacian", _wrap_FiniteElement_CalcPhysLinLaplacian, METH_VARARGS, "FiniteElement_CalcPhysLinLaplacian(FiniteElement self, mfem::ElementTransformation & Trans, Vector Laplacian)"},
 	 { "FiniteElement_GetLocalInterpolation", _wrap_FiniteElement_GetLocalInterpolation, METH_VARARGS, "FiniteElement_GetLocalInterpolation(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
 	 { "FiniteElement_GetLocalRestriction", _wrap_FiniteElement_GetLocalRestriction, METH_VARARGS, "FiniteElement_GetLocalRestriction(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
 	 { "FiniteElement_GetTransferMatrix", _wrap_FiniteElement_GetTransferMatrix, METH_VARARGS, "FiniteElement_GetTransferMatrix(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
@@ -51005,6 +52473,10 @@ static PyMethodDef SwigMethods[] = {
 		"Poly_1D_CalcBernstein(int const p, double const x, double * u)\n"
 		"Poly_1D_CalcBernstein(int const p, double const x, double * u, double * d)\n"
 		""},
+	 { "Poly_1D_CalcLegendre", _wrap_Poly_1D_CalcLegendre, METH_VARARGS, "\n"
+		"Poly_1D_CalcLegendre(int const p, double const x, double * u)\n"
+		"Poly_1D_CalcLegendre(int const p, double const x, double * u, double * d)\n"
+		""},
 	 { "delete_Poly_1D", _wrap_delete_Poly_1D, METH_O, "delete_Poly_1D(Poly_1D self)"},
 	 { "Poly_1D_swigregister", Poly_1D_swigregister, METH_O, NULL},
 	 { "Poly_1D_swiginit", Poly_1D_swiginit, METH_VARARGS, NULL},
@@ -51023,6 +52495,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "PositiveTensorFiniteElement_GetDofToQuad", _wrap_PositiveTensorFiniteElement_GetDofToQuad, METH_VARARGS, "PositiveTensorFiniteElement_GetDofToQuad(PositiveTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
 	 { "delete_PositiveTensorFiniteElement", _wrap_delete_PositiveTensorFiniteElement, METH_O, "delete_PositiveTensorFiniteElement(PositiveTensorFiniteElement self)"},
 	 { "PositiveTensorFiniteElement_swigregister", PositiveTensorFiniteElement_swigregister, METH_O, NULL},
+	 { "new_VectorTensorFiniteElement", _wrap_new_VectorTensorFiniteElement, METH_VARARGS, "new_VectorTensorFiniteElement(int const dims, int const d, int const p, int const cbtype, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement"},
+	 { "VectorTensorFiniteElement_GetDofToQuad", _wrap_VectorTensorFiniteElement_GetDofToQuad, METH_VARARGS, "VectorTensorFiniteElement_GetDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "VectorTensorFiniteElement_GetDofToQuadOpen", _wrap_VectorTensorFiniteElement_GetDofToQuadOpen, METH_VARARGS, "VectorTensorFiniteElement_GetDofToQuadOpen(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "VectorTensorFiniteElement_GetTensorDofToQuad", _wrap_VectorTensorFiniteElement_GetTensorDofToQuad, METH_VARARGS, "VectorTensorFiniteElement_GetTensorDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode, bool const closed) -> DofToQuad"},
+	 { "delete_VectorTensorFiniteElement", _wrap_delete_VectorTensorFiniteElement, METH_O, "delete_VectorTensorFiniteElement(VectorTensorFiniteElement self)"},
+	 { "VectorTensorFiniteElement_swigregister", VectorTensorFiniteElement_swigregister, METH_O, NULL},
+	 { "VectorTensorFiniteElement_swiginit", VectorTensorFiniteElement_swiginit, METH_VARARGS, NULL},
 	 { "new_H1_SegmentElement", _wrap_new_H1_SegmentElement, METH_VARARGS, "H1_SegmentElement(int const p, int const btype=GaussLobatto)"},
 	 { "H1_SegmentElement_CalcShape", _wrap_H1_SegmentElement_CalcShape, METH_VARARGS, "H1_SegmentElement_CalcShape(H1_SegmentElement self, IntegrationPoint ip, Vector shape)"},
 	 { "H1_SegmentElement_CalcDShape", _wrap_H1_SegmentElement_CalcDShape, METH_VARARGS, "H1_SegmentElement_CalcDShape(H1_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"},
@@ -51058,6 +52537,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_H1Pos_QuadrilateralElement", _wrap_delete_H1Pos_QuadrilateralElement, METH_O, "delete_H1Pos_QuadrilateralElement(H1Pos_QuadrilateralElement self)"},
 	 { "H1Pos_QuadrilateralElement_swigregister", H1Pos_QuadrilateralElement_swigregister, METH_O, NULL},
 	 { "H1Pos_QuadrilateralElement_swiginit", H1Pos_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Ser_QuadrilateralElement", _wrap_new_H1Ser_QuadrilateralElement, METH_O, "new_H1Ser_QuadrilateralElement(int const p) -> H1Ser_QuadrilateralElement"},
+	 { "H1Ser_QuadrilateralElement_CalcShape", _wrap_H1Ser_QuadrilateralElement_CalcShape, METH_VARARGS, "H1Ser_QuadrilateralElement_CalcShape(H1Ser_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1Ser_QuadrilateralElement_CalcDShape", _wrap_H1Ser_QuadrilateralElement_CalcDShape, METH_VARARGS, "H1Ser_QuadrilateralElement_CalcDShape(H1Ser_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1Ser_QuadrilateralElement_GetLocalInterpolation", _wrap_H1Ser_QuadrilateralElement_GetLocalInterpolation, METH_VARARGS, "H1Ser_QuadrilateralElement_GetLocalInterpolation(H1Ser_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "H1Ser_QuadrilateralElement_Project", _wrap_H1Ser_QuadrilateralElement_Project, METH_VARARGS, "\n"
+		"H1Ser_QuadrilateralElement_Project(H1Ser_QuadrilateralElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"H1Ser_QuadrilateralElement_Project(H1Ser_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"H1Ser_QuadrilateralElement_Project(H1Ser_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "delete_H1Ser_QuadrilateralElement", _wrap_delete_H1Ser_QuadrilateralElement, METH_O, "delete_H1Ser_QuadrilateralElement(H1Ser_QuadrilateralElement self)"},
+	 { "H1Ser_QuadrilateralElement_swigregister", H1Ser_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "H1Ser_QuadrilateralElement_swiginit", H1Ser_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
 	 { "new_H1Pos_HexahedronElement", _wrap_new_H1Pos_HexahedronElement, METH_O, "new_H1Pos_HexahedronElement(int const p) -> H1Pos_HexahedronElement"},
 	 { "H1Pos_HexahedronElement_CalcShape", _wrap_H1Pos_HexahedronElement_CalcShape, METH_VARARGS, "H1Pos_HexahedronElement_CalcShape(H1Pos_HexahedronElement self, IntegrationPoint ip, Vector shape)"},
 	 { "H1Pos_HexahedronElement_CalcDShape", _wrap_H1Pos_HexahedronElement_CalcDShape, METH_VARARGS, "H1Pos_HexahedronElement_CalcDShape(H1Pos_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
@@ -51423,6 +52914,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "NURBS1DFiniteElement_SetOrder", _wrap_NURBS1DFiniteElement_SetOrder, METH_O, "NURBS1DFiniteElement_SetOrder(NURBS1DFiniteElement self)"},
 	 { "NURBS1DFiniteElement_CalcShape", _wrap_NURBS1DFiniteElement_CalcShape, METH_VARARGS, "NURBS1DFiniteElement_CalcShape(NURBS1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
 	 { "NURBS1DFiniteElement_CalcDShape", _wrap_NURBS1DFiniteElement_CalcDShape, METH_VARARGS, "NURBS1DFiniteElement_CalcDShape(NURBS1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "NURBS1DFiniteElement_CalcHessian", _wrap_NURBS1DFiniteElement_CalcHessian, METH_VARARGS, "NURBS1DFiniteElement_CalcHessian(NURBS1DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"},
 	 { "delete_NURBS1DFiniteElement", _wrap_delete_NURBS1DFiniteElement, METH_O, "delete_NURBS1DFiniteElement(NURBS1DFiniteElement self)"},
 	 { "NURBS1DFiniteElement_swigregister", NURBS1DFiniteElement_swigregister, METH_O, NULL},
 	 { "NURBS1DFiniteElement_swiginit", NURBS1DFiniteElement_swiginit, METH_VARARGS, NULL},
@@ -51433,6 +52925,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "NURBS2DFiniteElement_SetOrder", _wrap_NURBS2DFiniteElement_SetOrder, METH_O, "NURBS2DFiniteElement_SetOrder(NURBS2DFiniteElement self)"},
 	 { "NURBS2DFiniteElement_CalcShape", _wrap_NURBS2DFiniteElement_CalcShape, METH_VARARGS, "NURBS2DFiniteElement_CalcShape(NURBS2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
 	 { "NURBS2DFiniteElement_CalcDShape", _wrap_NURBS2DFiniteElement_CalcDShape, METH_VARARGS, "NURBS2DFiniteElement_CalcDShape(NURBS2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "NURBS2DFiniteElement_CalcHessian", _wrap_NURBS2DFiniteElement_CalcHessian, METH_VARARGS, "NURBS2DFiniteElement_CalcHessian(NURBS2DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"},
 	 { "delete_NURBS2DFiniteElement", _wrap_delete_NURBS2DFiniteElement, METH_O, "delete_NURBS2DFiniteElement(NURBS2DFiniteElement self)"},
 	 { "NURBS2DFiniteElement_swigregister", NURBS2DFiniteElement_swigregister, METH_O, NULL},
 	 { "NURBS2DFiniteElement_swiginit", NURBS2DFiniteElement_swiginit, METH_VARARGS, NULL},
@@ -51443,6 +52936,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "NURBS3DFiniteElement_SetOrder", _wrap_NURBS3DFiniteElement_SetOrder, METH_O, "NURBS3DFiniteElement_SetOrder(NURBS3DFiniteElement self)"},
 	 { "NURBS3DFiniteElement_CalcShape", _wrap_NURBS3DFiniteElement_CalcShape, METH_VARARGS, "NURBS3DFiniteElement_CalcShape(NURBS3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
 	 { "NURBS3DFiniteElement_CalcDShape", _wrap_NURBS3DFiniteElement_CalcDShape, METH_VARARGS, "NURBS3DFiniteElement_CalcDShape(NURBS3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "NURBS3DFiniteElement_CalcHessian", _wrap_NURBS3DFiniteElement_CalcHessian, METH_VARARGS, "NURBS3DFiniteElement_CalcHessian(NURBS3DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"},
 	 { "delete_NURBS3DFiniteElement", _wrap_delete_NURBS3DFiniteElement, METH_O, "delete_NURBS3DFiniteElement(NURBS3DFiniteElement self)"},
 	 { "NURBS3DFiniteElement_swigregister", NURBS3DFiniteElement_swigregister, METH_O, NULL},
 	 { "NURBS3DFiniteElement_swiginit", NURBS3DFiniteElement_swiginit, METH_VARARGS, NULL},
@@ -51450,15 +52944,1056 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "BasisType_Check", _wrap_BasisType_Check, METH_O, "Check(int b_type) -> int"},
+	 { "BasisType_CheckNodal", _wrap_BasisType_CheckNodal, METH_O, "CheckNodal(int b_type) -> int"},
+	 { "BasisType_GetQuadrature1D", _wrap_BasisType_GetQuadrature1D, METH_O, "GetQuadrature1D(int b_type) -> int"},
+	 { "BasisType_GetNodalBasis", _wrap_BasisType_GetNodalBasis, METH_O, "GetNodalBasis(int qpt_type) -> int"},
+	 { "BasisType_Name", _wrap_BasisType_Name, METH_O, "Name(int b_type) -> char const *"},
+	 { "BasisType_GetChar", _wrap_BasisType_GetChar, METH_O, "GetChar(int b_type) -> char"},
+	 { "BasisType_GetType", _wrap_BasisType_GetType, METH_O, "GetType(char b_ident) -> int"},
+	 { "new_BasisType", _wrap_new_BasisType, METH_NOARGS, "new_BasisType() -> BasisType"},
+	 { "delete_BasisType", _wrap_delete_BasisType, METH_O, "delete_BasisType(BasisType self)"},
+	 { "BasisType_swigregister", BasisType_swigregister, METH_O, NULL},
+	 { "BasisType_swiginit", BasisType_swiginit, METH_VARARGS, NULL},
+	 { "DofToQuad_IntRule_set", _wrap_DofToQuad_IntRule_set, METH_VARARGS, "DofToQuad_IntRule_set(DofToQuad self, IntegrationRule IntRule)"},
+	 { "DofToQuad_IntRule_get", _wrap_DofToQuad_IntRule_get, METH_O, "DofToQuad_IntRule_get(DofToQuad self) -> IntegrationRule"},
+	 { "DofToQuad_mode_set", _wrap_DofToQuad_mode_set, METH_VARARGS, "DofToQuad_mode_set(DofToQuad self, mfem::DofToQuad::Mode mode)"},
+	 { "DofToQuad_mode_get", _wrap_DofToQuad_mode_get, METH_O, "DofToQuad_mode_get(DofToQuad self) -> mfem::DofToQuad::Mode"},
+	 { "DofToQuad_ndof_set", _wrap_DofToQuad_ndof_set, METH_VARARGS, "DofToQuad_ndof_set(DofToQuad self, int ndof)"},
+	 { "DofToQuad_ndof_get", _wrap_DofToQuad_ndof_get, METH_O, "DofToQuad_ndof_get(DofToQuad self) -> int"},
+	 { "DofToQuad_nqpt_set", _wrap_DofToQuad_nqpt_set, METH_VARARGS, "DofToQuad_nqpt_set(DofToQuad self, int nqpt)"},
+	 { "DofToQuad_nqpt_get", _wrap_DofToQuad_nqpt_get, METH_O, "DofToQuad_nqpt_get(DofToQuad self) -> int"},
+	 { "DofToQuad_B_set", _wrap_DofToQuad_B_set, METH_VARARGS, "DofToQuad_B_set(DofToQuad self, doubleArray B)"},
+	 { "DofToQuad_B_get", _wrap_DofToQuad_B_get, METH_O, "DofToQuad_B_get(DofToQuad self) -> doubleArray"},
+	 { "DofToQuad_Bt_set", _wrap_DofToQuad_Bt_set, METH_VARARGS, "DofToQuad_Bt_set(DofToQuad self, doubleArray Bt)"},
+	 { "DofToQuad_Bt_get", _wrap_DofToQuad_Bt_get, METH_O, "DofToQuad_Bt_get(DofToQuad self) -> doubleArray"},
+	 { "DofToQuad_G_set", _wrap_DofToQuad_G_set, METH_VARARGS, "DofToQuad_G_set(DofToQuad self, doubleArray G)"},
+	 { "DofToQuad_G_get", _wrap_DofToQuad_G_get, METH_O, "DofToQuad_G_get(DofToQuad self) -> doubleArray"},
+	 { "DofToQuad_Gt_set", _wrap_DofToQuad_Gt_set, METH_VARARGS, "DofToQuad_Gt_set(DofToQuad self, doubleArray Gt)"},
+	 { "DofToQuad_Gt_get", _wrap_DofToQuad_Gt_get, METH_O, "DofToQuad_Gt_get(DofToQuad self) -> doubleArray"},
+	 { "new_DofToQuad", _wrap_new_DofToQuad, METH_NOARGS, "new_DofToQuad() -> DofToQuad"},
+	 { "delete_DofToQuad", _wrap_delete_DofToQuad, METH_O, "delete_DofToQuad(DofToQuad self)"},
+	 { "DofToQuad_swigregister", DofToQuad_swigregister, METH_O, NULL},
+	 { "DofToQuad_swiginit", DofToQuad_swiginit, METH_VARARGS, NULL},
+	 { "new_FunctionSpace", _wrap_new_FunctionSpace, METH_NOARGS, "new_FunctionSpace() -> FunctionSpace"},
+	 { "delete_FunctionSpace", _wrap_delete_FunctionSpace, METH_O, "delete_FunctionSpace(FunctionSpace self)"},
+	 { "FunctionSpace_swigregister", FunctionSpace_swigregister, METH_O, NULL},
+	 { "FunctionSpace_swiginit", FunctionSpace_swiginit, METH_VARARGS, NULL},
+	 { "FiniteElement_GetDim", _wrap_FiniteElement_GetDim, METH_O, "GetDim(FiniteElement self) -> int"},
+	 { "FiniteElement_GetGeomType", _wrap_FiniteElement_GetGeomType, METH_O, "GetGeomType(FiniteElement self) -> mfem::Geometry::Type"},
+	 { "FiniteElement_GetDof", _wrap_FiniteElement_GetDof, METH_O, "GetDof(FiniteElement self) -> int"},
+	 { "FiniteElement_GetOrder", _wrap_FiniteElement_GetOrder, METH_O, "GetOrder(FiniteElement self) -> int"},
+	 { "FiniteElement_HasAnisotropicOrders", _wrap_FiniteElement_HasAnisotropicOrders, METH_O, "HasAnisotropicOrders(FiniteElement self) -> bool"},
+	 { "FiniteElement_GetAnisotropicOrders", _wrap_FiniteElement_GetAnisotropicOrders, METH_O, "GetAnisotropicOrders(FiniteElement self) -> int const *"},
+	 { "FiniteElement_Space", _wrap_FiniteElement_Space, METH_O, "Space(FiniteElement self) -> int"},
+	 { "FiniteElement_GetRangeType", _wrap_FiniteElement_GetRangeType, METH_O, "GetRangeType(FiniteElement self) -> int"},
+	 { "FiniteElement_GetDerivRangeType", _wrap_FiniteElement_GetDerivRangeType, METH_O, "GetDerivRangeType(FiniteElement self) -> int"},
+	 { "FiniteElement_GetMapType", _wrap_FiniteElement_GetMapType, METH_O, "GetMapType(FiniteElement self) -> int"},
+	 { "FiniteElement_GetDerivType", _wrap_FiniteElement_GetDerivType, METH_O, "GetDerivType(FiniteElement self) -> int"},
+	 { "FiniteElement_GetDerivMapType", _wrap_FiniteElement_GetDerivMapType, METH_O, "GetDerivMapType(FiniteElement self) -> int"},
+	 { "FiniteElement_CalcShape", _wrap_FiniteElement_CalcShape, METH_VARARGS, "CalcShape(FiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "FiniteElement_CalcPhysShape", _wrap_FiniteElement_CalcPhysShape, METH_VARARGS, "CalcPhysShape(FiniteElement self, mfem::ElementTransformation & Trans, Vector shape)"},
+	 { "FiniteElement_CalcDShape", _wrap_FiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(FiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "FiniteElement_CalcPhysDShape", _wrap_FiniteElement_CalcPhysDShape, METH_VARARGS, "CalcPhysDShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix dshape)"},
+	 { "FiniteElement_GetNodes", _wrap_FiniteElement_GetNodes, METH_O, "GetNodes(FiniteElement self) -> IntegrationRule"},
+	 { "FiniteElement_CalcVShape", _wrap_FiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(FiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "FiniteElement_CalcPhysVShape", _wrap_FiniteElement_CalcPhysVShape, METH_VARARGS, "CalcPhysVShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)"},
+	 { "FiniteElement_CalcDivShape", _wrap_FiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(FiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "FiniteElement_CalcPhysDivShape", _wrap_FiniteElement_CalcPhysDivShape, METH_VARARGS, "CalcPhysDivShape(FiniteElement self, mfem::ElementTransformation & Trans, Vector divshape)"},
+	 { "FiniteElement_CalcCurlShape", _wrap_FiniteElement_CalcCurlShape, METH_VARARGS, "CalcCurlShape(FiniteElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "FiniteElement_CalcPhysCurlShape", _wrap_FiniteElement_CalcPhysCurlShape, METH_VARARGS, "CalcPhysCurlShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"},
+	 { "FiniteElement_GetFaceDofs", _wrap_FiniteElement_GetFaceDofs, METH_VARARGS, "GetFaceDofs(FiniteElement self, int face, int ** dofs, int * ndofs)"},
+	 { "FiniteElement_CalcHessian", _wrap_FiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(FiniteElement self, IntegrationPoint ip, DenseMatrix Hessian)"},
+	 { "FiniteElement_CalcPhysHessian", _wrap_FiniteElement_CalcPhysHessian, METH_VARARGS, "CalcPhysHessian(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix Hessian)"},
+	 { "FiniteElement_CalcPhysLaplacian", _wrap_FiniteElement_CalcPhysLaplacian, METH_VARARGS, "CalcPhysLaplacian(FiniteElement self, mfem::ElementTransformation & Trans, Vector Laplacian)"},
+	 { "FiniteElement_CalcPhysLinLaplacian", _wrap_FiniteElement_CalcPhysLinLaplacian, METH_VARARGS, "CalcPhysLinLaplacian(FiniteElement self, mfem::ElementTransformation & Trans, Vector Laplacian)"},
+	 { "FiniteElement_GetLocalInterpolation", _wrap_FiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "FiniteElement_GetLocalRestriction", _wrap_FiniteElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "FiniteElement_GetTransferMatrix", _wrap_FiniteElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "FiniteElement_ProjectMatrixCoefficient", _wrap_FiniteElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(FiniteElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "FiniteElement_ProjectDelta", _wrap_FiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(FiniteElement self, int vertex, Vector dofs)"},
+	 { "FiniteElement_Project", _wrap_FiniteElement_Project, METH_VARARGS, "\n"
+		"Project(FiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(FiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "FiniteElement_ProjectGrad", _wrap_FiniteElement_ProjectGrad, METH_VARARGS, "ProjectGrad(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "FiniteElement_ProjectCurl", _wrap_FiniteElement_ProjectCurl, METH_VARARGS, "ProjectCurl(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "FiniteElement_ProjectDiv", _wrap_FiniteElement_ProjectDiv, METH_VARARGS, "ProjectDiv(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"},
+	 { "FiniteElement_GetDofToQuad", _wrap_FiniteElement_GetDofToQuad, METH_VARARGS, "GetDofToQuad(FiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "delete_FiniteElement", _wrap_delete_FiniteElement, METH_O, "delete_FiniteElement(FiniteElement self)"},
+	 { "FiniteElement_IsClosedType", _wrap_FiniteElement_IsClosedType, METH_O, "IsClosedType(int b_type) -> bool"},
+	 { "FiniteElement_IsOpenType", _wrap_FiniteElement_IsOpenType, METH_O, "IsOpenType(int b_type) -> bool"},
+	 { "FiniteElement_VerifyClosed", _wrap_FiniteElement_VerifyClosed, METH_O, "VerifyClosed(int b_type) -> int"},
+	 { "FiniteElement_VerifyOpen", _wrap_FiniteElement_VerifyOpen, METH_O, "VerifyOpen(int b_type) -> int"},
+	 { "FiniteElement_VerifyNodal", _wrap_FiniteElement_VerifyNodal, METH_O, "VerifyNodal(int b_type) -> int"},
+	 { "FiniteElement_swigregister", FiniteElement_swigregister, METH_O, NULL},
+	 { "ScalarFiniteElement_SetMapType", _wrap_ScalarFiniteElement_SetMapType, METH_VARARGS, "SetMapType(ScalarFiniteElement self, int M)"},
+	 { "ScalarFiniteElement_NodalLocalInterpolation", _wrap_ScalarFiniteElement_NodalLocalInterpolation, METH_VARARGS, "NodalLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"},
+	 { "ScalarFiniteElement_ScalarLocalInterpolation", _wrap_ScalarFiniteElement_ScalarLocalInterpolation, METH_VARARGS, "ScalarLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"},
+	 { "ScalarFiniteElement_GetDofToQuad", _wrap_ScalarFiniteElement_GetDofToQuad, METH_VARARGS, "GetDofToQuad(ScalarFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "delete_ScalarFiniteElement", _wrap_delete_ScalarFiniteElement, METH_O, "delete_ScalarFiniteElement(ScalarFiniteElement self)"},
+	 { "ScalarFiniteElement_swigregister", ScalarFiniteElement_swigregister, METH_O, NULL},
+	 { "NodalFiniteElement_GetLocalInterpolation", _wrap_NodalFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(NodalFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "NodalFiniteElement_GetLocalRestriction", _wrap_NodalFiniteElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(NodalFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "NodalFiniteElement_GetTransferMatrix", _wrap_NodalFiniteElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "NodalFiniteElement_ProjectMatrixCoefficient", _wrap_NodalFiniteElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(NodalFiniteElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "NodalFiniteElement_Project", _wrap_NodalFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(NodalFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(NodalFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "NodalFiniteElement_ProjectGrad", _wrap_NodalFiniteElement_ProjectGrad, METH_VARARGS, "ProjectGrad(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "NodalFiniteElement_ProjectDiv", _wrap_NodalFiniteElement_ProjectDiv, METH_VARARGS, "ProjectDiv(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"},
+	 { "delete_NodalFiniteElement", _wrap_delete_NodalFiniteElement, METH_O, "delete_NodalFiniteElement(NodalFiniteElement self)"},
+	 { "NodalFiniteElement_swigregister", NodalFiniteElement_swigregister, METH_O, NULL},
+	 { "PositiveFiniteElement_GetLocalInterpolation", _wrap_PositiveFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "PositiveFiniteElement_GetTransferMatrix", _wrap_PositiveFiniteElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "PositiveFiniteElement_Project", _wrap_PositiveFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(PositiveFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(PositiveFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(PositiveFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(PositiveFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "delete_PositiveFiniteElement", _wrap_delete_PositiveFiniteElement, METH_O, "delete_PositiveFiniteElement(PositiveFiniteElement self)"},
+	 { "PositiveFiniteElement_swigregister", PositiveFiniteElement_swigregister, METH_O, NULL},
+	 { "new_VectorFiniteElement", _wrap_new_VectorFiniteElement, METH_VARARGS, "VectorFiniteElement(int D, mfem::Geometry::Type G, int Do, int O, int M, int F=Pk)"},
+	 { "delete_VectorFiniteElement", _wrap_delete_VectorFiniteElement, METH_O, "delete_VectorFiniteElement(VectorFiniteElement self)"},
+	 { "VectorFiniteElement_swigregister", VectorFiniteElement_swigregister, METH_O, NULL},
+	 { "VectorFiniteElement_swiginit", VectorFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_PointFiniteElement", _wrap_new_PointFiniteElement, METH_NOARGS, "new_PointFiniteElement() -> PointFiniteElement"},
+	 { "PointFiniteElement_CalcShape", _wrap_PointFiniteElement_CalcShape, METH_VARARGS, "CalcShape(PointFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "PointFiniteElement_CalcDShape", _wrap_PointFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(PointFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_PointFiniteElement", _wrap_delete_PointFiniteElement, METH_O, "delete_PointFiniteElement(PointFiniteElement self)"},
+	 { "PointFiniteElement_swigregister", PointFiniteElement_swigregister, METH_O, NULL},
+	 { "PointFiniteElement_swiginit", PointFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Linear1DFiniteElement", _wrap_new_Linear1DFiniteElement, METH_NOARGS, "new_Linear1DFiniteElement() -> Linear1DFiniteElement"},
+	 { "Linear1DFiniteElement_CalcShape", _wrap_Linear1DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Linear1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Linear1DFiniteElement_CalcDShape", _wrap_Linear1DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Linear1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_Linear1DFiniteElement", _wrap_delete_Linear1DFiniteElement, METH_O, "delete_Linear1DFiniteElement(Linear1DFiniteElement self)"},
+	 { "Linear1DFiniteElement_swigregister", Linear1DFiniteElement_swigregister, METH_O, NULL},
+	 { "Linear1DFiniteElement_swiginit", Linear1DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Linear2DFiniteElement", _wrap_new_Linear2DFiniteElement, METH_NOARGS, "new_Linear2DFiniteElement() -> Linear2DFiniteElement"},
+	 { "Linear2DFiniteElement_CalcShape", _wrap_Linear2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Linear2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Linear2DFiniteElement_CalcDShape", _wrap_Linear2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Linear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "Linear2DFiniteElement_ProjectDelta", _wrap_Linear2DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(Linear2DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_Linear2DFiniteElement", _wrap_delete_Linear2DFiniteElement, METH_O, "delete_Linear2DFiniteElement(Linear2DFiniteElement self)"},
+	 { "Linear2DFiniteElement_swigregister", Linear2DFiniteElement_swigregister, METH_O, NULL},
+	 { "Linear2DFiniteElement_swiginit", Linear2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_BiLinear2DFiniteElement", _wrap_new_BiLinear2DFiniteElement, METH_NOARGS, "new_BiLinear2DFiniteElement() -> BiLinear2DFiniteElement"},
+	 { "BiLinear2DFiniteElement_CalcShape", _wrap_BiLinear2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(BiLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "BiLinear2DFiniteElement_CalcDShape", _wrap_BiLinear2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(BiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "BiLinear2DFiniteElement_CalcHessian", _wrap_BiLinear2DFiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(BiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"},
+	 { "BiLinear2DFiniteElement_ProjectDelta", _wrap_BiLinear2DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(BiLinear2DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_BiLinear2DFiniteElement", _wrap_delete_BiLinear2DFiniteElement, METH_O, "delete_BiLinear2DFiniteElement(BiLinear2DFiniteElement self)"},
+	 { "BiLinear2DFiniteElement_swigregister", BiLinear2DFiniteElement_swigregister, METH_O, NULL},
+	 { "BiLinear2DFiniteElement_swiginit", BiLinear2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_GaussLinear2DFiniteElement", _wrap_new_GaussLinear2DFiniteElement, METH_NOARGS, "new_GaussLinear2DFiniteElement() -> GaussLinear2DFiniteElement"},
+	 { "GaussLinear2DFiniteElement_CalcShape", _wrap_GaussLinear2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(GaussLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "GaussLinear2DFiniteElement_CalcDShape", _wrap_GaussLinear2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(GaussLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "GaussLinear2DFiniteElement_ProjectDelta", _wrap_GaussLinear2DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(GaussLinear2DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_GaussLinear2DFiniteElement", _wrap_delete_GaussLinear2DFiniteElement, METH_O, "delete_GaussLinear2DFiniteElement(GaussLinear2DFiniteElement self)"},
+	 { "GaussLinear2DFiniteElement_swigregister", GaussLinear2DFiniteElement_swigregister, METH_O, NULL},
+	 { "GaussLinear2DFiniteElement_swiginit", GaussLinear2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_GaussBiLinear2DFiniteElement", _wrap_new_GaussBiLinear2DFiniteElement, METH_NOARGS, "new_GaussBiLinear2DFiniteElement() -> GaussBiLinear2DFiniteElement"},
+	 { "GaussBiLinear2DFiniteElement_CalcShape", _wrap_GaussBiLinear2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(GaussBiLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "GaussBiLinear2DFiniteElement_CalcDShape", _wrap_GaussBiLinear2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(GaussBiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "GaussBiLinear2DFiniteElement_ProjectDelta", _wrap_GaussBiLinear2DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(GaussBiLinear2DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_GaussBiLinear2DFiniteElement", _wrap_delete_GaussBiLinear2DFiniteElement, METH_O, "delete_GaussBiLinear2DFiniteElement(GaussBiLinear2DFiniteElement self)"},
+	 { "GaussBiLinear2DFiniteElement_swigregister", GaussBiLinear2DFiniteElement_swigregister, METH_O, NULL},
+	 { "GaussBiLinear2DFiniteElement_swiginit", GaussBiLinear2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P1OnQuadFiniteElement", _wrap_new_P1OnQuadFiniteElement, METH_NOARGS, "new_P1OnQuadFiniteElement() -> P1OnQuadFiniteElement"},
+	 { "P1OnQuadFiniteElement_CalcShape", _wrap_P1OnQuadFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P1OnQuadFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P1OnQuadFiniteElement_CalcDShape", _wrap_P1OnQuadFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P1OnQuadFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "P1OnQuadFiniteElement_ProjectDelta", _wrap_P1OnQuadFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(P1OnQuadFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_P1OnQuadFiniteElement", _wrap_delete_P1OnQuadFiniteElement, METH_O, "delete_P1OnQuadFiniteElement(P1OnQuadFiniteElement self)"},
+	 { "P1OnQuadFiniteElement_swigregister", P1OnQuadFiniteElement_swigregister, METH_O, NULL},
+	 { "P1OnQuadFiniteElement_swiginit", P1OnQuadFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Quad1DFiniteElement", _wrap_new_Quad1DFiniteElement, METH_NOARGS, "new_Quad1DFiniteElement() -> Quad1DFiniteElement"},
+	 { "Quad1DFiniteElement_CalcShape", _wrap_Quad1DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Quad1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Quad1DFiniteElement_CalcDShape", _wrap_Quad1DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Quad1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_Quad1DFiniteElement", _wrap_delete_Quad1DFiniteElement, METH_O, "delete_Quad1DFiniteElement(Quad1DFiniteElement self)"},
+	 { "Quad1DFiniteElement_swigregister", Quad1DFiniteElement_swigregister, METH_O, NULL},
+	 { "Quad1DFiniteElement_swiginit", Quad1DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_QuadPos1DFiniteElement", _wrap_new_QuadPos1DFiniteElement, METH_NOARGS, "new_QuadPos1DFiniteElement() -> QuadPos1DFiniteElement"},
+	 { "QuadPos1DFiniteElement_CalcShape", _wrap_QuadPos1DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(QuadPos1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "QuadPos1DFiniteElement_CalcDShape", _wrap_QuadPos1DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(QuadPos1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_QuadPos1DFiniteElement", _wrap_delete_QuadPos1DFiniteElement, METH_O, "delete_QuadPos1DFiniteElement(QuadPos1DFiniteElement self)"},
+	 { "QuadPos1DFiniteElement_swigregister", QuadPos1DFiniteElement_swigregister, METH_O, NULL},
+	 { "QuadPos1DFiniteElement_swiginit", QuadPos1DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Quad2DFiniteElement", _wrap_new_Quad2DFiniteElement, METH_NOARGS, "new_Quad2DFiniteElement() -> Quad2DFiniteElement"},
+	 { "Quad2DFiniteElement_CalcShape", _wrap_Quad2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Quad2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Quad2DFiniteElement_CalcDShape", _wrap_Quad2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Quad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "Quad2DFiniteElement_CalcHessian", _wrap_Quad2DFiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(Quad2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"},
+	 { "Quad2DFiniteElement_ProjectDelta", _wrap_Quad2DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(Quad2DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_Quad2DFiniteElement", _wrap_delete_Quad2DFiniteElement, METH_O, "delete_Quad2DFiniteElement(Quad2DFiniteElement self)"},
+	 { "Quad2DFiniteElement_swigregister", Quad2DFiniteElement_swigregister, METH_O, NULL},
+	 { "Quad2DFiniteElement_swiginit", Quad2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_GaussQuad2DFiniteElement", _wrap_new_GaussQuad2DFiniteElement, METH_NOARGS, "new_GaussQuad2DFiniteElement() -> GaussQuad2DFiniteElement"},
+	 { "GaussQuad2DFiniteElement_CalcShape", _wrap_GaussQuad2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(GaussQuad2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "GaussQuad2DFiniteElement_CalcDShape", _wrap_GaussQuad2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(GaussQuad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_GaussQuad2DFiniteElement", _wrap_delete_GaussQuad2DFiniteElement, METH_O, "delete_GaussQuad2DFiniteElement(GaussQuad2DFiniteElement self)"},
+	 { "GaussQuad2DFiniteElement_swigregister", GaussQuad2DFiniteElement_swigregister, METH_O, NULL},
+	 { "GaussQuad2DFiniteElement_swiginit", GaussQuad2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_BiQuad2DFiniteElement", _wrap_new_BiQuad2DFiniteElement, METH_NOARGS, "new_BiQuad2DFiniteElement() -> BiQuad2DFiniteElement"},
+	 { "BiQuad2DFiniteElement_CalcShape", _wrap_BiQuad2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(BiQuad2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "BiQuad2DFiniteElement_CalcDShape", _wrap_BiQuad2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(BiQuad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "BiQuad2DFiniteElement_ProjectDelta", _wrap_BiQuad2DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(BiQuad2DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_BiQuad2DFiniteElement", _wrap_delete_BiQuad2DFiniteElement, METH_O, "delete_BiQuad2DFiniteElement(BiQuad2DFiniteElement self)"},
+	 { "BiQuad2DFiniteElement_swigregister", BiQuad2DFiniteElement_swigregister, METH_O, NULL},
+	 { "BiQuad2DFiniteElement_swiginit", BiQuad2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_BiQuadPos2DFiniteElement", _wrap_new_BiQuadPos2DFiniteElement, METH_NOARGS, "new_BiQuadPos2DFiniteElement() -> BiQuadPos2DFiniteElement"},
+	 { "BiQuadPos2DFiniteElement_CalcShape", _wrap_BiQuadPos2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(BiQuadPos2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "BiQuadPos2DFiniteElement_CalcDShape", _wrap_BiQuadPos2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(BiQuadPos2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "BiQuadPos2DFiniteElement_GetLocalInterpolation", _wrap_BiQuadPos2DFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(BiQuadPos2DFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "BiQuadPos2DFiniteElement_Project", _wrap_BiQuadPos2DFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(BiQuadPos2DFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(BiQuadPos2DFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(BiQuadPos2DFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(BiQuadPos2DFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(BiQuadPos2DFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "BiQuadPos2DFiniteElement_ProjectDelta", _wrap_BiQuadPos2DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(BiQuadPos2DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_BiQuadPos2DFiniteElement", _wrap_delete_BiQuadPos2DFiniteElement, METH_O, "delete_BiQuadPos2DFiniteElement(BiQuadPos2DFiniteElement self)"},
+	 { "BiQuadPos2DFiniteElement_swigregister", BiQuadPos2DFiniteElement_swigregister, METH_O, NULL},
+	 { "BiQuadPos2DFiniteElement_swiginit", BiQuadPos2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_GaussBiQuad2DFiniteElement", _wrap_new_GaussBiQuad2DFiniteElement, METH_NOARGS, "new_GaussBiQuad2DFiniteElement() -> GaussBiQuad2DFiniteElement"},
+	 { "GaussBiQuad2DFiniteElement_CalcShape", _wrap_GaussBiQuad2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(GaussBiQuad2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "GaussBiQuad2DFiniteElement_CalcDShape", _wrap_GaussBiQuad2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(GaussBiQuad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_GaussBiQuad2DFiniteElement", _wrap_delete_GaussBiQuad2DFiniteElement, METH_O, "delete_GaussBiQuad2DFiniteElement(GaussBiQuad2DFiniteElement self)"},
+	 { "GaussBiQuad2DFiniteElement_swigregister", GaussBiQuad2DFiniteElement_swigregister, METH_O, NULL},
+	 { "GaussBiQuad2DFiniteElement_swiginit", GaussBiQuad2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_BiCubic2DFiniteElement", _wrap_new_BiCubic2DFiniteElement, METH_NOARGS, "new_BiCubic2DFiniteElement() -> BiCubic2DFiniteElement"},
+	 { "BiCubic2DFiniteElement_CalcShape", _wrap_BiCubic2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(BiCubic2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "BiCubic2DFiniteElement_CalcDShape", _wrap_BiCubic2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(BiCubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "BiCubic2DFiniteElement_CalcHessian", _wrap_BiCubic2DFiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(BiCubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"},
+	 { "delete_BiCubic2DFiniteElement", _wrap_delete_BiCubic2DFiniteElement, METH_O, "delete_BiCubic2DFiniteElement(BiCubic2DFiniteElement self)"},
+	 { "BiCubic2DFiniteElement_swigregister", BiCubic2DFiniteElement_swigregister, METH_O, NULL},
+	 { "BiCubic2DFiniteElement_swiginit", BiCubic2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Cubic1DFiniteElement", _wrap_new_Cubic1DFiniteElement, METH_NOARGS, "new_Cubic1DFiniteElement() -> Cubic1DFiniteElement"},
+	 { "Cubic1DFiniteElement_CalcShape", _wrap_Cubic1DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Cubic1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Cubic1DFiniteElement_CalcDShape", _wrap_Cubic1DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Cubic1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_Cubic1DFiniteElement", _wrap_delete_Cubic1DFiniteElement, METH_O, "delete_Cubic1DFiniteElement(Cubic1DFiniteElement self)"},
+	 { "Cubic1DFiniteElement_swigregister", Cubic1DFiniteElement_swigregister, METH_O, NULL},
+	 { "Cubic1DFiniteElement_swiginit", Cubic1DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Cubic2DFiniteElement", _wrap_new_Cubic2DFiniteElement, METH_NOARGS, "new_Cubic2DFiniteElement() -> Cubic2DFiniteElement"},
+	 { "Cubic2DFiniteElement_CalcShape", _wrap_Cubic2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Cubic2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Cubic2DFiniteElement_CalcDShape", _wrap_Cubic2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Cubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "Cubic2DFiniteElement_CalcHessian", _wrap_Cubic2DFiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(Cubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"},
+	 { "delete_Cubic2DFiniteElement", _wrap_delete_Cubic2DFiniteElement, METH_O, "delete_Cubic2DFiniteElement(Cubic2DFiniteElement self)"},
+	 { "Cubic2DFiniteElement_swigregister", Cubic2DFiniteElement_swigregister, METH_O, NULL},
+	 { "Cubic2DFiniteElement_swiginit", Cubic2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Cubic3DFiniteElement", _wrap_new_Cubic3DFiniteElement, METH_NOARGS, "new_Cubic3DFiniteElement() -> Cubic3DFiniteElement"},
+	 { "Cubic3DFiniteElement_CalcShape", _wrap_Cubic3DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Cubic3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Cubic3DFiniteElement_CalcDShape", _wrap_Cubic3DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Cubic3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_Cubic3DFiniteElement", _wrap_delete_Cubic3DFiniteElement, METH_O, "delete_Cubic3DFiniteElement(Cubic3DFiniteElement self)"},
+	 { "Cubic3DFiniteElement_swigregister", Cubic3DFiniteElement_swigregister, METH_O, NULL},
+	 { "Cubic3DFiniteElement_swiginit", Cubic3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P0TriangleFiniteElement", _wrap_new_P0TriangleFiniteElement, METH_NOARGS, "new_P0TriangleFiniteElement() -> P0TriangleFiniteElement"},
+	 { "P0TriangleFiniteElement_CalcShape", _wrap_P0TriangleFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P0TriangleFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P0TriangleFiniteElement_CalcDShape", _wrap_P0TriangleFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P0TriangleFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "P0TriangleFiniteElement_ProjectDelta", _wrap_P0TriangleFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(P0TriangleFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_P0TriangleFiniteElement", _wrap_delete_P0TriangleFiniteElement, METH_O, "delete_P0TriangleFiniteElement(P0TriangleFiniteElement self)"},
+	 { "P0TriangleFiniteElement_swigregister", P0TriangleFiniteElement_swigregister, METH_O, NULL},
+	 { "P0TriangleFiniteElement_swiginit", P0TriangleFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P0QuadFiniteElement", _wrap_new_P0QuadFiniteElement, METH_NOARGS, "new_P0QuadFiniteElement() -> P0QuadFiniteElement"},
+	 { "P0QuadFiniteElement_CalcShape", _wrap_P0QuadFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P0QuadFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P0QuadFiniteElement_CalcDShape", _wrap_P0QuadFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P0QuadFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "P0QuadFiniteElement_ProjectDelta", _wrap_P0QuadFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(P0QuadFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_P0QuadFiniteElement", _wrap_delete_P0QuadFiniteElement, METH_O, "delete_P0QuadFiniteElement(P0QuadFiniteElement self)"},
+	 { "P0QuadFiniteElement_swigregister", P0QuadFiniteElement_swigregister, METH_O, NULL},
+	 { "P0QuadFiniteElement_swiginit", P0QuadFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Linear3DFiniteElement", _wrap_new_Linear3DFiniteElement, METH_NOARGS, "new_Linear3DFiniteElement() -> Linear3DFiniteElement"},
+	 { "Linear3DFiniteElement_CalcShape", _wrap_Linear3DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Linear3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Linear3DFiniteElement_CalcDShape", _wrap_Linear3DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Linear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "Linear3DFiniteElement_ProjectDelta", _wrap_Linear3DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(Linear3DFiniteElement self, int vertex, Vector dofs)"},
+	 { "Linear3DFiniteElement_GetFaceDofs", _wrap_Linear3DFiniteElement_GetFaceDofs, METH_VARARGS, "GetFaceDofs(Linear3DFiniteElement self, int face, int ** dofs, int * ndofs)"},
+	 { "delete_Linear3DFiniteElement", _wrap_delete_Linear3DFiniteElement, METH_O, "delete_Linear3DFiniteElement(Linear3DFiniteElement self)"},
+	 { "Linear3DFiniteElement_swigregister", Linear3DFiniteElement_swigregister, METH_O, NULL},
+	 { "Linear3DFiniteElement_swiginit", Linear3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Quadratic3DFiniteElement", _wrap_new_Quadratic3DFiniteElement, METH_NOARGS, "new_Quadratic3DFiniteElement() -> Quadratic3DFiniteElement"},
+	 { "Quadratic3DFiniteElement_CalcShape", _wrap_Quadratic3DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Quadratic3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Quadratic3DFiniteElement_CalcDShape", _wrap_Quadratic3DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Quadratic3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_Quadratic3DFiniteElement", _wrap_delete_Quadratic3DFiniteElement, METH_O, "delete_Quadratic3DFiniteElement(Quadratic3DFiniteElement self)"},
+	 { "Quadratic3DFiniteElement_swigregister", Quadratic3DFiniteElement_swigregister, METH_O, NULL},
+	 { "Quadratic3DFiniteElement_swiginit", Quadratic3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_TriLinear3DFiniteElement", _wrap_new_TriLinear3DFiniteElement, METH_NOARGS, "new_TriLinear3DFiniteElement() -> TriLinear3DFiniteElement"},
+	 { "TriLinear3DFiniteElement_CalcShape", _wrap_TriLinear3DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(TriLinear3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "TriLinear3DFiniteElement_CalcDShape", _wrap_TriLinear3DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(TriLinear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "TriLinear3DFiniteElement_ProjectDelta", _wrap_TriLinear3DFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(TriLinear3DFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_TriLinear3DFiniteElement", _wrap_delete_TriLinear3DFiniteElement, METH_O, "delete_TriLinear3DFiniteElement(TriLinear3DFiniteElement self)"},
+	 { "TriLinear3DFiniteElement_swigregister", TriLinear3DFiniteElement_swigregister, METH_O, NULL},
+	 { "TriLinear3DFiniteElement_swiginit", TriLinear3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_CrouzeixRaviartFiniteElement", _wrap_new_CrouzeixRaviartFiniteElement, METH_NOARGS, "new_CrouzeixRaviartFiniteElement() -> CrouzeixRaviartFiniteElement"},
+	 { "CrouzeixRaviartFiniteElement_CalcShape", _wrap_CrouzeixRaviartFiniteElement_CalcShape, METH_VARARGS, "CalcShape(CrouzeixRaviartFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "CrouzeixRaviartFiniteElement_CalcDShape", _wrap_CrouzeixRaviartFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(CrouzeixRaviartFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "CrouzeixRaviartFiniteElement_ProjectDelta", _wrap_CrouzeixRaviartFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(CrouzeixRaviartFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_CrouzeixRaviartFiniteElement", _wrap_delete_CrouzeixRaviartFiniteElement, METH_O, "delete_CrouzeixRaviartFiniteElement(CrouzeixRaviartFiniteElement self)"},
+	 { "CrouzeixRaviartFiniteElement_swigregister", CrouzeixRaviartFiniteElement_swigregister, METH_O, NULL},
+	 { "CrouzeixRaviartFiniteElement_swiginit", CrouzeixRaviartFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_CrouzeixRaviartQuadFiniteElement", _wrap_new_CrouzeixRaviartQuadFiniteElement, METH_NOARGS, "new_CrouzeixRaviartQuadFiniteElement() -> CrouzeixRaviartQuadFiniteElement"},
+	 { "CrouzeixRaviartQuadFiniteElement_CalcShape", _wrap_CrouzeixRaviartQuadFiniteElement_CalcShape, METH_VARARGS, "CalcShape(CrouzeixRaviartQuadFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "CrouzeixRaviartQuadFiniteElement_CalcDShape", _wrap_CrouzeixRaviartQuadFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(CrouzeixRaviartQuadFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_CrouzeixRaviartQuadFiniteElement", _wrap_delete_CrouzeixRaviartQuadFiniteElement, METH_O, "delete_CrouzeixRaviartQuadFiniteElement(CrouzeixRaviartQuadFiniteElement self)"},
+	 { "CrouzeixRaviartQuadFiniteElement_swigregister", CrouzeixRaviartQuadFiniteElement_swigregister, METH_O, NULL},
+	 { "CrouzeixRaviartQuadFiniteElement_swiginit", CrouzeixRaviartQuadFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P0SegmentFiniteElement", _wrap_new_P0SegmentFiniteElement, METH_VARARGS, "P0SegmentFiniteElement(int Ord=0)"},
+	 { "P0SegmentFiniteElement_CalcShape", _wrap_P0SegmentFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P0SegmentFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P0SegmentFiniteElement_CalcDShape", _wrap_P0SegmentFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P0SegmentFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_P0SegmentFiniteElement", _wrap_delete_P0SegmentFiniteElement, METH_O, "delete_P0SegmentFiniteElement(P0SegmentFiniteElement self)"},
+	 { "P0SegmentFiniteElement_swigregister", P0SegmentFiniteElement_swigregister, METH_O, NULL},
+	 { "P0SegmentFiniteElement_swiginit", P0SegmentFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT0TriangleFiniteElement", _wrap_new_RT0TriangleFiniteElement, METH_NOARGS, "new_RT0TriangleFiniteElement() -> RT0TriangleFiniteElement"},
+	 { "RT0TriangleFiniteElement_CalcVShape", _wrap_RT0TriangleFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT0TriangleFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT0TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT0TriangleFiniteElement_CalcDivShape", _wrap_RT0TriangleFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT0TriangleFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT0TriangleFiniteElement_GetLocalInterpolation", _wrap_RT0TriangleFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT0TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT0TriangleFiniteElement_Project", _wrap_RT0TriangleFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT0TriangleFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0TriangleFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0TriangleFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT0TriangleFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT0TriangleFiniteElement", _wrap_delete_RT0TriangleFiniteElement, METH_O, "delete_RT0TriangleFiniteElement(RT0TriangleFiniteElement self)"},
+	 { "RT0TriangleFiniteElement_swigregister", RT0TriangleFiniteElement_swigregister, METH_O, NULL},
+	 { "RT0TriangleFiniteElement_swiginit", RT0TriangleFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT0QuadFiniteElement", _wrap_new_RT0QuadFiniteElement, METH_NOARGS, "new_RT0QuadFiniteElement() -> RT0QuadFiniteElement"},
+	 { "RT0QuadFiniteElement_CalcVShape", _wrap_RT0QuadFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT0QuadFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT0QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT0QuadFiniteElement_CalcDivShape", _wrap_RT0QuadFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT0QuadFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT0QuadFiniteElement_GetLocalInterpolation", _wrap_RT0QuadFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT0QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT0QuadFiniteElement_Project", _wrap_RT0QuadFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT0QuadFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0QuadFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT0QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT0QuadFiniteElement", _wrap_delete_RT0QuadFiniteElement, METH_O, "delete_RT0QuadFiniteElement(RT0QuadFiniteElement self)"},
+	 { "RT0QuadFiniteElement_swigregister", RT0QuadFiniteElement_swigregister, METH_O, NULL},
+	 { "RT0QuadFiniteElement_swiginit", RT0QuadFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT1TriangleFiniteElement", _wrap_new_RT1TriangleFiniteElement, METH_NOARGS, "new_RT1TriangleFiniteElement() -> RT1TriangleFiniteElement"},
+	 { "RT1TriangleFiniteElement_CalcVShape", _wrap_RT1TriangleFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT1TriangleFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT1TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT1TriangleFiniteElement_CalcDivShape", _wrap_RT1TriangleFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT1TriangleFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT1TriangleFiniteElement_GetLocalInterpolation", _wrap_RT1TriangleFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT1TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT1TriangleFiniteElement_Project", _wrap_RT1TriangleFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT1TriangleFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT1TriangleFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT1TriangleFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT1TriangleFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT1TriangleFiniteElement", _wrap_delete_RT1TriangleFiniteElement, METH_O, "delete_RT1TriangleFiniteElement(RT1TriangleFiniteElement self)"},
+	 { "RT1TriangleFiniteElement_swigregister", RT1TriangleFiniteElement_swigregister, METH_O, NULL},
+	 { "RT1TriangleFiniteElement_swiginit", RT1TriangleFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT1QuadFiniteElement", _wrap_new_RT1QuadFiniteElement, METH_NOARGS, "new_RT1QuadFiniteElement() -> RT1QuadFiniteElement"},
+	 { "RT1QuadFiniteElement_CalcVShape", _wrap_RT1QuadFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT1QuadFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT1QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT1QuadFiniteElement_CalcDivShape", _wrap_RT1QuadFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT1QuadFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT1QuadFiniteElement_GetLocalInterpolation", _wrap_RT1QuadFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT1QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT1QuadFiniteElement_Project", _wrap_RT1QuadFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT1QuadFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT1QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT1QuadFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT1QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT1QuadFiniteElement", _wrap_delete_RT1QuadFiniteElement, METH_O, "delete_RT1QuadFiniteElement(RT1QuadFiniteElement self)"},
+	 { "RT1QuadFiniteElement_swigregister", RT1QuadFiniteElement_swigregister, METH_O, NULL},
+	 { "RT1QuadFiniteElement_swiginit", RT1QuadFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT2TriangleFiniteElement", _wrap_new_RT2TriangleFiniteElement, METH_NOARGS, "new_RT2TriangleFiniteElement() -> RT2TriangleFiniteElement"},
+	 { "RT2TriangleFiniteElement_CalcVShape", _wrap_RT2TriangleFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT2TriangleFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT2TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT2TriangleFiniteElement_CalcDivShape", _wrap_RT2TriangleFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT2TriangleFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "delete_RT2TriangleFiniteElement", _wrap_delete_RT2TriangleFiniteElement, METH_O, "delete_RT2TriangleFiniteElement(RT2TriangleFiniteElement self)"},
+	 { "RT2TriangleFiniteElement_swigregister", RT2TriangleFiniteElement_swigregister, METH_O, NULL},
+	 { "RT2TriangleFiniteElement_swiginit", RT2TriangleFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT2QuadFiniteElement", _wrap_new_RT2QuadFiniteElement, METH_NOARGS, "new_RT2QuadFiniteElement() -> RT2QuadFiniteElement"},
+	 { "RT2QuadFiniteElement_CalcVShape", _wrap_RT2QuadFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT2QuadFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT2QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT2QuadFiniteElement_CalcDivShape", _wrap_RT2QuadFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT2QuadFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT2QuadFiniteElement_GetLocalInterpolation", _wrap_RT2QuadFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT2QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT2QuadFiniteElement_Project", _wrap_RT2QuadFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT2QuadFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT2QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT2QuadFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT2QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT2QuadFiniteElement", _wrap_delete_RT2QuadFiniteElement, METH_O, "delete_RT2QuadFiniteElement(RT2QuadFiniteElement self)"},
+	 { "RT2QuadFiniteElement_swigregister", RT2QuadFiniteElement_swigregister, METH_O, NULL},
+	 { "RT2QuadFiniteElement_swiginit", RT2QuadFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P1SegmentFiniteElement", _wrap_new_P1SegmentFiniteElement, METH_NOARGS, "new_P1SegmentFiniteElement() -> P1SegmentFiniteElement"},
+	 { "P1SegmentFiniteElement_CalcShape", _wrap_P1SegmentFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P1SegmentFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P1SegmentFiniteElement_CalcDShape", _wrap_P1SegmentFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P1SegmentFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_P1SegmentFiniteElement", _wrap_delete_P1SegmentFiniteElement, METH_O, "delete_P1SegmentFiniteElement(P1SegmentFiniteElement self)"},
+	 { "P1SegmentFiniteElement_swigregister", P1SegmentFiniteElement_swigregister, METH_O, NULL},
+	 { "P1SegmentFiniteElement_swiginit", P1SegmentFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P2SegmentFiniteElement", _wrap_new_P2SegmentFiniteElement, METH_NOARGS, "new_P2SegmentFiniteElement() -> P2SegmentFiniteElement"},
+	 { "P2SegmentFiniteElement_CalcShape", _wrap_P2SegmentFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P2SegmentFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P2SegmentFiniteElement_CalcDShape", _wrap_P2SegmentFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P2SegmentFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_P2SegmentFiniteElement", _wrap_delete_P2SegmentFiniteElement, METH_O, "delete_P2SegmentFiniteElement(P2SegmentFiniteElement self)"},
+	 { "P2SegmentFiniteElement_swigregister", P2SegmentFiniteElement_swigregister, METH_O, NULL},
+	 { "P2SegmentFiniteElement_swiginit", P2SegmentFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Lagrange1DFiniteElement", _wrap_new_Lagrange1DFiniteElement, METH_O, "new_Lagrange1DFiniteElement(int degree) -> Lagrange1DFiniteElement"},
+	 { "Lagrange1DFiniteElement_CalcShape", _wrap_Lagrange1DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(Lagrange1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "Lagrange1DFiniteElement_CalcDShape", _wrap_Lagrange1DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(Lagrange1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_Lagrange1DFiniteElement", _wrap_delete_Lagrange1DFiniteElement, METH_O, "delete_Lagrange1DFiniteElement(Lagrange1DFiniteElement self)"},
+	 { "Lagrange1DFiniteElement_swigregister", Lagrange1DFiniteElement_swigregister, METH_O, NULL},
+	 { "Lagrange1DFiniteElement_swiginit", Lagrange1DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P1TetNonConfFiniteElement", _wrap_new_P1TetNonConfFiniteElement, METH_NOARGS, "new_P1TetNonConfFiniteElement() -> P1TetNonConfFiniteElement"},
+	 { "P1TetNonConfFiniteElement_CalcShape", _wrap_P1TetNonConfFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P1TetNonConfFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P1TetNonConfFiniteElement_CalcDShape", _wrap_P1TetNonConfFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P1TetNonConfFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_P1TetNonConfFiniteElement", _wrap_delete_P1TetNonConfFiniteElement, METH_O, "delete_P1TetNonConfFiniteElement(P1TetNonConfFiniteElement self)"},
+	 { "P1TetNonConfFiniteElement_swigregister", P1TetNonConfFiniteElement_swigregister, METH_O, NULL},
+	 { "P1TetNonConfFiniteElement_swiginit", P1TetNonConfFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P0TetFiniteElement", _wrap_new_P0TetFiniteElement, METH_NOARGS, "new_P0TetFiniteElement() -> P0TetFiniteElement"},
+	 { "P0TetFiniteElement_CalcShape", _wrap_P0TetFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P0TetFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P0TetFiniteElement_CalcDShape", _wrap_P0TetFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P0TetFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "P0TetFiniteElement_ProjectDelta", _wrap_P0TetFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(P0TetFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_P0TetFiniteElement", _wrap_delete_P0TetFiniteElement, METH_O, "delete_P0TetFiniteElement(P0TetFiniteElement self)"},
+	 { "P0TetFiniteElement_swigregister", P0TetFiniteElement_swigregister, METH_O, NULL},
+	 { "P0TetFiniteElement_swiginit", P0TetFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P0HexFiniteElement", _wrap_new_P0HexFiniteElement, METH_NOARGS, "new_P0HexFiniteElement() -> P0HexFiniteElement"},
+	 { "P0HexFiniteElement_CalcShape", _wrap_P0HexFiniteElement_CalcShape, METH_VARARGS, "CalcShape(P0HexFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "P0HexFiniteElement_CalcDShape", _wrap_P0HexFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(P0HexFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "P0HexFiniteElement_ProjectDelta", _wrap_P0HexFiniteElement_ProjectDelta, METH_VARARGS, "ProjectDelta(P0HexFiniteElement self, int vertex, Vector dofs)"},
+	 { "delete_P0HexFiniteElement", _wrap_delete_P0HexFiniteElement, METH_O, "delete_P0HexFiniteElement(P0HexFiniteElement self)"},
+	 { "P0HexFiniteElement_swigregister", P0HexFiniteElement_swigregister, METH_O, NULL},
+	 { "P0HexFiniteElement_swiginit", P0HexFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_LagrangeHexFiniteElement", _wrap_new_LagrangeHexFiniteElement, METH_O, "new_LagrangeHexFiniteElement(int degree) -> LagrangeHexFiniteElement"},
+	 { "LagrangeHexFiniteElement_CalcShape", _wrap_LagrangeHexFiniteElement_CalcShape, METH_VARARGS, "CalcShape(LagrangeHexFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "LagrangeHexFiniteElement_CalcDShape", _wrap_LagrangeHexFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(LagrangeHexFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_LagrangeHexFiniteElement", _wrap_delete_LagrangeHexFiniteElement, METH_O, "delete_LagrangeHexFiniteElement(LagrangeHexFiniteElement self)"},
+	 { "LagrangeHexFiniteElement_swigregister", LagrangeHexFiniteElement_swigregister, METH_O, NULL},
+	 { "LagrangeHexFiniteElement_swiginit", LagrangeHexFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RefinedLinear1DFiniteElement", _wrap_new_RefinedLinear1DFiniteElement, METH_NOARGS, "new_RefinedLinear1DFiniteElement() -> RefinedLinear1DFiniteElement"},
+	 { "RefinedLinear1DFiniteElement_CalcShape", _wrap_RefinedLinear1DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(RefinedLinear1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "RefinedLinear1DFiniteElement_CalcDShape", _wrap_RefinedLinear1DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(RefinedLinear1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_RefinedLinear1DFiniteElement", _wrap_delete_RefinedLinear1DFiniteElement, METH_O, "delete_RefinedLinear1DFiniteElement(RefinedLinear1DFiniteElement self)"},
+	 { "RefinedLinear1DFiniteElement_swigregister", RefinedLinear1DFiniteElement_swigregister, METH_O, NULL},
+	 { "RefinedLinear1DFiniteElement_swiginit", RefinedLinear1DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RefinedLinear2DFiniteElement", _wrap_new_RefinedLinear2DFiniteElement, METH_NOARGS, "new_RefinedLinear2DFiniteElement() -> RefinedLinear2DFiniteElement"},
+	 { "RefinedLinear2DFiniteElement_CalcShape", _wrap_RefinedLinear2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(RefinedLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "RefinedLinear2DFiniteElement_CalcDShape", _wrap_RefinedLinear2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(RefinedLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_RefinedLinear2DFiniteElement", _wrap_delete_RefinedLinear2DFiniteElement, METH_O, "delete_RefinedLinear2DFiniteElement(RefinedLinear2DFiniteElement self)"},
+	 { "RefinedLinear2DFiniteElement_swigregister", RefinedLinear2DFiniteElement_swigregister, METH_O, NULL},
+	 { "RefinedLinear2DFiniteElement_swiginit", RefinedLinear2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RefinedLinear3DFiniteElement", _wrap_new_RefinedLinear3DFiniteElement, METH_NOARGS, "new_RefinedLinear3DFiniteElement() -> RefinedLinear3DFiniteElement"},
+	 { "RefinedLinear3DFiniteElement_CalcShape", _wrap_RefinedLinear3DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(RefinedLinear3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "RefinedLinear3DFiniteElement_CalcDShape", _wrap_RefinedLinear3DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(RefinedLinear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_RefinedLinear3DFiniteElement", _wrap_delete_RefinedLinear3DFiniteElement, METH_O, "delete_RefinedLinear3DFiniteElement(RefinedLinear3DFiniteElement self)"},
+	 { "RefinedLinear3DFiniteElement_swigregister", RefinedLinear3DFiniteElement_swigregister, METH_O, NULL},
+	 { "RefinedLinear3DFiniteElement_swiginit", RefinedLinear3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RefinedBiLinear2DFiniteElement", _wrap_new_RefinedBiLinear2DFiniteElement, METH_NOARGS, "new_RefinedBiLinear2DFiniteElement() -> RefinedBiLinear2DFiniteElement"},
+	 { "RefinedBiLinear2DFiniteElement_CalcShape", _wrap_RefinedBiLinear2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(RefinedBiLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "RefinedBiLinear2DFiniteElement_CalcDShape", _wrap_RefinedBiLinear2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(RefinedBiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_RefinedBiLinear2DFiniteElement", _wrap_delete_RefinedBiLinear2DFiniteElement, METH_O, "delete_RefinedBiLinear2DFiniteElement(RefinedBiLinear2DFiniteElement self)"},
+	 { "RefinedBiLinear2DFiniteElement_swigregister", RefinedBiLinear2DFiniteElement_swigregister, METH_O, NULL},
+	 { "RefinedBiLinear2DFiniteElement_swiginit", RefinedBiLinear2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RefinedTriLinear3DFiniteElement", _wrap_new_RefinedTriLinear3DFiniteElement, METH_NOARGS, "new_RefinedTriLinear3DFiniteElement() -> RefinedTriLinear3DFiniteElement"},
+	 { "RefinedTriLinear3DFiniteElement_CalcShape", _wrap_RefinedTriLinear3DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(RefinedTriLinear3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "RefinedTriLinear3DFiniteElement_CalcDShape", _wrap_RefinedTriLinear3DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(RefinedTriLinear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_RefinedTriLinear3DFiniteElement", _wrap_delete_RefinedTriLinear3DFiniteElement, METH_O, "delete_RefinedTriLinear3DFiniteElement(RefinedTriLinear3DFiniteElement self)"},
+	 { "RefinedTriLinear3DFiniteElement_swigregister", RefinedTriLinear3DFiniteElement_swigregister, METH_O, NULL},
+	 { "RefinedTriLinear3DFiniteElement_swiginit", RefinedTriLinear3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Nedelec1HexFiniteElement", _wrap_new_Nedelec1HexFiniteElement, METH_NOARGS, "new_Nedelec1HexFiniteElement() -> Nedelec1HexFiniteElement"},
+	 { "Nedelec1HexFiniteElement_CalcVShape", _wrap_Nedelec1HexFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(Nedelec1HexFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(Nedelec1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "Nedelec1HexFiniteElement_CalcCurlShape", _wrap_Nedelec1HexFiniteElement_CalcCurlShape, METH_VARARGS, "CalcCurlShape(Nedelec1HexFiniteElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "Nedelec1HexFiniteElement_GetLocalInterpolation", _wrap_Nedelec1HexFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(Nedelec1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "Nedelec1HexFiniteElement_Project", _wrap_Nedelec1HexFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(Nedelec1HexFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(Nedelec1HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(Nedelec1HexFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(Nedelec1HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_Nedelec1HexFiniteElement", _wrap_delete_Nedelec1HexFiniteElement, METH_O, "delete_Nedelec1HexFiniteElement(Nedelec1HexFiniteElement self)"},
+	 { "Nedelec1HexFiniteElement_swigregister", Nedelec1HexFiniteElement_swigregister, METH_O, NULL},
+	 { "Nedelec1HexFiniteElement_swiginit", Nedelec1HexFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Nedelec1TetFiniteElement", _wrap_new_Nedelec1TetFiniteElement, METH_NOARGS, "new_Nedelec1TetFiniteElement() -> Nedelec1TetFiniteElement"},
+	 { "Nedelec1TetFiniteElement_CalcVShape", _wrap_Nedelec1TetFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(Nedelec1TetFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(Nedelec1TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "Nedelec1TetFiniteElement_CalcCurlShape", _wrap_Nedelec1TetFiniteElement_CalcCurlShape, METH_VARARGS, "CalcCurlShape(Nedelec1TetFiniteElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "Nedelec1TetFiniteElement_GetLocalInterpolation", _wrap_Nedelec1TetFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(Nedelec1TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "Nedelec1TetFiniteElement_Project", _wrap_Nedelec1TetFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(Nedelec1TetFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(Nedelec1TetFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(Nedelec1TetFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(Nedelec1TetFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_Nedelec1TetFiniteElement", _wrap_delete_Nedelec1TetFiniteElement, METH_O, "delete_Nedelec1TetFiniteElement(Nedelec1TetFiniteElement self)"},
+	 { "Nedelec1TetFiniteElement_swigregister", Nedelec1TetFiniteElement_swigregister, METH_O, NULL},
+	 { "Nedelec1TetFiniteElement_swiginit", Nedelec1TetFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT0HexFiniteElement", _wrap_new_RT0HexFiniteElement, METH_NOARGS, "new_RT0HexFiniteElement() -> RT0HexFiniteElement"},
+	 { "RT0HexFiniteElement_CalcVShape", _wrap_RT0HexFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT0HexFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT0HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT0HexFiniteElement_CalcDivShape", _wrap_RT0HexFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT0HexFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT0HexFiniteElement_GetLocalInterpolation", _wrap_RT0HexFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT0HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT0HexFiniteElement_Project", _wrap_RT0HexFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT0HexFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0HexFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT0HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT0HexFiniteElement", _wrap_delete_RT0HexFiniteElement, METH_O, "delete_RT0HexFiniteElement(RT0HexFiniteElement self)"},
+	 { "RT0HexFiniteElement_swigregister", RT0HexFiniteElement_swigregister, METH_O, NULL},
+	 { "RT0HexFiniteElement_swiginit", RT0HexFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT1HexFiniteElement", _wrap_new_RT1HexFiniteElement, METH_NOARGS, "new_RT1HexFiniteElement() -> RT1HexFiniteElement"},
+	 { "RT1HexFiniteElement_CalcVShape", _wrap_RT1HexFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT1HexFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT1HexFiniteElement_CalcDivShape", _wrap_RT1HexFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT1HexFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT1HexFiniteElement_GetLocalInterpolation", _wrap_RT1HexFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT1HexFiniteElement_Project", _wrap_RT1HexFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT1HexFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT1HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT1HexFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT1HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT1HexFiniteElement", _wrap_delete_RT1HexFiniteElement, METH_O, "delete_RT1HexFiniteElement(RT1HexFiniteElement self)"},
+	 { "RT1HexFiniteElement_swigregister", RT1HexFiniteElement_swigregister, METH_O, NULL},
+	 { "RT1HexFiniteElement_swiginit", RT1HexFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT0TetFiniteElement", _wrap_new_RT0TetFiniteElement, METH_NOARGS, "new_RT0TetFiniteElement() -> RT0TetFiniteElement"},
+	 { "RT0TetFiniteElement_CalcVShape", _wrap_RT0TetFiniteElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT0TetFiniteElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT0TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT0TetFiniteElement_CalcDivShape", _wrap_RT0TetFiniteElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT0TetFiniteElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT0TetFiniteElement_GetLocalInterpolation", _wrap_RT0TetFiniteElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT0TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT0TetFiniteElement_Project", _wrap_RT0TetFiniteElement_Project, METH_VARARGS, "\n"
+		"Project(RT0TetFiniteElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0TetFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT0TetFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT0TetFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		""},
+	 { "delete_RT0TetFiniteElement", _wrap_delete_RT0TetFiniteElement, METH_O, "delete_RT0TetFiniteElement(RT0TetFiniteElement self)"},
+	 { "RT0TetFiniteElement_swigregister", RT0TetFiniteElement_swigregister, METH_O, NULL},
+	 { "RT0TetFiniteElement_swiginit", RT0TetFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RotTriLinearHexFiniteElement", _wrap_new_RotTriLinearHexFiniteElement, METH_NOARGS, "new_RotTriLinearHexFiniteElement() -> RotTriLinearHexFiniteElement"},
+	 { "RotTriLinearHexFiniteElement_CalcShape", _wrap_RotTriLinearHexFiniteElement_CalcShape, METH_VARARGS, "CalcShape(RotTriLinearHexFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "RotTriLinearHexFiniteElement_CalcDShape", _wrap_RotTriLinearHexFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(RotTriLinearHexFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_RotTriLinearHexFiniteElement", _wrap_delete_RotTriLinearHexFiniteElement, METH_O, "delete_RotTriLinearHexFiniteElement(RotTriLinearHexFiniteElement self)"},
+	 { "RotTriLinearHexFiniteElement_swigregister", RotTriLinearHexFiniteElement_swigregister, METH_O, NULL},
+	 { "RotTriLinearHexFiniteElement_swiginit", RotTriLinearHexFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_Poly_1D", _wrap_new_Poly_1D, METH_NOARGS, "new_Poly_1D() -> Poly_1D"},
+	 { "Poly_1D_Binom", _wrap_Poly_1D_Binom, METH_O, "Binom(int const p) -> int const *"},
+	 { "Poly_1D_GetPoints", _wrap_Poly_1D_GetPoints, METH_VARARGS, "GetPoints(Poly_1D self, int const p, int const btype) -> double const *"},
+	 { "Poly_1D_OpenPoints", _wrap_Poly_1D_OpenPoints, METH_VARARGS, "OpenPoints(Poly_1D self, int const p, int const btype=GaussLegendre) -> double const"},
+	 { "Poly_1D_ClosedPoints", _wrap_Poly_1D_ClosedPoints, METH_VARARGS, "ClosedPoints(Poly_1D self, int const p, int const btype=GaussLobatto) -> double const"},
+	 { "Poly_1D_GetBasis", _wrap_Poly_1D_GetBasis, METH_VARARGS, "GetBasis(Poly_1D self, int const p, int const btype) -> mfem::Poly_1D::Basis &"},
+	 { "Poly_1D_CalcBasis", _wrap_Poly_1D_CalcBasis, METH_VARARGS, "\n"
+		"CalcBasis(int const p, double const x, double * u)\n"
+		"CalcBasis(int const p, double const x, double * u, double * d)\n"
+		"CalcBasis(int const p, double const x, double * u, double * d, double * dd)\n"
+		""},
+	 { "Poly_1D_CalcDelta", _wrap_Poly_1D_CalcDelta, METH_VARARGS, "CalcDelta(int const p, double const x) -> double"},
+	 { "Poly_1D_ChebyshevPoints", _wrap_Poly_1D_ChebyshevPoints, METH_VARARGS, "ChebyshevPoints(int const p, double * x)"},
+	 { "Poly_1D_CalcBinomTerms", _wrap_Poly_1D_CalcBinomTerms, METH_VARARGS, "\n"
+		"CalcBinomTerms(int const p, double const x, double const y, double * u)\n"
+		"CalcBinomTerms(int const p, double const x, double const y, double * u, double * d)\n"
+		""},
+	 { "Poly_1D_CalcDBinomTerms", _wrap_Poly_1D_CalcDBinomTerms, METH_VARARGS, "CalcDBinomTerms(int const p, double const x, double const y, double * d)"},
+	 { "Poly_1D_CalcBernstein", _wrap_Poly_1D_CalcBernstein, METH_VARARGS, "\n"
+		"CalcBernstein(int const p, double const x, double * u)\n"
+		"CalcBernstein(int const p, double const x, double * u, double * d)\n"
+		""},
+	 { "Poly_1D_CalcLegendre", _wrap_Poly_1D_CalcLegendre, METH_VARARGS, "\n"
+		"CalcLegendre(int const p, double const x, double * u)\n"
+		"CalcLegendre(int const p, double const x, double * u, double * d)\n"
+		""},
+	 { "delete_Poly_1D", _wrap_delete_Poly_1D, METH_O, "delete_Poly_1D(Poly_1D self)"},
+	 { "Poly_1D_swigregister", Poly_1D_swigregister, METH_O, NULL},
+	 { "Poly_1D_swiginit", Poly_1D_swiginit, METH_VARARGS, NULL},
+	 { "new_TensorBasisElement", _wrap_new_TensorBasisElement, METH_VARARGS, "new_TensorBasisElement(int const dims, int const p, int const btype, mfem::TensorBasisElement::DofMapType const dmtype) -> TensorBasisElement"},
+	 { "TensorBasisElement_GetBasisType", _wrap_TensorBasisElement_GetBasisType, METH_O, "GetBasisType(TensorBasisElement self) -> int"},
+	 { "TensorBasisElement_GetBasis1D", _wrap_TensorBasisElement_GetBasis1D, METH_O, "GetBasis1D(TensorBasisElement self) -> mfem::Poly_1D::Basis const &"},
+	 { "TensorBasisElement_GetDofMap", _wrap_TensorBasisElement_GetDofMap, METH_O, "GetDofMap(TensorBasisElement self) -> intArray"},
+	 { "TensorBasisElement_GetTensorProductGeometry", _wrap_TensorBasisElement_GetTensorProductGeometry, METH_O, "GetTensorProductGeometry(int dim) -> mfem::Geometry::Type"},
+	 { "TensorBasisElement_Pow", _wrap_TensorBasisElement_Pow, METH_VARARGS, "Pow(int base, int dim) -> int"},
+	 { "delete_TensorBasisElement", _wrap_delete_TensorBasisElement, METH_O, "delete_TensorBasisElement(TensorBasisElement self)"},
+	 { "TensorBasisElement_swigregister", TensorBasisElement_swigregister, METH_O, NULL},
+	 { "TensorBasisElement_swiginit", TensorBasisElement_swiginit, METH_VARARGS, NULL},
+	 { "NodalTensorFiniteElement_GetDofToQuad", _wrap_NodalTensorFiniteElement_GetDofToQuad, METH_VARARGS, "GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "delete_NodalTensorFiniteElement", _wrap_delete_NodalTensorFiniteElement, METH_O, "delete_NodalTensorFiniteElement(NodalTensorFiniteElement self)"},
+	 { "NodalTensorFiniteElement_swigregister", NodalTensorFiniteElement_swigregister, METH_O, NULL},
+	 { "PositiveTensorFiniteElement_GetDofToQuad", _wrap_PositiveTensorFiniteElement_GetDofToQuad, METH_VARARGS, "GetDofToQuad(PositiveTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "delete_PositiveTensorFiniteElement", _wrap_delete_PositiveTensorFiniteElement, METH_O, "delete_PositiveTensorFiniteElement(PositiveTensorFiniteElement self)"},
+	 { "PositiveTensorFiniteElement_swigregister", PositiveTensorFiniteElement_swigregister, METH_O, NULL},
+	 { "new_VectorTensorFiniteElement", _wrap_new_VectorTensorFiniteElement, METH_VARARGS, "new_VectorTensorFiniteElement(int const dims, int const d, int const p, int const cbtype, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement"},
+	 { "VectorTensorFiniteElement_GetDofToQuad", _wrap_VectorTensorFiniteElement_GetDofToQuad, METH_VARARGS, "GetDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "VectorTensorFiniteElement_GetDofToQuadOpen", _wrap_VectorTensorFiniteElement_GetDofToQuadOpen, METH_VARARGS, "GetDofToQuadOpen(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"},
+	 { "VectorTensorFiniteElement_GetTensorDofToQuad", _wrap_VectorTensorFiniteElement_GetTensorDofToQuad, METH_VARARGS, "GetTensorDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode, bool const closed) -> DofToQuad"},
+	 { "delete_VectorTensorFiniteElement", _wrap_delete_VectorTensorFiniteElement, METH_O, "delete_VectorTensorFiniteElement(VectorTensorFiniteElement self)"},
+	 { "VectorTensorFiniteElement_swigregister", VectorTensorFiniteElement_swigregister, METH_O, NULL},
+	 { "VectorTensorFiniteElement_swiginit", VectorTensorFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1_SegmentElement", _wrap_new_H1_SegmentElement, METH_VARARGS, "H1_SegmentElement(int const p, int const btype=GaussLobatto)"},
+	 { "H1_SegmentElement_CalcShape", _wrap_H1_SegmentElement_CalcShape, METH_VARARGS, "CalcShape(H1_SegmentElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1_SegmentElement_CalcDShape", _wrap_H1_SegmentElement_CalcDShape, METH_VARARGS, "CalcDShape(H1_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1_SegmentElement_ProjectDelta", _wrap_H1_SegmentElement_ProjectDelta, METH_VARARGS, "ProjectDelta(H1_SegmentElement self, int vertex, Vector dofs)"},
+	 { "delete_H1_SegmentElement", _wrap_delete_H1_SegmentElement, METH_O, "delete_H1_SegmentElement(H1_SegmentElement self)"},
+	 { "H1_SegmentElement_swigregister", H1_SegmentElement_swigregister, METH_O, NULL},
+	 { "H1_SegmentElement_swiginit", H1_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1_QuadrilateralElement", _wrap_new_H1_QuadrilateralElement, METH_VARARGS, "H1_QuadrilateralElement(int const p, int const btype=GaussLobatto)"},
+	 { "H1_QuadrilateralElement_CalcShape", _wrap_H1_QuadrilateralElement_CalcShape, METH_VARARGS, "CalcShape(H1_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1_QuadrilateralElement_CalcDShape", _wrap_H1_QuadrilateralElement_CalcDShape, METH_VARARGS, "CalcDShape(H1_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1_QuadrilateralElement_ProjectDelta", _wrap_H1_QuadrilateralElement_ProjectDelta, METH_VARARGS, "ProjectDelta(H1_QuadrilateralElement self, int vertex, Vector dofs)"},
+	 { "delete_H1_QuadrilateralElement", _wrap_delete_H1_QuadrilateralElement, METH_O, "delete_H1_QuadrilateralElement(H1_QuadrilateralElement self)"},
+	 { "H1_QuadrilateralElement_swigregister", H1_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "H1_QuadrilateralElement_swiginit", H1_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1_HexahedronElement", _wrap_new_H1_HexahedronElement, METH_VARARGS, "H1_HexahedronElement(int const p, int const btype=GaussLobatto)"},
+	 { "H1_HexahedronElement_CalcShape", _wrap_H1_HexahedronElement_CalcShape, METH_VARARGS, "CalcShape(H1_HexahedronElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1_HexahedronElement_CalcDShape", _wrap_H1_HexahedronElement_CalcDShape, METH_VARARGS, "CalcDShape(H1_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1_HexahedronElement_ProjectDelta", _wrap_H1_HexahedronElement_ProjectDelta, METH_VARARGS, "ProjectDelta(H1_HexahedronElement self, int vertex, Vector dofs)"},
+	 { "delete_H1_HexahedronElement", _wrap_delete_H1_HexahedronElement, METH_O, "delete_H1_HexahedronElement(H1_HexahedronElement self)"},
+	 { "H1_HexahedronElement_swigregister", H1_HexahedronElement_swigregister, METH_O, NULL},
+	 { "H1_HexahedronElement_swiginit", H1_HexahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Pos_SegmentElement", _wrap_new_H1Pos_SegmentElement, METH_O, "new_H1Pos_SegmentElement(int const p) -> H1Pos_SegmentElement"},
+	 { "H1Pos_SegmentElement_CalcShape", _wrap_H1Pos_SegmentElement_CalcShape, METH_VARARGS, "CalcShape(H1Pos_SegmentElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1Pos_SegmentElement_CalcDShape", _wrap_H1Pos_SegmentElement_CalcDShape, METH_VARARGS, "CalcDShape(H1Pos_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1Pos_SegmentElement_ProjectDelta", _wrap_H1Pos_SegmentElement_ProjectDelta, METH_VARARGS, "ProjectDelta(H1Pos_SegmentElement self, int vertex, Vector dofs)"},
+	 { "delete_H1Pos_SegmentElement", _wrap_delete_H1Pos_SegmentElement, METH_O, "delete_H1Pos_SegmentElement(H1Pos_SegmentElement self)"},
+	 { "H1Pos_SegmentElement_swigregister", H1Pos_SegmentElement_swigregister, METH_O, NULL},
+	 { "H1Pos_SegmentElement_swiginit", H1Pos_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Pos_QuadrilateralElement", _wrap_new_H1Pos_QuadrilateralElement, METH_O, "new_H1Pos_QuadrilateralElement(int const p) -> H1Pos_QuadrilateralElement"},
+	 { "H1Pos_QuadrilateralElement_CalcShape", _wrap_H1Pos_QuadrilateralElement_CalcShape, METH_VARARGS, "CalcShape(H1Pos_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1Pos_QuadrilateralElement_CalcDShape", _wrap_H1Pos_QuadrilateralElement_CalcDShape, METH_VARARGS, "CalcDShape(H1Pos_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1Pos_QuadrilateralElement_ProjectDelta", _wrap_H1Pos_QuadrilateralElement_ProjectDelta, METH_VARARGS, "ProjectDelta(H1Pos_QuadrilateralElement self, int vertex, Vector dofs)"},
+	 { "delete_H1Pos_QuadrilateralElement", _wrap_delete_H1Pos_QuadrilateralElement, METH_O, "delete_H1Pos_QuadrilateralElement(H1Pos_QuadrilateralElement self)"},
+	 { "H1Pos_QuadrilateralElement_swigregister", H1Pos_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "H1Pos_QuadrilateralElement_swiginit", H1Pos_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Ser_QuadrilateralElement", _wrap_new_H1Ser_QuadrilateralElement, METH_O, "new_H1Ser_QuadrilateralElement(int const p) -> H1Ser_QuadrilateralElement"},
+	 { "H1Ser_QuadrilateralElement_CalcShape", _wrap_H1Ser_QuadrilateralElement_CalcShape, METH_VARARGS, "CalcShape(H1Ser_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1Ser_QuadrilateralElement_CalcDShape", _wrap_H1Ser_QuadrilateralElement_CalcDShape, METH_VARARGS, "CalcDShape(H1Ser_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1Ser_QuadrilateralElement_GetLocalInterpolation", _wrap_H1Ser_QuadrilateralElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(H1Ser_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "H1Ser_QuadrilateralElement_Project", _wrap_H1Ser_QuadrilateralElement_Project, METH_VARARGS, "\n"
+		"Project(H1Ser_QuadrilateralElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(H1Ser_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(H1Ser_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "delete_H1Ser_QuadrilateralElement", _wrap_delete_H1Ser_QuadrilateralElement, METH_O, "delete_H1Ser_QuadrilateralElement(H1Ser_QuadrilateralElement self)"},
+	 { "H1Ser_QuadrilateralElement_swigregister", H1Ser_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "H1Ser_QuadrilateralElement_swiginit", H1Ser_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Pos_HexahedronElement", _wrap_new_H1Pos_HexahedronElement, METH_O, "new_H1Pos_HexahedronElement(int const p) -> H1Pos_HexahedronElement"},
+	 { "H1Pos_HexahedronElement_CalcShape", _wrap_H1Pos_HexahedronElement_CalcShape, METH_VARARGS, "CalcShape(H1Pos_HexahedronElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1Pos_HexahedronElement_CalcDShape", _wrap_H1Pos_HexahedronElement_CalcDShape, METH_VARARGS, "CalcDShape(H1Pos_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1Pos_HexahedronElement_ProjectDelta", _wrap_H1Pos_HexahedronElement_ProjectDelta, METH_VARARGS, "ProjectDelta(H1Pos_HexahedronElement self, int vertex, Vector dofs)"},
+	 { "delete_H1Pos_HexahedronElement", _wrap_delete_H1Pos_HexahedronElement, METH_O, "delete_H1Pos_HexahedronElement(H1Pos_HexahedronElement self)"},
+	 { "H1Pos_HexahedronElement_swigregister", H1Pos_HexahedronElement_swigregister, METH_O, NULL},
+	 { "H1Pos_HexahedronElement_swiginit", H1Pos_HexahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1_TriangleElement", _wrap_new_H1_TriangleElement, METH_VARARGS, "H1_TriangleElement(int const p, int const btype=GaussLobatto)"},
+	 { "H1_TriangleElement_CalcShape", _wrap_H1_TriangleElement_CalcShape, METH_VARARGS, "CalcShape(H1_TriangleElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1_TriangleElement_CalcDShape", _wrap_H1_TriangleElement_CalcDShape, METH_VARARGS, "CalcDShape(H1_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1_TriangleElement_CalcHessian", _wrap_H1_TriangleElement_CalcHessian, METH_VARARGS, "CalcHessian(H1_TriangleElement self, IntegrationPoint ip, DenseMatrix ddshape)"},
+	 { "delete_H1_TriangleElement", _wrap_delete_H1_TriangleElement, METH_O, "delete_H1_TriangleElement(H1_TriangleElement self)"},
+	 { "H1_TriangleElement_swigregister", H1_TriangleElement_swigregister, METH_O, NULL},
+	 { "H1_TriangleElement_swiginit", H1_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1_TetrahedronElement", _wrap_new_H1_TetrahedronElement, METH_VARARGS, "H1_TetrahedronElement(int const p, int const btype=GaussLobatto)"},
+	 { "H1_TetrahedronElement_CalcShape", _wrap_H1_TetrahedronElement_CalcShape, METH_VARARGS, "CalcShape(H1_TetrahedronElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1_TetrahedronElement_CalcDShape", _wrap_H1_TetrahedronElement_CalcDShape, METH_VARARGS, "CalcDShape(H1_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "H1_TetrahedronElement_CalcHessian", _wrap_H1_TetrahedronElement_CalcHessian, METH_VARARGS, "CalcHessian(H1_TetrahedronElement self, IntegrationPoint ip, DenseMatrix ddshape)"},
+	 { "delete_H1_TetrahedronElement", _wrap_delete_H1_TetrahedronElement, METH_O, "delete_H1_TetrahedronElement(H1_TetrahedronElement self)"},
+	 { "H1_TetrahedronElement_swigregister", H1_TetrahedronElement_swigregister, METH_O, NULL},
+	 { "H1_TetrahedronElement_swiginit", H1_TetrahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Pos_TriangleElement", _wrap_new_H1Pos_TriangleElement, METH_O, "new_H1Pos_TriangleElement(int const p) -> H1Pos_TriangleElement"},
+	 { "H1Pos_TriangleElement_CalcShape", _wrap_H1Pos_TriangleElement_CalcShape, METH_VARARGS, "\n"
+		"CalcShape(int const p, double const x, double const y, double * shape)\n"
+		"CalcShape(IntegrationPoint ip, Vector shape)\n"
+		""},
+	 { "H1Pos_TriangleElement_CalcDShape", _wrap_H1Pos_TriangleElement_CalcDShape, METH_VARARGS, "\n"
+		"CalcDShape(int const p, double const x, double const y, double * dshape_1d, double * dshape)\n"
+		"CalcDShape(IntegrationPoint ip, DenseMatrix dshape)\n"
+		""},
+	 { "delete_H1Pos_TriangleElement", _wrap_delete_H1Pos_TriangleElement, METH_O, "delete_H1Pos_TriangleElement(H1Pos_TriangleElement self)"},
+	 { "H1Pos_TriangleElement_swigregister", H1Pos_TriangleElement_swigregister, METH_O, NULL},
+	 { "H1Pos_TriangleElement_swiginit", H1Pos_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Pos_TetrahedronElement", _wrap_new_H1Pos_TetrahedronElement, METH_O, "new_H1Pos_TetrahedronElement(int const p) -> H1Pos_TetrahedronElement"},
+	 { "H1Pos_TetrahedronElement_CalcShape", _wrap_H1Pos_TetrahedronElement_CalcShape, METH_VARARGS, "\n"
+		"CalcShape(int const p, double const x, double const y, double const z, double * shape)\n"
+		"CalcShape(IntegrationPoint ip, Vector shape)\n"
+		""},
+	 { "H1Pos_TetrahedronElement_CalcDShape", _wrap_H1Pos_TetrahedronElement_CalcDShape, METH_VARARGS, "\n"
+		"CalcDShape(int const p, double const x, double const y, double const z, double * dshape_1d, double * dshape)\n"
+		"CalcDShape(IntegrationPoint ip, DenseMatrix dshape)\n"
+		""},
+	 { "delete_H1Pos_TetrahedronElement", _wrap_delete_H1Pos_TetrahedronElement, METH_O, "delete_H1Pos_TetrahedronElement(H1Pos_TetrahedronElement self)"},
+	 { "H1Pos_TetrahedronElement_swigregister", H1Pos_TetrahedronElement_swigregister, METH_O, NULL},
+	 { "H1Pos_TetrahedronElement_swiginit", H1Pos_TetrahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1_WedgeElement", _wrap_new_H1_WedgeElement, METH_VARARGS, "H1_WedgeElement(int const p, int const btype=GaussLobatto)"},
+	 { "H1_WedgeElement_CalcShape", _wrap_H1_WedgeElement_CalcShape, METH_VARARGS, "CalcShape(H1_WedgeElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1_WedgeElement_CalcDShape", _wrap_H1_WedgeElement_CalcDShape, METH_VARARGS, "CalcDShape(H1_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_H1_WedgeElement", _wrap_delete_H1_WedgeElement, METH_O, "delete_H1_WedgeElement(H1_WedgeElement self)"},
+	 { "H1_WedgeElement_swigregister", H1_WedgeElement_swigregister, METH_O, NULL},
+	 { "H1_WedgeElement_swiginit", H1_WedgeElement_swiginit, METH_VARARGS, NULL},
+	 { "new_BiLinear3DFiniteElement", _wrap_new_BiLinear3DFiniteElement, METH_NOARGS, "new_BiLinear3DFiniteElement() -> BiLinear3DFiniteElement"},
+	 { "delete_BiLinear3DFiniteElement", _wrap_delete_BiLinear3DFiniteElement, METH_O, "delete_BiLinear3DFiniteElement(BiLinear3DFiniteElement self)"},
+	 { "BiLinear3DFiniteElement_swigregister", BiLinear3DFiniteElement_swigregister, METH_O, NULL},
+	 { "BiLinear3DFiniteElement_swiginit", BiLinear3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_BiQuadratic3DFiniteElement", _wrap_new_BiQuadratic3DFiniteElement, METH_NOARGS, "new_BiQuadratic3DFiniteElement() -> BiQuadratic3DFiniteElement"},
+	 { "delete_BiQuadratic3DFiniteElement", _wrap_delete_BiQuadratic3DFiniteElement, METH_O, "delete_BiQuadratic3DFiniteElement(BiQuadratic3DFiniteElement self)"},
+	 { "BiQuadratic3DFiniteElement_swigregister", BiQuadratic3DFiniteElement_swigregister, METH_O, NULL},
+	 { "BiQuadratic3DFiniteElement_swiginit", BiQuadratic3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_BiCubic3DFiniteElement", _wrap_new_BiCubic3DFiniteElement, METH_NOARGS, "new_BiCubic3DFiniteElement() -> BiCubic3DFiniteElement"},
+	 { "delete_BiCubic3DFiniteElement", _wrap_delete_BiCubic3DFiniteElement, METH_O, "delete_BiCubic3DFiniteElement(BiCubic3DFiniteElement self)"},
+	 { "BiCubic3DFiniteElement_swigregister", BiCubic3DFiniteElement_swigregister, METH_O, NULL},
+	 { "BiCubic3DFiniteElement_swiginit", BiCubic3DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_H1Pos_WedgeElement", _wrap_new_H1Pos_WedgeElement, METH_O, "new_H1Pos_WedgeElement(int const p) -> H1Pos_WedgeElement"},
+	 { "H1Pos_WedgeElement_CalcShape", _wrap_H1Pos_WedgeElement_CalcShape, METH_VARARGS, "CalcShape(H1Pos_WedgeElement self, IntegrationPoint ip, Vector shape)"},
+	 { "H1Pos_WedgeElement_CalcDShape", _wrap_H1Pos_WedgeElement_CalcDShape, METH_VARARGS, "CalcDShape(H1Pos_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_H1Pos_WedgeElement", _wrap_delete_H1Pos_WedgeElement, METH_O, "delete_H1Pos_WedgeElement(H1Pos_WedgeElement self)"},
+	 { "H1Pos_WedgeElement_swigregister", H1Pos_WedgeElement_swigregister, METH_O, NULL},
+	 { "H1Pos_WedgeElement_swiginit", H1Pos_WedgeElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2_SegmentElement", _wrap_new_L2_SegmentElement, METH_VARARGS, "L2_SegmentElement(int const p, int const btype=GaussLegendre)"},
+	 { "L2_SegmentElement_CalcShape", _wrap_L2_SegmentElement_CalcShape, METH_VARARGS, "CalcShape(L2_SegmentElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2_SegmentElement_CalcDShape", _wrap_L2_SegmentElement_CalcDShape, METH_VARARGS, "CalcDShape(L2_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2_SegmentElement_ProjectDelta", _wrap_L2_SegmentElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2_SegmentElement self, int vertex, Vector dofs)"},
+	 { "delete_L2_SegmentElement", _wrap_delete_L2_SegmentElement, METH_O, "delete_L2_SegmentElement(L2_SegmentElement self)"},
+	 { "L2_SegmentElement_swigregister", L2_SegmentElement_swigregister, METH_O, NULL},
+	 { "L2_SegmentElement_swiginit", L2_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2Pos_SegmentElement", _wrap_new_L2Pos_SegmentElement, METH_O, "new_L2Pos_SegmentElement(int const p) -> L2Pos_SegmentElement"},
+	 { "L2Pos_SegmentElement_CalcShape", _wrap_L2Pos_SegmentElement_CalcShape, METH_VARARGS, "CalcShape(L2Pos_SegmentElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2Pos_SegmentElement_CalcDShape", _wrap_L2Pos_SegmentElement_CalcDShape, METH_VARARGS, "CalcDShape(L2Pos_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2Pos_SegmentElement_ProjectDelta", _wrap_L2Pos_SegmentElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2Pos_SegmentElement self, int vertex, Vector dofs)"},
+	 { "delete_L2Pos_SegmentElement", _wrap_delete_L2Pos_SegmentElement, METH_O, "delete_L2Pos_SegmentElement(L2Pos_SegmentElement self)"},
+	 { "L2Pos_SegmentElement_swigregister", L2Pos_SegmentElement_swigregister, METH_O, NULL},
+	 { "L2Pos_SegmentElement_swiginit", L2Pos_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2_QuadrilateralElement", _wrap_new_L2_QuadrilateralElement, METH_VARARGS, "L2_QuadrilateralElement(int const p, int const btype=GaussLegendre)"},
+	 { "L2_QuadrilateralElement_CalcShape", _wrap_L2_QuadrilateralElement_CalcShape, METH_VARARGS, "CalcShape(L2_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2_QuadrilateralElement_CalcDShape", _wrap_L2_QuadrilateralElement_CalcDShape, METH_VARARGS, "CalcDShape(L2_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2_QuadrilateralElement_ProjectDelta", _wrap_L2_QuadrilateralElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2_QuadrilateralElement self, int vertex, Vector dofs)"},
+	 { "L2_QuadrilateralElement_ProjectCurl", _wrap_L2_QuadrilateralElement_ProjectCurl, METH_VARARGS, "ProjectCurl(L2_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_L2_QuadrilateralElement", _wrap_delete_L2_QuadrilateralElement, METH_O, "delete_L2_QuadrilateralElement(L2_QuadrilateralElement self)"},
+	 { "L2_QuadrilateralElement_swigregister", L2_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "L2_QuadrilateralElement_swiginit", L2_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2Pos_QuadrilateralElement", _wrap_new_L2Pos_QuadrilateralElement, METH_O, "new_L2Pos_QuadrilateralElement(int const p) -> L2Pos_QuadrilateralElement"},
+	 { "L2Pos_QuadrilateralElement_CalcShape", _wrap_L2Pos_QuadrilateralElement_CalcShape, METH_VARARGS, "CalcShape(L2Pos_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2Pos_QuadrilateralElement_CalcDShape", _wrap_L2Pos_QuadrilateralElement_CalcDShape, METH_VARARGS, "CalcDShape(L2Pos_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2Pos_QuadrilateralElement_ProjectDelta", _wrap_L2Pos_QuadrilateralElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2Pos_QuadrilateralElement self, int vertex, Vector dofs)"},
+	 { "delete_L2Pos_QuadrilateralElement", _wrap_delete_L2Pos_QuadrilateralElement, METH_O, "delete_L2Pos_QuadrilateralElement(L2Pos_QuadrilateralElement self)"},
+	 { "L2Pos_QuadrilateralElement_swigregister", L2Pos_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "L2Pos_QuadrilateralElement_swiginit", L2Pos_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2_HexahedronElement", _wrap_new_L2_HexahedronElement, METH_VARARGS, "L2_HexahedronElement(int const p, int const btype=GaussLegendre)"},
+	 { "L2_HexahedronElement_CalcShape", _wrap_L2_HexahedronElement_CalcShape, METH_VARARGS, "CalcShape(L2_HexahedronElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2_HexahedronElement_CalcDShape", _wrap_L2_HexahedronElement_CalcDShape, METH_VARARGS, "CalcDShape(L2_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2_HexahedronElement_ProjectDelta", _wrap_L2_HexahedronElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2_HexahedronElement self, int vertex, Vector dofs)"},
+	 { "delete_L2_HexahedronElement", _wrap_delete_L2_HexahedronElement, METH_O, "delete_L2_HexahedronElement(L2_HexahedronElement self)"},
+	 { "L2_HexahedronElement_swigregister", L2_HexahedronElement_swigregister, METH_O, NULL},
+	 { "L2_HexahedronElement_swiginit", L2_HexahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2Pos_HexahedronElement", _wrap_new_L2Pos_HexahedronElement, METH_O, "new_L2Pos_HexahedronElement(int const p) -> L2Pos_HexahedronElement"},
+	 { "L2Pos_HexahedronElement_CalcShape", _wrap_L2Pos_HexahedronElement_CalcShape, METH_VARARGS, "CalcShape(L2Pos_HexahedronElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2Pos_HexahedronElement_CalcDShape", _wrap_L2Pos_HexahedronElement_CalcDShape, METH_VARARGS, "CalcDShape(L2Pos_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2Pos_HexahedronElement_ProjectDelta", _wrap_L2Pos_HexahedronElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2Pos_HexahedronElement self, int vertex, Vector dofs)"},
+	 { "delete_L2Pos_HexahedronElement", _wrap_delete_L2Pos_HexahedronElement, METH_O, "delete_L2Pos_HexahedronElement(L2Pos_HexahedronElement self)"},
+	 { "L2Pos_HexahedronElement_swigregister", L2Pos_HexahedronElement_swigregister, METH_O, NULL},
+	 { "L2Pos_HexahedronElement_swiginit", L2Pos_HexahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2_TriangleElement", _wrap_new_L2_TriangleElement, METH_VARARGS, "L2_TriangleElement(int const p, int const btype=GaussLegendre)"},
+	 { "L2_TriangleElement_CalcShape", _wrap_L2_TriangleElement_CalcShape, METH_VARARGS, "CalcShape(L2_TriangleElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2_TriangleElement_CalcDShape", _wrap_L2_TriangleElement_CalcDShape, METH_VARARGS, "CalcDShape(L2_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2_TriangleElement_ProjectDelta", _wrap_L2_TriangleElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2_TriangleElement self, int vertex, Vector dofs)"},
+	 { "L2_TriangleElement_ProjectCurl", _wrap_L2_TriangleElement_ProjectCurl, METH_VARARGS, "ProjectCurl(L2_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_L2_TriangleElement", _wrap_delete_L2_TriangleElement, METH_O, "delete_L2_TriangleElement(L2_TriangleElement self)"},
+	 { "L2_TriangleElement_swigregister", L2_TriangleElement_swigregister, METH_O, NULL},
+	 { "L2_TriangleElement_swiginit", L2_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2Pos_TriangleElement", _wrap_new_L2Pos_TriangleElement, METH_O, "new_L2Pos_TriangleElement(int const p) -> L2Pos_TriangleElement"},
+	 { "L2Pos_TriangleElement_CalcShape", _wrap_L2Pos_TriangleElement_CalcShape, METH_VARARGS, "CalcShape(L2Pos_TriangleElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2Pos_TriangleElement_CalcDShape", _wrap_L2Pos_TriangleElement_CalcDShape, METH_VARARGS, "CalcDShape(L2Pos_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2Pos_TriangleElement_ProjectDelta", _wrap_L2Pos_TriangleElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2Pos_TriangleElement self, int vertex, Vector dofs)"},
+	 { "delete_L2Pos_TriangleElement", _wrap_delete_L2Pos_TriangleElement, METH_O, "delete_L2Pos_TriangleElement(L2Pos_TriangleElement self)"},
+	 { "L2Pos_TriangleElement_swigregister", L2Pos_TriangleElement_swigregister, METH_O, NULL},
+	 { "L2Pos_TriangleElement_swiginit", L2Pos_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2_TetrahedronElement", _wrap_new_L2_TetrahedronElement, METH_VARARGS, "L2_TetrahedronElement(int const p, int const btype=GaussLegendre)"},
+	 { "L2_TetrahedronElement_CalcShape", _wrap_L2_TetrahedronElement_CalcShape, METH_VARARGS, "CalcShape(L2_TetrahedronElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2_TetrahedronElement_CalcDShape", _wrap_L2_TetrahedronElement_CalcDShape, METH_VARARGS, "CalcDShape(L2_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2_TetrahedronElement_ProjectDelta", _wrap_L2_TetrahedronElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2_TetrahedronElement self, int vertex, Vector dofs)"},
+	 { "delete_L2_TetrahedronElement", _wrap_delete_L2_TetrahedronElement, METH_O, "delete_L2_TetrahedronElement(L2_TetrahedronElement self)"},
+	 { "L2_TetrahedronElement_swigregister", L2_TetrahedronElement_swigregister, METH_O, NULL},
+	 { "L2_TetrahedronElement_swiginit", L2_TetrahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2Pos_TetrahedronElement", _wrap_new_L2Pos_TetrahedronElement, METH_O, "new_L2Pos_TetrahedronElement(int const p) -> L2Pos_TetrahedronElement"},
+	 { "L2Pos_TetrahedronElement_CalcShape", _wrap_L2Pos_TetrahedronElement_CalcShape, METH_VARARGS, "CalcShape(L2Pos_TetrahedronElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2Pos_TetrahedronElement_CalcDShape", _wrap_L2Pos_TetrahedronElement_CalcDShape, METH_VARARGS, "CalcDShape(L2Pos_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "L2Pos_TetrahedronElement_ProjectDelta", _wrap_L2Pos_TetrahedronElement_ProjectDelta, METH_VARARGS, "ProjectDelta(L2Pos_TetrahedronElement self, int vertex, Vector dofs)"},
+	 { "delete_L2Pos_TetrahedronElement", _wrap_delete_L2Pos_TetrahedronElement, METH_O, "delete_L2Pos_TetrahedronElement(L2Pos_TetrahedronElement self)"},
+	 { "L2Pos_TetrahedronElement_swigregister", L2Pos_TetrahedronElement_swigregister, METH_O, NULL},
+	 { "L2Pos_TetrahedronElement_swiginit", L2Pos_TetrahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2_WedgeElement", _wrap_new_L2_WedgeElement, METH_VARARGS, "L2_WedgeElement(int const p, int const btype=GaussLegendre)"},
+	 { "L2_WedgeElement_CalcShape", _wrap_L2_WedgeElement_CalcShape, METH_VARARGS, "CalcShape(L2_WedgeElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2_WedgeElement_CalcDShape", _wrap_L2_WedgeElement_CalcDShape, METH_VARARGS, "CalcDShape(L2_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_L2_WedgeElement", _wrap_delete_L2_WedgeElement, METH_O, "delete_L2_WedgeElement(L2_WedgeElement self)"},
+	 { "L2_WedgeElement_swigregister", L2_WedgeElement_swigregister, METH_O, NULL},
+	 { "L2_WedgeElement_swiginit", L2_WedgeElement_swiginit, METH_VARARGS, NULL},
+	 { "new_P0WedgeFiniteElement", _wrap_new_P0WedgeFiniteElement, METH_NOARGS, "new_P0WedgeFiniteElement() -> P0WedgeFiniteElement"},
+	 { "delete_P0WedgeFiniteElement", _wrap_delete_P0WedgeFiniteElement, METH_O, "delete_P0WedgeFiniteElement(P0WedgeFiniteElement self)"},
+	 { "P0WedgeFiniteElement_swigregister", P0WedgeFiniteElement_swigregister, METH_O, NULL},
+	 { "P0WedgeFiniteElement_swiginit", P0WedgeFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_L2Pos_WedgeElement", _wrap_new_L2Pos_WedgeElement, METH_O, "new_L2Pos_WedgeElement(int const p) -> L2Pos_WedgeElement"},
+	 { "L2Pos_WedgeElement_CalcShape", _wrap_L2Pos_WedgeElement_CalcShape, METH_VARARGS, "CalcShape(L2Pos_WedgeElement self, IntegrationPoint ip, Vector shape)"},
+	 { "L2Pos_WedgeElement_CalcDShape", _wrap_L2Pos_WedgeElement_CalcDShape, METH_VARARGS, "CalcDShape(L2Pos_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "delete_L2Pos_WedgeElement", _wrap_delete_L2Pos_WedgeElement, METH_O, "delete_L2Pos_WedgeElement(L2Pos_WedgeElement self)"},
+	 { "L2Pos_WedgeElement_swigregister", L2Pos_WedgeElement_swigregister, METH_O, NULL},
+	 { "L2Pos_WedgeElement_swiginit", L2Pos_WedgeElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT_QuadrilateralElement", _wrap_new_RT_QuadrilateralElement, METH_VARARGS, "RT_QuadrilateralElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre)"},
+	 { "RT_QuadrilateralElement_CalcVShape", _wrap_RT_QuadrilateralElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT_QuadrilateralElement_CalcDivShape", _wrap_RT_QuadrilateralElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT_QuadrilateralElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT_QuadrilateralElement_GetLocalInterpolation", _wrap_RT_QuadrilateralElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_QuadrilateralElement_GetLocalRestriction", _wrap_RT_QuadrilateralElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "RT_QuadrilateralElement_GetTransferMatrix", _wrap_RT_QuadrilateralElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_QuadrilateralElement_ProjectMatrixCoefficient", _wrap_RT_QuadrilateralElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(RT_QuadrilateralElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "RT_QuadrilateralElement_Project", _wrap_RT_QuadrilateralElement_Project, METH_VARARGS, "\n"
+		"Project(RT_QuadrilateralElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "RT_QuadrilateralElement_ProjectGrad", _wrap_RT_QuadrilateralElement_ProjectGrad, METH_VARARGS, "ProjectGrad(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "RT_QuadrilateralElement_ProjectCurl", _wrap_RT_QuadrilateralElement_ProjectCurl, METH_VARARGS, "ProjectCurl(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_RT_QuadrilateralElement", _wrap_delete_RT_QuadrilateralElement, METH_O, "delete_RT_QuadrilateralElement(RT_QuadrilateralElement self)"},
+	 { "RT_QuadrilateralElement_swigregister", RT_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "RT_QuadrilateralElement_swiginit", RT_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT_HexahedronElement", _wrap_new_RT_HexahedronElement, METH_VARARGS, "RT_HexahedronElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre)"},
+	 { "RT_HexahedronElement_CalcVShape", _wrap_RT_HexahedronElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT_HexahedronElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT_HexahedronElement_CalcDivShape", _wrap_RT_HexahedronElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT_HexahedronElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT_HexahedronElement_GetLocalInterpolation", _wrap_RT_HexahedronElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_HexahedronElement_GetLocalRestriction", _wrap_RT_HexahedronElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(RT_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "RT_HexahedronElement_GetTransferMatrix", _wrap_RT_HexahedronElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_HexahedronElement_ProjectMatrixCoefficient", _wrap_RT_HexahedronElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(RT_HexahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "RT_HexahedronElement_Project", _wrap_RT_HexahedronElement_Project, METH_VARARGS, "\n"
+		"Project(RT_HexahedronElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_HexahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT_HexahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "RT_HexahedronElement_ProjectCurl", _wrap_RT_HexahedronElement_ProjectCurl, METH_VARARGS, "ProjectCurl(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_RT_HexahedronElement", _wrap_delete_RT_HexahedronElement, METH_O, "delete_RT_HexahedronElement(RT_HexahedronElement self)"},
+	 { "RT_HexahedronElement_swigregister", RT_HexahedronElement_swigregister, METH_O, NULL},
+	 { "RT_HexahedronElement_swiginit", RT_HexahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT_TriangleElement", _wrap_new_RT_TriangleElement, METH_O, "new_RT_TriangleElement(int const p) -> RT_TriangleElement"},
+	 { "RT_TriangleElement_CalcVShape", _wrap_RT_TriangleElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT_TriangleElement_CalcDivShape", _wrap_RT_TriangleElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT_TriangleElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT_TriangleElement_GetLocalInterpolation", _wrap_RT_TriangleElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_TriangleElement_GetLocalRestriction", _wrap_RT_TriangleElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "RT_TriangleElement_GetTransferMatrix", _wrap_RT_TriangleElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_TriangleElement_ProjectMatrixCoefficient", _wrap_RT_TriangleElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(RT_TriangleElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "RT_TriangleElement_Project", _wrap_RT_TriangleElement_Project, METH_VARARGS, "\n"
+		"Project(RT_TriangleElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_TriangleElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT_TriangleElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "RT_TriangleElement_ProjectGrad", _wrap_RT_TriangleElement_ProjectGrad, METH_VARARGS, "ProjectGrad(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "RT_TriangleElement_ProjectCurl", _wrap_RT_TriangleElement_ProjectCurl, METH_VARARGS, "ProjectCurl(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_RT_TriangleElement", _wrap_delete_RT_TriangleElement, METH_O, "delete_RT_TriangleElement(RT_TriangleElement self)"},
+	 { "RT_TriangleElement_swigregister", RT_TriangleElement_swigregister, METH_O, NULL},
+	 { "RT_TriangleElement_swiginit", RT_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_RT_TetrahedronElement", _wrap_new_RT_TetrahedronElement, METH_O, "new_RT_TetrahedronElement(int const p) -> RT_TetrahedronElement"},
+	 { "RT_TetrahedronElement_CalcVShape", _wrap_RT_TetrahedronElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(RT_TetrahedronElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(RT_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "RT_TetrahedronElement_CalcDivShape", _wrap_RT_TetrahedronElement_CalcDivShape, METH_VARARGS, "CalcDivShape(RT_TetrahedronElement self, IntegrationPoint ip, Vector divshape)"},
+	 { "RT_TetrahedronElement_GetLocalInterpolation", _wrap_RT_TetrahedronElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(RT_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_TetrahedronElement_GetLocalRestriction", _wrap_RT_TetrahedronElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(RT_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "RT_TetrahedronElement_GetTransferMatrix", _wrap_RT_TetrahedronElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "RT_TetrahedronElement_ProjectMatrixCoefficient", _wrap_RT_TetrahedronElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(RT_TetrahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "RT_TetrahedronElement_Project", _wrap_RT_TetrahedronElement_Project, METH_VARARGS, "\n"
+		"Project(RT_TetrahedronElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_TetrahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(RT_TetrahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "RT_TetrahedronElement_ProjectCurl", _wrap_RT_TetrahedronElement_ProjectCurl, METH_VARARGS, "ProjectCurl(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_RT_TetrahedronElement", _wrap_delete_RT_TetrahedronElement, METH_O, "delete_RT_TetrahedronElement(RT_TetrahedronElement self)"},
+	 { "RT_TetrahedronElement_swigregister", RT_TetrahedronElement_swigregister, METH_O, NULL},
+	 { "RT_TetrahedronElement_swiginit", RT_TetrahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_HexahedronElement", _wrap_new_ND_HexahedronElement, METH_VARARGS, "ND_HexahedronElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre)"},
+	 { "ND_HexahedronElement_CalcVShape", _wrap_ND_HexahedronElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_HexahedronElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_HexahedronElement_CalcCurlShape", _wrap_ND_HexahedronElement_CalcCurlShape, METH_VARARGS, "CalcCurlShape(ND_HexahedronElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_HexahedronElement_GetLocalInterpolation", _wrap_ND_HexahedronElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_HexahedronElement_GetLocalRestriction", _wrap_ND_HexahedronElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_HexahedronElement_GetTransferMatrix", _wrap_ND_HexahedronElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_HexahedronElement_ProjectMatrixCoefficient", _wrap_ND_HexahedronElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(ND_HexahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "ND_HexahedronElement_Project", _wrap_ND_HexahedronElement_Project, METH_VARARGS, "\n"
+		"Project(ND_HexahedronElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_HexahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(ND_HexahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_HexahedronElement_ProjectGrad", _wrap_ND_HexahedronElement_ProjectGrad, METH_VARARGS, "ProjectGrad(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "ND_HexahedronElement_ProjectCurl", _wrap_ND_HexahedronElement_ProjectCurl, METH_VARARGS, "ProjectCurl(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_ND_HexahedronElement", _wrap_delete_ND_HexahedronElement, METH_O, "delete_ND_HexahedronElement(ND_HexahedronElement self)"},
+	 { "ND_HexahedronElement_swigregister", ND_HexahedronElement_swigregister, METH_O, NULL},
+	 { "ND_HexahedronElement_swiginit", ND_HexahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_QuadrilateralElement", _wrap_new_ND_QuadrilateralElement, METH_VARARGS, "ND_QuadrilateralElement(int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre)"},
+	 { "ND_QuadrilateralElement_CalcVShape", _wrap_ND_QuadrilateralElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_QuadrilateralElement_CalcCurlShape", _wrap_ND_QuadrilateralElement_CalcCurlShape, METH_VARARGS, "CalcCurlShape(ND_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_QuadrilateralElement_GetLocalInterpolation", _wrap_ND_QuadrilateralElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(ND_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_QuadrilateralElement_GetLocalRestriction", _wrap_ND_QuadrilateralElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(ND_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_QuadrilateralElement_GetTransferMatrix", _wrap_ND_QuadrilateralElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_QuadrilateralElement_ProjectMatrixCoefficient", _wrap_ND_QuadrilateralElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(ND_QuadrilateralElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "ND_QuadrilateralElement_Project", _wrap_ND_QuadrilateralElement_Project, METH_VARARGS, "\n"
+		"Project(ND_QuadrilateralElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(ND_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_QuadrilateralElement_ProjectGrad", _wrap_ND_QuadrilateralElement_ProjectGrad, METH_VARARGS, "ProjectGrad(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "delete_ND_QuadrilateralElement", _wrap_delete_ND_QuadrilateralElement, METH_O, "delete_ND_QuadrilateralElement(ND_QuadrilateralElement self)"},
+	 { "ND_QuadrilateralElement_swigregister", ND_QuadrilateralElement_swigregister, METH_O, NULL},
+	 { "ND_QuadrilateralElement_swiginit", ND_QuadrilateralElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_TetrahedronElement", _wrap_new_ND_TetrahedronElement, METH_O, "new_ND_TetrahedronElement(int const p) -> ND_TetrahedronElement"},
+	 { "ND_TetrahedronElement_CalcVShape", _wrap_ND_TetrahedronElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_TetrahedronElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_TetrahedronElement_CalcCurlShape", _wrap_ND_TetrahedronElement_CalcCurlShape, METH_VARARGS, "CalcCurlShape(ND_TetrahedronElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_TetrahedronElement_GetLocalInterpolation", _wrap_ND_TetrahedronElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_TetrahedronElement_GetLocalRestriction", _wrap_ND_TetrahedronElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_TetrahedronElement_GetTransferMatrix", _wrap_ND_TetrahedronElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_TetrahedronElement_ProjectMatrixCoefficient", _wrap_ND_TetrahedronElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(ND_TetrahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "ND_TetrahedronElement_Project", _wrap_ND_TetrahedronElement_Project, METH_VARARGS, "\n"
+		"Project(ND_TetrahedronElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_TetrahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(ND_TetrahedronElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_TetrahedronElement_ProjectGrad", _wrap_ND_TetrahedronElement_ProjectGrad, METH_VARARGS, "ProjectGrad(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "ND_TetrahedronElement_ProjectCurl", _wrap_ND_TetrahedronElement_ProjectCurl, METH_VARARGS, "ProjectCurl(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"},
+	 { "delete_ND_TetrahedronElement", _wrap_delete_ND_TetrahedronElement, METH_O, "delete_ND_TetrahedronElement(ND_TetrahedronElement self)"},
+	 { "ND_TetrahedronElement_swigregister", ND_TetrahedronElement_swigregister, METH_O, NULL},
+	 { "ND_TetrahedronElement_swiginit", ND_TetrahedronElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_TriangleElement", _wrap_new_ND_TriangleElement, METH_O, "new_ND_TriangleElement(int const p) -> ND_TriangleElement"},
+	 { "ND_TriangleElement_CalcVShape", _wrap_ND_TriangleElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_TriangleElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_TriangleElement_CalcCurlShape", _wrap_ND_TriangleElement_CalcCurlShape, METH_VARARGS, "CalcCurlShape(ND_TriangleElement self, IntegrationPoint ip, DenseMatrix curl_shape)"},
+	 { "ND_TriangleElement_GetLocalInterpolation", _wrap_ND_TriangleElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(ND_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_TriangleElement_GetLocalRestriction", _wrap_ND_TriangleElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(ND_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_TriangleElement_GetTransferMatrix", _wrap_ND_TriangleElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_TriangleElement_ProjectMatrixCoefficient", _wrap_ND_TriangleElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(ND_TriangleElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "ND_TriangleElement_Project", _wrap_ND_TriangleElement_Project, METH_VARARGS, "\n"
+		"Project(ND_TriangleElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_TriangleElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(ND_TriangleElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_TriangleElement_ProjectGrad", _wrap_ND_TriangleElement_ProjectGrad, METH_VARARGS, "ProjectGrad(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "delete_ND_TriangleElement", _wrap_delete_ND_TriangleElement, METH_O, "delete_ND_TriangleElement(ND_TriangleElement self)"},
+	 { "ND_TriangleElement_swigregister", ND_TriangleElement_swigregister, METH_O, NULL},
+	 { "ND_TriangleElement_swiginit", ND_TriangleElement_swiginit, METH_VARARGS, NULL},
+	 { "new_ND_SegmentElement", _wrap_new_ND_SegmentElement, METH_VARARGS, "ND_SegmentElement(int const p, int const ob_type=GaussLegendre)"},
+	 { "ND_SegmentElement_CalcShape", _wrap_ND_SegmentElement_CalcShape, METH_VARARGS, "CalcShape(ND_SegmentElement self, IntegrationPoint ip, Vector shape)"},
+	 { "ND_SegmentElement_CalcVShape", _wrap_ND_SegmentElement_CalcVShape, METH_VARARGS, "\n"
+		"CalcVShape(ND_SegmentElement self, IntegrationPoint ip, DenseMatrix shape)\n"
+		"CalcVShape(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)\n"
+		""},
+	 { "ND_SegmentElement_GetLocalInterpolation", _wrap_ND_SegmentElement_GetLocalInterpolation, METH_VARARGS, "GetLocalInterpolation(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_SegmentElement_GetLocalRestriction", _wrap_ND_SegmentElement_GetLocalRestriction, METH_VARARGS, "GetLocalRestriction(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"},
+	 { "ND_SegmentElement_GetTransferMatrix", _wrap_ND_SegmentElement_GetTransferMatrix, METH_VARARGS, "GetTransferMatrix(ND_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"},
+	 { "ND_SegmentElement_ProjectMatrixCoefficient", _wrap_ND_SegmentElement_ProjectMatrixCoefficient, METH_VARARGS, "ProjectMatrixCoefficient(ND_SegmentElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"},
+	 { "ND_SegmentElement_Project", _wrap_ND_SegmentElement_Project, METH_VARARGS, "\n"
+		"Project(ND_SegmentElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		"Project(ND_SegmentElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)\n"
+		"Project(ND_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)\n"
+		""},
+	 { "ND_SegmentElement_ProjectGrad", _wrap_ND_SegmentElement_ProjectGrad, METH_VARARGS, "ProjectGrad(ND_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"},
+	 { "delete_ND_SegmentElement", _wrap_delete_ND_SegmentElement, METH_O, "delete_ND_SegmentElement(ND_SegmentElement self)"},
+	 { "ND_SegmentElement_swigregister", ND_SegmentElement_swigregister, METH_O, NULL},
+	 { "ND_SegmentElement_swiginit", ND_SegmentElement_swiginit, METH_VARARGS, NULL},
+	 { "NURBSFiniteElement_Reset", _wrap_NURBSFiniteElement_Reset, METH_O, "Reset(NURBSFiniteElement self)"},
+	 { "NURBSFiniteElement_SetIJK", _wrap_NURBSFiniteElement_SetIJK, METH_VARARGS, "SetIJK(NURBSFiniteElement self, int const * IJK)"},
+	 { "NURBSFiniteElement_GetPatch", _wrap_NURBSFiniteElement_GetPatch, METH_O, "GetPatch(NURBSFiniteElement self) -> int"},
+	 { "NURBSFiniteElement_SetPatch", _wrap_NURBSFiniteElement_SetPatch, METH_VARARGS, "SetPatch(NURBSFiniteElement self, int p)"},
+	 { "NURBSFiniteElement_GetElement", _wrap_NURBSFiniteElement_GetElement, METH_O, "GetElement(NURBSFiniteElement self) -> int"},
+	 { "NURBSFiniteElement_SetElement", _wrap_NURBSFiniteElement_SetElement, METH_VARARGS, "SetElement(NURBSFiniteElement self, int e)"},
+	 { "NURBSFiniteElement_KnotVectors", _wrap_NURBSFiniteElement_KnotVectors, METH_O, "KnotVectors(NURBSFiniteElement self) -> mfem::Array< mfem::KnotVector const * > &"},
+	 { "NURBSFiniteElement_Weights", _wrap_NURBSFiniteElement_Weights, METH_O, "Weights(NURBSFiniteElement self) -> Vector"},
+	 { "NURBSFiniteElement_SetOrder", _wrap_NURBSFiniteElement_SetOrder, METH_O, "SetOrder(NURBSFiniteElement self)"},
+	 { "delete_NURBSFiniteElement", _wrap_delete_NURBSFiniteElement, METH_O, "delete_NURBSFiniteElement(NURBSFiniteElement self)"},
+	 { "NURBSFiniteElement_swigregister", NURBSFiniteElement_swigregister, METH_O, NULL},
+	 { "new_NURBS1DFiniteElement", _wrap_new_NURBS1DFiniteElement, METH_O, "new_NURBS1DFiniteElement(int p) -> NURBS1DFiniteElement"},
+	 { "NURBS1DFiniteElement_SetOrder", _wrap_NURBS1DFiniteElement_SetOrder, METH_O, "SetOrder(NURBS1DFiniteElement self)"},
+	 { "NURBS1DFiniteElement_CalcShape", _wrap_NURBS1DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(NURBS1DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "NURBS1DFiniteElement_CalcDShape", _wrap_NURBS1DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(NURBS1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "NURBS1DFiniteElement_CalcHessian", _wrap_NURBS1DFiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(NURBS1DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"},
+	 { "delete_NURBS1DFiniteElement", _wrap_delete_NURBS1DFiniteElement, METH_O, "delete_NURBS1DFiniteElement(NURBS1DFiniteElement self)"},
+	 { "NURBS1DFiniteElement_swigregister", NURBS1DFiniteElement_swigregister, METH_O, NULL},
+	 { "NURBS1DFiniteElement_swiginit", NURBS1DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_NURBS2DFiniteElement", _wrap_new_NURBS2DFiniteElement, METH_VARARGS, "\n"
+		"NURBS2DFiniteElement(int p)\n"
+		"new_NURBS2DFiniteElement(int px, int py) -> NURBS2DFiniteElement\n"
+		""},
+	 { "NURBS2DFiniteElement_SetOrder", _wrap_NURBS2DFiniteElement_SetOrder, METH_O, "SetOrder(NURBS2DFiniteElement self)"},
+	 { "NURBS2DFiniteElement_CalcShape", _wrap_NURBS2DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(NURBS2DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "NURBS2DFiniteElement_CalcDShape", _wrap_NURBS2DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(NURBS2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "NURBS2DFiniteElement_CalcHessian", _wrap_NURBS2DFiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(NURBS2DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"},
+	 { "delete_NURBS2DFiniteElement", _wrap_delete_NURBS2DFiniteElement, METH_O, "delete_NURBS2DFiniteElement(NURBS2DFiniteElement self)"},
+	 { "NURBS2DFiniteElement_swigregister", NURBS2DFiniteElement_swigregister, METH_O, NULL},
+	 { "NURBS2DFiniteElement_swiginit", NURBS2DFiniteElement_swiginit, METH_VARARGS, NULL},
+	 { "new_NURBS3DFiniteElement", _wrap_new_NURBS3DFiniteElement, METH_VARARGS, "\n"
+		"NURBS3DFiniteElement(int p)\n"
+		"new_NURBS3DFiniteElement(int px, int py, int pz) -> NURBS3DFiniteElement\n"
+		""},
+	 { "NURBS3DFiniteElement_SetOrder", _wrap_NURBS3DFiniteElement_SetOrder, METH_O, "SetOrder(NURBS3DFiniteElement self)"},
+	 { "NURBS3DFiniteElement_CalcShape", _wrap_NURBS3DFiniteElement_CalcShape, METH_VARARGS, "CalcShape(NURBS3DFiniteElement self, IntegrationPoint ip, Vector shape)"},
+	 { "NURBS3DFiniteElement_CalcDShape", _wrap_NURBS3DFiniteElement_CalcDShape, METH_VARARGS, "CalcDShape(NURBS3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"},
+	 { "NURBS3DFiniteElement_CalcHessian", _wrap_NURBS3DFiniteElement_CalcHessian, METH_VARARGS, "CalcHessian(NURBS3DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"},
+	 { "delete_NURBS3DFiniteElement", _wrap_delete_NURBS3DFiniteElement, METH_O, "delete_NURBS3DFiniteElement(NURBS3DFiniteElement self)"},
+	 { "NURBS3DFiniteElement_swigregister", NURBS3DFiniteElement_swigregister, METH_O, NULL},
+	 { "NURBS3DFiniteElement_swiginit", NURBS3DFiniteElement_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__NURBS2DFiniteElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ScalarFiniteElement *) (mfem::NURBSFiniteElement *) ((mfem::NURBS2DFiniteElement *) x));
-}
 static void *_p_mfem__NURBS1DFiniteElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ScalarFiniteElement *) (mfem::NURBSFiniteElement *) ((mfem::NURBS1DFiniteElement *) x));
 }
@@ -51533,6 +54068,9 @@ static void *_p_mfem__H1_TriangleElementTo_p_mfem__ScalarFiniteElement(void *x, 
 }
 static void *_p_mfem__H1Pos_HexahedronElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ScalarFiniteElement *) (mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_HexahedronElement *) x));
+}
+static void *_p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ScalarFiniteElement *)  ((mfem::H1Ser_QuadrilateralElement *) x));
 }
 static void *_p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ScalarFiniteElement *) (mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_QuadrilateralElement *) x));
@@ -51678,6 +54216,9 @@ static void *_p_mfem__P0TetFiniteElementTo_p_mfem__ScalarFiniteElement(void *x, 
 static void *_p_mfem__P0HexFiniteElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ScalarFiniteElement *) (mfem::NodalFiniteElement *) ((mfem::P0HexFiniteElement *) x));
 }
+static void *_p_mfem__NURBS2DFiniteElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ScalarFiniteElement *) (mfem::NURBSFiniteElement *) ((mfem::NURBS2DFiniteElement *) x));
+}
 static void *_p_mfem__NURBS3DFiniteElementTo_p_mfem__ScalarFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ScalarFiniteElement *) (mfem::NURBSFiniteElement *) ((mfem::NURBS3DFiniteElement *) x));
 }
@@ -51689,6 +54230,12 @@ static void *_p_mfem__NURBS2DFiniteElementTo_p_mfem__NURBSFiniteElement(void *x,
 }
 static void *_p_mfem__NURBS3DFiniteElementTo_p_mfem__NURBSFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::NURBSFiniteElement *)  ((mfem::NURBS3DFiniteElement *) x));
+}
+static void *_p_mfem__ND_HexahedronElementTo_p_mfem__VectorTensorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorTensorFiniteElement *)  ((mfem::ND_HexahedronElement *) x));
+}
+static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorTensorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorTensorFiniteElement *)  ((mfem::ND_QuadrilateralElement *) x));
 }
 static void *_p_mfem__P0WedgeFiniteElementTo_p_mfem__L2_WedgeElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::L2_WedgeElement *)  ((mfem::P0WedgeFiniteElement *) x));
@@ -51738,9 +54285,6 @@ static void *_p_mfem__L2_QuadrilateralElementTo_p_mfem__NodalTensorFiniteElement
 static void *_p_mfem__L2_HexahedronElementTo_p_mfem__NodalTensorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::NodalTensorFiniteElement *)  ((mfem::L2_HexahedronElement *) x));
 }
-static void *_p_mfem__L2Pos_HexahedronElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::TensorBasisElement *) (mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
-}
 static void *_p_mfem__L2_HexahedronElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TensorBasisElement *) (mfem::NodalTensorFiniteElement *) ((mfem::L2_HexahedronElement *) x));
 }
@@ -51774,20 +54318,32 @@ static void *_p_mfem__H1_QuadrilateralElementTo_p_mfem__TensorBasisElement(void 
 static void *_p_mfem__H1_SegmentElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TensorBasisElement *) (mfem::NodalTensorFiniteElement *) ((mfem::H1_SegmentElement *) x));
 }
+static void *_p_mfem__VectorTensorFiniteElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::TensorBasisElement *)  ((mfem::VectorTensorFiniteElement *) x));
+}
 static void *_p_mfem__PositiveTensorFiniteElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TensorBasisElement *)  ((mfem::PositiveTensorFiniteElement *) x));
 }
 static void *_p_mfem__NodalTensorFiniteElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TensorBasisElement *)  ((mfem::NodalTensorFiniteElement *) x));
 }
-static void *_p_mfem__RT_TriangleElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorFiniteElement *)  ((mfem::RT_TriangleElement *) x));
+static void *_p_mfem__L2Pos_HexahedronElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::TensorBasisElement *) (mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_HexahedronElement *) x));
+}
+static void *_p_mfem__ND_HexahedronElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::TensorBasisElement *) (mfem::VectorTensorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
+}
+static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__TensorBasisElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::TensorBasisElement *) (mfem::VectorTensorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
 }
 static void *_p_mfem__RT_HexahedronElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorFiniteElement *)  ((mfem::RT_HexahedronElement *) x));
 }
 static void *_p_mfem__RT_QuadrilateralElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorFiniteElement *)  ((mfem::RT_QuadrilateralElement *) x));
+}
+static void *_p_mfem__VectorTensorFiniteElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *)  ((mfem::VectorTensorFiniteElement *) x));
 }
 static void *_p_mfem__RT0TetFiniteElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorFiniteElement *)  ((mfem::RT0TetFiniteElement *) x));
@@ -51822,14 +54378,17 @@ static void *_p_mfem__RT0QuadFiniteElementTo_p_mfem__VectorFiniteElement(void *x
 static void *_p_mfem__RT0TriangleFiniteElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorFiniteElement *)  ((mfem::RT0TriangleFiniteElement *) x));
 }
+static void *_p_mfem__RT_TriangleElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFiniteElement *)  ((mfem::RT_TriangleElement *) x));
+}
 static void *_p_mfem__RT_TetrahedronElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorFiniteElement *)  ((mfem::RT_TetrahedronElement *) x));
 }
 static void *_p_mfem__ND_HexahedronElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_HexahedronElement *) x));
+    return (void *)((mfem::VectorFiniteElement *) (mfem::VectorTensorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
 }
 static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_QuadrilateralElement *) x));
+    return (void *)((mfem::VectorFiniteElement *) (mfem::VectorTensorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
 }
 static void *_p_mfem__ND_TetrahedronElementTo_p_mfem__VectorFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::VectorFiniteElement *)  ((mfem::ND_TetrahedronElement *) x));
@@ -52047,12 +54606,6 @@ static void *_p_mfem__L2_WedgeElementTo_p_mfem__NodalFiniteElement(void *x, int 
 static void *_p_mfem__P0WedgeFiniteElementTo_p_mfem__NodalFiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::NodalFiniteElement *) (mfem::L2_WedgeElement *) ((mfem::P0WedgeFiniteElement *) x));
 }
-static void *_p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_QuadrilateralElement *) x));
-}
-static void *_p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_SegmentElement *) x));
-}
 static void *_p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_SegmentElement *) x));
 }
@@ -52086,6 +54639,9 @@ static void *_p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement(void *x, int *S
 static void *_p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_HexahedronElement *) x));
 }
+static void *_p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *) ((mfem::H1Ser_QuadrilateralElement *) x));
+}
 static void *_p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::H1Pos_QuadrilateralElement *) x));
 }
@@ -52100,6 +54656,9 @@ static void *_p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, i
 }
 static void *_p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::H1_SegmentElement *) x));
+}
+static void *_p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::VectorTensorFiniteElement *) x));
 }
 static void *_p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *) ((mfem::PositiveTensorFiniteElement *) x));
@@ -52269,6 +54828,12 @@ static void *_p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement(void *x, 
 static void *_p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT1QuadFiniteElement *) x));
 }
+static void *_p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_SegmentElement *) x));
+}
+static void *_p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::NodalFiniteElement *)(mfem::NodalTensorFiniteElement *) ((mfem::L2_QuadrilateralElement *) x));
+}
 static void *_p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::ScalarFiniteElement *)(mfem::PositiveFiniteElement *)(mfem::PositiveTensorFiniteElement *) ((mfem::L2Pos_QuadrilateralElement *) x));
 }
@@ -52312,10 +54877,10 @@ static void *_p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::RT_TetrahedronElement *) x));
 }
 static void *_p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_HexahedronElement *) x));
 }
 static void *_p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
+    return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *)(mfem::VectorTensorFiniteElement *) ((mfem::ND_QuadrilateralElement *) x));
 }
 static void *_p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElement *) (mfem::VectorFiniteElement *) ((mfem::ND_TetrahedronElement *) x));
@@ -52374,6 +54939,7 @@ static swig_type_info _swigt__p_mfem__H1Pos_SegmentElement = {"_p_mfem__H1Pos_Se
 static swig_type_info _swigt__p_mfem__H1Pos_TetrahedronElement = {"_p_mfem__H1Pos_TetrahedronElement", "mfem::H1Pos_TetrahedronElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_TriangleElement = {"_p_mfem__H1Pos_TriangleElement", "mfem::H1Pos_TriangleElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_WedgeElement = {"_p_mfem__H1Pos_WedgeElement", "mfem::H1Pos_WedgeElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__H1Ser_QuadrilateralElement = {"_p_mfem__H1Ser_QuadrilateralElement", "mfem::H1Ser_QuadrilateralElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__H1_HexahedronElement = {"_p_mfem__H1_HexahedronElement", "mfem::H1_HexahedronElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__H1_QuadrilateralElement = {"_p_mfem__H1_QuadrilateralElement", "mfem::H1_QuadrilateralElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__H1_SegmentElement = {"_p_mfem__H1_SegmentElement", "mfem::H1_SegmentElement *", 0, 0, (void*)0, 0};
@@ -52457,6 +55023,7 @@ static swig_type_info _swigt__p_mfem__TriLinear3DFiniteElement = {"_p_mfem__TriL
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorCoefficient = {"_p_mfem__VectorCoefficient", "mfem::VectorCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__VectorFiniteElement = {"_p_mfem__VectorFiniteElement", "mfem::VectorFiniteElement *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__VectorTensorFiniteElement = {"_p_mfem__VectorTensorFiniteElement", "mfem::VectorTensorFiniteElement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_int = {"_p_p_int", "int **", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -52496,6 +55063,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__H1Pos_TetrahedronElement,
   &_swigt__p_mfem__H1Pos_TriangleElement,
   &_swigt__p_mfem__H1Pos_WedgeElement,
+  &_swigt__p_mfem__H1Ser_QuadrilateralElement,
   &_swigt__p_mfem__H1_HexahedronElement,
   &_swigt__p_mfem__H1_QuadrilateralElement,
   &_swigt__p_mfem__H1_SegmentElement,
@@ -52579,6 +55147,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Vector,
   &_swigt__p_mfem__VectorCoefficient,
   &_swigt__p_mfem__VectorFiniteElement,
+  &_swigt__p_mfem__VectorTensorFiniteElement,
   &_swigt__p_p_int,
 };
 
@@ -52606,7 +55175,7 @@ static swig_cast_info _swigc__p_mfem__Cubic3DFiniteElement[] = {  {&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DofToQuad[] = {  {&_swigt__p_mfem__DofToQuad, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ElementTransformation[] = {  {&_swigt__p_mfem__ElementTransformation, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_WedgeElement, _p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0WedgeFiniteElement, _p_mfem__P0WedgeFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_WedgeElement, _p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic3DFiniteElement, _p_mfem__BiCubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadratic3DFiniteElement, _p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear3DFiniteElement, _p_mfem__BiLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_WedgeElement, _p_mfem__H1_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_WedgeElement, _p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FiniteElement[] = {  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_WedgeElement, _p_mfem__H1Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0WedgeFiniteElement, _p_mfem__P0WedgeFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_WedgeElement, _p_mfem__L2_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic3DFiniteElement, _p_mfem__BiCubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadratic3DFiniteElement, _p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear3DFiniteElement, _p_mfem__BiLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_WedgeElement, _p_mfem__H1_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__FiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, _p_mfem__ScalarFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_WedgeElement, _p_mfem__L2Pos_WedgeElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__H1Ser_QuadrilateralElement, _p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, _p_mfem__VectorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__FiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__FiniteElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FunctionSpace[] = {  {&_swigt__p_mfem__FunctionSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GaussBiLinear2DFiniteElement[] = {  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GaussBiQuad2DFiniteElement[] = {  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -52618,6 +55187,7 @@ static swig_cast_info _swigc__p_mfem__H1Pos_SegmentElement[] = {  {&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__H1Pos_TetrahedronElement[] = {  {&_swigt__p_mfem__H1Pos_TetrahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_TriangleElement[] = {  {&_swigt__p_mfem__H1Pos_TriangleElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_WedgeElement[] = {  {&_swigt__p_mfem__H1Pos_WedgeElement, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Ser_QuadrilateralElement[] = {  {&_swigt__p_mfem__H1Ser_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_HexahedronElement[] = {  {&_swigt__p_mfem__H1_HexahedronElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_QuadrilateralElement[] = {  {&_swigt__p_mfem__H1_QuadrilateralElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_SegmentElement[] = {  {&_swigt__p_mfem__H1_SegmentElement, 0, 0, 0},{0, 0, 0, 0}};
@@ -52695,12 +55265,13 @@ static swig_cast_info _swigc__p_mfem__RefinedLinear2DFiniteElement[] = {  {&_swi
 static swig_cast_info _swigc__p_mfem__RefinedLinear3DFiniteElement[] = {  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RefinedTriLinear3DFiniteElement[] = {  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RotTriLinearHexFiniteElement[] = {  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ScalarFiniteElement[] = {  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_WedgeElement, _p_mfem__L2Pos_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_WedgeElement, _p_mfem__H1Pos_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0WedgeFiniteElement, _p_mfem__P0WedgeFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_WedgeElement, _p_mfem__L2_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic3DFiniteElement, _p_mfem__BiCubic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadratic3DFiniteElement, _p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear3DFiniteElement, _p_mfem__BiLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_WedgeElement, _p_mfem__H1_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TensorBasisElement[] = {  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__TensorBasisElement, 0, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__TensorBasisElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScalarFiniteElement[] = {  {&_swigt__p_mfem__NURBS1DFiniteElement, _p_mfem__NURBS1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NURBSFiniteElement, _p_mfem__NURBSFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_WedgeElement, _p_mfem__L2Pos_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__QuadPos1DFiniteElement, _p_mfem__QuadPos1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TetrahedronElement, _p_mfem__L2Pos_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_TriangleElement, _p_mfem__L2Pos_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_WedgeElement, _p_mfem__H1Pos_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TetrahedronElement, _p_mfem__H1Pos_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_TriangleElement, _p_mfem__H1Pos_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__PositiveFiniteElement, _p_mfem__PositiveFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0WedgeFiniteElement, _p_mfem__P0WedgeFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_WedgeElement, _p_mfem__L2_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TetrahedronElement, _p_mfem__L2_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_TriangleElement, _p_mfem__L2_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic3DFiniteElement, _p_mfem__BiCubic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadratic3DFiniteElement, _p_mfem__BiQuadratic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear3DFiniteElement, _p_mfem__BiLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_WedgeElement, _p_mfem__H1_WedgeElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TetrahedronElement, _p_mfem__H1_TetrahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_TriangleElement, _p_mfem__H1_TriangleElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RotTriLinearHexFiniteElement, _p_mfem__RotTriLinearHexFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedTriLinear3DFiniteElement, _p_mfem__RefinedTriLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedBiLinear2DFiniteElement, _p_mfem__RefinedBiLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0HexFiniteElement, _p_mfem__P0HexFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__LagrangeHexFiniteElement, _p_mfem__LagrangeHexFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear1DFiniteElement, _p_mfem__RefinedLinear1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0TriangleFiniteElement, _p_mfem__P0TriangleFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0QuadFiniteElement, _p_mfem__P0QuadFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Linear3DFiniteElement, _p_mfem__Linear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Quadratic3DFiniteElement, _p_mfem__Quadratic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__TriLinear3DFiniteElement, _p_mfem__TriLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFiniteElement, _p_mfem__CrouzeixRaviartFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartQuadFiniteElement, _p_mfem__CrouzeixRaviartQuadFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0SegmentFiniteElement, _p_mfem__P0SegmentFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P1SegmentFiniteElement, _p_mfem__P1SegmentFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P2SegmentFiniteElement, _p_mfem__P2SegmentFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Lagrange1DFiniteElement, _p_mfem__Lagrange1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P1TetNonConfFiniteElement, _p_mfem__P1TetNonConfFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P0TetFiniteElement, _p_mfem__P0TetFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__ScalarFiniteElement, 0, 0, 0},  {&_swigt__p_mfem__Cubic3DFiniteElement, _p_mfem__Cubic3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic2DFiniteElement, _p_mfem__Cubic2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Cubic1DFiniteElement, _p_mfem__Cubic1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiCubic2DFiniteElement, _p_mfem__BiCubic2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiQuad2DFiniteElement, _p_mfem__GaussBiQuad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuadPos2DFiniteElement, _p_mfem__BiQuadPos2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NodalFiniteElement, _p_mfem__NodalFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiQuad2DFiniteElement, _p_mfem__BiQuad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussQuad2DFiniteElement, _p_mfem__GaussQuad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Quad2DFiniteElement, _p_mfem__Quad2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Quad1DFiniteElement, _p_mfem__Quad1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__P1OnQuadFiniteElement, _p_mfem__P1OnQuadFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussBiLinear2DFiniteElement, _p_mfem__GaussBiLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__GaussLinear2DFiniteElement, _p_mfem__GaussLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__BiLinear2DFiniteElement, _p_mfem__BiLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Linear2DFiniteElement, _p_mfem__Linear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__Linear1DFiniteElement, _p_mfem__Linear1DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__PointFiniteElement, _p_mfem__PointFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear3DFiniteElement, _p_mfem__RefinedLinear3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__RefinedLinear2DFiniteElement, _p_mfem__RefinedLinear2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS2DFiniteElement, _p_mfem__NURBS2DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__NURBS3DFiniteElement, _p_mfem__NURBS3DFiniteElementTo_p_mfem__ScalarFiniteElement, 0, 0},  {&_swigt__p_mfem__H1Ser_QuadrilateralElement, _p_mfem__H1Ser_QuadrilateralElementTo_p_mfem__ScalarFiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TensorBasisElement[] = {  {&_swigt__p_mfem__H1_HexahedronElement, _p_mfem__H1_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1_QuadrilateralElement, _p_mfem__H1_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1_SegmentElement, _p_mfem__H1_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2Pos_HexahedronElement, _p_mfem__L2Pos_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2Pos_QuadrilateralElement, _p_mfem__L2Pos_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2Pos_SegmentElement, _p_mfem__L2Pos_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1Pos_HexahedronElement, _p_mfem__H1Pos_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1Pos_QuadrilateralElement, _p_mfem__H1Pos_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__H1Pos_SegmentElement, _p_mfem__H1Pos_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__PositiveTensorFiniteElement, _p_mfem__PositiveTensorFiniteElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__TensorBasisElement, 0, 0, 0},  {&_swigt__p_mfem__L2_SegmentElement, _p_mfem__L2_SegmentElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2_QuadrilateralElement, _p_mfem__L2_QuadrilateralElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__L2_HexahedronElement, _p_mfem__L2_HexahedronElementTo_p_mfem__TensorBasisElement, 0, 0},  {&_swigt__p_mfem__NodalTensorFiniteElement, _p_mfem__NodalTensorFiniteElementTo_p_mfem__TensorBasisElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TriLinear3DFiniteElement[] = {  {&_swigt__p_mfem__TriLinear3DFiniteElement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorCoefficient[] = {  {&_swigt__p_mfem__VectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorFiniteElement[] = {  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, 0, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__VectorFiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorFiniteElement[] = {  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__VectorTensorFiniteElement, _p_mfem__VectorTensorFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TetFiniteElement, _p_mfem__RT0TetFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT1HexFiniteElement, _p_mfem__RT1HexFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT0HexFiniteElement, _p_mfem__RT0HexFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1TetFiniteElement, _p_mfem__Nedelec1TetFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__Nedelec1HexFiniteElement, _p_mfem__Nedelec1HexFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT2QuadFiniteElement, _p_mfem__RT2QuadFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT2TriangleFiniteElement, _p_mfem__RT2TriangleFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT1QuadFiniteElement, _p_mfem__RT1QuadFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT1TriangleFiniteElement, _p_mfem__RT1TriangleFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT0QuadFiniteElement, _p_mfem__RT0QuadFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__VectorFiniteElement, 0, 0, 0},  {&_swigt__p_mfem__RT_QuadrilateralElement, _p_mfem__RT_QuadrilateralElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT_HexahedronElement, _p_mfem__RT_HexahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT0TriangleFiniteElement, _p_mfem__RT0TriangleFiniteElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TriangleElement, _p_mfem__RT_TriangleElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__RT_TetrahedronElement, _p_mfem__RT_TetrahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TetrahedronElement, _p_mfem__ND_TetrahedronElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_TriangleElement, _p_mfem__ND_TriangleElementTo_p_mfem__VectorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_SegmentElement, _p_mfem__ND_SegmentElementTo_p_mfem__VectorFiniteElement, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorTensorFiniteElement[] = {  {&_swigt__p_mfem__VectorTensorFiniteElement, 0, 0, 0},  {&_swigt__p_mfem__ND_HexahedronElement, _p_mfem__ND_HexahedronElementTo_p_mfem__VectorTensorFiniteElement, 0, 0},  {&_swigt__p_mfem__ND_QuadrilateralElement, _p_mfem__ND_QuadrilateralElementTo_p_mfem__VectorTensorFiniteElement, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_int[] = {  {&_swigt__p_p_int, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -52740,6 +55311,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__H1Pos_TetrahedronElement,
   _swigc__p_mfem__H1Pos_TriangleElement,
   _swigc__p_mfem__H1Pos_WedgeElement,
+  _swigc__p_mfem__H1Ser_QuadrilateralElement,
   _swigc__p_mfem__H1_HexahedronElement,
   _swigc__p_mfem__H1_QuadrilateralElement,
   _swigc__p_mfem__H1_SegmentElement,
@@ -52823,6 +55395,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Vector,
   _swigc__p_mfem__VectorCoefficient,
   _swigc__p_mfem__VectorFiniteElement,
+  _swigc__p_mfem__VectorTensorFiniteElement,
   _swigc__p_p_int,
 };
 
@@ -53563,6 +56136,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "BasisType_OpenUniform",SWIG_From_int(static_cast< int >(mfem::BasisType::OpenUniform)));
   SWIG_Python_SetConstant(d, "BasisType_ClosedUniform",SWIG_From_int(static_cast< int >(mfem::BasisType::ClosedUniform)));
   SWIG_Python_SetConstant(d, "BasisType_OpenHalfUniform",SWIG_From_int(static_cast< int >(mfem::BasisType::OpenHalfUniform)));
+  SWIG_Python_SetConstant(d, "BasisType_Serendipity",SWIG_From_int(static_cast< int >(mfem::BasisType::Serendipity)));
   SWIG_Python_SetConstant(d, "BasisType_NumBasisTypes",SWIG_From_int(static_cast< int >(mfem::BasisType::NumBasisTypes)));
   SWIG_Python_SetConstant(d, "DofToQuad_FULL",SWIG_From_int(static_cast< int >(mfem::DofToQuad::FULL)));
   SWIG_Python_SetConstant(d, "DofToQuad_TENSOR",SWIG_From_int(static_cast< int >(mfem::DofToQuad::TENSOR)));
@@ -53585,6 +56159,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Poly_1D_NumEvalTypes",SWIG_From_int(static_cast< int >(mfem::Poly_1D::NumEvalTypes)));
   SWIG_Python_SetConstant(d, "TensorBasisElement_L2_DOF_MAP",SWIG_From_int(static_cast< int >(mfem::TensorBasisElement::L2_DOF_MAP)));
   SWIG_Python_SetConstant(d, "TensorBasisElement_H1_DOF_MAP",SWIG_From_int(static_cast< int >(mfem::TensorBasisElement::H1_DOF_MAP)));
+  SWIG_Python_SetConstant(d, "TensorBasisElement_Sr_DOF_MAP",SWIG_From_int(static_cast< int >(mfem::TensorBasisElement::Sr_DOF_MAP)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

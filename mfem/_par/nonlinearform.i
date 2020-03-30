@@ -17,6 +17,7 @@ import_array();
 %include "exception.i"
 %import "operators.i"
 %import "fespace.i"
+%import "bilinearform.i"
 %import "nonlininteg.i"
 %import "../common/exception.i"
 %include "../common/typemap_macros.i"

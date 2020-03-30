@@ -7624,6 +7624,47 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorConstantCoefficient_GetVec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorConstantCoefficient *arg1 = (mfem::VectorConstantCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorConstantCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorConstantCoefficient_GetVec" "', argument " "1"" of type '" "mfem::VectorConstantCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorConstantCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &(arg1)->GetVec();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_VectorConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::VectorConstantCoefficient *arg1 = (mfem::VectorConstantCoefficient *) 0 ;
@@ -19540,6 +19581,7 @@ SWIGINTERN PyObject *MatrixPyCoefficientBase_swiginit(PyObject *SWIGUNUSEDPARM(s
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Coefficient_SetTime", _wrap_Coefficient_SetTime, METH_VARARGS, "Coefficient_SetTime(Coefficient self, double t)"},
 	 { "Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_O, "Coefficient_GetTime(Coefficient self) -> double"},
 	 { "Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, "\n"
@@ -19635,6 +19677,7 @@ static PyMethodDef SwigMethods[] = {
 		"VectorConstantCoefficient_Eval(VectorConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
 		"VectorConstantCoefficient_Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		""},
+	 { "VectorConstantCoefficient_GetVec", _wrap_VectorConstantCoefficient_GetVec, METH_O, "VectorConstantCoefficient_GetVec(VectorConstantCoefficient self) -> Vector"},
 	 { "delete_VectorConstantCoefficient", _wrap_delete_VectorConstantCoefficient, METH_O, "delete_VectorConstantCoefficient(VectorConstantCoefficient self)"},
 	 { "VectorConstantCoefficient_swigregister", VectorConstantCoefficient_swigregister, METH_O, NULL},
 	 { "VectorConstantCoefficient_swiginit", VectorConstantCoefficient_swiginit, METH_VARARGS, NULL},
@@ -19902,6 +19945,367 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Coefficient_SetTime", _wrap_Coefficient_SetTime, METH_VARARGS, "SetTime(Coefficient self, double t)"},
+	 { "Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_O, "GetTime(Coefficient self) -> double"},
+	 { "Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, "\n"
+		"Eval(Coefficient self, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Eval(Coefficient self, ElementTransformation T, IntegrationPoint ip, double t) -> double\n"
+		""},
+	 { "delete_Coefficient", _wrap_delete_Coefficient, METH_O, "delete_Coefficient(Coefficient self)"},
+	 { "Coefficient_swigregister", Coefficient_swigregister, METH_O, NULL},
+	 { "ConstantCoefficient_constant_set", _wrap_ConstantCoefficient_constant_set, METH_VARARGS, "ConstantCoefficient_constant_set(ConstantCoefficient self, double constant)"},
+	 { "ConstantCoefficient_constant_get", _wrap_ConstantCoefficient_constant_get, METH_O, "ConstantCoefficient_constant_get(ConstantCoefficient self) -> double"},
+	 { "new_ConstantCoefficient", _wrap_new_ConstantCoefficient, METH_VARARGS, "ConstantCoefficient(double c=1.0)"},
+	 { "ConstantCoefficient_Eval", _wrap_ConstantCoefficient_Eval, METH_VARARGS, "Eval(ConstantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_ConstantCoefficient", _wrap_delete_ConstantCoefficient, METH_O, "delete_ConstantCoefficient(ConstantCoefficient self)"},
+	 { "ConstantCoefficient_swigregister", ConstantCoefficient_swigregister, METH_O, NULL},
+	 { "ConstantCoefficient_swiginit", ConstantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_PWConstCoefficient", _wrap_new_PWConstCoefficient, METH_VARARGS, "\n"
+		"PWConstCoefficient(int NumOfSubD=0)\n"
+		"new_PWConstCoefficient(Vector c) -> PWConstCoefficient\n"
+		""},
+	 { "PWConstCoefficient_UpdateConstants", _wrap_PWConstCoefficient_UpdateConstants, METH_VARARGS, "UpdateConstants(PWConstCoefficient self, Vector c)"},
+	 { "PWConstCoefficient___call__", _wrap_PWConstCoefficient___call__, METH_VARARGS, "__call__(PWConstCoefficient self, int i) -> double &"},
+	 { "PWConstCoefficient_GetNConst", _wrap_PWConstCoefficient_GetNConst, METH_O, "GetNConst(PWConstCoefficient self) -> int"},
+	 { "PWConstCoefficient_Eval", _wrap_PWConstCoefficient_Eval, METH_VARARGS, "Eval(PWConstCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_PWConstCoefficient", _wrap_delete_PWConstCoefficient, METH_O, "delete_PWConstCoefficient(PWConstCoefficient self)"},
+	 { "PWConstCoefficient_swigregister", PWConstCoefficient_swigregister, METH_O, NULL},
+	 { "PWConstCoefficient_swiginit", PWConstCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_FunctionCoefficient", _wrap_new_FunctionCoefficient, METH_VARARGS, "\n"
+		"FunctionCoefficient(double (*)(mfem::Vector const &) f)\n"
+		"FunctionCoefficient(double (*)(mfem::Vector const &,double) tdf)\n"
+		"FunctionCoefficient(double (*)(mfem::Vector &) f)\n"
+		"new_FunctionCoefficient(double (*)(mfem::Vector &,double) tdf) -> FunctionCoefficient\n"
+		""},
+	 { "FunctionCoefficient_Eval", _wrap_FunctionCoefficient_Eval, METH_VARARGS, "Eval(FunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_FunctionCoefficient", _wrap_delete_FunctionCoefficient, METH_O, "delete_FunctionCoefficient(FunctionCoefficient self)"},
+	 { "FunctionCoefficient_swigregister", FunctionCoefficient_swigregister, METH_O, NULL},
+	 { "FunctionCoefficient_swiginit", FunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_GridFunctionCoefficient", _wrap_new_GridFunctionCoefficient, METH_VARARGS, "\n"
+		"GridFunctionCoefficient()\n"
+		"GridFunctionCoefficient(mfem::GridFunction * gf, int comp=1)\n"
+		""},
+	 { "GridFunctionCoefficient_SetGridFunction", _wrap_GridFunctionCoefficient_SetGridFunction, METH_VARARGS, "SetGridFunction(GridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "GridFunctionCoefficient_GetGridFunction", _wrap_GridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(GridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "GridFunctionCoefficient_Eval", _wrap_GridFunctionCoefficient_Eval, METH_VARARGS, "Eval(GridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_GridFunctionCoefficient", _wrap_delete_GridFunctionCoefficient, METH_O, "delete_GridFunctionCoefficient(GridFunctionCoefficient self)"},
+	 { "GridFunctionCoefficient_swigregister", GridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "GridFunctionCoefficient_swiginit", GridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_TransformedCoefficient", _wrap_new_TransformedCoefficient, METH_VARARGS, "\n"
+		"TransformedCoefficient(Coefficient q, double (*)(double) F)\n"
+		"new_TransformedCoefficient(Coefficient q1, Coefficient q2, double (*)(double,double) F) -> TransformedCoefficient\n"
+		""},
+	 { "TransformedCoefficient_Eval", _wrap_TransformedCoefficient_Eval, METH_VARARGS, "Eval(TransformedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_TransformedCoefficient", _wrap_delete_TransformedCoefficient, METH_O, "delete_TransformedCoefficient(TransformedCoefficient self)"},
+	 { "TransformedCoefficient_swigregister", TransformedCoefficient_swigregister, METH_O, NULL},
+	 { "TransformedCoefficient_swiginit", TransformedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_DeltaCoefficient", _wrap_new_DeltaCoefficient, METH_VARARGS, "\n"
+		"DeltaCoefficient()\n"
+		"DeltaCoefficient(double x, double s)\n"
+		"DeltaCoefficient(double x, double y, double s)\n"
+		"new_DeltaCoefficient(double x, double y, double z, double s) -> DeltaCoefficient\n"
+		""},
+	 { "DeltaCoefficient_SetDeltaCenter", _wrap_DeltaCoefficient_SetDeltaCenter, METH_VARARGS, "SetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { "DeltaCoefficient_SetScale", _wrap_DeltaCoefficient_SetScale, METH_VARARGS, "SetScale(DeltaCoefficient self, double _s)"},
+	 { "DeltaCoefficient_SetFunction", _wrap_DeltaCoefficient_SetFunction, METH_VARARGS, "SetFunction(DeltaCoefficient self, double (*)(double) f)"},
+	 { "DeltaCoefficient_SetTol", _wrap_DeltaCoefficient_SetTol, METH_VARARGS, "SetTol(DeltaCoefficient self, double _tol)"},
+	 { "DeltaCoefficient_SetWeight", _wrap_DeltaCoefficient_SetWeight, METH_VARARGS, "SetWeight(DeltaCoefficient self, Coefficient w)"},
+	 { "DeltaCoefficient_Center", _wrap_DeltaCoefficient_Center, METH_O, "Center(DeltaCoefficient self) -> double const *"},
+	 { "DeltaCoefficient_Scale", _wrap_DeltaCoefficient_Scale, METH_O, "Scale(DeltaCoefficient self) -> double"},
+	 { "DeltaCoefficient_Tol", _wrap_DeltaCoefficient_Tol, METH_O, "Tol(DeltaCoefficient self) -> double"},
+	 { "DeltaCoefficient_Weight", _wrap_DeltaCoefficient_Weight, METH_O, "Weight(DeltaCoefficient self) -> Coefficient"},
+	 { "DeltaCoefficient_GetDeltaCenter", _wrap_DeltaCoefficient_GetDeltaCenter, METH_VARARGS, "GetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { "DeltaCoefficient_EvalDelta", _wrap_DeltaCoefficient_EvalDelta, METH_VARARGS, "EvalDelta(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "DeltaCoefficient_Eval", _wrap_DeltaCoefficient_Eval, METH_VARARGS, "Eval(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_DeltaCoefficient", _wrap_delete_DeltaCoefficient, METH_O, "delete_DeltaCoefficient(DeltaCoefficient self)"},
+	 { "DeltaCoefficient_swigregister", DeltaCoefficient_swigregister, METH_O, NULL},
+	 { "DeltaCoefficient_swiginit", DeltaCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_RestrictedCoefficient", _wrap_new_RestrictedCoefficient, METH_VARARGS, "new_RestrictedCoefficient(Coefficient _c, intArray attr) -> RestrictedCoefficient"},
+	 { "RestrictedCoefficient_Eval", _wrap_RestrictedCoefficient_Eval, METH_VARARGS, "Eval(RestrictedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_RestrictedCoefficient", _wrap_delete_RestrictedCoefficient, METH_O, "delete_RestrictedCoefficient(RestrictedCoefficient self)"},
+	 { "RestrictedCoefficient_swigregister", RestrictedCoefficient_swigregister, METH_O, NULL},
+	 { "RestrictedCoefficient_swiginit", RestrictedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "VectorCoefficient_SetTime", _wrap_VectorCoefficient_SetTime, METH_VARARGS, "SetTime(VectorCoefficient self, double t)"},
+	 { "VectorCoefficient_GetTime", _wrap_VectorCoefficient_GetTime, METH_O, "GetTime(VectorCoefficient self) -> double"},
+	 { "VectorCoefficient_GetVDim", _wrap_VectorCoefficient_GetVDim, METH_O, "GetVDim(VectorCoefficient self) -> int"},
+	 { "VectorCoefficient_Eval", _wrap_VectorCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorCoefficient", _wrap_delete_VectorCoefficient, METH_O, "delete_VectorCoefficient(VectorCoefficient self)"},
+	 { "VectorCoefficient_swigregister", VectorCoefficient_swigregister, METH_O, NULL},
+	 { "new_VectorConstantCoefficient", _wrap_new_VectorConstantCoefficient, METH_O, "new_VectorConstantCoefficient(Vector v) -> VectorConstantCoefficient"},
+	 { "VectorConstantCoefficient_Eval", _wrap_VectorConstantCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "VectorConstantCoefficient_GetVec", _wrap_VectorConstantCoefficient_GetVec, METH_O, "GetVec(VectorConstantCoefficient self) -> Vector"},
+	 { "delete_VectorConstantCoefficient", _wrap_delete_VectorConstantCoefficient, METH_O, "delete_VectorConstantCoefficient(VectorConstantCoefficient self)"},
+	 { "VectorConstantCoefficient_swigregister", VectorConstantCoefficient_swigregister, METH_O, NULL},
+	 { "VectorConstantCoefficient_swiginit", VectorConstantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorFunctionCoefficient", _wrap_new_VectorFunctionCoefficient, METH_VARARGS, "\n"
+		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::Vector &) F, Coefficient q=None)\n"
+		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::Vector &) TDF, Coefficient q=None)\n"
+		""},
+	 { "VectorFunctionCoefficient_Eval", _wrap_VectorFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_VectorFunctionCoefficient", _wrap_delete_VectorFunctionCoefficient, METH_O, "delete_VectorFunctionCoefficient(VectorFunctionCoefficient self)"},
+	 { "VectorFunctionCoefficient_swigregister", VectorFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "VectorFunctionCoefficient_swiginit", VectorFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorArrayCoefficient", _wrap_new_VectorArrayCoefficient, METH_O, "new_VectorArrayCoefficient(int dim) -> VectorArrayCoefficient"},
+	 { "VectorArrayCoefficient_GetCoeff", _wrap_VectorArrayCoefficient_GetCoeff, METH_VARARGS, "GetCoeff(VectorArrayCoefficient self, int i) -> Coefficient"},
+	 { "VectorArrayCoefficient_GetCoeffs", _wrap_VectorArrayCoefficient_GetCoeffs, METH_O, "GetCoeffs(VectorArrayCoefficient self) -> mfem::Coefficient **"},
+	 { "VectorArrayCoefficient_Set", _wrap_VectorArrayCoefficient_Set, METH_VARARGS, "Set(VectorArrayCoefficient self, int i, Coefficient c, bool own=True)"},
+	 { "VectorArrayCoefficient_Eval", _wrap_VectorArrayCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorArrayCoefficient self, int i, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Eval(VectorArrayCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorArrayCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorArrayCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_VectorArrayCoefficient", _wrap_delete_VectorArrayCoefficient, METH_O, "delete_VectorArrayCoefficient(VectorArrayCoefficient self)"},
+	 { "VectorArrayCoefficient_swigregister", VectorArrayCoefficient_swigregister, METH_O, NULL},
+	 { "VectorArrayCoefficient_swiginit", VectorArrayCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorGridFunctionCoefficient", _wrap_new_VectorGridFunctionCoefficient, METH_VARARGS, "\n"
+		"VectorGridFunctionCoefficient()\n"
+		"new_VectorGridFunctionCoefficient(mfem::GridFunction * gf) -> VectorGridFunctionCoefficient\n"
+		""},
+	 { "VectorGridFunctionCoefficient_SetGridFunction", _wrap_VectorGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "SetGridFunction(VectorGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "VectorGridFunctionCoefficient_GetGridFunction", _wrap_VectorGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(VectorGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "VectorGridFunctionCoefficient_Eval", _wrap_VectorGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorGridFunctionCoefficient", _wrap_delete_VectorGridFunctionCoefficient, METH_O, "delete_VectorGridFunctionCoefficient(VectorGridFunctionCoefficient self)"},
+	 { "VectorGridFunctionCoefficient_swigregister", VectorGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "VectorGridFunctionCoefficient_swiginit", VectorGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_GradientGridFunctionCoefficient", _wrap_new_GradientGridFunctionCoefficient, METH_O, "new_GradientGridFunctionCoefficient(mfem::GridFunction * gf) -> GradientGridFunctionCoefficient"},
+	 { "GradientGridFunctionCoefficient_SetGridFunction", _wrap_GradientGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "SetGridFunction(GradientGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "GradientGridFunctionCoefficient_GetGridFunction", _wrap_GradientGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(GradientGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "GradientGridFunctionCoefficient_Eval", _wrap_GradientGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(GradientGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(GradientGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_GradientGridFunctionCoefficient", _wrap_delete_GradientGridFunctionCoefficient, METH_O, "delete_GradientGridFunctionCoefficient(GradientGridFunctionCoefficient self)"},
+	 { "GradientGridFunctionCoefficient_swigregister", GradientGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "GradientGridFunctionCoefficient_swiginit", GradientGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "CurlGridFunctionCoefficient_SetGridFunction", _wrap_CurlGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "CurlGridFunctionCoefficient_GetGridFunction", _wrap_CurlGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(CurlGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "CurlGridFunctionCoefficient_Eval", _wrap_CurlGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(CurlGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_CurlGridFunctionCoefficient", _wrap_delete_CurlGridFunctionCoefficient, METH_O, "delete_CurlGridFunctionCoefficient(CurlGridFunctionCoefficient self)"},
+	 { "CurlGridFunctionCoefficient_swigregister", CurlGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "new_DivergenceGridFunctionCoefficient", _wrap_new_DivergenceGridFunctionCoefficient, METH_O, "new_DivergenceGridFunctionCoefficient(mfem::GridFunction * gf) -> DivergenceGridFunctionCoefficient"},
+	 { "DivergenceGridFunctionCoefficient_SetGridFunction", _wrap_DivergenceGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "DivergenceGridFunctionCoefficient_GetGridFunction", _wrap_DivergenceGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(DivergenceGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "DivergenceGridFunctionCoefficient_Eval", _wrap_DivergenceGridFunctionCoefficient_Eval, METH_VARARGS, "Eval(DivergenceGridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_DivergenceGridFunctionCoefficient", _wrap_delete_DivergenceGridFunctionCoefficient, METH_O, "delete_DivergenceGridFunctionCoefficient(DivergenceGridFunctionCoefficient self)"},
+	 { "DivergenceGridFunctionCoefficient_swigregister", DivergenceGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "DivergenceGridFunctionCoefficient_swiginit", DivergenceGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorDeltaCoefficient", _wrap_new_VectorDeltaCoefficient, METH_VARARGS, "\n"
+		"VectorDeltaCoefficient(int _vdim)\n"
+		"VectorDeltaCoefficient(Vector _dir)\n"
+		"VectorDeltaCoefficient(Vector _dir, double x, double s)\n"
+		"VectorDeltaCoefficient(Vector _dir, double x, double y, double s)\n"
+		"new_VectorDeltaCoefficient(Vector _dir, double x, double y, double z, double s) -> VectorDeltaCoefficient\n"
+		""},
+	 { "VectorDeltaCoefficient_SetDeltaCoefficient", _wrap_VectorDeltaCoefficient_SetDeltaCoefficient, METH_VARARGS, "SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient _d)"},
+	 { "VectorDeltaCoefficient_GetDeltaCoefficient", _wrap_VectorDeltaCoefficient_GetDeltaCoefficient, METH_O, "GetDeltaCoefficient(VectorDeltaCoefficient self) -> DeltaCoefficient"},
+	 { "VectorDeltaCoefficient_SetScale", _wrap_VectorDeltaCoefficient_SetScale, METH_VARARGS, "SetScale(VectorDeltaCoefficient self, double s)"},
+	 { "VectorDeltaCoefficient_SetDirection", _wrap_VectorDeltaCoefficient_SetDirection, METH_VARARGS, "SetDirection(VectorDeltaCoefficient self, Vector _d)"},
+	 { "VectorDeltaCoefficient_SetDeltaCenter", _wrap_VectorDeltaCoefficient_SetDeltaCenter, METH_VARARGS, "SetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
+	 { "VectorDeltaCoefficient_GetDeltaCenter", _wrap_VectorDeltaCoefficient_GetDeltaCenter, METH_VARARGS, "GetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
+	 { "VectorDeltaCoefficient_EvalDelta", _wrap_VectorDeltaCoefficient_EvalDelta, METH_VARARGS, "EvalDelta(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)"},
+	 { "VectorDeltaCoefficient_Eval", _wrap_VectorDeltaCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorDeltaCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_VectorDeltaCoefficient", _wrap_delete_VectorDeltaCoefficient, METH_O, "delete_VectorDeltaCoefficient(VectorDeltaCoefficient self)"},
+	 { "VectorDeltaCoefficient_swigregister", VectorDeltaCoefficient_swigregister, METH_O, NULL},
+	 { "VectorDeltaCoefficient_swiginit", VectorDeltaCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorRestrictedCoefficient", _wrap_new_VectorRestrictedCoefficient, METH_VARARGS, "new_VectorRestrictedCoefficient(VectorCoefficient vc, intArray attr) -> VectorRestrictedCoefficient"},
+	 { "VectorRestrictedCoefficient_Eval", _wrap_VectorRestrictedCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorRestrictedCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorRestrictedCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorRestrictedCoefficient", _wrap_delete_VectorRestrictedCoefficient, METH_O, "delete_VectorRestrictedCoefficient(VectorRestrictedCoefficient self)"},
+	 { "VectorRestrictedCoefficient_swigregister", VectorRestrictedCoefficient_swigregister, METH_O, NULL},
+	 { "VectorRestrictedCoefficient_swiginit", VectorRestrictedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "MatrixCoefficient_SetTime", _wrap_MatrixCoefficient_SetTime, METH_VARARGS, "SetTime(MatrixCoefficient self, double t)"},
+	 { "MatrixCoefficient_GetTime", _wrap_MatrixCoefficient_GetTime, METH_O, "GetTime(MatrixCoefficient self) -> double"},
+	 { "MatrixCoefficient_GetHeight", _wrap_MatrixCoefficient_GetHeight, METH_O, "GetHeight(MatrixCoefficient self) -> int"},
+	 { "MatrixCoefficient_GetWidth", _wrap_MatrixCoefficient_GetWidth, METH_O, "GetWidth(MatrixCoefficient self) -> int"},
+	 { "MatrixCoefficient_GetVDim", _wrap_MatrixCoefficient_GetVDim, METH_O, "GetVDim(MatrixCoefficient self) -> int"},
+	 { "MatrixCoefficient_Eval", _wrap_MatrixCoefficient_Eval, METH_VARARGS, "Eval(MatrixCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixCoefficient", _wrap_delete_MatrixCoefficient, METH_O, "delete_MatrixCoefficient(MatrixCoefficient self)"},
+	 { "MatrixCoefficient_swigregister", MatrixCoefficient_swigregister, METH_O, NULL},
+	 { "new_MatrixConstantCoefficient", _wrap_new_MatrixConstantCoefficient, METH_O, "new_MatrixConstantCoefficient(DenseMatrix m) -> MatrixConstantCoefficient"},
+	 { "MatrixConstantCoefficient_Eval", _wrap_MatrixConstantCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(MatrixConstantCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(MatrixConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_MatrixConstantCoefficient", _wrap_delete_MatrixConstantCoefficient, METH_O, "delete_MatrixConstantCoefficient(MatrixConstantCoefficient self)"},
+	 { "MatrixConstantCoefficient_swigregister", MatrixConstantCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixConstantCoefficient_swiginit", MatrixConstantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixFunctionCoefficient", _wrap_new_MatrixFunctionCoefficient, METH_VARARGS, "\n"
+		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::DenseMatrix &) F, Coefficient q=None)\n"
+		"MatrixFunctionCoefficient(DenseMatrix m, Coefficient q)\n"
+		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::DenseMatrix &) TDF, Coefficient q=None)\n"
+		""},
+	 { "MatrixFunctionCoefficient_Eval", _wrap_MatrixFunctionCoefficient_Eval, METH_VARARGS, "Eval(MatrixFunctionCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixFunctionCoefficient", _wrap_delete_MatrixFunctionCoefficient, METH_O, "delete_MatrixFunctionCoefficient(MatrixFunctionCoefficient self)"},
+	 { "MatrixFunctionCoefficient_swigregister", MatrixFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixFunctionCoefficient_swiginit", MatrixFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixArrayCoefficient", _wrap_new_MatrixArrayCoefficient, METH_O, "new_MatrixArrayCoefficient(int dim) -> MatrixArrayCoefficient"},
+	 { "MatrixArrayCoefficient_GetCoeff", _wrap_MatrixArrayCoefficient_GetCoeff, METH_VARARGS, "GetCoeff(MatrixArrayCoefficient self, int i, int j) -> Coefficient"},
+	 { "MatrixArrayCoefficient_Set", _wrap_MatrixArrayCoefficient_Set, METH_VARARGS, "Set(MatrixArrayCoefficient self, int i, int j, Coefficient c, bool own=True)"},
+	 { "MatrixArrayCoefficient_Eval", _wrap_MatrixArrayCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(MatrixArrayCoefficient self, int i, int j, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Eval(MatrixArrayCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_MatrixArrayCoefficient", _wrap_delete_MatrixArrayCoefficient, METH_O, "delete_MatrixArrayCoefficient(MatrixArrayCoefficient self)"},
+	 { "MatrixArrayCoefficient_swigregister", MatrixArrayCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixArrayCoefficient_swiginit", MatrixArrayCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixRestrictedCoefficient", _wrap_new_MatrixRestrictedCoefficient, METH_VARARGS, "new_MatrixRestrictedCoefficient(MatrixCoefficient mc, intArray attr) -> MatrixRestrictedCoefficient"},
+	 { "MatrixRestrictedCoefficient_Eval", _wrap_MatrixRestrictedCoefficient_Eval, METH_VARARGS, "Eval(MatrixRestrictedCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixRestrictedCoefficient", _wrap_delete_MatrixRestrictedCoefficient, METH_O, "delete_MatrixRestrictedCoefficient(MatrixRestrictedCoefficient self)"},
+	 { "MatrixRestrictedCoefficient_swigregister", MatrixRestrictedCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixRestrictedCoefficient_swiginit", MatrixRestrictedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_SumCoefficient", _wrap_new_SumCoefficient, METH_VARARGS, "SumCoefficient(Coefficient A, Coefficient B, double _alpha=1.0, double _beta=1.0)"},
+	 { "SumCoefficient_Eval", _wrap_SumCoefficient_Eval, METH_VARARGS, "Eval(SumCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_SumCoefficient", _wrap_delete_SumCoefficient, METH_O, "delete_SumCoefficient(SumCoefficient self)"},
+	 { "SumCoefficient_swigregister", SumCoefficient_swigregister, METH_O, NULL},
+	 { "SumCoefficient_swiginit", SumCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_ProductCoefficient", _wrap_new_ProductCoefficient, METH_VARARGS, "new_ProductCoefficient(Coefficient A, Coefficient B) -> ProductCoefficient"},
+	 { "ProductCoefficient_Eval", _wrap_ProductCoefficient_Eval, METH_VARARGS, "Eval(ProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_ProductCoefficient", _wrap_delete_ProductCoefficient, METH_O, "delete_ProductCoefficient(ProductCoefficient self)"},
+	 { "ProductCoefficient_swigregister", ProductCoefficient_swigregister, METH_O, NULL},
+	 { "ProductCoefficient_swiginit", ProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_PowerCoefficient", _wrap_new_PowerCoefficient, METH_VARARGS, "new_PowerCoefficient(Coefficient A, double _p) -> PowerCoefficient"},
+	 { "PowerCoefficient_Eval", _wrap_PowerCoefficient_Eval, METH_VARARGS, "Eval(PowerCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_PowerCoefficient", _wrap_delete_PowerCoefficient, METH_O, "delete_PowerCoefficient(PowerCoefficient self)"},
+	 { "PowerCoefficient_swigregister", PowerCoefficient_swigregister, METH_O, NULL},
+	 { "PowerCoefficient_swiginit", PowerCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_InnerProductCoefficient", _wrap_new_InnerProductCoefficient, METH_VARARGS, "new_InnerProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> InnerProductCoefficient"},
+	 { "InnerProductCoefficient_Eval", _wrap_InnerProductCoefficient_Eval, METH_VARARGS, "Eval(InnerProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_InnerProductCoefficient", _wrap_delete_InnerProductCoefficient, METH_O, "delete_InnerProductCoefficient(InnerProductCoefficient self)"},
+	 { "InnerProductCoefficient_swigregister", InnerProductCoefficient_swigregister, METH_O, NULL},
+	 { "InnerProductCoefficient_swiginit", InnerProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorRotProductCoefficient", _wrap_new_VectorRotProductCoefficient, METH_VARARGS, "new_VectorRotProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorRotProductCoefficient"},
+	 { "VectorRotProductCoefficient_Eval", _wrap_VectorRotProductCoefficient_Eval, METH_VARARGS, "Eval(VectorRotProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_VectorRotProductCoefficient", _wrap_delete_VectorRotProductCoefficient, METH_O, "delete_VectorRotProductCoefficient(VectorRotProductCoefficient self)"},
+	 { "VectorRotProductCoefficient_swigregister", VectorRotProductCoefficient_swigregister, METH_O, NULL},
+	 { "VectorRotProductCoefficient_swiginit", VectorRotProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_DeterminantCoefficient", _wrap_new_DeterminantCoefficient, METH_O, "new_DeterminantCoefficient(MatrixCoefficient A) -> DeterminantCoefficient"},
+	 { "DeterminantCoefficient_Eval", _wrap_DeterminantCoefficient_Eval, METH_VARARGS, "Eval(DeterminantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_DeterminantCoefficient", _wrap_delete_DeterminantCoefficient, METH_O, "delete_DeterminantCoefficient(DeterminantCoefficient self)"},
+	 { "DeterminantCoefficient_swigregister", DeterminantCoefficient_swigregister, METH_O, NULL},
+	 { "DeterminantCoefficient_swiginit", DeterminantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorSumCoefficient", _wrap_new_VectorSumCoefficient, METH_VARARGS, "VectorSumCoefficient(VectorCoefficient A, VectorCoefficient B, double _alpha=1.0, double _beta=1.0)"},
+	 { "VectorSumCoefficient_Eval", _wrap_VectorSumCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorSumCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorSumCoefficient", _wrap_delete_VectorSumCoefficient, METH_O, "delete_VectorSumCoefficient(VectorSumCoefficient self)"},
+	 { "VectorSumCoefficient_swigregister", VectorSumCoefficient_swigregister, METH_O, NULL},
+	 { "VectorSumCoefficient_swiginit", VectorSumCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_ScalarVectorProductCoefficient", _wrap_new_ScalarVectorProductCoefficient, METH_VARARGS, "new_ScalarVectorProductCoefficient(Coefficient A, VectorCoefficient B) -> ScalarVectorProductCoefficient"},
+	 { "ScalarVectorProductCoefficient_Eval", _wrap_ScalarVectorProductCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(ScalarVectorProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(ScalarVectorProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_ScalarVectorProductCoefficient", _wrap_delete_ScalarVectorProductCoefficient, METH_O, "delete_ScalarVectorProductCoefficient(ScalarVectorProductCoefficient self)"},
+	 { "ScalarVectorProductCoefficient_swigregister", ScalarVectorProductCoefficient_swigregister, METH_O, NULL},
+	 { "ScalarVectorProductCoefficient_swiginit", ScalarVectorProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorCrossProductCoefficient", _wrap_new_VectorCrossProductCoefficient, METH_VARARGS, "new_VectorCrossProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorCrossProductCoefficient"},
+	 { "VectorCrossProductCoefficient_Eval", _wrap_VectorCrossProductCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorCrossProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorCrossProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorCrossProductCoefficient", _wrap_delete_VectorCrossProductCoefficient, METH_O, "delete_VectorCrossProductCoefficient(VectorCrossProductCoefficient self)"},
+	 { "VectorCrossProductCoefficient_swigregister", VectorCrossProductCoefficient_swigregister, METH_O, NULL},
+	 { "VectorCrossProductCoefficient_swiginit", VectorCrossProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatVecCoefficient", _wrap_new_MatVecCoefficient, METH_VARARGS, "new_MatVecCoefficient(MatrixCoefficient A, VectorCoefficient B) -> MatVecCoefficient"},
+	 { "MatVecCoefficient_Eval", _wrap_MatVecCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(MatVecCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(MatVecCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_MatVecCoefficient", _wrap_delete_MatVecCoefficient, METH_O, "delete_MatVecCoefficient(MatVecCoefficient self)"},
+	 { "MatVecCoefficient_swigregister", MatVecCoefficient_swigregister, METH_O, NULL},
+	 { "MatVecCoefficient_swiginit", MatVecCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_IdentityMatrixCoefficient", _wrap_new_IdentityMatrixCoefficient, METH_O, "new_IdentityMatrixCoefficient(int d) -> IdentityMatrixCoefficient"},
+	 { "IdentityMatrixCoefficient_Eval", _wrap_IdentityMatrixCoefficient_Eval, METH_VARARGS, "Eval(IdentityMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_IdentityMatrixCoefficient", _wrap_delete_IdentityMatrixCoefficient, METH_O, "delete_IdentityMatrixCoefficient(IdentityMatrixCoefficient self)"},
+	 { "IdentityMatrixCoefficient_swigregister", IdentityMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "IdentityMatrixCoefficient_swiginit", IdentityMatrixCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixSumCoefficient", _wrap_new_MatrixSumCoefficient, METH_VARARGS, "MatrixSumCoefficient(MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0, double _beta=1.0)"},
+	 { "MatrixSumCoefficient_Eval", _wrap_MatrixSumCoefficient_Eval, METH_VARARGS, "Eval(MatrixSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixSumCoefficient", _wrap_delete_MatrixSumCoefficient, METH_O, "delete_MatrixSumCoefficient(MatrixSumCoefficient self)"},
+	 { "MatrixSumCoefficient_swigregister", MatrixSumCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixSumCoefficient_swiginit", MatrixSumCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_ScalarMatrixProductCoefficient", _wrap_new_ScalarMatrixProductCoefficient, METH_VARARGS, "new_ScalarMatrixProductCoefficient(Coefficient A, MatrixCoefficient B) -> ScalarMatrixProductCoefficient"},
+	 { "ScalarMatrixProductCoefficient_Eval", _wrap_ScalarMatrixProductCoefficient_Eval, METH_VARARGS, "Eval(ScalarMatrixProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_ScalarMatrixProductCoefficient", _wrap_delete_ScalarMatrixProductCoefficient, METH_O, "delete_ScalarMatrixProductCoefficient(ScalarMatrixProductCoefficient self)"},
+	 { "ScalarMatrixProductCoefficient_swigregister", ScalarMatrixProductCoefficient_swigregister, METH_O, NULL},
+	 { "ScalarMatrixProductCoefficient_swiginit", ScalarMatrixProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_TransposeMatrixCoefficient", _wrap_new_TransposeMatrixCoefficient, METH_O, "new_TransposeMatrixCoefficient(MatrixCoefficient A) -> TransposeMatrixCoefficient"},
+	 { "TransposeMatrixCoefficient_Eval", _wrap_TransposeMatrixCoefficient_Eval, METH_VARARGS, "Eval(TransposeMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_TransposeMatrixCoefficient", _wrap_delete_TransposeMatrixCoefficient, METH_O, "delete_TransposeMatrixCoefficient(TransposeMatrixCoefficient self)"},
+	 { "TransposeMatrixCoefficient_swigregister", TransposeMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "TransposeMatrixCoefficient_swiginit", TransposeMatrixCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_InverseMatrixCoefficient", _wrap_new_InverseMatrixCoefficient, METH_O, "new_InverseMatrixCoefficient(MatrixCoefficient A) -> InverseMatrixCoefficient"},
+	 { "InverseMatrixCoefficient_Eval", _wrap_InverseMatrixCoefficient_Eval, METH_VARARGS, "Eval(InverseMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_InverseMatrixCoefficient", _wrap_delete_InverseMatrixCoefficient, METH_O, "delete_InverseMatrixCoefficient(InverseMatrixCoefficient self)"},
+	 { "InverseMatrixCoefficient_swigregister", InverseMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "InverseMatrixCoefficient_swiginit", InverseMatrixCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_OuterProductCoefficient", _wrap_new_OuterProductCoefficient, METH_VARARGS, "new_OuterProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> OuterProductCoefficient"},
+	 { "OuterProductCoefficient_Eval", _wrap_OuterProductCoefficient_Eval, METH_VARARGS, "Eval(OuterProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_OuterProductCoefficient", _wrap_delete_OuterProductCoefficient, METH_O, "delete_OuterProductCoefficient(OuterProductCoefficient self)"},
+	 { "OuterProductCoefficient_swigregister", OuterProductCoefficient_swigregister, METH_O, NULL},
+	 { "OuterProductCoefficient_swiginit", OuterProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "ComputeLpNorm", _wrap_ComputeLpNorm, METH_VARARGS, "\n"
+		"ComputeLpNorm(double p, Coefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		"ComputeLpNorm(double p, VectorCoefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		""},
+	 { "fake_func", _wrap_fake_func, METH_O, "fake_func(Vector x) -> double"},
+	 { "fake_func_vec", _wrap_fake_func_vec, METH_VARARGS, "fake_func_vec(Vector x, Vector Ht)"},
+	 { "fake_func_mat", _wrap_fake_func_mat, METH_VARARGS, "fake_func_mat(Vector x, DenseMatrix Kt)"},
+	 { "new_PyCoefficientBase", _wrap_new_PyCoefficientBase, METH_VARARGS, "new_PyCoefficientBase(PyObject * _self, int tdep) -> PyCoefficientBase"},
+	 { "PyCoefficientBase_Eval", _wrap_PyCoefficientBase_Eval, METH_VARARGS, "Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "PyCoefficientBase__EvalPy", _wrap_PyCoefficientBase__EvalPy, METH_VARARGS, "_EvalPy(PyCoefficientBase self, Vector arg0) -> double"},
+	 { "PyCoefficientBase__EvalPyT", _wrap_PyCoefficientBase__EvalPyT, METH_VARARGS, "_EvalPyT(PyCoefficientBase self, Vector arg0, double arg1) -> double"},
+	 { "delete_PyCoefficientBase", _wrap_delete_PyCoefficientBase, METH_O, "delete_PyCoefficientBase(PyCoefficientBase self)"},
+	 { "disown_PyCoefficientBase", _wrap_disown_PyCoefficientBase, METH_O, NULL},
+	 { "PyCoefficientBase_swigregister", PyCoefficientBase_swigregister, METH_O, NULL},
+	 { "PyCoefficientBase_swiginit", PyCoefficientBase_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorPyCoefficientBase", _wrap_new_VectorPyCoefficientBase, METH_VARARGS, "VectorPyCoefficientBase(int dim, int tdep, Coefficient q=None)"},
+	 { "VectorPyCoefficientBase_Eval", _wrap_VectorPyCoefficientBase_Eval, METH_VARARGS, "\n"
+		"Eval(VectorPyCoefficientBase self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorPyCoefficientBase self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "VectorPyCoefficientBase__EvalPy", _wrap_VectorPyCoefficientBase__EvalPy, METH_VARARGS, "_EvalPy(VectorPyCoefficientBase self, Vector arg0, Vector arg1)"},
+	 { "VectorPyCoefficientBase__EvalPyT", _wrap_VectorPyCoefficientBase__EvalPyT, METH_VARARGS, "_EvalPyT(VectorPyCoefficientBase self, Vector arg0, double arg1, Vector arg2)"},
+	 { "delete_VectorPyCoefficientBase", _wrap_delete_VectorPyCoefficientBase, METH_O, "delete_VectorPyCoefficientBase(VectorPyCoefficientBase self)"},
+	 { "disown_VectorPyCoefficientBase", _wrap_disown_VectorPyCoefficientBase, METH_O, NULL},
+	 { "VectorPyCoefficientBase_swigregister", VectorPyCoefficientBase_swigregister, METH_O, NULL},
+	 { "VectorPyCoefficientBase_swiginit", VectorPyCoefficientBase_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixPyCoefficientBase", _wrap_new_MatrixPyCoefficientBase, METH_VARARGS, "new_MatrixPyCoefficientBase(PyObject * _self, int dim, int tdep) -> MatrixPyCoefficientBase"},
+	 { "MatrixPyCoefficientBase_Eval", _wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS, "Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "MatrixPyCoefficientBase__EvalPy", _wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS, "_EvalPy(MatrixPyCoefficientBase self, Vector arg0, DenseMatrix arg1)"},
+	 { "MatrixPyCoefficientBase__EvalPyT", _wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS, "_EvalPyT(MatrixPyCoefficientBase self, Vector arg0, double arg1, DenseMatrix arg2)"},
+	 { "delete_MatrixPyCoefficientBase", _wrap_delete_MatrixPyCoefficientBase, METH_O, "delete_MatrixPyCoefficientBase(MatrixPyCoefficientBase self)"},
+	 { "disown_MatrixPyCoefficientBase", _wrap_disown_MatrixPyCoefficientBase, METH_O, NULL},
+	 { "MatrixPyCoefficientBase_swigregister", MatrixPyCoefficientBase_swigregister, METH_O, NULL},
+	 { "MatrixPyCoefficientBase_swiginit", MatrixPyCoefficientBase_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

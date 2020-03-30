@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _stable3d.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _stable3d.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -105,14 +108,17 @@ class STable3D(object):
     def Push(self, r, c, f):
         r"""Push(STable3D self, int r, int c, int f) -> int"""
         return _stable3d.STable3D_Push(self, r, c, f)
+    Push = _swig_new_instance_method(_stable3d.STable3D_Push)
 
     def Index(self, r, c, f):
         r"""Index(STable3D self, int r, int c, int f) -> int"""
         return _stable3d.STable3D_Index(self, r, c, f)
+    Index = _swig_new_instance_method(_stable3d.STable3D_Index)
 
     def Push4(self, r, c, f, t):
         r"""Push4(STable3D self, int r, int c, int f, int t) -> int"""
         return _stable3d.STable3D_Push4(self, r, c, f, t)
+    Push4 = _swig_new_instance_method(_stable3d.STable3D_Push4)
 
     def __call__(self, *args):
         r"""
@@ -120,10 +126,12 @@ class STable3D(object):
         __call__(STable3D self, int r, int c, int f, int t) -> int
         """
         return _stable3d.STable3D___call__(self, *args)
+    __call__ = _swig_new_instance_method(_stable3d.STable3D___call__)
 
     def NumberOfElements(self):
         r"""NumberOfElements(STable3D self) -> int"""
         return _stable3d.STable3D_NumberOfElements(self)
+    NumberOfElements = _swig_new_instance_method(_stable3d.STable3D_NumberOfElements)
     __swig_destroy__ = _stable3d.delete_STable3D
 
     def Print(self, *args):
@@ -132,6 +140,7 @@ class STable3D(object):
         Print(STable3D self, char const * file, int precision=8)
         """
         return _stable3d.STable3D_Print(self, *args)
+    Print = _swig_new_instance_method(_stable3d.STable3D_Print)
 
 # Register STable3D in _stable3d:
 _stable3d.STable3D_swigregister(STable3D)

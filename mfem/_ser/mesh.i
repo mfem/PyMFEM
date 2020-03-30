@@ -31,6 +31,7 @@ import_array();
 %import "gridfunc.i"
 %import "element.i"
 %import "vertex.i"
+%import "vtk.i"
 %import "mesh/mesquite.hpp"
 %import "densemat.i"
 %import "sparsemat.i"

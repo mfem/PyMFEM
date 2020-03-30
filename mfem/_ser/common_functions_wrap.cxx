@@ -4891,6 +4891,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "InnerProduct", _wrap_InnerProduct, METH_VARARGS, "InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double"},
 	 { "RAP", _wrap_RAP, METH_VARARGS, "\n"
 		"RAP(mfem::SparseMatrix const & A, mfem::DenseMatrix & P) -> mfem::DenseMatrix\n"
@@ -4926,6 +4927,39 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "InnerProduct", _wrap_InnerProduct, METH_VARARGS, "InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double"},
+	 { "RAP", _wrap_RAP, METH_VARARGS, "\n"
+		"RAP(mfem::SparseMatrix const & A, mfem::DenseMatrix & P) -> mfem::DenseMatrix\n"
+		"RAP(mfem::DenseMatrix & A, mfem::SparseMatrix const & P) -> mfem::DenseMatrix\n"
+		"RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R, mfem::SparseMatrix * ORAP=None) -> mfem::SparseMatrix\n"
+		"RAP(mfem::SparseMatrix const & Rt, mfem::SparseMatrix const & A, mfem::SparseMatrix const & P) -> mfem::SparseMatrix *\n"
+		""},
+	 { "Add", _wrap_Add, METH_VARARGS, "\n"
+		"Add(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B, double alpha, mfem::DenseMatrix & C)\n"
+		"Add(double alpha, double const * A, double beta, double const * B, mfem::DenseMatrix & C)\n"
+		"Add(double alpha, mfem::DenseMatrix const & A, double beta, mfem::DenseMatrix const & B, mfem::DenseMatrix & C)\n"
+		"Add(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"Add(double a, mfem::SparseMatrix const & A, double b, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"Add(mfem::Array< mfem::SparseMatrix * > & Ai) -> mfem::SparseMatrix\n"
+		"Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)\n"
+		""},
+	 { "Transpose", _wrap_Transpose, METH_VARARGS, "\n"
+		"Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(mfem::Table const & A) -> mfem::Table\n"
+		"Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix\n"
+		"Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *\n"
+		""},
+	 { "Mult", _wrap_Mult, METH_VARARGS, "\n"
+		"Mult(mfem::Table const & A, mfem::Table const & B, mfem::Table & C)\n"
+		"Mult(mfem::Table const & A, mfem::Table const & B) -> mfem::Table\n"
+		"Mult(mfem::DenseMatrix const & b, mfem::DenseMatrix const & c, mfem::DenseMatrix & a)\n"
+		"Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B, mfem::SparseMatrix * OAB=None) -> mfem::SparseMatrix\n"
+		"Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix\n"
+		"Mult(mfem::BlockMatrix const & A, mfem::BlockMatrix const & B) -> mfem::BlockMatrix *\n"
+		""},
 	 { NULL, NULL, 0, NULL }
 };
 

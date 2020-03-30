@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _estimators.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _estimators.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -87,7 +90,9 @@ import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.vertex
+import mfem._ser.vtk
 import mfem._ser.handle
+import mfem._ser.restriction
 import mfem._ser.bilinearform
 class AbstractErrorEstimator(object):
     r"""Proxy of C++ mfem::AbstractErrorEstimator class."""
@@ -115,10 +120,12 @@ class ErrorEstimator(AbstractErrorEstimator):
     def GetLocalErrors(self):
         r"""GetLocalErrors(ErrorEstimator self) -> Vector"""
         return _estimators.ErrorEstimator_GetLocalErrors(self)
+    GetLocalErrors = _swig_new_instance_method(_estimators.ErrorEstimator_GetLocalErrors)
 
     def Reset(self):
         r"""Reset(ErrorEstimator self)"""
         return _estimators.ErrorEstimator_Reset(self)
+    Reset = _swig_new_instance_method(_estimators.ErrorEstimator_Reset)
     __swig_destroy__ = _estimators.delete_ErrorEstimator
 
 # Register ErrorEstimator in _estimators:
@@ -136,6 +143,7 @@ class AnisotropicErrorEstimator(ErrorEstimator):
     def GetAnisotropicFlags(self):
         r"""GetAnisotropicFlags(AnisotropicErrorEstimator self) -> intArray"""
         return _estimators.AnisotropicErrorEstimator_GetAnisotropicFlags(self)
+    GetAnisotropicFlags = _swig_new_instance_method(_estimators.AnisotropicErrorEstimator_GetAnisotropicFlags)
     __swig_destroy__ = _estimators.delete_AnisotropicErrorEstimator
 
 # Register AnisotropicErrorEstimator in _estimators:
@@ -147,29 +155,40 @@ class ZienkiewiczZhuEstimator(AnisotropicErrorEstimator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
+    def SetWithCoeff(self, w_coeff=True):
+        r"""SetWithCoeff(ZienkiewiczZhuEstimator self, bool w_coeff=True)"""
+        return _estimators.ZienkiewiczZhuEstimator_SetWithCoeff(self, w_coeff)
+    SetWithCoeff = _swig_new_instance_method(_estimators.ZienkiewiczZhuEstimator_SetWithCoeff)
+
     def SetAnisotropic(self, aniso=True):
         r"""SetAnisotropic(ZienkiewiczZhuEstimator self, bool aniso=True)"""
         return _estimators.ZienkiewiczZhuEstimator_SetAnisotropic(self, aniso)
+    SetAnisotropic = _swig_new_instance_method(_estimators.ZienkiewiczZhuEstimator_SetAnisotropic)
 
     def SetFluxAveraging(self, fa):
         r"""SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"""
         return _estimators.ZienkiewiczZhuEstimator_SetFluxAveraging(self, fa)
+    SetFluxAveraging = _swig_new_instance_method(_estimators.ZienkiewiczZhuEstimator_SetFluxAveraging)
 
     def GetTotalError(self):
         r"""GetTotalError(ZienkiewiczZhuEstimator self) -> double"""
         return _estimators.ZienkiewiczZhuEstimator_GetTotalError(self)
+    GetTotalError = _swig_new_instance_method(_estimators.ZienkiewiczZhuEstimator_GetTotalError)
 
     def GetLocalErrors(self):
         r"""GetLocalErrors(ZienkiewiczZhuEstimator self) -> Vector"""
         return _estimators.ZienkiewiczZhuEstimator_GetLocalErrors(self)
+    GetLocalErrors = _swig_new_instance_method(_estimators.ZienkiewiczZhuEstimator_GetLocalErrors)
 
     def GetAnisotropicFlags(self):
         r"""GetAnisotropicFlags(ZienkiewiczZhuEstimator self) -> intArray"""
         return _estimators.ZienkiewiczZhuEstimator_GetAnisotropicFlags(self)
+    GetAnisotropicFlags = _swig_new_instance_method(_estimators.ZienkiewiczZhuEstimator_GetAnisotropicFlags)
 
     def Reset(self):
         r"""Reset(ZienkiewiczZhuEstimator self)"""
         return _estimators.ZienkiewiczZhuEstimator_Reset(self)
+    Reset = _swig_new_instance_method(_estimators.ZienkiewiczZhuEstimator_Reset)
     __swig_destroy__ = _estimators.delete_ZienkiewiczZhuEstimator
 
     def __init__(self, integ, sol, flux_fes, own_flux_fes=False):

@@ -3468,6 +3468,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_OutStream", _wrap_new_OutStream, METH_O, NULL},
 	 { "OutStream_SetStream", _wrap_OutStream_SetStream, METH_VARARGS, NULL},
 	 { "OutStream_Enable", _wrap_OutStream_Enable, METH_O, NULL},
@@ -3481,6 +3482,17 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_OutStream", _wrap_new_OutStream, METH_O, NULL},
+	 { "OutStream_SetStream", _wrap_OutStream_SetStream, METH_VARARGS, NULL},
+	 { "OutStream_Enable", _wrap_OutStream_Enable, METH_O, NULL},
+	 { "OutStream_Disable", _wrap_OutStream_Disable, METH_O, NULL},
+	 { "OutStream_IsEnabled", _wrap_OutStream_IsEnabled, METH_O, NULL},
+	 { "delete_OutStream", _wrap_delete_OutStream, METH_O, NULL},
+	 { "OutStream_swigregister", OutStream_swigregister, METH_O, NULL},
+	 { "OutStream_swiginit", OutStream_swiginit, METH_VARARGS, NULL},
+	 { "MakeParFilename", _wrap_MakeParFilename, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

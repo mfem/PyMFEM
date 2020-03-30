@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _lininteg.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _lininteg.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -90,14 +93,17 @@ class LinearFormIntegrator(object):
         AssembleRHSElementVect(LinearFormIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.LinearFormIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.LinearFormIntegrator_AssembleRHSElementVect)
 
     def SetIntRule(self, ir):
         r"""SetIntRule(LinearFormIntegrator self, IntegrationRule ir)"""
         return _lininteg.LinearFormIntegrator_SetIntRule(self, ir)
+    SetIntRule = _swig_new_instance_method(_lininteg.LinearFormIntegrator_SetIntRule)
 
     def GetIntRule(self):
         r"""GetIntRule(LinearFormIntegrator self) -> IntegrationRule"""
         return _lininteg.LinearFormIntegrator_GetIntRule(self)
+    GetIntRule = _swig_new_instance_method(_lininteg.LinearFormIntegrator_GetIntRule)
     __swig_destroy__ = _lininteg.delete_LinearFormIntegrator
 
 # Register LinearFormIntegrator in _lininteg:
@@ -115,14 +121,17 @@ class DeltaLFIntegrator(LinearFormIntegrator):
     def IsDelta(self):
         r"""IsDelta(DeltaLFIntegrator self) -> bool"""
         return _lininteg.DeltaLFIntegrator_IsDelta(self)
+    IsDelta = _swig_new_instance_method(_lininteg.DeltaLFIntegrator_IsDelta)
 
     def GetDeltaCenter(self, center):
         r"""GetDeltaCenter(DeltaLFIntegrator self, Vector center)"""
         return _lininteg.DeltaLFIntegrator_GetDeltaCenter(self, center)
+    GetDeltaCenter = _swig_new_instance_method(_lininteg.DeltaLFIntegrator_GetDeltaCenter)
 
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(DeltaLFIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
         return _lininteg.DeltaLFIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
+    AssembleDeltaElementVect = _swig_new_instance_method(_lininteg.DeltaLFIntegrator_AssembleDeltaElementVect)
     __swig_destroy__ = _lininteg.delete_DeltaLFIntegrator
 
 # Register DeltaLFIntegrator in _lininteg:
@@ -149,6 +158,7 @@ class DomainLFIntegrator(DeltaLFIntegrator):
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(DomainLFIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
         return _lininteg.DomainLFIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
+    AssembleDeltaElementVect = _swig_new_instance_method(_lininteg.DomainLFIntegrator_AssembleDeltaElementVect)
 
     def AssembleRHSElementVect(self, *args):
         r"""
@@ -156,6 +166,7 @@ class DomainLFIntegrator(DeltaLFIntegrator):
         AssembleRHSElementVect(DomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.DomainLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.DomainLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_DomainLFIntegrator
 
 # Register DomainLFIntegrator in _lininteg:
@@ -182,6 +193,7 @@ class BoundaryLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(BoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_BoundaryLFIntegrator
 
 # Register BoundaryLFIntegrator in _lininteg:
@@ -203,6 +215,7 @@ class BoundaryNormalLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(BoundaryNormalLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryNormalLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryNormalLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_BoundaryNormalLFIntegrator
 
 # Register BoundaryNormalLFIntegrator in _lininteg:
@@ -224,6 +237,7 @@ class BoundaryTangentialLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(BoundaryTangentialLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryTangentialLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryTangentialLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_BoundaryTangentialLFIntegrator
 
 # Register BoundaryTangentialLFIntegrator in _lininteg:
@@ -242,6 +256,7 @@ class VectorDomainLFIntegrator(DeltaLFIntegrator):
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(VectorDomainLFIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
         return _lininteg.VectorDomainLFIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
+    AssembleDeltaElementVect = _swig_new_instance_method(_lininteg.VectorDomainLFIntegrator_AssembleDeltaElementVect)
 
     def AssembleRHSElementVect(self, *args):
         r"""
@@ -249,6 +264,7 @@ class VectorDomainLFIntegrator(DeltaLFIntegrator):
         AssembleRHSElementVect(VectorDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorDomainLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorDomainLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_VectorDomainLFIntegrator
 
 # Register VectorDomainLFIntegrator in _lininteg:
@@ -270,6 +286,7 @@ class VectorBoundaryLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(VectorBoundaryLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorBoundaryLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorBoundaryLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_VectorBoundaryLFIntegrator
 
 # Register VectorBoundaryLFIntegrator in _lininteg:
@@ -293,6 +310,7 @@ class VectorFEDomainLFIntegrator(DeltaLFIntegrator):
     def AssembleDeltaElementVect(self, fe, Trans, elvect):
         r"""AssembleDeltaElementVect(VectorFEDomainLFIntegrator self, FiniteElement fe, ElementTransformation Trans, Vector elvect)"""
         return _lininteg.VectorFEDomainLFIntegrator_AssembleDeltaElementVect(self, fe, Trans, elvect)
+    AssembleDeltaElementVect = _swig_new_instance_method(_lininteg.VectorFEDomainLFIntegrator_AssembleDeltaElementVect)
 
     def AssembleRHSElementVect(self, *args):
         r"""
@@ -300,6 +318,7 @@ class VectorFEDomainLFIntegrator(DeltaLFIntegrator):
         AssembleRHSElementVect(VectorFEDomainLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEDomainLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEDomainLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_VectorFEDomainLFIntegrator
 
 # Register VectorFEDomainLFIntegrator in _lininteg:
@@ -321,6 +340,7 @@ class VectorBoundaryFluxLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(VectorBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorBoundaryFluxLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_VectorBoundaryFluxLFIntegrator
 
 # Register VectorBoundaryFluxLFIntegrator in _lininteg:
@@ -332,9 +352,12 @@ class VectorFEBoundaryFluxLFIntegrator(LinearFormIntegrator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, f):
-        r"""__init__(VectorFEBoundaryFluxLFIntegrator self, Coefficient f) -> VectorFEBoundaryFluxLFIntegrator"""
-        _lininteg.VectorFEBoundaryFluxLFIntegrator_swiginit(self, _lininteg.new_VectorFEBoundaryFluxLFIntegrator(f))
+    def __init__(self, *args):
+        r"""
+        __init__(VectorFEBoundaryFluxLFIntegrator self) -> VectorFEBoundaryFluxLFIntegrator
+        __init__(VectorFEBoundaryFluxLFIntegrator self, Coefficient f) -> VectorFEBoundaryFluxLFIntegrator
+        """
+        _lininteg.VectorFEBoundaryFluxLFIntegrator_swiginit(self, _lininteg.new_VectorFEBoundaryFluxLFIntegrator(*args))
 
     def AssembleRHSElementVect(self, *args):
         r"""
@@ -342,6 +365,7 @@ class VectorFEBoundaryFluxLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(VectorFEBoundaryFluxLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEBoundaryFluxLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_VectorFEBoundaryFluxLFIntegrator
 
 # Register VectorFEBoundaryFluxLFIntegrator in _lininteg:
@@ -368,6 +392,7 @@ class VectorFEBoundaryTangentLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(VectorFEBoundaryTangentLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.VectorFEBoundaryTangentLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_VectorFEBoundaryTangentLFIntegrator
 
 # Register VectorFEBoundaryTangentLFIntegrator in _lininteg:
@@ -389,6 +414,7 @@ class BoundaryFlowIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(BoundaryFlowIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.BoundaryFlowIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.BoundaryFlowIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_BoundaryFlowIntegrator
 
 # Register BoundaryFlowIntegrator in _lininteg:
@@ -414,6 +440,7 @@ class DGDirichletLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(DGDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.DGDirichletLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.DGDirichletLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_DGDirichletLFIntegrator
 
 # Register DGDirichletLFIntegrator in _lininteg:
@@ -435,6 +462,7 @@ class DGElasticityDirichletLFIntegrator(LinearFormIntegrator):
         AssembleRHSElementVect(DGElasticityDirichletLFIntegrator self, FiniteElement el, FaceElementTransformations Tr, Vector elvect)
         """
         return _lininteg.DGElasticityDirichletLFIntegrator_AssembleRHSElementVect(self, *args)
+    AssembleRHSElementVect = _swig_new_instance_method(_lininteg.DGElasticityDirichletLFIntegrator_AssembleRHSElementVect)
     __swig_destroy__ = _lininteg.delete_DGElasticityDirichletLFIntegrator
 
 # Register DGElasticityDirichletLFIntegrator in _lininteg:

@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _element.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _element.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -99,22 +102,27 @@ class Element(object):
     def GetType(self):
         r"""GetType(Element self) -> mfem::Element::Type"""
         return _element.Element_GetType(self)
+    GetType = _swig_new_instance_method(_element.Element_GetType)
 
     def GetGeometryType(self):
         r"""GetGeometryType(Element self) -> mfem::Geometry::Type"""
         return _element.Element_GetGeometryType(self)
+    GetGeometryType = _swig_new_instance_method(_element.Element_GetGeometryType)
 
     def GetAttribute(self):
         r"""GetAttribute(Element self) -> int"""
         return _element.Element_GetAttribute(self)
+    GetAttribute = _swig_new_instance_method(_element.Element_GetAttribute)
 
     def SetAttribute(self, attr):
         r"""SetAttribute(Element self, int const attr)"""
         return _element.Element_SetAttribute(self, attr)
+    SetAttribute = _swig_new_instance_method(_element.Element_SetAttribute)
 
     def SetVertices(self, ind):
         r"""SetVertices(Element self, int const * ind)"""
         return _element.Element_SetVertices(self, ind)
+    SetVertices = _swig_new_instance_method(_element.Element_SetVertices)
 
     def GetVertices(self, *args):
         r"""
@@ -123,55 +131,76 @@ class Element(object):
         GetVertices(Element self) -> int const *
         """
         return _element.Element_GetVertices(self, *args)
+    GetVertices = _swig_new_instance_method(_element.Element_GetVertices)
 
     def GetNVertices(self):
         r"""GetNVertices(Element self) -> int"""
         return _element.Element_GetNVertices(self)
+    GetNVertices = _swig_new_instance_method(_element.Element_GetNVertices)
 
     def GetNEdges(self):
         r"""GetNEdges(Element self) -> int"""
         return _element.Element_GetNEdges(self)
+    GetNEdges = _swig_new_instance_method(_element.Element_GetNEdges)
 
     def GetEdgeVertices(self, arg2):
         r"""GetEdgeVertices(Element self, int arg2) -> int const *"""
         return _element.Element_GetEdgeVertices(self, arg2)
+    GetEdgeVertices = _swig_new_instance_method(_element.Element_GetEdgeVertices)
 
-    def GetNFaces(self, nFaceVertices):
-        r"""GetNFaces(Element self, int & nFaceVertices) -> int"""
-        return _element.Element_GetNFaces(self, nFaceVertices)
+    def GetNFaces(self, *args):
+        r"""
+        GetNFaces(Element self, int & nFaceVertices) -> int
+        GetNFaces(Element self) -> int
+        """
+        return _element.Element_GetNFaces(self, *args)
+    GetNFaces = _swig_new_instance_method(_element.Element_GetNFaces)
+
+    def GetNFaceVertices(self, fi):
+        r"""GetNFaceVertices(Element self, int fi) -> int"""
+        return _element.Element_GetNFaceVertices(self, fi)
+    GetNFaceVertices = _swig_new_instance_method(_element.Element_GetNFaceVertices)
 
     def GetFaceVertices(self, fi):
         r"""GetFaceVertices(Element self, int fi) -> int const *"""
         return _element.Element_GetFaceVertices(self, fi)
+    GetFaceVertices = _swig_new_instance_method(_element.Element_GetFaceVertices)
 
     def MarkEdge(self, v_to_v, length):
         r"""MarkEdge(Element self, DSTable v_to_v, int const * length)"""
         return _element.Element_MarkEdge(self, v_to_v, length)
+    MarkEdge = _swig_new_instance_method(_element.Element_MarkEdge)
 
     def NeedRefinement(self, v_to_v):
         r"""NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"""
         return _element.Element_NeedRefinement(self, v_to_v)
+    NeedRefinement = _swig_new_instance_method(_element.Element_NeedRefinement)
 
     def ResetTransform(self, tr):
         r"""ResetTransform(Element self, int tr)"""
         return _element.Element_ResetTransform(self, tr)
+    ResetTransform = _swig_new_instance_method(_element.Element_ResetTransform)
 
     def PushTransform(self, tr):
         r"""PushTransform(Element self, int tr)"""
         return _element.Element_PushTransform(self, tr)
+    PushTransform = _swig_new_instance_method(_element.Element_PushTransform)
 
     def GetTransform(self):
         r"""GetTransform(Element self) -> unsigned int"""
         return _element.Element_GetTransform(self)
+    GetTransform = _swig_new_instance_method(_element.Element_GetTransform)
 
     def Duplicate(self, m):
         r"""Duplicate(Element self, mfem::Mesh * m) -> Element"""
         return _element.Element_Duplicate(self, m)
+    Duplicate = _swig_new_instance_method(_element.Element_Duplicate)
     __swig_destroy__ = _element.delete_Element
 
     def GetVerticesArray(self):
         r"""GetVerticesArray(Element self) -> PyObject *"""
         return _element.Element_GetVerticesArray(self)
+    GetVerticesArray = _swig_new_instance_method(_element.Element_GetVerticesArray)
 
 # Register Element in _element:
 _element.Element_swigregister(Element)

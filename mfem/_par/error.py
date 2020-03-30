@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _error.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _error.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -66,17 +69,22 @@ MFEM_ERROR_THROW = _error.MFEM_ERROR_THROW
 
 def set_error_action(action):
     return _error.set_error_action(action)
+set_error_action = _error.set_error_action
 
 def get_error_action():
     return _error.get_error_action()
+get_error_action = _error.get_error_action
 
 def mfem_backtrace(mode=0, depth=-1):
     return _error.mfem_backtrace(mode, depth)
+mfem_backtrace = _error.mfem_backtrace
 
 def mfem_error(msg=None):
     return _error.mfem_error(msg)
+mfem_error = _error.mfem_error
 
 def mfem_warning(msg=None):
     return _error.mfem_warning(msg)
+mfem_warning = _error.mfem_warning
 
 

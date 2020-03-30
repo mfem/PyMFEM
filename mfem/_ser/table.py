@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _table.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _table.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -81,10 +84,12 @@ class Connection(object):
     def __eq__(self, rhs):
         r"""__eq__(Connection self, Connection rhs) -> bool"""
         return _table.Connection___eq__(self, rhs)
+    __eq__ = _swig_new_instance_method(_table.Connection___eq__)
 
     def __lt__(self, rhs):
         r"""__lt__(Connection self, Connection rhs) -> bool"""
         return _table.Connection___lt__(self, rhs)
+    __lt__ = _swig_new_instance_method(_table.Connection___lt__)
     __swig_destroy__ = _table.delete_Connection
 
 # Register Connection in _table:
@@ -109,54 +114,67 @@ class Table(object):
     def MakeI(self, nrows):
         r"""MakeI(Table self, int nrows)"""
         return _table.Table_MakeI(self, nrows)
+    MakeI = _swig_new_instance_method(_table.Table_MakeI)
 
     def AddAColumnInRow(self, r):
         r"""AddAColumnInRow(Table self, int r)"""
         return _table.Table_AddAColumnInRow(self, r)
+    AddAColumnInRow = _swig_new_instance_method(_table.Table_AddAColumnInRow)
 
     def AddColumnsInRow(self, r, ncol):
         r"""AddColumnsInRow(Table self, int r, int ncol)"""
         return _table.Table_AddColumnsInRow(self, r, ncol)
+    AddColumnsInRow = _swig_new_instance_method(_table.Table_AddColumnsInRow)
 
     def MakeJ(self):
         r"""MakeJ(Table self)"""
         return _table.Table_MakeJ(self)
+    MakeJ = _swig_new_instance_method(_table.Table_MakeJ)
 
     def AddConnection(self, r, c):
         r"""AddConnection(Table self, int r, int c)"""
         return _table.Table_AddConnection(self, r, c)
+    AddConnection = _swig_new_instance_method(_table.Table_AddConnection)
 
     def AddConnections(self, r, c, nc):
         r"""AddConnections(Table self, int r, int const * c, int nc)"""
         return _table.Table_AddConnections(self, r, c, nc)
+    AddConnections = _swig_new_instance_method(_table.Table_AddConnections)
 
     def ShiftUpI(self):
         r"""ShiftUpI(Table self)"""
         return _table.Table_ShiftUpI(self)
+    ShiftUpI = _swig_new_instance_method(_table.Table_ShiftUpI)
 
     def SetSize(self, dim, connections_per_row):
         r"""SetSize(Table self, int dim, int connections_per_row)"""
         return _table.Table_SetSize(self, dim, connections_per_row)
+    SetSize = _swig_new_instance_method(_table.Table_SetSize)
 
     def SetDims(self, rows, nnz):
         r"""SetDims(Table self, int rows, int nnz)"""
         return _table.Table_SetDims(self, rows, nnz)
+    SetDims = _swig_new_instance_method(_table.Table_SetDims)
 
     def Size(self):
         r"""Size(Table self) -> int"""
         return _table.Table_Size(self)
+    Size = _swig_new_instance_method(_table.Table_Size)
 
     def Size_of_connections(self):
         r"""Size_of_connections(Table self) -> int"""
         return _table.Table_Size_of_connections(self)
+    Size_of_connections = _swig_new_instance_method(_table.Table_Size_of_connections)
 
     def __call__(self, i, j):
         r"""__call__(Table self, int i, int j) -> int"""
         return _table.Table___call__(self, i, j)
+    __call__ = _swig_new_instance_method(_table.Table___call__)
 
     def RowSize(self, i):
         r"""RowSize(Table self, int i) -> int"""
         return _table.Table_RowSize(self, i)
+    RowSize = _swig_new_instance_method(_table.Table_RowSize)
 
     def GetRow(self, *args):
         r"""
@@ -165,6 +183,7 @@ class Table(object):
         GetRow(Table self, int i) -> int *
         """
         return _table.Table_GetRow(self, *args)
+    GetRow = _swig_new_instance_method(_table.Table_GetRow)
 
     def GetI(self, *args):
         r"""
@@ -172,6 +191,7 @@ class Table(object):
         GetI(Table self) -> int const *
         """
         return _table.Table_GetI(self, *args)
+    GetI = _swig_new_instance_method(_table.Table_GetI)
 
     def GetJ(self, *args):
         r"""
@@ -179,6 +199,7 @@ class Table(object):
         GetJ(Table self) -> int const *
         """
         return _table.Table_GetJ(self, *args)
+    GetJ = _swig_new_instance_method(_table.Table_GetJ)
 
     def GetIMemory(self, *args):
         r"""
@@ -186,6 +207,7 @@ class Table(object):
         GetIMemory(Table self) -> mfem::Memory< int > const &
         """
         return _table.Table_GetIMemory(self, *args)
+    GetIMemory = _swig_new_instance_method(_table.Table_GetIMemory)
 
     def GetJMemory(self, *args):
         r"""
@@ -193,59 +215,73 @@ class Table(object):
         GetJMemory(Table self) -> mfem::Memory< int > const &
         """
         return _table.Table_GetJMemory(self, *args)
+    GetJMemory = _swig_new_instance_method(_table.Table_GetJMemory)
 
     def SortRows(self):
         r"""SortRows(Table self)"""
         return _table.Table_SortRows(self)
+    SortRows = _swig_new_instance_method(_table.Table_SortRows)
 
     def SetIJ(self, newI, newJ, newsize=-1):
         r"""SetIJ(Table self, int * newI, int * newJ, int newsize=-1)"""
         return _table.Table_SetIJ(self, newI, newJ, newsize)
+    SetIJ = _swig_new_instance_method(_table.Table_SetIJ)
 
     def Push(self, i, j):
         r"""Push(Table self, int i, int j) -> int"""
         return _table.Table_Push(self, i, j)
+    Push = _swig_new_instance_method(_table.Table_Push)
 
     def Finalize(self):
         r"""Finalize(Table self)"""
         return _table.Table_Finalize(self)
+    Finalize = _swig_new_instance_method(_table.Table_Finalize)
 
     def MakeFromList(self, nrows, list):
         r"""MakeFromList(Table self, int nrows, mfem::Array< mfem::Connection > const & list)"""
         return _table.Table_MakeFromList(self, nrows, list)
+    MakeFromList = _swig_new_instance_method(_table.Table_MakeFromList)
 
     def Width(self):
         r"""Width(Table self) -> int"""
         return _table.Table_Width(self)
+    Width = _swig_new_instance_method(_table.Table_Width)
 
     def LoseData(self):
         r"""LoseData(Table self)"""
         return _table.Table_LoseData(self)
+    LoseData = _swig_new_instance_method(_table.Table_LoseData)
 
     def Load(self, _in):
         r"""Load(Table self, std::istream & _in)"""
         return _table.Table_Load(self, _in)
+    Load = _swig_new_instance_method(_table.Table_Load)
 
     def Copy(self, copy):
         r"""Copy(Table self, Table copy)"""
         return _table.Table_Copy(self, copy)
+    Copy = _swig_new_instance_method(_table.Table_Copy)
 
     def Swap(self, other):
         r"""Swap(Table self, Table other)"""
         return _table.Table_Swap(self, other)
+    Swap = _swig_new_instance_method(_table.Table_Swap)
 
     def Clear(self):
         r"""Clear(Table self)"""
         return _table.Table_Clear(self)
+    Clear = _swig_new_instance_method(_table.Table_Clear)
 
     def MemoryUsage(self):
         r"""MemoryUsage(Table self) -> long"""
         return _table.Table_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_table.Table_MemoryUsage)
     __swig_destroy__ = _table.delete_Table
 
     def GetRowList(self, i):
         r"""GetRowList(Table self, int i) -> PyObject *"""
         return _table.Table_GetRowList(self, i)
+    GetRowList = _swig_new_instance_method(_table.Table_GetRowList)
 
     def Print(self, *args):
         r"""
@@ -253,6 +289,7 @@ class Table(object):
         Print(Table self, char const * file, int precision=8)
         """
         return _table.Table_Print(self, *args)
+    Print = _swig_new_instance_method(_table.Table_Print)
 
     def PrintMatlab(self, *args):
         r"""
@@ -260,6 +297,7 @@ class Table(object):
         PrintMatlab(Table self, char const * file, int precision=8)
         """
         return _table.Table_PrintMatlab(self, *args)
+    PrintMatlab = _swig_new_instance_method(_table.Table_PrintMatlab)
 
     def Save(self, *args):
         r"""
@@ -268,6 +306,7 @@ class Table(object):
         Save(Table self)
         """
         return _table.Table_Save(self, *args)
+    Save = _swig_new_instance_method(_table.Table_Save)
 
 # Register Table in _table:
 _table.Table_swigregister(Table)
@@ -285,10 +324,12 @@ class STable(Table):
     def __call__(self, i, j):
         r"""__call__(STable self, int i, int j) -> int"""
         return _table.STable___call__(self, i, j)
+    __call__ = _swig_new_instance_method(_table.STable___call__)
 
     def Push(self, i, j):
         r"""Push(STable self, int i, int j) -> int"""
         return _table.STable_Push(self, i, j)
+    Push = _swig_new_instance_method(_table.STable_Push)
     __swig_destroy__ = _table.delete_STable
 
 # Register STable in _table:
@@ -307,18 +348,22 @@ class DSTable(object):
     def NumberOfRows(self):
         r"""NumberOfRows(DSTable self) -> int"""
         return _table.DSTable_NumberOfRows(self)
+    NumberOfRows = _swig_new_instance_method(_table.DSTable_NumberOfRows)
 
     def NumberOfEntries(self):
         r"""NumberOfEntries(DSTable self) -> int"""
         return _table.DSTable_NumberOfEntries(self)
+    NumberOfEntries = _swig_new_instance_method(_table.DSTable_NumberOfEntries)
 
     def Push(self, a, b):
         r"""Push(DSTable self, int a, int b) -> int"""
         return _table.DSTable_Push(self, a, b)
+    Push = _swig_new_instance_method(_table.DSTable_Push)
 
     def __call__(self, a, b):
         r"""__call__(DSTable self, int a, int b) -> int"""
         return _table.DSTable___call__(self, a, b)
+    __call__ = _swig_new_instance_method(_table.DSTable___call__)
     __swig_destroy__ = _table.delete_DSTable
 
 # Register DSTable in _table:

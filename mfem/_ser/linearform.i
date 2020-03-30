@@ -23,6 +23,7 @@ import_array();
 %}
 
 %include "exception.i"
+%include "../common/cpointers.i"
 %import "coefficient.i"
 %import "array.i"
 %import "mesh.i"

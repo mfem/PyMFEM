@@ -22,7 +22,7 @@ if cxx_ser != '': os.environ['CXX'] = cxx_ser
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["io_stream",
+modules= ["io_stream", "vtk", 
           "globals", "mem_manager", "device", "hash", "stable3d",
           "error", "array", "common_functions", "socketstream", "handle",
           "segment", "point",
@@ -36,7 +36,7 @@ modules= ["io_stream",
           "solvers", "estimators", "mesh_operators", "ode",
           "sparsesmoothers",
           "matrix", "operators", "ncmesh", "eltrans", "geom",
-          "nonlininteg", "nonlinearform",]
+          "nonlininteg", "nonlinearform", "restriction"]
 
 sources = {name: [name + "_wrap.cxx"] for name in modules}
 proxy_names = {name: '_'+name for name in modules}

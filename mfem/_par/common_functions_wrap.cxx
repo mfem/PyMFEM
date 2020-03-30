@@ -5429,6 +5429,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Transpose", _wrap_Transpose, METH_VARARGS, "\n"
 		"Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)\n"
 		"Transpose(mfem::Table const & A) -> mfem::Table\n"
@@ -5472,6 +5473,47 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Transpose", _wrap_Transpose, METH_VARARGS, "\n"
+		"Transpose(mfem::Table const & A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(mfem::Table const & A) -> mfem::Table\n"
+		"Transpose(intArray A, mfem::Table & At, int _ncols_A=-1)\n"
+		"Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix\n"
+		"Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix *\n"
+		""},
+	 { "Mult", _wrap_Mult, METH_VARARGS, "\n"
+		"Mult(mfem::Table const & A, mfem::Table const & B, mfem::Table & C)\n"
+		"Mult(mfem::Table const & A, mfem::Table const & B) -> mfem::Table\n"
+		"Mult(mfem::BlockMatrix const & A, mfem::BlockMatrix const & B) -> mfem::BlockMatrix\n"
+		"Mult(mfem::DenseMatrix const & b, mfem::DenseMatrix const & c, mfem::DenseMatrix & a)\n"
+		"Mult(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B, mfem::SparseMatrix * OAB=None) -> mfem::SparseMatrix\n"
+		"Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix *\n"
+		""},
+	 { "InnerProduct", _wrap_InnerProduct, METH_VARARGS, "\n"
+		"InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double\n"
+		"InnerProduct(MPI_Comm comm, mfem::Vector const & x, mfem::Vector const & y) -> double\n"
+		"InnerProduct(mfem::HypreParVector & x, mfem::HypreParVector & y) -> double\n"
+		"InnerProduct(mfem::HypreParVector * x, mfem::HypreParVector * y) -> double\n"
+		""},
+	 { "Add", _wrap_Add, METH_VARARGS, "\n"
+		"Add(mfem::DenseMatrix const & A, mfem::DenseMatrix const & B, double alpha, mfem::DenseMatrix & C)\n"
+		"Add(double alpha, double const * A, double beta, double const * B, mfem::DenseMatrix & C)\n"
+		"Add(double alpha, mfem::DenseMatrix const & A, double beta, mfem::DenseMatrix const & B, mfem::DenseMatrix & C)\n"
+		"Add(mfem::SparseMatrix const & A, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"Add(double a, mfem::SparseMatrix const & A, double b, mfem::SparseMatrix const & B) -> mfem::SparseMatrix\n"
+		"Add(mfem::Array< mfem::SparseMatrix * > & Ai) -> mfem::SparseMatrix\n"
+		"Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)\n"
+		"Add(double alpha, mfem::HypreParMatrix const & A, double beta, mfem::HypreParMatrix const & B) -> mfem::HypreParMatrix *\n"
+		""},
+	 { "RAP", _wrap_RAP, METH_VARARGS, "\n"
+		"RAP(mfem::SparseMatrix const & A, mfem::DenseMatrix & P) -> mfem::DenseMatrix\n"
+		"RAP(mfem::DenseMatrix & A, mfem::SparseMatrix const & P) -> mfem::DenseMatrix\n"
+		"RAP(mfem::SparseMatrix const & A, mfem::SparseMatrix const & R, mfem::SparseMatrix * ORAP=None) -> mfem::SparseMatrix\n"
+		"RAP(mfem::SparseMatrix const & Rt, mfem::SparseMatrix const & A, mfem::SparseMatrix const & P) -> mfem::SparseMatrix\n"
+		"RAP(mfem::HypreParMatrix const * A, mfem::HypreParMatrix const * P) -> mfem::HypreParMatrix\n"
+		"RAP(mfem::HypreParMatrix const * Rt, mfem::HypreParMatrix const * A, mfem::HypreParMatrix const * P) -> mfem::HypreParMatrix *\n"
+		""},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -6342,19 +6384,19 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40100)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.1.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40100)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("tags/v4.0-0-g4d900b0c5fd6352c92173e74678bcbeeb11c8691"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_GIT_STRING",SWIG_FromCharPtr("tags/v4.1-0-g8dbbcfc25629ac7612fe31afd5b511752ff0e69b"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _pgridfunc.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _pgridfunc.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -103,6 +106,7 @@ import mfem._par.fe
 import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
+import mfem._par.vtk
 import mfem._par.element
 import mfem._par.table
 import mfem._par.hash
@@ -114,6 +118,7 @@ import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.handle
 import mfem._par.hypre
+import mfem._par.restriction
 import mfem._par.pmesh
 import mfem._par.pncmesh
 import mfem._par.communication
@@ -122,6 +127,7 @@ import mfem._par.sets
 def GlobalLpNorm(p, loc_norm, comm):
     r"""GlobalLpNorm(double const p, double loc_norm, MPI_Comm comm) -> double"""
     return _pgridfunc.GlobalLpNorm(p, loc_norm, comm)
+GlobalLpNorm = _pgridfunc.GlobalLpNorm
 class ParGridFunction(mfem._par.gridfunc.GridFunction):
     r"""Proxy of C++ mfem::ParGridFunction class."""
 
@@ -131,10 +137,12 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
     def ParFESpace(self):
         r"""ParFESpace(ParGridFunction self) -> ParFiniteElementSpace"""
         return _pgridfunc.ParGridFunction_ParFESpace(self)
+    ParFESpace = _swig_new_instance_method(_pgridfunc.ParGridFunction_ParFESpace)
 
     def Update(self):
         r"""Update(ParGridFunction self)"""
         return _pgridfunc.ParGridFunction_Update(self)
+    Update = _swig_new_instance_method(_pgridfunc.ParGridFunction_Update)
 
     def SetSpace(self, *args):
         r"""
@@ -142,15 +150,19 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         SetSpace(ParGridFunction self, ParFiniteElementSpace f)
         """
         return _pgridfunc.ParGridFunction_SetSpace(self, *args)
+    SetSpace = _swig_new_instance_method(_pgridfunc.ParGridFunction_SetSpace)
 
     def MakeRef(self, *args):
         r"""
+        MakeRef(ParGridFunction self, Vector base, int offset, int size)
+        MakeRef(ParGridFunction self, Vector base, int offset)
         MakeRef(ParGridFunction self, FiniteElementSpace f, double * v)
         MakeRef(ParGridFunction self, ParFiniteElementSpace f, double * v)
         MakeRef(ParGridFunction self, FiniteElementSpace f, Vector v, int v_offset)
         MakeRef(ParGridFunction self, ParFiniteElementSpace f, Vector v, int v_offset)
         """
         return _pgridfunc.ParGridFunction_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_pgridfunc.ParGridFunction_MakeRef)
 
     def Distribute(self, *args):
         r"""
@@ -158,6 +170,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         Distribute(ParGridFunction self, Vector tv)
         """
         return _pgridfunc.ParGridFunction_Distribute(self, *args)
+    Distribute = _swig_new_instance_method(_pgridfunc.ParGridFunction_Distribute)
 
     def AddDistribute(self, *args):
         r"""
@@ -165,10 +178,12 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         AddDistribute(ParGridFunction self, double a, Vector tv)
         """
         return _pgridfunc.ParGridFunction_AddDistribute(self, *args)
+    AddDistribute = _swig_new_instance_method(_pgridfunc.ParGridFunction_AddDistribute)
 
     def SetFromTrueDofs(self, tv):
         r"""SetFromTrueDofs(ParGridFunction self, Vector tv)"""
         return _pgridfunc.ParGridFunction_SetFromTrueDofs(self, tv)
+    SetFromTrueDofs = _swig_new_instance_method(_pgridfunc.ParGridFunction_SetFromTrueDofs)
 
     def Assign(self, *args):
         r"""
@@ -178,6 +193,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         Assign(ParGridFunction self, HypreParVector tv) -> ParGridFunction
         """
         return _pgridfunc.ParGridFunction_Assign(self, *args)
+    Assign = _swig_new_instance_method(_pgridfunc.ParGridFunction_Assign)
 
     def GetTrueDofs(self, *args):
         r"""
@@ -185,6 +201,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         GetTrueDofs(ParGridFunction self) -> HypreParVector
         """
         return _pgridfunc.ParGridFunction_GetTrueDofs(self, *args)
+    GetTrueDofs = _swig_new_instance_method(_pgridfunc.ParGridFunction_GetTrueDofs)
 
     def ParallelAverage(self, *args):
         r"""
@@ -193,6 +210,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ParallelAverage(ParGridFunction self) -> HypreParVector
         """
         return _pgridfunc.ParGridFunction_ParallelAverage(self, *args)
+    ParallelAverage = _swig_new_instance_method(_pgridfunc.ParGridFunction_ParallelAverage)
 
     def ParallelProject(self, *args):
         r"""
@@ -201,6 +219,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ParallelProject(ParGridFunction self) -> HypreParVector
         """
         return _pgridfunc.ParGridFunction_ParallelProject(self, *args)
+    ParallelProject = _swig_new_instance_method(_pgridfunc.ParGridFunction_ParallelProject)
 
     def ParallelAssemble(self, *args):
         r"""
@@ -209,10 +228,12 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ParallelAssemble(ParGridFunction self) -> HypreParVector
         """
         return _pgridfunc.ParGridFunction_ParallelAssemble(self, *args)
+    ParallelAssemble = _swig_new_instance_method(_pgridfunc.ParGridFunction_ParallelAssemble)
 
     def ExchangeFaceNbrData(self):
         r"""ExchangeFaceNbrData(ParGridFunction self)"""
         return _pgridfunc.ParGridFunction_ExchangeFaceNbrData(self)
+    ExchangeFaceNbrData = _swig_new_instance_method(_pgridfunc.ParGridFunction_ExchangeFaceNbrData)
 
     def FaceNbrData(self, *args):
         r"""
@@ -220,6 +241,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         FaceNbrData(ParGridFunction self) -> Vector
         """
         return _pgridfunc.ParGridFunction_FaceNbrData(self, *args)
+    FaceNbrData = _swig_new_instance_method(_pgridfunc.ParGridFunction_FaceNbrData)
 
     def GetValue(self, *args):
         r"""
@@ -227,6 +249,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         GetValue(ParGridFunction self, ElementTransformation T) -> double
         """
         return _pgridfunc.ParGridFunction_GetValue(self, *args)
+    GetValue = _swig_new_instance_method(_pgridfunc.ParGridFunction_GetValue)
 
     def ProjectCoefficient(self, *args):
         r"""
@@ -239,6 +262,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ProjectCoefficient(ParGridFunction self, Coefficient coeff)
         """
         return _pgridfunc.ParGridFunction_ProjectCoefficient(self, *args)
+    ProjectCoefficient = _swig_new_instance_method(_pgridfunc.ParGridFunction_ProjectCoefficient)
 
     def ProjectDiscCoefficient(self, *args):
         r"""
@@ -251,6 +275,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ProjectDiscCoefficient(ParGridFunction self, VectorCoefficient vcoeff, mfem::GridFunction::AvgType type)
         """
         return _pgridfunc.ParGridFunction_ProjectDiscCoefficient(self, *args)
+    ProjectDiscCoefficient = _swig_new_instance_method(_pgridfunc.ParGridFunction_ProjectDiscCoefficient)
 
     def ProjectBdrCoefficient(self, *args):
         r"""
@@ -261,10 +286,12 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ProjectBdrCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff, intArray attr)
         """
         return _pgridfunc.ParGridFunction_ProjectBdrCoefficient(self, *args)
+    ProjectBdrCoefficient = _swig_new_instance_method(_pgridfunc.ParGridFunction_ProjectBdrCoefficient)
 
     def ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr):
         r"""ProjectBdrCoefficientTangent(ParGridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"""
         return _pgridfunc.ParGridFunction_ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr)
+    ProjectBdrCoefficientTangent = _swig_new_instance_method(_pgridfunc.ParGridFunction_ProjectBdrCoefficientTangent)
 
     def ComputeL1Error(self, *args):
         r"""
@@ -273,6 +300,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ComputeL1Error(ParGridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _pgridfunc.ParGridFunction_ComputeL1Error(self, *args)
+    ComputeL1Error = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeL1Error)
 
     def ComputeL2Error(self, *args):
         r"""
@@ -281,6 +309,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ComputeL2Error(ParGridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
         """
         return _pgridfunc.ParGridFunction_ComputeL2Error(self, *args)
+    ComputeL2Error = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeL2Error)
 
     def ComputeMaxError(self, *args):
         r"""
@@ -289,6 +318,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ComputeMaxError(ParGridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _pgridfunc.ParGridFunction_ComputeMaxError(self, *args)
+    ComputeMaxError = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeMaxError)
 
     def ComputeLpError(self, *args):
         r"""
@@ -296,10 +326,12 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         ComputeLpError(ParGridFunction self, double const p, VectorCoefficient exsol, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _pgridfunc.ParGridFunction_ComputeLpError(self, *args)
+    ComputeLpError = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeLpError)
 
-    def ComputeFlux(self, blfi, flux, wcoef=1, subdomain=-1):
-        r"""ComputeFlux(ParGridFunction self, BilinearFormIntegrator blfi, GridFunction flux, int wcoef=1, int subdomain=-1)"""
+    def ComputeFlux(self, blfi, flux, wcoef=True, subdomain=-1):
+        r"""ComputeFlux(ParGridFunction self, BilinearFormIntegrator blfi, GridFunction flux, bool wcoef=True, int subdomain=-1)"""
         return _pgridfunc.ParGridFunction_ComputeFlux(self, blfi, flux, wcoef, subdomain)
+    ComputeFlux = _swig_new_instance_method(_pgridfunc.ParGridFunction_ComputeFlux)
     __swig_destroy__ = _pgridfunc.delete_ParGridFunction
 
     def __init__(self, *args):
@@ -341,6 +373,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         Save(ParGridFunction self, char const * file, int precision=8)
         """
         return _pgridfunc.ParGridFunction_Save(self, *args)
+    Save = _swig_new_instance_method(_pgridfunc.ParGridFunction_Save)
 
     def SaveAsOne(self, *args):
         r"""
@@ -348,6 +381,7 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         SaveAsOne(ParGridFunction self, char const * file, int precision=8)
         """
         return _pgridfunc.ParGridFunction_SaveAsOne(self, *args)
+    SaveAsOne = _swig_new_instance_method(_pgridfunc.ParGridFunction_SaveAsOne)
 
 # Register ParGridFunction in _pgridfunc:
 _pgridfunc.ParGridFunction_swigregister(ParGridFunction)
@@ -356,5 +390,6 @@ _pgridfunc.ParGridFunction_swigregister(ParGridFunction)
 def L2ZZErrorEstimator(flux_integrator, x, smooth_flux_fes, flux_fes, errors, norm_p=2, solver_tol=1e-12, solver_max_it=200):
     r"""L2ZZErrorEstimator(BilinearFormIntegrator flux_integrator, ParGridFunction x, ParFiniteElementSpace smooth_flux_fes, ParFiniteElementSpace flux_fes, Vector errors, int norm_p=2, double solver_tol=1e-12, int solver_max_it=200) -> double"""
     return _pgridfunc.L2ZZErrorEstimator(flux_integrator, x, smooth_flux_fes, flux_fes, errors, norm_p, solver_tol, solver_max_it)
+L2ZZErrorEstimator = _pgridfunc.L2ZZErrorEstimator
 
 

@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _io_stream.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _io_stream.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -77,18 +80,22 @@ class wFILE(object):
     def isSTDOUT(self):
         r"""isSTDOUT(wFILE self) -> int"""
         return _io_stream.wFILE_isSTDOUT(self)
+    isSTDOUT = _swig_new_instance_method(_io_stream.wFILE_isSTDOUT)
 
     def getFilename(self):
         r"""getFilename(wFILE self) -> char *"""
         return _io_stream.wFILE_getFilename(self)
+    getFilename = _swig_new_instance_method(_io_stream.wFILE_getFilename)
 
     def getPrecision(self):
         r"""getPrecision(wFILE self) -> int"""
         return _io_stream.wFILE_getPrecision(self)
+    getPrecision = _swig_new_instance_method(_io_stream.wFILE_getPrecision)
 
     def setPrecision(self, precision):
         r"""setPrecision(wFILE self, int precision)"""
         return _io_stream.wFILE_setPrecision(self, precision)
+    setPrecision = _swig_new_instance_method(_io_stream.wFILE_setPrecision)
     __swig_destroy__ = _io_stream.delete_wFILE
 
 # Register wFILE in _io_stream:

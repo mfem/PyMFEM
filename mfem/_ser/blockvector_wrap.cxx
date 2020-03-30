@@ -3715,6 +3715,7 @@ SWIGINTERN PyObject *BlockVector_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_BlockVector", _wrap_new_BlockVector, METH_VARARGS, "\n"
 		"BlockVector()\n"
 		"BlockVector(intArray bOffsets)\n"
@@ -3740,6 +3741,29 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_BlockVector", _wrap_new_BlockVector, METH_VARARGS, "\n"
+		"BlockVector()\n"
+		"BlockVector(intArray bOffsets)\n"
+		"BlockVector(intArray bOffsets, mfem::MemoryType mt)\n"
+		"BlockVector(BlockVector block)\n"
+		"new_BlockVector(double * data, intArray bOffsets) -> BlockVector\n"
+		""},
+	 { "delete_BlockVector", _wrap_delete_BlockVector, METH_O, "delete_BlockVector(BlockVector self)"},
+	 { "BlockVector_GetBlock", _wrap_BlockVector_GetBlock, METH_VARARGS, "\n"
+		"GetBlock(BlockVector self, int i) -> Vector\n"
+		"GetBlock(BlockVector self, int i) -> Vector\n"
+		""},
+	 { "BlockVector_GetBlockView", _wrap_BlockVector_GetBlockView, METH_VARARGS, "GetBlockView(BlockVector self, int i, Vector blockView)"},
+	 { "BlockVector_BlockSize", _wrap_BlockVector_BlockSize, METH_VARARGS, "BlockSize(BlockVector self, int i) -> int"},
+	 { "BlockVector_Update", _wrap_BlockVector_Update, METH_VARARGS, "\n"
+		"Update(BlockVector self, double * data, intArray bOffsets)\n"
+		"Update(BlockVector self, intArray bOffsets)\n"
+		"Update(BlockVector self, intArray bOffsets, mfem::MemoryType mt)\n"
+		""},
+	 { "BlockVector_swigregister", BlockVector_swigregister, METH_O, NULL},
+	 { "BlockVector_swiginit", BlockVector_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _vector.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _vector.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -72,6 +75,7 @@ def add_vector(*args):
     add_vector(double const a, Vector x, double const b, Vector y, Vector z)
     """
     return _vector.add_vector(*args)
+add_vector = _vector.add_vector
 
 def subtract_vector(*args):
     r"""
@@ -79,14 +83,17 @@ def subtract_vector(*args):
     subtract_vector(double const a, Vector x, Vector y, Vector z)
     """
     return _vector.subtract_vector(*args)
+subtract_vector = _vector.subtract_vector
 
 def CheckFinite(v, n):
     r"""CheckFinite(double const * v, int const n) -> int"""
     return _vector.CheckFinite(v, n)
+CheckFinite = _vector.CheckFinite
 
 def infinity():
     r"""infinity() -> double"""
     return _vector.infinity()
+infinity = _vector.infinity
 class Vector(object):
     r"""Proxy of C++ mfem::Vector class."""
 
@@ -99,6 +106,7 @@ class Vector(object):
         UseDevice(Vector self) -> bool
         """
         return _vector.Vector_UseDevice(self, *args)
+    UseDevice = _swig_new_instance_method(_vector.Vector_UseDevice)
 
     def Load(self, *args):
         r"""
@@ -107,6 +115,7 @@ class Vector(object):
         Load(Vector self, std::istream & _in)
         """
         return _vector.Vector_Load(self, *args)
+    Load = _swig_new_instance_method(_vector.Vector_Load)
 
     def SetSize(self, *args):
         r"""
@@ -115,42 +124,60 @@ class Vector(object):
         SetSize(Vector self, int s, Vector v)
         """
         return _vector.Vector_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_vector.Vector_SetSize)
 
     def SetData(self, d):
         r"""SetData(Vector self, double * d)"""
         return _vector.Vector_SetData(self, d)
+    SetData = _swig_new_instance_method(_vector.Vector_SetData)
 
     def SetDataAndSize(self, d, s):
         r"""SetDataAndSize(Vector self, double * d, int s)"""
         return _vector.Vector_SetDataAndSize(self, d, s)
+    SetDataAndSize = _swig_new_instance_method(_vector.Vector_SetDataAndSize)
 
     def NewDataAndSize(self, d, s):
         r"""NewDataAndSize(Vector self, double * d, int s)"""
         return _vector.Vector_NewDataAndSize(self, d, s)
+    NewDataAndSize = _swig_new_instance_method(_vector.Vector_NewDataAndSize)
 
     def NewMemoryAndSize(self, mem, s, own_mem):
         r"""NewMemoryAndSize(Vector self, mfem::Memory< double > const & mem, int s, bool own_mem)"""
         return _vector.Vector_NewMemoryAndSize(self, mem, s, own_mem)
+    NewMemoryAndSize = _swig_new_instance_method(_vector.Vector_NewMemoryAndSize)
+
+    def MakeRef(self, *args):
+        r"""
+        MakeRef(Vector self, Vector base, int offset, int size)
+        MakeRef(Vector self, Vector base, int offset)
+        """
+        return _vector.Vector_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_vector.Vector_MakeRef)
 
     def MakeDataOwner(self):
         r"""MakeDataOwner(Vector self)"""
         return _vector.Vector_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_vector.Vector_MakeDataOwner)
 
     def Destroy(self):
         r"""Destroy(Vector self)"""
         return _vector.Vector_Destroy(self)
+    Destroy = _swig_new_instance_method(_vector.Vector_Destroy)
 
     def Size(self):
         r"""Size(Vector self) -> int"""
         return _vector.Vector_Size(self)
+    Size = _swig_new_instance_method(_vector.Vector_Size)
 
     def Capacity(self):
         r"""Capacity(Vector self) -> int"""
         return _vector.Vector_Capacity(self)
+    Capacity = _swig_new_instance_method(_vector.Vector_Capacity)
 
     def GetData(self):
         r"""GetData(Vector self) -> double *"""
         return _vector.Vector_GetData(self)
+    GetData = _swig_new_instance_method(_vector.Vector_GetData)
 
     def GetMemory(self, *args):
         r"""
@@ -158,18 +185,22 @@ class Vector(object):
         GetMemory(Vector self) -> mfem::Memory< double > const &
         """
         return _vector.Vector_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_vector.Vector_GetMemory)
 
     def SyncMemory(self, v):
         r"""SyncMemory(Vector self, Vector v)"""
         return _vector.Vector_SyncMemory(self, v)
+    SyncMemory = _swig_new_instance_method(_vector.Vector_SyncMemory)
 
     def SyncAliasMemory(self, v):
         r"""SyncAliasMemory(Vector self, Vector v)"""
         return _vector.Vector_SyncAliasMemory(self, v)
+    SyncAliasMemory = _swig_new_instance_method(_vector.Vector_SyncAliasMemory)
 
     def OwnsData(self):
         r"""OwnsData(Vector self) -> bool"""
         return _vector.Vector_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_vector.Vector_OwnsData)
 
     def StealData(self, *args):
         r"""
@@ -177,6 +208,7 @@ class Vector(object):
         StealData(Vector self) -> double *
         """
         return _vector.Vector_StealData(self, *args)
+    StealData = _swig_new_instance_method(_vector.Vector_StealData)
 
     def Elem(self, *args):
         r"""
@@ -184,6 +216,7 @@ class Vector(object):
         Elem(Vector self, int i) -> double const &
         """
         return _vector.Vector_Elem(self, *args)
+    Elem = _swig_new_instance_method(_vector.Vector_Elem)
 
     def __call__(self, *args):
         r"""
@@ -191,6 +224,7 @@ class Vector(object):
         __call__(Vector self, int i) -> double const &
         """
         return _vector.Vector___call__(self, *args)
+    __call__ = _swig_new_instance_method(_vector.Vector___call__)
 
     def __mul__(self, *args):
         r"""
@@ -198,6 +232,7 @@ class Vector(object):
         __mul__(Vector self, Vector v) -> double
         """
         return _vector.Vector___mul__(self, *args)
+    __mul__ = _swig_new_instance_method(_vector.Vector___mul__)
 
     def __imul__(self, v):
         ret = _vector.Vector___imul__(self, v)
@@ -234,26 +269,32 @@ class Vector(object):
     def Add(self, a, Va):
         r"""Add(Vector self, double const a, Vector Va) -> Vector"""
         return _vector.Vector_Add(self, a, Va)
+    Add = _swig_new_instance_method(_vector.Vector_Add)
 
     def Set(self, a, x):
         r"""Set(Vector self, double const a, Vector x) -> Vector"""
         return _vector.Vector_Set(self, a, x)
+    Set = _swig_new_instance_method(_vector.Vector_Set)
 
     def SetVector(self, v, offset):
         r"""SetVector(Vector self, Vector v, int offset)"""
         return _vector.Vector_SetVector(self, v, offset)
+    SetVector = _swig_new_instance_method(_vector.Vector_SetVector)
 
     def Neg(self):
         r"""Neg(Vector self)"""
         return _vector.Vector_Neg(self)
+    Neg = _swig_new_instance_method(_vector.Vector_Neg)
 
     def Swap(self, other):
         r"""Swap(Vector self, Vector other)"""
         return _vector.Vector_Swap(self, other)
+    Swap = _swig_new_instance_method(_vector.Vector_Swap)
 
     def median(self, lo, hi):
         r"""median(Vector self, Vector lo, Vector hi)"""
         return _vector.Vector_median(self, lo, hi)
+    median = _swig_new_instance_method(_vector.Vector_median)
 
     def GetSubVector(self, *args):
         r"""
@@ -261,6 +302,7 @@ class Vector(object):
         GetSubVector(Vector self, intArray dofs, double * elem_data)
         """
         return _vector.Vector_GetSubVector(self, *args)
+    GetSubVector = _swig_new_instance_method(_vector.Vector_GetSubVector)
 
     def SetSubVector(self, *args):
         r"""
@@ -269,6 +311,7 @@ class Vector(object):
         SetSubVector(Vector self, intArray dofs, double * elem_data)
         """
         return _vector.Vector_SetSubVector(self, *args)
+    SetSubVector = _swig_new_instance_method(_vector.Vector_SetSubVector)
 
     def AddElementVector(self, *args):
         r"""
@@ -277,79 +320,98 @@ class Vector(object):
         AddElementVector(Vector self, intArray dofs, double const a, Vector elemvect)
         """
         return _vector.Vector_AddElementVector(self, *args)
+    AddElementVector = _swig_new_instance_method(_vector.Vector_AddElementVector)
 
     def SetSubVectorComplement(self, dofs, val):
         r"""SetSubVectorComplement(Vector self, intArray dofs, double const val)"""
         return _vector.Vector_SetSubVectorComplement(self, dofs, val)
+    SetSubVectorComplement = _swig_new_instance_method(_vector.Vector_SetSubVectorComplement)
 
     def Randomize(self, seed=0):
         r"""Randomize(Vector self, int seed=0)"""
         return _vector.Vector_Randomize(self, seed)
+    Randomize = _swig_new_instance_method(_vector.Vector_Randomize)
 
     def Norml2(self):
         r"""Norml2(Vector self) -> double"""
         return _vector.Vector_Norml2(self)
+    Norml2 = _swig_new_instance_method(_vector.Vector_Norml2)
 
     def Normlinf(self):
         r"""Normlinf(Vector self) -> double"""
         return _vector.Vector_Normlinf(self)
+    Normlinf = _swig_new_instance_method(_vector.Vector_Normlinf)
 
     def Norml1(self):
         r"""Norml1(Vector self) -> double"""
         return _vector.Vector_Norml1(self)
+    Norml1 = _swig_new_instance_method(_vector.Vector_Norml1)
 
     def Normlp(self, p):
         r"""Normlp(Vector self, double p) -> double"""
         return _vector.Vector_Normlp(self, p)
+    Normlp = _swig_new_instance_method(_vector.Vector_Normlp)
 
     def Max(self):
         r"""Max(Vector self) -> double"""
         return _vector.Vector_Max(self)
+    Max = _swig_new_instance_method(_vector.Vector_Max)
 
     def Min(self):
         r"""Min(Vector self) -> double"""
         return _vector.Vector_Min(self)
+    Min = _swig_new_instance_method(_vector.Vector_Min)
 
     def Sum(self):
         r"""Sum(Vector self) -> double"""
         return _vector.Vector_Sum(self)
+    Sum = _swig_new_instance_method(_vector.Vector_Sum)
 
     def DistanceSquaredTo(self, p):
         r"""DistanceSquaredTo(Vector self, double const * p) -> double"""
         return _vector.Vector_DistanceSquaredTo(self, p)
+    DistanceSquaredTo = _swig_new_instance_method(_vector.Vector_DistanceSquaredTo)
 
     def DistanceTo(self, p):
         r"""DistanceTo(Vector self, double const * p) -> double"""
         return _vector.Vector_DistanceTo(self, p)
+    DistanceTo = _swig_new_instance_method(_vector.Vector_DistanceTo)
 
     def CheckFinite(self):
         r"""CheckFinite(Vector self) -> int"""
         return _vector.Vector_CheckFinite(self)
+    CheckFinite = _swig_new_instance_method(_vector.Vector_CheckFinite)
     __swig_destroy__ = _vector.delete_Vector
 
     def Read(self, on_dev=True):
         r"""Read(Vector self, bool on_dev=True) -> double const"""
         return _vector.Vector_Read(self, on_dev)
+    Read = _swig_new_instance_method(_vector.Vector_Read)
 
     def HostRead(self):
         r"""HostRead(Vector self) -> double const *"""
         return _vector.Vector_HostRead(self)
+    HostRead = _swig_new_instance_method(_vector.Vector_HostRead)
 
     def Write(self, on_dev=True):
         r"""Write(Vector self, bool on_dev=True) -> double"""
         return _vector.Vector_Write(self, on_dev)
+    Write = _swig_new_instance_method(_vector.Vector_Write)
 
     def HostWrite(self):
         r"""HostWrite(Vector self) -> double *"""
         return _vector.Vector_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_vector.Vector_HostWrite)
 
     def ReadWrite(self, on_dev=True):
         r"""ReadWrite(Vector self, bool on_dev=True) -> double"""
         return _vector.Vector_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_vector.Vector_ReadWrite)
 
     def HostReadWrite(self):
         r"""HostReadWrite(Vector self) -> double *"""
         return _vector.Vector_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_vector.Vector_HostReadWrite)
 
     def __init__(self, *args):
         r"""
@@ -428,14 +490,17 @@ class Vector(object):
     def __setitem__(self, i, v):
         r"""__setitem__(Vector self, int i, double const v)"""
         return _vector.Vector___setitem__(self, i, v)
+    __setitem__ = _swig_new_instance_method(_vector.Vector___setitem__)
 
     def __getitem__(self, param):
         r"""__getitem__(Vector self, PyObject * param) -> PyObject *"""
         return _vector.Vector___getitem__(self, param)
+    __getitem__ = _swig_new_instance_method(_vector.Vector___getitem__)
 
     def GetDataArray(self):
         r"""GetDataArray(Vector self) -> PyObject *"""
         return _vector.Vector_GetDataArray(self)
+    GetDataArray = _swig_new_instance_method(_vector.Vector_GetDataArray)
 
     def Print(self, *args):
         r"""
@@ -443,6 +508,7 @@ class Vector(object):
         Print(Vector self, char const * file, int precision=8)
         """
         return _vector.Vector_Print(self, *args)
+    Print = _swig_new_instance_method(_vector.Vector_Print)
 
     def Print_HYPRE(self, *args):
         r"""
@@ -451,6 +517,7 @@ class Vector(object):
         Print_HYPRE(Vector self)
         """
         return _vector.Vector_Print_HYPRE(self, *args)
+    Print_HYPRE = _swig_new_instance_method(_vector.Vector_Print_HYPRE)
 
 # Register Vector in _vector:
 _vector.Vector_swigregister(Vector)
@@ -459,14 +526,17 @@ _vector.Vector_swigregister(Vector)
 def IsFinite(val):
     r"""IsFinite(double const & val) -> bool"""
     return _vector.IsFinite(val)
+IsFinite = _vector.IsFinite
 
 def DistanceSquared(x, y, n):
     r"""DistanceSquared(double const * x, double const * y, int const n) -> double"""
     return _vector.DistanceSquared(x, y, n)
+DistanceSquared = _vector.DistanceSquared
 
 def Distance(x, y, n):
     r"""Distance(double const * x, double const * y, int const n) -> double"""
     return _vector.Distance(x, y, n)
+Distance = _vector.Distance
 
 Vector.__idiv__ = Vector.__itruediv__
 

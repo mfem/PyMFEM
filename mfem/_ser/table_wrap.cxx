@@ -7108,6 +7108,7 @@ SWIGINTERN PyObject *DSTable_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Connection__from_set", _wrap_Connection__from_set, METH_VARARGS, "Connection__from_set(Connection self, int _from)"},
 	 { "Connection__from_get", _wrap_Connection__from_get, METH_O, "Connection__from_get(Connection self) -> int"},
 	 { "Connection_to_set", _wrap_Connection_to_set, METH_VARARGS, "Connection_to_set(Connection self, int to)"},
@@ -7209,6 +7210,105 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Connection__from_set", _wrap_Connection__from_set, METH_VARARGS, "Connection__from_set(Connection self, int _from)"},
+	 { "Connection__from_get", _wrap_Connection__from_get, METH_O, "Connection__from_get(Connection self) -> int"},
+	 { "Connection_to_set", _wrap_Connection_to_set, METH_VARARGS, "Connection_to_set(Connection self, int to)"},
+	 { "Connection_to_get", _wrap_Connection_to_get, METH_O, "Connection_to_get(Connection self) -> int"},
+	 { "new_Connection", _wrap_new_Connection, METH_VARARGS, "\n"
+		"Connection()\n"
+		"new_Connection(int _from, int to) -> Connection\n"
+		""},
+	 { "Connection___eq__", _wrap_Connection___eq__, METH_VARARGS, "__eq__(Connection self, Connection rhs) -> bool"},
+	 { "Connection___lt__", _wrap_Connection___lt__, METH_VARARGS, "__lt__(Connection self, Connection rhs) -> bool"},
+	 { "delete_Connection", _wrap_delete_Connection, METH_O, "delete_Connection(Connection self)"},
+	 { "Connection_swigregister", Connection_swigregister, METH_O, NULL},
+	 { "Connection_swiginit", Connection_swiginit, METH_VARARGS, NULL},
+	 { "new_Table", _wrap_new_Table, METH_VARARGS, "\n"
+		"Table()\n"
+		"Table(Table arg1)\n"
+		"Table(int dim, int connections_per_row=3)\n"
+		"Table(int nrows, mfem::Array< mfem::Connection > & list)\n"
+		"new_Table(int nrows, int * partitioning) -> Table\n"
+		""},
+	 { "Table_MakeI", _wrap_Table_MakeI, METH_VARARGS, "MakeI(Table self, int nrows)"},
+	 { "Table_AddAColumnInRow", _wrap_Table_AddAColumnInRow, METH_VARARGS, "AddAColumnInRow(Table self, int r)"},
+	 { "Table_AddColumnsInRow", _wrap_Table_AddColumnsInRow, METH_VARARGS, "AddColumnsInRow(Table self, int r, int ncol)"},
+	 { "Table_MakeJ", _wrap_Table_MakeJ, METH_O, "MakeJ(Table self)"},
+	 { "Table_AddConnection", _wrap_Table_AddConnection, METH_VARARGS, "AddConnection(Table self, int r, int c)"},
+	 { "Table_AddConnections", _wrap_Table_AddConnections, METH_VARARGS, "AddConnections(Table self, int r, int const * c, int nc)"},
+	 { "Table_ShiftUpI", _wrap_Table_ShiftUpI, METH_O, "ShiftUpI(Table self)"},
+	 { "Table_SetSize", _wrap_Table_SetSize, METH_VARARGS, "SetSize(Table self, int dim, int connections_per_row)"},
+	 { "Table_SetDims", _wrap_Table_SetDims, METH_VARARGS, "SetDims(Table self, int rows, int nnz)"},
+	 { "Table_Size", _wrap_Table_Size, METH_O, "Size(Table self) -> int"},
+	 { "Table_Size_of_connections", _wrap_Table_Size_of_connections, METH_O, "Size_of_connections(Table self) -> int"},
+	 { "Table___call__", _wrap_Table___call__, METH_VARARGS, "__call__(Table self, int i, int j) -> int"},
+	 { "Table_RowSize", _wrap_Table_RowSize, METH_VARARGS, "RowSize(Table self, int i) -> int"},
+	 { "Table_GetRow", _wrap_Table_GetRow, METH_VARARGS, "\n"
+		"GetRow(Table self, int i, intArray row)\n"
+		"GetRow(Table self, int i) -> int const\n"
+		"GetRow(Table self, int i) -> int *\n"
+		""},
+	 { "Table_GetI", _wrap_Table_GetI, METH_VARARGS, "\n"
+		"GetI(Table self) -> int\n"
+		"GetI(Table self) -> int const *\n"
+		""},
+	 { "Table_GetJ", _wrap_Table_GetJ, METH_VARARGS, "\n"
+		"GetJ(Table self) -> int\n"
+		"GetJ(Table self) -> int const *\n"
+		""},
+	 { "Table_GetIMemory", _wrap_Table_GetIMemory, METH_VARARGS, "\n"
+		"GetIMemory(Table self) -> mfem::Memory< int >\n"
+		"GetIMemory(Table self) -> mfem::Memory< int > const &\n"
+		""},
+	 { "Table_GetJMemory", _wrap_Table_GetJMemory, METH_VARARGS, "\n"
+		"GetJMemory(Table self) -> mfem::Memory< int >\n"
+		"GetJMemory(Table self) -> mfem::Memory< int > const &\n"
+		""},
+	 { "Table_SortRows", _wrap_Table_SortRows, METH_O, "SortRows(Table self)"},
+	 { "Table_SetIJ", _wrap_Table_SetIJ, METH_VARARGS, "SetIJ(Table self, int * newI, int * newJ, int newsize=-1)"},
+	 { "Table_Push", _wrap_Table_Push, METH_VARARGS, "Push(Table self, int i, int j) -> int"},
+	 { "Table_Finalize", _wrap_Table_Finalize, METH_O, "Finalize(Table self)"},
+	 { "Table_MakeFromList", _wrap_Table_MakeFromList, METH_VARARGS, "MakeFromList(Table self, int nrows, mfem::Array< mfem::Connection > const & list)"},
+	 { "Table_Width", _wrap_Table_Width, METH_O, "Width(Table self) -> int"},
+	 { "Table_LoseData", _wrap_Table_LoseData, METH_O, "LoseData(Table self)"},
+	 { "Table_Load", _wrap_Table_Load, METH_VARARGS, "Load(Table self, std::istream & _in)"},
+	 { "Table_Copy", _wrap_Table_Copy, METH_VARARGS, "Copy(Table self, Table copy)"},
+	 { "Table_Swap", _wrap_Table_Swap, METH_VARARGS, "Swap(Table self, Table other)"},
+	 { "Table_Clear", _wrap_Table_Clear, METH_O, "Clear(Table self)"},
+	 { "Table_MemoryUsage", _wrap_Table_MemoryUsage, METH_O, "MemoryUsage(Table self) -> long"},
+	 { "delete_Table", _wrap_delete_Table, METH_O, "delete_Table(Table self)"},
+	 { "Table_GetRowList", _wrap_Table_GetRowList, METH_VARARGS, "GetRowList(Table self, int i) -> PyObject *"},
+	 { "Table_Print", _wrap_Table_Print, METH_VARARGS, "\n"
+		"Print(Table self, std::ostream & out=mfem::out, int width=4)\n"
+		"Print(Table self, char const * file, int precision=8)\n"
+		""},
+	 { "Table_PrintMatlab", _wrap_Table_PrintMatlab, METH_VARARGS, "\n"
+		"PrintMatlab(Table self, std::ostream & out)\n"
+		"PrintMatlab(Table self, char const * file, int precision=8)\n"
+		""},
+	 { "Table_Save", _wrap_Table_Save, METH_VARARGS, "\n"
+		"Save(Table self, std::ostream & out)\n"
+		"Save(Table self, char const * file, int precision=8)\n"
+		"Save(Table self)\n"
+		""},
+	 { "Table_swigregister", Table_swigregister, METH_O, NULL},
+	 { "Table_swiginit", Table_swiginit, METH_VARARGS, NULL},
+	 { "new_STable", _wrap_new_STable, METH_VARARGS, "STable(int dim, int connections_per_row=3)"},
+	 { "STable___call__", _wrap_STable___call__, METH_VARARGS, "__call__(STable self, int i, int j) -> int"},
+	 { "STable_Push", _wrap_STable_Push, METH_VARARGS, "Push(STable self, int i, int j) -> int"},
+	 { "delete_STable", _wrap_delete_STable, METH_O, "delete_STable(STable self)"},
+	 { "STable_swigregister", STable_swigregister, METH_O, NULL},
+	 { "STable_swiginit", STable_swiginit, METH_VARARGS, NULL},
+	 { "new_DSTable", _wrap_new_DSTable, METH_O, "new_DSTable(int nrows) -> DSTable"},
+	 { "DSTable_NumberOfRows", _wrap_DSTable_NumberOfRows, METH_O, "NumberOfRows(DSTable self) -> int"},
+	 { "DSTable_NumberOfEntries", _wrap_DSTable_NumberOfEntries, METH_O, "NumberOfEntries(DSTable self) -> int"},
+	 { "DSTable_Push", _wrap_DSTable_Push, METH_VARARGS, "Push(DSTable self, int a, int b) -> int"},
+	 { "DSTable___call__", _wrap_DSTable___call__, METH_VARARGS, "__call__(DSTable self, int a, int b) -> int"},
+	 { "delete_DSTable", _wrap_delete_DSTable, METH_O, "delete_DSTable(DSTable self)"},
+	 { "DSTable_swigregister", DSTable_swigregister, METH_O, NULL},
+	 { "DSTable_swiginit", DSTable_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

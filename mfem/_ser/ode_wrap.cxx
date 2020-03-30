@@ -3068,38 +3068,62 @@ namespace Swig {
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
 #define SWIGTYPE_p_double swig_types[2]
-#define SWIGTYPE_p_mfem__BackwardEulerSolver swig_types[3]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[4]
-#define SWIGTYPE_p_mfem__ExplicitRKSolver swig_types[5]
-#define SWIGTYPE_p_mfem__ForwardEulerSolver swig_types[6]
-#define SWIGTYPE_p_mfem__GeneralizedAlphaSolver swig_types[7]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[8]
-#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[9]
-#define SWIGTYPE_p_mfem__ODESolver swig_types[10]
-#define SWIGTYPE_p_mfem__Operator swig_types[11]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[12]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[13]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[14]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[15]
-#define SWIGTYPE_p_mfem__RK2Solver swig_types[16]
-#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[17]
-#define SWIGTYPE_p_mfem__RK4Solver swig_types[18]
-#define SWIGTYPE_p_mfem__RK6Solver swig_types[19]
-#define SWIGTYPE_p_mfem__RK8Solver swig_types[20]
-#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[21]
-#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[22]
-#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[23]
-#define SWIGTYPE_p_mfem__SIA1Solver swig_types[24]
-#define SWIGTYPE_p_mfem__SIA2Solver swig_types[25]
-#define SWIGTYPE_p_mfem__SIASolver swig_types[26]
-#define SWIGTYPE_p_mfem__SIAVSolver swig_types[27]
-#define SWIGTYPE_p_mfem__Solver swig_types[28]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[29]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[30]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[31]
-#define SWIGTYPE_p_mfem__Vector swig_types[32]
-static swig_type_info *swig_types[34];
-static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__AB1Solver swig_types[3]
+#define SWIGTYPE_p_mfem__AB2Solver swig_types[4]
+#define SWIGTYPE_p_mfem__AB3Solver swig_types[5]
+#define SWIGTYPE_p_mfem__AB4Solver swig_types[6]
+#define SWIGTYPE_p_mfem__AB5Solver swig_types[7]
+#define SWIGTYPE_p_mfem__AM0Solver swig_types[8]
+#define SWIGTYPE_p_mfem__AM1Solver swig_types[9]
+#define SWIGTYPE_p_mfem__AM2Solver swig_types[10]
+#define SWIGTYPE_p_mfem__AM3Solver swig_types[11]
+#define SWIGTYPE_p_mfem__AM4Solver swig_types[12]
+#define SWIGTYPE_p_mfem__AdamsBashforthSolver swig_types[13]
+#define SWIGTYPE_p_mfem__AdamsMoultonSolver swig_types[14]
+#define SWIGTYPE_p_mfem__AverageAccelerationSolver swig_types[15]
+#define SWIGTYPE_p_mfem__BackwardEulerSolver swig_types[16]
+#define SWIGTYPE_p_mfem__CentralDifferenceSolver swig_types[17]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[18]
+#define SWIGTYPE_p_mfem__ExplicitRKSolver swig_types[19]
+#define SWIGTYPE_p_mfem__ForwardEulerSolver swig_types[20]
+#define SWIGTYPE_p_mfem__FoxGoodwinSolver swig_types[21]
+#define SWIGTYPE_p_mfem__GeneralizedAlpha2Solver swig_types[22]
+#define SWIGTYPE_p_mfem__GeneralizedAlphaSolver swig_types[23]
+#define SWIGTYPE_p_mfem__HHTAlphaSolver swig_types[24]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[25]
+#define SWIGTYPE_p_mfem__ImplicitMidpointSolver swig_types[26]
+#define SWIGTYPE_p_mfem__LinearAccelerationSolver swig_types[27]
+#define SWIGTYPE_p_mfem__NewmarkSolver swig_types[28]
+#define SWIGTYPE_p_mfem__ODESolver swig_types[29]
+#define SWIGTYPE_p_mfem__Operator swig_types[30]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[31]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[32]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[33]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[34]
+#define SWIGTYPE_p_mfem__RK2Solver swig_types[35]
+#define SWIGTYPE_p_mfem__RK3SSPSolver swig_types[36]
+#define SWIGTYPE_p_mfem__RK4Solver swig_types[37]
+#define SWIGTYPE_p_mfem__RK6Solver swig_types[38]
+#define SWIGTYPE_p_mfem__RK8Solver swig_types[39]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[40]
+#define SWIGTYPE_p_mfem__SDIRK23Solver swig_types[41]
+#define SWIGTYPE_p_mfem__SDIRK33Solver swig_types[42]
+#define SWIGTYPE_p_mfem__SDIRK34Solver swig_types[43]
+#define SWIGTYPE_p_mfem__SIA1Solver swig_types[44]
+#define SWIGTYPE_p_mfem__SIA2Solver swig_types[45]
+#define SWIGTYPE_p_mfem__SIASolver swig_types[46]
+#define SWIGTYPE_p_mfem__SIAVSolver swig_types[47]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[48]
+#define SWIGTYPE_p_mfem__SecondOrderODESolver swig_types[49]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[50]
+#define SWIGTYPE_p_mfem__Solver swig_types[51]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[52]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[53]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[54]
+#define SWIGTYPE_p_mfem__Vector swig_types[55]
+#define SWIGTYPE_p_mfem__WBZAlphaSolver swig_types[56]
+static swig_type_info *swig_types[58];
+static swig_module_info swig_module = {swig_types, 57, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3203,9 +3227,11 @@ namespace swig {
 }
 
 
+#include  "mfem.hpp"
 #include "linalg/ode.hpp"
 #include "pyoperator.hpp"
 #include "numpy/arrayobject.h"    
+#include "io_stream.hpp"
 
 
 SWIGINTERN int
@@ -4768,6 +4794,1258 @@ SWIGINTERN PyObject *RK8Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyOb
 }
 
 SWIGINTERN PyObject *RK8Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AdamsBashforthSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double *arg2 = (double *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  mfem::AdamsBashforthSolver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AdamsBashforthSolver", 2, 2, swig_obj)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_AdamsBashforthSolver" "', argument " "2"" of type '" "double const *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  {
+    try {
+      result = (mfem::AdamsBashforthSolver *)new mfem::AdamsBashforthSolver(arg1,(double const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AdamsBashforthSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AdamsBashforthSolver_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AdamsBashforthSolver *arg1 = (mfem::AdamsBashforthSolver *) 0 ;
+  mfem::TimeDependentOperator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "AdamsBashforthSolver_Init", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AdamsBashforthSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AdamsBashforthSolver_Init" "', argument " "1"" of type '" "mfem::AdamsBashforthSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AdamsBashforthSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__TimeDependentOperator,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AdamsBashforthSolver_Init" "', argument " "2"" of type '" "mfem::TimeDependentOperator &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AdamsBashforthSolver_Init" "', argument " "2"" of type '" "mfem::TimeDependentOperator &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::TimeDependentOperator * >(argp2);
+  {
+    try {
+      (arg1)->Init(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AdamsBashforthSolver_Step(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AdamsBashforthSolver *arg1 = (mfem::AdamsBashforthSolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  double *arg3 = 0 ;
+  double *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double temp3 ;
+  double dtemp4 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "AdamsBashforthSolver_Step", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AdamsBashforthSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AdamsBashforthSolver_Step" "', argument " "1"" of type '" "mfem::AdamsBashforthSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AdamsBashforthSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AdamsBashforthSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AdamsBashforthSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    temp3 = PyFloat_AsDouble(swig_obj[2]);
+    arg3 = &temp3;
+  }
+  {
+    dtemp4 = PyFloat_AsDouble(swig_obj[3]);
+    arg4 = &dtemp4;
+  }
+  {
+    try {
+      (arg1)->Step(*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg3));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AdamsBashforthSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AdamsBashforthSolver *arg1 = (mfem::AdamsBashforthSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AdamsBashforthSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AdamsBashforthSolver" "', argument " "1"" of type '" "mfem::AdamsBashforthSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AdamsBashforthSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AdamsBashforthSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AdamsBashforthSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AdamsBashforthSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AB1Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB1Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AB1Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AB1Solver *)new mfem::AB1Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AB1Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AB1Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB1Solver *arg1 = (mfem::AB1Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AB1Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AB1Solver" "', argument " "1"" of type '" "mfem::AB1Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AB1Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AB1Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AB1Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AB1Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AB2Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB2Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AB2Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AB2Solver *)new mfem::AB2Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AB2Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AB2Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB2Solver *arg1 = (mfem::AB2Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AB2Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AB2Solver" "', argument " "1"" of type '" "mfem::AB2Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AB2Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AB2Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AB2Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AB2Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AB3Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB3Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AB3Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AB3Solver *)new mfem::AB3Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AB3Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AB3Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB3Solver *arg1 = (mfem::AB3Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AB3Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AB3Solver" "', argument " "1"" of type '" "mfem::AB3Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AB3Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AB3Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AB3Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AB3Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AB4Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB4Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AB4Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AB4Solver *)new mfem::AB4Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AB4Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AB4Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB4Solver *arg1 = (mfem::AB4Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AB4Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AB4Solver" "', argument " "1"" of type '" "mfem::AB4Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AB4Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AB4Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AB4Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AB4Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AB5Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB5Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AB5Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AB5Solver *)new mfem::AB5Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AB5Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AB5Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AB5Solver *arg1 = (mfem::AB5Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AB5Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AB5Solver" "', argument " "1"" of type '" "mfem::AB5Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AB5Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AB5Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AB5Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AB5Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AdamsMoultonSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  double *arg2 = (double *) 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  mfem::AdamsMoultonSolver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AdamsMoultonSolver", 2, 2, swig_obj)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_AdamsMoultonSolver" "', argument " "2"" of type '" "double const *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  {
+    try {
+      result = (mfem::AdamsMoultonSolver *)new mfem::AdamsMoultonSolver(arg1,(double const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AdamsMoultonSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AdamsMoultonSolver_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AdamsMoultonSolver *arg1 = (mfem::AdamsMoultonSolver *) 0 ;
+  mfem::TimeDependentOperator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "AdamsMoultonSolver_Init", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AdamsMoultonSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AdamsMoultonSolver_Init" "', argument " "1"" of type '" "mfem::AdamsMoultonSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AdamsMoultonSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__TimeDependentOperator,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AdamsMoultonSolver_Init" "', argument " "2"" of type '" "mfem::TimeDependentOperator &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AdamsMoultonSolver_Init" "', argument " "2"" of type '" "mfem::TimeDependentOperator &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::TimeDependentOperator * >(argp2);
+  {
+    try {
+      (arg1)->Init(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AdamsMoultonSolver_Step(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AdamsMoultonSolver *arg1 = (mfem::AdamsMoultonSolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  double *arg3 = 0 ;
+  double *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  double temp3 ;
+  double dtemp4 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "AdamsMoultonSolver_Step", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AdamsMoultonSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AdamsMoultonSolver_Step" "', argument " "1"" of type '" "mfem::AdamsMoultonSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AdamsMoultonSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "AdamsMoultonSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "AdamsMoultonSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    temp3 = PyFloat_AsDouble(swig_obj[2]);
+    arg3 = &temp3;
+  }
+  {
+    dtemp4 = PyFloat_AsDouble(swig_obj[3]);
+    arg4 = &dtemp4;
+  }
+  {
+    try {
+      (arg1)->Step(*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg3));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AdamsMoultonSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AdamsMoultonSolver *arg1 = (mfem::AdamsMoultonSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AdamsMoultonSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AdamsMoultonSolver" "', argument " "1"" of type '" "mfem::AdamsMoultonSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AdamsMoultonSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AdamsMoultonSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AdamsMoultonSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AdamsMoultonSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AM0Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM0Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AM0Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AM0Solver *)new mfem::AM0Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AM0Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AM0Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM0Solver *arg1 = (mfem::AM0Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AM0Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AM0Solver" "', argument " "1"" of type '" "mfem::AM0Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AM0Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AM0Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AM0Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AM0Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AM1Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM1Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AM1Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AM1Solver *)new mfem::AM1Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AM1Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AM1Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM1Solver *arg1 = (mfem::AM1Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AM1Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AM1Solver" "', argument " "1"" of type '" "mfem::AM1Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AM1Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AM1Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AM1Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AM1Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AM2Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM2Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AM2Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AM2Solver *)new mfem::AM2Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AM2Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AM2Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM2Solver *arg1 = (mfem::AM2Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AM2Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AM2Solver" "', argument " "1"" of type '" "mfem::AM2Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AM2Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AM2Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AM2Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AM2Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AM3Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM3Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AM3Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AM3Solver *)new mfem::AM3Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AM3Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AM3Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM3Solver *arg1 = (mfem::AM3Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AM3Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AM3Solver" "', argument " "1"" of type '" "mfem::AM3Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AM3Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AM3Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AM3Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AM3Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AM4Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM4Solver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AM4Solver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AM4Solver *)new mfem::AM4Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AM4Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AM4Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AM4Solver *arg1 = (mfem::AM4Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AM4Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AM4Solver" "', argument " "1"" of type '" "mfem::AM4Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AM4Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AM4Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AM4Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AM4Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -6880,8 +8158,1832 @@ SWIGINTERN PyObject *SIAVSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_SecondOrderODESolver_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderODESolver *arg1 = (mfem::SecondOrderODESolver *) 0 ;
+  mfem::SecondOrderTimeDependentOperator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SecondOrderODESolver_Init", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderODESolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SecondOrderODESolver_Init" "', argument " "1"" of type '" "mfem::SecondOrderODESolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderODESolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SecondOrderODESolver_Init" "', argument " "2"" of type '" "mfem::SecondOrderTimeDependentOperator &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderODESolver_Init" "', argument " "2"" of type '" "mfem::SecondOrderTimeDependentOperator &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp2);
+  {
+    try {
+      (arg1)->Init(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderODESolver_Step(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderODESolver *arg1 = (mfem::SecondOrderODESolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  double *arg4 = 0 ;
+  double *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double temp4 ;
+  double dtemp5 ;
+  PyObject *swig_obj[5] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SecondOrderODESolver_Step", 5, 5, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderODESolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SecondOrderODESolver_Step" "', argument " "1"" of type '" "mfem::SecondOrderODESolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderODESolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SecondOrderODESolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderODESolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SecondOrderODESolver_Step" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderODESolver_Step" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    temp4 = PyFloat_AsDouble(swig_obj[3]);
+    arg4 = &temp4;
+  }
+  {
+    dtemp5 = PyFloat_AsDouble(swig_obj[4]);
+    arg5 = &dtemp5;
+  }
+  {
+    try {
+      (arg1)->Step(*arg2,*arg3,*arg4,*arg5);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg5));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderODESolver_Run(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderODESolver *arg1 = (mfem::SecondOrderODESolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  double *arg4 = 0 ;
+  double *arg5 = 0 ;
+  double arg6 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double temp4 ;
+  double dtemp5 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  PyObject *swig_obj[6] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "SecondOrderODESolver_Run", 6, 6, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderODESolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SecondOrderODESolver_Run" "', argument " "1"" of type '" "mfem::SecondOrderODESolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderODESolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SecondOrderODESolver_Run" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderODESolver_Run" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SecondOrderODESolver_Run" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderODESolver_Run" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    temp4 = PyFloat_AsDouble(swig_obj[3]);
+    arg4 = &temp4;
+  }
+  {
+    dtemp5 = PyFloat_AsDouble(swig_obj[4]);
+    arg5 = &dtemp5;
+  }
+  ecode6 = SWIG_AsVal_double(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "SecondOrderODESolver_Run" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  {
+    try {
+      (arg1)->Run(*arg2,*arg3,*arg4,*arg5,arg6);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg5));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SecondOrderODESolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderODESolver *arg1 = (mfem::SecondOrderODESolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderODESolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SecondOrderODESolver" "', argument " "1"" of type '" "mfem::SecondOrderODESolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderODESolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SecondOrderODESolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__SecondOrderODESolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_new_NewmarkSolver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double arg2 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  mfem::NewmarkSolver *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_NewmarkSolver" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_NewmarkSolver" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (mfem::NewmarkSolver *)new mfem::NewmarkSolver(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NewmarkSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NewmarkSolver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  mfem::NewmarkSolver *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_NewmarkSolver" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  {
+    try {
+      result = (mfem::NewmarkSolver *)new mfem::NewmarkSolver(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NewmarkSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NewmarkSolver__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::NewmarkSolver *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::NewmarkSolver *)new mfem::NewmarkSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__NewmarkSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_NewmarkSolver(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_NewmarkSolver", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_NewmarkSolver__SWIG_2(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_NewmarkSolver__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        return _wrap_new_NewmarkSolver__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_NewmarkSolver'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::NewmarkSolver::NewmarkSolver(double,double)\n"
+    "    mfem::NewmarkSolver::NewmarkSolver(double)\n"
+    "    mfem::NewmarkSolver::NewmarkSolver()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::NewmarkSolver *arg1 = (mfem::NewmarkSolver *) 0 ;
+  std::ostream *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewmarkSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewmarkSolver_PrintProperties" "', argument " "1"" of type '" "mfem::NewmarkSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NewmarkSolver * >(argp1);
+  {
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
+    }
+    else {
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
+    }
+  }
+  {
+    try {
+      (arg1)->PrintProperties(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::NewmarkSolver *arg1 = (mfem::NewmarkSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewmarkSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewmarkSolver_PrintProperties" "', argument " "1"" of type '" "mfem::NewmarkSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NewmarkSolver * >(argp1);
+  {
+    try {
+      (arg1)->PrintProperties();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "NewmarkSolver_PrintProperties", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NewmarkSolver, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_NewmarkSolver_PrintProperties__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__NewmarkSolver, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_NewmarkSolver_PrintProperties__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'NewmarkSolver_PrintProperties'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::NewmarkSolver::PrintProperties(std::ostream &)\n"
+    "    mfem::NewmarkSolver::PrintProperties()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_NewmarkSolver_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NewmarkSolver *arg1 = (mfem::NewmarkSolver *) 0 ;
+  mfem::SecondOrderTimeDependentOperator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NewmarkSolver_Init", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewmarkSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewmarkSolver_Init" "', argument " "1"" of type '" "mfem::NewmarkSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NewmarkSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NewmarkSolver_Init" "', argument " "2"" of type '" "mfem::SecondOrderTimeDependentOperator &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NewmarkSolver_Init" "', argument " "2"" of type '" "mfem::SecondOrderTimeDependentOperator &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp2);
+  {
+    try {
+      (arg1)->Init(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_NewmarkSolver_Step(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NewmarkSolver *arg1 = (mfem::NewmarkSolver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  double *arg4 = 0 ;
+  double *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double temp4 ;
+  double dtemp5 ;
+  PyObject *swig_obj[5] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "NewmarkSolver_Step", 5, 5, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewmarkSolver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "NewmarkSolver_Step" "', argument " "1"" of type '" "mfem::NewmarkSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NewmarkSolver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "NewmarkSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NewmarkSolver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "NewmarkSolver_Step" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "NewmarkSolver_Step" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    temp4 = PyFloat_AsDouble(swig_obj[3]);
+    arg4 = &temp4;
+  }
+  {
+    dtemp5 = PyFloat_AsDouble(swig_obj[4]);
+    arg5 = &dtemp5;
+  }
+  {
+    try {
+      (arg1)->Step(*arg2,*arg3,*arg4,*arg5);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg5));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_NewmarkSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::NewmarkSolver *arg1 = (mfem::NewmarkSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__NewmarkSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_NewmarkSolver" "', argument " "1"" of type '" "mfem::NewmarkSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::NewmarkSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *NewmarkSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__NewmarkSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *NewmarkSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_LinearAccelerationSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearAccelerationSolver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_LinearAccelerationSolver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::LinearAccelerationSolver *)new mfem::LinearAccelerationSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LinearAccelerationSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_LinearAccelerationSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::LinearAccelerationSolver *arg1 = (mfem::LinearAccelerationSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LinearAccelerationSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_LinearAccelerationSolver" "', argument " "1"" of type '" "mfem::LinearAccelerationSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::LinearAccelerationSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *LinearAccelerationSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__LinearAccelerationSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *LinearAccelerationSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_CentralDifferenceSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CentralDifferenceSolver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_CentralDifferenceSolver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::CentralDifferenceSolver *)new mfem::CentralDifferenceSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CentralDifferenceSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_CentralDifferenceSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::CentralDifferenceSolver *arg1 = (mfem::CentralDifferenceSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CentralDifferenceSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_CentralDifferenceSolver" "', argument " "1"" of type '" "mfem::CentralDifferenceSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::CentralDifferenceSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *CentralDifferenceSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__CentralDifferenceSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *CentralDifferenceSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_FoxGoodwinSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FoxGoodwinSolver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_FoxGoodwinSolver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::FoxGoodwinSolver *)new mfem::FoxGoodwinSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__FoxGoodwinSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_FoxGoodwinSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::FoxGoodwinSolver *arg1 = (mfem::FoxGoodwinSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FoxGoodwinSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_FoxGoodwinSolver" "', argument " "1"" of type '" "mfem::FoxGoodwinSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FoxGoodwinSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *FoxGoodwinSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__FoxGoodwinSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *FoxGoodwinSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_GeneralizedAlpha2Solver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  mfem::GeneralizedAlpha2Solver *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_GeneralizedAlpha2Solver" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  {
+    try {
+      result = (mfem::GeneralizedAlpha2Solver *)new mfem::GeneralizedAlpha2Solver(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GeneralizedAlpha2Solver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlpha2Solver *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::GeneralizedAlpha2Solver *)new mfem::GeneralizedAlpha2Solver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_GeneralizedAlpha2Solver(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_GeneralizedAlpha2Solver", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_GeneralizedAlpha2Solver__SWIG_1(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_GeneralizedAlpha2Solver__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_GeneralizedAlpha2Solver'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GeneralizedAlpha2Solver::GeneralizedAlpha2Solver(double)\n"
+    "    mfem::GeneralizedAlpha2Solver::GeneralizedAlpha2Solver()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlpha2Solver *arg1 = (mfem::GeneralizedAlpha2Solver *) 0 ;
+  std::ostream *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyMFEM::wFILE *temp2 = 0 ;
+  std::ofstream out2 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralizedAlpha2Solver_PrintProperties" "', argument " "1"" of type '" "mfem::GeneralizedAlpha2Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlpha2Solver * >(argp1);
+  {
+    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+      return NULL;
+    }  
+    
+    if (temp2->isSTDOUT() == 1) {
+      arg2 = &std::cout;
+    }
+    else {
+      out2.open(temp2->getFilename());
+      out2.precision(temp2->getPrecision());
+      arg2 = &out2;
+    }
+  }
+  {
+    try {
+      (arg1)->PrintProperties(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
+  return resultobj;
+fail:
+  {
+    if (temp2->isSTDOUT() != 1) {
+      out2.close();
+    }
+  }
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlpha2Solver *arg1 = (mfem::GeneralizedAlpha2Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralizedAlpha2Solver_PrintProperties" "', argument " "1"" of type '" "mfem::GeneralizedAlpha2Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlpha2Solver * >(argp1);
+  {
+    try {
+      (arg1)->PrintProperties();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GeneralizedAlpha2Solver_PrintProperties", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_GeneralizedAlpha2Solver_PrintProperties__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_GeneralizedAlpha2Solver_PrintProperties__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GeneralizedAlpha2Solver_PrintProperties'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GeneralizedAlpha2Solver::PrintProperties(std::ostream &)\n"
+    "    mfem::GeneralizedAlpha2Solver::PrintProperties()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlpha2Solver *arg1 = (mfem::GeneralizedAlpha2Solver *) 0 ;
+  mfem::SecondOrderTimeDependentOperator *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GeneralizedAlpha2Solver_Init", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralizedAlpha2Solver_Init" "', argument " "1"" of type '" "mfem::GeneralizedAlpha2Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlpha2Solver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralizedAlpha2Solver_Init" "', argument " "2"" of type '" "mfem::SecondOrderTimeDependentOperator &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralizedAlpha2Solver_Init" "', argument " "2"" of type '" "mfem::SecondOrderTimeDependentOperator &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp2);
+  {
+    try {
+      (arg1)->Init(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_Step(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlpha2Solver *arg1 = (mfem::GeneralizedAlpha2Solver *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  double *arg4 = 0 ;
+  double *arg5 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double temp4 ;
+  double dtemp5 ;
+  PyObject *swig_obj[5] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GeneralizedAlpha2Solver_Step", 5, 5, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GeneralizedAlpha2Solver_Step" "', argument " "1"" of type '" "mfem::GeneralizedAlpha2Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlpha2Solver * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GeneralizedAlpha2Solver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralizedAlpha2Solver_Step" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GeneralizedAlpha2Solver_Step" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GeneralizedAlpha2Solver_Step" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    temp4 = PyFloat_AsDouble(swig_obj[3]);
+    arg4 = &temp4;
+  }
+  {
+    dtemp5 = PyFloat_AsDouble(swig_obj[4]);
+    arg5 = &dtemp5;
+  }
+  {
+    try {
+      (arg1)->Step(*arg2,*arg3,*arg4,*arg5);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg4));
+  }
+  {
+    resultobj = SWIG_Python_AppendOutput(resultobj, PyFloat_FromDouble(*arg5));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_GeneralizedAlpha2Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GeneralizedAlpha2Solver *arg1 = (mfem::GeneralizedAlpha2Solver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_GeneralizedAlpha2Solver" "', argument " "1"" of type '" "mfem::GeneralizedAlpha2Solver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GeneralizedAlpha2Solver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *GeneralizedAlpha2Solver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__GeneralizedAlpha2Solver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *GeneralizedAlpha2Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_AverageAccelerationSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AverageAccelerationSolver *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_AverageAccelerationSolver", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::AverageAccelerationSolver *)new mfem::AverageAccelerationSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__AverageAccelerationSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AverageAccelerationSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::AverageAccelerationSolver *arg1 = (mfem::AverageAccelerationSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__AverageAccelerationSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AverageAccelerationSolver" "', argument " "1"" of type '" "mfem::AverageAccelerationSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::AverageAccelerationSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AverageAccelerationSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__AverageAccelerationSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *AverageAccelerationSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_HHTAlphaSolver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  mfem::HHTAlphaSolver *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_HHTAlphaSolver" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  {
+    try {
+      result = (mfem::HHTAlphaSolver *)new mfem::HHTAlphaSolver(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HHTAlphaSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_HHTAlphaSolver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::HHTAlphaSolver *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::HHTAlphaSolver *)new mfem::HHTAlphaSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__HHTAlphaSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_HHTAlphaSolver(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_HHTAlphaSolver", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_HHTAlphaSolver__SWIG_1(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_HHTAlphaSolver__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_HHTAlphaSolver'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::HHTAlphaSolver::HHTAlphaSolver(double)\n"
+    "    mfem::HHTAlphaSolver::HHTAlphaSolver()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_HHTAlphaSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::HHTAlphaSolver *arg1 = (mfem::HHTAlphaSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__HHTAlphaSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_HHTAlphaSolver" "', argument " "1"" of type '" "mfem::HHTAlphaSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::HHTAlphaSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *HHTAlphaSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__HHTAlphaSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *HHTAlphaSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_WBZAlphaSolver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  mfem::WBZAlphaSolver *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_WBZAlphaSolver" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  {
+    try {
+      result = (mfem::WBZAlphaSolver *)new mfem::WBZAlphaSolver(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__WBZAlphaSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_WBZAlphaSolver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::WBZAlphaSolver *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::WBZAlphaSolver *)new mfem::WBZAlphaSolver();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__WBZAlphaSolver, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_WBZAlphaSolver(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_WBZAlphaSolver", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_WBZAlphaSolver__SWIG_1(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_double(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_WBZAlphaSolver__SWIG_0(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_WBZAlphaSolver'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::WBZAlphaSolver::WBZAlphaSolver(double)\n"
+    "    mfem::WBZAlphaSolver::WBZAlphaSolver()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_WBZAlphaSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::WBZAlphaSolver *arg1 = (mfem::WBZAlphaSolver *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__WBZAlphaSolver, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_WBZAlphaSolver" "', argument " "1"" of type '" "mfem::WBZAlphaSolver *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::WBZAlphaSolver * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *WBZAlphaSolver_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__WBZAlphaSolver, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *WBZAlphaSolver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "ODESolver_Init", _wrap_ODESolver_Init, METH_VARARGS, "ODESolver_Init(ODESolver self, TimeDependentOperator f)"},
 	 { "ODESolver_Step", _wrap_ODESolver_Step, METH_VARARGS, "ODESolver_Step(ODESolver self, Vector x, double & t, double & dt)"},
 	 { "ODESolver_Run", _wrap_ODESolver_Run, METH_VARARGS, "ODESolver_Run(ODESolver self, Vector x, double & t, double & dt, double tf)"},
@@ -6925,6 +10027,58 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_RK8Solver", _wrap_delete_RK8Solver, METH_O, "delete_RK8Solver(RK8Solver self)"},
 	 { "RK8Solver_swigregister", RK8Solver_swigregister, METH_O, NULL},
 	 { "RK8Solver_swiginit", RK8Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AdamsBashforthSolver", _wrap_new_AdamsBashforthSolver, METH_VARARGS, "new_AdamsBashforthSolver(int _s, double const * _a) -> AdamsBashforthSolver"},
+	 { "AdamsBashforthSolver_Init", _wrap_AdamsBashforthSolver_Init, METH_VARARGS, "AdamsBashforthSolver_Init(AdamsBashforthSolver self, TimeDependentOperator _f)"},
+	 { "AdamsBashforthSolver_Step", _wrap_AdamsBashforthSolver_Step, METH_VARARGS, "AdamsBashforthSolver_Step(AdamsBashforthSolver self, Vector x, double & t, double & dt)"},
+	 { "delete_AdamsBashforthSolver", _wrap_delete_AdamsBashforthSolver, METH_O, "delete_AdamsBashforthSolver(AdamsBashforthSolver self)"},
+	 { "AdamsBashforthSolver_swigregister", AdamsBashforthSolver_swigregister, METH_O, NULL},
+	 { "AdamsBashforthSolver_swiginit", AdamsBashforthSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB1Solver", _wrap_new_AB1Solver, METH_NOARGS, "new_AB1Solver() -> AB1Solver"},
+	 { "delete_AB1Solver", _wrap_delete_AB1Solver, METH_O, "delete_AB1Solver(AB1Solver self)"},
+	 { "AB1Solver_swigregister", AB1Solver_swigregister, METH_O, NULL},
+	 { "AB1Solver_swiginit", AB1Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB2Solver", _wrap_new_AB2Solver, METH_NOARGS, "new_AB2Solver() -> AB2Solver"},
+	 { "delete_AB2Solver", _wrap_delete_AB2Solver, METH_O, "delete_AB2Solver(AB2Solver self)"},
+	 { "AB2Solver_swigregister", AB2Solver_swigregister, METH_O, NULL},
+	 { "AB2Solver_swiginit", AB2Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB3Solver", _wrap_new_AB3Solver, METH_NOARGS, "new_AB3Solver() -> AB3Solver"},
+	 { "delete_AB3Solver", _wrap_delete_AB3Solver, METH_O, "delete_AB3Solver(AB3Solver self)"},
+	 { "AB3Solver_swigregister", AB3Solver_swigregister, METH_O, NULL},
+	 { "AB3Solver_swiginit", AB3Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB4Solver", _wrap_new_AB4Solver, METH_NOARGS, "new_AB4Solver() -> AB4Solver"},
+	 { "delete_AB4Solver", _wrap_delete_AB4Solver, METH_O, "delete_AB4Solver(AB4Solver self)"},
+	 { "AB4Solver_swigregister", AB4Solver_swigregister, METH_O, NULL},
+	 { "AB4Solver_swiginit", AB4Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB5Solver", _wrap_new_AB5Solver, METH_NOARGS, "new_AB5Solver() -> AB5Solver"},
+	 { "delete_AB5Solver", _wrap_delete_AB5Solver, METH_O, "delete_AB5Solver(AB5Solver self)"},
+	 { "AB5Solver_swigregister", AB5Solver_swigregister, METH_O, NULL},
+	 { "AB5Solver_swiginit", AB5Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AdamsMoultonSolver", _wrap_new_AdamsMoultonSolver, METH_VARARGS, "new_AdamsMoultonSolver(int _s, double const * _a) -> AdamsMoultonSolver"},
+	 { "AdamsMoultonSolver_Init", _wrap_AdamsMoultonSolver_Init, METH_VARARGS, "AdamsMoultonSolver_Init(AdamsMoultonSolver self, TimeDependentOperator _f)"},
+	 { "AdamsMoultonSolver_Step", _wrap_AdamsMoultonSolver_Step, METH_VARARGS, "AdamsMoultonSolver_Step(AdamsMoultonSolver self, Vector x, double & t, double & dt)"},
+	 { "delete_AdamsMoultonSolver", _wrap_delete_AdamsMoultonSolver, METH_O, "delete_AdamsMoultonSolver(AdamsMoultonSolver self)"},
+	 { "AdamsMoultonSolver_swigregister", AdamsMoultonSolver_swigregister, METH_O, NULL},
+	 { "AdamsMoultonSolver_swiginit", AdamsMoultonSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM0Solver", _wrap_new_AM0Solver, METH_NOARGS, "new_AM0Solver() -> AM0Solver"},
+	 { "delete_AM0Solver", _wrap_delete_AM0Solver, METH_O, "delete_AM0Solver(AM0Solver self)"},
+	 { "AM0Solver_swigregister", AM0Solver_swigregister, METH_O, NULL},
+	 { "AM0Solver_swiginit", AM0Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM1Solver", _wrap_new_AM1Solver, METH_NOARGS, "new_AM1Solver() -> AM1Solver"},
+	 { "delete_AM1Solver", _wrap_delete_AM1Solver, METH_O, "delete_AM1Solver(AM1Solver self)"},
+	 { "AM1Solver_swigregister", AM1Solver_swigregister, METH_O, NULL},
+	 { "AM1Solver_swiginit", AM1Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM2Solver", _wrap_new_AM2Solver, METH_NOARGS, "new_AM2Solver() -> AM2Solver"},
+	 { "delete_AM2Solver", _wrap_delete_AM2Solver, METH_O, "delete_AM2Solver(AM2Solver self)"},
+	 { "AM2Solver_swigregister", AM2Solver_swigregister, METH_O, NULL},
+	 { "AM2Solver_swiginit", AM2Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM3Solver", _wrap_new_AM3Solver, METH_NOARGS, "new_AM3Solver() -> AM3Solver"},
+	 { "delete_AM3Solver", _wrap_delete_AM3Solver, METH_O, "delete_AM3Solver(AM3Solver self)"},
+	 { "AM3Solver_swigregister", AM3Solver_swigregister, METH_O, NULL},
+	 { "AM3Solver_swiginit", AM3Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM4Solver", _wrap_new_AM4Solver, METH_NOARGS, "new_AM4Solver() -> AM4Solver"},
+	 { "delete_AM4Solver", _wrap_delete_AM4Solver, METH_O, "delete_AM4Solver(AM4Solver self)"},
+	 { "AM4Solver_swigregister", AM4Solver_swigregister, METH_O, NULL},
+	 { "AM4Solver_swiginit", AM4Solver_swiginit, METH_VARARGS, NULL},
 	 { "BackwardEulerSolver_Init", _wrap_BackwardEulerSolver_Init, METH_VARARGS, "BackwardEulerSolver_Init(BackwardEulerSolver self, TimeDependentOperator _f)"},
 	 { "BackwardEulerSolver_Step", _wrap_BackwardEulerSolver_Step, METH_VARARGS, "BackwardEulerSolver_Step(BackwardEulerSolver self, Vector x, double & t, double & dt)"},
 	 { "new_BackwardEulerSolver", _wrap_new_BackwardEulerSolver, METH_NOARGS, "new_BackwardEulerSolver() -> BackwardEulerSolver"},
@@ -6981,69 +10135,257 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_SIAVSolver", _wrap_delete_SIAVSolver, METH_O, "delete_SIAVSolver(SIAVSolver self)"},
 	 { "SIAVSolver_swigregister", SIAVSolver_swigregister, METH_O, NULL},
 	 { "SIAVSolver_swiginit", SIAVSolver_swiginit, METH_VARARGS, NULL},
+	 { "SecondOrderODESolver_Init", _wrap_SecondOrderODESolver_Init, METH_VARARGS, "SecondOrderODESolver_Init(SecondOrderODESolver self, SecondOrderTimeDependentOperator f)"},
+	 { "SecondOrderODESolver_Step", _wrap_SecondOrderODESolver_Step, METH_VARARGS, "SecondOrderODESolver_Step(SecondOrderODESolver self, Vector x, Vector dxdt, double & t, double & dt)"},
+	 { "SecondOrderODESolver_Run", _wrap_SecondOrderODESolver_Run, METH_VARARGS, "SecondOrderODESolver_Run(SecondOrderODESolver self, Vector x, Vector dxdt, double & t, double & dt, double tf)"},
+	 { "delete_SecondOrderODESolver", _wrap_delete_SecondOrderODESolver, METH_O, "delete_SecondOrderODESolver(SecondOrderODESolver self)"},
+	 { "SecondOrderODESolver_swigregister", SecondOrderODESolver_swigregister, METH_O, NULL},
+	 { "new_NewmarkSolver", _wrap_new_NewmarkSolver, METH_VARARGS, "NewmarkSolver(double beta_=0.25, double gamma_=0.5)"},
+	 { "NewmarkSolver_PrintProperties", _wrap_NewmarkSolver_PrintProperties, METH_VARARGS, "NewmarkSolver_PrintProperties(NewmarkSolver self, std::ostream & out=mfem::out)"},
+	 { "NewmarkSolver_Init", _wrap_NewmarkSolver_Init, METH_VARARGS, "NewmarkSolver_Init(NewmarkSolver self, SecondOrderTimeDependentOperator _f)"},
+	 { "NewmarkSolver_Step", _wrap_NewmarkSolver_Step, METH_VARARGS, "NewmarkSolver_Step(NewmarkSolver self, Vector x, Vector dxdt, double & t, double & dt)"},
+	 { "delete_NewmarkSolver", _wrap_delete_NewmarkSolver, METH_O, "delete_NewmarkSolver(NewmarkSolver self)"},
+	 { "NewmarkSolver_swigregister", NewmarkSolver_swigregister, METH_O, NULL},
+	 { "NewmarkSolver_swiginit", NewmarkSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_LinearAccelerationSolver", _wrap_new_LinearAccelerationSolver, METH_NOARGS, "new_LinearAccelerationSolver() -> LinearAccelerationSolver"},
+	 { "delete_LinearAccelerationSolver", _wrap_delete_LinearAccelerationSolver, METH_O, "delete_LinearAccelerationSolver(LinearAccelerationSolver self)"},
+	 { "LinearAccelerationSolver_swigregister", LinearAccelerationSolver_swigregister, METH_O, NULL},
+	 { "LinearAccelerationSolver_swiginit", LinearAccelerationSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_CentralDifferenceSolver", _wrap_new_CentralDifferenceSolver, METH_NOARGS, "new_CentralDifferenceSolver() -> CentralDifferenceSolver"},
+	 { "delete_CentralDifferenceSolver", _wrap_delete_CentralDifferenceSolver, METH_O, "delete_CentralDifferenceSolver(CentralDifferenceSolver self)"},
+	 { "CentralDifferenceSolver_swigregister", CentralDifferenceSolver_swigregister, METH_O, NULL},
+	 { "CentralDifferenceSolver_swiginit", CentralDifferenceSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_FoxGoodwinSolver", _wrap_new_FoxGoodwinSolver, METH_NOARGS, "new_FoxGoodwinSolver() -> FoxGoodwinSolver"},
+	 { "delete_FoxGoodwinSolver", _wrap_delete_FoxGoodwinSolver, METH_O, "delete_FoxGoodwinSolver(FoxGoodwinSolver self)"},
+	 { "FoxGoodwinSolver_swigregister", FoxGoodwinSolver_swigregister, METH_O, NULL},
+	 { "FoxGoodwinSolver_swiginit", FoxGoodwinSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_GeneralizedAlpha2Solver", _wrap_new_GeneralizedAlpha2Solver, METH_VARARGS, "GeneralizedAlpha2Solver(double rho_inf=1.0)"},
+	 { "GeneralizedAlpha2Solver_PrintProperties", _wrap_GeneralizedAlpha2Solver_PrintProperties, METH_VARARGS, "GeneralizedAlpha2Solver_PrintProperties(GeneralizedAlpha2Solver self, std::ostream & out=mfem::out)"},
+	 { "GeneralizedAlpha2Solver_Init", _wrap_GeneralizedAlpha2Solver_Init, METH_VARARGS, "GeneralizedAlpha2Solver_Init(GeneralizedAlpha2Solver self, SecondOrderTimeDependentOperator _f)"},
+	 { "GeneralizedAlpha2Solver_Step", _wrap_GeneralizedAlpha2Solver_Step, METH_VARARGS, "GeneralizedAlpha2Solver_Step(GeneralizedAlpha2Solver self, Vector x, Vector dxdt, double & t, double & dt)"},
+	 { "delete_GeneralizedAlpha2Solver", _wrap_delete_GeneralizedAlpha2Solver, METH_O, "delete_GeneralizedAlpha2Solver(GeneralizedAlpha2Solver self)"},
+	 { "GeneralizedAlpha2Solver_swigregister", GeneralizedAlpha2Solver_swigregister, METH_O, NULL},
+	 { "GeneralizedAlpha2Solver_swiginit", GeneralizedAlpha2Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AverageAccelerationSolver", _wrap_new_AverageAccelerationSolver, METH_NOARGS, "new_AverageAccelerationSolver() -> AverageAccelerationSolver"},
+	 { "delete_AverageAccelerationSolver", _wrap_delete_AverageAccelerationSolver, METH_O, "delete_AverageAccelerationSolver(AverageAccelerationSolver self)"},
+	 { "AverageAccelerationSolver_swigregister", AverageAccelerationSolver_swigregister, METH_O, NULL},
+	 { "AverageAccelerationSolver_swiginit", AverageAccelerationSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_HHTAlphaSolver", _wrap_new_HHTAlphaSolver, METH_VARARGS, "HHTAlphaSolver(double alpha=1.0)"},
+	 { "delete_HHTAlphaSolver", _wrap_delete_HHTAlphaSolver, METH_O, "delete_HHTAlphaSolver(HHTAlphaSolver self)"},
+	 { "HHTAlphaSolver_swigregister", HHTAlphaSolver_swigregister, METH_O, NULL},
+	 { "HHTAlphaSolver_swiginit", HHTAlphaSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_WBZAlphaSolver", _wrap_new_WBZAlphaSolver, METH_VARARGS, "WBZAlphaSolver(double rho_inf=1.0)"},
+	 { "delete_WBZAlphaSolver", _wrap_delete_WBZAlphaSolver, METH_O, "delete_WBZAlphaSolver(WBZAlphaSolver self)"},
+	 { "WBZAlphaSolver_swigregister", WBZAlphaSolver_swigregister, METH_O, NULL},
+	 { "WBZAlphaSolver_swiginit", WBZAlphaSolver_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "ODESolver_Init", _wrap_ODESolver_Init, METH_VARARGS, "Init(ODESolver self, TimeDependentOperator f)"},
+	 { "ODESolver_Step", _wrap_ODESolver_Step, METH_VARARGS, "Step(ODESolver self, Vector x, double & t, double & dt)"},
+	 { "ODESolver_Run", _wrap_ODESolver_Run, METH_VARARGS, "Run(ODESolver self, Vector x, double & t, double & dt, double tf)"},
+	 { "delete_ODESolver", _wrap_delete_ODESolver, METH_O, "delete_ODESolver(ODESolver self)"},
+	 { "ODESolver_swigregister", ODESolver_swigregister, METH_O, NULL},
+	 { "ForwardEulerSolver_Init", _wrap_ForwardEulerSolver_Init, METH_VARARGS, "Init(ForwardEulerSolver self, TimeDependentOperator _f)"},
+	 { "ForwardEulerSolver_Step", _wrap_ForwardEulerSolver_Step, METH_VARARGS, "Step(ForwardEulerSolver self, Vector x, double & t, double & dt)"},
+	 { "new_ForwardEulerSolver", _wrap_new_ForwardEulerSolver, METH_NOARGS, "new_ForwardEulerSolver() -> ForwardEulerSolver"},
+	 { "delete_ForwardEulerSolver", _wrap_delete_ForwardEulerSolver, METH_O, "delete_ForwardEulerSolver(ForwardEulerSolver self)"},
+	 { "ForwardEulerSolver_swigregister", ForwardEulerSolver_swigregister, METH_O, NULL},
+	 { "ForwardEulerSolver_swiginit", ForwardEulerSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_RK2Solver", _wrap_new_RK2Solver, METH_VARARGS, "RK2Solver(double const _a=2./3.)"},
+	 { "RK2Solver_Init", _wrap_RK2Solver_Init, METH_VARARGS, "Init(RK2Solver self, TimeDependentOperator _f)"},
+	 { "RK2Solver_Step", _wrap_RK2Solver_Step, METH_VARARGS, "Step(RK2Solver self, Vector x, double & t, double & dt)"},
+	 { "delete_RK2Solver", _wrap_delete_RK2Solver, METH_O, "delete_RK2Solver(RK2Solver self)"},
+	 { "RK2Solver_swigregister", RK2Solver_swigregister, METH_O, NULL},
+	 { "RK2Solver_swiginit", RK2Solver_swiginit, METH_VARARGS, NULL},
+	 { "RK3SSPSolver_Init", _wrap_RK3SSPSolver_Init, METH_VARARGS, "Init(RK3SSPSolver self, TimeDependentOperator _f)"},
+	 { "RK3SSPSolver_Step", _wrap_RK3SSPSolver_Step, METH_VARARGS, "Step(RK3SSPSolver self, Vector x, double & t, double & dt)"},
+	 { "new_RK3SSPSolver", _wrap_new_RK3SSPSolver, METH_NOARGS, "new_RK3SSPSolver() -> RK3SSPSolver"},
+	 { "delete_RK3SSPSolver", _wrap_delete_RK3SSPSolver, METH_O, "delete_RK3SSPSolver(RK3SSPSolver self)"},
+	 { "RK3SSPSolver_swigregister", RK3SSPSolver_swigregister, METH_O, NULL},
+	 { "RK3SSPSolver_swiginit", RK3SSPSolver_swiginit, METH_VARARGS, NULL},
+	 { "RK4Solver_Init", _wrap_RK4Solver_Init, METH_VARARGS, "Init(RK4Solver self, TimeDependentOperator _f)"},
+	 { "RK4Solver_Step", _wrap_RK4Solver_Step, METH_VARARGS, "Step(RK4Solver self, Vector x, double & t, double & dt)"},
+	 { "new_RK4Solver", _wrap_new_RK4Solver, METH_NOARGS, "new_RK4Solver() -> RK4Solver"},
+	 { "delete_RK4Solver", _wrap_delete_RK4Solver, METH_O, "delete_RK4Solver(RK4Solver self)"},
+	 { "RK4Solver_swigregister", RK4Solver_swigregister, METH_O, NULL},
+	 { "RK4Solver_swiginit", RK4Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_ExplicitRKSolver", _wrap_new_ExplicitRKSolver, METH_VARARGS, "new_ExplicitRKSolver(int _s, double const * _a, double const * _b, double const * _c) -> ExplicitRKSolver"},
+	 { "ExplicitRKSolver_Init", _wrap_ExplicitRKSolver_Init, METH_VARARGS, "Init(ExplicitRKSolver self, TimeDependentOperator _f)"},
+	 { "ExplicitRKSolver_Step", _wrap_ExplicitRKSolver_Step, METH_VARARGS, "Step(ExplicitRKSolver self, Vector x, double & t, double & dt)"},
+	 { "delete_ExplicitRKSolver", _wrap_delete_ExplicitRKSolver, METH_O, "delete_ExplicitRKSolver(ExplicitRKSolver self)"},
+	 { "ExplicitRKSolver_swigregister", ExplicitRKSolver_swigregister, METH_O, NULL},
+	 { "ExplicitRKSolver_swiginit", ExplicitRKSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_RK6Solver", _wrap_new_RK6Solver, METH_NOARGS, "new_RK6Solver() -> RK6Solver"},
+	 { "delete_RK6Solver", _wrap_delete_RK6Solver, METH_O, "delete_RK6Solver(RK6Solver self)"},
+	 { "RK6Solver_swigregister", RK6Solver_swigregister, METH_O, NULL},
+	 { "RK6Solver_swiginit", RK6Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_RK8Solver", _wrap_new_RK8Solver, METH_NOARGS, "new_RK8Solver() -> RK8Solver"},
+	 { "delete_RK8Solver", _wrap_delete_RK8Solver, METH_O, "delete_RK8Solver(RK8Solver self)"},
+	 { "RK8Solver_swigregister", RK8Solver_swigregister, METH_O, NULL},
+	 { "RK8Solver_swiginit", RK8Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AdamsBashforthSolver", _wrap_new_AdamsBashforthSolver, METH_VARARGS, "new_AdamsBashforthSolver(int _s, double const * _a) -> AdamsBashforthSolver"},
+	 { "AdamsBashforthSolver_Init", _wrap_AdamsBashforthSolver_Init, METH_VARARGS, "Init(AdamsBashforthSolver self, TimeDependentOperator _f)"},
+	 { "AdamsBashforthSolver_Step", _wrap_AdamsBashforthSolver_Step, METH_VARARGS, "Step(AdamsBashforthSolver self, Vector x, double & t, double & dt)"},
+	 { "delete_AdamsBashforthSolver", _wrap_delete_AdamsBashforthSolver, METH_O, "delete_AdamsBashforthSolver(AdamsBashforthSolver self)"},
+	 { "AdamsBashforthSolver_swigregister", AdamsBashforthSolver_swigregister, METH_O, NULL},
+	 { "AdamsBashforthSolver_swiginit", AdamsBashforthSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB1Solver", _wrap_new_AB1Solver, METH_NOARGS, "new_AB1Solver() -> AB1Solver"},
+	 { "delete_AB1Solver", _wrap_delete_AB1Solver, METH_O, "delete_AB1Solver(AB1Solver self)"},
+	 { "AB1Solver_swigregister", AB1Solver_swigregister, METH_O, NULL},
+	 { "AB1Solver_swiginit", AB1Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB2Solver", _wrap_new_AB2Solver, METH_NOARGS, "new_AB2Solver() -> AB2Solver"},
+	 { "delete_AB2Solver", _wrap_delete_AB2Solver, METH_O, "delete_AB2Solver(AB2Solver self)"},
+	 { "AB2Solver_swigregister", AB2Solver_swigregister, METH_O, NULL},
+	 { "AB2Solver_swiginit", AB2Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB3Solver", _wrap_new_AB3Solver, METH_NOARGS, "new_AB3Solver() -> AB3Solver"},
+	 { "delete_AB3Solver", _wrap_delete_AB3Solver, METH_O, "delete_AB3Solver(AB3Solver self)"},
+	 { "AB3Solver_swigregister", AB3Solver_swigregister, METH_O, NULL},
+	 { "AB3Solver_swiginit", AB3Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB4Solver", _wrap_new_AB4Solver, METH_NOARGS, "new_AB4Solver() -> AB4Solver"},
+	 { "delete_AB4Solver", _wrap_delete_AB4Solver, METH_O, "delete_AB4Solver(AB4Solver self)"},
+	 { "AB4Solver_swigregister", AB4Solver_swigregister, METH_O, NULL},
+	 { "AB4Solver_swiginit", AB4Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AB5Solver", _wrap_new_AB5Solver, METH_NOARGS, "new_AB5Solver() -> AB5Solver"},
+	 { "delete_AB5Solver", _wrap_delete_AB5Solver, METH_O, "delete_AB5Solver(AB5Solver self)"},
+	 { "AB5Solver_swigregister", AB5Solver_swigregister, METH_O, NULL},
+	 { "AB5Solver_swiginit", AB5Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AdamsMoultonSolver", _wrap_new_AdamsMoultonSolver, METH_VARARGS, "new_AdamsMoultonSolver(int _s, double const * _a) -> AdamsMoultonSolver"},
+	 { "AdamsMoultonSolver_Init", _wrap_AdamsMoultonSolver_Init, METH_VARARGS, "Init(AdamsMoultonSolver self, TimeDependentOperator _f)"},
+	 { "AdamsMoultonSolver_Step", _wrap_AdamsMoultonSolver_Step, METH_VARARGS, "Step(AdamsMoultonSolver self, Vector x, double & t, double & dt)"},
+	 { "delete_AdamsMoultonSolver", _wrap_delete_AdamsMoultonSolver, METH_O, "delete_AdamsMoultonSolver(AdamsMoultonSolver self)"},
+	 { "AdamsMoultonSolver_swigregister", AdamsMoultonSolver_swigregister, METH_O, NULL},
+	 { "AdamsMoultonSolver_swiginit", AdamsMoultonSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM0Solver", _wrap_new_AM0Solver, METH_NOARGS, "new_AM0Solver() -> AM0Solver"},
+	 { "delete_AM0Solver", _wrap_delete_AM0Solver, METH_O, "delete_AM0Solver(AM0Solver self)"},
+	 { "AM0Solver_swigregister", AM0Solver_swigregister, METH_O, NULL},
+	 { "AM0Solver_swiginit", AM0Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM1Solver", _wrap_new_AM1Solver, METH_NOARGS, "new_AM1Solver() -> AM1Solver"},
+	 { "delete_AM1Solver", _wrap_delete_AM1Solver, METH_O, "delete_AM1Solver(AM1Solver self)"},
+	 { "AM1Solver_swigregister", AM1Solver_swigregister, METH_O, NULL},
+	 { "AM1Solver_swiginit", AM1Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM2Solver", _wrap_new_AM2Solver, METH_NOARGS, "new_AM2Solver() -> AM2Solver"},
+	 { "delete_AM2Solver", _wrap_delete_AM2Solver, METH_O, "delete_AM2Solver(AM2Solver self)"},
+	 { "AM2Solver_swigregister", AM2Solver_swigregister, METH_O, NULL},
+	 { "AM2Solver_swiginit", AM2Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM3Solver", _wrap_new_AM3Solver, METH_NOARGS, "new_AM3Solver() -> AM3Solver"},
+	 { "delete_AM3Solver", _wrap_delete_AM3Solver, METH_O, "delete_AM3Solver(AM3Solver self)"},
+	 { "AM3Solver_swigregister", AM3Solver_swigregister, METH_O, NULL},
+	 { "AM3Solver_swiginit", AM3Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AM4Solver", _wrap_new_AM4Solver, METH_NOARGS, "new_AM4Solver() -> AM4Solver"},
+	 { "delete_AM4Solver", _wrap_delete_AM4Solver, METH_O, "delete_AM4Solver(AM4Solver self)"},
+	 { "AM4Solver_swigregister", AM4Solver_swigregister, METH_O, NULL},
+	 { "AM4Solver_swiginit", AM4Solver_swiginit, METH_VARARGS, NULL},
+	 { "BackwardEulerSolver_Init", _wrap_BackwardEulerSolver_Init, METH_VARARGS, "Init(BackwardEulerSolver self, TimeDependentOperator _f)"},
+	 { "BackwardEulerSolver_Step", _wrap_BackwardEulerSolver_Step, METH_VARARGS, "Step(BackwardEulerSolver self, Vector x, double & t, double & dt)"},
+	 { "new_BackwardEulerSolver", _wrap_new_BackwardEulerSolver, METH_NOARGS, "new_BackwardEulerSolver() -> BackwardEulerSolver"},
+	 { "delete_BackwardEulerSolver", _wrap_delete_BackwardEulerSolver, METH_O, "delete_BackwardEulerSolver(BackwardEulerSolver self)"},
+	 { "BackwardEulerSolver_swigregister", BackwardEulerSolver_swigregister, METH_O, NULL},
+	 { "BackwardEulerSolver_swiginit", BackwardEulerSolver_swiginit, METH_VARARGS, NULL},
+	 { "ImplicitMidpointSolver_Init", _wrap_ImplicitMidpointSolver_Init, METH_VARARGS, "Init(ImplicitMidpointSolver self, TimeDependentOperator _f)"},
+	 { "ImplicitMidpointSolver_Step", _wrap_ImplicitMidpointSolver_Step, METH_VARARGS, "Step(ImplicitMidpointSolver self, Vector x, double & t, double & dt)"},
+	 { "new_ImplicitMidpointSolver", _wrap_new_ImplicitMidpointSolver, METH_NOARGS, "new_ImplicitMidpointSolver() -> ImplicitMidpointSolver"},
+	 { "delete_ImplicitMidpointSolver", _wrap_delete_ImplicitMidpointSolver, METH_O, "delete_ImplicitMidpointSolver(ImplicitMidpointSolver self)"},
+	 { "ImplicitMidpointSolver_swigregister", ImplicitMidpointSolver_swigregister, METH_O, NULL},
+	 { "ImplicitMidpointSolver_swiginit", ImplicitMidpointSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_SDIRK23Solver", _wrap_new_SDIRK23Solver, METH_VARARGS, "SDIRK23Solver(int gamma_opt=1)"},
+	 { "SDIRK23Solver_Init", _wrap_SDIRK23Solver_Init, METH_VARARGS, "Init(SDIRK23Solver self, TimeDependentOperator _f)"},
+	 { "SDIRK23Solver_Step", _wrap_SDIRK23Solver_Step, METH_VARARGS, "Step(SDIRK23Solver self, Vector x, double & t, double & dt)"},
+	 { "delete_SDIRK23Solver", _wrap_delete_SDIRK23Solver, METH_O, "delete_SDIRK23Solver(SDIRK23Solver self)"},
+	 { "SDIRK23Solver_swigregister", SDIRK23Solver_swigregister, METH_O, NULL},
+	 { "SDIRK23Solver_swiginit", SDIRK23Solver_swiginit, METH_VARARGS, NULL},
+	 { "SDIRK34Solver_Init", _wrap_SDIRK34Solver_Init, METH_VARARGS, "Init(SDIRK34Solver self, TimeDependentOperator _f)"},
+	 { "SDIRK34Solver_Step", _wrap_SDIRK34Solver_Step, METH_VARARGS, "Step(SDIRK34Solver self, Vector x, double & t, double & dt)"},
+	 { "new_SDIRK34Solver", _wrap_new_SDIRK34Solver, METH_NOARGS, "new_SDIRK34Solver() -> SDIRK34Solver"},
+	 { "delete_SDIRK34Solver", _wrap_delete_SDIRK34Solver, METH_O, "delete_SDIRK34Solver(SDIRK34Solver self)"},
+	 { "SDIRK34Solver_swigregister", SDIRK34Solver_swigregister, METH_O, NULL},
+	 { "SDIRK34Solver_swiginit", SDIRK34Solver_swiginit, METH_VARARGS, NULL},
+	 { "SDIRK33Solver_Init", _wrap_SDIRK33Solver_Init, METH_VARARGS, "Init(SDIRK33Solver self, TimeDependentOperator _f)"},
+	 { "SDIRK33Solver_Step", _wrap_SDIRK33Solver_Step, METH_VARARGS, "Step(SDIRK33Solver self, Vector x, double & t, double & dt)"},
+	 { "new_SDIRK33Solver", _wrap_new_SDIRK33Solver, METH_NOARGS, "new_SDIRK33Solver() -> SDIRK33Solver"},
+	 { "delete_SDIRK33Solver", _wrap_delete_SDIRK33Solver, METH_O, "delete_SDIRK33Solver(SDIRK33Solver self)"},
+	 { "SDIRK33Solver_swigregister", SDIRK33Solver_swigregister, METH_O, NULL},
+	 { "SDIRK33Solver_swiginit", SDIRK33Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_GeneralizedAlphaSolver", _wrap_new_GeneralizedAlphaSolver, METH_VARARGS, "GeneralizedAlphaSolver(double rho=1.0)"},
+	 { "GeneralizedAlphaSolver_Init", _wrap_GeneralizedAlphaSolver_Init, METH_VARARGS, "Init(GeneralizedAlphaSolver self, TimeDependentOperator _f)"},
+	 { "GeneralizedAlphaSolver_Step", _wrap_GeneralizedAlphaSolver_Step, METH_VARARGS, "Step(GeneralizedAlphaSolver self, Vector x, double & t, double & dt)"},
+	 { "delete_GeneralizedAlphaSolver", _wrap_delete_GeneralizedAlphaSolver, METH_O, "delete_GeneralizedAlphaSolver(GeneralizedAlphaSolver self)"},
+	 { "GeneralizedAlphaSolver_swigregister", GeneralizedAlphaSolver_swigregister, METH_O, NULL},
+	 { "GeneralizedAlphaSolver_swiginit", GeneralizedAlphaSolver_swiginit, METH_VARARGS, NULL},
+	 { "SIASolver_Init", _wrap_SIASolver_Init, METH_VARARGS, "Init(SIASolver self, Operator P, TimeDependentOperator F)"},
+	 { "SIASolver_Step", _wrap_SIASolver_Step, METH_VARARGS, "Step(SIASolver self, Vector q, Vector p, double & t, double & dt)"},
+	 { "SIASolver_Run", _wrap_SIASolver_Run, METH_VARARGS, "Run(SIASolver self, Vector q, Vector p, double & t, double & dt, double tf)"},
+	 { "delete_SIASolver", _wrap_delete_SIASolver, METH_O, "delete_SIASolver(SIASolver self)"},
+	 { "SIASolver_swigregister", SIASolver_swigregister, METH_O, NULL},
+	 { "new_SIA1Solver", _wrap_new_SIA1Solver, METH_NOARGS, "new_SIA1Solver() -> SIA1Solver"},
+	 { "SIA1Solver_Step", _wrap_SIA1Solver_Step, METH_VARARGS, "Step(SIA1Solver self, Vector q, Vector p, double & t, double & dt)"},
+	 { "delete_SIA1Solver", _wrap_delete_SIA1Solver, METH_O, "delete_SIA1Solver(SIA1Solver self)"},
+	 { "SIA1Solver_swigregister", SIA1Solver_swigregister, METH_O, NULL},
+	 { "SIA1Solver_swiginit", SIA1Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_SIA2Solver", _wrap_new_SIA2Solver, METH_NOARGS, "new_SIA2Solver() -> SIA2Solver"},
+	 { "SIA2Solver_Step", _wrap_SIA2Solver_Step, METH_VARARGS, "Step(SIA2Solver self, Vector q, Vector p, double & t, double & dt)"},
+	 { "delete_SIA2Solver", _wrap_delete_SIA2Solver, METH_O, "delete_SIA2Solver(SIA2Solver self)"},
+	 { "SIA2Solver_swigregister", SIA2Solver_swigregister, METH_O, NULL},
+	 { "SIA2Solver_swiginit", SIA2Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_SIAVSolver", _wrap_new_SIAVSolver, METH_O, "new_SIAVSolver(int order) -> SIAVSolver"},
+	 { "SIAVSolver_Step", _wrap_SIAVSolver_Step, METH_VARARGS, "Step(SIAVSolver self, Vector q, Vector p, double & t, double & dt)"},
+	 { "delete_SIAVSolver", _wrap_delete_SIAVSolver, METH_O, "delete_SIAVSolver(SIAVSolver self)"},
+	 { "SIAVSolver_swigregister", SIAVSolver_swigregister, METH_O, NULL},
+	 { "SIAVSolver_swiginit", SIAVSolver_swiginit, METH_VARARGS, NULL},
+	 { "SecondOrderODESolver_Init", _wrap_SecondOrderODESolver_Init, METH_VARARGS, "Init(SecondOrderODESolver self, SecondOrderTimeDependentOperator f)"},
+	 { "SecondOrderODESolver_Step", _wrap_SecondOrderODESolver_Step, METH_VARARGS, "Step(SecondOrderODESolver self, Vector x, Vector dxdt, double & t, double & dt)"},
+	 { "SecondOrderODESolver_Run", _wrap_SecondOrderODESolver_Run, METH_VARARGS, "Run(SecondOrderODESolver self, Vector x, Vector dxdt, double & t, double & dt, double tf)"},
+	 { "delete_SecondOrderODESolver", _wrap_delete_SecondOrderODESolver, METH_O, "delete_SecondOrderODESolver(SecondOrderODESolver self)"},
+	 { "SecondOrderODESolver_swigregister", SecondOrderODESolver_swigregister, METH_O, NULL},
+	 { "new_NewmarkSolver", _wrap_new_NewmarkSolver, METH_VARARGS, "NewmarkSolver(double beta_=0.25, double gamma_=0.5)"},
+	 { "NewmarkSolver_PrintProperties", _wrap_NewmarkSolver_PrintProperties, METH_VARARGS, "PrintProperties(NewmarkSolver self, std::ostream & out=mfem::out)"},
+	 { "NewmarkSolver_Init", _wrap_NewmarkSolver_Init, METH_VARARGS, "Init(NewmarkSolver self, SecondOrderTimeDependentOperator _f)"},
+	 { "NewmarkSolver_Step", _wrap_NewmarkSolver_Step, METH_VARARGS, "Step(NewmarkSolver self, Vector x, Vector dxdt, double & t, double & dt)"},
+	 { "delete_NewmarkSolver", _wrap_delete_NewmarkSolver, METH_O, "delete_NewmarkSolver(NewmarkSolver self)"},
+	 { "NewmarkSolver_swigregister", NewmarkSolver_swigregister, METH_O, NULL},
+	 { "NewmarkSolver_swiginit", NewmarkSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_LinearAccelerationSolver", _wrap_new_LinearAccelerationSolver, METH_NOARGS, "new_LinearAccelerationSolver() -> LinearAccelerationSolver"},
+	 { "delete_LinearAccelerationSolver", _wrap_delete_LinearAccelerationSolver, METH_O, "delete_LinearAccelerationSolver(LinearAccelerationSolver self)"},
+	 { "LinearAccelerationSolver_swigregister", LinearAccelerationSolver_swigregister, METH_O, NULL},
+	 { "LinearAccelerationSolver_swiginit", LinearAccelerationSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_CentralDifferenceSolver", _wrap_new_CentralDifferenceSolver, METH_NOARGS, "new_CentralDifferenceSolver() -> CentralDifferenceSolver"},
+	 { "delete_CentralDifferenceSolver", _wrap_delete_CentralDifferenceSolver, METH_O, "delete_CentralDifferenceSolver(CentralDifferenceSolver self)"},
+	 { "CentralDifferenceSolver_swigregister", CentralDifferenceSolver_swigregister, METH_O, NULL},
+	 { "CentralDifferenceSolver_swiginit", CentralDifferenceSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_FoxGoodwinSolver", _wrap_new_FoxGoodwinSolver, METH_NOARGS, "new_FoxGoodwinSolver() -> FoxGoodwinSolver"},
+	 { "delete_FoxGoodwinSolver", _wrap_delete_FoxGoodwinSolver, METH_O, "delete_FoxGoodwinSolver(FoxGoodwinSolver self)"},
+	 { "FoxGoodwinSolver_swigregister", FoxGoodwinSolver_swigregister, METH_O, NULL},
+	 { "FoxGoodwinSolver_swiginit", FoxGoodwinSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_GeneralizedAlpha2Solver", _wrap_new_GeneralizedAlpha2Solver, METH_VARARGS, "GeneralizedAlpha2Solver(double rho_inf=1.0)"},
+	 { "GeneralizedAlpha2Solver_PrintProperties", _wrap_GeneralizedAlpha2Solver_PrintProperties, METH_VARARGS, "PrintProperties(GeneralizedAlpha2Solver self, std::ostream & out=mfem::out)"},
+	 { "GeneralizedAlpha2Solver_Init", _wrap_GeneralizedAlpha2Solver_Init, METH_VARARGS, "Init(GeneralizedAlpha2Solver self, SecondOrderTimeDependentOperator _f)"},
+	 { "GeneralizedAlpha2Solver_Step", _wrap_GeneralizedAlpha2Solver_Step, METH_VARARGS, "Step(GeneralizedAlpha2Solver self, Vector x, Vector dxdt, double & t, double & dt)"},
+	 { "delete_GeneralizedAlpha2Solver", _wrap_delete_GeneralizedAlpha2Solver, METH_O, "delete_GeneralizedAlpha2Solver(GeneralizedAlpha2Solver self)"},
+	 { "GeneralizedAlpha2Solver_swigregister", GeneralizedAlpha2Solver_swigregister, METH_O, NULL},
+	 { "GeneralizedAlpha2Solver_swiginit", GeneralizedAlpha2Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_AverageAccelerationSolver", _wrap_new_AverageAccelerationSolver, METH_NOARGS, "new_AverageAccelerationSolver() -> AverageAccelerationSolver"},
+	 { "delete_AverageAccelerationSolver", _wrap_delete_AverageAccelerationSolver, METH_O, "delete_AverageAccelerationSolver(AverageAccelerationSolver self)"},
+	 { "AverageAccelerationSolver_swigregister", AverageAccelerationSolver_swigregister, METH_O, NULL},
+	 { "AverageAccelerationSolver_swiginit", AverageAccelerationSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_HHTAlphaSolver", _wrap_new_HHTAlphaSolver, METH_VARARGS, "HHTAlphaSolver(double alpha=1.0)"},
+	 { "delete_HHTAlphaSolver", _wrap_delete_HHTAlphaSolver, METH_O, "delete_HHTAlphaSolver(HHTAlphaSolver self)"},
+	 { "HHTAlphaSolver_swigregister", HHTAlphaSolver_swigregister, METH_O, NULL},
+	 { "HHTAlphaSolver_swiginit", HHTAlphaSolver_swiginit, METH_VARARGS, NULL},
+	 { "new_WBZAlphaSolver", _wrap_new_WBZAlphaSolver, METH_VARARGS, "WBZAlphaSolver(double rho_inf=1.0)"},
+	 { "delete_WBZAlphaSolver", _wrap_delete_WBZAlphaSolver, METH_O, "delete_WBZAlphaSolver(WBZAlphaSolver self)"},
+	 { "WBZAlphaSolver_swigregister", WBZAlphaSolver_swigregister, METH_O, NULL},
+	 { "WBZAlphaSolver_swiginit", WBZAlphaSolver_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static void *_p_mfem__SIA2SolverTo_p_mfem__SIASolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::SIASolver *)  ((mfem::SIA2Solver *) x));
-}
-static void *_p_mfem__SIAVSolverTo_p_mfem__SIASolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::SIASolver *)  ((mfem::SIAVSolver *) x));
-}
-static void *_p_mfem__SIA1SolverTo_p_mfem__SIASolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::SIASolver *)  ((mfem::SIA1Solver *) x));
-}
-static void *_p_mfem__RK6SolverTo_p_mfem__ExplicitRKSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ExplicitRKSolver *)  ((mfem::RK6Solver *) x));
-}
-static void *_p_mfem__RK8SolverTo_p_mfem__ExplicitRKSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ExplicitRKSolver *)  ((mfem::RK8Solver *) x));
-}
-static void *_p_mfem__ForwardEulerSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::ForwardEulerSolver *) x));
-}
-static void *_p_mfem__RK2SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::RK2Solver *) x));
-}
-static void *_p_mfem__RK3SSPSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::RK3SSPSolver *) x));
-}
-static void *_p_mfem__RK4SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::RK4Solver *) x));
-}
-static void *_p_mfem__RK6SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *) (mfem::ExplicitRKSolver *) ((mfem::RK6Solver *) x));
-}
-static void *_p_mfem__RK8SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *) (mfem::ExplicitRKSolver *) ((mfem::RK8Solver *) x));
-}
-static void *_p_mfem__BackwardEulerSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::BackwardEulerSolver *) x));
-}
-static void *_p_mfem__ImplicitMidpointSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::ImplicitMidpointSolver *) x));
-}
-static void *_p_mfem__SDIRK34SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::SDIRK34Solver *) x));
-}
-static void *_p_mfem__ExplicitRKSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::ExplicitRKSolver *) x));
-}
-static void *_p_mfem__SDIRK23SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::SDIRK23Solver *) x));
-}
-static void *_p_mfem__SDIRK33SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::SDIRK33Solver *) x));
-}
-static void *_p_mfem__GeneralizedAlphaSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::ODESolver *)  ((mfem::GeneralizedAlphaSolver *) x));
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__TimeDependentOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::TimeDependentOperator *)  ((mfem::SecondOrderTimeDependentOperator *) x));
 }
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TimeDependentOperator *)  ((mfem::PyTimeDependentOperatorBase *) x));
@@ -7054,8 +10396,14 @@ static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
 }
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
+}
 static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
 }
 static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
@@ -7072,31 +10420,217 @@ static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWI
 static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
 }
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
+}
 static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
 }
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
 }
+static void *_p_mfem__AB2SolverTo_p_mfem__AdamsBashforthSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsBashforthSolver *)  ((mfem::AB2Solver *) x));
+}
+static void *_p_mfem__AB4SolverTo_p_mfem__AdamsBashforthSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsBashforthSolver *)  ((mfem::AB4Solver *) x));
+}
+static void *_p_mfem__AB1SolverTo_p_mfem__AdamsBashforthSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsBashforthSolver *)  ((mfem::AB1Solver *) x));
+}
+static void *_p_mfem__AB3SolverTo_p_mfem__AdamsBashforthSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsBashforthSolver *)  ((mfem::AB3Solver *) x));
+}
+static void *_p_mfem__AB5SolverTo_p_mfem__AdamsBashforthSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsBashforthSolver *)  ((mfem::AB5Solver *) x));
+}
+static void *_p_mfem__AM0SolverTo_p_mfem__AdamsMoultonSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsMoultonSolver *)  ((mfem::AM0Solver *) x));
+}
+static void *_p_mfem__AM2SolverTo_p_mfem__AdamsMoultonSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsMoultonSolver *)  ((mfem::AM2Solver *) x));
+}
+static void *_p_mfem__AM4SolverTo_p_mfem__AdamsMoultonSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsMoultonSolver *)  ((mfem::AM4Solver *) x));
+}
+static void *_p_mfem__AM1SolverTo_p_mfem__AdamsMoultonSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsMoultonSolver *)  ((mfem::AM1Solver *) x));
+}
+static void *_p_mfem__AM3SolverTo_p_mfem__AdamsMoultonSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::AdamsMoultonSolver *)  ((mfem::AM3Solver *) x));
+}
+static void *_p_mfem__AverageAccelerationSolverTo_p_mfem__GeneralizedAlpha2Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GeneralizedAlpha2Solver *)  ((mfem::AverageAccelerationSolver *) x));
+}
+static void *_p_mfem__HHTAlphaSolverTo_p_mfem__GeneralizedAlpha2Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GeneralizedAlpha2Solver *)  ((mfem::HHTAlphaSolver *) x));
+}
+static void *_p_mfem__WBZAlphaSolverTo_p_mfem__GeneralizedAlpha2Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::GeneralizedAlpha2Solver *)  ((mfem::WBZAlphaSolver *) x));
+}
+static void *_p_mfem__AB5SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsBashforthSolver *) ((mfem::AB5Solver *) x));
+}
+static void *_p_mfem__AB3SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsBashforthSolver *) ((mfem::AB3Solver *) x));
+}
+static void *_p_mfem__AB1SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsBashforthSolver *) ((mfem::AB1Solver *) x));
+}
+static void *_p_mfem__ExplicitRKSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::ExplicitRKSolver *) x));
+}
+static void *_p_mfem__AM1SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsMoultonSolver *) ((mfem::AM1Solver *) x));
+}
+static void *_p_mfem__AM3SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsMoultonSolver *) ((mfem::AM3Solver *) x));
+}
+static void *_p_mfem__SDIRK23SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::SDIRK23Solver *) x));
+}
+static void *_p_mfem__SDIRK33SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::SDIRK33Solver *) x));
+}
+static void *_p_mfem__GeneralizedAlphaSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::GeneralizedAlphaSolver *) x));
+}
+static void *_p_mfem__AdamsMoultonSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::AdamsMoultonSolver *) x));
+}
+static void *_p_mfem__AB4SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsBashforthSolver *) ((mfem::AB4Solver *) x));
+}
+static void *_p_mfem__AB2SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsBashforthSolver *) ((mfem::AB2Solver *) x));
+}
+static void *_p_mfem__AdamsBashforthSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::AdamsBashforthSolver *) x));
+}
+static void *_p_mfem__RK8SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::ExplicitRKSolver *) ((mfem::RK8Solver *) x));
+}
+static void *_p_mfem__RK6SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::ExplicitRKSolver *) ((mfem::RK6Solver *) x));
+}
+static void *_p_mfem__RK4SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::RK4Solver *) x));
+}
+static void *_p_mfem__RK3SSPSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::RK3SSPSolver *) x));
+}
+static void *_p_mfem__RK2SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::RK2Solver *) x));
+}
+static void *_p_mfem__ForwardEulerSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::ForwardEulerSolver *) x));
+}
+static void *_p_mfem__AM0SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsMoultonSolver *) ((mfem::AM0Solver *) x));
+}
+static void *_p_mfem__AM2SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsMoultonSolver *) ((mfem::AM2Solver *) x));
+}
+static void *_p_mfem__AM4SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *) (mfem::AdamsMoultonSolver *) ((mfem::AM4Solver *) x));
+}
+static void *_p_mfem__BackwardEulerSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::BackwardEulerSolver *) x));
+}
+static void *_p_mfem__ImplicitMidpointSolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::ImplicitMidpointSolver *) x));
+}
+static void *_p_mfem__SDIRK34SolverTo_p_mfem__ODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ODESolver *)  ((mfem::SDIRK34Solver *) x));
+}
+static void *_p_mfem__RK6SolverTo_p_mfem__ExplicitRKSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ExplicitRKSolver *)  ((mfem::RK6Solver *) x));
+}
+static void *_p_mfem__RK8SolverTo_p_mfem__ExplicitRKSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::ExplicitRKSolver *)  ((mfem::RK8Solver *) x));
+}
+static void *_p_mfem__SIA2SolverTo_p_mfem__SIASolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SIASolver *)  ((mfem::SIA2Solver *) x));
+}
+static void *_p_mfem__SIAVSolverTo_p_mfem__SIASolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SIASolver *)  ((mfem::SIAVSolver *) x));
+}
+static void *_p_mfem__SIA1SolverTo_p_mfem__SIASolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SIASolver *)  ((mfem::SIA1Solver *) x));
+}
+static void *_p_mfem__LinearAccelerationSolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *) (mfem::NewmarkSolver *) ((mfem::LinearAccelerationSolver *) x));
+}
+static void *_p_mfem__FoxGoodwinSolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *) (mfem::NewmarkSolver *) ((mfem::FoxGoodwinSolver *) x));
+}
+static void *_p_mfem__GeneralizedAlpha2SolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *)  ((mfem::GeneralizedAlpha2Solver *) x));
+}
+static void *_p_mfem__AverageAccelerationSolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *) (mfem::GeneralizedAlpha2Solver *) ((mfem::AverageAccelerationSolver *) x));
+}
+static void *_p_mfem__NewmarkSolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *)  ((mfem::NewmarkSolver *) x));
+}
+static void *_p_mfem__CentralDifferenceSolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *) (mfem::NewmarkSolver *) ((mfem::CentralDifferenceSolver *) x));
+}
+static void *_p_mfem__HHTAlphaSolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *) (mfem::GeneralizedAlpha2Solver *) ((mfem::HHTAlphaSolver *) x));
+}
+static void *_p_mfem__WBZAlphaSolverTo_p_mfem__SecondOrderODESolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::SecondOrderODESolver *) (mfem::GeneralizedAlpha2Solver *) ((mfem::WBZAlphaSolver *) x));
+}
+static void *_p_mfem__LinearAccelerationSolverTo_p_mfem__NewmarkSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::NewmarkSolver *)  ((mfem::LinearAccelerationSolver *) x));
+}
+static void *_p_mfem__FoxGoodwinSolverTo_p_mfem__NewmarkSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::NewmarkSolver *)  ((mfem::FoxGoodwinSolver *) x));
+}
+static void *_p_mfem__CentralDifferenceSolverTo_p_mfem__NewmarkSolver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::NewmarkSolver *)  ((mfem::CentralDifferenceSolver *) x));
+}
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AB1Solver = {"_p_mfem__AB1Solver", "mfem::AB1Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AB2Solver = {"_p_mfem__AB2Solver", "mfem::AB2Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AB3Solver = {"_p_mfem__AB3Solver", "mfem::AB3Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AB4Solver = {"_p_mfem__AB4Solver", "mfem::AB4Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AB5Solver = {"_p_mfem__AB5Solver", "mfem::AB5Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AM0Solver = {"_p_mfem__AM0Solver", "mfem::AM0Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AM1Solver = {"_p_mfem__AM1Solver", "mfem::AM1Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AM2Solver = {"_p_mfem__AM2Solver", "mfem::AM2Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AM3Solver = {"_p_mfem__AM3Solver", "mfem::AM3Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AM4Solver = {"_p_mfem__AM4Solver", "mfem::AM4Solver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AdamsBashforthSolver = {"_p_mfem__AdamsBashforthSolver", "mfem::AdamsBashforthSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AdamsMoultonSolver = {"_p_mfem__AdamsMoultonSolver", "mfem::AdamsMoultonSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__AverageAccelerationSolver = {"_p_mfem__AverageAccelerationSolver", "mfem::AverageAccelerationSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BackwardEulerSolver = {"_p_mfem__BackwardEulerSolver", "mfem::BackwardEulerSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__CentralDifferenceSolver = {"_p_mfem__CentralDifferenceSolver", "mfem::CentralDifferenceSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ExplicitRKSolver = {"_p_mfem__ExplicitRKSolver", "mfem::ExplicitRKSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ForwardEulerSolver = {"_p_mfem__ForwardEulerSolver", "mfem::ForwardEulerSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__FoxGoodwinSolver = {"_p_mfem__FoxGoodwinSolver", "mfem::FoxGoodwinSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__GeneralizedAlpha2Solver = {"_p_mfem__GeneralizedAlpha2Solver", "mfem::GeneralizedAlpha2Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GeneralizedAlphaSolver = {"_p_mfem__GeneralizedAlphaSolver", "mfem::GeneralizedAlphaSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__HHTAlphaSolver = {"_p_mfem__HHTAlphaSolver", "mfem::HHTAlphaSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ImplicitMidpointSolver = {"_p_mfem__ImplicitMidpointSolver", "mfem::ImplicitMidpointSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__LinearAccelerationSolver = {"_p_mfem__LinearAccelerationSolver", "mfem::LinearAccelerationSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__NewmarkSolver = {"_p_mfem__NewmarkSolver", "mfem::NewmarkSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ODESolver = {"_p_mfem__ODESolver", "mfem::ODESolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RK2Solver = {"_p_mfem__RK2Solver", "mfem::RK2Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__RK3SSPSolver = {"_p_mfem__RK3SSPSolver", "mfem::RK3SSPSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__RK4Solver = {"_p_mfem__RK4Solver", "mfem::RK4Solver *", 0, 0, (void*)0, 0};
@@ -7109,20 +10643,42 @@ static swig_type_info _swigt__p_mfem__SIA1Solver = {"_p_mfem__SIA1Solver", "mfem
 static swig_type_info _swigt__p_mfem__SIA2Solver = {"_p_mfem__SIA2Solver", "mfem::SIA2Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SIASolver = {"_p_mfem__SIASolver", "mfem::SIASolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SIAVSolver = {"_p_mfem__SIAVSolver", "mfem::SIAVSolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderODESolver = {"_p_mfem__SecondOrderODESolver", "mfem::SecondOrderODESolver *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", "mfem::SecondOrderTimeDependentOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", "mfem::TimeDependentOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__WBZAlphaSolver = {"_p_mfem__WBZAlphaSolver", "mfem::WBZAlphaSolver *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
+  &_swigt__p_mfem__AB1Solver,
+  &_swigt__p_mfem__AB2Solver,
+  &_swigt__p_mfem__AB3Solver,
+  &_swigt__p_mfem__AB4Solver,
+  &_swigt__p_mfem__AB5Solver,
+  &_swigt__p_mfem__AM0Solver,
+  &_swigt__p_mfem__AM1Solver,
+  &_swigt__p_mfem__AM2Solver,
+  &_swigt__p_mfem__AM3Solver,
+  &_swigt__p_mfem__AM4Solver,
+  &_swigt__p_mfem__AdamsBashforthSolver,
+  &_swigt__p_mfem__AdamsMoultonSolver,
+  &_swigt__p_mfem__AverageAccelerationSolver,
   &_swigt__p_mfem__BackwardEulerSolver,
+  &_swigt__p_mfem__CentralDifferenceSolver,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__ExplicitRKSolver,
   &_swigt__p_mfem__ForwardEulerSolver,
+  &_swigt__p_mfem__FoxGoodwinSolver,
+  &_swigt__p_mfem__GeneralizedAlpha2Solver,
   &_swigt__p_mfem__GeneralizedAlphaSolver,
+  &_swigt__p_mfem__HHTAlphaSolver,
   &_swigt__p_mfem__IdentityOperator,
   &_swigt__p_mfem__ImplicitMidpointSolver,
+  &_swigt__p_mfem__LinearAccelerationSolver,
+  &_swigt__p_mfem__NewmarkSolver,
   &_swigt__p_mfem__ODESolver,
   &_swigt__p_mfem__Operator,
   &_swigt__p_mfem__ProductOperator,
@@ -7134,6 +10690,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__RK4Solver,
   &_swigt__p_mfem__RK6Solver,
   &_swigt__p_mfem__RK8Solver,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
   &_swigt__p_mfem__SDIRK23Solver,
   &_swigt__p_mfem__SDIRK33Solver,
   &_swigt__p_mfem__SDIRK34Solver,
@@ -7141,32 +10698,57 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__SIA2Solver,
   &_swigt__p_mfem__SIASolver,
   &_swigt__p_mfem__SIAVSolver,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderODESolver,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_mfem__Solver,
   &_swigt__p_mfem__TimeDependentOperator,
   &_swigt__p_mfem__TransposeOperator,
   &_swigt__p_mfem__TripleProductOperator,
   &_swigt__p_mfem__Vector,
+  &_swigt__p_mfem__WBZAlphaSolver,
 };
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AB1Solver[] = {  {&_swigt__p_mfem__AB1Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AB2Solver[] = {  {&_swigt__p_mfem__AB2Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AB3Solver[] = {  {&_swigt__p_mfem__AB3Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AB4Solver[] = {  {&_swigt__p_mfem__AB4Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AB5Solver[] = {  {&_swigt__p_mfem__AB5Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AM0Solver[] = {  {&_swigt__p_mfem__AM0Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AM1Solver[] = {  {&_swigt__p_mfem__AM1Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AM2Solver[] = {  {&_swigt__p_mfem__AM2Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AM3Solver[] = {  {&_swigt__p_mfem__AM3Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AM4Solver[] = {  {&_swigt__p_mfem__AM4Solver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AdamsBashforthSolver[] = {  {&_swigt__p_mfem__AdamsBashforthSolver, 0, 0, 0},  {&_swigt__p_mfem__AB2Solver, _p_mfem__AB2SolverTo_p_mfem__AdamsBashforthSolver, 0, 0},  {&_swigt__p_mfem__AB4Solver, _p_mfem__AB4SolverTo_p_mfem__AdamsBashforthSolver, 0, 0},  {&_swigt__p_mfem__AB1Solver, _p_mfem__AB1SolverTo_p_mfem__AdamsBashforthSolver, 0, 0},  {&_swigt__p_mfem__AB3Solver, _p_mfem__AB3SolverTo_p_mfem__AdamsBashforthSolver, 0, 0},  {&_swigt__p_mfem__AB5Solver, _p_mfem__AB5SolverTo_p_mfem__AdamsBashforthSolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AdamsMoultonSolver[] = {  {&_swigt__p_mfem__AdamsMoultonSolver, 0, 0, 0},  {&_swigt__p_mfem__AM0Solver, _p_mfem__AM0SolverTo_p_mfem__AdamsMoultonSolver, 0, 0},  {&_swigt__p_mfem__AM2Solver, _p_mfem__AM2SolverTo_p_mfem__AdamsMoultonSolver, 0, 0},  {&_swigt__p_mfem__AM4Solver, _p_mfem__AM4SolverTo_p_mfem__AdamsMoultonSolver, 0, 0},  {&_swigt__p_mfem__AM1Solver, _p_mfem__AM1SolverTo_p_mfem__AdamsMoultonSolver, 0, 0},  {&_swigt__p_mfem__AM3Solver, _p_mfem__AM3SolverTo_p_mfem__AdamsMoultonSolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__AverageAccelerationSolver[] = {  {&_swigt__p_mfem__AverageAccelerationSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BackwardEulerSolver[] = {  {&_swigt__p_mfem__BackwardEulerSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CentralDifferenceSolver[] = {  {&_swigt__p_mfem__CentralDifferenceSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ExplicitRKSolver[] = {  {&_swigt__p_mfem__RK6Solver, _p_mfem__RK6SolverTo_p_mfem__ExplicitRKSolver, 0, 0},  {&_swigt__p_mfem__RK8Solver, _p_mfem__RK8SolverTo_p_mfem__ExplicitRKSolver, 0, 0},  {&_swigt__p_mfem__ExplicitRKSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ForwardEulerSolver[] = {  {&_swigt__p_mfem__ForwardEulerSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FoxGoodwinSolver[] = {  {&_swigt__p_mfem__FoxGoodwinSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GeneralizedAlpha2Solver[] = {  {&_swigt__p_mfem__GeneralizedAlpha2Solver, 0, 0, 0},  {&_swigt__p_mfem__AverageAccelerationSolver, _p_mfem__AverageAccelerationSolverTo_p_mfem__GeneralizedAlpha2Solver, 0, 0},  {&_swigt__p_mfem__HHTAlphaSolver, _p_mfem__HHTAlphaSolverTo_p_mfem__GeneralizedAlpha2Solver, 0, 0},  {&_swigt__p_mfem__WBZAlphaSolver, _p_mfem__WBZAlphaSolverTo_p_mfem__GeneralizedAlpha2Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GeneralizedAlphaSolver[] = {  {&_swigt__p_mfem__GeneralizedAlphaSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__HHTAlphaSolver[] = {  {&_swigt__p_mfem__HHTAlphaSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ImplicitMidpointSolver[] = {  {&_swigt__p_mfem__ImplicitMidpointSolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ODESolver[] = {  {&_swigt__p_mfem__ExplicitRKSolver, _p_mfem__ExplicitRKSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK23Solver, _p_mfem__SDIRK23SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK33Solver, _p_mfem__SDIRK33SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__GeneralizedAlphaSolver, _p_mfem__GeneralizedAlphaSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ODESolver, 0, 0, 0},  {&_swigt__p_mfem__ForwardEulerSolver, _p_mfem__ForwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK2Solver, _p_mfem__RK2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK3SSPSolver, _p_mfem__RK3SSPSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK4Solver, _p_mfem__RK4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__BackwardEulerSolver, _p_mfem__BackwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ImplicitMidpointSolver, _p_mfem__ImplicitMidpointSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK34Solver, _p_mfem__SDIRK34SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK8Solver, _p_mfem__RK8SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK6Solver, _p_mfem__RK6SolverTo_p_mfem__ODESolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearAccelerationSolver[] = {  {&_swigt__p_mfem__LinearAccelerationSolver, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__NewmarkSolver[] = {  {&_swigt__p_mfem__LinearAccelerationSolver, _p_mfem__LinearAccelerationSolverTo_p_mfem__NewmarkSolver, 0, 0},  {&_swigt__p_mfem__FoxGoodwinSolver, _p_mfem__FoxGoodwinSolverTo_p_mfem__NewmarkSolver, 0, 0},  {&_swigt__p_mfem__NewmarkSolver, 0, 0, 0},  {&_swigt__p_mfem__CentralDifferenceSolver, _p_mfem__CentralDifferenceSolverTo_p_mfem__NewmarkSolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ODESolver[] = {  {&_swigt__p_mfem__AB5Solver, _p_mfem__AB5SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AB3Solver, _p_mfem__AB3SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AB1Solver, _p_mfem__AB1SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ExplicitRKSolver, _p_mfem__ExplicitRKSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM1Solver, _p_mfem__AM1SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM3Solver, _p_mfem__AM3SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK23Solver, _p_mfem__SDIRK23SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK33Solver, _p_mfem__SDIRK33SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__GeneralizedAlphaSolver, _p_mfem__GeneralizedAlphaSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ODESolver, 0, 0, 0},  {&_swigt__p_mfem__AB2Solver, _p_mfem__AB2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AdamsBashforthSolver, _p_mfem__AdamsBashforthSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK8Solver, _p_mfem__RK8SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK6Solver, _p_mfem__RK6SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AB4Solver, _p_mfem__AB4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AdamsMoultonSolver, _p_mfem__AdamsMoultonSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM0Solver, _p_mfem__AM0SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM2Solver, _p_mfem__AM2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__AM4Solver, _p_mfem__AM4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK4Solver, _p_mfem__RK4SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK3SSPSolver, _p_mfem__RK3SSPSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__RK2Solver, _p_mfem__RK2SolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ForwardEulerSolver, _p_mfem__ForwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__BackwardEulerSolver, _p_mfem__BackwardEulerSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__ImplicitMidpointSolver, _p_mfem__ImplicitMidpointSolverTo_p_mfem__ODESolver, 0, 0},  {&_swigt__p_mfem__SDIRK34Solver, _p_mfem__SDIRK34SolverTo_p_mfem__ODESolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {{&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RK2Solver[] = {  {&_swigt__p_mfem__RK2Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RK3SSPSolver[] = {  {&_swigt__p_mfem__RK3SSPSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RK4Solver[] = {  {&_swigt__p_mfem__RK4Solver, 0, 0, 0},{0, 0, 0, 0}};
@@ -7179,20 +10761,42 @@ static swig_cast_info _swigc__p_mfem__SIA1Solver[] = {  {&_swigt__p_mfem__SIA1So
 static swig_cast_info _swigc__p_mfem__SIA2Solver[] = {  {&_swigt__p_mfem__SIA2Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SIASolver[] = {  {&_swigt__p_mfem__SIA2Solver, _p_mfem__SIA2SolverTo_p_mfem__SIASolver, 0, 0},  {&_swigt__p_mfem__SIAVSolver, _p_mfem__SIAVSolverTo_p_mfem__SIASolver, 0, 0},  {&_swigt__p_mfem__SIASolver, 0, 0, 0},  {&_swigt__p_mfem__SIA1Solver, _p_mfem__SIA1SolverTo_p_mfem__SIASolver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SIAVSolver[] = {  {&_swigt__p_mfem__SIAVSolver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {  {&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderODESolver[] = {  {&_swigt__p_mfem__LinearAccelerationSolver, _p_mfem__LinearAccelerationSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__FoxGoodwinSolver, _p_mfem__FoxGoodwinSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__GeneralizedAlpha2Solver, _p_mfem__GeneralizedAlpha2SolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__AverageAccelerationSolver, _p_mfem__AverageAccelerationSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__SecondOrderODESolver, 0, 0, 0},  {&_swigt__p_mfem__HHTAlphaSolver, _p_mfem__HHTAlphaSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__WBZAlphaSolver, _p_mfem__WBZAlphaSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__NewmarkSolver, _p_mfem__NewmarkSolverTo_p_mfem__SecondOrderODESolver, 0, 0},  {&_swigt__p_mfem__CentralDifferenceSolver, _p_mfem__CentralDifferenceSolverTo_p_mfem__SecondOrderODESolver, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {  {&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__TimeDependentOperator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__WBZAlphaSolver[] = {  {&_swigt__p_mfem__WBZAlphaSolver, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
+  _swigc__p_mfem__AB1Solver,
+  _swigc__p_mfem__AB2Solver,
+  _swigc__p_mfem__AB3Solver,
+  _swigc__p_mfem__AB4Solver,
+  _swigc__p_mfem__AB5Solver,
+  _swigc__p_mfem__AM0Solver,
+  _swigc__p_mfem__AM1Solver,
+  _swigc__p_mfem__AM2Solver,
+  _swigc__p_mfem__AM3Solver,
+  _swigc__p_mfem__AM4Solver,
+  _swigc__p_mfem__AdamsBashforthSolver,
+  _swigc__p_mfem__AdamsMoultonSolver,
+  _swigc__p_mfem__AverageAccelerationSolver,
   _swigc__p_mfem__BackwardEulerSolver,
+  _swigc__p_mfem__CentralDifferenceSolver,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__ExplicitRKSolver,
   _swigc__p_mfem__ForwardEulerSolver,
+  _swigc__p_mfem__FoxGoodwinSolver,
+  _swigc__p_mfem__GeneralizedAlpha2Solver,
   _swigc__p_mfem__GeneralizedAlphaSolver,
+  _swigc__p_mfem__HHTAlphaSolver,
   _swigc__p_mfem__IdentityOperator,
   _swigc__p_mfem__ImplicitMidpointSolver,
+  _swigc__p_mfem__LinearAccelerationSolver,
+  _swigc__p_mfem__NewmarkSolver,
   _swigc__p_mfem__ODESolver,
   _swigc__p_mfem__Operator,
   _swigc__p_mfem__ProductOperator,
@@ -7204,6 +10808,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__RK4Solver,
   _swigc__p_mfem__RK6Solver,
   _swigc__p_mfem__RK8Solver,
+  _swigc__p_mfem__RectangularConstrainedOperator,
   _swigc__p_mfem__SDIRK23Solver,
   _swigc__p_mfem__SDIRK33Solver,
   _swigc__p_mfem__SDIRK34Solver,
@@ -7211,11 +10816,15 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__SIA2Solver,
   _swigc__p_mfem__SIASolver,
   _swigc__p_mfem__SIAVSolver,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderODESolver,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_mfem__Solver,
   _swigc__p_mfem__TimeDependentOperator,
   _swigc__p_mfem__TransposeOperator,
   _swigc__p_mfem__TripleProductOperator,
   _swigc__p_mfem__Vector,
+  _swigc__p_mfem__WBZAlphaSolver,
 };
 
 

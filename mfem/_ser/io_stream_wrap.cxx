@@ -3331,6 +3331,7 @@ SWIGINTERN PyObject *wFILE_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_wFILE", _wrap_new_wFILE, METH_VARARGS, "\n"
 		"wFILE()\n"
 		"wFILE(char const * filename, int precision=8)\n"
@@ -3346,6 +3347,19 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_wFILE", _wrap_new_wFILE, METH_VARARGS, "\n"
+		"wFILE()\n"
+		"wFILE(char const * filename, int precision=8)\n"
+		""},
+	 { "wFILE_isSTDOUT", _wrap_wFILE_isSTDOUT, METH_O, "isSTDOUT(wFILE self) -> int"},
+	 { "wFILE_getFilename", _wrap_wFILE_getFilename, METH_O, "getFilename(wFILE self) -> char *"},
+	 { "wFILE_getPrecision", _wrap_wFILE_getPrecision, METH_O, "getPrecision(wFILE self) -> int"},
+	 { "wFILE_setPrecision", _wrap_wFILE_setPrecision, METH_VARARGS, "setPrecision(wFILE self, int precision)"},
+	 { "delete_wFILE", _wrap_delete_wFILE, METH_O, "delete_wFILE(wFILE self)"},
+	 { "wFILE_swigregister", wFILE_swigregister, METH_O, NULL},
+	 { "wFILE_swiginit", wFILE_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

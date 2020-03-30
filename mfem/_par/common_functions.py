@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _common_functions.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _common_functions.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -86,6 +89,7 @@ def Transpose(*args):
     Transpose(mfem::SparseMatrix const & A) -> mfem::SparseMatrix *
     """
     return _common_functions.Transpose(*args)
+Transpose = _common_functions.Transpose
 
 def Mult(*args):
     r"""
@@ -97,6 +101,7 @@ def Mult(*args):
     Mult(mfem::SparseMatrix const & A, mfem::DenseMatrix & B) -> mfem::DenseMatrix *
     """
     return _common_functions.Mult(*args)
+Mult = _common_functions.Mult
 
 def InnerProduct(*args):
     r"""
@@ -106,6 +111,7 @@ def InnerProduct(*args):
     InnerProduct(mfem::HypreParVector * x, mfem::HypreParVector * y) -> double
     """
     return _common_functions.InnerProduct(*args)
+InnerProduct = _common_functions.InnerProduct
 
 def Add(*args):
     r"""
@@ -119,6 +125,7 @@ def Add(*args):
     Add(double alpha, mfem::HypreParMatrix const & A, double beta, mfem::HypreParMatrix const & B) -> mfem::HypreParMatrix *
     """
     return _common_functions.Add(*args)
+Add = _common_functions.Add
 
 def RAP(*args):
     r"""
@@ -130,5 +137,6 @@ def RAP(*args):
     RAP(mfem::HypreParMatrix const * Rt, mfem::HypreParMatrix const * A, mfem::HypreParMatrix const * P) -> mfem::HypreParMatrix *
     """
     return _common_functions.RAP(*args)
+RAP = _common_functions.RAP
 
 

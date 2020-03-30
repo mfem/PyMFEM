@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _mesh_operators.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _mesh_operators.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -70,6 +73,7 @@ import mfem._par.mesh
 import mfem._par.matrix
 import mfem._par.operators
 import mfem._par.ncmesh
+import mfem._par.vtk
 import mfem._par.element
 import mfem._par.densemat
 import mfem._par.geom
@@ -87,6 +91,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.handle
 import mfem._par.hypre
+import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.estimators
@@ -123,38 +128,47 @@ class MeshOperator(object):
     def Apply(self, mesh):
         r"""Apply(MeshOperator self, Mesh mesh) -> bool"""
         return _mesh_operators.MeshOperator_Apply(self, mesh)
+    Apply = _swig_new_instance_method(_mesh_operators.MeshOperator_Apply)
 
     def Stop(self):
         r"""Stop(MeshOperator self) -> bool"""
         return _mesh_operators.MeshOperator_Stop(self)
+    Stop = _swig_new_instance_method(_mesh_operators.MeshOperator_Stop)
 
     def Repeat(self):
         r"""Repeat(MeshOperator self) -> bool"""
         return _mesh_operators.MeshOperator_Repeat(self)
+    Repeat = _swig_new_instance_method(_mesh_operators.MeshOperator_Repeat)
 
     def Continue(self):
         r"""Continue(MeshOperator self) -> bool"""
         return _mesh_operators.MeshOperator_Continue(self)
+    Continue = _swig_new_instance_method(_mesh_operators.MeshOperator_Continue)
 
     def Refined(self):
         r"""Refined(MeshOperator self) -> bool"""
         return _mesh_operators.MeshOperator_Refined(self)
+    Refined = _swig_new_instance_method(_mesh_operators.MeshOperator_Refined)
 
     def Derefined(self):
         r"""Derefined(MeshOperator self) -> bool"""
         return _mesh_operators.MeshOperator_Derefined(self)
+    Derefined = _swig_new_instance_method(_mesh_operators.MeshOperator_Derefined)
 
     def Rebalanced(self):
         r"""Rebalanced(MeshOperator self) -> bool"""
         return _mesh_operators.MeshOperator_Rebalanced(self)
+    Rebalanced = _swig_new_instance_method(_mesh_operators.MeshOperator_Rebalanced)
 
     def GetActionInfo(self):
         r"""GetActionInfo(MeshOperator self) -> int"""
         return _mesh_operators.MeshOperator_GetActionInfo(self)
+    GetActionInfo = _swig_new_instance_method(_mesh_operators.MeshOperator_GetActionInfo)
 
     def Reset(self):
         r"""Reset(MeshOperator self)"""
         return _mesh_operators.MeshOperator_Reset(self)
+    Reset = _swig_new_instance_method(_mesh_operators.MeshOperator_Reset)
     __swig_destroy__ = _mesh_operators.delete_MeshOperator
 
 # Register MeshOperator in _mesh_operators:
@@ -174,14 +188,17 @@ class MeshOperatorSequence(MeshOperator):
     def Append(self, mc):
         r"""Append(MeshOperatorSequence self, MeshOperator mc)"""
         return _mesh_operators.MeshOperatorSequence_Append(self, mc)
+    Append = _swig_new_instance_method(_mesh_operators.MeshOperatorSequence_Append)
 
     def GetSequence(self):
         r"""GetSequence(MeshOperatorSequence self) -> mfem::Array< mfem::MeshOperator * > &"""
         return _mesh_operators.MeshOperatorSequence_GetSequence(self)
+    GetSequence = _swig_new_instance_method(_mesh_operators.MeshOperatorSequence_GetSequence)
 
     def Reset(self):
         r"""Reset(MeshOperatorSequence self)"""
         return _mesh_operators.MeshOperatorSequence_Reset(self)
+    Reset = _swig_new_instance_method(_mesh_operators.MeshOperatorSequence_Reset)
 
 # Register MeshOperatorSequence in _mesh_operators:
 _mesh_operators.MeshOperatorSequence_swigregister(MeshOperatorSequence)
@@ -199,46 +216,57 @@ class ThresholdRefiner(MeshOperator):
     def SetTotalErrorNormP(self, *args):
         r"""SetTotalErrorNormP(ThresholdRefiner self, double norm_p=mfem::infinity())"""
         return _mesh_operators.ThresholdRefiner_SetTotalErrorNormP(self, *args)
+    SetTotalErrorNormP = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetTotalErrorNormP)
 
     def SetTotalErrorGoal(self, err_goal):
         r"""SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"""
         return _mesh_operators.ThresholdRefiner_SetTotalErrorGoal(self, err_goal)
+    SetTotalErrorGoal = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetTotalErrorGoal)
 
     def SetTotalErrorFraction(self, fraction):
         r"""SetTotalErrorFraction(ThresholdRefiner self, double fraction)"""
         return _mesh_operators.ThresholdRefiner_SetTotalErrorFraction(self, fraction)
+    SetTotalErrorFraction = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetTotalErrorFraction)
 
     def SetLocalErrorGoal(self, err_goal):
         r"""SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"""
         return _mesh_operators.ThresholdRefiner_SetLocalErrorGoal(self, err_goal)
+    SetLocalErrorGoal = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetLocalErrorGoal)
 
     def SetMaxElements(self, max_elem):
         r"""SetMaxElements(ThresholdRefiner self, long max_elem)"""
         return _mesh_operators.ThresholdRefiner_SetMaxElements(self, max_elem)
+    SetMaxElements = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetMaxElements)
 
     def PreferNonconformingRefinement(self):
         r"""PreferNonconformingRefinement(ThresholdRefiner self)"""
         return _mesh_operators.ThresholdRefiner_PreferNonconformingRefinement(self)
+    PreferNonconformingRefinement = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_PreferNonconformingRefinement)
 
     def PreferConformingRefinement(self):
         r"""PreferConformingRefinement(ThresholdRefiner self)"""
         return _mesh_operators.ThresholdRefiner_PreferConformingRefinement(self)
+    PreferConformingRefinement = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_PreferConformingRefinement)
 
     def SetNCLimit(self, nc_limit):
         r"""SetNCLimit(ThresholdRefiner self, int nc_limit)"""
         return _mesh_operators.ThresholdRefiner_SetNCLimit(self, nc_limit)
+    SetNCLimit = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetNCLimit)
 
     def GetNumMarkedElements(self):
         r"""GetNumMarkedElements(ThresholdRefiner self) -> long"""
         return _mesh_operators.ThresholdRefiner_GetNumMarkedElements(self)
+    GetNumMarkedElements = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_GetNumMarkedElements)
 
     def GetThreshold(self):
         r"""GetThreshold(ThresholdRefiner self) -> double"""
         return _mesh_operators.ThresholdRefiner_GetThreshold(self)
+    GetThreshold = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_GetThreshold)
 
     def Reset(self):
         r"""Reset(ThresholdRefiner self)"""
         return _mesh_operators.ThresholdRefiner_Reset(self)
+    Reset = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_Reset)
     __swig_destroy__ = _mesh_operators.delete_ThresholdRefiner
 
 # Register ThresholdRefiner in _mesh_operators:
@@ -257,18 +285,22 @@ class ThresholdDerefiner(MeshOperator):
     def SetThreshold(self, thresh):
         r"""SetThreshold(ThresholdDerefiner self, double thresh)"""
         return _mesh_operators.ThresholdDerefiner_SetThreshold(self, thresh)
+    SetThreshold = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetThreshold)
 
     def SetOp(self, op):
         r"""SetOp(ThresholdDerefiner self, int op)"""
         return _mesh_operators.ThresholdDerefiner_SetOp(self, op)
+    SetOp = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetOp)
 
     def SetNCLimit(self, nc_limit):
         r"""SetNCLimit(ThresholdDerefiner self, int nc_limit)"""
         return _mesh_operators.ThresholdDerefiner_SetNCLimit(self, nc_limit)
+    SetNCLimit = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_SetNCLimit)
 
     def Reset(self):
         r"""Reset(ThresholdDerefiner self)"""
         return _mesh_operators.ThresholdDerefiner_Reset(self)
+    Reset = _swig_new_instance_method(_mesh_operators.ThresholdDerefiner_Reset)
     __swig_destroy__ = _mesh_operators.delete_ThresholdDerefiner
 
 # Register ThresholdDerefiner in _mesh_operators:
@@ -283,6 +315,7 @@ class Rebalancer(MeshOperator):
     def Reset(self):
         r"""Reset(Rebalancer self)"""
         return _mesh_operators.Rebalancer_Reset(self)
+    Reset = _swig_new_instance_method(_mesh_operators.Rebalancer_Reset)
 
     def __init__(self):
         r"""__init__(Rebalancer self) -> Rebalancer"""

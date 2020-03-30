@@ -31,6 +31,7 @@ import_array();
 %import "array.i"
 %import "ncmesh.i"
 %import "vector.i"
+%import "vtk.i"
 %import "element.i"
 %import "vertex.i"
 %import "gridfunc.i"

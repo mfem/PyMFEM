@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _bilininteg.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _bilininteg.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -82,10 +85,12 @@ import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.vertex
+import mfem._ser.vtk
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.handle
+import mfem._ser.restriction
 import mfem._ser.linearform
 class BilinearFormIntegrator(object):
     r"""Proxy of C++ mfem::BilinearFormIntegrator class."""
@@ -101,25 +106,49 @@ class BilinearFormIntegrator(object):
             _self = self
         _bilininteg.BilinearFormIntegrator_swiginit(self, _bilininteg.new_BilinearFormIntegrator(_self, ir))
 
-    def AssemblePA(self, fes):
-        r"""AssemblePA(BilinearFormIntegrator self, FiniteElementSpace fes)"""
-        return _bilininteg.BilinearFormIntegrator_AssemblePA(self, fes)
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(BilinearFormIntegrator self)
+        AssemblePA(BilinearFormIntegrator self, FiniteElementSpace fes)
+        AssemblePA(BilinearFormIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
+        """
+        return _bilininteg.BilinearFormIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssemblePA)
+
+    def AssemblePAInteriorFaces(self, fes):
+        r"""AssemblePAInteriorFaces(BilinearFormIntegrator self, FiniteElementSpace fes)"""
+        return _bilininteg.BilinearFormIntegrator_AssemblePAInteriorFaces(self, fes)
+    AssemblePAInteriorFaces = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssemblePAInteriorFaces)
+
+    def AssemblePABoundaryFaces(self, fes):
+        r"""AssemblePABoundaryFaces(BilinearFormIntegrator self, FiniteElementSpace fes)"""
+        return _bilininteg.BilinearFormIntegrator_AssemblePABoundaryFaces(self, fes)
+    AssemblePABoundaryFaces = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssemblePABoundaryFaces)
+
+    def AssembleDiagonalPA(self, diag):
+        r"""AssembleDiagonalPA(BilinearFormIntegrator self, Vector diag)"""
+        return _bilininteg.BilinearFormIntegrator_AssembleDiagonalPA(self, diag)
+    AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleDiagonalPA)
 
     def AddMultPA(self, x, y):
         r"""AddMultPA(BilinearFormIntegrator self, Vector x, Vector y)"""
         return _bilininteg.BilinearFormIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AddMultPA)
 
     def AddMultTransposePA(self, x, y):
         r"""AddMultTransposePA(BilinearFormIntegrator self, Vector x, Vector y)"""
         return _bilininteg.BilinearFormIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AddMultTransposePA)
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.BilinearFormIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(BilinearFormIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.BilinearFormIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleElementMatrix2)
 
     def AssembleFaceMatrix(self, *args):
         r"""
@@ -127,26 +156,32 @@ class BilinearFormIntegrator(object):
         AssembleFaceMatrix(BilinearFormIntegrator self, FiniteElement trial_face_fe, FiniteElement test_fe1, FiniteElement test_fe2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.BilinearFormIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleFaceMatrix)
 
     def AssembleElementVector(self, el, Tr, elfun, elvect):
         r"""AssembleElementVector(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"""
         return _bilininteg.BilinearFormIntegrator_AssembleElementVector(self, el, Tr, elfun, elvect)
+    AssembleElementVector = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleElementVector)
 
     def AssembleElementGrad(self, el, Tr, elfun, elmat):
         r"""AssembleElementGrad(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, DenseMatrix elmat)"""
         return _bilininteg.BilinearFormIntegrator_AssembleElementGrad(self, el, Tr, elfun, elmat)
+    AssembleElementGrad = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleElementGrad)
 
     def AssembleFaceGrad(self, el1, el2, Tr, elfun, elmat):
         r"""AssembleFaceGrad(BilinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, DenseMatrix elmat)"""
         return _bilininteg.BilinearFormIntegrator_AssembleFaceGrad(self, el1, el2, Tr, elfun, elmat)
+    AssembleFaceGrad = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_AssembleFaceGrad)
 
-    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=1):
-        r"""ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, int with_coef=1)"""
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True):
+        r"""ComputeElementFlux(BilinearFormIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"""
         return _bilininteg.BilinearFormIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    ComputeElementFlux = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
         r"""ComputeFluxEnergy(BilinearFormIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"""
         return _bilininteg.BilinearFormIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
+    ComputeFluxEnergy = _swig_new_instance_method(_bilininteg.BilinearFormIntegrator_ComputeFluxEnergy)
     __swig_destroy__ = _bilininteg.delete_BilinearFormIntegrator
     def __disown__(self):
         self.this.disown()
@@ -173,10 +208,12 @@ class TransposeIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(TransposeIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.TransposeIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(TransposeIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.TransposeIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AssembleElementMatrix2)
 
     def AssembleFaceMatrix(self, *args):
         r"""
@@ -185,6 +222,35 @@ class TransposeIntegrator(BilinearFormIntegrator):
         AssembleFaceMatrix(TransposeIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.TransposeIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AssembleFaceMatrix)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(TransposeIntegrator self)
+        AssemblePA(TransposeIntegrator self, FiniteElementSpace fes)
+        """
+        return _bilininteg.TransposeIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AssemblePA)
+
+    def AssemblePAInteriorFaces(self, fes):
+        r"""AssemblePAInteriorFaces(TransposeIntegrator self, FiniteElementSpace fes)"""
+        return _bilininteg.TransposeIntegrator_AssemblePAInteriorFaces(self, fes)
+    AssemblePAInteriorFaces = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AssemblePAInteriorFaces)
+
+    def AssemblePABoundaryFaces(self, fes):
+        r"""AssemblePABoundaryFaces(TransposeIntegrator self, FiniteElementSpace fes)"""
+        return _bilininteg.TransposeIntegrator_AssemblePABoundaryFaces(self, fes)
+    AssemblePABoundaryFaces = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AssemblePABoundaryFaces)
+
+    def AddMultTransposePA(self, x, y):
+        r"""AddMultTransposePA(TransposeIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.TransposeIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AddMultTransposePA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(TransposeIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.TransposeIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.TransposeIntegrator_AddMultPA)
     __swig_destroy__ = _bilininteg.delete_TransposeIntegrator
 
 # Register TransposeIntegrator in _bilininteg:
@@ -203,6 +269,7 @@ class LumpedIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(LumpedIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.LumpedIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.LumpedIntegrator_AssembleElementMatrix)
     __swig_destroy__ = _bilininteg.delete_LumpedIntegrator
 
 # Register LumpedIntegrator in _bilininteg:
@@ -225,6 +292,7 @@ class InverseIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(InverseIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.InverseIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.InverseIntegrator_AssembleElementMatrix)
     __swig_destroy__ = _bilininteg.delete_InverseIntegrator
 
 # Register InverseIntegrator in _bilininteg:
@@ -252,6 +320,7 @@ class SumIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(SumIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.SumIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.SumIntegrator_AssembleElementMatrix)
     __swig_destroy__ = _bilininteg.delete_SumIntegrator
 
 # Register SumIntegrator in _bilininteg:
@@ -269,10 +338,12 @@ class MixedScalarIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(MixedScalarIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MixedScalarIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.MixedScalarIntegrator_AssembleElementMatrix2)
 
     def AssembleElementMatrix(self, fe, Trans, elmat):
         r"""AssembleElementMatrix(MixedScalarIntegrator self, FiniteElement fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MixedScalarIntegrator_AssembleElementMatrix(self, fe, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.MixedScalarIntegrator_AssembleElementMatrix)
     __swig_destroy__ = _bilininteg.delete_MixedScalarIntegrator
 
 # Register MixedScalarIntegrator in _bilininteg:
@@ -290,10 +361,12 @@ class MixedVectorIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(MixedVectorIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MixedVectorIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.MixedVectorIntegrator_AssembleElementMatrix2)
 
     def AssembleElementMatrix(self, fe, Trans, elmat):
         r"""AssembleElementMatrix(MixedVectorIntegrator self, FiniteElement fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MixedVectorIntegrator_AssembleElementMatrix(self, fe, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.MixedVectorIntegrator_AssembleElementMatrix)
     __swig_destroy__ = _bilininteg.delete_MixedVectorIntegrator
 
 # Register MixedVectorIntegrator in _bilininteg:
@@ -311,6 +384,7 @@ class MixedScalarVectorIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(MixedScalarVectorIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MixedScalarVectorIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.MixedScalarVectorIntegrator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_MixedScalarVectorIntegrator
 
 # Register MixedScalarVectorIntegrator in _bilininteg:
@@ -514,10 +588,12 @@ class MixedDotProductIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedDotProductIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedDotProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedDotProductIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedDotProductIntegrator self) -> char const *"""
         return _bilininteg.MixedDotProductIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedDotProductIntegrator_FiniteElementTypeFailureMessage)
     __swig_destroy__ = _bilininteg.delete_MixedDotProductIntegrator
 
 # Register MixedDotProductIntegrator in _bilininteg:
@@ -541,14 +617,17 @@ class MixedWeakGradDotIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedWeakGradDotIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedWeakGradDotIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedWeakGradDotIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedWeakGradDotIntegrator self) -> char const *"""
         return _bilininteg.MixedWeakGradDotIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedWeakGradDotIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcShape(self, scalar_fe, Trans, shape):
         r"""CalcShape(MixedWeakGradDotIntegrator self, FiniteElement scalar_fe, ElementTransformation Trans, Vector shape)"""
         return _bilininteg.MixedWeakGradDotIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    CalcShape = _swig_new_instance_method(_bilininteg.MixedWeakGradDotIntegrator_CalcShape)
     __swig_destroy__ = _bilininteg.delete_MixedWeakGradDotIntegrator
 
 # Register MixedWeakGradDotIntegrator in _bilininteg:
@@ -567,14 +646,17 @@ class MixedWeakDivCrossIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedWeakDivCrossIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedWeakDivCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedWeakDivCrossIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedWeakDivCrossIntegrator self) -> char const *"""
         return _bilininteg.MixedWeakDivCrossIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedWeakDivCrossIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedWeakDivCrossIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedWeakDivCrossIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedWeakDivCrossIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedWeakDivCrossIntegrator
 
 # Register MixedWeakDivCrossIntegrator in _bilininteg:
@@ -598,22 +680,27 @@ class MixedGradGradIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedGradGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedGradGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedGradGradIntegrator self) -> char const *"""
         return _bilininteg.MixedGradGradIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_FiniteElementTypeFailureMessage)
 
     def GetIntegrationOrder(self, trial_fe, test_fe, Trans):
         r"""GetIntegrationOrder(MixedGradGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> int"""
         return _bilininteg.MixedGradGradIntegrator_GetIntegrationOrder(self, trial_fe, test_fe, Trans)
+    GetIntegrationOrder = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_GetIntegrationOrder)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedGradGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedGradGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_CalcTrialShape)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedGradGradIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedGradGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedGradGradIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedGradGradIntegrator
 
 # Register MixedGradGradIntegrator in _bilininteg:
@@ -632,18 +719,22 @@ class MixedCrossGradGradIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossGradGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossGradGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedCrossGradGradIntegrator self) -> char const *"""
         return _bilininteg.MixedCrossGradGradIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossGradGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_CalcTrialShape)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossGradGradIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedCrossGradGradIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedCrossGradGradIntegrator
 
 # Register MixedCrossGradGradIntegrator in _bilininteg:
@@ -667,18 +758,22 @@ class MixedCurlCurlIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCurlCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCurlCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedCurlCurlIntegrator self) -> char const *"""
         return _bilininteg.MixedCurlCurlIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCurlCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCurlCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_CalcTrialShape)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCurlCurlIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCurlCurlIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedCurlCurlIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedCurlCurlIntegrator
 
 # Register MixedCurlCurlIntegrator in _bilininteg:
@@ -697,18 +792,22 @@ class MixedCrossCurlCurlIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossCurlCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossCurlCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedCrossCurlCurlIntegrator self) -> char const *"""
         return _bilininteg.MixedCrossCurlCurlIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossCurlCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossCurlCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_CalcTrialShape)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossCurlCurlIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossCurlCurlIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedCrossCurlCurlIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedCrossCurlCurlIntegrator
 
 # Register MixedCrossCurlCurlIntegrator in _bilininteg:
@@ -727,18 +826,22 @@ class MixedCrossCurlGradIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossCurlGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossCurlGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedCrossCurlGradIntegrator self) -> char const *"""
         return _bilininteg.MixedCrossCurlGradIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossCurlGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossCurlGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_CalcTrialShape)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossCurlGradIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossCurlGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedCrossCurlGradIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedCrossCurlGradIntegrator
 
 # Register MixedCrossCurlGradIntegrator in _bilininteg:
@@ -757,18 +860,22 @@ class MixedCrossGradCurlIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossGradCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossGradCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedCrossGradCurlIntegrator self) -> char const *"""
         return _bilininteg.MixedCrossGradCurlIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossGradCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_CalcTrialShape)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossGradCurlIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradCurlIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedCrossGradCurlIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedCrossGradCurlIntegrator
 
 # Register MixedCrossGradCurlIntegrator in _bilininteg:
@@ -787,14 +894,17 @@ class MixedWeakCurlCrossIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedWeakCurlCrossIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedWeakCurlCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedWeakCurlCrossIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedWeakCurlCrossIntegrator self) -> char const *"""
         return _bilininteg.MixedWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedWeakCurlCrossIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedWeakCurlCrossIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedWeakCurlCrossIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedWeakCurlCrossIntegrator
 
 # Register MixedWeakCurlCrossIntegrator in _bilininteg:
@@ -813,14 +923,17 @@ class MixedScalarWeakCurlCrossIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarWeakCurlCrossIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarWeakCurlCrossIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedScalarWeakCurlCrossIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedScalarWeakCurlCrossIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarWeakCurlCrossIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcShape(self, scalar_fe, Trans, shape):
         r"""CalcShape(MixedScalarWeakCurlCrossIntegrator self, FiniteElement scalar_fe, ElementTransformation Trans, Vector shape)"""
         return _bilininteg.MixedScalarWeakCurlCrossIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    CalcShape = _swig_new_instance_method(_bilininteg.MixedScalarWeakCurlCrossIntegrator_CalcShape)
     __swig_destroy__ = _bilininteg.delete_MixedScalarWeakCurlCrossIntegrator
 
 # Register MixedScalarWeakCurlCrossIntegrator in _bilininteg:
@@ -839,18 +952,22 @@ class MixedCrossGradIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedCrossGradIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedCrossGradIntegrator self) -> char const *"""
         return _bilininteg.MixedCrossGradIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossGradIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossGradIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossGradIntegrator_CalcTrialShape)
 
     def CalcTestShape(self, test_fe, Trans, shape):
         r"""CalcTestShape(MixedCrossGradIntegrator self, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossGradIntegrator_CalcTestShape(self, test_fe, Trans, shape)
+    CalcTestShape = _swig_new_instance_method(_bilininteg.MixedCrossGradIntegrator_CalcTestShape)
     __swig_destroy__ = _bilininteg.delete_MixedCrossGradIntegrator
 
 # Register MixedCrossGradIntegrator in _bilininteg:
@@ -869,14 +986,17 @@ class MixedCrossCurlIntegrator(MixedVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedCrossCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedCrossCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedCrossCurlIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedCrossCurlIntegrator self) -> char const *"""
         return _bilininteg.MixedCrossCurlIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedCrossCurlIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcTrialShape(self, trial_fe, Trans, shape):
         r"""CalcTrialShape(MixedCrossCurlIntegrator self, FiniteElement trial_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedCrossCurlIntegrator_CalcTrialShape(self, trial_fe, Trans, shape)
+    CalcTrialShape = _swig_new_instance_method(_bilininteg.MixedCrossCurlIntegrator_CalcTrialShape)
     __swig_destroy__ = _bilininteg.delete_MixedCrossCurlIntegrator
 
 # Register MixedCrossCurlIntegrator in _bilininteg:
@@ -895,14 +1015,17 @@ class MixedScalarCrossCurlIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarCrossCurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarCrossCurlIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedScalarCrossCurlIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedScalarCrossCurlIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarCrossCurlIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarCrossCurlIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcShape(self, scalar_fe, Trans, shape):
         r"""CalcShape(MixedScalarCrossCurlIntegrator self, FiniteElement scalar_fe, ElementTransformation Trans, Vector shape)"""
         return _bilininteg.MixedScalarCrossCurlIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    CalcShape = _swig_new_instance_method(_bilininteg.MixedScalarCrossCurlIntegrator_CalcShape)
     __swig_destroy__ = _bilininteg.delete_MixedScalarCrossCurlIntegrator
 
 # Register MixedScalarCrossCurlIntegrator in _bilininteg:
@@ -921,14 +1044,17 @@ class MixedScalarCrossGradIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarCrossGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarCrossGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedScalarCrossGradIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedScalarCrossGradIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarCrossGradIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarCrossGradIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedScalarCrossGradIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedScalarCrossGradIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    CalcVShape = _swig_new_instance_method(_bilininteg.MixedScalarCrossGradIntegrator_CalcVShape)
     __swig_destroy__ = _bilininteg.delete_MixedScalarCrossGradIntegrator
 
 # Register MixedScalarCrossGradIntegrator in _bilininteg:
@@ -947,10 +1073,12 @@ class MixedScalarCrossProductIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarCrossProductIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarCrossProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedScalarCrossProductIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedScalarCrossProductIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarCrossProductIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarCrossProductIntegrator_FiniteElementTypeFailureMessage)
     __swig_destroy__ = _bilininteg.delete_MixedScalarCrossProductIntegrator
 
 # Register MixedScalarCrossProductIntegrator in _bilininteg:
@@ -969,14 +1097,17 @@ class MixedScalarWeakCrossProductIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarWeakCrossProductIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarWeakCrossProductIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedScalarWeakCrossProductIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedScalarWeakCrossProductIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarWeakCrossProductIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarWeakCrossProductIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcShape(self, scalar_fe, Trans, shape):
         r"""CalcShape(MixedScalarWeakCrossProductIntegrator self, FiniteElement scalar_fe, ElementTransformation Trans, Vector shape)"""
         return _bilininteg.MixedScalarWeakCrossProductIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    CalcShape = _swig_new_instance_method(_bilininteg.MixedScalarWeakCrossProductIntegrator_CalcShape)
     __swig_destroy__ = _bilininteg.delete_MixedScalarWeakCrossProductIntegrator
 
 # Register MixedScalarWeakCrossProductIntegrator in _bilininteg:
@@ -995,14 +1126,17 @@ class MixedDirectionalDerivativeIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedDirectionalDerivativeIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedDirectionalDerivativeIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedDirectionalDerivativeIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedDirectionalDerivativeIntegrator self) -> char const *"""
         return _bilininteg.MixedDirectionalDerivativeIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedDirectionalDerivativeIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedDirectionalDerivativeIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedDirectionalDerivativeIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    CalcVShape = _swig_new_instance_method(_bilininteg.MixedDirectionalDerivativeIntegrator_CalcVShape)
     __swig_destroy__ = _bilininteg.delete_MixedDirectionalDerivativeIntegrator
 
 # Register MixedDirectionalDerivativeIntegrator in _bilininteg:
@@ -1021,18 +1155,22 @@ class MixedGradDivIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedGradDivIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedGradDivIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedGradDivIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedGradDivIntegrator self) -> char const *"""
         return _bilininteg.MixedGradDivIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedGradDivIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedGradDivIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedGradDivIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    CalcVShape = _swig_new_instance_method(_bilininteg.MixedGradDivIntegrator_CalcVShape)
 
     def CalcShape(self, scalar_fe, Trans, shape):
         r"""CalcShape(MixedGradDivIntegrator self, FiniteElement scalar_fe, ElementTransformation Trans, Vector shape)"""
         return _bilininteg.MixedGradDivIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    CalcShape = _swig_new_instance_method(_bilininteg.MixedGradDivIntegrator_CalcShape)
     __swig_destroy__ = _bilininteg.delete_MixedGradDivIntegrator
 
 # Register MixedGradDivIntegrator in _bilininteg:
@@ -1051,18 +1189,22 @@ class MixedDivGradIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedDivGradIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedDivGradIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedDivGradIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedDivGradIntegrator self) -> char const *"""
         return _bilininteg.MixedDivGradIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedDivGradIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedDivGradIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedDivGradIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    CalcVShape = _swig_new_instance_method(_bilininteg.MixedDivGradIntegrator_CalcVShape)
 
     def CalcShape(self, scalar_fe, Trans, shape):
         r"""CalcShape(MixedDivGradIntegrator self, FiniteElement scalar_fe, ElementTransformation Trans, Vector shape)"""
         return _bilininteg.MixedDivGradIntegrator_CalcShape(self, scalar_fe, Trans, shape)
+    CalcShape = _swig_new_instance_method(_bilininteg.MixedDivGradIntegrator_CalcShape)
     __swig_destroy__ = _bilininteg.delete_MixedDivGradIntegrator
 
 # Register MixedDivGradIntegrator in _bilininteg:
@@ -1081,14 +1223,17 @@ class MixedScalarWeakDivergenceIntegrator(MixedScalarVectorIntegrator):
     def VerifyFiniteElementTypes(self, trial_fe, test_fe):
         r"""VerifyFiniteElementTypes(MixedScalarWeakDivergenceIntegrator self, FiniteElement trial_fe, FiniteElement test_fe) -> bool"""
         return _bilininteg.MixedScalarWeakDivergenceIntegrator_VerifyFiniteElementTypes(self, trial_fe, test_fe)
+    VerifyFiniteElementTypes = _swig_new_instance_method(_bilininteg.MixedScalarWeakDivergenceIntegrator_VerifyFiniteElementTypes)
 
     def FiniteElementTypeFailureMessage(self):
         r"""FiniteElementTypeFailureMessage(MixedScalarWeakDivergenceIntegrator self) -> char const *"""
         return _bilininteg.MixedScalarWeakDivergenceIntegrator_FiniteElementTypeFailureMessage(self)
+    FiniteElementTypeFailureMessage = _swig_new_instance_method(_bilininteg.MixedScalarWeakDivergenceIntegrator_FiniteElementTypeFailureMessage)
 
     def CalcVShape(self, vector_fe, Trans, shape):
         r"""CalcVShape(MixedScalarWeakDivergenceIntegrator self, FiniteElement vector_fe, ElementTransformation Trans, DenseMatrix shape)"""
         return _bilininteg.MixedScalarWeakDivergenceIntegrator_CalcVShape(self, vector_fe, Trans, shape)
+    CalcVShape = _swig_new_instance_method(_bilininteg.MixedScalarWeakDivergenceIntegrator_CalcVShape)
     __swig_destroy__ = _bilininteg.delete_MixedScalarWeakDivergenceIntegrator
 
 # Register MixedScalarWeakDivergenceIntegrator in _bilininteg:
@@ -1180,6 +1325,58 @@ class MixedVectorWeakDivergenceIntegrator(MixedVectorIntegrator):
 # Register MixedVectorWeakDivergenceIntegrator in _bilininteg:
 _bilininteg.MixedVectorWeakDivergenceIntegrator_swigregister(MixedVectorWeakDivergenceIntegrator)
 
+class GradientIntegrator(BilinearFormIntegrator):
+    r"""Proxy of C++ mfem::GradientIntegrator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(GradientIntegrator self) -> GradientIntegrator
+        __init__(GradientIntegrator self, Coefficient _q) -> GradientIntegrator
+        __init__(GradientIntegrator self, Coefficient q) -> GradientIntegrator
+        """
+        _bilininteg.GradientIntegrator_swiginit(self, _bilininteg.new_GradientIntegrator(*args))
+
+    def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
+        r"""AssembleElementMatrix2(GradientIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
+        return _bilininteg.GradientIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.GradientIntegrator_AssembleElementMatrix2)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(GradientIntegrator self)
+        AssemblePA(GradientIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
+        """
+        return _bilininteg.GradientIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.GradientIntegrator_AssemblePA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(GradientIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.GradientIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.GradientIntegrator_AddMultPA)
+
+    def AddMultTransposePA(self, x, y):
+        r"""AddMultTransposePA(GradientIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.GradientIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.GradientIntegrator_AddMultTransposePA)
+
+    @staticmethod
+    def GetRule(trial_fe, test_fe, Trans):
+        r"""GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
+        return _bilininteg.GradientIntegrator_GetRule(trial_fe, test_fe, Trans)
+    GetRule = _swig_new_static_method(_bilininteg.GradientIntegrator_GetRule)
+    __swig_destroy__ = _bilininteg.delete_GradientIntegrator
+
+# Register GradientIntegrator in _bilininteg:
+_bilininteg.GradientIntegrator_swigregister(GradientIntegrator)
+
+def GradientIntegrator_GetRule(trial_fe, test_fe, Trans):
+    r"""GradientIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
+    return _bilininteg.GradientIntegrator_GetRule(trial_fe, test_fe, Trans)
+GradientIntegrator_GetRule = _bilininteg.GradientIntegrator_GetRule
+
 class DiffusionIntegrator(BilinearFormIntegrator):
     r"""Proxy of C++ mfem::DiffusionIntegrator class."""
 
@@ -1198,40 +1395,61 @@ class DiffusionIntegrator(BilinearFormIntegrator):
 
 
 
+    __swig_destroy__ = _bilininteg.delete_DiffusionIntegrator
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DiffusionIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(DiffusionIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DiffusionIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_AssembleElementMatrix2)
 
     def AssembleElementVector(self, el, Tr, elfun, elvect):
         r"""AssembleElementVector(DiffusionIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"""
         return _bilininteg.DiffusionIntegrator_AssembleElementVector(self, el, Tr, elfun, elvect)
+    AssembleElementVector = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_AssembleElementVector)
 
-    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=1):
-        r"""ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, int with_coef=1)"""
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True):
+        r"""ComputeElementFlux(DiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"""
         return _bilininteg.DiffusionIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    ComputeElementFlux = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
         r"""ComputeFluxEnergy(DiffusionIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"""
         return _bilininteg.DiffusionIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
+    ComputeFluxEnergy = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_ComputeFluxEnergy)
 
-    def AssemblePA(self, arg2):
-        r"""AssemblePA(DiffusionIntegrator self, FiniteElementSpace arg2)"""
-        return _bilininteg.DiffusionIntegrator_AssemblePA(self, arg2)
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(DiffusionIntegrator self)
+        AssemblePA(DiffusionIntegrator self, FiniteElementSpace fes)
+        """
+        return _bilininteg.DiffusionIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_AssemblePA)
+
+    def AssembleDiagonalPA(self, diag):
+        r"""AssembleDiagonalPA(DiffusionIntegrator self, Vector diag)"""
+        return _bilininteg.DiffusionIntegrator_AssembleDiagonalPA(self, diag)
+    AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_AssembleDiagonalPA)
 
     def AddMultPA(self, arg2, arg3):
         r"""AddMultPA(DiffusionIntegrator self, Vector arg2, Vector arg3)"""
         return _bilininteg.DiffusionIntegrator_AddMultPA(self, arg2, arg3)
+    AddMultPA = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_AddMultPA)
 
     @staticmethod
     def GetRule(trial_fe, test_fe):
         r"""GetRule(FiniteElement trial_fe, FiniteElement test_fe) -> IntegrationRule"""
         return _bilininteg.DiffusionIntegrator_GetRule(trial_fe, test_fe)
-    __swig_destroy__ = _bilininteg.delete_DiffusionIntegrator
+    GetRule = _swig_new_static_method(_bilininteg.DiffusionIntegrator_GetRule)
+
+    def SetupPA(self, fes, force=False):
+        r"""SetupPA(DiffusionIntegrator self, FiniteElementSpace fes, bool const force=False)"""
+        return _bilininteg.DiffusionIntegrator_SetupPA(self, fes, force)
+    SetupPA = _swig_new_instance_method(_bilininteg.DiffusionIntegrator_SetupPA)
 
 # Register DiffusionIntegrator in _bilininteg:
 _bilininteg.DiffusionIntegrator_swigregister(DiffusionIntegrator)
@@ -1239,6 +1457,7 @@ _bilininteg.DiffusionIntegrator_swigregister(DiffusionIntegrator)
 def DiffusionIntegrator_GetRule(trial_fe, test_fe):
     r"""DiffusionIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe) -> IntegrationRule"""
     return _bilininteg.DiffusionIntegrator_GetRule(trial_fe, test_fe)
+DiffusionIntegrator_GetRule = _bilininteg.DiffusionIntegrator_GetRule
 
 class MassIntegrator(BilinearFormIntegrator):
     r"""Proxy of C++ mfem::MassIntegrator class."""
@@ -1257,28 +1476,46 @@ class MassIntegrator(BilinearFormIntegrator):
 
 
 
+    __swig_destroy__ = _bilininteg.delete_MassIntegrator
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(MassIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MassIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.MassIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(MassIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.MassIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.MassIntegrator_AssembleElementMatrix2)
 
-    def AssemblePA(self, arg2):
-        r"""AssemblePA(MassIntegrator self, FiniteElementSpace arg2)"""
-        return _bilininteg.MassIntegrator_AssemblePA(self, arg2)
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(MassIntegrator self)
+        AssemblePA(MassIntegrator self, FiniteElementSpace fes)
+        """
+        return _bilininteg.MassIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.MassIntegrator_AssemblePA)
+
+    def AssembleDiagonalPA(self, diag):
+        r"""AssembleDiagonalPA(MassIntegrator self, Vector diag)"""
+        return _bilininteg.MassIntegrator_AssembleDiagonalPA(self, diag)
+    AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.MassIntegrator_AssembleDiagonalPA)
 
     def AddMultPA(self, arg2, arg3):
         r"""AddMultPA(MassIntegrator self, Vector arg2, Vector arg3)"""
         return _bilininteg.MassIntegrator_AddMultPA(self, arg2, arg3)
+    AddMultPA = _swig_new_instance_method(_bilininteg.MassIntegrator_AddMultPA)
 
     @staticmethod
     def GetRule(trial_fe, test_fe, Trans):
         r"""GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
         return _bilininteg.MassIntegrator_GetRule(trial_fe, test_fe, Trans)
-    __swig_destroy__ = _bilininteg.delete_MassIntegrator
+    GetRule = _swig_new_static_method(_bilininteg.MassIntegrator_GetRule)
+
+    def SetupPA(self, fes, force=False):
+        r"""SetupPA(MassIntegrator self, FiniteElementSpace fes, bool const force=False)"""
+        return _bilininteg.MassIntegrator_SetupPA(self, fes, force)
+    SetupPA = _swig_new_instance_method(_bilininteg.MassIntegrator_SetupPA)
 
 # Register MassIntegrator in _bilininteg:
 _bilininteg.MassIntegrator_swigregister(MassIntegrator)
@@ -1286,6 +1523,7 @@ _bilininteg.MassIntegrator_swigregister(MassIntegrator)
 def MassIntegrator_GetRule(trial_fe, test_fe, Trans):
     r"""MassIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
     return _bilininteg.MassIntegrator_GetRule(trial_fe, test_fe, Trans)
+MassIntegrator_GetRule = _bilininteg.MassIntegrator_GetRule
 
 class BoundaryMassIntegrator(MassIntegrator):
     r"""Proxy of C++ mfem::BoundaryMassIntegrator class."""
@@ -1304,6 +1542,7 @@ class BoundaryMassIntegrator(MassIntegrator):
         AssembleFaceMatrix(BoundaryMassIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.BoundaryMassIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.BoundaryMassIntegrator_AssembleFaceMatrix)
     __swig_destroy__ = _bilininteg.delete_BoundaryMassIntegrator
 
 # Register BoundaryMassIntegrator in _bilininteg:
@@ -1322,10 +1561,41 @@ class ConvectionIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, arg2, arg3, arg4):
         r"""AssembleElementMatrix(ConvectionIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"""
         return _bilininteg.ConvectionIntegrator_AssembleElementMatrix(self, arg2, arg3, arg4)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.ConvectionIntegrator_AssembleElementMatrix)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(ConvectionIntegrator self)
+        AssemblePA(ConvectionIntegrator self, FiniteElementSpace arg2)
+        """
+        return _bilininteg.ConvectionIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.ConvectionIntegrator_AssemblePA)
+
+    def AddMultPA(self, arg2, arg3):
+        r"""AddMultPA(ConvectionIntegrator self, Vector arg2, Vector arg3)"""
+        return _bilininteg.ConvectionIntegrator_AddMultPA(self, arg2, arg3)
+    AddMultPA = _swig_new_instance_method(_bilininteg.ConvectionIntegrator_AddMultPA)
+
+    @staticmethod
+    def GetRule(*args):
+        r"""
+        GetRule(FiniteElement el, ElementTransformation Trans) -> IntegrationRule
+        GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule
+        """
+        return _bilininteg.ConvectionIntegrator_GetRule(*args)
+    GetRule = _swig_new_static_method(_bilininteg.ConvectionIntegrator_GetRule)
     __swig_destroy__ = _bilininteg.delete_ConvectionIntegrator
 
 # Register ConvectionIntegrator in _bilininteg:
 _bilininteg.ConvectionIntegrator_swigregister(ConvectionIntegrator)
+
+def ConvectionIntegrator_GetRule(*args):
+    r"""
+    ConvectionIntegrator_GetRule(FiniteElement el, ElementTransformation Trans) -> IntegrationRule
+    ConvectionIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule
+    """
+    return _bilininteg.ConvectionIntegrator_GetRule(*args)
+ConvectionIntegrator_GetRule = _bilininteg.ConvectionIntegrator_GetRule
 
 class GroupConvectionIntegrator(BilinearFormIntegrator):
     r"""Proxy of C++ mfem::GroupConvectionIntegrator class."""
@@ -1340,6 +1610,7 @@ class GroupConvectionIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, arg2, arg3, arg4):
         r"""AssembleElementMatrix(GroupConvectionIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"""
         return _bilininteg.GroupConvectionIntegrator_AssembleElementMatrix(self, arg2, arg3, arg4)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.GroupConvectionIntegrator_AssembleElementMatrix)
     __swig_destroy__ = _bilininteg.delete_GroupConvectionIntegrator
 
 # Register GroupConvectionIntegrator in _bilininteg:
@@ -1364,18 +1635,40 @@ class VectorMassIntegrator(BilinearFormIntegrator):
     def GetVDim(self):
         r"""GetVDim(VectorMassIntegrator self) -> int"""
         return _bilininteg.VectorMassIntegrator_GetVDim(self)
+    GetVDim = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_GetVDim)
 
     def SetVDim(self, vdim):
         r"""SetVDim(VectorMassIntegrator self, int vdim)"""
         return _bilininteg.VectorMassIntegrator_SetVDim(self, vdim)
+    SetVDim = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_SetVDim)
 
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorMassIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorMassIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorMassIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorMassIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_AssembleElementMatrix2)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(VectorMassIntegrator self)
+        AssemblePA(VectorMassIntegrator self, FiniteElementSpace fes)
+        """
+        return _bilininteg.VectorMassIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_AssemblePA)
+
+    def AssembleDiagonalPA(self, diag):
+        r"""AssembleDiagonalPA(VectorMassIntegrator self, Vector diag)"""
+        return _bilininteg.VectorMassIntegrator_AssembleDiagonalPA(self, diag)
+    AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_AssembleDiagonalPA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(VectorMassIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.VectorMassIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.VectorMassIntegrator_AddMultPA)
     __swig_destroy__ = _bilininteg.delete_VectorMassIntegrator
 
 # Register VectorMassIntegrator in _bilininteg:
@@ -1397,10 +1690,12 @@ class VectorFEDivergenceIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorFEDivergenceIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEDivergenceIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.VectorFEDivergenceIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorFEDivergenceIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEDivergenceIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorFEDivergenceIntegrator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_VectorFEDivergenceIntegrator
 
 # Register VectorFEDivergenceIntegrator in _bilininteg:
@@ -1422,10 +1717,12 @@ class VectorFEWeakDivergenceIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorFEWeakDivergenceIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEWeakDivergenceIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.VectorFEWeakDivergenceIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorFEWeakDivergenceIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEWeakDivergenceIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorFEWeakDivergenceIntegrator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_VectorFEWeakDivergenceIntegrator
 
 # Register VectorFEWeakDivergenceIntegrator in _bilininteg:
@@ -1447,10 +1744,12 @@ class VectorFECurlIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorFECurlIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFECurlIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.VectorFECurlIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorFECurlIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFECurlIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorFECurlIntegrator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_VectorFECurlIntegrator
 
 # Register VectorFECurlIntegrator in _bilininteg:
@@ -1469,10 +1768,12 @@ class DerivativeIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(DerivativeIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DerivativeIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.DerivativeIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(DerivativeIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DerivativeIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.DerivativeIntegrator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_DerivativeIntegrator
 
 # Register DerivativeIntegrator in _bilininteg:
@@ -1500,14 +1801,35 @@ class CurlCurlIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.CurlCurlIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_AssembleElementMatrix)
 
     def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef):
-        r"""ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, int with_coef)"""
+        r"""ComputeElementFlux(CurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef)"""
         return _bilininteg.CurlCurlIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    ComputeElementFlux = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
         r"""ComputeFluxEnergy(CurlCurlIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"""
         return _bilininteg.CurlCurlIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
+    ComputeFluxEnergy = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_ComputeFluxEnergy)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(CurlCurlIntegrator self)
+        AssemblePA(CurlCurlIntegrator self, FiniteElementSpace fes)
+        """
+        return _bilininteg.CurlCurlIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_AssemblePA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(CurlCurlIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.CurlCurlIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_AddMultPA)
+
+    def AssembleDiagonalPA(self, diag):
+        r"""AssembleDiagonalPA(CurlCurlIntegrator self, Vector diag)"""
+        return _bilininteg.CurlCurlIntegrator_AssembleDiagonalPA(self, diag)
+    AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.CurlCurlIntegrator_AssembleDiagonalPA)
     __swig_destroy__ = _bilininteg.delete_CurlCurlIntegrator
 
 # Register CurlCurlIntegrator in _bilininteg:
@@ -1529,10 +1851,12 @@ class VectorCurlCurlIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorCurlCurlIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorCurlCurlIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.VectorCurlCurlIntegrator_AssembleElementMatrix)
 
     def GetElementEnergy(self, el, Tr, elfun):
         r"""GetElementEnergy(VectorCurlCurlIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun) -> double"""
         return _bilininteg.VectorCurlCurlIntegrator_GetElementEnergy(self, el, Tr, elfun)
+    GetElementEnergy = _swig_new_instance_method(_bilininteg.VectorCurlCurlIntegrator_GetElementEnergy)
     __swig_destroy__ = _bilininteg.delete_VectorCurlCurlIntegrator
 
 # Register VectorCurlCurlIntegrator in _bilininteg:
@@ -1564,10 +1888,30 @@ class VectorFEMassIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorFEMassIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEMassIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AssembleElementMatrix)
 
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorFEMassIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorFEMassIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AssembleElementMatrix2)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(VectorFEMassIntegrator self)
+        AssemblePA(VectorFEMassIntegrator self, FiniteElementSpace fes)
+        """
+        return _bilininteg.VectorFEMassIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AssemblePA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(VectorFEMassIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.VectorFEMassIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AddMultPA)
+
+    def AssembleDiagonalPA(self, diag):
+        r"""AssembleDiagonalPA(VectorFEMassIntegrator self, Vector diag)"""
+        return _bilininteg.VectorFEMassIntegrator_AssembleDiagonalPA(self, diag)
+    AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.VectorFEMassIntegrator_AssembleDiagonalPA)
     __swig_destroy__ = _bilininteg.delete_VectorFEMassIntegrator
 
 # Register VectorFEMassIntegrator in _bilininteg:
@@ -1590,10 +1934,40 @@ class VectorDivergenceIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorDivergenceIntegrator self, FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorDivergenceIntegrator_AssembleElementMatrix2(self, trial_fe, test_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorDivergenceIntegrator_AssembleElementMatrix2)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(VectorDivergenceIntegrator self)
+        AssemblePA(VectorDivergenceIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
+        """
+        return _bilininteg.VectorDivergenceIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.VectorDivergenceIntegrator_AssemblePA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(VectorDivergenceIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.VectorDivergenceIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.VectorDivergenceIntegrator_AddMultPA)
+
+    def AddMultTransposePA(self, x, y):
+        r"""AddMultTransposePA(VectorDivergenceIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.VectorDivergenceIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.VectorDivergenceIntegrator_AddMultTransposePA)
+
+    @staticmethod
+    def GetRule(trial_fe, test_fe, Trans):
+        r"""GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
+        return _bilininteg.VectorDivergenceIntegrator_GetRule(trial_fe, test_fe, Trans)
+    GetRule = _swig_new_static_method(_bilininteg.VectorDivergenceIntegrator_GetRule)
     __swig_destroy__ = _bilininteg.delete_VectorDivergenceIntegrator
 
 # Register VectorDivergenceIntegrator in _bilininteg:
 _bilininteg.VectorDivergenceIntegrator_swigregister(VectorDivergenceIntegrator)
+
+def VectorDivergenceIntegrator_GetRule(trial_fe, test_fe, Trans):
+    r"""VectorDivergenceIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
+    return _bilininteg.VectorDivergenceIntegrator_GetRule(trial_fe, test_fe, Trans)
+VectorDivergenceIntegrator_GetRule = _bilininteg.VectorDivergenceIntegrator_GetRule
 
 class DivDivIntegrator(BilinearFormIntegrator):
     r"""Proxy of C++ mfem::DivDivIntegrator class."""
@@ -1611,6 +1985,7 @@ class DivDivIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(DivDivIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DivDivIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.DivDivIntegrator_AssembleElementMatrix)
     __swig_destroy__ = _bilininteg.delete_DivDivIntegrator
 
 # Register DivDivIntegrator in _bilininteg:
@@ -1632,10 +2007,30 @@ class VectorDiffusionIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, el, Trans, elmat):
         r"""AssembleElementMatrix(VectorDiffusionIntegrator self, FiniteElement el, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorDiffusionIntegrator_AssembleElementMatrix(self, el, Trans, elmat)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.VectorDiffusionIntegrator_AssembleElementMatrix)
 
     def AssembleElementVector(self, el, Tr, elfun, elvect):
         r"""AssembleElementVector(VectorDiffusionIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"""
         return _bilininteg.VectorDiffusionIntegrator_AssembleElementVector(self, el, Tr, elfun, elvect)
+    AssembleElementVector = _swig_new_instance_method(_bilininteg.VectorDiffusionIntegrator_AssembleElementVector)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(VectorDiffusionIntegrator self)
+        AssemblePA(VectorDiffusionIntegrator self, FiniteElementSpace fes)
+        """
+        return _bilininteg.VectorDiffusionIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_bilininteg.VectorDiffusionIntegrator_AssemblePA)
+
+    def AssembleDiagonalPA(self, diag):
+        r"""AssembleDiagonalPA(VectorDiffusionIntegrator self, Vector diag)"""
+        return _bilininteg.VectorDiffusionIntegrator_AssembleDiagonalPA(self, diag)
+    AssembleDiagonalPA = _swig_new_instance_method(_bilininteg.VectorDiffusionIntegrator_AssembleDiagonalPA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(VectorDiffusionIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.VectorDiffusionIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_bilininteg.VectorDiffusionIntegrator_AddMultPA)
     __swig_destroy__ = _bilininteg.delete_VectorDiffusionIntegrator
 
 # Register VectorDiffusionIntegrator in _bilininteg:
@@ -1657,14 +2052,17 @@ class ElasticityIntegrator(BilinearFormIntegrator):
     def AssembleElementMatrix(self, arg2, arg3, arg4):
         r"""AssembleElementMatrix(ElasticityIntegrator self, FiniteElement arg2, ElementTransformation arg3, DenseMatrix arg4)"""
         return _bilininteg.ElasticityIntegrator_AssembleElementMatrix(self, arg2, arg3, arg4)
+    AssembleElementMatrix = _swig_new_instance_method(_bilininteg.ElasticityIntegrator_AssembleElementMatrix)
 
-    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=1):
-        r"""ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, int with_coef=1)"""
+    def ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef=True):
+        r"""ComputeElementFlux(ElasticityIntegrator self, FiniteElement el, ElementTransformation Trans, Vector u, FiniteElement fluxelem, Vector flux, bool with_coef=True)"""
         return _bilininteg.ElasticityIntegrator_ComputeElementFlux(self, el, Trans, u, fluxelem, flux, with_coef)
+    ComputeElementFlux = _swig_new_instance_method(_bilininteg.ElasticityIntegrator_ComputeElementFlux)
 
     def ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy=None):
         r"""ComputeFluxEnergy(ElasticityIntegrator self, FiniteElement fluxelem, ElementTransformation Trans, Vector flux, Vector d_energy=None) -> double"""
         return _bilininteg.ElasticityIntegrator_ComputeFluxEnergy(self, fluxelem, Trans, flux, d_energy)
+    ComputeFluxEnergy = _swig_new_instance_method(_bilininteg.ElasticityIntegrator_ComputeFluxEnergy)
     __swig_destroy__ = _bilininteg.delete_ElasticityIntegrator
 
 # Register ElasticityIntegrator in _bilininteg:
@@ -1690,10 +2088,42 @@ class DGTraceIntegrator(BilinearFormIntegrator):
         AssembleFaceMatrix(DGTraceIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.DGTraceIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.DGTraceIntegrator_AssembleFaceMatrix)
+
+    def AssemblePAInteriorFaces(self, fes):
+        r"""AssemblePAInteriorFaces(DGTraceIntegrator self, FiniteElementSpace fes)"""
+        return _bilininteg.DGTraceIntegrator_AssemblePAInteriorFaces(self, fes)
+    AssemblePAInteriorFaces = _swig_new_instance_method(_bilininteg.DGTraceIntegrator_AssemblePAInteriorFaces)
+
+    def AssemblePABoundaryFaces(self, fes):
+        r"""AssemblePABoundaryFaces(DGTraceIntegrator self, FiniteElementSpace fes)"""
+        return _bilininteg.DGTraceIntegrator_AssemblePABoundaryFaces(self, fes)
+    AssemblePABoundaryFaces = _swig_new_instance_method(_bilininteg.DGTraceIntegrator_AssemblePABoundaryFaces)
+
+    def AddMultTransposePA(self, x, y):
+        r"""AddMultTransposePA(DGTraceIntegrator self, Vector x, Vector y)"""
+        return _bilininteg.DGTraceIntegrator_AddMultTransposePA(self, x, y)
+    AddMultTransposePA = _swig_new_instance_method(_bilininteg.DGTraceIntegrator_AddMultTransposePA)
+
+    def AddMultPA(self, arg2, arg3):
+        r"""AddMultPA(DGTraceIntegrator self, Vector arg2, Vector arg3)"""
+        return _bilininteg.DGTraceIntegrator_AddMultPA(self, arg2, arg3)
+    AddMultPA = _swig_new_instance_method(_bilininteg.DGTraceIntegrator_AddMultPA)
+
+    @staticmethod
+    def GetRule(geom, order, T):
+        r"""GetRule(mfem::Geometry::Type geom, int order, FaceElementTransformations T) -> IntegrationRule"""
+        return _bilininteg.DGTraceIntegrator_GetRule(geom, order, T)
+    GetRule = _swig_new_static_method(_bilininteg.DGTraceIntegrator_GetRule)
     __swig_destroy__ = _bilininteg.delete_DGTraceIntegrator
 
 # Register DGTraceIntegrator in _bilininteg:
 _bilininteg.DGTraceIntegrator_swigregister(DGTraceIntegrator)
+
+def DGTraceIntegrator_GetRule(geom, order, T):
+    r"""DGTraceIntegrator_GetRule(mfem::Geometry::Type geom, int order, FaceElementTransformations T) -> IntegrationRule"""
+    return _bilininteg.DGTraceIntegrator_GetRule(geom, order, T)
+DGTraceIntegrator_GetRule = _bilininteg.DGTraceIntegrator_GetRule
 
 class DGDiffusionIntegrator(BilinearFormIntegrator):
     r"""Proxy of C++ mfem::DGDiffusionIntegrator class."""
@@ -1716,6 +2146,7 @@ class DGDiffusionIntegrator(BilinearFormIntegrator):
         AssembleFaceMatrix(DGDiffusionIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.DGDiffusionIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.DGDiffusionIntegrator_AssembleFaceMatrix)
     __swig_destroy__ = _bilininteg.delete_DGDiffusionIntegrator
 
 # Register DGDiffusionIntegrator in _bilininteg:
@@ -1741,6 +2172,7 @@ class DGElasticityIntegrator(BilinearFormIntegrator):
         AssembleFaceMatrix(DGElasticityIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.DGElasticityIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.DGElasticityIntegrator_AssembleFaceMatrix)
     __swig_destroy__ = _bilininteg.delete_DGElasticityIntegrator
 
 # Register DGElasticityIntegrator in _bilininteg:
@@ -1763,6 +2195,7 @@ class TraceJumpIntegrator(BilinearFormIntegrator):
         AssembleFaceMatrix(TraceJumpIntegrator self, FiniteElement trial_face_fe, FiniteElement test_fe1, FiniteElement test_fe2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.TraceJumpIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.TraceJumpIntegrator_AssembleFaceMatrix)
     __swig_destroy__ = _bilininteg.delete_TraceJumpIntegrator
 
 # Register TraceJumpIntegrator in _bilininteg:
@@ -1785,6 +2218,7 @@ class NormalTraceJumpIntegrator(BilinearFormIntegrator):
         AssembleFaceMatrix(NormalTraceJumpIntegrator self, FiniteElement trial_face_fe, FiniteElement test_fe1, FiniteElement test_fe2, FaceElementTransformations Trans, DenseMatrix elmat)
         """
         return _bilininteg.NormalTraceJumpIntegrator_AssembleFaceMatrix(self, *args)
+    AssembleFaceMatrix = _swig_new_instance_method(_bilininteg.NormalTraceJumpIntegrator_AssembleFaceMatrix)
     __swig_destroy__ = _bilininteg.delete_NormalTraceJumpIntegrator
 
 # Register NormalTraceJumpIntegrator in _bilininteg:
@@ -1813,6 +2247,7 @@ class GradientInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, h1_fe, nd_fe, Trans, elmat):
         r"""AssembleElementMatrix2(GradientInterpolator self, FiniteElement h1_fe, FiniteElement nd_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.GradientInterpolator_AssembleElementMatrix2(self, h1_fe, nd_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.GradientInterpolator_AssembleElementMatrix2)
 
     def __init__(self):
         r"""__init__(GradientInterpolator self) -> GradientInterpolator"""
@@ -1831,6 +2266,7 @@ class IdentityInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(IdentityInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.IdentityInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.IdentityInterpolator_AssembleElementMatrix2)
 
     def __init__(self):
         r"""__init__(IdentityInterpolator self) -> IdentityInterpolator"""
@@ -1849,6 +2285,7 @@ class CurlInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(CurlInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.CurlInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.CurlInterpolator_AssembleElementMatrix2)
 
     def __init__(self):
         r"""__init__(CurlInterpolator self) -> CurlInterpolator"""
@@ -1867,6 +2304,7 @@ class DivergenceInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(DivergenceInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.DivergenceInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.DivergenceInterpolator_AssembleElementMatrix2)
 
     def __init__(self):
         r"""__init__(DivergenceInterpolator self) -> DivergenceInterpolator"""
@@ -1885,6 +2323,7 @@ class NormalInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(NormalInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.NormalInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.NormalInterpolator_AssembleElementMatrix2)
 
     def __init__(self):
         r"""__init__(NormalInterpolator self) -> NormalInterpolator"""
@@ -1907,6 +2346,7 @@ class ScalarProductInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(ScalarProductInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.ScalarProductInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.ScalarProductInterpolator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_ScalarProductInterpolator
 
 # Register ScalarProductInterpolator in _bilininteg:
@@ -1925,6 +2365,7 @@ class ScalarVectorProductInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(ScalarVectorProductInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.ScalarVectorProductInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.ScalarVectorProductInterpolator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_ScalarVectorProductInterpolator
 
 # Register ScalarVectorProductInterpolator in _bilininteg:
@@ -1943,6 +2384,7 @@ class VectorScalarProductInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorScalarProductInterpolator self, FiniteElement dom_fe, FiniteElement ran_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorScalarProductInterpolator_AssembleElementMatrix2(self, dom_fe, ran_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorScalarProductInterpolator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_VectorScalarProductInterpolator
 
 # Register VectorScalarProductInterpolator in _bilininteg:
@@ -1961,6 +2403,7 @@ class VectorCrossProductInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, nd_fe, rt_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorCrossProductInterpolator self, FiniteElement nd_fe, FiniteElement rt_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorCrossProductInterpolator_AssembleElementMatrix2(self, nd_fe, rt_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorCrossProductInterpolator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_VectorCrossProductInterpolator
 
 # Register VectorCrossProductInterpolator in _bilininteg:
@@ -1979,6 +2422,7 @@ class VectorInnerProductInterpolator(DiscreteInterpolator):
     def AssembleElementMatrix2(self, rt_fe, l2_fe, Trans, elmat):
         r"""AssembleElementMatrix2(VectorInnerProductInterpolator self, FiniteElement rt_fe, FiniteElement l2_fe, ElementTransformation Trans, DenseMatrix elmat)"""
         return _bilininteg.VectorInnerProductInterpolator_AssembleElementMatrix2(self, rt_fe, l2_fe, Trans, elmat)
+    AssembleElementMatrix2 = _swig_new_instance_method(_bilininteg.VectorInnerProductInterpolator_AssembleElementMatrix2)
     __swig_destroy__ = _bilininteg.delete_VectorInnerProductInterpolator
 
 # Register VectorInnerProductInterpolator in _bilininteg:

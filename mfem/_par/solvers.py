@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _solvers.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _solvers.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -94,42 +97,83 @@ class IterativeSolver(mfem._par.operators.Solver):
     def SetRelTol(self, rtol):
         r"""SetRelTol(IterativeSolver self, double rtol)"""
         return _solvers.IterativeSolver_SetRelTol(self, rtol)
+    SetRelTol = _swig_new_instance_method(_solvers.IterativeSolver_SetRelTol)
 
     def SetAbsTol(self, atol):
         r"""SetAbsTol(IterativeSolver self, double atol)"""
         return _solvers.IterativeSolver_SetAbsTol(self, atol)
+    SetAbsTol = _swig_new_instance_method(_solvers.IterativeSolver_SetAbsTol)
 
     def SetMaxIter(self, max_it):
         r"""SetMaxIter(IterativeSolver self, int max_it)"""
         return _solvers.IterativeSolver_SetMaxIter(self, max_it)
+    SetMaxIter = _swig_new_instance_method(_solvers.IterativeSolver_SetMaxIter)
 
     def SetPrintLevel(self, print_lvl):
         r"""SetPrintLevel(IterativeSolver self, int print_lvl)"""
         return _solvers.IterativeSolver_SetPrintLevel(self, print_lvl)
+    SetPrintLevel = _swig_new_instance_method(_solvers.IterativeSolver_SetPrintLevel)
 
     def GetNumIterations(self):
         r"""GetNumIterations(IterativeSolver self) -> int"""
         return _solvers.IterativeSolver_GetNumIterations(self)
+    GetNumIterations = _swig_new_instance_method(_solvers.IterativeSolver_GetNumIterations)
 
     def GetConverged(self):
         r"""GetConverged(IterativeSolver self) -> int"""
         return _solvers.IterativeSolver_GetConverged(self)
+    GetConverged = _swig_new_instance_method(_solvers.IterativeSolver_GetConverged)
 
     def GetFinalNorm(self):
         r"""GetFinalNorm(IterativeSolver self) -> double"""
         return _solvers.IterativeSolver_GetFinalNorm(self)
+    GetFinalNorm = _swig_new_instance_method(_solvers.IterativeSolver_GetFinalNorm)
 
     def SetPreconditioner(self, pr):
         r"""SetPreconditioner(IterativeSolver self, Solver pr)"""
         return _solvers.IterativeSolver_SetPreconditioner(self, pr)
+    SetPreconditioner = _swig_new_instance_method(_solvers.IterativeSolver_SetPreconditioner)
 
     def SetOperator(self, op):
         r"""SetOperator(IterativeSolver self, Operator op)"""
         return _solvers.IterativeSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.IterativeSolver_SetOperator)
     __swig_destroy__ = _solvers.delete_IterativeSolver
 
 # Register IterativeSolver in _solvers:
 _solvers.IterativeSolver_swigregister(IterativeSolver)
+
+class OperatorJacobiSmoother(mfem._par.operators.Solver):
+    r"""Proxy of C++ mfem::OperatorJacobiSmoother class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(OperatorJacobiSmoother self, mfem::BilinearForm const & a, intArray ess_tdof_list, double const damping=1.0) -> OperatorJacobiSmoother
+        __init__(OperatorJacobiSmoother self, Vector d, intArray ess_tdof_list, double const damping=1.0) -> OperatorJacobiSmoother
+        """
+        _solvers.OperatorJacobiSmoother_swiginit(self, _solvers.new_OperatorJacobiSmoother(*args))
+    __swig_destroy__ = _solvers.delete_OperatorJacobiSmoother
+
+    def Mult(self, x, y):
+        r"""Mult(OperatorJacobiSmoother self, Vector x, Vector y)"""
+        return _solvers.OperatorJacobiSmoother_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_solvers.OperatorJacobiSmoother_Mult)
+
+    def SetOperator(self, op):
+        r"""SetOperator(OperatorJacobiSmoother self, Operator op)"""
+        return _solvers.OperatorJacobiSmoother_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.OperatorJacobiSmoother_SetOperator)
+
+    def Setup(self, diag):
+        r"""Setup(OperatorJacobiSmoother self, Vector diag)"""
+        return _solvers.OperatorJacobiSmoother_Setup(self, diag)
+    Setup = _swig_new_instance_method(_solvers.OperatorJacobiSmoother_Setup)
+
+# Register OperatorJacobiSmoother in _solvers:
+_solvers.OperatorJacobiSmoother_swigregister(OperatorJacobiSmoother)
 
 class SLISolver(IterativeSolver):
     r"""Proxy of C++ mfem::SLISolver class."""
@@ -147,10 +191,12 @@ class SLISolver(IterativeSolver):
     def SetOperator(self, op):
         r"""SetOperator(SLISolver self, Operator op)"""
         return _solvers.SLISolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.SLISolver_SetOperator)
 
     def Mult(self, b, x):
         r"""Mult(SLISolver self, Vector b, Vector x)"""
         return _solvers.SLISolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.SLISolver_Mult)
     __swig_destroy__ = _solvers.delete_SLISolver
 
 # Register SLISolver in _solvers:
@@ -163,6 +209,7 @@ def SLI(*args):
     SLI(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double RTOLERANCE=1e-12, double ATOLERANCE=1e-24)
     """
     return _solvers.SLI(*args)
+SLI = _solvers.SLI
 class CGSolver(IterativeSolver):
     r"""Proxy of C++ mfem::CGSolver class."""
 
@@ -179,10 +226,12 @@ class CGSolver(IterativeSolver):
     def SetOperator(self, op):
         r"""SetOperator(CGSolver self, Operator op)"""
         return _solvers.CGSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.CGSolver_SetOperator)
 
     def Mult(self, b, x):
         r"""Mult(CGSolver self, Vector b, Vector x)"""
         return _solvers.CGSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.CGSolver_Mult)
     __swig_destroy__ = _solvers.delete_CGSolver
 
 # Register CGSolver in _solvers:
@@ -192,10 +241,12 @@ _solvers.CGSolver_swigregister(CGSolver)
 def CG(A, b, x, print_iter=0, max_num_iter=1000, RTOLERANCE=1e-12, ATOLERANCE=1e-24):
     r"""CG(Operator A, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double RTOLERANCE=1e-12, double ATOLERANCE=1e-24)"""
     return _solvers.CG(A, b, x, print_iter, max_num_iter, RTOLERANCE, ATOLERANCE)
+CG = _solvers.CG
 
 def PCG(A, B, b, x, print_iter=0, max_num_iter=1000, RTOLERANCE=1e-12, ATOLERANCE=1e-24):
     r"""PCG(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double RTOLERANCE=1e-12, double ATOLERANCE=1e-24)"""
     return _solvers.PCG(A, B, b, x, print_iter, max_num_iter, RTOLERANCE, ATOLERANCE)
+PCG = _solvers.PCG
 class GMRESSolver(IterativeSolver):
     r"""Proxy of C++ mfem::GMRESSolver class."""
 
@@ -212,10 +263,12 @@ class GMRESSolver(IterativeSolver):
     def SetKDim(self, dim):
         r"""SetKDim(GMRESSolver self, int dim)"""
         return _solvers.GMRESSolver_SetKDim(self, dim)
+    SetKDim = _swig_new_instance_method(_solvers.GMRESSolver_SetKDim)
 
     def Mult(self, b, x):
         r"""Mult(GMRESSolver self, Vector b, Vector x)"""
         return _solvers.GMRESSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.GMRESSolver_Mult)
     __swig_destroy__ = _solvers.delete_GMRESSolver
 
 # Register GMRESSolver in _solvers:
@@ -237,10 +290,12 @@ class FGMRESSolver(IterativeSolver):
     def SetKDim(self, dim):
         r"""SetKDim(FGMRESSolver self, int dim)"""
         return _solvers.FGMRESSolver_SetKDim(self, dim)
+    SetKDim = _swig_new_instance_method(_solvers.FGMRESSolver_SetKDim)
 
     def Mult(self, b, x):
         r"""Mult(FGMRESSolver self, Vector b, Vector x)"""
         return _solvers.FGMRESSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.FGMRESSolver_Mult)
     __swig_destroy__ = _solvers.delete_FGMRESSolver
 
 # Register FGMRESSolver in _solvers:
@@ -253,6 +308,7 @@ def GMRES(*args):
     GMRES(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, int m=50, double rtol=1e-12, double atol=1e-24)
     """
     return _solvers.GMRES(*args)
+GMRES = _solvers.GMRES
 class BiCGSTABSolver(IterativeSolver):
     r"""Proxy of C++ mfem::BiCGSTABSolver class."""
 
@@ -269,10 +325,12 @@ class BiCGSTABSolver(IterativeSolver):
     def SetOperator(self, op):
         r"""SetOperator(BiCGSTABSolver self, Operator op)"""
         return _solvers.BiCGSTABSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.BiCGSTABSolver_SetOperator)
 
     def Mult(self, b, x):
         r"""Mult(BiCGSTABSolver self, Vector b, Vector x)"""
         return _solvers.BiCGSTABSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.BiCGSTABSolver_Mult)
     __swig_destroy__ = _solvers.delete_BiCGSTABSolver
 
 # Register BiCGSTABSolver in _solvers:
@@ -285,6 +343,7 @@ def BiCGSTAB(*args):
     BiCGSTAB(Operator A, Solver B, Vector b, Vector x, int print_iter=0, int max_num_iter=1000, double rtol=1e-12, double atol=1e-24)
     """
     return _solvers.BiCGSTAB(*args)
+BiCGSTAB = _solvers.BiCGSTAB
 class MINRESSolver(IterativeSolver):
     r"""Proxy of C++ mfem::MINRESSolver class."""
 
@@ -301,14 +360,17 @@ class MINRESSolver(IterativeSolver):
     def SetPreconditioner(self, pr):
         r"""SetPreconditioner(MINRESSolver self, Solver pr)"""
         return _solvers.MINRESSolver_SetPreconditioner(self, pr)
+    SetPreconditioner = _swig_new_instance_method(_solvers.MINRESSolver_SetPreconditioner)
 
     def SetOperator(self, op):
         r"""SetOperator(MINRESSolver self, Operator op)"""
         return _solvers.MINRESSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.MINRESSolver_SetOperator)
 
     def Mult(self, b, x):
         r"""Mult(MINRESSolver self, Vector b, Vector x)"""
         return _solvers.MINRESSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.MINRESSolver_Mult)
     __swig_destroy__ = _solvers.delete_MINRESSolver
 
 # Register MINRESSolver in _solvers:
@@ -321,6 +383,7 @@ def MINRES(*args):
     MINRES(Operator A, Solver B, Vector b, Vector x, int print_it=0, int max_it=1000, double rtol=1e-12, double atol=1e-24)
     """
     return _solvers.MINRES(*args)
+MINRES = _solvers.MINRES
 class NewtonSolver(IterativeSolver):
     r"""Proxy of C++ mfem::NewtonSolver class."""
 
@@ -337,18 +400,27 @@ class NewtonSolver(IterativeSolver):
     def SetOperator(self, op):
         r"""SetOperator(NewtonSolver self, Operator op)"""
         return _solvers.NewtonSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.NewtonSolver_SetOperator)
 
     def SetSolver(self, solver):
         r"""SetSolver(NewtonSolver self, Solver solver)"""
         return _solvers.NewtonSolver_SetSolver(self, solver)
+    SetSolver = _swig_new_instance_method(_solvers.NewtonSolver_SetSolver)
 
     def Mult(self, b, x):
         r"""Mult(NewtonSolver self, Vector b, Vector x)"""
         return _solvers.NewtonSolver_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.NewtonSolver_Mult)
 
     def ComputeScalingFactor(self, x, b):
         r"""ComputeScalingFactor(NewtonSolver self, Vector x, Vector b) -> double"""
         return _solvers.NewtonSolver_ComputeScalingFactor(self, x, b)
+    ComputeScalingFactor = _swig_new_instance_method(_solvers.NewtonSolver_ComputeScalingFactor)
+
+    def ProcessNewState(self, x):
+        r"""ProcessNewState(NewtonSolver self, Vector x)"""
+        return _solvers.NewtonSolver_ProcessNewState(self, x)
+    ProcessNewState = _swig_new_instance_method(_solvers.NewtonSolver_ProcessNewState)
     __swig_destroy__ = _solvers.delete_NewtonSolver
 
 # Register NewtonSolver in _solvers:
@@ -358,7 +430,120 @@ _solvers.NewtonSolver_swigregister(NewtonSolver)
 def aGMRES(A, x, b, M, max_iter, m_max, m_min, m_step, cf, tol, atol, printit):
     r"""aGMRES(Operator A, Vector x, Vector b, Operator M, int & max_iter, int m_max, int m_min, int m_step, double cf, double & tol, double & atol, int printit) -> int"""
     return _solvers.aGMRES(A, x, b, M, max_iter, m_max, m_min, m_step, cf, tol, atol, printit)
-class SLBQPOptimizer(IterativeSolver):
+aGMRES = _solvers.aGMRES
+class OptimizationProblem(object):
+    r"""Proxy of C++ mfem::OptimizationProblem class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    input_size = property(_solvers.OptimizationProblem_input_size_get, doc=r"""input_size : q(const).int""")
+
+    def CalcObjective(self, x):
+        r"""CalcObjective(OptimizationProblem self, Vector x) -> double"""
+        return _solvers.OptimizationProblem_CalcObjective(self, x)
+    CalcObjective = _swig_new_instance_method(_solvers.OptimizationProblem_CalcObjective)
+
+    def CalcObjectiveGrad(self, x, grad):
+        r"""CalcObjectiveGrad(OptimizationProblem self, Vector x, Vector grad)"""
+        return _solvers.OptimizationProblem_CalcObjectiveGrad(self, x, grad)
+    CalcObjectiveGrad = _swig_new_instance_method(_solvers.OptimizationProblem_CalcObjectiveGrad)
+
+    def SetEqualityConstraint(self, c):
+        r"""SetEqualityConstraint(OptimizationProblem self, Vector c)"""
+        return _solvers.OptimizationProblem_SetEqualityConstraint(self, c)
+    SetEqualityConstraint = _swig_new_instance_method(_solvers.OptimizationProblem_SetEqualityConstraint)
+
+    def SetInequalityConstraint(self, dl, dh):
+        r"""SetInequalityConstraint(OptimizationProblem self, Vector dl, Vector dh)"""
+        return _solvers.OptimizationProblem_SetInequalityConstraint(self, dl, dh)
+    SetInequalityConstraint = _swig_new_instance_method(_solvers.OptimizationProblem_SetInequalityConstraint)
+
+    def SetSolutionBounds(self, xl, xh):
+        r"""SetSolutionBounds(OptimizationProblem self, Vector xl, Vector xh)"""
+        return _solvers.OptimizationProblem_SetSolutionBounds(self, xl, xh)
+    SetSolutionBounds = _swig_new_instance_method(_solvers.OptimizationProblem_SetSolutionBounds)
+
+    def GetC(self):
+        r"""GetC(OptimizationProblem self) -> Operator"""
+        return _solvers.OptimizationProblem_GetC(self)
+    GetC = _swig_new_instance_method(_solvers.OptimizationProblem_GetC)
+
+    def GetD(self):
+        r"""GetD(OptimizationProblem self) -> Operator"""
+        return _solvers.OptimizationProblem_GetD(self)
+    GetD = _swig_new_instance_method(_solvers.OptimizationProblem_GetD)
+
+    def GetEqualityVec(self):
+        r"""GetEqualityVec(OptimizationProblem self) -> Vector"""
+        return _solvers.OptimizationProblem_GetEqualityVec(self)
+    GetEqualityVec = _swig_new_instance_method(_solvers.OptimizationProblem_GetEqualityVec)
+
+    def GetInequalityVec_Lo(self):
+        r"""GetInequalityVec_Lo(OptimizationProblem self) -> Vector"""
+        return _solvers.OptimizationProblem_GetInequalityVec_Lo(self)
+    GetInequalityVec_Lo = _swig_new_instance_method(_solvers.OptimizationProblem_GetInequalityVec_Lo)
+
+    def GetInequalityVec_Hi(self):
+        r"""GetInequalityVec_Hi(OptimizationProblem self) -> Vector"""
+        return _solvers.OptimizationProblem_GetInequalityVec_Hi(self)
+    GetInequalityVec_Hi = _swig_new_instance_method(_solvers.OptimizationProblem_GetInequalityVec_Hi)
+
+    def GetBoundsVec_Lo(self):
+        r"""GetBoundsVec_Lo(OptimizationProblem self) -> Vector"""
+        return _solvers.OptimizationProblem_GetBoundsVec_Lo(self)
+    GetBoundsVec_Lo = _swig_new_instance_method(_solvers.OptimizationProblem_GetBoundsVec_Lo)
+
+    def GetBoundsVec_Hi(self):
+        r"""GetBoundsVec_Hi(OptimizationProblem self) -> Vector"""
+        return _solvers.OptimizationProblem_GetBoundsVec_Hi(self)
+    GetBoundsVec_Hi = _swig_new_instance_method(_solvers.OptimizationProblem_GetBoundsVec_Hi)
+
+    def GetNumConstraints(self):
+        r"""GetNumConstraints(OptimizationProblem self) -> int"""
+        return _solvers.OptimizationProblem_GetNumConstraints(self)
+    GetNumConstraints = _swig_new_instance_method(_solvers.OptimizationProblem_GetNumConstraints)
+    __swig_destroy__ = _solvers.delete_OptimizationProblem
+
+# Register OptimizationProblem in _solvers:
+_solvers.OptimizationProblem_swigregister(OptimizationProblem)
+
+class OptimizationSolver(IterativeSolver):
+    r"""Proxy of C++ mfem::OptimizationSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+    __swig_destroy__ = _solvers.delete_OptimizationSolver
+
+    def SetOptimizationProblem(self, prob):
+        r"""SetOptimizationProblem(OptimizationSolver self, OptimizationProblem prob)"""
+        return _solvers.OptimizationSolver_SetOptimizationProblem(self, prob)
+    SetOptimizationProblem = _swig_new_instance_method(_solvers.OptimizationSolver_SetOptimizationProblem)
+
+    def Mult(self, xt, x):
+        r"""Mult(OptimizationSolver self, Vector xt, Vector x)"""
+        return _solvers.OptimizationSolver_Mult(self, xt, x)
+    Mult = _swig_new_instance_method(_solvers.OptimizationSolver_Mult)
+
+    def SetPreconditioner(self, pr):
+        r"""SetPreconditioner(OptimizationSolver self, Solver pr)"""
+        return _solvers.OptimizationSolver_SetPreconditioner(self, pr)
+    SetPreconditioner = _swig_new_instance_method(_solvers.OptimizationSolver_SetPreconditioner)
+
+    def SetOperator(self, op):
+        r"""SetOperator(OptimizationSolver self, Operator op)"""
+        return _solvers.OptimizationSolver_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.OptimizationSolver_SetOperator)
+
+# Register OptimizationSolver in _solvers:
+_solvers.OptimizationSolver_swigregister(OptimizationSolver)
+
+class SLBQPOptimizer(OptimizationSolver):
     r"""Proxy of C++ mfem::SLBQPOptimizer class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -371,29 +556,75 @@ class SLBQPOptimizer(IterativeSolver):
         """
         _solvers.SLBQPOptimizer_swiginit(self, _solvers.new_SLBQPOptimizer(*args))
 
+    def SetOptimizationProblem(self, prob):
+        r"""SetOptimizationProblem(SLBQPOptimizer self, OptimizationProblem prob)"""
+        return _solvers.SLBQPOptimizer_SetOptimizationProblem(self, prob)
+    SetOptimizationProblem = _swig_new_instance_method(_solvers.SLBQPOptimizer_SetOptimizationProblem)
+
     def SetBounds(self, _lo, _hi):
         r"""SetBounds(SLBQPOptimizer self, Vector _lo, Vector _hi)"""
         return _solvers.SLBQPOptimizer_SetBounds(self, _lo, _hi)
+    SetBounds = _swig_new_instance_method(_solvers.SLBQPOptimizer_SetBounds)
 
     def SetLinearConstraint(self, _w, _a):
         r"""SetLinearConstraint(SLBQPOptimizer self, Vector _w, double _a)"""
         return _solvers.SLBQPOptimizer_SetLinearConstraint(self, _w, _a)
+    SetLinearConstraint = _swig_new_instance_method(_solvers.SLBQPOptimizer_SetLinearConstraint)
 
     def Mult(self, xt, x):
         r"""Mult(SLBQPOptimizer self, Vector xt, Vector x)"""
         return _solvers.SLBQPOptimizer_Mult(self, xt, x)
-
-    def SetPreconditioner(self, pr):
-        r"""SetPreconditioner(SLBQPOptimizer self, Solver pr)"""
-        return _solvers.SLBQPOptimizer_SetPreconditioner(self, pr)
-
-    def SetOperator(self, op):
-        r"""SetOperator(SLBQPOptimizer self, Operator op)"""
-        return _solvers.SLBQPOptimizer_SetOperator(self, op)
+    Mult = _swig_new_instance_method(_solvers.SLBQPOptimizer_Mult)
     __swig_destroy__ = _solvers.delete_SLBQPOptimizer
 
 # Register SLBQPOptimizer in _solvers:
 _solvers.SLBQPOptimizer_swigregister(SLBQPOptimizer)
+
+class BlockILU(mfem._par.operators.Solver):
+    r"""Proxy of C++ mfem::BlockILU class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    Reordering_MINIMUM_DISCARDED_FILL = _solvers.BlockILU_Reordering_MINIMUM_DISCARDED_FILL
+    
+    Reordering_NONE = _solvers.BlockILU_Reordering_NONE
+    
+
+    def __init__(self, *args):
+        r"""
+        __init__(BlockILU self, int block_size_, mfem::BlockILU::Reordering reordering_=MINIMUM_DISCARDED_FILL, int k_fill_=0) -> BlockILU
+        __init__(BlockILU self, Operator op, int block_size_=1, mfem::BlockILU::Reordering reordering_=MINIMUM_DISCARDED_FILL, int k_fill_=0) -> BlockILU
+        """
+        _solvers.BlockILU_swiginit(self, _solvers.new_BlockILU(*args))
+
+    def SetOperator(self, op):
+        r"""SetOperator(BlockILU self, Operator op)"""
+        return _solvers.BlockILU_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_solvers.BlockILU_SetOperator)
+
+    def Mult(self, b, x):
+        r"""Mult(BlockILU self, Vector b, Vector x)"""
+        return _solvers.BlockILU_Mult(self, b, x)
+    Mult = _swig_new_instance_method(_solvers.BlockILU_Mult)
+
+    def GetBlockI(self):
+        r"""GetBlockI(BlockILU self) -> int *"""
+        return _solvers.BlockILU_GetBlockI(self)
+    GetBlockI = _swig_new_instance_method(_solvers.BlockILU_GetBlockI)
+
+    def GetBlockJ(self):
+        r"""GetBlockJ(BlockILU self) -> int *"""
+        return _solvers.BlockILU_GetBlockJ(self)
+    GetBlockJ = _swig_new_instance_method(_solvers.BlockILU_GetBlockJ)
+
+    def GetBlockData(self):
+        r"""GetBlockData(BlockILU self) -> double *"""
+        return _solvers.BlockILU_GetBlockData(self)
+    GetBlockData = _swig_new_instance_method(_solvers.BlockILU_GetBlockData)
+    __swig_destroy__ = _solvers.delete_BlockILU
+
+# Register BlockILU in _solvers:
+_solvers.BlockILU_swigregister(BlockILU)
 
 
 

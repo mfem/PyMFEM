@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _pnonlinearform.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _pnonlinearform.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -91,6 +94,7 @@ import mfem._par.fe
 import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
+import mfem._par.vtk
 import mfem._par.element
 import mfem._par.table
 import mfem._par.hash
@@ -102,6 +106,8 @@ import mfem._par.lininteg
 import mfem._par.linearform
 import mfem._par.handle
 import mfem._par.hypre
+import mfem._par.restriction
+import mfem._par.bilinearform
 import mfem._par.nonlininteg
 import mfem._par.blockoperator
 import mfem._par.pfespace
@@ -123,10 +129,12 @@ class ParNonlinearForm(mfem._par.nonlinearform.NonlinearForm):
     def ParFESpace(self):
         r"""ParFESpace(ParNonlinearForm self) -> ParFiniteElementSpace"""
         return _pnonlinearform.ParNonlinearForm_ParFESpace(self)
+    ParFESpace = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_ParFESpace)
 
     def GetParGridFunctionEnergy(self, x):
         r"""GetParGridFunctionEnergy(ParNonlinearForm self, Vector x) -> double"""
         return _pnonlinearform.ParNonlinearForm_GetParGridFunctionEnergy(self, x)
+    GetParGridFunctionEnergy = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_GetParGridFunctionEnergy)
 
     def GetEnergy(self, *args):
         r"""
@@ -134,26 +142,32 @@ class ParNonlinearForm(mfem._par.nonlinearform.NonlinearForm):
         GetEnergy(ParNonlinearForm self, Vector x) -> double
         """
         return _pnonlinearform.ParNonlinearForm_GetEnergy(self, *args)
+    GetEnergy = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_GetEnergy)
 
     def Mult(self, x, y):
         r"""Mult(ParNonlinearForm self, Vector x, Vector y)"""
         return _pnonlinearform.ParNonlinearForm_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_Mult)
 
     def GetLocalGradient(self, x):
         r"""GetLocalGradient(ParNonlinearForm self, Vector x) -> SparseMatrix"""
         return _pnonlinearform.ParNonlinearForm_GetLocalGradient(self, x)
+    GetLocalGradient = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_GetLocalGradient)
 
     def GetGradient(self, x):
         r"""GetGradient(ParNonlinearForm self, Vector x) -> Operator"""
         return _pnonlinearform.ParNonlinearForm_GetGradient(self, x)
+    GetGradient = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_GetGradient)
 
     def SetGradientType(self, tid):
         r"""SetGradientType(ParNonlinearForm self, mfem::Operator::Type tid)"""
         return _pnonlinearform.ParNonlinearForm_SetGradientType(self, tid)
+    SetGradientType = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_SetGradientType)
 
     def Update(self):
         r"""Update(ParNonlinearForm self)"""
         return _pnonlinearform.ParNonlinearForm_Update(self)
+    Update = _swig_new_instance_method(_pnonlinearform.ParNonlinearForm_Update)
     __swig_destroy__ = _pnonlinearform.delete_ParNonlinearForm
 
 # Register ParNonlinearForm in _pnonlinearform:
@@ -178,30 +192,37 @@ class ParBlockNonlinearForm(mfem._par.nonlinearform.BlockNonlinearForm):
         ParFESpace(ParBlockNonlinearForm self, int k) -> ParFiniteElementSpace
         """
         return _pnonlinearform.ParBlockNonlinearForm_ParFESpace(self, *args)
+    ParFESpace = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_ParFESpace)
 
     def SetParSpaces(self, pf):
         r"""SetParSpaces(ParBlockNonlinearForm self, mfem::Array< mfem::ParFiniteElementSpace * > & pf)"""
         return _pnonlinearform.ParBlockNonlinearForm_SetParSpaces(self, pf)
+    SetParSpaces = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_SetParSpaces)
 
     def SetEssentialBC(self, bdr_attr_is_ess, rhs):
         r"""SetEssentialBC(ParBlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, mfem::Array< mfem::Vector * > & rhs)"""
         return _pnonlinearform.ParBlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
+    SetEssentialBC = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_SetEssentialBC)
 
     def Mult(self, x, y):
         r"""Mult(ParBlockNonlinearForm self, Vector x, Vector y)"""
         return _pnonlinearform.ParBlockNonlinearForm_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_Mult)
 
     def GetLocalGradient(self, x):
         r"""GetLocalGradient(ParBlockNonlinearForm self, Vector x) -> BlockOperator"""
         return _pnonlinearform.ParBlockNonlinearForm_GetLocalGradient(self, x)
+    GetLocalGradient = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_GetLocalGradient)
 
     def GetGradient(self, x):
         r"""GetGradient(ParBlockNonlinearForm self, Vector x) -> BlockOperator"""
         return _pnonlinearform.ParBlockNonlinearForm_GetGradient(self, x)
+    GetGradient = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_GetGradient)
 
     def SetGradientType(self, tid):
         r"""SetGradientType(ParBlockNonlinearForm self, mfem::Operator::Type tid)"""
         return _pnonlinearform.ParBlockNonlinearForm_SetGradientType(self, tid)
+    SetGradientType = _swig_new_instance_method(_pnonlinearform.ParBlockNonlinearForm_SetGradientType)
     __swig_destroy__ = _pnonlinearform.delete_ParBlockNonlinearForm
 
 # Register ParBlockNonlinearForm in _pnonlinearform:

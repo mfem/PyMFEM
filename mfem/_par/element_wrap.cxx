@@ -3679,7 +3679,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_GetNFaces(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_GetNFaces__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int *arg2 = 0 ;
@@ -3687,10 +3687,9 @@ SWIGINTERN PyObject *_wrap_Element_GetNFaces(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_GetNFaces", 2, 2, swig_obj)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_GetNFaces" "', argument " "1"" of type '" "mfem::Element const *""'"); 
@@ -3707,6 +3706,121 @@ SWIGINTERN PyObject *_wrap_Element_GetNFaces(PyObject *SWIGUNUSEDPARM(self), PyO
   {
     try {
       result = (int)((mfem::Element const *)arg1)->GetNFaces(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Element_GetNFaces__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Element *arg1 = (mfem::Element *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int result;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_GetNFaces" "', argument " "1"" of type '" "mfem::Element const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Element * >(argp1);
+  {
+    try {
+      result = (int)((mfem::Element const *)arg1)->GetNFaces(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Element_GetNFaces(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "Element_GetNFaces", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Element, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_Element_GetNFaces__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Element, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_int, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_Element_GetNFaces__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Element_GetNFaces'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Element::GetNFaces(int &) const\n"
+    "    mfem::Element::GetNFaces() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_Element_GetNFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Element *arg1 = (mfem::Element *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Element_GetNFaceVertices", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_GetNFaceVertices" "', argument " "1"" of type '" "mfem::Element const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Element * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    try {
+      result = (int)((mfem::Element const *)arg1)->GetNFaceVertices(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4097,6 +4211,7 @@ SWIGINTERN PyObject *Element_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObje
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Element_GetType", _wrap_Element_GetType, METH_O, "Element_GetType(Element self) -> mfem::Element::Type"},
 	 { "Element_GetGeometryType", _wrap_Element_GetGeometryType, METH_O, "Element_GetGeometryType(Element self) -> mfem::Geometry::Type"},
 	 { "Element_GetAttribute", _wrap_Element_GetAttribute, METH_O, "Element_GetAttribute(Element self) -> int"},
@@ -4110,7 +4225,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "Element_GetNVertices", _wrap_Element_GetNVertices, METH_O, "Element_GetNVertices(Element self) -> int"},
 	 { "Element_GetNEdges", _wrap_Element_GetNEdges, METH_O, "Element_GetNEdges(Element self) -> int"},
 	 { "Element_GetEdgeVertices", _wrap_Element_GetEdgeVertices, METH_VARARGS, "Element_GetEdgeVertices(Element self, int arg2) -> int const *"},
-	 { "Element_GetNFaces", _wrap_Element_GetNFaces, METH_VARARGS, "Element_GetNFaces(Element self, int & nFaceVertices) -> int"},
+	 { "Element_GetNFaces", _wrap_Element_GetNFaces, METH_VARARGS, "\n"
+		"Element_GetNFaces(Element self, int & nFaceVertices) -> int\n"
+		"Element_GetNFaces(Element self) -> int\n"
+		""},
+	 { "Element_GetNFaceVertices", _wrap_Element_GetNFaceVertices, METH_VARARGS, "Element_GetNFaceVertices(Element self, int fi) -> int"},
 	 { "Element_GetFaceVertices", _wrap_Element_GetFaceVertices, METH_VARARGS, "Element_GetFaceVertices(Element self, int fi) -> int const *"},
 	 { "Element_MarkEdge", _wrap_Element_MarkEdge, METH_VARARGS, "Element_MarkEdge(Element self, DSTable v_to_v, int const * length)"},
 	 { "Element_NeedRefinement", _wrap_Element_NeedRefinement, METH_VARARGS, "Element_NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"},
@@ -4125,6 +4244,36 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Element_GetType", _wrap_Element_GetType, METH_O, "GetType(Element self) -> mfem::Element::Type"},
+	 { "Element_GetGeometryType", _wrap_Element_GetGeometryType, METH_O, "GetGeometryType(Element self) -> mfem::Geometry::Type"},
+	 { "Element_GetAttribute", _wrap_Element_GetAttribute, METH_O, "GetAttribute(Element self) -> int"},
+	 { "Element_SetAttribute", _wrap_Element_SetAttribute, METH_VARARGS, "SetAttribute(Element self, int const attr)"},
+	 { "Element_SetVertices", _wrap_Element_SetVertices, METH_VARARGS, "SetVertices(Element self, int const * ind)"},
+	 { "Element_GetVertices", _wrap_Element_GetVertices, METH_VARARGS, "\n"
+		"GetVertices(Element self, intArray v)\n"
+		"GetVertices(Element self) -> int\n"
+		"GetVertices(Element self) -> int const *\n"
+		""},
+	 { "Element_GetNVertices", _wrap_Element_GetNVertices, METH_O, "GetNVertices(Element self) -> int"},
+	 { "Element_GetNEdges", _wrap_Element_GetNEdges, METH_O, "GetNEdges(Element self) -> int"},
+	 { "Element_GetEdgeVertices", _wrap_Element_GetEdgeVertices, METH_VARARGS, "GetEdgeVertices(Element self, int arg2) -> int const *"},
+	 { "Element_GetNFaces", _wrap_Element_GetNFaces, METH_VARARGS, "\n"
+		"GetNFaces(Element self, int & nFaceVertices) -> int\n"
+		"GetNFaces(Element self) -> int\n"
+		""},
+	 { "Element_GetNFaceVertices", _wrap_Element_GetNFaceVertices, METH_VARARGS, "GetNFaceVertices(Element self, int fi) -> int"},
+	 { "Element_GetFaceVertices", _wrap_Element_GetFaceVertices, METH_VARARGS, "GetFaceVertices(Element self, int fi) -> int const *"},
+	 { "Element_MarkEdge", _wrap_Element_MarkEdge, METH_VARARGS, "MarkEdge(Element self, DSTable v_to_v, int const * length)"},
+	 { "Element_NeedRefinement", _wrap_Element_NeedRefinement, METH_VARARGS, "NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"},
+	 { "Element_ResetTransform", _wrap_Element_ResetTransform, METH_VARARGS, "ResetTransform(Element self, int tr)"},
+	 { "Element_PushTransform", _wrap_Element_PushTransform, METH_VARARGS, "PushTransform(Element self, int tr)"},
+	 { "Element_GetTransform", _wrap_Element_GetTransform, METH_O, "GetTransform(Element self) -> unsigned int"},
+	 { "Element_Duplicate", _wrap_Element_Duplicate, METH_VARARGS, "Duplicate(Element self, mfem::Mesh * m) -> Element"},
+	 { "delete_Element", _wrap_delete_Element, METH_O, "delete_Element(Element self)"},
+	 { "Element_GetVerticesArray", _wrap_Element_GetVerticesArray, METH_O, "GetVerticesArray(Element self) -> PyObject *"},
+	 { "Element_swigregister", Element_swigregister, METH_O, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

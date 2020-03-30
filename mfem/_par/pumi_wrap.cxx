@@ -3069,37 +3069,38 @@ namespace Swig {
 #define SWIGTYPE_p_GroupId swig_types[1]
 #define SWIGTYPE_p_MPI_Comm swig_types[2]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
-#define SWIGTYPE_p_apf__Field swig_types[4]
-#define SWIGTYPE_p_apf__Mesh2 swig_types[5]
-#define SWIGTYPE_p_apf__Numbering swig_types[6]
-#define SWIGTYPE_p_char swig_types[7]
-#define SWIGTYPE_p_double swig_types[8]
-#define SWIGTYPE_p_doublep swig_types[9]
-#define SWIGTYPE_p_hex_t swig_types[10]
-#define SWIGTYPE_p_int swig_types[11]
-#define SWIGTYPE_p_intp swig_types[12]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__GridFunctionPumi swig_types[14]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[15]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[16]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[17]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[18]
-#define SWIGTYPE_p_mfem__Mesh swig_types[19]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[20]
-#define SWIGTYPE_p_mfem__ParGridFunction swig_types[21]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[22]
-#define SWIGTYPE_p_mfem__ParPumiMesh swig_types[23]
-#define SWIGTYPE_p_mfem__PumiMesh swig_types[24]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[25]
-#define SWIGTYPE_p_mfem__Vector swig_types[26]
-#define SWIGTYPE_p_pri_t swig_types[27]
-#define SWIGTYPE_p_quad_t swig_types[28]
-#define SWIGTYPE_p_seg_t swig_types[29]
-#define SWIGTYPE_p_std__istream swig_types[30]
-#define SWIGTYPE_p_tet_t swig_types[31]
-#define SWIGTYPE_p_tri_t swig_types[32]
-static swig_type_info *swig_types[34];
-static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
+#define SWIGTYPE_p_RefCoord swig_types[4]
+#define SWIGTYPE_p_apf__Field swig_types[5]
+#define SWIGTYPE_p_apf__Mesh2 swig_types[6]
+#define SWIGTYPE_p_apf__Numbering swig_types[7]
+#define SWIGTYPE_p_char swig_types[8]
+#define SWIGTYPE_p_double swig_types[9]
+#define SWIGTYPE_p_doublep swig_types[10]
+#define SWIGTYPE_p_hex_t swig_types[11]
+#define SWIGTYPE_p_int swig_types[12]
+#define SWIGTYPE_p_intp swig_types[13]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[14]
+#define SWIGTYPE_p_mfem__GridFunctionPumi swig_types[15]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[16]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[17]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[18]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[19]
+#define SWIGTYPE_p_mfem__Mesh swig_types[20]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[21]
+#define SWIGTYPE_p_mfem__ParGridFunction swig_types[22]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[23]
+#define SWIGTYPE_p_mfem__ParPumiMesh swig_types[24]
+#define SWIGTYPE_p_mfem__PumiMesh swig_types[25]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[26]
+#define SWIGTYPE_p_mfem__Vector swig_types[27]
+#define SWIGTYPE_p_pri_t swig_types[28]
+#define SWIGTYPE_p_quad_t swig_types[29]
+#define SWIGTYPE_p_seg_t swig_types[30]
+#define SWIGTYPE_p_std__istream swig_types[31]
+#define SWIGTYPE_p_tet_t swig_types[32]
+#define SWIGTYPE_p_tri_t swig_types[33]
+static swig_type_info *swig_types[35];
+static swig_module_info swig_module = {swig_types, 34, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5312,6 +5313,7 @@ SWIGINTERN PyObject *GridFunctionPumi_swiginit(PyObject *SWIGUNUSEDPARM(self), P
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_intp", _wrap_new_intp, METH_NOARGS, "new_intp() -> intp"},
 	 { "delete_intp", _wrap_delete_intp, METH_O, "delete_intp(intp self)"},
 	 { "intp_assign", _wrap_intp_assign, METH_VARARGS, "intp_assign(intp self, int value)"},
@@ -5359,6 +5361,51 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_intp", _wrap_new_intp, METH_NOARGS, "new_intp() -> intp"},
+	 { "delete_intp", _wrap_delete_intp, METH_O, "delete_intp(intp self)"},
+	 { "intp_assign", _wrap_intp_assign, METH_VARARGS, "assign(intp self, int value)"},
+	 { "intp_value", _wrap_intp_value, METH_O, "value(intp self) -> int"},
+	 { "intp_cast", _wrap_intp_cast, METH_O, "cast(intp self) -> int *"},
+	 { "intp_frompointer", _wrap_intp_frompointer, METH_O, "frompointer(int * t) -> intp"},
+	 { "intp_swigregister", intp_swigregister, METH_O, NULL},
+	 { "intp_swiginit", intp_swiginit, METH_VARARGS, NULL},
+	 { "new_doublep", _wrap_new_doublep, METH_NOARGS, "new_doublep() -> doublep"},
+	 { "delete_doublep", _wrap_delete_doublep, METH_O, "delete_doublep(doublep self)"},
+	 { "doublep_assign", _wrap_doublep_assign, METH_VARARGS, "assign(doublep self, double value)"},
+	 { "doublep_value", _wrap_doublep_value, METH_O, "value(doublep self) -> double"},
+	 { "doublep_cast", _wrap_doublep_cast, METH_O, "cast(doublep self) -> double *"},
+	 { "doublep_frompointer", _wrap_doublep_frompointer, METH_O, "frompointer(double * t) -> doublep"},
+	 { "doublep_swigregister", doublep_swigregister, METH_O, NULL},
+	 { "doublep_swiginit", doublep_swiginit, METH_VARARGS, NULL},
+	 { "ParMesh2ParPumiMesh", _wrap_ParMesh2ParPumiMesh, METH_O, "ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"},
+	 { "new_PumiMesh", _wrap_new_PumiMesh, METH_VARARGS, "PumiMesh(apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)"},
+	 { "PumiMesh_Load", _wrap_PumiMesh_Load, METH_VARARGS, "\n"
+		"Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
+		"Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1)\n"
+		"Load(PumiMesh self, std::istream & input, int generate_edges=0)\n"
+		"Load(PumiMesh self, std::istream & input)\n"
+		"Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
+		""},
+	 { "delete_PumiMesh", _wrap_delete_PumiMesh, METH_O, "delete_PumiMesh(PumiMesh self)"},
+	 { "PumiMesh_swigregister", PumiMesh_swigregister, METH_O, NULL},
+	 { "PumiMesh_swiginit", PumiMesh_swiginit, METH_VARARGS, NULL},
+	 { "new_ParPumiMesh", _wrap_new_ParPumiMesh, METH_VARARGS, "new_ParPumiMesh(MPI_Comm comm, apf::Mesh2 * apf_mesh) -> ParPumiMesh"},
+	 { "ParPumiMesh_FieldMFEMtoPUMI", _wrap_ParPumiMesh_FieldMFEMtoPUMI, METH_VARARGS, "\n"
+		"FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, ParGridFunction Pr, apf::Field * VelField, apf::Field * PrField, apf::Field * VelMagField)\n"
+		"FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Pr, apf::Field * PrField, apf::Field * PrMagField)\n"
+		""},
+	 { "ParPumiMesh_VectorFieldMFEMtoPUMI", _wrap_ParPumiMesh_VectorFieldMFEMtoPUMI, METH_VARARGS, "VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, apf::Field * VelField, apf::Field * VelMagField)"},
+	 { "ParPumiMesh_UpdateMesh", _wrap_ParPumiMesh_UpdateMesh, METH_VARARGS, "UpdateMesh(ParPumiMesh self, ParMesh AdaptedpMesh)"},
+	 { "ParPumiMesh_FieldPUMItoMFEM", _wrap_ParPumiMesh_FieldPUMItoMFEM, METH_VARARGS, "FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction Pr)"},
+	 { "delete_ParPumiMesh", _wrap_delete_ParPumiMesh, METH_O, "delete_ParPumiMesh(ParPumiMesh self)"},
+	 { "ParPumiMesh_swigregister", ParPumiMesh_swigregister, METH_O, NULL},
+	 { "ParPumiMesh_swiginit", ParPumiMesh_swiginit, METH_VARARGS, NULL},
+	 { "new_GridFunctionPumi", _wrap_new_GridFunctionPumi, METH_VARARGS, "new_GridFunctionPumi(Mesh m, apf::Mesh2 * PumiM, apf::Numbering * v_num_loc, int const mesh_order) -> GridFunctionPumi"},
+	 { "delete_GridFunctionPumi", _wrap_delete_GridFunctionPumi, METH_O, "delete_GridFunctionPumi(GridFunctionPumi self)"},
+	 { "GridFunctionPumi_swigregister", GridFunctionPumi_swigregister, METH_O, NULL},
+	 { "GridFunctionPumi_swiginit", GridFunctionPumi_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5411,6 +5458,7 @@ static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Field = {"_p_apf__Field", "apf::Field *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Mesh2 = {"_p_apf__Mesh2", "apf::Mesh2 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Numbering = {"_p_apf__Numbering", "apf::Numbering *", 0, 0, (void*)0, 0};
@@ -5446,6 +5494,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_GroupId,
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_apf__Field,
   &_swigt__p_apf__Mesh2,
   &_swigt__p_apf__Numbering,
@@ -5481,6 +5530,7 @@ static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0}
 static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Field[] = {  {&_swigt__p_apf__Field, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Mesh2[] = {  {&_swigt__p_apf__Mesh2, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Numbering[] = {  {&_swigt__p_apf__Numbering, 0, 0, 0},{0, 0, 0, 0}};
@@ -5516,6 +5566,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_GroupId,
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_apf__Field,
   _swigc__p_apf__Mesh2,
   _swigc__p_apf__Numbering,
@@ -6274,18 +6325,18 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40100)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.1.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40100)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

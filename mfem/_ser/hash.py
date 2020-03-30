@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _hash.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _hash.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -103,9 +106,16 @@ _hash.Hashed4_swigregister(Hashed4)
 def sort3(a, b, c):
     r"""sort3(int & a, int & b, int & c)"""
     return _hash.sort3(a, b, c)
+sort3 = _hash.sort3
 
 def sort4(a, b, c, d):
     r"""sort4(int & a, int & b, int & c, int & d)"""
     return _hash.sort4(a, b, c, d)
+sort4 = _hash.sort4
+
+def sort4_ext(a, b, c, d):
+    r"""sort4_ext(int & a, int & b, int & c, int & d)"""
+    return _hash.sort4_ext(a, b, c, d)
+sort4_ext = _hash.sort4_ext
 
 

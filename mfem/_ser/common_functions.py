@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _common_functions.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _common_functions.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -67,6 +70,7 @@ import mfem._ser.mem_manager
 def InnerProduct(x, y):
     r"""InnerProduct(mfem::Vector const & x, mfem::Vector const & y) -> double"""
     return _common_functions.InnerProduct(x, y)
+InnerProduct = _common_functions.InnerProduct
 
 def RAP(*args):
     r"""
@@ -76,6 +80,7 @@ def RAP(*args):
     RAP(mfem::SparseMatrix const & Rt, mfem::SparseMatrix const & A, mfem::SparseMatrix const & P) -> mfem::SparseMatrix *
     """
     return _common_functions.RAP(*args)
+RAP = _common_functions.RAP
 
 def Add(*args):
     r"""
@@ -88,6 +93,7 @@ def Add(*args):
     Add(mfem::SparseMatrix const & A, double alpha, mfem::DenseMatrix & B)
     """
     return _common_functions.Add(*args)
+Add = _common_functions.Add
 
 def Transpose(*args):
     r"""
@@ -98,6 +104,7 @@ def Transpose(*args):
     Transpose(mfem::BlockMatrix const & A) -> mfem::BlockMatrix *
     """
     return _common_functions.Transpose(*args)
+Transpose = _common_functions.Transpose
 
 def Mult(*args):
     r"""
@@ -109,5 +116,6 @@ def Mult(*args):
     Mult(mfem::BlockMatrix const & A, mfem::BlockMatrix const & B) -> mfem::BlockMatrix *
     """
     return _common_functions.Mult(*args)
+Mult = _common_functions.Mult
 
 

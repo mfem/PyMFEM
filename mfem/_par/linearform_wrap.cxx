@@ -3064,44 +3064,46 @@ namespace Swig {
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_hex_t swig_types[3]
-#define SWIGTYPE_p_int swig_types[4]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t swig_types[8]
-#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[9]
-#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[10]
-#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[11]
-#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[12]
-#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[13]
-#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[15]
-#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[16]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[17]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[18]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[19]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[20]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[21]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[22]
-#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[23]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[24]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[25]
-#define SWIGTYPE_p_mfem__Vector swig_types[26]
-#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[27]
-#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[28]
-#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[29]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[30]
-#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[31]
-#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[32]
-#define SWIGTYPE_p_pri_t swig_types[33]
-#define SWIGTYPE_p_quad_t swig_types[34]
-#define SWIGTYPE_p_seg_t swig_types[35]
-#define SWIGTYPE_p_tet_t swig_types[36]
-#define SWIGTYPE_p_tri_t swig_types[37]
-static swig_type_info *swig_types[39];
-static swig_module_info swig_module = {swig_types, 38, 0, 0, 0, 0};
+#define SWIGTYPE_p_RefCoord swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_double swig_types[4]
+#define SWIGTYPE_p_hex_t swig_types[5]
+#define SWIGTYPE_p_int swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__ArrayT_int_t_p_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__DeltaLFIntegrator_p_t swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__LinearFormIntegrator_p_t swig_types[10]
+#define SWIGTYPE_p_mfem__BoundaryFlowIntegrator swig_types[11]
+#define SWIGTYPE_p_mfem__BoundaryLFIntegrator swig_types[12]
+#define SWIGTYPE_p_mfem__BoundaryNormalLFIntegrator swig_types[13]
+#define SWIGTYPE_p_mfem__BoundaryTangentialLFIntegrator swig_types[14]
+#define SWIGTYPE_p_mfem__DGDirichletLFIntegrator swig_types[15]
+#define SWIGTYPE_p_mfem__DGElasticityDirichletLFIntegrator swig_types[16]
+#define SWIGTYPE_p_mfem__DeltaLFIntegrator swig_types[17]
+#define SWIGTYPE_p_mfem__DomainLFIntegrator swig_types[18]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[19]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[20]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[21]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[22]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[23]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[24]
+#define SWIGTYPE_p_mfem__LinearFormIntegrator swig_types[25]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[26]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[27]
+#define SWIGTYPE_p_mfem__Vector swig_types[28]
+#define SWIGTYPE_p_mfem__VectorBoundaryFluxLFIntegrator swig_types[29]
+#define SWIGTYPE_p_mfem__VectorBoundaryLFIntegrator swig_types[30]
+#define SWIGTYPE_p_mfem__VectorDomainLFIntegrator swig_types[31]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryFluxLFIntegrator swig_types[32]
+#define SWIGTYPE_p_mfem__VectorFEBoundaryTangentLFIntegrator swig_types[33]
+#define SWIGTYPE_p_mfem__VectorFEDomainLFIntegrator swig_types[34]
+#define SWIGTYPE_p_pri_t swig_types[35]
+#define SWIGTYPE_p_quad_t swig_types[36]
+#define SWIGTYPE_p_seg_t swig_types[37]
+#define SWIGTYPE_p_tet_t swig_types[38]
+#define SWIGTYPE_p_tri_t swig_types[39]
+static swig_type_info *swig_types[41];
+static swig_module_info swig_module = {swig_types, 40, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3320,6 +3322,42 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_LinearForm__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
+  double *arg2 = (double *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  mfem::LinearForm *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_LinearForm" "', argument " "1"" of type '" "mfem::FiniteElementSpace *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_LinearForm" "', argument " "2"" of type '" "double *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  {
+    try {
+      result = (mfem::LinearForm *)new mfem::LinearForm(arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__LinearForm, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_LinearForm(PyObject *self, PyObject *args) {
   Py_ssize_t argc;
   PyObject *argv[3] = {
@@ -3354,13 +3392,28 @@ SWIGINTERN PyObject *_wrap_new_LinearForm(PyObject *self, PyObject *args) {
       }
     }
   }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_new_LinearForm__SWIG_3(self, argc, argv);
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_LinearForm'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::LinearForm::LinearForm(mfem::FiniteElementSpace *)\n"
     "    mfem::LinearForm::LinearForm(mfem::FiniteElementSpace *,mfem::LinearForm *)\n"
-    "    mfem::LinearForm::LinearForm()\n");
+    "    mfem::LinearForm::LinearForm()\n"
+    "    mfem::LinearForm::LinearForm(mfem::FiniteElementSpace *,double *)\n");
   return 0;
 }
 
@@ -4263,10 +4316,12 @@ SWIGINTERN PyObject *LinearForm_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_LinearForm", _wrap_new_LinearForm, METH_VARARGS, "\n"
 		"LinearForm(FiniteElementSpace f)\n"
 		"LinearForm(FiniteElementSpace f, LinearForm lf)\n"
-		"new_LinearForm() -> LinearForm\n"
+		"LinearForm()\n"
+		"new_LinearForm(FiniteElementSpace f, double * data) -> LinearForm\n"
 		""},
 	 { "LinearForm_GetFES", _wrap_LinearForm_GetFES, METH_O, "LinearForm_GetFES(LinearForm self) -> FiniteElementSpace"},
 	 { "LinearForm_FESpace", _wrap_LinearForm_FESpace, METH_VARARGS, "\n"
@@ -4302,6 +4357,44 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_LinearForm", _wrap_new_LinearForm, METH_VARARGS, "\n"
+		"LinearForm(FiniteElementSpace f)\n"
+		"LinearForm(FiniteElementSpace f, LinearForm lf)\n"
+		"LinearForm()\n"
+		"new_LinearForm(FiniteElementSpace f, double * data) -> LinearForm\n"
+		""},
+	 { "LinearForm_GetFES", _wrap_LinearForm_GetFES, METH_O, "GetFES(LinearForm self) -> FiniteElementSpace"},
+	 { "LinearForm_FESpace", _wrap_LinearForm_FESpace, METH_VARARGS, "\n"
+		"FESpace(LinearForm self) -> FiniteElementSpace\n"
+		"FESpace(LinearForm self) -> FiniteElementSpace\n"
+		""},
+	 { "LinearForm_AddDomainIntegrator", _wrap_LinearForm_AddDomainIntegrator, METH_VARARGS, "AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
+	 { "LinearForm_AddBoundaryIntegrator", _wrap_LinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
+		"AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)\n"
+		"AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
+		""},
+	 { "LinearForm_AddBdrFaceIntegrator", _wrap_LinearForm_AddBdrFaceIntegrator, METH_VARARGS, "\n"
+		"AddBdrFaceIntegrator(LinearForm self, LinearFormIntegrator lfi)\n"
+		"AddBdrFaceIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
+		""},
+	 { "LinearForm_GetDLFI", _wrap_LinearForm_GetDLFI, METH_O, "GetDLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { "LinearForm_GetDLFI_Delta", _wrap_LinearForm_GetDLFI_Delta, METH_O, "GetDLFI_Delta(LinearForm self) -> mfem::Array< mfem::DeltaLFIntegrator * > *"},
+	 { "LinearForm_GetBLFI", _wrap_LinearForm_GetBLFI, METH_O, "GetBLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { "LinearForm_GetFLFI", _wrap_LinearForm_GetFLFI, METH_O, "GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"},
+	 { "LinearForm_GetFLFI_Marker", _wrap_LinearForm_GetFLFI_Marker, METH_O, "GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
+	 { "LinearForm_Assemble", _wrap_LinearForm_Assemble, METH_O, "Assemble(LinearForm self)"},
+	 { "LinearForm_AssembleDelta", _wrap_LinearForm_AssembleDelta, METH_O, "AssembleDelta(LinearForm self)"},
+	 { "LinearForm_Update", _wrap_LinearForm_Update, METH_VARARGS, "\n"
+		"Update(LinearForm self)\n"
+		"Update(LinearForm self, FiniteElementSpace f)\n"
+		"Update(LinearForm self, FiniteElementSpace f, Vector v, int v_offset)\n"
+		""},
+	 { "LinearForm___call__", _wrap_LinearForm___call__, METH_VARARGS, "__call__(LinearForm self, GridFunction gf) -> double"},
+	 { "delete_LinearForm", _wrap_delete_LinearForm, METH_O, "delete_LinearForm(LinearForm self)"},
+	 { "LinearForm_swigregister", LinearForm_swigregister, METH_O, NULL},
+	 { "LinearForm_swiginit", LinearForm_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -4364,7 +4457,9 @@ static void *_p_mfem__DeltaLFIntegratorTo_p_mfem__LinearFormIntegrator(void *x, 
 }
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
@@ -4404,7 +4499,9 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_char,
+  &_swigt__p_double,
   &_swigt__p_hex_t,
   &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
@@ -4444,7 +4541,9 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -4484,7 +4583,9 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_char,
+  _swigc__p_double,
   _swigc__p_hex_t,
   _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,

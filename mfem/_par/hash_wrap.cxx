@@ -3425,8 +3425,81 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_sort4_ext(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int *arg1 = 0 ;
+  int *arg2 = 0 ;
+  int *arg3 = 0 ;
+  int *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "sort4_ext", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sort4_ext" "', argument " "1"" of type '" "int &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4_ext" "', argument " "1"" of type '" "int &""'"); 
+  }
+  arg1 = reinterpret_cast< int * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sort4_ext" "', argument " "2"" of type '" "int &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4_ext" "', argument " "2"" of type '" "int &""'"); 
+  }
+  arg2 = reinterpret_cast< int * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "sort4_ext" "', argument " "3"" of type '" "int &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4_ext" "', argument " "3"" of type '" "int &""'"); 
+  }
+  arg3 = reinterpret_cast< int * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_int,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "sort4_ext" "', argument " "4"" of type '" "int &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4_ext" "', argument " "4"" of type '" "int &""'"); 
+  }
+  arg4 = reinterpret_cast< int * >(argp4);
+  {
+    try {
+      mfem::internal::sort4_ext(*arg1,*arg2,*arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "Hashed2_p1_set", _wrap_Hashed2_p1_set, METH_VARARGS, "Hashed2_p1_set(Hashed2 self, int p1)"},
 	 { "Hashed2_p1_get", _wrap_Hashed2_p1_get, METH_O, "Hashed2_p1_get(Hashed2 self) -> int"},
 	 { "Hashed2_p2_set", _wrap_Hashed2_p2_set, METH_VARARGS, "Hashed2_p2_set(Hashed2 self, int p2)"},
@@ -3451,10 +3524,38 @@ static PyMethodDef SwigMethods[] = {
 	 { "Hashed4_swiginit", Hashed4_swiginit, METH_VARARGS, NULL},
 	 { "sort3", _wrap_sort3, METH_VARARGS, "sort3(int & a, int & b, int & c)"},
 	 { "sort4", _wrap_sort4, METH_VARARGS, "sort4(int & a, int & b, int & c, int & d)"},
+	 { "sort4_ext", _wrap_sort4_ext, METH_VARARGS, "sort4_ext(int & a, int & b, int & c, int & d)"},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Hashed2_p1_set", _wrap_Hashed2_p1_set, METH_VARARGS, "Hashed2_p1_set(Hashed2 self, int p1)"},
+	 { "Hashed2_p1_get", _wrap_Hashed2_p1_get, METH_O, "Hashed2_p1_get(Hashed2 self) -> int"},
+	 { "Hashed2_p2_set", _wrap_Hashed2_p2_set, METH_VARARGS, "Hashed2_p2_set(Hashed2 self, int p2)"},
+	 { "Hashed2_p2_get", _wrap_Hashed2_p2_get, METH_O, "Hashed2_p2_get(Hashed2 self) -> int"},
+	 { "Hashed2_next_set", _wrap_Hashed2_next_set, METH_VARARGS, "Hashed2_next_set(Hashed2 self, int next)"},
+	 { "Hashed2_next_get", _wrap_Hashed2_next_get, METH_O, "Hashed2_next_get(Hashed2 self) -> int"},
+	 { "new_Hashed2", _wrap_new_Hashed2, METH_NOARGS, "new_Hashed2() -> Hashed2"},
+	 { "delete_Hashed2", _wrap_delete_Hashed2, METH_O, "delete_Hashed2(Hashed2 self)"},
+	 { "Hashed2_swigregister", Hashed2_swigregister, METH_O, NULL},
+	 { "Hashed2_swiginit", Hashed2_swiginit, METH_VARARGS, NULL},
+	 { "Hashed4_p1_set", _wrap_Hashed4_p1_set, METH_VARARGS, "Hashed4_p1_set(Hashed4 self, int p1)"},
+	 { "Hashed4_p1_get", _wrap_Hashed4_p1_get, METH_O, "Hashed4_p1_get(Hashed4 self) -> int"},
+	 { "Hashed4_p2_set", _wrap_Hashed4_p2_set, METH_VARARGS, "Hashed4_p2_set(Hashed4 self, int p2)"},
+	 { "Hashed4_p2_get", _wrap_Hashed4_p2_get, METH_O, "Hashed4_p2_get(Hashed4 self) -> int"},
+	 { "Hashed4_p3_set", _wrap_Hashed4_p3_set, METH_VARARGS, "Hashed4_p3_set(Hashed4 self, int p3)"},
+	 { "Hashed4_p3_get", _wrap_Hashed4_p3_get, METH_O, "Hashed4_p3_get(Hashed4 self) -> int"},
+	 { "Hashed4_next_set", _wrap_Hashed4_next_set, METH_VARARGS, "Hashed4_next_set(Hashed4 self, int next)"},
+	 { "Hashed4_next_get", _wrap_Hashed4_next_get, METH_O, "Hashed4_next_get(Hashed4 self) -> int"},
+	 { "new_Hashed4", _wrap_new_Hashed4, METH_NOARGS, "new_Hashed4() -> Hashed4"},
+	 { "delete_Hashed4", _wrap_delete_Hashed4, METH_O, "delete_Hashed4(Hashed4 self)"},
+	 { "Hashed4_swigregister", Hashed4_swigregister, METH_O, NULL},
+	 { "Hashed4_swiginit", Hashed4_swiginit, METH_VARARGS, NULL},
+	 { "sort3", _wrap_sort3, METH_VARARGS, "sort3(int & a, int & b, int & c)"},
+	 { "sort4", _wrap_sort4, METH_VARARGS, "sort4(int & a, int & b, int & c, int & d)"},
+	 { "sort4_ext", _wrap_sort4_ext, METH_VARARGS, "sort4_ext(int & a, int & b, int & c, int & d)"},
 	 { NULL, NULL, 0, NULL }
 };
 

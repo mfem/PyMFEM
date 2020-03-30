@@ -3067,24 +3067,25 @@ namespace Swig {
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_hex_t swig_types[3]
-#define SWIGTYPE_p_int swig_types[4]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[5]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[6]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[7]
-#define SWIGTYPE_p_mfem__Mesh swig_types[8]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[9]
-#define SWIGTYPE_p_mfem__socketbuf swig_types[10]
-#define SWIGTYPE_p_mfem__socketserver swig_types[11]
-#define SWIGTYPE_p_mfem__socketstream swig_types[12]
-#define SWIGTYPE_p_pri_t swig_types[13]
-#define SWIGTYPE_p_quad_t swig_types[14]
-#define SWIGTYPE_p_seg_t swig_types[15]
-#define SWIGTYPE_p_tet_t swig_types[16]
-#define SWIGTYPE_p_tri_t swig_types[17]
-static swig_type_info *swig_types[19];
-static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
+#define SWIGTYPE_p_RefCoord swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_hex_t swig_types[4]
+#define SWIGTYPE_p_int swig_types[5]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[6]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[7]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[8]
+#define SWIGTYPE_p_mfem__Mesh swig_types[9]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[10]
+#define SWIGTYPE_p_mfem__socketbuf swig_types[11]
+#define SWIGTYPE_p_mfem__socketserver swig_types[12]
+#define SWIGTYPE_p_mfem__socketstream swig_types[13]
+#define SWIGTYPE_p_pri_t swig_types[14]
+#define SWIGTYPE_p_quad_t swig_types[15]
+#define SWIGTYPE_p_seg_t swig_types[16]
+#define SWIGTYPE_p_tet_t swig_types[17]
+#define SWIGTYPE_p_tri_t swig_types[18]
+static swig_type_info *swig_types[20];
+static swig_module_info swig_module = {swig_types, 19, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5236,6 +5237,7 @@ SWIGINTERN PyObject *socketserver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObj
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_socketbuf", _wrap_new_socketbuf, METH_VARARGS, "\n"
 		"socketbuf()\n"
 		"socketbuf(int sd)\n"
@@ -5291,6 +5293,59 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_socketbuf", _wrap_new_socketbuf, METH_VARARGS, "\n"
+		"socketbuf()\n"
+		"socketbuf(int sd)\n"
+		"new_socketbuf(char const [] hostname, int port) -> socketbuf\n"
+		""},
+	 { "socketbuf_attach", _wrap_socketbuf_attach, METH_VARARGS, "attach(socketbuf self, int sd) -> int"},
+	 { "socketbuf_detach", _wrap_socketbuf_detach, METH_O, "detach(socketbuf self) -> int"},
+	 { "socketbuf_open", _wrap_socketbuf_open, METH_VARARGS, "open(socketbuf self, char const [] hostname, int port) -> int"},
+	 { "socketbuf_close", _wrap_socketbuf_close, METH_O, "close(socketbuf self) -> int"},
+	 { "socketbuf_getsocketdescriptor", _wrap_socketbuf_getsocketdescriptor, METH_O, "getsocketdescriptor(socketbuf self) -> int"},
+	 { "socketbuf_is_open", _wrap_socketbuf_is_open, METH_O, "is_open(socketbuf self) -> bool"},
+	 { "delete_socketbuf", _wrap_delete_socketbuf, METH_O, "delete_socketbuf(socketbuf self)"},
+	 { "socketbuf_swigregister", socketbuf_swigregister, METH_O, NULL},
+	 { "socketbuf_swiginit", socketbuf_swiginit, METH_VARARGS, NULL},
+	 { "new_socketstream", _wrap_new_socketstream, METH_VARARGS, "\n"
+		"socketstream(bool secure=secure_default)\n"
+		"socketstream(socketbuf buf)\n"
+		"socketstream(int s, bool secure=secure_default)\n"
+		"socketstream(char const [] hostname, int port, bool secure=secure_default)\n"
+		""},
+	 { "socketstream_rdbuf", _wrap_socketstream_rdbuf, METH_O, "rdbuf(socketstream self) -> socketbuf"},
+	 { "socketstream_open", _wrap_socketstream_open, METH_VARARGS, "open(socketstream self, char const [] hostname, int port) -> int"},
+	 { "socketstream_close", _wrap_socketstream_close, METH_O, "close(socketstream self) -> int"},
+	 { "socketstream_is_open", _wrap_socketstream_is_open, METH_O, "is_open(socketstream self) -> bool"},
+	 { "delete_socketstream", _wrap_delete_socketstream, METH_O, "delete_socketstream(socketstream self)"},
+	 { "socketstream_precision", _wrap_socketstream_precision, METH_VARARGS, "\n"
+		"precision(socketstream self, int const p) -> int\n"
+		"precision(socketstream self) -> int\n"
+		""},
+	 { "socketstream_send_solution", _wrap_socketstream_send_solution, METH_VARARGS, "send_solution(socketstream self, Mesh mesh, GridFunction gf)"},
+	 { "socketstream_send_text", _wrap_socketstream_send_text, METH_VARARGS, "send_text(socketstream self, char const [] ostr)"},
+	 { "socketstream_flush", _wrap_socketstream_flush, METH_O, "flush(socketstream self)"},
+	 { "socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, "\n"
+		"__lshift__(socketstream self, char const [] ostr) -> socketstream\n"
+		"__lshift__(socketstream self, int const x) -> socketstream\n"
+		"__lshift__(socketstream self, Mesh mesh) -> socketstream\n"
+		"__lshift__(socketstream self, GridFunction gf) -> socketstream\n"
+		""},
+	 { "socketstream_endline", _wrap_socketstream_endline, METH_O, "endline(socketstream self) -> socketstream"},
+	 { "socketstream_swigregister", socketstream_swigregister, METH_O, NULL},
+	 { "socketstream_swiginit", socketstream_swiginit, METH_VARARGS, NULL},
+	 { "new_socketserver", _wrap_new_socketserver, METH_VARARGS, "socketserver(int port, int backlog=4)"},
+	 { "socketserver_good", _wrap_socketserver_good, METH_O, "good(socketserver self) -> bool"},
+	 { "socketserver_close", _wrap_socketserver_close, METH_O, "close(socketserver self) -> int"},
+	 { "socketserver_accept", _wrap_socketserver_accept, METH_VARARGS, "\n"
+		"accept(socketserver self) -> int\n"
+		"accept(socketserver self, socketstream sockstr) -> int\n"
+		""},
+	 { "delete_socketserver", _wrap_delete_socketserver, METH_O, "delete_socketserver(socketserver self)"},
+	 { "socketserver_swigregister", socketserver_swigregister, METH_O, NULL},
+	 { "socketserver_swiginit", socketserver_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5299,6 +5354,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
@@ -5319,6 +5375,7 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_char,
   &_swigt__p_hex_t,
   &_swigt__p_int,
@@ -5339,6 +5396,7 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
@@ -5359,6 +5417,7 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_char,
   _swigc__p_hex_t,
   _swigc__p_int,

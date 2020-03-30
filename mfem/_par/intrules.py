@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _intrules.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _intrules.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -71,7 +74,9 @@ class IntegrationPointArray(object):
 
     def __init__(self, *args):
         r"""
-        __init__(IntegrationPointArray self, int asize=0) -> IntegrationPointArray
+        __init__(IntegrationPointArray self) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, mfem::MemoryType mt) -> IntegrationPointArray
+        __init__(IntegrationPointArray self, int asize) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPoint _data, int asize) -> IntegrationPointArray
         __init__(IntegrationPointArray self, IntegrationPointArray src) -> IntegrationPointArray
         """
@@ -90,6 +95,7 @@ class IntegrationPointArray(object):
         GetData(IntegrationPointArray self) -> IntegrationPoint
         """
         return _intrules.IntegrationPointArray_GetData(self, *args)
+    GetData = _swig_new_instance_method(_intrules.IntegrationPointArray_GetData)
 
     def GetMemory(self, *args):
         r"""
@@ -97,30 +103,37 @@ class IntegrationPointArray(object):
         GetMemory(IntegrationPointArray self) -> mfem::Memory< mfem::IntegrationPoint > const &
         """
         return _intrules.IntegrationPointArray_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_intrules.IntegrationPointArray_GetMemory)
 
     def UseDevice(self):
         r"""UseDevice(IntegrationPointArray self) -> bool"""
         return _intrules.IntegrationPointArray_UseDevice(self)
+    UseDevice = _swig_new_instance_method(_intrules.IntegrationPointArray_UseDevice)
 
     def OwnsData(self):
         r"""OwnsData(IntegrationPointArray self) -> bool"""
         return _intrules.IntegrationPointArray_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_intrules.IntegrationPointArray_OwnsData)
 
     def StealData(self, p):
         r"""StealData(IntegrationPointArray self, mfem::IntegrationPoint ** p)"""
         return _intrules.IntegrationPointArray_StealData(self, p)
+    StealData = _swig_new_instance_method(_intrules.IntegrationPointArray_StealData)
 
     def LoseData(self):
         r"""LoseData(IntegrationPointArray self)"""
         return _intrules.IntegrationPointArray_LoseData(self)
+    LoseData = _swig_new_instance_method(_intrules.IntegrationPointArray_LoseData)
 
     def MakeDataOwner(self):
         r"""MakeDataOwner(IntegrationPointArray self)"""
         return _intrules.IntegrationPointArray_MakeDataOwner(self)
+    MakeDataOwner = _swig_new_instance_method(_intrules.IntegrationPointArray_MakeDataOwner)
 
     def Size(self):
         r"""Size(IntegrationPointArray self) -> int"""
         return _intrules.IntegrationPointArray_Size(self)
+    Size = _swig_new_instance_method(_intrules.IntegrationPointArray_Size)
 
     def SetSize(self, *args):
         r"""
@@ -129,14 +142,17 @@ class IntegrationPointArray(object):
         SetSize(IntegrationPointArray self, int nsize, mfem::MemoryType mt)
         """
         return _intrules.IntegrationPointArray_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_intrules.IntegrationPointArray_SetSize)
 
     def Capacity(self):
         r"""Capacity(IntegrationPointArray self) -> int"""
         return _intrules.IntegrationPointArray_Capacity(self)
+    Capacity = _swig_new_instance_method(_intrules.IntegrationPointArray_Capacity)
 
     def Reserve(self, capacity):
         r"""Reserve(IntegrationPointArray self, int capacity)"""
         return _intrules.IntegrationPointArray_Reserve(self, capacity)
+    Reserve = _swig_new_instance_method(_intrules.IntegrationPointArray_Reserve)
 
     def Append(self, *args):
         r"""
@@ -145,10 +161,12 @@ class IntegrationPointArray(object):
         Append(IntegrationPointArray self, IntegrationPointArray els) -> int
         """
         return _intrules.IntegrationPointArray_Append(self, *args)
+    Append = _swig_new_instance_method(_intrules.IntegrationPointArray_Append)
 
     def Prepend(self, el):
         r"""Prepend(IntegrationPointArray self, IntegrationPoint el) -> int"""
         return _intrules.IntegrationPointArray_Prepend(self, el)
+    Prepend = _swig_new_instance_method(_intrules.IntegrationPointArray_Prepend)
 
     def Last(self, *args):
         r"""
@@ -156,18 +174,22 @@ class IntegrationPointArray(object):
         Last(IntegrationPointArray self) -> IntegrationPoint
         """
         return _intrules.IntegrationPointArray_Last(self, *args)
+    Last = _swig_new_instance_method(_intrules.IntegrationPointArray_Last)
 
     def DeleteLast(self):
         r"""DeleteLast(IntegrationPointArray self)"""
         return _intrules.IntegrationPointArray_DeleteLast(self)
+    DeleteLast = _swig_new_instance_method(_intrules.IntegrationPointArray_DeleteLast)
 
     def DeleteAll(self):
         r"""DeleteAll(IntegrationPointArray self)"""
         return _intrules.IntegrationPointArray_DeleteAll(self)
+    DeleteAll = _swig_new_instance_method(_intrules.IntegrationPointArray_DeleteAll)
 
     def Copy(self, copy):
         r"""Copy(IntegrationPointArray self, IntegrationPointArray copy)"""
         return _intrules.IntegrationPointArray_Copy(self, copy)
+    Copy = _swig_new_instance_method(_intrules.IntegrationPointArray_Copy)
 
     def MakeRef(self, *args):
         r"""
@@ -175,54 +197,73 @@ class IntegrationPointArray(object):
         MakeRef(IntegrationPointArray self, IntegrationPointArray master)
         """
         return _intrules.IntegrationPointArray_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_intrules.IntegrationPointArray_MakeRef)
 
     def GetSubArray(self, offset, sa_size, sa):
         r"""GetSubArray(IntegrationPointArray self, int offset, int sa_size, IntegrationPointArray sa)"""
         return _intrules.IntegrationPointArray_GetSubArray(self, offset, sa_size, sa)
+    GetSubArray = _swig_new_instance_method(_intrules.IntegrationPointArray_GetSubArray)
 
-    def begin(self):
-        r"""begin(IntegrationPointArray self) -> IntegrationPoint"""
-        return _intrules.IntegrationPointArray_begin(self)
+    def begin(self, *args):
+        r"""
+        begin(IntegrationPointArray self) -> IntegrationPoint
+        begin(IntegrationPointArray self) -> IntegrationPoint
+        """
+        return _intrules.IntegrationPointArray_begin(self, *args)
+    begin = _swig_new_instance_method(_intrules.IntegrationPointArray_begin)
 
-    def end(self):
-        r"""end(IntegrationPointArray self) -> IntegrationPoint"""
-        return _intrules.IntegrationPointArray_end(self)
+    def end(self, *args):
+        r"""
+        end(IntegrationPointArray self) -> IntegrationPoint
+        end(IntegrationPointArray self) -> IntegrationPoint
+        """
+        return _intrules.IntegrationPointArray_end(self, *args)
+    end = _swig_new_instance_method(_intrules.IntegrationPointArray_end)
 
     def MemoryUsage(self):
         r"""MemoryUsage(IntegrationPointArray self) -> long"""
         return _intrules.IntegrationPointArray_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_intrules.IntegrationPointArray_MemoryUsage)
 
     def Read(self, on_dev=True):
         r"""Read(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"""
         return _intrules.IntegrationPointArray_Read(self, on_dev)
+    Read = _swig_new_instance_method(_intrules.IntegrationPointArray_Read)
 
     def HostRead(self):
         r"""HostRead(IntegrationPointArray self) -> IntegrationPoint"""
         return _intrules.IntegrationPointArray_HostRead(self)
+    HostRead = _swig_new_instance_method(_intrules.IntegrationPointArray_HostRead)
 
     def Write(self, on_dev=True):
         r"""Write(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"""
         return _intrules.IntegrationPointArray_Write(self, on_dev)
+    Write = _swig_new_instance_method(_intrules.IntegrationPointArray_Write)
 
     def HostWrite(self):
         r"""HostWrite(IntegrationPointArray self) -> IntegrationPoint"""
         return _intrules.IntegrationPointArray_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_intrules.IntegrationPointArray_HostWrite)
 
     def ReadWrite(self, on_dev=True):
         r"""ReadWrite(IntegrationPointArray self, bool on_dev=True) -> IntegrationPoint"""
         return _intrules.IntegrationPointArray_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_intrules.IntegrationPointArray_ReadWrite)
 
     def HostReadWrite(self):
         r"""HostReadWrite(IntegrationPointArray self) -> IntegrationPoint"""
         return _intrules.IntegrationPointArray_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_intrules.IntegrationPointArray_HostReadWrite)
 
     def __setitem__(self, i, v):
         r"""__setitem__(IntegrationPointArray self, int i, IntegrationPoint v)"""
         return _intrules.IntegrationPointArray___setitem__(self, i, v)
+    __setitem__ = _swig_new_instance_method(_intrules.IntegrationPointArray___setitem__)
 
     def __getitem__(self, i):
         r"""__getitem__(IntegrationPointArray self, int const i) -> IntegrationPoint"""
         return _intrules.IntegrationPointArray___getitem__(self, i)
+    __getitem__ = _swig_new_instance_method(_intrules.IntegrationPointArray___getitem__)
 
     def Assign(self, *args):
         r"""
@@ -230,6 +271,7 @@ class IntegrationPointArray(object):
         Assign(IntegrationPointArray self, IntegrationPoint a)
         """
         return _intrules.IntegrationPointArray_Assign(self, *args)
+    Assign = _swig_new_instance_method(_intrules.IntegrationPointArray_Assign)
 
     def ToList(self):
         return [self[i] for i in range(self.Size())]
@@ -248,14 +290,17 @@ class IntegrationPoint(object):
     y = property(_intrules.IntegrationPoint_y_get, _intrules.IntegrationPoint_y_set, doc=r"""y : double""")
     z = property(_intrules.IntegrationPoint_z_get, _intrules.IntegrationPoint_z_set, doc=r"""z : double""")
     weight = property(_intrules.IntegrationPoint_weight_get, _intrules.IntegrationPoint_weight_set, doc=r"""weight : double""")
+    index = property(_intrules.IntegrationPoint_index_get, _intrules.IntegrationPoint_index_set, doc=r"""index : int""")
 
-    def Init(self):
-        r"""Init(IntegrationPoint self)"""
-        return _intrules.IntegrationPoint_Init(self)
+    def Init(self, i):
+        r"""Init(IntegrationPoint self, int const i)"""
+        return _intrules.IntegrationPoint_Init(self, i)
+    Init = _swig_new_instance_method(_intrules.IntegrationPoint_Init)
 
     def Get(self, p, dim):
         r"""Get(IntegrationPoint self, double * p, int const dim)"""
         return _intrules.IntegrationPoint_Get(self, p, dim)
+    Get = _swig_new_instance_method(_intrules.IntegrationPoint_Get)
 
     def Set(self, *args):
         r"""
@@ -263,10 +308,12 @@ class IntegrationPoint(object):
         Set(IntegrationPoint self, double const x1, double const x2, double const x3, double const w)
         """
         return _intrules.IntegrationPoint_Set(self, *args)
+    Set = _swig_new_instance_method(_intrules.IntegrationPoint_Set)
 
     def Set3w(self, p):
         r"""Set3w(IntegrationPoint self, double const * p)"""
         return _intrules.IntegrationPoint_Set3w(self, p)
+    Set3w = _swig_new_instance_method(_intrules.IntegrationPoint_Set3w)
 
     def Set3(self, *args):
         r"""
@@ -274,6 +321,7 @@ class IntegrationPoint(object):
         Set3(IntegrationPoint self, double const * p)
         """
         return _intrules.IntegrationPoint_Set3(self, *args)
+    Set3 = _swig_new_instance_method(_intrules.IntegrationPoint_Set3)
 
     def Set2w(self, *args):
         r"""
@@ -281,6 +329,7 @@ class IntegrationPoint(object):
         Set2w(IntegrationPoint self, double const * p)
         """
         return _intrules.IntegrationPoint_Set2w(self, *args)
+    Set2w = _swig_new_instance_method(_intrules.IntegrationPoint_Set2w)
 
     def Set2(self, *args):
         r"""
@@ -288,6 +337,7 @@ class IntegrationPoint(object):
         Set2(IntegrationPoint self, double const * p)
         """
         return _intrules.IntegrationPoint_Set2(self, *args)
+    Set2 = _swig_new_instance_method(_intrules.IntegrationPoint_Set2)
 
     def Set1w(self, *args):
         r"""
@@ -295,6 +345,7 @@ class IntegrationPoint(object):
         Set1w(IntegrationPoint self, double const * p)
         """
         return _intrules.IntegrationPoint_Set1w(self, *args)
+    Set1w = _swig_new_instance_method(_intrules.IntegrationPoint_Set1w)
 
     def __init__(self):
         r"""__init__(IntegrationPoint self) -> IntegrationPoint"""
@@ -322,14 +373,17 @@ class IntegrationRule(IntegrationPointArray):
     def GetOrder(self):
         r"""GetOrder(IntegrationRule self) -> int"""
         return _intrules.IntegrationRule_GetOrder(self)
+    GetOrder = _swig_new_instance_method(_intrules.IntegrationRule_GetOrder)
 
     def SetOrder(self, order):
         r"""SetOrder(IntegrationRule self, int const order)"""
         return _intrules.IntegrationRule_SetOrder(self, order)
+    SetOrder = _swig_new_instance_method(_intrules.IntegrationRule_SetOrder)
 
     def GetNPoints(self):
         r"""GetNPoints(IntegrationRule self) -> int"""
         return _intrules.IntegrationRule_GetNPoints(self)
+    GetNPoints = _swig_new_instance_method(_intrules.IntegrationRule_GetNPoints)
 
     def IntPoint(self, *args):
         r"""
@@ -337,10 +391,12 @@ class IntegrationRule(IntegrationPointArray):
         IntPoint(IntegrationRule self, int i) -> IntegrationPoint
         """
         return _intrules.IntegrationRule_IntPoint(self, *args)
+    IntPoint = _swig_new_instance_method(_intrules.IntegrationRule_IntPoint)
 
     def GetWeights(self):
         r"""GetWeights(IntegrationRule self) -> doubleArray"""
         return _intrules.IntegrationRule_GetWeights(self)
+    GetWeights = _swig_new_instance_method(_intrules.IntegrationRule_GetWeights)
     __swig_destroy__ = _intrules.delete_IntegrationRule
 
 # Register IntegrationRule in _intrules:
@@ -355,26 +411,32 @@ class QuadratureFunctions1D(object):
     def GaussLegendre(self, np, ir):
         r"""GaussLegendre(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
         return _intrules.QuadratureFunctions1D_GaussLegendre(self, np, ir)
+    GaussLegendre = _swig_new_instance_method(_intrules.QuadratureFunctions1D_GaussLegendre)
 
     def GaussLobatto(self, np, ir):
         r"""GaussLobatto(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
         return _intrules.QuadratureFunctions1D_GaussLobatto(self, np, ir)
+    GaussLobatto = _swig_new_instance_method(_intrules.QuadratureFunctions1D_GaussLobatto)
 
     def OpenUniform(self, np, ir):
         r"""OpenUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
         return _intrules.QuadratureFunctions1D_OpenUniform(self, np, ir)
+    OpenUniform = _swig_new_instance_method(_intrules.QuadratureFunctions1D_OpenUniform)
 
     def ClosedUniform(self, np, ir):
         r"""ClosedUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
         return _intrules.QuadratureFunctions1D_ClosedUniform(self, np, ir)
+    ClosedUniform = _swig_new_instance_method(_intrules.QuadratureFunctions1D_ClosedUniform)
 
     def OpenHalfUniform(self, np, ir):
         r"""OpenHalfUniform(QuadratureFunctions1D self, int const np, IntegrationRule ir)"""
         return _intrules.QuadratureFunctions1D_OpenHalfUniform(self, np, ir)
+    OpenHalfUniform = _swig_new_instance_method(_intrules.QuadratureFunctions1D_OpenHalfUniform)
 
     def GivePolyPoints(self, np, pts, type):
         r"""GivePolyPoints(QuadratureFunctions1D self, int const np, double * pts, int const type)"""
         return _intrules.QuadratureFunctions1D_GivePolyPoints(self, np, pts, type)
+    GivePolyPoints = _swig_new_instance_method(_intrules.QuadratureFunctions1D_GivePolyPoints)
 
     def __init__(self):
         r"""__init__(QuadratureFunctions1D self) -> QuadratureFunctions1D"""
@@ -406,11 +468,13 @@ class Quadrature1D(object):
     def CheckClosed(type):
         r"""CheckClosed(int type) -> int"""
         return _intrules.Quadrature1D_CheckClosed(type)
+    CheckClosed = _swig_new_static_method(_intrules.Quadrature1D_CheckClosed)
 
     @staticmethod
     def CheckOpen(type):
         r"""CheckOpen(int type) -> int"""
         return _intrules.Quadrature1D_CheckOpen(type)
+    CheckOpen = _swig_new_static_method(_intrules.Quadrature1D_CheckOpen)
 
     def __init__(self):
         r"""__init__(Quadrature1D self) -> Quadrature1D"""
@@ -423,10 +487,12 @@ _intrules.Quadrature1D_swigregister(Quadrature1D)
 def Quadrature1D_CheckClosed(type):
     r"""Quadrature1D_CheckClosed(int type) -> int"""
     return _intrules.Quadrature1D_CheckClosed(type)
+Quadrature1D_CheckClosed = _intrules.Quadrature1D_CheckClosed
 
 def Quadrature1D_CheckOpen(type):
     r"""Quadrature1D_CheckOpen(int type) -> int"""
     return _intrules.Quadrature1D_CheckOpen(type)
+Quadrature1D_CheckOpen = _intrules.Quadrature1D_CheckOpen
 
 class IntegrationRules(object):
     r"""Proxy of C++ mfem::IntegrationRules class."""
@@ -441,14 +507,17 @@ class IntegrationRules(object):
     def Get(self, GeomType, Order):
         r"""Get(IntegrationRules self, int GeomType, int Order) -> IntegrationRule"""
         return _intrules.IntegrationRules_Get(self, GeomType, Order)
+    Get = _swig_new_instance_method(_intrules.IntegrationRules_Get)
 
     def Set(self, GeomType, Order, IntRule):
         r"""Set(IntegrationRules self, int GeomType, int Order, IntegrationRule IntRule)"""
         return _intrules.IntegrationRules_Set(self, GeomType, Order, IntRule)
+    Set = _swig_new_instance_method(_intrules.IntegrationRules_Set)
 
     def SetOwnRules(self, o):
         r"""SetOwnRules(IntegrationRules self, int o)"""
         return _intrules.IntegrationRules_SetOwnRules(self, o)
+    SetOwnRules = _swig_new_instance_method(_intrules.IntegrationRules_SetOwnRules)
     __swig_destroy__ = _intrules.delete_IntegrationRules
 
 # Register IntegrationRules in _intrules:

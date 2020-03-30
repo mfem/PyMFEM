@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _complex_operator.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _complex_operator.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -81,13 +84,46 @@ class ComplexOperator(mfem._par.operators.Operator):
     
     __swig_destroy__ = _complex_operator.delete_ComplexOperator
 
+    def hasRealPart(self):
+        r"""hasRealPart(ComplexOperator self) -> bool"""
+        return _complex_operator.ComplexOperator_hasRealPart(self)
+    hasRealPart = _swig_new_instance_method(_complex_operator.ComplexOperator_hasRealPart)
+
+    def hasImagPart(self):
+        r"""hasImagPart(ComplexOperator self) -> bool"""
+        return _complex_operator.ComplexOperator_hasImagPart(self)
+    hasImagPart = _swig_new_instance_method(_complex_operator.ComplexOperator_hasImagPart)
+
+    def real(self, *args):
+        r"""
+        real(ComplexOperator self) -> Operator
+        real(ComplexOperator self) -> Operator
+        """
+        return _complex_operator.ComplexOperator_real(self, *args)
+    real = _swig_new_instance_method(_complex_operator.ComplexOperator_real)
+
+    def imag(self, *args):
+        r"""
+        imag(ComplexOperator self) -> Operator
+        imag(ComplexOperator self) -> Operator
+        """
+        return _complex_operator.ComplexOperator_imag(self, *args)
+    imag = _swig_new_instance_method(_complex_operator.ComplexOperator_imag)
+
     def Mult(self, x, y):
         r"""Mult(ComplexOperator self, Vector x, Vector y)"""
         return _complex_operator.ComplexOperator_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_complex_operator.ComplexOperator_Mult)
 
     def MultTranspose(self, x, y):
         r"""MultTranspose(ComplexOperator self, Vector x, Vector y)"""
         return _complex_operator.ComplexOperator_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_complex_operator.ComplexOperator_MultTranspose)
+
+    def GetType(self):
+        r"""GetType(ComplexOperator self) -> mfem::Operator::Type"""
+        return _complex_operator.ComplexOperator_GetType(self)
+    GetType = _swig_new_instance_method(_complex_operator.ComplexOperator_GetType)
 
     def __init__(self, Op_Real, Op_Imag, ownReal=False, ownImag=False, hermitan=True):
         r"""__init__(ComplexOperator self, Operator Op_Real, Operator Op_Imag, bool ownReal=False, bool ownImag=False, bool hermitan=True) -> ComplexOperator"""
@@ -116,9 +152,31 @@ class ComplexSparseMatrix(ComplexOperator):
         r"""__init__(ComplexSparseMatrix self, SparseMatrix A_Real, SparseMatrix A_Imag, bool ownReal, bool ownImag, mfem::ComplexOperator::Convention convention=HERMITIAN) -> ComplexSparseMatrix"""
         _complex_operator.ComplexSparseMatrix_swiginit(self, _complex_operator.new_ComplexSparseMatrix(*args))
 
+    def real(self, *args):
+        r"""
+        real(ComplexSparseMatrix self) -> SparseMatrix
+        real(ComplexSparseMatrix self) -> SparseMatrix
+        """
+        return _complex_operator.ComplexSparseMatrix_real(self, *args)
+    real = _swig_new_instance_method(_complex_operator.ComplexSparseMatrix_real)
+
+    def imag(self, *args):
+        r"""
+        imag(ComplexSparseMatrix self) -> SparseMatrix
+        imag(ComplexSparseMatrix self) -> SparseMatrix
+        """
+        return _complex_operator.ComplexSparseMatrix_imag(self, *args)
+    imag = _swig_new_instance_method(_complex_operator.ComplexSparseMatrix_imag)
+
     def GetSystemMatrix(self):
         r"""GetSystemMatrix(ComplexSparseMatrix self) -> SparseMatrix"""
         return _complex_operator.ComplexSparseMatrix_GetSystemMatrix(self)
+    GetSystemMatrix = _swig_new_instance_method(_complex_operator.ComplexSparseMatrix_GetSystemMatrix)
+
+    def GetType(self):
+        r"""GetType(ComplexSparseMatrix self) -> mfem::Operator::Type"""
+        return _complex_operator.ComplexSparseMatrix_GetType(self)
+    GetType = _swig_new_instance_method(_complex_operator.ComplexSparseMatrix_GetType)
     __swig_destroy__ = _complex_operator.delete_ComplexSparseMatrix
 
 # Register ComplexSparseMatrix in _complex_operator:

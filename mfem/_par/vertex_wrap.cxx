@@ -3841,6 +3841,7 @@ SWIGINTERN PyObject *Vertex_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *a
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_Vertex", _wrap_new_Vertex, METH_VARARGS, "\n"
 		"Vertex()\n"
 		"Vertex(double * xx, int dim)\n"
@@ -3863,6 +3864,26 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_Vertex", _wrap_new_Vertex, METH_VARARGS, "\n"
+		"Vertex()\n"
+		"Vertex(double * xx, int dim)\n"
+		"Vertex(double x, double y)\n"
+		"new_Vertex(double x, double y, double z) -> Vertex\n"
+		""},
+	 { "Vertex___call__", _wrap_Vertex___call__, METH_VARARGS, "\n"
+		"__call__(Vertex self) -> double\n"
+		"__call__(Vertex self, int i) -> double\n"
+		"__call__(Vertex self, int i) -> double const &\n"
+		""},
+	 { "Vertex_SetCoords", _wrap_Vertex_SetCoords, METH_VARARGS, "\n"
+		"SetCoords(Vertex self, double const * p)\n"
+		"SetCoords(Vertex self, int dim, double const * p)\n"
+		""},
+	 { "delete_Vertex", _wrap_delete_Vertex, METH_O, "delete_Vertex(Vertex self)"},
+	 { "Vertex_swigregister", Vertex_swigregister, METH_O, NULL},
+	 { "Vertex_swiginit", Vertex_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

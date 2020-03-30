@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _nonlinearform.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _nonlinearform.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -87,7 +90,10 @@ import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.vertex
+import mfem._ser.vtk
 import mfem._ser.handle
+import mfem._ser.restriction
+import mfem._ser.bilinearform
 import mfem._ser.nonlininteg
 class NonlinearForm(mfem._ser.operators.Operator):
     r"""Proxy of C++ mfem::NonlinearForm class."""
@@ -99,12 +105,18 @@ class NonlinearForm(mfem._ser.operators.Operator):
         r"""__init__(NonlinearForm self, FiniteElementSpace f) -> NonlinearForm"""
         _nonlinearform.NonlinearForm_swiginit(self, _nonlinearform.new_NonlinearForm(f))
 
+    def SetAssemblyLevel(self, assembly_level):
+        r"""SetAssemblyLevel(NonlinearForm self, mfem::AssemblyLevel assembly_level)"""
+        return _nonlinearform.NonlinearForm_SetAssemblyLevel(self, assembly_level)
+    SetAssemblyLevel = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetAssemblyLevel)
+
     def FESpace(self, *args):
         r"""
         FESpace(NonlinearForm self) -> FiniteElementSpace
         FESpace(NonlinearForm self) -> FiniteElementSpace
         """
         return _nonlinearform.NonlinearForm_FESpace(self, *args)
+    FESpace = _swig_new_instance_method(_nonlinearform.NonlinearForm_FESpace)
 
     def AddDomainIntegrator(self, nlfi):
         r"""AddDomainIntegrator(NonlinearForm self, NonlinearFormIntegrator nlfi)"""
@@ -116,6 +128,11 @@ class NonlinearForm(mfem._ser.operators.Operator):
 
         return _nonlinearform.NonlinearForm_AddDomainIntegrator(self, nlfi)
 
+
+    def GetDNFI(self):
+        r"""GetDNFI(NonlinearForm self) -> mfem::Array< mfem::NonlinearFormIntegrator * > *"""
+        return _nonlinearform.NonlinearForm_GetDNFI(self)
+    GetDNFI = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetDNFI)
 
     def AddInteriorFaceIntegrator(self, nlfi):
         r"""AddInteriorFaceIntegrator(NonlinearForm self, NonlinearFormIntegrator nlfi)"""
@@ -146,51 +163,68 @@ class NonlinearForm(mfem._ser.operators.Operator):
     def SetEssentialBC(self, bdr_attr_is_ess, rhs=None):
         r"""SetEssentialBC(NonlinearForm self, intArray bdr_attr_is_ess, Vector rhs=None)"""
         return _nonlinearform.NonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
+    SetEssentialBC = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetEssentialBC)
 
     def SetEssentialVDofs(self, ess_vdofs_list):
         r"""SetEssentialVDofs(NonlinearForm self, intArray ess_vdofs_list)"""
         return _nonlinearform.NonlinearForm_SetEssentialVDofs(self, ess_vdofs_list)
+    SetEssentialVDofs = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetEssentialVDofs)
 
     def SetEssentialTrueDofs(self, ess_tdof_list):
         r"""SetEssentialTrueDofs(NonlinearForm self, intArray ess_tdof_list)"""
         return _nonlinearform.NonlinearForm_SetEssentialTrueDofs(self, ess_tdof_list)
+    SetEssentialTrueDofs = _swig_new_instance_method(_nonlinearform.NonlinearForm_SetEssentialTrueDofs)
 
     def GetEssentialTrueDofs(self):
         r"""GetEssentialTrueDofs(NonlinearForm self) -> intArray"""
         return _nonlinearform.NonlinearForm_GetEssentialTrueDofs(self)
+    GetEssentialTrueDofs = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetEssentialTrueDofs)
 
     def GetGridFunctionEnergy(self, x):
         r"""GetGridFunctionEnergy(NonlinearForm self, Vector x) -> double"""
         return _nonlinearform.NonlinearForm_GetGridFunctionEnergy(self, x)
+    GetGridFunctionEnergy = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetGridFunctionEnergy)
 
     def GetEnergy(self, x):
         r"""GetEnergy(NonlinearForm self, Vector x) -> double"""
         return _nonlinearform.NonlinearForm_GetEnergy(self, x)
+    GetEnergy = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetEnergy)
 
     def Mult(self, x, y):
         r"""Mult(NonlinearForm self, Vector x, Vector y)"""
         return _nonlinearform.NonlinearForm_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_nonlinearform.NonlinearForm_Mult)
 
     def GetGradient(self, x):
         r"""GetGradient(NonlinearForm self, Vector x) -> Operator"""
         return _nonlinearform.NonlinearForm_GetGradient(self, x)
+    GetGradient = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetGradient)
 
     def Update(self):
         r"""Update(NonlinearForm self)"""
         return _nonlinearform.NonlinearForm_Update(self)
+    Update = _swig_new_instance_method(_nonlinearform.NonlinearForm_Update)
+
+    def Setup(self):
+        r"""Setup(NonlinearForm self)"""
+        return _nonlinearform.NonlinearForm_Setup(self)
+    Setup = _swig_new_instance_method(_nonlinearform.NonlinearForm_Setup)
 
     def GetProlongation(self):
         r"""GetProlongation(NonlinearForm self) -> Operator"""
         return _nonlinearform.NonlinearForm_GetProlongation(self)
+    GetProlongation = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetProlongation)
 
     def GetRestriction(self):
         r"""GetRestriction(NonlinearForm self) -> Operator"""
         return _nonlinearform.NonlinearForm_GetRestriction(self)
+    GetRestriction = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetRestriction)
     __swig_destroy__ = _nonlinearform.delete_NonlinearForm
 
     def GetGradientMatrix(self, x):
         r"""GetGradientMatrix(NonlinearForm self, Vector x) -> SparseMatrix"""
         return _nonlinearform.NonlinearForm_GetGradientMatrix(self, x)
+    GetGradientMatrix = _swig_new_instance_method(_nonlinearform.NonlinearForm_GetGradientMatrix)
 
 # Register NonlinearForm in _nonlinearform:
 _nonlinearform.NonlinearForm_swigregister(NonlinearForm)
@@ -214,18 +248,22 @@ class BlockNonlinearForm(mfem._ser.operators.Operator):
         FESpace(BlockNonlinearForm self, int k) -> FiniteElementSpace
         """
         return _nonlinearform.BlockNonlinearForm_FESpace(self, *args)
+    FESpace = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_FESpace)
 
     def SetSpaces(self, f):
         r"""SetSpaces(BlockNonlinearForm self, mfem::Array< mfem::FiniteElementSpace * > & f)"""
         return _nonlinearform.BlockNonlinearForm_SetSpaces(self, f)
+    SetSpaces = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_SetSpaces)
 
     def GetBlockOffsets(self):
         r"""GetBlockOffsets(BlockNonlinearForm self) -> intArray"""
         return _nonlinearform.BlockNonlinearForm_GetBlockOffsets(self)
+    GetBlockOffsets = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_GetBlockOffsets)
 
     def GetBlockTrueOffsets(self):
         r"""GetBlockTrueOffsets(BlockNonlinearForm self) -> intArray"""
         return _nonlinearform.BlockNonlinearForm_GetBlockTrueOffsets(self)
+    GetBlockTrueOffsets = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_GetBlockTrueOffsets)
 
     def AddDomainIntegrator(self, nlfi):
         r"""AddDomainIntegrator(BlockNonlinearForm self, BlockNonlinearFormIntegrator nlfi)"""
@@ -267,18 +305,22 @@ class BlockNonlinearForm(mfem._ser.operators.Operator):
     def SetEssentialBC(self, bdr_attr_is_ess, rhs):
         r"""SetEssentialBC(BlockNonlinearForm self, mfem::Array< mfem::Array< int > * > const & bdr_attr_is_ess, mfem::Array< mfem::Vector * > & rhs)"""
         return _nonlinearform.BlockNonlinearForm_SetEssentialBC(self, bdr_attr_is_ess, rhs)
+    SetEssentialBC = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_SetEssentialBC)
 
     def GetEnergy(self, x):
         r"""GetEnergy(BlockNonlinearForm self, Vector x) -> double"""
         return _nonlinearform.BlockNonlinearForm_GetEnergy(self, x)
+    GetEnergy = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_GetEnergy)
 
     def Mult(self, x, y):
         r"""Mult(BlockNonlinearForm self, Vector x, Vector y)"""
         return _nonlinearform.BlockNonlinearForm_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_Mult)
 
     def GetGradient(self, x):
         r"""GetGradient(BlockNonlinearForm self, Vector x) -> Operator"""
         return _nonlinearform.BlockNonlinearForm_GetGradient(self, x)
+    GetGradient = _swig_new_instance_method(_nonlinearform.BlockNonlinearForm_GetGradient)
     __swig_destroy__ = _nonlinearform.delete_BlockNonlinearForm
 
 # Register BlockNonlinearForm in _nonlinearform:

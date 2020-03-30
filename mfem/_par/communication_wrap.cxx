@@ -5030,6 +5030,100 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLTDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
+  mfem::Table *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GroupCommunicator_GetNeighborLTDofTable", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_GetNeighborLTDofTable" "', argument " "1"" of type '" "mfem::GroupCommunicator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Table,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_GetNeighborLTDofTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupCommunicator_GetNeighborLTDofTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Table * >(argp2);
+  {
+    try {
+      ((mfem::GroupCommunicator const *)arg1)->GetNeighborLTDofTable(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
+  mfem::Table *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "GroupCommunicator_GetNeighborLDofTable", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_GetNeighborLDofTable" "', argument " "1"" of type '" "mfem::GroupCommunicator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Table,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_GetNeighborLDofTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GroupCommunicator_GetNeighborLDofTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Table * >(argp2);
+  {
+    try {
+      ((mfem::GroupCommunicator const *)arg1)->GetNeighborLDofTable(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
@@ -5402,6 +5496,7 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_MPI_Session", _wrap_new_MPI_Session, METH_VARARGS, "\n"
 		"MPI_Session()\n"
 		"new_MPI_Session(int & argc, char **& argv) -> MPI_Session\n"
@@ -5452,6 +5547,8 @@ static PyMethodDef SwigMethods[] = {
 		"GroupCommunicator_GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
 		"GroupCommunicator_GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
 		""},
+	 { "GroupCommunicator_GetNeighborLTDofTable", _wrap_GroupCommunicator_GetNeighborLTDofTable, METH_VARARGS, "GroupCommunicator_GetNeighborLTDofTable(GroupCommunicator self, Table nbr_ltdof)"},
+	 { "GroupCommunicator_GetNeighborLDofTable", _wrap_GroupCommunicator_GetNeighborLDofTable, METH_VARARGS, "GroupCommunicator_GetNeighborLDofTable(GroupCommunicator self, Table nbr_ldof)"},
 	 { "delete_GroupCommunicator", _wrap_delete_GroupCommunicator, METH_O, "delete_GroupCommunicator(GroupCommunicator self)"},
 	 { "GroupCommunicator_PrintInfo", _wrap_GroupCommunicator_PrintInfo, METH_VARARGS, "\n"
 		"GroupCommunicator_PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)\n"
@@ -5464,6 +5561,68 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_MPI_Session", _wrap_new_MPI_Session, METH_VARARGS, "\n"
+		"MPI_Session()\n"
+		"new_MPI_Session(int & argc, char **& argv) -> MPI_Session\n"
+		""},
+	 { "delete_MPI_Session", _wrap_delete_MPI_Session, METH_O, "delete_MPI_Session(MPI_Session self)"},
+	 { "MPI_Session_WorldRank", _wrap_MPI_Session_WorldRank, METH_O, "WorldRank(MPI_Session self) -> int"},
+	 { "MPI_Session_WorldSize", _wrap_MPI_Session_WorldSize, METH_O, "WorldSize(MPI_Session self) -> int"},
+	 { "MPI_Session_Root", _wrap_MPI_Session_Root, METH_O, "Root(MPI_Session self) -> bool"},
+	 { "MPI_Session_swigregister", MPI_Session_swigregister, METH_O, NULL},
+	 { "MPI_Session_swiginit", MPI_Session_swiginit, METH_VARARGS, NULL},
+	 { "new_GroupTopology", _wrap_new_GroupTopology, METH_VARARGS, "\n"
+		"GroupTopology()\n"
+		"GroupTopology(MPI_Comm comm)\n"
+		"new_GroupTopology(GroupTopology gt) -> GroupTopology\n"
+		""},
+	 { "GroupTopology_SetComm", _wrap_GroupTopology_SetComm, METH_VARARGS, "SetComm(GroupTopology self, MPI_Comm comm)"},
+	 { "GroupTopology_GetComm", _wrap_GroupTopology_GetComm, METH_O, "GetComm(GroupTopology self) -> MPI_Comm"},
+	 { "GroupTopology_MyRank", _wrap_GroupTopology_MyRank, METH_O, "MyRank(GroupTopology self) -> int"},
+	 { "GroupTopology_NRanks", _wrap_GroupTopology_NRanks, METH_O, "NRanks(GroupTopology self) -> int"},
+	 { "GroupTopology_Create", _wrap_GroupTopology_Create, METH_VARARGS, "Create(GroupTopology self, ListOfIntegerSets groups, int mpitag)"},
+	 { "GroupTopology_NGroups", _wrap_GroupTopology_NGroups, METH_O, "NGroups(GroupTopology self) -> int"},
+	 { "GroupTopology_GetNumNeighbors", _wrap_GroupTopology_GetNumNeighbors, METH_O, "GetNumNeighbors(GroupTopology self) -> int"},
+	 { "GroupTopology_GetNeighborRank", _wrap_GroupTopology_GetNeighborRank, METH_VARARGS, "GetNeighborRank(GroupTopology self, int i) -> int"},
+	 { "GroupTopology_IAmMaster", _wrap_GroupTopology_IAmMaster, METH_VARARGS, "IAmMaster(GroupTopology self, int g) -> bool"},
+	 { "GroupTopology_GetGroupMaster", _wrap_GroupTopology_GetGroupMaster, METH_VARARGS, "GetGroupMaster(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupMasterRank", _wrap_GroupTopology_GetGroupMasterRank, METH_VARARGS, "GetGroupMasterRank(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupMasterGroup", _wrap_GroupTopology_GetGroupMasterGroup, METH_VARARGS, "GetGroupMasterGroup(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupSize", _wrap_GroupTopology_GetGroupSize, METH_VARARGS, "GetGroupSize(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroup", _wrap_GroupTopology_GetGroup, METH_VARARGS, "GetGroup(GroupTopology self, int g) -> int const *"},
+	 { "GroupTopology_Load", _wrap_GroupTopology_Load, METH_VARARGS, "Load(GroupTopology self, std::istream & _in)"},
+	 { "GroupTopology_Copy", _wrap_GroupTopology_Copy, METH_VARARGS, "Copy(GroupTopology self, GroupTopology copy)"},
+	 { "delete_GroupTopology", _wrap_delete_GroupTopology, METH_O, "delete_GroupTopology(GroupTopology self)"},
+	 { "GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, "\n"
+		"Save(GroupTopology self, std::ostream & out)\n"
+		"Save(GroupTopology self, char const * file, int precision=8)\n"
+		""},
+	 { "GroupTopology_swigregister", GroupTopology_swigregister, METH_O, NULL},
+	 { "GroupTopology_swiginit", GroupTopology_swiginit, METH_VARARGS, NULL},
+	 { "new_GroupCommunicator", _wrap_new_GroupCommunicator, METH_VARARGS, "GroupCommunicator(GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor)"},
+	 { "GroupCommunicator_Create", _wrap_GroupCommunicator_Create, METH_VARARGS, "Create(GroupCommunicator self, intArray ldof_group)"},
+	 { "GroupCommunicator_GroupLDofTable", _wrap_GroupCommunicator_GroupLDofTable, METH_VARARGS, "\n"
+		"GroupLDofTable(GroupCommunicator self) -> Table\n"
+		"GroupLDofTable(GroupCommunicator self) -> Table\n"
+		""},
+	 { "GroupCommunicator_Finalize", _wrap_GroupCommunicator_Finalize, METH_O, "Finalize(GroupCommunicator self)"},
+	 { "GroupCommunicator_SetLTDofTable", _wrap_GroupCommunicator_SetLTDofTable, METH_VARARGS, "SetLTDofTable(GroupCommunicator self, intArray ldof_ltdof)"},
+	 { "GroupCommunicator_GetGroupTopology", _wrap_GroupCommunicator_GetGroupTopology, METH_VARARGS, "\n"
+		"GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
+		"GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
+		""},
+	 { "GroupCommunicator_GetNeighborLTDofTable", _wrap_GroupCommunicator_GetNeighborLTDofTable, METH_VARARGS, "GetNeighborLTDofTable(GroupCommunicator self, Table nbr_ltdof)"},
+	 { "GroupCommunicator_GetNeighborLDofTable", _wrap_GroupCommunicator_GetNeighborLDofTable, METH_VARARGS, "GetNeighborLDofTable(GroupCommunicator self, Table nbr_ldof)"},
+	 { "delete_GroupCommunicator", _wrap_delete_GroupCommunicator, METH_O, "delete_GroupCommunicator(GroupCommunicator self)"},
+	 { "GroupCommunicator_PrintInfo", _wrap_GroupCommunicator_PrintInfo, METH_VARARGS, "\n"
+		"PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)\n"
+		"PrintInfo(GroupCommunicator self, char const * file, int precision=8)\n"
+		""},
+	 { "GroupCommunicator_swigregister", GroupCommunicator_swigregister, METH_O, NULL},
+	 { "GroupCommunicator_swiginit", GroupCommunicator_swiginit, METH_VARARGS, NULL},
+	 { "ReorderRanksZCurve", _wrap_ReorderRanksZCurve, METH_O, "ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -6260,18 +6419,18 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40100)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.1.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40100)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
   
   import_array();
   

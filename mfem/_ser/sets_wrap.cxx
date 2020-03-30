@@ -3555,6 +3555,7 @@ SWIGINTERN PyObject *ListOfIntegerSets_swiginit(PyObject *SWIGUNUSEDPARM(self), 
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_IntegerSet", _wrap_new_IntegerSet, METH_VARARGS, "\n"
 		"IntegerSet()\n"
 		"IntegerSet(IntegerSet s)\n"
@@ -3582,6 +3583,31 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_IntegerSet", _wrap_new_IntegerSet, METH_VARARGS, "\n"
+		"IntegerSet()\n"
+		"IntegerSet(IntegerSet s)\n"
+		"new_IntegerSet(int const n, int const * p) -> IntegerSet\n"
+		""},
+	 { "IntegerSet_Size", _wrap_IntegerSet_Size, METH_O, "Size(IntegerSet self) -> int"},
+	 { "IntegerSet_PickElement", _wrap_IntegerSet_PickElement, METH_O, "PickElement(IntegerSet self) -> int"},
+	 { "IntegerSet_PickRandomElement", _wrap_IntegerSet_PickRandomElement, METH_O, "PickRandomElement(IntegerSet self) -> int"},
+	 { "IntegerSet___eq__", _wrap_IntegerSet___eq__, METH_VARARGS, "__eq__(IntegerSet self, IntegerSet s) -> int"},
+	 { "IntegerSet_Recreate", _wrap_IntegerSet_Recreate, METH_VARARGS, "Recreate(IntegerSet self, int const n, int const * p)"},
+	 { "delete_IntegerSet", _wrap_delete_IntegerSet, METH_O, "delete_IntegerSet(IntegerSet self)"},
+	 { "IntegerSet_swigregister", IntegerSet_swigregister, METH_O, NULL},
+	 { "IntegerSet_swiginit", IntegerSet_swiginit, METH_VARARGS, NULL},
+	 { "ListOfIntegerSets_Size", _wrap_ListOfIntegerSets_Size, METH_O, "Size(ListOfIntegerSets self) -> int"},
+	 { "ListOfIntegerSets_PickElementInSet", _wrap_ListOfIntegerSets_PickElementInSet, METH_VARARGS, "PickElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { "ListOfIntegerSets_PickRandomElementInSet", _wrap_ListOfIntegerSets_PickRandomElementInSet, METH_VARARGS, "PickRandomElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { "ListOfIntegerSets_Insert", _wrap_ListOfIntegerSets_Insert, METH_VARARGS, "Insert(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { "ListOfIntegerSets_Lookup", _wrap_ListOfIntegerSets_Lookup, METH_VARARGS, "Lookup(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { "ListOfIntegerSets_AsTable", _wrap_ListOfIntegerSets_AsTable, METH_VARARGS, "AsTable(ListOfIntegerSets self, Table t)"},
+	 { "delete_ListOfIntegerSets", _wrap_delete_ListOfIntegerSets, METH_O, "delete_ListOfIntegerSets(ListOfIntegerSets self)"},
+	 { "new_ListOfIntegerSets", _wrap_new_ListOfIntegerSets, METH_NOARGS, "new_ListOfIntegerSets() -> ListOfIntegerSets"},
+	 { "ListOfIntegerSets_swigregister", ListOfIntegerSets_swigregister, METH_O, NULL},
+	 { "ListOfIntegerSets_swiginit", ListOfIntegerSets_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
