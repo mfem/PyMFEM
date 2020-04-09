@@ -977,10 +977,21 @@ class Mesh(object):
         return _mesh.Mesh_PrintCharacteristics(self, *args)
     PrintCharacteristics = _swig_new_instance_method(_mesh.Mesh_PrintCharacteristics)
 
-    def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
-        r"""FindPoints(Mesh self, DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int"""
-        return _mesh.Mesh_FindPoints(self, point_mat, elem_ids, ips, warn, inv_trans)
-    FindPoints = _swig_new_instance_method(_mesh.Mesh_FindPoints)
+    def FindPoints(self, pp):
+        r"""count, element_id, integration_points = FindPoints(points)"""
+        import numpy as np
+        import mfem.par as mfem
+
+        pp = np.array(pp, copy=False, dtype=float).transpose()      
+        M = mfem.DenseMatrix(pp.shape[0], pp.shape[1])
+        M.Assign(pp)
+        elem_ids = mfem.intArray()
+        int_points = mfem.IntegrationPointArray()
+        count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points)
+        elem_ids = elem_ids.ToList()
+        return count, elem_ids, int_points
+
+
     __swig_destroy__ = _mesh.delete_Mesh
 
     def __init__(self, *args):

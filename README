@@ -194,6 +194,15 @@ to find more detail of the MFEM libirary.
             virtual void PrintInfo(std::ostream &out = mfem::out)
 
 
+         FindPoints receive only one argument (points to look for) and returns
+	 count, element_id, integration_points. Note points are row order. For example,
+
+         >>> count, elem_ids, int_pts = mesh.FindPoint([1,2,3], [3,4,5], [4,5,6], [7,8,9]])
+
+         will look for 4 points.
+
+
+
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.
