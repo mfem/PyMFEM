@@ -205,9 +205,9 @@ class ParFiniteElementSpace(mfem._par.fespace.FiniteElementSpace):
 
 
 
-    def GetFaceRestriction(self, *args):
+    def GetFaceRestriction(self, *args, **kwargs):
         r"""GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"""
-        return _pfespace.ParFiniteElementSpace_GetFaceRestriction(self, *args)
+        return _pfespace.ParFiniteElementSpace_GetFaceRestriction(self, *args, **kwargs)
     GetFaceRestriction = _swig_new_instance_method(_pfespace.ParFiniteElementSpace_GetFaceRestriction)
 
     def GetSharedEdgeDofs(self, group, ei):

@@ -222,9 +222,6 @@ class PumiMesh(mfem._par.mesh.Mesh):
     def Load(self, *args):
         r"""
         Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)
-        Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1)
-        Load(PumiMesh self, std::istream & input, int generate_edges=0)
-        Load(PumiMesh self, std::istream & input)
         Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)
         """
         return _pumi.PumiMesh_Load(self, *args)

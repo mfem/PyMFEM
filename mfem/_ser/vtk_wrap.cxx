@@ -3393,7 +3393,7 @@ SWIG_FromCharPtr(const char *cptr)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_CreateVTKElementConnectivity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_CreateVTKElementConnectivity(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = 0 ;
   mfem::Geometry::Type arg2 ;
@@ -3402,10 +3402,15 @@ SWIGINTERN PyObject *_wrap_CreateVTKElementConnectivity(PyObject *SWIGUNUSEDPARM
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"con",  (char *)"geom",  (char *)"ref",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "CreateVTKElementConnectivity", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:CreateVTKElementConnectivity", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CreateVTKElementConnectivity" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -3413,16 +3418,16 @@ SWIGINTERN PyObject *_wrap_CreateVTKElementConnectivity(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CreateVTKElementConnectivity" "', argument " "1"" of type '" "mfem::Array< int > &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< int > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CreateVTKElementConnectivity" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
   } 
   arg2 = static_cast< mfem::Geometry::Type >(val2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -3450,7 +3455,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   std::ostream *arg1 = 0 ;
   void *arg2 = (void *) 0 ;
@@ -3461,11 +3466,17 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
   int res2 ;
   void *argp3 ;
   int res3 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"out",  (char *)"bytes",  (char *)"nbytes",  (char *)"compression_level",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "WriteVTKEncodedCompressed", 4, 4, swig_obj)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:WriteVTKEncodedCompressed", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
   {
-    if (SWIG_ConvertPtr(swig_obj[0], (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+    if (SWIG_ConvertPtr(obj0, (void **) &temp1, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
       SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
       return NULL;
     }  
@@ -3479,12 +3490,12 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
       arg1 = &out1;
     }
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1],SWIG_as_voidptrptr(&arg2), 0, 0);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WriteVTKEncodedCompressed" "', argument " "2"" of type '" "void const *""'"); 
   }
   {
-    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_uint32_t,  0  | 0);
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_uint32_t,  0  | 0);
     if (!SWIG_IsOK(res3)) {
       SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "WriteVTKEncodedCompressed" "', argument " "3"" of type '" "uint32_t""'"); 
     }  
@@ -3497,10 +3508,10 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
     }
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -3572,8 +3583,8 @@ fail:
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "CreateVTKElementConnectivity", _wrap_CreateVTKElementConnectivity, METH_VARARGS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
-	 { "WriteVTKEncodedCompressed", _wrap_WriteVTKEncodedCompressed, METH_VARARGS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
+	 { "CreateVTKElementConnectivity", (PyCFunction)(void(*)(void))_wrap_CreateVTKElementConnectivity, METH_VARARGS|METH_KEYWORDS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
+	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
 	 { "VTKByteOrder", _wrap_VTKByteOrder, METH_NOARGS, "VTKByteOrder() -> char const *"},
 	 { NULL, NULL, 0, NULL }
 };
@@ -3581,8 +3592,8 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "CreateVTKElementConnectivity", _wrap_CreateVTKElementConnectivity, METH_VARARGS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
-	 { "WriteVTKEncodedCompressed", _wrap_WriteVTKEncodedCompressed, METH_VARARGS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
+	 { "CreateVTKElementConnectivity", (PyCFunction)(void(*)(void))_wrap_CreateVTKElementConnectivity, METH_VARARGS|METH_KEYWORDS, "CreateVTKElementConnectivity(intArray con, mfem::Geometry::Type geom, int ref)"},
+	 { "WriteVTKEncodedCompressed", (PyCFunction)(void(*)(void))_wrap_WriteVTKEncodedCompressed, METH_VARARGS|METH_KEYWORDS, "WriteVTKEncodedCompressed(std::ostream & out, void const * bytes, uint32_t nbytes, int compression_level)"},
 	 { "VTKByteOrder", _wrap_VTKByteOrder, METH_NOARGS, "VTKByteOrder() -> char const *"},
 	 { NULL, NULL, 0, NULL }
 };

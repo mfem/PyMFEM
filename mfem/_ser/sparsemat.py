@@ -205,17 +205,17 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     GetMemoryI = _swig_new_instance_method(_sparsemat.SparseMatrix_GetMemoryI)
 
     def ReadI(self, on_dev=True):
-        r"""ReadI(SparseMatrix self, bool on_dev=True) -> int const"""
+        r"""ReadI(SparseMatrix self, bool on_dev=True) -> int const *"""
         return _sparsemat.SparseMatrix_ReadI(self, on_dev)
     ReadI = _swig_new_instance_method(_sparsemat.SparseMatrix_ReadI)
 
     def WriteI(self, on_dev=True):
-        r"""WriteI(SparseMatrix self, bool on_dev=True) -> int"""
+        r"""WriteI(SparseMatrix self, bool on_dev=True) -> int *"""
         return _sparsemat.SparseMatrix_WriteI(self, on_dev)
     WriteI = _swig_new_instance_method(_sparsemat.SparseMatrix_WriteI)
 
     def ReadWriteI(self, on_dev=True):
-        r"""ReadWriteI(SparseMatrix self, bool on_dev=True) -> int"""
+        r"""ReadWriteI(SparseMatrix self, bool on_dev=True) -> int *"""
         return _sparsemat.SparseMatrix_ReadWriteI(self, on_dev)
     ReadWriteI = _swig_new_instance_method(_sparsemat.SparseMatrix_ReadWriteI)
 
@@ -243,17 +243,17 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     GetMemoryJ = _swig_new_instance_method(_sparsemat.SparseMatrix_GetMemoryJ)
 
     def ReadJ(self, on_dev=True):
-        r"""ReadJ(SparseMatrix self, bool on_dev=True) -> int const"""
+        r"""ReadJ(SparseMatrix self, bool on_dev=True) -> int const *"""
         return _sparsemat.SparseMatrix_ReadJ(self, on_dev)
     ReadJ = _swig_new_instance_method(_sparsemat.SparseMatrix_ReadJ)
 
     def WriteJ(self, on_dev=True):
-        r"""WriteJ(SparseMatrix self, bool on_dev=True) -> int"""
+        r"""WriteJ(SparseMatrix self, bool on_dev=True) -> int *"""
         return _sparsemat.SparseMatrix_WriteJ(self, on_dev)
     WriteJ = _swig_new_instance_method(_sparsemat.SparseMatrix_WriteJ)
 
     def ReadWriteJ(self, on_dev=True):
-        r"""ReadWriteJ(SparseMatrix self, bool on_dev=True) -> int"""
+        r"""ReadWriteJ(SparseMatrix self, bool on_dev=True) -> int *"""
         return _sparsemat.SparseMatrix_ReadWriteJ(self, on_dev)
     ReadWriteJ = _swig_new_instance_method(_sparsemat.SparseMatrix_ReadWriteJ)
 
@@ -281,17 +281,17 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
     GetMemoryData = _swig_new_instance_method(_sparsemat.SparseMatrix_GetMemoryData)
 
     def ReadData(self, on_dev=True):
-        r"""ReadData(SparseMatrix self, bool on_dev=True) -> double const"""
+        r"""ReadData(SparseMatrix self, bool on_dev=True) -> double const *"""
         return _sparsemat.SparseMatrix_ReadData(self, on_dev)
     ReadData = _swig_new_instance_method(_sparsemat.SparseMatrix_ReadData)
 
     def WriteData(self, on_dev=True):
-        r"""WriteData(SparseMatrix self, bool on_dev=True) -> double"""
+        r"""WriteData(SparseMatrix self, bool on_dev=True) -> double *"""
         return _sparsemat.SparseMatrix_WriteData(self, on_dev)
     WriteData = _swig_new_instance_method(_sparsemat.SparseMatrix_WriteData)
 
     def ReadWriteData(self, on_dev=True):
-        r"""ReadWriteData(SparseMatrix self, bool on_dev=True) -> double"""
+        r"""ReadWriteData(SparseMatrix self, bool on_dev=True) -> double *"""
         return _sparsemat.SparseMatrix_ReadWriteData(self, on_dev)
     ReadWriteData = _swig_new_instance_method(_sparsemat.SparseMatrix_ReadWriteData)
 
@@ -468,9 +468,9 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_EliminateRow(self, *args)
     EliminateRow = _swig_new_instance_method(_sparsemat.SparseMatrix_EliminateRow)
 
-    def EliminateCol(self, *args):
+    def EliminateCol(self, *args, **kwargs):
         r"""EliminateCol(SparseMatrix self, int col, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ZERO)"""
-        return _sparsemat.SparseMatrix_EliminateCol(self, *args)
+        return _sparsemat.SparseMatrix_EliminateCol(self, *args, **kwargs)
     EliminateCol = _swig_new_instance_method(_sparsemat.SparseMatrix_EliminateCol)
 
     def EliminateCols(self, *args):
@@ -481,9 +481,9 @@ class SparseMatrix(mfem._ser.matrix.AbstractSparseMatrix):
         return _sparsemat.SparseMatrix_EliminateCols(self, *args)
     EliminateCols = _swig_new_instance_method(_sparsemat.SparseMatrix_EliminateCols)
 
-    def EliminateRowColMultipleRHS(self, *args):
+    def EliminateRowColMultipleRHS(self, *args, **kwargs):
         r"""EliminateRowColMultipleRHS(SparseMatrix self, int rc, Vector sol, DenseMatrix rhs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)"""
-        return _sparsemat.SparseMatrix_EliminateRowColMultipleRHS(self, *args)
+        return _sparsemat.SparseMatrix_EliminateRowColMultipleRHS(self, *args, **kwargs)
     EliminateRowColMultipleRHS = _swig_new_instance_method(_sparsemat.SparseMatrix_EliminateRowColMultipleRHS)
 
     def EliminateRowColDiag(self, rc, value):

@@ -3229,11 +3229,11 @@ fail:
 SWIGINTERN PyObject *_wrap_new_Segment__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int *arg1 = (int *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   int temp1[2] ;
   mfem::Segment *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   {
     if (PyList_Check(swig_obj[0])) {
       int ll = PyList_Size(swig_obj[0]);
@@ -3254,11 +3254,13 @@ SWIGINTERN PyObject *_wrap_new_Segment__SWIG_1(PyObject *SWIGUNUSEDPARM(self), P
     
     arg1 = temp1;
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
   {
     try {
@@ -3282,59 +3284,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_Segment__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int *arg1 = (int *) 0 ;
-  int temp1[2] ;
-  mfem::Segment *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    if (PyList_Check(swig_obj[0])) {
-      int ll = PyList_Size(swig_obj[0]);
-      for (int i = 0; i < ll; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[0],i);
-        temp1[i] = (int)PyInt_AsLong(s);
-      }
-    } else if (PyTuple_Check(swig_obj[0])) {
-      int ll = PyTuple_Size(swig_obj[0]);
-      for (int i = 0; i < ll; i++) {
-        PyObject *s = PyTuple_GetItem(swig_obj[0],i);
-        temp1[i] = (int)PyInt_AsLong(s);
-      }
-    } else {
-      PyErr_SetString(PyExc_ValueError, "Expecting a list/tuple");
-      return NULL;
-    }
-    
-    arg1 = temp1;
-  }
-  {
-    try {
-      result = (mfem::Segment *)new mfem::Segment((int const *)arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Segment, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Segment__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
-  int arg3 ;
+  int arg3 = (int) 1 ;
   mfem::Segment *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -3347,54 +3302,17 @@ SWIGINTERN PyObject *_wrap_new_Segment__SWIG_3(PyObject *SWIGUNUSEDPARM(self), P
     };  
     arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
       result = (mfem::Segment *)new mfem::Segment(arg1,arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Segment, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Segment__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  mfem::Segment *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::Segment *)new mfem::Segment(arg1,arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -3423,7 +3341,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
   if (argc == 0) {
     return _wrap_new_Segment__SWIG_0(self, argc, argv);
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     {
       _v = 0;
@@ -3440,26 +3358,9 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
       
     }
     if (_v) {
-      return _wrap_new_Segment__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      _v = 0;
-      if (PyList_Check(argv[0])){
-        if  (PyList_Size(argv[0]) == 2){
-          _v = 1;
-        }
+      if (argc <= 1) {
+        return _wrap_new_Segment__SWIG_1(self, argc, argv);
       }
-      if (PyTuple_Check(argv[0])){
-        if  (PyTuple_Size(argv[0]) == 2){
-          _v = 1;
-        }
-      }
-      
-    }
-    if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -3473,7 +3374,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
@@ -3493,30 +3394,9 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
-        return _wrap_new_Segment__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_new_Segment__SWIG_2(self, argc, argv);
         }
-      }
-      if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -3526,7 +3406,7 @@ SWIGINTERN PyObject *_wrap_new_Segment(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_Segment__SWIG_3(self, argc, argv);
+          return _wrap_new_Segment__SWIG_2(self, argc, argv);
         }
       }
     }
@@ -3537,39 +3417,41 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Segment::Segment()\n"
     "    mfem::Segment::Segment(int const *,int)\n"
-    "    mfem::Segment::Segment(int const *)\n"
-    "    mfem::Segment::Segment(int,int,int)\n"
-    "    mfem::Segment::Segment(int,int)\n");
+    "    mfem::Segment::Segment(int,int,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Segment_SetVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Segment_SetVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Segment *arg1 = (mfem::Segment *) 0 ;
   int *arg2 = (int *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int temp2[2] ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ind",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Segment_SetVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Segment_SetVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Segment_SetVertices" "', argument " "1"" of type '" "mfem::Segment *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Segment * >(argp1);
   {
-    if (PyList_Check(swig_obj[1])) {
-      int ll = PyList_Size(swig_obj[1]);
+    if (PyList_Check(obj1)) {
+      int ll = PyList_Size(obj1);
       for (int i = 0; i < ll; i++) {
-        PyObject *s = PyList_GetItem(swig_obj[1],i);
+        PyObject *s = PyList_GetItem(obj1,i);
         temp2[i] = (int)PyInt_AsLong(s);
       }
-    } else if (PyTuple_Check(swig_obj[1])) {
-      int ll = PyTuple_Size(swig_obj[1]);
+    } else if (PyTuple_Check(obj1)) {
+      int ll = PyTuple_Size(obj1);
       for (int i = 0; i < ll; i++) {
-        PyObject *s = PyTuple_GetItem(swig_obj[1],i);
+        PyObject *s = PyTuple_GetItem(obj1,i);
         temp2[i] = (int)PyInt_AsLong(s);
       }
     } else {
@@ -3826,26 +3708,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Segment_GetEdgeVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Segment_GetEdgeVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Segment *arg1 = (mfem::Segment *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ei",  NULL 
+  };
   int *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Segment_GetEdgeVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Segment_GetEdgeVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Segment_GetEdgeVertices" "', argument " "1"" of type '" "mfem::Segment const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Segment * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3985,26 +3871,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Segment_GetNFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Segment_GetNFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Segment *arg1 = (mfem::Segment *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg2",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Segment_GetNFaceVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Segment_GetNFaceVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Segment_GetNFaceVertices" "', argument " "1"" of type '" "mfem::Segment const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Segment * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4026,26 +3916,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Segment_GetFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Segment_GetFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Segment *arg1 = (mfem::Segment *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fi",  NULL 
+  };
   int *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Segment_GetFaceVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Segment_GetFaceVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Segment_GetFaceVertices" "', argument " "1"" of type '" "mfem::Segment const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Segment * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4067,7 +3961,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Segment_Duplicate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Segment_Duplicate(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Segment *arg1 = (mfem::Segment *) 0 ;
   mfem::Mesh *arg2 = (mfem::Mesh *) 0 ;
@@ -4075,16 +3969,20 @@ SWIGINTERN PyObject *_wrap_Segment_Duplicate(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  NULL 
+  };
   mfem::Element *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Segment_Duplicate", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Segment_Duplicate", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Segment, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Segment_Duplicate" "', argument " "1"" of type '" "mfem::Segment const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Segment * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Segment_Duplicate" "', argument " "2"" of type '" "mfem::Mesh *""'"); 
   }
@@ -4190,9 +4088,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_Segment", _wrap_new_Segment, METH_VARARGS, "\n"
 		"Segment()\n"
 		"Segment(int const * ind, int attr=1)\n"
-		"Segment(int ind1, int ind2, int attr=1)\n"
+		"new_Segment(int ind1, int ind2, int attr=1) -> Segment\n"
 		""},
-	 { "Segment_SetVertices", _wrap_Segment_SetVertices, METH_VARARGS, "Segment_SetVertices(Segment self, int const * ind)"},
+	 { "Segment_SetVertices", (PyCFunction)(void(*)(void))_wrap_Segment_SetVertices, METH_VARARGS|METH_KEYWORDS, "Segment_SetVertices(Segment self, int const * ind)"},
 	 { "Segment_GetType", _wrap_Segment_GetType, METH_O, "Segment_GetType(Segment self) -> mfem::Element::Type"},
 	 { "Segment_GetVertices", _wrap_Segment_GetVertices, METH_VARARGS, "\n"
 		"Segment_GetVertices(Segment self, intArray v)\n"
@@ -4200,14 +4098,14 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "Segment_GetNVertices", _wrap_Segment_GetNVertices, METH_O, "Segment_GetNVertices(Segment self) -> int"},
 	 { "Segment_GetNEdges", _wrap_Segment_GetNEdges, METH_O, "Segment_GetNEdges(Segment self) -> int"},
-	 { "Segment_GetEdgeVertices", _wrap_Segment_GetEdgeVertices, METH_VARARGS, "Segment_GetEdgeVertices(Segment self, int ei) -> int const *"},
+	 { "Segment_GetEdgeVertices", (PyCFunction)(void(*)(void))_wrap_Segment_GetEdgeVertices, METH_VARARGS|METH_KEYWORDS, "Segment_GetEdgeVertices(Segment self, int ei) -> int const *"},
 	 { "Segment_GetNFaces", _wrap_Segment_GetNFaces, METH_VARARGS, "\n"
 		"Segment_GetNFaces(Segment self, int & nFaceVertices) -> int\n"
 		"Segment_GetNFaces(Segment self) -> int\n"
 		""},
-	 { "Segment_GetNFaceVertices", _wrap_Segment_GetNFaceVertices, METH_VARARGS, "Segment_GetNFaceVertices(Segment self, int arg2) -> int"},
-	 { "Segment_GetFaceVertices", _wrap_Segment_GetFaceVertices, METH_VARARGS, "Segment_GetFaceVertices(Segment self, int fi) -> int const *"},
-	 { "Segment_Duplicate", _wrap_Segment_Duplicate, METH_VARARGS, "Segment_Duplicate(Segment self, mfem::Mesh * m) -> Element"},
+	 { "Segment_GetNFaceVertices", (PyCFunction)(void(*)(void))_wrap_Segment_GetNFaceVertices, METH_VARARGS|METH_KEYWORDS, "Segment_GetNFaceVertices(Segment self, int arg2) -> int"},
+	 { "Segment_GetFaceVertices", (PyCFunction)(void(*)(void))_wrap_Segment_GetFaceVertices, METH_VARARGS|METH_KEYWORDS, "Segment_GetFaceVertices(Segment self, int fi) -> int const *"},
+	 { "Segment_Duplicate", (PyCFunction)(void(*)(void))_wrap_Segment_Duplicate, METH_VARARGS|METH_KEYWORDS, "Segment_Duplicate(Segment self, mfem::Mesh * m) -> Element"},
 	 { "delete_Segment", _wrap_delete_Segment, METH_O, "delete_Segment(Segment self)"},
 	 { "Segment_swigregister", Segment_swigregister, METH_O, NULL},
 	 { "Segment_swiginit", Segment_swiginit, METH_VARARGS, NULL},
@@ -4220,9 +4118,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_Segment", _wrap_new_Segment, METH_VARARGS, "\n"
 		"Segment()\n"
 		"Segment(int const * ind, int attr=1)\n"
-		"Segment(int ind1, int ind2, int attr=1)\n"
+		"new_Segment(int ind1, int ind2, int attr=1) -> Segment\n"
 		""},
-	 { "Segment_SetVertices", _wrap_Segment_SetVertices, METH_VARARGS, "SetVertices(Segment self, int const * ind)"},
+	 { "Segment_SetVertices", (PyCFunction)(void(*)(void))_wrap_Segment_SetVertices, METH_VARARGS|METH_KEYWORDS, "SetVertices(Segment self, int const * ind)"},
 	 { "Segment_GetType", _wrap_Segment_GetType, METH_O, "GetType(Segment self) -> mfem::Element::Type"},
 	 { "Segment_GetVertices", _wrap_Segment_GetVertices, METH_VARARGS, "\n"
 		"GetVertices(Segment self, intArray v)\n"
@@ -4230,14 +4128,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "Segment_GetNVertices", _wrap_Segment_GetNVertices, METH_O, "GetNVertices(Segment self) -> int"},
 	 { "Segment_GetNEdges", _wrap_Segment_GetNEdges, METH_O, "GetNEdges(Segment self) -> int"},
-	 { "Segment_GetEdgeVertices", _wrap_Segment_GetEdgeVertices, METH_VARARGS, "GetEdgeVertices(Segment self, int ei) -> int const *"},
+	 { "Segment_GetEdgeVertices", (PyCFunction)(void(*)(void))_wrap_Segment_GetEdgeVertices, METH_VARARGS|METH_KEYWORDS, "GetEdgeVertices(Segment self, int ei) -> int const *"},
 	 { "Segment_GetNFaces", _wrap_Segment_GetNFaces, METH_VARARGS, "\n"
 		"GetNFaces(Segment self, int & nFaceVertices) -> int\n"
 		"GetNFaces(Segment self) -> int\n"
 		""},
-	 { "Segment_GetNFaceVertices", _wrap_Segment_GetNFaceVertices, METH_VARARGS, "GetNFaceVertices(Segment self, int arg2) -> int"},
-	 { "Segment_GetFaceVertices", _wrap_Segment_GetFaceVertices, METH_VARARGS, "GetFaceVertices(Segment self, int fi) -> int const *"},
-	 { "Segment_Duplicate", _wrap_Segment_Duplicate, METH_VARARGS, "Duplicate(Segment self, mfem::Mesh * m) -> Element"},
+	 { "Segment_GetNFaceVertices", (PyCFunction)(void(*)(void))_wrap_Segment_GetNFaceVertices, METH_VARARGS|METH_KEYWORDS, "GetNFaceVertices(Segment self, int arg2) -> int"},
+	 { "Segment_GetFaceVertices", (PyCFunction)(void(*)(void))_wrap_Segment_GetFaceVertices, METH_VARARGS|METH_KEYWORDS, "GetFaceVertices(Segment self, int fi) -> int const *"},
+	 { "Segment_Duplicate", (PyCFunction)(void(*)(void))_wrap_Segment_Duplicate, METH_VARARGS|METH_KEYWORDS, "Duplicate(Segment self, mfem::Mesh * m) -> Element"},
 	 { "delete_Segment", _wrap_delete_Segment, METH_O, "delete_Segment(Segment self)"},
 	 { "Segment_swigregister", Segment_swigregister, METH_O, NULL},
 	 { "Segment_swiginit", Segment_swiginit, METH_VARARGS, NULL},

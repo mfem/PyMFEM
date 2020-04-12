@@ -179,9 +179,9 @@ class L2FaceRestriction(mfem._ser.operators.Operator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2FaceRestriction self, FiniteElementSpace arg2, mfem::ElementDofOrdering const arg3, mfem::FaceType const arg4, mfem::L2FaceValues const m=DoubleValued) -> L2FaceRestriction"""
-        _restriction.L2FaceRestriction_swiginit(self, _restriction.new_L2FaceRestriction(*args))
+        _restriction.L2FaceRestriction_swiginit(self, _restriction.new_L2FaceRestriction(*args, **kwargs))
 
     def Mult(self, x, y):
         r"""Mult(L2FaceRestriction self, Vector x, Vector y)"""

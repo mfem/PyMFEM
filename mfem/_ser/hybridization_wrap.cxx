@@ -3287,7 +3287,7 @@ namespace swig {
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_Hybridization(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_Hybridization(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
@@ -3295,16 +3295,20 @@ SWIGINTERN PyObject *_wrap_new_Hybridization(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"fespace",  (char *)"c_fespace",  NULL 
+  };
   mfem::Hybridization *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_Hybridization", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_Hybridization", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Hybridization" "', argument " "1"" of type '" "mfem::FiniteElementSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_Hybridization" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
   }
@@ -3375,7 +3379,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hybridization_SetConstraintIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hybridization_SetConstraintIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Hybridization *arg1 = (mfem::Hybridization *) 0 ;
   mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
@@ -3383,15 +3387,19 @@ SWIGINTERN PyObject *_wrap_Hybridization_SetConstraintIntegrator(PyObject *SWIGU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"c_integ",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Hybridization_SetConstraintIntegrator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hybridization_SetConstraintIntegrator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hybridization_SetConstraintIntegrator" "', argument " "1"" of type '" "mfem::Hybridization *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Hybridization_SetConstraintIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
@@ -3422,7 +3430,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hybridization_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hybridization_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Hybridization *arg1 = (mfem::Hybridization *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -3430,15 +3438,19 @@ SWIGINTERN PyObject *_wrap_Hybridization_Init(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ess_tdof_list",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Hybridization_Init", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Hybridization_Init", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hybridization_Init" "', argument " "1"" of type '" "mfem::Hybridization *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Hybridization_Init" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -3472,7 +3484,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hybridization_AssembleMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hybridization_AssembleMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Hybridization *arg1 = (mfem::Hybridization *) 0 ;
   int arg2 ;
@@ -3481,21 +3493,26 @@ SWIGINTERN PyObject *_wrap_Hybridization_AssembleMatrix(PyObject *SWIGUNUSEDPARM
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"el",  (char *)"A",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Hybridization_AssembleMatrix", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Hybridization_AssembleMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hybridization_AssembleMatrix" "', argument " "1"" of type '" "mfem::Hybridization *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Hybridization_AssembleMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
   }
@@ -3529,7 +3546,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hybridization_AssembleBdrMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hybridization_AssembleBdrMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Hybridization *arg1 = (mfem::Hybridization *) 0 ;
   int arg2 ;
@@ -3538,21 +3555,26 @@ SWIGINTERN PyObject *_wrap_Hybridization_AssembleBdrMatrix(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bdr_el",  (char *)"A",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Hybridization_AssembleBdrMatrix", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Hybridization_AssembleBdrMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hybridization_AssembleBdrMatrix" "', argument " "1"" of type '" "mfem::Hybridization *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Hybridization_AssembleBdrMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
   }
@@ -3667,7 +3689,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hybridization_ReduceRHS(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hybridization_ReduceRHS(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Hybridization *arg1 = (mfem::Hybridization *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3678,15 +3700,20 @@ SWIGINTERN PyObject *_wrap_Hybridization_ReduceRHS(PyObject *SWIGUNUSEDPARM(self
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"b",  (char *)"b_r",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Hybridization_ReduceRHS", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Hybridization_ReduceRHS", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hybridization_ReduceRHS" "', argument " "1"" of type '" "mfem::Hybridization const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Hybridization_ReduceRHS" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3694,7 +3721,7 @@ SWIGINTERN PyObject *_wrap_Hybridization_ReduceRHS(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Hybridization_ReduceRHS" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Hybridization_ReduceRHS" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3728,7 +3755,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Hybridization_ComputeSolution(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Hybridization_ComputeSolution(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Hybridization *arg1 = (mfem::Hybridization *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3742,15 +3769,21 @@ SWIGINTERN PyObject *_wrap_Hybridization_ComputeSolution(PyObject *SWIGUNUSEDPAR
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"b",  (char *)"sol_r",  (char *)"sol",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Hybridization_ComputeSolution", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Hybridization_ComputeSolution", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Hybridization, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Hybridization_ComputeSolution" "', argument " "1"" of type '" "mfem::Hybridization const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Hybridization * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Hybridization_ComputeSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3758,7 +3791,7 @@ SWIGINTERN PyObject *_wrap_Hybridization_ComputeSolution(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Hybridization_ComputeSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Hybridization_ComputeSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3766,7 +3799,7 @@ SWIGINTERN PyObject *_wrap_Hybridization_ComputeSolution(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Hybridization_ComputeSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Hybridization_ComputeSolution" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -3854,16 +3887,16 @@ SWIGINTERN PyObject *Hybridization_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_Hybridization", _wrap_new_Hybridization, METH_VARARGS, "new_Hybridization(FiniteElementSpace fespace, FiniteElementSpace c_fespace) -> Hybridization"},
+	 { "new_Hybridization", (PyCFunction)(void(*)(void))_wrap_new_Hybridization, METH_VARARGS|METH_KEYWORDS, "new_Hybridization(FiniteElementSpace fespace, FiniteElementSpace c_fespace) -> Hybridization"},
 	 { "delete_Hybridization", _wrap_delete_Hybridization, METH_O, "delete_Hybridization(Hybridization self)"},
-	 { "Hybridization_SetConstraintIntegrator", _wrap_Hybridization_SetConstraintIntegrator, METH_VARARGS, "Hybridization_SetConstraintIntegrator(Hybridization self, BilinearFormIntegrator c_integ)"},
-	 { "Hybridization_Init", _wrap_Hybridization_Init, METH_VARARGS, "Hybridization_Init(Hybridization self, intArray ess_tdof_list)"},
-	 { "Hybridization_AssembleMatrix", _wrap_Hybridization_AssembleMatrix, METH_VARARGS, "Hybridization_AssembleMatrix(Hybridization self, int el, DenseMatrix A)"},
-	 { "Hybridization_AssembleBdrMatrix", _wrap_Hybridization_AssembleBdrMatrix, METH_VARARGS, "Hybridization_AssembleBdrMatrix(Hybridization self, int bdr_el, DenseMatrix A)"},
+	 { "Hybridization_SetConstraintIntegrator", (PyCFunction)(void(*)(void))_wrap_Hybridization_SetConstraintIntegrator, METH_VARARGS|METH_KEYWORDS, "Hybridization_SetConstraintIntegrator(Hybridization self, BilinearFormIntegrator c_integ)"},
+	 { "Hybridization_Init", (PyCFunction)(void(*)(void))_wrap_Hybridization_Init, METH_VARARGS|METH_KEYWORDS, "Hybridization_Init(Hybridization self, intArray ess_tdof_list)"},
+	 { "Hybridization_AssembleMatrix", (PyCFunction)(void(*)(void))_wrap_Hybridization_AssembleMatrix, METH_VARARGS|METH_KEYWORDS, "Hybridization_AssembleMatrix(Hybridization self, int el, DenseMatrix A)"},
+	 { "Hybridization_AssembleBdrMatrix", (PyCFunction)(void(*)(void))_wrap_Hybridization_AssembleBdrMatrix, METH_VARARGS|METH_KEYWORDS, "Hybridization_AssembleBdrMatrix(Hybridization self, int bdr_el, DenseMatrix A)"},
 	 { "Hybridization_Finalize", _wrap_Hybridization_Finalize, METH_O, "Hybridization_Finalize(Hybridization self)"},
 	 { "Hybridization_GetMatrix", _wrap_Hybridization_GetMatrix, METH_O, "Hybridization_GetMatrix(Hybridization self) -> SparseMatrix"},
-	 { "Hybridization_ReduceRHS", _wrap_Hybridization_ReduceRHS, METH_VARARGS, "Hybridization_ReduceRHS(Hybridization self, Vector b, Vector b_r)"},
-	 { "Hybridization_ComputeSolution", _wrap_Hybridization_ComputeSolution, METH_VARARGS, "Hybridization_ComputeSolution(Hybridization self, Vector b, Vector sol_r, Vector sol)"},
+	 { "Hybridization_ReduceRHS", (PyCFunction)(void(*)(void))_wrap_Hybridization_ReduceRHS, METH_VARARGS|METH_KEYWORDS, "Hybridization_ReduceRHS(Hybridization self, Vector b, Vector b_r)"},
+	 { "Hybridization_ComputeSolution", (PyCFunction)(void(*)(void))_wrap_Hybridization_ComputeSolution, METH_VARARGS|METH_KEYWORDS, "Hybridization_ComputeSolution(Hybridization self, Vector b, Vector sol_r, Vector sol)"},
 	 { "Hybridization_Reset", _wrap_Hybridization_Reset, METH_O, "Hybridization_Reset(Hybridization self)"},
 	 { "Hybridization_swigregister", Hybridization_swigregister, METH_O, NULL},
 	 { "Hybridization_swiginit", Hybridization_swiginit, METH_VARARGS, NULL},
@@ -3873,16 +3906,16 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_Hybridization", _wrap_new_Hybridization, METH_VARARGS, "new_Hybridization(FiniteElementSpace fespace, FiniteElementSpace c_fespace) -> Hybridization"},
+	 { "new_Hybridization", (PyCFunction)(void(*)(void))_wrap_new_Hybridization, METH_VARARGS|METH_KEYWORDS, "new_Hybridization(FiniteElementSpace fespace, FiniteElementSpace c_fespace) -> Hybridization"},
 	 { "delete_Hybridization", _wrap_delete_Hybridization, METH_O, "delete_Hybridization(Hybridization self)"},
-	 { "Hybridization_SetConstraintIntegrator", _wrap_Hybridization_SetConstraintIntegrator, METH_VARARGS, "SetConstraintIntegrator(Hybridization self, BilinearFormIntegrator c_integ)"},
-	 { "Hybridization_Init", _wrap_Hybridization_Init, METH_VARARGS, "Init(Hybridization self, intArray ess_tdof_list)"},
-	 { "Hybridization_AssembleMatrix", _wrap_Hybridization_AssembleMatrix, METH_VARARGS, "AssembleMatrix(Hybridization self, int el, DenseMatrix A)"},
-	 { "Hybridization_AssembleBdrMatrix", _wrap_Hybridization_AssembleBdrMatrix, METH_VARARGS, "AssembleBdrMatrix(Hybridization self, int bdr_el, DenseMatrix A)"},
+	 { "Hybridization_SetConstraintIntegrator", (PyCFunction)(void(*)(void))_wrap_Hybridization_SetConstraintIntegrator, METH_VARARGS|METH_KEYWORDS, "SetConstraintIntegrator(Hybridization self, BilinearFormIntegrator c_integ)"},
+	 { "Hybridization_Init", (PyCFunction)(void(*)(void))_wrap_Hybridization_Init, METH_VARARGS|METH_KEYWORDS, "Init(Hybridization self, intArray ess_tdof_list)"},
+	 { "Hybridization_AssembleMatrix", (PyCFunction)(void(*)(void))_wrap_Hybridization_AssembleMatrix, METH_VARARGS|METH_KEYWORDS, "AssembleMatrix(Hybridization self, int el, DenseMatrix A)"},
+	 { "Hybridization_AssembleBdrMatrix", (PyCFunction)(void(*)(void))_wrap_Hybridization_AssembleBdrMatrix, METH_VARARGS|METH_KEYWORDS, "AssembleBdrMatrix(Hybridization self, int bdr_el, DenseMatrix A)"},
 	 { "Hybridization_Finalize", _wrap_Hybridization_Finalize, METH_O, "Finalize(Hybridization self)"},
 	 { "Hybridization_GetMatrix", _wrap_Hybridization_GetMatrix, METH_O, "GetMatrix(Hybridization self) -> SparseMatrix"},
-	 { "Hybridization_ReduceRHS", _wrap_Hybridization_ReduceRHS, METH_VARARGS, "ReduceRHS(Hybridization self, Vector b, Vector b_r)"},
-	 { "Hybridization_ComputeSolution", _wrap_Hybridization_ComputeSolution, METH_VARARGS, "ComputeSolution(Hybridization self, Vector b, Vector sol_r, Vector sol)"},
+	 { "Hybridization_ReduceRHS", (PyCFunction)(void(*)(void))_wrap_Hybridization_ReduceRHS, METH_VARARGS|METH_KEYWORDS, "ReduceRHS(Hybridization self, Vector b, Vector b_r)"},
+	 { "Hybridization_ComputeSolution", (PyCFunction)(void(*)(void))_wrap_Hybridization_ComputeSolution, METH_VARARGS|METH_KEYWORDS, "ComputeSolution(Hybridization self, Vector b, Vector sol_r, Vector sol)"},
 	 { "Hybridization_Reset", _wrap_Hybridization_Reset, METH_O, "Reset(Hybridization self)"},
 	 { "Hybridization_swigregister", Hybridization_swigregister, METH_O, NULL},
 	 { "Hybridization_swiginit", Hybridization_swiginit, METH_VARARGS, NULL},

@@ -148,9 +148,9 @@ class ComplexSparseMatrix(ComplexOperator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ComplexSparseMatrix self, SparseMatrix A_Real, SparseMatrix A_Imag, bool ownReal, bool ownImag, mfem::ComplexOperator::Convention convention=HERMITIAN) -> ComplexSparseMatrix"""
-        _complex_operator.ComplexSparseMatrix_swiginit(self, _complex_operator.new_ComplexSparseMatrix(*args))
+        _complex_operator.ComplexSparseMatrix_swiginit(self, _complex_operator.new_ComplexSparseMatrix(*args, **kwargs))
 
     def real(self, *args):
         r"""

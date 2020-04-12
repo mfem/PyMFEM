@@ -384,7 +384,7 @@ class Vector(object):
     __swig_destroy__ = _vector.delete_Vector
 
     def Read(self, on_dev=True):
-        r"""Read(Vector self, bool on_dev=True) -> double const"""
+        r"""Read(Vector self, bool on_dev=True) -> double const *"""
         return _vector.Vector_Read(self, on_dev)
     Read = _swig_new_instance_method(_vector.Vector_Read)
 
@@ -394,7 +394,7 @@ class Vector(object):
     HostRead = _swig_new_instance_method(_vector.Vector_HostRead)
 
     def Write(self, on_dev=True):
-        r"""Write(Vector self, bool on_dev=True) -> double"""
+        r"""Write(Vector self, bool on_dev=True) -> double *"""
         return _vector.Vector_Write(self, on_dev)
     Write = _swig_new_instance_method(_vector.Vector_Write)
 
@@ -404,7 +404,7 @@ class Vector(object):
     HostWrite = _swig_new_instance_method(_vector.Vector_HostWrite)
 
     def ReadWrite(self, on_dev=True):
-        r"""ReadWrite(Vector self, bool on_dev=True) -> double"""
+        r"""ReadWrite(Vector self, bool on_dev=True) -> double *"""
         return _vector.Vector_ReadWrite(self, on_dev)
     ReadWrite = _swig_new_instance_method(_vector.Vector_ReadWrite)
 

@@ -92,8 +92,8 @@ class OutStream(object):
 _globals.OutStream_swigregister(OutStream)
 
 
-def MakeParFilename(*args):
-    return _globals.MakeParFilename(*args)
+def MakeParFilename(*args, **kwargs):
+    return _globals.MakeParFilename(*args, **kwargs)
 MakeParFilename = _globals.MakeParFilename
 
 cvar = _globals.cvar

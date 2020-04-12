@@ -240,9 +240,9 @@ class GroupCommunicator(object):
     byNeighbor = _communication.GroupCommunicator_byNeighbor
     
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(GroupCommunicator self, GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor) -> GroupCommunicator"""
-        _communication.GroupCommunicator_swiginit(self, _communication.new_GroupCommunicator(*args))
+        _communication.GroupCommunicator_swiginit(self, _communication.new_GroupCommunicator(*args, **kwargs))
 
     def Create(self, ldof_group):
         r"""Create(GroupCommunicator self, intArray ldof_group)"""

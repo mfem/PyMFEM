@@ -255,7 +255,6 @@ class ParGridFunction(mfem._par.gridfunc.GridFunction):
         r"""
         ProjectCoefficient(ParGridFunction self, Coefficient coeff)
         ProjectCoefficient(ParGridFunction self, Coefficient coeff, intArray dofs, int vd=0)
-        ProjectCoefficient(ParGridFunction self, Coefficient coeff, intArray dofs)
         ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff)
         ProjectCoefficient(ParGridFunction self, VectorCoefficient vcoeff, intArray dofs)
         ProjectCoefficient(ParGridFunction self, mfem::Coefficient *[] coeff)

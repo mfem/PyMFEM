@@ -288,7 +288,7 @@ class intArray(object):
     MemoryUsage = _swig_new_instance_method(_array.intArray_MemoryUsage)
 
     def Read(self, on_dev=True):
-        r"""Read(intArray self, bool on_dev=True) -> int const"""
+        r"""Read(intArray self, bool on_dev=True) -> int const *"""
         return _array.intArray_Read(self, on_dev)
     Read = _swig_new_instance_method(_array.intArray_Read)
 
@@ -298,7 +298,7 @@ class intArray(object):
     HostRead = _swig_new_instance_method(_array.intArray_HostRead)
 
     def Write(self, on_dev=True):
-        r"""Write(intArray self, bool on_dev=True) -> int"""
+        r"""Write(intArray self, bool on_dev=True) -> int *"""
         return _array.intArray_Write(self, on_dev)
     Write = _swig_new_instance_method(_array.intArray_Write)
 
@@ -308,7 +308,7 @@ class intArray(object):
     HostWrite = _swig_new_instance_method(_array.intArray_HostWrite)
 
     def ReadWrite(self, on_dev=True):
-        r"""ReadWrite(intArray self, bool on_dev=True) -> int"""
+        r"""ReadWrite(intArray self, bool on_dev=True) -> int *"""
         return _array.intArray_ReadWrite(self, on_dev)
     ReadWrite = _swig_new_instance_method(_array.intArray_ReadWrite)
 
@@ -583,7 +583,7 @@ class doubleArray(object):
     MemoryUsage = _swig_new_instance_method(_array.doubleArray_MemoryUsage)
 
     def Read(self, on_dev=True):
-        r"""Read(doubleArray self, bool on_dev=True) -> double const"""
+        r"""Read(doubleArray self, bool on_dev=True) -> double const *"""
         return _array.doubleArray_Read(self, on_dev)
     Read = _swig_new_instance_method(_array.doubleArray_Read)
 
@@ -593,7 +593,7 @@ class doubleArray(object):
     HostRead = _swig_new_instance_method(_array.doubleArray_HostRead)
 
     def Write(self, on_dev=True):
-        r"""Write(doubleArray self, bool on_dev=True) -> double"""
+        r"""Write(doubleArray self, bool on_dev=True) -> double *"""
         return _array.doubleArray_Write(self, on_dev)
     Write = _swig_new_instance_method(_array.doubleArray_Write)
 
@@ -603,7 +603,7 @@ class doubleArray(object):
     HostWrite = _swig_new_instance_method(_array.doubleArray_HostWrite)
 
     def ReadWrite(self, on_dev=True):
-        r"""ReadWrite(doubleArray self, bool on_dev=True) -> double"""
+        r"""ReadWrite(doubleArray self, bool on_dev=True) -> double *"""
         return _array.doubleArray_ReadWrite(self, on_dev)
     ReadWrite = _swig_new_instance_method(_array.doubleArray_ReadWrite)
 

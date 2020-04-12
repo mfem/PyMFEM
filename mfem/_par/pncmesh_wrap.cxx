@@ -3478,14 +3478,14 @@ SWIGINTERN PyObject *_wrap_new_ParNCMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   MPI_Comm arg1 ;
   mfem::NCMesh *arg2 = 0 ;
-  int *arg3 = (int *) 0 ;
+  int *arg3 = (int *) NULL ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   mfem::ParNCMesh *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   {
     MPI_Comm *ptr = (MPI_Comm *)0;
     int res = SWIG_AsPtr_MPI_Comm(swig_obj[0], &ptr);
@@ -3503,11 +3503,13 @@ SWIGINTERN PyObject *_wrap_new_ParNCMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParNCMesh" "', argument " "2"" of type '" "mfem::NCMesh const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::NCMesh * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParNCMesh" "', argument " "3"" of type '" "int *""'"); 
+  if (swig_obj[2]) {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_int, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParNCMesh" "', argument " "3"" of type '" "int *""'"); 
+    }
+    arg3 = reinterpret_cast< int * >(argp3);
   }
-  arg3 = reinterpret_cast< int * >(argp3);
   {
     try {
       result = (mfem::ParNCMesh *)new mfem::ParNCMesh(arg1,(mfem::NCMesh const &)*arg2,arg3); 
@@ -3524,47 +3526,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_ParNCMesh__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  MPI_Comm arg1 ;
-  mfem::NCMesh *arg2 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::ParNCMesh *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    MPI_Comm *ptr = (MPI_Comm *)0;
-    int res = SWIG_AsPtr_MPI_Comm(swig_obj[0], &ptr);
-    if (!SWIG_IsOK(res) || !ptr) {
-      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_ParNCMesh" "', argument " "1"" of type '" "MPI_Comm""'"); 
-    }
-    arg1 = *ptr;
-    if (SWIG_IsNewObj(res)) delete ptr;
-  }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__NCMesh,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParNCMesh" "', argument " "2"" of type '" "mfem::NCMesh const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParNCMesh" "', argument " "2"" of type '" "mfem::NCMesh const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::NCMesh * >(argp2);
-  {
-    try {
-      result = (mfem::ParNCMesh *)new mfem::ParNCMesh(arg1,(mfem::NCMesh const &)*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParNCMesh, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParNCMesh__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -3608,10 +3569,10 @@ SWIGINTERN PyObject *_wrap_new_ParNCMesh(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ParNCMesh, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_ParNCMesh__SWIG_2(self, argc, argv);
+      return _wrap_new_ParNCMesh__SWIG_1(self, argc, argv);
     }
   }
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     int res = SWIG_AsPtr_MPI_Comm(argv[0], (MPI_Comm**)(0));
     _v = SWIG_CheckState(res);
@@ -3619,18 +3580,9 @@ SWIGINTERN PyObject *_wrap_new_ParNCMesh(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__NCMesh, SWIG_POINTER_NO_NULL | 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_ParNCMesh__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    int res = SWIG_AsPtr_MPI_Comm(argv[0], (MPI_Comm**)(0));
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__NCMesh, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_ParNCMesh__SWIG_0(self, argc, argv);
+        }
         void *vptr = 0;
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_int, 0);
         _v = SWIG_CheckState(res);
@@ -3645,7 +3597,6 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ParNCMesh'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::ParNCMesh::ParNCMesh(MPI_Comm,mfem::NCMesh const &,int *)\n"
-    "    mfem::ParNCMesh::ParNCMesh(MPI_Comm,mfem::NCMesh const &)\n"
     "    mfem::ParNCMesh::ParNCMesh(mfem::ParNCMesh const &)\n");
   return 0;
 }
@@ -3680,7 +3631,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_Refine(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_Refine(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::Array< mfem::Refinement > *arg2 = 0 ;
@@ -3688,15 +3639,19 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_Refine(PyObject *SWIGUNUSEDPARM(self), PyOb
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"refinements",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_Refine", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_Refine", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_Refine" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_Refine" "', argument " "2"" of type '" "mfem::Array< mfem::Refinement > const &""'"); 
   }
@@ -3719,25 +3674,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_LimitNCLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_LimitNCLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"max_nc_level",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_LimitNCLevel", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_LimitNCLevel", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_LimitNCLevel" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3754,7 +3713,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_CheckDerefinementNCLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_CheckDerefinementNCLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::Table *arg2 = 0 ;
@@ -3766,15 +3725,21 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_CheckDerefinementNCLevel(PyObject *SWIGUNUS
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"deref_table",  (char *)"level_ok",  (char *)"max_nc_level",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_CheckDerefinementNCLevel", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParNCMesh_CheckDerefinementNCLevel", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_CheckDerefinementNCLevel" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Table,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Table,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_CheckDerefinementNCLevel" "', argument " "2"" of type '" "mfem::Table const &""'"); 
   }
@@ -3782,7 +3747,7 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_CheckDerefinementNCLevel(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParNCMesh_CheckDerefinementNCLevel" "', argument " "2"" of type '" "mfem::Table const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Table * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParNCMesh_CheckDerefinementNCLevel" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -3791,10 +3756,10 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_CheckDerefinementNCLevel(PyObject *SWIGUNUS
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -3811,7 +3776,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_Derefine(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_Derefine(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -3819,15 +3784,19 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_Derefine(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"derefs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_Derefine", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_Derefine", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_Derefine" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_Derefine" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -3850,26 +3819,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
-  mfem::Array< int > *arg2 = (mfem::Array< int > *) 0 ;
+  mfem::Array< int > *arg2 = (mfem::Array< int > *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"custom_partition",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ParNCMesh_Rebalance", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_Rebalance" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_Rebalance" "', argument " "2"" of type '" "mfem::Array< int > const *""'"); 
+  if (obj1) {
+    res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_Rebalance" "', argument " "2"" of type '" "mfem::Array< int > const *""'"); 
+    }
+    arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
   {
     try {
       (arg1)->Rebalance((mfem::Array< int > const *)arg2); 
@@ -3882,74 +3858,6 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance__SWIG_0(PyObject *SWIGUNUSEDPARM(
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_Rebalance" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  {
-    try {
-      (arg1)->Rebalance(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParNCMesh_Rebalance(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ParNCMesh_Rebalance", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ParNCMesh_Rebalance__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_ParNCMesh_Rebalance__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParNCMesh_Rebalance'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParNCMesh::Rebalance(mfem::Array< int > const *)\n"
-    "    mfem::ParNCMesh::Rebalance()\n");
-  return 0;
 }
 
 
@@ -4193,26 +4101,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetSharedList(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetSharedList(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"entity",  NULL 
+  };
   mfem::NCMesh::NCList *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetSharedList", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_GetSharedList", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetSharedList" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4229,26 +4141,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetFaceOrientation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetFaceOrientation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"index",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetFaceOrientation", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_GetFaceOrientation", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetFaceOrientation" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4265,33 +4181,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetEntityOwnerId(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetEntityOwnerId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"entity",  (char *)"index",  NULL 
+  };
   mfem::ParNCMesh::GroupId result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetEntityOwnerId", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParNCMesh_GetEntityOwnerId", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetEntityOwnerId" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4308,33 +4229,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetEntityGroupId(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetEntityGroupId(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"entity",  (char *)"index",  NULL 
+  };
   mfem::ParNCMesh::GroupId result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetEntityGroupId", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParNCMesh_GetEntityGroupId", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetEntityGroupId" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4351,7 +4277,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetGroup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetGroup(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::ParNCMesh::GroupId arg2 ;
@@ -4359,16 +4285,20 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_GetGroup(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   short val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"id",  NULL 
+  };
   mfem::ParNCMesh::CommGroup *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetGroup", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_GetGroup", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetGroup" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  ecode2 = SWIG_AsVal_short(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_short(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParNCMesh_GetGroup" "', argument " "2"" of type '" "mfem::ParNCMesh::GroupId""'");
   } 
@@ -4388,7 +4318,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_GroupContains(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GroupContains(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::ParNCMesh::GroupId arg2 ;
@@ -4397,25 +4327,30 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_GroupContains(PyObject *SWIGUNUSEDPARM(self
   int res1 = 0 ;
   short val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"id",  (char *)"rank",  NULL 
+  };
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GroupContains", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParNCMesh_GroupContains", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GroupContains" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  ecode2 = SWIG_AsVal_short(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_short(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParNCMesh_GroupContains" "', argument " "2"" of type '" "mfem::ParNCMesh::GroupId""'");
   } 
   arg2 = static_cast< mfem::ParNCMesh::GroupId >(val2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4432,33 +4367,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_IsGhost(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_IsGhost(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"entity",  (char *)"index",  NULL 
+  };
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_IsGhost", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParNCMesh_IsGhost", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_IsGhost" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4475,26 +4415,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_ElementRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_ElementRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"index",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_ElementRank", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_ElementRank", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_ElementRank" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4541,7 +4485,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_SendRebalanceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_SendRebalanceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   int arg2 ;
@@ -4556,21 +4500,28 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_SendRebalanceDofs(PyObject *SWIGUNUSEDPARM(
   int ecode4 = 0 ;
   void *argp5 = 0 ;
   int res5 = 0 ;
-  PyObject *swig_obj[5] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"old_ndofs",  (char *)"old_element_dofs",  (char *)"old_global_offset",  (char *)"space",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_SendRebalanceDofs", 5, 5, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:ParNCMesh_SendRebalanceDofs", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_SendRebalanceDofs" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Table,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Table,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParNCMesh_SendRebalanceDofs" "', argument " "3"" of type '" "mfem::Table const &""'"); 
   }
@@ -4578,12 +4529,12 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_SendRebalanceDofs(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParNCMesh_SendRebalanceDofs" "', argument " "3"" of type '" "mfem::Table const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Table * >(argp3);
-  ecode4 = SWIG_AsVal_long(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_long(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ParNCMesh_SendRebalanceDofs" "', argument " "4"" of type '" "long""'");
   } 
   arg4 = static_cast< long >(val4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ParNCMesh_SendRebalanceDofs" "', argument " "5"" of type '" "mfem::FiniteElementSpace *""'"); 
   }
@@ -4603,7 +4554,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_RecvRebalanceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_RecvRebalanceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -4614,15 +4565,20 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_RecvRebalanceDofs(PyObject *SWIGUNUSEDPARM(
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"elements",  (char *)"dofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_RecvRebalanceDofs", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParNCMesh_RecvRebalanceDofs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_RecvRebalanceDofs" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_RecvRebalanceDofs" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -4630,7 +4586,7 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_RecvRebalanceDofs(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParNCMesh_RecvRebalanceDofs" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_long_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_long_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParNCMesh_RecvRebalanceDofs" "', argument " "3"" of type '" "mfem::Array< long > &""'"); 
   }
@@ -4713,7 +4669,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetBoundaryClosure(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetBoundaryClosure(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -4727,15 +4683,21 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_GetBoundaryClosure(PyObject *SWIGUNUSEDPARM
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bdr_attr_is_ess",  (char *)"bdr_vertices",  (char *)"bdr_edges",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetBoundaryClosure", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParNCMesh_GetBoundaryClosure", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetBoundaryClosure" "', argument " "1"" of type '" "mfem::ParNCMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_GetBoundaryClosure" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -4743,7 +4705,7 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_GetBoundaryClosure(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParNCMesh_GetBoundaryClosure" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParNCMesh_GetBoundaryClosure" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -4751,7 +4713,7 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_GetBoundaryClosure(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParNCMesh_GetBoundaryClosure" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParNCMesh_GetBoundaryClosure" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -4803,27 +4765,34 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_MemoryUsage__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
-  bool arg2 ;
+  bool arg2 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"with_base",  NULL 
+  };
   long result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ParNCMesh_MemoryUsage", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_MemoryUsage" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParNCMesh_MemoryUsage" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParNCMesh_MemoryUsage" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
       result = (long)((mfem::ParNCMesh const *)arg1)->MemoryUsage(arg2); 
@@ -4839,97 +4808,34 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_MemoryUsage__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_PrintMemoryDetail(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  long result;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_MemoryUsage" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  {
-    try {
-      result = (long)((mfem::ParNCMesh const *)arg1)->MemoryUsage(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_long(static_cast< long >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParNCMesh_MemoryUsage(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ParNCMesh_MemoryUsage", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ParNCMesh_MemoryUsage__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_bool(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_ParNCMesh_MemoryUsage__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParNCMesh_MemoryUsage'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParNCMesh::MemoryUsage(bool) const\n"
-    "    mfem::ParNCMesh::MemoryUsage() const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParNCMesh_PrintMemoryDetail__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
-  bool arg2 ;
+  bool arg2 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"with_base",  NULL 
+  };
   int result;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ParNCMesh_PrintMemoryDetail", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_PrintMemoryDetail" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParNCMesh_PrintMemoryDetail" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParNCMesh_PrintMemoryDetail" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
       result = (int)((mfem::ParNCMesh const *)arg1)->PrintMemoryDetail(arg2); 
@@ -4945,77 +4851,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParNCMesh_PrintMemoryDetail__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int result;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_PrintMemoryDetail" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  {
-    try {
-      result = (int)((mfem::ParNCMesh const *)arg1)->PrintMemoryDetail(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParNCMesh_PrintMemoryDetail(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ParNCMesh_PrintMemoryDetail", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ParNCMesh_PrintMemoryDetail__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParNCMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_bool(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_ParNCMesh_PrintMemoryDetail__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParNCMesh_PrintMemoryDetail'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParNCMesh::PrintMemoryDetail(bool) const\n"
-    "    mfem::ParNCMesh::PrintMemoryDetail() const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParNCMesh_GetDebugMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParNCMesh_GetDebugMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParNCMesh *arg1 = (mfem::ParNCMesh *) 0 ;
   mfem::Mesh *arg2 = 0 ;
@@ -5023,15 +4859,19 @@ SWIGINTERN PyObject *_wrap_ParNCMesh_GetDebugMesh(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"debug_mesh",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParNCMesh_GetDebugMesh", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParNCMesh_GetDebugMesh", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParNCMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParNCMesh_GetDebugMesh" "', argument " "1"" of type '" "mfem::ParNCMesh const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParNCMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParNCMesh_GetDebugMesh" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
   }
@@ -5065,7 +4905,7 @@ SWIGINTERN PyObject *ParNCMesh_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::NCMesh::MeshId *arg1 = 0 ;
   mfem::NCMesh::MeshId *arg2 = 0 ;
@@ -5073,11 +4913,15 @@ SWIGINTERN PyObject *_wrap___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject *args
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"a",  (char *)"b",  NULL 
+  };
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "__lt__", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:__lt__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "__lt__" "', argument " "1"" of type '" "mfem::NCMesh::MeshId const &""'"); 
   }
@@ -5085,7 +4929,7 @@ SWIGINTERN PyObject *_wrap___lt__(PyObject *SWIGUNUSEDPARM(self), PyObject *args
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "__lt__" "', argument " "1"" of type '" "mfem::NCMesh::MeshId const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh::MeshId * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "__lt__" "', argument " "2"" of type '" "mfem::NCMesh::MeshId const &""'"); 
   }
@@ -5110,7 +4954,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::NCMesh::MeshId *arg1 = 0 ;
   mfem::NCMesh::MeshId *arg2 = 0 ;
@@ -5118,11 +4962,15 @@ SWIGINTERN PyObject *_wrap___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"a",  (char *)"b",  NULL 
+  };
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "__eq__", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:__eq__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "__eq__" "', argument " "1"" of type '" "mfem::NCMesh::MeshId const &""'"); 
   }
@@ -5130,7 +4978,7 @@ SWIGINTERN PyObject *_wrap___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "__eq__" "', argument " "1"" of type '" "mfem::NCMesh::MeshId const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::NCMesh::MeshId * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__NCMesh__MeshId,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "__eq__" "', argument " "2"" of type '" "mfem::NCMesh::MeshId const &""'"); 
   }
@@ -5163,11 +5011,11 @@ static PyMethodDef SwigMethods[] = {
 		"new_ParNCMesh(ParNCMesh other) -> ParNCMesh\n"
 		""},
 	 { "delete_ParNCMesh", _wrap_delete_ParNCMesh, METH_O, "delete_ParNCMesh(ParNCMesh self)"},
-	 { "ParNCMesh_Refine", _wrap_ParNCMesh_Refine, METH_VARARGS, "ParNCMesh_Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
-	 { "ParNCMesh_LimitNCLevel", _wrap_ParNCMesh_LimitNCLevel, METH_VARARGS, "ParNCMesh_LimitNCLevel(ParNCMesh self, int max_nc_level)"},
-	 { "ParNCMesh_CheckDerefinementNCLevel", _wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS, "ParNCMesh_CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
-	 { "ParNCMesh_Derefine", _wrap_ParNCMesh_Derefine, METH_VARARGS, "ParNCMesh_Derefine(ParNCMesh self, intArray derefs)"},
-	 { "ParNCMesh_Rebalance", _wrap_ParNCMesh_Rebalance, METH_VARARGS, "ParNCMesh_Rebalance(ParNCMesh self, intArray custom_partition=None)"},
+	 { "ParNCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "ParNCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_LimitNCLevel(ParNCMesh self, int max_nc_level)"},
+	 { "ParNCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
+	 { "ParNCMesh_Derefine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Derefine, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Derefine(ParNCMesh self, intArray derefs)"},
+	 { "ParNCMesh_Rebalance", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Rebalance, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_Rebalance(ParNCMesh self, intArray custom_partition=None)"},
 	 { "ParNCMesh_GetNElements", _wrap_ParNCMesh_GetNElements, METH_O, "ParNCMesh_GetNElements(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostVertices", _wrap_ParNCMesh_GetNGhostVertices, METH_O, "ParNCMesh_GetNGhostVertices(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostEdges", _wrap_ParNCMesh_GetNGhostEdges, METH_O, "ParNCMesh_GetNGhostEdges(ParNCMesh self) -> int"},
@@ -5176,28 +5024,28 @@ static PyMethodDef SwigMethods[] = {
 	 { "ParNCMesh_GetSharedVertices", _wrap_ParNCMesh_GetSharedVertices, METH_O, "ParNCMesh_GetSharedVertices(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
 	 { "ParNCMesh_GetSharedEdges", _wrap_ParNCMesh_GetSharedEdges, METH_O, "ParNCMesh_GetSharedEdges(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
 	 { "ParNCMesh_GetSharedFaces", _wrap_ParNCMesh_GetSharedFaces, METH_O, "ParNCMesh_GetSharedFaces(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
-	 { "ParNCMesh_GetSharedList", _wrap_ParNCMesh_GetSharedList, METH_VARARGS, "ParNCMesh_GetSharedList(ParNCMesh self, int entity) -> mfem::NCMesh::NCList const &"},
-	 { "ParNCMesh_GetFaceOrientation", _wrap_ParNCMesh_GetFaceOrientation, METH_VARARGS, "ParNCMesh_GetFaceOrientation(ParNCMesh self, int index) -> int"},
-	 { "ParNCMesh_GetEntityOwnerId", _wrap_ParNCMesh_GetEntityOwnerId, METH_VARARGS, "ParNCMesh_GetEntityOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
-	 { "ParNCMesh_GetEntityGroupId", _wrap_ParNCMesh_GetEntityGroupId, METH_VARARGS, "ParNCMesh_GetEntityGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
-	 { "ParNCMesh_GetGroup", _wrap_ParNCMesh_GetGroup, METH_VARARGS, "ParNCMesh_GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"},
-	 { "ParNCMesh_GroupContains", _wrap_ParNCMesh_GroupContains, METH_VARARGS, "ParNCMesh_GroupContains(ParNCMesh self, mfem::ParNCMesh::GroupId id, int rank) -> bool"},
-	 { "ParNCMesh_IsGhost", _wrap_ParNCMesh_IsGhost, METH_VARARGS, "ParNCMesh_IsGhost(ParNCMesh self, int entity, int index) -> bool"},
-	 { "ParNCMesh_ElementRank", _wrap_ParNCMesh_ElementRank, METH_VARARGS, "ParNCMesh_ElementRank(ParNCMesh self, int index) -> int"},
+	 { "ParNCMesh_GetSharedList", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetSharedList, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetSharedList(ParNCMesh self, int entity) -> mfem::NCMesh::NCList const &"},
+	 { "ParNCMesh_GetFaceOrientation", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetFaceOrientation, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetFaceOrientation(ParNCMesh self, int index) -> int"},
+	 { "ParNCMesh_GetEntityOwnerId", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetEntityOwnerId, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetEntityOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
+	 { "ParNCMesh_GetEntityGroupId", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetEntityGroupId, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetEntityGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
+	 { "ParNCMesh_GetGroup", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetGroup, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"},
+	 { "ParNCMesh_GroupContains", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GroupContains, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GroupContains(ParNCMesh self, mfem::ParNCMesh::GroupId id, int rank) -> bool"},
+	 { "ParNCMesh_IsGhost", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_IsGhost, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_IsGhost(ParNCMesh self, int entity, int index) -> bool"},
+	 { "ParNCMesh_ElementRank", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_ElementRank, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_ElementRank(ParNCMesh self, int index) -> int"},
 	 { "ParNCMesh_GetMyRank", _wrap_ParNCMesh_GetMyRank, METH_O, "ParNCMesh_GetMyRank(ParNCMesh self) -> int"},
-	 { "ParNCMesh_SendRebalanceDofs", _wrap_ParNCMesh_SendRebalanceDofs, METH_VARARGS, "ParNCMesh_SendRebalanceDofs(ParNCMesh self, int old_ndofs, Table old_element_dofs, long old_global_offset, FiniteElementSpace space)"},
-	 { "ParNCMesh_RecvRebalanceDofs", _wrap_ParNCMesh_RecvRebalanceDofs, METH_VARARGS, "ParNCMesh_RecvRebalanceDofs(ParNCMesh self, intArray elements, mfem::Array< long > & dofs)"},
+	 { "ParNCMesh_SendRebalanceDofs", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_SendRebalanceDofs, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_SendRebalanceDofs(ParNCMesh self, int old_ndofs, Table old_element_dofs, long old_global_offset, FiniteElementSpace space)"},
+	 { "ParNCMesh_RecvRebalanceDofs", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_RecvRebalanceDofs, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_RecvRebalanceDofs(ParNCMesh self, intArray elements, mfem::Array< long > & dofs)"},
 	 { "ParNCMesh_GetRebalanceOldIndex", _wrap_ParNCMesh_GetRebalanceOldIndex, METH_O, "ParNCMesh_GetRebalanceOldIndex(ParNCMesh self) -> intArray"},
 	 { "ParNCMesh_GetDerefineOldRanks", _wrap_ParNCMesh_GetDerefineOldRanks, METH_O, "ParNCMesh_GetDerefineOldRanks(ParNCMesh self) -> intArray"},
-	 { "ParNCMesh_GetBoundaryClosure", _wrap_ParNCMesh_GetBoundaryClosure, METH_VARARGS, "ParNCMesh_GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
+	 { "ParNCMesh_GetBoundaryClosure", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetBoundaryClosure, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
 	 { "ParNCMesh_Trim", _wrap_ParNCMesh_Trim, METH_O, "ParNCMesh_Trim(ParNCMesh self)"},
-	 { "ParNCMesh_MemoryUsage", _wrap_ParNCMesh_MemoryUsage, METH_VARARGS, "ParNCMesh_MemoryUsage(ParNCMesh self, bool with_base=True) -> long"},
-	 { "ParNCMesh_PrintMemoryDetail", _wrap_ParNCMesh_PrintMemoryDetail, METH_VARARGS, "ParNCMesh_PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"},
-	 { "ParNCMesh_GetDebugMesh", _wrap_ParNCMesh_GetDebugMesh, METH_VARARGS, "ParNCMesh_GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"},
+	 { "ParNCMesh_MemoryUsage", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_MemoryUsage, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_MemoryUsage(ParNCMesh self, bool with_base=True) -> long"},
+	 { "ParNCMesh_PrintMemoryDetail", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_PrintMemoryDetail, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"},
+	 { "ParNCMesh_GetDebugMesh", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetDebugMesh, METH_VARARGS|METH_KEYWORDS, "ParNCMesh_GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"},
 	 { "ParNCMesh_swigregister", ParNCMesh_swigregister, METH_O, NULL},
 	 { "ParNCMesh_swiginit", ParNCMesh_swiginit, METH_VARARGS, NULL},
-	 { "__lt__", _wrap___lt__, METH_VARARGS, "__lt__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
-	 { "__eq__", _wrap___eq__, METH_VARARGS, "__eq__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
+	 { "__lt__", (PyCFunction)(void(*)(void))_wrap___lt__, METH_VARARGS|METH_KEYWORDS, "__lt__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
+	 { "__eq__", (PyCFunction)(void(*)(void))_wrap___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5209,11 +5057,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"new_ParNCMesh(ParNCMesh other) -> ParNCMesh\n"
 		""},
 	 { "delete_ParNCMesh", _wrap_delete_ParNCMesh, METH_O, "delete_ParNCMesh(ParNCMesh self)"},
-	 { "ParNCMesh_Refine", _wrap_ParNCMesh_Refine, METH_VARARGS, "Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
-	 { "ParNCMesh_LimitNCLevel", _wrap_ParNCMesh_LimitNCLevel, METH_VARARGS, "LimitNCLevel(ParNCMesh self, int max_nc_level)"},
-	 { "ParNCMesh_CheckDerefinementNCLevel", _wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS, "CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
-	 { "ParNCMesh_Derefine", _wrap_ParNCMesh_Derefine, METH_VARARGS, "Derefine(ParNCMesh self, intArray derefs)"},
-	 { "ParNCMesh_Rebalance", _wrap_ParNCMesh_Rebalance, METH_VARARGS, "Rebalance(ParNCMesh self, intArray custom_partition=None)"},
+	 { "ParNCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "Refine(ParNCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "ParNCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "LimitNCLevel(ParNCMesh self, int max_nc_level)"},
+	 { "ParNCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "CheckDerefinementNCLevel(ParNCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
+	 { "ParNCMesh_Derefine", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Derefine, METH_VARARGS|METH_KEYWORDS, "Derefine(ParNCMesh self, intArray derefs)"},
+	 { "ParNCMesh_Rebalance", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_Rebalance, METH_VARARGS|METH_KEYWORDS, "Rebalance(ParNCMesh self, intArray custom_partition=None)"},
 	 { "ParNCMesh_GetNElements", _wrap_ParNCMesh_GetNElements, METH_O, "GetNElements(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostVertices", _wrap_ParNCMesh_GetNGhostVertices, METH_O, "GetNGhostVertices(ParNCMesh self) -> int"},
 	 { "ParNCMesh_GetNGhostEdges", _wrap_ParNCMesh_GetNGhostEdges, METH_O, "GetNGhostEdges(ParNCMesh self) -> int"},
@@ -5222,28 +5070,28 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ParNCMesh_GetSharedVertices", _wrap_ParNCMesh_GetSharedVertices, METH_O, "GetSharedVertices(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
 	 { "ParNCMesh_GetSharedEdges", _wrap_ParNCMesh_GetSharedEdges, METH_O, "GetSharedEdges(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
 	 { "ParNCMesh_GetSharedFaces", _wrap_ParNCMesh_GetSharedFaces, METH_O, "GetSharedFaces(ParNCMesh self) -> mfem::NCMesh::NCList const &"},
-	 { "ParNCMesh_GetSharedList", _wrap_ParNCMesh_GetSharedList, METH_VARARGS, "GetSharedList(ParNCMesh self, int entity) -> mfem::NCMesh::NCList const &"},
-	 { "ParNCMesh_GetFaceOrientation", _wrap_ParNCMesh_GetFaceOrientation, METH_VARARGS, "GetFaceOrientation(ParNCMesh self, int index) -> int"},
-	 { "ParNCMesh_GetEntityOwnerId", _wrap_ParNCMesh_GetEntityOwnerId, METH_VARARGS, "GetEntityOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
-	 { "ParNCMesh_GetEntityGroupId", _wrap_ParNCMesh_GetEntityGroupId, METH_VARARGS, "GetEntityGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
-	 { "ParNCMesh_GetGroup", _wrap_ParNCMesh_GetGroup, METH_VARARGS, "GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"},
-	 { "ParNCMesh_GroupContains", _wrap_ParNCMesh_GroupContains, METH_VARARGS, "GroupContains(ParNCMesh self, mfem::ParNCMesh::GroupId id, int rank) -> bool"},
-	 { "ParNCMesh_IsGhost", _wrap_ParNCMesh_IsGhost, METH_VARARGS, "IsGhost(ParNCMesh self, int entity, int index) -> bool"},
-	 { "ParNCMesh_ElementRank", _wrap_ParNCMesh_ElementRank, METH_VARARGS, "ElementRank(ParNCMesh self, int index) -> int"},
+	 { "ParNCMesh_GetSharedList", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetSharedList, METH_VARARGS|METH_KEYWORDS, "GetSharedList(ParNCMesh self, int entity) -> mfem::NCMesh::NCList const &"},
+	 { "ParNCMesh_GetFaceOrientation", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetFaceOrientation, METH_VARARGS|METH_KEYWORDS, "GetFaceOrientation(ParNCMesh self, int index) -> int"},
+	 { "ParNCMesh_GetEntityOwnerId", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetEntityOwnerId, METH_VARARGS|METH_KEYWORDS, "GetEntityOwnerId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
+	 { "ParNCMesh_GetEntityGroupId", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetEntityGroupId, METH_VARARGS|METH_KEYWORDS, "GetEntityGroupId(ParNCMesh self, int entity, int index) -> mfem::ParNCMesh::GroupId"},
+	 { "ParNCMesh_GetGroup", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetGroup, METH_VARARGS|METH_KEYWORDS, "GetGroup(ParNCMesh self, mfem::ParNCMesh::GroupId id) -> mfem::ParNCMesh::CommGroup const &"},
+	 { "ParNCMesh_GroupContains", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GroupContains, METH_VARARGS|METH_KEYWORDS, "GroupContains(ParNCMesh self, mfem::ParNCMesh::GroupId id, int rank) -> bool"},
+	 { "ParNCMesh_IsGhost", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_IsGhost, METH_VARARGS|METH_KEYWORDS, "IsGhost(ParNCMesh self, int entity, int index) -> bool"},
+	 { "ParNCMesh_ElementRank", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_ElementRank, METH_VARARGS|METH_KEYWORDS, "ElementRank(ParNCMesh self, int index) -> int"},
 	 { "ParNCMesh_GetMyRank", _wrap_ParNCMesh_GetMyRank, METH_O, "GetMyRank(ParNCMesh self) -> int"},
-	 { "ParNCMesh_SendRebalanceDofs", _wrap_ParNCMesh_SendRebalanceDofs, METH_VARARGS, "SendRebalanceDofs(ParNCMesh self, int old_ndofs, Table old_element_dofs, long old_global_offset, FiniteElementSpace space)"},
-	 { "ParNCMesh_RecvRebalanceDofs", _wrap_ParNCMesh_RecvRebalanceDofs, METH_VARARGS, "RecvRebalanceDofs(ParNCMesh self, intArray elements, mfem::Array< long > & dofs)"},
+	 { "ParNCMesh_SendRebalanceDofs", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_SendRebalanceDofs, METH_VARARGS|METH_KEYWORDS, "SendRebalanceDofs(ParNCMesh self, int old_ndofs, Table old_element_dofs, long old_global_offset, FiniteElementSpace space)"},
+	 { "ParNCMesh_RecvRebalanceDofs", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_RecvRebalanceDofs, METH_VARARGS|METH_KEYWORDS, "RecvRebalanceDofs(ParNCMesh self, intArray elements, mfem::Array< long > & dofs)"},
 	 { "ParNCMesh_GetRebalanceOldIndex", _wrap_ParNCMesh_GetRebalanceOldIndex, METH_O, "GetRebalanceOldIndex(ParNCMesh self) -> intArray"},
 	 { "ParNCMesh_GetDerefineOldRanks", _wrap_ParNCMesh_GetDerefineOldRanks, METH_O, "GetDerefineOldRanks(ParNCMesh self) -> intArray"},
-	 { "ParNCMesh_GetBoundaryClosure", _wrap_ParNCMesh_GetBoundaryClosure, METH_VARARGS, "GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
+	 { "ParNCMesh_GetBoundaryClosure", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetBoundaryClosure, METH_VARARGS|METH_KEYWORDS, "GetBoundaryClosure(ParNCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"},
 	 { "ParNCMesh_Trim", _wrap_ParNCMesh_Trim, METH_O, "Trim(ParNCMesh self)"},
-	 { "ParNCMesh_MemoryUsage", _wrap_ParNCMesh_MemoryUsage, METH_VARARGS, "MemoryUsage(ParNCMesh self, bool with_base=True) -> long"},
-	 { "ParNCMesh_PrintMemoryDetail", _wrap_ParNCMesh_PrintMemoryDetail, METH_VARARGS, "PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"},
-	 { "ParNCMesh_GetDebugMesh", _wrap_ParNCMesh_GetDebugMesh, METH_VARARGS, "GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"},
+	 { "ParNCMesh_MemoryUsage", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_MemoryUsage, METH_VARARGS|METH_KEYWORDS, "MemoryUsage(ParNCMesh self, bool with_base=True) -> long"},
+	 { "ParNCMesh_PrintMemoryDetail", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_PrintMemoryDetail, METH_VARARGS|METH_KEYWORDS, "PrintMemoryDetail(ParNCMesh self, bool with_base=True) -> int"},
+	 { "ParNCMesh_GetDebugMesh", (PyCFunction)(void(*)(void))_wrap_ParNCMesh_GetDebugMesh, METH_VARARGS|METH_KEYWORDS, "GetDebugMesh(ParNCMesh self, Mesh debug_mesh)"},
 	 { "ParNCMesh_swigregister", ParNCMesh_swigregister, METH_O, NULL},
 	 { "ParNCMesh_swiginit", ParNCMesh_swiginit, METH_VARARGS, NULL},
-	 { "__lt__", _wrap___lt__, METH_VARARGS, "__lt__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
-	 { "__eq__", _wrap___eq__, METH_VARARGS, "__eq__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
+	 { "__lt__", (PyCFunction)(void(*)(void))_wrap___lt__, METH_VARARGS|METH_KEYWORDS, "__lt__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
+	 { "__eq__", (PyCFunction)(void(*)(void))_wrap___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(mfem::NCMesh::MeshId const & a, mfem::NCMesh::MeshId const & b) -> bool"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -6115,10 +5963,10 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

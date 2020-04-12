@@ -3540,7 +3540,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
   mfem::LinearFormIntegrator *arg2 = (mfem::LinearFormIntegrator *) 0 ;
@@ -3548,15 +3548,19 @@ SWIGINTERN PyObject *_wrap_LinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPA
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"lfi",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "LinearForm_AddDomainIntegrator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:LinearForm_AddDomainIntegrator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::LinearFormIntegrator *""'"); 
   }
@@ -4234,7 +4238,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -4242,16 +4246,20 @@ SWIGINTERN PyObject *_wrap_LinearForm___call__(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "LinearForm___call__", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:LinearForm___call__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm___call__" "', argument " "1"" of type '" "mfem::LinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LinearForm___call__" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
   }
@@ -4328,7 +4336,7 @@ static PyMethodDef SwigMethods[] = {
 		"LinearForm_FESpace(LinearForm self) -> FiniteElementSpace\n"
 		"LinearForm_FESpace(LinearForm self) -> FiniteElementSpace\n"
 		""},
-	 { "LinearForm_AddDomainIntegrator", _wrap_LinearForm_AddDomainIntegrator, METH_VARARGS, "LinearForm_AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
+	 { "LinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_LinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "LinearForm_AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
 	 { "LinearForm_AddBoundaryIntegrator", _wrap_LinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"LinearForm_AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)\n"
 		"LinearForm_AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
@@ -4349,7 +4357,7 @@ static PyMethodDef SwigMethods[] = {
 		"LinearForm_Update(LinearForm self, FiniteElementSpace f)\n"
 		"LinearForm_Update(LinearForm self, FiniteElementSpace f, Vector v, int v_offset)\n"
 		""},
-	 { "LinearForm___call__", _wrap_LinearForm___call__, METH_VARARGS, "LinearForm___call__(LinearForm self, GridFunction gf) -> double"},
+	 { "LinearForm___call__", (PyCFunction)(void(*)(void))_wrap_LinearForm___call__, METH_VARARGS|METH_KEYWORDS, "LinearForm___call__(LinearForm self, GridFunction gf) -> double"},
 	 { "delete_LinearForm", _wrap_delete_LinearForm, METH_O, "delete_LinearForm(LinearForm self)"},
 	 { "LinearForm_swigregister", LinearForm_swigregister, METH_O, NULL},
 	 { "LinearForm_swiginit", LinearForm_swiginit, METH_VARARGS, NULL},
@@ -4370,7 +4378,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"FESpace(LinearForm self) -> FiniteElementSpace\n"
 		"FESpace(LinearForm self) -> FiniteElementSpace\n"
 		""},
-	 { "LinearForm_AddDomainIntegrator", _wrap_LinearForm_AddDomainIntegrator, METH_VARARGS, "AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
+	 { "LinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_LinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
 	 { "LinearForm_AddBoundaryIntegrator", _wrap_LinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)\n"
 		"AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
@@ -4391,7 +4399,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Update(LinearForm self, FiniteElementSpace f)\n"
 		"Update(LinearForm self, FiniteElementSpace f, Vector v, int v_offset)\n"
 		""},
-	 { "LinearForm___call__", _wrap_LinearForm___call__, METH_VARARGS, "__call__(LinearForm self, GridFunction gf) -> double"},
+	 { "LinearForm___call__", (PyCFunction)(void(*)(void))_wrap_LinearForm___call__, METH_VARARGS|METH_KEYWORDS, "__call__(LinearForm self, GridFunction gf) -> double"},
 	 { "delete_LinearForm", _wrap_delete_LinearForm, METH_O, "delete_LinearForm(LinearForm self)"},
 	 { "LinearForm_swigregister", LinearForm_swigregister, METH_O, NULL},
 	 { "LinearForm_swiginit", LinearForm_swiginit, METH_VARARGS, NULL},

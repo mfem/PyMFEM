@@ -3388,7 +3388,7 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_ElementRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ElementRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = 0 ;
   mfem::ElementDofOrdering arg2 ;
@@ -3396,11 +3396,15 @@ SWIGINTERN PyObject *_wrap_new_ElementRestriction(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"arg1",  (char *)"arg2",  NULL 
+  };
   mfem::ElementRestriction *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_ElementRestriction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_ElementRestriction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ElementRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
@@ -3408,7 +3412,7 @@ SWIGINTERN PyObject *_wrap_new_ElementRestriction(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ElementRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_ElementRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
   } 
@@ -3439,7 +3443,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ElementRestriction *arg1 = (mfem::ElementRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3450,15 +3454,20 @@ SWIGINTERN PyObject *_wrap_ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(self
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ElementRestriction_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ElementRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ElementRestriction_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementRestriction_Mult" "', argument " "1"" of type '" "mfem::ElementRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ElementRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3466,7 +3475,7 @@ SWIGINTERN PyObject *_wrap_ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ElementRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ElementRestriction_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3500,7 +3509,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ElementRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ElementRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ElementRestriction *arg1 = (mfem::ElementRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3511,15 +3520,20 @@ SWIGINTERN PyObject *_wrap_ElementRestriction_MultTranspose(PyObject *SWIGUNUSED
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ElementRestriction_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ElementRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ElementRestriction_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementRestriction_MultTranspose" "', argument " "1"" of type '" "mfem::ElementRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ElementRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3527,7 +3541,7 @@ SWIGINTERN PyObject *_wrap_ElementRestriction_MultTranspose(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ElementRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ElementRestriction_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3561,7 +3575,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ElementRestriction_MultTransposeUnsigned(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ElementRestriction_MultTransposeUnsigned(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ElementRestriction *arg1 = (mfem::ElementRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3572,15 +3586,20 @@ SWIGINTERN PyObject *_wrap_ElementRestriction_MultTransposeUnsigned(PyObject *SW
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ElementRestriction_MultTransposeUnsigned", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ElementRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ElementRestriction_MultTransposeUnsigned", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementRestriction_MultTransposeUnsigned" "', argument " "1"" of type '" "mfem::ElementRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ElementRestriction_MultTransposeUnsigned" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3588,7 +3607,7 @@ SWIGINTERN PyObject *_wrap_ElementRestriction_MultTransposeUnsigned(PyObject *SW
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ElementRestriction_MultTransposeUnsigned" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ElementRestriction_MultTransposeUnsigned" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3673,17 +3692,19 @@ SWIGINTERN PyObject *ElementRestriction_swiginit(PyObject *SWIGUNUSEDPARM(self),
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_L2ElementRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_L2ElementRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"arg1",  NULL 
+  };
   mfem::L2ElementRestriction *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_L2ElementRestriction", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_L2ElementRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
@@ -3717,7 +3738,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_L2ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_L2ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::L2ElementRestriction *arg1 = (mfem::L2ElementRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3728,15 +3749,20 @@ SWIGINTERN PyObject *_wrap_L2ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(se
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "L2ElementRestriction_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__L2ElementRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:L2ElementRestriction_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__L2ElementRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "L2ElementRestriction_Mult" "', argument " "1"" of type '" "mfem::L2ElementRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::L2ElementRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "L2ElementRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3744,7 +3770,7 @@ SWIGINTERN PyObject *_wrap_L2ElementRestriction_Mult(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "L2ElementRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "L2ElementRestriction_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3778,7 +3804,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_L2ElementRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_L2ElementRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::L2ElementRestriction *arg1 = (mfem::L2ElementRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3789,15 +3815,20 @@ SWIGINTERN PyObject *_wrap_L2ElementRestriction_MultTranspose(PyObject *SWIGUNUS
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "L2ElementRestriction_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__L2ElementRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:L2ElementRestriction_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__L2ElementRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "L2ElementRestriction_MultTranspose" "', argument " "1"" of type '" "mfem::L2ElementRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::L2ElementRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "L2ElementRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3805,7 +3836,7 @@ SWIGINTERN PyObject *_wrap_L2ElementRestriction_MultTranspose(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "L2ElementRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "L2ElementRestriction_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3890,7 +3921,7 @@ SWIGINTERN PyObject *L2ElementRestriction_swiginit(PyObject *SWIGUNUSEDPARM(self
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_H1FaceRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_H1FaceRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = 0 ;
   mfem::ElementDofOrdering arg2 ;
@@ -3901,11 +3932,16 @@ SWIGINTERN PyObject *_wrap_new_H1FaceRestriction(PyObject *SWIGUNUSEDPARM(self),
   int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"arg1",  (char *)"arg2",  (char *)"arg3",  NULL 
+  };
   mfem::H1FaceRestriction *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_H1FaceRestriction", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:new_H1FaceRestriction", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_H1FaceRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
@@ -3913,12 +3949,12 @@ SWIGINTERN PyObject *_wrap_new_H1FaceRestriction(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_H1FaceRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_H1FaceRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
   } 
   arg2 = static_cast< mfem::ElementDofOrdering >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_H1FaceRestriction" "', argument " "3"" of type '" "mfem::FaceType""'");
   } 
@@ -3949,7 +3985,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_H1FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_H1FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::H1FaceRestriction *arg1 = (mfem::H1FaceRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3960,15 +3996,20 @@ SWIGINTERN PyObject *_wrap_H1FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self)
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "H1FaceRestriction_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1FaceRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:H1FaceRestriction_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__H1FaceRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1FaceRestriction_Mult" "', argument " "1"" of type '" "mfem::H1FaceRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::H1FaceRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1FaceRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3976,7 +4017,7 @@ SWIGINTERN PyObject *_wrap_H1FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1FaceRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1FaceRestriction_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4010,7 +4051,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_H1FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_H1FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::H1FaceRestriction *arg1 = (mfem::H1FaceRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4021,15 +4062,20 @@ SWIGINTERN PyObject *_wrap_H1FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDP
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "H1FaceRestriction_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__H1FaceRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:H1FaceRestriction_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__H1FaceRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "H1FaceRestriction_MultTranspose" "', argument " "1"" of type '" "mfem::H1FaceRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::H1FaceRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "H1FaceRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4037,7 +4083,7 @@ SWIGINTERN PyObject *_wrap_H1FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "H1FaceRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "H1FaceRestriction_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4122,12 +4168,12 @@ SWIGINTERN PyObject *H1FaceRestriction_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_L2FaceRestriction__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_L2FaceRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = 0 ;
   mfem::ElementDofOrdering arg2 ;
   mfem::FaceType arg3 ;
-  mfem::L2FaceValues arg4 ;
+  mfem::L2FaceValues arg4 = (mfem::L2FaceValues) (mfem::L2FaceValues)mfem::L2FaceValues::DoubleValued ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
@@ -4136,10 +4182,17 @@ SWIGINTERN PyObject *_wrap_new_L2FaceRestriction__SWIG_0(PyObject *SWIGUNUSEDPAR
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"arg1",  (char *)"arg2",  (char *)"arg3",  (char *)"m",  NULL 
+  };
   mfem::L2FaceRestriction *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:new_L2FaceRestriction", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_L2FaceRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
@@ -4147,21 +4200,23 @@ SWIGINTERN PyObject *_wrap_new_L2FaceRestriction__SWIG_0(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_L2FaceRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_L2FaceRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
   } 
   arg2 = static_cast< mfem::ElementDofOrdering >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_L2FaceRestriction" "', argument " "3"" of type '" "mfem::FaceType""'");
   } 
   arg3 = static_cast< mfem::FaceType >(val3);
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_L2FaceRestriction" "', argument " "4"" of type '" "mfem::L2FaceValues""'");
-  } 
-  arg4 = static_cast< mfem::L2FaceValues >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_int(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_L2FaceRestriction" "', argument " "4"" of type '" "mfem::L2FaceValues""'");
+    } 
+    arg4 = static_cast< mfem::L2FaceValues >(val4);
+  }
   {
     try {
       result = (mfem::L2FaceRestriction *)new mfem::L2FaceRestriction((mfem::FiniteElementSpace const &)*arg1,arg2,arg3,arg4);
@@ -4188,129 +4243,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_L2FaceRestriction__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::FiniteElementSpace *arg1 = 0 ;
-  mfem::ElementDofOrdering arg2 ;
-  mfem::FaceType arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  mfem::L2FaceRestriction *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_L2FaceRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_L2FaceRestriction" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_L2FaceRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
-  } 
-  arg2 = static_cast< mfem::ElementDofOrdering >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_L2FaceRestriction" "', argument " "3"" of type '" "mfem::FaceType""'");
-  } 
-  arg3 = static_cast< mfem::FaceType >(val3);
-  {
-    try {
-      result = (mfem::L2FaceRestriction *)new mfem::L2FaceRestriction((mfem::FiniteElementSpace const &)*arg1,arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__L2FaceRestriction, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_L2FaceRestriction(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_L2FaceRestriction", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__FiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_L2FaceRestriction__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__FiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_L2FaceRestriction__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_L2FaceRestriction'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::L2FaceRestriction::L2FaceRestriction(mfem::FiniteElementSpace const &,mfem::ElementDofOrdering const,mfem::FaceType const,mfem::L2FaceValues const)\n"
-    "    mfem::L2FaceRestriction::L2FaceRestriction(mfem::FiniteElementSpace const &,mfem::ElementDofOrdering const,mfem::FaceType const)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_L2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_L2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::L2FaceRestriction *arg1 = (mfem::L2FaceRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4321,15 +4254,20 @@ SWIGINTERN PyObject *_wrap_L2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self)
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "L2FaceRestriction_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__L2FaceRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:L2FaceRestriction_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__L2FaceRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "L2FaceRestriction_Mult" "', argument " "1"" of type '" "mfem::L2FaceRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::L2FaceRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "L2FaceRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4337,7 +4275,7 @@ SWIGINTERN PyObject *_wrap_L2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "L2FaceRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "L2FaceRestriction_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4371,7 +4309,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_L2FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_L2FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::L2FaceRestriction *arg1 = (mfem::L2FaceRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4382,15 +4320,20 @@ SWIGINTERN PyObject *_wrap_L2FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDP
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "L2FaceRestriction_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__L2FaceRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:L2FaceRestriction_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__L2FaceRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "L2FaceRestriction_MultTranspose" "', argument " "1"" of type '" "mfem::L2FaceRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::L2FaceRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "L2FaceRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4398,7 +4341,7 @@ SWIGINTERN PyObject *_wrap_L2FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "L2FaceRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "L2FaceRestriction_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4483,7 +4426,7 @@ SWIGINTERN PyObject *L2FaceRestriction_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_GetFaceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GetFaceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -4491,28 +4434,34 @@ SWIGINTERN PyObject *_wrap_GetFaceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject 
   mfem::Array< int > *arg4 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"dim",  (char *)"face_id",  (char *)"dof1d",  (char *)"faceMap",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GetFaceDofs", 4, 4, swig_obj)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:GetFaceDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GetFaceDofs" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -4546,39 +4495,45 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ToLexOrdering(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ToLexOrdering(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
   int arg3 ;
   int arg4 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"dim",  (char *)"face_id",  (char *)"size1d",  (char *)"index",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ToLexOrdering", 4, 4, swig_obj)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ToLexOrdering", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -4606,7 +4561,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PermuteFaceL2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PermuteFaceL2(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -4614,45 +4569,53 @@ SWIGINTERN PyObject *_wrap_PermuteFaceL2(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int arg4 ;
   int arg5 ;
   int arg6 ;
-  PyObject *swig_obj[6] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"dim",  (char *)"face_id1",  (char *)"face_id2",  (char *)"orientation",  (char *)"size1d",  (char *)"index",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "PermuteFaceL2", 6, 6, swig_obj)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:PermuteFaceL2", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
     try {
@@ -4683,68 +4646,68 @@ fail:
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_ElementRestriction", _wrap_new_ElementRestriction, METH_VARARGS, "new_ElementRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering arg2) -> ElementRestriction"},
-	 { "ElementRestriction_Mult", _wrap_ElementRestriction_Mult, METH_VARARGS, "ElementRestriction_Mult(ElementRestriction self, Vector x, Vector y)"},
-	 { "ElementRestriction_MultTranspose", _wrap_ElementRestriction_MultTranspose, METH_VARARGS, "ElementRestriction_MultTranspose(ElementRestriction self, Vector x, Vector y)"},
-	 { "ElementRestriction_MultTransposeUnsigned", _wrap_ElementRestriction_MultTransposeUnsigned, METH_VARARGS, "ElementRestriction_MultTransposeUnsigned(ElementRestriction self, Vector x, Vector y)"},
+	 { "new_ElementRestriction", (PyCFunction)(void(*)(void))_wrap_new_ElementRestriction, METH_VARARGS|METH_KEYWORDS, "new_ElementRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering arg2) -> ElementRestriction"},
+	 { "ElementRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_ElementRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "ElementRestriction_Mult(ElementRestriction self, Vector x, Vector y)"},
+	 { "ElementRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ElementRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "ElementRestriction_MultTranspose(ElementRestriction self, Vector x, Vector y)"},
+	 { "ElementRestriction_MultTransposeUnsigned", (PyCFunction)(void(*)(void))_wrap_ElementRestriction_MultTransposeUnsigned, METH_VARARGS|METH_KEYWORDS, "ElementRestriction_MultTransposeUnsigned(ElementRestriction self, Vector x, Vector y)"},
 	 { "delete_ElementRestriction", _wrap_delete_ElementRestriction, METH_O, "delete_ElementRestriction(ElementRestriction self)"},
 	 { "ElementRestriction_swigregister", ElementRestriction_swigregister, METH_O, NULL},
 	 { "ElementRestriction_swiginit", ElementRestriction_swiginit, METH_VARARGS, NULL},
-	 { "new_L2ElementRestriction", _wrap_new_L2ElementRestriction, METH_O, "new_L2ElementRestriction(FiniteElementSpace arg1) -> L2ElementRestriction"},
-	 { "L2ElementRestriction_Mult", _wrap_L2ElementRestriction_Mult, METH_VARARGS, "L2ElementRestriction_Mult(L2ElementRestriction self, Vector x, Vector y)"},
-	 { "L2ElementRestriction_MultTranspose", _wrap_L2ElementRestriction_MultTranspose, METH_VARARGS, "L2ElementRestriction_MultTranspose(L2ElementRestriction self, Vector x, Vector y)"},
+	 { "new_L2ElementRestriction", (PyCFunction)(void(*)(void))_wrap_new_L2ElementRestriction, METH_VARARGS|METH_KEYWORDS, "new_L2ElementRestriction(FiniteElementSpace arg1) -> L2ElementRestriction"},
+	 { "L2ElementRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_L2ElementRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "L2ElementRestriction_Mult(L2ElementRestriction self, Vector x, Vector y)"},
+	 { "L2ElementRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_L2ElementRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "L2ElementRestriction_MultTranspose(L2ElementRestriction self, Vector x, Vector y)"},
 	 { "delete_L2ElementRestriction", _wrap_delete_L2ElementRestriction, METH_O, "delete_L2ElementRestriction(L2ElementRestriction self)"},
 	 { "L2ElementRestriction_swigregister", L2ElementRestriction_swigregister, METH_O, NULL},
 	 { "L2ElementRestriction_swiginit", L2ElementRestriction_swiginit, METH_VARARGS, NULL},
-	 { "new_H1FaceRestriction", _wrap_new_H1FaceRestriction, METH_VARARGS, "new_H1FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3) -> H1FaceRestriction"},
-	 { "H1FaceRestriction_Mult", _wrap_H1FaceRestriction_Mult, METH_VARARGS, "H1FaceRestriction_Mult(H1FaceRestriction self, Vector x, Vector y)"},
-	 { "H1FaceRestriction_MultTranspose", _wrap_H1FaceRestriction_MultTranspose, METH_VARARGS, "H1FaceRestriction_MultTranspose(H1FaceRestriction self, Vector x, Vector y)"},
+	 { "new_H1FaceRestriction", (PyCFunction)(void(*)(void))_wrap_new_H1FaceRestriction, METH_VARARGS|METH_KEYWORDS, "new_H1FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3) -> H1FaceRestriction"},
+	 { "H1FaceRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_H1FaceRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "H1FaceRestriction_Mult(H1FaceRestriction self, Vector x, Vector y)"},
+	 { "H1FaceRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_H1FaceRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "H1FaceRestriction_MultTranspose(H1FaceRestriction self, Vector x, Vector y)"},
 	 { "delete_H1FaceRestriction", _wrap_delete_H1FaceRestriction, METH_O, "delete_H1FaceRestriction(H1FaceRestriction self)"},
 	 { "H1FaceRestriction_swigregister", H1FaceRestriction_swigregister, METH_O, NULL},
 	 { "H1FaceRestriction_swiginit", H1FaceRestriction_swiginit, METH_VARARGS, NULL},
-	 { "new_L2FaceRestriction", _wrap_new_L2FaceRestriction, METH_VARARGS, "L2FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3, mfem::L2FaceValues const m=DoubleValued)"},
-	 { "L2FaceRestriction_Mult", _wrap_L2FaceRestriction_Mult, METH_VARARGS, "L2FaceRestriction_Mult(L2FaceRestriction self, Vector x, Vector y)"},
-	 { "L2FaceRestriction_MultTranspose", _wrap_L2FaceRestriction_MultTranspose, METH_VARARGS, "L2FaceRestriction_MultTranspose(L2FaceRestriction self, Vector x, Vector y)"},
+	 { "new_L2FaceRestriction", (PyCFunction)(void(*)(void))_wrap_new_L2FaceRestriction, METH_VARARGS|METH_KEYWORDS, "new_L2FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3, mfem::L2FaceValues const m=DoubleValued) -> L2FaceRestriction"},
+	 { "L2FaceRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_L2FaceRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "L2FaceRestriction_Mult(L2FaceRestriction self, Vector x, Vector y)"},
+	 { "L2FaceRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_L2FaceRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "L2FaceRestriction_MultTranspose(L2FaceRestriction self, Vector x, Vector y)"},
 	 { "delete_L2FaceRestriction", _wrap_delete_L2FaceRestriction, METH_O, "delete_L2FaceRestriction(L2FaceRestriction self)"},
 	 { "L2FaceRestriction_swigregister", L2FaceRestriction_swigregister, METH_O, NULL},
 	 { "L2FaceRestriction_swiginit", L2FaceRestriction_swiginit, METH_VARARGS, NULL},
-	 { "GetFaceDofs", _wrap_GetFaceDofs, METH_VARARGS, "GetFaceDofs(int const dim, int const face_id, int const dof1d, intArray faceMap)"},
-	 { "ToLexOrdering", _wrap_ToLexOrdering, METH_VARARGS, "ToLexOrdering(int const dim, int const face_id, int const size1d, int const index) -> int"},
-	 { "PermuteFaceL2", _wrap_PermuteFaceL2, METH_VARARGS, "PermuteFaceL2(int const dim, int const face_id1, int const face_id2, int const orientation, int const size1d, int const index) -> int"},
+	 { "GetFaceDofs", (PyCFunction)(void(*)(void))_wrap_GetFaceDofs, METH_VARARGS|METH_KEYWORDS, "GetFaceDofs(int const dim, int const face_id, int const dof1d, intArray faceMap)"},
+	 { "ToLexOrdering", (PyCFunction)(void(*)(void))_wrap_ToLexOrdering, METH_VARARGS|METH_KEYWORDS, "ToLexOrdering(int const dim, int const face_id, int const size1d, int const index) -> int"},
+	 { "PermuteFaceL2", (PyCFunction)(void(*)(void))_wrap_PermuteFaceL2, METH_VARARGS|METH_KEYWORDS, "PermuteFaceL2(int const dim, int const face_id1, int const face_id2, int const orientation, int const size1d, int const index) -> int"},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_ElementRestriction", _wrap_new_ElementRestriction, METH_VARARGS, "new_ElementRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering arg2) -> ElementRestriction"},
-	 { "ElementRestriction_Mult", _wrap_ElementRestriction_Mult, METH_VARARGS, "Mult(ElementRestriction self, Vector x, Vector y)"},
-	 { "ElementRestriction_MultTranspose", _wrap_ElementRestriction_MultTranspose, METH_VARARGS, "MultTranspose(ElementRestriction self, Vector x, Vector y)"},
-	 { "ElementRestriction_MultTransposeUnsigned", _wrap_ElementRestriction_MultTransposeUnsigned, METH_VARARGS, "MultTransposeUnsigned(ElementRestriction self, Vector x, Vector y)"},
+	 { "new_ElementRestriction", (PyCFunction)(void(*)(void))_wrap_new_ElementRestriction, METH_VARARGS|METH_KEYWORDS, "new_ElementRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering arg2) -> ElementRestriction"},
+	 { "ElementRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_ElementRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ElementRestriction self, Vector x, Vector y)"},
+	 { "ElementRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ElementRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(ElementRestriction self, Vector x, Vector y)"},
+	 { "ElementRestriction_MultTransposeUnsigned", (PyCFunction)(void(*)(void))_wrap_ElementRestriction_MultTransposeUnsigned, METH_VARARGS|METH_KEYWORDS, "MultTransposeUnsigned(ElementRestriction self, Vector x, Vector y)"},
 	 { "delete_ElementRestriction", _wrap_delete_ElementRestriction, METH_O, "delete_ElementRestriction(ElementRestriction self)"},
 	 { "ElementRestriction_swigregister", ElementRestriction_swigregister, METH_O, NULL},
 	 { "ElementRestriction_swiginit", ElementRestriction_swiginit, METH_VARARGS, NULL},
-	 { "new_L2ElementRestriction", _wrap_new_L2ElementRestriction, METH_O, "new_L2ElementRestriction(FiniteElementSpace arg1) -> L2ElementRestriction"},
-	 { "L2ElementRestriction_Mult", _wrap_L2ElementRestriction_Mult, METH_VARARGS, "Mult(L2ElementRestriction self, Vector x, Vector y)"},
-	 { "L2ElementRestriction_MultTranspose", _wrap_L2ElementRestriction_MultTranspose, METH_VARARGS, "MultTranspose(L2ElementRestriction self, Vector x, Vector y)"},
+	 { "new_L2ElementRestriction", (PyCFunction)(void(*)(void))_wrap_new_L2ElementRestriction, METH_VARARGS|METH_KEYWORDS, "new_L2ElementRestriction(FiniteElementSpace arg1) -> L2ElementRestriction"},
+	 { "L2ElementRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_L2ElementRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(L2ElementRestriction self, Vector x, Vector y)"},
+	 { "L2ElementRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_L2ElementRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(L2ElementRestriction self, Vector x, Vector y)"},
 	 { "delete_L2ElementRestriction", _wrap_delete_L2ElementRestriction, METH_O, "delete_L2ElementRestriction(L2ElementRestriction self)"},
 	 { "L2ElementRestriction_swigregister", L2ElementRestriction_swigregister, METH_O, NULL},
 	 { "L2ElementRestriction_swiginit", L2ElementRestriction_swiginit, METH_VARARGS, NULL},
-	 { "new_H1FaceRestriction", _wrap_new_H1FaceRestriction, METH_VARARGS, "new_H1FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3) -> H1FaceRestriction"},
-	 { "H1FaceRestriction_Mult", _wrap_H1FaceRestriction_Mult, METH_VARARGS, "Mult(H1FaceRestriction self, Vector x, Vector y)"},
-	 { "H1FaceRestriction_MultTranspose", _wrap_H1FaceRestriction_MultTranspose, METH_VARARGS, "MultTranspose(H1FaceRestriction self, Vector x, Vector y)"},
+	 { "new_H1FaceRestriction", (PyCFunction)(void(*)(void))_wrap_new_H1FaceRestriction, METH_VARARGS|METH_KEYWORDS, "new_H1FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3) -> H1FaceRestriction"},
+	 { "H1FaceRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_H1FaceRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(H1FaceRestriction self, Vector x, Vector y)"},
+	 { "H1FaceRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_H1FaceRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(H1FaceRestriction self, Vector x, Vector y)"},
 	 { "delete_H1FaceRestriction", _wrap_delete_H1FaceRestriction, METH_O, "delete_H1FaceRestriction(H1FaceRestriction self)"},
 	 { "H1FaceRestriction_swigregister", H1FaceRestriction_swigregister, METH_O, NULL},
 	 { "H1FaceRestriction_swiginit", H1FaceRestriction_swiginit, METH_VARARGS, NULL},
-	 { "new_L2FaceRestriction", _wrap_new_L2FaceRestriction, METH_VARARGS, "L2FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3, mfem::L2FaceValues const m=DoubleValued)"},
-	 { "L2FaceRestriction_Mult", _wrap_L2FaceRestriction_Mult, METH_VARARGS, "Mult(L2FaceRestriction self, Vector x, Vector y)"},
-	 { "L2FaceRestriction_MultTranspose", _wrap_L2FaceRestriction_MultTranspose, METH_VARARGS, "MultTranspose(L2FaceRestriction self, Vector x, Vector y)"},
+	 { "new_L2FaceRestriction", (PyCFunction)(void(*)(void))_wrap_new_L2FaceRestriction, METH_VARARGS|METH_KEYWORDS, "new_L2FaceRestriction(FiniteElementSpace arg1, mfem::ElementDofOrdering const arg2, mfem::FaceType const arg3, mfem::L2FaceValues const m=DoubleValued) -> L2FaceRestriction"},
+	 { "L2FaceRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_L2FaceRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(L2FaceRestriction self, Vector x, Vector y)"},
+	 { "L2FaceRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_L2FaceRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(L2FaceRestriction self, Vector x, Vector y)"},
 	 { "delete_L2FaceRestriction", _wrap_delete_L2FaceRestriction, METH_O, "delete_L2FaceRestriction(L2FaceRestriction self)"},
 	 { "L2FaceRestriction_swigregister", L2FaceRestriction_swigregister, METH_O, NULL},
 	 { "L2FaceRestriction_swiginit", L2FaceRestriction_swiginit, METH_VARARGS, NULL},
-	 { "GetFaceDofs", _wrap_GetFaceDofs, METH_VARARGS, "GetFaceDofs(int const dim, int const face_id, int const dof1d, intArray faceMap)"},
-	 { "ToLexOrdering", _wrap_ToLexOrdering, METH_VARARGS, "ToLexOrdering(int const dim, int const face_id, int const size1d, int const index) -> int"},
-	 { "PermuteFaceL2", _wrap_PermuteFaceL2, METH_VARARGS, "PermuteFaceL2(int const dim, int const face_id1, int const face_id2, int const orientation, int const size1d, int const index) -> int"},
+	 { "GetFaceDofs", (PyCFunction)(void(*)(void))_wrap_GetFaceDofs, METH_VARARGS|METH_KEYWORDS, "GetFaceDofs(int const dim, int const face_id, int const dof1d, intArray faceMap)"},
+	 { "ToLexOrdering", (PyCFunction)(void(*)(void))_wrap_ToLexOrdering, METH_VARARGS|METH_KEYWORDS, "ToLexOrdering(int const dim, int const face_id, int const size1d, int const index) -> int"},
+	 { "PermuteFaceL2", (PyCFunction)(void(*)(void))_wrap_PermuteFaceL2, METH_VARARGS|METH_KEYWORDS, "PermuteFaceL2(int const dim, int const face_id1, int const face_id2, int const orientation, int const size1d, int const index) -> int"},
 	 { NULL, NULL, 0, NULL }
 };
 

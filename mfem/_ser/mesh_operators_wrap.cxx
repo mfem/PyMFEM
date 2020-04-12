@@ -3354,7 +3354,7 @@ SWIG_AsVal_long (PyObject *obj, long* val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_MeshOperator_Apply(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MeshOperator_Apply(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MeshOperator *arg1 = (mfem::MeshOperator *) 0 ;
   mfem::Mesh *arg2 = 0 ;
@@ -3362,16 +3362,20 @@ SWIGINTERN PyObject *_wrap_MeshOperator_Apply(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"mesh",  NULL 
+  };
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "MeshOperator_Apply", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MeshOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MeshOperator_Apply", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MeshOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MeshOperator_Apply" "', argument " "1"" of type '" "mfem::MeshOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MeshOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeshOperator_Apply" "', argument " "2"" of type '" "mfem::Mesh &""'"); 
   }
@@ -3870,7 +3874,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MeshOperatorSequence_Append(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MeshOperatorSequence_Append(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MeshOperatorSequence *arg1 = (mfem::MeshOperatorSequence *) 0 ;
   mfem::MeshOperator *arg2 = (mfem::MeshOperator *) 0 ;
@@ -3878,15 +3882,19 @@ SWIGINTERN PyObject *_wrap_MeshOperatorSequence_Append(PyObject *SWIGUNUSEDPARM(
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"mc",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MeshOperatorSequence_Append", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MeshOperatorSequence, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MeshOperatorSequence_Append", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MeshOperatorSequence, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MeshOperatorSequence_Append" "', argument " "1"" of type '" "mfem::MeshOperatorSequence *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MeshOperatorSequence * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__MeshOperator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__MeshOperator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MeshOperatorSequence_Append" "', argument " "2"" of type '" "mfem::MeshOperator *""'"); 
   }
@@ -4009,17 +4017,19 @@ SWIGINTERN PyObject *MeshOperatorSequence_swiginit(PyObject *SWIGUNUSEDPARM(self
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ThresholdRefiner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ThresholdRefiner(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ErrorEstimator *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"est",  NULL 
+  };
   mfem::ThresholdRefiner *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ErrorEstimator,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_ThresholdRefiner", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ErrorEstimator,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ThresholdRefiner" "', argument " "1"" of type '" "mfem::ErrorEstimator &""'"); 
   }
@@ -4053,26 +4063,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorNormP__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorNormP(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
-  double arg2 ;
+  double arg2 = (double) mfem::infinity() ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"norm_p",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ThresholdRefiner_SetTotalErrorNormP", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetTotalErrorNormP" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetTotalErrorNormP" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetTotalErrorNormP" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+  }
   {
     try {
       (arg1)->SetTotalErrorNormP(arg2);
@@ -4099,90 +4116,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorNormP__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetTotalErrorNormP" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
-  {
-    try {
-      (arg1)->SetTotalErrorNormP();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorNormP(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ThresholdRefiner_SetTotalErrorNormP", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ThresholdRefiner, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ThresholdRefiner_SetTotalErrorNormP__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ThresholdRefiner, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if (PyFloat_Check(argv[1])){
-          _v = 1;
-        } else {
-          _v = 0;
-        }
-      }
-      if (_v) {
-        return _wrap_ThresholdRefiner_SetTotalErrorNormP__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ThresholdRefiner_SetTotalErrorNormP'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ThresholdRefiner::SetTotalErrorNormP(double)\n"
-    "    mfem::ThresholdRefiner::SetTotalErrorNormP()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorGoal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorGoal(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
   double arg2 ;
@@ -4190,15 +4124,19 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorGoal(PyObject *SWIGUNUS
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"err_goal",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdRefiner_SetTotalErrorGoal", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdRefiner_SetTotalErrorGoal", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetTotalErrorGoal" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetTotalErrorGoal" "', argument " "2"" of type '" "double""'");
   } 
@@ -4229,7 +4167,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorFraction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorFraction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
   double arg2 ;
@@ -4237,15 +4175,19 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetTotalErrorFraction(PyObject *SWIG
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fraction",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdRefiner_SetTotalErrorFraction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdRefiner_SetTotalErrorFraction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetTotalErrorFraction" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetTotalErrorFraction" "', argument " "2"" of type '" "double""'");
   } 
@@ -4276,7 +4218,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetLocalErrorGoal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetLocalErrorGoal(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
   double arg2 ;
@@ -4284,15 +4226,19 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetLocalErrorGoal(PyObject *SWIGUNUS
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"err_goal",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdRefiner_SetLocalErrorGoal", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdRefiner_SetLocalErrorGoal", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetLocalErrorGoal" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetLocalErrorGoal" "', argument " "2"" of type '" "double""'");
   } 
@@ -4323,7 +4269,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetMaxElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetMaxElements(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
   long arg2 ;
@@ -4331,15 +4277,19 @@ SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetMaxElements(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   long val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"max_elem",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdRefiner_SetMaxElements", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdRefiner_SetMaxElements", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetMaxElements" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
-  ecode2 = SWIG_AsVal_long(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_long(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdRefiner_SetMaxElements" "', argument " "2"" of type '" "long""'");
   } 
@@ -4450,25 +4400,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetNCLimit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdRefiner_SetNCLimit(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdRefiner *arg1 = (mfem::ThresholdRefiner *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"nc_limit",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdRefiner_SetNCLimit", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdRefiner_SetNCLimit", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdRefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdRefiner_SetNCLimit" "', argument " "1"" of type '" "mfem::ThresholdRefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdRefiner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4669,17 +4623,19 @@ SWIGINTERN PyObject *ThresholdRefiner_swiginit(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ThresholdDerefiner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ThresholdDerefiner(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ErrorEstimator *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"est",  NULL 
+  };
   mfem::ThresholdDerefiner *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ErrorEstimator,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_ThresholdDerefiner", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ErrorEstimator,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ThresholdDerefiner" "', argument " "1"" of type '" "mfem::ErrorEstimator &""'"); 
   }
@@ -4713,7 +4669,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetThreshold(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetThreshold(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdDerefiner *arg1 = (mfem::ThresholdDerefiner *) 0 ;
   double arg2 ;
@@ -4721,15 +4677,19 @@ SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetThreshold(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"thresh",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdDerefiner_SetThreshold", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdDerefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdDerefiner_SetThreshold", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdDerefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdDerefiner_SetThreshold" "', argument " "1"" of type '" "mfem::ThresholdDerefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdDerefiner * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ThresholdDerefiner_SetThreshold" "', argument " "2"" of type '" "double""'");
   } 
@@ -4760,25 +4720,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetOp(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetOp(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdDerefiner *arg1 = (mfem::ThresholdDerefiner *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"op",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdDerefiner_SetOp", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdDerefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdDerefiner_SetOp", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdDerefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdDerefiner_SetOp" "', argument " "1"" of type '" "mfem::ThresholdDerefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdDerefiner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4806,25 +4770,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetNCLimit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ThresholdDerefiner_SetNCLimit(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ThresholdDerefiner *arg1 = (mfem::ThresholdDerefiner *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"nc_limit",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ThresholdDerefiner_SetNCLimit", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ThresholdDerefiner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ThresholdDerefiner_SetNCLimit", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ThresholdDerefiner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ThresholdDerefiner_SetNCLimit" "', argument " "1"" of type '" "mfem::ThresholdDerefiner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ThresholdDerefiner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5068,7 +5036,7 @@ SWIGINTERN PyObject *Rebalancer_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "MeshOperator_Apply", _wrap_MeshOperator_Apply, METH_VARARGS, "MeshOperator_Apply(MeshOperator self, Mesh mesh) -> bool"},
+	 { "MeshOperator_Apply", (PyCFunction)(void(*)(void))_wrap_MeshOperator_Apply, METH_VARARGS|METH_KEYWORDS, "MeshOperator_Apply(MeshOperator self, Mesh mesh) -> bool"},
 	 { "MeshOperator_Stop", _wrap_MeshOperator_Stop, METH_O, "MeshOperator_Stop(MeshOperator self) -> bool"},
 	 { "MeshOperator_Repeat", _wrap_MeshOperator_Repeat, METH_O, "MeshOperator_Repeat(MeshOperator self) -> bool"},
 	 { "MeshOperator_Continue", _wrap_MeshOperator_Continue, METH_O, "MeshOperator_Continue(MeshOperator self) -> bool"},
@@ -5081,30 +5049,30 @@ static PyMethodDef SwigMethods[] = {
 	 { "MeshOperator_swigregister", MeshOperator_swigregister, METH_O, NULL},
 	 { "new_MeshOperatorSequence", _wrap_new_MeshOperatorSequence, METH_VARARGS, NULL},
 	 { "delete_MeshOperatorSequence", _wrap_delete_MeshOperatorSequence, METH_O, "delete_MeshOperatorSequence(MeshOperatorSequence self)"},
-	 { "MeshOperatorSequence_Append", _wrap_MeshOperatorSequence_Append, METH_VARARGS, "MeshOperatorSequence_Append(MeshOperatorSequence self, MeshOperator mc)"},
+	 { "MeshOperatorSequence_Append", (PyCFunction)(void(*)(void))_wrap_MeshOperatorSequence_Append, METH_VARARGS|METH_KEYWORDS, "MeshOperatorSequence_Append(MeshOperatorSequence self, MeshOperator mc)"},
 	 { "MeshOperatorSequence_GetSequence", _wrap_MeshOperatorSequence_GetSequence, METH_O, "MeshOperatorSequence_GetSequence(MeshOperatorSequence self) -> mfem::Array< mfem::MeshOperator * > &"},
 	 { "MeshOperatorSequence_Reset", _wrap_MeshOperatorSequence_Reset, METH_O, "MeshOperatorSequence_Reset(MeshOperatorSequence self)"},
 	 { "MeshOperatorSequence_swigregister", MeshOperatorSequence_swigregister, METH_O, NULL},
 	 { "MeshOperatorSequence_swiginit", MeshOperatorSequence_swiginit, METH_VARARGS, NULL},
-	 { "new_ThresholdRefiner", _wrap_new_ThresholdRefiner, METH_O, "new_ThresholdRefiner(ErrorEstimator est) -> ThresholdRefiner"},
-	 { "ThresholdRefiner_SetTotalErrorNormP", _wrap_ThresholdRefiner_SetTotalErrorNormP, METH_VARARGS, "ThresholdRefiner_SetTotalErrorNormP(ThresholdRefiner self, double norm_p=mfem::infinity())"},
-	 { "ThresholdRefiner_SetTotalErrorGoal", _wrap_ThresholdRefiner_SetTotalErrorGoal, METH_VARARGS, "ThresholdRefiner_SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"},
-	 { "ThresholdRefiner_SetTotalErrorFraction", _wrap_ThresholdRefiner_SetTotalErrorFraction, METH_VARARGS, "ThresholdRefiner_SetTotalErrorFraction(ThresholdRefiner self, double fraction)"},
-	 { "ThresholdRefiner_SetLocalErrorGoal", _wrap_ThresholdRefiner_SetLocalErrorGoal, METH_VARARGS, "ThresholdRefiner_SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"},
-	 { "ThresholdRefiner_SetMaxElements", _wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS, "ThresholdRefiner_SetMaxElements(ThresholdRefiner self, long max_elem)"},
+	 { "new_ThresholdRefiner", (PyCFunction)(void(*)(void))_wrap_new_ThresholdRefiner, METH_VARARGS|METH_KEYWORDS, "new_ThresholdRefiner(ErrorEstimator est) -> ThresholdRefiner"},
+	 { "ThresholdRefiner_SetTotalErrorNormP", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorNormP, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetTotalErrorNormP(ThresholdRefiner self, double norm_p=mfem::infinity())"},
+	 { "ThresholdRefiner_SetTotalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorGoal, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"},
+	 { "ThresholdRefiner_SetTotalErrorFraction", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorFraction, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetTotalErrorFraction(ThresholdRefiner self, double fraction)"},
+	 { "ThresholdRefiner_SetLocalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetLocalErrorGoal, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"},
+	 { "ThresholdRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetMaxElements(ThresholdRefiner self, long max_elem)"},
 	 { "ThresholdRefiner_PreferNonconformingRefinement", _wrap_ThresholdRefiner_PreferNonconformingRefinement, METH_O, "ThresholdRefiner_PreferNonconformingRefinement(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_PreferConformingRefinement", _wrap_ThresholdRefiner_PreferConformingRefinement, METH_O, "ThresholdRefiner_PreferConformingRefinement(ThresholdRefiner self)"},
-	 { "ThresholdRefiner_SetNCLimit", _wrap_ThresholdRefiner_SetNCLimit, METH_VARARGS, "ThresholdRefiner_SetNCLimit(ThresholdRefiner self, int nc_limit)"},
+	 { "ThresholdRefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "ThresholdRefiner_SetNCLimit(ThresholdRefiner self, int nc_limit)"},
 	 { "ThresholdRefiner_GetNumMarkedElements", _wrap_ThresholdRefiner_GetNumMarkedElements, METH_O, "ThresholdRefiner_GetNumMarkedElements(ThresholdRefiner self) -> long"},
 	 { "ThresholdRefiner_GetThreshold", _wrap_ThresholdRefiner_GetThreshold, METH_O, "ThresholdRefiner_GetThreshold(ThresholdRefiner self) -> double"},
 	 { "ThresholdRefiner_Reset", _wrap_ThresholdRefiner_Reset, METH_O, "ThresholdRefiner_Reset(ThresholdRefiner self)"},
 	 { "delete_ThresholdRefiner", _wrap_delete_ThresholdRefiner, METH_O, "delete_ThresholdRefiner(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_swigregister", ThresholdRefiner_swigregister, METH_O, NULL},
 	 { "ThresholdRefiner_swiginit", ThresholdRefiner_swiginit, METH_VARARGS, NULL},
-	 { "new_ThresholdDerefiner", _wrap_new_ThresholdDerefiner, METH_O, "new_ThresholdDerefiner(ErrorEstimator est) -> ThresholdDerefiner"},
-	 { "ThresholdDerefiner_SetThreshold", _wrap_ThresholdDerefiner_SetThreshold, METH_VARARGS, "ThresholdDerefiner_SetThreshold(ThresholdDerefiner self, double thresh)"},
-	 { "ThresholdDerefiner_SetOp", _wrap_ThresholdDerefiner_SetOp, METH_VARARGS, "ThresholdDerefiner_SetOp(ThresholdDerefiner self, int op)"},
-	 { "ThresholdDerefiner_SetNCLimit", _wrap_ThresholdDerefiner_SetNCLimit, METH_VARARGS, "ThresholdDerefiner_SetNCLimit(ThresholdDerefiner self, int nc_limit)"},
+	 { "new_ThresholdDerefiner", (PyCFunction)(void(*)(void))_wrap_new_ThresholdDerefiner, METH_VARARGS|METH_KEYWORDS, "new_ThresholdDerefiner(ErrorEstimator est) -> ThresholdDerefiner"},
+	 { "ThresholdDerefiner_SetThreshold", (PyCFunction)(void(*)(void))_wrap_ThresholdDerefiner_SetThreshold, METH_VARARGS|METH_KEYWORDS, "ThresholdDerefiner_SetThreshold(ThresholdDerefiner self, double thresh)"},
+	 { "ThresholdDerefiner_SetOp", (PyCFunction)(void(*)(void))_wrap_ThresholdDerefiner_SetOp, METH_VARARGS|METH_KEYWORDS, "ThresholdDerefiner_SetOp(ThresholdDerefiner self, int op)"},
+	 { "ThresholdDerefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_ThresholdDerefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "ThresholdDerefiner_SetNCLimit(ThresholdDerefiner self, int nc_limit)"},
 	 { "ThresholdDerefiner_Reset", _wrap_ThresholdDerefiner_Reset, METH_O, "ThresholdDerefiner_Reset(ThresholdDerefiner self)"},
 	 { "delete_ThresholdDerefiner", _wrap_delete_ThresholdDerefiner, METH_O, "delete_ThresholdDerefiner(ThresholdDerefiner self)"},
 	 { "ThresholdDerefiner_swigregister", ThresholdDerefiner_swigregister, METH_O, NULL},
@@ -5120,7 +5088,7 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "MeshOperator_Apply", _wrap_MeshOperator_Apply, METH_VARARGS, "Apply(MeshOperator self, Mesh mesh) -> bool"},
+	 { "MeshOperator_Apply", (PyCFunction)(void(*)(void))_wrap_MeshOperator_Apply, METH_VARARGS|METH_KEYWORDS, "Apply(MeshOperator self, Mesh mesh) -> bool"},
 	 { "MeshOperator_Stop", _wrap_MeshOperator_Stop, METH_O, "Stop(MeshOperator self) -> bool"},
 	 { "MeshOperator_Repeat", _wrap_MeshOperator_Repeat, METH_O, "Repeat(MeshOperator self) -> bool"},
 	 { "MeshOperator_Continue", _wrap_MeshOperator_Continue, METH_O, "Continue(MeshOperator self) -> bool"},
@@ -5133,30 +5101,30 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MeshOperator_swigregister", MeshOperator_swigregister, METH_O, NULL},
 	 { "new_MeshOperatorSequence", _wrap_new_MeshOperatorSequence, METH_VARARGS, NULL},
 	 { "delete_MeshOperatorSequence", _wrap_delete_MeshOperatorSequence, METH_O, "delete_MeshOperatorSequence(MeshOperatorSequence self)"},
-	 { "MeshOperatorSequence_Append", _wrap_MeshOperatorSequence_Append, METH_VARARGS, "Append(MeshOperatorSequence self, MeshOperator mc)"},
+	 { "MeshOperatorSequence_Append", (PyCFunction)(void(*)(void))_wrap_MeshOperatorSequence_Append, METH_VARARGS|METH_KEYWORDS, "Append(MeshOperatorSequence self, MeshOperator mc)"},
 	 { "MeshOperatorSequence_GetSequence", _wrap_MeshOperatorSequence_GetSequence, METH_O, "GetSequence(MeshOperatorSequence self) -> mfem::Array< mfem::MeshOperator * > &"},
 	 { "MeshOperatorSequence_Reset", _wrap_MeshOperatorSequence_Reset, METH_O, "Reset(MeshOperatorSequence self)"},
 	 { "MeshOperatorSequence_swigregister", MeshOperatorSequence_swigregister, METH_O, NULL},
 	 { "MeshOperatorSequence_swiginit", MeshOperatorSequence_swiginit, METH_VARARGS, NULL},
-	 { "new_ThresholdRefiner", _wrap_new_ThresholdRefiner, METH_O, "new_ThresholdRefiner(ErrorEstimator est) -> ThresholdRefiner"},
-	 { "ThresholdRefiner_SetTotalErrorNormP", _wrap_ThresholdRefiner_SetTotalErrorNormP, METH_VARARGS, "SetTotalErrorNormP(ThresholdRefiner self, double norm_p=mfem::infinity())"},
-	 { "ThresholdRefiner_SetTotalErrorGoal", _wrap_ThresholdRefiner_SetTotalErrorGoal, METH_VARARGS, "SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"},
-	 { "ThresholdRefiner_SetTotalErrorFraction", _wrap_ThresholdRefiner_SetTotalErrorFraction, METH_VARARGS, "SetTotalErrorFraction(ThresholdRefiner self, double fraction)"},
-	 { "ThresholdRefiner_SetLocalErrorGoal", _wrap_ThresholdRefiner_SetLocalErrorGoal, METH_VARARGS, "SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"},
-	 { "ThresholdRefiner_SetMaxElements", _wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS, "SetMaxElements(ThresholdRefiner self, long max_elem)"},
+	 { "new_ThresholdRefiner", (PyCFunction)(void(*)(void))_wrap_new_ThresholdRefiner, METH_VARARGS|METH_KEYWORDS, "new_ThresholdRefiner(ErrorEstimator est) -> ThresholdRefiner"},
+	 { "ThresholdRefiner_SetTotalErrorNormP", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorNormP, METH_VARARGS|METH_KEYWORDS, "SetTotalErrorNormP(ThresholdRefiner self, double norm_p=mfem::infinity())"},
+	 { "ThresholdRefiner_SetTotalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorGoal, METH_VARARGS|METH_KEYWORDS, "SetTotalErrorGoal(ThresholdRefiner self, double err_goal)"},
+	 { "ThresholdRefiner_SetTotalErrorFraction", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetTotalErrorFraction, METH_VARARGS|METH_KEYWORDS, "SetTotalErrorFraction(ThresholdRefiner self, double fraction)"},
+	 { "ThresholdRefiner_SetLocalErrorGoal", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetLocalErrorGoal, METH_VARARGS|METH_KEYWORDS, "SetLocalErrorGoal(ThresholdRefiner self, double err_goal)"},
+	 { "ThresholdRefiner_SetMaxElements", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetMaxElements, METH_VARARGS|METH_KEYWORDS, "SetMaxElements(ThresholdRefiner self, long max_elem)"},
 	 { "ThresholdRefiner_PreferNonconformingRefinement", _wrap_ThresholdRefiner_PreferNonconformingRefinement, METH_O, "PreferNonconformingRefinement(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_PreferConformingRefinement", _wrap_ThresholdRefiner_PreferConformingRefinement, METH_O, "PreferConformingRefinement(ThresholdRefiner self)"},
-	 { "ThresholdRefiner_SetNCLimit", _wrap_ThresholdRefiner_SetNCLimit, METH_VARARGS, "SetNCLimit(ThresholdRefiner self, int nc_limit)"},
+	 { "ThresholdRefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_ThresholdRefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "SetNCLimit(ThresholdRefiner self, int nc_limit)"},
 	 { "ThresholdRefiner_GetNumMarkedElements", _wrap_ThresholdRefiner_GetNumMarkedElements, METH_O, "GetNumMarkedElements(ThresholdRefiner self) -> long"},
 	 { "ThresholdRefiner_GetThreshold", _wrap_ThresholdRefiner_GetThreshold, METH_O, "GetThreshold(ThresholdRefiner self) -> double"},
 	 { "ThresholdRefiner_Reset", _wrap_ThresholdRefiner_Reset, METH_O, "Reset(ThresholdRefiner self)"},
 	 { "delete_ThresholdRefiner", _wrap_delete_ThresholdRefiner, METH_O, "delete_ThresholdRefiner(ThresholdRefiner self)"},
 	 { "ThresholdRefiner_swigregister", ThresholdRefiner_swigregister, METH_O, NULL},
 	 { "ThresholdRefiner_swiginit", ThresholdRefiner_swiginit, METH_VARARGS, NULL},
-	 { "new_ThresholdDerefiner", _wrap_new_ThresholdDerefiner, METH_O, "new_ThresholdDerefiner(ErrorEstimator est) -> ThresholdDerefiner"},
-	 { "ThresholdDerefiner_SetThreshold", _wrap_ThresholdDerefiner_SetThreshold, METH_VARARGS, "SetThreshold(ThresholdDerefiner self, double thresh)"},
-	 { "ThresholdDerefiner_SetOp", _wrap_ThresholdDerefiner_SetOp, METH_VARARGS, "SetOp(ThresholdDerefiner self, int op)"},
-	 { "ThresholdDerefiner_SetNCLimit", _wrap_ThresholdDerefiner_SetNCLimit, METH_VARARGS, "SetNCLimit(ThresholdDerefiner self, int nc_limit)"},
+	 { "new_ThresholdDerefiner", (PyCFunction)(void(*)(void))_wrap_new_ThresholdDerefiner, METH_VARARGS|METH_KEYWORDS, "new_ThresholdDerefiner(ErrorEstimator est) -> ThresholdDerefiner"},
+	 { "ThresholdDerefiner_SetThreshold", (PyCFunction)(void(*)(void))_wrap_ThresholdDerefiner_SetThreshold, METH_VARARGS|METH_KEYWORDS, "SetThreshold(ThresholdDerefiner self, double thresh)"},
+	 { "ThresholdDerefiner_SetOp", (PyCFunction)(void(*)(void))_wrap_ThresholdDerefiner_SetOp, METH_VARARGS|METH_KEYWORDS, "SetOp(ThresholdDerefiner self, int op)"},
+	 { "ThresholdDerefiner_SetNCLimit", (PyCFunction)(void(*)(void))_wrap_ThresholdDerefiner_SetNCLimit, METH_VARARGS|METH_KEYWORDS, "SetNCLimit(ThresholdDerefiner self, int nc_limit)"},
 	 { "ThresholdDerefiner_Reset", _wrap_ThresholdDerefiner_Reset, METH_O, "Reset(ThresholdDerefiner self)"},
 	 { "delete_ThresholdDerefiner", _wrap_delete_ThresholdDerefiner, METH_O, "delete_ThresholdDerefiner(ThresholdDerefiner self)"},
 	 { "ThresholdDerefiner_swigregister", ThresholdDerefiner_swigregister, METH_O, NULL},

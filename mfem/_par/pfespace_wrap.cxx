@@ -3872,8 +3872,8 @@ fail:
 SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = 0 ;
-  mfem::ParMesh *arg2 = (mfem::ParMesh *) 0 ;
-  mfem::FiniteElementCollection *arg3 = (mfem::FiniteElementCollection *) 0 ;
+  mfem::ParMesh *arg2 = (mfem::ParMesh *) NULL ;
+  mfem::FiniteElementCollection *arg3 = (mfem::FiniteElementCollection *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -3882,7 +3882,7 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_0(PyObject *SWIGUNUSE
   int res3 = 0 ;
   mfem::ParFiniteElementSpace *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
@@ -3891,16 +3891,20 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::ParMesh *""'"); 
+  if (swig_obj[1]) {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::ParMesh *""'"); 
+    }
+    arg2 = reinterpret_cast< mfem::ParMesh * >(argp2);
   }
-  arg2 = reinterpret_cast< mfem::ParMesh * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  if (swig_obj[2]) {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "mfem::FiniteElementCollection const *""'"); 
+    }
+    arg3 = reinterpret_cast< mfem::FiniteElementCollection * >(argp3);
   }
-  arg3 = reinterpret_cast< mfem::FiniteElementCollection * >(argp3);
   {
     try {
       result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace((mfem::ParFiniteElementSpace const &)*arg1,arg2,(mfem::FiniteElementCollection const *)arg3); 
@@ -3918,79 +3922,9 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  mfem::ParFiniteElementSpace *arg1 = 0 ;
-  mfem::ParMesh *arg2 = (mfem::ParMesh *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::ParMesh *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::ParMesh * >(argp2);
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace((mfem::ParFiniteElementSpace const &)*arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParFiniteElementSpace *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace((mfem::ParFiniteElementSpace const &)*arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = 0 ;
   mfem::ParMesh *arg2 = 0 ;
-  mfem::FiniteElementCollection *arg3 = (mfem::FiniteElementCollection *) 0 ;
+  mfem::FiniteElementCollection *arg3 = (mfem::FiniteElementCollection *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -3999,7 +3933,7 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_3(PyObject *SWIGUNUSE
   int res3 = 0 ;
   mfem::ParFiniteElementSpace *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
@@ -4016,11 +3950,13 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_3(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::ParMesh &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ParMesh * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  if (swig_obj[2]) {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "mfem::FiniteElementCollection const *""'"); 
+    }
+    arg3 = reinterpret_cast< mfem::FiniteElementCollection * >(argp3);
   }
-  arg3 = reinterpret_cast< mfem::FiniteElementCollection * >(argp3);
   {
     try {
       result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace((mfem::FiniteElementSpace const &)*arg1,*arg2,(mfem::FiniteElementCollection const *)arg3); 
@@ -4036,54 +3972,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::FiniteElementSpace *arg1 = 0 ;
-  mfem::ParMesh *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::FiniteElementSpace const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ParMesh,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::ParMesh &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::ParMesh &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::ParMesh * >(argp2);
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace((mfem::FiniteElementSpace const &)*arg1,*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
   int *arg3 = (int *) 0 ;
-  mfem::FiniteElementCollection *arg4 = (mfem::FiniteElementCollection *) 0 ;
+  mfem::FiniteElementCollection *arg4 = (mfem::FiniteElementCollection *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4094,7 +3988,7 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_5(PyObject *SWIGUNUSE
   int res4 = 0 ;
   mfem::ParFiniteElementSpace *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
@@ -4110,11 +4004,13 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_5(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "int const *""'"); 
   }
   arg3 = reinterpret_cast< int * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_ParFiniteElementSpace" "', argument " "4"" of type '" "mfem::FiniteElementCollection const *""'"); 
+  if (swig_obj[3]) {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_ParFiniteElementSpace" "', argument " "4"" of type '" "mfem::FiniteElementCollection const *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::FiniteElementCollection * >(argp4);
   }
-  arg4 = reinterpret_cast< mfem::FiniteElementCollection * >(argp4);
   {
     try {
       result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace(arg1,(mfem::FiniteElementSpace const *)arg2,(int const *)arg3,(mfem::FiniteElementCollection const *)arg4); 
@@ -4130,63 +4026,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
-  int *arg3 = (int *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::FiniteElementSpace const *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_int, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "int const *""'"); 
-  }
-  arg3 = reinterpret_cast< int * >(argp3);
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace(arg1,(mfem::FiniteElementSpace const *)arg2,(int const *)arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   mfem::FiniteElementCollection *arg2 = (mfem::FiniteElementCollection *) 0 ;
-  int arg3 ;
-  int arg4 ;
+  int arg3 = (int) 1 ;
+  int arg4 = (int) mfem::Ordering::byNODES ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   mfem::ParFiniteElementSpace *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
@@ -4197,17 +4049,21 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_7(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::FiniteElementCollection const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::FiniteElementCollection * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -4224,92 +4080,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_8(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::FiniteElementCollection *arg2 = (mfem::FiniteElementCollection *) 0 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::FiniteElementCollection const *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::FiniteElementCollection * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace(arg1,(mfem::FiniteElementCollection const *)arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_9(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::FiniteElementCollection *arg2 = (mfem::FiniteElementCollection *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::FiniteElementCollection const *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::FiniteElementCollection * >(argp2);
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace(arg1,(mfem::FiniteElementCollection const *)arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_10(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   mfem::NURBSExtension *arg2 = (mfem::NURBSExtension *) 0 ;
   mfem::FiniteElementCollection *arg3 = (mfem::FiniteElementCollection *) 0 ;
-  int arg4 ;
-  int arg5 ;
+  int arg4 = (int) 1 ;
+  int arg5 = (int) mfem::Ordering::byNODES ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4318,7 +4095,7 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_10(PyObject *SWIGUNUS
   int res3 = 0 ;
   mfem::ParFiniteElementSpace *result = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
@@ -4334,116 +4111,25 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_10(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "mfem::FiniteElementCollection const *""'"); 
   }
   arg3 = reinterpret_cast< mfem::FiniteElementCollection * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+  if (swig_obj[4]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    }
   }
   {
     try {
       result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace(arg1,arg2,(mfem::FiniteElementCollection const *)arg3,arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_11(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::NURBSExtension *arg2 = (mfem::NURBSExtension *) 0 ;
-  mfem::FiniteElementCollection *arg3 = (mfem::FiniteElementCollection *) 0 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__NURBSExtension, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::NURBSExtension *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::NURBSExtension * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "mfem::FiniteElementCollection const *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::FiniteElementCollection * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-  }
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace(arg1,arg2,(mfem::FiniteElementCollection const *)arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace__SWIG_12(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
-  mfem::NURBSExtension *arg2 = (mfem::NURBSExtension *) 0 ;
-  mfem::FiniteElementCollection *arg3 = (mfem::FiniteElementCollection *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  mfem::ParFiniteElementSpace *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParFiniteElementSpace" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__NURBSExtension, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParFiniteElementSpace" "', argument " "2"" of type '" "mfem::NURBSExtension *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::NURBSExtension * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ParFiniteElementSpace" "', argument " "3"" of type '" "mfem::FiniteElementCollection const *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::FiniteElementCollection * >(argp3);
-  {
-    try {
-      result = (mfem::ParFiniteElementSpace *)new mfem::ParFiniteElementSpace(arg1,arg2,(mfem::FiniteElementCollection const *)arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4464,63 +4150,21 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_ParFiniteElementSpace", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 3)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_ParFiniteElementSpace__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_ParFiniteElementSpace__SWIG_0(self, argc, argv);
+      }
       void *vptr = 0;
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_ParFiniteElementSpace__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__FiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ParMesh, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_ParFiniteElementSpace__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_ParFiniteElementSpace__SWIG_9(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_ParFiniteElementSpace__SWIG_0(self, argc, argv);
+        }
         void *vptr = 0;
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
         _v = SWIG_CheckState(res);
@@ -4530,50 +4174,7 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
       }
     }
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_int, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_new_ParFiniteElementSpace__SWIG_6(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_new_ParFiniteElementSpace__SWIG_8(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__FiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
@@ -4582,35 +4183,19 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ParMesh, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_ParFiniteElementSpace__SWIG_1(self, argc, argv);
+        }
         void *vptr = 0;
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_new_ParFiniteElementSpace__SWIG_3(self, argc, argv);
+          return _wrap_new_ParFiniteElementSpace__SWIG_1(self, argc, argv);
         }
       }
     }
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__NURBSExtension, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_new_ParFiniteElementSpace__SWIG_12(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
+  if ((argc >= 2) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
@@ -4620,6 +4205,9 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_ParFiniteElementSpace__SWIG_3(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -4629,6 +4217,9 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
           }
         }
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_ParFiniteElementSpace__SWIG_3(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -4638,42 +4229,13 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
             }
           }
           if (_v) {
-            return _wrap_new_ParFiniteElementSpace__SWIG_7(self, argc, argv);
+            return _wrap_new_ParFiniteElementSpace__SWIG_3(self, argc, argv);
           }
         }
       }
     }
   }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__NURBSExtension, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            return _wrap_new_ParFiniteElementSpace__SWIG_11(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
@@ -4687,17 +4249,20 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_int, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_ParFiniteElementSpace__SWIG_2(self, argc, argv);
+          }
           void *vptr = 0;
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_new_ParFiniteElementSpace__SWIG_5(self, argc, argv);
+            return _wrap_new_ParFiniteElementSpace__SWIG_2(self, argc, argv);
           }
         }
       }
     }
   }
-  if (argc == 5) {
+  if ((argc >= 3) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParMesh, 0);
@@ -4711,6 +4276,9 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__FiniteElementCollection, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_ParFiniteElementSpace__SWIG_4(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -4720,6 +4288,9 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
             }
           }
           if (_v) {
+            if (argc <= 4) {
+              return _wrap_new_ParFiniteElementSpace__SWIG_4(self, argc, argv);
+            }
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 PyErr_Clear();
@@ -4729,7 +4300,7 @@ SWIGINTERN PyObject *_wrap_new_ParFiniteElementSpace(PyObject *self, PyObject *a
               }
             }
             if (_v) {
-              return _wrap_new_ParFiniteElementSpace__SWIG_10(self, argc, argv);
+              return _wrap_new_ParFiniteElementSpace__SWIG_4(self, argc, argv);
             }
           }
         }
@@ -4741,18 +4312,10 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ParFiniteElementSpace'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParFiniteElementSpace const &,mfem::ParMesh *,mfem::FiniteElementCollection const *)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParFiniteElementSpace const &,mfem::ParMesh *)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParFiniteElementSpace const &)\n"
     "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::FiniteElementSpace const &,mfem::ParMesh &,mfem::FiniteElementCollection const *)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::FiniteElementSpace const &,mfem::ParMesh &)\n"
     "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::FiniteElementSpace const *,int const *,mfem::FiniteElementCollection const *)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::FiniteElementSpace const *,int const *)\n"
     "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::FiniteElementCollection const *,int,int)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::FiniteElementCollection const *,int)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::FiniteElementCollection const *)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::NURBSExtension *,mfem::FiniteElementCollection const *,int,int)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::NURBSExtension *,mfem::FiniteElementCollection const *,int)\n"
-    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::NURBSExtension *,mfem::FiniteElementCollection const *)\n");
+    "    mfem::ParFiniteElementSpace::ParFiniteElementSpace(mfem::ParMesh *,mfem::NURBSExtension *,mfem::FiniteElementCollection const *,int,int)\n");
   return 0;
 }
 
@@ -4877,26 +4440,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetDofSign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetDofSign(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetDofSign", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_GetDofSign", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetDofSign" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5063,7 +4630,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetElementDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetElementDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -5072,21 +4639,26 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetElementDofs(PyObject *SWIGUN
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"dofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetElementDofs", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParFiniteElementSpace_GetElementDofs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetElementDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetElementDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5109,7 +4681,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetBdrElementDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetBdrElementDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -5118,21 +4690,26 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetBdrElementDofs(PyObject *SWI
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"dofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetBdrElementDofs", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParFiniteElementSpace_GetBdrElementDofs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetBdrElementDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetBdrElementDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5155,7 +4732,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -5164,21 +4741,26 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceDofs(PyObject *SWIGUNUSE
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"dofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetFaceDofs", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParFiniteElementSpace_GetFaceDofs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetFaceDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetFaceDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5201,12 +4783,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceRestriction__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::ElementDofOrdering arg2 ;
   mfem::FaceType arg3 ;
-  mfem::L2FaceValues arg4 ;
+  mfem::L2FaceValues arg4 = (mfem::L2FaceValues) mfem::L2FaceValues::DoubleValued ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
@@ -5215,29 +4797,38 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceRestriction__SWIG_0(PyOb
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"e_ordering",  (char *)"type",  (char *)"mul",  NULL 
+  };
   mfem::Operator *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:ParFiniteElementSpace_GetFaceRestriction", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
   } 
   arg2 = static_cast< mfem::ElementDofOrdering >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "3"" of type '" "mfem::FaceType""'");
   } 
   arg3 = static_cast< mfem::FaceType >(val3);
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "4"" of type '" "mfem::L2FaceValues""'");
-  } 
-  arg4 = static_cast< mfem::L2FaceValues >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_int(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "4"" of type '" "mfem::L2FaceValues""'");
+    } 
+    arg4 = static_cast< mfem::L2FaceValues >(val4);
+  }
   {
     try {
       result = (mfem::Operator *)((mfem::ParFiniteElementSpace const *)arg1)->GetFaceRestriction(arg2,arg3,arg4); 
@@ -5253,117 +4844,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceRestriction__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
-  mfem::ElementDofOrdering arg2 ;
-  mfem::FaceType arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  mfem::Operator *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
-  } 
-  arg2 = static_cast< mfem::ElementDofOrdering >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ParFiniteElementSpace_GetFaceRestriction" "', argument " "3"" of type '" "mfem::FaceType""'");
-  } 
-  arg3 = static_cast< mfem::FaceType >(val3);
-  {
-    try {
-      result = (mfem::Operator *)((mfem::ParFiniteElementSpace const *)arg1)->GetFaceRestriction(arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceRestriction(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetFaceRestriction", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_ParFiniteElementSpace_GetFaceRestriction__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_ParFiniteElementSpace_GetFaceRestriction__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParFiniteElementSpace_GetFaceRestriction'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParFiniteElementSpace::GetFaceRestriction(mfem::ElementDofOrdering,mfem::FaceType,mfem::L2FaceValues) const\n"
-    "    mfem::ParFiniteElementSpace::GetFaceRestriction(mfem::ElementDofOrdering,mfem::FaceType) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedEdgeDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedEdgeDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -5373,27 +4854,33 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedEdgeDofs(PyObject *SWI
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"group",  (char *)"ei",  (char *)"dofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetSharedEdgeDofs", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParFiniteElementSpace_GetSharedEdgeDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetSharedEdgeDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParFiniteElementSpace_GetSharedEdgeDofs" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5416,7 +4903,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedTriangleDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedTriangleDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -5426,27 +4913,33 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedTriangleDofs(PyObject 
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"group",  (char *)"fi",  (char *)"dofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetSharedTriangleDofs", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParFiniteElementSpace_GetSharedTriangleDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetSharedTriangleDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParFiniteElementSpace_GetSharedTriangleDofs" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5469,7 +4962,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedQuadrilateralDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedQuadrilateralDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -5479,27 +4972,33 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetSharedQuadrilateralDofs(PyOb
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"group",  (char *)"fi",  (char *)"dofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetSharedQuadrilateralDofs", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParFiniteElementSpace_GetSharedQuadrilateralDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetSharedQuadrilateralDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParFiniteElementSpace_GetSharedQuadrilateralDofs" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5612,7 +5111,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_DivideByGroupSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_DivideByGroupSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   double *arg2 = (double *) 0 ;
@@ -5620,15 +5119,19 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_DivideByGroupSize(PyObject *SWI
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vec",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_DivideByGroupSize", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_DivideByGroupSize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_DivideByGroupSize" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParFiniteElementSpace_DivideByGroupSize" "', argument " "2"" of type '" "double *""'"); 
   }
@@ -5770,7 +5273,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Synchronize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Synchronize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -5778,15 +5281,19 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Synchronize(PyObject *SWIGUNUSE
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ldof_marker",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_Synchronize", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_Synchronize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_Synchronize" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParFiniteElementSpace_Synchronize" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5809,26 +5316,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialVDofs__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialVDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
   mfem::Array< int > *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bdr_attr_is_ess",  (char *)"ess_dofs",  (char *)"component",  NULL 
+  };
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:ParFiniteElementSpace_GetEssentialVDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -5836,7 +5350,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialVDofs__SWIG_0(PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5844,14 +5358,16 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialVDofs__SWIG_0(PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  {
-    if (PyInt_Check(swig_obj[3])) {
-      arg4 = PyInt_AsLong(swig_obj[3]);
-    } else if ((PyArray_PyIntAsInt(swig_obj[3]) != -1) || !PyErr_Occurred()) {
-      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-    } else {
-      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
-      return NULL;
+  if (obj3) {
+    {
+      if (PyInt_Check(obj3)) {
+        arg4 = PyInt_AsLong(obj3);
+      } else if ((PyArray_PyIntAsInt(obj3) != -1) || !PyErr_Occurred()) {
+        arg4 = PyArray_PyIntAsInt(obj3);
+      } else {
+        PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+        return NULL;
+      }
     }
   }
   {
@@ -5869,134 +5385,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialVDofs__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialTrueDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
   mfem::Array< int > *arg3 = 0 ;
+  int arg4 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialVDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  {
-    try {
-      ((mfem::ParFiniteElementSpace const *)arg1)->GetEssentialVDofs((mfem::Array< int > const &)*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialVDofs(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bdr_attr_is_ess",  (char *)"ess_tdof_list",  (char *)"component",  NULL 
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetEssentialVDofs", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_ParFiniteElementSpace_GetEssentialVDofs__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            _v = PyInt_Check(argv[3]) ? 1 : 0;
-          }
-          if (_v) {
-            return _wrap_ParFiniteElementSpace_GetEssentialVDofs__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParFiniteElementSpace_GetEssentialVDofs'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParFiniteElementSpace::GetEssentialVDofs(mfem::Array< int > const &,mfem::Array< int > &,int) const\n"
-    "    mfem::ParFiniteElementSpace::GetEssentialVDofs(mfem::Array< int > const &,mfem::Array< int > &) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialTrueDofs__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Array< int > *arg3 = 0 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:ParFiniteElementSpace_GetEssentialTrueDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -6004,7 +5419,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialTrueDofs__SWIG_0(Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -6012,14 +5427,16 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialTrueDofs__SWIG_0(Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  {
-    if (PyInt_Check(swig_obj[3])) {
-      arg4 = PyInt_AsLong(swig_obj[3]);
-    } else if ((PyArray_PyIntAsInt(swig_obj[3]) != -1) || !PyErr_Occurred()) {
-      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-    } else {
-      PyErr_SetString(PyExc_ValueError, "Expecting a integer");
-      return NULL;
+  if (obj3) {
+    {
+      if (PyInt_Check(obj3)) {
+        arg4 = PyInt_AsLong(obj3);
+      } else if ((PyArray_PyIntAsInt(obj3) != -1) || !PyErr_Occurred()) {
+        arg4 = PyArray_PyIntAsInt(obj3);
+      } else {
+        PyErr_SetString(PyExc_ValueError, "Expecting a integer");
+        return NULL;
+      }
     }
   }
   {
@@ -6037,134 +5454,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialTrueDofs__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Array< int > *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetEssentialTrueDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  {
-    try {
-      (arg1)->GetEssentialTrueDofs((mfem::Array< int > const &)*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetEssentialTrueDofs(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetEssentialTrueDofs", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_ParFiniteElementSpace_GetEssentialTrueDofs__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            _v = PyInt_Check(argv[3]) ? 1 : 0;
-          }
-          if (_v) {
-            return _wrap_ParFiniteElementSpace_GetEssentialTrueDofs__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParFiniteElementSpace_GetEssentialTrueDofs'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParFiniteElementSpace::GetEssentialTrueDofs(mfem::Array< int > const &,mfem::Array< int > &,int)\n"
-    "    mfem::ParFiniteElementSpace::GetEssentialTrueDofs(mfem::Array< int > const &,mfem::Array< int > &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetLocalTDofNumber(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetLocalTDofNumber(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ldof",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetLocalTDofNumber", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_GetLocalTDofNumber", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetLocalTDofNumber" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6181,26 +5494,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalTDofNumber(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalTDofNumber(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ldof",  NULL 
+  };
   HYPRE_Int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetGlobalTDofNumber", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_GetGlobalTDofNumber", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetGlobalTDofNumber" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6217,26 +5534,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"sldof",  NULL 
+  };
   HYPRE_Int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetGlobalScalarTDofNumber", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_GetGlobalScalarTDofNumber", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetGlobalScalarTDofNumber" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6432,7 +5753,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -6441,21 +5762,26 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs(PyObject
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"vdofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetFaceNbrElementVDofs", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParFiniteElementSpace_GetFaceNbrElementVDofs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetFaceNbrElementVDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetFaceNbrElementVDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -6478,7 +5804,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
@@ -6487,21 +5813,26 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs(PyObject *S
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"vdofs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetFaceNbrFaceVDofs", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParFiniteElementSpace_GetFaceNbrFaceVDofs", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetFaceNbrFaceVDofs" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetFaceNbrFaceVDofs" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -6524,26 +5855,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrFE(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrFE(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   mfem::FiniteElement *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetFaceNbrFE", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_GetFaceNbrFE", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetFaceNbrFE" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6560,26 +5895,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrFaceFE(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetFaceNbrFaceFE(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   mfem::FiniteElement *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetFaceNbrFaceFE", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParFiniteElementSpace_GetFaceNbrFaceFE", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetFaceNbrFaceFE" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -6773,7 +6112,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetTrueTransferOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetTrueTransferOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
   mfem::FiniteElementSpace *arg2 = 0 ;
@@ -6784,15 +6123,20 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetTrueTransferOperator(PyObjec
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"coarse_fes",  (char *)"T",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_GetTrueTransferOperator", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParFiniteElementSpace_GetTrueTransferOperator", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_GetTrueTransferOperator" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParFiniteElementSpace_GetTrueTransferOperator" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
@@ -6800,7 +6144,7 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_GetTrueTransferOperator(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParFiniteElementSpace_GetTrueTransferOperator" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__OperatorHandle,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__OperatorHandle,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParFiniteElementSpace_GetTrueTransferOperator" "', argument " "3"" of type '" "mfem::OperatorHandle &""'"); 
   }
@@ -6823,26 +6167,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Update__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Update(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
-  bool arg2 ;
+  bool arg2 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"want_transform",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ParFiniteElementSpace_Update", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_Update" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParFiniteElementSpace_Update" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ParFiniteElementSpace_Update" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
       (arg1)->Update(arg2); 
@@ -6855,75 +6206,6 @@ SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Update__SWIG_0(PyObject *SWIGUN
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Update__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParFiniteElementSpace *arg1 = (mfem::ParFiniteElementSpace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParFiniteElementSpace_Update" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  {
-    try {
-      (arg1)->Update(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParFiniteElementSpace_Update(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ParFiniteElementSpace_Update", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ParFiniteElementSpace_Update__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_bool(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_ParFiniteElementSpace_Update__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParFiniteElementSpace_Update'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParFiniteElementSpace::Update(bool)\n"
-    "    mfem::ParFiniteElementSpace::Update()\n");
-  return 0;
 }
 
 
@@ -7055,17 +6337,19 @@ SWIGINTERN PyObject *ParFiniteElementSpace_swiginit(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ConformingProlongationOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ConformingProlongationOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"pfes",  NULL 
+  };
   mfem::ConformingProlongationOperator *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_ConformingProlongationOperator", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ConformingProlongationOperator" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
   }
@@ -7088,7 +6372,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ConformingProlongationOperator *arg1 = (mfem::ConformingProlongationOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7099,15 +6383,20 @@ SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_Mult(PyObject *SWIGUNU
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ConformingProlongationOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ConformingProlongationOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ConformingProlongationOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ConformingProlongationOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConformingProlongationOperator_Mult" "', argument " "1"" of type '" "mfem::ConformingProlongationOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ConformingProlongationOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ConformingProlongationOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7115,7 +6404,7 @@ SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_Mult(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConformingProlongationOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ConformingProlongationOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -7138,7 +6427,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ConformingProlongationOperator *arg1 = (mfem::ConformingProlongationOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7149,15 +6438,20 @@ SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_MultTranspose(PyObject
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ConformingProlongationOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ConformingProlongationOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ConformingProlongationOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ConformingProlongationOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConformingProlongationOperator_MultTranspose" "', argument " "1"" of type '" "mfem::ConformingProlongationOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ConformingProlongationOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ConformingProlongationOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7165,7 +6459,7 @@ SWIGINTERN PyObject *_wrap_ConformingProlongationOperator_MultTranspose(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConformingProlongationOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ConformingProlongationOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -7228,17 +6522,19 @@ SWIGINTERN PyObject *ConformingProlongationOperator_swiginit(PyObject *SWIGUNUSE
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_DeviceConformingProlongationOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_DeviceConformingProlongationOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"pfes",  NULL 
+  };
   mfem::DeviceConformingProlongationOperator *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_DeviceConformingProlongationOperator", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DeviceConformingProlongationOperator" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
   }
@@ -7290,7 +6586,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeviceConformingProlongationOperator *arg1 = (mfem::DeviceConformingProlongationOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7301,15 +6597,20 @@ SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_Mult(PyObject *S
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeviceConformingProlongationOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeviceConformingProlongationOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DeviceConformingProlongationOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeviceConformingProlongationOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeviceConformingProlongationOperator_Mult" "', argument " "1"" of type '" "mfem::DeviceConformingProlongationOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeviceConformingProlongationOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeviceConformingProlongationOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7317,7 +6618,7 @@ SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_Mult(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DeviceConformingProlongationOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DeviceConformingProlongationOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -7340,7 +6641,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeviceConformingProlongationOperator *arg1 = (mfem::DeviceConformingProlongationOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7351,15 +6652,20 @@ SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_MultTranspose(Py
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeviceConformingProlongationOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeviceConformingProlongationOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DeviceConformingProlongationOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeviceConformingProlongationOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeviceConformingProlongationOperator_MultTranspose" "', argument " "1"" of type '" "mfem::DeviceConformingProlongationOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeviceConformingProlongationOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeviceConformingProlongationOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7367,7 +6673,7 @@ SWIGINTERN PyObject *_wrap_DeviceConformingProlongationOperator_MultTranspose(Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DeviceConformingProlongationOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DeviceConformingProlongationOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -7418,74 +6724,74 @@ static PyMethodDef SwigMethods[] = {
 		"ParFiniteElementSpace(FiniteElementSpace orig, ParMesh pmesh, FiniteElementCollection fec=None)\n"
 		"ParFiniteElementSpace(ParMesh pm, FiniteElementSpace global_fes, int const * partitioning, FiniteElementCollection f=None)\n"
 		"ParFiniteElementSpace(ParMesh pm, FiniteElementCollection f, int dim=1, int ordering=byNODES)\n"
-		"ParFiniteElementSpace(ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1, int ordering=byNODES)\n"
+		"new_ParFiniteElementSpace(ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1, int ordering=byNODES) -> ParFiniteElementSpace\n"
 		""},
 	 { "ParFiniteElementSpace_GetComm", _wrap_ParFiniteElementSpace_GetComm, METH_O, "ParFiniteElementSpace_GetComm(ParFiniteElementSpace self) -> MPI_Comm"},
 	 { "ParFiniteElementSpace_GetNRanks", _wrap_ParFiniteElementSpace_GetNRanks, METH_O, "ParFiniteElementSpace_GetNRanks(ParFiniteElementSpace self) -> int"},
 	 { "ParFiniteElementSpace_GetMyRank", _wrap_ParFiniteElementSpace_GetMyRank, METH_O, "ParFiniteElementSpace_GetMyRank(ParFiniteElementSpace self) -> int"},
 	 { "ParFiniteElementSpace_GetParMesh", _wrap_ParFiniteElementSpace_GetParMesh, METH_O, "ParFiniteElementSpace_GetParMesh(ParFiniteElementSpace self) -> ParMesh"},
-	 { "ParFiniteElementSpace_GetDofSign", _wrap_ParFiniteElementSpace_GetDofSign, METH_VARARGS, "ParFiniteElementSpace_GetDofSign(ParFiniteElementSpace self, int i) -> int"},
+	 { "ParFiniteElementSpace_GetDofSign", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetDofSign, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetDofSign(ParFiniteElementSpace self, int i) -> int"},
 	 { "ParFiniteElementSpace_GetDofOffsets", _wrap_ParFiniteElementSpace_GetDofOffsets, METH_O, "ParFiniteElementSpace_GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"},
 	 { "ParFiniteElementSpace_GetTrueDofOffsets", _wrap_ParFiniteElementSpace_GetTrueDofOffsets, METH_O, "ParFiniteElementSpace_GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"},
 	 { "ParFiniteElementSpace_GlobalVSize", _wrap_ParFiniteElementSpace_GlobalVSize, METH_O, "ParFiniteElementSpace_GlobalVSize(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GlobalTrueVSize", _wrap_ParFiniteElementSpace_GlobalTrueVSize, METH_O, "ParFiniteElementSpace_GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetTrueVSize", _wrap_ParFiniteElementSpace_GetTrueVSize, METH_O, "ParFiniteElementSpace_GetTrueVSize(ParFiniteElementSpace self) -> int"},
-	 { "ParFiniteElementSpace_GetElementDofs", _wrap_ParFiniteElementSpace_GetElementDofs, METH_VARARGS, "ParFiniteElementSpace_GetElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetBdrElementDofs", _wrap_ParFiniteElementSpace_GetBdrElementDofs, METH_VARARGS, "ParFiniteElementSpace_GetBdrElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetFaceDofs", _wrap_ParFiniteElementSpace_GetFaceDofs, METH_VARARGS, "ParFiniteElementSpace_GetFaceDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetFaceRestriction", _wrap_ParFiniteElementSpace_GetFaceRestriction, METH_VARARGS, "ParFiniteElementSpace_GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"},
-	 { "ParFiniteElementSpace_GetSharedEdgeDofs", _wrap_ParFiniteElementSpace_GetSharedEdgeDofs, METH_VARARGS, "ParFiniteElementSpace_GetSharedEdgeDofs(ParFiniteElementSpace self, int group, int ei, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetSharedTriangleDofs", _wrap_ParFiniteElementSpace_GetSharedTriangleDofs, METH_VARARGS, "ParFiniteElementSpace_GetSharedTriangleDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetSharedQuadrilateralDofs", _wrap_ParFiniteElementSpace_GetSharedQuadrilateralDofs, METH_VARARGS, "ParFiniteElementSpace_GetSharedQuadrilateralDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetElementDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetElementDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetBdrElementDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetBdrElementDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetBdrElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetFaceDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetFaceDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetFaceRestriction", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceRestriction, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"},
+	 { "ParFiniteElementSpace_GetSharedEdgeDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetSharedEdgeDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetSharedEdgeDofs(ParFiniteElementSpace self, int group, int ei, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetSharedTriangleDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetSharedTriangleDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetSharedTriangleDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetSharedQuadrilateralDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetSharedQuadrilateralDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetSharedQuadrilateralDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
 	 { "ParFiniteElementSpace_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Dof_TrueDof_Matrix, METH_O, "ParFiniteElementSpace_Dof_TrueDof_Matrix(ParFiniteElementSpace self) -> HypreParMatrix"},
 	 { "ParFiniteElementSpace_GetPartialConformingInterpolation", _wrap_ParFiniteElementSpace_GetPartialConformingInterpolation, METH_O, "ParFiniteElementSpace_GetPartialConformingInterpolation(ParFiniteElementSpace self) -> HypreParMatrix"},
 	 { "ParFiniteElementSpace_NewTrueDofVector", _wrap_ParFiniteElementSpace_NewTrueDofVector, METH_O, "ParFiniteElementSpace_NewTrueDofVector(ParFiniteElementSpace self) -> HypreParVector"},
-	 { "ParFiniteElementSpace_DivideByGroupSize", _wrap_ParFiniteElementSpace_DivideByGroupSize, METH_VARARGS, "ParFiniteElementSpace_DivideByGroupSize(ParFiniteElementSpace self, double * vec)"},
+	 { "ParFiniteElementSpace_DivideByGroupSize", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_DivideByGroupSize, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_DivideByGroupSize(ParFiniteElementSpace self, double * vec)"},
 	 { "ParFiniteElementSpace_GroupComm", _wrap_ParFiniteElementSpace_GroupComm, METH_VARARGS, "\n"
 		"ParFiniteElementSpace_GroupComm(ParFiniteElementSpace self) -> GroupCommunicator\n"
 		"ParFiniteElementSpace_GroupComm(ParFiniteElementSpace self) -> GroupCommunicator\n"
 		""},
 	 { "ParFiniteElementSpace_ScalarGroupComm", _wrap_ParFiniteElementSpace_ScalarGroupComm, METH_O, "ParFiniteElementSpace_ScalarGroupComm(ParFiniteElementSpace self) -> GroupCommunicator"},
-	 { "ParFiniteElementSpace_Synchronize", _wrap_ParFiniteElementSpace_Synchronize, METH_VARARGS, "ParFiniteElementSpace_Synchronize(ParFiniteElementSpace self, intArray ldof_marker)"},
-	 { "ParFiniteElementSpace_GetEssentialVDofs", _wrap_ParFiniteElementSpace_GetEssentialVDofs, METH_VARARGS, "ParFiniteElementSpace_GetEssentialVDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_dofs, int component=-1)"},
-	 { "ParFiniteElementSpace_GetEssentialTrueDofs", _wrap_ParFiniteElementSpace_GetEssentialTrueDofs, METH_VARARGS, "ParFiniteElementSpace_GetEssentialTrueDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list, int component=-1)"},
-	 { "ParFiniteElementSpace_GetLocalTDofNumber", _wrap_ParFiniteElementSpace_GetLocalTDofNumber, METH_VARARGS, "ParFiniteElementSpace_GetLocalTDofNumber(ParFiniteElementSpace self, int ldof) -> int"},
-	 { "ParFiniteElementSpace_GetGlobalTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalTDofNumber, METH_VARARGS, "ParFiniteElementSpace_GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"},
-	 { "ParFiniteElementSpace_GetGlobalScalarTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber, METH_VARARGS, "ParFiniteElementSpace_GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"},
+	 { "ParFiniteElementSpace_Synchronize", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_Synchronize, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_Synchronize(ParFiniteElementSpace self, intArray ldof_marker)"},
+	 { "ParFiniteElementSpace_GetEssentialVDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetEssentialVDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetEssentialVDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_dofs, int component=-1)"},
+	 { "ParFiniteElementSpace_GetEssentialTrueDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetEssentialTrueDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetEssentialTrueDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list, int component=-1)"},
+	 { "ParFiniteElementSpace_GetLocalTDofNumber", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetLocalTDofNumber, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetLocalTDofNumber(ParFiniteElementSpace self, int ldof) -> int"},
+	 { "ParFiniteElementSpace_GetGlobalTDofNumber", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetGlobalTDofNumber, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"},
+	 { "ParFiniteElementSpace_GetGlobalScalarTDofNumber", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetMyDofOffset", _wrap_ParFiniteElementSpace_GetMyDofOffset, METH_O, "ParFiniteElementSpace_GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetMyTDofOffset", _wrap_ParFiniteElementSpace_GetMyTDofOffset, METH_O, "ParFiniteElementSpace_GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetProlongationMatrix", _wrap_ParFiniteElementSpace_GetProlongationMatrix, METH_O, "ParFiniteElementSpace_GetProlongationMatrix(ParFiniteElementSpace self) -> Operator"},
 	 { "ParFiniteElementSpace_GetRestrictionMatrix", _wrap_ParFiniteElementSpace_GetRestrictionMatrix, METH_O, "ParFiniteElementSpace_GetRestrictionMatrix(ParFiniteElementSpace self) -> SparseMatrix"},
 	 { "ParFiniteElementSpace_ExchangeFaceNbrData", _wrap_ParFiniteElementSpace_ExchangeFaceNbrData, METH_O, "ParFiniteElementSpace_ExchangeFaceNbrData(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_GetFaceNbrVSize", _wrap_ParFiniteElementSpace_GetFaceNbrVSize, METH_O, "ParFiniteElementSpace_GetFaceNbrVSize(ParFiniteElementSpace self) -> int"},
-	 { "ParFiniteElementSpace_GetFaceNbrElementVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs, METH_VARARGS, "ParFiniteElementSpace_GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
-	 { "ParFiniteElementSpace_GetFaceNbrFaceVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs, METH_VARARGS, "ParFiniteElementSpace_GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
-	 { "ParFiniteElementSpace_GetFaceNbrFE", _wrap_ParFiniteElementSpace_GetFaceNbrFE, METH_VARARGS, "ParFiniteElementSpace_GetFaceNbrFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
-	 { "ParFiniteElementSpace_GetFaceNbrFaceFE", _wrap_ParFiniteElementSpace_GetFaceNbrFaceFE, METH_VARARGS, "ParFiniteElementSpace_GetFaceNbrFaceFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
+	 { "ParFiniteElementSpace_GetFaceNbrElementVDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
+	 { "ParFiniteElementSpace_GetFaceNbrFaceVDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
+	 { "ParFiniteElementSpace_GetFaceNbrFE", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrFE, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetFaceNbrFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
+	 { "ParFiniteElementSpace_GetFaceNbrFaceFE", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrFaceFE, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetFaceNbrFaceFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
 	 { "ParFiniteElementSpace_GetFaceNbrGlobalDofMap", _wrap_ParFiniteElementSpace_GetFaceNbrGlobalDofMap, METH_O, "ParFiniteElementSpace_GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_Int const *"},
 	 { "ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix, METH_O, "ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_LoseDofOffsets", _wrap_ParFiniteElementSpace_LoseDofOffsets, METH_O, "ParFiniteElementSpace_LoseDofOffsets(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_LoseTrueDofOffsets", _wrap_ParFiniteElementSpace_LoseTrueDofOffsets, METH_O, "ParFiniteElementSpace_LoseTrueDofOffsets(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_Conforming", _wrap_ParFiniteElementSpace_Conforming, METH_O, "ParFiniteElementSpace_Conforming(ParFiniteElementSpace self) -> bool"},
 	 { "ParFiniteElementSpace_Nonconforming", _wrap_ParFiniteElementSpace_Nonconforming, METH_O, "ParFiniteElementSpace_Nonconforming(ParFiniteElementSpace self) -> bool"},
-	 { "ParFiniteElementSpace_GetTrueTransferOperator", _wrap_ParFiniteElementSpace_GetTrueTransferOperator, METH_VARARGS, "ParFiniteElementSpace_GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"},
-	 { "ParFiniteElementSpace_Update", _wrap_ParFiniteElementSpace_Update, METH_VARARGS, "ParFiniteElementSpace_Update(ParFiniteElementSpace self, bool want_transform=True)"},
+	 { "ParFiniteElementSpace_GetTrueTransferOperator", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetTrueTransferOperator, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"},
+	 { "ParFiniteElementSpace_Update", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_Update, METH_VARARGS|METH_KEYWORDS, "ParFiniteElementSpace_Update(ParFiniteElementSpace self, bool want_transform=True)"},
 	 { "ParFiniteElementSpace_UpdatesFinished", _wrap_ParFiniteElementSpace_UpdatesFinished, METH_O, "ParFiniteElementSpace_UpdatesFinished(ParFiniteElementSpace self)"},
 	 { "delete_ParFiniteElementSpace", _wrap_delete_ParFiniteElementSpace, METH_O, "delete_ParFiniteElementSpace(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_PrintPartitionStats", _wrap_ParFiniteElementSpace_PrintPartitionStats, METH_O, "ParFiniteElementSpace_PrintPartitionStats(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_TrueVSize", _wrap_ParFiniteElementSpace_TrueVSize, METH_O, "ParFiniteElementSpace_TrueVSize(ParFiniteElementSpace self) -> int"},
 	 { "ParFiniteElementSpace_swigregister", ParFiniteElementSpace_swigregister, METH_O, NULL},
 	 { "ParFiniteElementSpace_swiginit", ParFiniteElementSpace_swiginit, METH_VARARGS, NULL},
-	 { "new_ConformingProlongationOperator", _wrap_new_ConformingProlongationOperator, METH_O, "new_ConformingProlongationOperator(ParFiniteElementSpace pfes) -> ConformingProlongationOperator"},
-	 { "ConformingProlongationOperator_Mult", _wrap_ConformingProlongationOperator_Mult, METH_VARARGS, "ConformingProlongationOperator_Mult(ConformingProlongationOperator self, Vector x, Vector y)"},
-	 { "ConformingProlongationOperator_MultTranspose", _wrap_ConformingProlongationOperator_MultTranspose, METH_VARARGS, "ConformingProlongationOperator_MultTranspose(ConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "new_ConformingProlongationOperator", (PyCFunction)(void(*)(void))_wrap_new_ConformingProlongationOperator, METH_VARARGS|METH_KEYWORDS, "new_ConformingProlongationOperator(ParFiniteElementSpace pfes) -> ConformingProlongationOperator"},
+	 { "ConformingProlongationOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ConformingProlongationOperator_Mult, METH_VARARGS|METH_KEYWORDS, "ConformingProlongationOperator_Mult(ConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "ConformingProlongationOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ConformingProlongationOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "ConformingProlongationOperator_MultTranspose(ConformingProlongationOperator self, Vector x, Vector y)"},
 	 { "delete_ConformingProlongationOperator", _wrap_delete_ConformingProlongationOperator, METH_O, "delete_ConformingProlongationOperator(ConformingProlongationOperator self)"},
 	 { "ConformingProlongationOperator_swigregister", ConformingProlongationOperator_swigregister, METH_O, NULL},
 	 { "ConformingProlongationOperator_swiginit", ConformingProlongationOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_DeviceConformingProlongationOperator", _wrap_new_DeviceConformingProlongationOperator, METH_O, "new_DeviceConformingProlongationOperator(ParFiniteElementSpace pfes) -> DeviceConformingProlongationOperator"},
+	 { "new_DeviceConformingProlongationOperator", (PyCFunction)(void(*)(void))_wrap_new_DeviceConformingProlongationOperator, METH_VARARGS|METH_KEYWORDS, "new_DeviceConformingProlongationOperator(ParFiniteElementSpace pfes) -> DeviceConformingProlongationOperator"},
 	 { "delete_DeviceConformingProlongationOperator", _wrap_delete_DeviceConformingProlongationOperator, METH_O, "delete_DeviceConformingProlongationOperator(DeviceConformingProlongationOperator self)"},
-	 { "DeviceConformingProlongationOperator_Mult", _wrap_DeviceConformingProlongationOperator_Mult, METH_VARARGS, "DeviceConformingProlongationOperator_Mult(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
-	 { "DeviceConformingProlongationOperator_MultTranspose", _wrap_DeviceConformingProlongationOperator_MultTranspose, METH_VARARGS, "DeviceConformingProlongationOperator_MultTranspose(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "DeviceConformingProlongationOperator_Mult", (PyCFunction)(void(*)(void))_wrap_DeviceConformingProlongationOperator_Mult, METH_VARARGS|METH_KEYWORDS, "DeviceConformingProlongationOperator_Mult(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "DeviceConformingProlongationOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_DeviceConformingProlongationOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "DeviceConformingProlongationOperator_MultTranspose(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
 	 { "DeviceConformingProlongationOperator_swigregister", DeviceConformingProlongationOperator_swigregister, METH_O, NULL},
 	 { "DeviceConformingProlongationOperator_swiginit", DeviceConformingProlongationOperator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -7508,74 +6814,74 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ParFiniteElementSpace(FiniteElementSpace orig, ParMesh pmesh, FiniteElementCollection fec=None)\n"
 		"ParFiniteElementSpace(ParMesh pm, FiniteElementSpace global_fes, int const * partitioning, FiniteElementCollection f=None)\n"
 		"ParFiniteElementSpace(ParMesh pm, FiniteElementCollection f, int dim=1, int ordering=byNODES)\n"
-		"ParFiniteElementSpace(ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1, int ordering=byNODES)\n"
+		"new_ParFiniteElementSpace(ParMesh pm, mfem::NURBSExtension * ext, FiniteElementCollection f, int dim=1, int ordering=byNODES) -> ParFiniteElementSpace\n"
 		""},
 	 { "ParFiniteElementSpace_GetComm", _wrap_ParFiniteElementSpace_GetComm, METH_O, "GetComm(ParFiniteElementSpace self) -> MPI_Comm"},
 	 { "ParFiniteElementSpace_GetNRanks", _wrap_ParFiniteElementSpace_GetNRanks, METH_O, "GetNRanks(ParFiniteElementSpace self) -> int"},
 	 { "ParFiniteElementSpace_GetMyRank", _wrap_ParFiniteElementSpace_GetMyRank, METH_O, "GetMyRank(ParFiniteElementSpace self) -> int"},
 	 { "ParFiniteElementSpace_GetParMesh", _wrap_ParFiniteElementSpace_GetParMesh, METH_O, "GetParMesh(ParFiniteElementSpace self) -> ParMesh"},
-	 { "ParFiniteElementSpace_GetDofSign", _wrap_ParFiniteElementSpace_GetDofSign, METH_VARARGS, "GetDofSign(ParFiniteElementSpace self, int i) -> int"},
+	 { "ParFiniteElementSpace_GetDofSign", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetDofSign, METH_VARARGS|METH_KEYWORDS, "GetDofSign(ParFiniteElementSpace self, int i) -> int"},
 	 { "ParFiniteElementSpace_GetDofOffsets", _wrap_ParFiniteElementSpace_GetDofOffsets, METH_O, "GetDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"},
 	 { "ParFiniteElementSpace_GetTrueDofOffsets", _wrap_ParFiniteElementSpace_GetTrueDofOffsets, METH_O, "GetTrueDofOffsets(ParFiniteElementSpace self) -> HYPRE_Int *"},
 	 { "ParFiniteElementSpace_GlobalVSize", _wrap_ParFiniteElementSpace_GlobalVSize, METH_O, "GlobalVSize(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GlobalTrueVSize", _wrap_ParFiniteElementSpace_GlobalTrueVSize, METH_O, "GlobalTrueVSize(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetTrueVSize", _wrap_ParFiniteElementSpace_GetTrueVSize, METH_O, "GetTrueVSize(ParFiniteElementSpace self) -> int"},
-	 { "ParFiniteElementSpace_GetElementDofs", _wrap_ParFiniteElementSpace_GetElementDofs, METH_VARARGS, "GetElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetBdrElementDofs", _wrap_ParFiniteElementSpace_GetBdrElementDofs, METH_VARARGS, "GetBdrElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetFaceDofs", _wrap_ParFiniteElementSpace_GetFaceDofs, METH_VARARGS, "GetFaceDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetFaceRestriction", _wrap_ParFiniteElementSpace_GetFaceRestriction, METH_VARARGS, "GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"},
-	 { "ParFiniteElementSpace_GetSharedEdgeDofs", _wrap_ParFiniteElementSpace_GetSharedEdgeDofs, METH_VARARGS, "GetSharedEdgeDofs(ParFiniteElementSpace self, int group, int ei, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetSharedTriangleDofs", _wrap_ParFiniteElementSpace_GetSharedTriangleDofs, METH_VARARGS, "GetSharedTriangleDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
-	 { "ParFiniteElementSpace_GetSharedQuadrilateralDofs", _wrap_ParFiniteElementSpace_GetSharedQuadrilateralDofs, METH_VARARGS, "GetSharedQuadrilateralDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetElementDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetElementDofs, METH_VARARGS|METH_KEYWORDS, "GetElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetBdrElementDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetBdrElementDofs, METH_VARARGS|METH_KEYWORDS, "GetBdrElementDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetFaceDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceDofs, METH_VARARGS|METH_KEYWORDS, "GetFaceDofs(ParFiniteElementSpace self, int i, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetFaceRestriction", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceRestriction, METH_VARARGS|METH_KEYWORDS, "GetFaceRestriction(ParFiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType type, mfem::L2FaceValues mul=DoubleValued) -> Operator"},
+	 { "ParFiniteElementSpace_GetSharedEdgeDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetSharedEdgeDofs, METH_VARARGS|METH_KEYWORDS, "GetSharedEdgeDofs(ParFiniteElementSpace self, int group, int ei, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetSharedTriangleDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetSharedTriangleDofs, METH_VARARGS|METH_KEYWORDS, "GetSharedTriangleDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
+	 { "ParFiniteElementSpace_GetSharedQuadrilateralDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetSharedQuadrilateralDofs, METH_VARARGS|METH_KEYWORDS, "GetSharedQuadrilateralDofs(ParFiniteElementSpace self, int group, int fi, intArray dofs)"},
 	 { "ParFiniteElementSpace_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Dof_TrueDof_Matrix, METH_O, "Dof_TrueDof_Matrix(ParFiniteElementSpace self) -> HypreParMatrix"},
 	 { "ParFiniteElementSpace_GetPartialConformingInterpolation", _wrap_ParFiniteElementSpace_GetPartialConformingInterpolation, METH_O, "GetPartialConformingInterpolation(ParFiniteElementSpace self) -> HypreParMatrix"},
 	 { "ParFiniteElementSpace_NewTrueDofVector", _wrap_ParFiniteElementSpace_NewTrueDofVector, METH_O, "NewTrueDofVector(ParFiniteElementSpace self) -> HypreParVector"},
-	 { "ParFiniteElementSpace_DivideByGroupSize", _wrap_ParFiniteElementSpace_DivideByGroupSize, METH_VARARGS, "DivideByGroupSize(ParFiniteElementSpace self, double * vec)"},
+	 { "ParFiniteElementSpace_DivideByGroupSize", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_DivideByGroupSize, METH_VARARGS|METH_KEYWORDS, "DivideByGroupSize(ParFiniteElementSpace self, double * vec)"},
 	 { "ParFiniteElementSpace_GroupComm", _wrap_ParFiniteElementSpace_GroupComm, METH_VARARGS, "\n"
 		"GroupComm(ParFiniteElementSpace self) -> GroupCommunicator\n"
 		"GroupComm(ParFiniteElementSpace self) -> GroupCommunicator\n"
 		""},
 	 { "ParFiniteElementSpace_ScalarGroupComm", _wrap_ParFiniteElementSpace_ScalarGroupComm, METH_O, "ScalarGroupComm(ParFiniteElementSpace self) -> GroupCommunicator"},
-	 { "ParFiniteElementSpace_Synchronize", _wrap_ParFiniteElementSpace_Synchronize, METH_VARARGS, "Synchronize(ParFiniteElementSpace self, intArray ldof_marker)"},
-	 { "ParFiniteElementSpace_GetEssentialVDofs", _wrap_ParFiniteElementSpace_GetEssentialVDofs, METH_VARARGS, "GetEssentialVDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_dofs, int component=-1)"},
-	 { "ParFiniteElementSpace_GetEssentialTrueDofs", _wrap_ParFiniteElementSpace_GetEssentialTrueDofs, METH_VARARGS, "GetEssentialTrueDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list, int component=-1)"},
-	 { "ParFiniteElementSpace_GetLocalTDofNumber", _wrap_ParFiniteElementSpace_GetLocalTDofNumber, METH_VARARGS, "GetLocalTDofNumber(ParFiniteElementSpace self, int ldof) -> int"},
-	 { "ParFiniteElementSpace_GetGlobalTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalTDofNumber, METH_VARARGS, "GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"},
-	 { "ParFiniteElementSpace_GetGlobalScalarTDofNumber", _wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber, METH_VARARGS, "GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"},
+	 { "ParFiniteElementSpace_Synchronize", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_Synchronize, METH_VARARGS|METH_KEYWORDS, "Synchronize(ParFiniteElementSpace self, intArray ldof_marker)"},
+	 { "ParFiniteElementSpace_GetEssentialVDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetEssentialVDofs, METH_VARARGS|METH_KEYWORDS, "GetEssentialVDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_dofs, int component=-1)"},
+	 { "ParFiniteElementSpace_GetEssentialTrueDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetEssentialTrueDofs, METH_VARARGS|METH_KEYWORDS, "GetEssentialTrueDofs(ParFiniteElementSpace self, intArray bdr_attr_is_ess, intArray ess_tdof_list, int component=-1)"},
+	 { "ParFiniteElementSpace_GetLocalTDofNumber", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetLocalTDofNumber, METH_VARARGS|METH_KEYWORDS, "GetLocalTDofNumber(ParFiniteElementSpace self, int ldof) -> int"},
+	 { "ParFiniteElementSpace_GetGlobalTDofNumber", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetGlobalTDofNumber, METH_VARARGS|METH_KEYWORDS, "GetGlobalTDofNumber(ParFiniteElementSpace self, int ldof) -> HYPRE_Int"},
+	 { "ParFiniteElementSpace_GetGlobalScalarTDofNumber", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetGlobalScalarTDofNumber, METH_VARARGS|METH_KEYWORDS, "GetGlobalScalarTDofNumber(ParFiniteElementSpace self, int sldof) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetMyDofOffset", _wrap_ParFiniteElementSpace_GetMyDofOffset, METH_O, "GetMyDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetMyTDofOffset", _wrap_ParFiniteElementSpace_GetMyTDofOffset, METH_O, "GetMyTDofOffset(ParFiniteElementSpace self) -> HYPRE_Int"},
 	 { "ParFiniteElementSpace_GetProlongationMatrix", _wrap_ParFiniteElementSpace_GetProlongationMatrix, METH_O, "GetProlongationMatrix(ParFiniteElementSpace self) -> Operator"},
 	 { "ParFiniteElementSpace_GetRestrictionMatrix", _wrap_ParFiniteElementSpace_GetRestrictionMatrix, METH_O, "GetRestrictionMatrix(ParFiniteElementSpace self) -> SparseMatrix"},
 	 { "ParFiniteElementSpace_ExchangeFaceNbrData", _wrap_ParFiniteElementSpace_ExchangeFaceNbrData, METH_O, "ExchangeFaceNbrData(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_GetFaceNbrVSize", _wrap_ParFiniteElementSpace_GetFaceNbrVSize, METH_O, "GetFaceNbrVSize(ParFiniteElementSpace self) -> int"},
-	 { "ParFiniteElementSpace_GetFaceNbrElementVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs, METH_VARARGS, "GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
-	 { "ParFiniteElementSpace_GetFaceNbrFaceVDofs", _wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs, METH_VARARGS, "GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
-	 { "ParFiniteElementSpace_GetFaceNbrFE", _wrap_ParFiniteElementSpace_GetFaceNbrFE, METH_VARARGS, "GetFaceNbrFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
-	 { "ParFiniteElementSpace_GetFaceNbrFaceFE", _wrap_ParFiniteElementSpace_GetFaceNbrFaceFE, METH_VARARGS, "GetFaceNbrFaceFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
+	 { "ParFiniteElementSpace_GetFaceNbrElementVDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrElementVDofs, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrElementVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
+	 { "ParFiniteElementSpace_GetFaceNbrFaceVDofs", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrFaceVDofs, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrFaceVDofs(ParFiniteElementSpace self, int i, intArray vdofs)"},
+	 { "ParFiniteElementSpace_GetFaceNbrFE", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrFE, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
+	 { "ParFiniteElementSpace_GetFaceNbrFaceFE", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetFaceNbrFaceFE, METH_VARARGS|METH_KEYWORDS, "GetFaceNbrFaceFE(ParFiniteElementSpace self, int i) -> FiniteElement"},
 	 { "ParFiniteElementSpace_GetFaceNbrGlobalDofMap", _wrap_ParFiniteElementSpace_GetFaceNbrGlobalDofMap, METH_O, "GetFaceNbrGlobalDofMap(ParFiniteElementSpace self) -> HYPRE_Int const *"},
 	 { "ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix", _wrap_ParFiniteElementSpace_Lose_Dof_TrueDof_Matrix, METH_O, "Lose_Dof_TrueDof_Matrix(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_LoseDofOffsets", _wrap_ParFiniteElementSpace_LoseDofOffsets, METH_O, "LoseDofOffsets(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_LoseTrueDofOffsets", _wrap_ParFiniteElementSpace_LoseTrueDofOffsets, METH_O, "LoseTrueDofOffsets(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_Conforming", _wrap_ParFiniteElementSpace_Conforming, METH_O, "Conforming(ParFiniteElementSpace self) -> bool"},
 	 { "ParFiniteElementSpace_Nonconforming", _wrap_ParFiniteElementSpace_Nonconforming, METH_O, "Nonconforming(ParFiniteElementSpace self) -> bool"},
-	 { "ParFiniteElementSpace_GetTrueTransferOperator", _wrap_ParFiniteElementSpace_GetTrueTransferOperator, METH_VARARGS, "GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"},
-	 { "ParFiniteElementSpace_Update", _wrap_ParFiniteElementSpace_Update, METH_VARARGS, "Update(ParFiniteElementSpace self, bool want_transform=True)"},
+	 { "ParFiniteElementSpace_GetTrueTransferOperator", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_GetTrueTransferOperator, METH_VARARGS|METH_KEYWORDS, "GetTrueTransferOperator(ParFiniteElementSpace self, FiniteElementSpace coarse_fes, OperatorHandle T)"},
+	 { "ParFiniteElementSpace_Update", (PyCFunction)(void(*)(void))_wrap_ParFiniteElementSpace_Update, METH_VARARGS|METH_KEYWORDS, "Update(ParFiniteElementSpace self, bool want_transform=True)"},
 	 { "ParFiniteElementSpace_UpdatesFinished", _wrap_ParFiniteElementSpace_UpdatesFinished, METH_O, "UpdatesFinished(ParFiniteElementSpace self)"},
 	 { "delete_ParFiniteElementSpace", _wrap_delete_ParFiniteElementSpace, METH_O, "delete_ParFiniteElementSpace(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_PrintPartitionStats", _wrap_ParFiniteElementSpace_PrintPartitionStats, METH_O, "PrintPartitionStats(ParFiniteElementSpace self)"},
 	 { "ParFiniteElementSpace_TrueVSize", _wrap_ParFiniteElementSpace_TrueVSize, METH_O, "TrueVSize(ParFiniteElementSpace self) -> int"},
 	 { "ParFiniteElementSpace_swigregister", ParFiniteElementSpace_swigregister, METH_O, NULL},
 	 { "ParFiniteElementSpace_swiginit", ParFiniteElementSpace_swiginit, METH_VARARGS, NULL},
-	 { "new_ConformingProlongationOperator", _wrap_new_ConformingProlongationOperator, METH_O, "new_ConformingProlongationOperator(ParFiniteElementSpace pfes) -> ConformingProlongationOperator"},
-	 { "ConformingProlongationOperator_Mult", _wrap_ConformingProlongationOperator_Mult, METH_VARARGS, "Mult(ConformingProlongationOperator self, Vector x, Vector y)"},
-	 { "ConformingProlongationOperator_MultTranspose", _wrap_ConformingProlongationOperator_MultTranspose, METH_VARARGS, "MultTranspose(ConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "new_ConformingProlongationOperator", (PyCFunction)(void(*)(void))_wrap_new_ConformingProlongationOperator, METH_VARARGS|METH_KEYWORDS, "new_ConformingProlongationOperator(ParFiniteElementSpace pfes) -> ConformingProlongationOperator"},
+	 { "ConformingProlongationOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ConformingProlongationOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "ConformingProlongationOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ConformingProlongationOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(ConformingProlongationOperator self, Vector x, Vector y)"},
 	 { "delete_ConformingProlongationOperator", _wrap_delete_ConformingProlongationOperator, METH_O, "delete_ConformingProlongationOperator(ConformingProlongationOperator self)"},
 	 { "ConformingProlongationOperator_swigregister", ConformingProlongationOperator_swigregister, METH_O, NULL},
 	 { "ConformingProlongationOperator_swiginit", ConformingProlongationOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_DeviceConformingProlongationOperator", _wrap_new_DeviceConformingProlongationOperator, METH_O, "new_DeviceConformingProlongationOperator(ParFiniteElementSpace pfes) -> DeviceConformingProlongationOperator"},
+	 { "new_DeviceConformingProlongationOperator", (PyCFunction)(void(*)(void))_wrap_new_DeviceConformingProlongationOperator, METH_VARARGS|METH_KEYWORDS, "new_DeviceConformingProlongationOperator(ParFiniteElementSpace pfes) -> DeviceConformingProlongationOperator"},
 	 { "delete_DeviceConformingProlongationOperator", _wrap_delete_DeviceConformingProlongationOperator, METH_O, "delete_DeviceConformingProlongationOperator(DeviceConformingProlongationOperator self)"},
-	 { "DeviceConformingProlongationOperator_Mult", _wrap_DeviceConformingProlongationOperator_Mult, METH_VARARGS, "Mult(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
-	 { "DeviceConformingProlongationOperator_MultTranspose", _wrap_DeviceConformingProlongationOperator_MultTranspose, METH_VARARGS, "MultTranspose(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "DeviceConformingProlongationOperator_Mult", (PyCFunction)(void(*)(void))_wrap_DeviceConformingProlongationOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
+	 { "DeviceConformingProlongationOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_DeviceConformingProlongationOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(DeviceConformingProlongationOperator self, Vector x, Vector y)"},
 	 { "DeviceConformingProlongationOperator_swigregister", DeviceConformingProlongationOperator_swigregister, METH_O, NULL},
 	 { "DeviceConformingProlongationOperator_swiginit", DeviceConformingProlongationOperator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -9680,10 +8986,10 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

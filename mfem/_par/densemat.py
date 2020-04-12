@@ -538,7 +538,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     MemoryUsage = _swig_new_instance_method(_densemat.DenseMatrix_MemoryUsage)
 
     def Read(self, on_dev=True):
-        r"""Read(DenseMatrix self, bool on_dev=True) -> double const"""
+        r"""Read(DenseMatrix self, bool on_dev=True) -> double const *"""
         return _densemat.DenseMatrix_Read(self, on_dev)
     Read = _swig_new_instance_method(_densemat.DenseMatrix_Read)
 
@@ -548,7 +548,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     HostRead = _swig_new_instance_method(_densemat.DenseMatrix_HostRead)
 
     def Write(self, on_dev=True):
-        r"""Write(DenseMatrix self, bool on_dev=True) -> double"""
+        r"""Write(DenseMatrix self, bool on_dev=True) -> double *"""
         return _densemat.DenseMatrix_Write(self, on_dev)
     Write = _swig_new_instance_method(_densemat.DenseMatrix_Write)
 
@@ -558,7 +558,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     HostWrite = _swig_new_instance_method(_densemat.DenseMatrix_HostWrite)
 
     def ReadWrite(self, on_dev=True):
-        r"""ReadWrite(DenseMatrix self, bool on_dev=True) -> double"""
+        r"""ReadWrite(DenseMatrix self, bool on_dev=True) -> double *"""
         return _densemat.DenseMatrix_ReadWrite(self, on_dev)
     ReadWrite = _swig_new_instance_method(_densemat.DenseMatrix_ReadWrite)
 
@@ -1077,7 +1077,7 @@ class DenseTensor(object):
     MemoryUsage = _swig_new_instance_method(_densemat.DenseTensor_MemoryUsage)
 
     def Read(self, on_dev=True):
-        r"""Read(DenseTensor self, bool on_dev=True) -> double const"""
+        r"""Read(DenseTensor self, bool on_dev=True) -> double const *"""
         return _densemat.DenseTensor_Read(self, on_dev)
     Read = _swig_new_instance_method(_densemat.DenseTensor_Read)
 
@@ -1087,7 +1087,7 @@ class DenseTensor(object):
     HostRead = _swig_new_instance_method(_densemat.DenseTensor_HostRead)
 
     def Write(self, on_dev=True):
-        r"""Write(DenseTensor self, bool on_dev=True) -> double"""
+        r"""Write(DenseTensor self, bool on_dev=True) -> double *"""
         return _densemat.DenseTensor_Write(self, on_dev)
     Write = _swig_new_instance_method(_densemat.DenseTensor_Write)
 
@@ -1097,7 +1097,7 @@ class DenseTensor(object):
     HostWrite = _swig_new_instance_method(_densemat.DenseTensor_HostWrite)
 
     def ReadWrite(self, on_dev=True):
-        r"""ReadWrite(DenseTensor self, bool on_dev=True) -> double"""
+        r"""ReadWrite(DenseTensor self, bool on_dev=True) -> double *"""
         return _densemat.DenseTensor_ReadWrite(self, on_dev)
     ReadWrite = _swig_new_instance_method(_densemat.DenseTensor_ReadWrite)
 

@@ -3352,7 +3352,7 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
   return SWIG_OK;
 }
 
-SWIGINTERN mfem::ComplexOperator *new_mfem_ComplexOperator__SWIG_0(mfem::Operator *Op_Real,mfem::Operator *Op_Imag,bool ownReal=false,bool ownImag=false,bool hermitan=true){
+SWIGINTERN mfem::ComplexOperator *new_mfem_ComplexOperator(mfem::Operator *Op_Real,mfem::Operator *Op_Imag,bool ownReal=false,bool ownImag=false,bool hermitan=true){
    if (hermitan){
      return  new mfem::ComplexOperator(Op_Real, Op_Imag, ownReal, ownImag,
 				       mfem::ComplexOperator::HERMITIAN);
@@ -3748,7 +3748,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ComplexOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ComplexOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ComplexOperator *arg1 = (mfem::ComplexOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3759,15 +3759,20 @@ SWIGINTERN PyObject *_wrap_ComplexOperator_Mult(PyObject *SWIGUNUSEDPARM(self), 
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ComplexOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ComplexOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ComplexOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ComplexOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComplexOperator_Mult" "', argument " "1"" of type '" "mfem::ComplexOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ComplexOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ComplexOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3775,7 +3780,7 @@ SWIGINTERN PyObject *_wrap_ComplexOperator_Mult(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ComplexOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ComplexOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3809,7 +3814,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ComplexOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ComplexOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ComplexOperator *arg1 = (mfem::ComplexOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3820,15 +3825,20 @@ SWIGINTERN PyObject *_wrap_ComplexOperator_MultTranspose(PyObject *SWIGUNUSEDPAR
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ComplexOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ComplexOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ComplexOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ComplexOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ComplexOperator_MultTranspose" "', argument " "1"" of type '" "mfem::ComplexOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ComplexOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ComplexOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3836,7 +3846,7 @@ SWIGINTERN PyObject *_wrap_ComplexOperator_MultTranspose(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ComplexOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ComplexOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3911,13 +3921,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ComplexOperator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ComplexOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Operator *arg2 = (mfem::Operator *) 0 ;
-  bool arg3 ;
-  bool arg4 ;
-  bool arg5 ;
+  bool arg3 = (bool) false ;
+  bool arg4 = (bool) false ;
+  bool arg5 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -3928,334 +3938,71 @@ SWIGINTERN PyObject *_wrap_new_ComplexOperator__SWIG_0(PyObject *SWIGUNUSEDPARM(
   int ecode4 = 0 ;
   bool val5 ;
   int ecode5 = 0 ;
-  mfem::ComplexOperator *result = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ComplexOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ComplexOperator" "', argument " "2"" of type '" "mfem::Operator *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ComplexOperator" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ComplexOperator" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_ComplexOperator" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
-  {
-    try {
-      result = (mfem::ComplexOperator *)new_mfem_ComplexOperator__SWIG_0(arg1,arg2,arg3,arg4,arg5);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ComplexOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ComplexOperator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  mfem::Operator *arg2 = (mfem::Operator *) 0 ;
-  bool arg3 ;
-  bool arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  bool val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  mfem::ComplexOperator *result = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ComplexOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ComplexOperator" "', argument " "2"" of type '" "mfem::Operator *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ComplexOperator" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ComplexOperator" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  {
-    try {
-      result = (mfem::ComplexOperator *)new_mfem_ComplexOperator__SWIG_0(arg1,arg2,arg3,arg4);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ComplexOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ComplexOperator__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  mfem::Operator *arg2 = (mfem::Operator *) 0 ;
-  bool arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  bool val3 ;
-  int ecode3 = 0 ;
-  mfem::ComplexOperator *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ComplexOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ComplexOperator" "', argument " "2"" of type '" "mfem::Operator *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ComplexOperator" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
-  {
-    try {
-      result = (mfem::ComplexOperator *)new_mfem_ComplexOperator__SWIG_0(arg1,arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ComplexOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ComplexOperator__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  mfem::Operator *arg2 = (mfem::Operator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::ComplexOperator *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ComplexOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ComplexOperator" "', argument " "2"" of type '" "mfem::Operator *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  {
-    try {
-      result = (mfem::ComplexOperator *)new_mfem_ComplexOperator__SWIG_0(arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ComplexOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ComplexOperator(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"Op_Real",  (char *)"Op_Imag",  (char *)"ownReal",  (char *)"ownImag",  (char *)"hermitan",  NULL 
   };
+  mfem::ComplexOperator *result = 0 ;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_ComplexOperator", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_ComplexOperator__SWIG_3(self, argc, argv);
-      }
-    }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OOO:new_ComplexOperator", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ComplexOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_bool(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_ComplexOperator__SWIG_2(self, argc, argv);
-        }
-      }
-    }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ComplexOperator" "', argument " "2"" of type '" "mfem::Operator *""'"); 
   }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_bool(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_ComplexOperator__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
+  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ComplexOperator" "', argument " "3"" of type '" "bool""'");
+    } 
+    arg3 = static_cast< bool >(val3);
   }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_bool(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            {
-              int res = SWIG_AsVal_bool(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-            if (_v) {
-              return _wrap_new_ComplexOperator__SWIG_0(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ComplexOperator" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
   }
-  
+  if (obj4) {
+    ecode5 = SWIG_AsVal_bool(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_ComplexOperator" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
+  }
+  {
+    try {
+      result = (mfem::ComplexOperator *)new_mfem_ComplexOperator(arg1,arg2,arg3,arg4,arg5);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ComplexOperator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ComplexOperator'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ComplexOperator::ComplexOperator(mfem::Operator *,mfem::Operator *,bool,bool,bool)\n"
-    "    mfem::ComplexOperator::ComplexOperator(mfem::Operator *,mfem::Operator *,bool,bool)\n"
-    "    mfem::ComplexOperator::ComplexOperator(mfem::Operator *,mfem::Operator *,bool)\n"
-    "    mfem::ComplexOperator::ComplexOperator(mfem::Operator *,mfem::Operator *)\n");
-  return 0;
+  return NULL;
 }
 
 
@@ -4270,13 +4017,13 @@ SWIGINTERN PyObject *ComplexOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ComplexSparseMatrix__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ComplexSparseMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
   mfem::SparseMatrix *arg2 = (mfem::SparseMatrix *) 0 ;
   bool arg3 ;
   bool arg4 ;
-  mfem::ComplexOperator::Convention arg5 ;
+  mfem::ComplexOperator::Convention arg5 = (mfem::ComplexOperator::Convention) mfem::ComplexOperator::HERMITIAN ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4287,34 +4034,44 @@ SWIGINTERN PyObject *_wrap_new_ComplexSparseMatrix__SWIG_0(PyObject *SWIGUNUSEDP
   int ecode4 = 0 ;
   int val5 ;
   int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"A_Real",  (char *)"A_Imag",  (char *)"ownReal",  (char *)"ownImag",  (char *)"convention",  NULL 
+  };
   mfem::ComplexSparseMatrix *result = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|O:new_ComplexSparseMatrix", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ComplexSparseMatrix" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ComplexSparseMatrix" "', argument " "2"" of type '" "mfem::SparseMatrix *""'"); 
   }
   arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ComplexSparseMatrix" "', argument " "3"" of type '" "bool""'");
   } 
   arg3 = static_cast< bool >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ComplexSparseMatrix" "', argument " "4"" of type '" "bool""'");
   } 
   arg4 = static_cast< bool >(val4);
-  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_ComplexSparseMatrix" "', argument " "5"" of type '" "mfem::ComplexOperator::Convention""'");
-  } 
-  arg5 = static_cast< mfem::ComplexOperator::Convention >(val5);
+  if (obj4) {
+    ecode5 = SWIG_AsVal_int(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_ComplexSparseMatrix" "', argument " "5"" of type '" "mfem::ComplexOperator::Convention""'");
+    } 
+    arg5 = static_cast< mfem::ComplexOperator::Convention >(val5);
+  }
   {
     try {
       result = (mfem::ComplexSparseMatrix *)new mfem::ComplexSparseMatrix(arg1,arg2,arg3,arg4,arg5);
@@ -4338,145 +4095,6 @@ SWIGINTERN PyObject *_wrap_new_ComplexSparseMatrix__SWIG_0(PyObject *SWIGUNUSEDP
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ComplexSparseMatrix__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = (mfem::SparseMatrix *) 0 ;
-  mfem::SparseMatrix *arg2 = (mfem::SparseMatrix *) 0 ;
-  bool arg3 ;
-  bool arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  bool val3 ;
-  int ecode3 = 0 ;
-  bool val4 ;
-  int ecode4 = 0 ;
-  mfem::ComplexSparseMatrix *result = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ComplexSparseMatrix" "', argument " "1"" of type '" "mfem::SparseMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ComplexSparseMatrix" "', argument " "2"" of type '" "mfem::SparseMatrix *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::SparseMatrix * >(argp2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ComplexSparseMatrix" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ComplexSparseMatrix" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  {
-    try {
-      result = (mfem::ComplexSparseMatrix *)new mfem::ComplexSparseMatrix(arg1,arg2,arg3,arg4);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ComplexSparseMatrix, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ComplexSparseMatrix(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_ComplexSparseMatrix", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_bool(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_ComplexSparseMatrix__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__SparseMatrix, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_bool(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            {
-              int res = SWIG_AsVal_int(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-            if (_v) {
-              return _wrap_new_ComplexSparseMatrix__SWIG_0(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ComplexSparseMatrix'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ComplexSparseMatrix::ComplexSparseMatrix(mfem::SparseMatrix *,mfem::SparseMatrix *,bool,bool,mfem::ComplexOperator::Convention)\n"
-    "    mfem::ComplexSparseMatrix::ComplexSparseMatrix(mfem::SparseMatrix *,mfem::SparseMatrix *,bool,bool)\n");
-  return 0;
 }
 
 
@@ -4855,13 +4473,13 @@ static PyMethodDef SwigMethods[] = {
 		"ComplexOperator_imag(ComplexOperator self) -> Operator\n"
 		"ComplexOperator_imag(ComplexOperator self) -> Operator\n"
 		""},
-	 { "ComplexOperator_Mult", _wrap_ComplexOperator_Mult, METH_VARARGS, "ComplexOperator_Mult(ComplexOperator self, Vector x, Vector y)"},
-	 { "ComplexOperator_MultTranspose", _wrap_ComplexOperator_MultTranspose, METH_VARARGS, "ComplexOperator_MultTranspose(ComplexOperator self, Vector x, Vector y)"},
+	 { "ComplexOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ComplexOperator_Mult, METH_VARARGS|METH_KEYWORDS, "ComplexOperator_Mult(ComplexOperator self, Vector x, Vector y)"},
+	 { "ComplexOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ComplexOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "ComplexOperator_MultTranspose(ComplexOperator self, Vector x, Vector y)"},
 	 { "ComplexOperator_GetType", _wrap_ComplexOperator_GetType, METH_O, "ComplexOperator_GetType(ComplexOperator self) -> mfem::Operator::Type"},
-	 { "new_ComplexOperator", _wrap_new_ComplexOperator, METH_VARARGS, "ComplexOperator(Operator Op_Real, Operator Op_Imag, bool ownReal=False, bool ownImag=False, bool hermitan=True)"},
+	 { "new_ComplexOperator", (PyCFunction)(void(*)(void))_wrap_new_ComplexOperator, METH_VARARGS|METH_KEYWORDS, "new_ComplexOperator(Operator Op_Real, Operator Op_Imag, bool ownReal=False, bool ownImag=False, bool hermitan=True) -> ComplexOperator"},
 	 { "ComplexOperator_swigregister", ComplexOperator_swigregister, METH_O, NULL},
 	 { "ComplexOperator_swiginit", ComplexOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_ComplexSparseMatrix", _wrap_new_ComplexSparseMatrix, METH_VARARGS, "ComplexSparseMatrix(SparseMatrix A_Real, SparseMatrix A_Imag, bool ownReal, bool ownImag, mfem::ComplexOperator::Convention convention=HERMITIAN)"},
+	 { "new_ComplexSparseMatrix", (PyCFunction)(void(*)(void))_wrap_new_ComplexSparseMatrix, METH_VARARGS|METH_KEYWORDS, "new_ComplexSparseMatrix(SparseMatrix A_Real, SparseMatrix A_Imag, bool ownReal, bool ownImag, mfem::ComplexOperator::Convention convention=HERMITIAN) -> ComplexSparseMatrix"},
 	 { "ComplexSparseMatrix_real", _wrap_ComplexSparseMatrix_real, METH_VARARGS, "\n"
 		"ComplexSparseMatrix_real(ComplexSparseMatrix self) -> SparseMatrix\n"
 		"ComplexSparseMatrix_real(ComplexSparseMatrix self) -> SparseMatrix\n"
@@ -4892,13 +4510,13 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"imag(ComplexOperator self) -> Operator\n"
 		"imag(ComplexOperator self) -> Operator\n"
 		""},
-	 { "ComplexOperator_Mult", _wrap_ComplexOperator_Mult, METH_VARARGS, "Mult(ComplexOperator self, Vector x, Vector y)"},
-	 { "ComplexOperator_MultTranspose", _wrap_ComplexOperator_MultTranspose, METH_VARARGS, "MultTranspose(ComplexOperator self, Vector x, Vector y)"},
+	 { "ComplexOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ComplexOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ComplexOperator self, Vector x, Vector y)"},
+	 { "ComplexOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ComplexOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(ComplexOperator self, Vector x, Vector y)"},
 	 { "ComplexOperator_GetType", _wrap_ComplexOperator_GetType, METH_O, "GetType(ComplexOperator self) -> mfem::Operator::Type"},
-	 { "new_ComplexOperator", _wrap_new_ComplexOperator, METH_VARARGS, "ComplexOperator(Operator Op_Real, Operator Op_Imag, bool ownReal=False, bool ownImag=False, bool hermitan=True)"},
+	 { "new_ComplexOperator", (PyCFunction)(void(*)(void))_wrap_new_ComplexOperator, METH_VARARGS|METH_KEYWORDS, "new_ComplexOperator(Operator Op_Real, Operator Op_Imag, bool ownReal=False, bool ownImag=False, bool hermitan=True) -> ComplexOperator"},
 	 { "ComplexOperator_swigregister", ComplexOperator_swigregister, METH_O, NULL},
 	 { "ComplexOperator_swiginit", ComplexOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_ComplexSparseMatrix", _wrap_new_ComplexSparseMatrix, METH_VARARGS, "ComplexSparseMatrix(SparseMatrix A_Real, SparseMatrix A_Imag, bool ownReal, bool ownImag, mfem::ComplexOperator::Convention convention=HERMITIAN)"},
+	 { "new_ComplexSparseMatrix", (PyCFunction)(void(*)(void))_wrap_new_ComplexSparseMatrix, METH_VARARGS|METH_KEYWORDS, "new_ComplexSparseMatrix(SparseMatrix A_Real, SparseMatrix A_Imag, bool ownReal, bool ownImag, mfem::ComplexOperator::Convention convention=HERMITIAN) -> ComplexSparseMatrix"},
 	 { "ComplexSparseMatrix_real", _wrap_ComplexSparseMatrix_real, METH_VARARGS, "\n"
 		"real(ComplexSparseMatrix self) -> SparseMatrix\n"
 		"real(ComplexSparseMatrix self) -> SparseMatrix\n"

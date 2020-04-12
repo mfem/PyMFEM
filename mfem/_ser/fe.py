@@ -641,9 +641,9 @@ class VectorFiniteElement(FiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(VectorFiniteElement self, int D, mfem::Geometry::Type G, int Do, int O, int M, int F=Pk) -> VectorFiniteElement"""
-        _fe.VectorFiniteElement_swiginit(self, _fe.new_VectorFiniteElement(*args))
+        _fe.VectorFiniteElement_swiginit(self, _fe.new_VectorFiniteElement(*args, **kwargs))
     __swig_destroy__ = _fe.delete_VectorFiniteElement
 
 # Register VectorFiniteElement in _fe:
@@ -2177,14 +2177,14 @@ class Poly_1D(object):
         return _fe.Poly_1D_GetPoints(self, p, btype)
     GetPoints = _swig_new_instance_method(_fe.Poly_1D_GetPoints)
 
-    def OpenPoints(self, *args):
-        r"""OpenPoints(Poly_1D self, int const p, int const btype=GaussLegendre) -> double const"""
-        return _fe.Poly_1D_OpenPoints(self, *args)
+    def OpenPoints(self, *args, **kwargs):
+        r"""OpenPoints(Poly_1D self, int const p, int const btype=GaussLegendre) -> double const *"""
+        return _fe.Poly_1D_OpenPoints(self, *args, **kwargs)
     OpenPoints = _swig_new_instance_method(_fe.Poly_1D_OpenPoints)
 
-    def ClosedPoints(self, *args):
-        r"""ClosedPoints(Poly_1D self, int const p, int const btype=GaussLobatto) -> double const"""
-        return _fe.Poly_1D_ClosedPoints(self, *args)
+    def ClosedPoints(self, *args, **kwargs):
+        r"""ClosedPoints(Poly_1D self, int const p, int const btype=GaussLobatto) -> double const *"""
+        return _fe.Poly_1D_ClosedPoints(self, *args, **kwargs)
     ClosedPoints = _swig_new_instance_method(_fe.Poly_1D_ClosedPoints)
 
     def GetBasis(self, p, btype):
@@ -2432,9 +2432,9 @@ class H1_SegmentElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_SegmentElement self, int const p, int const btype=GaussLobatto) -> H1_SegmentElement"""
-        _fe.H1_SegmentElement_swiginit(self, _fe.new_H1_SegmentElement(*args))
+        _fe.H1_SegmentElement_swiginit(self, _fe.new_H1_SegmentElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_SegmentElement self, IntegrationPoint ip, Vector shape)"""
@@ -2461,9 +2461,9 @@ class H1_QuadrilateralElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_QuadrilateralElement self, int const p, int const btype=GaussLobatto) -> H1_QuadrilateralElement"""
-        _fe.H1_QuadrilateralElement_swiginit(self, _fe.new_H1_QuadrilateralElement(*args))
+        _fe.H1_QuadrilateralElement_swiginit(self, _fe.new_H1_QuadrilateralElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"""
@@ -2490,9 +2490,9 @@ class H1_HexahedronElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_HexahedronElement self, int const p, int const btype=GaussLobatto) -> H1_HexahedronElement"""
-        _fe.H1_HexahedronElement_swiginit(self, _fe.new_H1_HexahedronElement(*args))
+        _fe.H1_HexahedronElement_swiginit(self, _fe.new_H1_HexahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_HexahedronElement self, IntegrationPoint ip, Vector shape)"""
@@ -2644,9 +2644,9 @@ class H1_TriangleElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_TriangleElement self, int const p, int const btype=GaussLobatto) -> H1_TriangleElement"""
-        _fe.H1_TriangleElement_swiginit(self, _fe.new_H1_TriangleElement(*args))
+        _fe.H1_TriangleElement_swiginit(self, _fe.new_H1_TriangleElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_TriangleElement self, IntegrationPoint ip, Vector shape)"""
@@ -2673,9 +2673,9 @@ class H1_TetrahedronElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_TetrahedronElement self, int const p, int const btype=GaussLobatto) -> H1_TetrahedronElement"""
-        _fe.H1_TetrahedronElement_swiginit(self, _fe.new_H1_TetrahedronElement(*args))
+        _fe.H1_TetrahedronElement_swiginit(self, _fe.new_H1_TetrahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_TetrahedronElement self, IntegrationPoint ip, Vector shape)"""
@@ -2762,9 +2762,9 @@ class H1_WedgeElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_WedgeElement self, int const p, int const btype=GaussLobatto) -> H1_WedgeElement"""
-        _fe.H1_WedgeElement_swiginit(self, _fe.new_H1_WedgeElement(*args))
+        _fe.H1_WedgeElement_swiginit(self, _fe.new_H1_WedgeElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_WedgeElement self, IntegrationPoint ip, Vector shape)"""
@@ -2852,9 +2852,9 @@ class L2_SegmentElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_SegmentElement self, int const p, int const btype=GaussLegendre) -> L2_SegmentElement"""
-        _fe.L2_SegmentElement_swiginit(self, _fe.new_L2_SegmentElement(*args))
+        _fe.L2_SegmentElement_swiginit(self, _fe.new_L2_SegmentElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_SegmentElement self, IntegrationPoint ip, Vector shape)"""
@@ -2910,9 +2910,9 @@ class L2_QuadrilateralElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_QuadrilateralElement self, int const p, int const btype=GaussLegendre) -> L2_QuadrilateralElement"""
-        _fe.L2_QuadrilateralElement_swiginit(self, _fe.new_L2_QuadrilateralElement(*args))
+        _fe.L2_QuadrilateralElement_swiginit(self, _fe.new_L2_QuadrilateralElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"""
@@ -2973,9 +2973,9 @@ class L2_HexahedronElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_HexahedronElement self, int const p, int const btype=GaussLegendre) -> L2_HexahedronElement"""
-        _fe.L2_HexahedronElement_swiginit(self, _fe.new_L2_HexahedronElement(*args))
+        _fe.L2_HexahedronElement_swiginit(self, _fe.new_L2_HexahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_HexahedronElement self, IntegrationPoint ip, Vector shape)"""
@@ -3031,9 +3031,9 @@ class L2_TriangleElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_TriangleElement self, int const p, int const btype=GaussLegendre) -> L2_TriangleElement"""
-        _fe.L2_TriangleElement_swiginit(self, _fe.new_L2_TriangleElement(*args))
+        _fe.L2_TriangleElement_swiginit(self, _fe.new_L2_TriangleElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_TriangleElement self, IntegrationPoint ip, Vector shape)"""
@@ -3094,9 +3094,9 @@ class L2_TetrahedronElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_TetrahedronElement self, int const p, int const btype=GaussLegendre) -> L2_TetrahedronElement"""
-        _fe.L2_TetrahedronElement_swiginit(self, _fe.new_L2_TetrahedronElement(*args))
+        _fe.L2_TetrahedronElement_swiginit(self, _fe.new_L2_TetrahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_TetrahedronElement self, IntegrationPoint ip, Vector shape)"""
@@ -3152,9 +3152,9 @@ class L2_WedgeElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_WedgeElement self, int const p, int const btype=GaussLegendre) -> L2_WedgeElement"""
-        _fe.L2_WedgeElement_swiginit(self, _fe.new_L2_WedgeElement(*args))
+        _fe.L2_WedgeElement_swiginit(self, _fe.new_L2_WedgeElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_WedgeElement self, IntegrationPoint ip, Vector shape)"""
@@ -3214,9 +3214,9 @@ class RT_QuadrilateralElement(VectorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(RT_QuadrilateralElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> RT_QuadrilateralElement"""
-        _fe.RT_QuadrilateralElement_swiginit(self, _fe.new_RT_QuadrilateralElement(*args))
+        _fe.RT_QuadrilateralElement_swiginit(self, _fe.new_RT_QuadrilateralElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -3282,9 +3282,9 @@ class RT_HexahedronElement(VectorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(RT_HexahedronElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> RT_HexahedronElement"""
-        _fe.RT_HexahedronElement_swiginit(self, _fe.new_RT_HexahedronElement(*args))
+        _fe.RT_HexahedronElement_swiginit(self, _fe.new_RT_HexahedronElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -3476,9 +3476,9 @@ class ND_HexahedronElement(VectorTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_HexahedronElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_HexahedronElement"""
-        _fe.ND_HexahedronElement_swiginit(self, _fe.new_ND_HexahedronElement(*args))
+        _fe.ND_HexahedronElement_swiginit(self, _fe.new_ND_HexahedronElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -3544,9 +3544,9 @@ class ND_QuadrilateralElement(VectorTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_QuadrilateralElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_QuadrilateralElement"""
-        _fe.ND_QuadrilateralElement_swiginit(self, _fe.new_ND_QuadrilateralElement(*args))
+        _fe.ND_QuadrilateralElement_swiginit(self, _fe.new_ND_QuadrilateralElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -3738,9 +3738,9 @@ class ND_SegmentElement(VectorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_SegmentElement self, int const p, int const ob_type=GaussLegendre) -> ND_SegmentElement"""
-        _fe.ND_SegmentElement_swiginit(self, _fe.new_ND_SegmentElement(*args))
+        _fe.ND_SegmentElement_swiginit(self, _fe.new_ND_SegmentElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(ND_SegmentElement self, IntegrationPoint ip, Vector shape)"""

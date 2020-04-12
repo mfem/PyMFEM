@@ -697,7 +697,7 @@ class Mesh(object):
     CartesianPartitioning = _swig_new_instance_method(_mesh.Mesh_CartesianPartitioning)
 
     def GeneratePartitioning(self, nparts, part_method=1):
-        r"""GeneratePartitioning(Mesh self, int nparts, int part_method=1) -> int"""
+        r"""GeneratePartitioning(Mesh self, int nparts, int part_method=1) -> int *"""
         return _mesh.Mesh_GeneratePartitioning(self, nparts, part_method)
     GeneratePartitioning = _swig_new_instance_method(_mesh.Mesh_GeneratePartitioning)
 
@@ -972,9 +972,9 @@ class Mesh(object):
         return _mesh.Mesh_PrintElementsByGeometry(dim, num_elems_by_geom, out)
     PrintElementsByGeometry = _swig_new_static_method(_mesh.Mesh_PrintElementsByGeometry)
 
-    def PrintCharacteristics(self, *args):
+    def PrintCharacteristics(self, *args, **kwargs):
         r"""PrintCharacteristics(Mesh self, Vector Vh=None, Vector Vk=None, std::ostream & out=mfem::out)"""
-        return _mesh.Mesh_PrintCharacteristics(self, *args)
+        return _mesh.Mesh_PrintCharacteristics(self, *args, **kwargs)
     PrintCharacteristics = _swig_new_instance_method(_mesh.Mesh_PrintCharacteristics)
 
     def FindPoints(self, pp):

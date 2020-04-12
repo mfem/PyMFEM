@@ -110,8 +110,8 @@ class Device(object):
         return _device.Device_Configure(self, device, dev)
     Configure = _swig_new_instance_method(_device.Device_Configure)
 
-    def Print(self, *args):
-        return _device.Device_Print(self, *args)
+    def Print(self, *args, **kwargs):
+        return _device.Device_Print(self, *args, **kwargs)
     Print = _swig_new_instance_method(_device.Device_Print)
 
     @staticmethod

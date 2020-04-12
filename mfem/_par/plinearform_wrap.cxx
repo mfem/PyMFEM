@@ -3483,23 +3483,25 @@ fail:
 SWIGINTERN PyObject *_wrap_ParLinearForm_Update__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParLinearForm *arg1 = (mfem::ParLinearForm *) 0 ;
-  mfem::ParFiniteElementSpace *arg2 = (mfem::ParFiniteElementSpace *) 0 ;
+  mfem::ParFiniteElementSpace *arg2 = (mfem::ParFiniteElementSpace *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParLinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParLinearForm_Update" "', argument " "1"" of type '" "mfem::ParLinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParLinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParLinearForm_Update" "', argument " "2"" of type '" "mfem::ParFiniteElementSpace *""'"); 
+  if (swig_obj[1]) {
+    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ParFiniteElementSpace, 0 |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParLinearForm_Update" "', argument " "2"" of type '" "mfem::ParFiniteElementSpace *""'"); 
+    }
+    arg2 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp2);
   }
-  arg2 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp2);
   {
     try {
       (arg1)->Update(arg2); 
@@ -3516,33 +3518,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_ParLinearForm_Update__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParLinearForm *arg1 = (mfem::ParLinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParLinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParLinearForm_Update" "', argument " "1"" of type '" "mfem::ParLinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParLinearForm * >(argp1);
-  {
-    try {
-      (arg1)->Update(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParLinearForm_Update__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::ParLinearForm *arg1 = (mfem::ParLinearForm *) 0 ;
   mfem::ParFiniteElementSpace *arg2 = (mfem::ParFiniteElementSpace *) 0 ;
@@ -3603,21 +3578,15 @@ SWIGINTERN PyObject *_wrap_ParLinearForm_Update(PyObject *self, PyObject *args) 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "ParLinearForm_Update", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParLinearForm, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_ParLinearForm_Update__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ParLinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_ParLinearForm_Update__SWIG_0(self, argc, argv);
+      }
       void *vptr = 0;
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__ParFiniteElementSpace, 0);
       _v = SWIG_CheckState(res);
@@ -3649,7 +3618,7 @@ SWIGINTERN PyObject *_wrap_ParLinearForm_Update(PyObject *self, PyObject *args) 
             }
           }
           if (_v) {
-            return _wrap_ParLinearForm_Update__SWIG_2(self, argc, argv);
+            return _wrap_ParLinearForm_Update__SWIG_1(self, argc, argv);
           }
         }
       }
@@ -3660,7 +3629,6 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ParLinearForm_Update'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::ParLinearForm::Update(mfem::ParFiniteElementSpace *)\n"
-    "    mfem::ParLinearForm::Update()\n"
     "    mfem::ParLinearForm::Update(mfem::ParFiniteElementSpace *,mfem::Vector &,int)\n");
   return 0;
 }
@@ -3773,7 +3741,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParLinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParLinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParLinearForm *arg1 = (mfem::ParLinearForm *) 0 ;
   mfem::ParGridFunction *arg2 = 0 ;
@@ -3781,16 +3749,20 @@ SWIGINTERN PyObject *_wrap_ParLinearForm___call__(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ParLinearForm___call__", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParLinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParLinearForm___call__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParLinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParLinearForm___call__" "', argument " "1"" of type '" "mfem::ParLinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParLinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ParGridFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ParGridFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParLinearForm___call__" "', argument " "2"" of type '" "mfem::ParGridFunction const &""'"); 
   }
@@ -3871,7 +3843,7 @@ static PyMethodDef SwigMethods[] = {
 		"ParLinearForm_ParallelAssemble(ParLinearForm self, Vector tv)\n"
 		"ParLinearForm_ParallelAssemble(ParLinearForm self) -> HypreParVector\n"
 		""},
-	 { "ParLinearForm___call__", _wrap_ParLinearForm___call__, METH_VARARGS, "ParLinearForm___call__(ParLinearForm self, ParGridFunction gf) -> double"},
+	 { "ParLinearForm___call__", (PyCFunction)(void(*)(void))_wrap_ParLinearForm___call__, METH_VARARGS|METH_KEYWORDS, "ParLinearForm___call__(ParLinearForm self, ParGridFunction gf) -> double"},
 	 { "delete_ParLinearForm", _wrap_delete_ParLinearForm, METH_O, "delete_ParLinearForm(ParLinearForm self)"},
 	 { "ParLinearForm_swigregister", ParLinearForm_swigregister, METH_O, NULL},
 	 { "ParLinearForm_swiginit", ParLinearForm_swiginit, METH_VARARGS, NULL},
@@ -3896,7 +3868,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ParallelAssemble(ParLinearForm self, Vector tv)\n"
 		"ParallelAssemble(ParLinearForm self) -> HypreParVector\n"
 		""},
-	 { "ParLinearForm___call__", _wrap_ParLinearForm___call__, METH_VARARGS, "__call__(ParLinearForm self, ParGridFunction gf) -> double"},
+	 { "ParLinearForm___call__", (PyCFunction)(void(*)(void))_wrap_ParLinearForm___call__, METH_VARARGS|METH_KEYWORDS, "__call__(ParLinearForm self, ParGridFunction gf) -> double"},
 	 { "delete_ParLinearForm", _wrap_delete_ParLinearForm, METH_O, "delete_ParLinearForm(ParLinearForm self)"},
 	 { "ParLinearForm_swigregister", ParLinearForm_swigregister, METH_O, NULL},
 	 { "ParLinearForm_swiginit", ParLinearForm_swiginit, METH_VARARGS, NULL},
@@ -4773,10 +4745,10 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   if (import_mpi4py() < 0)
 #if PY_MAJOR_VERSION >= 3

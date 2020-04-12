@@ -128,9 +128,9 @@ class RK2Solver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(RK2Solver self, double const _a=2./3.) -> RK2Solver"""
-        _ode.RK2Solver_swiginit(self, _ode.new_RK2Solver(*args))
+        _ode.RK2Solver_swiginit(self, _ode.new_RK2Solver(*args, **kwargs))
 
     def Init(self, _f):
         r"""Init(RK2Solver self, TimeDependentOperator _f)"""
@@ -701,9 +701,9 @@ class NewmarkSolver(SecondOrderODESolver):
         r"""__init__(NewmarkSolver self, double beta_=0.25, double gamma_=0.5) -> NewmarkSolver"""
         _ode.NewmarkSolver_swiginit(self, _ode.new_NewmarkSolver(beta_, gamma_))
 
-    def PrintProperties(self, *args):
+    def PrintProperties(self, *args, **kwargs):
         r"""PrintProperties(NewmarkSolver self, std::ostream & out=mfem::out)"""
-        return _ode.NewmarkSolver_PrintProperties(self, *args)
+        return _ode.NewmarkSolver_PrintProperties(self, *args, **kwargs)
     PrintProperties = _swig_new_instance_method(_ode.NewmarkSolver_PrintProperties)
 
     def Init(self, _f):
@@ -772,9 +772,9 @@ class GeneralizedAlpha2Solver(SecondOrderODESolver):
         r"""__init__(GeneralizedAlpha2Solver self, double rho_inf=1.0) -> GeneralizedAlpha2Solver"""
         _ode.GeneralizedAlpha2Solver_swiginit(self, _ode.new_GeneralizedAlpha2Solver(rho_inf))
 
-    def PrintProperties(self, *args):
+    def PrintProperties(self, *args, **kwargs):
         r"""PrintProperties(GeneralizedAlpha2Solver self, std::ostream & out=mfem::out)"""
-        return _ode.GeneralizedAlpha2Solver_PrintProperties(self, *args)
+        return _ode.GeneralizedAlpha2Solver_PrintProperties(self, *args, **kwargs)
     PrintProperties = _swig_new_instance_method(_ode.GeneralizedAlpha2Solver_PrintProperties)
 
     def Init(self, _f):

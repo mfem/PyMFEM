@@ -3501,7 +3501,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_BlockMatrix_PrintMatlab__SWIG_2(mfem::BlockMatrix *self,char const *file,int precision=8){
+SWIGINTERN void mfem_BlockMatrix_PrintMatlab__SWIG_1(mfem::BlockMatrix *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3644,7 +3644,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_SetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_SetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   int arg2 ;
@@ -3654,27 +3654,33 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_SetBlock(PyObject *SWIGUNUSEDPARM(self), 
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  (char *)"mat",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockMatrix_SetBlock", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:BlockMatrix_SetBlock", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_SetBlock" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__SparseMatrix, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BlockMatrix_SetBlock" "', argument " "4"" of type '" "mfem::SparseMatrix *""'"); 
   }
@@ -3939,33 +3945,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_IsZeroBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_IsZeroBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockMatrix_IsZeroBlock", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockMatrix_IsZeroBlock", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_IsZeroBlock" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4191,26 +4202,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_RowSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_RowSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockMatrix_RowSize", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BlockMatrix_RowSize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_RowSize" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4236,13 +4251,13 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol__SWIG_0(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   int arg2 ;
-  mfem::Matrix::DiagonalPolicy arg3 ;
+  mfem::Matrix::DiagonalPolicy arg3 = (mfem::Matrix::DiagonalPolicy) mfem::Matrix::DIAG_ONE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_EliminateRowCol" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
@@ -4254,11 +4269,13 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol__SWIG_0(PyObject *SWIGUNU
     };  
     arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BlockMatrix_EliminateRowCol" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
-  } 
-  arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BlockMatrix_EliminateRowCol" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+    } 
+    arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  }
   {
     try {
       (arg1)->EliminateRowCol(arg2,arg3); 
@@ -4280,45 +4297,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_EliminateRowCol" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      (arg1)->EliminateRowCol(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -4391,7 +4369,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BlockMatrix_EliminateRowCol", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
@@ -4406,25 +4384,9 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol(PyObject *self, PyObject 
         }
       }
       if (_v) {
-        return _wrap_BlockMatrix_EliminateRowCol__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_BlockMatrix_EliminateRowCol__SWIG_0(self, argc, argv);
         }
-      }
-      if (_v) {
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
@@ -4453,7 +4415,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateRowCol(PyObject *self, PyObject 
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_BlockMatrix_EliminateRowCol__SWIG_2(self, argc, argv);
+            return _wrap_BlockMatrix_EliminateRowCol__SWIG_1(self, argc, argv);
           }
         }
       }
@@ -4464,7 +4426,6 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockMatrix_EliminateRowCol'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BlockMatrix::EliminateRowCol(int,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BlockMatrix::EliminateRowCol(int)\n"
     "    mfem::BlockMatrix::EliminateRowCol(mfem::Array< int > &,mfem::Vector &,mfem::Vector &)\n");
   return 0;
 }
@@ -4473,21 +4434,23 @@ fail:
 SWIGINTERN PyObject *_wrap_BlockMatrix_Finalize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_Finalize" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
   {
     try {
@@ -4510,38 +4473,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_BlockMatrix_Finalize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_Finalize" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  {
-    try {
-      (arg1)->Finalize(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_Finalize__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   int arg2 ;
@@ -4596,21 +4527,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Finalize(PyObject *self, PyObject *args) 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BlockMatrix_Finalize", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_BlockMatrix_Finalize__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_BlockMatrix_Finalize__SWIG_0(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -4644,7 +4569,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Finalize(PyObject *self, PyObject *args) 
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_BlockMatrix_Finalize__SWIG_2(self, argc, argv);
+          return _wrap_BlockMatrix_Finalize__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -4654,7 +4579,6 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockMatrix_Finalize'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BlockMatrix::Finalize(int)\n"
-    "    mfem::BlockMatrix::Finalize()\n"
     "    mfem::BlockMatrix::Finalize(int,bool)\n");
   return 0;
 }
@@ -4698,31 +4622,34 @@ fail:
 SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  std::ostream *arg2 = 0 ;
+  std::ostream &arg2_defvalue = mfem::out ;
+  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
   std::ofstream out2 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_PrintMatlab" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
-    }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
+  if (swig_obj[1]) {
+    {
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+        SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+        return NULL;
+      }  
+      
+      if (temp2->isSTDOUT() == 1) {
+        arg2 = &std::cout;
+      }
+      else {
+        out2.open(temp2->getFilename());
+        out2.precision(temp2->getPrecision());
+        arg2 = &out2;
+      }
     }
   }
   {
@@ -4751,38 +4678,6 @@ fail:
       out2.close();
     }
   }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_PrintMatlab" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  {
-    try {
-      ((mfem::BlockMatrix const *)arg1)->PrintMatlab(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
   return NULL;
 }
 
@@ -5027,7 +4922,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_GetRow(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_GetRow(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   int arg2 ;
@@ -5039,22 +4934,28 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetRow(PyObject *SWIGUNUSEDPARM(self), Py
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"row",  (char *)"cols",  (char *)"srow",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockMatrix_GetRow", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:BlockMatrix_GetRow", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_GetRow" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockMatrix_GetRow" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -5062,7 +4963,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_GetRow(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_GetRow" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BlockMatrix_GetRow" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -5090,26 +4991,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateZeroRows__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateZeroRows(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  double arg2 ;
+  double arg2 = (double) (double)1e-12 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"threshold",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:BlockMatrix_EliminateZeroRows", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_EliminateZeroRows" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlockMatrix_EliminateZeroRows" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_double(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BlockMatrix_EliminateZeroRows" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+  }
   {
     try {
       (arg1)->EliminateZeroRows(arg2); 
@@ -5130,81 +5038,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateZeroRows__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_EliminateZeroRows" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  {
-    try {
-      (arg1)->EliminateZeroRows(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_EliminateZeroRows(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BlockMatrix_EliminateZeroRows", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_BlockMatrix_EliminateZeroRows__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_BlockMatrix_EliminateZeroRows__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockMatrix_EliminateZeroRows'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BlockMatrix::EliminateZeroRows(double const)\n"
-    "    mfem::BlockMatrix::EliminateZeroRows()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5215,15 +5049,20 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Mult(PyObject *SWIGUNUSEDPARM(self), PyOb
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockMatrix_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockMatrix_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_Mult" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5231,7 +5070,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_Mult(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockMatrix_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5259,12 +5098,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
-  double arg4 ;
+  double arg4 = (double) (double)1. ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -5273,14 +5112,21 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM(
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  (char *)"val",  NULL 
+  };
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:BlockMatrix_AddMult", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_AddMult" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5288,7 +5134,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockMatrix_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5296,11 +5142,13 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BlockMatrix_AddMult" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BlockMatrix_AddMult" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       ((mfem::BlockMatrix const *)arg1)->AddMult((mfem::Vector const &)*arg2,*arg3,arg4); 
@@ -5321,7 +5169,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5332,129 +5180,20 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult__SWIG_1(PyObject *SWIGUNUSEDPARM(
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_AddMult" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockMatrix_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  {
-    try {
-      ((mfem::BlockMatrix const *)arg1)->AddMult((mfem::Vector const &)*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_AddMult(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BlockMatrix_AddMult", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_BlockMatrix_AddMult__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_BlockMatrix_AddMult__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockMatrix_AddMult'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BlockMatrix::AddMult(mfem::Vector const &,mfem::Vector &,double const) const\n"
-    "    mfem::BlockMatrix::AddMult(mfem::Vector const &,mfem::Vector &) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "BlockMatrix_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockMatrix_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_MultTranspose" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5462,7 +5201,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_MultTranspose(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockMatrix_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5490,12 +5229,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
-  double arg4 ;
+  double arg4 = (double) (double)1. ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -5504,14 +5243,21 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose__SWIG_0(PyObject *SWIGUN
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  (char *)"val",  NULL 
+  };
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:BlockMatrix_AddMultTranspose", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5519,7 +5265,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose__SWIG_0(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5527,11 +5273,13 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose__SWIG_0(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       ((mfem::BlockMatrix const *)arg1)->AddMultTranspose((mfem::Vector const &)*arg2,*arg3,arg4); 
@@ -5549,120 +5297,6 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose__SWIG_0(PyObject *SWIGUN
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "1"" of type '" "mfem::BlockMatrix const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockMatrix_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockMatrix_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  {
-    try {
-      ((mfem::BlockMatrix const *)arg1)->AddMultTranspose((mfem::Vector const &)*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_AddMultTranspose(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BlockMatrix_AddMultTranspose", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_BlockMatrix_AddMultTranspose__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_BlockMatrix_AddMultTranspose__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockMatrix_AddMultTranspose'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BlockMatrix::AddMultTranspose(mfem::Vector const &,mfem::Vector &,double const) const\n"
-    "    mfem::BlockMatrix::AddMultTranspose(mfem::Vector const &,mfem::Vector &) const\n");
-  return 0;
 }
 
 
@@ -5751,18 +5385,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_PrintMatlab" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
@@ -5773,58 +5407,17 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_2(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      mfem_BlockMatrix_PrintMatlab__SWIG_2(arg1,(char const *)arg2,arg3); 
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockMatrix *arg1 = (mfem::BlockMatrix *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockMatrix, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockMatrix_PrintMatlab" "', argument " "1"" of type '" "mfem::BlockMatrix *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockMatrix * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockMatrix_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
   {
     try {
-      mfem_BlockMatrix_PrintMatlab__SWIG_2(arg1,(char const *)arg2); 
+      mfem_BlockMatrix_PrintMatlab__SWIG_1(arg1,(char const *)arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -5852,34 +5445,15 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab(PyObject *self, PyObject *arg
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BlockMatrix_PrintMatlab", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_BlockMatrix_PrintMatlab__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_BlockMatrix_PrintMatlab__SWIG_3(self, argc, argv);
+      if (argc <= 1) {
+        return _wrap_BlockMatrix_PrintMatlab__SWIG_0(self, argc, argv);
       }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
       {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
@@ -5894,7 +5468,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab(PyObject *self, PyObject *arg
       }
     }
   }
-  if (argc == 3) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockMatrix, 0);
@@ -5903,6 +5477,9 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab(PyObject *self, PyObject *arg
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_BlockMatrix_PrintMatlab__SWIG_1(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -5912,7 +5489,7 @@ SWIGINTERN PyObject *_wrap_BlockMatrix_PrintMatlab(PyObject *self, PyObject *arg
           }
         }
         if (_v) {
-          return _wrap_BlockMatrix_PrintMatlab__SWIG_2(self, argc, argv);
+          return _wrap_BlockMatrix_PrintMatlab__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -5922,9 +5499,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockMatrix_PrintMatlab'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BlockMatrix::PrintMatlab(std::ostream &) const\n"
-    "    mfem::BlockMatrix::PrintMatlab() const\n"
-    "    mfem::BlockMatrix::PrintMatlab(char const *,int)\n"
-    "    mfem::BlockMatrix::PrintMatlab(char const *)\n");
+    "    mfem::BlockMatrix::PrintMatlab(char const *,int)\n");
   return 0;
 }
 
@@ -5947,14 +5522,14 @@ static PyMethodDef SwigMethods[] = {
 		"BlockMatrix(intArray offsets)\n"
 		"new_BlockMatrix(intArray row_offsets, intArray col_offsets) -> BlockMatrix\n"
 		""},
-	 { "BlockMatrix_SetBlock", _wrap_BlockMatrix_SetBlock, METH_VARARGS, "BlockMatrix_SetBlock(BlockMatrix self, int i, int j, SparseMatrix mat)"},
+	 { "BlockMatrix_SetBlock", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_SetBlock, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_SetBlock(BlockMatrix self, int i, int j, SparseMatrix mat)"},
 	 { "BlockMatrix_NumRowBlocks", _wrap_BlockMatrix_NumRowBlocks, METH_O, "BlockMatrix_NumRowBlocks(BlockMatrix self) -> int"},
 	 { "BlockMatrix_NumColBlocks", _wrap_BlockMatrix_NumColBlocks, METH_O, "BlockMatrix_NumColBlocks(BlockMatrix self) -> int"},
 	 { "BlockMatrix_GetBlock", _wrap_BlockMatrix_GetBlock, METH_VARARGS, "\n"
 		"BlockMatrix_GetBlock(BlockMatrix self, int i, int j) -> SparseMatrix\n"
 		"BlockMatrix_GetBlock(BlockMatrix self, int i, int j) -> SparseMatrix\n"
 		""},
-	 { "BlockMatrix_IsZeroBlock", _wrap_BlockMatrix_IsZeroBlock, METH_VARARGS, "BlockMatrix_IsZeroBlock(BlockMatrix self, int i, int j) -> int"},
+	 { "BlockMatrix_IsZeroBlock", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_IsZeroBlock, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_IsZeroBlock(BlockMatrix self, int i, int j) -> int"},
 	 { "BlockMatrix_RowOffsets", _wrap_BlockMatrix_RowOffsets, METH_VARARGS, "\n"
 		"BlockMatrix_RowOffsets(BlockMatrix self) -> intArray\n"
 		"BlockMatrix_RowOffsets(BlockMatrix self) -> intArray\n"
@@ -5963,7 +5538,7 @@ static PyMethodDef SwigMethods[] = {
 		"BlockMatrix_ColOffsets(BlockMatrix self) -> intArray\n"
 		"BlockMatrix_ColOffsets(BlockMatrix self) -> intArray\n"
 		""},
-	 { "BlockMatrix_RowSize", _wrap_BlockMatrix_RowSize, METH_VARARGS, "BlockMatrix_RowSize(BlockMatrix self, int const i) -> int"},
+	 { "BlockMatrix_RowSize", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_RowSize, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_RowSize(BlockMatrix self, int const i) -> int"},
 	 { "BlockMatrix_EliminateRowCol", _wrap_BlockMatrix_EliminateRowCol, METH_VARARGS, "\n"
 		"BlockMatrix_EliminateRowCol(BlockMatrix self, int rc, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"BlockMatrix_EliminateRowCol(BlockMatrix self, intArray ess_bc_dofs, Vector sol, Vector rhs)\n"
@@ -5979,12 +5554,12 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "BlockMatrix_Inverse", _wrap_BlockMatrix_Inverse, METH_O, "BlockMatrix_Inverse(BlockMatrix self) -> MatrixInverse"},
 	 { "BlockMatrix_NumNonZeroElems", _wrap_BlockMatrix_NumNonZeroElems, METH_O, "BlockMatrix_NumNonZeroElems(BlockMatrix self) -> int"},
-	 { "BlockMatrix_GetRow", _wrap_BlockMatrix_GetRow, METH_VARARGS, "BlockMatrix_GetRow(BlockMatrix self, int const row, intArray cols, Vector srow) -> int"},
-	 { "BlockMatrix_EliminateZeroRows", _wrap_BlockMatrix_EliminateZeroRows, METH_VARARGS, "BlockMatrix_EliminateZeroRows(BlockMatrix self, double const threshold=1e-12)"},
-	 { "BlockMatrix_Mult", _wrap_BlockMatrix_Mult, METH_VARARGS, "BlockMatrix_Mult(BlockMatrix self, Vector x, Vector y)"},
-	 { "BlockMatrix_AddMult", _wrap_BlockMatrix_AddMult, METH_VARARGS, "BlockMatrix_AddMult(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
-	 { "BlockMatrix_MultTranspose", _wrap_BlockMatrix_MultTranspose, METH_VARARGS, "BlockMatrix_MultTranspose(BlockMatrix self, Vector x, Vector y)"},
-	 { "BlockMatrix_AddMultTranspose", _wrap_BlockMatrix_AddMultTranspose, METH_VARARGS, "BlockMatrix_AddMultTranspose(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
+	 { "BlockMatrix_GetRow", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_GetRow, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_GetRow(BlockMatrix self, int const row, intArray cols, Vector srow) -> int"},
+	 { "BlockMatrix_EliminateZeroRows", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_EliminateZeroRows, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_EliminateZeroRows(BlockMatrix self, double const threshold=1e-12)"},
+	 { "BlockMatrix_Mult", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_Mult, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_Mult(BlockMatrix self, Vector x, Vector y)"},
+	 { "BlockMatrix_AddMult", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_AddMult, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_AddMult(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
+	 { "BlockMatrix_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_MultTranspose, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_MultTranspose(BlockMatrix self, Vector x, Vector y)"},
+	 { "BlockMatrix_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "BlockMatrix_AddMultTranspose(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
 	 { "delete_BlockMatrix", _wrap_delete_BlockMatrix, METH_O, "delete_BlockMatrix(BlockMatrix self)"},
 	 { "BlockMatrix_owns_blocks_set", _wrap_BlockMatrix_owns_blocks_set, METH_VARARGS, "BlockMatrix_owns_blocks_set(BlockMatrix self, int owns_blocks)"},
 	 { "BlockMatrix_owns_blocks_get", _wrap_BlockMatrix_owns_blocks_get, METH_O, "BlockMatrix_owns_blocks_get(BlockMatrix self) -> int"},
@@ -6004,14 +5579,14 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"BlockMatrix(intArray offsets)\n"
 		"new_BlockMatrix(intArray row_offsets, intArray col_offsets) -> BlockMatrix\n"
 		""},
-	 { "BlockMatrix_SetBlock", _wrap_BlockMatrix_SetBlock, METH_VARARGS, "SetBlock(BlockMatrix self, int i, int j, SparseMatrix mat)"},
+	 { "BlockMatrix_SetBlock", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_SetBlock, METH_VARARGS|METH_KEYWORDS, "SetBlock(BlockMatrix self, int i, int j, SparseMatrix mat)"},
 	 { "BlockMatrix_NumRowBlocks", _wrap_BlockMatrix_NumRowBlocks, METH_O, "NumRowBlocks(BlockMatrix self) -> int"},
 	 { "BlockMatrix_NumColBlocks", _wrap_BlockMatrix_NumColBlocks, METH_O, "NumColBlocks(BlockMatrix self) -> int"},
 	 { "BlockMatrix_GetBlock", _wrap_BlockMatrix_GetBlock, METH_VARARGS, "\n"
 		"GetBlock(BlockMatrix self, int i, int j) -> SparseMatrix\n"
 		"GetBlock(BlockMatrix self, int i, int j) -> SparseMatrix\n"
 		""},
-	 { "BlockMatrix_IsZeroBlock", _wrap_BlockMatrix_IsZeroBlock, METH_VARARGS, "IsZeroBlock(BlockMatrix self, int i, int j) -> int"},
+	 { "BlockMatrix_IsZeroBlock", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_IsZeroBlock, METH_VARARGS|METH_KEYWORDS, "IsZeroBlock(BlockMatrix self, int i, int j) -> int"},
 	 { "BlockMatrix_RowOffsets", _wrap_BlockMatrix_RowOffsets, METH_VARARGS, "\n"
 		"RowOffsets(BlockMatrix self) -> intArray\n"
 		"RowOffsets(BlockMatrix self) -> intArray\n"
@@ -6020,7 +5595,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"ColOffsets(BlockMatrix self) -> intArray\n"
 		"ColOffsets(BlockMatrix self) -> intArray\n"
 		""},
-	 { "BlockMatrix_RowSize", _wrap_BlockMatrix_RowSize, METH_VARARGS, "RowSize(BlockMatrix self, int const i) -> int"},
+	 { "BlockMatrix_RowSize", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_RowSize, METH_VARARGS|METH_KEYWORDS, "RowSize(BlockMatrix self, int const i) -> int"},
 	 { "BlockMatrix_EliminateRowCol", _wrap_BlockMatrix_EliminateRowCol, METH_VARARGS, "\n"
 		"EliminateRowCol(BlockMatrix self, int rc, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"EliminateRowCol(BlockMatrix self, intArray ess_bc_dofs, Vector sol, Vector rhs)\n"
@@ -6036,12 +5611,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "BlockMatrix_Inverse", _wrap_BlockMatrix_Inverse, METH_O, "Inverse(BlockMatrix self) -> MatrixInverse"},
 	 { "BlockMatrix_NumNonZeroElems", _wrap_BlockMatrix_NumNonZeroElems, METH_O, "NumNonZeroElems(BlockMatrix self) -> int"},
-	 { "BlockMatrix_GetRow", _wrap_BlockMatrix_GetRow, METH_VARARGS, "GetRow(BlockMatrix self, int const row, intArray cols, Vector srow) -> int"},
-	 { "BlockMatrix_EliminateZeroRows", _wrap_BlockMatrix_EliminateZeroRows, METH_VARARGS, "EliminateZeroRows(BlockMatrix self, double const threshold=1e-12)"},
-	 { "BlockMatrix_Mult", _wrap_BlockMatrix_Mult, METH_VARARGS, "Mult(BlockMatrix self, Vector x, Vector y)"},
-	 { "BlockMatrix_AddMult", _wrap_BlockMatrix_AddMult, METH_VARARGS, "AddMult(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
-	 { "BlockMatrix_MultTranspose", _wrap_BlockMatrix_MultTranspose, METH_VARARGS, "MultTranspose(BlockMatrix self, Vector x, Vector y)"},
-	 { "BlockMatrix_AddMultTranspose", _wrap_BlockMatrix_AddMultTranspose, METH_VARARGS, "AddMultTranspose(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
+	 { "BlockMatrix_GetRow", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_GetRow, METH_VARARGS|METH_KEYWORDS, "GetRow(BlockMatrix self, int const row, intArray cols, Vector srow) -> int"},
+	 { "BlockMatrix_EliminateZeroRows", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_EliminateZeroRows, METH_VARARGS|METH_KEYWORDS, "EliminateZeroRows(BlockMatrix self, double const threshold=1e-12)"},
+	 { "BlockMatrix_Mult", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(BlockMatrix self, Vector x, Vector y)"},
+	 { "BlockMatrix_AddMult", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_AddMult, METH_VARARGS|METH_KEYWORDS, "AddMult(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
+	 { "BlockMatrix_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(BlockMatrix self, Vector x, Vector y)"},
+	 { "BlockMatrix_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockMatrix_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "AddMultTranspose(BlockMatrix self, Vector x, Vector y, double const val=1.)"},
 	 { "delete_BlockMatrix", _wrap_delete_BlockMatrix, METH_O, "delete_BlockMatrix(BlockMatrix self)"},
 	 { "BlockMatrix_owns_blocks_set", _wrap_BlockMatrix_owns_blocks_set, METH_VARARGS, "BlockMatrix_owns_blocks_set(BlockMatrix self, int owns_blocks)"},
 	 { "BlockMatrix_owns_blocks_get", _wrap_BlockMatrix_owns_blocks_get, METH_O, "BlockMatrix_owns_blocks_get(BlockMatrix self) -> int"},

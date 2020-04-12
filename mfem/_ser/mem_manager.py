@@ -127,12 +127,12 @@ class MemoryManager(object):
         return _mem_manager.MemoryManager_RegisterCheck(self, h_ptr)
     RegisterCheck = _swig_new_instance_method(_mem_manager.MemoryManager_RegisterCheck)
 
-    def PrintPtrs(self, *args):
-        return _mem_manager.MemoryManager_PrintPtrs(self, *args)
+    def PrintPtrs(self, *args, **kwargs):
+        return _mem_manager.MemoryManager_PrintPtrs(self, *args, **kwargs)
     PrintPtrs = _swig_new_instance_method(_mem_manager.MemoryManager_PrintPtrs)
 
-    def PrintAliases(self, *args):
-        return _mem_manager.MemoryManager_PrintAliases(self, *args)
+    def PrintAliases(self, *args, **kwargs):
+        return _mem_manager.MemoryManager_PrintAliases(self, *args, **kwargs)
     PrintAliases = _swig_new_instance_method(_mem_manager.MemoryManager_PrintAliases)
 
     @staticmethod

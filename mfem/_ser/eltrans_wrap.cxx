@@ -3560,7 +3560,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ElementTransformation_SetIntPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ElementTransformation_SetIntPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ElementTransformation *arg1 = (mfem::ElementTransformation *) 0 ;
   mfem::IntegrationPoint *arg2 = (mfem::IntegrationPoint *) 0 ;
@@ -3568,15 +3568,19 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_SetIntPoint(PyObject *SWIGUNUSE
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ElementTransformation_SetIntPoint", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ElementTransformation_SetIntPoint", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementTransformation_SetIntPoint" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__IntegrationPoint, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__IntegrationPoint, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ElementTransformation_SetIntPoint" "', argument " "2"" of type '" "mfem::IntegrationPoint const *""'"); 
   }
@@ -4229,7 +4233,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ElementTransformation_OrderGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ElementTransformation_OrderGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ElementTransformation *arg1 = (mfem::ElementTransformation *) 0 ;
   mfem::FiniteElement *arg2 = (mfem::FiniteElement *) 0 ;
@@ -4237,16 +4241,20 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_OrderGrad(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ElementTransformation_OrderGrad", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ElementTransformation_OrderGrad", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementTransformation_OrderGrad" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ElementTransformation_OrderGrad" "', argument " "2"" of type '" "mfem::FiniteElement const *""'"); 
   }
@@ -4400,7 +4408,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ElementTransformation_TransformBack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ElementTransformation_TransformBack(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ElementTransformation *arg1 = (mfem::ElementTransformation *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4411,16 +4419,21 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_TransformBack(PyObject *SWIGUNU
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"pt",  (char *)"ip",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ElementTransformation_TransformBack", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ElementTransformation_TransformBack", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ElementTransformation_TransformBack" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ElementTransformation_TransformBack" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4428,7 +4441,7 @@ SWIGINTERN PyObject *_wrap_ElementTransformation_TransformBack(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ElementTransformation_TransformBack" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ElementTransformation_TransformBack" "', argument " "3"" of type '" "mfem::IntegrationPoint &""'"); 
   }
@@ -4509,19 +4522,25 @@ SWIGINTERN PyObject *ElementTransformation_swigregister(PyObject *SWIGUNUSEDPARM
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_InverseElementTransformation__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_InverseElementTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  mfem::ElementTransformation *arg1 = (mfem::ElementTransformation *) 0 ;
+  mfem::ElementTransformation *arg1 = (mfem::ElementTransformation *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"Trans",  NULL 
+  };
   mfem::InverseElementTransformation *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_InverseElementTransformation" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|O:new_InverseElementTransformation", kwnames, &obj0)) SWIG_fail;
+  if (obj0) {
+    res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ElementTransformation, 0 |  0 );
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_InverseElementTransformation" "', argument " "1"" of type '" "mfem::ElementTransformation *""'"); 
+    }
+    arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
   }
-  arg1 = reinterpret_cast< mfem::ElementTransformation * >(argp1);
   {
     try {
       result = (mfem::InverseElementTransformation *)new mfem::InverseElementTransformation(arg1);
@@ -4545,67 +4564,6 @@ SWIGINTERN PyObject *_wrap_new_InverseElementTransformation__SWIG_0(PyObject *SW
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_InverseElementTransformation__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  mfem::InverseElementTransformation *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (mfem::InverseElementTransformation *)new mfem::InverseElementTransformation();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__InverseElementTransformation, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_InverseElementTransformation(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_InverseElementTransformation", 0, 1, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_InverseElementTransformation__SWIG_1(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ElementTransformation, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_InverseElementTransformation__SWIG_0(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_InverseElementTransformation'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::InverseElementTransformation::InverseElementTransformation(mfem::ElementTransformation *)\n"
-    "    mfem::InverseElementTransformation::InverseElementTransformation()\n");
-  return 0;
 }
 
 
@@ -4649,7 +4607,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -4657,15 +4615,19 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetTransformation(PyObje
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Trans",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetTransformation", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetTransformation", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetTransformation" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InverseElementTransformation_SetTransformation" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -4699,7 +4661,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitialGuessType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitialGuessType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   mfem::InverseElementTransformation::InitGuessType arg2 ;
@@ -4707,15 +4669,19 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitialGuessType(PyOb
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"itype",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetInitialGuessType", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetInitialGuessType", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetInitialGuessType" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "InverseElementTransformation_SetInitialGuessType" "', argument " "2"" of type '" "mfem::InverseElementTransformation::InitGuessType""'");
   } 
@@ -4746,7 +4712,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitialGuess(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitialGuess(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   mfem::IntegrationPoint *arg2 = 0 ;
@@ -4754,15 +4720,19 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitialGuess(PyObject
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"init_ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetInitialGuess", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetInitialGuess", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetInitialGuess" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InverseElementTransformation_SetInitialGuess" "', argument " "2"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -4796,25 +4766,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitGuessPointsType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitGuessPointsType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"q_type",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetInitGuessPointsType", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetInitGuessPointsType", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetInitGuessPointsType" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4842,25 +4816,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitGuessRelOrder(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetInitGuessRelOrder(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"order",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetInitGuessRelOrder", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetInitGuessRelOrder", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetInitGuessRelOrder" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4888,7 +4866,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetSolverType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetSolverType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   mfem::InverseElementTransformation::SolverType arg2 ;
@@ -4896,15 +4874,19 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetSolverType(PyObject *
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"stype",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetSolverType", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetSolverType", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetSolverType" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "InverseElementTransformation_SetSolverType" "', argument " "2"" of type '" "mfem::InverseElementTransformation::SolverType""'");
   } 
@@ -4935,25 +4917,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetMaxIter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetMaxIter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"max_it",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetMaxIter", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetMaxIter", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetMaxIter" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4981,7 +4967,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetReferenceTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetReferenceTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   double arg2 ;
@@ -4989,15 +4975,19 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetReferenceTol(PyObject
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ref_sp_tol",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetReferenceTol", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetReferenceTol", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetReferenceTol" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "InverseElementTransformation_SetReferenceTol" "', argument " "2"" of type '" "double""'");
   } 
@@ -5028,7 +5018,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetPhysicalRelTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetPhysicalRelTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   double arg2 ;
@@ -5036,15 +5026,19 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetPhysicalRelTol(PyObje
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"phys_rel_tol",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetPhysicalRelTol", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetPhysicalRelTol", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetPhysicalRelTol" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "InverseElementTransformation_SetPhysicalRelTol" "', argument " "2"" of type '" "double""'");
   } 
@@ -5075,7 +5069,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetElementTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetElementTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   double arg2 ;
@@ -5083,15 +5077,19 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetElementTol(PyObject *
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"el_tol",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetElementTol", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetElementTol", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetElementTol" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "InverseElementTransformation_SetElementTol" "', argument " "2"" of type '" "double""'");
   } 
@@ -5122,25 +5120,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetPrintLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_SetPrintLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"pr_level",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_SetPrintLevel", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:InverseElementTransformation_SetPrintLevel", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_SetPrintLevel" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -5168,7 +5170,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestPhysPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestPhysPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5179,16 +5181,21 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestPhysPoint(PyO
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"pt",  (char *)"ir",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_FindClosestPhysPoint", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:InverseElementTransformation_FindClosestPhysPoint", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_FindClosestPhysPoint" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InverseElementTransformation_FindClosestPhysPoint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5196,7 +5203,7 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestPhysPoint(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseElementTransformation_FindClosestPhysPoint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InverseElementTransformation_FindClosestPhysPoint" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
   }
@@ -5230,7 +5237,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestRefPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestRefPoint(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5241,16 +5248,21 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestRefPoint(PyOb
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"pt",  (char *)"ir",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_FindClosestRefPoint", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:InverseElementTransformation_FindClosestRefPoint", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_FindClosestRefPoint" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InverseElementTransformation_FindClosestRefPoint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5258,7 +5270,7 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_FindClosestRefPoint(PyOb
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseElementTransformation_FindClosestRefPoint" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InverseElementTransformation_FindClosestRefPoint" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
   }
@@ -5292,7 +5304,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseElementTransformation_Transform(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseElementTransformation_Transform(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseElementTransformation *arg1 = (mfem::InverseElementTransformation *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5303,16 +5315,21 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_Transform(PyObject *SWIG
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"pt",  (char *)"ip",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseElementTransformation_Transform", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:InverseElementTransformation_Transform", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseElementTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseElementTransformation_Transform" "', argument " "1"" of type '" "mfem::InverseElementTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseElementTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InverseElementTransformation_Transform" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5320,7 +5337,7 @@ SWIGINTERN PyObject *_wrap_InverseElementTransformation_Transform(PyObject *SWIG
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseElementTransformation_Transform" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InverseElementTransformation_Transform" "', argument " "3"" of type '" "mfem::IntegrationPoint &""'"); 
   }
@@ -5365,7 +5382,7 @@ SWIGINTERN PyObject *InverseElementTransformation_swiginit(PyObject *SWIGUNUSEDP
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetFE(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetFE(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IsoparametricTransformation *arg1 = (mfem::IsoparametricTransformation *) 0 ;
   mfem::FiniteElement *arg2 = (mfem::FiniteElement *) 0 ;
@@ -5373,15 +5390,19 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetFE(PyObject *SWIGUNUSE
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"FE",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "IsoparametricTransformation_SetFE", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:IsoparametricTransformation_SetFE", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IsoparametricTransformation_SetFE" "', argument " "1"" of type '" "mfem::IsoparametricTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IsoparametricTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IsoparametricTransformation_SetFE" "', argument " "2"" of type '" "mfem::FiniteElement const *""'"); 
   }
@@ -5534,7 +5555,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetIdentityTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetIdentityTransformation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IsoparametricTransformation *arg1 = (mfem::IsoparametricTransformation *) 0 ;
   mfem::Geometry::Type arg2 ;
@@ -5542,15 +5563,19 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_SetIdentityTransformation
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"GeomType",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "IsoparametricTransformation_SetIdentityTransformation", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:IsoparametricTransformation_SetIdentityTransformation", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IsoparametricTransformation_SetIdentityTransformation" "', argument " "1"" of type '" "mfem::IsoparametricTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IsoparametricTransformation * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IsoparametricTransformation_SetIdentityTransformation" "', argument " "2"" of type '" "mfem::Geometry::Type""'");
   } 
@@ -5957,7 +5982,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IsoparametricTransformation_OrderGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IsoparametricTransformation_OrderGrad(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IsoparametricTransformation *arg1 = (mfem::IsoparametricTransformation *) 0 ;
   mfem::FiniteElement *arg2 = (mfem::FiniteElement *) 0 ;
@@ -5965,16 +5990,20 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_OrderGrad(PyObject *SWIGU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fe",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "IsoparametricTransformation_OrderGrad", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:IsoparametricTransformation_OrderGrad", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IsoparametricTransformation_OrderGrad" "', argument " "1"" of type '" "mfem::IsoparametricTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IsoparametricTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElement, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IsoparametricTransformation_OrderGrad" "', argument " "2"" of type '" "mfem::FiniteElement const *""'"); 
   }
@@ -6005,7 +6034,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IsoparametricTransformation_TransformBack(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IsoparametricTransformation_TransformBack(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IsoparametricTransformation *arg1 = (mfem::IsoparametricTransformation *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -6016,16 +6045,21 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_TransformBack(PyObject *S
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"v",  (char *)"ip",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "IsoparametricTransformation_TransformBack", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:IsoparametricTransformation_TransformBack", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IsoparametricTransformation, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IsoparametricTransformation_TransformBack" "', argument " "1"" of type '" "mfem::IsoparametricTransformation *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IsoparametricTransformation * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IsoparametricTransformation_TransformBack" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -6033,7 +6067,7 @@ SWIGINTERN PyObject *_wrap_IsoparametricTransformation_TransformBack(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IsoparametricTransformation_TransformBack" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IsoparametricTransformation_TransformBack" "', argument " "3"" of type '" "mfem::IntegrationPoint &""'"); 
   }
@@ -6959,7 +6993,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ElementTransformation_Attribute_get", _wrap_ElementTransformation_Attribute_get, METH_O, "ElementTransformation_Attribute_get(ElementTransformation self) -> int"},
 	 { "ElementTransformation_ElementNo_set", _wrap_ElementTransformation_ElementNo_set, METH_VARARGS, "ElementTransformation_ElementNo_set(ElementTransformation self, int ElementNo)"},
 	 { "ElementTransformation_ElementNo_get", _wrap_ElementTransformation_ElementNo_get, METH_O, "ElementTransformation_ElementNo_get(ElementTransformation self) -> int"},
-	 { "ElementTransformation_SetIntPoint", _wrap_ElementTransformation_SetIntPoint, METH_VARARGS, "ElementTransformation_SetIntPoint(ElementTransformation self, IntegrationPoint ip)"},
+	 { "ElementTransformation_SetIntPoint", (PyCFunction)(void(*)(void))_wrap_ElementTransformation_SetIntPoint, METH_VARARGS|METH_KEYWORDS, "ElementTransformation_SetIntPoint(ElementTransformation self, IntegrationPoint ip)"},
 	 { "ElementTransformation_GetIntPoint", _wrap_ElementTransformation_GetIntPoint, METH_O, "ElementTransformation_GetIntPoint(ElementTransformation self) -> IntegrationPoint"},
 	 { "ElementTransformation_Transform", _wrap_ElementTransformation_Transform, METH_VARARGS, "\n"
 		"ElementTransformation_Transform(ElementTransformation self, IntegrationPoint arg2, Vector arg3)\n"
@@ -6974,36 +7008,36 @@ static PyMethodDef SwigMethods[] = {
 	 { "ElementTransformation_Order", _wrap_ElementTransformation_Order, METH_O, "ElementTransformation_Order(ElementTransformation self) -> int"},
 	 { "ElementTransformation_OrderJ", _wrap_ElementTransformation_OrderJ, METH_O, "ElementTransformation_OrderJ(ElementTransformation self) -> int"},
 	 { "ElementTransformation_OrderW", _wrap_ElementTransformation_OrderW, METH_O, "ElementTransformation_OrderW(ElementTransformation self) -> int"},
-	 { "ElementTransformation_OrderGrad", _wrap_ElementTransformation_OrderGrad, METH_VARARGS, "ElementTransformation_OrderGrad(ElementTransformation self, FiniteElement fe) -> int"},
+	 { "ElementTransformation_OrderGrad", (PyCFunction)(void(*)(void))_wrap_ElementTransformation_OrderGrad, METH_VARARGS|METH_KEYWORDS, "ElementTransformation_OrderGrad(ElementTransformation self, FiniteElement fe) -> int"},
 	 { "ElementTransformation_GetGeometryType", _wrap_ElementTransformation_GetGeometryType, METH_O, "ElementTransformation_GetGeometryType(ElementTransformation self) -> mfem::Geometry::Type"},
 	 { "ElementTransformation_GetDimension", _wrap_ElementTransformation_GetDimension, METH_O, "ElementTransformation_GetDimension(ElementTransformation self) -> int"},
 	 { "ElementTransformation_GetSpaceDim", _wrap_ElementTransformation_GetSpaceDim, METH_O, "ElementTransformation_GetSpaceDim(ElementTransformation self) -> int"},
-	 { "ElementTransformation_TransformBack", _wrap_ElementTransformation_TransformBack, METH_VARARGS, "ElementTransformation_TransformBack(ElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
+	 { "ElementTransformation_TransformBack", (PyCFunction)(void(*)(void))_wrap_ElementTransformation_TransformBack, METH_VARARGS|METH_KEYWORDS, "ElementTransformation_TransformBack(ElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
 	 { "delete_ElementTransformation", _wrap_delete_ElementTransformation, METH_O, "delete_ElementTransformation(ElementTransformation self)"},
 	 { "ElementTransformation_swigregister", ElementTransformation_swigregister, METH_O, NULL},
-	 { "new_InverseElementTransformation", _wrap_new_InverseElementTransformation, METH_VARARGS, "InverseElementTransformation(ElementTransformation Trans=None)"},
+	 { "new_InverseElementTransformation", (PyCFunction)(void(*)(void))_wrap_new_InverseElementTransformation, METH_VARARGS|METH_KEYWORDS, "new_InverseElementTransformation(ElementTransformation Trans=None) -> InverseElementTransformation"},
 	 { "delete_InverseElementTransformation", _wrap_delete_InverseElementTransformation, METH_O, "delete_InverseElementTransformation(InverseElementTransformation self)"},
-	 { "InverseElementTransformation_SetTransformation", _wrap_InverseElementTransformation_SetTransformation, METH_VARARGS, "InverseElementTransformation_SetTransformation(InverseElementTransformation self, ElementTransformation Trans)"},
-	 { "InverseElementTransformation_SetInitialGuessType", _wrap_InverseElementTransformation_SetInitialGuessType, METH_VARARGS, "InverseElementTransformation_SetInitialGuessType(InverseElementTransformation self, mfem::InverseElementTransformation::InitGuessType itype)"},
-	 { "InverseElementTransformation_SetInitialGuess", _wrap_InverseElementTransformation_SetInitialGuess, METH_VARARGS, "InverseElementTransformation_SetInitialGuess(InverseElementTransformation self, IntegrationPoint init_ip)"},
-	 { "InverseElementTransformation_SetInitGuessPointsType", _wrap_InverseElementTransformation_SetInitGuessPointsType, METH_VARARGS, "InverseElementTransformation_SetInitGuessPointsType(InverseElementTransformation self, int q_type)"},
-	 { "InverseElementTransformation_SetInitGuessRelOrder", _wrap_InverseElementTransformation_SetInitGuessRelOrder, METH_VARARGS, "InverseElementTransformation_SetInitGuessRelOrder(InverseElementTransformation self, int order)"},
-	 { "InverseElementTransformation_SetSolverType", _wrap_InverseElementTransformation_SetSolverType, METH_VARARGS, "InverseElementTransformation_SetSolverType(InverseElementTransformation self, mfem::InverseElementTransformation::SolverType stype)"},
-	 { "InverseElementTransformation_SetMaxIter", _wrap_InverseElementTransformation_SetMaxIter, METH_VARARGS, "InverseElementTransformation_SetMaxIter(InverseElementTransformation self, int max_it)"},
-	 { "InverseElementTransformation_SetReferenceTol", _wrap_InverseElementTransformation_SetReferenceTol, METH_VARARGS, "InverseElementTransformation_SetReferenceTol(InverseElementTransformation self, double ref_sp_tol)"},
-	 { "InverseElementTransformation_SetPhysicalRelTol", _wrap_InverseElementTransformation_SetPhysicalRelTol, METH_VARARGS, "InverseElementTransformation_SetPhysicalRelTol(InverseElementTransformation self, double phys_rel_tol)"},
-	 { "InverseElementTransformation_SetElementTol", _wrap_InverseElementTransformation_SetElementTol, METH_VARARGS, "InverseElementTransformation_SetElementTol(InverseElementTransformation self, double el_tol)"},
-	 { "InverseElementTransformation_SetPrintLevel", _wrap_InverseElementTransformation_SetPrintLevel, METH_VARARGS, "InverseElementTransformation_SetPrintLevel(InverseElementTransformation self, int pr_level)"},
-	 { "InverseElementTransformation_FindClosestPhysPoint", _wrap_InverseElementTransformation_FindClosestPhysPoint, METH_VARARGS, "InverseElementTransformation_FindClosestPhysPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
-	 { "InverseElementTransformation_FindClosestRefPoint", _wrap_InverseElementTransformation_FindClosestRefPoint, METH_VARARGS, "InverseElementTransformation_FindClosestRefPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
-	 { "InverseElementTransformation_Transform", _wrap_InverseElementTransformation_Transform, METH_VARARGS, "InverseElementTransformation_Transform(InverseElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
+	 { "InverseElementTransformation_SetTransformation", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetTransformation, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetTransformation(InverseElementTransformation self, ElementTransformation Trans)"},
+	 { "InverseElementTransformation_SetInitialGuessType", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitialGuessType, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetInitialGuessType(InverseElementTransformation self, mfem::InverseElementTransformation::InitGuessType itype)"},
+	 { "InverseElementTransformation_SetInitialGuess", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitialGuess, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetInitialGuess(InverseElementTransformation self, IntegrationPoint init_ip)"},
+	 { "InverseElementTransformation_SetInitGuessPointsType", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitGuessPointsType, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetInitGuessPointsType(InverseElementTransformation self, int q_type)"},
+	 { "InverseElementTransformation_SetInitGuessRelOrder", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitGuessRelOrder, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetInitGuessRelOrder(InverseElementTransformation self, int order)"},
+	 { "InverseElementTransformation_SetSolverType", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetSolverType, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetSolverType(InverseElementTransformation self, mfem::InverseElementTransformation::SolverType stype)"},
+	 { "InverseElementTransformation_SetMaxIter", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetMaxIter, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetMaxIter(InverseElementTransformation self, int max_it)"},
+	 { "InverseElementTransformation_SetReferenceTol", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetReferenceTol, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetReferenceTol(InverseElementTransformation self, double ref_sp_tol)"},
+	 { "InverseElementTransformation_SetPhysicalRelTol", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetPhysicalRelTol, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetPhysicalRelTol(InverseElementTransformation self, double phys_rel_tol)"},
+	 { "InverseElementTransformation_SetElementTol", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetElementTol, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetElementTol(InverseElementTransformation self, double el_tol)"},
+	 { "InverseElementTransformation_SetPrintLevel", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetPrintLevel, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_SetPrintLevel(InverseElementTransformation self, int pr_level)"},
+	 { "InverseElementTransformation_FindClosestPhysPoint", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_FindClosestPhysPoint, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_FindClosestPhysPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
+	 { "InverseElementTransformation_FindClosestRefPoint", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_FindClosestRefPoint, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_FindClosestRefPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
+	 { "InverseElementTransformation_Transform", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_Transform, METH_VARARGS|METH_KEYWORDS, "InverseElementTransformation_Transform(InverseElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
 	 { "InverseElementTransformation_swigregister", InverseElementTransformation_swigregister, METH_O, NULL},
 	 { "InverseElementTransformation_swiginit", InverseElementTransformation_swiginit, METH_VARARGS, NULL},
-	 { "IsoparametricTransformation_SetFE", _wrap_IsoparametricTransformation_SetFE, METH_VARARGS, "IsoparametricTransformation_SetFE(IsoparametricTransformation self, FiniteElement FE)"},
+	 { "IsoparametricTransformation_SetFE", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_SetFE, METH_VARARGS|METH_KEYWORDS, "IsoparametricTransformation_SetFE(IsoparametricTransformation self, FiniteElement FE)"},
 	 { "IsoparametricTransformation_GetFE", _wrap_IsoparametricTransformation_GetFE, METH_O, "IsoparametricTransformation_GetFE(IsoparametricTransformation self) -> FiniteElement"},
 	 { "IsoparametricTransformation_GetPointMat", _wrap_IsoparametricTransformation_GetPointMat, METH_O, "IsoparametricTransformation_GetPointMat(IsoparametricTransformation self) -> DenseMatrix"},
 	 { "IsoparametricTransformation_FinalizeTransformation", _wrap_IsoparametricTransformation_FinalizeTransformation, METH_O, "IsoparametricTransformation_FinalizeTransformation(IsoparametricTransformation self)"},
-	 { "IsoparametricTransformation_SetIdentityTransformation", _wrap_IsoparametricTransformation_SetIdentityTransformation, METH_VARARGS, "IsoparametricTransformation_SetIdentityTransformation(IsoparametricTransformation self, mfem::Geometry::Type GeomType)"},
+	 { "IsoparametricTransformation_SetIdentityTransformation", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_SetIdentityTransformation, METH_VARARGS|METH_KEYWORDS, "IsoparametricTransformation_SetIdentityTransformation(IsoparametricTransformation self, mfem::Geometry::Type GeomType)"},
 	 { "IsoparametricTransformation_Transform", _wrap_IsoparametricTransformation_Transform, METH_VARARGS, "\n"
 		"IsoparametricTransformation_Transform(IsoparametricTransformation self, IntegrationPoint arg2, Vector arg3)\n"
 		"IsoparametricTransformation_Transform(IsoparametricTransformation self, IntegrationRule arg2, DenseMatrix arg3)\n"
@@ -7012,8 +7046,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "IsoparametricTransformation_Order", _wrap_IsoparametricTransformation_Order, METH_O, "IsoparametricTransformation_Order(IsoparametricTransformation self) -> int"},
 	 { "IsoparametricTransformation_OrderJ", _wrap_IsoparametricTransformation_OrderJ, METH_O, "IsoparametricTransformation_OrderJ(IsoparametricTransformation self) -> int"},
 	 { "IsoparametricTransformation_OrderW", _wrap_IsoparametricTransformation_OrderW, METH_O, "IsoparametricTransformation_OrderW(IsoparametricTransformation self) -> int"},
-	 { "IsoparametricTransformation_OrderGrad", _wrap_IsoparametricTransformation_OrderGrad, METH_VARARGS, "IsoparametricTransformation_OrderGrad(IsoparametricTransformation self, FiniteElement fe) -> int"},
-	 { "IsoparametricTransformation_TransformBack", _wrap_IsoparametricTransformation_TransformBack, METH_VARARGS, "IsoparametricTransformation_TransformBack(IsoparametricTransformation self, Vector v, IntegrationPoint ip) -> int"},
+	 { "IsoparametricTransformation_OrderGrad", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_OrderGrad, METH_VARARGS|METH_KEYWORDS, "IsoparametricTransformation_OrderGrad(IsoparametricTransformation self, FiniteElement fe) -> int"},
+	 { "IsoparametricTransformation_TransformBack", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_TransformBack, METH_VARARGS|METH_KEYWORDS, "IsoparametricTransformation_TransformBack(IsoparametricTransformation self, Vector v, IntegrationPoint ip) -> int"},
 	 { "delete_IsoparametricTransformation", _wrap_delete_IsoparametricTransformation, METH_O, "delete_IsoparametricTransformation(IsoparametricTransformation self)"},
 	 { "new_IsoparametricTransformation", _wrap_new_IsoparametricTransformation, METH_NOARGS, "new_IsoparametricTransformation() -> IsoparametricTransformation"},
 	 { "IsoparametricTransformation_swigregister", IsoparametricTransformation_swigregister, METH_O, NULL},
@@ -7058,7 +7092,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ElementTransformation_Attribute_get", _wrap_ElementTransformation_Attribute_get, METH_O, "ElementTransformation_Attribute_get(ElementTransformation self) -> int"},
 	 { "ElementTransformation_ElementNo_set", _wrap_ElementTransformation_ElementNo_set, METH_VARARGS, "ElementTransformation_ElementNo_set(ElementTransformation self, int ElementNo)"},
 	 { "ElementTransformation_ElementNo_get", _wrap_ElementTransformation_ElementNo_get, METH_O, "ElementTransformation_ElementNo_get(ElementTransformation self) -> int"},
-	 { "ElementTransformation_SetIntPoint", _wrap_ElementTransformation_SetIntPoint, METH_VARARGS, "SetIntPoint(ElementTransformation self, IntegrationPoint ip)"},
+	 { "ElementTransformation_SetIntPoint", (PyCFunction)(void(*)(void))_wrap_ElementTransformation_SetIntPoint, METH_VARARGS|METH_KEYWORDS, "SetIntPoint(ElementTransformation self, IntegrationPoint ip)"},
 	 { "ElementTransformation_GetIntPoint", _wrap_ElementTransformation_GetIntPoint, METH_O, "GetIntPoint(ElementTransformation self) -> IntegrationPoint"},
 	 { "ElementTransformation_Transform", _wrap_ElementTransformation_Transform, METH_VARARGS, "\n"
 		"Transform(ElementTransformation self, IntegrationPoint arg2, Vector arg3)\n"
@@ -7073,36 +7107,36 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "ElementTransformation_Order", _wrap_ElementTransformation_Order, METH_O, "Order(ElementTransformation self) -> int"},
 	 { "ElementTransformation_OrderJ", _wrap_ElementTransformation_OrderJ, METH_O, "OrderJ(ElementTransformation self) -> int"},
 	 { "ElementTransformation_OrderW", _wrap_ElementTransformation_OrderW, METH_O, "OrderW(ElementTransformation self) -> int"},
-	 { "ElementTransformation_OrderGrad", _wrap_ElementTransformation_OrderGrad, METH_VARARGS, "OrderGrad(ElementTransformation self, FiniteElement fe) -> int"},
+	 { "ElementTransformation_OrderGrad", (PyCFunction)(void(*)(void))_wrap_ElementTransformation_OrderGrad, METH_VARARGS|METH_KEYWORDS, "OrderGrad(ElementTransformation self, FiniteElement fe) -> int"},
 	 { "ElementTransformation_GetGeometryType", _wrap_ElementTransformation_GetGeometryType, METH_O, "GetGeometryType(ElementTransformation self) -> mfem::Geometry::Type"},
 	 { "ElementTransformation_GetDimension", _wrap_ElementTransformation_GetDimension, METH_O, "GetDimension(ElementTransformation self) -> int"},
 	 { "ElementTransformation_GetSpaceDim", _wrap_ElementTransformation_GetSpaceDim, METH_O, "GetSpaceDim(ElementTransformation self) -> int"},
-	 { "ElementTransformation_TransformBack", _wrap_ElementTransformation_TransformBack, METH_VARARGS, "TransformBack(ElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
+	 { "ElementTransformation_TransformBack", (PyCFunction)(void(*)(void))_wrap_ElementTransformation_TransformBack, METH_VARARGS|METH_KEYWORDS, "TransformBack(ElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
 	 { "delete_ElementTransformation", _wrap_delete_ElementTransformation, METH_O, "delete_ElementTransformation(ElementTransformation self)"},
 	 { "ElementTransformation_swigregister", ElementTransformation_swigregister, METH_O, NULL},
-	 { "new_InverseElementTransformation", _wrap_new_InverseElementTransformation, METH_VARARGS, "InverseElementTransformation(ElementTransformation Trans=None)"},
+	 { "new_InverseElementTransformation", (PyCFunction)(void(*)(void))_wrap_new_InverseElementTransformation, METH_VARARGS|METH_KEYWORDS, "new_InverseElementTransformation(ElementTransformation Trans=None) -> InverseElementTransformation"},
 	 { "delete_InverseElementTransformation", _wrap_delete_InverseElementTransformation, METH_O, "delete_InverseElementTransformation(InverseElementTransformation self)"},
-	 { "InverseElementTransformation_SetTransformation", _wrap_InverseElementTransformation_SetTransformation, METH_VARARGS, "SetTransformation(InverseElementTransformation self, ElementTransformation Trans)"},
-	 { "InverseElementTransformation_SetInitialGuessType", _wrap_InverseElementTransformation_SetInitialGuessType, METH_VARARGS, "SetInitialGuessType(InverseElementTransformation self, mfem::InverseElementTransformation::InitGuessType itype)"},
-	 { "InverseElementTransformation_SetInitialGuess", _wrap_InverseElementTransformation_SetInitialGuess, METH_VARARGS, "SetInitialGuess(InverseElementTransformation self, IntegrationPoint init_ip)"},
-	 { "InverseElementTransformation_SetInitGuessPointsType", _wrap_InverseElementTransformation_SetInitGuessPointsType, METH_VARARGS, "SetInitGuessPointsType(InverseElementTransformation self, int q_type)"},
-	 { "InverseElementTransformation_SetInitGuessRelOrder", _wrap_InverseElementTransformation_SetInitGuessRelOrder, METH_VARARGS, "SetInitGuessRelOrder(InverseElementTransformation self, int order)"},
-	 { "InverseElementTransformation_SetSolverType", _wrap_InverseElementTransformation_SetSolverType, METH_VARARGS, "SetSolverType(InverseElementTransformation self, mfem::InverseElementTransformation::SolverType stype)"},
-	 { "InverseElementTransformation_SetMaxIter", _wrap_InverseElementTransformation_SetMaxIter, METH_VARARGS, "SetMaxIter(InverseElementTransformation self, int max_it)"},
-	 { "InverseElementTransformation_SetReferenceTol", _wrap_InverseElementTransformation_SetReferenceTol, METH_VARARGS, "SetReferenceTol(InverseElementTransformation self, double ref_sp_tol)"},
-	 { "InverseElementTransformation_SetPhysicalRelTol", _wrap_InverseElementTransformation_SetPhysicalRelTol, METH_VARARGS, "SetPhysicalRelTol(InverseElementTransformation self, double phys_rel_tol)"},
-	 { "InverseElementTransformation_SetElementTol", _wrap_InverseElementTransformation_SetElementTol, METH_VARARGS, "SetElementTol(InverseElementTransformation self, double el_tol)"},
-	 { "InverseElementTransformation_SetPrintLevel", _wrap_InverseElementTransformation_SetPrintLevel, METH_VARARGS, "SetPrintLevel(InverseElementTransformation self, int pr_level)"},
-	 { "InverseElementTransformation_FindClosestPhysPoint", _wrap_InverseElementTransformation_FindClosestPhysPoint, METH_VARARGS, "FindClosestPhysPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
-	 { "InverseElementTransformation_FindClosestRefPoint", _wrap_InverseElementTransformation_FindClosestRefPoint, METH_VARARGS, "FindClosestRefPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
-	 { "InverseElementTransformation_Transform", _wrap_InverseElementTransformation_Transform, METH_VARARGS, "Transform(InverseElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
+	 { "InverseElementTransformation_SetTransformation", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetTransformation, METH_VARARGS|METH_KEYWORDS, "SetTransformation(InverseElementTransformation self, ElementTransformation Trans)"},
+	 { "InverseElementTransformation_SetInitialGuessType", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitialGuessType, METH_VARARGS|METH_KEYWORDS, "SetInitialGuessType(InverseElementTransformation self, mfem::InverseElementTransformation::InitGuessType itype)"},
+	 { "InverseElementTransformation_SetInitialGuess", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitialGuess, METH_VARARGS|METH_KEYWORDS, "SetInitialGuess(InverseElementTransformation self, IntegrationPoint init_ip)"},
+	 { "InverseElementTransformation_SetInitGuessPointsType", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitGuessPointsType, METH_VARARGS|METH_KEYWORDS, "SetInitGuessPointsType(InverseElementTransformation self, int q_type)"},
+	 { "InverseElementTransformation_SetInitGuessRelOrder", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetInitGuessRelOrder, METH_VARARGS|METH_KEYWORDS, "SetInitGuessRelOrder(InverseElementTransformation self, int order)"},
+	 { "InverseElementTransformation_SetSolverType", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetSolverType, METH_VARARGS|METH_KEYWORDS, "SetSolverType(InverseElementTransformation self, mfem::InverseElementTransformation::SolverType stype)"},
+	 { "InverseElementTransformation_SetMaxIter", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetMaxIter, METH_VARARGS|METH_KEYWORDS, "SetMaxIter(InverseElementTransformation self, int max_it)"},
+	 { "InverseElementTransformation_SetReferenceTol", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetReferenceTol, METH_VARARGS|METH_KEYWORDS, "SetReferenceTol(InverseElementTransformation self, double ref_sp_tol)"},
+	 { "InverseElementTransformation_SetPhysicalRelTol", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetPhysicalRelTol, METH_VARARGS|METH_KEYWORDS, "SetPhysicalRelTol(InverseElementTransformation self, double phys_rel_tol)"},
+	 { "InverseElementTransformation_SetElementTol", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetElementTol, METH_VARARGS|METH_KEYWORDS, "SetElementTol(InverseElementTransformation self, double el_tol)"},
+	 { "InverseElementTransformation_SetPrintLevel", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_SetPrintLevel, METH_VARARGS|METH_KEYWORDS, "SetPrintLevel(InverseElementTransformation self, int pr_level)"},
+	 { "InverseElementTransformation_FindClosestPhysPoint", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_FindClosestPhysPoint, METH_VARARGS|METH_KEYWORDS, "FindClosestPhysPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
+	 { "InverseElementTransformation_FindClosestRefPoint", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_FindClosestRefPoint, METH_VARARGS|METH_KEYWORDS, "FindClosestRefPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"},
+	 { "InverseElementTransformation_Transform", (PyCFunction)(void(*)(void))_wrap_InverseElementTransformation_Transform, METH_VARARGS|METH_KEYWORDS, "Transform(InverseElementTransformation self, Vector pt, IntegrationPoint ip) -> int"},
 	 { "InverseElementTransformation_swigregister", InverseElementTransformation_swigregister, METH_O, NULL},
 	 { "InverseElementTransformation_swiginit", InverseElementTransformation_swiginit, METH_VARARGS, NULL},
-	 { "IsoparametricTransformation_SetFE", _wrap_IsoparametricTransformation_SetFE, METH_VARARGS, "SetFE(IsoparametricTransformation self, FiniteElement FE)"},
+	 { "IsoparametricTransformation_SetFE", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_SetFE, METH_VARARGS|METH_KEYWORDS, "SetFE(IsoparametricTransformation self, FiniteElement FE)"},
 	 { "IsoparametricTransformation_GetFE", _wrap_IsoparametricTransformation_GetFE, METH_O, "GetFE(IsoparametricTransformation self) -> FiniteElement"},
 	 { "IsoparametricTransformation_GetPointMat", _wrap_IsoparametricTransformation_GetPointMat, METH_O, "GetPointMat(IsoparametricTransformation self) -> DenseMatrix"},
 	 { "IsoparametricTransformation_FinalizeTransformation", _wrap_IsoparametricTransformation_FinalizeTransformation, METH_O, "FinalizeTransformation(IsoparametricTransformation self)"},
-	 { "IsoparametricTransformation_SetIdentityTransformation", _wrap_IsoparametricTransformation_SetIdentityTransformation, METH_VARARGS, "SetIdentityTransformation(IsoparametricTransformation self, mfem::Geometry::Type GeomType)"},
+	 { "IsoparametricTransformation_SetIdentityTransformation", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_SetIdentityTransformation, METH_VARARGS|METH_KEYWORDS, "SetIdentityTransformation(IsoparametricTransformation self, mfem::Geometry::Type GeomType)"},
 	 { "IsoparametricTransformation_Transform", _wrap_IsoparametricTransformation_Transform, METH_VARARGS, "\n"
 		"Transform(IsoparametricTransformation self, IntegrationPoint arg2, Vector arg3)\n"
 		"Transform(IsoparametricTransformation self, IntegrationRule arg2, DenseMatrix arg3)\n"
@@ -7111,8 +7145,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "IsoparametricTransformation_Order", _wrap_IsoparametricTransformation_Order, METH_O, "Order(IsoparametricTransformation self) -> int"},
 	 { "IsoparametricTransformation_OrderJ", _wrap_IsoparametricTransformation_OrderJ, METH_O, "OrderJ(IsoparametricTransformation self) -> int"},
 	 { "IsoparametricTransformation_OrderW", _wrap_IsoparametricTransformation_OrderW, METH_O, "OrderW(IsoparametricTransformation self) -> int"},
-	 { "IsoparametricTransformation_OrderGrad", _wrap_IsoparametricTransformation_OrderGrad, METH_VARARGS, "OrderGrad(IsoparametricTransformation self, FiniteElement fe) -> int"},
-	 { "IsoparametricTransformation_TransformBack", _wrap_IsoparametricTransformation_TransformBack, METH_VARARGS, "TransformBack(IsoparametricTransformation self, Vector v, IntegrationPoint ip) -> int"},
+	 { "IsoparametricTransformation_OrderGrad", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_OrderGrad, METH_VARARGS|METH_KEYWORDS, "OrderGrad(IsoparametricTransformation self, FiniteElement fe) -> int"},
+	 { "IsoparametricTransformation_TransformBack", (PyCFunction)(void(*)(void))_wrap_IsoparametricTransformation_TransformBack, METH_VARARGS|METH_KEYWORDS, "TransformBack(IsoparametricTransformation self, Vector v, IntegrationPoint ip) -> int"},
 	 { "delete_IsoparametricTransformation", _wrap_delete_IsoparametricTransformation, METH_O, "delete_IsoparametricTransformation(IsoparametricTransformation self)"},
 	 { "new_IsoparametricTransformation", _wrap_new_IsoparametricTransformation, METH_NOARGS, "new_IsoparametricTransformation() -> IsoparametricTransformation"},
 	 { "IsoparametricTransformation_swigregister", IsoparametricTransformation_swigregister, METH_O, NULL},

@@ -3292,7 +3292,7 @@ SWIGINTERN PyObject *Hashed4_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_sort3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_sort3(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int *arg1 = 0 ;
   int *arg2 = 0 ;
@@ -3303,10 +3303,15 @@ SWIGINTERN PyObject *_wrap_sort3(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"a",  (char *)"b",  (char *)"c",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "sort3", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:sort3", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sort3" "', argument " "1"" of type '" "int &""'"); 
   }
@@ -3314,7 +3319,7 @@ SWIGINTERN PyObject *_wrap_sort3(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort3" "', argument " "1"" of type '" "int &""'"); 
   }
   arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sort3" "', argument " "2"" of type '" "int &""'"); 
   }
@@ -3322,7 +3327,7 @@ SWIGINTERN PyObject *_wrap_sort3(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort3" "', argument " "2"" of type '" "int &""'"); 
   }
   arg2 = reinterpret_cast< int * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_int,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "sort3" "', argument " "3"" of type '" "int &""'"); 
   }
@@ -3353,7 +3358,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_sort4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_sort4(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int *arg1 = 0 ;
   int *arg2 = 0 ;
@@ -3367,10 +3372,16 @@ SWIGINTERN PyObject *_wrap_sort4(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"a",  (char *)"b",  (char *)"c",  (char *)"d",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "sort4", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:sort4", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sort4" "', argument " "1"" of type '" "int &""'"); 
   }
@@ -3378,7 +3389,7 @@ SWIGINTERN PyObject *_wrap_sort4(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4" "', argument " "1"" of type '" "int &""'"); 
   }
   arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sort4" "', argument " "2"" of type '" "int &""'"); 
   }
@@ -3386,7 +3397,7 @@ SWIGINTERN PyObject *_wrap_sort4(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4" "', argument " "2"" of type '" "int &""'"); 
   }
   arg2 = reinterpret_cast< int * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_int,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "sort4" "', argument " "3"" of type '" "int &""'"); 
   }
@@ -3394,7 +3405,7 @@ SWIGINTERN PyObject *_wrap_sort4(PyObject *SWIGUNUSEDPARM(self), PyObject *args)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4" "', argument " "3"" of type '" "int &""'"); 
   }
   arg3 = reinterpret_cast< int * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_int,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "sort4" "', argument " "4"" of type '" "int &""'"); 
   }
@@ -3425,7 +3436,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_sort4_ext(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_sort4_ext(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int *arg1 = 0 ;
   int *arg2 = 0 ;
@@ -3439,10 +3450,16 @@ SWIGINTERN PyObject *_wrap_sort4_ext(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"a",  (char *)"b",  (char *)"c",  (char *)"d",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "sort4_ext", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_int,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:sort4_ext", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "sort4_ext" "', argument " "1"" of type '" "int &""'"); 
   }
@@ -3450,7 +3467,7 @@ SWIGINTERN PyObject *_wrap_sort4_ext(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4_ext" "', argument " "1"" of type '" "int &""'"); 
   }
   arg1 = reinterpret_cast< int * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_int,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "sort4_ext" "', argument " "2"" of type '" "int &""'"); 
   }
@@ -3458,7 +3475,7 @@ SWIGINTERN PyObject *_wrap_sort4_ext(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4_ext" "', argument " "2"" of type '" "int &""'"); 
   }
   arg2 = reinterpret_cast< int * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_int,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "sort4_ext" "', argument " "3"" of type '" "int &""'"); 
   }
@@ -3466,7 +3483,7 @@ SWIGINTERN PyObject *_wrap_sort4_ext(PyObject *SWIGUNUSEDPARM(self), PyObject *a
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "sort4_ext" "', argument " "3"" of type '" "int &""'"); 
   }
   arg3 = reinterpret_cast< int * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_int,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_int,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "sort4_ext" "', argument " "4"" of type '" "int &""'"); 
   }
@@ -3522,9 +3539,9 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_Hashed4", _wrap_delete_Hashed4, METH_O, "delete_Hashed4(Hashed4 self)"},
 	 { "Hashed4_swigregister", Hashed4_swigregister, METH_O, NULL},
 	 { "Hashed4_swiginit", Hashed4_swiginit, METH_VARARGS, NULL},
-	 { "sort3", _wrap_sort3, METH_VARARGS, "sort3(int & a, int & b, int & c)"},
-	 { "sort4", _wrap_sort4, METH_VARARGS, "sort4(int & a, int & b, int & c, int & d)"},
-	 { "sort4_ext", _wrap_sort4_ext, METH_VARARGS, "sort4_ext(int & a, int & b, int & c, int & d)"},
+	 { "sort3", (PyCFunction)(void(*)(void))_wrap_sort3, METH_VARARGS|METH_KEYWORDS, "sort3(int & a, int & b, int & c)"},
+	 { "sort4", (PyCFunction)(void(*)(void))_wrap_sort4, METH_VARARGS|METH_KEYWORDS, "sort4(int & a, int & b, int & c, int & d)"},
+	 { "sort4_ext", (PyCFunction)(void(*)(void))_wrap_sort4_ext, METH_VARARGS|METH_KEYWORDS, "sort4_ext(int & a, int & b, int & c, int & d)"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -3553,9 +3570,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_Hashed4", _wrap_delete_Hashed4, METH_O, "delete_Hashed4(Hashed4 self)"},
 	 { "Hashed4_swigregister", Hashed4_swigregister, METH_O, NULL},
 	 { "Hashed4_swiginit", Hashed4_swiginit, METH_VARARGS, NULL},
-	 { "sort3", _wrap_sort3, METH_VARARGS, "sort3(int & a, int & b, int & c)"},
-	 { "sort4", _wrap_sort4, METH_VARARGS, "sort4(int & a, int & b, int & c, int & d)"},
-	 { "sort4_ext", _wrap_sort4_ext, METH_VARARGS, "sort4_ext(int & a, int & b, int & c, int & d)"},
+	 { "sort3", (PyCFunction)(void(*)(void))_wrap_sort3, METH_VARARGS|METH_KEYWORDS, "sort3(int & a, int & b, int & c)"},
+	 { "sort4", (PyCFunction)(void(*)(void))_wrap_sort4, METH_VARARGS|METH_KEYWORDS, "sort4(int & a, int & b, int & c, int & d)"},
+	 { "sort4_ext", (PyCFunction)(void(*)(void))_wrap_sort4_ext, METH_VARARGS|METH_KEYWORDS, "sort4_ext(int & a, int & b, int & c, int & d)"},
 	 { NULL, NULL, 0, NULL }
 };
 

@@ -301,10 +301,21 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max)
     GetCharacteristics = _swig_new_instance_method(_pmesh.ParMesh_GetCharacteristics)
 
-    def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
-        r"""FindPoints(ParMesh self, DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int"""
-        return _pmesh.ParMesh_FindPoints(self, point_mat, elem_ids, ips, warn, inv_trans)
-    FindPoints = _swig_new_instance_method(_pmesh.ParMesh_FindPoints)
+    def FindPoints(self, pp):
+        r"""count, element_id, integration_points = FindPoints(points)"""
+        import numpy as np
+        import mfem.par as mfem
+
+        pp = np.array(pp, copy=False, dtype=float).transpose()      
+        M = mfem.DenseMatrix(pp.shape[0], pp.shape[1])
+        M.Assign(pp)
+        elem_ids = mfem.intArray()
+        int_points = mfem.IntegrationPointArray()
+        count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points)
+        elem_ids = elem_ids.ToList()
+        return count, elem_ids, int_points
+
+
 
     def PrintSharedEntities(self, fname_prefix):
         r"""PrintSharedEntities(ParMesh self, char const * fname_prefix)"""

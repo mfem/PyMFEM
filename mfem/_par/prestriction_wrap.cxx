@@ -3394,12 +3394,12 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_ParL2FaceRestriction__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ParL2FaceRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParFiniteElementSpace *arg1 = 0 ;
   mfem::ElementDofOrdering arg2 ;
   mfem::FaceType arg3 ;
-  mfem::L2FaceValues arg4 ;
+  mfem::L2FaceValues arg4 = (mfem::L2FaceValues) mfem::L2FaceValues::DoubleValued ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
@@ -3408,10 +3408,17 @@ SWIGINTERN PyObject *_wrap_new_ParL2FaceRestriction__SWIG_0(PyObject *SWIGUNUSED
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"arg1",  (char *)"arg2",  (char *)"type",  (char *)"m",  NULL 
+  };
   mfem::ParL2FaceRestriction *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:new_ParL2FaceRestriction", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParL2FaceRestriction" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
   }
@@ -3419,21 +3426,23 @@ SWIGINTERN PyObject *_wrap_new_ParL2FaceRestriction__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParL2FaceRestriction" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_ParL2FaceRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
   } 
   arg2 = static_cast< mfem::ElementDofOrdering >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ParL2FaceRestriction" "', argument " "3"" of type '" "mfem::FaceType""'");
   } 
   arg3 = static_cast< mfem::FaceType >(val3);
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ParL2FaceRestriction" "', argument " "4"" of type '" "mfem::L2FaceValues""'");
-  } 
-  arg4 = static_cast< mfem::L2FaceValues >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_int(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ParL2FaceRestriction" "', argument " "4"" of type '" "mfem::L2FaceValues""'");
+    } 
+    arg4 = static_cast< mfem::L2FaceValues >(val4);
+  }
   {
     try {
       result = (mfem::ParL2FaceRestriction *)new mfem::ParL2FaceRestriction((mfem::ParFiniteElementSpace const &)*arg1,arg2,arg3,arg4); 
@@ -3449,118 +3458,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ParL2FaceRestriction__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ParFiniteElementSpace *arg1 = 0 ;
-  mfem::ElementDofOrdering arg2 ;
-  mfem::FaceType arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  mfem::ParL2FaceRestriction *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ParFiniteElementSpace,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ParL2FaceRestriction" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ParL2FaceRestriction" "', argument " "1"" of type '" "mfem::ParFiniteElementSpace const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ParFiniteElementSpace * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_ParL2FaceRestriction" "', argument " "2"" of type '" "mfem::ElementDofOrdering""'");
-  } 
-  arg2 = static_cast< mfem::ElementDofOrdering >(val2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ParL2FaceRestriction" "', argument " "3"" of type '" "mfem::FaceType""'");
-  } 
-  arg3 = static_cast< mfem::FaceType >(val3);
-  {
-    try {
-      result = (mfem::ParL2FaceRestriction *)new mfem::ParL2FaceRestriction((mfem::ParFiniteElementSpace const &)*arg1,arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ParL2FaceRestriction, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ParL2FaceRestriction(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_ParL2FaceRestriction", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_ParL2FaceRestriction__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ParFiniteElementSpace, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_int(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_ParL2FaceRestriction__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ParL2FaceRestriction'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ParL2FaceRestriction::ParL2FaceRestriction(mfem::ParFiniteElementSpace const &,mfem::ElementDofOrdering,mfem::FaceType,mfem::L2FaceValues)\n"
-    "    mfem::ParL2FaceRestriction::ParL2FaceRestriction(mfem::ParFiniteElementSpace const &,mfem::ElementDofOrdering,mfem::FaceType)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParL2FaceRestriction *arg1 = (mfem::ParL2FaceRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3571,15 +3469,20 @@ SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(se
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParL2FaceRestriction_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParL2FaceRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParL2FaceRestriction_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParL2FaceRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParL2FaceRestriction_Mult" "', argument " "1"" of type '" "mfem::ParL2FaceRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParL2FaceRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParL2FaceRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3587,7 +3490,7 @@ SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_Mult(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParL2FaceRestriction_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParL2FaceRestriction_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3610,7 +3513,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParL2FaceRestriction *arg1 = (mfem::ParL2FaceRestriction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3621,15 +3524,20 @@ SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_MultTranspose(PyObject *SWIGUNUS
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParL2FaceRestriction_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParL2FaceRestriction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ParL2FaceRestriction_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParL2FaceRestriction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParL2FaceRestriction_MultTranspose" "', argument " "1"" of type '" "mfem::ParL2FaceRestriction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParL2FaceRestriction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParL2FaceRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3637,7 +3545,7 @@ SWIGINTERN PyObject *_wrap_ParL2FaceRestriction_MultTranspose(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ParL2FaceRestriction_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParL2FaceRestriction_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3703,9 +3611,9 @@ SWIGINTERN PyObject *ParL2FaceRestriction_swiginit(PyObject *SWIGUNUSEDPARM(self
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_ParL2FaceRestriction", _wrap_new_ParL2FaceRestriction, METH_VARARGS, "ParL2FaceRestriction(mfem::ParFiniteElementSpace const & arg1, mfem::ElementDofOrdering arg2, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued)"},
-	 { "ParL2FaceRestriction_Mult", _wrap_ParL2FaceRestriction_Mult, METH_VARARGS, "ParL2FaceRestriction_Mult(ParL2FaceRestriction self, Vector x, Vector y)"},
-	 { "ParL2FaceRestriction_MultTranspose", _wrap_ParL2FaceRestriction_MultTranspose, METH_VARARGS, "ParL2FaceRestriction_MultTranspose(ParL2FaceRestriction self, Vector x, Vector y)"},
+	 { "new_ParL2FaceRestriction", (PyCFunction)(void(*)(void))_wrap_new_ParL2FaceRestriction, METH_VARARGS|METH_KEYWORDS, "new_ParL2FaceRestriction(mfem::ParFiniteElementSpace const & arg1, mfem::ElementDofOrdering arg2, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued) -> ParL2FaceRestriction"},
+	 { "ParL2FaceRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_ParL2FaceRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "ParL2FaceRestriction_Mult(ParL2FaceRestriction self, Vector x, Vector y)"},
+	 { "ParL2FaceRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ParL2FaceRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "ParL2FaceRestriction_MultTranspose(ParL2FaceRestriction self, Vector x, Vector y)"},
 	 { "delete_ParL2FaceRestriction", _wrap_delete_ParL2FaceRestriction, METH_O, "delete_ParL2FaceRestriction(ParL2FaceRestriction self)"},
 	 { "ParL2FaceRestriction_swigregister", ParL2FaceRestriction_swigregister, METH_O, NULL},
 	 { "ParL2FaceRestriction_swiginit", ParL2FaceRestriction_swiginit, METH_VARARGS, NULL},
@@ -3715,9 +3623,9 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_ParL2FaceRestriction", _wrap_new_ParL2FaceRestriction, METH_VARARGS, "ParL2FaceRestriction(mfem::ParFiniteElementSpace const & arg1, mfem::ElementDofOrdering arg2, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued)"},
-	 { "ParL2FaceRestriction_Mult", _wrap_ParL2FaceRestriction_Mult, METH_VARARGS, "Mult(ParL2FaceRestriction self, Vector x, Vector y)"},
-	 { "ParL2FaceRestriction_MultTranspose", _wrap_ParL2FaceRestriction_MultTranspose, METH_VARARGS, "MultTranspose(ParL2FaceRestriction self, Vector x, Vector y)"},
+	 { "new_ParL2FaceRestriction", (PyCFunction)(void(*)(void))_wrap_new_ParL2FaceRestriction, METH_VARARGS|METH_KEYWORDS, "new_ParL2FaceRestriction(mfem::ParFiniteElementSpace const & arg1, mfem::ElementDofOrdering arg2, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued) -> ParL2FaceRestriction"},
+	 { "ParL2FaceRestriction_Mult", (PyCFunction)(void(*)(void))_wrap_ParL2FaceRestriction_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ParL2FaceRestriction self, Vector x, Vector y)"},
+	 { "ParL2FaceRestriction_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ParL2FaceRestriction_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(ParL2FaceRestriction self, Vector x, Vector y)"},
 	 { "delete_ParL2FaceRestriction", _wrap_delete_ParL2FaceRestriction, METH_O, "delete_ParL2FaceRestriction(ParL2FaceRestriction self)"},
 	 { "ParL2FaceRestriction_swigregister", ParL2FaceRestriction_swigregister, METH_O, NULL},
 	 { "ParL2FaceRestriction_swiginit", ParL2FaceRestriction_swiginit, METH_VARARGS, NULL},

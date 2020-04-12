@@ -4024,7 +4024,7 @@ void SwigDirector_BilinearForm::AddMult(mfem::Vector const &x, mfem::Vector &y, 
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 16;
+  const size_t swig_method_index = 14;
   const char *const swig_method_name = "AddMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4054,7 +4054,7 @@ void SwigDirector_BilinearForm::AddMultTranspose(mfem::Vector const &x, mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 18;
+  const size_t swig_method_index = 15;
   const char *const swig_method_name = "AddMultTranspose";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4092,7 +4092,7 @@ void SwigDirector_BilinearForm::FormLinearSystem(mfem::Array< int > const &ess_t
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 21;
+  const size_t swig_method_index = 16;
   const char *const swig_method_name = "FormLinearSystem";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4,(PyObject *)obj5,(PyObject *)obj6, NULL);
@@ -4120,7 +4120,7 @@ void SwigDirector_BilinearForm::FormSystemMatrix(mfem::Array< int > const &ess_t
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 23;
+  const size_t swig_method_index = 17;
   const char *const swig_method_name = "FormSystemMatrix";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -4146,7 +4146,7 @@ void SwigDirector_BilinearForm::Update(mfem::FiniteElementSpace *nfes) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call BilinearForm.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 24;
+  const size_t swig_method_index = 18;
   const char *const swig_method_name = "Update";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -4236,14 +4236,14 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm__SWIG_2(PyObject *SWIGUNUSEDPARM(sel
   PyObject *arg1 = (PyObject *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
   mfem::BilinearForm *arg3 = (mfem::BilinearForm *) 0 ;
-  int arg4 ;
+  int arg4 = (int) 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   mfem::BilinearForm *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   arg1 = swig_obj[0];
   res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
@@ -4255,11 +4255,13 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm__SWIG_2(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_BilinearForm" "', argument " "3"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg3 = reinterpret_cast< mfem::BilinearForm * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -4268,49 +4270,6 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm__SWIG_2(PyObject *SWIGUNUSEDPARM(sel
         result = (mfem::BilinearForm *)new SwigDirector_BilinearForm(arg1,arg2,arg3,arg4); 
       } else {
         result = (mfem::BilinearForm *)new mfem::BilinearForm(arg2,arg3,arg4); 
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__BilinearForm, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_BilinearForm__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
-  mfem::BilinearForm *arg3 = (mfem::BilinearForm *) 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  mfem::BilinearForm *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  arg1 = swig_obj[0];
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_BilinearForm" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_BilinearForm" "', argument " "3"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::BilinearForm * >(argp3);
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::BilinearForm *)new SwigDirector_BilinearForm(arg1,arg2,arg3); 
-      } else {
-        result = (mfem::BilinearForm *)new mfem::BilinearForm(arg2,arg3); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -4351,7 +4310,7 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
@@ -4363,23 +4322,9 @@ SWIGINTERN PyObject *_wrap_new_BilinearForm(PyObject *self, PyObject *args) {
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_new_BilinearForm__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_BilinearForm__SWIG_2(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -4401,8 +4346,7 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BilinearForm::BilinearForm()\n"
     "    mfem::BilinearForm::BilinearForm(mfem::FiniteElementSpace *)\n"
-    "    mfem::BilinearForm::BilinearForm(mfem::FiniteElementSpace *,mfem::BilinearForm *,int)\n"
-    "    mfem::BilinearForm::BilinearForm(PyObject *,mfem::FiniteElementSpace *,mfem::BilinearForm *)\n");
+    "    mfem::BilinearForm::BilinearForm(PyObject *,mfem::FiniteElementSpace *,mfem::BilinearForm *,int)\n");
   return 0;
 }
 
@@ -4437,7 +4381,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_SetAssemblyLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_SetAssemblyLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::AssemblyLevel arg2 ;
@@ -4445,15 +4389,19 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SetAssemblyLevel(PyObject *SWIGUNUSEDPAR
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"assembly_level",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_SetAssemblyLevel", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BilinearForm_SetAssemblyLevel", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_SetAssemblyLevel" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BilinearForm_SetAssemblyLevel" "', argument " "2"" of type '" "mfem::AssemblyLevel""'");
   } 
@@ -4592,7 +4540,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_EnableHybridization(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_EnableHybridization(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
@@ -4606,25 +4554,31 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EnableHybridization(PyObject *SWIGUNUSED
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"constr_space",  (char *)"constr_integ",  (char *)"ess_tdof_list",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_EnableHybridization", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:BilinearForm_EnableHybridization", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EnableHybridization" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EnableHybridization" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
   }
   arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EnableHybridization" "', argument " "3"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
   arg3 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_EnableHybridization" "', argument " "4"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -4647,24 +4601,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_UsePrecomputedSparsity__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_UsePrecomputedSparsity(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ps",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:BilinearForm_UsePrecomputedSparsity", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_UsePrecomputedSparsity" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   {
     try {
@@ -4678,79 +4639,6 @@ SWIGINTERN PyObject *_wrap_BilinearForm_UsePrecomputedSparsity__SWIG_0(PyObject 
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_UsePrecomputedSparsity__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_UsePrecomputedSparsity" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    try {
-      (arg1)->UsePrecomputedSparsity(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_UsePrecomputedSparsity(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_UsePrecomputedSparsity", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_BilinearForm_UsePrecomputedSparsity__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_BilinearForm_UsePrecomputedSparsity__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_UsePrecomputedSparsity'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::UsePrecomputedSparsity(int)\n"
-    "    mfem::BilinearForm::UsePrecomputedSparsity()\n");
-  return 0;
 }
 
 
@@ -5109,33 +4997,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
   double *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm___call__", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm___call__", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm___call__" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5342,7 +5235,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5353,17 +5246,22 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyO
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_Mult" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5371,7 +5269,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5380,7 +5278,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyO
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -5404,7 +5302,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_FullMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_FullMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5415,15 +5313,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullMult(PyObject *SWIGUNUSEDPARM(self),
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_FullMult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_FullMult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FullMult" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_FullMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5431,7 +5334,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullMult(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FullMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_FullMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5454,12 +5357,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_AddMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
-  double arg4 ;
+  double arg4 = (double) (double)1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -5468,16 +5371,23 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  (char *)"a",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:BilinearForm_AddMult", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AddMult" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5485,7 +5395,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5493,13 +5403,15 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BilinearForm_AddMult" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BilinearForm_AddMult" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -5523,7 +5435,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_AddMult__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5534,136 +5446,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMult__SWIG_1(PyObject *SWIGUNUSEDPARM
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  Swig::Director *director = 0;
-  bool upcall = false;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AddMult" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
-  try {
-    {
-      try {
-        if (upcall) {
-          ((mfem::BilinearForm const *)arg1)->mfem::BilinearForm::AddMult((mfem::Vector const &)*arg2,*arg3);
-        } else {
-          ((mfem::BilinearForm const *)arg1)->AddMult((mfem::Vector const &)*arg2,*arg3);
-        } 
-      }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
-      }    
-    }
-  } catch (Swig::DirectorException&) {
-    SWIG_fail;
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_AddMult(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_AddMult", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_BilinearForm_AddMult__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_BilinearForm_AddMult__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_AddMult'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::AddMult(mfem::Vector const &,mfem::Vector &,double const) const\n"
-    "    mfem::BilinearForm::AddMult(mfem::Vector const &,mfem::Vector &) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_FullAddMult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_FullAddMult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FullAddMult" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_FullAddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5671,7 +5467,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMult(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FullAddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_FullAddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5694,12 +5490,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
-  double arg4 ;
+  double arg4 = (double) (double)1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -5708,16 +5504,23 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose__SWIG_0(PyObject *SWIGU
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  (char *)"a",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:BilinearForm_AddMultTranspose", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AddMultTranspose" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5725,7 +5528,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose__SWIG_0(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5733,13 +5536,15 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose__SWIG_0(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BilinearForm_AddMultTranspose" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BilinearForm_AddMultTranspose" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -5763,7 +5568,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5774,136 +5579,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose__SWIG_1(PyObject *SWIGU
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  Swig::Director *director = 0;
-  bool upcall = false;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AddMultTranspose" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
-  try {
-    {
-      try {
-        if (upcall) {
-          ((mfem::BilinearForm const *)arg1)->mfem::BilinearForm::AddMultTranspose((mfem::Vector const &)*arg2,*arg3);
-        } else {
-          ((mfem::BilinearForm const *)arg1)->AddMultTranspose((mfem::Vector const &)*arg2,*arg3);
-        } 
-      }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
-      }    
-    }
-  } catch (Swig::DirectorException&) {
-    SWIG_fail;
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_AddMultTranspose(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_AddMultTranspose", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_BilinearForm_AddMultTranspose__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_BilinearForm_AddMultTranspose__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_AddMultTranspose'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::AddMultTranspose(mfem::Vector const &,mfem::Vector &,double const) const\n"
-    "    mfem::BilinearForm::AddMultTranspose(mfem::Vector const &,mfem::Vector &) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_FullAddMultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_FullAddMultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FullAddMultTranspose" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_FullAddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5911,7 +5600,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullAddMultTranspose(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FullAddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_FullAddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5934,7 +5623,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5945,17 +5634,22 @@ SWIGINTERN PyObject *_wrap_BilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(s
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_MultTranspose" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5963,7 +5657,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5972,7 +5666,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(s
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -5996,7 +5690,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_InnerProduct(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_InnerProduct(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -6007,16 +5701,21 @@ SWIGINTERN PyObject *_wrap_BilinearForm_InnerProduct(PyObject *SWIGUNUSEDPARM(se
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_InnerProduct", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_InnerProduct", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_InnerProduct" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_InnerProduct" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -6024,7 +5723,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_InnerProduct(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_InnerProduct" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_InnerProduct" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -6092,29 +5791,36 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_Finalize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_Finalize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"skip_zeros",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:BilinearForm_Finalize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_Finalize" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -6135,91 +5841,6 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Finalize__SWIG_0(PyObject *SWIGUNUSEDPAR
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_Finalize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  Swig::Director *director = 0;
-  bool upcall = false;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_Finalize" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
-  try {
-    {
-      try {
-        if (upcall) {
-          (arg1)->mfem::BilinearForm::Finalize();
-        } else {
-          (arg1)->Finalize();
-        } 
-      }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
-      }    
-    }
-  } catch (Swig::DirectorException&) {
-    SWIG_fail;
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_Finalize(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_Finalize", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_BilinearForm_Finalize__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_BilinearForm_Finalize__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_Finalize'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::Finalize(int)\n"
-    "    mfem::BilinearForm::Finalize()\n");
-  return 0;
 }
 
 
@@ -6437,7 +6058,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
@@ -6445,15 +6066,19 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddDomainIntegrator(PyObject *SWIGUNUSED
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bfi",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_AddDomainIntegrator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BilinearForm_AddDomainIntegrator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
@@ -6605,7 +6230,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_AddInteriorFaceIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_AddInteriorFaceIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
@@ -6613,15 +6238,19 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AddInteriorFaceIntegrator(PyObject *SWIG
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bfi",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_AddInteriorFaceIntegrator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BilinearForm_AddInteriorFaceIntegrator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AddInteriorFaceIntegrator" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_AddInteriorFaceIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
@@ -6773,24 +6402,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_Assemble__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_Assemble(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"skip_zeros",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:BilinearForm_Assemble", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_Assemble" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   {
     try {
@@ -6807,80 +6443,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_Assemble__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_Assemble" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    try {
-      (arg1)->Assemble(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_Assemble(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_Assemble", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_BilinearForm_Assemble__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_BilinearForm_Assemble__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_Assemble'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::Assemble(int)\n"
-    "    mfem::BilinearForm::Assemble()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_AssembleDiagonal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_AssembleDiagonal(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -6888,15 +6451,19 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleDiagonal(PyObject *SWIGUNUSEDPAR
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"diag",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_AssembleDiagonal", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BilinearForm_AssembleDiagonal", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleDiagonal" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_AssembleDiagonal" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -7108,7 +6675,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_0(PyObject *SWIGU
   mfem::OperatorHandle *arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   mfem::Vector *arg7 = 0 ;
-  int arg8 ;
+  int arg8 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -7126,7 +6693,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_0(PyObject *SWIGU
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
+  if ((nobjs < 7) || (nobjs > 8)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FormLinearSystem" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -7180,11 +6747,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_0(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[7]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg8 = PyArray_PyIntAsInt(swig_obj[7]);
+  if (swig_obj[7]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[7]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg8 = PyArray_PyIntAsInt(swig_obj[7]);
+    }
   }
   director = SWIG_DIRECTOR_CAST(arg1);
   upcall = (director && (director->swig_get_self()==swig_obj[0]));
@@ -7195,111 +6764,6 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_0(PyObject *SWIGU
           (arg1)->mfem::BilinearForm::FormLinearSystem((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7,arg8);
         } else {
           (arg1)->FormLinearSystem((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7,arg8);
-        } 
-      }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
-      }    
-    }
-  } catch (Swig::DirectorException&) {
-    SWIG_fail;
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  mfem::OperatorHandle *arg5 = 0 ;
-  mfem::Vector *arg6 = 0 ;
-  mfem::Vector *arg7 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  void *argp6 = 0 ;
-  int res6 = 0 ;
-  void *argp7 = 0 ;
-  int res7 = 0 ;
-  Swig::Director *director = 0;
-  bool upcall = false;
-  
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FormLinearSystem" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__OperatorHandle,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BilinearForm_FormLinearSystem" "', argument " "5"" of type '" "mfem::OperatorHandle &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "5"" of type '" "mfem::OperatorHandle &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::OperatorHandle * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "BilinearForm_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp6) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res7)) {
-    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp7) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
-  }
-  arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
-  try {
-    {
-      try {
-        if (upcall) {
-          (arg1)->mfem::BilinearForm::FormLinearSystem((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7);
-        } else {
-          (arg1)->FormLinearSystem((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7);
         } 
       }
       catch (Swig::DirectorException &e) {
@@ -7377,7 +6841,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7391,17 +6855,23 @@ SWIGINTERN PyObject *_wrap_BilinearForm_RecoverFEMSolution(PyObject *SWIGUNUSEDP
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"X",  (char *)"b",  (char *)"x",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_RecoverFEMSolution", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:BilinearForm_RecoverFEMSolution", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_RecoverFEMSolution" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_RecoverFEMSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7409,7 +6879,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_RecoverFEMSolution(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_RecoverFEMSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_RecoverFEMSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7417,7 +6887,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_RecoverFEMSolution(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_RecoverFEMSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_RecoverFEMSolution" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -7426,7 +6896,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_RecoverFEMSolution(PyObject *SWIGUNUSEDP
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -7508,7 +6978,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_ComputeElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_ComputeElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   int arg2 ;
@@ -7517,21 +6987,26 @@ SWIGINTERN PyObject *_wrap_BilinearForm_ComputeElementMatrix(PyObject *SWIGUNUSE
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"elmat",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_ComputeElementMatrix", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_ComputeElementMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_ComputeElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_ComputeElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -7554,7 +7029,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_ComputeBdrElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_ComputeBdrElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   int arg2 ;
@@ -7563,21 +7038,26 @@ SWIGINTERN PyObject *_wrap_BilinearForm_ComputeBdrElementMatrix(PyObject *SWIGUN
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"elmat",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_ComputeBdrElementMatrix", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_ComputeBdrElementMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_ComputeBdrElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_ComputeBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -7605,13 +7085,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_0(PyObject *
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -7631,11 +7111,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_0(PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -7657,53 +7139,8 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_1(PyObject *
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    try {
-      (arg1)->AssembleElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
   mfem::Array< int > *arg4 = 0 ;
-  int arg5 ;
+  int arg5 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -7711,7 +7148,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_2(PyObject *
   void *argp4 = 0 ;
   int res4 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -7739,71 +7176,17 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_2(PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+  if (swig_obj[4]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    }
   }
   {
     try {
       (arg1)->AssembleElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
-  mfem::Array< int > *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
-  {
-    try {
-      (arg1)->AssembleElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -7824,7 +7207,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_AssembleElementMatrix", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -7842,57 +7225,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_BilinearForm_AssembleElementMatrix__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_BilinearForm_AssembleElementMatrix__SWIG_3(self, argc, argv);
+          if (argc <= 3) {
+            return _wrap_BilinearForm_AssembleElementMatrix__SWIG_0(self, argc, argv);
           }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -7908,7 +7243,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
       }
     }
   }
-  if (argc == 5) {
+  if ((argc >= 4) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -7930,6 +7265,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
+            if (argc <= 4) {
+              return _wrap_BilinearForm_AssembleElementMatrix__SWIG_1(self, argc, argv);
+            }
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 PyErr_Clear();
@@ -7939,7 +7277,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleElementMatrix(PyObject *self, Py
               }
             }
             if (_v) {
-              return _wrap_BilinearForm_AssembleElementMatrix__SWIG_2(self, argc, argv);
+              return _wrap_BilinearForm_AssembleElementMatrix__SWIG_1(self, argc, argv);
             }
           }
         }
@@ -7951,9 +7289,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_AssembleElementMatrix'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,int)\n"
-    "    mfem::BilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &)\n"
-    "    mfem::BilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,int)\n"
-    "    mfem::BilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &)\n");
+    "    mfem::BilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,int)\n");
   return 0;
 }
 
@@ -7963,13 +7299,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_0(PyObjec
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -7989,11 +7325,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_0(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -8015,53 +7353,8 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_1(PyObjec
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    try {
-      (arg1)->AssembleBdrElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
   mfem::Array< int > *arg4 = 0 ;
-  int arg5 ;
+  int arg5 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -8069,7 +7362,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_2(PyObjec
   void *argp4 = 0 ;
   int res4 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -8097,71 +7390,17 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_2(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+  if (swig_obj[4]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    }
   }
   {
     try {
       (arg1)->AssembleBdrElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
-  mfem::Array< int > *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_AssembleBdrElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
-  {
-    try {
-      (arg1)->AssembleBdrElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8182,7 +7421,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_AssembleBdrElementMatrix", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -8200,57 +7439,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_3(self, argc, argv);
+          if (argc <= 3) {
+            return _wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_0(self, argc, argv);
           }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -8266,7 +7457,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
       }
     }
   }
-  if (argc == 5) {
+  if ((argc >= 4) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -8288,6 +7479,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
+            if (argc <= 4) {
+              return _wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_1(self, argc, argv);
+            }
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 PyErr_Clear();
@@ -8297,7 +7491,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_AssembleBdrElementMatrix(PyObject *self,
               }
             }
             if (_v) {
-              return _wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_2(self, argc, argv);
+              return _wrap_BilinearForm_AssembleBdrElementMatrix__SWIG_1(self, argc, argv);
             }
           }
         }
@@ -8309,9 +7503,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_AssembleBdrElementMatrix'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,int)\n"
-    "    mfem::BilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &)\n"
-    "    mfem::BilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,int)\n"
-    "    mfem::BilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &)\n");
+    "    mfem::BilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,int)\n");
   return 0;
 }
 
@@ -8322,7 +7514,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_0(PyObject *S
   mfem::Array< int > *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
-  mfem::Matrix::DiagonalPolicy arg5 ;
+  mfem::Matrix::DiagonalPolicy arg5 = (mfem::Matrix::DiagonalPolicy) mfem::Matrix::DIAG_ONE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -8334,7 +7526,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_0(PyObject *S
   int val5 ;
   int ecode5 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -8364,11 +7556,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_0(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
-  } 
-  arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+    } 
+    arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
+  }
   {
     try {
       (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5); 
@@ -8388,67 +7582,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_1(PyObject *S
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    try {
-      (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Matrix::DiagonalPolicy arg3 ;
+  mfem::Matrix::DiagonalPolicy arg3 = (mfem::Matrix::DiagonalPolicy) mfem::Matrix::DIAG_ONE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -8456,7 +7590,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_2(PyObject *S
   int val3 ;
   int ecode3 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -8470,52 +7604,16 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_2(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
-  } 
-  arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+    } 
+    arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  }
   {
     try {
       (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBC" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  {
-    try {
-      (arg1)->EliminateEssentialBC((mfem::Array< int > const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8536,7 +7634,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC(PyObject *self, PyO
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_EliminateEssentialBC", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -8545,30 +7643,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC(PyObject *self, PyO
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_BilinearForm_EliminateEssentialBC__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_BilinearForm_EliminateEssentialBC__SWIG_1(self, argc, argv);
+        }
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_BilinearForm_EliminateEssentialBC__SWIG_2(self, argc, argv);
+          return _wrap_BilinearForm_EliminateEssentialBC__SWIG_1(self, argc, argv);
         }
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 4) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -8584,28 +7672,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBC(PyObject *self, PyO
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_BilinearForm_EliminateEssentialBC__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
+            if (argc <= 4) {
+              return _wrap_BilinearForm_EliminateEssentialBC__SWIG_0(self, argc, argv);
+            }
             {
               int res = SWIG_AsVal_int(argv[4], NULL);
               _v = SWIG_CheckState(res);
@@ -8623,14 +7692,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_EliminateEssentialBC'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &)\n"
-    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &)\n");
+    "    mfem::BilinearForm::EliminateEssentialBC(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -8641,15 +7708,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCDiag(PyObject *SWIGU
   int res2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bdr_attr_is_ess",  (char *)"value",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_EliminateEssentialBCDiag", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_EliminateEssentialBCDiag", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBCDiag" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateEssentialBCDiag" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -8657,7 +7729,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCDiag(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCDiag" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateEssentialBCDiag" "', argument " "3"" of type '" "double""'");
   } 
@@ -8683,7 +7755,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_0(PyObject *SWIGUNU
   mfem::Array< int > *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
-  mfem::Matrix::DiagonalPolicy arg5 ;
+  mfem::Matrix::DiagonalPolicy arg5 = (mfem::Matrix::DiagonalPolicy) mfem::Matrix::DIAG_ONE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -8695,7 +7767,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_0(PyObject *SWIGUNU
   int val5 ;
   int ecode5 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateVDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -8725,11 +7797,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BilinearForm_EliminateVDofs" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
-  } 
-  arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BilinearForm_EliminateVDofs" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+    } 
+    arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
+  }
   {
     try {
       (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5); 
@@ -8749,67 +7823,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_1(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateVDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_EliminateVDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    try {
-      (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Matrix::DiagonalPolicy arg3 ;
+  mfem::Matrix::DiagonalPolicy arg3 = (mfem::Matrix::DiagonalPolicy) mfem::Matrix::DIAG_ONE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -8817,7 +7831,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_2(PyObject *SWIGUNU
   int val3 ;
   int ecode3 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateVDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -8831,52 +7845,16 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_2(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
-  } 
-  arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateVDofs" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+    } 
+    arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  }
   {
     try {
       (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateVDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  {
-    try {
-      (arg1)->EliminateVDofs((mfem::Array< int > const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8897,7 +7875,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_EliminateVDofs", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -8906,30 +7884,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_BilinearForm_EliminateVDofs__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_BilinearForm_EliminateVDofs__SWIG_1(self, argc, argv);
+        }
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_BilinearForm_EliminateVDofs__SWIG_2(self, argc, argv);
+          return _wrap_BilinearForm_EliminateVDofs__SWIG_1(self, argc, argv);
         }
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 4) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -8945,28 +7913,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofs(PyObject *self, PyObject 
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_BilinearForm_EliminateVDofs__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
+            if (argc <= 4) {
+              return _wrap_BilinearForm_EliminateVDofs__SWIG_0(self, argc, argv);
+            }
             {
               int res = SWIG_AsVal_int(argv[4], NULL);
               _v = SWIG_CheckState(res);
@@ -8984,9 +7933,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_EliminateVDofs'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &)\n"
-    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &)\n");
+    "    mfem::BilinearForm::EliminateVDofs(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n");
   return 0;
 }
 
@@ -8997,7 +7944,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_0(PyO
   mfem::Array< int > *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
-  mfem::Matrix::DiagonalPolicy arg5 ;
+  mfem::Matrix::DiagonalPolicy arg5 = (mfem::Matrix::DiagonalPolicy) mfem::Matrix::DIAG_ONE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -9009,7 +7956,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_0(PyO
   int val5 ;
   int ecode5 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -9039,11 +7986,13 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_0(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
-  } 
-  arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "5"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+    } 
+    arg5 = static_cast< mfem::Matrix::DiagonalPolicy >(val5);
+  }
   {
     try {
       (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4,arg5); 
@@ -9063,67 +8012,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_1(PyO
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    try {
-      (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2,(mfem::Vector const &)*arg3,*arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Matrix::DiagonalPolicy arg3 ;
+  mfem::Matrix::DiagonalPolicy arg3 = (mfem::Matrix::DiagonalPolicy) mfem::Matrix::DIAG_ONE ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -9131,7 +8020,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_2(PyO
   int val3 ;
   int ecode3 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -9145,52 +8034,16 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_2(PyO
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
-  } 
-  arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "3"" of type '" "mfem::Matrix::DiagonalPolicy""'");
+    } 
+    arg3 = static_cast< mfem::Matrix::DiagonalPolicy >(val3);
+  }
   {
     try {
       (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  {
-    try {
-      (arg1)->EliminateEssentialBCFromDofs((mfem::Array< int > const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -9211,7 +8064,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs(PyObject *s
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_EliminateEssentialBCFromDofs", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -9220,30 +8073,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs(PyObject *s
       int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_1(self, argc, argv);
+        }
         {
           int res = SWIG_AsVal_int(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_2(self, argc, argv);
+          return _wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_1(self, argc, argv);
         }
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 4) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -9259,28 +8102,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofs(PyObject *s
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
+            if (argc <= 4) {
+              return _wrap_BilinearForm_EliminateEssentialBCFromDofs__SWIG_0(self, argc, argv);
+            }
             {
               int res = SWIG_AsVal_int(argv[4], NULL);
               _v = SWIG_CheckState(res);
@@ -9298,14 +8122,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_EliminateEssentialBCFromDofs'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Vector const &,mfem::Vector &)\n"
-    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n"
-    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &)\n");
+    "    mfem::BilinearForm::EliminateEssentialBCFromDofs(mfem::Array< int > const &,mfem::Matrix::DiagonalPolicy)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofsDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofsDiag(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -9316,15 +8138,20 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofsDiag(PyObjec
   int res2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ess_dofs",  (char *)"value",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_EliminateEssentialBCFromDofsDiag", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_EliminateEssentialBCFromDofsDiag", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateEssentialBCFromDofsDiag" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateEssentialBCFromDofsDiag" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -9332,7 +8159,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateEssentialBCFromDofsDiag(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateEssentialBCFromDofsDiag" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "BilinearForm_EliminateEssentialBCFromDofsDiag" "', argument " "3"" of type '" "double""'");
   } 
@@ -9352,7 +8179,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofsInRHS(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofsInRHS(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -9366,15 +8193,21 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofsInRHS(PyObject *SWIGUNUSED
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vdofs",  (char *)"x",  (char *)"b",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_EliminateVDofsInRHS", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:BilinearForm_EliminateVDofsInRHS", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_EliminateVDofsInRHS" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_EliminateVDofsInRHS" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -9382,7 +8215,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofsInRHS(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofsInRHS" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_EliminateVDofsInRHS" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9390,7 +8223,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_EliminateVDofsInRHS(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_EliminateVDofsInRHS" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_EliminateVDofsInRHS" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -9413,7 +8246,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_FullInnerProduct(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_FullInnerProduct(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9424,16 +8257,21 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullInnerProduct(PyObject *SWIGUNUSEDPAR
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_FullInnerProduct", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BilinearForm_FullInnerProduct", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FullInnerProduct" "', argument " "1"" of type '" "mfem::BilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_FullInnerProduct" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9441,7 +8279,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FullInnerProduct(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FullInnerProduct" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_FullInnerProduct" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9464,30 +8302,37 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_Update__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_Update(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
+  mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"nfes",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:BilinearForm_Update", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_Update" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_Update" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
+  if (obj1) {
+    res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_Update" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
+    }
+    arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
   }
-  arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -9508,86 +8353,6 @@ SWIGINTERN PyObject *_wrap_BilinearForm_Update__SWIG_0(PyObject *SWIGUNUSEDPARM(
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_Update__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  Swig::Director *director = 0;
-  bool upcall = false;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_Update" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
-  try {
-    {
-      try {
-        if (upcall) {
-          (arg1)->mfem::BilinearForm::Update();
-        } else {
-          (arg1)->Update();
-        } 
-      }
-      catch (Swig::DirectorException &e) {
-        SWIG_fail; 
-      }    
-    }
-  } catch (Swig::DirectorException&) {
-    SWIG_fail;
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_Update(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_Update", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_BilinearForm_Update__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_BilinearForm_Update__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_Update'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BilinearForm::Update(mfem::FiniteElementSpace *)\n"
-    "    mfem::BilinearForm::Update()\n");
-  return 0;
 }
 
 
@@ -9713,7 +8478,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_SetDiagonalPolicy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BilinearForm_SetDiagonalPolicy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Matrix::DiagonalPolicy arg2 ;
@@ -9721,15 +8486,19 @@ SWIGINTERN PyObject *_wrap_BilinearForm_SetDiagonalPolicy(PyObject *SWIGUNUSEDPA
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"policy",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BilinearForm_SetDiagonalPolicy", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BilinearForm_SetDiagonalPolicy", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_SetDiagonalPolicy" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "BilinearForm_SetDiagonalPolicy" "', argument " "2"" of type '" "mfem::Matrix::DiagonalPolicy""'");
   } 
@@ -9807,7 +8576,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -9816,7 +8585,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_4(PyObject *SWIGU
   mfem::SparseMatrix *arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   mfem::Vector *arg7 = 0 ;
-  int arg8 ;
+  int arg8 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -9832,7 +8601,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_4(PyObject *SWIGU
   void *argp7 = 0 ;
   int res7 = 0 ;
   
-  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
+  if ((nobjs < 7) || (nobjs > 8)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FormLinearSystem" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -9886,108 +8655,17 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_4(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[7]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg8 = PyArray_PyIntAsInt(swig_obj[7]);
+  if (swig_obj[7]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[7]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg8 = PyArray_PyIntAsInt(swig_obj[7]);
+    }
   }
   {
     try {
       (arg1)->SWIGTEMPLATEDISAMBIGUATOR FormLinearSystem< mfem::SparseMatrix >((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7,arg8); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  mfem::SparseMatrix *arg5 = 0 ;
-  mfem::Vector *arg6 = 0 ;
-  mfem::Vector *arg7 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  void *argp6 = 0 ;
-  int res6 = 0 ;
-  void *argp7 = 0 ;
-  int res7 = 0 ;
-  
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FormLinearSystem" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__SparseMatrix,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BilinearForm_FormLinearSystem" "', argument " "5"" of type '" "mfem::SparseMatrix &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "5"" of type '" "mfem::SparseMatrix &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::SparseMatrix * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "BilinearForm_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp6) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res7)) {
-    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp7) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
-  }
-  arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  {
-    try {
-      (arg1)->SWIGTEMPLATEDISAMBIGUATOR FormLinearSystem< mfem::SparseMatrix >((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10049,7 +8727,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -10058,7 +8736,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_6(PyObject *SWIGU
   mfem::HypreParMatrix *arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   mfem::Vector *arg7 = 0 ;
-  int arg8 ;
+  int arg8 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -10074,7 +8752,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_6(PyObject *SWIGU
   void *argp7 = 0 ;
   int res7 = 0 ;
   
-  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
+  if ((nobjs < 7) || (nobjs > 8)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FormLinearSystem" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
@@ -10128,108 +8806,17 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_6(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[7]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg8 = PyArray_PyIntAsInt(swig_obj[7]);
+  if (swig_obj[7]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[7]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg8 = PyArray_PyIntAsInt(swig_obj[7]);
+    }
   }
   {
     try {
       (arg1)->SWIGTEMPLATEDISAMBIGUATOR FormLinearSystem< mfem::HypreParMatrix >((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7,arg8); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  mfem::HypreParMatrix *arg5 = 0 ;
-  mfem::Vector *arg6 = 0 ;
-  mfem::Vector *arg7 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  void *argp6 = 0 ;
-  int res6 = 0 ;
-  void *argp7 = 0 ;
-  int res7 = 0 ;
-  
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BilinearForm_FormLinearSystem" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BilinearForm_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BilinearForm_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BilinearForm_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__HypreParMatrix,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "BilinearForm_FormLinearSystem" "', argument " "5"" of type '" "mfem::HypreParMatrix &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "5"" of type '" "mfem::HypreParMatrix &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::HypreParMatrix * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "BilinearForm_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp6) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
-  }
-  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res7)) {
-    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp7) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BilinearForm_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
-  }
-  arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  {
-    try {
-      (arg1)->SWIGTEMPLATEDISAMBIGUATOR FormLinearSystem< mfem::HypreParMatrix >((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10250,7 +8837,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem(PyObject *self, PyObjec
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "BilinearForm_FormLinearSystem", 0, 8, argv))) SWIG_fail;
   --argc;
-  if (argc == 7) {
+  if ((argc >= 7) && (argc <= 8)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -10279,120 +8866,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem(PyObject *self, PyObjec
                 int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
                 _v = SWIG_CheckState(res);
                 if (_v) {
-                  return _wrap_BilinearForm_FormLinearSystem__SWIG_1(self, argc, argv);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 7) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                void *vptr = 0;
-                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-                _v = SWIG_CheckState(res);
-                if (_v) {
-                  return _wrap_BilinearForm_FormLinearSystem__SWIG_5(self, argc, argv);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 7) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                void *vptr = 0;
-                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-                _v = SWIG_CheckState(res);
-                if (_v) {
-                  return _wrap_BilinearForm_FormLinearSystem__SWIG_7(self, argc, argv);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 8) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__OperatorHandle, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                void *vptr = 0;
-                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-                _v = SWIG_CheckState(res);
-                if (_v) {
+                  if (argc <= 7) {
+                    return _wrap_BilinearForm_FormLinearSystem__SWIG_0(self, argc, argv);
+                  }
                   {
                     if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
                       PyErr_Clear();
@@ -10412,55 +8888,7 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem(PyObject *self, PyObjec
       }
     }
   }
-  if (argc == 8) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                void *vptr = 0;
-                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-                _v = SWIG_CheckState(res);
-                if (_v) {
-                  {
-                    if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
-                      PyErr_Clear();
-                      _v = 0;
-                    } else {
-                      _v = 1;    
-                    }
-                  }
-                  if (_v) {
-                    return _wrap_BilinearForm_FormLinearSystem__SWIG_6(self, argc, argv);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 8) {
+  if ((argc >= 7) && (argc <= 8)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
@@ -10489,6 +8917,9 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem(PyObject *self, PyObjec
                 int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
                 _v = SWIG_CheckState(res);
                 if (_v) {
+                  if (argc <= 7) {
+                    return _wrap_BilinearForm_FormLinearSystem__SWIG_2(self, argc, argv);
+                  }
                   {
                     if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
                       PyErr_Clear();
@@ -10498,7 +8929,58 @@ SWIGINTERN PyObject *_wrap_BilinearForm_FormLinearSystem(PyObject *self, PyObjec
                     }
                   }
                   if (_v) {
-                    return _wrap_BilinearForm_FormLinearSystem__SWIG_4(self, argc, argv);
+                    return _wrap_BilinearForm_FormLinearSystem__SWIG_2(self, argc, argv);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 7) && (argc <= 8)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearForm, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__HypreParMatrix, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  if (argc <= 7) {
+                    return _wrap_BilinearForm_FormLinearSystem__SWIG_3(self, argc, argv);
+                  }
+                  {
+                    if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
+                      PyErr_Clear();
+                      _v = 0;
+                    } else {
+                      _v = 1;    
+                    }
+                  }
+                  if (_v) {
+                    return _wrap_BilinearForm_FormLinearSystem__SWIG_3(self, argc, argv);
                   }
                 }
               }
@@ -10513,11 +8995,8 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BilinearForm_FormLinearSystem'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::BilinearForm::FormLinearSystem(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::OperatorHandle &,mfem::Vector &,mfem::Vector &,int)\n"
-    "    mfem::BilinearForm::FormLinearSystem(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::OperatorHandle &,mfem::Vector &,mfem::Vector &)\n"
     "    mfem::BilinearForm::FormLinearSystem< mfem::SparseMatrix >(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::SparseMatrix &,mfem::Vector &,mfem::Vector &,int)\n"
-    "    mfem::BilinearForm::FormLinearSystem< mfem::SparseMatrix >(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::SparseMatrix &,mfem::Vector &,mfem::Vector &)\n"
-    "    mfem::BilinearForm::FormLinearSystem< mfem::HypreParMatrix >(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::HypreParMatrix &,mfem::Vector &,mfem::Vector &,int)\n"
-    "    mfem::BilinearForm::FormLinearSystem< mfem::HypreParMatrix >(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::HypreParMatrix &,mfem::Vector &,mfem::Vector &)\n");
+    "    mfem::BilinearForm::FormLinearSystem< mfem::HypreParMatrix >(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::HypreParMatrix &,mfem::Vector &,mfem::Vector &,int)\n");
   return 0;
 }
 
@@ -10644,16 +9123,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_BilinearForm(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_BilinearForm(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearForm *arg1 = (mfem::BilinearForm *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_BilinearForm", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_BilinearForm" "', argument " "1"" of type '" "mfem::BilinearForm *""'"); 
   }
@@ -10972,7 +9453,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -10983,15 +9464,20 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self)
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MixedBilinearForm_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_Mult" "', argument " "1"" of type '" "mfem::MixedBilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -10999,7 +9485,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Mult(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -11022,12 +9508,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
-  double arg4 ;
+  double arg4 = (double) (double)1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -11036,14 +9522,21 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSE
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  (char *)"a",  NULL 
+  };
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:MixedBilinearForm_AddMult", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AddMult" "', argument " "1"" of type '" "mfem::MixedBilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -11051,7 +9544,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -11059,11 +9552,13 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MixedBilinearForm_AddMult" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MixedBilinearForm_AddMult" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       ((mfem::MixedBilinearForm const *)arg1)->AddMult((mfem::Vector const &)*arg2,*arg3,arg4); 
@@ -11079,7 +9574,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -11090,124 +9585,20 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult__SWIG_1(PyObject *SWIGUNUSE
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AddMult" "', argument " "1"" of type '" "mfem::MixedBilinearForm const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  {
-    try {
-      ((mfem::MixedBilinearForm const *)arg1)->AddMult((mfem::Vector const &)*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMult(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "MixedBilinearForm_AddMult", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_MixedBilinearForm_AddMult__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_MixedBilinearForm_AddMult__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MixedBilinearForm_AddMult'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::MixedBilinearForm::AddMult(mfem::Vector const &,mfem::Vector &,double const) const\n"
-    "    mfem::MixedBilinearForm::AddMult(mfem::Vector const &,mfem::Vector &) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  PyObject *swig_obj[3] ;
-  
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MixedBilinearForm_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_MultTranspose" "', argument " "1"" of type '" "mfem::MixedBilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -11215,7 +9606,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_MultTranspose(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -11238,12 +9629,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Vector *arg2 = 0 ;
   mfem::Vector *arg3 = 0 ;
-  double arg4 ;
+  double arg4 = (double) (double)1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -11252,14 +9643,21 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose__SWIG_0(PyObject *
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  (char *)"a",  NULL 
+  };
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:MixedBilinearForm_AddMultTranspose", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "1"" of type '" "mfem::MixedBilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -11267,7 +9665,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose__SWIG_0(PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -11275,11 +9673,13 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose__SWIG_0(PyObject *
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       ((mfem::MixedBilinearForm const *)arg1)->AddMultTranspose((mfem::Vector const &)*arg2,*arg3,arg4); 
@@ -11292,115 +9692,6 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose__SWIG_0(PyObject *
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "1"" of type '" "mfem::MixedBilinearForm const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AddMultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  {
-    try {
-      ((mfem::MixedBilinearForm const *)arg1)->AddMultTranspose((mfem::Vector const &)*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddMultTranspose(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "MixedBilinearForm_AddMultTranspose", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_MixedBilinearForm_AddMultTranspose__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_MixedBilinearForm_AddMultTranspose__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MixedBilinearForm_AddMultTranspose'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::MixedBilinearForm::AddMultTranspose(mfem::Vector const &,mfem::Vector &,double const) const\n"
-    "    mfem::MixedBilinearForm::AddMultTranspose(mfem::Vector const &,mfem::Vector &) const\n");
-  return 0;
 }
 
 
@@ -11434,24 +9725,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_Finalize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_Finalize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"skip_zeros",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:MixedBilinearForm_Finalize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_Finalize" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   {
     try {
@@ -11468,80 +9766,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_Finalize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_Finalize" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    try {
-      (arg1)->Finalize(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_Finalize(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "MixedBilinearForm_Finalize", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_MixedBilinearForm_Finalize__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_MixedBilinearForm_Finalize__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MixedBilinearForm_Finalize'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::MixedBilinearForm::Finalize(int)\n"
-    "    mfem::MixedBilinearForm::Finalize()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBlocks(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBlocks(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Array2D< mfem::SparseMatrix * > *arg2 = 0 ;
@@ -11549,15 +9774,19 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_GetBlocks(PyObject *SWIGUNUSEDPARM(
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"blocks",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_GetBlocks", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MixedBilinearForm_GetBlocks", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_GetBlocks" "', argument " "1"" of type '" "mfem::MixedBilinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Array2DT_mfem__SparseMatrix_p_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Array2DT_mfem__SparseMatrix_p_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_GetBlocks" "', argument " "2"" of type '" "mfem::Array2D< mfem::SparseMatrix * > &""'"); 
   }
@@ -11702,7 +9931,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
@@ -11710,15 +9939,19 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddDomainIntegrator(PyObject *SWIGU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bfi",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_AddDomainIntegrator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MixedBilinearForm_AddDomainIntegrator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
@@ -11870,7 +10103,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddTraceFaceIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddTraceFaceIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::BilinearFormIntegrator *arg2 = (mfem::BilinearFormIntegrator *) 0 ;
@@ -11878,15 +10111,19 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AddTraceFaceIntegrator(PyObject *SW
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bfi",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_AddTraceFaceIntegrator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MixedBilinearForm_AddTraceFaceIntegrator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AddTraceFaceIntegrator" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__BilinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_AddTraceFaceIntegrator" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator *""'"); 
   }
@@ -12218,7 +10455,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_SetAssemblyLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_SetAssemblyLevel(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::AssemblyLevel arg2 ;
@@ -12226,15 +10463,19 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_SetAssemblyLevel(PyObject *SWIGUNUS
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"assembly_level",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_SetAssemblyLevel", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MixedBilinearForm_SetAssemblyLevel", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_SetAssemblyLevel" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MixedBilinearForm_SetAssemblyLevel" "', argument " "2"" of type '" "mfem::AssemblyLevel""'");
   } 
@@ -12254,24 +10495,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_Assemble__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_Assemble(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"skip_zeros",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:MixedBilinearForm_Assemble", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_Assemble" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   {
     try {
@@ -12285,79 +10533,6 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_Assemble__SWIG_0(PyObject *SWIGUNUS
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_Assemble__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_Assemble" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    try {
-      (arg1)->Assemble(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_Assemble(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "MixedBilinearForm_Assemble", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_MixedBilinearForm_Assemble__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_MixedBilinearForm_Assemble__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MixedBilinearForm_Assemble'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::MixedBilinearForm::Assemble(int)\n"
-    "    mfem::MixedBilinearForm::Assemble()\n");
-  return 0;
 }
 
 
@@ -12510,7 +10685,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   int arg2 ;
@@ -12519,21 +10694,26 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeElementMatrix(PyObject *SWIG
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"elmat",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_ComputeElementMatrix", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MixedBilinearForm_ComputeElementMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_ComputeElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_ComputeElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -12556,7 +10736,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeBdrElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeBdrElementMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   int arg2 ;
@@ -12565,21 +10745,26 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_ComputeBdrElementMatrix(PyObject *S
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"elmat",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_ComputeBdrElementMatrix", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MixedBilinearForm_ComputeBdrElementMatrix", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_ComputeBdrElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_ComputeBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -12607,13 +10792,13 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_0(PyObj
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
@@ -12633,11 +10818,13 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_0(PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -12659,54 +10846,9 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_1(PyObj
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    try {
-      (arg1)->AssembleElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
   mfem::Array< int > *arg4 = 0 ;
   mfem::Array< int > *arg5 = 0 ;
-  int arg6 ;
+  int arg6 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -12716,7 +10858,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_2(PyObj
   void *argp5 = 0 ;
   int res5 = 0 ;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 5) || (nobjs > 6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
@@ -12752,82 +10894,17 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_2(PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "5"" of type '" "mfem::Array< int > &""'"); 
   }
   arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+  if (swig_obj[5]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    }
   }
   {
     try {
       (arg1)->AssembleElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4,*arg5,arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
-  mfem::Array< int > *arg4 = 0 ;
-  mfem::Array< int > *arg5 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "5"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleElementMatrix" "', argument " "5"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    try {
-      (arg1)->AssembleElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4,*arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -12848,7 +10925,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix(PyObject *sel
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "MixedBilinearForm_AssembleElementMatrix", 0, 6, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
@@ -12866,29 +10943,9 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix(PyObject *sel
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
+          if (argc <= 3) {
+            return _wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_0(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -12904,7 +10961,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix(PyObject *sel
       }
     }
   }
-  if (argc == 5) {
+  if ((argc >= 5) && (argc <= 6)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
@@ -12930,39 +10987,9 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix(PyObject *sel
             int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_3(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
+              if (argc <= 5) {
+                return _wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_1(self, argc, argv);
+              }
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   PyErr_Clear();
@@ -12972,7 +10999,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleElementMatrix(PyObject *sel
                 }
               }
               if (_v) {
-                return _wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_2(self, argc, argv);
+                return _wrap_MixedBilinearForm_AssembleElementMatrix__SWIG_1(self, argc, argv);
               }
             }
           }
@@ -12985,9 +11012,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MixedBilinearForm_AssembleElementMatrix'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::MixedBilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,int)\n"
-    "    mfem::MixedBilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &)\n"
-    "    mfem::MixedBilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,mfem::Array< int > &,int)\n"
-    "    mfem::MixedBilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,mfem::Array< int > &)\n");
+    "    mfem::MixedBilinearForm::AssembleElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,mfem::Array< int > &,int)\n");
   return 0;
 }
 
@@ -12997,13 +11022,13 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_0(Py
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
@@ -13023,11 +11048,13 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_0(Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -13049,54 +11076,9 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_1(Py
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   int arg2 ;
   mfem::DenseMatrix *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  {
-    try {
-      (arg1)->AssembleBdrElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
   mfem::Array< int > *arg4 = 0 ;
   mfem::Array< int > *arg5 = 0 ;
-  int arg6 ;
+  int arg6 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -13106,7 +11088,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_2(Py
   void *argp5 = 0 ;
   int res5 = 0 ;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 5) || (nobjs > 6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
@@ -13142,82 +11124,17 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_2(Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "5"" of type '" "mfem::Array< int > &""'"); 
   }
   arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+  if (swig_obj[5]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    }
   }
   {
     try {
       (arg1)->AssembleBdrElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4,*arg5,arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
-  int arg2 ;
-  mfem::DenseMatrix *arg3 = 0 ;
-  mfem::Array< int > *arg4 = 0 ;
-  mfem::Array< int > *arg5 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "3"" of type '" "mfem::DenseMatrix const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "4"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "5"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_AssembleBdrElementMatrix" "', argument " "5"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    try {
-      (arg1)->AssembleBdrElementMatrix(arg2,(mfem::DenseMatrix const &)*arg3,*arg4,*arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13238,7 +11155,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix(PyObject *
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "MixedBilinearForm_AssembleBdrElementMatrix", 0, 6, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
@@ -13256,29 +11173,9 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix(PyObject *
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
+          if (argc <= 3) {
+            return _wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_0(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -13294,7 +11191,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix(PyObject *
       }
     }
   }
-  if (argc == 5) {
+  if ((argc >= 5) && (argc <= 6)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
@@ -13320,39 +11217,9 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix(PyObject *
             int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_3(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MixedBilinearForm, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
+              if (argc <= 5) {
+                return _wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_1(self, argc, argv);
+              }
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   PyErr_Clear();
@@ -13362,7 +11229,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_AssembleBdrElementMatrix(PyObject *
                 }
               }
               if (_v) {
-                return _wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_2(self, argc, argv);
+                return _wrap_MixedBilinearForm_AssembleBdrElementMatrix__SWIG_1(self, argc, argv);
               }
             }
           }
@@ -13375,14 +11242,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MixedBilinearForm_AssembleBdrElementMatrix'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::MixedBilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,int)\n"
-    "    mfem::MixedBilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &)\n"
-    "    mfem::MixedBilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,mfem::Array< int > &,int)\n"
-    "    mfem::MixedBilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,mfem::Array< int > &)\n");
+    "    mfem::MixedBilinearForm::AssembleBdrElementMatrix(int,mfem::DenseMatrix const &,mfem::Array< int > &,mfem::Array< int > &,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -13396,15 +11261,21 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUN
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bdr_attr_is_ess",  (char *)"sol",  (char *)"rhs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_EliminateTrialDofs", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MixedBilinearForm_EliminateTrialDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -13412,7 +11283,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -13420,7 +11291,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTrialDofs(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MixedBilinearForm_EliminateTrialDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -13443,7 +11314,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -13457,15 +11328,21 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(P
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"marked_vdofs",  (char *)"sol",  (char *)"rhs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_EliminateEssentialBCFromTrialDofs", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MixedBilinearForm_EliminateEssentialBCFromTrialDofs", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -13473,7 +11350,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(P
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -13481,7 +11358,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs(P
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MixedBilinearForm_EliminateEssentialBCFromTrialDofs" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -13504,7 +11381,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTestDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTestDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -13512,15 +11389,19 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_EliminateTestDofs(PyObject *SWIGUNU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"bdr_attr_is_ess",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_EliminateTestDofs", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MixedBilinearForm_EliminateTestDofs", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_EliminateTestDofs" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_EliminateTestDofs" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -13543,7 +11424,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularSystemMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularSystemMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -13557,15 +11438,21 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularSystemMatrix(PyObjec
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"trial_tdof_list",  (char *)"test_tdof_list",  (char *)"A",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_FormRectangularSystemMatrix", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MixedBilinearForm_FormRectangularSystemMatrix", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_FormRectangularSystemMatrix" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_FormRectangularSystemMatrix" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -13573,7 +11460,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularSystemMatrix(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularSystemMatrix" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_FormRectangularSystemMatrix" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -13581,7 +11468,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularSystemMatrix(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularSystemMatrix" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__OperatorHandle,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__OperatorHandle,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MixedBilinearForm_FormRectangularSystemMatrix" "', argument " "4"" of type '" "mfem::OperatorHandle &""'"); 
   }
@@ -13604,7 +11491,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MixedBilinearForm *arg1 = (mfem::MixedBilinearForm *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -13630,15 +11517,25 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
   int res7 = 0 ;
   void *argp8 = 0 ;
   int res8 = 0 ;
-  PyObject *swig_obj[8] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"trial_tdof_list",  (char *)"test_tdof_list",  (char *)"x",  (char *)"b",  (char *)"A",  (char *)"X",  (char *)"B",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MixedBilinearForm_FormRectangularLinearSystem", 8, 8, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOOO:MixedBilinearForm_FormRectangularLinearSystem", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MixedBilinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "1"" of type '" "mfem::MixedBilinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MixedBilinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -13646,7 +11543,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -13654,7 +11551,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -13662,7 +11559,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "5"" of type '" "mfem::Vector &""'"); 
   }
@@ -13670,7 +11567,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "5"" of type '" "mfem::Vector &""'"); 
   }
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__OperatorHandle,  0 );
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__OperatorHandle,  0 );
   if (!SWIG_IsOK(res6)) {
     SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "6"" of type '" "mfem::OperatorHandle &""'"); 
   }
@@ -13678,7 +11575,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "6"" of type '" "mfem::OperatorHandle &""'"); 
   }
   arg6 = reinterpret_cast< mfem::OperatorHandle * >(argp6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_mfem__Vector,  0 );
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res7)) {
     SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
@@ -13686,7 +11583,7 @@ SWIGINTERN PyObject *_wrap_MixedBilinearForm_FormRectangularLinearSystem(PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  res8 = SWIG_ConvertPtr(swig_obj[7], &argp8, SWIGTYPE_p_mfem__Vector,  0 );
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res8)) {
     SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "MixedBilinearForm_FormRectangularLinearSystem" "', argument " "8"" of type '" "mfem::Vector &""'"); 
   }
@@ -13962,7 +11859,7 @@ SWIGINTERN PyObject *MixedBilinearForm_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_DiscreteLinearOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_DiscreteLinearOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::FiniteElementSpace *arg1 = (mfem::FiniteElementSpace *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
@@ -13970,16 +11867,20 @@ SWIGINTERN PyObject *_wrap_new_DiscreteLinearOperator(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"domain_fes",  (char *)"range_fes",  NULL 
+  };
   mfem::DiscreteLinearOperator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_DiscreteLinearOperator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_DiscreteLinearOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DiscreteLinearOperator" "', argument " "1"" of type '" "mfem::FiniteElementSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::FiniteElementSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_DiscreteLinearOperator" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
   }
@@ -13999,7 +11900,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddDomainInterpolator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddDomainInterpolator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DiscreteLinearOperator *arg1 = (mfem::DiscreteLinearOperator *) 0 ;
   mfem::DiscreteInterpolator *arg2 = (mfem::DiscreteInterpolator *) 0 ;
@@ -14007,15 +11908,19 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddDomainInterpolator(PyObject
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"di",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DiscreteLinearOperator_AddDomainInterpolator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DiscreteLinearOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DiscreteLinearOperator_AddDomainInterpolator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DiscreteLinearOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiscreteLinearOperator_AddDomainInterpolator" "', argument " "1"" of type '" "mfem::DiscreteLinearOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DiscreteLinearOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__DiscreteInterpolator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__DiscreteInterpolator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DiscreteLinearOperator_AddDomainInterpolator" "', argument " "2"" of type '" "mfem::DiscreteInterpolator *""'"); 
   }
@@ -14035,7 +11940,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddTraceFaceInterpolator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddTraceFaceInterpolator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DiscreteLinearOperator *arg1 = (mfem::DiscreteLinearOperator *) 0 ;
   mfem::DiscreteInterpolator *arg2 = (mfem::DiscreteInterpolator *) 0 ;
@@ -14043,15 +11948,19 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_AddTraceFaceInterpolator(PyObj
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"di",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DiscreteLinearOperator_AddTraceFaceInterpolator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DiscreteLinearOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DiscreteLinearOperator_AddTraceFaceInterpolator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DiscreteLinearOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiscreteLinearOperator_AddTraceFaceInterpolator" "', argument " "1"" of type '" "mfem::DiscreteLinearOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DiscreteLinearOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__DiscreteInterpolator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__DiscreteInterpolator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DiscreteLinearOperator_AddTraceFaceInterpolator" "', argument " "2"" of type '" "mfem::DiscreteInterpolator *""'"); 
   }
@@ -14101,24 +12010,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_Assemble__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_Assemble(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DiscreteLinearOperator *arg1 = (mfem::DiscreteLinearOperator *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"skip_zeros",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DiscreteLinearOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:DiscreteLinearOperator_Assemble", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DiscreteLinearOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiscreteLinearOperator_Assemble" "', argument " "1"" of type '" "mfem::DiscreteLinearOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DiscreteLinearOperator * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   {
     try {
@@ -14132,79 +12048,6 @@ SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_Assemble__SWIG_0(PyObject *SWI
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_Assemble__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::DiscreteLinearOperator *arg1 = (mfem::DiscreteLinearOperator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DiscreteLinearOperator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DiscreteLinearOperator_Assemble" "', argument " "1"" of type '" "mfem::DiscreteLinearOperator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::DiscreteLinearOperator * >(argp1);
-  {
-    try {
-      (arg1)->Assemble(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_DiscreteLinearOperator_Assemble(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "DiscreteLinearOperator_Assemble", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DiscreteLinearOperator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_DiscreteLinearOperator_Assemble__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__DiscreteLinearOperator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_DiscreteLinearOperator_Assemble__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'DiscreteLinearOperator_Assemble'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::DiscreteLinearOperator::Assemble(int)\n"
-    "    mfem::DiscreteLinearOperator::Assemble()\n");
-  return 0;
 }
 
 
@@ -14254,16 +12097,16 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_BilinearForm", _wrap_new_BilinearForm, METH_VARARGS, "\n"
 		"BilinearForm()\n"
 		"BilinearForm(FiniteElementSpace f)\n"
-		"BilinearForm(FiniteElementSpace f, BilinearForm bf, int ps=0)\n"
+		"new_BilinearForm(PyObject * _self, FiniteElementSpace f, BilinearForm bf, int ps=0) -> BilinearForm\n"
 		""},
 	 { "BilinearForm_Size", _wrap_BilinearForm_Size, METH_O, "BilinearForm_Size(BilinearForm self) -> int"},
-	 { "BilinearForm_SetAssemblyLevel", _wrap_BilinearForm_SetAssemblyLevel, METH_VARARGS, "BilinearForm_SetAssemblyLevel(BilinearForm self, mfem::AssemblyLevel assembly_level)"},
+	 { "BilinearForm_SetAssemblyLevel", (PyCFunction)(void(*)(void))_wrap_BilinearForm_SetAssemblyLevel, METH_VARARGS|METH_KEYWORDS, "BilinearForm_SetAssemblyLevel(BilinearForm self, mfem::AssemblyLevel assembly_level)"},
 	 { "BilinearForm_GetAssemblyLevel", _wrap_BilinearForm_GetAssemblyLevel, METH_O, "BilinearForm_GetAssemblyLevel(BilinearForm self) -> mfem::AssemblyLevel"},
 	 { "BilinearForm_EnableStaticCondensation", _wrap_BilinearForm_EnableStaticCondensation, METH_O, "BilinearForm_EnableStaticCondensation(BilinearForm self)"},
 	 { "BilinearForm_StaticCondensationIsEnabled", _wrap_BilinearForm_StaticCondensationIsEnabled, METH_O, "BilinearForm_StaticCondensationIsEnabled(BilinearForm self) -> bool"},
 	 { "BilinearForm_SCFESpace", _wrap_BilinearForm_SCFESpace, METH_O, "BilinearForm_SCFESpace(BilinearForm self) -> FiniteElementSpace"},
-	 { "BilinearForm_EnableHybridization", _wrap_BilinearForm_EnableHybridization, METH_VARARGS, "BilinearForm_EnableHybridization(BilinearForm self, FiniteElementSpace constr_space, BilinearFormIntegrator constr_integ, intArray ess_tdof_list)"},
-	 { "BilinearForm_UsePrecomputedSparsity", _wrap_BilinearForm_UsePrecomputedSparsity, METH_VARARGS, "BilinearForm_UsePrecomputedSparsity(BilinearForm self, int ps=1)"},
+	 { "BilinearForm_EnableHybridization", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EnableHybridization, METH_VARARGS|METH_KEYWORDS, "BilinearForm_EnableHybridization(BilinearForm self, FiniteElementSpace constr_space, BilinearFormIntegrator constr_integ, intArray ess_tdof_list)"},
+	 { "BilinearForm_UsePrecomputedSparsity", (PyCFunction)(void(*)(void))_wrap_BilinearForm_UsePrecomputedSparsity, METH_VARARGS|METH_KEYWORDS, "BilinearForm_UsePrecomputedSparsity(BilinearForm self, int ps=1)"},
 	 { "BilinearForm_UseSparsity", _wrap_BilinearForm_UseSparsity, METH_VARARGS, "\n"
 		"BilinearForm_UseSparsity(BilinearForm self, int * I, int * J, bool isSorted)\n"
 		"BilinearForm_UseSparsity(BilinearForm self, SparseMatrix A)\n"
@@ -14275,21 +12118,21 @@ static PyMethodDef SwigMethods[] = {
 	 { "BilinearForm_GetFBFI", _wrap_BilinearForm_GetFBFI, METH_O, "BilinearForm_GetFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "BilinearForm_GetBFBFI", _wrap_BilinearForm_GetBFBFI, METH_O, "BilinearForm_GetBFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "BilinearForm_GetBFBFI_Marker", _wrap_BilinearForm_GetBFBFI_Marker, METH_O, "BilinearForm_GetBFBFI_Marker(BilinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
-	 { "BilinearForm___call__", _wrap_BilinearForm___call__, METH_VARARGS, "BilinearForm___call__(BilinearForm self, int i, int j) -> double const &"},
+	 { "BilinearForm___call__", (PyCFunction)(void(*)(void))_wrap_BilinearForm___call__, METH_VARARGS|METH_KEYWORDS, "BilinearForm___call__(BilinearForm self, int i, int j) -> double const &"},
 	 { "BilinearForm_Elem", _wrap_BilinearForm_Elem, METH_VARARGS, "\n"
 		"BilinearForm_Elem(BilinearForm self, int i, int j) -> double\n"
 		"BilinearForm_Elem(BilinearForm self, int i, int j) -> double const &\n"
 		""},
-	 { "BilinearForm_Mult", _wrap_BilinearForm_Mult, METH_VARARGS, "BilinearForm_Mult(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_FullMult", _wrap_BilinearForm_FullMult, METH_VARARGS, "BilinearForm_FullMult(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_AddMult", _wrap_BilinearForm_AddMult, METH_VARARGS, "BilinearForm_AddMult(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
-	 { "BilinearForm_FullAddMult", _wrap_BilinearForm_FullAddMult, METH_VARARGS, "BilinearForm_FullAddMult(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_AddMultTranspose", _wrap_BilinearForm_AddMultTranspose, METH_VARARGS, "BilinearForm_AddMultTranspose(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
-	 { "BilinearForm_FullAddMultTranspose", _wrap_BilinearForm_FullAddMultTranspose, METH_VARARGS, "BilinearForm_FullAddMultTranspose(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_MultTranspose", _wrap_BilinearForm_MultTranspose, METH_VARARGS, "BilinearForm_MultTranspose(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_InnerProduct", _wrap_BilinearForm_InnerProduct, METH_VARARGS, "BilinearForm_InnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
+	 { "BilinearForm_Mult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Mult, METH_VARARGS|METH_KEYWORDS, "BilinearForm_Mult(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_FullMult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullMult, METH_VARARGS|METH_KEYWORDS, "BilinearForm_FullMult(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_AddMult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddMult, METH_VARARGS|METH_KEYWORDS, "BilinearForm_AddMult(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "BilinearForm_FullAddMult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullAddMult, METH_VARARGS|METH_KEYWORDS, "BilinearForm_FullAddMult(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "BilinearForm_AddMultTranspose(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "BilinearForm_FullAddMultTranspose", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullAddMultTranspose, METH_VARARGS|METH_KEYWORDS, "BilinearForm_FullAddMultTranspose(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BilinearForm_MultTranspose, METH_VARARGS|METH_KEYWORDS, "BilinearForm_MultTranspose(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_InnerProduct", (PyCFunction)(void(*)(void))_wrap_BilinearForm_InnerProduct, METH_VARARGS|METH_KEYWORDS, "BilinearForm_InnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
 	 { "BilinearForm_Inverse", _wrap_BilinearForm_Inverse, METH_O, "BilinearForm_Inverse(BilinearForm self) -> MatrixInverse"},
-	 { "BilinearForm_Finalize", _wrap_BilinearForm_Finalize, METH_VARARGS, "BilinearForm_Finalize(BilinearForm self, int skip_zeros=1)"},
+	 { "BilinearForm_Finalize", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Finalize, METH_VARARGS|METH_KEYWORDS, "BilinearForm_Finalize(BilinearForm self, int skip_zeros=1)"},
 	 { "BilinearForm_SpMat", _wrap_BilinearForm_SpMat, METH_VARARGS, "\n"
 		"BilinearForm_SpMat(BilinearForm self) -> SparseMatrix\n"
 		"BilinearForm_SpMat(BilinearForm self) -> SparseMatrix\n"
@@ -14299,27 +12142,27 @@ static PyMethodDef SwigMethods[] = {
 		"BilinearForm_SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		"BilinearForm_SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		""},
-	 { "BilinearForm_AddDomainIntegrator", _wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS, "BilinearForm_AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "BilinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "BilinearForm_AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "BilinearForm_AddBoundaryIntegrator", _wrap_BilinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"BilinearForm_AddBoundaryIntegrator(BilinearForm self, BilinearFormIntegrator bfi)\n"
 		"BilinearForm_AddBoundaryIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
 		""},
-	 { "BilinearForm_AddInteriorFaceIntegrator", _wrap_BilinearForm_AddInteriorFaceIntegrator, METH_VARARGS, "BilinearForm_AddInteriorFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "BilinearForm_AddInteriorFaceIntegrator", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddInteriorFaceIntegrator, METH_VARARGS|METH_KEYWORDS, "BilinearForm_AddInteriorFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "BilinearForm_AddBdrFaceIntegrator", _wrap_BilinearForm_AddBdrFaceIntegrator, METH_VARARGS, "\n"
 		"BilinearForm_AddBdrFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi)\n"
 		"BilinearForm_AddBdrFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
 		""},
-	 { "BilinearForm_Assemble", _wrap_BilinearForm_Assemble, METH_VARARGS, "BilinearForm_Assemble(BilinearForm self, int skip_zeros=1)"},
-	 { "BilinearForm_AssembleDiagonal", _wrap_BilinearForm_AssembleDiagonal, METH_VARARGS, "BilinearForm_AssembleDiagonal(BilinearForm self, Vector diag)"},
+	 { "BilinearForm_Assemble", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Assemble, METH_VARARGS|METH_KEYWORDS, "BilinearForm_Assemble(BilinearForm self, int skip_zeros=1)"},
+	 { "BilinearForm_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "BilinearForm_AssembleDiagonal(BilinearForm self, Vector diag)"},
 	 { "BilinearForm_GetProlongation", _wrap_BilinearForm_GetProlongation, METH_O, "BilinearForm_GetProlongation(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetRestriction", _wrap_BilinearForm_GetRestriction, METH_O, "BilinearForm_GetRestriction(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputProlongation", _wrap_BilinearForm_GetOutputProlongation, METH_O, "BilinearForm_GetOutputProlongation(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputRestriction", _wrap_BilinearForm_GetOutputRestriction, METH_O, "BilinearForm_GetOutputRestriction(BilinearForm self) -> Operator"},
-	 { "BilinearForm_RecoverFEMSolution", _wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS, "BilinearForm_RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"},
+	 { "BilinearForm_RecoverFEMSolution", (PyCFunction)(void(*)(void))_wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS|METH_KEYWORDS, "BilinearForm_RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"},
 	 { "BilinearForm_ComputeElementMatrices", _wrap_BilinearForm_ComputeElementMatrices, METH_O, "BilinearForm_ComputeElementMatrices(BilinearForm self)"},
 	 { "BilinearForm_FreeElementMatrices", _wrap_BilinearForm_FreeElementMatrices, METH_O, "BilinearForm_FreeElementMatrices(BilinearForm self)"},
-	 { "BilinearForm_ComputeElementMatrix", _wrap_BilinearForm_ComputeElementMatrix, METH_VARARGS, "BilinearForm_ComputeElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
-	 { "BilinearForm_ComputeBdrElementMatrix", _wrap_BilinearForm_ComputeBdrElementMatrix, METH_VARARGS, "BilinearForm_ComputeBdrElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
+	 { "BilinearForm_ComputeElementMatrix", (PyCFunction)(void(*)(void))_wrap_BilinearForm_ComputeElementMatrix, METH_VARARGS|METH_KEYWORDS, "BilinearForm_ComputeElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
+	 { "BilinearForm_ComputeBdrElementMatrix", (PyCFunction)(void(*)(void))_wrap_BilinearForm_ComputeBdrElementMatrix, METH_VARARGS|METH_KEYWORDS, "BilinearForm_ComputeBdrElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
 	 { "BilinearForm_AssembleElementMatrix", _wrap_BilinearForm_AssembleElementMatrix, METH_VARARGS, "\n"
 		"BilinearForm_AssembleElementMatrix(BilinearForm self, int i, DenseMatrix elmat, int skip_zeros=1)\n"
 		"BilinearForm_AssembleElementMatrix(BilinearForm self, int i, DenseMatrix elmat, intArray vdofs, int skip_zeros=1)\n"
@@ -14332,7 +12175,7 @@ static PyMethodDef SwigMethods[] = {
 		"BilinearForm_EliminateEssentialBC(BilinearForm self, intArray bdr_attr_is_ess, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"BilinearForm_EliminateEssentialBC(BilinearForm self, intArray bdr_attr_is_ess, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		""},
-	 { "BilinearForm_EliminateEssentialBCDiag", _wrap_BilinearForm_EliminateEssentialBCDiag, METH_VARARGS, "BilinearForm_EliminateEssentialBCDiag(BilinearForm self, intArray bdr_attr_is_ess, double value)"},
+	 { "BilinearForm_EliminateEssentialBCDiag", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EliminateEssentialBCDiag, METH_VARARGS|METH_KEYWORDS, "BilinearForm_EliminateEssentialBCDiag(BilinearForm self, intArray bdr_attr_is_ess, double value)"},
 	 { "BilinearForm_EliminateVDofs", _wrap_BilinearForm_EliminateVDofs, METH_VARARGS, "\n"
 		"BilinearForm_EliminateVDofs(BilinearForm self, intArray vdofs, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"BilinearForm_EliminateVDofs(BilinearForm self, intArray vdofs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
@@ -14341,16 +12184,16 @@ static PyMethodDef SwigMethods[] = {
 		"BilinearForm_EliminateEssentialBCFromDofs(BilinearForm self, intArray ess_dofs, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"BilinearForm_EliminateEssentialBCFromDofs(BilinearForm self, intArray ess_dofs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		""},
-	 { "BilinearForm_EliminateEssentialBCFromDofsDiag", _wrap_BilinearForm_EliminateEssentialBCFromDofsDiag, METH_VARARGS, "BilinearForm_EliminateEssentialBCFromDofsDiag(BilinearForm self, intArray ess_dofs, double value)"},
-	 { "BilinearForm_EliminateVDofsInRHS", _wrap_BilinearForm_EliminateVDofsInRHS, METH_VARARGS, "BilinearForm_EliminateVDofsInRHS(BilinearForm self, intArray vdofs, Vector x, Vector b)"},
-	 { "BilinearForm_FullInnerProduct", _wrap_BilinearForm_FullInnerProduct, METH_VARARGS, "BilinearForm_FullInnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
-	 { "BilinearForm_Update", _wrap_BilinearForm_Update, METH_VARARGS, "BilinearForm_Update(BilinearForm self, FiniteElementSpace nfes=None)"},
+	 { "BilinearForm_EliminateEssentialBCFromDofsDiag", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EliminateEssentialBCFromDofsDiag, METH_VARARGS|METH_KEYWORDS, "BilinearForm_EliminateEssentialBCFromDofsDiag(BilinearForm self, intArray ess_dofs, double value)"},
+	 { "BilinearForm_EliminateVDofsInRHS", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EliminateVDofsInRHS, METH_VARARGS|METH_KEYWORDS, "BilinearForm_EliminateVDofsInRHS(BilinearForm self, intArray vdofs, Vector x, Vector b)"},
+	 { "BilinearForm_FullInnerProduct", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullInnerProduct, METH_VARARGS|METH_KEYWORDS, "BilinearForm_FullInnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
+	 { "BilinearForm_Update", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Update, METH_VARARGS|METH_KEYWORDS, "BilinearForm_Update(BilinearForm self, FiniteElementSpace nfes=None)"},
 	 { "BilinearForm_GetFES", _wrap_BilinearForm_GetFES, METH_O, "BilinearForm_GetFES(BilinearForm self) -> FiniteElementSpace"},
 	 { "BilinearForm_FESpace", _wrap_BilinearForm_FESpace, METH_VARARGS, "\n"
 		"BilinearForm_FESpace(BilinearForm self) -> FiniteElementSpace\n"
 		"BilinearForm_FESpace(BilinearForm self) -> FiniteElementSpace\n"
 		""},
-	 { "BilinearForm_SetDiagonalPolicy", _wrap_BilinearForm_SetDiagonalPolicy, METH_VARARGS, "BilinearForm_SetDiagonalPolicy(BilinearForm self, mfem::Matrix::DiagonalPolicy policy)"},
+	 { "BilinearForm_SetDiagonalPolicy", (PyCFunction)(void(*)(void))_wrap_BilinearForm_SetDiagonalPolicy, METH_VARARGS|METH_KEYWORDS, "BilinearForm_SetDiagonalPolicy(BilinearForm self, mfem::Matrix::DiagonalPolicy policy)"},
 	 { "BilinearForm_UseExternalIntegrators", _wrap_BilinearForm_UseExternalIntegrators, METH_O, "BilinearForm_UseExternalIntegrators(BilinearForm self)"},
 	 { "delete_BilinearForm", _wrap_delete_BilinearForm, METH_O, "delete_BilinearForm(BilinearForm self)"},
 	 { "BilinearForm_FormLinearSystem", _wrap_BilinearForm_FormLinearSystem, METH_VARARGS, "\n"
@@ -14363,7 +12206,7 @@ static PyMethodDef SwigMethods[] = {
 		"BilinearForm_FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, SparseMatrix A)\n"
 		"BilinearForm_FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, HypreParMatrix A)\n"
 		""},
-	 { "disown_BilinearForm", _wrap_disown_BilinearForm, METH_O, NULL},
+	 { "disown_BilinearForm", (PyCFunction)(void(*)(void))_wrap_disown_BilinearForm, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "BilinearForm_swigregister", BilinearForm_swigregister, METH_O, NULL},
 	 { "BilinearForm_swiginit", BilinearForm_swiginit, METH_VARARGS, NULL},
 	 { "new_MixedBilinearForm", _wrap_new_MixedBilinearForm, METH_VARARGS, "\n"
@@ -14374,24 +12217,24 @@ static PyMethodDef SwigMethods[] = {
 		"MixedBilinearForm_Elem(MixedBilinearForm self, int i, int j) -> double\n"
 		"MixedBilinearForm_Elem(MixedBilinearForm self, int i, int j) -> double const &\n"
 		""},
-	 { "MixedBilinearForm_Mult", _wrap_MixedBilinearForm_Mult, METH_VARARGS, "MixedBilinearForm_Mult(MixedBilinearForm self, Vector x, Vector y)"},
-	 { "MixedBilinearForm_AddMult", _wrap_MixedBilinearForm_AddMult, METH_VARARGS, "MixedBilinearForm_AddMult(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
-	 { "MixedBilinearForm_MultTranspose", _wrap_MixedBilinearForm_MultTranspose, METH_VARARGS, "MixedBilinearForm_MultTranspose(MixedBilinearForm self, Vector x, Vector y)"},
-	 { "MixedBilinearForm_AddMultTranspose", _wrap_MixedBilinearForm_AddMultTranspose, METH_VARARGS, "MixedBilinearForm_AddMultTranspose(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "MixedBilinearForm_Mult", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_Mult, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_Mult(MixedBilinearForm self, Vector x, Vector y)"},
+	 { "MixedBilinearForm_AddMult", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddMult, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_AddMult(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "MixedBilinearForm_MultTranspose", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_MultTranspose(MixedBilinearForm self, Vector x, Vector y)"},
+	 { "MixedBilinearForm_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_AddMultTranspose(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
 	 { "MixedBilinearForm_Inverse", _wrap_MixedBilinearForm_Inverse, METH_O, "MixedBilinearForm_Inverse(MixedBilinearForm self) -> MatrixInverse"},
-	 { "MixedBilinearForm_Finalize", _wrap_MixedBilinearForm_Finalize, METH_VARARGS, "MixedBilinearForm_Finalize(MixedBilinearForm self, int skip_zeros=1)"},
-	 { "MixedBilinearForm_GetBlocks", _wrap_MixedBilinearForm_GetBlocks, METH_VARARGS, "MixedBilinearForm_GetBlocks(MixedBilinearForm self, mfem::Array2D< mfem::SparseMatrix * > & blocks)"},
+	 { "MixedBilinearForm_Finalize", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_Finalize, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_Finalize(MixedBilinearForm self, int skip_zeros=1)"},
+	 { "MixedBilinearForm_GetBlocks", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_GetBlocks, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_GetBlocks(MixedBilinearForm self, mfem::Array2D< mfem::SparseMatrix * > & blocks)"},
 	 { "MixedBilinearForm_SpMat", _wrap_MixedBilinearForm_SpMat, METH_VARARGS, "\n"
 		"MixedBilinearForm_SpMat(MixedBilinearForm self) -> SparseMatrix\n"
 		"MixedBilinearForm_SpMat(MixedBilinearForm self) -> SparseMatrix\n"
 		""},
 	 { "MixedBilinearForm_LoseMat", _wrap_MixedBilinearForm_LoseMat, METH_O, "MixedBilinearForm_LoseMat(MixedBilinearForm self) -> SparseMatrix"},
-	 { "MixedBilinearForm_AddDomainIntegrator", _wrap_MixedBilinearForm_AddDomainIntegrator, METH_VARARGS, "MixedBilinearForm_AddDomainIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "MixedBilinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_AddDomainIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "MixedBilinearForm_AddBoundaryIntegrator", _wrap_MixedBilinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"MixedBilinearForm_AddBoundaryIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)\n"
 		"MixedBilinearForm_AddBoundaryIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
 		""},
-	 { "MixedBilinearForm_AddTraceFaceIntegrator", _wrap_MixedBilinearForm_AddTraceFaceIntegrator, METH_VARARGS, "MixedBilinearForm_AddTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "MixedBilinearForm_AddTraceFaceIntegrator", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddTraceFaceIntegrator, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_AddTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "MixedBilinearForm_AddBdrTraceFaceIntegrator", _wrap_MixedBilinearForm_AddBdrTraceFaceIntegrator, METH_VARARGS, "\n"
 		"MixedBilinearForm_AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)\n"
 		"MixedBilinearForm_AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
@@ -14402,15 +12245,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "MixedBilinearForm_GetTFBFI", _wrap_MixedBilinearForm_GetTFBFI, METH_O, "MixedBilinearForm_GetTFBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "MixedBilinearForm_GetBTFBFI", _wrap_MixedBilinearForm_GetBTFBFI, METH_O, "MixedBilinearForm_GetBTFBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "MixedBilinearForm_GetBTFBFI_Marker", _wrap_MixedBilinearForm_GetBTFBFI_Marker, METH_O, "MixedBilinearForm_GetBTFBFI_Marker(MixedBilinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
-	 { "MixedBilinearForm_SetAssemblyLevel", _wrap_MixedBilinearForm_SetAssemblyLevel, METH_VARARGS, "MixedBilinearForm_SetAssemblyLevel(MixedBilinearForm self, mfem::AssemblyLevel assembly_level)"},
-	 { "MixedBilinearForm_Assemble", _wrap_MixedBilinearForm_Assemble, METH_VARARGS, "MixedBilinearForm_Assemble(MixedBilinearForm self, int skip_zeros=1)"},
+	 { "MixedBilinearForm_SetAssemblyLevel", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_SetAssemblyLevel, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_SetAssemblyLevel(MixedBilinearForm self, mfem::AssemblyLevel assembly_level)"},
+	 { "MixedBilinearForm_Assemble", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_Assemble, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_Assemble(MixedBilinearForm self, int skip_zeros=1)"},
 	 { "MixedBilinearForm_GetProlongation", _wrap_MixedBilinearForm_GetProlongation, METH_O, "MixedBilinearForm_GetProlongation(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_GetRestriction", _wrap_MixedBilinearForm_GetRestriction, METH_O, "MixedBilinearForm_GetRestriction(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_GetOutputProlongation", _wrap_MixedBilinearForm_GetOutputProlongation, METH_O, "MixedBilinearForm_GetOutputProlongation(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_GetOutputRestriction", _wrap_MixedBilinearForm_GetOutputRestriction, METH_O, "MixedBilinearForm_GetOutputRestriction(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_ConformingAssemble", _wrap_MixedBilinearForm_ConformingAssemble, METH_O, "MixedBilinearForm_ConformingAssemble(MixedBilinearForm self)"},
-	 { "MixedBilinearForm_ComputeElementMatrix", _wrap_MixedBilinearForm_ComputeElementMatrix, METH_VARARGS, "MixedBilinearForm_ComputeElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
-	 { "MixedBilinearForm_ComputeBdrElementMatrix", _wrap_MixedBilinearForm_ComputeBdrElementMatrix, METH_VARARGS, "MixedBilinearForm_ComputeBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
+	 { "MixedBilinearForm_ComputeElementMatrix", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_ComputeElementMatrix, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_ComputeElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
+	 { "MixedBilinearForm_ComputeBdrElementMatrix", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_ComputeBdrElementMatrix, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_ComputeBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
 	 { "MixedBilinearForm_AssembleElementMatrix", _wrap_MixedBilinearForm_AssembleElementMatrix, METH_VARARGS, "\n"
 		"MixedBilinearForm_AssembleElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, int skip_zeros=1)\n"
 		"MixedBilinearForm_AssembleElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, intArray trial_vdofs, intArray test_vdofs, int skip_zeros=1)\n"
@@ -14419,11 +12262,11 @@ static PyMethodDef SwigMethods[] = {
 		"MixedBilinearForm_AssembleBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, int skip_zeros=1)\n"
 		"MixedBilinearForm_AssembleBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, intArray trial_vdofs, intArray test_vdofs, int skip_zeros=1)\n"
 		""},
-	 { "MixedBilinearForm_EliminateTrialDofs", _wrap_MixedBilinearForm_EliminateTrialDofs, METH_VARARGS, "MixedBilinearForm_EliminateTrialDofs(MixedBilinearForm self, intArray bdr_attr_is_ess, Vector sol, Vector rhs)"},
-	 { "MixedBilinearForm_EliminateEssentialBCFromTrialDofs", _wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs, METH_VARARGS, "MixedBilinearForm_EliminateEssentialBCFromTrialDofs(MixedBilinearForm self, intArray marked_vdofs, Vector sol, Vector rhs)"},
-	 { "MixedBilinearForm_EliminateTestDofs", _wrap_MixedBilinearForm_EliminateTestDofs, METH_VARARGS, "MixedBilinearForm_EliminateTestDofs(MixedBilinearForm self, intArray bdr_attr_is_ess)"},
-	 { "MixedBilinearForm_FormRectangularSystemMatrix", _wrap_MixedBilinearForm_FormRectangularSystemMatrix, METH_VARARGS, "MixedBilinearForm_FormRectangularSystemMatrix(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, OperatorHandle A)"},
-	 { "MixedBilinearForm_FormRectangularLinearSystem", _wrap_MixedBilinearForm_FormRectangularLinearSystem, METH_VARARGS, "MixedBilinearForm_FormRectangularLinearSystem(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)"},
+	 { "MixedBilinearForm_EliminateTrialDofs", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_EliminateTrialDofs, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_EliminateTrialDofs(MixedBilinearForm self, intArray bdr_attr_is_ess, Vector sol, Vector rhs)"},
+	 { "MixedBilinearForm_EliminateEssentialBCFromTrialDofs", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_EliminateEssentialBCFromTrialDofs(MixedBilinearForm self, intArray marked_vdofs, Vector sol, Vector rhs)"},
+	 { "MixedBilinearForm_EliminateTestDofs", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_EliminateTestDofs, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_EliminateTestDofs(MixedBilinearForm self, intArray bdr_attr_is_ess)"},
+	 { "MixedBilinearForm_FormRectangularSystemMatrix", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_FormRectangularSystemMatrix, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_FormRectangularSystemMatrix(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, OperatorHandle A)"},
+	 { "MixedBilinearForm_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "MixedBilinearForm_FormRectangularLinearSystem(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)"},
 	 { "MixedBilinearForm_Update", _wrap_MixedBilinearForm_Update, METH_O, "MixedBilinearForm_Update(MixedBilinearForm self)"},
 	 { "MixedBilinearForm_TrialFESpace", _wrap_MixedBilinearForm_TrialFESpace, METH_VARARGS, "\n"
 		"MixedBilinearForm_TrialFESpace(MixedBilinearForm self) -> FiniteElementSpace\n"
@@ -14436,11 +12279,11 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_MixedBilinearForm", _wrap_delete_MixedBilinearForm, METH_O, "delete_MixedBilinearForm(MixedBilinearForm self)"},
 	 { "MixedBilinearForm_swigregister", MixedBilinearForm_swigregister, METH_O, NULL},
 	 { "MixedBilinearForm_swiginit", MixedBilinearForm_swiginit, METH_VARARGS, NULL},
-	 { "new_DiscreteLinearOperator", _wrap_new_DiscreteLinearOperator, METH_VARARGS, "new_DiscreteLinearOperator(FiniteElementSpace domain_fes, FiniteElementSpace range_fes) -> DiscreteLinearOperator"},
-	 { "DiscreteLinearOperator_AddDomainInterpolator", _wrap_DiscreteLinearOperator_AddDomainInterpolator, METH_VARARGS, "DiscreteLinearOperator_AddDomainInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
-	 { "DiscreteLinearOperator_AddTraceFaceInterpolator", _wrap_DiscreteLinearOperator_AddTraceFaceInterpolator, METH_VARARGS, "DiscreteLinearOperator_AddTraceFaceInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
+	 { "new_DiscreteLinearOperator", (PyCFunction)(void(*)(void))_wrap_new_DiscreteLinearOperator, METH_VARARGS|METH_KEYWORDS, "new_DiscreteLinearOperator(FiniteElementSpace domain_fes, FiniteElementSpace range_fes) -> DiscreteLinearOperator"},
+	 { "DiscreteLinearOperator_AddDomainInterpolator", (PyCFunction)(void(*)(void))_wrap_DiscreteLinearOperator_AddDomainInterpolator, METH_VARARGS|METH_KEYWORDS, "DiscreteLinearOperator_AddDomainInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
+	 { "DiscreteLinearOperator_AddTraceFaceInterpolator", (PyCFunction)(void(*)(void))_wrap_DiscreteLinearOperator_AddTraceFaceInterpolator, METH_VARARGS|METH_KEYWORDS, "DiscreteLinearOperator_AddTraceFaceInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
 	 { "DiscreteLinearOperator_GetDI", _wrap_DiscreteLinearOperator_GetDI, METH_O, "DiscreteLinearOperator_GetDI(DiscreteLinearOperator self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
-	 { "DiscreteLinearOperator_Assemble", _wrap_DiscreteLinearOperator_Assemble, METH_VARARGS, "DiscreteLinearOperator_Assemble(DiscreteLinearOperator self, int skip_zeros=1)"},
+	 { "DiscreteLinearOperator_Assemble", (PyCFunction)(void(*)(void))_wrap_DiscreteLinearOperator_Assemble, METH_VARARGS|METH_KEYWORDS, "DiscreteLinearOperator_Assemble(DiscreteLinearOperator self, int skip_zeros=1)"},
 	 { "delete_DiscreteLinearOperator", _wrap_delete_DiscreteLinearOperator, METH_O, "delete_DiscreteLinearOperator(DiscreteLinearOperator self)"},
 	 { "DiscreteLinearOperator_swigregister", DiscreteLinearOperator_swigregister, METH_O, NULL},
 	 { "DiscreteLinearOperator_swiginit", DiscreteLinearOperator_swiginit, METH_VARARGS, NULL},
@@ -14453,16 +12296,16 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "new_BilinearForm", _wrap_new_BilinearForm, METH_VARARGS, "\n"
 		"BilinearForm()\n"
 		"BilinearForm(FiniteElementSpace f)\n"
-		"BilinearForm(FiniteElementSpace f, BilinearForm bf, int ps=0)\n"
+		"new_BilinearForm(PyObject * _self, FiniteElementSpace f, BilinearForm bf, int ps=0) -> BilinearForm\n"
 		""},
 	 { "BilinearForm_Size", _wrap_BilinearForm_Size, METH_O, "Size(BilinearForm self) -> int"},
-	 { "BilinearForm_SetAssemblyLevel", _wrap_BilinearForm_SetAssemblyLevel, METH_VARARGS, "SetAssemblyLevel(BilinearForm self, mfem::AssemblyLevel assembly_level)"},
+	 { "BilinearForm_SetAssemblyLevel", (PyCFunction)(void(*)(void))_wrap_BilinearForm_SetAssemblyLevel, METH_VARARGS|METH_KEYWORDS, "SetAssemblyLevel(BilinearForm self, mfem::AssemblyLevel assembly_level)"},
 	 { "BilinearForm_GetAssemblyLevel", _wrap_BilinearForm_GetAssemblyLevel, METH_O, "GetAssemblyLevel(BilinearForm self) -> mfem::AssemblyLevel"},
 	 { "BilinearForm_EnableStaticCondensation", _wrap_BilinearForm_EnableStaticCondensation, METH_O, "EnableStaticCondensation(BilinearForm self)"},
 	 { "BilinearForm_StaticCondensationIsEnabled", _wrap_BilinearForm_StaticCondensationIsEnabled, METH_O, "StaticCondensationIsEnabled(BilinearForm self) -> bool"},
 	 { "BilinearForm_SCFESpace", _wrap_BilinearForm_SCFESpace, METH_O, "SCFESpace(BilinearForm self) -> FiniteElementSpace"},
-	 { "BilinearForm_EnableHybridization", _wrap_BilinearForm_EnableHybridization, METH_VARARGS, "EnableHybridization(BilinearForm self, FiniteElementSpace constr_space, BilinearFormIntegrator constr_integ, intArray ess_tdof_list)"},
-	 { "BilinearForm_UsePrecomputedSparsity", _wrap_BilinearForm_UsePrecomputedSparsity, METH_VARARGS, "UsePrecomputedSparsity(BilinearForm self, int ps=1)"},
+	 { "BilinearForm_EnableHybridization", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EnableHybridization, METH_VARARGS|METH_KEYWORDS, "EnableHybridization(BilinearForm self, FiniteElementSpace constr_space, BilinearFormIntegrator constr_integ, intArray ess_tdof_list)"},
+	 { "BilinearForm_UsePrecomputedSparsity", (PyCFunction)(void(*)(void))_wrap_BilinearForm_UsePrecomputedSparsity, METH_VARARGS|METH_KEYWORDS, "UsePrecomputedSparsity(BilinearForm self, int ps=1)"},
 	 { "BilinearForm_UseSparsity", _wrap_BilinearForm_UseSparsity, METH_VARARGS, "\n"
 		"UseSparsity(BilinearForm self, int * I, int * J, bool isSorted)\n"
 		"UseSparsity(BilinearForm self, SparseMatrix A)\n"
@@ -14474,21 +12317,21 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "BilinearForm_GetFBFI", _wrap_BilinearForm_GetFBFI, METH_O, "GetFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "BilinearForm_GetBFBFI", _wrap_BilinearForm_GetBFBFI, METH_O, "GetBFBFI(BilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "BilinearForm_GetBFBFI_Marker", _wrap_BilinearForm_GetBFBFI_Marker, METH_O, "GetBFBFI_Marker(BilinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
-	 { "BilinearForm___call__", _wrap_BilinearForm___call__, METH_VARARGS, "__call__(BilinearForm self, int i, int j) -> double const &"},
+	 { "BilinearForm___call__", (PyCFunction)(void(*)(void))_wrap_BilinearForm___call__, METH_VARARGS|METH_KEYWORDS, "__call__(BilinearForm self, int i, int j) -> double const &"},
 	 { "BilinearForm_Elem", _wrap_BilinearForm_Elem, METH_VARARGS, "\n"
 		"Elem(BilinearForm self, int i, int j) -> double\n"
 		"Elem(BilinearForm self, int i, int j) -> double const &\n"
 		""},
-	 { "BilinearForm_Mult", _wrap_BilinearForm_Mult, METH_VARARGS, "Mult(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_FullMult", _wrap_BilinearForm_FullMult, METH_VARARGS, "FullMult(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_AddMult", _wrap_BilinearForm_AddMult, METH_VARARGS, "AddMult(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
-	 { "BilinearForm_FullAddMult", _wrap_BilinearForm_FullAddMult, METH_VARARGS, "FullAddMult(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_AddMultTranspose", _wrap_BilinearForm_AddMultTranspose, METH_VARARGS, "AddMultTranspose(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
-	 { "BilinearForm_FullAddMultTranspose", _wrap_BilinearForm_FullAddMultTranspose, METH_VARARGS, "FullAddMultTranspose(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_MultTranspose", _wrap_BilinearForm_MultTranspose, METH_VARARGS, "MultTranspose(BilinearForm self, Vector x, Vector y)"},
-	 { "BilinearForm_InnerProduct", _wrap_BilinearForm_InnerProduct, METH_VARARGS, "InnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
+	 { "BilinearForm_Mult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_FullMult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullMult, METH_VARARGS|METH_KEYWORDS, "FullMult(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_AddMult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddMult, METH_VARARGS|METH_KEYWORDS, "AddMult(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "BilinearForm_FullAddMult", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullAddMult, METH_VARARGS|METH_KEYWORDS, "FullAddMult(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "AddMultTranspose(BilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "BilinearForm_FullAddMultTranspose", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullAddMultTranspose, METH_VARARGS|METH_KEYWORDS, "FullAddMultTranspose(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BilinearForm_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(BilinearForm self, Vector x, Vector y)"},
+	 { "BilinearForm_InnerProduct", (PyCFunction)(void(*)(void))_wrap_BilinearForm_InnerProduct, METH_VARARGS|METH_KEYWORDS, "InnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
 	 { "BilinearForm_Inverse", _wrap_BilinearForm_Inverse, METH_O, "Inverse(BilinearForm self) -> MatrixInverse"},
-	 { "BilinearForm_Finalize", _wrap_BilinearForm_Finalize, METH_VARARGS, "Finalize(BilinearForm self, int skip_zeros=1)"},
+	 { "BilinearForm_Finalize", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Finalize, METH_VARARGS|METH_KEYWORDS, "Finalize(BilinearForm self, int skip_zeros=1)"},
 	 { "BilinearForm_SpMat", _wrap_BilinearForm_SpMat, METH_VARARGS, "\n"
 		"SpMat(BilinearForm self) -> SparseMatrix\n"
 		"SpMat(BilinearForm self) -> SparseMatrix\n"
@@ -14498,27 +12341,27 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		"SpMatElim(BilinearForm self) -> SparseMatrix\n"
 		""},
-	 { "BilinearForm_AddDomainIntegrator", _wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS, "AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "BilinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "AddDomainIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "BilinearForm_AddBoundaryIntegrator", _wrap_BilinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"AddBoundaryIntegrator(BilinearForm self, BilinearFormIntegrator bfi)\n"
 		"AddBoundaryIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
 		""},
-	 { "BilinearForm_AddInteriorFaceIntegrator", _wrap_BilinearForm_AddInteriorFaceIntegrator, METH_VARARGS, "AddInteriorFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "BilinearForm_AddInteriorFaceIntegrator", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AddInteriorFaceIntegrator, METH_VARARGS|METH_KEYWORDS, "AddInteriorFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "BilinearForm_AddBdrFaceIntegrator", _wrap_BilinearForm_AddBdrFaceIntegrator, METH_VARARGS, "\n"
 		"AddBdrFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi)\n"
 		"AddBdrFaceIntegrator(BilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
 		""},
-	 { "BilinearForm_Assemble", _wrap_BilinearForm_Assemble, METH_VARARGS, "Assemble(BilinearForm self, int skip_zeros=1)"},
-	 { "BilinearForm_AssembleDiagonal", _wrap_BilinearForm_AssembleDiagonal, METH_VARARGS, "AssembleDiagonal(BilinearForm self, Vector diag)"},
+	 { "BilinearForm_Assemble", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Assemble, METH_VARARGS|METH_KEYWORDS, "Assemble(BilinearForm self, int skip_zeros=1)"},
+	 { "BilinearForm_AssembleDiagonal", (PyCFunction)(void(*)(void))_wrap_BilinearForm_AssembleDiagonal, METH_VARARGS|METH_KEYWORDS, "AssembleDiagonal(BilinearForm self, Vector diag)"},
 	 { "BilinearForm_GetProlongation", _wrap_BilinearForm_GetProlongation, METH_O, "GetProlongation(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetRestriction", _wrap_BilinearForm_GetRestriction, METH_O, "GetRestriction(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputProlongation", _wrap_BilinearForm_GetOutputProlongation, METH_O, "GetOutputProlongation(BilinearForm self) -> Operator"},
 	 { "BilinearForm_GetOutputRestriction", _wrap_BilinearForm_GetOutputRestriction, METH_O, "GetOutputRestriction(BilinearForm self) -> Operator"},
-	 { "BilinearForm_RecoverFEMSolution", _wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS, "RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"},
+	 { "BilinearForm_RecoverFEMSolution", (PyCFunction)(void(*)(void))_wrap_BilinearForm_RecoverFEMSolution, METH_VARARGS|METH_KEYWORDS, "RecoverFEMSolution(BilinearForm self, Vector X, Vector b, Vector x)"},
 	 { "BilinearForm_ComputeElementMatrices", _wrap_BilinearForm_ComputeElementMatrices, METH_O, "ComputeElementMatrices(BilinearForm self)"},
 	 { "BilinearForm_FreeElementMatrices", _wrap_BilinearForm_FreeElementMatrices, METH_O, "FreeElementMatrices(BilinearForm self)"},
-	 { "BilinearForm_ComputeElementMatrix", _wrap_BilinearForm_ComputeElementMatrix, METH_VARARGS, "ComputeElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
-	 { "BilinearForm_ComputeBdrElementMatrix", _wrap_BilinearForm_ComputeBdrElementMatrix, METH_VARARGS, "ComputeBdrElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
+	 { "BilinearForm_ComputeElementMatrix", (PyCFunction)(void(*)(void))_wrap_BilinearForm_ComputeElementMatrix, METH_VARARGS|METH_KEYWORDS, "ComputeElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
+	 { "BilinearForm_ComputeBdrElementMatrix", (PyCFunction)(void(*)(void))_wrap_BilinearForm_ComputeBdrElementMatrix, METH_VARARGS|METH_KEYWORDS, "ComputeBdrElementMatrix(BilinearForm self, int i, DenseMatrix elmat)"},
 	 { "BilinearForm_AssembleElementMatrix", _wrap_BilinearForm_AssembleElementMatrix, METH_VARARGS, "\n"
 		"AssembleElementMatrix(BilinearForm self, int i, DenseMatrix elmat, int skip_zeros=1)\n"
 		"AssembleElementMatrix(BilinearForm self, int i, DenseMatrix elmat, intArray vdofs, int skip_zeros=1)\n"
@@ -14531,7 +12374,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"EliminateEssentialBC(BilinearForm self, intArray bdr_attr_is_ess, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"EliminateEssentialBC(BilinearForm self, intArray bdr_attr_is_ess, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		""},
-	 { "BilinearForm_EliminateEssentialBCDiag", _wrap_BilinearForm_EliminateEssentialBCDiag, METH_VARARGS, "EliminateEssentialBCDiag(BilinearForm self, intArray bdr_attr_is_ess, double value)"},
+	 { "BilinearForm_EliminateEssentialBCDiag", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EliminateEssentialBCDiag, METH_VARARGS|METH_KEYWORDS, "EliminateEssentialBCDiag(BilinearForm self, intArray bdr_attr_is_ess, double value)"},
 	 { "BilinearForm_EliminateVDofs", _wrap_BilinearForm_EliminateVDofs, METH_VARARGS, "\n"
 		"EliminateVDofs(BilinearForm self, intArray vdofs, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"EliminateVDofs(BilinearForm self, intArray vdofs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
@@ -14540,16 +12383,16 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"EliminateEssentialBCFromDofs(BilinearForm self, intArray ess_dofs, Vector sol, Vector rhs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		"EliminateEssentialBCFromDofs(BilinearForm self, intArray ess_dofs, mfem::Matrix::DiagonalPolicy dpolicy=DIAG_ONE)\n"
 		""},
-	 { "BilinearForm_EliminateEssentialBCFromDofsDiag", _wrap_BilinearForm_EliminateEssentialBCFromDofsDiag, METH_VARARGS, "EliminateEssentialBCFromDofsDiag(BilinearForm self, intArray ess_dofs, double value)"},
-	 { "BilinearForm_EliminateVDofsInRHS", _wrap_BilinearForm_EliminateVDofsInRHS, METH_VARARGS, "EliminateVDofsInRHS(BilinearForm self, intArray vdofs, Vector x, Vector b)"},
-	 { "BilinearForm_FullInnerProduct", _wrap_BilinearForm_FullInnerProduct, METH_VARARGS, "FullInnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
-	 { "BilinearForm_Update", _wrap_BilinearForm_Update, METH_VARARGS, "Update(BilinearForm self, FiniteElementSpace nfes=None)"},
+	 { "BilinearForm_EliminateEssentialBCFromDofsDiag", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EliminateEssentialBCFromDofsDiag, METH_VARARGS|METH_KEYWORDS, "EliminateEssentialBCFromDofsDiag(BilinearForm self, intArray ess_dofs, double value)"},
+	 { "BilinearForm_EliminateVDofsInRHS", (PyCFunction)(void(*)(void))_wrap_BilinearForm_EliminateVDofsInRHS, METH_VARARGS|METH_KEYWORDS, "EliminateVDofsInRHS(BilinearForm self, intArray vdofs, Vector x, Vector b)"},
+	 { "BilinearForm_FullInnerProduct", (PyCFunction)(void(*)(void))_wrap_BilinearForm_FullInnerProduct, METH_VARARGS|METH_KEYWORDS, "FullInnerProduct(BilinearForm self, Vector x, Vector y) -> double"},
+	 { "BilinearForm_Update", (PyCFunction)(void(*)(void))_wrap_BilinearForm_Update, METH_VARARGS|METH_KEYWORDS, "Update(BilinearForm self, FiniteElementSpace nfes=None)"},
 	 { "BilinearForm_GetFES", _wrap_BilinearForm_GetFES, METH_O, "GetFES(BilinearForm self) -> FiniteElementSpace"},
 	 { "BilinearForm_FESpace", _wrap_BilinearForm_FESpace, METH_VARARGS, "\n"
 		"FESpace(BilinearForm self) -> FiniteElementSpace\n"
 		"FESpace(BilinearForm self) -> FiniteElementSpace\n"
 		""},
-	 { "BilinearForm_SetDiagonalPolicy", _wrap_BilinearForm_SetDiagonalPolicy, METH_VARARGS, "SetDiagonalPolicy(BilinearForm self, mfem::Matrix::DiagonalPolicy policy)"},
+	 { "BilinearForm_SetDiagonalPolicy", (PyCFunction)(void(*)(void))_wrap_BilinearForm_SetDiagonalPolicy, METH_VARARGS|METH_KEYWORDS, "SetDiagonalPolicy(BilinearForm self, mfem::Matrix::DiagonalPolicy policy)"},
 	 { "BilinearForm_UseExternalIntegrators", _wrap_BilinearForm_UseExternalIntegrators, METH_O, "UseExternalIntegrators(BilinearForm self)"},
 	 { "delete_BilinearForm", _wrap_delete_BilinearForm, METH_O, "delete_BilinearForm(BilinearForm self)"},
 	 { "BilinearForm_FormLinearSystem", _wrap_BilinearForm_FormLinearSystem, METH_VARARGS, "\n"
@@ -14562,7 +12405,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, SparseMatrix A)\n"
 		"FormSystemMatrix(BilinearForm self, intArray ess_tdof_list, HypreParMatrix A)\n"
 		""},
-	 { "disown_BilinearForm", _wrap_disown_BilinearForm, METH_O, NULL},
+	 { "disown_BilinearForm", (PyCFunction)(void(*)(void))_wrap_disown_BilinearForm, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "BilinearForm_swigregister", BilinearForm_swigregister, METH_O, NULL},
 	 { "BilinearForm_swiginit", BilinearForm_swiginit, METH_VARARGS, NULL},
 	 { "new_MixedBilinearForm", _wrap_new_MixedBilinearForm, METH_VARARGS, "\n"
@@ -14573,24 +12416,24 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Elem(MixedBilinearForm self, int i, int j) -> double\n"
 		"Elem(MixedBilinearForm self, int i, int j) -> double const &\n"
 		""},
-	 { "MixedBilinearForm_Mult", _wrap_MixedBilinearForm_Mult, METH_VARARGS, "Mult(MixedBilinearForm self, Vector x, Vector y)"},
-	 { "MixedBilinearForm_AddMult", _wrap_MixedBilinearForm_AddMult, METH_VARARGS, "AddMult(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
-	 { "MixedBilinearForm_MultTranspose", _wrap_MixedBilinearForm_MultTranspose, METH_VARARGS, "MultTranspose(MixedBilinearForm self, Vector x, Vector y)"},
-	 { "MixedBilinearForm_AddMultTranspose", _wrap_MixedBilinearForm_AddMultTranspose, METH_VARARGS, "AddMultTranspose(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "MixedBilinearForm_Mult", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(MixedBilinearForm self, Vector x, Vector y)"},
+	 { "MixedBilinearForm_AddMult", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddMult, METH_VARARGS|METH_KEYWORDS, "AddMult(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
+	 { "MixedBilinearForm_MultTranspose", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(MixedBilinearForm self, Vector x, Vector y)"},
+	 { "MixedBilinearForm_AddMultTranspose", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddMultTranspose, METH_VARARGS|METH_KEYWORDS, "AddMultTranspose(MixedBilinearForm self, Vector x, Vector y, double const a=1.0)"},
 	 { "MixedBilinearForm_Inverse", _wrap_MixedBilinearForm_Inverse, METH_O, "Inverse(MixedBilinearForm self) -> MatrixInverse"},
-	 { "MixedBilinearForm_Finalize", _wrap_MixedBilinearForm_Finalize, METH_VARARGS, "Finalize(MixedBilinearForm self, int skip_zeros=1)"},
-	 { "MixedBilinearForm_GetBlocks", _wrap_MixedBilinearForm_GetBlocks, METH_VARARGS, "GetBlocks(MixedBilinearForm self, mfem::Array2D< mfem::SparseMatrix * > & blocks)"},
+	 { "MixedBilinearForm_Finalize", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_Finalize, METH_VARARGS|METH_KEYWORDS, "Finalize(MixedBilinearForm self, int skip_zeros=1)"},
+	 { "MixedBilinearForm_GetBlocks", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_GetBlocks, METH_VARARGS|METH_KEYWORDS, "GetBlocks(MixedBilinearForm self, mfem::Array2D< mfem::SparseMatrix * > & blocks)"},
 	 { "MixedBilinearForm_SpMat", _wrap_MixedBilinearForm_SpMat, METH_VARARGS, "\n"
 		"SpMat(MixedBilinearForm self) -> SparseMatrix\n"
 		"SpMat(MixedBilinearForm self) -> SparseMatrix\n"
 		""},
 	 { "MixedBilinearForm_LoseMat", _wrap_MixedBilinearForm_LoseMat, METH_O, "LoseMat(MixedBilinearForm self) -> SparseMatrix"},
-	 { "MixedBilinearForm_AddDomainIntegrator", _wrap_MixedBilinearForm_AddDomainIntegrator, METH_VARARGS, "AddDomainIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "MixedBilinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "AddDomainIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "MixedBilinearForm_AddBoundaryIntegrator", _wrap_MixedBilinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"AddBoundaryIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)\n"
 		"AddBoundaryIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
 		""},
-	 { "MixedBilinearForm_AddTraceFaceIntegrator", _wrap_MixedBilinearForm_AddTraceFaceIntegrator, METH_VARARGS, "AddTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
+	 { "MixedBilinearForm_AddTraceFaceIntegrator", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_AddTraceFaceIntegrator, METH_VARARGS|METH_KEYWORDS, "AddTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)"},
 	 { "MixedBilinearForm_AddBdrTraceFaceIntegrator", _wrap_MixedBilinearForm_AddBdrTraceFaceIntegrator, METH_VARARGS, "\n"
 		"AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi)\n"
 		"AddBdrTraceFaceIntegrator(MixedBilinearForm self, BilinearFormIntegrator bfi, intArray bdr_marker)\n"
@@ -14601,15 +12444,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MixedBilinearForm_GetTFBFI", _wrap_MixedBilinearForm_GetTFBFI, METH_O, "GetTFBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "MixedBilinearForm_GetBTFBFI", _wrap_MixedBilinearForm_GetBTFBFI, METH_O, "GetBTFBFI(MixedBilinearForm self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
 	 { "MixedBilinearForm_GetBTFBFI_Marker", _wrap_MixedBilinearForm_GetBTFBFI_Marker, METH_O, "GetBTFBFI_Marker(MixedBilinearForm self) -> mfem::Array< mfem::Array< int > * > *"},
-	 { "MixedBilinearForm_SetAssemblyLevel", _wrap_MixedBilinearForm_SetAssemblyLevel, METH_VARARGS, "SetAssemblyLevel(MixedBilinearForm self, mfem::AssemblyLevel assembly_level)"},
-	 { "MixedBilinearForm_Assemble", _wrap_MixedBilinearForm_Assemble, METH_VARARGS, "Assemble(MixedBilinearForm self, int skip_zeros=1)"},
+	 { "MixedBilinearForm_SetAssemblyLevel", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_SetAssemblyLevel, METH_VARARGS|METH_KEYWORDS, "SetAssemblyLevel(MixedBilinearForm self, mfem::AssemblyLevel assembly_level)"},
+	 { "MixedBilinearForm_Assemble", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_Assemble, METH_VARARGS|METH_KEYWORDS, "Assemble(MixedBilinearForm self, int skip_zeros=1)"},
 	 { "MixedBilinearForm_GetProlongation", _wrap_MixedBilinearForm_GetProlongation, METH_O, "GetProlongation(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_GetRestriction", _wrap_MixedBilinearForm_GetRestriction, METH_O, "GetRestriction(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_GetOutputProlongation", _wrap_MixedBilinearForm_GetOutputProlongation, METH_O, "GetOutputProlongation(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_GetOutputRestriction", _wrap_MixedBilinearForm_GetOutputRestriction, METH_O, "GetOutputRestriction(MixedBilinearForm self) -> Operator"},
 	 { "MixedBilinearForm_ConformingAssemble", _wrap_MixedBilinearForm_ConformingAssemble, METH_O, "ConformingAssemble(MixedBilinearForm self)"},
-	 { "MixedBilinearForm_ComputeElementMatrix", _wrap_MixedBilinearForm_ComputeElementMatrix, METH_VARARGS, "ComputeElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
-	 { "MixedBilinearForm_ComputeBdrElementMatrix", _wrap_MixedBilinearForm_ComputeBdrElementMatrix, METH_VARARGS, "ComputeBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
+	 { "MixedBilinearForm_ComputeElementMatrix", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_ComputeElementMatrix, METH_VARARGS|METH_KEYWORDS, "ComputeElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
+	 { "MixedBilinearForm_ComputeBdrElementMatrix", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_ComputeBdrElementMatrix, METH_VARARGS|METH_KEYWORDS, "ComputeBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat)"},
 	 { "MixedBilinearForm_AssembleElementMatrix", _wrap_MixedBilinearForm_AssembleElementMatrix, METH_VARARGS, "\n"
 		"AssembleElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, int skip_zeros=1)\n"
 		"AssembleElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, intArray trial_vdofs, intArray test_vdofs, int skip_zeros=1)\n"
@@ -14618,11 +12461,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"AssembleBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, int skip_zeros=1)\n"
 		"AssembleBdrElementMatrix(MixedBilinearForm self, int i, DenseMatrix elmat, intArray trial_vdofs, intArray test_vdofs, int skip_zeros=1)\n"
 		""},
-	 { "MixedBilinearForm_EliminateTrialDofs", _wrap_MixedBilinearForm_EliminateTrialDofs, METH_VARARGS, "EliminateTrialDofs(MixedBilinearForm self, intArray bdr_attr_is_ess, Vector sol, Vector rhs)"},
-	 { "MixedBilinearForm_EliminateEssentialBCFromTrialDofs", _wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs, METH_VARARGS, "EliminateEssentialBCFromTrialDofs(MixedBilinearForm self, intArray marked_vdofs, Vector sol, Vector rhs)"},
-	 { "MixedBilinearForm_EliminateTestDofs", _wrap_MixedBilinearForm_EliminateTestDofs, METH_VARARGS, "EliminateTestDofs(MixedBilinearForm self, intArray bdr_attr_is_ess)"},
-	 { "MixedBilinearForm_FormRectangularSystemMatrix", _wrap_MixedBilinearForm_FormRectangularSystemMatrix, METH_VARARGS, "FormRectangularSystemMatrix(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, OperatorHandle A)"},
-	 { "MixedBilinearForm_FormRectangularLinearSystem", _wrap_MixedBilinearForm_FormRectangularLinearSystem, METH_VARARGS, "FormRectangularLinearSystem(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)"},
+	 { "MixedBilinearForm_EliminateTrialDofs", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_EliminateTrialDofs, METH_VARARGS|METH_KEYWORDS, "EliminateTrialDofs(MixedBilinearForm self, intArray bdr_attr_is_ess, Vector sol, Vector rhs)"},
+	 { "MixedBilinearForm_EliminateEssentialBCFromTrialDofs", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_EliminateEssentialBCFromTrialDofs, METH_VARARGS|METH_KEYWORDS, "EliminateEssentialBCFromTrialDofs(MixedBilinearForm self, intArray marked_vdofs, Vector sol, Vector rhs)"},
+	 { "MixedBilinearForm_EliminateTestDofs", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_EliminateTestDofs, METH_VARARGS|METH_KEYWORDS, "EliminateTestDofs(MixedBilinearForm self, intArray bdr_attr_is_ess)"},
+	 { "MixedBilinearForm_FormRectangularSystemMatrix", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_FormRectangularSystemMatrix, METH_VARARGS|METH_KEYWORDS, "FormRectangularSystemMatrix(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, OperatorHandle A)"},
+	 { "MixedBilinearForm_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_MixedBilinearForm_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormRectangularLinearSystem(MixedBilinearForm self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, OperatorHandle A, Vector X, Vector B)"},
 	 { "MixedBilinearForm_Update", _wrap_MixedBilinearForm_Update, METH_O, "Update(MixedBilinearForm self)"},
 	 { "MixedBilinearForm_TrialFESpace", _wrap_MixedBilinearForm_TrialFESpace, METH_VARARGS, "\n"
 		"TrialFESpace(MixedBilinearForm self) -> FiniteElementSpace\n"
@@ -14635,11 +12478,11 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_MixedBilinearForm", _wrap_delete_MixedBilinearForm, METH_O, "delete_MixedBilinearForm(MixedBilinearForm self)"},
 	 { "MixedBilinearForm_swigregister", MixedBilinearForm_swigregister, METH_O, NULL},
 	 { "MixedBilinearForm_swiginit", MixedBilinearForm_swiginit, METH_VARARGS, NULL},
-	 { "new_DiscreteLinearOperator", _wrap_new_DiscreteLinearOperator, METH_VARARGS, "new_DiscreteLinearOperator(FiniteElementSpace domain_fes, FiniteElementSpace range_fes) -> DiscreteLinearOperator"},
-	 { "DiscreteLinearOperator_AddDomainInterpolator", _wrap_DiscreteLinearOperator_AddDomainInterpolator, METH_VARARGS, "AddDomainInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
-	 { "DiscreteLinearOperator_AddTraceFaceInterpolator", _wrap_DiscreteLinearOperator_AddTraceFaceInterpolator, METH_VARARGS, "AddTraceFaceInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
+	 { "new_DiscreteLinearOperator", (PyCFunction)(void(*)(void))_wrap_new_DiscreteLinearOperator, METH_VARARGS|METH_KEYWORDS, "new_DiscreteLinearOperator(FiniteElementSpace domain_fes, FiniteElementSpace range_fes) -> DiscreteLinearOperator"},
+	 { "DiscreteLinearOperator_AddDomainInterpolator", (PyCFunction)(void(*)(void))_wrap_DiscreteLinearOperator_AddDomainInterpolator, METH_VARARGS|METH_KEYWORDS, "AddDomainInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
+	 { "DiscreteLinearOperator_AddTraceFaceInterpolator", (PyCFunction)(void(*)(void))_wrap_DiscreteLinearOperator_AddTraceFaceInterpolator, METH_VARARGS|METH_KEYWORDS, "AddTraceFaceInterpolator(DiscreteLinearOperator self, DiscreteInterpolator di)"},
 	 { "DiscreteLinearOperator_GetDI", _wrap_DiscreteLinearOperator_GetDI, METH_O, "GetDI(DiscreteLinearOperator self) -> mfem::Array< mfem::BilinearFormIntegrator * > *"},
-	 { "DiscreteLinearOperator_Assemble", _wrap_DiscreteLinearOperator_Assemble, METH_VARARGS, "Assemble(DiscreteLinearOperator self, int skip_zeros=1)"},
+	 { "DiscreteLinearOperator_Assemble", (PyCFunction)(void(*)(void))_wrap_DiscreteLinearOperator_Assemble, METH_VARARGS|METH_KEYWORDS, "Assemble(DiscreteLinearOperator self, int skip_zeros=1)"},
 	 { "delete_DiscreteLinearOperator", _wrap_delete_DiscreteLinearOperator, METH_O, "delete_DiscreteLinearOperator(DiscreteLinearOperator self)"},
 	 { "DiscreteLinearOperator_swigregister", DiscreteLinearOperator_swigregister, METH_O, NULL},
 	 { "DiscreteLinearOperator_swiginit", DiscreteLinearOperator_swiginit, METH_VARARGS, NULL},

@@ -3417,7 +3417,7 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
 
   #define SWIG_From_double   PyFloat_FromDouble 
 
-SWIGINTERN mfem::ZienkiewiczZhuEstimator *new_mfem_ZienkiewiczZhuEstimator__SWIG_0(mfem::BilinearFormIntegrator &integ,mfem::GridFunction &sol,mfem::FiniteElementSpace *flux_fes,bool own_flux_fes=false){
+SWIGINTERN mfem::ZienkiewiczZhuEstimator *new_mfem_ZienkiewiczZhuEstimator(mfem::BilinearFormIntegrator &integ,mfem::GridFunction &sol,mfem::FiniteElementSpace *flux_fes,bool own_flux_fes=false){
        if (own_flux_fes){
            return new mfem::ZienkiewiczZhuEstimator(integ, sol, flux_fes);
        } else {
@@ -3733,26 +3733,33 @@ SWIGINTERN PyObject *AnisotropicErrorEstimator_swigregister(PyObject *SWIGUNUSED
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetWithCoeff__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetWithCoeff(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ZienkiewiczZhuEstimator *arg1 = (mfem::ZienkiewiczZhuEstimator *) 0 ;
-  bool arg2 ;
+  bool arg2 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"w_coeff",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ZienkiewiczZhuEstimator_SetWithCoeff", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "1"" of type '" "mfem::ZienkiewiczZhuEstimator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ZienkiewiczZhuEstimator * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
       (arg1)->SetWithCoeff(arg2);
@@ -3779,106 +3786,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetWithCoeff__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetAnisotropic(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ZienkiewiczZhuEstimator *arg1 = (mfem::ZienkiewiczZhuEstimator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZienkiewiczZhuEstimator_SetWithCoeff" "', argument " "1"" of type '" "mfem::ZienkiewiczZhuEstimator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ZienkiewiczZhuEstimator * >(argp1);
-  {
-    try {
-      (arg1)->SetWithCoeff();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetWithCoeff(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ZienkiewiczZhuEstimator_SetWithCoeff", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ZienkiewiczZhuEstimator_SetWithCoeff__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_bool(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_ZienkiewiczZhuEstimator_SetWithCoeff__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ZienkiewiczZhuEstimator_SetWithCoeff'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ZienkiewiczZhuEstimator::SetWithCoeff(bool)\n"
-    "    mfem::ZienkiewiczZhuEstimator::SetWithCoeff()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetAnisotropic__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ZienkiewiczZhuEstimator *arg1 = (mfem::ZienkiewiczZhuEstimator *) 0 ;
-  bool arg2 ;
+  bool arg2 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"aniso",  NULL 
+  };
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:ZienkiewiczZhuEstimator_SetAnisotropic", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZienkiewiczZhuEstimator_SetAnisotropic" "', argument " "1"" of type '" "mfem::ZienkiewiczZhuEstimator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ZienkiewiczZhuEstimator * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ZienkiewiczZhuEstimator_SetAnisotropic" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ZienkiewiczZhuEstimator_SetAnisotropic" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
       (arg1)->SetAnisotropic(arg2);
@@ -3905,105 +3839,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetAnisotropic__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::ZienkiewiczZhuEstimator *arg1 = (mfem::ZienkiewiczZhuEstimator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZienkiewiczZhuEstimator_SetAnisotropic" "', argument " "1"" of type '" "mfem::ZienkiewiczZhuEstimator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::ZienkiewiczZhuEstimator * >(argp1);
-  {
-    try {
-      (arg1)->SetAnisotropic();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetAnisotropic(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ZienkiewiczZhuEstimator_SetAnisotropic", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_ZienkiewiczZhuEstimator_SetAnisotropic__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_bool(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_ZienkiewiczZhuEstimator_SetAnisotropic__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ZienkiewiczZhuEstimator_SetAnisotropic'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ZienkiewiczZhuEstimator::SetAnisotropic(bool)\n"
-    "    mfem::ZienkiewiczZhuEstimator::SetAnisotropic()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetFluxAveraging(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ZienkiewiczZhuEstimator_SetFluxAveraging(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ZienkiewiczZhuEstimator *arg1 = (mfem::ZienkiewiczZhuEstimator *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fa",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ZienkiewiczZhuEstimator_SetFluxAveraging", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ZienkiewiczZhuEstimator_SetFluxAveraging", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZienkiewiczZhuEstimator_SetFluxAveraging" "', argument " "1"" of type '" "mfem::ZienkiewiczZhuEstimator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ZienkiewiczZhuEstimator * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4234,12 +4092,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ZienkiewiczZhuEstimator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ZienkiewiczZhuEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearFormIntegrator *arg1 = 0 ;
   mfem::GridFunction *arg2 = 0 ;
   mfem::FiniteElementSpace *arg3 = (mfem::FiniteElementSpace *) 0 ;
-  bool arg4 ;
+  bool arg4 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4248,181 +4106,67 @@ SWIGINTERN PyObject *_wrap_new_ZienkiewiczZhuEstimator__SWIG_0(PyObject *SWIGUNU
   int res3 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
-  mfem::ZienkiewiczZhuEstimator *result = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "3"" of type '" "mfem::FiniteElementSpace *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::FiniteElementSpace * >(argp3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
-  {
-    try {
-      result = (mfem::ZienkiewiczZhuEstimator *)new_mfem_ZienkiewiczZhuEstimator__SWIG_0(*arg1,*arg2,arg3,arg4);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ZienkiewiczZhuEstimator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearFormIntegrator *arg1 = 0 ;
-  mfem::GridFunction *arg2 = 0 ;
-  mfem::FiniteElementSpace *arg3 = (mfem::FiniteElementSpace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  mfem::ZienkiewiczZhuEstimator *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "3"" of type '" "mfem::FiniteElementSpace *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::FiniteElementSpace * >(argp3);
-  {
-    try {
-      result = (mfem::ZienkiewiczZhuEstimator *)new_mfem_ZienkiewiczZhuEstimator__SWIG_0(*arg1,*arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ZienkiewiczZhuEstimator(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"integ",  (char *)"sol",  (char *)"flux_fes",  (char *)"own_flux_fes",  NULL 
   };
+  mfem::ZienkiewiczZhuEstimator *result = 0 ;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_ZienkiewiczZhuEstimator", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_new_ZienkiewiczZhuEstimator__SWIG_1(self, argc, argv);
-        }
-      }
-    }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:new_ZienkiewiczZhuEstimator", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
   }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_ZienkiewiczZhuEstimator__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
   }
-  
+  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "3"" of type '" "mfem::FiniteElementSpace *""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::FiniteElementSpace * >(argp3);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ZienkiewiczZhuEstimator" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  {
+    try {
+      result = (mfem::ZienkiewiczZhuEstimator *)new_mfem_ZienkiewiczZhuEstimator(*arg1,*arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ZienkiewiczZhuEstimator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ZienkiewiczZhuEstimator'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ZienkiewiczZhuEstimator::ZienkiewiczZhuEstimator(mfem::BilinearFormIntegrator &,mfem::GridFunction &,mfem::FiniteElementSpace *,bool)\n"
-    "    mfem::ZienkiewiczZhuEstimator::ZienkiewiczZhuEstimator(mfem::BilinearFormIntegrator &,mfem::GridFunction &,mfem::FiniteElementSpace *)\n");
-  return 0;
+  return NULL;
 }
 
 
@@ -4451,15 +4195,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "AnisotropicErrorEstimator_GetAnisotropicFlags", _wrap_AnisotropicErrorEstimator_GetAnisotropicFlags, METH_O, "AnisotropicErrorEstimator_GetAnisotropicFlags(AnisotropicErrorEstimator self) -> intArray"},
 	 { "delete_AnisotropicErrorEstimator", _wrap_delete_AnisotropicErrorEstimator, METH_O, "delete_AnisotropicErrorEstimator(AnisotropicErrorEstimator self)"},
 	 { "AnisotropicErrorEstimator_swigregister", AnisotropicErrorEstimator_swigregister, METH_O, NULL},
-	 { "ZienkiewiczZhuEstimator_SetWithCoeff", _wrap_ZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS, "ZienkiewiczZhuEstimator_SetWithCoeff(ZienkiewiczZhuEstimator self, bool w_coeff=True)"},
-	 { "ZienkiewiczZhuEstimator_SetAnisotropic", _wrap_ZienkiewiczZhuEstimator_SetAnisotropic, METH_VARARGS, "ZienkiewiczZhuEstimator_SetAnisotropic(ZienkiewiczZhuEstimator self, bool aniso=True)"},
-	 { "ZienkiewiczZhuEstimator_SetFluxAveraging", _wrap_ZienkiewiczZhuEstimator_SetFluxAveraging, METH_VARARGS, "ZienkiewiczZhuEstimator_SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"},
+	 { "ZienkiewiczZhuEstimator_SetWithCoeff", (PyCFunction)(void(*)(void))_wrap_ZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS|METH_KEYWORDS, "ZienkiewiczZhuEstimator_SetWithCoeff(ZienkiewiczZhuEstimator self, bool w_coeff=True)"},
+	 { "ZienkiewiczZhuEstimator_SetAnisotropic", (PyCFunction)(void(*)(void))_wrap_ZienkiewiczZhuEstimator_SetAnisotropic, METH_VARARGS|METH_KEYWORDS, "ZienkiewiczZhuEstimator_SetAnisotropic(ZienkiewiczZhuEstimator self, bool aniso=True)"},
+	 { "ZienkiewiczZhuEstimator_SetFluxAveraging", (PyCFunction)(void(*)(void))_wrap_ZienkiewiczZhuEstimator_SetFluxAveraging, METH_VARARGS|METH_KEYWORDS, "ZienkiewiczZhuEstimator_SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"},
 	 { "ZienkiewiczZhuEstimator_GetTotalError", _wrap_ZienkiewiczZhuEstimator_GetTotalError, METH_O, "ZienkiewiczZhuEstimator_GetTotalError(ZienkiewiczZhuEstimator self) -> double"},
 	 { "ZienkiewiczZhuEstimator_GetLocalErrors", _wrap_ZienkiewiczZhuEstimator_GetLocalErrors, METH_O, "ZienkiewiczZhuEstimator_GetLocalErrors(ZienkiewiczZhuEstimator self) -> Vector"},
 	 { "ZienkiewiczZhuEstimator_GetAnisotropicFlags", _wrap_ZienkiewiczZhuEstimator_GetAnisotropicFlags, METH_O, "ZienkiewiczZhuEstimator_GetAnisotropicFlags(ZienkiewiczZhuEstimator self) -> intArray"},
 	 { "ZienkiewiczZhuEstimator_Reset", _wrap_ZienkiewiczZhuEstimator_Reset, METH_O, "ZienkiewiczZhuEstimator_Reset(ZienkiewiczZhuEstimator self)"},
 	 { "delete_ZienkiewiczZhuEstimator", _wrap_delete_ZienkiewiczZhuEstimator, METH_O, "delete_ZienkiewiczZhuEstimator(ZienkiewiczZhuEstimator self)"},
-	 { "new_ZienkiewiczZhuEstimator", _wrap_new_ZienkiewiczZhuEstimator, METH_VARARGS, "ZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol, FiniteElementSpace flux_fes, bool own_flux_fes=False)"},
+	 { "new_ZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_ZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_ZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol, FiniteElementSpace flux_fes, bool own_flux_fes=False) -> ZienkiewiczZhuEstimator"},
 	 { "ZienkiewiczZhuEstimator_swigregister", ZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
 	 { "ZienkiewiczZhuEstimator_swiginit", ZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
@@ -4479,15 +4223,15 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "AnisotropicErrorEstimator_GetAnisotropicFlags", _wrap_AnisotropicErrorEstimator_GetAnisotropicFlags, METH_O, "GetAnisotropicFlags(AnisotropicErrorEstimator self) -> intArray"},
 	 { "delete_AnisotropicErrorEstimator", _wrap_delete_AnisotropicErrorEstimator, METH_O, "delete_AnisotropicErrorEstimator(AnisotropicErrorEstimator self)"},
 	 { "AnisotropicErrorEstimator_swigregister", AnisotropicErrorEstimator_swigregister, METH_O, NULL},
-	 { "ZienkiewiczZhuEstimator_SetWithCoeff", _wrap_ZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS, "SetWithCoeff(ZienkiewiczZhuEstimator self, bool w_coeff=True)"},
-	 { "ZienkiewiczZhuEstimator_SetAnisotropic", _wrap_ZienkiewiczZhuEstimator_SetAnisotropic, METH_VARARGS, "SetAnisotropic(ZienkiewiczZhuEstimator self, bool aniso=True)"},
-	 { "ZienkiewiczZhuEstimator_SetFluxAveraging", _wrap_ZienkiewiczZhuEstimator_SetFluxAveraging, METH_VARARGS, "SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"},
+	 { "ZienkiewiczZhuEstimator_SetWithCoeff", (PyCFunction)(void(*)(void))_wrap_ZienkiewiczZhuEstimator_SetWithCoeff, METH_VARARGS|METH_KEYWORDS, "SetWithCoeff(ZienkiewiczZhuEstimator self, bool w_coeff=True)"},
+	 { "ZienkiewiczZhuEstimator_SetAnisotropic", (PyCFunction)(void(*)(void))_wrap_ZienkiewiczZhuEstimator_SetAnisotropic, METH_VARARGS|METH_KEYWORDS, "SetAnisotropic(ZienkiewiczZhuEstimator self, bool aniso=True)"},
+	 { "ZienkiewiczZhuEstimator_SetFluxAveraging", (PyCFunction)(void(*)(void))_wrap_ZienkiewiczZhuEstimator_SetFluxAveraging, METH_VARARGS|METH_KEYWORDS, "SetFluxAveraging(ZienkiewiczZhuEstimator self, int fa)"},
 	 { "ZienkiewiczZhuEstimator_GetTotalError", _wrap_ZienkiewiczZhuEstimator_GetTotalError, METH_O, "GetTotalError(ZienkiewiczZhuEstimator self) -> double"},
 	 { "ZienkiewiczZhuEstimator_GetLocalErrors", _wrap_ZienkiewiczZhuEstimator_GetLocalErrors, METH_O, "GetLocalErrors(ZienkiewiczZhuEstimator self) -> Vector"},
 	 { "ZienkiewiczZhuEstimator_GetAnisotropicFlags", _wrap_ZienkiewiczZhuEstimator_GetAnisotropicFlags, METH_O, "GetAnisotropicFlags(ZienkiewiczZhuEstimator self) -> intArray"},
 	 { "ZienkiewiczZhuEstimator_Reset", _wrap_ZienkiewiczZhuEstimator_Reset, METH_O, "Reset(ZienkiewiczZhuEstimator self)"},
 	 { "delete_ZienkiewiczZhuEstimator", _wrap_delete_ZienkiewiczZhuEstimator, METH_O, "delete_ZienkiewiczZhuEstimator(ZienkiewiczZhuEstimator self)"},
-	 { "new_ZienkiewiczZhuEstimator", _wrap_new_ZienkiewiczZhuEstimator, METH_VARARGS, "ZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol, FiniteElementSpace flux_fes, bool own_flux_fes=False)"},
+	 { "new_ZienkiewiczZhuEstimator", (PyCFunction)(void(*)(void))_wrap_new_ZienkiewiczZhuEstimator, METH_VARARGS|METH_KEYWORDS, "new_ZienkiewiczZhuEstimator(BilinearFormIntegrator integ, GridFunction sol, FiniteElementSpace flux_fes, bool own_flux_fes=False) -> ZienkiewiczZhuEstimator"},
 	 { "ZienkiewiczZhuEstimator_swigregister", ZienkiewiczZhuEstimator_swigregister, METH_O, NULL},
 	 { "ZienkiewiczZhuEstimator_swiginit", ZienkiewiczZhuEstimator_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

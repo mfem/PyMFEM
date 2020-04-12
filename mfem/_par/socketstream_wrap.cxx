@@ -3657,26 +3657,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_socketbuf_attach(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_socketbuf_attach(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"sd",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "socketbuf_attach", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:socketbuf_attach", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_attach" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
   }
   arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3723,7 +3727,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_socketbuf_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_socketbuf_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
   char *arg2 ;
@@ -3733,25 +3737,30 @@ SWIGINTERN PyObject *_wrap_socketbuf_open(PyObject *SWIGUNUSEDPARM(self), PyObje
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hostname",  (char *)"port",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "socketbuf_open", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:socketbuf_open", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketbuf, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketbuf_open" "', argument " "1"" of type '" "mfem::socketbuf *""'"); 
   }
   arg1 = reinterpret_cast< mfem::socketbuf * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketbuf_open" "', argument " "2"" of type '" "char const []""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -3902,17 +3911,19 @@ SWIGINTERN PyObject *socketbuf_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject
 
 SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  bool arg1 ;
+  bool arg1 = (bool) mfem::socketstream::secure_default ;
   bool val1 ;
   int ecode1 = 0 ;
   mfem::socketstream *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_bool(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_socketstream" "', argument " "1"" of type '" "bool""'");
-  } 
-  arg1 = static_cast< bool >(val1);
+  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
+  if (swig_obj[0]) {
+    ecode1 = SWIG_AsVal_bool(swig_obj[0], &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_socketstream" "', argument " "1"" of type '" "bool""'");
+    } 
+    arg1 = static_cast< bool >(val1);
+  }
   {
     try {
       result = (mfem::socketstream *)new mfem::socketstream(arg1); 
@@ -3928,27 +3939,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  mfem::socketstream *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (mfem::socketstream *)new mfem::socketstream(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::socketbuf *arg1 = (mfem::socketbuf *) 0 ;
   void *argp1 = 0 ;
@@ -3976,26 +3967,28 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
-  bool arg2 ;
+  bool arg2 = (bool) mfem::socketstream::secure_default ;
   bool val2 ;
   int ecode2 = 0 ;
   mfem::socketstream *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
     arg1 = PyArray_PyIntAsInt(swig_obj[0]);
   }
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_socketstream" "', argument " "2"" of type '" "bool""'");
-  } 
-  arg2 = static_cast< bool >(val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_socketstream" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
   {
     try {
       result = (mfem::socketstream *)new mfem::socketstream(arg1,arg2); 
@@ -4011,38 +4004,11 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  mfem::socketstream *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    try {
-      result = (mfem::socketstream *)new mfem::socketstream(arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   char *arg1 ;
   int arg2 ;
-  bool arg3 ;
+  bool arg3 = (bool) mfem::socketstream::secure_default ;
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
@@ -4050,7 +4016,7 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
   int ecode3 = 0 ;
   mfem::socketstream *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_socketstream" "', argument " "1"" of type '" "char const []""'");
@@ -4062,52 +4028,16 @@ SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_5(PyObject *SWIGUNUSEDPARM(sel
     };  
     arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_socketstream" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_socketstream" "', argument " "3"" of type '" "bool""'");
+    } 
+    arg3 = static_cast< bool >(val3);
+  }
   {
     try {
       result = (mfem::socketstream *)new mfem::socketstream((char const (*))arg1,arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketstream, SWIG_POINTER_NEW |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return resultobj;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_socketstream__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 ;
-  int arg2 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  mfem::socketstream *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_socketstream" "', argument " "1"" of type '" "char const []""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::socketstream *)new mfem::socketstream((char const (*))arg1,arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4130,20 +4060,11 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_socketstream", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 0) {
-    return _wrap_new_socketstream__SWIG_1(self, argc, argv);
-  }
-  if (argc == 1) {
+  if ((argc >= 0) && (argc <= 1)) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketbuf, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_socketstream__SWIG_2(self, argc, argv);
+    if (argc <= 0) {
+      return _wrap_new_socketstream__SWIG_0(self, argc, argv);
     }
-  }
-  if (argc == 1) {
-    int _v;
     {
       int res = SWIG_AsVal_bool(argv[0], NULL);
       _v = SWIG_CheckState(res);
@@ -4154,19 +4075,14 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
   }
   if (argc == 1) {
     int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__socketbuf, 0);
+    _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_socketstream__SWIG_4(self, argc, argv);
+      return _wrap_new_socketstream__SWIG_1(self, argc, argv);
     }
   }
-  if (argc == 2) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
@@ -4177,16 +4093,19 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
       }
     }
     if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_socketstream__SWIG_2(self, argc, argv);
+      }
       {
         int res = SWIG_AsVal_bool(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_socketstream__SWIG_3(self, argc, argv);
+        return _wrap_new_socketstream__SWIG_2(self, argc, argv);
       }
     }
   }
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
     _v = SWIG_CheckState(res);
@@ -4200,30 +4119,15 @@ SWIGINTERN PyObject *_wrap_new_socketstream(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
-        return _wrap_new_socketstream__SWIG_6(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_new_socketstream__SWIG_3(self, argc, argv);
         }
-      }
-      if (_v) {
         {
           int res = SWIG_AsVal_bool(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_new_socketstream__SWIG_5(self, argc, argv);
+          return _wrap_new_socketstream__SWIG_3(self, argc, argv);
         }
       }
     }
@@ -4233,12 +4137,9 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_socketstream'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::socketstream::socketstream(bool)\n"
-    "    mfem::socketstream::socketstream()\n"
     "    mfem::socketstream::socketstream(mfem::socketbuf *)\n"
     "    mfem::socketstream::socketstream(int,bool)\n"
-    "    mfem::socketstream::socketstream(int)\n"
-    "    mfem::socketstream::socketstream(char const [],int,bool)\n"
-    "    mfem::socketstream::socketstream(char const [],int)\n");
+    "    mfem::socketstream::socketstream(char const [],int,bool)\n");
   return 0;
 }
 
@@ -4273,7 +4174,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_socketstream_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_socketstream_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
   char *arg2 ;
@@ -4283,25 +4184,30 @@ SWIGINTERN PyObject *_wrap_socketstream_open(PyObject *SWIGUNUSEDPARM(self), PyO
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"hostname",  (char *)"port",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "socketstream_open", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:socketstream_open", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_open" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
   }
   arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream_open" "', argument " "2"" of type '" "char const []""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4518,7 +4424,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_socketstream_send_solution(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_socketstream_send_solution(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
   mfem::Mesh *arg2 = 0 ;
@@ -4529,15 +4435,20 @@ SWIGINTERN PyObject *_wrap_socketstream_send_solution(PyObject *SWIGUNUSEDPARM(s
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"mesh",  (char *)"gf",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "socketstream_send_solution", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:socketstream_send_solution", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_send_solution" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
   }
   arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Mesh,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream_send_solution" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
   }
@@ -4545,7 +4456,7 @@ SWIGINTERN PyObject *_wrap_socketstream_send_solution(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "socketstream_send_solution" "', argument " "2"" of type '" "mfem::Mesh const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "socketstream_send_solution" "', argument " "3"" of type '" "mfem::GridFunction const &""'"); 
   }
@@ -4568,7 +4479,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_socketstream_send_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_socketstream_send_text(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::socketstream *arg1 = (mfem::socketstream *) 0 ;
   char *arg2 ;
@@ -4577,15 +4488,19 @@ SWIGINTERN PyObject *_wrap_socketstream_send_text(PyObject *SWIGUNUSEDPARM(self)
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ostr",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "socketstream_send_text", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:socketstream_send_text", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__socketstream, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "socketstream_send_text" "', argument " "1"" of type '" "mfem::socketstream *""'"); 
   }
   arg1 = reinterpret_cast< mfem::socketstream * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "socketstream_send_text" "', argument " "2"" of type '" "char const []""'");
   }
@@ -4910,24 +4825,31 @@ SWIGINTERN PyObject *socketstream_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_socketserver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int arg2 ;
+  int arg2 = (int) 4 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"port",  (char *)"backlog",  NULL 
+  };
   mfem::socketserver *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_socketserver", kwnames, &obj0, &obj1)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   {
     try {
@@ -4941,89 +4863,6 @@ SWIGINTERN PyObject *_wrap_new_socketserver__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_socketserver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  mfem::socketserver *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    try {
-      result = (mfem::socketserver *)new mfem::socketserver(arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__socketserver, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_socketserver(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_socketserver", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      return _wrap_new_socketserver__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_socketserver__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_socketserver'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::socketserver::socketserver(int,int)\n"
-    "    mfem::socketserver::socketserver(int)\n");
-  return 0;
 }
 
 
@@ -5243,9 +5082,9 @@ static PyMethodDef SwigMethods[] = {
 		"socketbuf(int sd)\n"
 		"new_socketbuf(char const [] hostname, int port) -> socketbuf\n"
 		""},
-	 { "socketbuf_attach", _wrap_socketbuf_attach, METH_VARARGS, "socketbuf_attach(socketbuf self, int sd) -> int"},
+	 { "socketbuf_attach", (PyCFunction)(void(*)(void))_wrap_socketbuf_attach, METH_VARARGS|METH_KEYWORDS, "socketbuf_attach(socketbuf self, int sd) -> int"},
 	 { "socketbuf_detach", _wrap_socketbuf_detach, METH_O, "socketbuf_detach(socketbuf self) -> int"},
-	 { "socketbuf_open", _wrap_socketbuf_open, METH_VARARGS, "socketbuf_open(socketbuf self, char const [] hostname, int port) -> int"},
+	 { "socketbuf_open", (PyCFunction)(void(*)(void))_wrap_socketbuf_open, METH_VARARGS|METH_KEYWORDS, "socketbuf_open(socketbuf self, char const [] hostname, int port) -> int"},
 	 { "socketbuf_close", _wrap_socketbuf_close, METH_O, "socketbuf_close(socketbuf self) -> int"},
 	 { "socketbuf_getsocketdescriptor", _wrap_socketbuf_getsocketdescriptor, METH_O, "socketbuf_getsocketdescriptor(socketbuf self) -> int"},
 	 { "socketbuf_is_open", _wrap_socketbuf_is_open, METH_O, "socketbuf_is_open(socketbuf self) -> bool"},
@@ -5256,10 +5095,10 @@ static PyMethodDef SwigMethods[] = {
 		"socketstream(bool secure=secure_default)\n"
 		"socketstream(socketbuf buf)\n"
 		"socketstream(int s, bool secure=secure_default)\n"
-		"socketstream(char const [] hostname, int port, bool secure=secure_default)\n"
+		"new_socketstream(char const [] hostname, int port, bool secure=secure_default) -> socketstream\n"
 		""},
 	 { "socketstream_rdbuf", _wrap_socketstream_rdbuf, METH_O, "socketstream_rdbuf(socketstream self) -> socketbuf"},
-	 { "socketstream_open", _wrap_socketstream_open, METH_VARARGS, "socketstream_open(socketstream self, char const [] hostname, int port) -> int"},
+	 { "socketstream_open", (PyCFunction)(void(*)(void))_wrap_socketstream_open, METH_VARARGS|METH_KEYWORDS, "socketstream_open(socketstream self, char const [] hostname, int port) -> int"},
 	 { "socketstream_close", _wrap_socketstream_close, METH_O, "socketstream_close(socketstream self) -> int"},
 	 { "socketstream_is_open", _wrap_socketstream_is_open, METH_O, "socketstream_is_open(socketstream self) -> bool"},
 	 { "delete_socketstream", _wrap_delete_socketstream, METH_O, "delete_socketstream(socketstream self)"},
@@ -5267,8 +5106,8 @@ static PyMethodDef SwigMethods[] = {
 		"socketstream_precision(socketstream self, int const p) -> int\n"
 		"socketstream_precision(socketstream self) -> int\n"
 		""},
-	 { "socketstream_send_solution", _wrap_socketstream_send_solution, METH_VARARGS, "socketstream_send_solution(socketstream self, Mesh mesh, GridFunction gf)"},
-	 { "socketstream_send_text", _wrap_socketstream_send_text, METH_VARARGS, "socketstream_send_text(socketstream self, char const [] ostr)"},
+	 { "socketstream_send_solution", (PyCFunction)(void(*)(void))_wrap_socketstream_send_solution, METH_VARARGS|METH_KEYWORDS, "socketstream_send_solution(socketstream self, Mesh mesh, GridFunction gf)"},
+	 { "socketstream_send_text", (PyCFunction)(void(*)(void))_wrap_socketstream_send_text, METH_VARARGS|METH_KEYWORDS, "socketstream_send_text(socketstream self, char const [] ostr)"},
 	 { "socketstream_flush", _wrap_socketstream_flush, METH_O, "socketstream_flush(socketstream self)"},
 	 { "socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, "\n"
 		"socketstream___lshift__(socketstream self, char const [] ostr) -> socketstream\n"
@@ -5279,7 +5118,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "socketstream_endline", _wrap_socketstream_endline, METH_O, "socketstream_endline(socketstream self) -> socketstream"},
 	 { "socketstream_swigregister", socketstream_swigregister, METH_O, NULL},
 	 { "socketstream_swiginit", socketstream_swiginit, METH_VARARGS, NULL},
-	 { "new_socketserver", _wrap_new_socketserver, METH_VARARGS, "socketserver(int port, int backlog=4)"},
+	 { "new_socketserver", (PyCFunction)(void(*)(void))_wrap_new_socketserver, METH_VARARGS|METH_KEYWORDS, "new_socketserver(int port, int backlog=4) -> socketserver"},
 	 { "socketserver_good", _wrap_socketserver_good, METH_O, "socketserver_good(socketserver self) -> bool"},
 	 { "socketserver_close", _wrap_socketserver_close, METH_O, "socketserver_close(socketserver self) -> int"},
 	 { "socketserver_accept", _wrap_socketserver_accept, METH_VARARGS, "\n"
@@ -5300,9 +5139,9 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"socketbuf(int sd)\n"
 		"new_socketbuf(char const [] hostname, int port) -> socketbuf\n"
 		""},
-	 { "socketbuf_attach", _wrap_socketbuf_attach, METH_VARARGS, "attach(socketbuf self, int sd) -> int"},
+	 { "socketbuf_attach", (PyCFunction)(void(*)(void))_wrap_socketbuf_attach, METH_VARARGS|METH_KEYWORDS, "attach(socketbuf self, int sd) -> int"},
 	 { "socketbuf_detach", _wrap_socketbuf_detach, METH_O, "detach(socketbuf self) -> int"},
-	 { "socketbuf_open", _wrap_socketbuf_open, METH_VARARGS, "open(socketbuf self, char const [] hostname, int port) -> int"},
+	 { "socketbuf_open", (PyCFunction)(void(*)(void))_wrap_socketbuf_open, METH_VARARGS|METH_KEYWORDS, "open(socketbuf self, char const [] hostname, int port) -> int"},
 	 { "socketbuf_close", _wrap_socketbuf_close, METH_O, "close(socketbuf self) -> int"},
 	 { "socketbuf_getsocketdescriptor", _wrap_socketbuf_getsocketdescriptor, METH_O, "getsocketdescriptor(socketbuf self) -> int"},
 	 { "socketbuf_is_open", _wrap_socketbuf_is_open, METH_O, "is_open(socketbuf self) -> bool"},
@@ -5313,10 +5152,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"socketstream(bool secure=secure_default)\n"
 		"socketstream(socketbuf buf)\n"
 		"socketstream(int s, bool secure=secure_default)\n"
-		"socketstream(char const [] hostname, int port, bool secure=secure_default)\n"
+		"new_socketstream(char const [] hostname, int port, bool secure=secure_default) -> socketstream\n"
 		""},
 	 { "socketstream_rdbuf", _wrap_socketstream_rdbuf, METH_O, "rdbuf(socketstream self) -> socketbuf"},
-	 { "socketstream_open", _wrap_socketstream_open, METH_VARARGS, "open(socketstream self, char const [] hostname, int port) -> int"},
+	 { "socketstream_open", (PyCFunction)(void(*)(void))_wrap_socketstream_open, METH_VARARGS|METH_KEYWORDS, "open(socketstream self, char const [] hostname, int port) -> int"},
 	 { "socketstream_close", _wrap_socketstream_close, METH_O, "close(socketstream self) -> int"},
 	 { "socketstream_is_open", _wrap_socketstream_is_open, METH_O, "is_open(socketstream self) -> bool"},
 	 { "delete_socketstream", _wrap_delete_socketstream, METH_O, "delete_socketstream(socketstream self)"},
@@ -5324,8 +5163,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"precision(socketstream self, int const p) -> int\n"
 		"precision(socketstream self) -> int\n"
 		""},
-	 { "socketstream_send_solution", _wrap_socketstream_send_solution, METH_VARARGS, "send_solution(socketstream self, Mesh mesh, GridFunction gf)"},
-	 { "socketstream_send_text", _wrap_socketstream_send_text, METH_VARARGS, "send_text(socketstream self, char const [] ostr)"},
+	 { "socketstream_send_solution", (PyCFunction)(void(*)(void))_wrap_socketstream_send_solution, METH_VARARGS|METH_KEYWORDS, "send_solution(socketstream self, Mesh mesh, GridFunction gf)"},
+	 { "socketstream_send_text", (PyCFunction)(void(*)(void))_wrap_socketstream_send_text, METH_VARARGS|METH_KEYWORDS, "send_text(socketstream self, char const [] ostr)"},
 	 { "socketstream_flush", _wrap_socketstream_flush, METH_O, "flush(socketstream self)"},
 	 { "socketstream___lshift__", _wrap_socketstream___lshift__, METH_VARARGS, "\n"
 		"__lshift__(socketstream self, char const [] ostr) -> socketstream\n"
@@ -5336,7 +5175,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "socketstream_endline", _wrap_socketstream_endline, METH_O, "endline(socketstream self) -> socketstream"},
 	 { "socketstream_swigregister", socketstream_swigregister, METH_O, NULL},
 	 { "socketstream_swiginit", socketstream_swiginit, METH_VARARGS, NULL},
-	 { "new_socketserver", _wrap_new_socketserver, METH_VARARGS, "socketserver(int port, int backlog=4)"},
+	 { "new_socketserver", (PyCFunction)(void(*)(void))_wrap_new_socketserver, METH_VARARGS|METH_KEYWORDS, "new_socketserver(int port, int backlog=4) -> socketserver"},
 	 { "socketserver_good", _wrap_socketserver_good, METH_O, "good(socketserver self) -> bool"},
 	 { "socketserver_close", _wrap_socketserver_close, METH_O, "close(socketserver self) -> int"},
 	 { "socketserver_accept", _wrap_socketserver_accept, METH_VARARGS, "\n"

@@ -163,9 +163,9 @@ class H1_FECollection(FiniteElementCollection):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_FECollection self, int const p, int const dim=3, int const btype=GaussLobatto) -> H1_FECollection"""
-        _fe_coll.H1_FECollection_swiginit(self, _fe_coll.new_H1_FECollection(*args))
+        _fe_coll.H1_FECollection_swiginit(self, _fe_coll.new_H1_FECollection(*args, **kwargs))
 
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(H1_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
@@ -240,9 +240,9 @@ class H1_Trace_FECollection(H1_FECollection):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_Trace_FECollection self, int const p, int const dim, int const btype=GaussLobatto) -> H1_Trace_FECollection"""
-        _fe_coll.H1_Trace_FECollection_swiginit(self, _fe_coll.new_H1_Trace_FECollection(*args))
+        _fe_coll.H1_Trace_FECollection_swiginit(self, _fe_coll.new_H1_Trace_FECollection(*args, **kwargs))
     __swig_destroy__ = _fe_coll.delete_H1_Trace_FECollection
 
 # Register H1_Trace_FECollection in _fe_coll:
@@ -254,9 +254,9 @@ class L2_FECollection(FiniteElementCollection):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_FECollection self, int const p, int const dim, int const btype=GaussLegendre, int const map_type=VALUE) -> L2_FECollection"""
-        _fe_coll.L2_FECollection_swiginit(self, _fe_coll.new_L2_FECollection(*args))
+        _fe_coll.L2_FECollection_swiginit(self, _fe_coll.new_L2_FECollection(*args, **kwargs))
 
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(L2_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
@@ -337,9 +337,9 @@ class RT_Trace_FECollection(RT_FECollection):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(RT_Trace_FECollection self, int const p, int const dim, int const map_type=INTEGRAL, int const ob_type=GaussLegendre) -> RT_Trace_FECollection"""
-        _fe_coll.RT_Trace_FECollection_swiginit(self, _fe_coll.new_RT_Trace_FECollection(*args))
+        _fe_coll.RT_Trace_FECollection_swiginit(self, _fe_coll.new_RT_Trace_FECollection(*args, **kwargs))
     __swig_destroy__ = _fe_coll.delete_RT_Trace_FECollection
 
 # Register RT_Trace_FECollection in _fe_coll:
@@ -351,9 +351,9 @@ class DG_Interface_FECollection(RT_FECollection):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(DG_Interface_FECollection self, int const p, int const dim, int const map_type=VALUE, int const ob_type=GaussLegendre) -> DG_Interface_FECollection"""
-        _fe_coll.DG_Interface_FECollection_swiginit(self, _fe_coll.new_DG_Interface_FECollection(*args))
+        _fe_coll.DG_Interface_FECollection_swiginit(self, _fe_coll.new_DG_Interface_FECollection(*args, **kwargs))
     __swig_destroy__ = _fe_coll.delete_DG_Interface_FECollection
 
 # Register DG_Interface_FECollection in _fe_coll:
@@ -365,9 +365,9 @@ class ND_FECollection(FiniteElementCollection):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_FECollection self, int const p, int const dim, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_FECollection"""
-        _fe_coll.ND_FECollection_swiginit(self, _fe_coll.new_ND_FECollection(*args))
+        _fe_coll.ND_FECollection_swiginit(self, _fe_coll.new_ND_FECollection(*args, **kwargs))
 
     def FiniteElementForGeometry(self, GeomType):
         r"""FiniteElementForGeometry(ND_FECollection self, mfem::Geometry::Type GeomType) -> FiniteElement"""
@@ -404,9 +404,9 @@ class ND_Trace_FECollection(ND_FECollection):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_Trace_FECollection self, int const p, int const dim, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_Trace_FECollection"""
-        _fe_coll.ND_Trace_FECollection_swiginit(self, _fe_coll.new_ND_Trace_FECollection(*args))
+        _fe_coll.ND_Trace_FECollection_swiginit(self, _fe_coll.new_ND_Trace_FECollection(*args, **kwargs))
     __swig_destroy__ = _fe_coll.delete_ND_Trace_FECollection
 
 # Register ND_Trace_FECollection in _fe_coll:
@@ -420,9 +420,9 @@ class NURBSFECollection(FiniteElementCollection):
     VariableOrder = _fe_coll.NURBSFECollection_VariableOrder
     
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(NURBSFECollection self, int Order=VariableOrder) -> NURBSFECollection"""
-        _fe_coll.NURBSFECollection_swiginit(self, _fe_coll.new_NURBSFECollection(*args))
+        _fe_coll.NURBSFECollection_swiginit(self, _fe_coll.new_NURBSFECollection(*args, **kwargs))
 
     def Reset(self):
         r"""Reset(NURBSFECollection self)"""

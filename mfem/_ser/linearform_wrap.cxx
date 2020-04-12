@@ -3476,7 +3476,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   intp *arg1 = (intp *) 0 ;
   int arg2 ;
@@ -3484,15 +3484,19 @@ SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject 
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"value",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "intp_assign", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_intp, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:intp_assign", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_assign" "', argument " "1"" of type '" "intp *""'"); 
   }
   arg1 = reinterpret_cast< intp * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intp_assign" "', argument " "2"" of type '" "int""'");
   } 
@@ -3551,17 +3555,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_intp_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_intp_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int *arg1 = (int *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"t",  NULL 
+  };
   intp *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_int, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:intp_frompointer", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_frompointer" "', argument " "1"" of type '" "int *""'"); 
   }
@@ -3620,7 +3626,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   doublep *arg1 = (doublep *) 0 ;
   double arg2 ;
@@ -3628,15 +3634,19 @@ SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObje
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"value",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "doublep_assign", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_doublep, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:doublep_assign", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_assign" "', argument " "1"" of type '" "doublep *""'"); 
   }
   arg1 = reinterpret_cast< doublep * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doublep_assign" "', argument " "2"" of type '" "double""'");
   } 
@@ -3695,17 +3705,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doublep_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_doublep_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"t",  NULL 
+  };
   doublep *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_double, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:doublep_frompointer", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_frompointer" "', argument " "1"" of type '" "double *""'"); 
   }
@@ -4108,7 +4120,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
   mfem::LinearFormIntegrator *arg2 = (mfem::LinearFormIntegrator *) 0 ;
@@ -4116,15 +4128,19 @@ SWIGINTERN PyObject *_wrap_LinearForm_AddDomainIntegrator(PyObject *SWIGUNUSEDPA
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"lfi",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "LinearForm_AddDomainIntegrator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:LinearForm_AddDomainIntegrator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm_AddDomainIntegrator" "', argument " "1"" of type '" "mfem::LinearForm *""'"); 
   }
   arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__LinearFormIntegrator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LinearForm_AddDomainIntegrator" "', argument " "2"" of type '" "mfem::LinearFormIntegrator *""'"); 
   }
@@ -4967,7 +4983,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_LinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_LinearForm___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::LinearForm *arg1 = (mfem::LinearForm *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -4975,16 +4991,20 @@ SWIGINTERN PyObject *_wrap_LinearForm___call__(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "LinearForm___call__", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:LinearForm___call__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__LinearForm, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "LinearForm___call__" "', argument " "1"" of type '" "mfem::LinearForm const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::LinearForm * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "LinearForm___call__" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
   }
@@ -5074,18 +5094,18 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_intp", _wrap_new_intp, METH_NOARGS, NULL},
 	 { "delete_intp", _wrap_delete_intp, METH_O, NULL},
-	 { "intp_assign", _wrap_intp_assign, METH_VARARGS, NULL},
+	 { "intp_assign", (PyCFunction)(void(*)(void))_wrap_intp_assign, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "intp_value", _wrap_intp_value, METH_O, NULL},
 	 { "intp_cast", _wrap_intp_cast, METH_O, NULL},
-	 { "intp_frompointer", _wrap_intp_frompointer, METH_O, NULL},
+	 { "intp_frompointer", (PyCFunction)(void(*)(void))_wrap_intp_frompointer, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "intp_swigregister", intp_swigregister, METH_O, NULL},
 	 { "intp_swiginit", intp_swiginit, METH_VARARGS, NULL},
 	 { "new_doublep", _wrap_new_doublep, METH_NOARGS, NULL},
 	 { "delete_doublep", _wrap_delete_doublep, METH_O, NULL},
-	 { "doublep_assign", _wrap_doublep_assign, METH_VARARGS, NULL},
+	 { "doublep_assign", (PyCFunction)(void(*)(void))_wrap_doublep_assign, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "doublep_value", _wrap_doublep_value, METH_O, NULL},
 	 { "doublep_cast", _wrap_doublep_cast, METH_O, NULL},
-	 { "doublep_frompointer", _wrap_doublep_frompointer, METH_O, NULL},
+	 { "doublep_frompointer", (PyCFunction)(void(*)(void))_wrap_doublep_frompointer, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "doublep_swigregister", doublep_swigregister, METH_O, NULL},
 	 { "doublep_swiginit", doublep_swiginit, METH_VARARGS, NULL},
 	 { "new_LinearForm", _wrap_new_LinearForm, METH_VARARGS, "\n"
@@ -5099,7 +5119,7 @@ static PyMethodDef SwigMethods[] = {
 		"LinearForm_FESpace(LinearForm self) -> FiniteElementSpace\n"
 		"LinearForm_FESpace(LinearForm self) -> FiniteElementSpace\n"
 		""},
-	 { "LinearForm_AddDomainIntegrator", _wrap_LinearForm_AddDomainIntegrator, METH_VARARGS, "LinearForm_AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
+	 { "LinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_LinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "LinearForm_AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
 	 { "LinearForm_AddBoundaryIntegrator", _wrap_LinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"LinearForm_AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)\n"
 		"LinearForm_AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
@@ -5120,7 +5140,7 @@ static PyMethodDef SwigMethods[] = {
 		"LinearForm_Update(LinearForm self, FiniteElementSpace f)\n"
 		"LinearForm_Update(LinearForm self, FiniteElementSpace f, Vector v, int v_offset)\n"
 		""},
-	 { "LinearForm___call__", _wrap_LinearForm___call__, METH_VARARGS, "LinearForm___call__(LinearForm self, GridFunction gf) -> double"},
+	 { "LinearForm___call__", (PyCFunction)(void(*)(void))_wrap_LinearForm___call__, METH_VARARGS|METH_KEYWORDS, "LinearForm___call__(LinearForm self, GridFunction gf) -> double"},
 	 { "delete_LinearForm", _wrap_delete_LinearForm, METH_O, "delete_LinearForm(LinearForm self)"},
 	 { "LinearForm_swigregister", LinearForm_swigregister, METH_O, NULL},
 	 { "LinearForm_swiginit", LinearForm_swiginit, METH_VARARGS, NULL},
@@ -5132,18 +5152,18 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_intp", _wrap_new_intp, METH_NOARGS, NULL},
 	 { "delete_intp", _wrap_delete_intp, METH_O, NULL},
-	 { "intp_assign", _wrap_intp_assign, METH_VARARGS, NULL},
+	 { "intp_assign", (PyCFunction)(void(*)(void))_wrap_intp_assign, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "intp_value", _wrap_intp_value, METH_O, NULL},
 	 { "intp_cast", _wrap_intp_cast, METH_O, NULL},
-	 { "intp_frompointer", _wrap_intp_frompointer, METH_O, NULL},
+	 { "intp_frompointer", (PyCFunction)(void(*)(void))_wrap_intp_frompointer, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "intp_swigregister", intp_swigregister, METH_O, NULL},
 	 { "intp_swiginit", intp_swiginit, METH_VARARGS, NULL},
 	 { "new_doublep", _wrap_new_doublep, METH_NOARGS, NULL},
 	 { "delete_doublep", _wrap_delete_doublep, METH_O, NULL},
-	 { "doublep_assign", _wrap_doublep_assign, METH_VARARGS, NULL},
+	 { "doublep_assign", (PyCFunction)(void(*)(void))_wrap_doublep_assign, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "doublep_value", _wrap_doublep_value, METH_O, NULL},
 	 { "doublep_cast", _wrap_doublep_cast, METH_O, NULL},
-	 { "doublep_frompointer", _wrap_doublep_frompointer, METH_O, NULL},
+	 { "doublep_frompointer", (PyCFunction)(void(*)(void))_wrap_doublep_frompointer, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "doublep_swigregister", doublep_swigregister, METH_O, NULL},
 	 { "doublep_swiginit", doublep_swiginit, METH_VARARGS, NULL},
 	 { "new_LinearForm", _wrap_new_LinearForm, METH_VARARGS, "\n"
@@ -5157,7 +5177,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"FESpace(LinearForm self) -> FiniteElementSpace\n"
 		"FESpace(LinearForm self) -> FiniteElementSpace\n"
 		""},
-	 { "LinearForm_AddDomainIntegrator", _wrap_LinearForm_AddDomainIntegrator, METH_VARARGS, "AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
+	 { "LinearForm_AddDomainIntegrator", (PyCFunction)(void(*)(void))_wrap_LinearForm_AddDomainIntegrator, METH_VARARGS|METH_KEYWORDS, "AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"},
 	 { "LinearForm_AddBoundaryIntegrator", _wrap_LinearForm_AddBoundaryIntegrator, METH_VARARGS, "\n"
 		"AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi)\n"
 		"AddBoundaryIntegrator(LinearForm self, LinearFormIntegrator lfi, intArray bdr_attr_marker)\n"
@@ -5178,7 +5198,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"Update(LinearForm self, FiniteElementSpace f)\n"
 		"Update(LinearForm self, FiniteElementSpace f, Vector v, int v_offset)\n"
 		""},
-	 { "LinearForm___call__", _wrap_LinearForm___call__, METH_VARARGS, "__call__(LinearForm self, GridFunction gf) -> double"},
+	 { "LinearForm___call__", (PyCFunction)(void(*)(void))_wrap_LinearForm___call__, METH_VARARGS|METH_KEYWORDS, "__call__(LinearForm self, GridFunction gf) -> double"},
 	 { "delete_LinearForm", _wrap_delete_LinearForm, METH_O, "delete_LinearForm(LinearForm self)"},
 	 { "LinearForm_swigregister", LinearForm_swigregister, METH_O, NULL},
 	 { "LinearForm_swiginit", LinearForm_swiginit, METH_VARARGS, NULL},

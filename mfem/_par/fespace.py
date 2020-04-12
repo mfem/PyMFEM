@@ -198,9 +198,9 @@ class FiniteElementSpace(object):
         return _fespace.FiniteElementSpace_GetElementRestriction(self, e_ordering)
     GetElementRestriction = _swig_new_instance_method(_fespace.FiniteElementSpace_GetElementRestriction)
 
-    def GetFaceRestriction(self, *args):
+    def GetFaceRestriction(self, *args, **kwargs):
         r"""GetFaceRestriction(FiniteElementSpace self, mfem::ElementDofOrdering e_ordering, mfem::FaceType arg3, mfem::L2FaceValues mul=DoubleValued) -> Operator"""
-        return _fespace.FiniteElementSpace_GetFaceRestriction(self, *args)
+        return _fespace.FiniteElementSpace_GetFaceRestriction(self, *args, **kwargs)
     GetFaceRestriction = _swig_new_instance_method(_fespace.FiniteElementSpace_GetFaceRestriction)
 
     def GetQuadratureInterpolator(self, *args):

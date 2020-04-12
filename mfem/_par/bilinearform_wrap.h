@@ -71,7 +71,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[26];
+    mutable swig::SwigVar_PyObject vtable[19];
 #endif
 
 };

@@ -500,9 +500,9 @@ class IntegrationRules(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(IntegrationRules self, int Ref=0, int type=GaussLegendre) -> IntegrationRules"""
-        _intrules.IntegrationRules_swiginit(self, _intrules.new_IntegrationRules(*args))
+        _intrules.IntegrationRules_swiginit(self, _intrules.new_IntegrationRules(*args, **kwargs))
 
     def Get(self, GeomType, Order):
         r"""Get(IntegrationRules self, int GeomType, int Order) -> IntegrationRule"""

@@ -3146,7 +3146,7 @@ SWIG_AsVal_int (PyObject * obj, int *val)
   return res;
 }
 
-SWIGINTERN void mfem_GroupCommunicator_PrintInfo__SWIG_2(mfem::GroupCommunicator *self,char const *file,int precision=8){
+SWIGINTERN void mfem_GroupCommunicator_PrintInfo__SWIG_1(mfem::GroupCommunicator *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3578,23 +3578,27 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_SetComm(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_SetComm(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   MPI_Comm arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"comm",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_SetComm", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_SetComm", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_SetComm" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
     MPI_Comm *ptr = (MPI_Comm *)0;
-    int res = SWIG_AsPtr_MPI_Comm(swig_obj[1], &ptr);
+    int res = SWIG_AsPtr_MPI_Comm(obj1, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
       SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "GroupTopology_SetComm" "', argument " "2"" of type '" "MPI_Comm""'"); 
     }
@@ -3738,7 +3742,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_Create(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_Create(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   mfem::ListOfIntegerSets *arg2 = 0 ;
@@ -3747,15 +3751,20 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Create(PyObject *SWIGUNUSEDPARM(self), 
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"groups",  (char *)"mpitag",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_Create", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GroupTopology_Create", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Create" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ListOfIntegerSets,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ListOfIntegerSets,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Create" "', argument " "2"" of type '" "mfem::ListOfIntegerSets &""'"); 
   }
@@ -3764,10 +3773,10 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Create(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg2 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -3868,26 +3877,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_GetNeighborRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_GetNeighborRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_GetNeighborRank", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_GetNeighborRank", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetNeighborRank" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3912,26 +3925,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_IAmMaster(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_IAmMaster(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"g",  NULL 
+  };
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_IAmMaster", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_IAmMaster", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_IAmMaster" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3956,26 +3973,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMaster(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMaster(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"g",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_GetGroupMaster", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_GetGroupMaster", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetGroupMaster" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4000,26 +4021,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMasterRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMasterRank(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"g",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_GetGroupMasterRank", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_GetGroupMasterRank", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetGroupMasterRank" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4044,26 +4069,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMasterGroup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupMasterGroup(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"g",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_GetGroupMasterGroup", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_GetGroupMasterGroup", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetGroupMasterGroup" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4088,26 +4117,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_GetGroupSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"g",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_GetGroupSize", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_GetGroupSize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetGroupSize" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4132,26 +4165,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_GetGroup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_GetGroup(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"g",  NULL 
+  };
   int *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_GetGroup", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_GetGroup", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_GetGroup" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4239,7 +4276,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_Load(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   std::istream *arg2 = 0 ;
@@ -4247,15 +4284,19 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Load(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"_in",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_Load", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_Load", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Load" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__istream,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__istream,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Load" "', argument " "2"" of type '" "std::istream &""'"); 
   }
@@ -4286,7 +4327,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupTopology_Copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupTopology_Copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   mfem::GroupTopology *arg2 = 0 ;
@@ -4294,15 +4335,19 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Copy(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"copy",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupTopology_Copy", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupTopology_Copy", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Copy" "', argument " "1"" of type '" "mfem::GroupTopology const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GroupTopology,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GroupTopology,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Copy" "', argument " "2"" of type '" "mfem::GroupTopology &""'"); 
   }
@@ -4374,14 +4419,14 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(s
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Save" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
@@ -4392,61 +4437,17 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Save" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
       mfem_GroupTopology_Save__SWIG_1(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroupTopology_Save__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GroupTopology *arg1 = (mfem::GroupTopology *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupTopology, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupTopology_Save" "', argument " "1"" of type '" "mfem::GroupTopology *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupTopology_Save" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  {
-    try {
-      mfem_GroupTopology_Save__SWIG_1(arg1,(char const *)arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4477,7 +4478,7 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GroupTopology_Save", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupTopology, 0);
@@ -4486,7 +4487,20 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save(PyObject *self, PyObject *args) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GroupTopology_Save__SWIG_2(self, argc, argv);
+        if (argc <= 2) {
+          return _wrap_GroupTopology_Save__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_GroupTopology_Save__SWIG_1(self, argc, argv);
+        }
       }
     }
   }
@@ -4510,36 +4524,12 @@ SWIGINTERN PyObject *_wrap_GroupTopology_Save(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupTopology, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_GroupTopology_Save__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GroupTopology_Save'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GroupTopology::Save(std::ostream &) const\n"
-    "    mfem::GroupTopology::Save(char const *,int)\n"
-    "    mfem::GroupTopology::Save(char const *)\n");
+    "    mfem::GroupTopology::Save(char const *,int)\n");
   return 0;
 }
 
@@ -4555,18 +4545,23 @@ SWIGINTERN PyObject *GroupTopology_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_GroupCommunicator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_GroupCommunicator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupTopology *arg1 = 0 ;
-  mfem::GroupCommunicator::Mode arg2 ;
+  mfem::GroupCommunicator::Mode arg2 = (mfem::GroupCommunicator::Mode) mfem::GroupCommunicator::byNeighbor ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"gt",  (char *)"m",  NULL 
+  };
   mfem::GroupCommunicator *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__GroupTopology,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:new_GroupCommunicator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__GroupTopology,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GroupCommunicator" "', argument " "1"" of type '" "mfem::GroupTopology &""'"); 
   }
@@ -4574,11 +4569,13 @@ SWIGINTERN PyObject *_wrap_new_GroupCommunicator__SWIG_0(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GroupCommunicator" "', argument " "1"" of type '" "mfem::GroupTopology &""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_GroupCommunicator" "', argument " "2"" of type '" "mfem::GroupCommunicator::Mode""'");
-  } 
-  arg2 = static_cast< mfem::GroupCommunicator::Mode >(val2);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_int(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_GroupCommunicator" "', argument " "2"" of type '" "mfem::GroupCommunicator::Mode""'");
+    } 
+    arg2 = static_cast< mfem::GroupCommunicator::Mode >(val2);
+  }
   {
     try {
       result = (mfem::GroupCommunicator *)new mfem::GroupCommunicator(*arg1,arg2);
@@ -4602,88 +4599,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_GroupCommunicator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GroupTopology *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::GroupCommunicator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__GroupTopology,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GroupCommunicator" "', argument " "1"" of type '" "mfem::GroupTopology &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GroupCommunicator" "', argument " "1"" of type '" "mfem::GroupTopology &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GroupTopology * >(argp1);
-  {
-    try {
-      result = (mfem::GroupCommunicator *)new mfem::GroupCommunicator(*arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GroupCommunicator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GroupCommunicator(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_GroupCommunicator", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupTopology, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_GroupCommunicator__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupTopology, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        return _wrap_new_GroupCommunicator__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_GroupCommunicator'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GroupCommunicator::GroupCommunicator(mfem::GroupTopology &,mfem::GroupCommunicator::Mode)\n"
-    "    mfem::GroupCommunicator::GroupCommunicator(mfem::GroupTopology &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroupCommunicator_Create(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupCommunicator_Create(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -4691,15 +4607,19 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_Create(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ldof_group",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupCommunicator_Create", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupCommunicator_Create", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_Create" "', argument " "1"" of type '" "mfem::GroupCommunicator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_Create" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -4875,7 +4795,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupCommunicator_SetLTDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupCommunicator_SetLTDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -4883,15 +4803,19 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_SetLTDofTable(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ldof_ltdof",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupCommunicator_SetLTDofTable", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupCommunicator_SetLTDofTable", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_SetLTDofTable" "', argument " "1"" of type '" "mfem::GroupCommunicator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_SetLTDofTable" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -5030,7 +4954,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLTDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLTDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
   mfem::Table *arg2 = 0 ;
@@ -5038,15 +4962,19 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLTDofTable(PyObject *SWI
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"nbr_ltdof",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupCommunicator_GetNeighborLTDofTable", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupCommunicator_GetNeighborLTDofTable", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_GetNeighborLTDofTable" "', argument " "1"" of type '" "mfem::GroupCommunicator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Table,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Table,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_GetNeighborLTDofTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
   }
@@ -5077,7 +5005,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLDofTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
   mfem::Table *arg2 = 0 ;
@@ -5085,15 +5013,19 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_GetNeighborLDofTable(PyObject *SWIG
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"nbr_ldof",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GroupCommunicator_GetNeighborLDofTable", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GroupCommunicator_GetNeighborLDofTable", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_GetNeighborLDofTable" "', argument " "1"" of type '" "mfem::GroupCommunicator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Table,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Table,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_GetNeighborLDofTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
   }
@@ -5127,31 +5059,34 @@ fail:
 SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
-  std::ostream *arg2 = 0 ;
+  std::ostream &arg2_defvalue = mfem::out ;
+  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
   std::ofstream out2 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_PrintInfo" "', argument " "1"" of type '" "mfem::GroupCommunicator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
-    }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
+  if (swig_obj[1]) {
+    {
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+        SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+        return NULL;
+      }  
+      
+      if (temp2->isSTDOUT() == 1) {
+        arg2 = &std::cout;
+      }
+      else {
+        out2.open(temp2->getFilename());
+        out2.precision(temp2->getPrecision());
+        arg2 = &out2;
+      }
     }
   }
   {
@@ -5183,41 +5118,6 @@ fail:
       out2.close();
     }
   }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_PrintInfo" "', argument " "1"" of type '" "mfem::GroupCommunicator const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  {
-    try {
-      ((mfem::GroupCommunicator const *)arg1)->PrintInfo();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
   return NULL;
 }
 
@@ -5259,18 +5159,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_PrintInfo" "', argument " "1"" of type '" "mfem::GroupCommunicator *""'"); 
@@ -5281,61 +5181,17 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_2(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_PrintInfo" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
-      mfem_GroupCommunicator_PrintInfo__SWIG_2(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GroupCommunicator *arg1 = (mfem::GroupCommunicator *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GroupCommunicator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GroupCommunicator_PrintInfo" "', argument " "1"" of type '" "mfem::GroupCommunicator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GroupCommunicator * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GroupCommunicator_PrintInfo" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  {
-    try {
-      mfem_GroupCommunicator_PrintInfo__SWIG_2(arg1,(char const *)arg2);
+      mfem_GroupCommunicator_PrintInfo__SWIG_1(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -5366,34 +5222,15 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GroupCommunicator_PrintInfo", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupCommunicator, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_GroupCommunicator_PrintInfo__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupCommunicator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GroupCommunicator_PrintInfo__SWIG_3(self, argc, argv);
+      if (argc <= 1) {
+        return _wrap_GroupCommunicator_PrintInfo__SWIG_0(self, argc, argv);
       }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupCommunicator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
       {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
@@ -5408,7 +5245,7 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo(PyObject *self, PyObject 
       }
     }
   }
-  if (argc == 3) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GroupCommunicator, 0);
@@ -5417,6 +5254,9 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo(PyObject *self, PyObject 
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_GroupCommunicator_PrintInfo__SWIG_1(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -5426,7 +5266,7 @@ SWIGINTERN PyObject *_wrap_GroupCommunicator_PrintInfo(PyObject *self, PyObject 
           }
         }
         if (_v) {
-          return _wrap_GroupCommunicator_PrintInfo__SWIG_2(self, argc, argv);
+          return _wrap_GroupCommunicator_PrintInfo__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -5436,9 +5276,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GroupCommunicator_PrintInfo'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GroupCommunicator::PrintInfo(std::ostream &) const\n"
-    "    mfem::GroupCommunicator::PrintInfo() const\n"
-    "    mfem::GroupCommunicator::PrintInfo(char const *,int)\n"
-    "    mfem::GroupCommunicator::PrintInfo(char const *)\n");
+    "    mfem::GroupCommunicator::PrintInfo(char const *,int)\n");
   return 0;
 }
 
@@ -5454,17 +5292,19 @@ SWIGINTERN PyObject *GroupCommunicator_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_ReorderRanksZCurve(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ReorderRanksZCurve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   MPI_Comm arg1 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"comm",  NULL 
+  };
   MPI_Comm result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:ReorderRanksZCurve", kwnames, &obj0)) SWIG_fail;
   {
     MPI_Comm *ptr = (MPI_Comm *)0;
-    int res = SWIG_AsPtr_MPI_Comm(swig_obj[0], &ptr);
+    int res = SWIG_AsPtr_MPI_Comm(obj0, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
       SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ReorderRanksZCurve" "', argument " "1"" of type '" "MPI_Comm""'"); 
     }
@@ -5512,22 +5352,22 @@ static PyMethodDef SwigMethods[] = {
 		"GroupTopology(MPI_Comm comm)\n"
 		"new_GroupTopology(GroupTopology gt) -> GroupTopology\n"
 		""},
-	 { "GroupTopology_SetComm", _wrap_GroupTopology_SetComm, METH_VARARGS, "GroupTopology_SetComm(GroupTopology self, MPI_Comm comm)"},
+	 { "GroupTopology_SetComm", (PyCFunction)(void(*)(void))_wrap_GroupTopology_SetComm, METH_VARARGS|METH_KEYWORDS, "GroupTopology_SetComm(GroupTopology self, MPI_Comm comm)"},
 	 { "GroupTopology_GetComm", _wrap_GroupTopology_GetComm, METH_O, "GroupTopology_GetComm(GroupTopology self) -> MPI_Comm"},
 	 { "GroupTopology_MyRank", _wrap_GroupTopology_MyRank, METH_O, "GroupTopology_MyRank(GroupTopology self) -> int"},
 	 { "GroupTopology_NRanks", _wrap_GroupTopology_NRanks, METH_O, "GroupTopology_NRanks(GroupTopology self) -> int"},
-	 { "GroupTopology_Create", _wrap_GroupTopology_Create, METH_VARARGS, "GroupTopology_Create(GroupTopology self, ListOfIntegerSets groups, int mpitag)"},
+	 { "GroupTopology_Create", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Create, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Create(GroupTopology self, ListOfIntegerSets groups, int mpitag)"},
 	 { "GroupTopology_NGroups", _wrap_GroupTopology_NGroups, METH_O, "GroupTopology_NGroups(GroupTopology self) -> int"},
 	 { "GroupTopology_GetNumNeighbors", _wrap_GroupTopology_GetNumNeighbors, METH_O, "GroupTopology_GetNumNeighbors(GroupTopology self) -> int"},
-	 { "GroupTopology_GetNeighborRank", _wrap_GroupTopology_GetNeighborRank, METH_VARARGS, "GroupTopology_GetNeighborRank(GroupTopology self, int i) -> int"},
-	 { "GroupTopology_IAmMaster", _wrap_GroupTopology_IAmMaster, METH_VARARGS, "GroupTopology_IAmMaster(GroupTopology self, int g) -> bool"},
-	 { "GroupTopology_GetGroupMaster", _wrap_GroupTopology_GetGroupMaster, METH_VARARGS, "GroupTopology_GetGroupMaster(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroupMasterRank", _wrap_GroupTopology_GetGroupMasterRank, METH_VARARGS, "GroupTopology_GetGroupMasterRank(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroupMasterGroup", _wrap_GroupTopology_GetGroupMasterGroup, METH_VARARGS, "GroupTopology_GetGroupMasterGroup(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroupSize", _wrap_GroupTopology_GetGroupSize, METH_VARARGS, "GroupTopology_GetGroupSize(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroup", _wrap_GroupTopology_GetGroup, METH_VARARGS, "GroupTopology_GetGroup(GroupTopology self, int g) -> int const *"},
-	 { "GroupTopology_Load", _wrap_GroupTopology_Load, METH_VARARGS, "GroupTopology_Load(GroupTopology self, std::istream & _in)"},
-	 { "GroupTopology_Copy", _wrap_GroupTopology_Copy, METH_VARARGS, "GroupTopology_Copy(GroupTopology self, GroupTopology copy)"},
+	 { "GroupTopology_GetNeighborRank", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetNeighborRank, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetNeighborRank(GroupTopology self, int i) -> int"},
+	 { "GroupTopology_IAmMaster", (PyCFunction)(void(*)(void))_wrap_GroupTopology_IAmMaster, METH_VARARGS|METH_KEYWORDS, "GroupTopology_IAmMaster(GroupTopology self, int g) -> bool"},
+	 { "GroupTopology_GetGroupMaster", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupMaster, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetGroupMaster(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupMasterRank", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupMasterRank, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetGroupMasterRank(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupMasterGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupMasterGroup, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetGroupMasterGroup(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupSize", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupSize, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetGroupSize(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroup, METH_VARARGS|METH_KEYWORDS, "GroupTopology_GetGroup(GroupTopology self, int g) -> int const *"},
+	 { "GroupTopology_Load", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Load, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Load(GroupTopology self, std::istream & _in)"},
+	 { "GroupTopology_Copy", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Copy, METH_VARARGS|METH_KEYWORDS, "GroupTopology_Copy(GroupTopology self, GroupTopology copy)"},
 	 { "delete_GroupTopology", _wrap_delete_GroupTopology, METH_O, "delete_GroupTopology(GroupTopology self)"},
 	 { "GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, "\n"
 		"GroupTopology_Save(GroupTopology self, std::ostream & out)\n"
@@ -5535,20 +5375,20 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "GroupTopology_swigregister", GroupTopology_swigregister, METH_O, NULL},
 	 { "GroupTopology_swiginit", GroupTopology_swiginit, METH_VARARGS, NULL},
-	 { "new_GroupCommunicator", _wrap_new_GroupCommunicator, METH_VARARGS, "GroupCommunicator(GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor)"},
-	 { "GroupCommunicator_Create", _wrap_GroupCommunicator_Create, METH_VARARGS, "GroupCommunicator_Create(GroupCommunicator self, intArray ldof_group)"},
+	 { "new_GroupCommunicator", (PyCFunction)(void(*)(void))_wrap_new_GroupCommunicator, METH_VARARGS|METH_KEYWORDS, "new_GroupCommunicator(GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor) -> GroupCommunicator"},
+	 { "GroupCommunicator_Create", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_Create, METH_VARARGS|METH_KEYWORDS, "GroupCommunicator_Create(GroupCommunicator self, intArray ldof_group)"},
 	 { "GroupCommunicator_GroupLDofTable", _wrap_GroupCommunicator_GroupLDofTable, METH_VARARGS, "\n"
 		"GroupCommunicator_GroupLDofTable(GroupCommunicator self) -> Table\n"
 		"GroupCommunicator_GroupLDofTable(GroupCommunicator self) -> Table\n"
 		""},
 	 { "GroupCommunicator_Finalize", _wrap_GroupCommunicator_Finalize, METH_O, "GroupCommunicator_Finalize(GroupCommunicator self)"},
-	 { "GroupCommunicator_SetLTDofTable", _wrap_GroupCommunicator_SetLTDofTable, METH_VARARGS, "GroupCommunicator_SetLTDofTable(GroupCommunicator self, intArray ldof_ltdof)"},
+	 { "GroupCommunicator_SetLTDofTable", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_SetLTDofTable, METH_VARARGS|METH_KEYWORDS, "GroupCommunicator_SetLTDofTable(GroupCommunicator self, intArray ldof_ltdof)"},
 	 { "GroupCommunicator_GetGroupTopology", _wrap_GroupCommunicator_GetGroupTopology, METH_VARARGS, "\n"
 		"GroupCommunicator_GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
 		"GroupCommunicator_GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
 		""},
-	 { "GroupCommunicator_GetNeighborLTDofTable", _wrap_GroupCommunicator_GetNeighborLTDofTable, METH_VARARGS, "GroupCommunicator_GetNeighborLTDofTable(GroupCommunicator self, Table nbr_ltdof)"},
-	 { "GroupCommunicator_GetNeighborLDofTable", _wrap_GroupCommunicator_GetNeighborLDofTable, METH_VARARGS, "GroupCommunicator_GetNeighborLDofTable(GroupCommunicator self, Table nbr_ldof)"},
+	 { "GroupCommunicator_GetNeighborLTDofTable", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_GetNeighborLTDofTable, METH_VARARGS|METH_KEYWORDS, "GroupCommunicator_GetNeighborLTDofTable(GroupCommunicator self, Table nbr_ltdof)"},
+	 { "GroupCommunicator_GetNeighborLDofTable", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_GetNeighborLDofTable, METH_VARARGS|METH_KEYWORDS, "GroupCommunicator_GetNeighborLDofTable(GroupCommunicator self, Table nbr_ldof)"},
 	 { "delete_GroupCommunicator", _wrap_delete_GroupCommunicator, METH_O, "delete_GroupCommunicator(GroupCommunicator self)"},
 	 { "GroupCommunicator_PrintInfo", _wrap_GroupCommunicator_PrintInfo, METH_VARARGS, "\n"
 		"GroupCommunicator_PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)\n"
@@ -5556,7 +5396,7 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "GroupCommunicator_swigregister", GroupCommunicator_swigregister, METH_O, NULL},
 	 { "GroupCommunicator_swiginit", GroupCommunicator_swiginit, METH_VARARGS, NULL},
-	 { "ReorderRanksZCurve", _wrap_ReorderRanksZCurve, METH_O, "ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"},
+	 { "ReorderRanksZCurve", (PyCFunction)(void(*)(void))_wrap_ReorderRanksZCurve, METH_VARARGS|METH_KEYWORDS, "ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5578,22 +5418,22 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GroupTopology(MPI_Comm comm)\n"
 		"new_GroupTopology(GroupTopology gt) -> GroupTopology\n"
 		""},
-	 { "GroupTopology_SetComm", _wrap_GroupTopology_SetComm, METH_VARARGS, "SetComm(GroupTopology self, MPI_Comm comm)"},
+	 { "GroupTopology_SetComm", (PyCFunction)(void(*)(void))_wrap_GroupTopology_SetComm, METH_VARARGS|METH_KEYWORDS, "SetComm(GroupTopology self, MPI_Comm comm)"},
 	 { "GroupTopology_GetComm", _wrap_GroupTopology_GetComm, METH_O, "GetComm(GroupTopology self) -> MPI_Comm"},
 	 { "GroupTopology_MyRank", _wrap_GroupTopology_MyRank, METH_O, "MyRank(GroupTopology self) -> int"},
 	 { "GroupTopology_NRanks", _wrap_GroupTopology_NRanks, METH_O, "NRanks(GroupTopology self) -> int"},
-	 { "GroupTopology_Create", _wrap_GroupTopology_Create, METH_VARARGS, "Create(GroupTopology self, ListOfIntegerSets groups, int mpitag)"},
+	 { "GroupTopology_Create", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Create, METH_VARARGS|METH_KEYWORDS, "Create(GroupTopology self, ListOfIntegerSets groups, int mpitag)"},
 	 { "GroupTopology_NGroups", _wrap_GroupTopology_NGroups, METH_O, "NGroups(GroupTopology self) -> int"},
 	 { "GroupTopology_GetNumNeighbors", _wrap_GroupTopology_GetNumNeighbors, METH_O, "GetNumNeighbors(GroupTopology self) -> int"},
-	 { "GroupTopology_GetNeighborRank", _wrap_GroupTopology_GetNeighborRank, METH_VARARGS, "GetNeighborRank(GroupTopology self, int i) -> int"},
-	 { "GroupTopology_IAmMaster", _wrap_GroupTopology_IAmMaster, METH_VARARGS, "IAmMaster(GroupTopology self, int g) -> bool"},
-	 { "GroupTopology_GetGroupMaster", _wrap_GroupTopology_GetGroupMaster, METH_VARARGS, "GetGroupMaster(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroupMasterRank", _wrap_GroupTopology_GetGroupMasterRank, METH_VARARGS, "GetGroupMasterRank(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroupMasterGroup", _wrap_GroupTopology_GetGroupMasterGroup, METH_VARARGS, "GetGroupMasterGroup(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroupSize", _wrap_GroupTopology_GetGroupSize, METH_VARARGS, "GetGroupSize(GroupTopology self, int g) -> int"},
-	 { "GroupTopology_GetGroup", _wrap_GroupTopology_GetGroup, METH_VARARGS, "GetGroup(GroupTopology self, int g) -> int const *"},
-	 { "GroupTopology_Load", _wrap_GroupTopology_Load, METH_VARARGS, "Load(GroupTopology self, std::istream & _in)"},
-	 { "GroupTopology_Copy", _wrap_GroupTopology_Copy, METH_VARARGS, "Copy(GroupTopology self, GroupTopology copy)"},
+	 { "GroupTopology_GetNeighborRank", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetNeighborRank, METH_VARARGS|METH_KEYWORDS, "GetNeighborRank(GroupTopology self, int i) -> int"},
+	 { "GroupTopology_IAmMaster", (PyCFunction)(void(*)(void))_wrap_GroupTopology_IAmMaster, METH_VARARGS|METH_KEYWORDS, "IAmMaster(GroupTopology self, int g) -> bool"},
+	 { "GroupTopology_GetGroupMaster", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupMaster, METH_VARARGS|METH_KEYWORDS, "GetGroupMaster(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupMasterRank", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupMasterRank, METH_VARARGS|METH_KEYWORDS, "GetGroupMasterRank(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupMasterGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupMasterGroup, METH_VARARGS|METH_KEYWORDS, "GetGroupMasterGroup(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroupSize", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroupSize, METH_VARARGS|METH_KEYWORDS, "GetGroupSize(GroupTopology self, int g) -> int"},
+	 { "GroupTopology_GetGroup", (PyCFunction)(void(*)(void))_wrap_GroupTopology_GetGroup, METH_VARARGS|METH_KEYWORDS, "GetGroup(GroupTopology self, int g) -> int const *"},
+	 { "GroupTopology_Load", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Load, METH_VARARGS|METH_KEYWORDS, "Load(GroupTopology self, std::istream & _in)"},
+	 { "GroupTopology_Copy", (PyCFunction)(void(*)(void))_wrap_GroupTopology_Copy, METH_VARARGS|METH_KEYWORDS, "Copy(GroupTopology self, GroupTopology copy)"},
 	 { "delete_GroupTopology", _wrap_delete_GroupTopology, METH_O, "delete_GroupTopology(GroupTopology self)"},
 	 { "GroupTopology_Save", _wrap_GroupTopology_Save, METH_VARARGS, "\n"
 		"Save(GroupTopology self, std::ostream & out)\n"
@@ -5601,20 +5441,20 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "GroupTopology_swigregister", GroupTopology_swigregister, METH_O, NULL},
 	 { "GroupTopology_swiginit", GroupTopology_swiginit, METH_VARARGS, NULL},
-	 { "new_GroupCommunicator", _wrap_new_GroupCommunicator, METH_VARARGS, "GroupCommunicator(GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor)"},
-	 { "GroupCommunicator_Create", _wrap_GroupCommunicator_Create, METH_VARARGS, "Create(GroupCommunicator self, intArray ldof_group)"},
+	 { "new_GroupCommunicator", (PyCFunction)(void(*)(void))_wrap_new_GroupCommunicator, METH_VARARGS|METH_KEYWORDS, "new_GroupCommunicator(GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor) -> GroupCommunicator"},
+	 { "GroupCommunicator_Create", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_Create, METH_VARARGS|METH_KEYWORDS, "Create(GroupCommunicator self, intArray ldof_group)"},
 	 { "GroupCommunicator_GroupLDofTable", _wrap_GroupCommunicator_GroupLDofTable, METH_VARARGS, "\n"
 		"GroupLDofTable(GroupCommunicator self) -> Table\n"
 		"GroupLDofTable(GroupCommunicator self) -> Table\n"
 		""},
 	 { "GroupCommunicator_Finalize", _wrap_GroupCommunicator_Finalize, METH_O, "Finalize(GroupCommunicator self)"},
-	 { "GroupCommunicator_SetLTDofTable", _wrap_GroupCommunicator_SetLTDofTable, METH_VARARGS, "SetLTDofTable(GroupCommunicator self, intArray ldof_ltdof)"},
+	 { "GroupCommunicator_SetLTDofTable", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_SetLTDofTable, METH_VARARGS|METH_KEYWORDS, "SetLTDofTable(GroupCommunicator self, intArray ldof_ltdof)"},
 	 { "GroupCommunicator_GetGroupTopology", _wrap_GroupCommunicator_GetGroupTopology, METH_VARARGS, "\n"
 		"GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
 		"GetGroupTopology(GroupCommunicator self) -> GroupTopology\n"
 		""},
-	 { "GroupCommunicator_GetNeighborLTDofTable", _wrap_GroupCommunicator_GetNeighborLTDofTable, METH_VARARGS, "GetNeighborLTDofTable(GroupCommunicator self, Table nbr_ltdof)"},
-	 { "GroupCommunicator_GetNeighborLDofTable", _wrap_GroupCommunicator_GetNeighborLDofTable, METH_VARARGS, "GetNeighborLDofTable(GroupCommunicator self, Table nbr_ldof)"},
+	 { "GroupCommunicator_GetNeighborLTDofTable", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_GetNeighborLTDofTable, METH_VARARGS|METH_KEYWORDS, "GetNeighborLTDofTable(GroupCommunicator self, Table nbr_ltdof)"},
+	 { "GroupCommunicator_GetNeighborLDofTable", (PyCFunction)(void(*)(void))_wrap_GroupCommunicator_GetNeighborLDofTable, METH_VARARGS|METH_KEYWORDS, "GetNeighborLDofTable(GroupCommunicator self, Table nbr_ldof)"},
 	 { "delete_GroupCommunicator", _wrap_delete_GroupCommunicator, METH_O, "delete_GroupCommunicator(GroupCommunicator self)"},
 	 { "GroupCommunicator_PrintInfo", _wrap_GroupCommunicator_PrintInfo, METH_VARARGS, "\n"
 		"PrintInfo(GroupCommunicator self, std::ostream & out=mfem::out)\n"
@@ -5622,7 +5462,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "GroupCommunicator_swigregister", GroupCommunicator_swigregister, METH_O, NULL},
 	 { "GroupCommunicator_swiginit", GroupCommunicator_swiginit, METH_VARARGS, NULL},
-	 { "ReorderRanksZCurve", _wrap_ReorderRanksZCurve, METH_O, "ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"},
+	 { "ReorderRanksZCurve", (PyCFunction)(void(*)(void))_wrap_ReorderRanksZCurve, METH_VARARGS|METH_KEYWORDS, "ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -6427,10 +6267,10 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/src/mfem"));
-  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/p/rf/sshiraiw/twopi_roots/20200327/mfem/par"));
-  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(2)));
-  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21802)));
+  SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
+  SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
+  SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MFEM_HYPRE_VERSION",SWIG_From_int(static_cast< int >(21600)));
   
   import_array();
   

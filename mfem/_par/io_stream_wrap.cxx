@@ -3101,7 +3101,7 @@ fail:
 SWIGINTERN PyObject *_wrap_new_wFILE__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 8 ;
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
@@ -3109,42 +3109,20 @@ SWIGINTERN PyObject *_wrap_new_wFILE__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_
   int ecode2 = 0 ;
   PyMFEM::wFILE *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_wFILE" "', argument " "1"" of type '" "char const *""'");
   }
   arg1 = reinterpret_cast< char * >(buf1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_wFILE" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_wFILE" "', argument " "2"" of type '" "int""'");
+    } 
+    arg2 = static_cast< int >(val2);
+  }
   result = (PyMFEM::wFILE *)new PyMFEM::wFILE((char const *)arg1,arg2);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PyMFEM__wFILE, SWIG_POINTER_NEW |  0 );
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return resultobj;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_wFILE__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  PyMFEM::wFILE *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(swig_obj[0], &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_wFILE" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  result = (PyMFEM::wFILE *)new PyMFEM::wFILE((char const *)arg1);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_PyMFEM__wFILE, SWIG_POINTER_NEW |  0 );
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return resultobj;
@@ -3165,19 +3143,14 @@ SWIGINTERN PyObject *_wrap_new_wFILE(PyObject *self, PyObject *args) {
   if (argc == 0) {
     return _wrap_new_wFILE__SWIG_0(self, argc, argv);
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_wFILE__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_wFILE__SWIG_1(self, argc, argv);
+      }
       {
         int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
@@ -3192,8 +3165,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_wFILE'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    PyMFEM::wFILE::wFILE()\n"
-    "    PyMFEM::wFILE::wFILE(char const *,int)\n"
-    "    PyMFEM::wFILE::wFILE(char const *)\n");
+    "    PyMFEM::wFILE::wFILE(char const *,int)\n");
   return 0;
 }
 
@@ -3267,7 +3239,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_wFILE_setPrecision(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_wFILE_setPrecision(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   PyMFEM::wFILE *arg1 = (PyMFEM::wFILE *) 0 ;
   int arg2 ;
@@ -3275,15 +3247,19 @@ SWIGINTERN PyObject *_wrap_wFILE_setPrecision(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"precision",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "wFILE_setPrecision", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_PyMFEM__wFILE, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:wFILE_setPrecision", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_PyMFEM__wFILE, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "wFILE_setPrecision" "', argument " "1"" of type '" "PyMFEM::wFILE *""'"); 
   }
   arg1 = reinterpret_cast< PyMFEM::wFILE * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "wFILE_setPrecision" "', argument " "2"" of type '" "int""'");
   } 
@@ -3334,12 +3310,12 @@ static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_wFILE", _wrap_new_wFILE, METH_VARARGS, "\n"
 		"wFILE()\n"
-		"wFILE(char const * filename, int precision=8)\n"
+		"new_wFILE(char const * filename, int precision=8) -> wFILE\n"
 		""},
 	 { "wFILE_isSTDOUT", _wrap_wFILE_isSTDOUT, METH_O, "wFILE_isSTDOUT(wFILE self) -> int"},
 	 { "wFILE_getFilename", _wrap_wFILE_getFilename, METH_O, "wFILE_getFilename(wFILE self) -> char *"},
 	 { "wFILE_getPrecision", _wrap_wFILE_getPrecision, METH_O, "wFILE_getPrecision(wFILE self) -> int"},
-	 { "wFILE_setPrecision", _wrap_wFILE_setPrecision, METH_VARARGS, "wFILE_setPrecision(wFILE self, int precision)"},
+	 { "wFILE_setPrecision", (PyCFunction)(void(*)(void))_wrap_wFILE_setPrecision, METH_VARARGS|METH_KEYWORDS, "wFILE_setPrecision(wFILE self, int precision)"},
 	 { "delete_wFILE", _wrap_delete_wFILE, METH_O, "delete_wFILE(wFILE self)"},
 	 { "wFILE_swigregister", wFILE_swigregister, METH_O, NULL},
 	 { "wFILE_swiginit", wFILE_swiginit, METH_VARARGS, NULL},
@@ -3351,12 +3327,12 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_wFILE", _wrap_new_wFILE, METH_VARARGS, "\n"
 		"wFILE()\n"
-		"wFILE(char const * filename, int precision=8)\n"
+		"new_wFILE(char const * filename, int precision=8) -> wFILE\n"
 		""},
 	 { "wFILE_isSTDOUT", _wrap_wFILE_isSTDOUT, METH_O, "isSTDOUT(wFILE self) -> int"},
 	 { "wFILE_getFilename", _wrap_wFILE_getFilename, METH_O, "getFilename(wFILE self) -> char *"},
 	 { "wFILE_getPrecision", _wrap_wFILE_getPrecision, METH_O, "getPrecision(wFILE self) -> int"},
-	 { "wFILE_setPrecision", _wrap_wFILE_setPrecision, METH_VARARGS, "setPrecision(wFILE self, int precision)"},
+	 { "wFILE_setPrecision", (PyCFunction)(void(*)(void))_wrap_wFILE_setPrecision, METH_VARARGS|METH_KEYWORDS, "setPrecision(wFILE self, int precision)"},
 	 { "delete_wFILE", _wrap_delete_wFILE, METH_O, "delete_wFILE(wFILE self)"},
 	 { "wFILE_swigregister", wFILE_swigregister, METH_O, NULL},
 	 { "wFILE_swiginit", wFILE_swiginit, METH_VARARGS, NULL},

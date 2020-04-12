@@ -3381,7 +3381,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockVector_GetBlockView(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockVector_GetBlockView(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockVector *arg1 = (mfem::BlockVector *) 0 ;
   int arg2 ;
@@ -3390,21 +3390,26 @@ SWIGINTERN PyObject *_wrap_BlockVector_GetBlockView(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"blockView",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockVector_GetBlockView", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockVector_GetBlockView", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockVector_GetBlockView" "', argument " "1"" of type '" "mfem::BlockVector *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockVector_GetBlockView" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3435,26 +3440,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockVector_BlockSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockVector_BlockSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockVector *arg1 = (mfem::BlockVector *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockVector_BlockSize", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BlockVector_BlockSize", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockVector, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockVector_BlockSize" "', argument " "1"" of type '" "mfem::BlockVector *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockVector * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3728,8 +3737,8 @@ static PyMethodDef SwigMethods[] = {
 		"BlockVector_GetBlock(BlockVector self, int i) -> Vector\n"
 		"BlockVector_GetBlock(BlockVector self, int i) -> Vector\n"
 		""},
-	 { "BlockVector_GetBlockView", _wrap_BlockVector_GetBlockView, METH_VARARGS, "BlockVector_GetBlockView(BlockVector self, int i, Vector blockView)"},
-	 { "BlockVector_BlockSize", _wrap_BlockVector_BlockSize, METH_VARARGS, "BlockVector_BlockSize(BlockVector self, int i) -> int"},
+	 { "BlockVector_GetBlockView", (PyCFunction)(void(*)(void))_wrap_BlockVector_GetBlockView, METH_VARARGS|METH_KEYWORDS, "BlockVector_GetBlockView(BlockVector self, int i, Vector blockView)"},
+	 { "BlockVector_BlockSize", (PyCFunction)(void(*)(void))_wrap_BlockVector_BlockSize, METH_VARARGS|METH_KEYWORDS, "BlockVector_BlockSize(BlockVector self, int i) -> int"},
 	 { "BlockVector_Update", _wrap_BlockVector_Update, METH_VARARGS, "\n"
 		"BlockVector_Update(BlockVector self, double * data, intArray bOffsets)\n"
 		"BlockVector_Update(BlockVector self, intArray bOffsets)\n"
@@ -3755,8 +3764,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		"GetBlock(BlockVector self, int i) -> Vector\n"
 		"GetBlock(BlockVector self, int i) -> Vector\n"
 		""},
-	 { "BlockVector_GetBlockView", _wrap_BlockVector_GetBlockView, METH_VARARGS, "GetBlockView(BlockVector self, int i, Vector blockView)"},
-	 { "BlockVector_BlockSize", _wrap_BlockVector_BlockSize, METH_VARARGS, "BlockSize(BlockVector self, int i) -> int"},
+	 { "BlockVector_GetBlockView", (PyCFunction)(void(*)(void))_wrap_BlockVector_GetBlockView, METH_VARARGS|METH_KEYWORDS, "GetBlockView(BlockVector self, int i, Vector blockView)"},
+	 { "BlockVector_BlockSize", (PyCFunction)(void(*)(void))_wrap_BlockVector_BlockSize, METH_VARARGS|METH_KEYWORDS, "BlockSize(BlockVector self, int i) -> int"},
 	 { "BlockVector_Update", _wrap_BlockVector_Update, METH_VARARGS, "\n"
 		"Update(BlockVector self, double * data, intArray bOffsets)\n"
 		"Update(BlockVector self, intArray bOffsets)\n"

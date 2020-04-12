@@ -213,9 +213,9 @@ class ThresholdRefiner(MeshOperator):
         r"""__init__(ThresholdRefiner self, ErrorEstimator est) -> ThresholdRefiner"""
         _mesh_operators.ThresholdRefiner_swiginit(self, _mesh_operators.new_ThresholdRefiner(est))
 
-    def SetTotalErrorNormP(self, *args):
+    def SetTotalErrorNormP(self, *args, **kwargs):
         r"""SetTotalErrorNormP(ThresholdRefiner self, double norm_p=mfem::infinity())"""
-        return _mesh_operators.ThresholdRefiner_SetTotalErrorNormP(self, *args)
+        return _mesh_operators.ThresholdRefiner_SetTotalErrorNormP(self, *args, **kwargs)
     SetTotalErrorNormP = _swig_new_instance_method(_mesh_operators.ThresholdRefiner_SetTotalErrorNormP)
 
     def SetTotalErrorGoal(self, err_goal):

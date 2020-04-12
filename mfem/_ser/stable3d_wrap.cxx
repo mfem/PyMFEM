@@ -3310,7 +3310,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_STable3D_Print__SWIG_2(mfem::STable3D *self,char const *file,int precision=8){
+SWIGINTERN void mfem_STable3D_Print__SWIG_1(mfem::STable3D *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3619,19 +3619,21 @@ SWIGINTERN PyObject *STable3DNode_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_STable3D(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_STable3D(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"nr",  NULL 
+  };
   mfem::STable3D *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_STable3D", kwnames, &obj0)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -3659,7 +3661,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_STable3D_Push(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_STable3D_Push(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   int arg2 ;
@@ -3667,32 +3669,38 @@ SWIGINTERN PyObject *_wrap_STable3D_Push(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"r",  (char *)"c",  (char *)"f",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "STable3D_Push", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:STable3D_Push", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STable3D_Push" "', argument " "1"" of type '" "mfem::STable3D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::STable3D * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -3780,7 +3788,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_STable3D_Index(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_STable3D_Index(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   int arg2 ;
@@ -3788,32 +3796,38 @@ SWIGINTERN PyObject *_wrap_STable3D_Index(PyObject *SWIGUNUSEDPARM(self), PyObje
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"r",  (char *)"c",  (char *)"f",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "STable3D_Index", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:STable3D_Index", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STable3D_Index" "', argument " "1"" of type '" "mfem::STable3D const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::STable3D * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -3841,7 +3855,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_STable3D_Push4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_STable3D_Push4(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   int arg2 ;
@@ -3850,38 +3864,45 @@ SWIGINTERN PyObject *_wrap_STable3D_Push4(PyObject *SWIGUNUSEDPARM(self), PyObje
   int arg5 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[5] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"r",  (char *)"c",  (char *)"f",  (char *)"t",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "STable3D_Push4", 5, 5, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:STable3D_Push4", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STable3D_Push4" "', argument " "1"" of type '" "mfem::STable3D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::STable3D * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    arg5 = PyArray_PyIntAsInt(obj4);
   }
   {
     try {
@@ -4126,31 +4147,34 @@ fail:
 SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
-  std::ostream *arg2 = 0 ;
+  std::ostream &arg2_defvalue = mfem::out ;
+  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
   std::ofstream out2 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STable3D_Print" "', argument " "1"" of type '" "mfem::STable3D const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::STable3D * >(argp1);
-  {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
-    }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
+  if (swig_obj[1]) {
+    {
+      if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+        SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
+        return NULL;
+      }  
+      
+      if (temp2->isSTDOUT() == 1) {
+        arg2 = &std::cout;
+      }
+      else {
+        out2.open(temp2->getFilename());
+        out2.precision(temp2->getPrecision());
+        arg2 = &out2;
+      }
     }
   }
   {
@@ -4185,44 +4209,6 @@ fail:
       out2.close();
     }
   }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STable3D_Print" "', argument " "1"" of type '" "mfem::STable3D const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::STable3D * >(argp1);
-  {
-    try {
-      ((mfem::STable3D const *)arg1)->Print();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
   return NULL;
 }
 
@@ -4267,18 +4253,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STable3D_Print" "', argument " "1"" of type '" "mfem::STable3D *""'"); 
@@ -4289,64 +4275,17 @@ SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_2(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "STable3D_Print" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
-      mfem_STable3D_Print__SWIG_2(arg1,(char const *)arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_STable3D_Print__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::STable3D *arg1 = (mfem::STable3D *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__STable3D, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "STable3D_Print" "', argument " "1"" of type '" "mfem::STable3D *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::STable3D * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "STable3D_Print" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  {
-    try {
-      mfem_STable3D_Print__SWIG_2(arg1,(char const *)arg2);
+      mfem_STable3D_Print__SWIG_1(arg1,(char const *)arg2,arg3);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -4380,34 +4319,15 @@ SWIGINTERN PyObject *_wrap_STable3D_Print(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "STable3D_Print", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__STable3D, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_STable3D_Print__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__STable3D, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_STable3D_Print__SWIG_3(self, argc, argv);
+      if (argc <= 1) {
+        return _wrap_STable3D_Print__SWIG_0(self, argc, argv);
       }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__STable3D, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
       {
         void *ptr;
         if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
@@ -4422,7 +4342,7 @@ SWIGINTERN PyObject *_wrap_STable3D_Print(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 3) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__STable3D, 0);
@@ -4431,6 +4351,9 @@ SWIGINTERN PyObject *_wrap_STable3D_Print(PyObject *self, PyObject *args) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_STable3D_Print__SWIG_1(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -4440,7 +4363,7 @@ SWIGINTERN PyObject *_wrap_STable3D_Print(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_STable3D_Print__SWIG_2(self, argc, argv);
+          return _wrap_STable3D_Print__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -4450,9 +4373,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'STable3D_Print'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::STable3D::Print(std::ostream &) const\n"
-    "    mfem::STable3D::Print() const\n"
-    "    mfem::STable3D::Print(char const *,int)\n"
-    "    mfem::STable3D::Print(char const *)\n");
+    "    mfem::STable3D::Print(char const *,int)\n");
   return 0;
 }
 
@@ -4483,10 +4404,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_STable3DNode", _wrap_delete_STable3DNode, METH_O, "delete_STable3DNode(STable3DNode self)"},
 	 { "STable3DNode_swigregister", STable3DNode_swigregister, METH_O, NULL},
 	 { "STable3DNode_swiginit", STable3DNode_swiginit, METH_VARARGS, NULL},
-	 { "new_STable3D", _wrap_new_STable3D, METH_O, "new_STable3D(int nr) -> STable3D"},
-	 { "STable3D_Push", _wrap_STable3D_Push, METH_VARARGS, "STable3D_Push(STable3D self, int r, int c, int f) -> int"},
-	 { "STable3D_Index", _wrap_STable3D_Index, METH_VARARGS, "STable3D_Index(STable3D self, int r, int c, int f) -> int"},
-	 { "STable3D_Push4", _wrap_STable3D_Push4, METH_VARARGS, "STable3D_Push4(STable3D self, int r, int c, int f, int t) -> int"},
+	 { "new_STable3D", (PyCFunction)(void(*)(void))_wrap_new_STable3D, METH_VARARGS|METH_KEYWORDS, "new_STable3D(int nr) -> STable3D"},
+	 { "STable3D_Push", (PyCFunction)(void(*)(void))_wrap_STable3D_Push, METH_VARARGS|METH_KEYWORDS, "STable3D_Push(STable3D self, int r, int c, int f) -> int"},
+	 { "STable3D_Index", (PyCFunction)(void(*)(void))_wrap_STable3D_Index, METH_VARARGS|METH_KEYWORDS, "STable3D_Index(STable3D self, int r, int c, int f) -> int"},
+	 { "STable3D_Push4", (PyCFunction)(void(*)(void))_wrap_STable3D_Push4, METH_VARARGS|METH_KEYWORDS, "STable3D_Push4(STable3D self, int r, int c, int f, int t) -> int"},
 	 { "STable3D___call__", _wrap_STable3D___call__, METH_VARARGS, "\n"
 		"STable3D___call__(STable3D self, int r, int c, int f) -> int\n"
 		"STable3D___call__(STable3D self, int r, int c, int f, int t) -> int\n"
@@ -4517,10 +4438,10 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_STable3DNode", _wrap_delete_STable3DNode, METH_O, "delete_STable3DNode(STable3DNode self)"},
 	 { "STable3DNode_swigregister", STable3DNode_swigregister, METH_O, NULL},
 	 { "STable3DNode_swiginit", STable3DNode_swiginit, METH_VARARGS, NULL},
-	 { "new_STable3D", _wrap_new_STable3D, METH_O, "new_STable3D(int nr) -> STable3D"},
-	 { "STable3D_Push", _wrap_STable3D_Push, METH_VARARGS, "Push(STable3D self, int r, int c, int f) -> int"},
-	 { "STable3D_Index", _wrap_STable3D_Index, METH_VARARGS, "Index(STable3D self, int r, int c, int f) -> int"},
-	 { "STable3D_Push4", _wrap_STable3D_Push4, METH_VARARGS, "Push4(STable3D self, int r, int c, int f, int t) -> int"},
+	 { "new_STable3D", (PyCFunction)(void(*)(void))_wrap_new_STable3D, METH_VARARGS|METH_KEYWORDS, "new_STable3D(int nr) -> STable3D"},
+	 { "STable3D_Push", (PyCFunction)(void(*)(void))_wrap_STable3D_Push, METH_VARARGS|METH_KEYWORDS, "Push(STable3D self, int r, int c, int f) -> int"},
+	 { "STable3D_Index", (PyCFunction)(void(*)(void))_wrap_STable3D_Index, METH_VARARGS|METH_KEYWORDS, "Index(STable3D self, int r, int c, int f) -> int"},
+	 { "STable3D_Push4", (PyCFunction)(void(*)(void))_wrap_STable3D_Push4, METH_VARARGS|METH_KEYWORDS, "Push4(STable3D self, int r, int c, int f, int t) -> int"},
 	 { "STable3D___call__", _wrap_STable3D___call__, METH_VARARGS, "\n"
 		"__call__(STable3D self, int r, int c, int f) -> int\n"
 		"__call__(STable3D self, int r, int c, int f, int t) -> int\n"

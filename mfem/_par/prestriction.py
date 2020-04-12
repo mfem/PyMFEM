@@ -100,9 +100,9 @@ class ParL2FaceRestriction(mfem._par.operators.Operator):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ParL2FaceRestriction self, mfem::ParFiniteElementSpace const & arg2, mfem::ElementDofOrdering arg3, mfem::FaceType type, mfem::L2FaceValues m=DoubleValued) -> ParL2FaceRestriction"""
-        _prestriction.ParL2FaceRestriction_swiginit(self, _prestriction.new_ParL2FaceRestriction(*args))
+        _prestriction.ParL2FaceRestriction_swiginit(self, _prestriction.new_ParL2FaceRestriction(*args, **kwargs))
 
     def Mult(self, x, y):
         r"""Mult(ParL2FaceRestriction self, Vector x, Vector y)"""

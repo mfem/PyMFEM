@@ -488,7 +488,7 @@ class HypreParMatrix(mfem._par.operators.Operator):
     get_local_true_nnz = _swig_new_instance_method(_hypre.HypreParMatrix_get_local_true_nnz)
 
     def GetCooDataArray(self, base_i=0, base_j=0):
-        r"""GetCooDataArray(HypreParMatrix self, HYPRE_Int const base_i=0, HYPRE_Int const base_j=0) -> PyObject"""
+        r"""GetCooDataArray(HypreParMatrix self, HYPRE_Int const base_i=0, HYPRE_Int const base_j=0) -> PyObject *"""
         return _hypre.HypreParMatrix_GetCooDataArray(self, base_i, base_j)
     GetCooDataArray = _swig_new_instance_method(_hypre.HypreParMatrix_GetCooDataArray)
 

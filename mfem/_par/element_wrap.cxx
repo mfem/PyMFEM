@@ -3327,25 +3327,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_SetAttribute(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_SetAttribute(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"attr",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_SetAttribute", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_SetAttribute", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_SetAttribute" "', argument " "1"" of type '" "mfem::Element *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3367,7 +3371,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_SetVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_SetVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int *arg2 = (int *) 0 ;
@@ -3375,15 +3379,19 @@ SWIGINTERN PyObject *_wrap_Element_SetVertices(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ind",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_SetVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_SetVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_SetVertices" "', argument " "1"" of type '" "mfem::Element *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_int, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Element_SetVertices" "', argument " "2"" of type '" "int const *""'"); 
   }
@@ -3638,26 +3646,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_GetEdgeVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_GetEdgeVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg2",  NULL 
+  };
   int *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_GetEdgeVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_GetEdgeVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_GetEdgeVertices" "', argument " "1"" of type '" "mfem::Element const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3797,26 +3809,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_GetNFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_GetNFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fi",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_GetNFaceVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_GetNFaceVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_GetNFaceVertices" "', argument " "1"" of type '" "mfem::Element const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3838,26 +3854,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_GetFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_GetFaceVertices(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"fi",  NULL 
+  };
   int *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_GetFaceVertices", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_GetFaceVertices", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_GetFaceVertices" "', argument " "1"" of type '" "mfem::Element const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3879,7 +3899,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_MarkEdge(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_MarkEdge(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   mfem::DSTable *arg2 = 0 ;
@@ -3890,15 +3910,20 @@ SWIGINTERN PyObject *_wrap_Element_MarkEdge(PyObject *SWIGUNUSEDPARM(self), PyOb
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"v_to_v",  (char *)"length",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_MarkEdge", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Element_MarkEdge", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_MarkEdge" "', argument " "1"" of type '" "mfem::Element *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DSTable,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DSTable,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Element_MarkEdge" "', argument " "2"" of type '" "mfem::DSTable const &""'"); 
   }
@@ -3906,7 +3931,7 @@ SWIGINTERN PyObject *_wrap_Element_MarkEdge(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Element_MarkEdge" "', argument " "2"" of type '" "mfem::DSTable const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DSTable * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_int, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Element_MarkEdge" "', argument " "3"" of type '" "int const *""'"); 
   }
@@ -3931,7 +3956,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_NeedRefinement(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_NeedRefinement(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   mfem::HashTable< mfem::Hashed2 > *arg2 = 0 ;
@@ -3939,16 +3964,20 @@ SWIGINTERN PyObject *_wrap_Element_NeedRefinement(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"v_to_v",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_NeedRefinement", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_NeedRefinement", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_NeedRefinement" "', argument " "1"" of type '" "mfem::Element const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__HashTableT_mfem__Hashed2_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__HashTableT_mfem__Hashed2_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Element_NeedRefinement" "', argument " "2"" of type '" "mfem::HashTable< mfem::Hashed2 > &""'"); 
   }
@@ -3976,25 +4005,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_ResetTransform(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_ResetTransform(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tr",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_ResetTransform", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_ResetTransform", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_ResetTransform" "', argument " "1"" of type '" "mfem::Element *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4016,25 +4049,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_PushTransform(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_PushTransform(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tr",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_PushTransform", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_PushTransform", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_PushTransform" "', argument " "1"" of type '" "mfem::Element *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4091,7 +4128,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Element_Duplicate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Element_Duplicate(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Element *arg1 = (mfem::Element *) 0 ;
   mfem::Mesh *arg2 = (mfem::Mesh *) 0 ;
@@ -4099,16 +4136,20 @@ SWIGINTERN PyObject *_wrap_Element_Duplicate(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"m",  NULL 
+  };
   mfem::Element *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Element_Duplicate", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Element_Duplicate", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Element, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Element_Duplicate" "', argument " "1"" of type '" "mfem::Element const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Element * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Element_Duplicate" "', argument " "2"" of type '" "mfem::Mesh *""'"); 
   }
@@ -4215,8 +4256,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "Element_GetType", _wrap_Element_GetType, METH_O, "Element_GetType(Element self) -> mfem::Element::Type"},
 	 { "Element_GetGeometryType", _wrap_Element_GetGeometryType, METH_O, "Element_GetGeometryType(Element self) -> mfem::Geometry::Type"},
 	 { "Element_GetAttribute", _wrap_Element_GetAttribute, METH_O, "Element_GetAttribute(Element self) -> int"},
-	 { "Element_SetAttribute", _wrap_Element_SetAttribute, METH_VARARGS, "Element_SetAttribute(Element self, int const attr)"},
-	 { "Element_SetVertices", _wrap_Element_SetVertices, METH_VARARGS, "Element_SetVertices(Element self, int const * ind)"},
+	 { "Element_SetAttribute", (PyCFunction)(void(*)(void))_wrap_Element_SetAttribute, METH_VARARGS|METH_KEYWORDS, "Element_SetAttribute(Element self, int const attr)"},
+	 { "Element_SetVertices", (PyCFunction)(void(*)(void))_wrap_Element_SetVertices, METH_VARARGS|METH_KEYWORDS, "Element_SetVertices(Element self, int const * ind)"},
 	 { "Element_GetVertices", _wrap_Element_GetVertices, METH_VARARGS, "\n"
 		"Element_GetVertices(Element self, intArray v)\n"
 		"Element_GetVertices(Element self) -> int\n"
@@ -4224,19 +4265,19 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "Element_GetNVertices", _wrap_Element_GetNVertices, METH_O, "Element_GetNVertices(Element self) -> int"},
 	 { "Element_GetNEdges", _wrap_Element_GetNEdges, METH_O, "Element_GetNEdges(Element self) -> int"},
-	 { "Element_GetEdgeVertices", _wrap_Element_GetEdgeVertices, METH_VARARGS, "Element_GetEdgeVertices(Element self, int arg2) -> int const *"},
+	 { "Element_GetEdgeVertices", (PyCFunction)(void(*)(void))_wrap_Element_GetEdgeVertices, METH_VARARGS|METH_KEYWORDS, "Element_GetEdgeVertices(Element self, int arg2) -> int const *"},
 	 { "Element_GetNFaces", _wrap_Element_GetNFaces, METH_VARARGS, "\n"
 		"Element_GetNFaces(Element self, int & nFaceVertices) -> int\n"
 		"Element_GetNFaces(Element self) -> int\n"
 		""},
-	 { "Element_GetNFaceVertices", _wrap_Element_GetNFaceVertices, METH_VARARGS, "Element_GetNFaceVertices(Element self, int fi) -> int"},
-	 { "Element_GetFaceVertices", _wrap_Element_GetFaceVertices, METH_VARARGS, "Element_GetFaceVertices(Element self, int fi) -> int const *"},
-	 { "Element_MarkEdge", _wrap_Element_MarkEdge, METH_VARARGS, "Element_MarkEdge(Element self, DSTable v_to_v, int const * length)"},
-	 { "Element_NeedRefinement", _wrap_Element_NeedRefinement, METH_VARARGS, "Element_NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"},
-	 { "Element_ResetTransform", _wrap_Element_ResetTransform, METH_VARARGS, "Element_ResetTransform(Element self, int tr)"},
-	 { "Element_PushTransform", _wrap_Element_PushTransform, METH_VARARGS, "Element_PushTransform(Element self, int tr)"},
+	 { "Element_GetNFaceVertices", (PyCFunction)(void(*)(void))_wrap_Element_GetNFaceVertices, METH_VARARGS|METH_KEYWORDS, "Element_GetNFaceVertices(Element self, int fi) -> int"},
+	 { "Element_GetFaceVertices", (PyCFunction)(void(*)(void))_wrap_Element_GetFaceVertices, METH_VARARGS|METH_KEYWORDS, "Element_GetFaceVertices(Element self, int fi) -> int const *"},
+	 { "Element_MarkEdge", (PyCFunction)(void(*)(void))_wrap_Element_MarkEdge, METH_VARARGS|METH_KEYWORDS, "Element_MarkEdge(Element self, DSTable v_to_v, int const * length)"},
+	 { "Element_NeedRefinement", (PyCFunction)(void(*)(void))_wrap_Element_NeedRefinement, METH_VARARGS|METH_KEYWORDS, "Element_NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"},
+	 { "Element_ResetTransform", (PyCFunction)(void(*)(void))_wrap_Element_ResetTransform, METH_VARARGS|METH_KEYWORDS, "Element_ResetTransform(Element self, int tr)"},
+	 { "Element_PushTransform", (PyCFunction)(void(*)(void))_wrap_Element_PushTransform, METH_VARARGS|METH_KEYWORDS, "Element_PushTransform(Element self, int tr)"},
 	 { "Element_GetTransform", _wrap_Element_GetTransform, METH_O, "Element_GetTransform(Element self) -> unsigned int"},
-	 { "Element_Duplicate", _wrap_Element_Duplicate, METH_VARARGS, "Element_Duplicate(Element self, mfem::Mesh * m) -> Element"},
+	 { "Element_Duplicate", (PyCFunction)(void(*)(void))_wrap_Element_Duplicate, METH_VARARGS|METH_KEYWORDS, "Element_Duplicate(Element self, mfem::Mesh * m) -> Element"},
 	 { "delete_Element", _wrap_delete_Element, METH_O, "delete_Element(Element self)"},
 	 { "Element_GetVerticesArray", _wrap_Element_GetVerticesArray, METH_O, "Element_GetVerticesArray(Element self) -> PyObject *"},
 	 { "Element_swigregister", Element_swigregister, METH_O, NULL},
@@ -4249,8 +4290,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Element_GetType", _wrap_Element_GetType, METH_O, "GetType(Element self) -> mfem::Element::Type"},
 	 { "Element_GetGeometryType", _wrap_Element_GetGeometryType, METH_O, "GetGeometryType(Element self) -> mfem::Geometry::Type"},
 	 { "Element_GetAttribute", _wrap_Element_GetAttribute, METH_O, "GetAttribute(Element self) -> int"},
-	 { "Element_SetAttribute", _wrap_Element_SetAttribute, METH_VARARGS, "SetAttribute(Element self, int const attr)"},
-	 { "Element_SetVertices", _wrap_Element_SetVertices, METH_VARARGS, "SetVertices(Element self, int const * ind)"},
+	 { "Element_SetAttribute", (PyCFunction)(void(*)(void))_wrap_Element_SetAttribute, METH_VARARGS|METH_KEYWORDS, "SetAttribute(Element self, int const attr)"},
+	 { "Element_SetVertices", (PyCFunction)(void(*)(void))_wrap_Element_SetVertices, METH_VARARGS|METH_KEYWORDS, "SetVertices(Element self, int const * ind)"},
 	 { "Element_GetVertices", _wrap_Element_GetVertices, METH_VARARGS, "\n"
 		"GetVertices(Element self, intArray v)\n"
 		"GetVertices(Element self) -> int\n"
@@ -4258,19 +4299,19 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "Element_GetNVertices", _wrap_Element_GetNVertices, METH_O, "GetNVertices(Element self) -> int"},
 	 { "Element_GetNEdges", _wrap_Element_GetNEdges, METH_O, "GetNEdges(Element self) -> int"},
-	 { "Element_GetEdgeVertices", _wrap_Element_GetEdgeVertices, METH_VARARGS, "GetEdgeVertices(Element self, int arg2) -> int const *"},
+	 { "Element_GetEdgeVertices", (PyCFunction)(void(*)(void))_wrap_Element_GetEdgeVertices, METH_VARARGS|METH_KEYWORDS, "GetEdgeVertices(Element self, int arg2) -> int const *"},
 	 { "Element_GetNFaces", _wrap_Element_GetNFaces, METH_VARARGS, "\n"
 		"GetNFaces(Element self, int & nFaceVertices) -> int\n"
 		"GetNFaces(Element self) -> int\n"
 		""},
-	 { "Element_GetNFaceVertices", _wrap_Element_GetNFaceVertices, METH_VARARGS, "GetNFaceVertices(Element self, int fi) -> int"},
-	 { "Element_GetFaceVertices", _wrap_Element_GetFaceVertices, METH_VARARGS, "GetFaceVertices(Element self, int fi) -> int const *"},
-	 { "Element_MarkEdge", _wrap_Element_MarkEdge, METH_VARARGS, "MarkEdge(Element self, DSTable v_to_v, int const * length)"},
-	 { "Element_NeedRefinement", _wrap_Element_NeedRefinement, METH_VARARGS, "NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"},
-	 { "Element_ResetTransform", _wrap_Element_ResetTransform, METH_VARARGS, "ResetTransform(Element self, int tr)"},
-	 { "Element_PushTransform", _wrap_Element_PushTransform, METH_VARARGS, "PushTransform(Element self, int tr)"},
+	 { "Element_GetNFaceVertices", (PyCFunction)(void(*)(void))_wrap_Element_GetNFaceVertices, METH_VARARGS|METH_KEYWORDS, "GetNFaceVertices(Element self, int fi) -> int"},
+	 { "Element_GetFaceVertices", (PyCFunction)(void(*)(void))_wrap_Element_GetFaceVertices, METH_VARARGS|METH_KEYWORDS, "GetFaceVertices(Element self, int fi) -> int const *"},
+	 { "Element_MarkEdge", (PyCFunction)(void(*)(void))_wrap_Element_MarkEdge, METH_VARARGS|METH_KEYWORDS, "MarkEdge(Element self, DSTable v_to_v, int const * length)"},
+	 { "Element_NeedRefinement", (PyCFunction)(void(*)(void))_wrap_Element_NeedRefinement, METH_VARARGS|METH_KEYWORDS, "NeedRefinement(Element self, mfem::HashTable< mfem::Hashed2 > & v_to_v) -> int"},
+	 { "Element_ResetTransform", (PyCFunction)(void(*)(void))_wrap_Element_ResetTransform, METH_VARARGS|METH_KEYWORDS, "ResetTransform(Element self, int tr)"},
+	 { "Element_PushTransform", (PyCFunction)(void(*)(void))_wrap_Element_PushTransform, METH_VARARGS|METH_KEYWORDS, "PushTransform(Element self, int tr)"},
 	 { "Element_GetTransform", _wrap_Element_GetTransform, METH_O, "GetTransform(Element self) -> unsigned int"},
-	 { "Element_Duplicate", _wrap_Element_Duplicate, METH_VARARGS, "Duplicate(Element self, mfem::Mesh * m) -> Element"},
+	 { "Element_Duplicate", (PyCFunction)(void(*)(void))_wrap_Element_Duplicate, METH_VARARGS|METH_KEYWORDS, "Duplicate(Element self, mfem::Mesh * m) -> Element"},
 	 { "delete_Element", _wrap_delete_Element, METH_O, "delete_Element(Element self)"},
 	 { "Element_GetVerticesArray", _wrap_Element_GetVerticesArray, METH_O, "GetVerticesArray(Element self) -> PyObject *"},
 	 { "Element_swigregister", Element_swigregister, METH_O, NULL},
