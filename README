@@ -197,8 +197,8 @@ to find more detail of the MFEM libirary.
          FindPoints receive only one argument (points to look for) and returns
 	 count, element_id, integration_points. Note points are row order. For example,
 
-         >>> count, elem_ids, int_pts = mesh.FindPoint([1,2,3], [3,4,5], [4,5,6], [7,8,9]])
-
+         >>> count, elem_ids, int_pts = mesh.FindPoint([1,2,3], [3,4,5], [4,5,6], [7,8,9]],
+ 	                                               warn=True, int_trans=None)
          will look for 4 points.
 
 
