@@ -3069,37 +3069,38 @@ namespace Swig {
 #define SWIGTYPE_p_GroupId swig_types[1]
 #define SWIGTYPE_p_MPI_Comm swig_types[2]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[3]
-#define SWIGTYPE_p_apf__Field swig_types[4]
-#define SWIGTYPE_p_apf__Mesh2 swig_types[5]
-#define SWIGTYPE_p_apf__Numbering swig_types[6]
-#define SWIGTYPE_p_char swig_types[7]
-#define SWIGTYPE_p_double swig_types[8]
-#define SWIGTYPE_p_doublep swig_types[9]
-#define SWIGTYPE_p_hex_t swig_types[10]
-#define SWIGTYPE_p_int swig_types[11]
-#define SWIGTYPE_p_intp swig_types[12]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[13]
-#define SWIGTYPE_p_mfem__GridFunctionPumi swig_types[14]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[15]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[16]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[17]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[18]
-#define SWIGTYPE_p_mfem__Mesh swig_types[19]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[20]
-#define SWIGTYPE_p_mfem__ParGridFunction swig_types[21]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[22]
-#define SWIGTYPE_p_mfem__ParPumiMesh swig_types[23]
-#define SWIGTYPE_p_mfem__PumiMesh swig_types[24]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[25]
-#define SWIGTYPE_p_mfem__Vector swig_types[26]
-#define SWIGTYPE_p_pri_t swig_types[27]
-#define SWIGTYPE_p_quad_t swig_types[28]
-#define SWIGTYPE_p_seg_t swig_types[29]
-#define SWIGTYPE_p_std__istream swig_types[30]
-#define SWIGTYPE_p_tet_t swig_types[31]
-#define SWIGTYPE_p_tri_t swig_types[32]
-static swig_type_info *swig_types[34];
-static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
+#define SWIGTYPE_p_RefCoord swig_types[4]
+#define SWIGTYPE_p_apf__Field swig_types[5]
+#define SWIGTYPE_p_apf__Mesh2 swig_types[6]
+#define SWIGTYPE_p_apf__Numbering swig_types[7]
+#define SWIGTYPE_p_char swig_types[8]
+#define SWIGTYPE_p_double swig_types[9]
+#define SWIGTYPE_p_doublep swig_types[10]
+#define SWIGTYPE_p_hex_t swig_types[11]
+#define SWIGTYPE_p_int swig_types[12]
+#define SWIGTYPE_p_intp swig_types[13]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[14]
+#define SWIGTYPE_p_mfem__GridFunctionPumi swig_types[15]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[16]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[17]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[18]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[19]
+#define SWIGTYPE_p_mfem__Mesh swig_types[20]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[21]
+#define SWIGTYPE_p_mfem__ParGridFunction swig_types[22]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[23]
+#define SWIGTYPE_p_mfem__ParPumiMesh swig_types[24]
+#define SWIGTYPE_p_mfem__PumiMesh swig_types[25]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[26]
+#define SWIGTYPE_p_mfem__Vector swig_types[27]
+#define SWIGTYPE_p_pri_t swig_types[28]
+#define SWIGTYPE_p_quad_t swig_types[29]
+#define SWIGTYPE_p_seg_t swig_types[30]
+#define SWIGTYPE_p_std__istream swig_types[31]
+#define SWIGTYPE_p_tet_t swig_types[32]
+#define SWIGTYPE_p_tri_t swig_types[33]
+static swig_type_info *swig_types[35];
+static swig_module_info swig_module = {swig_types, 34, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3555,7 +3556,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   intp *arg1 = (intp *) 0 ;
   int arg2 ;
@@ -3563,15 +3564,19 @@ SWIGINTERN PyObject *_wrap_intp_assign(PyObject *SWIGUNUSEDPARM(self), PyObject 
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"value",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "intp_assign", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_intp, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:intp_assign", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_intp, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_assign" "', argument " "1"" of type '" "intp *""'"); 
   }
   arg1 = reinterpret_cast< intp * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "intp_assign" "', argument " "2"" of type '" "int""'");
   } 
@@ -3630,17 +3635,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_intp_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_intp_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int *arg1 = (int *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"t",  NULL 
+  };
   intp *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_int, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:intp_frompointer", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "intp_frompointer" "', argument " "1"" of type '" "int *""'"); 
   }
@@ -3699,7 +3706,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   doublep *arg1 = (doublep *) 0 ;
   double arg2 ;
@@ -3707,15 +3714,19 @@ SWIGINTERN PyObject *_wrap_doublep_assign(PyObject *SWIGUNUSEDPARM(self), PyObje
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"value",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "doublep_assign", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_doublep, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:doublep_assign", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_doublep, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_assign" "', argument " "1"" of type '" "doublep *""'"); 
   }
   arg1 = reinterpret_cast< doublep * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "doublep_assign" "', argument " "2"" of type '" "double""'");
   } 
@@ -3774,17 +3785,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_doublep_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_doublep_frompointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   double *arg1 = (double *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"t",  NULL 
+  };
   doublep *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_double, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:doublep_frompointer", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "doublep_frompointer" "', argument " "1"" of type '" "double *""'"); 
   }
@@ -3808,17 +3821,19 @@ SWIGINTERN PyObject *doublep_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_ParMesh2ParPumiMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParMesh2ParPumiMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParMesh *arg1 = (mfem::ParMesh *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"pmesh",  NULL 
+  };
   mfem::ParPumiMesh *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:ParMesh2ParPumiMesh", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParMesh2ParPumiMesh" "', argument " "1"" of type '" "mfem::ParMesh *""'"); 
   }
@@ -3838,41 +3853,54 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PumiMesh__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_PumiMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   apf::Mesh2 *arg1 = (apf::Mesh2 *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  bool arg4 ;
+  int arg2 = (int) 0 ;
+  int arg3 = (int) 1 ;
+  bool arg4 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"apf_mesh",  (char *)"generate_edges",  (char *)"refine",  (char *)"fix_orientation",  NULL 
+  };
   mfem::PumiMesh *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|OOO:new_PumiMesh", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PumiMesh" "', argument " "1"" of type '" "apf::Mesh2 *""'"); 
   }
   arg1 = reinterpret_cast< apf::Mesh2 * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (obj1) {
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
   }
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_PumiMesh" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_PumiMesh" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
   {
     try {
       result = (mfem::PumiMesh *)new mfem::PumiMesh(arg1,arg2,arg3,arg4); 
@@ -3888,230 +3916,13 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PumiMesh__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  apf::Mesh2 *arg1 = (apf::Mesh2 *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::PumiMesh *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PumiMesh" "', argument " "1"" of type '" "apf::Mesh2 *""'"); 
-  }
-  arg1 = reinterpret_cast< apf::Mesh2 * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      result = (mfem::PumiMesh *)new mfem::PumiMesh(arg1,arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PumiMesh, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PumiMesh__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  apf::Mesh2 *arg1 = (apf::Mesh2 *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::PumiMesh *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PumiMesh" "', argument " "1"" of type '" "apf::Mesh2 *""'"); 
-  }
-  arg1 = reinterpret_cast< apf::Mesh2 * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::PumiMesh *)new mfem::PumiMesh(arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PumiMesh, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PumiMesh__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  apf::Mesh2 *arg1 = (apf::Mesh2 *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::PumiMesh *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PumiMesh" "', argument " "1"" of type '" "apf::Mesh2 *""'"); 
-  }
-  arg1 = reinterpret_cast< apf::Mesh2 * >(argp1);
-  {
-    try {
-      result = (mfem::PumiMesh *)new mfem::PumiMesh(arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PumiMesh, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PumiMesh(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_PumiMesh", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_PumiMesh__SWIG_3(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_new_PumiMesh__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_new_PumiMesh__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_PumiMesh__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_PumiMesh'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::PumiMesh::PumiMesh(apf::Mesh2 *,int,int,bool)\n"
-    "    mfem::PumiMesh::PumiMesh(apf::Mesh2 *,int,int)\n"
-    "    mfem::PumiMesh::PumiMesh(apf::Mesh2 *,int)\n"
-    "    mfem::PumiMesh::PumiMesh(apf::Mesh2 *)\n");
-  return 0;
-}
-
-
 SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
   std::istream *arg2 = 0 ;
-  int arg3 ;
-  int arg4 ;
-  bool arg5 ;
+  int arg3 = (int) 0 ;
+  int arg4 = (int) 1 ;
+  bool arg5 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4119,7 +3930,7 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self
   bool val5 ;
   int ecode5 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
@@ -4133,161 +3944,32 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
   }
   arg2 = reinterpret_cast< std::istream * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
-  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "PumiMesh_Load" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "PumiMesh_Load" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
+  }
   {
     try {
       (arg1)->Load(*arg2,arg3,arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
-  std::istream *arg2 = 0 ;
-  int arg3 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::PumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::istream * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-  }
-  {
-    try {
-      (arg1)->Load(*arg2,arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
-  std::istream *arg2 = 0 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::PumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::istream * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      (arg1)->Load(*arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_0_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
-  std::istream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::PumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__istream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "std::istream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::istream * >(argp2);
-  {
-    try {
-      (arg1)->Load(*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4304,9 +3986,9 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   PyObject *resultobj = 0;
   mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
-  int arg3 ;
-  int arg4 ;
-  bool arg5 ;
+  int arg3 = (int) 0 ;
+  int arg4 = (int) 1 ;
+  bool arg5 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4314,7 +3996,7 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   bool val5 ;
   int ecode5 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
@@ -4325,152 +4007,32 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
   arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
-  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "PumiMesh_Load" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "PumiMesh_Load" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
+  }
   {
     try {
       (arg1)->Load(arg2,arg3,arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
-  apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
-  int arg3 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::PumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
-  }
-  arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-  }
-  {
-    try {
-      (arg1)->Load(arg2,arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
-  apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::PumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
-  }
-  arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      (arg1)->Load(arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_PumiMesh_Load__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::PumiMesh *arg1 = (mfem::PumiMesh *) 0 ;
-  apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PumiMesh, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PumiMesh_Load" "', argument " "1"" of type '" "mfem::PumiMesh *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::PumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PumiMesh_Load" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
-  }
-  arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  {
-    try {
-      (arg1)->Load(arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4491,7 +4053,7 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "PumiMesh_Load", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
@@ -4501,34 +4063,9 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load(PyObject *self, PyObject *args) {
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_PumiMesh_Load__SWIG_0_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_PumiMesh_Load__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -4538,54 +4075,9 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_PumiMesh_Load__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
+          if (argc <= 3) {
+            return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
           }
-        }
-        if (_v) {
-          return _wrap_PumiMesh_Load__SWIG_0_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -4595,114 +4087,9 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load(PyObject *self, PyObject *args) {
             }
           }
           if (_v) {
-            return _wrap_PumiMesh_Load__SWIG_0_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
+            if (argc <= 4) {
+              return _wrap_PumiMesh_Load__SWIG_0_0(self, argc, argv);
             }
-          }
-          if (_v) {
-            return _wrap_PumiMesh_Load__SWIG_2(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            {
-              int res = SWIG_AsVal_bool(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-            if (_v) {
-              return _wrap_PumiMesh_Load__SWIG_1(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
             {
               int res = SWIG_AsVal_bool(argv[4], NULL);
               _v = SWIG_CheckState(res);
@@ -4715,18 +4102,61 @@ SWIGINTERN PyObject *_wrap_PumiMesh_Load(PyObject *self, PyObject *args) {
       }
     }
   }
+  if ((argc >= 2) && (argc <= 5)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__PumiMesh, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_apf__Mesh2, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_PumiMesh_Load__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_PumiMesh_Load__SWIG_1(self, argc, argv);
+          }
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_PumiMesh_Load__SWIG_1(self, argc, argv);
+            }
+            {
+              int res = SWIG_AsVal_bool(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_PumiMesh_Load__SWIG_1(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'PumiMesh_Load'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    Load(std::istream &,int,int,bool)\n"
-    "    Load(std::istream &,int,int)\n"
-    "    Load(std::istream &,int)\n"
-    "    Load(std::istream &)\n"
-    "    mfem::PumiMesh::Load(apf::Mesh2 *,int,int,bool)\n"
-    "    mfem::PumiMesh::Load(apf::Mesh2 *,int,int)\n"
-    "    mfem::PumiMesh::Load(apf::Mesh2 *,int)\n"
-    "    mfem::PumiMesh::Load(apf::Mesh2 *)\n");
+    "    mfem::PumiMesh::Load(apf::Mesh2 *,int,int,bool)\n");
   return 0;
 }
 
@@ -4771,26 +4201,30 @@ SWIGINTERN PyObject *PumiMesh_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ParPumiMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ParPumiMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   MPI_Comm arg1 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"comm",  (char *)"apf_mesh",  NULL 
+  };
   mfem::ParPumiMesh *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_ParPumiMesh", 2, 2, swig_obj)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_ParPumiMesh", kwnames, &obj0, &obj1)) SWIG_fail;
   {
     MPI_Comm *ptr = (MPI_Comm *)0;
-    int res = SWIG_AsPtr_MPI_Comm(swig_obj[0], &ptr);
+    int res = SWIG_AsPtr_MPI_Comm(obj0, &ptr);
     if (!SWIG_IsOK(res) || !ptr) {
       SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "new_ParPumiMesh" "', argument " "1"" of type '" "MPI_Comm""'"); 
     }
     arg1 = *ptr;
     if (SWIG_IsNewObj(res)) delete ptr;
   }
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ParPumiMesh" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
@@ -5030,7 +4464,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParPumiMesh_VectorFieldMFEMtoPUMI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParPumiMesh_VectorFieldMFEMtoPUMI(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParPumiMesh *arg1 = (mfem::ParPumiMesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
@@ -5047,30 +4481,37 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_VectorFieldMFEMtoPUMI(PyObject *SWIGUNUSE
   int res4 = 0 ;
   void *argp5 = 0 ;
   int res5 = 0 ;
-  PyObject *swig_obj[5] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"apf_mesh",  (char *)"Vel",  (char *)"VelField",  (char *)"VelMagField",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParPumiMesh_VectorFieldMFEMtoPUMI", 5, 5, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParPumiMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO:ParPumiMesh_VectorFieldMFEMtoPUMI", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParPumiMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "1"" of type '" "mfem::ParPumiMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParPumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
   arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "3"" of type '" "mfem::ParGridFunction *""'"); 
   }
   arg3 = reinterpret_cast< mfem::ParGridFunction * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_apf__Field, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_apf__Field, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "4"" of type '" "apf::Field *""'"); 
   }
   arg4 = reinterpret_cast< apf::Field * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_apf__Field, 0 |  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_apf__Field, 0 |  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ParPumiMesh_VectorFieldMFEMtoPUMI" "', argument " "5"" of type '" "apf::Field *""'"); 
   }
@@ -5090,7 +4531,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParPumiMesh_UpdateMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParPumiMesh_UpdateMesh(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParPumiMesh *arg1 = (mfem::ParPumiMesh *) 0 ;
   mfem::ParMesh *arg2 = (mfem::ParMesh *) 0 ;
@@ -5098,15 +4539,19 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_UpdateMesh(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"AdaptedpMesh",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParPumiMesh_UpdateMesh", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParPumiMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ParPumiMesh_UpdateMesh", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParPumiMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParPumiMesh_UpdateMesh" "', argument " "1"" of type '" "mfem::ParPumiMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParPumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__ParMesh, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParPumiMesh_UpdateMesh" "', argument " "2"" of type '" "mfem::ParMesh const *""'"); 
   }
@@ -5126,7 +4571,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldPUMItoMFEM(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldPUMItoMFEM(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ParPumiMesh *arg1 = (mfem::ParPumiMesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
@@ -5140,25 +4585,31 @@ SWIGINTERN PyObject *_wrap_ParPumiMesh_FieldPUMItoMFEM(PyObject *SWIGUNUSEDPARM(
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"apf_mesh",  (char *)"ScalarField",  (char *)"Pr",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ParPumiMesh_FieldPUMItoMFEM", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ParPumiMesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ParPumiMesh_FieldPUMItoMFEM", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ParPumiMesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ParPumiMesh_FieldPUMItoMFEM" "', argument " "1"" of type '" "mfem::ParPumiMesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ParPumiMesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ParPumiMesh_FieldPUMItoMFEM" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
   arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_apf__Field, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_apf__Field, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ParPumiMesh_FieldPUMItoMFEM" "', argument " "3"" of type '" "apf::Field *""'"); 
   }
   arg3 = reinterpret_cast< apf::Field * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__ParGridFunction, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ParPumiMesh_FieldPUMItoMFEM" "', argument " "4"" of type '" "mfem::ParGridFunction *""'"); 
   }
@@ -5218,7 +4669,7 @@ SWIGINTERN PyObject *ParPumiMesh_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_GridFunctionPumi(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_GridFunctionPumi(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   apf::Mesh2 *arg2 = (apf::Mesh2 *) 0 ;
@@ -5230,30 +4681,36 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionPumi(PyObject *SWIGUNUSEDPARM(self), 
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"m",  (char *)"PumiM",  (char *)"v_num_loc",  (char *)"mesh_order",  NULL 
+  };
   mfem::GridFunctionPumi *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_GridFunctionPumi", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:new_GridFunctionPumi", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GridFunctionPumi" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_apf__Mesh2, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_GridFunctionPumi" "', argument " "2"" of type '" "apf::Mesh2 *""'"); 
   }
   arg2 = reinterpret_cast< apf::Mesh2 * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_apf__Numbering, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_apf__Numbering, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_GridFunctionPumi" "', argument " "3"" of type '" "apf::Numbering *""'"); 
   }
   arg3 = reinterpret_cast< apf::Numbering * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -5312,46 +4769,44 @@ SWIGINTERN PyObject *GridFunctionPumi_swiginit(PyObject *SWIGUNUSEDPARM(self), P
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_intp", _wrap_new_intp, METH_NOARGS, "new_intp() -> intp"},
 	 { "delete_intp", _wrap_delete_intp, METH_O, "delete_intp(intp self)"},
-	 { "intp_assign", _wrap_intp_assign, METH_VARARGS, "intp_assign(intp self, int value)"},
+	 { "intp_assign", (PyCFunction)(void(*)(void))_wrap_intp_assign, METH_VARARGS|METH_KEYWORDS, "intp_assign(intp self, int value)"},
 	 { "intp_value", _wrap_intp_value, METH_O, "intp_value(intp self) -> int"},
 	 { "intp_cast", _wrap_intp_cast, METH_O, "intp_cast(intp self) -> int *"},
-	 { "intp_frompointer", _wrap_intp_frompointer, METH_O, "intp_frompointer(int * t) -> intp"},
+	 { "intp_frompointer", (PyCFunction)(void(*)(void))_wrap_intp_frompointer, METH_VARARGS|METH_KEYWORDS, "intp_frompointer(int * t) -> intp"},
 	 { "intp_swigregister", intp_swigregister, METH_O, NULL},
 	 { "intp_swiginit", intp_swiginit, METH_VARARGS, NULL},
 	 { "new_doublep", _wrap_new_doublep, METH_NOARGS, "new_doublep() -> doublep"},
 	 { "delete_doublep", _wrap_delete_doublep, METH_O, "delete_doublep(doublep self)"},
-	 { "doublep_assign", _wrap_doublep_assign, METH_VARARGS, "doublep_assign(doublep self, double value)"},
+	 { "doublep_assign", (PyCFunction)(void(*)(void))_wrap_doublep_assign, METH_VARARGS|METH_KEYWORDS, "doublep_assign(doublep self, double value)"},
 	 { "doublep_value", _wrap_doublep_value, METH_O, "doublep_value(doublep self) -> double"},
 	 { "doublep_cast", _wrap_doublep_cast, METH_O, "doublep_cast(doublep self) -> double *"},
-	 { "doublep_frompointer", _wrap_doublep_frompointer, METH_O, "doublep_frompointer(double * t) -> doublep"},
+	 { "doublep_frompointer", (PyCFunction)(void(*)(void))_wrap_doublep_frompointer, METH_VARARGS|METH_KEYWORDS, "doublep_frompointer(double * t) -> doublep"},
 	 { "doublep_swigregister", doublep_swigregister, METH_O, NULL},
 	 { "doublep_swiginit", doublep_swiginit, METH_VARARGS, NULL},
-	 { "ParMesh2ParPumiMesh", _wrap_ParMesh2ParPumiMesh, METH_O, "ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"},
-	 { "new_PumiMesh", _wrap_new_PumiMesh, METH_VARARGS, "PumiMesh(apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)"},
+	 { "ParMesh2ParPumiMesh", (PyCFunction)(void(*)(void))_wrap_ParMesh2ParPumiMesh, METH_VARARGS|METH_KEYWORDS, "ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"},
+	 { "new_PumiMesh", (PyCFunction)(void(*)(void))_wrap_new_PumiMesh, METH_VARARGS|METH_KEYWORDS, "new_PumiMesh(apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True) -> PumiMesh"},
 	 { "PumiMesh_Load", _wrap_PumiMesh_Load, METH_VARARGS, "\n"
 		"PumiMesh_Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
-		"PumiMesh_Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1)\n"
-		"PumiMesh_Load(PumiMesh self, std::istream & input, int generate_edges=0)\n"
-		"PumiMesh_Load(PumiMesh self, std::istream & input)\n"
 		"PumiMesh_Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
 		""},
 	 { "delete_PumiMesh", _wrap_delete_PumiMesh, METH_O, "delete_PumiMesh(PumiMesh self)"},
 	 { "PumiMesh_swigregister", PumiMesh_swigregister, METH_O, NULL},
 	 { "PumiMesh_swiginit", PumiMesh_swiginit, METH_VARARGS, NULL},
-	 { "new_ParPumiMesh", _wrap_new_ParPumiMesh, METH_VARARGS, "new_ParPumiMesh(MPI_Comm comm, apf::Mesh2 * apf_mesh) -> ParPumiMesh"},
+	 { "new_ParPumiMesh", (PyCFunction)(void(*)(void))_wrap_new_ParPumiMesh, METH_VARARGS|METH_KEYWORDS, "new_ParPumiMesh(MPI_Comm comm, apf::Mesh2 * apf_mesh) -> ParPumiMesh"},
 	 { "ParPumiMesh_FieldMFEMtoPUMI", _wrap_ParPumiMesh_FieldMFEMtoPUMI, METH_VARARGS, "\n"
 		"ParPumiMesh_FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, ParGridFunction Pr, apf::Field * VelField, apf::Field * PrField, apf::Field * VelMagField)\n"
 		"ParPumiMesh_FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Pr, apf::Field * PrField, apf::Field * PrMagField)\n"
 		""},
-	 { "ParPumiMesh_VectorFieldMFEMtoPUMI", _wrap_ParPumiMesh_VectorFieldMFEMtoPUMI, METH_VARARGS, "ParPumiMesh_VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, apf::Field * VelField, apf::Field * VelMagField)"},
-	 { "ParPumiMesh_UpdateMesh", _wrap_ParPumiMesh_UpdateMesh, METH_VARARGS, "ParPumiMesh_UpdateMesh(ParPumiMesh self, ParMesh AdaptedpMesh)"},
-	 { "ParPumiMesh_FieldPUMItoMFEM", _wrap_ParPumiMesh_FieldPUMItoMFEM, METH_VARARGS, "ParPumiMesh_FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction Pr)"},
+	 { "ParPumiMesh_VectorFieldMFEMtoPUMI", (PyCFunction)(void(*)(void))_wrap_ParPumiMesh_VectorFieldMFEMtoPUMI, METH_VARARGS|METH_KEYWORDS, "ParPumiMesh_VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, apf::Field * VelField, apf::Field * VelMagField)"},
+	 { "ParPumiMesh_UpdateMesh", (PyCFunction)(void(*)(void))_wrap_ParPumiMesh_UpdateMesh, METH_VARARGS|METH_KEYWORDS, "ParPumiMesh_UpdateMesh(ParPumiMesh self, ParMesh AdaptedpMesh)"},
+	 { "ParPumiMesh_FieldPUMItoMFEM", (PyCFunction)(void(*)(void))_wrap_ParPumiMesh_FieldPUMItoMFEM, METH_VARARGS|METH_KEYWORDS, "ParPumiMesh_FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction Pr)"},
 	 { "delete_ParPumiMesh", _wrap_delete_ParPumiMesh, METH_O, "delete_ParPumiMesh(ParPumiMesh self)"},
 	 { "ParPumiMesh_swigregister", ParPumiMesh_swigregister, METH_O, NULL},
 	 { "ParPumiMesh_swiginit", ParPumiMesh_swiginit, METH_VARARGS, NULL},
-	 { "new_GridFunctionPumi", _wrap_new_GridFunctionPumi, METH_VARARGS, "new_GridFunctionPumi(Mesh m, apf::Mesh2 * PumiM, apf::Numbering * v_num_loc, int const mesh_order) -> GridFunctionPumi"},
+	 { "new_GridFunctionPumi", (PyCFunction)(void(*)(void))_wrap_new_GridFunctionPumi, METH_VARARGS|METH_KEYWORDS, "new_GridFunctionPumi(Mesh m, apf::Mesh2 * PumiM, apf::Numbering * v_num_loc, int const mesh_order) -> GridFunctionPumi"},
 	 { "delete_GridFunctionPumi", _wrap_delete_GridFunctionPumi, METH_O, "delete_GridFunctionPumi(GridFunctionPumi self)"},
 	 { "GridFunctionPumi_swigregister", GridFunctionPumi_swigregister, METH_O, NULL},
 	 { "GridFunctionPumi_swiginit", GridFunctionPumi_swiginit, METH_VARARGS, NULL},
@@ -5359,6 +4814,48 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_intp", _wrap_new_intp, METH_NOARGS, "new_intp() -> intp"},
+	 { "delete_intp", _wrap_delete_intp, METH_O, "delete_intp(intp self)"},
+	 { "intp_assign", (PyCFunction)(void(*)(void))_wrap_intp_assign, METH_VARARGS|METH_KEYWORDS, "assign(intp self, int value)"},
+	 { "intp_value", _wrap_intp_value, METH_O, "value(intp self) -> int"},
+	 { "intp_cast", _wrap_intp_cast, METH_O, "cast(intp self) -> int *"},
+	 { "intp_frompointer", (PyCFunction)(void(*)(void))_wrap_intp_frompointer, METH_VARARGS|METH_KEYWORDS, "frompointer(int * t) -> intp"},
+	 { "intp_swigregister", intp_swigregister, METH_O, NULL},
+	 { "intp_swiginit", intp_swiginit, METH_VARARGS, NULL},
+	 { "new_doublep", _wrap_new_doublep, METH_NOARGS, "new_doublep() -> doublep"},
+	 { "delete_doublep", _wrap_delete_doublep, METH_O, "delete_doublep(doublep self)"},
+	 { "doublep_assign", (PyCFunction)(void(*)(void))_wrap_doublep_assign, METH_VARARGS|METH_KEYWORDS, "assign(doublep self, double value)"},
+	 { "doublep_value", _wrap_doublep_value, METH_O, "value(doublep self) -> double"},
+	 { "doublep_cast", _wrap_doublep_cast, METH_O, "cast(doublep self) -> double *"},
+	 { "doublep_frompointer", (PyCFunction)(void(*)(void))_wrap_doublep_frompointer, METH_VARARGS|METH_KEYWORDS, "frompointer(double * t) -> doublep"},
+	 { "doublep_swigregister", doublep_swigregister, METH_O, NULL},
+	 { "doublep_swiginit", doublep_swiginit, METH_VARARGS, NULL},
+	 { "ParMesh2ParPumiMesh", (PyCFunction)(void(*)(void))_wrap_ParMesh2ParPumiMesh, METH_VARARGS|METH_KEYWORDS, "ParMesh2ParPumiMesh(ParMesh pmesh) -> ParPumiMesh"},
+	 { "new_PumiMesh", (PyCFunction)(void(*)(void))_wrap_new_PumiMesh, METH_VARARGS|METH_KEYWORDS, "new_PumiMesh(apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True) -> PumiMesh"},
+	 { "PumiMesh_Load", _wrap_PumiMesh_Load, METH_VARARGS, "\n"
+		"Load(PumiMesh self, std::istream & input, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
+		"Load(PumiMesh self, apf::Mesh2 * apf_mesh, int generate_edges=0, int refine=1, bool fix_orientation=True)\n"
+		""},
+	 { "delete_PumiMesh", _wrap_delete_PumiMesh, METH_O, "delete_PumiMesh(PumiMesh self)"},
+	 { "PumiMesh_swigregister", PumiMesh_swigregister, METH_O, NULL},
+	 { "PumiMesh_swiginit", PumiMesh_swiginit, METH_VARARGS, NULL},
+	 { "new_ParPumiMesh", (PyCFunction)(void(*)(void))_wrap_new_ParPumiMesh, METH_VARARGS|METH_KEYWORDS, "new_ParPumiMesh(MPI_Comm comm, apf::Mesh2 * apf_mesh) -> ParPumiMesh"},
+	 { "ParPumiMesh_FieldMFEMtoPUMI", _wrap_ParPumiMesh_FieldMFEMtoPUMI, METH_VARARGS, "\n"
+		"FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, ParGridFunction Pr, apf::Field * VelField, apf::Field * PrField, apf::Field * VelMagField)\n"
+		"FieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Pr, apf::Field * PrField, apf::Field * PrMagField)\n"
+		""},
+	 { "ParPumiMesh_VectorFieldMFEMtoPUMI", (PyCFunction)(void(*)(void))_wrap_ParPumiMesh_VectorFieldMFEMtoPUMI, METH_VARARGS|METH_KEYWORDS, "VectorFieldMFEMtoPUMI(ParPumiMesh self, apf::Mesh2 * apf_mesh, ParGridFunction Vel, apf::Field * VelField, apf::Field * VelMagField)"},
+	 { "ParPumiMesh_UpdateMesh", (PyCFunction)(void(*)(void))_wrap_ParPumiMesh_UpdateMesh, METH_VARARGS|METH_KEYWORDS, "UpdateMesh(ParPumiMesh self, ParMesh AdaptedpMesh)"},
+	 { "ParPumiMesh_FieldPUMItoMFEM", (PyCFunction)(void(*)(void))_wrap_ParPumiMesh_FieldPUMItoMFEM, METH_VARARGS|METH_KEYWORDS, "FieldPUMItoMFEM(ParPumiMesh self, apf::Mesh2 * apf_mesh, apf::Field * ScalarField, ParGridFunction Pr)"},
+	 { "delete_ParPumiMesh", _wrap_delete_ParPumiMesh, METH_O, "delete_ParPumiMesh(ParPumiMesh self)"},
+	 { "ParPumiMesh_swigregister", ParPumiMesh_swigregister, METH_O, NULL},
+	 { "ParPumiMesh_swiginit", ParPumiMesh_swiginit, METH_VARARGS, NULL},
+	 { "new_GridFunctionPumi", (PyCFunction)(void(*)(void))_wrap_new_GridFunctionPumi, METH_VARARGS|METH_KEYWORDS, "new_GridFunctionPumi(Mesh m, apf::Mesh2 * PumiM, apf::Numbering * v_num_loc, int const mesh_order) -> GridFunctionPumi"},
+	 { "delete_GridFunctionPumi", _wrap_delete_GridFunctionPumi, METH_O, "delete_GridFunctionPumi(GridFunctionPumi self)"},
+	 { "GridFunctionPumi_swigregister", GridFunctionPumi_swigregister, METH_O, NULL},
+	 { "GridFunctionPumi_swiginit", GridFunctionPumi_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5411,6 +4908,7 @@ static swig_type_info _swigt__p_CommGroup = {"_p_CommGroup", "CommGroup *", 0, 0
 static swig_type_info _swigt__p_GroupId = {"_p_GroupId", "GroupId *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Field = {"_p_apf__Field", "apf::Field *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Mesh2 = {"_p_apf__Mesh2", "apf::Mesh2 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_apf__Numbering = {"_p_apf__Numbering", "apf::Numbering *", 0, 0, (void*)0, 0};
@@ -5446,6 +4944,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_GroupId,
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_apf__Field,
   &_swigt__p_apf__Mesh2,
   &_swigt__p_apf__Numbering,
@@ -5481,6 +4980,7 @@ static swig_cast_info _swigc__p_CommGroup[] = {  {&_swigt__p_CommGroup, 0, 0, 0}
 static swig_cast_info _swigc__p_GroupId[] = {  {&_swigt__p_GroupId, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Field[] = {  {&_swigt__p_apf__Field, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Mesh2[] = {  {&_swigt__p_apf__Mesh2, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_apf__Numbering[] = {  {&_swigt__p_apf__Numbering, 0, 0, 0},{0, 0, 0, 0}};
@@ -5516,6 +5016,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_GroupId,
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_apf__Field,
   _swigc__p_apf__Mesh2,
   _swigc__p_apf__Numbering,
@@ -6274,14 +5775,14 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
-  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40000)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.0"));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40000)%2))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION",SWIG_From_int(static_cast< int >(40100)));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_STRING",SWIG_FromCharPtr("4.1.0"));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE",SWIG_From_int(static_cast< int >(((40100)%2))));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_RELEASE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MFEM_VERSION_TYPE_DEVELOPMENT",SWIG_From_int(static_cast< int >(1)));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40000)/10000))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40000)/100)%100))));
-  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40000)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MAJOR",SWIG_From_int(static_cast< int >(((40100)/10000))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_MINOR",SWIG_From_int(static_cast< int >((((40100)/100)%100))));
+  SWIG_Python_SetConstant(d, "MFEM_VERSION_PATCH",SWIG_From_int(static_cast< int >(((40100)%100))));
   SWIG_Python_SetConstant(d, "MFEM_SOURCE_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/src/mfem"));
   SWIG_Python_SetConstant(d, "MFEM_INSTALL_DIR",SWIG_FromCharPtr("/usr/local/Cellar/twopi/0.9.2/mfem/par"));
   SWIG_Python_SetConstant(d, "MFEM_TIMER_TYPE",SWIG_From_int(static_cast< int >(4)));

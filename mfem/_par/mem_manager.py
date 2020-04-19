@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _mem_manager.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _mem_manager.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -64,22 +67,34 @@ class _SwigNonDynamicMeta(type):
 MemoryType_HOST = _mem_manager.MemoryType_HOST
 MemoryType_HOST_32 = _mem_manager.MemoryType_HOST_32
 MemoryType_HOST_64 = _mem_manager.MemoryType_HOST_64
-MemoryType_CUDA = _mem_manager.MemoryType_CUDA
-MemoryType_CUDA_UVM = _mem_manager.MemoryType_CUDA_UVM
+MemoryType_HOST_DEBUG = _mem_manager.MemoryType_HOST_DEBUG
+MemoryType_HOST_UMPIRE = _mem_manager.MemoryType_HOST_UMPIRE
+MemoryType_MANAGED = _mem_manager.MemoryType_MANAGED
+MemoryType_DEVICE = _mem_manager.MemoryType_DEVICE
+MemoryType_DEVICE_DEBUG = _mem_manager.MemoryType_DEVICE_DEBUG
+MemoryType_DEVICE_UMPIRE = _mem_manager.MemoryType_DEVICE_UMPIRE
+MemoryType_SIZE = _mem_manager.MemoryType_SIZE
 MemoryClass_HOST = _mem_manager.MemoryClass_HOST
 MemoryClass_HOST_32 = _mem_manager.MemoryClass_HOST_32
 MemoryClass_HOST_64 = _mem_manager.MemoryClass_HOST_64
-MemoryClass_CUDA = _mem_manager.MemoryClass_CUDA
-MemoryClass_CUDA_UVM = _mem_manager.MemoryClass_CUDA_UVM
+MemoryClass_DEVICE = _mem_manager.MemoryClass_DEVICE
+MemoryClass_MANAGED = _mem_manager.MemoryClass_MANAGED
 
 def IsHostMemory(mt):
     return _mem_manager.IsHostMemory(mt)
+IsHostMemory = _mem_manager.IsHostMemory
+
+def IsDeviceMemory(mt):
+    return _mem_manager.IsDeviceMemory(mt)
+IsDeviceMemory = _mem_manager.IsDeviceMemory
 
 def GetMemoryType(mc):
     return _mem_manager.GetMemoryType(mc)
+GetMemoryType = _mem_manager.GetMemoryType
 
 def __mul__(mc1, mc2):
     return _mem_manager.__mul__(mc1, mc2)
+__mul__ = _mem_manager.__mul__
 class MemoryManager(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
@@ -88,28 +103,68 @@ class MemoryManager(object):
         _mem_manager.MemoryManager_swiginit(self, _mem_manager.new_MemoryManager())
     __swig_destroy__ = _mem_manager.delete_MemoryManager
 
+    def Init(self):
+        return _mem_manager.MemoryManager_Init(self)
+    Init = _swig_new_instance_method(_mem_manager.MemoryManager_Init)
+
+    def Configure(self, h_mt, d_mt):
+        return _mem_manager.MemoryManager_Configure(self, h_mt, d_mt)
+    Configure = _swig_new_instance_method(_mem_manager.MemoryManager_Configure)
+
     def Destroy(self):
         return _mem_manager.MemoryManager_Destroy(self)
+    Destroy = _swig_new_instance_method(_mem_manager.MemoryManager_Destroy)
+
+    def IsKnown(self, h_ptr):
+        return _mem_manager.MemoryManager_IsKnown(self, h_ptr)
+    IsKnown = _swig_new_instance_method(_mem_manager.MemoryManager_IsKnown)
+
+    def IsAlias(self, h_ptr):
+        return _mem_manager.MemoryManager_IsAlias(self, h_ptr)
+    IsAlias = _swig_new_instance_method(_mem_manager.MemoryManager_IsAlias)
+
+    def RegisterCheck(self, h_ptr):
+        return _mem_manager.MemoryManager_RegisterCheck(self, h_ptr)
+    RegisterCheck = _swig_new_instance_method(_mem_manager.MemoryManager_RegisterCheck)
+
+    def PrintPtrs(self, *args, **kwargs):
+        return _mem_manager.MemoryManager_PrintPtrs(self, *args, **kwargs)
+    PrintPtrs = _swig_new_instance_method(_mem_manager.MemoryManager_PrintPtrs)
+
+    def PrintAliases(self, *args, **kwargs):
+        return _mem_manager.MemoryManager_PrintAliases(self, *args, **kwargs)
+    PrintAliases = _swig_new_instance_method(_mem_manager.MemoryManager_PrintAliases)
 
     @staticmethod
-    def Exists():
-        return _mem_manager.MemoryManager_Exists()
+    def GetHostMemoryType():
+        return _mem_manager.MemoryManager_GetHostMemoryType()
+    GetHostMemoryType = _swig_new_static_method(_mem_manager.MemoryManager_GetHostMemoryType)
 
-    def RegisterCheck(self, ptr):
-        return _mem_manager.MemoryManager_RegisterCheck(self, ptr)
-
-    def PrintPtrs(self):
-        return _mem_manager.MemoryManager_PrintPtrs(self)
+    @staticmethod
+    def GetDeviceMemoryType():
+        return _mem_manager.MemoryManager_GetDeviceMemoryType()
+    GetDeviceMemoryType = _swig_new_static_method(_mem_manager.MemoryManager_GetDeviceMemoryType)
 
 # Register MemoryManager in _mem_manager:
 _mem_manager.MemoryManager_swigregister(MemoryManager)
+cvar = _mem_manager.cvar
+MemoryTypeSize = cvar.MemoryTypeSize
+HostMemoryType = cvar.HostMemoryType
+HostMemoryTypeSize = cvar.HostMemoryTypeSize
+DeviceMemoryType = cvar.DeviceMemoryType
+DeviceMemoryTypeSize = cvar.DeviceMemoryTypeSize
 
-def MemoryManager_Exists():
-    return _mem_manager.MemoryManager_Exists()
+def MemoryManager_GetHostMemoryType():
+    return _mem_manager.MemoryManager_GetHostMemoryType()
+MemoryManager_GetHostMemoryType = _mem_manager.MemoryManager_GetHostMemoryType
+
+def MemoryManager_GetDeviceMemoryType():
+    return _mem_manager.MemoryManager_GetDeviceMemoryType()
+MemoryManager_GetDeviceMemoryType = _mem_manager.MemoryManager_GetDeviceMemoryType
 
 
 def MemoryPrintFlags(flags):
     return _mem_manager.MemoryPrintFlags(flags)
+MemoryPrintFlags = _mem_manager.MemoryPrintFlags
 
-cvar = _mem_manager.cvar
 

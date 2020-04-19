@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _hybridization.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _hybridization.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -87,7 +90,9 @@ import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.vertex
+import mfem._ser.vtk
 import mfem._ser.handle
+import mfem._ser.restriction
 class Hybridization(object):
     r"""Proxy of C++ mfem::Hybridization class."""
 
@@ -102,38 +107,47 @@ class Hybridization(object):
     def SetConstraintIntegrator(self, c_integ):
         r"""SetConstraintIntegrator(Hybridization self, BilinearFormIntegrator c_integ)"""
         return _hybridization.Hybridization_SetConstraintIntegrator(self, c_integ)
+    SetConstraintIntegrator = _swig_new_instance_method(_hybridization.Hybridization_SetConstraintIntegrator)
 
     def Init(self, ess_tdof_list):
         r"""Init(Hybridization self, intArray ess_tdof_list)"""
         return _hybridization.Hybridization_Init(self, ess_tdof_list)
+    Init = _swig_new_instance_method(_hybridization.Hybridization_Init)
 
     def AssembleMatrix(self, el, A):
         r"""AssembleMatrix(Hybridization self, int el, DenseMatrix A)"""
         return _hybridization.Hybridization_AssembleMatrix(self, el, A)
+    AssembleMatrix = _swig_new_instance_method(_hybridization.Hybridization_AssembleMatrix)
 
     def AssembleBdrMatrix(self, bdr_el, A):
         r"""AssembleBdrMatrix(Hybridization self, int bdr_el, DenseMatrix A)"""
         return _hybridization.Hybridization_AssembleBdrMatrix(self, bdr_el, A)
+    AssembleBdrMatrix = _swig_new_instance_method(_hybridization.Hybridization_AssembleBdrMatrix)
 
     def Finalize(self):
         r"""Finalize(Hybridization self)"""
         return _hybridization.Hybridization_Finalize(self)
+    Finalize = _swig_new_instance_method(_hybridization.Hybridization_Finalize)
 
     def GetMatrix(self):
         r"""GetMatrix(Hybridization self) -> SparseMatrix"""
         return _hybridization.Hybridization_GetMatrix(self)
+    GetMatrix = _swig_new_instance_method(_hybridization.Hybridization_GetMatrix)
 
     def ReduceRHS(self, b, b_r):
         r"""ReduceRHS(Hybridization self, Vector b, Vector b_r)"""
         return _hybridization.Hybridization_ReduceRHS(self, b, b_r)
+    ReduceRHS = _swig_new_instance_method(_hybridization.Hybridization_ReduceRHS)
 
     def ComputeSolution(self, b, sol_r, sol):
         r"""ComputeSolution(Hybridization self, Vector b, Vector sol_r, Vector sol)"""
         return _hybridization.Hybridization_ComputeSolution(self, b, sol_r, sol)
+    ComputeSolution = _swig_new_instance_method(_hybridization.Hybridization_ComputeSolution)
 
     def Reset(self):
         r"""Reset(Hybridization self)"""
         return _hybridization.Hybridization_Reset(self)
+    Reset = _swig_new_instance_method(_hybridization.Hybridization_Reset)
 
 # Register Hybridization in _hybridization:
 _hybridization.Hybridization_swigregister(Hybridization)

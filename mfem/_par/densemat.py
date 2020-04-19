@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _densemat.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _densemat.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -88,22 +91,27 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     def UseExternalData(self, d, h, w):
         r"""UseExternalData(DenseMatrix self, double * d, int h, int w)"""
         return _densemat.DenseMatrix_UseExternalData(self, d, h, w)
+    UseExternalData = _swig_new_instance_method(_densemat.DenseMatrix_UseExternalData)
 
     def Reset(self, d, h, w):
         r"""Reset(DenseMatrix self, double * d, int h, int w)"""
         return _densemat.DenseMatrix_Reset(self, d, h, w)
+    Reset = _swig_new_instance_method(_densemat.DenseMatrix_Reset)
 
     def ClearExternalData(self):
         r"""ClearExternalData(DenseMatrix self)"""
         return _densemat.DenseMatrix_ClearExternalData(self)
+    ClearExternalData = _swig_new_instance_method(_densemat.DenseMatrix_ClearExternalData)
 
     def Clear(self):
         r"""Clear(DenseMatrix self)"""
         return _densemat.DenseMatrix_Clear(self)
+    Clear = _swig_new_instance_method(_densemat.DenseMatrix_Clear)
 
     def Size(self):
         r"""Size(DenseMatrix self) -> int"""
         return _densemat.DenseMatrix_Size(self)
+    Size = _swig_new_instance_method(_densemat.DenseMatrix_Size)
 
     def SetSize(self, *args):
         r"""
@@ -111,18 +119,30 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         SetSize(DenseMatrix self, int h, int w)
         """
         return _densemat.DenseMatrix_SetSize(self, *args)
+    SetSize = _swig_new_instance_method(_densemat.DenseMatrix_SetSize)
 
     def Data(self):
         r"""Data(DenseMatrix self) -> double *"""
         return _densemat.DenseMatrix_Data(self)
+    Data = _swig_new_instance_method(_densemat.DenseMatrix_Data)
 
     def GetData(self):
         r"""GetData(DenseMatrix self) -> double *"""
         return _densemat.DenseMatrix_GetData(self)
+    GetData = _swig_new_instance_method(_densemat.DenseMatrix_GetData)
+
+    def GetMemory(self, *args):
+        r"""
+        GetMemory(DenseMatrix self) -> mfem::Memory< double >
+        GetMemory(DenseMatrix self) -> mfem::Memory< double > const &
+        """
+        return _densemat.DenseMatrix_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_densemat.DenseMatrix_GetMemory)
 
     def OwnsData(self):
         r"""OwnsData(DenseMatrix self) -> bool"""
         return _densemat.DenseMatrix_OwnsData(self)
+    OwnsData = _swig_new_instance_method(_densemat.DenseMatrix_OwnsData)
 
     def __call__(self, *args):
         r"""
@@ -130,14 +150,17 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         __call__(DenseMatrix self, int i, int j) -> double const &
         """
         return _densemat.DenseMatrix___call__(self, *args)
+    __call__ = _swig_new_instance_method(_densemat.DenseMatrix___call__)
 
     def __mul__(self, m):
         r"""__mul__(DenseMatrix self, DenseMatrix m) -> double"""
         return _densemat.DenseMatrix___mul__(self, m)
+    __mul__ = _swig_new_instance_method(_densemat.DenseMatrix___mul__)
 
     def Trace(self):
         r"""Trace(DenseMatrix self) -> double"""
         return _densemat.DenseMatrix_Trace(self)
+    Trace = _swig_new_instance_method(_densemat.DenseMatrix_Trace)
 
     def Elem(self, *args):
         r"""
@@ -145,6 +168,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Elem(DenseMatrix self, int i, int j) -> double const &
         """
         return _densemat.DenseMatrix_Elem(self, *args)
+    Elem = _swig_new_instance_method(_densemat.DenseMatrix_Elem)
 
     def Mult(self, *args):
         r"""
@@ -152,6 +176,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Mult(DenseMatrix self, Vector x, Vector y)
         """
         return _densemat.DenseMatrix_Mult(self, *args)
+    Mult = _swig_new_instance_method(_densemat.DenseMatrix_Mult)
 
     def MultTranspose(self, *args):
         r"""
@@ -159,46 +184,57 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         MultTranspose(DenseMatrix self, Vector x, Vector y)
         """
         return _densemat.DenseMatrix_MultTranspose(self, *args)
+    MultTranspose = _swig_new_instance_method(_densemat.DenseMatrix_MultTranspose)
 
     def AddMult(self, x, y):
         r"""AddMult(DenseMatrix self, Vector x, Vector y)"""
         return _densemat.DenseMatrix_AddMult(self, x, y)
+    AddMult = _swig_new_instance_method(_densemat.DenseMatrix_AddMult)
 
     def AddMultTranspose(self, x, y):
         r"""AddMultTranspose(DenseMatrix self, Vector x, Vector y)"""
         return _densemat.DenseMatrix_AddMultTranspose(self, x, y)
+    AddMultTranspose = _swig_new_instance_method(_densemat.DenseMatrix_AddMultTranspose)
 
     def AddMult_a(self, a, x, y):
         r"""AddMult_a(DenseMatrix self, double a, Vector x, Vector y)"""
         return _densemat.DenseMatrix_AddMult_a(self, a, x, y)
+    AddMult_a = _swig_new_instance_method(_densemat.DenseMatrix_AddMult_a)
 
     def AddMultTranspose_a(self, a, x, y):
         r"""AddMultTranspose_a(DenseMatrix self, double a, Vector x, Vector y)"""
         return _densemat.DenseMatrix_AddMultTranspose_a(self, a, x, y)
+    AddMultTranspose_a = _swig_new_instance_method(_densemat.DenseMatrix_AddMultTranspose_a)
 
     def LeftScaling(self, s):
         r"""LeftScaling(DenseMatrix self, Vector s)"""
         return _densemat.DenseMatrix_LeftScaling(self, s)
+    LeftScaling = _swig_new_instance_method(_densemat.DenseMatrix_LeftScaling)
 
     def InvLeftScaling(self, s):
         r"""InvLeftScaling(DenseMatrix self, Vector s)"""
         return _densemat.DenseMatrix_InvLeftScaling(self, s)
+    InvLeftScaling = _swig_new_instance_method(_densemat.DenseMatrix_InvLeftScaling)
 
     def RightScaling(self, s):
         r"""RightScaling(DenseMatrix self, Vector s)"""
         return _densemat.DenseMatrix_RightScaling(self, s)
+    RightScaling = _swig_new_instance_method(_densemat.DenseMatrix_RightScaling)
 
     def InvRightScaling(self, s):
         r"""InvRightScaling(DenseMatrix self, Vector s)"""
         return _densemat.DenseMatrix_InvRightScaling(self, s)
+    InvRightScaling = _swig_new_instance_method(_densemat.DenseMatrix_InvRightScaling)
 
     def SymmetricScaling(self, s):
         r"""SymmetricScaling(DenseMatrix self, Vector s)"""
         return _densemat.DenseMatrix_SymmetricScaling(self, s)
+    SymmetricScaling = _swig_new_instance_method(_densemat.DenseMatrix_SymmetricScaling)
 
     def InvSymmetricScaling(self, s):
         r"""InvSymmetricScaling(DenseMatrix self, Vector s)"""
         return _densemat.DenseMatrix_InvSymmetricScaling(self, s)
+    InvSymmetricScaling = _swig_new_instance_method(_densemat.DenseMatrix_InvSymmetricScaling)
 
     def InnerProduct(self, *args):
         r"""
@@ -206,26 +242,32 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         InnerProduct(DenseMatrix self, Vector x, Vector y) -> double
         """
         return _densemat.DenseMatrix_InnerProduct(self, *args)
+    InnerProduct = _swig_new_instance_method(_densemat.DenseMatrix_InnerProduct)
 
     def Inverse(self):
         r"""Inverse(DenseMatrix self) -> MatrixInverse"""
         return _densemat.DenseMatrix_Inverse(self)
+    Inverse = _swig_new_instance_method(_densemat.DenseMatrix_Inverse)
 
     def Invert(self):
         r"""Invert(DenseMatrix self)"""
         return _densemat.DenseMatrix_Invert(self)
+    Invert = _swig_new_instance_method(_densemat.DenseMatrix_Invert)
 
     def SquareRootInverse(self):
         r"""SquareRootInverse(DenseMatrix self)"""
         return _densemat.DenseMatrix_SquareRootInverse(self)
+    SquareRootInverse = _swig_new_instance_method(_densemat.DenseMatrix_SquareRootInverse)
 
     def Det(self):
         r"""Det(DenseMatrix self) -> double"""
         return _densemat.DenseMatrix_Det(self)
+    Det = _swig_new_instance_method(_densemat.DenseMatrix_Det)
 
     def Weight(self):
         r"""Weight(DenseMatrix self) -> double"""
         return _densemat.DenseMatrix_Weight(self)
+    Weight = _swig_new_instance_method(_densemat.DenseMatrix_Weight)
 
     def Set(self, *args):
         r"""
@@ -233,10 +275,12 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Set(DenseMatrix self, double alpha, DenseMatrix A)
         """
         return _densemat.DenseMatrix_Set(self, *args)
+    Set = _swig_new_instance_method(_densemat.DenseMatrix_Set)
 
     def Add(self, c, A):
         r"""Add(DenseMatrix self, double const c, DenseMatrix A)"""
         return _densemat.DenseMatrix_Add(self, c, A)
+    Add = _swig_new_instance_method(_densemat.DenseMatrix_Add)
 
     def __iadd__(self, v):
         ret = _densmat.DenseMatrix___iadd__(self, v)
@@ -265,22 +309,27 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     def Neg(self):
         r"""Neg(DenseMatrix self)"""
         return _densemat.DenseMatrix_Neg(self)
+    Neg = _swig_new_instance_method(_densemat.DenseMatrix_Neg)
 
     def Norm2(self, v):
         r"""Norm2(DenseMatrix self, double * v)"""
         return _densemat.DenseMatrix_Norm2(self, v)
+    Norm2 = _swig_new_instance_method(_densemat.DenseMatrix_Norm2)
 
     def MaxMaxNorm(self):
         r"""MaxMaxNorm(DenseMatrix self) -> double"""
         return _densemat.DenseMatrix_MaxMaxNorm(self)
+    MaxMaxNorm = _swig_new_instance_method(_densemat.DenseMatrix_MaxMaxNorm)
 
     def FNorm(self):
         r"""FNorm(DenseMatrix self) -> double"""
         return _densemat.DenseMatrix_FNorm(self)
+    FNorm = _swig_new_instance_method(_densemat.DenseMatrix_FNorm)
 
     def FNorm2(self):
         r"""FNorm2(DenseMatrix self) -> double"""
         return _densemat.DenseMatrix_FNorm2(self)
+    FNorm2 = _swig_new_instance_method(_densemat.DenseMatrix_FNorm2)
 
     def Eigenvalues(self, *args):
         r"""
@@ -290,6 +339,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Eigenvalues(DenseMatrix self, DenseMatrix b, Vector ev, DenseMatrix evect)
         """
         return _densemat.DenseMatrix_Eigenvalues(self, *args)
+    Eigenvalues = _swig_new_instance_method(_densemat.DenseMatrix_Eigenvalues)
 
     def Eigensystem(self, *args):
         r"""
@@ -297,26 +347,32 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Eigensystem(DenseMatrix self, DenseMatrix b, Vector ev, DenseMatrix evect)
         """
         return _densemat.DenseMatrix_Eigensystem(self, *args)
+    Eigensystem = _swig_new_instance_method(_densemat.DenseMatrix_Eigensystem)
 
     def SingularValues(self, sv):
         r"""SingularValues(DenseMatrix self, Vector sv)"""
         return _densemat.DenseMatrix_SingularValues(self, sv)
+    SingularValues = _swig_new_instance_method(_densemat.DenseMatrix_SingularValues)
 
     def Rank(self, tol):
         r"""Rank(DenseMatrix self, double tol) -> int"""
         return _densemat.DenseMatrix_Rank(self, tol)
+    Rank = _swig_new_instance_method(_densemat.DenseMatrix_Rank)
 
     def CalcSingularvalue(self, i):
         r"""CalcSingularvalue(DenseMatrix self, int const i) -> double"""
         return _densemat.DenseMatrix_CalcSingularvalue(self, i)
+    CalcSingularvalue = _swig_new_instance_method(_densemat.DenseMatrix_CalcSingularvalue)
 
     def CalcEigenvalues(self, _lambda, vec):
         r"""CalcEigenvalues(DenseMatrix self, double * _lambda, double * vec)"""
         return _densemat.DenseMatrix_CalcEigenvalues(self, _lambda, vec)
+    CalcEigenvalues = _swig_new_instance_method(_densemat.DenseMatrix_CalcEigenvalues)
 
     def GetRow(self, r, row):
         r"""GetRow(DenseMatrix self, int r, Vector row)"""
         return _densemat.DenseMatrix_GetRow(self, r, row)
+    GetRow = _swig_new_instance_method(_densemat.DenseMatrix_GetRow)
 
     def GetColumn(self, *args):
         r"""
@@ -325,36 +381,45 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         GetColumn(DenseMatrix self, int col) -> double const *
         """
         return _densemat.DenseMatrix_GetColumn(self, *args)
+    GetColumn = _swig_new_instance_method(_densemat.DenseMatrix_GetColumn)
 
     def GetColumnReference(self, c, col):
         r"""GetColumnReference(DenseMatrix self, int c, Vector col)"""
         return _densemat.DenseMatrix_GetColumnReference(self, c, col)
+    GetColumnReference = _swig_new_instance_method(_densemat.DenseMatrix_GetColumnReference)
 
     def SetRow(self, *args):
         r"""
+        SetRow(DenseMatrix self, int r, double const * row)
         SetRow(DenseMatrix self, int r, Vector row)
         SetRow(DenseMatrix self, int row, double value)
         """
         return _densemat.DenseMatrix_SetRow(self, *args)
+    SetRow = _swig_new_instance_method(_densemat.DenseMatrix_SetRow)
 
     def SetCol(self, *args):
         r"""
+        SetCol(DenseMatrix self, int c, double const * col)
         SetCol(DenseMatrix self, int c, Vector col)
         SetCol(DenseMatrix self, int col, double value)
         """
         return _densemat.DenseMatrix_SetCol(self, *args)
+    SetCol = _swig_new_instance_method(_densemat.DenseMatrix_SetCol)
 
     def GetDiag(self, d):
         r"""GetDiag(DenseMatrix self, Vector d)"""
         return _densemat.DenseMatrix_GetDiag(self, d)
+    GetDiag = _swig_new_instance_method(_densemat.DenseMatrix_GetDiag)
 
     def Getl1Diag(self, l):
         r"""Getl1Diag(DenseMatrix self, Vector l)"""
         return _densemat.DenseMatrix_Getl1Diag(self, l)
+    Getl1Diag = _swig_new_instance_method(_densemat.DenseMatrix_Getl1Diag)
 
     def GetRowSums(self, l):
         r"""GetRowSums(DenseMatrix self, Vector l)"""
         return _densemat.DenseMatrix_GetRowSums(self, l)
+    GetRowSums = _swig_new_instance_method(_densemat.DenseMatrix_GetRowSums)
 
     def Diag(self, *args):
         r"""
@@ -362,6 +427,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Diag(DenseMatrix self, double * diag, int n)
         """
         return _densemat.DenseMatrix_Diag(self, *args)
+    Diag = _swig_new_instance_method(_densemat.DenseMatrix_Diag)
 
     def Transpose(self, *args):
         r"""
@@ -369,34 +435,42 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Transpose(DenseMatrix self, DenseMatrix A)
         """
         return _densemat.DenseMatrix_Transpose(self, *args)
+    Transpose = _swig_new_instance_method(_densemat.DenseMatrix_Transpose)
 
     def Symmetrize(self):
         r"""Symmetrize(DenseMatrix self)"""
         return _densemat.DenseMatrix_Symmetrize(self)
+    Symmetrize = _swig_new_instance_method(_densemat.DenseMatrix_Symmetrize)
 
     def Lump(self):
         r"""Lump(DenseMatrix self)"""
         return _densemat.DenseMatrix_Lump(self)
+    Lump = _swig_new_instance_method(_densemat.DenseMatrix_Lump)
 
     def GradToCurl(self, curl):
         r"""GradToCurl(DenseMatrix self, DenseMatrix curl)"""
         return _densemat.DenseMatrix_GradToCurl(self, curl)
+    GradToCurl = _swig_new_instance_method(_densemat.DenseMatrix_GradToCurl)
 
     def GradToDiv(self, div):
         r"""GradToDiv(DenseMatrix self, Vector div)"""
         return _densemat.DenseMatrix_GradToDiv(self, div)
+    GradToDiv = _swig_new_instance_method(_densemat.DenseMatrix_GradToDiv)
 
     def CopyRows(self, A, row1, row2):
         r"""CopyRows(DenseMatrix self, DenseMatrix A, int row1, int row2)"""
         return _densemat.DenseMatrix_CopyRows(self, A, row1, row2)
+    CopyRows = _swig_new_instance_method(_densemat.DenseMatrix_CopyRows)
 
     def CopyCols(self, A, col1, col2):
         r"""CopyCols(DenseMatrix self, DenseMatrix A, int col1, int col2)"""
         return _densemat.DenseMatrix_CopyCols(self, A, col1, col2)
+    CopyCols = _swig_new_instance_method(_densemat.DenseMatrix_CopyCols)
 
     def CopyMNt(self, A, row_offset, col_offset):
         r"""CopyMNt(DenseMatrix self, DenseMatrix A, int row_offset, int col_offset)"""
         return _densemat.DenseMatrix_CopyMNt(self, A, row_offset, col_offset)
+    CopyMNt = _swig_new_instance_method(_densemat.DenseMatrix_CopyMNt)
 
     def CopyMN(self, *args):
         r"""
@@ -405,6 +479,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         CopyMN(DenseMatrix self, DenseMatrix A, int m, int n, int Aro, int Aco, int row_offset, int col_offset)
         """
         return _densemat.DenseMatrix_CopyMN(self, *args)
+    CopyMN = _swig_new_instance_method(_densemat.DenseMatrix_CopyMN)
 
     def CopyMNDiag(self, *args):
         r"""
@@ -412,10 +487,12 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         CopyMNDiag(DenseMatrix self, double * diag, int n, int row_offset, int col_offset)
         """
         return _densemat.DenseMatrix_CopyMNDiag(self, *args)
+    CopyMNDiag = _swig_new_instance_method(_densemat.DenseMatrix_CopyMNDiag)
 
     def CopyExceptMN(self, A, m, n):
         r"""CopyExceptMN(DenseMatrix self, DenseMatrix A, int m, int n)"""
         return _densemat.DenseMatrix_CopyExceptMN(self, A, m, n)
+    CopyExceptMN = _swig_new_instance_method(_densemat.DenseMatrix_CopyExceptMN)
 
     def AddMatrix(self, *args):
         r"""
@@ -423,34 +500,72 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         AddMatrix(DenseMatrix self, double a, DenseMatrix A, int ro, int co)
         """
         return _densemat.DenseMatrix_AddMatrix(self, *args)
+    AddMatrix = _swig_new_instance_method(_densemat.DenseMatrix_AddMatrix)
 
     def AddToVector(self, offset, v):
         r"""AddToVector(DenseMatrix self, int offset, Vector v)"""
         return _densemat.DenseMatrix_AddToVector(self, offset, v)
+    AddToVector = _swig_new_instance_method(_densemat.DenseMatrix_AddToVector)
 
     def GetFromVector(self, offset, v):
         r"""GetFromVector(DenseMatrix self, int offset, Vector v)"""
         return _densemat.DenseMatrix_GetFromVector(self, offset, v)
+    GetFromVector = _swig_new_instance_method(_densemat.DenseMatrix_GetFromVector)
 
     def AdjustDofDirection(self, dofs):
         r"""AdjustDofDirection(DenseMatrix self, intArray dofs)"""
         return _densemat.DenseMatrix_AdjustDofDirection(self, dofs)
+    AdjustDofDirection = _swig_new_instance_method(_densemat.DenseMatrix_AdjustDofDirection)
 
     def Threshold(self, eps):
         r"""Threshold(DenseMatrix self, double eps)"""
         return _densemat.DenseMatrix_Threshold(self, eps)
+    Threshold = _swig_new_instance_method(_densemat.DenseMatrix_Threshold)
 
     def CheckFinite(self):
         r"""CheckFinite(DenseMatrix self) -> int"""
         return _densemat.DenseMatrix_CheckFinite(self)
+    CheckFinite = _swig_new_instance_method(_densemat.DenseMatrix_CheckFinite)
 
     def TestInversion(self):
         r"""TestInversion(DenseMatrix self)"""
         return _densemat.DenseMatrix_TestInversion(self)
+    TestInversion = _swig_new_instance_method(_densemat.DenseMatrix_TestInversion)
 
     def MemoryUsage(self):
         r"""MemoryUsage(DenseMatrix self) -> long"""
         return _densemat.DenseMatrix_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_densemat.DenseMatrix_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(DenseMatrix self, bool on_dev=True) -> double const *"""
+        return _densemat.DenseMatrix_Read(self, on_dev)
+    Read = _swig_new_instance_method(_densemat.DenseMatrix_Read)
+
+    def HostRead(self):
+        r"""HostRead(DenseMatrix self) -> double const *"""
+        return _densemat.DenseMatrix_HostRead(self)
+    HostRead = _swig_new_instance_method(_densemat.DenseMatrix_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(DenseMatrix self, bool on_dev=True) -> double *"""
+        return _densemat.DenseMatrix_Write(self, on_dev)
+    Write = _swig_new_instance_method(_densemat.DenseMatrix_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(DenseMatrix self) -> double *"""
+        return _densemat.DenseMatrix_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_densemat.DenseMatrix_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(DenseMatrix self, bool on_dev=True) -> double *"""
+        return _densemat.DenseMatrix_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_densemat.DenseMatrix_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(DenseMatrix self) -> double *"""
+        return _densemat.DenseMatrix_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_densemat.DenseMatrix_HostReadWrite)
     __swig_destroy__ = _densemat.delete_DenseMatrix
 
     def Assign(self, *args):
@@ -496,6 +611,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
     def GetDataArray(self):
         r"""GetDataArray(DenseMatrix self) -> PyObject *"""
         return _densemat.DenseMatrix_GetDataArray(self)
+    GetDataArray = _swig_new_instance_method(_densemat.DenseMatrix_GetDataArray)
 
     def Print(self, *args):
         r"""
@@ -503,6 +619,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         Print(DenseMatrix self, char const * file, int precision=8)
         """
         return _densemat.DenseMatrix_Print(self, *args)
+    Print = _swig_new_instance_method(_densemat.DenseMatrix_Print)
 
     def PrintT(self, *args):
         r"""
@@ -510,6 +627,7 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         PrintT(DenseMatrix self, char const * file, int precision=8)
         """
         return _densemat.DenseMatrix_PrintT(self, *args)
+    PrintT = _swig_new_instance_method(_densemat.DenseMatrix_PrintT)
 
     def PrintMatlab(self, *args):
         r"""
@@ -517,102 +635,136 @@ class DenseMatrix(mfem._par.matrix.Matrix):
         PrintMatlab(DenseMatrix self, char const * file, int precision=8)
         """
         return _densemat.DenseMatrix_PrintMatlab(self, *args)
+    PrintMatlab = _swig_new_instance_method(_densemat.DenseMatrix_PrintMatlab)
 
 # Register DenseMatrix in _densemat:
 _densemat.DenseMatrix_swigregister(DenseMatrix)
 
 
+def LinearSolve(A, X, TOL=1.e-9):
+    r"""LinearSolve(DenseMatrix A, double * X, double TOL=1.e-9) -> bool"""
+    return _densemat.LinearSolve(A, X, TOL)
+LinearSolve = _densemat.LinearSolve
+
 def AddMult(b, c, a):
     r"""AddMult(DenseMatrix b, DenseMatrix c, DenseMatrix a)"""
     return _densemat.AddMult(b, c, a)
+AddMult = _densemat.AddMult
+
+def AddMult_a(alpha, b, c, a):
+    r"""AddMult_a(double alpha, DenseMatrix b, DenseMatrix c, DenseMatrix a)"""
+    return _densemat.AddMult_a(alpha, b, c, a)
+AddMult_a = _densemat.AddMult_a
 
 def CalcAdjugate(a, adja):
     r"""CalcAdjugate(DenseMatrix a, DenseMatrix adja)"""
     return _densemat.CalcAdjugate(a, adja)
+CalcAdjugate = _densemat.CalcAdjugate
 
 def CalcAdjugateTranspose(a, adjat):
     r"""CalcAdjugateTranspose(DenseMatrix a, DenseMatrix adjat)"""
     return _densemat.CalcAdjugateTranspose(a, adjat)
+CalcAdjugateTranspose = _densemat.CalcAdjugateTranspose
 
 def CalcInverse(a, inva):
     r"""CalcInverse(DenseMatrix a, DenseMatrix inva)"""
     return _densemat.CalcInverse(a, inva)
+CalcInverse = _densemat.CalcInverse
 
 def CalcInverseTranspose(a, inva):
     r"""CalcInverseTranspose(DenseMatrix a, DenseMatrix inva)"""
     return _densemat.CalcInverseTranspose(a, inva)
+CalcInverseTranspose = _densemat.CalcInverseTranspose
 
 def CalcOrtho(J, n):
     r"""CalcOrtho(DenseMatrix J, Vector n)"""
     return _densemat.CalcOrtho(J, n)
+CalcOrtho = _densemat.CalcOrtho
 
 def MultAAt(a, aat):
     r"""MultAAt(DenseMatrix a, DenseMatrix aat)"""
     return _densemat.MultAAt(a, aat)
+MultAAt = _densemat.MultAAt
 
 def MultADAt(A, D, ADAt):
     r"""MultADAt(DenseMatrix A, Vector D, DenseMatrix ADAt)"""
     return _densemat.MultADAt(A, D, ADAt)
+MultADAt = _densemat.MultADAt
 
 def AddMultADAt(A, D, ADAt):
     r"""AddMultADAt(DenseMatrix A, Vector D, DenseMatrix ADAt)"""
     return _densemat.AddMultADAt(A, D, ADAt)
+AddMultADAt = _densemat.AddMultADAt
 
 def MultABt(A, B, ABt):
     r"""MultABt(DenseMatrix A, DenseMatrix B, DenseMatrix ABt)"""
     return _densemat.MultABt(A, B, ABt)
+MultABt = _densemat.MultABt
 
 def MultADBt(A, D, B, ADBt):
     r"""MultADBt(DenseMatrix A, Vector D, DenseMatrix B, DenseMatrix ADBt)"""
     return _densemat.MultADBt(A, D, B, ADBt)
+MultADBt = _densemat.MultADBt
 
 def AddMultABt(A, B, ABt):
     r"""AddMultABt(DenseMatrix A, DenseMatrix B, DenseMatrix ABt)"""
     return _densemat.AddMultABt(A, B, ABt)
+AddMultABt = _densemat.AddMultABt
 
 def AddMultADBt(A, D, B, ADBt):
     r"""AddMultADBt(DenseMatrix A, Vector D, DenseMatrix B, DenseMatrix ADBt)"""
     return _densemat.AddMultADBt(A, D, B, ADBt)
+AddMultADBt = _densemat.AddMultADBt
 
 def AddMult_a_ABt(a, A, B, ABt):
     r"""AddMult_a_ABt(double a, DenseMatrix A, DenseMatrix B, DenseMatrix ABt)"""
     return _densemat.AddMult_a_ABt(a, A, B, ABt)
+AddMult_a_ABt = _densemat.AddMult_a_ABt
 
 def MultAtB(A, B, AtB):
     r"""MultAtB(DenseMatrix A, DenseMatrix B, DenseMatrix AtB)"""
     return _densemat.MultAtB(A, B, AtB)
+MultAtB = _densemat.MultAtB
 
 def AddMult_a_AAt(a, A, AAt):
     r"""AddMult_a_AAt(double a, DenseMatrix A, DenseMatrix AAt)"""
     return _densemat.AddMult_a_AAt(a, A, AAt)
+AddMult_a_AAt = _densemat.AddMult_a_AAt
 
 def Mult_a_AAt(a, A, AAt):
     r"""Mult_a_AAt(double a, DenseMatrix A, DenseMatrix AAt)"""
     return _densemat.Mult_a_AAt(a, A, AAt)
+Mult_a_AAt = _densemat.Mult_a_AAt
 
 def MultVVt(v, vvt):
     r"""MultVVt(Vector v, DenseMatrix vvt)"""
     return _densemat.MultVVt(v, vvt)
+MultVVt = _densemat.MultVVt
 
 def MultVWt(v, w, VWt):
     r"""MultVWt(Vector v, Vector w, DenseMatrix VWt)"""
     return _densemat.MultVWt(v, w, VWt)
+MultVWt = _densemat.MultVWt
 
 def AddMultVWt(v, w, VWt):
     r"""AddMultVWt(Vector v, Vector w, DenseMatrix VWt)"""
     return _densemat.AddMultVWt(v, w, VWt)
+AddMultVWt = _densemat.AddMultVWt
 
 def AddMultVVt(v, VWt):
     r"""AddMultVVt(Vector v, DenseMatrix VWt)"""
     return _densemat.AddMultVVt(v, VWt)
+AddMultVVt = _densemat.AddMultVVt
 
 def AddMult_a_VWt(a, v, w, VWt):
     r"""AddMult_a_VWt(double const a, Vector v, Vector w, DenseMatrix VWt)"""
     return _densemat.AddMult_a_VWt(a, v, w, VWt)
+AddMult_a_VWt = _densemat.AddMult_a_VWt
 
 def AddMult_a_VVt(a, v, VVt):
     r"""AddMult_a_VVt(double const a, Vector v, DenseMatrix VVt)"""
     return _densemat.AddMult_a_VVt(a, v, VVt)
+AddMult_a_VVt = _densemat.AddMult_a_VVt
 class LUFactors(object):
     r"""Proxy of C++ mfem::LUFactors class."""
 
@@ -630,50 +782,66 @@ class LUFactors(object):
         """
         _densemat.LUFactors_swiginit(self, _densemat.new_LUFactors(*args))
 
-    def Factor(self, m):
-        r"""Factor(LUFactors self, int m)"""
-        return _densemat.LUFactors_Factor(self, m)
+    def Factor(self, m, TOL=0.0):
+        r"""Factor(LUFactors self, int m, double TOL=0.0) -> bool"""
+        return _densemat.LUFactors_Factor(self, m, TOL)
+    Factor = _swig_new_instance_method(_densemat.LUFactors_Factor)
 
     def Det(self, m):
         r"""Det(LUFactors self, int m) -> double"""
         return _densemat.LUFactors_Det(self, m)
+    Det = _swig_new_instance_method(_densemat.LUFactors_Det)
 
     def Mult(self, m, n, X):
         r"""Mult(LUFactors self, int m, int n, double * X)"""
         return _densemat.LUFactors_Mult(self, m, n, X)
+    Mult = _swig_new_instance_method(_densemat.LUFactors_Mult)
 
     def LSolve(self, m, n, X):
         r"""LSolve(LUFactors self, int m, int n, double * X)"""
         return _densemat.LUFactors_LSolve(self, m, n, X)
+    LSolve = _swig_new_instance_method(_densemat.LUFactors_LSolve)
 
     def USolve(self, m, n, X):
         r"""USolve(LUFactors self, int m, int n, double * X)"""
         return _densemat.LUFactors_USolve(self, m, n, X)
+    USolve = _swig_new_instance_method(_densemat.LUFactors_USolve)
 
     def Solve(self, m, n, X):
         r"""Solve(LUFactors self, int m, int n, double * X)"""
         return _densemat.LUFactors_Solve(self, m, n, X)
+    Solve = _swig_new_instance_method(_densemat.LUFactors_Solve)
+
+    def RightSolve(self, m, n, X):
+        r"""RightSolve(LUFactors self, int m, int n, double * X)"""
+        return _densemat.LUFactors_RightSolve(self, m, n, X)
+    RightSolve = _swig_new_instance_method(_densemat.LUFactors_RightSolve)
 
     def GetInverseMatrix(self, m, X):
         r"""GetInverseMatrix(LUFactors self, int m, double * X)"""
         return _densemat.LUFactors_GetInverseMatrix(self, m, X)
+    GetInverseMatrix = _swig_new_instance_method(_densemat.LUFactors_GetInverseMatrix)
 
     @staticmethod
     def SubMult(m, n, r, A21, X1, X2):
         r"""SubMult(int m, int n, int r, double const * A21, double const * X1, double * X2)"""
         return _densemat.LUFactors_SubMult(m, n, r, A21, X1, X2)
+    SubMult = _swig_new_static_method(_densemat.LUFactors_SubMult)
 
     def BlockFactor(self, m, n, A12, A21, A22):
         r"""BlockFactor(LUFactors self, int m, int n, double * A12, double * A21, double * A22)"""
         return _densemat.LUFactors_BlockFactor(self, m, n, A12, A21, A22)
+    BlockFactor = _swig_new_instance_method(_densemat.LUFactors_BlockFactor)
 
     def BlockForwSolve(self, m, n, r, L21, B1, B2):
         r"""BlockForwSolve(LUFactors self, int m, int n, int r, double const * L21, double * B1, double * B2)"""
         return _densemat.LUFactors_BlockForwSolve(self, m, n, r, L21, B1, B2)
+    BlockForwSolve = _swig_new_instance_method(_densemat.LUFactors_BlockForwSolve)
 
     def BlockBackSolve(self, m, n, r, U12, X2, Y1):
         r"""BlockBackSolve(LUFactors self, int m, int n, int r, double const * U12, double const * X2, double * Y1)"""
         return _densemat.LUFactors_BlockBackSolve(self, m, n, r, U12, X2, Y1)
+    BlockBackSolve = _swig_new_instance_method(_densemat.LUFactors_BlockBackSolve)
     __swig_destroy__ = _densemat.delete_LUFactors
 
 # Register LUFactors in _densemat:
@@ -682,6 +850,7 @@ _densemat.LUFactors_swigregister(LUFactors)
 def LUFactors_SubMult(m, n, r, A21, X1, X2):
     r"""LUFactors_SubMult(int m, int n, int r, double const * A21, double const * X1, double * X2)"""
     return _densemat.LUFactors_SubMult(m, n, r, A21, X1, X2)
+LUFactors_SubMult = _densemat.LUFactors_SubMult
 
 class DenseMatrixInverse(mfem._par.matrix.MatrixInverse):
     r"""Proxy of C++ mfem::DenseMatrixInverse class."""
@@ -700,6 +869,7 @@ class DenseMatrixInverse(mfem._par.matrix.MatrixInverse):
     def Size(self):
         r"""Size(DenseMatrixInverse self) -> int"""
         return _densemat.DenseMatrixInverse_Size(self)
+    Size = _swig_new_instance_method(_densemat.DenseMatrixInverse_Size)
 
     def Factor(self, *args):
         r"""
@@ -707,10 +877,12 @@ class DenseMatrixInverse(mfem._par.matrix.MatrixInverse):
         Factor(DenseMatrixInverse self, DenseMatrix mat)
         """
         return _densemat.DenseMatrixInverse_Factor(self, *args)
+    Factor = _swig_new_instance_method(_densemat.DenseMatrixInverse_Factor)
 
     def SetOperator(self, op):
         r"""SetOperator(DenseMatrixInverse self, Operator op)"""
         return _densemat.DenseMatrixInverse_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_densemat.DenseMatrixInverse_SetOperator)
 
     def Mult(self, *args):
         r"""
@@ -719,18 +891,22 @@ class DenseMatrixInverse(mfem._par.matrix.MatrixInverse):
         Mult(DenseMatrixInverse self, DenseMatrix X)
         """
         return _densemat.DenseMatrixInverse_Mult(self, *args)
+    Mult = _swig_new_instance_method(_densemat.DenseMatrixInverse_Mult)
 
     def GetInverseMatrix(self, Ainv):
         r"""GetInverseMatrix(DenseMatrixInverse self, DenseMatrix Ainv)"""
         return _densemat.DenseMatrixInverse_GetInverseMatrix(self, Ainv)
+    GetInverseMatrix = _swig_new_instance_method(_densemat.DenseMatrixInverse_GetInverseMatrix)
 
     def Det(self):
         r"""Det(DenseMatrixInverse self) -> double"""
         return _densemat.DenseMatrixInverse_Det(self)
+    Det = _swig_new_instance_method(_densemat.DenseMatrixInverse_Det)
 
     def TestInversion(self):
         r"""TestInversion(DenseMatrixInverse self)"""
         return _densemat.DenseMatrixInverse_TestInversion(self)
+    TestInversion = _swig_new_instance_method(_densemat.DenseMatrixInverse_TestInversion)
     __swig_destroy__ = _densemat.delete_DenseMatrixInverse
 
 # Register DenseMatrixInverse in _densemat:
@@ -752,22 +928,27 @@ class DenseMatrixEigensystem(object):
     def Eval(self):
         r"""Eval(DenseMatrixEigensystem self)"""
         return _densemat.DenseMatrixEigensystem_Eval(self)
+    Eval = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eval)
 
     def Eigenvalues(self):
         r"""Eigenvalues(DenseMatrixEigensystem self) -> Vector"""
         return _densemat.DenseMatrixEigensystem_Eigenvalues(self)
+    Eigenvalues = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvalues)
 
     def Eigenvectors(self):
         r"""Eigenvectors(DenseMatrixEigensystem self) -> DenseMatrix"""
         return _densemat.DenseMatrixEigensystem_Eigenvectors(self)
+    Eigenvectors = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvectors)
 
     def Eigenvalue(self, i):
         r"""Eigenvalue(DenseMatrixEigensystem self, int i) -> double"""
         return _densemat.DenseMatrixEigensystem_Eigenvalue(self, i)
+    Eigenvalue = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvalue)
 
     def Eigenvector(self, i):
         r"""Eigenvector(DenseMatrixEigensystem self, int i) -> Vector"""
         return _densemat.DenseMatrixEigensystem_Eigenvector(self, i)
+    Eigenvector = _swig_new_instance_method(_densemat.DenseMatrixEigensystem_Eigenvector)
     __swig_destroy__ = _densemat.delete_DenseMatrixEigensystem
 
 # Register DenseMatrixEigensystem in _densemat:
@@ -789,14 +970,17 @@ class DenseMatrixSVD(object):
     def Eval(self, M):
         r"""Eval(DenseMatrixSVD self, DenseMatrix M)"""
         return _densemat.DenseMatrixSVD_Eval(self, M)
+    Eval = _swig_new_instance_method(_densemat.DenseMatrixSVD_Eval)
 
     def Singularvalues(self):
         r"""Singularvalues(DenseMatrixSVD self) -> Vector"""
         return _densemat.DenseMatrixSVD_Singularvalues(self)
+    Singularvalues = _swig_new_instance_method(_densemat.DenseMatrixSVD_Singularvalues)
 
     def Singularvalue(self, i):
         r"""Singularvalue(DenseMatrixSVD self, int i) -> double"""
         return _densemat.DenseMatrixSVD_Singularvalue(self, i)
+    Singularvalue = _swig_new_instance_method(_densemat.DenseMatrixSVD_Singularvalue)
     __swig_destroy__ = _densemat.delete_DenseMatrixSVD
 
 # Register DenseMatrixSVD in _densemat:
@@ -819,26 +1003,32 @@ class DenseTensor(object):
     def SizeI(self):
         r"""SizeI(DenseTensor self) -> int"""
         return _densemat.DenseTensor_SizeI(self)
+    SizeI = _swig_new_instance_method(_densemat.DenseTensor_SizeI)
 
     def SizeJ(self):
         r"""SizeJ(DenseTensor self) -> int"""
         return _densemat.DenseTensor_SizeJ(self)
+    SizeJ = _swig_new_instance_method(_densemat.DenseTensor_SizeJ)
 
     def SizeK(self):
         r"""SizeK(DenseTensor self) -> int"""
         return _densemat.DenseTensor_SizeK(self)
+    SizeK = _swig_new_instance_method(_densemat.DenseTensor_SizeK)
 
     def TotalSize(self):
         r"""TotalSize(DenseTensor self) -> int"""
         return _densemat.DenseTensor_TotalSize(self)
+    TotalSize = _swig_new_instance_method(_densemat.DenseTensor_TotalSize)
 
     def SetSize(self, i, j, k):
         r"""SetSize(DenseTensor self, int i, int j, int k)"""
         return _densemat.DenseTensor_SetSize(self, i, j, k)
+    SetSize = _swig_new_instance_method(_densemat.DenseTensor_SetSize)
 
     def UseExternalData(self, ext_data, i, j, k):
         r"""UseExternalData(DenseTensor self, double * ext_data, int i, int j, int k)"""
         return _densemat.DenseTensor_UseExternalData(self, ext_data, i, j, k)
+    UseExternalData = _swig_new_instance_method(_densemat.DenseTensor_UseExternalData)
 
     def __call__(self, *args):
         r"""
@@ -848,10 +1038,12 @@ class DenseTensor(object):
         __call__(DenseTensor self, int i, int j, int k) -> double const &
         """
         return _densemat.DenseTensor___call__(self, *args)
+    __call__ = _swig_new_instance_method(_densemat.DenseTensor___call__)
 
     def GetData(self, k):
         r"""GetData(DenseTensor self, int k) -> double *"""
         return _densemat.DenseTensor_GetData(self, k)
+    GetData = _swig_new_instance_method(_densemat.DenseTensor_GetData)
 
     def Data(self, *args):
         r"""
@@ -859,6 +1051,7 @@ class DenseTensor(object):
         Data(DenseTensor self) -> double const *
         """
         return _densemat.DenseTensor_Data(self, *args)
+    Data = _swig_new_instance_method(_densemat.DenseTensor_Data)
 
     def GetMemory(self, *args):
         r"""
@@ -866,18 +1059,52 @@ class DenseTensor(object):
         GetMemory(DenseTensor self) -> mfem::Memory< double > const &
         """
         return _densemat.DenseTensor_GetMemory(self, *args)
+    GetMemory = _swig_new_instance_method(_densemat.DenseTensor_GetMemory)
 
     def AddMult(self, elem_dof, x, y):
         r"""AddMult(DenseTensor self, mfem::Table const & elem_dof, Vector x, Vector y)"""
         return _densemat.DenseTensor_AddMult(self, elem_dof, x, y)
+    AddMult = _swig_new_instance_method(_densemat.DenseTensor_AddMult)
 
     def Clear(self):
         r"""Clear(DenseTensor self)"""
         return _densemat.DenseTensor_Clear(self)
+    Clear = _swig_new_instance_method(_densemat.DenseTensor_Clear)
 
     def MemoryUsage(self):
         r"""MemoryUsage(DenseTensor self) -> long"""
         return _densemat.DenseTensor_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_densemat.DenseTensor_MemoryUsage)
+
+    def Read(self, on_dev=True):
+        r"""Read(DenseTensor self, bool on_dev=True) -> double const *"""
+        return _densemat.DenseTensor_Read(self, on_dev)
+    Read = _swig_new_instance_method(_densemat.DenseTensor_Read)
+
+    def HostRead(self):
+        r"""HostRead(DenseTensor self) -> double const *"""
+        return _densemat.DenseTensor_HostRead(self)
+    HostRead = _swig_new_instance_method(_densemat.DenseTensor_HostRead)
+
+    def Write(self, on_dev=True):
+        r"""Write(DenseTensor self, bool on_dev=True) -> double *"""
+        return _densemat.DenseTensor_Write(self, on_dev)
+    Write = _swig_new_instance_method(_densemat.DenseTensor_Write)
+
+    def HostWrite(self):
+        r"""HostWrite(DenseTensor self) -> double *"""
+        return _densemat.DenseTensor_HostWrite(self)
+    HostWrite = _swig_new_instance_method(_densemat.DenseTensor_HostWrite)
+
+    def ReadWrite(self, on_dev=True):
+        r"""ReadWrite(DenseTensor self, bool on_dev=True) -> double *"""
+        return _densemat.DenseTensor_ReadWrite(self, on_dev)
+    ReadWrite = _swig_new_instance_method(_densemat.DenseTensor_ReadWrite)
+
+    def HostReadWrite(self):
+        r"""HostReadWrite(DenseTensor self) -> double *"""
+        return _densemat.DenseTensor_HostReadWrite(self)
+    HostReadWrite = _swig_new_instance_method(_densemat.DenseTensor_HostReadWrite)
     __swig_destroy__ = _densemat.delete_DenseTensor
 
     def Assign(self, c):
@@ -916,6 +1143,7 @@ class DenseTensor(object):
     def GetDataArray(self):
         r"""GetDataArray(DenseTensor self) -> PyObject *"""
         return _densemat.DenseTensor_GetDataArray(self)
+    GetDataArray = _swig_new_instance_method(_densemat.DenseTensor_GetDataArray)
 
 # Register DenseTensor in _densemat:
 _densemat.DenseTensor_swigregister(DenseTensor)

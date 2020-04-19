@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _globals.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _globals.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -70,23 +73,28 @@ class OutStream(object):
 
     def SetStream(self, out):
         return _globals.OutStream_SetStream(self, out)
+    SetStream = _swig_new_instance_method(_globals.OutStream_SetStream)
 
     def Enable(self):
         return _globals.OutStream_Enable(self)
+    Enable = _swig_new_instance_method(_globals.OutStream_Enable)
 
     def Disable(self):
         return _globals.OutStream_Disable(self)
+    Disable = _swig_new_instance_method(_globals.OutStream_Disable)
 
     def IsEnabled(self):
         return _globals.OutStream_IsEnabled(self)
+    IsEnabled = _swig_new_instance_method(_globals.OutStream_IsEnabled)
     __swig_destroy__ = _globals.delete_OutStream
 
 # Register OutStream in _globals:
 _globals.OutStream_swigregister(OutStream)
 
 
-def MakeParFilename(*args):
-    return _globals.MakeParFilename(*args)
+def MakeParFilename(*args, **kwargs):
+    return _globals.MakeParFilename(*args, **kwargs)
+MakeParFilename = _globals.MakeParFilename
 
 cvar = _globals.cvar
 out = cvar.out

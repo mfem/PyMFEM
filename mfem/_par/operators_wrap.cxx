@@ -3067,32 +3067,39 @@ namespace Swig {
 
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[2]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[3]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[4]
-#define SWIGTYPE_p_mfem__Operator swig_types[5]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[6]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[7]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[8]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[9]
-#define SWIGTYPE_p_mfem__Solver swig_types[10]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[11]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[12]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[13]
-#define SWIGTYPE_p_mfem__Vector swig_types[14]
-#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[15]
-#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[16]
-#define SWIGTYPE_p_p_mfem__Operator swig_types[17]
-#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[18]
-#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[19]
-#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[20]
-#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[21]
-#define SWIGTYPE_p_p_mfem__Solver swig_types[22]
-#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[23]
-#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[24]
-#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[25]
-static swig_type_info *swig_types[27];
-static swig_module_info swig_module = {swig_types, 26, 0, 0, 0, 0};
+#define SWIGTYPE_p_int swig_types[2]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[3]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[4]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[5]
+#define SWIGTYPE_p_mfem__Operator swig_types[6]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[7]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[8]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[9]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[10]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[11]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[12]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[13]
+#define SWIGTYPE_p_mfem__Solver swig_types[14]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[15]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[16]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[17]
+#define SWIGTYPE_p_mfem__Vector swig_types[18]
+#define SWIGTYPE_p_p_mfem__ConstrainedOperator swig_types[19]
+#define SWIGTYPE_p_p_mfem__IdentityOperator swig_types[20]
+#define SWIGTYPE_p_p_mfem__Operator swig_types[21]
+#define SWIGTYPE_p_p_mfem__ProductOperator swig_types[22]
+#define SWIGTYPE_p_p_mfem__PyOperatorBase swig_types[23]
+#define SWIGTYPE_p_p_mfem__PyTimeDependentOperatorBase swig_types[24]
+#define SWIGTYPE_p_p_mfem__RAPOperator swig_types[25]
+#define SWIGTYPE_p_p_mfem__RectangularConstrainedOperator swig_types[26]
+#define SWIGTYPE_p_p_mfem__ScaledOperator swig_types[27]
+#define SWIGTYPE_p_p_mfem__SecondOrderTimeDependentOperator swig_types[28]
+#define SWIGTYPE_p_p_mfem__Solver swig_types[29]
+#define SWIGTYPE_p_p_mfem__TimeDependentOperator swig_types[30]
+#define SWIGTYPE_p_p_mfem__TransposeOperator swig_types[31]
+#define SWIGTYPE_p_p_mfem__TripleProductOperator swig_types[32]
+static swig_type_info *swig_types[34];
+static swig_module_info swig_module = {swig_types, 33, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3495,7 +3502,7 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
 
-SWIGINTERN void mfem_Operator_PrintMatlab__SWIG_3(mfem::Operator *self,char const *file,int precision=8){
+SWIGINTERN void mfem_Operator_PrintMatlab__SWIG_1(mfem::Operator *self,char const *file,int precision=8){
   std::ofstream ofile(file);
   if (!ofile)
      {
@@ -3757,6 +3764,80 @@ mfem::Operator const *SwigDirector_Operator::GetRestriction() const {
 }
 
 
+mfem::Operator const *SwigDirector_Operator::GetOutputProlongation() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char *const swig_method_name = "GetOutputProlongation";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputProlongation");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_Operator::GetOutputRestriction() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char *const swig_method_name = "GetOutputRestriction";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputRestriction");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
 void SwigDirector_Operator::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&X), SWIGTYPE_p_mfem__Vector,  0 );
@@ -3768,7 +3849,7 @@ void SwigDirector_Operator::RecoverFEMSolution(mfem::Vector const &X, mfem::Vect
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Operator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4009,6 +4090,80 @@ mfem::Operator const *SwigDirector_TimeDependentOperator::GetRestriction() const
 }
 
 
+mfem::Operator const *SwigDirector_TimeDependentOperator::GetOutputProlongation() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char *const swig_method_name = "GetOutputProlongation";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputProlongation");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_TimeDependentOperator::GetOutputRestriction() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char *const swig_method_name = "GetOutputRestriction";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputRestriction");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
 void SwigDirector_TimeDependentOperator::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&X), SWIGTYPE_p_mfem__Vector,  0 );
@@ -4020,7 +4175,7 @@ void SwigDirector_TimeDependentOperator::RecoverFEMSolution(mfem::Vector const &
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4049,7 +4204,7 @@ double SwigDirector_TimeDependentOperator::GetTime() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 9;
   const char *const swig_method_name = "GetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -4083,12 +4238,38 @@ void SwigDirector_TimeDependentOperator::SetTime(double const _t) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 10;
   const char *const swig_method_name = "SetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
 #else
   swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetTime");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_TimeDependentOperator::SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_From_int(static_cast< int >(new_eval_mode));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char *const swig_method_name = "SetEvalMode";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetEvalMode");
   swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
 #endif
   if (!result) {
@@ -4111,7 +4292,7 @@ void SwigDirector_TimeDependentOperator::ExplicitMult(mfem::Vector const &x, mfe
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 12;
   const char *const swig_method_name = "ExplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -4141,7 +4322,7 @@ void SwigDirector_TimeDependentOperator::ImplicitMult(mfem::Vector const &x, mfe
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 13;
   const char *const swig_method_name = "ImplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4171,7 +4352,7 @@ void SwigDirector_TimeDependentOperator::ImplicitSolve(double const dt, mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 14;
   const char *const swig_method_name = "ImplicitSolve";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4206,7 +4387,7 @@ mfem::Operator &SwigDirector_TimeDependentOperator::GetImplicitGradient(mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 15;
   const char *const swig_method_name = "GetImplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4247,7 +4428,7 @@ mfem::Operator &SwigDirector_TimeDependentOperator::GetExplicitGradient(mfem::Ve
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 16;
   const char *const swig_method_name = "GetExplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -4273,6 +4454,198 @@ mfem::Operator &SwigDirector_TimeDependentOperator::GetExplicitGradient(mfem::Ve
   c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
   swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
   return (mfem::Operator &) *c_result;
+}
+
+
+int SwigDirector_TimeDependentOperator::SUNImplicitSetup(mfem::Vector const &x, mfem::Vector const &fx, int jok, int *jcur, double gamma) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&fx), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_From_int(static_cast< int >(jok));
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(jcur), SWIGTYPE_p_int,  0 );
+  swig::SwigVar_PyObject obj4;
+  obj4 = SWIG_From_double(static_cast< double >(gamma));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char *const swig_method_name = "SUNImplicitSetup";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNImplicitSetup");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_TimeDependentOperator::SUNImplicitSolve(mfem::Vector const &b, mfem::Vector &x, double tol) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&b), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_From_double(static_cast< double >(tol));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 18;
+  const char *const swig_method_name = "SUNImplicitSolve";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNImplicitSolve");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_TimeDependentOperator::SUNMassSetup() {
+  int c_result = SwigValueInit< int >() ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 19;
+  const char *const swig_method_name = "SUNMassSetup";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNMassSetup");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_TimeDependentOperator::SUNMassSolve(mfem::Vector const &b, mfem::Vector &x, double tol) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&b), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_From_double(static_cast< double >(tol));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 20;
+  const char *const swig_method_name = "SUNMassSolve";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNMassSolve");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_TimeDependentOperator::SUNMassMult(mfem::Vector const &x, mfem::Vector &v) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&v), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call TimeDependentOperator.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 21;
+  const char *const swig_method_name = "SUNMassMult";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNMassMult");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
 }
 
 
@@ -4495,6 +4868,80 @@ mfem::Operator const *SwigDirector_Solver::GetRestriction() const {
 }
 
 
+mfem::Operator const *SwigDirector_Solver::GetOutputProlongation() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char *const swig_method_name = "GetOutputProlongation";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputProlongation");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_Solver::GetOutputRestriction() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char *const swig_method_name = "GetOutputRestriction";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputRestriction");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
 void SwigDirector_Solver::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&X), SWIGTYPE_p_mfem__Vector,  0 );
@@ -4506,7 +4953,7 @@ void SwigDirector_Solver::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4535,7 +4982,7 @@ void SwigDirector_Solver::SetOperator(mfem::Operator const &op) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call Solver.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 9;
   const char *const swig_method_name = "SetOperator";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -4773,6 +5220,80 @@ mfem::Operator const *SwigDirector_PyOperatorBase::GetRestriction() const {
 }
 
 
+mfem::Operator const *SwigDirector_PyOperatorBase::GetOutputProlongation() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char *const swig_method_name = "GetOutputProlongation";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputProlongation");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_PyOperatorBase::GetOutputRestriction() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char *const swig_method_name = "GetOutputRestriction";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputRestriction");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
 void SwigDirector_PyOperatorBase::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&X), SWIGTYPE_p_mfem__Vector,  0 );
@@ -4784,7 +5305,7 @@ void SwigDirector_PyOperatorBase::RecoverFEMSolution(mfem::Vector const &X, mfem
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -4818,7 +5339,7 @@ mfem::Vector &SwigDirector_PyOperatorBase::_EvalMult(mfem::Vector const &arg0) c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 9;
   const char *const swig_method_name = "_EvalMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5066,6 +5587,80 @@ mfem::Operator const *SwigDirector_PyTimeDependentOperatorBase::GetRestriction()
 }
 
 
+mfem::Operator const *SwigDirector_PyTimeDependentOperatorBase::GetOutputProlongation() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 6;
+  const char *const swig_method_name = "GetOutputProlongation";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputProlongation");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
+mfem::Operator const *SwigDirector_PyTimeDependentOperatorBase::GetOutputRestriction() const {
+  mfem::Operator *c_result = 0 ;
+  void *swig_argp ;
+  int swig_res ;
+  swig_owntype own ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 7;
+  const char *const swig_method_name = "GetOutputRestriction";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("GetOutputRestriction");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  swig_res = SWIG_ConvertPtrAndOwn(result, &swig_argp, SWIGTYPE_p_mfem__Operator,  0  | SWIG_POINTER_DISOWN, &own);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""mfem::Operator const *""'");
+  }
+  c_result = reinterpret_cast< mfem::Operator * >(swig_argp);
+  swig_acquire_ownership_obj(SWIG_as_voidptr(c_result), own /* & TODO: SWIG_POINTER_OWN */);
+  return (mfem::Operator const *) c_result;
+}
+
+
 void SwigDirector_PyTimeDependentOperatorBase::RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x) {
   swig::SwigVar_PyObject obj0;
   obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&X), SWIGTYPE_p_mfem__Vector,  0 );
@@ -5077,7 +5672,7 @@ void SwigDirector_PyTimeDependentOperatorBase::RecoverFEMSolution(mfem::Vector c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 6;
+  const size_t swig_method_index = 8;
   const char *const swig_method_name = "RecoverFEMSolution";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -5106,7 +5701,7 @@ double SwigDirector_PyTimeDependentOperatorBase::GetTime() const {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 7;
+  const size_t swig_method_index = 9;
   const char *const swig_method_name = "GetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject args = PyTuple_New(0);
@@ -5140,12 +5735,38 @@ void SwigDirector_PyTimeDependentOperatorBase::SetTime(double const _t) {
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 8;
+  const size_t swig_method_index = 10;
   const char *const swig_method_name = "SetTime";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
 #else
   swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetTime");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+}
+
+
+void SwigDirector_PyTimeDependentOperatorBase::SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode) {
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_From_int(static_cast< int >(new_eval_mode));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 11;
+  const char *const swig_method_name = "SetEvalMode";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SetEvalMode");
   swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0, NULL);
 #endif
   if (!result) {
@@ -5168,7 +5789,7 @@ void SwigDirector_PyTimeDependentOperatorBase::ExplicitMult(mfem::Vector const &
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 9;
+  const size_t swig_method_index = 12;
   const char *const swig_method_name = "ExplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
@@ -5198,7 +5819,7 @@ void SwigDirector_PyTimeDependentOperatorBase::ImplicitMult(mfem::Vector const &
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 10;
+  const size_t swig_method_index = 13;
   const char *const swig_method_name = "ImplicitMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -5228,7 +5849,7 @@ void SwigDirector_PyTimeDependentOperatorBase::ImplicitSolve(double const dt, mf
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 11;
+  const size_t swig_method_index = 14;
   const char *const swig_method_name = "ImplicitSolve";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -5263,7 +5884,7 @@ mfem::Operator &SwigDirector_PyTimeDependentOperatorBase::GetImplicitGradient(mf
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 12;
+  const size_t swig_method_index = 15;
   const char *const swig_method_name = "GetImplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
@@ -5304,7 +5925,7 @@ mfem::Operator &SwigDirector_PyTimeDependentOperatorBase::GetExplicitGradient(mf
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 13;
+  const size_t swig_method_index = 16;
   const char *const swig_method_name = "GetExplicitGradient";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5333,6 +5954,198 @@ mfem::Operator &SwigDirector_PyTimeDependentOperatorBase::GetExplicitGradient(mf
 }
 
 
+int SwigDirector_PyTimeDependentOperatorBase::SUNImplicitSetup(mfem::Vector const &x, mfem::Vector const &fx, int jok, int *jcur, double gamma) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&fx), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_From_int(static_cast< int >(jok));
+  swig::SwigVar_PyObject obj3;
+  obj3 = SWIG_NewPointerObj(SWIG_as_voidptr(jcur), SWIGTYPE_p_int,  0 );
+  swig::SwigVar_PyObject obj4;
+  obj4 = SWIG_From_double(static_cast< double >(gamma));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 17;
+  const char *const swig_method_name = "SUNImplicitSetup";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNImplicitSetup");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2,(PyObject *)obj3,(PyObject *)obj4, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_PyTimeDependentOperatorBase::SUNImplicitSolve(mfem::Vector const &b, mfem::Vector &x, double tol) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&b), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_From_double(static_cast< double >(tol));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 18;
+  const char *const swig_method_name = "SUNImplicitSolve";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNImplicitSolve");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_PyTimeDependentOperatorBase::SUNMassSetup() {
+  int c_result = SwigValueInit< int >() ;
+  
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 19;
+  const char *const swig_method_name = "SUNMassSetup";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject args = PyTuple_New(0);
+  swig::SwigVar_PyObject result = PyObject_Call(method, (PyObject *) args, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNMassSetup");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_PyTimeDependentOperatorBase::SUNMassSolve(mfem::Vector const &b, mfem::Vector &x, double tol) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&b), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj2;
+  obj2 = SWIG_From_double(static_cast< double >(tol));
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 20;
+  const char *const swig_method_name = "SUNMassSolve";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNMassSolve");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1,(PyObject *)obj2, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
+int SwigDirector_PyTimeDependentOperatorBase::SUNMassMult(mfem::Vector const &x, mfem::Vector &v) {
+  int c_result = SwigValueInit< int >() ;
+  
+  swig::SwigVar_PyObject obj0;
+  obj0 = SWIG_NewPointerObj(SWIG_as_voidptr(&x), SWIGTYPE_p_mfem__Vector,  0 );
+  swig::SwigVar_PyObject obj1;
+  obj1 = SWIG_NewPointerObj(SWIG_as_voidptr(&v), SWIGTYPE_p_mfem__Vector,  0 );
+  if (!swig_get_self()) {
+    Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
+  }
+#if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
+  const size_t swig_method_index = 21;
+  const char *const swig_method_name = "SUNMassMult";
+  PyObject *method = swig_get_method(swig_method_index, swig_method_name);
+  swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#else
+  swig::SwigVar_PyObject swig_method_name = SWIG_Python_str_FromChar("SUNMassMult");
+  swig::SwigVar_PyObject result = PyObject_CallMethodObjArgs(swig_get_self(), (PyObject *) swig_method_name ,(PyObject *)obj0,(PyObject *)obj1, NULL);
+#endif
+  if (!result) {
+    PyObject *error = PyErr_Occurred();
+    {
+      if (error != NULL) {
+        throw Swig::DirectorMethodException();
+      }
+    }
+  }
+  int swig_val;
+  int swig_res = SWIG_AsVal_int(result, &swig_val);
+  if (!SWIG_IsOK(swig_res)) {
+    Swig::DirectorTypeMismatchException::raise(SWIG_ErrorType(SWIG_ArgError(swig_res)), "in output value of type '""int""'");
+  }
+  c_result = static_cast< int >(swig_val);
+  return (int) c_result;
+}
+
+
 mfem::Vector &SwigDirector_PyTimeDependentOperatorBase::_EvalMult(mfem::Vector const &arg0) const {
   mfem::Vector *c_result = 0 ;
   void *swig_argp ;
@@ -5345,7 +6158,7 @@ mfem::Vector &SwigDirector_PyTimeDependentOperatorBase::_EvalMult(mfem::Vector c
     Swig::DirectorException::raise("'self' uninitialized, maybe you forgot to call PyTimeDependentOperatorBase.__init__.");
   }
 #if defined(SWIG_PYTHON_DIRECTOR_VTABLE)
-  const size_t swig_method_index = 14;
+  const size_t swig_method_index = 22;
   const char *const swig_method_name = "_EvalMult";
   PyObject *method = swig_get_method(swig_method_index, swig_method_name);
   swig::SwigVar_PyObject result = PyObject_CallFunctionObjArgs(method ,(PyObject *)obj0, NULL);
@@ -5377,19 +6190,132 @@ mfem::Vector &SwigDirector_PyTimeDependentOperatorBase::_EvalMult(mfem::Vector c
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_Operator_InitTVectors(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Operator *arg2 = (mfem::Operator *) 0 ;
+  mfem::Operator *arg3 = (mfem::Operator *) 0 ;
+  mfem::Operator *arg4 = (mfem::Operator *) 0 ;
+  mfem::Vector *arg5 = 0 ;
+  mfem::Vector *arg6 = 0 ;
+  mfem::Vector *arg7 = 0 ;
+  mfem::Vector *arg8 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  void *argp7 = 0 ;
+  int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"Po",  (char *)"Ri",  (char *)"Pi",  (char *)"x",  (char *)"b",  (char *)"X",  (char *)"B",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOOO:Operator_InitTVectors", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_InitTVectors" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_InitTVectors" "', argument " "2"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Operator * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_InitTVectors" "', argument " "3"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Operator * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Operator_InitTVectors" "', argument " "4"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Operator * >(argp4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "Operator_InitTVectors" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_InitTVectors" "', argument " "5"" of type '" "mfem::Vector &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "Operator_InitTVectors" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_InitTVectors" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res7)) {
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "Operator_InitTVectors" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp7) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_InitTVectors" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+  }
+  arg7 = reinterpret_cast< mfem::Vector * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "Operator_InitTVectors" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_InitTVectors" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  arg8 = reinterpret_cast< mfem::Vector * >(argp8);
+  {
+    try {
+      ((mfem::Operator const *)arg1)->InitTVectors((mfem::Operator const *)arg2,(mfem::Operator const *)arg3,(mfem::Operator const *)arg4,*arg5,*arg6,*arg7,*arg8); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_Operator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 0 ;
   mfem::Operator *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
   {
     try {
@@ -5418,39 +6344,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_Operator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  mfem::Operator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::Operator *)new SwigDirector_Operator(arg1); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Operator__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
@@ -5505,17 +6398,13 @@ SWIGINTERN PyObject *_wrap_new_Operator(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_Operator", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
-      return _wrap_new_Operator__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_Operator__SWIG_0(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -5551,7 +6440,7 @@ SWIGINTERN PyObject *_wrap_new_Operator(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_Operator__SWIG_2(self, argc, argv);
+          return _wrap_new_Operator__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -5561,7 +6450,6 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Operator'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Operator::Operator(int)\n"
-    "    mfem::Operator::Operator()\n"
     "    mfem::Operator::Operator(PyObject *,int,int)\n");
   return 0;
 }
@@ -5754,7 +6642,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Operator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5765,17 +6653,22 @@ SWIGINTERN PyObject *_wrap_Operator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "Operator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Operator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_Mult" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5783,7 +6676,7 @@ SWIGINTERN PyObject *_wrap_Operator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5792,7 +6685,7 @@ SWIGINTERN PyObject *_wrap_Operator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObjec
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -5821,7 +6714,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Operator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5832,17 +6725,22 @@ SWIGINTERN PyObject *_wrap_Operator_MultTranspose(PyObject *SWIGUNUSEDPARM(self)
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "Operator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Operator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_MultTranspose" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5850,7 +6748,7 @@ SWIGINTERN PyObject *_wrap_Operator_MultTranspose(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5859,7 +6757,7 @@ SWIGINTERN PyObject *_wrap_Operator_MultTranspose(PyObject *SWIGUNUSEDPARM(self)
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -5888,7 +6786,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_GetGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Operator_GetGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5896,18 +6794,22 @@ SWIGINTERN PyObject *_wrap_Operator_GetGradient(PyObject *SWIGUNUSEDPARM(self), 
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   mfem::Operator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Operator_GetGradient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Operator_GetGradient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_GetGradient" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_GetGradient" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5916,7 +6818,7 @@ SWIGINTERN PyObject *_wrap_Operator_GetGradient(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -6066,7 +6968,119 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Operator_GetOutputProlongation(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Swig::Director *director = 0;
+  bool upcall = false;
+  mfem::Operator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_GetOutputProlongation" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (mfem::Operator *)((mfem::Operator const *)arg1)->mfem::Operator::GetOutputProlongation();
+        } else {
+          result = (mfem::Operator *)((mfem::Operator const *)arg1)->GetOutputProlongation();
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Operator_GetOutputRestriction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Swig::Director *director = 0;
+  bool upcall = false;
+  mfem::Operator *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_GetOutputRestriction" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (mfem::Operator *)((mfem::Operator const *)arg1)->mfem::Operator::GetOutputRestriction();
+        } else {
+          result = (mfem::Operator *)((mfem::Operator const *)arg1)->GetOutputRestriction();
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  director = SWIG_DIRECTOR_CAST(result);
+  if (director) {
+    resultobj = director->swig_get_self();
+    Py_INCREF(resultobj);
+  } else {
+    resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  }
+  if (director) {
+    SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -6075,7 +7089,7 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
   mfem::Operator **arg5 = 0 ;
   mfem::Vector *arg6 = 0 ;
   mfem::Vector *arg7 = 0 ;
-  int arg8 ;
+  int arg8 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -6090,14 +7104,25 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
   int res6 = 0 ;
   void *argp7 = 0 ;
   int res7 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ess_tdof_list",  (char *)"x",  (char *)"b",  (char *)"A",  (char *)"X",  (char *)"B",  (char *)"copy_interior",  NULL 
+  };
   
-  if ((nobjs < 8) || (nobjs > 8)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOO|O:Operator_FormLinearSystem", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_FormLinearSystem" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -6105,7 +7130,7 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -6113,7 +7138,7 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Operator_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -6121,7 +7146,7 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_p_mfem__Operator,  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_p_mfem__Operator,  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "Operator_FormLinearSystem" "', argument " "5"" of type '" "mfem::Operator *&""'"); 
   }
@@ -6129,7 +7154,7 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "5"" of type '" "mfem::Operator *&""'"); 
   }
   arg5 = reinterpret_cast< mfem::Operator ** >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__Vector,  0 );
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res6)) {
     SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "Operator_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
   }
@@ -6137,7 +7162,7 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
   }
   arg6 = reinterpret_cast< mfem::Vector * >(argp6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_mfem__Vector,  0 );
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res7)) {
     SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "Operator_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
@@ -6145,11 +7170,13 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_0(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[7]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg8 = PyArray_PyIntAsInt(swig_obj[7]);
+  if (obj7) {
+    {
+      if ((PyArray_PyIntAsInt(obj7) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg8 = PyArray_PyIntAsInt(obj7);
+    }
   }
   {
     try {
@@ -6171,15 +7198,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Operator_FormRectangularLinearSystem(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
-  mfem::Vector *arg3 = 0 ;
+  mfem::Array< int > *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
-  mfem::Operator **arg5 = 0 ;
-  mfem::Vector *arg6 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  mfem::Operator **arg6 = 0 ;
   mfem::Vector *arg7 = 0 ;
+  mfem::Vector *arg8 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -6194,64 +7222,85 @@ SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem__SWIG_1(PyObject *SWIGUNUSE
   int res6 = 0 ;
   void *argp7 = 0 ;
   int res7 = 0 ;
+  void *argp8 = 0 ;
+  int res8 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  PyObject * obj7 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"trial_tdof_list",  (char *)"test_tdof_list",  (char *)"x",  (char *)"b",  (char *)"A",  (char *)"X",  (char *)"B",  NULL 
+  };
   
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOOOO:Operator_FormRectangularLinearSystem", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6, &obj7)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_FormLinearSystem" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularLinearSystem" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
   }
   if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularLinearSystem" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
   }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Operator_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularLinearSystem" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_p_mfem__Operator,  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "Operator_FormLinearSystem" "', argument " "5"" of type '" "mfem::Operator *&""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "5"" of type '" "mfem::Vector &""'"); 
   }
   if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "5"" of type '" "mfem::Operator *&""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularLinearSystem" "', argument " "5"" of type '" "mfem::Vector &""'"); 
   }
-  arg5 = reinterpret_cast< mfem::Operator ** >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__Vector,  0 );
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_p_mfem__Operator,  0 );
   if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "Operator_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "6"" of type '" "mfem::Operator *&""'"); 
   }
   if (!argp6) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularLinearSystem" "', argument " "6"" of type '" "mfem::Operator *&""'"); 
   }
-  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
-  res7 = SWIG_ConvertPtr(swig_obj[6], &argp7, SWIGTYPE_p_mfem__Vector,  0 );
+  arg6 = reinterpret_cast< mfem::Operator ** >(argp6);
+  res7 = SWIG_ConvertPtr(obj6, &argp7, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res7)) {
-    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "Operator_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
   if (!argp7) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularLinearSystem" "', argument " "7"" of type '" "mfem::Vector &""'"); 
   }
   arg7 = reinterpret_cast< mfem::Vector * >(argp7);
+  res8 = SWIG_ConvertPtr(obj7, &argp8, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res8)) {
+    SWIG_exception_fail(SWIG_ArgError(res8), "in method '" "Operator_FormRectangularLinearSystem" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp8) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularLinearSystem" "', argument " "8"" of type '" "mfem::Vector &""'"); 
+  }
+  arg8 = reinterpret_cast< mfem::Vector * >(argp8);
   {
     try {
-      (arg1)->FormLinearSystem((mfem::Array< int > const &)*arg2,*arg3,*arg4,*arg5,*arg6,*arg7); 
+      (arg1)->FormRectangularLinearSystem((mfem::Array< int > const &)*arg2,(mfem::Array< int > const &)*arg3,*arg4,*arg5,*arg6,*arg7,*arg8); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -6269,111 +7318,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_FormLinearSystem(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[9] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "Operator_FormLinearSystem", 0, 8, argv))) SWIG_fail;
-  --argc;
-  if (argc == 7) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_p_mfem__Operator, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                void *vptr = 0;
-                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-                _v = SWIG_CheckState(res);
-                if (_v) {
-                  return _wrap_Operator_FormLinearSystem__SWIG_1(self, argc, argv);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 8) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_p_mfem__Operator, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                void *vptr = 0;
-                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-                _v = SWIG_CheckState(res);
-                if (_v) {
-                  {
-                    if ((PyArray_PyIntAsInt(argv[7]) == -1) && PyErr_Occurred()) {
-                      PyErr_Clear();
-                      _v = 0;
-                    } else {
-                      _v = 1;    
-                    }
-                  }
-                  if (_v) {
-                    return _wrap_Operator_FormLinearSystem__SWIG_0(self, argc, argv);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Operator_FormLinearSystem'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Operator::FormLinearSystem(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::Operator *&,mfem::Vector &,mfem::Vector &,int)\n"
-    "    mfem::Operator::FormLinearSystem(mfem::Array< int > const &,mfem::Vector &,mfem::Vector &,mfem::Operator *&,mfem::Vector &,mfem::Vector &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Operator_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Operator_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -6387,17 +7332,23 @@ SWIGINTERN PyObject *_wrap_Operator_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"X",  (char *)"b",  (char *)"x",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "Operator_RecoverFEMSolution", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Operator_RecoverFEMSolution", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_RecoverFEMSolution" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_RecoverFEMSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -6405,7 +7356,7 @@ SWIGINTERN PyObject *_wrap_Operator_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_RecoverFEMSolution" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_RecoverFEMSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -6413,7 +7364,7 @@ SWIGINTERN PyObject *_wrap_Operator_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_RecoverFEMSolution" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Operator_RecoverFEMSolution" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -6422,7 +7373,7 @@ SWIGINTERN PyObject *_wrap_Operator_RecoverFEMSolution(PyObject *SWIGUNUSEDPARM(
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -6451,18 +7402,198 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Operator_FormSystemOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  mfem::Operator **arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"ess_tdof_list",  (char *)"A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:Operator_FormSystemOperator", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_FormSystemOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_FormSystemOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormSystemOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_p_mfem__Operator,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_FormSystemOperator" "', argument " "3"" of type '" "mfem::Operator *&""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormSystemOperator" "', argument " "3"" of type '" "mfem::Operator *&""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Operator ** >(argp3);
+  {
+    try {
+      (arg1)->FormSystemOperator((mfem::Array< int > const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Operator_FormRectangularSystemOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  mfem::Array< int > *arg3 = 0 ;
+  mfem::Operator **arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"trial_tdof_list",  (char *)"test_tdof_list",  (char *)"A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Operator_FormRectangularSystemOperator", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_FormRectangularSystemOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_FormRectangularSystemOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularSystemOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Operator_FormRectangularSystemOperator" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularSystemOperator" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_p_mfem__Operator,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Operator_FormRectangularSystemOperator" "', argument " "4"" of type '" "mfem::Operator *&""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormRectangularSystemOperator" "', argument " "4"" of type '" "mfem::Operator *&""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Operator ** >(argp4);
+  {
+    try {
+      (arg1)->FormRectangularSystemOperator((mfem::Array< int > const &)*arg2,(mfem::Array< int > const &)*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Operator_FormDiscreteOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Operator **arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"A",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Operator_FormDiscreteOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_FormDiscreteOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_p_mfem__Operator,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_FormDiscreteOperator" "', argument " "2"" of type '" "mfem::Operator *&""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Operator_FormDiscreteOperator" "', argument " "2"" of type '" "mfem::Operator *&""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Operator ** >(argp2);
+  {
+    try {
+      (arg1)->FormDiscreteOperator(*arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   std::ostream *arg2 = 0 ;
-  int arg3 ;
-  int arg4 ;
+  int arg3 = (int) 0 ;
+  int arg4 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
   std::ofstream out2 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlab" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
@@ -6483,148 +7614,25 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM
       arg2 = &out2;
     }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
       ((mfem::Operator const *)arg1)->PrintMatlab(*arg2,arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
-    }
-  }
-  return resultobj;
-fail:
-  {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
-    }
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  std::ostream *arg2 = 0 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlab" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
-    }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
-    }
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      ((mfem::Operator const *)arg1)->PrintMatlab(*arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
-    }
-  }
-  return resultobj;
-fail:
-  {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
-    }
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  std::ostream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlab" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
-    }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
-    }
-  }
-  {
-    try {
-      ((mfem::Operator const *)arg1)->PrintMatlab(*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -6721,18 +7729,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlab" "', argument " "1"" of type '" "mfem::Operator *""'"); 
@@ -6743,58 +7751,17 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_3(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      mfem_Operator_PrintMatlab__SWIG_3(arg1,(char const *)arg2,arg3); 
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
     }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
   }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Operator_PrintMatlab__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Operator_PrintMatlab" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Operator_PrintMatlab" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
   {
     try {
-      mfem_Operator_PrintMatlab__SWIG_3(arg1,(char const *)arg2); 
+      mfem_Operator_PrintMatlab__SWIG_1(arg1,(char const *)arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -6822,7 +7789,7 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab(PyObject *self, PyObject *args) 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "Operator_PrintMatlab", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
@@ -6831,69 +7798,9 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab(PyObject *self, PyObject *args) 
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_Operator_PrintMatlab__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_Operator_PrintMatlab__SWIG_1(self, argc, argv);
         }
-      }
-      if (_v) {
-        return _wrap_Operator_PrintMatlab__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_Operator_PrintMatlab__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -6908,7 +7815,7 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab(PyObject *self, PyObject *args) 
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 2) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
@@ -6924,6 +7831,9 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab(PyObject *self, PyObject *args) 
         }
       }
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_Operator_PrintMatlab__SWIG_0(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -6933,6 +7843,9 @@ SWIGINTERN PyObject *_wrap_Operator_PrintMatlab(PyObject *self, PyObject *args) 
           }
         }
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_Operator_PrintMatlab__SWIG_0(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -6953,24 +7866,23 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Operator_PrintMatlab'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Operator::PrintMatlab(std::ostream &,int,int) const\n"
-    "    mfem::Operator::PrintMatlab(std::ostream &,int) const\n"
-    "    mfem::Operator::PrintMatlab(std::ostream &) const\n"
-    "    mfem::Operator::PrintMatlab(char const *,int)\n"
-    "    mfem::Operator::PrintMatlab(char const *)\n");
+    "    mfem::Operator::PrintMatlab(char const *,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_Operator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_Operator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_Operator", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_Operator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
@@ -7001,33 +7913,39 @@ SWIGINTERN PyObject *Operator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject 
 SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  double arg3 ;
-  mfem::TimeDependentOperator::Type arg4 ;
+  int arg2 = (int) 0 ;
+  double arg3 = (double) 0.0 ;
+  mfem::TimeDependentOperator::Type arg4 = (mfem::TimeDependentOperator::Type) mfem::TimeDependentOperator::EXPLICIT ;
   double val3 ;
   int ecode3 = 0 ;
   int val4 ;
   int ecode4 = 0 ;
   mfem::TimeDependentOperator *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 4)) SWIG_fail;
   arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TimeDependentOperator" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TimeDependentOperator" "', argument " "4"" of type '" "mfem::TimeDependentOperator::Type""'");
-  } 
-  arg4 = static_cast< mfem::TimeDependentOperator::Type >(val4);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TimeDependentOperator" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TimeDependentOperator" "', argument " "4"" of type '" "mfem::TimeDependentOperator::Type""'");
+    } 
+    arg4 = static_cast< mfem::TimeDependentOperator::Type >(val4);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
@@ -7057,134 +7975,16 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_1(PyObject *SWIGUNUSE
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
-  double arg3 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  mfem::TimeDependentOperator *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_TimeDependentOperator" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::TimeDependentOperator *)new SwigDirector_TimeDependentOperator(arg1,arg2,arg3); 
-      } else {
-        result = (mfem::TimeDependentOperator *)new mfem::TimeDependentOperator(arg2,arg3); 
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TimeDependentOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  mfem::TimeDependentOperator *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::TimeDependentOperator *)new SwigDirector_TimeDependentOperator(arg1,arg2); 
-      } else {
-        result = (mfem::TimeDependentOperator *)new mfem::TimeDependentOperator(arg2); 
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TimeDependentOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  mfem::TimeDependentOperator *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::TimeDependentOperator *)new SwigDirector_TimeDependentOperator(arg1); 
-      } else {
-        result = (mfem::TimeDependentOperator *)new mfem::TimeDependentOperator(); 
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TimeDependentOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
   int arg3 ;
-  double arg4 ;
-  mfem::TimeDependentOperator::Type arg5 ;
+  double arg4 = (double) 0.0 ;
+  mfem::TimeDependentOperator::Type arg5 = (mfem::TimeDependentOperator::Type) mfem::TimeDependentOperator::EXPLICIT ;
   double val4 ;
   int ecode4 = 0 ;
   int val5 ;
   int ecode5 = 0 ;
   mfem::TimeDependentOperator *result = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 5)) SWIG_fail;
   arg1 = swig_obj[0];
   {
     if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
@@ -7198,16 +7998,20 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_4(PyObject *SWIGUNUSE
     };  
     arg3 = PyArray_PyIntAsInt(swig_obj[2]);
   }
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TimeDependentOperator" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_TimeDependentOperator" "', argument " "5"" of type '" "mfem::TimeDependentOperator::Type""'");
-  } 
-  arg5 = static_cast< mfem::TimeDependentOperator::Type >(val5);
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TimeDependentOperator" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_TimeDependentOperator" "', argument " "5"" of type '" "mfem::TimeDependentOperator::Type""'");
+    } 
+    arg5 = static_cast< mfem::TimeDependentOperator::Type >(val5);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
@@ -7215,106 +8019,6 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_4(PyObject *SWIGUNUSE
         result = (mfem::TimeDependentOperator *)new SwigDirector_TimeDependentOperator(arg1,arg2,arg3,arg4,arg5); 
       } else {
         result = (mfem::TimeDependentOperator *)new mfem::TimeDependentOperator(arg2,arg3,arg4,arg5); 
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TimeDependentOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  double arg4 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  mfem::TimeDependentOperator *result = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TimeDependentOperator" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::TimeDependentOperator *)new SwigDirector_TimeDependentOperator(arg1,arg2,arg3,arg4); 
-      } else {
-        result = (mfem::TimeDependentOperator *)new mfem::TimeDependentOperator(arg2,arg3,arg4); 
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__TimeDependentOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_TimeDependentOperator__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::TimeDependentOperator *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::TimeDependentOperator *)new SwigDirector_TimeDependentOperator(arg1,arg2,arg3); 
-      } else {
-        result = (mfem::TimeDependentOperator *)new mfem::TimeDependentOperator(arg2,arg3); 
       }
     }
     catch (Swig::DirectorException &e) {
@@ -7341,17 +8045,13 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator(PyObject *self, PyObject *a
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_TimeDependentOperator", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 4)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
-      return _wrap_new_TimeDependentOperator__SWIG_3(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_TimeDependentOperator__SWIG_0(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -7361,111 +8061,17 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator(PyObject *self, PyObject *a
         }
       }
       if (_v) {
-        return _wrap_new_TimeDependentOperator__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_new_TimeDependentOperator__SWIG_0(self, argc, argv);
         }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_new_TimeDependentOperator__SWIG_6(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
-          return _wrap_new_TimeDependentOperator__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
+          if (argc <= 3) {
+            return _wrap_new_TimeDependentOperator__SWIG_0(self, argc, argv);
           }
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_TimeDependentOperator__SWIG_5(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
           {
             int res = SWIG_AsVal_int(argv[3], NULL);
             _v = SWIG_CheckState(res);
@@ -7477,7 +8083,7 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator(PyObject *self, PyObject *a
       }
     }
   }
-  if (argc == 5) {
+  if ((argc >= 3) && (argc <= 5)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
@@ -7499,17 +8105,23 @@ SWIGINTERN PyObject *_wrap_new_TimeDependentOperator(PyObject *self, PyObject *a
           }
         }
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_TimeDependentOperator__SWIG_1(self, argc, argv);
+          }
           {
             int res = SWIG_AsVal_double(argv[3], NULL);
             _v = SWIG_CheckState(res);
           }
           if (_v) {
+            if (argc <= 4) {
+              return _wrap_new_TimeDependentOperator__SWIG_1(self, argc, argv);
+            }
             {
               int res = SWIG_AsVal_int(argv[4], NULL);
               _v = SWIG_CheckState(res);
             }
             if (_v) {
-              return _wrap_new_TimeDependentOperator__SWIG_4(self, argc, argv);
+              return _wrap_new_TimeDependentOperator__SWIG_1(self, argc, argv);
             }
           }
         }
@@ -7521,12 +8133,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_TimeDependentOperator'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::TimeDependentOperator::TimeDependentOperator(int,double,mfem::TimeDependentOperator::Type)\n"
-    "    mfem::TimeDependentOperator::TimeDependentOperator(int,double)\n"
-    "    mfem::TimeDependentOperator::TimeDependentOperator(int)\n"
-    "    mfem::TimeDependentOperator::TimeDependentOperator()\n"
-    "    mfem::TimeDependentOperator::TimeDependentOperator(int,int,double,mfem::TimeDependentOperator::Type)\n"
-    "    mfem::TimeDependentOperator::TimeDependentOperator(int,int,double)\n"
-    "    mfem::TimeDependentOperator::TimeDependentOperator(PyObject *,int,int)\n");
+    "    mfem::TimeDependentOperator::TimeDependentOperator(PyObject *,int,int,double,mfem::TimeDependentOperator::Type)\n");
   return 0;
 }
 
@@ -7578,7 +8185,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TimeDependentOperator_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   double arg2 ;
@@ -7586,23 +8193,27 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_SetTime(PyObject *SWIGUNUSEDPAR
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"_t",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "TimeDependentOperator_SetTime", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:TimeDependentOperator_SetTime", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_SetTime" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TimeDependentOperator_SetTime" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -7736,7 +8347,99 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TimeDependentOperator_ExplicitMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetEvalMode(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::TimeDependentOperator::EvalMode result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_GetEvalMode" "', argument " "1"" of type '" "mfem::TimeDependentOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
+  {
+    try {
+      result = (mfem::TimeDependentOperator::EvalMode)((mfem::TimeDependentOperator const *)arg1)->GetEvalMode(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_SetEvalMode(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
+  mfem::TimeDependentOperator::EvalMode arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"new_eval_mode",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:TimeDependentOperator_SetEvalMode", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_SetEvalMode" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TimeDependentOperator_SetEvalMode" "', argument " "2"" of type '" "mfem::TimeDependentOperator::EvalMode""'");
+  } 
+  arg2 = static_cast< mfem::TimeDependentOperator::EvalMode >(val2);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          (arg1)->mfem::TimeDependentOperator::SetEvalMode(arg2);
+        } else {
+          (arg1)->SetEvalMode(arg2);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_ExplicitMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7747,17 +8450,22 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ExplicitMult(PyObject *SWIGUNUS
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "TimeDependentOperator_ExplicitMult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TimeDependentOperator_ExplicitMult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_ExplicitMult" "', argument " "1"" of type '" "mfem::TimeDependentOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_ExplicitMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7765,7 +8473,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ExplicitMult(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_ExplicitMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_ExplicitMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -7774,7 +8482,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ExplicitMult(PyObject *SWIGUNUS
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -7803,7 +8511,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7817,17 +8525,23 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitMult(PyObject *SWIGUNUS
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"k",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "TimeDependentOperator_ImplicitMult", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:TimeDependentOperator_ImplicitMult", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_ImplicitMult" "', argument " "1"" of type '" "mfem::TimeDependentOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_ImplicitMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7835,7 +8549,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitMult(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_ImplicitMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_ImplicitMult" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7843,7 +8557,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitMult(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_ImplicitMult" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TimeDependentOperator_ImplicitMult" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -7852,7 +8566,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitMult(PyObject *SWIGUNUS
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -7881,7 +8595,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TimeDependentOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -7892,17 +8606,22 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_Mult(PyObject *SWIGUNUSEDPARM(s
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "TimeDependentOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TimeDependentOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_Mult" "', argument " "1"" of type '" "mfem::TimeDependentOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7910,7 +8629,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_Mult(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -7919,7 +8638,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_Mult(PyObject *SWIGUNUSEDPARM(s
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -7948,7 +8667,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitSolve(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitSolve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   double arg2 ;
@@ -7962,22 +8681,28 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitSolve(PyObject *SWIGUNU
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"dt",  (char *)"x",  (char *)"k",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "TimeDependentOperator_ImplicitSolve", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:TimeDependentOperator_ImplicitSolve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_ImplicitSolve" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "TimeDependentOperator_ImplicitSolve" "', argument " "2"" of type '" "double""'");
   } 
   arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_ImplicitSolve" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7985,7 +8710,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitSolve(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_ImplicitSolve" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TimeDependentOperator_ImplicitSolve" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -7994,7 +8719,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_ImplicitSolve(PyObject *SWIGUNU
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -8023,7 +8748,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetImplicitGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetImplicitGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -8037,18 +8762,24 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetImplicitGradient(PyObject *S
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"k",  (char *)"shift",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   mfem::Operator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "TimeDependentOperator_GetImplicitGradient", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:TimeDependentOperator_GetImplicitGradient", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_GetImplicitGradient" "', argument " "1"" of type '" "mfem::TimeDependentOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_GetImplicitGradient" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -8056,7 +8787,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetImplicitGradient(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_GetImplicitGradient" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_GetImplicitGradient" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
@@ -8064,13 +8795,13 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetImplicitGradient(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_GetImplicitGradient" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "TimeDependentOperator_GetImplicitGradient" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = static_cast< double >(val4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -8108,7 +8839,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetExplicitGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetExplicitGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -8116,18 +8847,22 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetExplicitGradient(PyObject *S
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   mfem::Operator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "TimeDependentOperator_GetExplicitGradient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:TimeDependentOperator_GetExplicitGradient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_GetExplicitGradient" "', argument " "1"" of type '" "mfem::TimeDependentOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_GetExplicitGradient" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -8136,7 +8871,7 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetExplicitGradient(PyObject *S
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -8168,6 +8903,389 @@ SWIGINTERN PyObject *_wrap_TimeDependentOperator_GetExplicitGradient(PyObject *S
   if (director) {
     SWIG_AcquirePtr(resultobj, director->swig_release_ownership(SWIG_as_voidptr(result)));
   }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_SUNImplicitSetup(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  double arg6 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  double val6 ;
+  int ecode6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"fx",  (char *)"jok",  (char *)"jcur",  (char *)"gamma",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:TimeDependentOperator_SUNImplicitSetup", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_SUNImplicitSetup" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_SUNImplicitSetup" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNImplicitSetup" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_SUNImplicitSetup" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNImplicitSetup" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
+  }
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "TimeDependentOperator_SUNImplicitSetup" "', argument " "5"" of type '" "int *""'"); 
+  }
+  arg5 = reinterpret_cast< int * >(argp5);
+  ecode6 = SWIG_AsVal_double(obj5, &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "TimeDependentOperator_SUNImplicitSetup" "', argument " "6"" of type '" "double""'");
+  } 
+  arg6 = static_cast< double >(val6);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (int)(arg1)->mfem::TimeDependentOperator::SUNImplicitSetup((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,arg4,arg5,arg6);
+        } else {
+          result = (int)(arg1)->SUNImplicitSetup((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,arg4,arg5,arg6);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_SUNImplicitSolve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"b",  (char *)"x",  (char *)"tol",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:TimeDependentOperator_SUNImplicitSolve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_SUNImplicitSolve" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_SUNImplicitSolve" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNImplicitSolve" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_SUNImplicitSolve" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNImplicitSolve" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "TimeDependentOperator_SUNImplicitSolve" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (int)(arg1)->mfem::TimeDependentOperator::SUNImplicitSolve((mfem::Vector const &)*arg2,*arg3,arg4);
+        } else {
+          result = (int)(arg1)->SUNImplicitSolve((mfem::Vector const &)*arg2,*arg3,arg4);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_SUNMassSetup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Swig::Director *director = 0;
+  bool upcall = false;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_SUNMassSetup" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (int)(arg1)->mfem::TimeDependentOperator::SUNMassSetup();
+        } else {
+          result = (int)(arg1)->SUNMassSetup();
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_SUNMassSolve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  double arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  double val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"b",  (char *)"x",  (char *)"tol",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:TimeDependentOperator_SUNMassSolve", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_SUNMassSolve" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_SUNMassSolve" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNMassSolve" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_SUNMassSolve" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNMassSolve" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "TimeDependentOperator_SUNMassSolve" "', argument " "4"" of type '" "double""'");
+  } 
+  arg4 = static_cast< double >(val4);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (int)(arg1)->mfem::TimeDependentOperator::SUNMassSolve((mfem::Vector const &)*arg2,*arg3,arg4);
+        } else {
+          result = (int)(arg1)->SUNMassSolve((mfem::Vector const &)*arg2,*arg3,arg4);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_TimeDependentOperator_SUNMassMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"v",  NULL 
+  };
+  Swig::Director *director = 0;
+  bool upcall = false;
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TimeDependentOperator_SUNMassMult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TimeDependentOperator_SUNMassMult" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::TimeDependentOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TimeDependentOperator_SUNMassMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNMassMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TimeDependentOperator_SUNMassMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TimeDependentOperator_SUNMassMult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  director = SWIG_DIRECTOR_CAST(arg1);
+  upcall = (director && (director->swig_get_self()==obj0));
+  try {
+    {
+      try {
+        if (upcall) {
+          result = (int)(arg1)->mfem::TimeDependentOperator::SUNMassMult((mfem::Vector const &)*arg2,*arg3);
+        } else {
+          result = (int)(arg1)->SUNMassMult((mfem::Vector const &)*arg2,*arg3);
+        } 
+      }
+      catch (Swig::DirectorException &e) {
+        SWIG_fail; 
+      }    
+      //catch (...){
+      //  SWIG_fail;
+      //}
+      //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+      //    catch (std::exception &e) { SWIG_fail; }    
+    }
+  } catch (Swig::DirectorException&) {
+    SWIG_fail;
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -8208,16 +9326,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_TimeDependentOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_TimeDependentOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TimeDependentOperator *arg1 = (mfem::TimeDependentOperator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_TimeDependentOperator", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TimeDependentOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_TimeDependentOperator" "', argument " "1"" of type '" "mfem::TimeDependentOperator *""'"); 
   }
@@ -8242,6 +9362,655 @@ SWIGINTERN PyObject *TimeDependentOperator_swigregister(PyObject *SWIGUNUSEDPARM
 }
 
 SWIGINTERN PyObject *TimeDependentOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_SecondOrderTimeDependentOperator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 = (int) 0 ;
+  double arg2 = (double) 0.0 ;
+  mfem::TimeDependentOperator::Type arg3 = (mfem::TimeDependentOperator::Type) mfem::TimeDependentOperator::EXPLICIT ;
+  double val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  mfem::SecondOrderTimeDependentOperator *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 3)) SWIG_fail;
+  if (swig_obj[0]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    }
+  }
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_SecondOrderTimeDependentOperator" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+  }
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SecondOrderTimeDependentOperator" "', argument " "3"" of type '" "mfem::TimeDependentOperator::Type""'");
+    } 
+    arg3 = static_cast< mfem::TimeDependentOperator::Type >(val3);
+  }
+  {
+    try {
+      result = (mfem::SecondOrderTimeDependentOperator *)new mfem::SecondOrderTimeDependentOperator(arg1,arg2,arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SecondOrderTimeDependentOperator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int arg2 ;
+  double arg3 = (double) 0.0 ;
+  mfem::TimeDependentOperator::Type arg4 = (mfem::TimeDependentOperator::Type) mfem::TimeDependentOperator::EXPLICIT ;
+  double val3 ;
+  int ecode3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  mfem::SecondOrderTimeDependentOperator *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SecondOrderTimeDependentOperator" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SecondOrderTimeDependentOperator" "', argument " "4"" of type '" "mfem::TimeDependentOperator::Type""'");
+    } 
+    arg4 = static_cast< mfem::TimeDependentOperator::Type >(val4);
+  }
+  {
+    try {
+      result = (mfem::SecondOrderTimeDependentOperator *)new mfem::SecondOrderTimeDependentOperator(arg1,arg2,arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_SecondOrderTimeDependentOperator(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SecondOrderTimeDependentOperator", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 0) && (argc <= 3)) {
+    int _v;
+    if (argc <= 0) {
+      return _wrap_new_SecondOrderTimeDependentOperator__SWIG_0(self, argc, argv);
+    }
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_SecondOrderTimeDependentOperator__SWIG_0(self, argc, argv);
+      }
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_SecondOrderTimeDependentOperator__SWIG_0(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_new_SecondOrderTimeDependentOperator__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 4)) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_SecondOrderTimeDependentOperator__SWIG_1(self, argc, argv);
+        }
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_SecondOrderTimeDependentOperator__SWIG_1(self, argc, argv);
+          }
+          {
+            int res = SWIG_AsVal_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_new_SecondOrderTimeDependentOperator__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SecondOrderTimeDependentOperator'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::SecondOrderTimeDependentOperator::SecondOrderTimeDependentOperator(int,double,mfem::TimeDependentOperator::Type)\n"
+    "    mfem::SecondOrderTimeDependentOperator::SecondOrderTimeDependentOperator(int,int,double,mfem::TimeDependentOperator::Type)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderTimeDependentOperator_Mult__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderTimeDependentOperator *arg1 = (mfem::SecondOrderTimeDependentOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "1"" of type '" "mfem::SecondOrderTimeDependentOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::SecondOrderTimeDependentOperator const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderTimeDependentOperator_Mult__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderTimeDependentOperator *arg1 = (mfem::SecondOrderTimeDependentOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "1"" of type '" "mfem::SecondOrderTimeDependentOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_Mult" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      ((mfem::SecondOrderTimeDependentOperator const *)arg1)->Mult((mfem::Vector const &)*arg2,(mfem::Vector const &)*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderTimeDependentOperator_Mult(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[5] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SecondOrderTimeDependentOperator_Mult", 0, 4, argv))) SWIG_fail;
+  --argc;
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_SecondOrderTimeDependentOperator_Mult__SWIG_0_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_SecondOrderTimeDependentOperator_Mult__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SecondOrderTimeDependentOperator_Mult'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    Mult(mfem::Vector const &,mfem::Vector &) const\n"
+    "    mfem::SecondOrderTimeDependentOperator::Mult(mfem::Vector const &,mfem::Vector const &,mfem::Vector &) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderTimeDependentOperator_ImplicitSolve__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderTimeDependentOperator *arg1 = (mfem::SecondOrderTimeDependentOperator *) 0 ;
+  double arg2 ;
+  mfem::Vector *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "1"" of type '" "mfem::SecondOrderTimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  {
+    try {
+      (arg1)->ImplicitSolve(arg2,(mfem::Vector const &)*arg3,*arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderTimeDependentOperator_ImplicitSolve__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderTimeDependentOperator *arg1 = (mfem::SecondOrderTimeDependentOperator *) 0 ;
+  double arg2 ;
+  double arg3 ;
+  mfem::Vector *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  mfem::Vector *arg6 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  double val3 ;
+  int ecode3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  
+  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "1"" of type '" "mfem::SecondOrderTimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp1);
+  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "3"" of type '" "double""'");
+  } 
+  arg3 = static_cast< double >(val3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "4"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "5"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "5"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
+  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp6) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SecondOrderTimeDependentOperator_ImplicitSolve" "', argument " "6"" of type '" "mfem::Vector &""'"); 
+  }
+  arg6 = reinterpret_cast< mfem::Vector * >(argp6);
+  {
+    try {
+      (arg1)->ImplicitSolve(arg2,arg3,(mfem::Vector const &)*arg4,(mfem::Vector const &)*arg5,*arg6); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_SecondOrderTimeDependentOperator_ImplicitSolve(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[7] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "SecondOrderTimeDependentOperator_ImplicitSolve", 0, 6, argv))) SWIG_fail;
+  --argc;
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_SecondOrderTimeDependentOperator_ImplicitSolve__SWIG_0_0(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_double(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_double(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            int res = SWIG_ConvertPtr(argv[4], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                return _wrap_SecondOrderTimeDependentOperator_ImplicitSolve__SWIG_1(self, argc, argv);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'SecondOrderTimeDependentOperator_ImplicitSolve'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    ImplicitSolve(double const,mfem::Vector const &,mfem::Vector &)\n"
+    "    mfem::SecondOrderTimeDependentOperator::ImplicitSolve(double const,double const,mfem::Vector const &,mfem::Vector const &,mfem::Vector &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_SecondOrderTimeDependentOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::SecondOrderTimeDependentOperator *arg1 = (mfem::SecondOrderTimeDependentOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_SecondOrderTimeDependentOperator" "', argument " "1"" of type '" "mfem::SecondOrderTimeDependentOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::SecondOrderTimeDependentOperator * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *SecondOrderTimeDependentOperator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *SecondOrderTimeDependentOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -8300,25 +10069,29 @@ fail:
 SWIGINTERN PyObject *_wrap_new_Solver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  bool arg3 ;
+  int arg2 = (int) 0 ;
+  bool arg3 = (bool) false ;
   bool val3 ;
   int ecode3 = 0 ;
   mfem::Solver *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
   arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Solver" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_Solver" "', argument " "3"" of type '" "bool""'");
+    } 
+    arg3 = static_cast< bool >(val3);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
@@ -8349,86 +10122,13 @@ SWIGINTERN PyObject *_wrap_new_Solver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
-  mfem::Solver *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::Solver *)new SwigDirector_Solver(arg1,arg2); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Solver, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Solver__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  mfem::Solver *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::Solver *)new SwigDirector_Solver(arg1); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Solver, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Solver__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
   int arg3 ;
-  bool arg4 ;
+  bool arg4 = (bool) false ;
   bool val4 ;
   int ecode4 = 0 ;
   mfem::Solver *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   arg1 = swig_obj[0];
   {
     if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
@@ -8442,63 +10142,18 @@ SWIGINTERN PyObject *_wrap_new_Solver__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py
     };  
     arg3 = PyArray_PyIntAsInt(swig_obj[2]);
   }
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Solver" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_Solver" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
         result = (mfem::Solver *)new SwigDirector_Solver(arg1,arg2,arg3,arg4); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Solver, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Solver__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::Solver *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::Solver *)new SwigDirector_Solver(arg1,arg2,arg3); 
       } else {
         SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
         SWIG_fail;
@@ -8528,17 +10183,13 @@ SWIGINTERN PyObject *_wrap_new_Solver(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_Solver", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 3)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
-      return _wrap_new_Solver__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_Solver__SWIG_0(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -8548,23 +10199,9 @@ SWIGINTERN PyObject *_wrap_new_Solver(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
-        return _wrap_new_Solver__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_new_Solver__SWIG_0(self, argc, argv);
         }
-      }
-      if (_v) {
         {
           int res = SWIG_AsVal_bool(argv[2], NULL);
           _v = SWIG_CheckState(res);
@@ -8575,7 +10212,7 @@ SWIGINTERN PyObject *_wrap_new_Solver(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
@@ -8597,39 +10234,15 @@ SWIGINTERN PyObject *_wrap_new_Solver(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_Solver__SWIG_4(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
+          if (argc <= 3) {
+            return _wrap_new_Solver__SWIG_1(self, argc, argv);
           }
-        }
-        if (_v) {
           {
             int res = SWIG_AsVal_bool(argv[3], NULL);
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_Solver__SWIG_3(self, argc, argv);
+            return _wrap_new_Solver__SWIG_1(self, argc, argv);
           }
         }
       }
@@ -8640,15 +10253,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Solver'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Solver::Solver(int,bool)\n"
-    "    mfem::Solver::Solver(int)\n"
-    "    mfem::Solver::Solver()\n"
-    "    mfem::Solver::Solver(int,int,bool)\n"
-    "    mfem::Solver::Solver(PyObject *,int,int)\n");
+    "    mfem::Solver::Solver(PyObject *,int,int,bool)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_Solver_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Solver_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Solver *arg1 = (mfem::Solver *) 0 ;
   mfem::Operator *arg2 = 0 ;
@@ -8656,17 +10266,21 @@ SWIGINTERN PyObject *_wrap_Solver_SetOperator(PyObject *SWIGUNUSEDPARM(self), Py
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"op",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "Solver_SetOperator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Solver, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Solver_SetOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Solver, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Solver_SetOperator" "', argument " "1"" of type '" "mfem::Solver *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Solver * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Solver_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
   }
@@ -8675,7 +10289,7 @@ SWIGINTERN PyObject *_wrap_Solver_SetOperator(PyObject *SWIGUNUSEDPARM(self), Py
   }
   arg2 = reinterpret_cast< mfem::Operator * >(argp2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -8738,16 +10352,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_Solver(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Solver *arg1 = (mfem::Solver *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Solver, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_Solver", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Solver, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_Solver" "', argument " "1"" of type '" "mfem::Solver *""'"); 
   }
@@ -8775,19 +10391,21 @@ SWIGINTERN PyObject *Solver_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_IdentityOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_IdentityOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"n",  NULL 
+  };
   mfem::IdentityOperator *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_IdentityOperator", kwnames, &obj0)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -8809,7 +10427,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IdentityOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IdentityOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IdentityOperator *arg1 = (mfem::IdentityOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -8820,15 +10438,20 @@ SWIGINTERN PyObject *_wrap_IdentityOperator_Mult(PyObject *SWIGUNUSEDPARM(self),
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "IdentityOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IdentityOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:IdentityOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IdentityOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IdentityOperator_Mult" "', argument " "1"" of type '" "mfem::IdentityOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IdentityOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IdentityOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -8836,7 +10459,7 @@ SWIGINTERN PyObject *_wrap_IdentityOperator_Mult(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IdentityOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -8864,7 +10487,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IdentityOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IdentityOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IdentityOperator *arg1 = (mfem::IdentityOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -8875,15 +10498,20 @@ SWIGINTERN PyObject *_wrap_IdentityOperator_MultTranspose(PyObject *SWIGUNUSEDPA
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "IdentityOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IdentityOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:IdentityOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IdentityOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IdentityOperator_MultTranspose" "', argument " "1"" of type '" "mfem::IdentityOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IdentityOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IdentityOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -8891,7 +10519,7 @@ SWIGINTERN PyObject *_wrap_IdentityOperator_MultTranspose(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IdentityOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -8961,6 +10589,194 @@ SWIGINTERN PyObject *IdentityOperator_swigregister(PyObject *SWIGUNUSEDPARM(self
 }
 
 SWIGINTERN PyObject *IdentityOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_IsIdentityProlongation(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"P",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:IsIdentityProlongation", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IsIdentityProlongation" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  {
+    try {
+      result = (bool)mfem::IsIdentityProlongation((mfem::Operator const *)arg1); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_ScaledOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"a",  NULL 
+  };
+  mfem::ScaledOperator *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_ScaledOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ScaledOperator" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_ScaledOperator" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  {
+    try {
+      result = (mfem::ScaledOperator *)new mfem::ScaledOperator((mfem::Operator const *)arg1,arg2); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ScaledOperator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ScaledOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::ScaledOperator *arg1 = (mfem::ScaledOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ScaledOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScaledOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScaledOperator_Mult" "', argument " "1"" of type '" "mfem::ScaledOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScaledOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScaledOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScaledOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScaledOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScaledOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::ScaledOperator const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ScaledOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::ScaledOperator *arg1 = (mfem::ScaledOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ScaledOperator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ScaledOperator" "', argument " "1"" of type '" "mfem::ScaledOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::ScaledOperator * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ScaledOperator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ScaledOperator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ScaledOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -9068,7 +10884,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TransposeOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TransposeOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TransposeOperator *arg1 = (mfem::TransposeOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9079,15 +10895,20 @@ SWIGINTERN PyObject *_wrap_TransposeOperator_Mult(PyObject *SWIGUNUSEDPARM(self)
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "TransposeOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TransposeOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TransposeOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TransposeOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransposeOperator_Mult" "', argument " "1"" of type '" "mfem::TransposeOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TransposeOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TransposeOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9095,7 +10916,7 @@ SWIGINTERN PyObject *_wrap_TransposeOperator_Mult(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TransposeOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9123,7 +10944,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TransposeOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TransposeOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TransposeOperator *arg1 = (mfem::TransposeOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9134,15 +10955,20 @@ SWIGINTERN PyObject *_wrap_TransposeOperator_MultTranspose(PyObject *SWIGUNUSEDP
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "TransposeOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TransposeOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TransposeOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TransposeOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransposeOperator_MultTranspose" "', argument " "1"" of type '" "mfem::TransposeOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TransposeOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TransposeOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9150,7 +10976,7 @@ SWIGINTERN PyObject *_wrap_TransposeOperator_MultTranspose(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TransposeOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9223,7 +11049,7 @@ SWIGINTERN PyObject *TransposeOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ProductOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ProductOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Operator *arg2 = (mfem::Operator *) 0 ;
@@ -9237,26 +11063,32 @@ SWIGINTERN PyObject *_wrap_new_ProductOperator(PyObject *SWIGUNUSEDPARM(self), P
   int ecode3 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  (char *)"ownA",  (char *)"ownB",  NULL 
+  };
   mfem::ProductOperator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_ProductOperator", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:new_ProductOperator", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ProductOperator" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ProductOperator" "', argument " "2"" of type '" "mfem::Operator const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ProductOperator" "', argument " "3"" of type '" "bool""'");
   } 
   arg3 = static_cast< bool >(val3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_ProductOperator" "', argument " "4"" of type '" "bool""'");
   } 
@@ -9281,7 +11113,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ProductOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ProductOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ProductOperator *arg1 = (mfem::ProductOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9292,15 +11124,20 @@ SWIGINTERN PyObject *_wrap_ProductOperator_Mult(PyObject *SWIGUNUSEDPARM(self), 
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ProductOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ProductOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ProductOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ProductOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ProductOperator_Mult" "', argument " "1"" of type '" "mfem::ProductOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ProductOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ProductOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9308,7 +11145,7 @@ SWIGINTERN PyObject *_wrap_ProductOperator_Mult(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ProductOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ProductOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9336,7 +11173,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ProductOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ProductOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ProductOperator *arg1 = (mfem::ProductOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9347,15 +11184,20 @@ SWIGINTERN PyObject *_wrap_ProductOperator_MultTranspose(PyObject *SWIGUNUSEDPAR
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ProductOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ProductOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ProductOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ProductOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ProductOperator_MultTranspose" "', argument " "1"" of type '" "mfem::ProductOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ProductOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ProductOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9363,7 +11205,7 @@ SWIGINTERN PyObject *_wrap_ProductOperator_MultTranspose(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ProductOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ProductOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9436,7 +11278,7 @@ SWIGINTERN PyObject *ProductOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), Py
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_RAPOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_RAPOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = 0 ;
   mfem::Operator *arg2 = 0 ;
@@ -9447,11 +11289,16 @@ SWIGINTERN PyObject *_wrap_new_RAPOperator(PyObject *SWIGUNUSEDPARM(self), PyObj
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"Rt_",  (char *)"A_",  (char *)"P_",  NULL 
+  };
   mfem::RAPOperator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_RAPOperator", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:new_RAPOperator", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RAPOperator" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
   }
@@ -9459,7 +11306,7 @@ SWIGINTERN PyObject *_wrap_new_RAPOperator(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RAPOperator" "', argument " "1"" of type '" "mfem::Operator const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RAPOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
   }
@@ -9467,7 +11314,7 @@ SWIGINTERN PyObject *_wrap_new_RAPOperator(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RAPOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_RAPOperator" "', argument " "3"" of type '" "mfem::Operator const &""'"); 
   }
@@ -9530,7 +11377,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RAPOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RAPOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::RAPOperator *arg1 = (mfem::RAPOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9541,15 +11388,20 @@ SWIGINTERN PyObject *_wrap_RAPOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyOb
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "RAPOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__RAPOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:RAPOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RAPOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAPOperator_Mult" "', argument " "1"" of type '" "mfem::RAPOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::RAPOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RAPOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9557,7 +11409,7 @@ SWIGINTERN PyObject *_wrap_RAPOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RAPOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RAPOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9585,7 +11437,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RAPOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RAPOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::RAPOperator *arg1 = (mfem::RAPOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9596,15 +11448,20 @@ SWIGINTERN PyObject *_wrap_RAPOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(se
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "RAPOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__RAPOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:RAPOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RAPOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RAPOperator_MultTranspose" "', argument " "1"" of type '" "mfem::RAPOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::RAPOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RAPOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9612,7 +11469,7 @@ SWIGINTERN PyObject *_wrap_RAPOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RAPOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RAPOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9685,7 +11542,7 @@ SWIGINTERN PyObject *RAPOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObje
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_TripleProductOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_TripleProductOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Operator *arg2 = (mfem::Operator *) 0 ;
@@ -9705,36 +11562,44 @@ SWIGINTERN PyObject *_wrap_new_TripleProductOperator(PyObject *SWIGUNUSEDPARM(se
   int ecode5 = 0 ;
   bool val6 ;
   int ecode6 = 0 ;
-  PyObject *swig_obj[6] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  (char *)"C",  (char *)"ownA",  (char *)"ownB",  (char *)"ownC",  NULL 
+  };
   mfem::TripleProductOperator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_TripleProductOperator", 6, 6, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:new_TripleProductOperator", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_TripleProductOperator" "', argument " "1"" of type '" "mfem::Operator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_TripleProductOperator" "', argument " "2"" of type '" "mfem::Operator const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::Operator * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_TripleProductOperator" "', argument " "3"" of type '" "mfem::Operator const *""'"); 
   }
   arg3 = reinterpret_cast< mfem::Operator * >(argp3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_bool(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_TripleProductOperator" "', argument " "4"" of type '" "bool""'");
   } 
   arg4 = static_cast< bool >(val4);
-  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
+  ecode5 = SWIG_AsVal_bool(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "new_TripleProductOperator" "', argument " "5"" of type '" "bool""'");
   } 
   arg5 = static_cast< bool >(val5);
-  ecode6 = SWIG_AsVal_bool(swig_obj[5], &val6);
+  ecode6 = SWIG_AsVal_bool(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
     SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "new_TripleProductOperator" "', argument " "6"" of type '" "bool""'");
   } 
@@ -9794,7 +11659,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TripleProductOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TripleProductOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TripleProductOperator *arg1 = (mfem::TripleProductOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9805,15 +11670,20 @@ SWIGINTERN PyObject *_wrap_TripleProductOperator_Mult(PyObject *SWIGUNUSEDPARM(s
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "TripleProductOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TripleProductOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TripleProductOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TripleProductOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TripleProductOperator_Mult" "', argument " "1"" of type '" "mfem::TripleProductOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TripleProductOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TripleProductOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9821,7 +11691,7 @@ SWIGINTERN PyObject *_wrap_TripleProductOperator_Mult(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TripleProductOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TripleProductOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9849,7 +11719,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TripleProductOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TripleProductOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TripleProductOperator *arg1 = (mfem::TripleProductOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -9860,15 +11730,20 @@ SWIGINTERN PyObject *_wrap_TripleProductOperator_MultTranspose(PyObject *SWIGUNU
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "TripleProductOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TripleProductOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TripleProductOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TripleProductOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TripleProductOperator_MultTranspose" "', argument " "1"" of type '" "mfem::TripleProductOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TripleProductOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TripleProductOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -9876,7 +11751,7 @@ SWIGINTERN PyObject *_wrap_TripleProductOperator_MultTranspose(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TripleProductOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TripleProductOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -9949,26 +11824,32 @@ SWIGINTERN PyObject *TripleProductOperator_swiginit(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ConstrainedOperator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ConstrainedOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   mfem::Array< int > *arg2 = 0 ;
-  bool arg3 ;
+  bool arg3 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   bool val3 ;
   int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"list",  (char *)"own_A",  NULL 
+  };
   mfem::ConstrainedOperator *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:new_ConstrainedOperator", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ConstrainedOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ConstrainedOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -9976,11 +11857,13 @@ SWIGINTERN PyObject *_wrap_new_ConstrainedOperator__SWIG_0(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ConstrainedOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  ecode3 = SWIG_AsVal_bool(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ConstrainedOperator" "', argument " "3"" of type '" "bool""'");
-  } 
-  arg3 = static_cast< bool >(val3);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_bool(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_ConstrainedOperator" "', argument " "3"" of type '" "bool""'");
+    } 
+    arg3 = static_cast< bool >(val3);
+  }
   {
     try {
       result = (mfem::ConstrainedOperator *)new mfem::ConstrainedOperator(arg1,(mfem::Array< int > const &)*arg2,arg3); 
@@ -9998,100 +11881,6 @@ SWIGINTERN PyObject *_wrap_new_ConstrainedOperator__SWIG_0(PyObject *SWIGUNUSEDP
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ConstrainedOperator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
-  mfem::Array< int > *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::ConstrainedOperator *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ConstrainedOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ConstrainedOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ConstrainedOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
-  {
-    try {
-      result = (mfem::ConstrainedOperator *)new mfem::ConstrainedOperator(arg1,(mfem::Array< int > const &)*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ConstrainedOperator, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ConstrainedOperator(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_ConstrainedOperator", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_ConstrainedOperator__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_bool(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_ConstrainedOperator__SWIG_0(self, argc, argv);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ConstrainedOperator'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ConstrainedOperator::ConstrainedOperator(mfem::Operator *,mfem::Array< int > const &,bool)\n"
-    "    mfem::ConstrainedOperator::ConstrainedOperator(mfem::Operator *,mfem::Array< int > const &)\n");
-  return 0;
 }
 
 
@@ -10130,7 +11919,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ConstrainedOperator_EliminateRHS(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ConstrainedOperator_EliminateRHS(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ConstrainedOperator *arg1 = (mfem::ConstrainedOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -10141,15 +11930,20 @@ SWIGINTERN PyObject *_wrap_ConstrainedOperator_EliminateRHS(PyObject *SWIGUNUSED
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"b",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ConstrainedOperator_EliminateRHS", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ConstrainedOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ConstrainedOperator_EliminateRHS", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ConstrainedOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConstrainedOperator_EliminateRHS" "', argument " "1"" of type '" "mfem::ConstrainedOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ConstrainedOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ConstrainedOperator_EliminateRHS" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -10157,7 +11951,7 @@ SWIGINTERN PyObject *_wrap_ConstrainedOperator_EliminateRHS(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConstrainedOperator_EliminateRHS" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ConstrainedOperator_EliminateRHS" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -10185,7 +11979,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ConstrainedOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ConstrainedOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ConstrainedOperator *arg1 = (mfem::ConstrainedOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -10196,15 +11990,20 @@ SWIGINTERN PyObject *_wrap_ConstrainedOperator_Mult(PyObject *SWIGUNUSEDPARM(sel
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ConstrainedOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ConstrainedOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ConstrainedOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ConstrainedOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConstrainedOperator_Mult" "', argument " "1"" of type '" "mfem::ConstrainedOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ConstrainedOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ConstrainedOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -10212,7 +12011,7 @@ SWIGINTERN PyObject *_wrap_ConstrainedOperator_Mult(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConstrainedOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ConstrainedOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -10285,19 +12084,293 @@ SWIGINTERN PyObject *ConstrainedOperator_swiginit(PyObject *SWIGUNUSEDPARM(self)
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_RectangularConstrainedOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Operator *arg1 = (mfem::Operator *) 0 ;
+  mfem::Array< int > *arg2 = 0 ;
+  mfem::Array< int > *arg3 = 0 ;
+  bool arg4 = (bool) false ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"trial_list",  (char *)"test_list",  (char *)"own_A",  NULL 
+  };
+  mfem::RectangularConstrainedOperator *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:new_RectangularConstrainedOperator", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RectangularConstrainedOperator" "', argument " "1"" of type '" "mfem::Operator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Operator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RectangularConstrainedOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RectangularConstrainedOperator" "', argument " "2"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< int > * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_RectangularConstrainedOperator" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RectangularConstrainedOperator" "', argument " "3"" of type '" "mfem::Array< int > const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_RectangularConstrainedOperator" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
+  {
+    try {
+      result = (mfem::RectangularConstrainedOperator *)new mfem::RectangularConstrainedOperator(arg1,(mfem::Array< int > const &)*arg2,(mfem::Array< int > const &)*arg3,arg4); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__RectangularConstrainedOperator, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RectangularConstrainedOperator_GetMemoryClass(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RectangularConstrainedOperator *arg1 = (mfem::RectangularConstrainedOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::MemoryClass result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__RectangularConstrainedOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RectangularConstrainedOperator_GetMemoryClass" "', argument " "1"" of type '" "mfem::RectangularConstrainedOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RectangularConstrainedOperator * >(argp1);
+  {
+    try {
+      result = (mfem::MemoryClass)((mfem::RectangularConstrainedOperator const *)arg1)->GetMemoryClass(); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RectangularConstrainedOperator_EliminateRHS(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::RectangularConstrainedOperator *arg1 = (mfem::RectangularConstrainedOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"b",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:RectangularConstrainedOperator_EliminateRHS", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RectangularConstrainedOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RectangularConstrainedOperator_EliminateRHS" "', argument " "1"" of type '" "mfem::RectangularConstrainedOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RectangularConstrainedOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RectangularConstrainedOperator_EliminateRHS" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RectangularConstrainedOperator_EliminateRHS" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RectangularConstrainedOperator_EliminateRHS" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RectangularConstrainedOperator_EliminateRHS" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::RectangularConstrainedOperator const *)arg1)->EliminateRHS((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RectangularConstrainedOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::RectangularConstrainedOperator *arg1 = (mfem::RectangularConstrainedOperator *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  mfem::Vector *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:RectangularConstrainedOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RectangularConstrainedOperator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RectangularConstrainedOperator_Mult" "', argument " "1"" of type '" "mfem::RectangularConstrainedOperator const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RectangularConstrainedOperator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RectangularConstrainedOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RectangularConstrainedOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RectangularConstrainedOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RectangularConstrainedOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
+  {
+    try {
+      ((mfem::RectangularConstrainedOperator const *)arg1)->Mult((mfem::Vector const &)*arg2,*arg3); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_RectangularConstrainedOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::RectangularConstrainedOperator *arg1 = (mfem::RectangularConstrainedOperator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__RectangularConstrainedOperator, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RectangularConstrainedOperator" "', argument " "1"" of type '" "mfem::RectangularConstrainedOperator *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::RectangularConstrainedOperator * >(argp1);
+  {
+    try {
+      delete arg1; 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+    //catch (...){
+    //  SWIG_fail;
+    //}
+    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
+    //    catch (std::exception &e) { SWIG_fail; }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *RectangularConstrainedOperator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__RectangularConstrainedOperator, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *RectangularConstrainedOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 SWIGINTERN PyObject *_wrap_new_PyOperatorBase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 0 ;
   mfem::PyOperatorBase *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
   {
     try {
@@ -10326,39 +12399,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_PyOperatorBase__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  mfem::PyOperatorBase *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::PyOperatorBase *)new SwigDirector_PyOperatorBase(arg1); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PyOperatorBase, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PyOperatorBase__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
@@ -10413,17 +12453,13 @@ SWIGINTERN PyObject *_wrap_new_PyOperatorBase(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_PyOperatorBase", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
-      return _wrap_new_PyOperatorBase__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_PyOperatorBase__SWIG_0(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -10459,7 +12495,7 @@ SWIGINTERN PyObject *_wrap_new_PyOperatorBase(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_PyOperatorBase__SWIG_2(self, argc, argv);
+          return _wrap_new_PyOperatorBase__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -10469,13 +12505,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_PyOperatorBase'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::PyOperatorBase::PyOperatorBase(int)\n"
-    "    mfem::PyOperatorBase::PyOperatorBase()\n"
     "    mfem::PyOperatorBase::PyOperatorBase(PyObject *,int,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PyOperatorBase_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PyOperatorBase_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyOperatorBase *arg1 = (mfem::PyOperatorBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -10486,17 +12521,22 @@ SWIGINTERN PyObject *_wrap_PyOperatorBase_Mult(PyObject *SWIGUNUSEDPARM(self), P
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "PyOperatorBase_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyOperatorBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:PyOperatorBase_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyOperatorBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyOperatorBase_Mult" "', argument " "1"" of type '" "mfem::PyOperatorBase const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PyOperatorBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyOperatorBase_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -10504,7 +12544,7 @@ SWIGINTERN PyObject *_wrap_PyOperatorBase_Mult(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PyOperatorBase_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PyOperatorBase_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -10513,7 +12553,7 @@ SWIGINTERN PyObject *_wrap_PyOperatorBase_Mult(PyObject *SWIGUNUSEDPARM(self), P
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -10542,7 +12582,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PyOperatorBase__EvalMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PyOperatorBase__EvalMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyOperatorBase *arg1 = (mfem::PyOperatorBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -10550,18 +12590,22 @@ SWIGINTERN PyObject *_wrap_PyOperatorBase__EvalMult(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   mfem::Vector *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PyOperatorBase__EvalMult", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyOperatorBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyOperatorBase__EvalMult", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyOperatorBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyOperatorBase__EvalMult" "', argument " "1"" of type '" "mfem::PyOperatorBase const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PyOperatorBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyOperatorBase__EvalMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -10570,7 +12614,7 @@ SWIGINTERN PyObject *_wrap_PyOperatorBase__EvalMult(PyObject *SWIGUNUSEDPARM(sel
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -10636,16 +12680,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_PyOperatorBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_PyOperatorBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyOperatorBase *arg1 = (mfem::PyOperatorBase *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyOperatorBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_PyOperatorBase", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyOperatorBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_PyOperatorBase" "', argument " "1"" of type '" "mfem::PyOperatorBase *""'"); 
   }
@@ -10676,25 +12722,29 @@ SWIGINTERN PyObject *PyOperatorBase_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
 SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  double arg3 ;
+  int arg2 = (int) 0 ;
+  double arg3 = (double) 0.0 ;
   double val3 ;
   int ecode3 = 0 ;
   mfem::PyTimeDependentOperatorBase *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
   arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_PyTimeDependentOperatorBase" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_PyTimeDependentOperatorBase" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
@@ -10725,86 +12775,13 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_1(PyObject *SWI
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
-  mfem::PyTimeDependentOperatorBase *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::PyTimeDependentOperatorBase *)new SwigDirector_PyTimeDependentOperatorBase(arg1,arg2); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  mfem::PyTimeDependentOperatorBase *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::PyTimeDependentOperatorBase *)new SwigDirector_PyTimeDependentOperatorBase(arg1); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
   int arg3 ;
-  double arg4 ;
+  double arg4 = (double) 0.0 ;
   double val4 ;
   int ecode4 = 0 ;
   mfem::PyTimeDependentOperatorBase *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   arg1 = swig_obj[0];
   {
     if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
@@ -10818,63 +12795,18 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_3(PyObject *SWI
     };  
     arg3 = PyArray_PyIntAsInt(swig_obj[2]);
   }
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_PyTimeDependentOperatorBase" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_PyTimeDependentOperatorBase" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       if ( arg1 != Py_None ) {
         /* subclassed */
         result = (mfem::PyTimeDependentOperatorBase *)new SwigDirector_PyTimeDependentOperatorBase(arg1,arg2,arg3,arg4); 
-      } else {
-        SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
-        SWIG_fail;
-      }
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::PyTimeDependentOperatorBase *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::PyTimeDependentOperatorBase *)new SwigDirector_PyTimeDependentOperatorBase(arg1,arg2,arg3); 
       } else {
         SWIG_SetErrorMsg(PyExc_RuntimeError,"accessing abstract class or protected constructor"); 
         SWIG_fail;
@@ -10904,17 +12836,13 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase(PyObject *self, PyObj
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_PyTimeDependentOperatorBase", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 3)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
-      return _wrap_new_PyTimeDependentOperatorBase__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_PyTimeDependentOperatorBase__SWIG_0(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -10924,50 +12852,9 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase(PyObject *self, PyObj
         }
       }
       if (_v) {
-        return _wrap_new_PyTimeDependentOperatorBase__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_new_PyTimeDependentOperatorBase__SWIG_0(self, argc, argv);
         }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_new_PyTimeDependentOperatorBase__SWIG_4(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
@@ -10978,7 +12865,7 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase(PyObject *self, PyObj
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     _v = (argv[0] != 0);
     if (_v) {
@@ -11000,12 +12887,15 @@ SWIGINTERN PyObject *_wrap_new_PyTimeDependentOperatorBase(PyObject *self, PyObj
           }
         }
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_PyTimeDependentOperatorBase__SWIG_1(self, argc, argv);
+          }
           {
             int res = SWIG_AsVal_double(argv[3], NULL);
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_new_PyTimeDependentOperatorBase__SWIG_3(self, argc, argv);
+            return _wrap_new_PyTimeDependentOperatorBase__SWIG_1(self, argc, argv);
           }
         }
       }
@@ -11016,15 +12906,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_PyTimeDependentOperatorBase'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::PyTimeDependentOperatorBase::PyTimeDependentOperatorBase(int,double)\n"
-    "    mfem::PyTimeDependentOperatorBase::PyTimeDependentOperatorBase(int)\n"
-    "    mfem::PyTimeDependentOperatorBase::PyTimeDependentOperatorBase()\n"
-    "    mfem::PyTimeDependentOperatorBase::PyTimeDependentOperatorBase(int,int,double)\n"
-    "    mfem::PyTimeDependentOperatorBase::PyTimeDependentOperatorBase(PyObject *,int,int)\n");
+    "    mfem::PyTimeDependentOperatorBase::PyTimeDependentOperatorBase(PyObject *,int,int,double)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyTimeDependentOperatorBase *arg1 = (mfem::PyTimeDependentOperatorBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -11035,17 +12922,22 @@ SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase_Mult(PyObject *SWIGUNUSED
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "PyTimeDependentOperatorBase_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:PyTimeDependentOperatorBase_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyTimeDependentOperatorBase_Mult" "', argument " "1"" of type '" "mfem::PyTimeDependentOperatorBase const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PyTimeDependentOperatorBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyTimeDependentOperatorBase_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -11053,7 +12945,7 @@ SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase_Mult(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PyTimeDependentOperatorBase_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PyTimeDependentOperatorBase_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -11062,7 +12954,7 @@ SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase_Mult(PyObject *SWIGUNUSED
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -11091,7 +12983,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase__EvalMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase__EvalMult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyTimeDependentOperatorBase *arg1 = (mfem::PyTimeDependentOperatorBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -11099,18 +12991,22 @@ SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase__EvalMult(PyObject *SWIGU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   mfem::Vector *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PyTimeDependentOperatorBase__EvalMult", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyTimeDependentOperatorBase__EvalMult", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyTimeDependentOperatorBase__EvalMult" "', argument " "1"" of type '" "mfem::PyTimeDependentOperatorBase const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PyTimeDependentOperatorBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyTimeDependentOperatorBase__EvalMult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -11119,7 +13015,7 @@ SWIGINTERN PyObject *_wrap_PyTimeDependentOperatorBase__EvalMult(PyObject *SWIGU
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -11185,16 +13081,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_PyTimeDependentOperatorBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_PyTimeDependentOperatorBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyTimeDependentOperatorBase *arg1 = (mfem::PyTimeDependentOperatorBase *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_PyTimeDependentOperatorBase", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyTimeDependentOperatorBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_PyTimeDependentOperatorBase" "', argument " "1"" of type '" "mfem::PyTimeDependentOperatorBase *""'"); 
   }
@@ -11224,6 +13122,8 @@ SWIGINTERN PyObject *PyTimeDependentOperatorBase_swiginit(PyObject *SWIGUNUSEDPA
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Operator_InitTVectors", (PyCFunction)(void(*)(void))_wrap_Operator_InitTVectors, METH_VARARGS|METH_KEYWORDS, "Operator_InitTVectors(Operator self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"},
 	 { "new_Operator", _wrap_new_Operator, METH_VARARGS, "\n"
 		"Operator(int s=0)\n"
 		"new_Operator(PyObject * _self, int h, int w) -> Operator\n"
@@ -11233,118 +13133,320 @@ static PyMethodDef SwigMethods[] = {
 	 { "Operator_Width", _wrap_Operator_Width, METH_O, "Operator_Width(Operator self) -> int"},
 	 { "Operator_NumCols", _wrap_Operator_NumCols, METH_O, "Operator_NumCols(Operator self) -> int"},
 	 { "Operator_GetMemoryClass", _wrap_Operator_GetMemoryClass, METH_O, "Operator_GetMemoryClass(Operator self) -> mfem::MemoryClass"},
-	 { "Operator_Mult", _wrap_Operator_Mult, METH_VARARGS, "Operator_Mult(Operator self, Vector x, Vector y)"},
-	 { "Operator_MultTranspose", _wrap_Operator_MultTranspose, METH_VARARGS, "Operator_MultTranspose(Operator self, Vector x, Vector y)"},
-	 { "Operator_GetGradient", _wrap_Operator_GetGradient, METH_VARARGS, "Operator_GetGradient(Operator self, Vector x) -> Operator"},
+	 { "Operator_Mult", (PyCFunction)(void(*)(void))_wrap_Operator_Mult, METH_VARARGS|METH_KEYWORDS, "Operator_Mult(Operator self, Vector x, Vector y)"},
+	 { "Operator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_Operator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "Operator_MultTranspose(Operator self, Vector x, Vector y)"},
+	 { "Operator_GetGradient", (PyCFunction)(void(*)(void))_wrap_Operator_GetGradient, METH_VARARGS|METH_KEYWORDS, "Operator_GetGradient(Operator self, Vector x) -> Operator"},
 	 { "Operator_GetProlongation", _wrap_Operator_GetProlongation, METH_O, "Operator_GetProlongation(Operator self) -> Operator"},
 	 { "Operator_GetRestriction", _wrap_Operator_GetRestriction, METH_O, "Operator_GetRestriction(Operator self) -> Operator"},
-	 { "Operator_FormLinearSystem", _wrap_Operator_FormLinearSystem, METH_VARARGS, "Operator_FormLinearSystem(Operator self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"},
-	 { "Operator_RecoverFEMSolution", _wrap_Operator_RecoverFEMSolution, METH_VARARGS, "Operator_RecoverFEMSolution(Operator self, Vector X, Vector b, Vector x)"},
+	 { "Operator_GetOutputProlongation", _wrap_Operator_GetOutputProlongation, METH_O, "Operator_GetOutputProlongation(Operator self) -> Operator"},
+	 { "Operator_GetOutputRestriction", _wrap_Operator_GetOutputRestriction, METH_O, "Operator_GetOutputRestriction(Operator self) -> Operator"},
+	 { "Operator_FormLinearSystem", (PyCFunction)(void(*)(void))_wrap_Operator_FormLinearSystem, METH_VARARGS|METH_KEYWORDS, "Operator_FormLinearSystem(Operator self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"},
+	 { "Operator_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_Operator_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "Operator_FormRectangularLinearSystem(Operator self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)"},
+	 { "Operator_RecoverFEMSolution", (PyCFunction)(void(*)(void))_wrap_Operator_RecoverFEMSolution, METH_VARARGS|METH_KEYWORDS, "Operator_RecoverFEMSolution(Operator self, Vector X, Vector b, Vector x)"},
+	 { "Operator_FormSystemOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormSystemOperator, METH_VARARGS|METH_KEYWORDS, "Operator_FormSystemOperator(Operator self, intArray ess_tdof_list, mfem::Operator *& A)"},
+	 { "Operator_FormRectangularSystemOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormRectangularSystemOperator, METH_VARARGS|METH_KEYWORDS, "Operator_FormRectangularSystemOperator(Operator self, intArray trial_tdof_list, intArray test_tdof_list, mfem::Operator *& A)"},
+	 { "Operator_FormDiscreteOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormDiscreteOperator, METH_VARARGS|METH_KEYWORDS, "Operator_FormDiscreteOperator(Operator self, mfem::Operator *& A)"},
 	 { "delete_Operator", _wrap_delete_Operator, METH_O, "delete_Operator(Operator self)"},
 	 { "Operator_GetType", _wrap_Operator_GetType, METH_O, "Operator_GetType(Operator self) -> mfem::Operator::Type"},
 	 { "Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, "\n"
 		"Operator_PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)\n"
 		"Operator_PrintMatlab(Operator self, char const * file, int precision=8)\n"
 		""},
-	 { "disown_Operator", _wrap_disown_Operator, METH_O, NULL},
+	 { "disown_Operator", (PyCFunction)(void(*)(void))_wrap_disown_Operator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Operator_swigregister", Operator_swigregister, METH_O, NULL},
 	 { "Operator_swiginit", Operator_swiginit, METH_VARARGS, NULL},
 	 { "new_TimeDependentOperator", _wrap_new_TimeDependentOperator, METH_VARARGS, "\n"
 		"TimeDependentOperator(int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT)\n"
-		"TimeDependentOperator(int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT)\n"
+		"new_TimeDependentOperator(PyObject * _self, int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> TimeDependentOperator\n"
 		""},
 	 { "TimeDependentOperator_GetTime", _wrap_TimeDependentOperator_GetTime, METH_O, "TimeDependentOperator_GetTime(TimeDependentOperator self) -> double"},
-	 { "TimeDependentOperator_SetTime", _wrap_TimeDependentOperator_SetTime, METH_VARARGS, "TimeDependentOperator_SetTime(TimeDependentOperator self, double const _t)"},
+	 { "TimeDependentOperator_SetTime", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SetTime, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_SetTime(TimeDependentOperator self, double const _t)"},
 	 { "TimeDependentOperator_isExplicit", _wrap_TimeDependentOperator_isExplicit, METH_O, "TimeDependentOperator_isExplicit(TimeDependentOperator self) -> bool"},
 	 { "TimeDependentOperator_isImplicit", _wrap_TimeDependentOperator_isImplicit, METH_O, "TimeDependentOperator_isImplicit(TimeDependentOperator self) -> bool"},
 	 { "TimeDependentOperator_isHomogeneous", _wrap_TimeDependentOperator_isHomogeneous, METH_O, "TimeDependentOperator_isHomogeneous(TimeDependentOperator self) -> bool"},
-	 { "TimeDependentOperator_ExplicitMult", _wrap_TimeDependentOperator_ExplicitMult, METH_VARARGS, "TimeDependentOperator_ExplicitMult(TimeDependentOperator self, Vector x, Vector y)"},
-	 { "TimeDependentOperator_ImplicitMult", _wrap_TimeDependentOperator_ImplicitMult, METH_VARARGS, "TimeDependentOperator_ImplicitMult(TimeDependentOperator self, Vector x, Vector k, Vector y)"},
-	 { "TimeDependentOperator_Mult", _wrap_TimeDependentOperator_Mult, METH_VARARGS, "TimeDependentOperator_Mult(TimeDependentOperator self, Vector x, Vector y)"},
-	 { "TimeDependentOperator_ImplicitSolve", _wrap_TimeDependentOperator_ImplicitSolve, METH_VARARGS, "TimeDependentOperator_ImplicitSolve(TimeDependentOperator self, double const dt, Vector x, Vector k)"},
-	 { "TimeDependentOperator_GetImplicitGradient", _wrap_TimeDependentOperator_GetImplicitGradient, METH_VARARGS, "TimeDependentOperator_GetImplicitGradient(TimeDependentOperator self, Vector x, Vector k, double shift) -> Operator"},
-	 { "TimeDependentOperator_GetExplicitGradient", _wrap_TimeDependentOperator_GetExplicitGradient, METH_VARARGS, "TimeDependentOperator_GetExplicitGradient(TimeDependentOperator self, Vector x) -> Operator"},
+	 { "TimeDependentOperator_GetEvalMode", _wrap_TimeDependentOperator_GetEvalMode, METH_O, "TimeDependentOperator_GetEvalMode(TimeDependentOperator self) -> mfem::TimeDependentOperator::EvalMode"},
+	 { "TimeDependentOperator_SetEvalMode", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SetEvalMode, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_SetEvalMode(TimeDependentOperator self, mfem::TimeDependentOperator::EvalMode const new_eval_mode)"},
+	 { "TimeDependentOperator_ExplicitMult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_ExplicitMult, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_ExplicitMult(TimeDependentOperator self, Vector x, Vector y)"},
+	 { "TimeDependentOperator_ImplicitMult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_ImplicitMult, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_ImplicitMult(TimeDependentOperator self, Vector x, Vector k, Vector y)"},
+	 { "TimeDependentOperator_Mult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_Mult, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_Mult(TimeDependentOperator self, Vector x, Vector y)"},
+	 { "TimeDependentOperator_ImplicitSolve", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_ImplicitSolve, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_ImplicitSolve(TimeDependentOperator self, double const dt, Vector x, Vector k)"},
+	 { "TimeDependentOperator_GetImplicitGradient", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_GetImplicitGradient, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_GetImplicitGradient(TimeDependentOperator self, Vector x, Vector k, double shift) -> Operator"},
+	 { "TimeDependentOperator_GetExplicitGradient", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_GetExplicitGradient, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_GetExplicitGradient(TimeDependentOperator self, Vector x) -> Operator"},
+	 { "TimeDependentOperator_SUNImplicitSetup", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNImplicitSetup, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_SUNImplicitSetup(TimeDependentOperator self, Vector x, Vector fx, int jok, int * jcur, double gamma) -> int"},
+	 { "TimeDependentOperator_SUNImplicitSolve", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNImplicitSolve, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_SUNImplicitSolve(TimeDependentOperator self, Vector b, Vector x, double tol) -> int"},
+	 { "TimeDependentOperator_SUNMassSetup", _wrap_TimeDependentOperator_SUNMassSetup, METH_O, "TimeDependentOperator_SUNMassSetup(TimeDependentOperator self) -> int"},
+	 { "TimeDependentOperator_SUNMassSolve", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNMassSolve, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_SUNMassSolve(TimeDependentOperator self, Vector b, Vector x, double tol) -> int"},
+	 { "TimeDependentOperator_SUNMassMult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNMassMult, METH_VARARGS|METH_KEYWORDS, "TimeDependentOperator_SUNMassMult(TimeDependentOperator self, Vector x, Vector v) -> int"},
 	 { "delete_TimeDependentOperator", _wrap_delete_TimeDependentOperator, METH_O, "delete_TimeDependentOperator(TimeDependentOperator self)"},
-	 { "disown_TimeDependentOperator", _wrap_disown_TimeDependentOperator, METH_O, NULL},
+	 { "disown_TimeDependentOperator", (PyCFunction)(void(*)(void))_wrap_disown_TimeDependentOperator, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "TimeDependentOperator_swigregister", TimeDependentOperator_swigregister, METH_O, NULL},
 	 { "TimeDependentOperator_swiginit", TimeDependentOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_SecondOrderTimeDependentOperator", _wrap_new_SecondOrderTimeDependentOperator, METH_VARARGS, "\n"
+		"SecondOrderTimeDependentOperator(int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT)\n"
+		"new_SecondOrderTimeDependentOperator(int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> SecondOrderTimeDependentOperator\n"
+		""},
+	 { "SecondOrderTimeDependentOperator_Mult", _wrap_SecondOrderTimeDependentOperator_Mult, METH_VARARGS, "\n"
+		"SecondOrderTimeDependentOperator_Mult(SecondOrderTimeDependentOperator self, Vector x, Vector y)\n"
+		"SecondOrderTimeDependentOperator_Mult(SecondOrderTimeDependentOperator self, Vector x, Vector dxdt, Vector y)\n"
+		""},
+	 { "SecondOrderTimeDependentOperator_ImplicitSolve", _wrap_SecondOrderTimeDependentOperator_ImplicitSolve, METH_VARARGS, "\n"
+		"SecondOrderTimeDependentOperator_ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt, Vector x, Vector k)\n"
+		"SecondOrderTimeDependentOperator_ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt0, double const dt1, Vector x, Vector dxdt, Vector k)\n"
+		""},
+	 { "delete_SecondOrderTimeDependentOperator", _wrap_delete_SecondOrderTimeDependentOperator, METH_O, "delete_SecondOrderTimeDependentOperator(SecondOrderTimeDependentOperator self)"},
+	 { "SecondOrderTimeDependentOperator_swigregister", SecondOrderTimeDependentOperator_swigregister, METH_O, NULL},
+	 { "SecondOrderTimeDependentOperator_swiginit", SecondOrderTimeDependentOperator_swiginit, METH_VARARGS, NULL},
 	 { "Solver_iterative_mode_set", _wrap_Solver_iterative_mode_set, METH_VARARGS, "Solver_iterative_mode_set(Solver self, bool iterative_mode)"},
 	 { "Solver_iterative_mode_get", _wrap_Solver_iterative_mode_get, METH_O, "Solver_iterative_mode_get(Solver self) -> bool"},
 	 { "new_Solver", _wrap_new_Solver, METH_VARARGS, "\n"
 		"Solver(int s=0, bool iter_mode=False)\n"
-		"Solver(int h, int w, bool iter_mode=False)\n"
+		"new_Solver(PyObject * _self, int h, int w, bool iter_mode=False) -> Solver\n"
 		""},
-	 { "Solver_SetOperator", _wrap_Solver_SetOperator, METH_VARARGS, "Solver_SetOperator(Solver self, Operator op)"},
+	 { "Solver_SetOperator", (PyCFunction)(void(*)(void))_wrap_Solver_SetOperator, METH_VARARGS|METH_KEYWORDS, "Solver_SetOperator(Solver self, Operator op)"},
 	 { "delete_Solver", _wrap_delete_Solver, METH_O, "delete_Solver(Solver self)"},
-	 { "disown_Solver", _wrap_disown_Solver, METH_O, NULL},
+	 { "disown_Solver", (PyCFunction)(void(*)(void))_wrap_disown_Solver, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Solver_swigregister", Solver_swigregister, METH_O, NULL},
 	 { "Solver_swiginit", Solver_swiginit, METH_VARARGS, NULL},
-	 { "new_IdentityOperator", _wrap_new_IdentityOperator, METH_O, "new_IdentityOperator(int n) -> IdentityOperator"},
-	 { "IdentityOperator_Mult", _wrap_IdentityOperator_Mult, METH_VARARGS, "IdentityOperator_Mult(IdentityOperator self, Vector x, Vector y)"},
-	 { "IdentityOperator_MultTranspose", _wrap_IdentityOperator_MultTranspose, METH_VARARGS, "IdentityOperator_MultTranspose(IdentityOperator self, Vector x, Vector y)"},
+	 { "new_IdentityOperator", (PyCFunction)(void(*)(void))_wrap_new_IdentityOperator, METH_VARARGS|METH_KEYWORDS, "new_IdentityOperator(int n) -> IdentityOperator"},
+	 { "IdentityOperator_Mult", (PyCFunction)(void(*)(void))_wrap_IdentityOperator_Mult, METH_VARARGS|METH_KEYWORDS, "IdentityOperator_Mult(IdentityOperator self, Vector x, Vector y)"},
+	 { "IdentityOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_IdentityOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "IdentityOperator_MultTranspose(IdentityOperator self, Vector x, Vector y)"},
 	 { "delete_IdentityOperator", _wrap_delete_IdentityOperator, METH_O, "delete_IdentityOperator(IdentityOperator self)"},
 	 { "IdentityOperator_swigregister", IdentityOperator_swigregister, METH_O, NULL},
 	 { "IdentityOperator_swiginit", IdentityOperator_swiginit, METH_VARARGS, NULL},
+	 { "IsIdentityProlongation", (PyCFunction)(void(*)(void))_wrap_IsIdentityProlongation, METH_VARARGS|METH_KEYWORDS, "IsIdentityProlongation(Operator P) -> bool"},
+	 { "new_ScaledOperator", (PyCFunction)(void(*)(void))_wrap_new_ScaledOperator, METH_VARARGS|METH_KEYWORDS, "new_ScaledOperator(Operator A, double a) -> ScaledOperator"},
+	 { "ScaledOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ScaledOperator_Mult, METH_VARARGS|METH_KEYWORDS, "ScaledOperator_Mult(ScaledOperator self, Vector x, Vector y)"},
+	 { "delete_ScaledOperator", _wrap_delete_ScaledOperator, METH_O, "delete_ScaledOperator(ScaledOperator self)"},
+	 { "ScaledOperator_swigregister", ScaledOperator_swigregister, METH_O, NULL},
+	 { "ScaledOperator_swiginit", ScaledOperator_swiginit, METH_VARARGS, NULL},
 	 { "new_TransposeOperator", _wrap_new_TransposeOperator, METH_VARARGS, "\n"
 		"TransposeOperator(Operator a)\n"
 		"new_TransposeOperator(Operator a) -> TransposeOperator\n"
 		""},
-	 { "TransposeOperator_Mult", _wrap_TransposeOperator_Mult, METH_VARARGS, "TransposeOperator_Mult(TransposeOperator self, Vector x, Vector y)"},
-	 { "TransposeOperator_MultTranspose", _wrap_TransposeOperator_MultTranspose, METH_VARARGS, "TransposeOperator_MultTranspose(TransposeOperator self, Vector x, Vector y)"},
+	 { "TransposeOperator_Mult", (PyCFunction)(void(*)(void))_wrap_TransposeOperator_Mult, METH_VARARGS|METH_KEYWORDS, "TransposeOperator_Mult(TransposeOperator self, Vector x, Vector y)"},
+	 { "TransposeOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_TransposeOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "TransposeOperator_MultTranspose(TransposeOperator self, Vector x, Vector y)"},
 	 { "delete_TransposeOperator", _wrap_delete_TransposeOperator, METH_O, "delete_TransposeOperator(TransposeOperator self)"},
 	 { "TransposeOperator_swigregister", TransposeOperator_swigregister, METH_O, NULL},
 	 { "TransposeOperator_swiginit", TransposeOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_ProductOperator", _wrap_new_ProductOperator, METH_VARARGS, "new_ProductOperator(Operator A, Operator B, bool ownA, bool ownB) -> ProductOperator"},
-	 { "ProductOperator_Mult", _wrap_ProductOperator_Mult, METH_VARARGS, "ProductOperator_Mult(ProductOperator self, Vector x, Vector y)"},
-	 { "ProductOperator_MultTranspose", _wrap_ProductOperator_MultTranspose, METH_VARARGS, "ProductOperator_MultTranspose(ProductOperator self, Vector x, Vector y)"},
+	 { "new_ProductOperator", (PyCFunction)(void(*)(void))_wrap_new_ProductOperator, METH_VARARGS|METH_KEYWORDS, "new_ProductOperator(Operator A, Operator B, bool ownA, bool ownB) -> ProductOperator"},
+	 { "ProductOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ProductOperator_Mult, METH_VARARGS|METH_KEYWORDS, "ProductOperator_Mult(ProductOperator self, Vector x, Vector y)"},
+	 { "ProductOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ProductOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "ProductOperator_MultTranspose(ProductOperator self, Vector x, Vector y)"},
 	 { "delete_ProductOperator", _wrap_delete_ProductOperator, METH_O, "delete_ProductOperator(ProductOperator self)"},
 	 { "ProductOperator_swigregister", ProductOperator_swigregister, METH_O, NULL},
 	 { "ProductOperator_swiginit", ProductOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_RAPOperator", _wrap_new_RAPOperator, METH_VARARGS, "new_RAPOperator(Operator Rt_, Operator A_, Operator P_) -> RAPOperator"},
+	 { "new_RAPOperator", (PyCFunction)(void(*)(void))_wrap_new_RAPOperator, METH_VARARGS|METH_KEYWORDS, "new_RAPOperator(Operator Rt_, Operator A_, Operator P_) -> RAPOperator"},
 	 { "RAPOperator_GetMemoryClass", _wrap_RAPOperator_GetMemoryClass, METH_O, "RAPOperator_GetMemoryClass(RAPOperator self) -> mfem::MemoryClass"},
-	 { "RAPOperator_Mult", _wrap_RAPOperator_Mult, METH_VARARGS, "RAPOperator_Mult(RAPOperator self, Vector x, Vector y)"},
-	 { "RAPOperator_MultTranspose", _wrap_RAPOperator_MultTranspose, METH_VARARGS, "RAPOperator_MultTranspose(RAPOperator self, Vector x, Vector y)"},
+	 { "RAPOperator_Mult", (PyCFunction)(void(*)(void))_wrap_RAPOperator_Mult, METH_VARARGS|METH_KEYWORDS, "RAPOperator_Mult(RAPOperator self, Vector x, Vector y)"},
+	 { "RAPOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_RAPOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "RAPOperator_MultTranspose(RAPOperator self, Vector x, Vector y)"},
 	 { "delete_RAPOperator", _wrap_delete_RAPOperator, METH_O, "delete_RAPOperator(RAPOperator self)"},
 	 { "RAPOperator_swigregister", RAPOperator_swigregister, METH_O, NULL},
 	 { "RAPOperator_swiginit", RAPOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_TripleProductOperator", _wrap_new_TripleProductOperator, METH_VARARGS, "new_TripleProductOperator(Operator A, Operator B, Operator C, bool ownA, bool ownB, bool ownC) -> TripleProductOperator"},
+	 { "new_TripleProductOperator", (PyCFunction)(void(*)(void))_wrap_new_TripleProductOperator, METH_VARARGS|METH_KEYWORDS, "new_TripleProductOperator(Operator A, Operator B, Operator C, bool ownA, bool ownB, bool ownC) -> TripleProductOperator"},
 	 { "TripleProductOperator_GetMemoryClass", _wrap_TripleProductOperator_GetMemoryClass, METH_O, "TripleProductOperator_GetMemoryClass(TripleProductOperator self) -> mfem::MemoryClass"},
-	 { "TripleProductOperator_Mult", _wrap_TripleProductOperator_Mult, METH_VARARGS, "TripleProductOperator_Mult(TripleProductOperator self, Vector x, Vector y)"},
-	 { "TripleProductOperator_MultTranspose", _wrap_TripleProductOperator_MultTranspose, METH_VARARGS, "TripleProductOperator_MultTranspose(TripleProductOperator self, Vector x, Vector y)"},
+	 { "TripleProductOperator_Mult", (PyCFunction)(void(*)(void))_wrap_TripleProductOperator_Mult, METH_VARARGS|METH_KEYWORDS, "TripleProductOperator_Mult(TripleProductOperator self, Vector x, Vector y)"},
+	 { "TripleProductOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_TripleProductOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "TripleProductOperator_MultTranspose(TripleProductOperator self, Vector x, Vector y)"},
 	 { "delete_TripleProductOperator", _wrap_delete_TripleProductOperator, METH_O, "delete_TripleProductOperator(TripleProductOperator self)"},
 	 { "TripleProductOperator_swigregister", TripleProductOperator_swigregister, METH_O, NULL},
 	 { "TripleProductOperator_swiginit", TripleProductOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_ConstrainedOperator", _wrap_new_ConstrainedOperator, METH_VARARGS, "ConstrainedOperator(Operator A, intArray list, bool own_A=False)"},
+	 { "new_ConstrainedOperator", (PyCFunction)(void(*)(void))_wrap_new_ConstrainedOperator, METH_VARARGS|METH_KEYWORDS, "new_ConstrainedOperator(Operator A, intArray list, bool own_A=False) -> ConstrainedOperator"},
 	 { "ConstrainedOperator_GetMemoryClass", _wrap_ConstrainedOperator_GetMemoryClass, METH_O, "ConstrainedOperator_GetMemoryClass(ConstrainedOperator self) -> mfem::MemoryClass"},
-	 { "ConstrainedOperator_EliminateRHS", _wrap_ConstrainedOperator_EliminateRHS, METH_VARARGS, "ConstrainedOperator_EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"},
-	 { "ConstrainedOperator_Mult", _wrap_ConstrainedOperator_Mult, METH_VARARGS, "ConstrainedOperator_Mult(ConstrainedOperator self, Vector x, Vector y)"},
+	 { "ConstrainedOperator_EliminateRHS", (PyCFunction)(void(*)(void))_wrap_ConstrainedOperator_EliminateRHS, METH_VARARGS|METH_KEYWORDS, "ConstrainedOperator_EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"},
+	 { "ConstrainedOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ConstrainedOperator_Mult, METH_VARARGS|METH_KEYWORDS, "ConstrainedOperator_Mult(ConstrainedOperator self, Vector x, Vector y)"},
 	 { "delete_ConstrainedOperator", _wrap_delete_ConstrainedOperator, METH_O, "delete_ConstrainedOperator(ConstrainedOperator self)"},
 	 { "ConstrainedOperator_swigregister", ConstrainedOperator_swigregister, METH_O, NULL},
 	 { "ConstrainedOperator_swiginit", ConstrainedOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_RectangularConstrainedOperator", (PyCFunction)(void(*)(void))_wrap_new_RectangularConstrainedOperator, METH_VARARGS|METH_KEYWORDS, "new_RectangularConstrainedOperator(Operator A, intArray trial_list, intArray test_list, bool own_A=False) -> RectangularConstrainedOperator"},
+	 { "RectangularConstrainedOperator_GetMemoryClass", _wrap_RectangularConstrainedOperator_GetMemoryClass, METH_O, "RectangularConstrainedOperator_GetMemoryClass(RectangularConstrainedOperator self) -> mfem::MemoryClass"},
+	 { "RectangularConstrainedOperator_EliminateRHS", (PyCFunction)(void(*)(void))_wrap_RectangularConstrainedOperator_EliminateRHS, METH_VARARGS|METH_KEYWORDS, "RectangularConstrainedOperator_EliminateRHS(RectangularConstrainedOperator self, Vector x, Vector b)"},
+	 { "RectangularConstrainedOperator_Mult", (PyCFunction)(void(*)(void))_wrap_RectangularConstrainedOperator_Mult, METH_VARARGS|METH_KEYWORDS, "RectangularConstrainedOperator_Mult(RectangularConstrainedOperator self, Vector x, Vector y)"},
+	 { "delete_RectangularConstrainedOperator", _wrap_delete_RectangularConstrainedOperator, METH_O, "delete_RectangularConstrainedOperator(RectangularConstrainedOperator self)"},
+	 { "RectangularConstrainedOperator_swigregister", RectangularConstrainedOperator_swigregister, METH_O, NULL},
+	 { "RectangularConstrainedOperator_swiginit", RectangularConstrainedOperator_swiginit, METH_VARARGS, NULL},
 	 { "new_PyOperatorBase", _wrap_new_PyOperatorBase, METH_VARARGS, "\n"
 		"PyOperatorBase(int s=0)\n"
 		"new_PyOperatorBase(PyObject * _self, int h, int w) -> PyOperatorBase\n"
 		""},
-	 { "PyOperatorBase_Mult", _wrap_PyOperatorBase_Mult, METH_VARARGS, "PyOperatorBase_Mult(PyOperatorBase self, Vector x, Vector y)"},
-	 { "PyOperatorBase__EvalMult", _wrap_PyOperatorBase__EvalMult, METH_VARARGS, "PyOperatorBase__EvalMult(PyOperatorBase self, Vector arg0) -> Vector"},
+	 { "PyOperatorBase_Mult", (PyCFunction)(void(*)(void))_wrap_PyOperatorBase_Mult, METH_VARARGS|METH_KEYWORDS, "PyOperatorBase_Mult(PyOperatorBase self, Vector x, Vector y)"},
+	 { "PyOperatorBase__EvalMult", (PyCFunction)(void(*)(void))_wrap_PyOperatorBase__EvalMult, METH_VARARGS|METH_KEYWORDS, "PyOperatorBase__EvalMult(PyOperatorBase self, Vector arg0) -> Vector"},
 	 { "delete_PyOperatorBase", _wrap_delete_PyOperatorBase, METH_O, "delete_PyOperatorBase(PyOperatorBase self)"},
-	 { "disown_PyOperatorBase", _wrap_disown_PyOperatorBase, METH_O, NULL},
+	 { "disown_PyOperatorBase", (PyCFunction)(void(*)(void))_wrap_disown_PyOperatorBase, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "PyOperatorBase_swigregister", PyOperatorBase_swigregister, METH_O, NULL},
 	 { "PyOperatorBase_swiginit", PyOperatorBase_swiginit, METH_VARARGS, NULL},
 	 { "new_PyTimeDependentOperatorBase", _wrap_new_PyTimeDependentOperatorBase, METH_VARARGS, "\n"
 		"PyTimeDependentOperatorBase(int n=0, double _t=0.0)\n"
-		"PyTimeDependentOperatorBase(int h, int w, double _t=0.0)\n"
+		"new_PyTimeDependentOperatorBase(PyObject * _self, int h, int w, double _t=0.0) -> PyTimeDependentOperatorBase\n"
 		""},
-	 { "PyTimeDependentOperatorBase_Mult", _wrap_PyTimeDependentOperatorBase_Mult, METH_VARARGS, "PyTimeDependentOperatorBase_Mult(PyTimeDependentOperatorBase self, Vector x, Vector y)"},
-	 { "PyTimeDependentOperatorBase__EvalMult", _wrap_PyTimeDependentOperatorBase__EvalMult, METH_VARARGS, "PyTimeDependentOperatorBase__EvalMult(PyTimeDependentOperatorBase self, Vector arg0) -> Vector"},
+	 { "PyTimeDependentOperatorBase_Mult", (PyCFunction)(void(*)(void))_wrap_PyTimeDependentOperatorBase_Mult, METH_VARARGS|METH_KEYWORDS, "PyTimeDependentOperatorBase_Mult(PyTimeDependentOperatorBase self, Vector x, Vector y)"},
+	 { "PyTimeDependentOperatorBase__EvalMult", (PyCFunction)(void(*)(void))_wrap_PyTimeDependentOperatorBase__EvalMult, METH_VARARGS|METH_KEYWORDS, "PyTimeDependentOperatorBase__EvalMult(PyTimeDependentOperatorBase self, Vector arg0) -> Vector"},
 	 { "delete_PyTimeDependentOperatorBase", _wrap_delete_PyTimeDependentOperatorBase, METH_O, "delete_PyTimeDependentOperatorBase(PyTimeDependentOperatorBase self)"},
-	 { "disown_PyTimeDependentOperatorBase", _wrap_disown_PyTimeDependentOperatorBase, METH_O, NULL},
+	 { "disown_PyTimeDependentOperatorBase", (PyCFunction)(void(*)(void))_wrap_disown_PyTimeDependentOperatorBase, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "PyTimeDependentOperatorBase_swigregister", PyTimeDependentOperatorBase_swigregister, METH_O, NULL},
 	 { "PyTimeDependentOperatorBase_swiginit", PyTimeDependentOperatorBase_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Operator_InitTVectors", (PyCFunction)(void(*)(void))_wrap_Operator_InitTVectors, METH_VARARGS|METH_KEYWORDS, "InitTVectors(Operator self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"},
+	 { "new_Operator", _wrap_new_Operator, METH_VARARGS, "\n"
+		"Operator(int s=0)\n"
+		"new_Operator(PyObject * _self, int h, int w) -> Operator\n"
+		""},
+	 { "Operator_Height", _wrap_Operator_Height, METH_O, "Height(Operator self) -> int"},
+	 { "Operator_NumRows", _wrap_Operator_NumRows, METH_O, "NumRows(Operator self) -> int"},
+	 { "Operator_Width", _wrap_Operator_Width, METH_O, "Width(Operator self) -> int"},
+	 { "Operator_NumCols", _wrap_Operator_NumCols, METH_O, "NumCols(Operator self) -> int"},
+	 { "Operator_GetMemoryClass", _wrap_Operator_GetMemoryClass, METH_O, "GetMemoryClass(Operator self) -> mfem::MemoryClass"},
+	 { "Operator_Mult", (PyCFunction)(void(*)(void))_wrap_Operator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(Operator self, Vector x, Vector y)"},
+	 { "Operator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_Operator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(Operator self, Vector x, Vector y)"},
+	 { "Operator_GetGradient", (PyCFunction)(void(*)(void))_wrap_Operator_GetGradient, METH_VARARGS|METH_KEYWORDS, "GetGradient(Operator self, Vector x) -> Operator"},
+	 { "Operator_GetProlongation", _wrap_Operator_GetProlongation, METH_O, "GetProlongation(Operator self) -> Operator"},
+	 { "Operator_GetRestriction", _wrap_Operator_GetRestriction, METH_O, "GetRestriction(Operator self) -> Operator"},
+	 { "Operator_GetOutputProlongation", _wrap_Operator_GetOutputProlongation, METH_O, "GetOutputProlongation(Operator self) -> Operator"},
+	 { "Operator_GetOutputRestriction", _wrap_Operator_GetOutputRestriction, METH_O, "GetOutputRestriction(Operator self) -> Operator"},
+	 { "Operator_FormLinearSystem", (PyCFunction)(void(*)(void))_wrap_Operator_FormLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormLinearSystem(Operator self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"},
+	 { "Operator_FormRectangularLinearSystem", (PyCFunction)(void(*)(void))_wrap_Operator_FormRectangularLinearSystem, METH_VARARGS|METH_KEYWORDS, "FormRectangularLinearSystem(Operator self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)"},
+	 { "Operator_RecoverFEMSolution", (PyCFunction)(void(*)(void))_wrap_Operator_RecoverFEMSolution, METH_VARARGS|METH_KEYWORDS, "RecoverFEMSolution(Operator self, Vector X, Vector b, Vector x)"},
+	 { "Operator_FormSystemOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormSystemOperator, METH_VARARGS|METH_KEYWORDS, "FormSystemOperator(Operator self, intArray ess_tdof_list, mfem::Operator *& A)"},
+	 { "Operator_FormRectangularSystemOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormRectangularSystemOperator, METH_VARARGS|METH_KEYWORDS, "FormRectangularSystemOperator(Operator self, intArray trial_tdof_list, intArray test_tdof_list, mfem::Operator *& A)"},
+	 { "Operator_FormDiscreteOperator", (PyCFunction)(void(*)(void))_wrap_Operator_FormDiscreteOperator, METH_VARARGS|METH_KEYWORDS, "FormDiscreteOperator(Operator self, mfem::Operator *& A)"},
+	 { "delete_Operator", _wrap_delete_Operator, METH_O, "delete_Operator(Operator self)"},
+	 { "Operator_GetType", _wrap_Operator_GetType, METH_O, "GetType(Operator self) -> mfem::Operator::Type"},
+	 { "Operator_PrintMatlab", _wrap_Operator_PrintMatlab, METH_VARARGS, "\n"
+		"PrintMatlab(Operator self, std::ostream & out, int n=0, int m=0)\n"
+		"PrintMatlab(Operator self, char const * file, int precision=8)\n"
+		""},
+	 { "disown_Operator", (PyCFunction)(void(*)(void))_wrap_disown_Operator, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Operator_swigregister", Operator_swigregister, METH_O, NULL},
+	 { "Operator_swiginit", Operator_swiginit, METH_VARARGS, NULL},
+	 { "new_TimeDependentOperator", _wrap_new_TimeDependentOperator, METH_VARARGS, "\n"
+		"TimeDependentOperator(int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT)\n"
+		"new_TimeDependentOperator(PyObject * _self, int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> TimeDependentOperator\n"
+		""},
+	 { "TimeDependentOperator_GetTime", _wrap_TimeDependentOperator_GetTime, METH_O, "GetTime(TimeDependentOperator self) -> double"},
+	 { "TimeDependentOperator_SetTime", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(TimeDependentOperator self, double const _t)"},
+	 { "TimeDependentOperator_isExplicit", _wrap_TimeDependentOperator_isExplicit, METH_O, "isExplicit(TimeDependentOperator self) -> bool"},
+	 { "TimeDependentOperator_isImplicit", _wrap_TimeDependentOperator_isImplicit, METH_O, "isImplicit(TimeDependentOperator self) -> bool"},
+	 { "TimeDependentOperator_isHomogeneous", _wrap_TimeDependentOperator_isHomogeneous, METH_O, "isHomogeneous(TimeDependentOperator self) -> bool"},
+	 { "TimeDependentOperator_GetEvalMode", _wrap_TimeDependentOperator_GetEvalMode, METH_O, "GetEvalMode(TimeDependentOperator self) -> mfem::TimeDependentOperator::EvalMode"},
+	 { "TimeDependentOperator_SetEvalMode", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SetEvalMode, METH_VARARGS|METH_KEYWORDS, "SetEvalMode(TimeDependentOperator self, mfem::TimeDependentOperator::EvalMode const new_eval_mode)"},
+	 { "TimeDependentOperator_ExplicitMult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_ExplicitMult, METH_VARARGS|METH_KEYWORDS, "ExplicitMult(TimeDependentOperator self, Vector x, Vector y)"},
+	 { "TimeDependentOperator_ImplicitMult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_ImplicitMult, METH_VARARGS|METH_KEYWORDS, "ImplicitMult(TimeDependentOperator self, Vector x, Vector k, Vector y)"},
+	 { "TimeDependentOperator_Mult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(TimeDependentOperator self, Vector x, Vector y)"},
+	 { "TimeDependentOperator_ImplicitSolve", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_ImplicitSolve, METH_VARARGS|METH_KEYWORDS, "ImplicitSolve(TimeDependentOperator self, double const dt, Vector x, Vector k)"},
+	 { "TimeDependentOperator_GetImplicitGradient", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_GetImplicitGradient, METH_VARARGS|METH_KEYWORDS, "GetImplicitGradient(TimeDependentOperator self, Vector x, Vector k, double shift) -> Operator"},
+	 { "TimeDependentOperator_GetExplicitGradient", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_GetExplicitGradient, METH_VARARGS|METH_KEYWORDS, "GetExplicitGradient(TimeDependentOperator self, Vector x) -> Operator"},
+	 { "TimeDependentOperator_SUNImplicitSetup", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNImplicitSetup, METH_VARARGS|METH_KEYWORDS, "SUNImplicitSetup(TimeDependentOperator self, Vector x, Vector fx, int jok, int * jcur, double gamma) -> int"},
+	 { "TimeDependentOperator_SUNImplicitSolve", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNImplicitSolve, METH_VARARGS|METH_KEYWORDS, "SUNImplicitSolve(TimeDependentOperator self, Vector b, Vector x, double tol) -> int"},
+	 { "TimeDependentOperator_SUNMassSetup", _wrap_TimeDependentOperator_SUNMassSetup, METH_O, "SUNMassSetup(TimeDependentOperator self) -> int"},
+	 { "TimeDependentOperator_SUNMassSolve", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNMassSolve, METH_VARARGS|METH_KEYWORDS, "SUNMassSolve(TimeDependentOperator self, Vector b, Vector x, double tol) -> int"},
+	 { "TimeDependentOperator_SUNMassMult", (PyCFunction)(void(*)(void))_wrap_TimeDependentOperator_SUNMassMult, METH_VARARGS|METH_KEYWORDS, "SUNMassMult(TimeDependentOperator self, Vector x, Vector v) -> int"},
+	 { "delete_TimeDependentOperator", _wrap_delete_TimeDependentOperator, METH_O, "delete_TimeDependentOperator(TimeDependentOperator self)"},
+	 { "disown_TimeDependentOperator", (PyCFunction)(void(*)(void))_wrap_disown_TimeDependentOperator, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "TimeDependentOperator_swigregister", TimeDependentOperator_swigregister, METH_O, NULL},
+	 { "TimeDependentOperator_swiginit", TimeDependentOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_SecondOrderTimeDependentOperator", _wrap_new_SecondOrderTimeDependentOperator, METH_VARARGS, "\n"
+		"SecondOrderTimeDependentOperator(int n=0, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT)\n"
+		"new_SecondOrderTimeDependentOperator(int h, int w, double t_=0.0, mfem::TimeDependentOperator::Type type_=EXPLICIT) -> SecondOrderTimeDependentOperator\n"
+		""},
+	 { "SecondOrderTimeDependentOperator_Mult", _wrap_SecondOrderTimeDependentOperator_Mult, METH_VARARGS, "\n"
+		"Mult(SecondOrderTimeDependentOperator self, Vector x, Vector y)\n"
+		"Mult(SecondOrderTimeDependentOperator self, Vector x, Vector dxdt, Vector y)\n"
+		""},
+	 { "SecondOrderTimeDependentOperator_ImplicitSolve", _wrap_SecondOrderTimeDependentOperator_ImplicitSolve, METH_VARARGS, "\n"
+		"ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt, Vector x, Vector k)\n"
+		"ImplicitSolve(SecondOrderTimeDependentOperator self, double const dt0, double const dt1, Vector x, Vector dxdt, Vector k)\n"
+		""},
+	 { "delete_SecondOrderTimeDependentOperator", _wrap_delete_SecondOrderTimeDependentOperator, METH_O, "delete_SecondOrderTimeDependentOperator(SecondOrderTimeDependentOperator self)"},
+	 { "SecondOrderTimeDependentOperator_swigregister", SecondOrderTimeDependentOperator_swigregister, METH_O, NULL},
+	 { "SecondOrderTimeDependentOperator_swiginit", SecondOrderTimeDependentOperator_swiginit, METH_VARARGS, NULL},
+	 { "Solver_iterative_mode_set", _wrap_Solver_iterative_mode_set, METH_VARARGS, "Solver_iterative_mode_set(Solver self, bool iterative_mode)"},
+	 { "Solver_iterative_mode_get", _wrap_Solver_iterative_mode_get, METH_O, "Solver_iterative_mode_get(Solver self) -> bool"},
+	 { "new_Solver", _wrap_new_Solver, METH_VARARGS, "\n"
+		"Solver(int s=0, bool iter_mode=False)\n"
+		"new_Solver(PyObject * _self, int h, int w, bool iter_mode=False) -> Solver\n"
+		""},
+	 { "Solver_SetOperator", (PyCFunction)(void(*)(void))_wrap_Solver_SetOperator, METH_VARARGS|METH_KEYWORDS, "SetOperator(Solver self, Operator op)"},
+	 { "delete_Solver", _wrap_delete_Solver, METH_O, "delete_Solver(Solver self)"},
+	 { "disown_Solver", (PyCFunction)(void(*)(void))_wrap_disown_Solver, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Solver_swigregister", Solver_swigregister, METH_O, NULL},
+	 { "Solver_swiginit", Solver_swiginit, METH_VARARGS, NULL},
+	 { "new_IdentityOperator", (PyCFunction)(void(*)(void))_wrap_new_IdentityOperator, METH_VARARGS|METH_KEYWORDS, "new_IdentityOperator(int n) -> IdentityOperator"},
+	 { "IdentityOperator_Mult", (PyCFunction)(void(*)(void))_wrap_IdentityOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(IdentityOperator self, Vector x, Vector y)"},
+	 { "IdentityOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_IdentityOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(IdentityOperator self, Vector x, Vector y)"},
+	 { "delete_IdentityOperator", _wrap_delete_IdentityOperator, METH_O, "delete_IdentityOperator(IdentityOperator self)"},
+	 { "IdentityOperator_swigregister", IdentityOperator_swigregister, METH_O, NULL},
+	 { "IdentityOperator_swiginit", IdentityOperator_swiginit, METH_VARARGS, NULL},
+	 { "IsIdentityProlongation", (PyCFunction)(void(*)(void))_wrap_IsIdentityProlongation, METH_VARARGS|METH_KEYWORDS, "IsIdentityProlongation(Operator P) -> bool"},
+	 { "new_ScaledOperator", (PyCFunction)(void(*)(void))_wrap_new_ScaledOperator, METH_VARARGS|METH_KEYWORDS, "new_ScaledOperator(Operator A, double a) -> ScaledOperator"},
+	 { "ScaledOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ScaledOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ScaledOperator self, Vector x, Vector y)"},
+	 { "delete_ScaledOperator", _wrap_delete_ScaledOperator, METH_O, "delete_ScaledOperator(ScaledOperator self)"},
+	 { "ScaledOperator_swigregister", ScaledOperator_swigregister, METH_O, NULL},
+	 { "ScaledOperator_swiginit", ScaledOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_TransposeOperator", _wrap_new_TransposeOperator, METH_VARARGS, "\n"
+		"TransposeOperator(Operator a)\n"
+		"new_TransposeOperator(Operator a) -> TransposeOperator\n"
+		""},
+	 { "TransposeOperator_Mult", (PyCFunction)(void(*)(void))_wrap_TransposeOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(TransposeOperator self, Vector x, Vector y)"},
+	 { "TransposeOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_TransposeOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(TransposeOperator self, Vector x, Vector y)"},
+	 { "delete_TransposeOperator", _wrap_delete_TransposeOperator, METH_O, "delete_TransposeOperator(TransposeOperator self)"},
+	 { "TransposeOperator_swigregister", TransposeOperator_swigregister, METH_O, NULL},
+	 { "TransposeOperator_swiginit", TransposeOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_ProductOperator", (PyCFunction)(void(*)(void))_wrap_new_ProductOperator, METH_VARARGS|METH_KEYWORDS, "new_ProductOperator(Operator A, Operator B, bool ownA, bool ownB) -> ProductOperator"},
+	 { "ProductOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ProductOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ProductOperator self, Vector x, Vector y)"},
+	 { "ProductOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_ProductOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(ProductOperator self, Vector x, Vector y)"},
+	 { "delete_ProductOperator", _wrap_delete_ProductOperator, METH_O, "delete_ProductOperator(ProductOperator self)"},
+	 { "ProductOperator_swigregister", ProductOperator_swigregister, METH_O, NULL},
+	 { "ProductOperator_swiginit", ProductOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_RAPOperator", (PyCFunction)(void(*)(void))_wrap_new_RAPOperator, METH_VARARGS|METH_KEYWORDS, "new_RAPOperator(Operator Rt_, Operator A_, Operator P_) -> RAPOperator"},
+	 { "RAPOperator_GetMemoryClass", _wrap_RAPOperator_GetMemoryClass, METH_O, "GetMemoryClass(RAPOperator self) -> mfem::MemoryClass"},
+	 { "RAPOperator_Mult", (PyCFunction)(void(*)(void))_wrap_RAPOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(RAPOperator self, Vector x, Vector y)"},
+	 { "RAPOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_RAPOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(RAPOperator self, Vector x, Vector y)"},
+	 { "delete_RAPOperator", _wrap_delete_RAPOperator, METH_O, "delete_RAPOperator(RAPOperator self)"},
+	 { "RAPOperator_swigregister", RAPOperator_swigregister, METH_O, NULL},
+	 { "RAPOperator_swiginit", RAPOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_TripleProductOperator", (PyCFunction)(void(*)(void))_wrap_new_TripleProductOperator, METH_VARARGS|METH_KEYWORDS, "new_TripleProductOperator(Operator A, Operator B, Operator C, bool ownA, bool ownB, bool ownC) -> TripleProductOperator"},
+	 { "TripleProductOperator_GetMemoryClass", _wrap_TripleProductOperator_GetMemoryClass, METH_O, "GetMemoryClass(TripleProductOperator self) -> mfem::MemoryClass"},
+	 { "TripleProductOperator_Mult", (PyCFunction)(void(*)(void))_wrap_TripleProductOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(TripleProductOperator self, Vector x, Vector y)"},
+	 { "TripleProductOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_TripleProductOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(TripleProductOperator self, Vector x, Vector y)"},
+	 { "delete_TripleProductOperator", _wrap_delete_TripleProductOperator, METH_O, "delete_TripleProductOperator(TripleProductOperator self)"},
+	 { "TripleProductOperator_swigregister", TripleProductOperator_swigregister, METH_O, NULL},
+	 { "TripleProductOperator_swiginit", TripleProductOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_ConstrainedOperator", (PyCFunction)(void(*)(void))_wrap_new_ConstrainedOperator, METH_VARARGS|METH_KEYWORDS, "new_ConstrainedOperator(Operator A, intArray list, bool own_A=False) -> ConstrainedOperator"},
+	 { "ConstrainedOperator_GetMemoryClass", _wrap_ConstrainedOperator_GetMemoryClass, METH_O, "GetMemoryClass(ConstrainedOperator self) -> mfem::MemoryClass"},
+	 { "ConstrainedOperator_EliminateRHS", (PyCFunction)(void(*)(void))_wrap_ConstrainedOperator_EliminateRHS, METH_VARARGS|METH_KEYWORDS, "EliminateRHS(ConstrainedOperator self, Vector x, Vector b)"},
+	 { "ConstrainedOperator_Mult", (PyCFunction)(void(*)(void))_wrap_ConstrainedOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(ConstrainedOperator self, Vector x, Vector y)"},
+	 { "delete_ConstrainedOperator", _wrap_delete_ConstrainedOperator, METH_O, "delete_ConstrainedOperator(ConstrainedOperator self)"},
+	 { "ConstrainedOperator_swigregister", ConstrainedOperator_swigregister, METH_O, NULL},
+	 { "ConstrainedOperator_swiginit", ConstrainedOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_RectangularConstrainedOperator", (PyCFunction)(void(*)(void))_wrap_new_RectangularConstrainedOperator, METH_VARARGS|METH_KEYWORDS, "new_RectangularConstrainedOperator(Operator A, intArray trial_list, intArray test_list, bool own_A=False) -> RectangularConstrainedOperator"},
+	 { "RectangularConstrainedOperator_GetMemoryClass", _wrap_RectangularConstrainedOperator_GetMemoryClass, METH_O, "GetMemoryClass(RectangularConstrainedOperator self) -> mfem::MemoryClass"},
+	 { "RectangularConstrainedOperator_EliminateRHS", (PyCFunction)(void(*)(void))_wrap_RectangularConstrainedOperator_EliminateRHS, METH_VARARGS|METH_KEYWORDS, "EliminateRHS(RectangularConstrainedOperator self, Vector x, Vector b)"},
+	 { "RectangularConstrainedOperator_Mult", (PyCFunction)(void(*)(void))_wrap_RectangularConstrainedOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(RectangularConstrainedOperator self, Vector x, Vector y)"},
+	 { "delete_RectangularConstrainedOperator", _wrap_delete_RectangularConstrainedOperator, METH_O, "delete_RectangularConstrainedOperator(RectangularConstrainedOperator self)"},
+	 { "RectangularConstrainedOperator_swigregister", RectangularConstrainedOperator_swigregister, METH_O, NULL},
+	 { "RectangularConstrainedOperator_swiginit", RectangularConstrainedOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_PyOperatorBase", _wrap_new_PyOperatorBase, METH_VARARGS, "\n"
+		"PyOperatorBase(int s=0)\n"
+		"new_PyOperatorBase(PyObject * _self, int h, int w) -> PyOperatorBase\n"
+		""},
+	 { "PyOperatorBase_Mult", (PyCFunction)(void(*)(void))_wrap_PyOperatorBase_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(PyOperatorBase self, Vector x, Vector y)"},
+	 { "PyOperatorBase__EvalMult", (PyCFunction)(void(*)(void))_wrap_PyOperatorBase__EvalMult, METH_VARARGS|METH_KEYWORDS, "_EvalMult(PyOperatorBase self, Vector arg0) -> Vector"},
+	 { "delete_PyOperatorBase", _wrap_delete_PyOperatorBase, METH_O, "delete_PyOperatorBase(PyOperatorBase self)"},
+	 { "disown_PyOperatorBase", (PyCFunction)(void(*)(void))_wrap_disown_PyOperatorBase, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "PyOperatorBase_swigregister", PyOperatorBase_swigregister, METH_O, NULL},
+	 { "PyOperatorBase_swiginit", PyOperatorBase_swiginit, METH_VARARGS, NULL},
+	 { "new_PyTimeDependentOperatorBase", _wrap_new_PyTimeDependentOperatorBase, METH_VARARGS, "\n"
+		"PyTimeDependentOperatorBase(int n=0, double _t=0.0)\n"
+		"new_PyTimeDependentOperatorBase(PyObject * _self, int h, int w, double _t=0.0) -> PyTimeDependentOperatorBase\n"
+		""},
+	 { "PyTimeDependentOperatorBase_Mult", (PyCFunction)(void(*)(void))_wrap_PyTimeDependentOperatorBase_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(PyTimeDependentOperatorBase self, Vector x, Vector y)"},
+	 { "PyTimeDependentOperatorBase__EvalMult", (PyCFunction)(void(*)(void))_wrap_PyTimeDependentOperatorBase__EvalMult, METH_VARARGS|METH_KEYWORDS, "_EvalMult(PyTimeDependentOperatorBase self, Vector arg0) -> Vector"},
+	 { "delete_PyTimeDependentOperatorBase", _wrap_delete_PyTimeDependentOperatorBase, METH_O, "delete_PyTimeDependentOperatorBase(PyTimeDependentOperatorBase self)"},
+	 { "disown_PyTimeDependentOperatorBase", (PyCFunction)(void(*)(void))_wrap_disown_PyTimeDependentOperatorBase, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "PyTimeDependentOperatorBase_swigregister", PyTimeDependentOperatorBase_swigregister, METH_O, NULL},
+	 { "PyTimeDependentOperatorBase_swiginit", PyTimeDependentOperatorBase_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -11357,8 +13459,14 @@ static void *_p_p_mfem__SolverTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM
 static void *_p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **)  ((mfem::TimeDependentOperator **) x));
 }
+static void *_p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator **) x));
+}
 static void *_p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **)  ((mfem::IdentityOperator **) x));
+}
+static void *_p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::ScaledOperator **) x));
 }
 static void *_p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **)  ((mfem::TransposeOperator **) x));
@@ -11375,6 +13483,9 @@ static void *_p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator(void *x, int 
 static void *_p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **)  ((mfem::ConstrainedOperator **) x));
 }
+static void *_p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator **)  ((mfem::RectangularConstrainedOperator **) x));
+}
 static void *_p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator **)  ((mfem::PyOperatorBase **) x));
 }
@@ -11387,8 +13498,14 @@ static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(new
 static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
 }
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
+}
 static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
 }
 static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
@@ -11405,17 +13522,24 @@ static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWI
 static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
 }
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
+}
 static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
 }
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
 }
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__TimeDependentOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::TimeDependentOperator *)  ((mfem::SecondOrderTimeDependentOperator *) x));
+}
 static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::TimeDependentOperator *)  ((mfem::PyTimeDependentOperatorBase *) x));
 }
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", "mfem::ConstrainedOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", "mfem::IdentityOperator *", 0, 0, (void*)0, 0};
@@ -11424,26 +13548,33 @@ static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperat
 static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", "mfem::PyOperatorBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", "mfem::PyTimeDependentOperatorBase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", "mfem::RAPOperator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", "mfem::RectangularConstrainedOperator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", "mfem::ScaledOperator *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", "mfem::SecondOrderTimeDependentOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", "mfem::TimeDependentOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", "mfem::TransposeOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", "mfem::TripleProductOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_mfem__Operator = {"_p_p_mfem__Operator", "mfem::Operator **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__Solver = {"_p_p_mfem__Solver", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__TimeDependentOperator = {"_p_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__SecondOrderTimeDependentOperator = {"_p_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__IdentityOperator = {"_p_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__ScaledOperator = {"_p_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__TransposeOperator = {"_p_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__ProductOperator = {"_p_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__RAPOperator = {"_p_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__TripleProductOperator = {"_p_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_p_mfem__ConstrainedOperator = {"_p_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__PyOperatorBase = {"_p_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_p_mfem__PyTimeDependentOperatorBase = {"_p_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__RectangularConstrainedOperator = {"_p_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
+  &_swigt__p_int,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ConstrainedOperator,
   &_swigt__p_mfem__IdentityOperator,
@@ -11452,6 +13583,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__RAPOperator,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_mfem__Solver,
   &_swigt__p_mfem__TimeDependentOperator,
   &_swigt__p_mfem__TransposeOperator,
@@ -11464,6 +13598,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_mfem__PyOperatorBase,
   &_swigt__p_p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_p_mfem__RAPOperator,
+  &_swigt__p_p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_p_mfem__ScaledOperator,
+  &_swigt__p_p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_p_mfem__Solver,
   &_swigt__p_p_mfem__TimeDependentOperator,
   &_swigt__p_p_mfem__TransposeOperator,
@@ -11472,34 +13609,42 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {  {&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {  {&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ProductOperator[] = {  {&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {  {&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RAPOperator[] = {  {&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {  {&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {  {&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {  {&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {  {&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__TimeDependentOperator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__TimeDependentOperator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {  {&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {  {&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__Solver[] = {{&_swigt__p_p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__TimeDependentOperator[] = {{&_swigt__p_p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__IdentityOperator[] = {{&_swigt__p_p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__ScaledOperator[] = {{&_swigt__p_p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__TransposeOperator[] = {{&_swigt__p_p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__ProductOperator[] = {{&_swigt__p_p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__RAPOperator[] = {{&_swigt__p_p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__TripleProductOperator[] = {{&_swigt__p_p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_mfem__ConstrainedOperator[] = {{&_swigt__p_p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__PyOperatorBase[] = {{&_swigt__p_p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Operator[] = {  {&_swigt__p_p_mfem__PyOperatorBase, _p_p_mfem__PyOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__PyTimeDependentOperatorBase, _p_p_mfem__PyTimeDependentOperatorBaseTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Solver, _p_p_mfem__SolverTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TimeDependentOperator, _p_p_mfem__TimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__SecondOrderTimeDependentOperator, _p_p_mfem__SecondOrderTimeDependentOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__IdentityOperator, _p_p_mfem__IdentityOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ScaledOperator, _p_p_mfem__ScaledOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TransposeOperator, _p_p_mfem__TransposeOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ProductOperator, _p_p_mfem__ProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RAPOperator, _p_p_mfem__RAPOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__TripleProductOperator, _p_p_mfem__TripleProductOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__ConstrainedOperator, _p_p_mfem__ConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__RectangularConstrainedOperator, _p_p_mfem__RectangularConstrainedOperatorTo_p_p_mfem__Operator, 0, 0},  {&_swigt__p_p_mfem__Operator, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
+  _swigc__p_int,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ConstrainedOperator,
   _swigc__p_mfem__IdentityOperator,
@@ -11508,6 +13653,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__RAPOperator,
+  _swigc__p_mfem__RectangularConstrainedOperator,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_mfem__Solver,
   _swigc__p_mfem__TimeDependentOperator,
   _swigc__p_mfem__TransposeOperator,
@@ -11520,6 +13668,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_mfem__PyOperatorBase,
   _swigc__p_p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_p_mfem__RAPOperator,
+  _swigc__p_p_mfem__RectangularConstrainedOperator,
+  _swigc__p_p_mfem__ScaledOperator,
+  _swigc__p_p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_p_mfem__Solver,
   _swigc__p_p_mfem__TimeDependentOperator,
   _swigc__p_p_mfem__TransposeOperator,
@@ -12265,9 +14416,15 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Operator_PETSC_MATNEST",SWIG_From_int(static_cast< int >(mfem::Operator::PETSC_MATNEST)));
   SWIG_Python_SetConstant(d, "Operator_PETSC_MATHYPRE",SWIG_From_int(static_cast< int >(mfem::Operator::PETSC_MATHYPRE)));
   SWIG_Python_SetConstant(d, "Operator_PETSC_MATGENERIC",SWIG_From_int(static_cast< int >(mfem::Operator::PETSC_MATGENERIC)));
+  SWIG_Python_SetConstant(d, "Operator_Complex_Operator",SWIG_From_int(static_cast< int >(mfem::Operator::Complex_Operator)));
+  SWIG_Python_SetConstant(d, "Operator_MFEM_ComplexSparseMat",SWIG_From_int(static_cast< int >(mfem::Operator::MFEM_ComplexSparseMat)));
+  SWIG_Python_SetConstant(d, "Operator_Complex_Hypre_ParCSR",SWIG_From_int(static_cast< int >(mfem::Operator::Complex_Hypre_ParCSR)));
   SWIG_Python_SetConstant(d, "TimeDependentOperator_EXPLICIT",SWIG_From_int(static_cast< int >(mfem::TimeDependentOperator::EXPLICIT)));
   SWIG_Python_SetConstant(d, "TimeDependentOperator_IMPLICIT",SWIG_From_int(static_cast< int >(mfem::TimeDependentOperator::IMPLICIT)));
   SWIG_Python_SetConstant(d, "TimeDependentOperator_HOMOGENEOUS",SWIG_From_int(static_cast< int >(mfem::TimeDependentOperator::HOMOGENEOUS)));
+  SWIG_Python_SetConstant(d, "TimeDependentOperator_NORMAL",SWIG_From_int(static_cast< int >(mfem::TimeDependentOperator::NORMAL)));
+  SWIG_Python_SetConstant(d, "TimeDependentOperator_ADDITIVE_TERM_1",SWIG_From_int(static_cast< int >(mfem::TimeDependentOperator::ADDITIVE_TERM_1)));
+  SWIG_Python_SetConstant(d, "TimeDependentOperator_ADDITIVE_TERM_2",SWIG_From_int(static_cast< int >(mfem::TimeDependentOperator::ADDITIVE_TERM_2)));
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

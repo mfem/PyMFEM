@@ -3060,7 +3060,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IntegerSet___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IntegerSet___eq__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IntegerSet *arg1 = (mfem::IntegerSet *) 0 ;
   mfem::IntegerSet *arg2 = 0 ;
@@ -3068,16 +3068,20 @@ SWIGINTERN PyObject *_wrap_IntegerSet___eq__(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"s",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "IntegerSet___eq__", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IntegerSet, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:IntegerSet___eq__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IntegerSet, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerSet___eq__" "', argument " "1"" of type '" "mfem::IntegerSet *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegerSet,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegerSet,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IntegerSet___eq__" "', argument " "2"" of type '" "mfem::IntegerSet &""'"); 
   }
@@ -3110,7 +3114,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IntegerSet_Recreate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IntegerSet_Recreate(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IntegerSet *arg1 = (mfem::IntegerSet *) 0 ;
   int arg2 ;
@@ -3119,21 +3123,26 @@ SWIGINTERN PyObject *_wrap_IntegerSet_Recreate(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"n",  (char *)"p",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "IntegerSet_Recreate", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IntegerSet, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:IntegerSet_Recreate", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IntegerSet, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerSet_Recreate" "', argument " "1"" of type '" "mfem::IntegerSet *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegerSet * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_int, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_int, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IntegerSet_Recreate" "', argument " "3"" of type '" "int const *""'"); 
   }
@@ -3247,26 +3256,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickElementInSet(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickElementInSet(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ListOfIntegerSets *arg1 = (mfem::ListOfIntegerSets *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ListOfIntegerSets_PickElementInSet", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ListOfIntegerSets_PickElementInSet", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListOfIntegerSets_PickElementInSet" "', argument " "1"" of type '" "mfem::ListOfIntegerSets *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3291,26 +3304,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickRandomElementInSet(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ListOfIntegerSets_PickRandomElementInSet(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ListOfIntegerSets *arg1 = (mfem::ListOfIntegerSets *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ListOfIntegerSets_PickRandomElementInSet", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ListOfIntegerSets_PickRandomElementInSet", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListOfIntegerSets_PickRandomElementInSet" "', argument " "1"" of type '" "mfem::ListOfIntegerSets *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -3335,7 +3352,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Insert(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Insert(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ListOfIntegerSets *arg1 = (mfem::ListOfIntegerSets *) 0 ;
   mfem::IntegerSet *arg2 = 0 ;
@@ -3343,16 +3360,20 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Insert(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"s",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ListOfIntegerSets_Insert", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ListOfIntegerSets_Insert", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListOfIntegerSets_Insert" "', argument " "1"" of type '" "mfem::ListOfIntegerSets *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegerSet,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegerSet,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ListOfIntegerSets_Insert" "', argument " "2"" of type '" "mfem::IntegerSet &""'"); 
   }
@@ -3383,7 +3404,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Lookup(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Lookup(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ListOfIntegerSets *arg1 = (mfem::ListOfIntegerSets *) 0 ;
   mfem::IntegerSet *arg2 = 0 ;
@@ -3391,16 +3412,20 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_Lookup(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"s",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ListOfIntegerSets_Lookup", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ListOfIntegerSets_Lookup", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListOfIntegerSets_Lookup" "', argument " "1"" of type '" "mfem::ListOfIntegerSets *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__IntegerSet,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__IntegerSet,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ListOfIntegerSets_Lookup" "', argument " "2"" of type '" "mfem::IntegerSet &""'"); 
   }
@@ -3431,7 +3456,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ListOfIntegerSets_AsTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ListOfIntegerSets_AsTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ListOfIntegerSets *arg1 = (mfem::ListOfIntegerSets *) 0 ;
   mfem::Table *arg2 = 0 ;
@@ -3439,15 +3464,19 @@ SWIGINTERN PyObject *_wrap_ListOfIntegerSets_AsTable(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ListOfIntegerSets_AsTable", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:ListOfIntegerSets_AsTable", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ListOfIntegerSets, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListOfIntegerSets_AsTable" "', argument " "1"" of type '" "mfem::ListOfIntegerSets *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ListOfIntegerSets * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Table,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Table,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ListOfIntegerSets_AsTable" "', argument " "2"" of type '" "mfem::Table &""'"); 
   }
@@ -3556,6 +3585,7 @@ SWIGINTERN PyObject *ListOfIntegerSets_swiginit(PyObject *SWIGUNUSEDPARM(self), 
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_IntegerSet", _wrap_new_IntegerSet, METH_VARARGS, "\n"
 		"IntegerSet()\n"
 		"IntegerSet(IntegerSet s)\n"
@@ -3564,17 +3594,17 @@ static PyMethodDef SwigMethods[] = {
 	 { "IntegerSet_Size", _wrap_IntegerSet_Size, METH_O, "IntegerSet_Size(IntegerSet self) -> int"},
 	 { "IntegerSet_PickElement", _wrap_IntegerSet_PickElement, METH_O, "IntegerSet_PickElement(IntegerSet self) -> int"},
 	 { "IntegerSet_PickRandomElement", _wrap_IntegerSet_PickRandomElement, METH_O, "IntegerSet_PickRandomElement(IntegerSet self) -> int"},
-	 { "IntegerSet___eq__", _wrap_IntegerSet___eq__, METH_VARARGS, "IntegerSet___eq__(IntegerSet self, IntegerSet s) -> int"},
-	 { "IntegerSet_Recreate", _wrap_IntegerSet_Recreate, METH_VARARGS, "IntegerSet_Recreate(IntegerSet self, int const n, int const * p)"},
+	 { "IntegerSet___eq__", (PyCFunction)(void(*)(void))_wrap_IntegerSet___eq__, METH_VARARGS|METH_KEYWORDS, "IntegerSet___eq__(IntegerSet self, IntegerSet s) -> int"},
+	 { "IntegerSet_Recreate", (PyCFunction)(void(*)(void))_wrap_IntegerSet_Recreate, METH_VARARGS|METH_KEYWORDS, "IntegerSet_Recreate(IntegerSet self, int const n, int const * p)"},
 	 { "delete_IntegerSet", _wrap_delete_IntegerSet, METH_O, "delete_IntegerSet(IntegerSet self)"},
 	 { "IntegerSet_swigregister", IntegerSet_swigregister, METH_O, NULL},
 	 { "IntegerSet_swiginit", IntegerSet_swiginit, METH_VARARGS, NULL},
 	 { "ListOfIntegerSets_Size", _wrap_ListOfIntegerSets_Size, METH_O, "ListOfIntegerSets_Size(ListOfIntegerSets self) -> int"},
-	 { "ListOfIntegerSets_PickElementInSet", _wrap_ListOfIntegerSets_PickElementInSet, METH_VARARGS, "ListOfIntegerSets_PickElementInSet(ListOfIntegerSets self, int i) -> int"},
-	 { "ListOfIntegerSets_PickRandomElementInSet", _wrap_ListOfIntegerSets_PickRandomElementInSet, METH_VARARGS, "ListOfIntegerSets_PickRandomElementInSet(ListOfIntegerSets self, int i) -> int"},
-	 { "ListOfIntegerSets_Insert", _wrap_ListOfIntegerSets_Insert, METH_VARARGS, "ListOfIntegerSets_Insert(ListOfIntegerSets self, IntegerSet s) -> int"},
-	 { "ListOfIntegerSets_Lookup", _wrap_ListOfIntegerSets_Lookup, METH_VARARGS, "ListOfIntegerSets_Lookup(ListOfIntegerSets self, IntegerSet s) -> int"},
-	 { "ListOfIntegerSets_AsTable", _wrap_ListOfIntegerSets_AsTable, METH_VARARGS, "ListOfIntegerSets_AsTable(ListOfIntegerSets self, Table t)"},
+	 { "ListOfIntegerSets_PickElementInSet", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_PickElementInSet, METH_VARARGS|METH_KEYWORDS, "ListOfIntegerSets_PickElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { "ListOfIntegerSets_PickRandomElementInSet", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_PickRandomElementInSet, METH_VARARGS|METH_KEYWORDS, "ListOfIntegerSets_PickRandomElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { "ListOfIntegerSets_Insert", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_Insert, METH_VARARGS|METH_KEYWORDS, "ListOfIntegerSets_Insert(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { "ListOfIntegerSets_Lookup", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_Lookup, METH_VARARGS|METH_KEYWORDS, "ListOfIntegerSets_Lookup(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { "ListOfIntegerSets_AsTable", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_AsTable, METH_VARARGS|METH_KEYWORDS, "ListOfIntegerSets_AsTable(ListOfIntegerSets self, Table t)"},
 	 { "delete_ListOfIntegerSets", _wrap_delete_ListOfIntegerSets, METH_O, "delete_ListOfIntegerSets(ListOfIntegerSets self)"},
 	 { "new_ListOfIntegerSets", _wrap_new_ListOfIntegerSets, METH_NOARGS, "new_ListOfIntegerSets() -> ListOfIntegerSets"},
 	 { "ListOfIntegerSets_swigregister", ListOfIntegerSets_swigregister, METH_O, NULL},
@@ -3583,6 +3613,31 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_IntegerSet", _wrap_new_IntegerSet, METH_VARARGS, "\n"
+		"IntegerSet()\n"
+		"IntegerSet(IntegerSet s)\n"
+		"new_IntegerSet(int const n, int const * p) -> IntegerSet\n"
+		""},
+	 { "IntegerSet_Size", _wrap_IntegerSet_Size, METH_O, "Size(IntegerSet self) -> int"},
+	 { "IntegerSet_PickElement", _wrap_IntegerSet_PickElement, METH_O, "PickElement(IntegerSet self) -> int"},
+	 { "IntegerSet_PickRandomElement", _wrap_IntegerSet_PickRandomElement, METH_O, "PickRandomElement(IntegerSet self) -> int"},
+	 { "IntegerSet___eq__", (PyCFunction)(void(*)(void))_wrap_IntegerSet___eq__, METH_VARARGS|METH_KEYWORDS, "__eq__(IntegerSet self, IntegerSet s) -> int"},
+	 { "IntegerSet_Recreate", (PyCFunction)(void(*)(void))_wrap_IntegerSet_Recreate, METH_VARARGS|METH_KEYWORDS, "Recreate(IntegerSet self, int const n, int const * p)"},
+	 { "delete_IntegerSet", _wrap_delete_IntegerSet, METH_O, "delete_IntegerSet(IntegerSet self)"},
+	 { "IntegerSet_swigregister", IntegerSet_swigregister, METH_O, NULL},
+	 { "IntegerSet_swiginit", IntegerSet_swiginit, METH_VARARGS, NULL},
+	 { "ListOfIntegerSets_Size", _wrap_ListOfIntegerSets_Size, METH_O, "Size(ListOfIntegerSets self) -> int"},
+	 { "ListOfIntegerSets_PickElementInSet", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_PickElementInSet, METH_VARARGS|METH_KEYWORDS, "PickElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { "ListOfIntegerSets_PickRandomElementInSet", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_PickRandomElementInSet, METH_VARARGS|METH_KEYWORDS, "PickRandomElementInSet(ListOfIntegerSets self, int i) -> int"},
+	 { "ListOfIntegerSets_Insert", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_Insert, METH_VARARGS|METH_KEYWORDS, "Insert(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { "ListOfIntegerSets_Lookup", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_Lookup, METH_VARARGS|METH_KEYWORDS, "Lookup(ListOfIntegerSets self, IntegerSet s) -> int"},
+	 { "ListOfIntegerSets_AsTable", (PyCFunction)(void(*)(void))_wrap_ListOfIntegerSets_AsTable, METH_VARARGS|METH_KEYWORDS, "AsTable(ListOfIntegerSets self, Table t)"},
+	 { "delete_ListOfIntegerSets", _wrap_delete_ListOfIntegerSets, METH_O, "delete_ListOfIntegerSets(ListOfIntegerSets self)"},
+	 { "new_ListOfIntegerSets", _wrap_new_ListOfIntegerSets, METH_NOARGS, "new_ListOfIntegerSets() -> ListOfIntegerSets"},
+	 { "ListOfIntegerSets_swigregister", ListOfIntegerSets_swigregister, METH_O, NULL},
+	 { "ListOfIntegerSets_swiginit", ListOfIntegerSets_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

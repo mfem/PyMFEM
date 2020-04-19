@@ -17,7 +17,7 @@ WHOLE_ARCHIVE = --whole_archive
 NO_WHOLE_ARCHIVE = --no-whole-archive
 
 SWIG=$(shell which swig)
-SWIGFLAG = -Wall -c++ -python
+SWIGFLAG = -Wall -c++ -python -fastproxy -olddefs -keyword
 
 #
 # MFEM path:

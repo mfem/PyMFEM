@@ -31,6 +31,7 @@ import_array();
 %import "array.i"
 %import "ncmesh.i"
 %import "vector.i"
+%import "vtk.i"
 %import "element.i"
 %import "vertex.i"
 %import "gridfunc.i"
@@ -266,6 +267,21 @@ def GetEdgeTransformation(self, i):
     Tr = IsoparametricTransformation()
     _mesh.Mesh_GetEdgeTransformation(self, i, Tr)
     return Tr
+%}
+%feature("shadow") mfem::Mesh::FindPoints %{
+def FindPoints(self, pp, warn=True, inv_trans=None):            
+    r"""count, element_id, integration_points = FindPoints(points, warn=True, int_trans=None)"""
+    import numpy as np
+    import mfem.par as mfem
+      
+    pp = np.array(pp, copy=False, dtype=float).transpose()      
+    M = mfem.DenseMatrix(pp.shape[0], pp.shape[1])
+    M.Assign(pp)
+    elem_ids = mfem.intArray()
+    int_points = mfem.IntegrationPointArray()
+    count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points, warn, inv_trans)      
+    elem_ids = elem_ids.ToList()
+    return count, elem_ids, int_points
 %}
 
 %immutable attributes;

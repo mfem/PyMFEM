@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _pmesh.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _pmesh.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -94,6 +97,7 @@ import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.operators
 import mfem._par.ncmesh
+import mfem._par.vtk
 import mfem._par.element
 import mfem._par.densemat
 import mfem._par.geom
@@ -111,6 +115,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.handle
 import mfem._par.hypre
+import mfem._par.restriction
 import mfem._par.bilininteg
 import mfem._par.linearform
 import mfem._par.pncmesh
@@ -125,18 +130,27 @@ class ParMesh(mfem._par.mesh.Mesh):
     def Finalize(self, refine=False, fix_orientation=False):
         r"""Finalize(ParMesh self, bool refine=False, bool fix_orientation=False)"""
         return _pmesh.ParMesh_Finalize(self, refine, fix_orientation)
+    Finalize = _swig_new_instance_method(_pmesh.ParMesh_Finalize)
+
+    def SetAttributes(self):
+        r"""SetAttributes(ParMesh self)"""
+        return _pmesh.ParMesh_SetAttributes(self)
+    SetAttributes = _swig_new_instance_method(_pmesh.ParMesh_SetAttributes)
 
     def GetComm(self):
         r"""GetComm(ParMesh self) -> MPI_Comm"""
         return _pmesh.ParMesh_GetComm(self)
+    GetComm = _swig_new_instance_method(_pmesh.ParMesh_GetComm)
 
     def GetNRanks(self):
         r"""GetNRanks(ParMesh self) -> int"""
         return _pmesh.ParMesh_GetNRanks(self)
+    GetNRanks = _swig_new_instance_method(_pmesh.ParMesh_GetNRanks)
 
     def GetMyRank(self):
         r"""GetMyRank(ParMesh self) -> int"""
         return _pmesh.ParMesh_GetMyRank(self)
+    GetMyRank = _swig_new_instance_method(_pmesh.ParMesh_GetMyRank)
     gtopo = property(_pmesh.ParMesh_gtopo_get, doc=r"""gtopo : mfem::GroupTopology""")
     have_face_nbr_data = property(_pmesh.ParMesh_have_face_nbr_data_get, _pmesh.ParMesh_have_face_nbr_data_set, doc=r"""have_face_nbr_data : bool""")
     face_nbr_group = property(_pmesh.ParMesh_face_nbr_group_get, _pmesh.ParMesh_face_nbr_group_set, doc=r"""face_nbr_group : mfem::Array<(int)>""")
@@ -151,26 +165,32 @@ class ParMesh(mfem._par.mesh.Mesh):
     def GetNGroups(self):
         r"""GetNGroups(ParMesh self) -> int"""
         return _pmesh.ParMesh_GetNGroups(self)
+    GetNGroups = _swig_new_instance_method(_pmesh.ParMesh_GetNGroups)
 
     def GroupNVertices(self, group):
         r"""GroupNVertices(ParMesh self, int group) -> int"""
         return _pmesh.ParMesh_GroupNVertices(self, group)
+    GroupNVertices = _swig_new_instance_method(_pmesh.ParMesh_GroupNVertices)
 
     def GroupNEdges(self, group):
         r"""GroupNEdges(ParMesh self, int group) -> int"""
         return _pmesh.ParMesh_GroupNEdges(self, group)
+    GroupNEdges = _swig_new_instance_method(_pmesh.ParMesh_GroupNEdges)
 
     def GroupNTriangles(self, group):
         r"""GroupNTriangles(ParMesh self, int group) -> int"""
         return _pmesh.ParMesh_GroupNTriangles(self, group)
+    GroupNTriangles = _swig_new_instance_method(_pmesh.ParMesh_GroupNTriangles)
 
     def GroupNQuadrilaterals(self, group):
         r"""GroupNQuadrilaterals(ParMesh self, int group) -> int"""
         return _pmesh.ParMesh_GroupNQuadrilaterals(self, group)
+    GroupNQuadrilaterals = _swig_new_instance_method(_pmesh.ParMesh_GroupNQuadrilaterals)
 
     def GroupVertex(self, group, i):
         r"""GroupVertex(ParMesh self, int group, int i) -> int"""
         return _pmesh.ParMesh_GroupVertex(self, group, i)
+    GroupVertex = _swig_new_instance_method(_pmesh.ParMesh_GroupVertex)
 
     def GroupEdge(self, group, i, *args):
         if len(args) == 0:
@@ -187,62 +207,85 @@ class ParMesh(mfem._par.mesh.Mesh):
     def GroupTriangle(self, group, i, face, o):
         r"""GroupTriangle(ParMesh self, int group, int i, int & face, int & o)"""
         return _pmesh.ParMesh_GroupTriangle(self, group, i, face, o)
+    GroupTriangle = _swig_new_instance_method(_pmesh.ParMesh_GroupTriangle)
 
     def GroupQuadrilateral(self, group, i, face, o):
         r"""GroupQuadrilateral(ParMesh self, int group, int i, int & face, int & o)"""
         return _pmesh.ParMesh_GroupQuadrilateral(self, group, i, face, o)
+    GroupQuadrilateral = _swig_new_instance_method(_pmesh.ParMesh_GroupQuadrilateral)
 
     def GenerateOffsets(self, N, loc_sizes, offsets):
         r"""GenerateOffsets(ParMesh self, int N, HYPRE_Int [] loc_sizes, mfem::Array< HYPRE_Int > *[] offsets)"""
         return _pmesh.ParMesh_GenerateOffsets(self, N, loc_sizes, offsets)
+    GenerateOffsets = _swig_new_instance_method(_pmesh.ParMesh_GenerateOffsets)
 
     def ExchangeFaceNbrData(self):
         r"""ExchangeFaceNbrData(ParMesh self)"""
         return _pmesh.ParMesh_ExchangeFaceNbrData(self)
+    ExchangeFaceNbrData = _swig_new_instance_method(_pmesh.ParMesh_ExchangeFaceNbrData)
 
     def ExchangeFaceNbrNodes(self):
         r"""ExchangeFaceNbrNodes(ParMesh self)"""
         return _pmesh.ParMesh_ExchangeFaceNbrNodes(self)
+    ExchangeFaceNbrNodes = _swig_new_instance_method(_pmesh.ParMesh_ExchangeFaceNbrNodes)
+
+    def SetCurvature(self, order, discont=False, space_dim=-1, ordering=1):
+        r"""SetCurvature(ParMesh self, int order, bool discont=False, int space_dim=-1, int ordering=1)"""
+        return _pmesh.ParMesh_SetCurvature(self, order, discont, space_dim, ordering)
+    SetCurvature = _swig_new_instance_method(_pmesh.ParMesh_SetCurvature)
 
     def GetNFaceNeighbors(self):
         r"""GetNFaceNeighbors(ParMesh self) -> int"""
         return _pmesh.ParMesh_GetNFaceNeighbors(self)
+    GetNFaceNeighbors = _swig_new_instance_method(_pmesh.ParMesh_GetNFaceNeighbors)
 
     def GetFaceNbrGroup(self, fn):
         r"""GetFaceNbrGroup(ParMesh self, int fn) -> int"""
         return _pmesh.ParMesh_GetFaceNbrGroup(self, fn)
+    GetFaceNbrGroup = _swig_new_instance_method(_pmesh.ParMesh_GetFaceNbrGroup)
 
     def GetFaceNbrRank(self, fn):
         r"""GetFaceNbrRank(ParMesh self, int fn) -> int"""
         return _pmesh.ParMesh_GetFaceNbrRank(self, fn)
+    GetFaceNbrRank = _swig_new_instance_method(_pmesh.ParMesh_GetFaceNbrRank)
 
     def GetFaceToAllElementTable(self):
         r"""GetFaceToAllElementTable(ParMesh self) -> Table"""
         return _pmesh.ParMesh_GetFaceToAllElementTable(self)
+    GetFaceToAllElementTable = _swig_new_instance_method(_pmesh.ParMesh_GetFaceToAllElementTable)
 
     def GetSharedFaceTransformations(self, sf, fill2=True):
         r"""GetSharedFaceTransformations(ParMesh self, int sf, bool fill2=True) -> FaceElementTransformations"""
         return _pmesh.ParMesh_GetSharedFaceTransformations(self, sf, fill2)
+    GetSharedFaceTransformations = _swig_new_instance_method(_pmesh.ParMesh_GetSharedFaceTransformations)
 
     def GetNSharedFaces(self):
         r"""GetNSharedFaces(ParMesh self) -> int"""
         return _pmesh.ParMesh_GetNSharedFaces(self)
+    GetNSharedFaces = _swig_new_instance_method(_pmesh.ParMesh_GetNSharedFaces)
 
     def GetSharedFace(self, sface):
         r"""GetSharedFace(ParMesh self, int sface) -> int"""
         return _pmesh.ParMesh_GetSharedFace(self, sface)
+    GetSharedFace = _swig_new_instance_method(_pmesh.ParMesh_GetSharedFace)
 
     def ReorientTetMesh(self):
         r"""ReorientTetMesh(ParMesh self)"""
         return _pmesh.ParMesh_ReorientTetMesh(self)
+    ReorientTetMesh = _swig_new_instance_method(_pmesh.ParMesh_ReorientTetMesh)
 
     def ReduceInt(self, value):
         r"""ReduceInt(ParMesh self, int value) -> long"""
         return _pmesh.ParMesh_ReduceInt(self, value)
+    ReduceInt = _swig_new_instance_method(_pmesh.ParMesh_ReduceInt)
 
-    def Rebalance(self):
-        r"""Rebalance(ParMesh self)"""
-        return _pmesh.ParMesh_Rebalance(self)
+    def Rebalance(self, *args):
+        r"""
+        Rebalance(ParMesh self)
+        Rebalance(ParMesh self, intArray partition)
+        """
+        return _pmesh.ParMesh_Rebalance(self, *args)
+    Rebalance = _swig_new_instance_method(_pmesh.ParMesh_Rebalance)
 
     def GetBoundingBox(self, ref = 2):
         from  .vector import Vector
@@ -256,14 +299,28 @@ class ParMesh(mfem._par.mesh.Mesh):
     def GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max):
         r"""GetCharacteristics(ParMesh self, double & h_min, double & h_max, double & kappa_min, double & kappa_max)"""
         return _pmesh.ParMesh_GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max)
+    GetCharacteristics = _swig_new_instance_method(_pmesh.ParMesh_GetCharacteristics)
 
-    def FindPoints(self, point_mat, elem_ids, ips, warn=True, inv_trans=None):
-        r"""FindPoints(ParMesh self, DenseMatrix point_mat, intArray elem_ids, IntegrationPointArray ips, bool warn=True, InverseElementTransformation inv_trans=None) -> int"""
-        return _pmesh.ParMesh_FindPoints(self, point_mat, elem_ids, ips, warn, inv_trans)
+    def FindPoints(self, pp):
+        r"""count, element_id, integration_points = FindPoints(points)"""
+        import numpy as np
+        import mfem.par as mfem
+
+        pp = np.array(pp, copy=False, dtype=float).transpose()      
+        M = mfem.DenseMatrix(pp.shape[0], pp.shape[1])
+        M.Assign(pp)
+        elem_ids = mfem.intArray()
+        int_points = mfem.IntegrationPointArray()
+        count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points)
+        elem_ids = elem_ids.ToList()
+        return count, elem_ids, int_points
+
+
 
     def PrintSharedEntities(self, fname_prefix):
         r"""PrintSharedEntities(ParMesh self, char const * fname_prefix)"""
         return _pmesh.ParMesh_PrintSharedEntities(self, fname_prefix)
+    PrintSharedEntities = _swig_new_instance_method(_pmesh.ParMesh_PrintSharedEntities)
     __swig_destroy__ = _pmesh.delete_ParMesh
 
     def __init__(self, *args):
@@ -279,6 +336,7 @@ class ParMesh(mfem._par.mesh.Mesh):
     def ParPrintToFile(self, mesh_file, precision):
         r"""ParPrintToFile(ParMesh self, char const * mesh_file, int const precision)"""
         return _pmesh.ParMesh_ParPrintToFile(self, mesh_file, precision)
+    ParPrintToFile = _swig_new_instance_method(_pmesh.ParMesh_ParPrintToFile)
 
     def Print(self, *args):
         r"""
@@ -286,6 +344,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         Print(ParMesh self, char const * file, int precision=8)
         """
         return _pmesh.ParMesh_Print(self, *args)
+    Print = _swig_new_instance_method(_pmesh.ParMesh_Print)
 
     def PrintXG(self, *args):
         r"""
@@ -293,6 +352,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         PrintXG(ParMesh self, char const * file, int precision=8)
         """
         return _pmesh.ParMesh_PrintXG(self, *args)
+    PrintXG = _swig_new_instance_method(_pmesh.ParMesh_PrintXG)
 
     def PrintAsOne(self, *args):
         r"""
@@ -300,6 +360,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         PrintAsOne(ParMesh self, char const * file, int precision=8)
         """
         return _pmesh.ParMesh_PrintAsOne(self, *args)
+    PrintAsOne = _swig_new_instance_method(_pmesh.ParMesh_PrintAsOne)
 
     def PrintAsOneXG(self, *args):
         r"""
@@ -307,6 +368,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         PrintAsOneXG(ParMesh self, char const * file, int precision=8)
         """
         return _pmesh.ParMesh_PrintAsOneXG(self, *args)
+    PrintAsOneXG = _swig_new_instance_method(_pmesh.ParMesh_PrintAsOneXG)
 
     def PrintInfo(self, *args):
         r"""
@@ -314,6 +376,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         PrintInfo(ParMesh self, char const * file, int precision=8)
         """
         return _pmesh.ParMesh_PrintInfo(self, *args)
+    PrintInfo = _swig_new_instance_method(_pmesh.ParMesh_PrintInfo)
 
     def ParPrint(self, *args):
         r"""
@@ -322,6 +385,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         ParPrint(ParMesh self)
         """
         return _pmesh.ParMesh_ParPrint(self, *args)
+    ParPrint = _swig_new_instance_method(_pmesh.ParMesh_ParPrint)
 
 # Register ParMesh in _pmesh:
 _pmesh.ParMesh_swigregister(ParMesh)

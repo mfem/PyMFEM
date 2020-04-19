@@ -1,11 +1,11 @@
 '''''
 PyMFEM
-built on mfem 4.0 (commit SHA=4d900b0c5fd6352c92173e74678bcbeeb11c8691)
+built on mfem 4.1 (commit SHA=60b2b7d4238fb72d018ee6f9f7a54bbfc7817e96)
 '''''
 
 PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
-PyMFEM is tested with python = 2.7, 3.7
+PyMFEM is tested with python = 3.6, 3.7
 
 This wrapper is meant for a rapid-prototyping of FEM program, and
 is built using SWIG 3.0.12
@@ -192,6 +192,15 @@ to find more detail of the MFEM libirary.
             void PrintVTK(std::ostream &out);	    
          Following method accept empty argument (=std:cout) and filename
             virtual void PrintInfo(std::ostream &out = mfem::out)
+
+
+         FindPoints receive only one argument (points to look for) and returns
+	 count, element_id, integration_points. Note points are row order. For example,
+
+         >>> count, elem_ids, int_pts = mesh.FindPoint([1,2,3], [3,4,5], [4,5,6], [7,8,9]],
+ 	                                               warn=True, int_trans=None)
+         will look for 4 points.
+
 
 
   4-5) sparsemat

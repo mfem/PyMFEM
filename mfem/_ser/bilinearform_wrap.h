@@ -27,6 +27,8 @@ public:
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_BilinearForm();
     virtual double &Elem(int i, int j);
@@ -69,7 +71,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[24];
+    mutable swig::SwigVar_PyObject vtable[19];
 #endif
 
 };

@@ -3078,14 +3078,17 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__PyOperatorBase swig_types[10]
 #define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[11]
 #define SWIGTYPE_p_mfem__RAPOperator swig_types[12]
-#define SWIGTYPE_p_mfem__Solver swig_types[13]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[14]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[15]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[16]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[17]
-#define SWIGTYPE_p_mfem__Vector swig_types[18]
-static swig_type_info *swig_types[20];
-static swig_module_info swig_module = {swig_types, 19, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[13]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[14]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[15]
+#define SWIGTYPE_p_mfem__Solver swig_types[16]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[17]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[18]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[19]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[20]
+#define SWIGTYPE_p_mfem__Vector swig_types[21]
+static swig_type_info *swig_types[23];
+static swig_module_info swig_module = {swig_types, 22, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3270,17 +3273,19 @@ SWIGINTERNINLINE PyObject*
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_Opr2BlockOpr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Opr2BlockOpr(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"op",  NULL 
+  };
   mfem::BlockOperator *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:Opr2BlockOpr", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Opr2BlockOpr" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
@@ -3311,17 +3316,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Opr2SparseMat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Opr2SparseMat(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Operator *arg1 = (mfem::Operator *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"op",  NULL 
+  };
   mfem::SparseMatrix *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:Opr2SparseMat", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Opr2SparseMat" "', argument " "1"" of type '" "mfem::Operator *""'"); 
   }
@@ -3485,41 +3492,50 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   int arg2 ;
   mfem::Operator *arg3 = (mfem::Operator *) 0 ;
-  double arg4 ;
+  double arg4 = (double) 1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"iblock",  (char *)"op",  (char *)"c",  NULL 
+  };
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:BlockOperator_SetDiagonalBlock", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_SetDiagonalBlock" "', argument " "1"" of type '" "mfem::BlockOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockOperator_SetDiagonalBlock" "', argument " "3"" of type '" "mfem::Operator *""'"); 
   }
   arg3 = reinterpret_cast< mfem::Operator * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BlockOperator_SetDiagonalBlock" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BlockOperator_SetDiagonalBlock" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       (arg1)->SetDiagonalBlock(arg2,arg3,arg4);
@@ -3546,173 +3562,58 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
-  int arg2 ;
-  mfem::Operator *arg3 = (mfem::Operator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_SetDiagonalBlock" "', argument " "1"" of type '" "mfem::BlockOperator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockOperator_SetDiagonalBlock" "', argument " "3"" of type '" "mfem::Operator *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Operator * >(argp3);
-  {
-    try {
-      (arg1)->SetDiagonalBlock(arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockOperator_SetDiagonalBlock(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BlockOperator_SetDiagonalBlock", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockOperator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_BlockOperator_SetDiagonalBlock__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockOperator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_BlockOperator_SetDiagonalBlock__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockOperator_SetDiagonalBlock'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BlockOperator::SetDiagonalBlock(int,mfem::Operator *,double)\n"
-    "    mfem::BlockOperator::SetDiagonalBlock(int,mfem::Operator *)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   int arg2 ;
   int arg3 ;
   mfem::Operator *arg4 = (mfem::Operator *) 0 ;
-  double arg5 ;
+  double arg5 = (double) 1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"iRow",  (char *)"iCol",  (char *)"op",  (char *)"c",  NULL 
+  };
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|O:BlockOperator_SetBlock", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_SetBlock" "', argument " "1"" of type '" "mfem::BlockOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BlockOperator_SetBlock" "', argument " "4"" of type '" "mfem::Operator *""'"); 
   }
   arg4 = reinterpret_cast< mfem::Operator * >(argp4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BlockOperator_SetBlock" "', argument " "5"" of type '" "double""'");
-  } 
-  arg5 = static_cast< double >(val5);
+  if (obj4) {
+    ecode5 = SWIG_AsVal_double(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "BlockOperator_SetBlock" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
   {
     try {
       (arg1)->SetBlock(arg2,arg3,arg4,arg5);
@@ -3736,158 +3637,6 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock__SWIG_0(PyObject *SWIGUNUSEDPA
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::Operator *arg4 = (mfem::Operator *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_SetBlock" "', argument " "1"" of type '" "mfem::BlockOperator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BlockOperator_SetBlock" "', argument " "4"" of type '" "mfem::Operator *""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Operator * >(argp4);
-  {
-    try {
-      (arg1)->SetBlock(arg2,arg3,arg4);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_BlockOperator_SetBlock(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "BlockOperator_SetBlock", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockOperator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_BlockOperator_SetBlock__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BlockOperator, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Operator, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-            if (_v) {
-              return _wrap_BlockOperator_SetBlock__SWIG_0(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'BlockOperator_SetBlock'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::BlockOperator::SetBlock(int,int,mfem::Operator *,double)\n"
-    "    mfem::BlockOperator::SetBlock(int,int,mfem::Operator *)\n");
-  return 0;
 }
 
 
@@ -3973,33 +3722,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_IsZeroBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockOperator_IsZeroBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockOperator_IsZeroBlock", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockOperator_IsZeroBlock", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_IsZeroBlock" "', argument " "1"" of type '" "mfem::BlockOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4027,33 +3781,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_GetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockOperator_GetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
   mfem::Operator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockOperator_GetBlock", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockOperator_GetBlock", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_GetBlock" "', argument " "1"" of type '" "mfem::BlockOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4081,33 +3840,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_GetBlockCoef(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockOperator_GetBlockCoef(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockOperator_GetBlockCoef", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockOperator_GetBlockCoef", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_GetBlockCoef" "', argument " "1"" of type '" "mfem::BlockOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -4135,7 +3899,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_SetBlockCoef(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockOperator_SetBlockCoef(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   int arg2 ;
@@ -4145,27 +3909,33 @@ SWIGINTERN PyObject *_wrap_BlockOperator_SetBlockCoef(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  (char *)"c",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockOperator_SetBlockCoef", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:BlockOperator_SetBlockCoef", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_SetBlockCoef" "', argument " "1"" of type '" "mfem::BlockOperator *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+  ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "BlockOperator_SetBlockCoef" "', argument " "4"" of type '" "double""'");
   } 
@@ -4278,7 +4048,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockOperator_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4289,15 +4059,20 @@ SWIGINTERN PyObject *_wrap_BlockOperator_Mult(PyObject *SWIGUNUSEDPARM(self), Py
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockOperator_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockOperator_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_Mult" "', argument " "1"" of type '" "mfem::BlockOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4305,7 +4080,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_Mult(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockOperator_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockOperator_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4339,7 +4114,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockOperator *arg1 = (mfem::BlockOperator *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4350,15 +4125,20 @@ SWIGINTERN PyObject *_wrap_BlockOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockOperator_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockOperator_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockOperator, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockOperator_MultTranspose" "', argument " "1"" of type '" "mfem::BlockOperator const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockOperator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4366,7 +4146,7 @@ SWIGINTERN PyObject *_wrap_BlockOperator_MultTranspose(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockOperator_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockOperator_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4502,17 +4282,19 @@ SWIGINTERN PyObject *BlockOperator_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_BlockDiagonalPreconditioner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_BlockDiagonalPreconditioner(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"offsets",  NULL 
+  };
   mfem::BlockDiagonalPreconditioner *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_BlockDiagonalPreconditioner", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockDiagonalPreconditioner" "', argument " "1"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -4546,7 +4328,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_SetDiagonalBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_SetDiagonalBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockDiagonalPreconditioner *arg1 = (mfem::BlockDiagonalPreconditioner *) 0 ;
   int arg2 ;
@@ -4555,21 +4337,26 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_SetDiagonalBlock(PyObject
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"iblock",  (char *)"op",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockDiagonalPreconditioner_SetDiagonalBlock", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockDiagonalPreconditioner_SetDiagonalBlock", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockDiagonalPreconditioner_SetDiagonalBlock" "', argument " "1"" of type '" "mfem::BlockDiagonalPreconditioner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockDiagonalPreconditioner_SetDiagonalBlock" "', argument " "3"" of type '" "mfem::Operator *""'"); 
   }
@@ -4600,7 +4387,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockDiagonalPreconditioner *arg1 = (mfem::BlockDiagonalPreconditioner *) 0 ;
   mfem::Operator *arg2 = 0 ;
@@ -4608,15 +4395,19 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_SetOperator(PyObject *SWI
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"op",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockDiagonalPreconditioner_SetOperator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BlockDiagonalPreconditioner_SetOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockDiagonalPreconditioner_SetOperator" "', argument " "1"" of type '" "mfem::BlockDiagonalPreconditioner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockDiagonalPreconditioner_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
   }
@@ -4691,26 +4482,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_GetDiagonalBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_GetDiagonalBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockDiagonalPreconditioner *arg1 = (mfem::BlockDiagonalPreconditioner *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"iblock",  NULL 
+  };
   mfem::Operator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockDiagonalPreconditioner_GetDiagonalBlock", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BlockDiagonalPreconditioner_GetDiagonalBlock", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockDiagonalPreconditioner_GetDiagonalBlock" "', argument " "1"" of type '" "mfem::BlockDiagonalPreconditioner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4779,7 +4574,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockDiagonalPreconditioner *arg1 = (mfem::BlockDiagonalPreconditioner *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4790,15 +4585,20 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_Mult(PyObject *SWIGUNUSED
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockDiagonalPreconditioner_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockDiagonalPreconditioner_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockDiagonalPreconditioner_Mult" "', argument " "1"" of type '" "mfem::BlockDiagonalPreconditioner const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockDiagonalPreconditioner_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4806,7 +4606,7 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_Mult(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockDiagonalPreconditioner_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockDiagonalPreconditioner_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4840,7 +4640,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockDiagonalPreconditioner *arg1 = (mfem::BlockDiagonalPreconditioner *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4851,15 +4651,20 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_MultTranspose(PyObject *S
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockDiagonalPreconditioner_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockDiagonalPreconditioner_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockDiagonalPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockDiagonalPreconditioner_MultTranspose" "', argument " "1"" of type '" "mfem::BlockDiagonalPreconditioner const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockDiagonalPreconditioner * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockDiagonalPreconditioner_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4867,7 +4672,7 @@ SWIGINTERN PyObject *_wrap_BlockDiagonalPreconditioner_MultTranspose(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockDiagonalPreconditioner_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockDiagonalPreconditioner_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5003,17 +4808,19 @@ SWIGINTERN PyObject *BlockDiagonalPreconditioner_swiginit(PyObject *SWIGUNUSEDPA
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_BlockLowerTriangularPreconditioner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_BlockLowerTriangularPreconditioner(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Array< int > *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"offsets",  NULL 
+  };
   mfem::BlockLowerTriangularPreconditioner *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_BlockLowerTriangularPreconditioner", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__ArrayT_int_t,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_BlockLowerTriangularPreconditioner" "', argument " "1"" of type '" "mfem::Array< int > const &""'"); 
   }
@@ -5047,7 +4854,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockLowerTriangularPreconditioner *arg1 = (mfem::BlockLowerTriangularPreconditioner *) 0 ;
   int arg2 ;
@@ -5056,21 +4863,26 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock(P
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"iblock",  (char *)"op",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockLowerTriangularPreconditioner_SetDiagonalBlock", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockLowerTriangularPreconditioner_SetDiagonalBlock", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockLowerTriangularPreconditioner_SetDiagonalBlock" "', argument " "1"" of type '" "mfem::BlockLowerTriangularPreconditioner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockLowerTriangularPreconditioner_SetDiagonalBlock" "', argument " "3"" of type '" "mfem::Operator *""'"); 
   }
@@ -5101,7 +4913,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockLowerTriangularPreconditioner *arg1 = (mfem::BlockLowerTriangularPreconditioner *) 0 ;
   int arg2 ;
@@ -5111,27 +4923,33 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetBlock(PyObject 
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"iRow",  (char *)"iCol",  (char *)"op",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockLowerTriangularPreconditioner_SetBlock", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:BlockLowerTriangularPreconditioner_SetBlock", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockLowerTriangularPreconditioner_SetBlock" "', argument " "1"" of type '" "mfem::BlockLowerTriangularPreconditioner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Operator, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "BlockLowerTriangularPreconditioner_SetBlock" "', argument " "4"" of type '" "mfem::Operator *""'"); 
   }
@@ -5162,7 +4980,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockLowerTriangularPreconditioner *arg1 = (mfem::BlockLowerTriangularPreconditioner *) 0 ;
   mfem::Operator *arg2 = 0 ;
@@ -5170,15 +4988,19 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_SetOperator(PyObje
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"op",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockLowerTriangularPreconditioner_SetOperator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:BlockLowerTriangularPreconditioner_SetOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockLowerTriangularPreconditioner_SetOperator" "', argument " "1"" of type '" "mfem::BlockLowerTriangularPreconditioner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockLowerTriangularPreconditioner_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
   }
@@ -5253,33 +5075,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_GetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_GetBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockLowerTriangularPreconditioner *arg1 = (mfem::BlockLowerTriangularPreconditioner *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"iblock",  (char *)"jblock",  NULL 
+  };
   mfem::Operator *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockLowerTriangularPreconditioner_GetBlock", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockLowerTriangularPreconditioner_GetBlock", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockLowerTriangularPreconditioner_GetBlock" "', argument " "1"" of type '" "mfem::BlockLowerTriangularPreconditioner *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -5348,7 +5175,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockLowerTriangularPreconditioner *arg1 = (mfem::BlockLowerTriangularPreconditioner *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5359,15 +5186,20 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_Mult(PyObject *SWI
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockLowerTriangularPreconditioner_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockLowerTriangularPreconditioner_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockLowerTriangularPreconditioner_Mult" "', argument " "1"" of type '" "mfem::BlockLowerTriangularPreconditioner const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockLowerTriangularPreconditioner_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5375,7 +5207,7 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_Mult(PyObject *SWI
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockLowerTriangularPreconditioner_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockLowerTriangularPreconditioner_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5409,7 +5241,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_MultTranspose(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BlockLowerTriangularPreconditioner *arg1 = (mfem::BlockLowerTriangularPreconditioner *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -5420,15 +5252,20 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_MultTranspose(PyOb
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "BlockLowerTriangularPreconditioner_MultTranspose", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:BlockLowerTriangularPreconditioner_MultTranspose", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__BlockLowerTriangularPreconditioner, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "BlockLowerTriangularPreconditioner_MultTranspose" "', argument " "1"" of type '" "mfem::BlockLowerTriangularPreconditioner const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::BlockLowerTriangularPreconditioner * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "BlockLowerTriangularPreconditioner_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -5436,7 +5273,7 @@ SWIGINTERN PyObject *_wrap_BlockLowerTriangularPreconditioner_MultTranspose(PyOb
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "BlockLowerTriangularPreconditioner_MultTranspose" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "BlockLowerTriangularPreconditioner_MultTranspose" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -5574,51 +5411,52 @@ SWIGINTERN PyObject *BlockLowerTriangularPreconditioner_swiginit(PyObject *SWIGU
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { "Opr2BlockOpr", _wrap_Opr2BlockOpr, METH_O, "Opr2BlockOpr(Operator op) -> BlockOperator"},
-	 { "Opr2SparseMat", _wrap_Opr2SparseMat, METH_O, "Opr2SparseMat(Operator op) -> mfem::SparseMatrix *"},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Opr2BlockOpr", (PyCFunction)(void(*)(void))_wrap_Opr2BlockOpr, METH_VARARGS|METH_KEYWORDS, "Opr2BlockOpr(Operator op) -> BlockOperator"},
+	 { "Opr2SparseMat", (PyCFunction)(void(*)(void))_wrap_Opr2SparseMat, METH_VARARGS|METH_KEYWORDS, "Opr2SparseMat(Operator op) -> mfem::SparseMatrix *"},
 	 { "new_BlockOperator", _wrap_new_BlockOperator, METH_VARARGS, "\n"
 		"BlockOperator(intArray offsets)\n"
 		"new_BlockOperator(intArray row_offsets, intArray col_offsets) -> BlockOperator\n"
 		""},
-	 { "BlockOperator_SetDiagonalBlock", _wrap_BlockOperator_SetDiagonalBlock, METH_VARARGS, "BlockOperator_SetDiagonalBlock(BlockOperator self, int iblock, Operator op, double c=1.0)"},
-	 { "BlockOperator_SetBlock", _wrap_BlockOperator_SetBlock, METH_VARARGS, "BlockOperator_SetBlock(BlockOperator self, int iRow, int iCol, Operator op, double c=1.0)"},
+	 { "BlockOperator_SetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_SetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "BlockOperator_SetDiagonalBlock(BlockOperator self, int iblock, Operator op, double c=1.0)"},
+	 { "BlockOperator_SetBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_SetBlock, METH_VARARGS|METH_KEYWORDS, "BlockOperator_SetBlock(BlockOperator self, int iRow, int iCol, Operator op, double c=1.0)"},
 	 { "BlockOperator_NumRowBlocks", _wrap_BlockOperator_NumRowBlocks, METH_O, "BlockOperator_NumRowBlocks(BlockOperator self) -> int"},
 	 { "BlockOperator_NumColBlocks", _wrap_BlockOperator_NumColBlocks, METH_O, "BlockOperator_NumColBlocks(BlockOperator self) -> int"},
-	 { "BlockOperator_IsZeroBlock", _wrap_BlockOperator_IsZeroBlock, METH_VARARGS, "BlockOperator_IsZeroBlock(BlockOperator self, int i, int j) -> int"},
-	 { "BlockOperator_GetBlock", _wrap_BlockOperator_GetBlock, METH_VARARGS, "BlockOperator_GetBlock(BlockOperator self, int i, int j) -> Operator"},
-	 { "BlockOperator_GetBlockCoef", _wrap_BlockOperator_GetBlockCoef, METH_VARARGS, "BlockOperator_GetBlockCoef(BlockOperator self, int i, int j) -> double"},
-	 { "BlockOperator_SetBlockCoef", _wrap_BlockOperator_SetBlockCoef, METH_VARARGS, "BlockOperator_SetBlockCoef(BlockOperator self, int i, int j, double c)"},
+	 { "BlockOperator_IsZeroBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_IsZeroBlock, METH_VARARGS|METH_KEYWORDS, "BlockOperator_IsZeroBlock(BlockOperator self, int i, int j) -> int"},
+	 { "BlockOperator_GetBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_GetBlock, METH_VARARGS|METH_KEYWORDS, "BlockOperator_GetBlock(BlockOperator self, int i, int j) -> Operator"},
+	 { "BlockOperator_GetBlockCoef", (PyCFunction)(void(*)(void))_wrap_BlockOperator_GetBlockCoef, METH_VARARGS|METH_KEYWORDS, "BlockOperator_GetBlockCoef(BlockOperator self, int i, int j) -> double"},
+	 { "BlockOperator_SetBlockCoef", (PyCFunction)(void(*)(void))_wrap_BlockOperator_SetBlockCoef, METH_VARARGS|METH_KEYWORDS, "BlockOperator_SetBlockCoef(BlockOperator self, int i, int j, double c)"},
 	 { "BlockOperator_RowOffsets", _wrap_BlockOperator_RowOffsets, METH_O, "BlockOperator_RowOffsets(BlockOperator self) -> intArray"},
 	 { "BlockOperator_ColOffsets", _wrap_BlockOperator_ColOffsets, METH_O, "BlockOperator_ColOffsets(BlockOperator self) -> intArray"},
-	 { "BlockOperator_Mult", _wrap_BlockOperator_Mult, METH_VARARGS, "BlockOperator_Mult(BlockOperator self, Vector x, Vector y)"},
-	 { "BlockOperator_MultTranspose", _wrap_BlockOperator_MultTranspose, METH_VARARGS, "BlockOperator_MultTranspose(BlockOperator self, Vector x, Vector y)"},
+	 { "BlockOperator_Mult", (PyCFunction)(void(*)(void))_wrap_BlockOperator_Mult, METH_VARARGS|METH_KEYWORDS, "BlockOperator_Mult(BlockOperator self, Vector x, Vector y)"},
+	 { "BlockOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "BlockOperator_MultTranspose(BlockOperator self, Vector x, Vector y)"},
 	 { "delete_BlockOperator", _wrap_delete_BlockOperator, METH_O, "delete_BlockOperator(BlockOperator self)"},
 	 { "BlockOperator_owns_blocks_set", _wrap_BlockOperator_owns_blocks_set, METH_VARARGS, "BlockOperator_owns_blocks_set(BlockOperator self, int owns_blocks)"},
 	 { "BlockOperator_owns_blocks_get", _wrap_BlockOperator_owns_blocks_get, METH_O, "BlockOperator_owns_blocks_get(BlockOperator self) -> int"},
 	 { "BlockOperator_swigregister", BlockOperator_swigregister, METH_O, NULL},
 	 { "BlockOperator_swiginit", BlockOperator_swiginit, METH_VARARGS, NULL},
-	 { "new_BlockDiagonalPreconditioner", _wrap_new_BlockDiagonalPreconditioner, METH_O, "new_BlockDiagonalPreconditioner(intArray offsets) -> BlockDiagonalPreconditioner"},
-	 { "BlockDiagonalPreconditioner_SetDiagonalBlock", _wrap_BlockDiagonalPreconditioner_SetDiagonalBlock, METH_VARARGS, "BlockDiagonalPreconditioner_SetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock, Operator op)"},
-	 { "BlockDiagonalPreconditioner_SetOperator", _wrap_BlockDiagonalPreconditioner_SetOperator, METH_VARARGS, "BlockDiagonalPreconditioner_SetOperator(BlockDiagonalPreconditioner self, Operator op)"},
+	 { "new_BlockDiagonalPreconditioner", (PyCFunction)(void(*)(void))_wrap_new_BlockDiagonalPreconditioner, METH_VARARGS|METH_KEYWORDS, "new_BlockDiagonalPreconditioner(intArray offsets) -> BlockDiagonalPreconditioner"},
+	 { "BlockDiagonalPreconditioner_SetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_SetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "BlockDiagonalPreconditioner_SetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock, Operator op)"},
+	 { "BlockDiagonalPreconditioner_SetOperator", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_SetOperator, METH_VARARGS|METH_KEYWORDS, "BlockDiagonalPreconditioner_SetOperator(BlockDiagonalPreconditioner self, Operator op)"},
 	 { "BlockDiagonalPreconditioner_NumBlocks", _wrap_BlockDiagonalPreconditioner_NumBlocks, METH_O, "BlockDiagonalPreconditioner_NumBlocks(BlockDiagonalPreconditioner self) -> int"},
-	 { "BlockDiagonalPreconditioner_GetDiagonalBlock", _wrap_BlockDiagonalPreconditioner_GetDiagonalBlock, METH_VARARGS, "BlockDiagonalPreconditioner_GetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock) -> Operator"},
+	 { "BlockDiagonalPreconditioner_GetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_GetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "BlockDiagonalPreconditioner_GetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock) -> Operator"},
 	 { "BlockDiagonalPreconditioner_Offsets", _wrap_BlockDiagonalPreconditioner_Offsets, METH_O, "BlockDiagonalPreconditioner_Offsets(BlockDiagonalPreconditioner self) -> intArray"},
-	 { "BlockDiagonalPreconditioner_Mult", _wrap_BlockDiagonalPreconditioner_Mult, METH_VARARGS, "BlockDiagonalPreconditioner_Mult(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
-	 { "BlockDiagonalPreconditioner_MultTranspose", _wrap_BlockDiagonalPreconditioner_MultTranspose, METH_VARARGS, "BlockDiagonalPreconditioner_MultTranspose(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
+	 { "BlockDiagonalPreconditioner_Mult", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_Mult, METH_VARARGS|METH_KEYWORDS, "BlockDiagonalPreconditioner_Mult(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
+	 { "BlockDiagonalPreconditioner_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_MultTranspose, METH_VARARGS|METH_KEYWORDS, "BlockDiagonalPreconditioner_MultTranspose(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
 	 { "delete_BlockDiagonalPreconditioner", _wrap_delete_BlockDiagonalPreconditioner, METH_O, "delete_BlockDiagonalPreconditioner(BlockDiagonalPreconditioner self)"},
 	 { "BlockDiagonalPreconditioner_owns_blocks_set", _wrap_BlockDiagonalPreconditioner_owns_blocks_set, METH_VARARGS, "BlockDiagonalPreconditioner_owns_blocks_set(BlockDiagonalPreconditioner self, int owns_blocks)"},
 	 { "BlockDiagonalPreconditioner_owns_blocks_get", _wrap_BlockDiagonalPreconditioner_owns_blocks_get, METH_O, "BlockDiagonalPreconditioner_owns_blocks_get(BlockDiagonalPreconditioner self) -> int"},
 	 { "BlockDiagonalPreconditioner_swigregister", BlockDiagonalPreconditioner_swigregister, METH_O, NULL},
 	 { "BlockDiagonalPreconditioner_swiginit", BlockDiagonalPreconditioner_swiginit, METH_VARARGS, NULL},
-	 { "new_BlockLowerTriangularPreconditioner", _wrap_new_BlockLowerTriangularPreconditioner, METH_O, "new_BlockLowerTriangularPreconditioner(intArray offsets) -> BlockLowerTriangularPreconditioner"},
-	 { "BlockLowerTriangularPreconditioner_SetDiagonalBlock", _wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock, METH_VARARGS, "BlockLowerTriangularPreconditioner_SetDiagonalBlock(BlockLowerTriangularPreconditioner self, int iblock, Operator op)"},
-	 { "BlockLowerTriangularPreconditioner_SetBlock", _wrap_BlockLowerTriangularPreconditioner_SetBlock, METH_VARARGS, "BlockLowerTriangularPreconditioner_SetBlock(BlockLowerTriangularPreconditioner self, int iRow, int iCol, Operator op)"},
-	 { "BlockLowerTriangularPreconditioner_SetOperator", _wrap_BlockLowerTriangularPreconditioner_SetOperator, METH_VARARGS, "BlockLowerTriangularPreconditioner_SetOperator(BlockLowerTriangularPreconditioner self, Operator op)"},
+	 { "new_BlockLowerTriangularPreconditioner", (PyCFunction)(void(*)(void))_wrap_new_BlockLowerTriangularPreconditioner, METH_VARARGS|METH_KEYWORDS, "new_BlockLowerTriangularPreconditioner(intArray offsets) -> BlockLowerTriangularPreconditioner"},
+	 { "BlockLowerTriangularPreconditioner_SetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "BlockLowerTriangularPreconditioner_SetDiagonalBlock(BlockLowerTriangularPreconditioner self, int iblock, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_SetBlock", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_SetBlock, METH_VARARGS|METH_KEYWORDS, "BlockLowerTriangularPreconditioner_SetBlock(BlockLowerTriangularPreconditioner self, int iRow, int iCol, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_SetOperator", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_SetOperator, METH_VARARGS|METH_KEYWORDS, "BlockLowerTriangularPreconditioner_SetOperator(BlockLowerTriangularPreconditioner self, Operator op)"},
 	 { "BlockLowerTriangularPreconditioner_NumBlocks", _wrap_BlockLowerTriangularPreconditioner_NumBlocks, METH_O, "BlockLowerTriangularPreconditioner_NumBlocks(BlockLowerTriangularPreconditioner self) -> int"},
-	 { "BlockLowerTriangularPreconditioner_GetBlock", _wrap_BlockLowerTriangularPreconditioner_GetBlock, METH_VARARGS, "BlockLowerTriangularPreconditioner_GetBlock(BlockLowerTriangularPreconditioner self, int iblock, int jblock) -> Operator"},
+	 { "BlockLowerTriangularPreconditioner_GetBlock", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_GetBlock, METH_VARARGS|METH_KEYWORDS, "BlockLowerTriangularPreconditioner_GetBlock(BlockLowerTriangularPreconditioner self, int iblock, int jblock) -> Operator"},
 	 { "BlockLowerTriangularPreconditioner_Offsets", _wrap_BlockLowerTriangularPreconditioner_Offsets, METH_O, "BlockLowerTriangularPreconditioner_Offsets(BlockLowerTriangularPreconditioner self) -> intArray"},
-	 { "BlockLowerTriangularPreconditioner_Mult", _wrap_BlockLowerTriangularPreconditioner_Mult, METH_VARARGS, "BlockLowerTriangularPreconditioner_Mult(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
-	 { "BlockLowerTriangularPreconditioner_MultTranspose", _wrap_BlockLowerTriangularPreconditioner_MultTranspose, METH_VARARGS, "BlockLowerTriangularPreconditioner_MultTranspose(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
+	 { "BlockLowerTriangularPreconditioner_Mult", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_Mult, METH_VARARGS|METH_KEYWORDS, "BlockLowerTriangularPreconditioner_Mult(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
+	 { "BlockLowerTriangularPreconditioner_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_MultTranspose, METH_VARARGS|METH_KEYWORDS, "BlockLowerTriangularPreconditioner_MultTranspose(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
 	 { "delete_BlockLowerTriangularPreconditioner", _wrap_delete_BlockLowerTriangularPreconditioner, METH_O, "delete_BlockLowerTriangularPreconditioner(BlockLowerTriangularPreconditioner self)"},
 	 { "BlockLowerTriangularPreconditioner_owns_blocks_set", _wrap_BlockLowerTriangularPreconditioner_owns_blocks_set, METH_VARARGS, "BlockLowerTriangularPreconditioner_owns_blocks_set(BlockLowerTriangularPreconditioner self, int owns_blocks)"},
 	 { "BlockLowerTriangularPreconditioner_owns_blocks_get", _wrap_BlockLowerTriangularPreconditioner_owns_blocks_get, METH_O, "BlockLowerTriangularPreconditioner_owns_blocks_get(BlockLowerTriangularPreconditioner self) -> int"},
@@ -5628,6 +5466,58 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Opr2BlockOpr", (PyCFunction)(void(*)(void))_wrap_Opr2BlockOpr, METH_VARARGS|METH_KEYWORDS, "Opr2BlockOpr(Operator op) -> BlockOperator"},
+	 { "Opr2SparseMat", (PyCFunction)(void(*)(void))_wrap_Opr2SparseMat, METH_VARARGS|METH_KEYWORDS, "Opr2SparseMat(Operator op) -> mfem::SparseMatrix *"},
+	 { "new_BlockOperator", _wrap_new_BlockOperator, METH_VARARGS, "\n"
+		"BlockOperator(intArray offsets)\n"
+		"new_BlockOperator(intArray row_offsets, intArray col_offsets) -> BlockOperator\n"
+		""},
+	 { "BlockOperator_SetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_SetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "SetDiagonalBlock(BlockOperator self, int iblock, Operator op, double c=1.0)"},
+	 { "BlockOperator_SetBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_SetBlock, METH_VARARGS|METH_KEYWORDS, "SetBlock(BlockOperator self, int iRow, int iCol, Operator op, double c=1.0)"},
+	 { "BlockOperator_NumRowBlocks", _wrap_BlockOperator_NumRowBlocks, METH_O, "NumRowBlocks(BlockOperator self) -> int"},
+	 { "BlockOperator_NumColBlocks", _wrap_BlockOperator_NumColBlocks, METH_O, "NumColBlocks(BlockOperator self) -> int"},
+	 { "BlockOperator_IsZeroBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_IsZeroBlock, METH_VARARGS|METH_KEYWORDS, "IsZeroBlock(BlockOperator self, int i, int j) -> int"},
+	 { "BlockOperator_GetBlock", (PyCFunction)(void(*)(void))_wrap_BlockOperator_GetBlock, METH_VARARGS|METH_KEYWORDS, "GetBlock(BlockOperator self, int i, int j) -> Operator"},
+	 { "BlockOperator_GetBlockCoef", (PyCFunction)(void(*)(void))_wrap_BlockOperator_GetBlockCoef, METH_VARARGS|METH_KEYWORDS, "GetBlockCoef(BlockOperator self, int i, int j) -> double"},
+	 { "BlockOperator_SetBlockCoef", (PyCFunction)(void(*)(void))_wrap_BlockOperator_SetBlockCoef, METH_VARARGS|METH_KEYWORDS, "SetBlockCoef(BlockOperator self, int i, int j, double c)"},
+	 { "BlockOperator_RowOffsets", _wrap_BlockOperator_RowOffsets, METH_O, "RowOffsets(BlockOperator self) -> intArray"},
+	 { "BlockOperator_ColOffsets", _wrap_BlockOperator_ColOffsets, METH_O, "ColOffsets(BlockOperator self) -> intArray"},
+	 { "BlockOperator_Mult", (PyCFunction)(void(*)(void))_wrap_BlockOperator_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(BlockOperator self, Vector x, Vector y)"},
+	 { "BlockOperator_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockOperator_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(BlockOperator self, Vector x, Vector y)"},
+	 { "delete_BlockOperator", _wrap_delete_BlockOperator, METH_O, "delete_BlockOperator(BlockOperator self)"},
+	 { "BlockOperator_owns_blocks_set", _wrap_BlockOperator_owns_blocks_set, METH_VARARGS, "BlockOperator_owns_blocks_set(BlockOperator self, int owns_blocks)"},
+	 { "BlockOperator_owns_blocks_get", _wrap_BlockOperator_owns_blocks_get, METH_O, "BlockOperator_owns_blocks_get(BlockOperator self) -> int"},
+	 { "BlockOperator_swigregister", BlockOperator_swigregister, METH_O, NULL},
+	 { "BlockOperator_swiginit", BlockOperator_swiginit, METH_VARARGS, NULL},
+	 { "new_BlockDiagonalPreconditioner", (PyCFunction)(void(*)(void))_wrap_new_BlockDiagonalPreconditioner, METH_VARARGS|METH_KEYWORDS, "new_BlockDiagonalPreconditioner(intArray offsets) -> BlockDiagonalPreconditioner"},
+	 { "BlockDiagonalPreconditioner_SetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_SetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "SetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock, Operator op)"},
+	 { "BlockDiagonalPreconditioner_SetOperator", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_SetOperator, METH_VARARGS|METH_KEYWORDS, "SetOperator(BlockDiagonalPreconditioner self, Operator op)"},
+	 { "BlockDiagonalPreconditioner_NumBlocks", _wrap_BlockDiagonalPreconditioner_NumBlocks, METH_O, "NumBlocks(BlockDiagonalPreconditioner self) -> int"},
+	 { "BlockDiagonalPreconditioner_GetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_GetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "GetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock) -> Operator"},
+	 { "BlockDiagonalPreconditioner_Offsets", _wrap_BlockDiagonalPreconditioner_Offsets, METH_O, "Offsets(BlockDiagonalPreconditioner self) -> intArray"},
+	 { "BlockDiagonalPreconditioner_Mult", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
+	 { "BlockDiagonalPreconditioner_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockDiagonalPreconditioner_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(BlockDiagonalPreconditioner self, Vector x, Vector y)"},
+	 { "delete_BlockDiagonalPreconditioner", _wrap_delete_BlockDiagonalPreconditioner, METH_O, "delete_BlockDiagonalPreconditioner(BlockDiagonalPreconditioner self)"},
+	 { "BlockDiagonalPreconditioner_owns_blocks_set", _wrap_BlockDiagonalPreconditioner_owns_blocks_set, METH_VARARGS, "BlockDiagonalPreconditioner_owns_blocks_set(BlockDiagonalPreconditioner self, int owns_blocks)"},
+	 { "BlockDiagonalPreconditioner_owns_blocks_get", _wrap_BlockDiagonalPreconditioner_owns_blocks_get, METH_O, "BlockDiagonalPreconditioner_owns_blocks_get(BlockDiagonalPreconditioner self) -> int"},
+	 { "BlockDiagonalPreconditioner_swigregister", BlockDiagonalPreconditioner_swigregister, METH_O, NULL},
+	 { "BlockDiagonalPreconditioner_swiginit", BlockDiagonalPreconditioner_swiginit, METH_VARARGS, NULL},
+	 { "new_BlockLowerTriangularPreconditioner", (PyCFunction)(void(*)(void))_wrap_new_BlockLowerTriangularPreconditioner, METH_VARARGS|METH_KEYWORDS, "new_BlockLowerTriangularPreconditioner(intArray offsets) -> BlockLowerTriangularPreconditioner"},
+	 { "BlockLowerTriangularPreconditioner_SetDiagonalBlock", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_SetDiagonalBlock, METH_VARARGS|METH_KEYWORDS, "SetDiagonalBlock(BlockLowerTriangularPreconditioner self, int iblock, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_SetBlock", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_SetBlock, METH_VARARGS|METH_KEYWORDS, "SetBlock(BlockLowerTriangularPreconditioner self, int iRow, int iCol, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_SetOperator", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_SetOperator, METH_VARARGS|METH_KEYWORDS, "SetOperator(BlockLowerTriangularPreconditioner self, Operator op)"},
+	 { "BlockLowerTriangularPreconditioner_NumBlocks", _wrap_BlockLowerTriangularPreconditioner_NumBlocks, METH_O, "NumBlocks(BlockLowerTriangularPreconditioner self) -> int"},
+	 { "BlockLowerTriangularPreconditioner_GetBlock", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_GetBlock, METH_VARARGS|METH_KEYWORDS, "GetBlock(BlockLowerTriangularPreconditioner self, int iblock, int jblock) -> Operator"},
+	 { "BlockLowerTriangularPreconditioner_Offsets", _wrap_BlockLowerTriangularPreconditioner_Offsets, METH_O, "Offsets(BlockLowerTriangularPreconditioner self) -> intArray"},
+	 { "BlockLowerTriangularPreconditioner_Mult", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
+	 { "BlockLowerTriangularPreconditioner_MultTranspose", (PyCFunction)(void(*)(void))_wrap_BlockLowerTriangularPreconditioner_MultTranspose, METH_VARARGS|METH_KEYWORDS, "MultTranspose(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"},
+	 { "delete_BlockLowerTriangularPreconditioner", _wrap_delete_BlockLowerTriangularPreconditioner, METH_O, "delete_BlockLowerTriangularPreconditioner(BlockLowerTriangularPreconditioner self)"},
+	 { "BlockLowerTriangularPreconditioner_owns_blocks_set", _wrap_BlockLowerTriangularPreconditioner_owns_blocks_set, METH_VARARGS, "BlockLowerTriangularPreconditioner_owns_blocks_set(BlockLowerTriangularPreconditioner self, int owns_blocks)"},
+	 { "BlockLowerTriangularPreconditioner_owns_blocks_get", _wrap_BlockLowerTriangularPreconditioner_owns_blocks_get, METH_O, "BlockLowerTriangularPreconditioner_owns_blocks_get(BlockLowerTriangularPreconditioner self) -> int"},
+	 { "BlockLowerTriangularPreconditioner_swigregister", BlockLowerTriangularPreconditioner_swigregister, METH_O, NULL},
+	 { "BlockLowerTriangularPreconditioner_swiginit", BlockLowerTriangularPreconditioner_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -5640,6 +5530,12 @@ static void *_p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Solver(void *x, int 
 static void *_p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Solver(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Solver *)  ((mfem::BlockLowerTriangularPreconditioner *) x));
 }
+static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
+}
+static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+}
 static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
 }
@@ -5649,35 +5545,38 @@ static void *_p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Operator(void *x, in
 static void *_p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Solver *) ((mfem::BlockLowerTriangularPreconditioner *) x));
 }
-static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
+static void *_p_mfem__BlockOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::BlockOperator *) x));
 }
-static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
-}
-static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
-}
-static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
-}
-static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
-}
-static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
 }
 static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
 }
-static void *_p_mfem__BlockOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::BlockOperator *) x));
+static void *_p_mfem__TripleProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TripleProductOperator *) x));
 }
-static void *_p_mfem__PyOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *)  ((mfem::PyOperatorBase *) x));
+static void *_p_mfem__RAPOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RAPOperator *) x));
 }
-static void *_p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::PyTimeDependentOperatorBase *) x));
+static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ProductOperator *) x));
+}
+static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
+}
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
+}
+static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
+}
+static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
 }
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -5686,15 +5585,18 @@ static swig_type_info _swigt__p_mfem__BlockDiagonalPreconditioner = {"_p_mfem__B
 static swig_type_info _swigt__p_mfem__BlockLowerTriangularPreconditioner = {"_p_mfem__BlockLowerTriangularPreconditioner", "mfem::BlockLowerTriangularPreconditioner *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BlockOperator = {"_p_mfem__BlockOperator", "mfem::BlockOperator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
@@ -5713,6 +5615,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__RAPOperator,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_mfem__Solver,
   &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__TimeDependentOperator,
@@ -5727,16 +5632,19 @@ static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__Arra
 static swig_cast_info _swigc__p_mfem__BlockDiagonalPreconditioner[] = {  {&_swigt__p_mfem__BlockDiagonalPreconditioner, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BlockLowerTriangularPreconditioner[] = {  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BlockOperator[] = {  {&_swigt__p_mfem__BlockOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, _p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockDiagonalPreconditioner, _p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockOperator, _p_mfem__BlockOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, _p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockDiagonalPreconditioner, _p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__BlockOperator, _p_mfem__BlockOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__BlockDiagonalPreconditioner, _p_mfem__BlockDiagonalPreconditionerTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__BlockLowerTriangularPreconditioner, _p_mfem__BlockLowerTriangularPreconditionerTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
@@ -5755,6 +5663,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__RAPOperator,
+  _swigc__p_mfem__RectangularConstrainedOperator,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_mfem__Solver,
   _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__TimeDependentOperator,

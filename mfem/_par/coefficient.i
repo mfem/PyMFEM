@@ -309,7 +309,7 @@ class MatrixPyCoefficient(MatrixPyCoefficientBase):
        K.Assign(k)	 	 	 	 	 	 
 
    def EvalValue(self, x):
-       return np.array([[0,0,0], [0,0,0] [0,0,0]])
+       return np.array([[0,0,0], [0,0,0], [0,0,0]])
   
 class MatrixPyCoefficientT(MatrixPyCoefficientBase):
    def __init__(self, dim):
@@ -320,7 +320,7 @@ class MatrixPyCoefficientT(MatrixPyCoefficientBase):
        K.Assign(k)	 	 	 	 	 	 
 
    def EvalValue(self, x, t):
-       return np.array([[0.0,0.0,0.0], [0.0,0.0,0.0] [0.0,0.0,0.0]])
+       return np.array([[0.0,0.0,0.0], [0.0,0.0,0.0], [0.0,0.0,0.0]])
 	 
 %}
 

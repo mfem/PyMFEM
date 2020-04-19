@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _linearform.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _linearform.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -77,6 +80,7 @@ import mfem._par.fe
 import mfem._par.geom
 import mfem._par.mesh
 import mfem._par.ncmesh
+import mfem._par.vtk
 import mfem._par.element
 import mfem._par.table
 import mfem._par.hash
@@ -87,6 +91,7 @@ import mfem._par.fe_coll
 import mfem._par.lininteg
 import mfem._par.handle
 import mfem._par.hypre
+import mfem._par.restriction
 import mfem._par.bilininteg
 class LinearForm(mfem._par.vector.Vector):
     r"""Proxy of C++ mfem::LinearForm class."""
@@ -99,12 +104,14 @@ class LinearForm(mfem._par.vector.Vector):
         __init__(LinearForm self, FiniteElementSpace f) -> LinearForm
         __init__(LinearForm self, FiniteElementSpace f, LinearForm lf) -> LinearForm
         __init__(LinearForm self) -> LinearForm
+        __init__(LinearForm self, FiniteElementSpace f, double * data) -> LinearForm
         """
         _linearform.LinearForm_swiginit(self, _linearform.new_LinearForm(*args))
 
     def GetFES(self):
         r"""GetFES(LinearForm self) -> FiniteElementSpace"""
         return _linearform.LinearForm_GetFES(self)
+    GetFES = _swig_new_instance_method(_linearform.LinearForm_GetFES)
 
     def FESpace(self, *args):
         r"""
@@ -112,6 +119,7 @@ class LinearForm(mfem._par.vector.Vector):
         FESpace(LinearForm self) -> FiniteElementSpace
         """
         return _linearform.LinearForm_FESpace(self, *args)
+    FESpace = _swig_new_instance_method(_linearform.LinearForm_FESpace)
 
     def AddDomainIntegrator(self, lfi):
         r"""AddDomainIntegrator(LinearForm self, LinearFormIntegrator lfi)"""
@@ -157,30 +165,37 @@ class LinearForm(mfem._par.vector.Vector):
     def GetDLFI(self):
         r"""GetDLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
         return _linearform.LinearForm_GetDLFI(self)
+    GetDLFI = _swig_new_instance_method(_linearform.LinearForm_GetDLFI)
 
     def GetDLFI_Delta(self):
         r"""GetDLFI_Delta(LinearForm self) -> mfem::Array< mfem::DeltaLFIntegrator * > *"""
         return _linearform.LinearForm_GetDLFI_Delta(self)
+    GetDLFI_Delta = _swig_new_instance_method(_linearform.LinearForm_GetDLFI_Delta)
 
     def GetBLFI(self):
         r"""GetBLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
         return _linearform.LinearForm_GetBLFI(self)
+    GetBLFI = _swig_new_instance_method(_linearform.LinearForm_GetBLFI)
 
     def GetFLFI(self):
         r"""GetFLFI(LinearForm self) -> mfem::Array< mfem::LinearFormIntegrator * > *"""
         return _linearform.LinearForm_GetFLFI(self)
+    GetFLFI = _swig_new_instance_method(_linearform.LinearForm_GetFLFI)
 
     def GetFLFI_Marker(self):
         r"""GetFLFI_Marker(LinearForm self) -> mfem::Array< mfem::Array< int > * > *"""
         return _linearform.LinearForm_GetFLFI_Marker(self)
+    GetFLFI_Marker = _swig_new_instance_method(_linearform.LinearForm_GetFLFI_Marker)
 
     def Assemble(self):
         r"""Assemble(LinearForm self)"""
         return _linearform.LinearForm_Assemble(self)
+    Assemble = _swig_new_instance_method(_linearform.LinearForm_Assemble)
 
     def AssembleDelta(self):
         r"""AssembleDelta(LinearForm self)"""
         return _linearform.LinearForm_AssembleDelta(self)
+    AssembleDelta = _swig_new_instance_method(_linearform.LinearForm_AssembleDelta)
 
     def Update(self, *args):
         r"""
@@ -189,10 +204,12 @@ class LinearForm(mfem._par.vector.Vector):
         Update(LinearForm self, FiniteElementSpace f, Vector v, int v_offset)
         """
         return _linearform.LinearForm_Update(self, *args)
+    Update = _swig_new_instance_method(_linearform.LinearForm_Update)
 
     def __call__(self, gf):
         r"""__call__(LinearForm self, GridFunction gf) -> double"""
         return _linearform.LinearForm___call__(self, gf)
+    __call__ = _swig_new_instance_method(_linearform.LinearForm___call__)
     __swig_destroy__ = _linearform.delete_LinearForm
 
 # Register LinearForm in _linearform:

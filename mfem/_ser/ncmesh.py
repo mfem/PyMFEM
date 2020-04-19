@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _ncmesh.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _ncmesh.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -77,19 +80,23 @@ class intp(object):
     def assign(self, value):
         r"""assign(intp self, int value)"""
         return _ncmesh.intp_assign(self, value)
+    assign = _swig_new_instance_method(_ncmesh.intp_assign)
 
     def value(self):
         r"""value(intp self) -> int"""
         return _ncmesh.intp_value(self)
+    value = _swig_new_instance_method(_ncmesh.intp_value)
 
     def cast(self):
         r"""cast(intp self) -> int *"""
         return _ncmesh.intp_cast(self)
+    cast = _swig_new_instance_method(_ncmesh.intp_cast)
 
     @staticmethod
     def frompointer(t):
         r"""frompointer(int * t) -> intp"""
         return _ncmesh.intp_frompointer(t)
+    frompointer = _swig_new_static_method(_ncmesh.intp_frompointer)
 
 # Register intp in _ncmesh:
 _ncmesh.intp_swigregister(intp)
@@ -97,6 +104,7 @@ _ncmesh.intp_swigregister(intp)
 def intp_frompointer(t):
     r"""intp_frompointer(int * t) -> intp"""
     return _ncmesh.intp_frompointer(t)
+intp_frompointer = _ncmesh.intp_frompointer
 
 class doublep(object):
     r"""Proxy of C++ doublep class."""
@@ -112,19 +120,23 @@ class doublep(object):
     def assign(self, value):
         r"""assign(doublep self, double value)"""
         return _ncmesh.doublep_assign(self, value)
+    assign = _swig_new_instance_method(_ncmesh.doublep_assign)
 
     def value(self):
         r"""value(doublep self) -> double"""
         return _ncmesh.doublep_value(self)
+    value = _swig_new_instance_method(_ncmesh.doublep_value)
 
     def cast(self):
         r"""cast(doublep self) -> double *"""
         return _ncmesh.doublep_cast(self)
+    cast = _swig_new_instance_method(_ncmesh.doublep_cast)
 
     @staticmethod
     def frompointer(t):
         r"""frompointer(double * t) -> doublep"""
         return _ncmesh.doublep_frompointer(t)
+    frompointer = _swig_new_static_method(_ncmesh.doublep_frompointer)
 
 # Register doublep in _ncmesh:
 _ncmesh.doublep_swigregister(doublep)
@@ -132,6 +144,7 @@ _ncmesh.doublep_swigregister(doublep)
 def doublep_frompointer(t):
     r"""doublep_frompointer(double * t) -> doublep"""
     return _ncmesh.doublep_frompointer(t)
+doublep_frompointer = _ncmesh.doublep_frompointer
 
 import mfem._ser.mesh
 import mfem._ser.matrix
@@ -151,12 +164,14 @@ import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.handle
-import mfem._ser.bilininteg
-import mfem._ser.linearform
+import mfem._ser.restriction
 import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
+import mfem._ser.bilininteg
+import mfem._ser.linearform
 import mfem._ser.vertex
+import mfem._ser.vtk
 class Refinement(object):
     r"""Proxy of C++ mfem::Refinement class."""
 
@@ -200,24 +215,28 @@ class CoarseFineTransformations(object):
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
-    point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : std::map<(mfem::Geometry::Type,mfem::DenseTensor)>""")
+    point_matrices = property(_ncmesh.CoarseFineTransformations_point_matrices_get, _ncmesh.CoarseFineTransformations_point_matrices_set, doc=r"""point_matrices : a(mfem::Geometry::NumGeom).mfem::DenseTensor""")
     embeddings = property(_ncmesh.CoarseFineTransformations_embeddings_get, doc=r"""embeddings : mfem::Array<(mfem::Embedding)>""")
-
-    def GetPointMatrices(self, geom):
-        r"""GetPointMatrices(CoarseFineTransformations self, mfem::Geometry::Type geom) -> DenseTensor"""
-        return _ncmesh.CoarseFineTransformations_GetPointMatrices(self, geom)
 
     def GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom):
         r"""GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, mfem::Array< mfem::Geometry::Type > & ref_type_to_geom)"""
         return _ncmesh.CoarseFineTransformations_GetCoarseToFineMap(self, fine_mesh, coarse_to_fine, coarse_to_ref_type, ref_type_to_matrix, ref_type_to_geom)
+    GetCoarseToFineMap = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_GetCoarseToFineMap)
 
     def Clear(self):
         r"""Clear(CoarseFineTransformations self)"""
         return _ncmesh.CoarseFineTransformations_Clear(self)
+    Clear = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_Clear)
+
+    def IsInitialized(self):
+        r"""IsInitialized(CoarseFineTransformations self) -> bool"""
+        return _ncmesh.CoarseFineTransformations_IsInitialized(self)
+    IsInitialized = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_IsInitialized)
 
     def MemoryUsage(self):
         r"""MemoryUsage(CoarseFineTransformations self) -> long"""
         return _ncmesh.CoarseFineTransformations_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_ncmesh.CoarseFineTransformations_MemoryUsage)
 
     def __init__(self):
         r"""__init__(CoarseFineTransformations self) -> CoarseFineTransformations"""
@@ -244,140 +263,189 @@ class NCMesh(object):
     def Dimension(self):
         r"""Dimension(NCMesh self) -> int"""
         return _ncmesh.NCMesh_Dimension(self)
+    Dimension = _swig_new_instance_method(_ncmesh.NCMesh_Dimension)
 
     def SpaceDimension(self):
         r"""SpaceDimension(NCMesh self) -> int"""
         return _ncmesh.NCMesh_SpaceDimension(self)
+    SpaceDimension = _swig_new_instance_method(_ncmesh.NCMesh_SpaceDimension)
 
     def GetNVertices(self):
         r"""GetNVertices(NCMesh self) -> int"""
         return _ncmesh.NCMesh_GetNVertices(self)
+    GetNVertices = _swig_new_instance_method(_ncmesh.NCMesh_GetNVertices)
 
     def GetNEdges(self):
         r"""GetNEdges(NCMesh self) -> int"""
         return _ncmesh.NCMesh_GetNEdges(self)
+    GetNEdges = _swig_new_instance_method(_ncmesh.NCMesh_GetNEdges)
 
     def GetNFaces(self):
         r"""GetNFaces(NCMesh self) -> int"""
         return _ncmesh.NCMesh_GetNFaces(self)
+    GetNFaces = _swig_new_instance_method(_ncmesh.NCMesh_GetNFaces)
 
     def Refine(self, refinements):
         r"""Refine(NCMesh self, mfem::Array< mfem::Refinement > const & refinements)"""
         return _ncmesh.NCMesh_Refine(self, refinements)
+    Refine = _swig_new_instance_method(_ncmesh.NCMesh_Refine)
 
     def LimitNCLevel(self, max_nc_level):
         r"""LimitNCLevel(NCMesh self, int max_nc_level)"""
         return _ncmesh.NCMesh_LimitNCLevel(self, max_nc_level)
+    LimitNCLevel = _swig_new_instance_method(_ncmesh.NCMesh_LimitNCLevel)
 
     def GetDerefinementTable(self):
         r"""GetDerefinementTable(NCMesh self) -> Table"""
         return _ncmesh.NCMesh_GetDerefinementTable(self)
+    GetDerefinementTable = _swig_new_instance_method(_ncmesh.NCMesh_GetDerefinementTable)
 
     def CheckDerefinementNCLevel(self, deref_table, level_ok, max_nc_level):
         r"""CheckDerefinementNCLevel(NCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"""
         return _ncmesh.NCMesh_CheckDerefinementNCLevel(self, deref_table, level_ok, max_nc_level)
+    CheckDerefinementNCLevel = _swig_new_instance_method(_ncmesh.NCMesh_CheckDerefinementNCLevel)
 
     def Derefine(self, derefs):
         r"""Derefine(NCMesh self, intArray derefs)"""
         return _ncmesh.NCMesh_Derefine(self, derefs)
+    Derefine = _swig_new_instance_method(_ncmesh.NCMesh_Derefine)
 
     def GetFaceList(self):
         r"""GetFaceList(NCMesh self) -> mfem::NCMesh::NCList const &"""
         return _ncmesh.NCMesh_GetFaceList(self)
+    GetFaceList = _swig_new_instance_method(_ncmesh.NCMesh_GetFaceList)
 
     def GetEdgeList(self):
         r"""GetEdgeList(NCMesh self) -> mfem::NCMesh::NCList const &"""
         return _ncmesh.NCMesh_GetEdgeList(self)
+    GetEdgeList = _swig_new_instance_method(_ncmesh.NCMesh_GetEdgeList)
 
     def GetVertexList(self):
         r"""GetVertexList(NCMesh self) -> mfem::NCMesh::NCList const &"""
         return _ncmesh.NCMesh_GetVertexList(self)
+    GetVertexList = _swig_new_instance_method(_ncmesh.NCMesh_GetVertexList)
 
     def GetNCList(self, entity):
         r"""GetNCList(NCMesh self, int entity) -> mfem::NCMesh::NCList const &"""
         return _ncmesh.NCMesh_GetNCList(self, entity)
+    GetNCList = _swig_new_instance_method(_ncmesh.NCMesh_GetNCList)
 
     def MarkCoarseLevel(self):
         r"""MarkCoarseLevel(NCMesh self)"""
         return _ncmesh.NCMesh_MarkCoarseLevel(self)
+    MarkCoarseLevel = _swig_new_instance_method(_ncmesh.NCMesh_MarkCoarseLevel)
 
     def GetRefinementTransforms(self):
         r"""GetRefinementTransforms(NCMesh self) -> CoarseFineTransformations"""
         return _ncmesh.NCMesh_GetRefinementTransforms(self)
+    GetRefinementTransforms = _swig_new_instance_method(_ncmesh.NCMesh_GetRefinementTransforms)
 
     def GetDerefinementTransforms(self):
         r"""GetDerefinementTransforms(NCMesh self) -> CoarseFineTransformations"""
         return _ncmesh.NCMesh_GetDerefinementTransforms(self)
+    GetDerefinementTransforms = _swig_new_instance_method(_ncmesh.NCMesh_GetDerefinementTransforms)
 
     def ClearTransforms(self):
         r"""ClearTransforms(NCMesh self)"""
         return _ncmesh.NCMesh_ClearTransforms(self)
+    ClearTransforms = _swig_new_instance_method(_ncmesh.NCMesh_ClearTransforms)
 
     @staticmethod
     def GridSfcOrdering2D(width, height, coords):
         r"""GridSfcOrdering2D(int width, int height, intArray coords)"""
         return _ncmesh.NCMesh_GridSfcOrdering2D(width, height, coords)
+    GridSfcOrdering2D = _swig_new_static_method(_ncmesh.NCMesh_GridSfcOrdering2D)
 
     @staticmethod
     def GridSfcOrdering3D(width, height, depth, coords):
         r"""GridSfcOrdering3D(int width, int height, int depth, intArray coords)"""
         return _ncmesh.NCMesh_GridSfcOrdering3D(width, height, depth, coords)
+    GridSfcOrdering3D = _swig_new_static_method(_ncmesh.NCMesh_GridSfcOrdering3D)
 
     def GetEdgeVertices(self, edge_id, vert_index, oriented=True):
         r"""GetEdgeVertices(NCMesh self, mfem::NCMesh::MeshId const & edge_id, int [2] vert_index, bool oriented=True)"""
         return _ncmesh.NCMesh_GetEdgeVertices(self, edge_id, vert_index, oriented)
+    GetEdgeVertices = _swig_new_instance_method(_ncmesh.NCMesh_GetEdgeVertices)
 
     def GetEdgeNCOrientation(self, edge_id):
         r"""GetEdgeNCOrientation(NCMesh self, mfem::NCMesh::MeshId const & edge_id) -> int"""
         return _ncmesh.NCMesh_GetEdgeNCOrientation(self, edge_id)
+    GetEdgeNCOrientation = _swig_new_instance_method(_ncmesh.NCMesh_GetEdgeNCOrientation)
 
     def GetFaceVerticesEdges(self, face_id, vert_index, edge_index, edge_orientation):
-        r"""GetFaceVerticesEdges(NCMesh self, mfem::NCMesh::MeshId const & face_id, int [4] vert_index, int [4] edge_index, int [4] edge_orientation)"""
+        r"""GetFaceVerticesEdges(NCMesh self, mfem::NCMesh::MeshId const & face_id, int [4] vert_index, int [4] edge_index, int [4] edge_orientation) -> int"""
         return _ncmesh.NCMesh_GetFaceVerticesEdges(self, face_id, vert_index, edge_index, edge_orientation)
+    GetFaceVerticesEdges = _swig_new_instance_method(_ncmesh.NCMesh_GetFaceVerticesEdges)
 
     def GetEdgeMaster(self, v1, v2):
         r"""GetEdgeMaster(NCMesh self, int v1, int v2) -> int"""
         return _ncmesh.NCMesh_GetEdgeMaster(self, v1, v2)
+    GetEdgeMaster = _swig_new_instance_method(_ncmesh.NCMesh_GetEdgeMaster)
 
     def GetBoundaryClosure(self, bdr_attr_is_ess, bdr_vertices, bdr_edges):
         r"""GetBoundaryClosure(NCMesh self, intArray bdr_attr_is_ess, intArray bdr_vertices, intArray bdr_edges)"""
         return _ncmesh.NCMesh_GetBoundaryClosure(self, bdr_attr_is_ess, bdr_vertices, bdr_edges)
+    GetBoundaryClosure = _swig_new_instance_method(_ncmesh.NCMesh_GetBoundaryClosure)
 
-    def GetElementGeometry(self):
-        r"""GetElementGeometry(NCMesh self) -> mfem::Geometry::Type"""
-        return _ncmesh.NCMesh_GetElementGeometry(self)
+    def GetElementGeometry(self, index):
+        r"""GetElementGeometry(NCMesh self, int index) -> mfem::Geometry::Type"""
+        return _ncmesh.NCMesh_GetElementGeometry(self, index)
+    GetElementGeometry = _swig_new_instance_method(_ncmesh.NCMesh_GetElementGeometry)
 
-    def GetFaceGeometry(self):
-        r"""GetFaceGeometry(NCMesh self) -> mfem::Geometry::Type"""
-        return _ncmesh.NCMesh_GetFaceGeometry(self)
+    def GetFaceGeometry(self, index):
+        r"""GetFaceGeometry(NCMesh self, int index) -> mfem::Geometry::Type"""
+        return _ncmesh.NCMesh_GetFaceGeometry(self, index)
+    GetFaceGeometry = _swig_new_instance_method(_ncmesh.NCMesh_GetFaceGeometry)
+
+    def GetNumRootElements(self):
+        r"""GetNumRootElements(NCMesh self) -> int"""
+        return _ncmesh.NCMesh_GetNumRootElements(self)
+    GetNumRootElements = _swig_new_instance_method(_ncmesh.NCMesh_GetNumRootElements)
 
     def GetElementDepth(self, i):
         r"""GetElementDepth(NCMesh self, int i) -> int"""
         return _ncmesh.NCMesh_GetElementDepth(self, i)
+    GetElementDepth = _swig_new_instance_method(_ncmesh.NCMesh_GetElementDepth)
+
+    def GetElementSizeReduction(self, i):
+        r"""GetElementSizeReduction(NCMesh self, int i) -> int"""
+        return _ncmesh.NCMesh_GetElementSizeReduction(self, i)
+    GetElementSizeReduction = _swig_new_instance_method(_ncmesh.NCMesh_GetElementSizeReduction)
+
+    def GetElementFacesAttributes(self, i, faces, fattr):
+        r"""GetElementFacesAttributes(NCMesh self, int i, intArray faces, intArray fattr)"""
+        return _ncmesh.NCMesh_GetElementFacesAttributes(self, i, faces, fattr)
+    GetElementFacesAttributes = _swig_new_instance_method(_ncmesh.NCMesh_GetElementFacesAttributes)
 
     def LoadVertexParents(self, input):
         r"""LoadVertexParents(NCMesh self, std::istream & input)"""
         return _ncmesh.NCMesh_LoadVertexParents(self, input)
+    LoadVertexParents = _swig_new_instance_method(_ncmesh.NCMesh_LoadVertexParents)
 
     def LoadCoarseElements(self, input):
         r"""LoadCoarseElements(NCMesh self, std::istream & input)"""
         return _ncmesh.NCMesh_LoadCoarseElements(self, input)
+    LoadCoarseElements = _swig_new_instance_method(_ncmesh.NCMesh_LoadCoarseElements)
 
     def SetVertexPositions(self, vertices):
         r"""SetVertexPositions(NCMesh self, mfem::Array< mfem::Vertex > const & vertices)"""
         return _ncmesh.NCMesh_SetVertexPositions(self, vertices)
+    SetVertexPositions = _swig_new_instance_method(_ncmesh.NCMesh_SetVertexPositions)
 
     def Trim(self):
         r"""Trim(NCMesh self)"""
         return _ncmesh.NCMesh_Trim(self)
+    Trim = _swig_new_instance_method(_ncmesh.NCMesh_Trim)
 
     def MemoryUsage(self):
         r"""MemoryUsage(NCMesh self) -> long"""
         return _ncmesh.NCMesh_MemoryUsage(self)
+    MemoryUsage = _swig_new_instance_method(_ncmesh.NCMesh_MemoryUsage)
 
     def PrintMemoryDetail(self):
         r"""PrintMemoryDetail(NCMesh self) -> int"""
         return _ncmesh.NCMesh_PrintMemoryDetail(self)
+    PrintMemoryDetail = _swig_new_instance_method(_ncmesh.NCMesh_PrintMemoryDetail)
 
     def PrintVertexParents(self, *args):
         r"""
@@ -386,6 +454,7 @@ class NCMesh(object):
         PrintVertexParents(NCMesh self)
         """
         return _ncmesh.NCMesh_PrintVertexParents(self, *args)
+    PrintVertexParents = _swig_new_instance_method(_ncmesh.NCMesh_PrintVertexParents)
 
     def PrintCoarseElements(self, *args):
         r"""
@@ -394,6 +463,7 @@ class NCMesh(object):
         PrintCoarseElements(NCMesh self)
         """
         return _ncmesh.NCMesh_PrintCoarseElements(self, *args)
+    PrintCoarseElements = _swig_new_instance_method(_ncmesh.NCMesh_PrintCoarseElements)
 
     def PrintStats(self, *args):
         r"""
@@ -401,6 +471,7 @@ class NCMesh(object):
         PrintStats(NCMesh self, char const * file, int precision=8)
         """
         return _ncmesh.NCMesh_PrintStats(self, *args)
+    PrintStats = _swig_new_instance_method(_ncmesh.NCMesh_PrintStats)
 
 # Register NCMesh in _ncmesh:
 _ncmesh.NCMesh_swigregister(NCMesh)
@@ -408,10 +479,12 @@ _ncmesh.NCMesh_swigregister(NCMesh)
 def NCMesh_GridSfcOrdering2D(width, height, coords):
     r"""NCMesh_GridSfcOrdering2D(int width, int height, intArray coords)"""
     return _ncmesh.NCMesh_GridSfcOrdering2D(width, height, coords)
+NCMesh_GridSfcOrdering2D = _ncmesh.NCMesh_GridSfcOrdering2D
 
 def NCMesh_GridSfcOrdering3D(width, height, depth, coords):
     r"""NCMesh_GridSfcOrdering3D(int width, int height, int depth, intArray coords)"""
     return _ncmesh.NCMesh_GridSfcOrdering3D(width, height, depth, coords)
+NCMesh_GridSfcOrdering3D = _ncmesh.NCMesh_GridSfcOrdering3D
 
 
 

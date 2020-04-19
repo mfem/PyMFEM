@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _device.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _device.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -68,16 +71,22 @@ class Backend(object):
     CPU = _device.Backend_CPU
     OMP = _device.Backend_OMP
     CUDA = _device.Backend_CUDA
+    HIP = _device.Backend_HIP
     RAJA_CPU = _device.Backend_RAJA_CPU
     RAJA_OMP = _device.Backend_RAJA_OMP
     RAJA_CUDA = _device.Backend_RAJA_CUDA
     OCCA_CPU = _device.Backend_OCCA_CPU
     OCCA_OMP = _device.Backend_OCCA_OMP
     OCCA_CUDA = _device.Backend_OCCA_CUDA
+    CEED_CPU = _device.Backend_CEED_CPU
+    CEED_CUDA = _device.Backend_CEED_CUDA
+    DEBUG = _device.Backend_DEBUG
     NUM_BACKENDS = _device.Backend_NUM_BACKENDS
     CPU_MASK = _device.Backend_CPU_MASK
     CUDA_MASK = _device.Backend_CUDA_MASK
+    HIP_MASK = _device.Backend_HIP_MASK
     OMP_MASK = _device.Backend_OMP_MASK
+    CEED_MASK = _device.Backend_CEED_MASK
     DEVICE_MASK = _device.Backend_DEVICE_MASK
     RAJA_MASK = _device.Backend_RAJA_MASK
     OCCA_MASK = _device.Backend_OCCA_MASK
@@ -99,61 +108,131 @@ class Device(object):
 
     def Configure(self, device, dev=0):
         return _device.Device_Configure(self, device, dev)
+    Configure = _swig_new_instance_method(_device.Device_Configure)
 
-    def Print(self, *args):
-        return _device.Device_Print(self, *args)
+    def Print(self, *args, **kwargs):
+        return _device.Device_Print(self, *args, **kwargs)
+    Print = _swig_new_instance_method(_device.Device_Print)
 
     @staticmethod
     def IsConfigured():
         return _device.Device_IsConfigured()
+    IsConfigured = _swig_new_static_method(_device.Device_IsConfigured)
 
     @staticmethod
     def IsAvailable():
         return _device.Device_IsAvailable()
+    IsAvailable = _swig_new_static_method(_device.Device_IsAvailable)
 
     @staticmethod
     def IsEnabled():
         return _device.Device_IsEnabled()
+    IsEnabled = _swig_new_static_method(_device.Device_IsEnabled)
 
     @staticmethod
     def IsDisabled():
         return _device.Device_IsDisabled()
+    IsDisabled = _swig_new_static_method(_device.Device_IsDisabled)
 
     @staticmethod
     def Allows(b_mask):
         return _device.Device_Allows(b_mask)
+    Allows = _swig_new_static_method(_device.Device_Allows)
+
+    @staticmethod
+    def GetHostMemoryType():
+        return _device.Device_GetHostMemoryType()
+    GetHostMemoryType = _swig_new_static_method(_device.Device_GetHostMemoryType)
+
+    @staticmethod
+    def GetHostMemoryClass():
+        return _device.Device_GetHostMemoryClass()
+    GetHostMemoryClass = _swig_new_static_method(_device.Device_GetHostMemoryClass)
+
+    @staticmethod
+    def GetDeviceMemoryType():
+        return _device.Device_GetDeviceMemoryType()
+    GetDeviceMemoryType = _swig_new_static_method(_device.Device_GetDeviceMemoryType)
 
     @staticmethod
     def GetMemoryType():
         return _device.Device_GetMemoryType()
+    GetMemoryType = _swig_new_static_method(_device.Device_GetMemoryType)
+
+    @staticmethod
+    def GetDeviceMemoryClass():
+        return _device.Device_GetDeviceMemoryClass()
+    GetDeviceMemoryClass = _swig_new_static_method(_device.Device_GetDeviceMemoryClass)
 
     @staticmethod
     def GetMemoryClass():
         return _device.Device_GetMemoryClass()
+    GetMemoryClass = _swig_new_static_method(_device.Device_GetMemoryClass)
+
+    @staticmethod
+    def SetGPUAwareMPI(force=True):
+        return _device.Device_SetGPUAwareMPI(force)
+    SetGPUAwareMPI = _swig_new_static_method(_device.Device_SetGPUAwareMPI)
+
+    @staticmethod
+    def GetGPUAwareMPI():
+        return _device.Device_GetGPUAwareMPI()
+    GetGPUAwareMPI = _swig_new_static_method(_device.Device_GetGPUAwareMPI)
 
 # Register Device in _device:
 _device.Device_swigregister(Device)
 
 def Device_IsConfigured():
     return _device.Device_IsConfigured()
+Device_IsConfigured = _device.Device_IsConfigured
 
 def Device_IsAvailable():
     return _device.Device_IsAvailable()
+Device_IsAvailable = _device.Device_IsAvailable
 
 def Device_IsEnabled():
     return _device.Device_IsEnabled()
+Device_IsEnabled = _device.Device_IsEnabled
 
 def Device_IsDisabled():
     return _device.Device_IsDisabled()
+Device_IsDisabled = _device.Device_IsDisabled
 
 def Device_Allows(b_mask):
     return _device.Device_Allows(b_mask)
+Device_Allows = _device.Device_Allows
+
+def Device_GetHostMemoryType():
+    return _device.Device_GetHostMemoryType()
+Device_GetHostMemoryType = _device.Device_GetHostMemoryType
+
+def Device_GetHostMemoryClass():
+    return _device.Device_GetHostMemoryClass()
+Device_GetHostMemoryClass = _device.Device_GetHostMemoryClass
+
+def Device_GetDeviceMemoryType():
+    return _device.Device_GetDeviceMemoryType()
+Device_GetDeviceMemoryType = _device.Device_GetDeviceMemoryType
 
 def Device_GetMemoryType():
     return _device.Device_GetMemoryType()
+Device_GetMemoryType = _device.Device_GetMemoryType
+
+def Device_GetDeviceMemoryClass():
+    return _device.Device_GetDeviceMemoryClass()
+Device_GetDeviceMemoryClass = _device.Device_GetDeviceMemoryClass
 
 def Device_GetMemoryClass():
     return _device.Device_GetMemoryClass()
+Device_GetMemoryClass = _device.Device_GetMemoryClass
+
+def Device_SetGPUAwareMPI(force=True):
+    return _device.Device_SetGPUAwareMPI(force)
+Device_SetGPUAwareMPI = _device.Device_SetGPUAwareMPI
+
+def Device_GetGPUAwareMPI():
+    return _device.Device_GetGPUAwareMPI()
+Device_GetGPUAwareMPI = _device.Device_GetGPUAwareMPI
 
 
 

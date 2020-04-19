@@ -3869,7 +3869,7 @@ void SwigDirector_MatrixPyCoefficientBase::_EvalPyT(mfem::Vector &arg0, double a
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_Coefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Coefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = (mfem::Coefficient *) 0 ;
   double arg2 ;
@@ -3877,15 +3877,19 @@ SWIGINTERN PyObject *_wrap_Coefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), P
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "Coefficient_SetTime", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:Coefficient_SetTime", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Coefficient_SetTime" "', argument " "1"" of type '" "mfem::Coefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Coefficient_SetTime" "', argument " "2"" of type '" "double""'");
   } 
@@ -4246,19 +4250,25 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ConstantCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_ConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
-  double arg1 ;
+  double arg1 = (double) 1.0 ;
   double val1 ;
   int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"c",  NULL 
+  };
   mfem::ConstantCoefficient *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_ConstantCoefficient" "', argument " "1"" of type '" "double""'");
-  } 
-  arg1 = static_cast< double >(val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|O:new_ConstantCoefficient", kwnames, &obj0)) SWIG_fail;
+  if (obj0) {
+    ecode1 = SWIG_AsVal_double(obj0, &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_ConstantCoefficient" "', argument " "1"" of type '" "double""'");
+    } 
+    arg1 = static_cast< double >(val1);
+  }
   {
     try {
       result = (mfem::ConstantCoefficient *)new mfem::ConstantCoefficient(arg1);
@@ -4285,69 +4295,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ConstantCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  mfem::ConstantCoefficient *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (mfem::ConstantCoefficient *)new mfem::ConstantCoefficient();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ConstantCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_ConstantCoefficient(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[2] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_ConstantCoefficient", 0, 1, argv))) SWIG_fail;
-  --argc;
-  if (argc == 0) {
-    return _wrap_new_ConstantCoefficient__SWIG_1(self, argc, argv);
-  }
-  if (argc == 1) {
-    int _v;
-    {
-      int res = SWIG_AsVal_double(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      return _wrap_new_ConstantCoefficient__SWIG_0(self, argc, argv);
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_ConstantCoefficient'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ConstantCoefficient::ConstantCoefficient(double)\n"
-    "    mfem::ConstantCoefficient::ConstantCoefficient()\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_ConstantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ConstantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ConstantCoefficient *arg1 = (mfem::ConstantCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -4358,16 +4306,21 @@ SWIGINTERN PyObject *_wrap_ConstantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(sel
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ConstantCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ConstantCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ConstantCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ConstantCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ConstantCoefficient_Eval" "', argument " "1"" of type '" "mfem::ConstantCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ConstantCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ConstantCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -4375,7 +4328,7 @@ SWIGINTERN PyObject *_wrap_ConstantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ConstantCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ConstantCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -4462,15 +4415,17 @@ SWIGINTERN PyObject *ConstantCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self)
 
 SWIGINTERN PyObject *_wrap_new_PWConstCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int arg1 ;
+  int arg1 = (int) 0 ;
   mfem::PWConstCoefficient *result = 0 ;
   
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  if ((nobjs < 0) || (nobjs > 1)) SWIG_fail;
+  if (swig_obj[0]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    }
   }
   {
     try {
@@ -4498,38 +4453,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PWConstCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  mfem::PWConstCoefficient *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (mfem::PWConstCoefficient *)new mfem::PWConstCoefficient();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__PWConstCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_PWConstCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_PWConstCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = 0 ;
   void *argp1 = 0 ;
@@ -4579,20 +4503,11 @@ SWIGINTERN PyObject *_wrap_new_PWConstCoefficient(PyObject *self, PyObject *args
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_PWConstCoefficient", 0, 1, argv))) SWIG_fail;
   --argc;
-  if (argc == 0) {
-    return _wrap_new_PWConstCoefficient__SWIG_1(self, argc, argv);
-  }
-  if (argc == 1) {
+  if ((argc >= 0) && (argc <= 1)) {
     int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_PWConstCoefficient__SWIG_2(self, argc, argv);
+    if (argc <= 0) {
+      return _wrap_new_PWConstCoefficient__SWIG_0(self, argc, argv);
     }
-  }
-  if (argc == 1) {
-    int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         PyErr_Clear();
@@ -4605,18 +4520,26 @@ SWIGINTERN PyObject *_wrap_new_PWConstCoefficient(PyObject *self, PyObject *args
       return _wrap_new_PWConstCoefficient__SWIG_0(self, argc, argv);
     }
   }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_PWConstCoefficient__SWIG_1(self, argc, argv);
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_PWConstCoefficient'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::PWConstCoefficient::PWConstCoefficient(int)\n"
-    "    mfem::PWConstCoefficient::PWConstCoefficient()\n"
     "    mfem::PWConstCoefficient::PWConstCoefficient(mfem::Vector &)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_PWConstCoefficient_UpdateConstants(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PWConstCoefficient_UpdateConstants(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PWConstCoefficient *arg1 = (mfem::PWConstCoefficient *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4624,15 +4547,19 @@ SWIGINTERN PyObject *_wrap_PWConstCoefficient_UpdateConstants(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"c",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "PWConstCoefficient_UpdateConstants", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PWConstCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PWConstCoefficient_UpdateConstants", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PWConstCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PWConstCoefficient_UpdateConstants" "', argument " "1"" of type '" "mfem::PWConstCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PWConstCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PWConstCoefficient_UpdateConstants" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -4666,26 +4593,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PWConstCoefficient___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PWConstCoefficient___call__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PWConstCoefficient *arg1 = (mfem::PWConstCoefficient *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   double *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "PWConstCoefficient___call__", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PWConstCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PWConstCoefficient___call__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PWConstCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PWConstCoefficient___call__" "', argument " "1"" of type '" "mfem::PWConstCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PWConstCoefficient * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -4754,7 +4685,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PWConstCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PWConstCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PWConstCoefficient *arg1 = (mfem::PWConstCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -4765,16 +4696,21 @@ SWIGINTERN PyObject *_wrap_PWConstCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "PWConstCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PWConstCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:PWConstCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PWConstCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PWConstCoefficient_Eval" "', argument " "1"" of type '" "mfem::PWConstCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PWConstCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PWConstCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -4782,7 +4718,7 @@ SWIGINTERN PyObject *_wrap_PWConstCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PWConstCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PWConstCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -5075,7 +5011,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_FunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_FunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::FunctionCoefficient *arg1 = (mfem::FunctionCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -5086,16 +5022,21 @@ SWIGINTERN PyObject *_wrap_FunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(sel
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "FunctionCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__FunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:FunctionCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__FunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::FunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::FunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -5103,7 +5044,7 @@ SWIGINTERN PyObject *_wrap_FunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "FunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "FunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -5222,65 +5163,28 @@ fail:
 SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   mfem::GridFunctionCoefficient *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
   {
     try {
       result = (mfem::GridFunctionCoefficient *)new mfem::GridFunctionCoefficient(arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GridFunctionCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::GridFunctionCoefficient *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    try {
-      result = (mfem::GridFunctionCoefficient *)new mfem::GridFunctionCoefficient(arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -5315,21 +5219,15 @@ SWIGINTERN PyObject *_wrap_new_GridFunctionCoefficient(PyObject *self, PyObject 
   if (argc == 0) {
     return _wrap_new_GridFunctionCoefficient__SWIG_0(self, argc, argv);
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_GridFunctionCoefficient__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_GridFunctionCoefficient__SWIG_1(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -5348,13 +5246,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_GridFunctionCoefficient'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunctionCoefficient::GridFunctionCoefficient()\n"
-    "    mfem::GridFunctionCoefficient::GridFunctionCoefficient(mfem::GridFunction *,int)\n"
-    "    mfem::GridFunctionCoefficient::GridFunctionCoefficient(mfem::GridFunction *)\n");
+    "    mfem::GridFunctionCoefficient::GridFunctionCoefficient(mfem::GridFunction *,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunctionCoefficient *arg1 = (mfem::GridFunctionCoefficient *) 0 ;
   mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
@@ -5362,15 +5259,19 @@ SWIGINTERN PyObject *_wrap_GridFunctionCoefficient_SetGridFunction(PyObject *SWI
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunctionCoefficient_SetGridFunction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunctionCoefficient_SetGridFunction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::GridFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
   }
@@ -5442,7 +5343,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunctionCoefficient *arg1 = (mfem::GridFunctionCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -5453,16 +5354,21 @@ SWIGINTERN PyObject *_wrap_GridFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunctionCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunctionCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::GridFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -5470,7 +5376,7 @@ SWIGINTERN PyObject *_wrap_GridFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -5706,7 +5612,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TransformedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TransformedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TransformedCoefficient *arg1 = (mfem::TransformedCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -5717,16 +5623,21 @@ SWIGINTERN PyObject *_wrap_TransformedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "TransformedCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TransformedCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:TransformedCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TransformedCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransformedCoefficient_Eval" "', argument " "1"" of type '" "mfem::TransformedCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TransformedCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TransformedCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -5734,7 +5645,7 @@ SWIGINTERN PyObject *_wrap_TransformedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransformedCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TransformedCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -6104,7 +6015,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -6112,15 +6023,19 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetDeltaCenter(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"center",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_SetDeltaCenter", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DeltaCoefficient_SetDeltaCenter", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_SetDeltaCenter" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeltaCoefficient_SetDeltaCenter" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -6154,7 +6069,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetScale(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetScale(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   double arg2 ;
@@ -6162,15 +6077,19 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetScale(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"_s",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_SetScale", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DeltaCoefficient_SetScale", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_SetScale" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DeltaCoefficient_SetScale" "', argument " "2"" of type '" "double""'");
   } 
@@ -6201,22 +6120,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   double (*arg2)(double) = (double (*)(double)) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"f",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_SetFunction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DeltaCoefficient_SetFunction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_SetFunction" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
   {
-    int res = SWIG_ConvertFunctionPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_f_double__double);
+    int res = SWIG_ConvertFunctionPtr(obj1, (void**)(&arg2), SWIGTYPE_p_f_double__double);
     if (!SWIG_IsOK(res)) {
       SWIG_exception_fail(SWIG_ArgError(res), "in method '" "DeltaCoefficient_SetFunction" "', argument " "2"" of type '" "double (*)(double)""'"); 
     }
@@ -6247,7 +6170,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetTol(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   double arg2 ;
@@ -6255,15 +6178,19 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetTol(PyObject *SWIGUNUSEDPARM(self
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"_tol",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_SetTol", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DeltaCoefficient_SetTol", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_SetTol" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DeltaCoefficient_SetTol" "', argument " "2"" of type '" "double""'");
   } 
@@ -6294,7 +6221,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetWeight(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetWeight(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   mfem::Coefficient *arg2 = (mfem::Coefficient *) 0 ;
@@ -6302,15 +6229,19 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_SetWeight(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"w",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_SetWeight", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DeltaCoefficient_SetWeight", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_SetWeight" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeltaCoefficient_SetWeight" "', argument " "2"" of type '" "mfem::Coefficient *""'"); 
   }
@@ -6505,7 +6436,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_GetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_GetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -6513,15 +6444,19 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_GetDeltaCenter(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"center",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_GetDeltaCenter", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DeltaCoefficient_GetDeltaCenter", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_GetDeltaCenter" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeltaCoefficient_GetDeltaCenter" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -6555,7 +6490,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_EvalDelta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_EvalDelta(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -6566,16 +6501,21 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_EvalDelta(PyObject *SWIGUNUSEDPARM(s
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_EvalDelta", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DeltaCoefficient_EvalDelta", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_EvalDelta" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeltaCoefficient_EvalDelta" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -6583,7 +6523,7 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_EvalDelta(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DeltaCoefficient_EvalDelta" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DeltaCoefficient_EvalDelta" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -6617,7 +6557,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeltaCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeltaCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeltaCoefficient *arg1 = (mfem::DeltaCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -6628,16 +6568,21 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self),
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "DeltaCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DeltaCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeltaCoefficient_Eval" "', argument " "1"" of type '" "mfem::DeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeltaCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -6645,7 +6590,7 @@ SWIGINTERN PyObject *_wrap_DeltaCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DeltaCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DeltaCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -6730,7 +6675,7 @@ SWIGINTERN PyObject *DeltaCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_RestrictedCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_RestrictedCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -6738,11 +6683,15 @@ SWIGINTERN PyObject *_wrap_new_RestrictedCoefficient(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"_c",  (char *)"attr",  NULL 
+  };
   mfem::RestrictedCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_RestrictedCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_RestrictedCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RestrictedCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -6750,7 +6699,7 @@ SWIGINTERN PyObject *_wrap_new_RestrictedCoefficient(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RestrictedCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_RestrictedCoefficient" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -6784,7 +6733,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_RestrictedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_RestrictedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::RestrictedCoefficient *arg1 = (mfem::RestrictedCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -6795,16 +6744,21 @@ SWIGINTERN PyObject *_wrap_RestrictedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(s
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "RestrictedCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__RestrictedCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:RestrictedCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__RestrictedCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RestrictedCoefficient_Eval" "', argument " "1"" of type '" "mfem::RestrictedCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::RestrictedCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RestrictedCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -6812,7 +6766,7 @@ SWIGINTERN PyObject *_wrap_RestrictedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RestrictedCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RestrictedCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -6897,7 +6851,7 @@ SWIGINTERN PyObject *RestrictedCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_VectorCoefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorCoefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorCoefficient *arg1 = (mfem::VectorCoefficient *) 0 ;
   double arg2 ;
@@ -6905,15 +6859,19 @@ SWIGINTERN PyObject *_wrap_VectorCoefficient_SetTime(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorCoefficient_SetTime", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorCoefficient_SetTime", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorCoefficient_SetTime" "', argument " "1"" of type '" "mfem::VectorCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VectorCoefficient_SetTime" "', argument " "2"" of type '" "double""'");
   } 
@@ -7279,17 +7237,19 @@ SWIGINTERN PyObject *VectorCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_VectorConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"v",  NULL 
+  };
   mfem::VectorConstantCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_VectorConstantCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorConstantCoefficient" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
   }
@@ -7624,6 +7584,47 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_VectorConstantCoefficient_GetVec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::VectorConstantCoefficient *arg1 = (mfem::VectorConstantCoefficient *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Vector *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorConstantCoefficient, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorConstantCoefficient_GetVec" "', argument " "1"" of type '" "mfem::VectorConstantCoefficient *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::VectorConstantCoefficient * >(argp1);
+  {
+    try {
+      result = (mfem::Vector *) &(arg1)->GetVec();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Vector, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_VectorConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::VectorConstantCoefficient *arg1 = (mfem::VectorConstantCoefficient *) 0 ;
@@ -7679,12 +7680,12 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_0(PyObject *SWIGU
   PyObject *resultobj = 0;
   int arg1 ;
   void (*arg2)(mfem::Vector const &,mfem::Vector &) = (void (*)(mfem::Vector const &,mfem::Vector &)) 0 ;
-  mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
+  mfem::Coefficient *arg3 = (mfem::Coefficient *) NULL ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   mfem::VectorFunctionCoefficient *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -7697,11 +7698,13 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_0(PyObject *SWIGU
       SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_VectorFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,mfem::Vector &)""'"); 
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_VectorFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[2]) {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_VectorFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   {
     try {
       result = (mfem::VectorFunctionCoefficient *)new mfem::VectorFunctionCoefficient(arg1,arg2,arg3);
@@ -7731,58 +7734,13 @@ fail:
 SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
-  void (*arg2)(mfem::Vector const &,mfem::Vector &) = (void (*)(mfem::Vector const &,mfem::Vector &)) 0 ;
-  mfem::VectorFunctionCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    int res = SWIG_ConvertFunctionPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_VectorFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,mfem::Vector &)""'"); 
-    }
-  }
-  {
-    try {
-      result = (mfem::VectorFunctionCoefficient *)new mfem::VectorFunctionCoefficient(arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFunctionCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
   void (*arg2)(mfem::Vector const &,double,mfem::Vector &) = (void (*)(mfem::Vector const &,double,mfem::Vector &)) 0 ;
-  mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
+  mfem::Coefficient *arg3 = (mfem::Coefficient *) NULL ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   mfem::VectorFunctionCoefficient *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -7795,59 +7753,16 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_2(PyObject *SWIGU
       SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_VectorFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,double,mfem::Vector &)""'"); 
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_VectorFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[2]) {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_VectorFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   {
     try {
       result = (mfem::VectorFunctionCoefficient *)new mfem::VectorFunctionCoefficient(arg1,arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorFunctionCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  void (*arg2)(mfem::Vector const &,double,mfem::Vector &) = (void (*)(mfem::Vector const &,double,mfem::Vector &)) 0 ;
-  mfem::VectorFunctionCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    int res = SWIG_ConvertFunctionPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_VectorFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,double,mfem::Vector &)""'"); 
-    }
-  }
-  {
-    try {
-      result = (mfem::VectorFunctionCoefficient *)new mfem::VectorFunctionCoefficient(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -7879,7 +7794,7 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_VectorFunctionCoefficient", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
@@ -7894,68 +7809,9 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
       int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_VectorFunctionCoefficient__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      void *ptr = 0;
-      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_VectorFunctionCoefficient__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      void *ptr = 0;
-      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_new_VectorFunctionCoefficient__SWIG_2(self, argc, argv);
+        if (argc <= 2) {
+          return _wrap_new_VectorFunctionCoefficient__SWIG_0(self, argc, argv);
         }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      void *ptr = 0;
-      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void);
-      _v = SWIG_CheckState(res);
-      if (_v) {
         void *vptr = 0;
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
         _v = SWIG_CheckState(res);
@@ -7965,14 +7821,39 @@ SWIGINTERN PyObject *_wrap_new_VectorFunctionCoefficient(PyObject *self, PyObjec
       }
     }
   }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      void *ptr = 0;
+      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__Vector__void);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_VectorFunctionCoefficient__SWIG_1(self, argc, argv);
+        }
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_new_VectorFunctionCoefficient__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_VectorFunctionCoefficient'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::VectorFunctionCoefficient::VectorFunctionCoefficient(int,void (*)(mfem::Vector const &,mfem::Vector &),mfem::Coefficient *)\n"
-    "    mfem::VectorFunctionCoefficient::VectorFunctionCoefficient(int,void (*)(mfem::Vector const &,mfem::Vector &))\n"
-    "    mfem::VectorFunctionCoefficient::VectorFunctionCoefficient(int,void (*)(mfem::Vector const &,double,mfem::Vector &),mfem::Coefficient *)\n"
-    "    mfem::VectorFunctionCoefficient::VectorFunctionCoefficient(int,void (*)(mfem::Vector const &,double,mfem::Vector &))\n");
+    "    mfem::VectorFunctionCoefficient::VectorFunctionCoefficient(int,void (*)(mfem::Vector const &,double,mfem::Vector &),mfem::Coefficient *)\n");
   return 0;
 }
 
@@ -8329,19 +8210,21 @@ SWIGINTERN PyObject *VectorFunctionCoefficient_swiginit(PyObject *SWIGUNUSEDPARM
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorArrayCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_VectorArrayCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"dim",  NULL 
+  };
   mfem::VectorArrayCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_VectorArrayCoefficient", kwnames, &obj0)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -8369,26 +8252,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorArrayCoefficient *arg1 = (mfem::VectorArrayCoefficient *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
   mfem::Coefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorArrayCoefficient_GetCoeff", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorArrayCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorArrayCoefficient_GetCoeff", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorArrayCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorArrayCoefficient_GetCoeff" "', argument " "1"" of type '" "mfem::VectorArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -8457,41 +8344,50 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorArrayCoefficient *arg1 = (mfem::VectorArrayCoefficient *) 0 ;
   int arg2 ;
   mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
-  bool arg4 ;
+  bool arg4 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   bool val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"c",  (char *)"own",  NULL 
+  };
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorArrayCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:VectorArrayCoefficient_Set", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorArrayCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::VectorArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorArrayCoefficient_Set" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
   }
   arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
-  ecode4 = SWIG_AsVal_bool(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "VectorArrayCoefficient_Set" "', argument " "4"" of type '" "bool""'");
-  } 
-  arg4 = static_cast< bool >(val4);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "VectorArrayCoefficient_Set" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
+  }
   {
     try {
       (arg1)->Set(arg2,arg3,arg4);
@@ -8515,131 +8411,6 @@ SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set__SWIG_0(PyObject *SWIGUNUS
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::VectorArrayCoefficient *arg1 = (mfem::VectorArrayCoefficient *) 0 ;
-  int arg2 ;
-  mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorArrayCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::VectorArrayCoefficient *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::VectorArrayCoefficient * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorArrayCoefficient_Set" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
-  {
-    try {
-      (arg1)->Set(arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_VectorArrayCoefficient_Set(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "VectorArrayCoefficient_Set", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorArrayCoefficient, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_VectorArrayCoefficient_Set__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorArrayCoefficient, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_bool(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_VectorArrayCoefficient_Set__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'VectorArrayCoefficient_Set'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::VectorArrayCoefficient::Set(int,mfem::Coefficient *,bool)\n"
-    "    mfem::VectorArrayCoefficient::Set(int,mfem::Coefficient *)\n");
-  return 0;
 }
 
 
@@ -9192,7 +8963,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorGridFunctionCoefficient *arg1 = (mfem::VectorGridFunctionCoefficient *) 0 ;
   mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
@@ -9200,15 +8971,19 @@ SWIGINTERN PyObject *_wrap_VectorGridFunctionCoefficient_SetGridFunction(PyObjec
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorGridFunctionCoefficient_SetGridFunction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorGridFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorGridFunctionCoefficient_SetGridFunction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorGridFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorGridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::VectorGridFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorGridFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorGridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
   }
@@ -9537,17 +9312,19 @@ SWIGINTERN PyObject *VectorGridFunctionCoefficient_swiginit(PyObject *SWIGUNUSED
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_GradientGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_GradientGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"gf",  NULL 
+  };
   mfem::GradientGridFunctionCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_GradientGridFunctionCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GradientGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
@@ -9578,7 +9355,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GradientGridFunctionCoefficient *arg1 = (mfem::GradientGridFunctionCoefficient *) 0 ;
   mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
@@ -9586,15 +9363,19 @@ SWIGINTERN PyObject *_wrap_GradientGridFunctionCoefficient_SetGridFunction(PyObj
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GradientGridFunctionCoefficient_SetGridFunction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GradientGridFunctionCoefficient_SetGridFunction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GradientGridFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GradientGridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::GradientGridFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GradientGridFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GradientGridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
   }
@@ -9923,7 +9704,7 @@ SWIGINTERN PyObject *GradientGridFunctionCoefficient_swiginit(PyObject *SWIGUNUS
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::CurlGridFunctionCoefficient *arg1 = (mfem::CurlGridFunctionCoefficient *) 0 ;
   mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
@@ -9931,15 +9712,19 @@ SWIGINTERN PyObject *_wrap_CurlGridFunctionCoefficient_SetGridFunction(PyObject 
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "CurlGridFunctionCoefficient_SetGridFunction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:CurlGridFunctionCoefficient_SetGridFunction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__CurlGridFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CurlGridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::CurlGridFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::CurlGridFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CurlGridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
   }
@@ -10359,17 +10144,19 @@ SWIGINTERN PyObject *CurlGridFunctionCoefficient_swigregister(PyObject *SWIGUNUS
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_DivergenceGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_DivergenceGridFunctionCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"gf",  NULL 
+  };
   mfem::DivergenceGridFunctionCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_DivergenceGridFunctionCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DivergenceGridFunctionCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
@@ -10400,7 +10187,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_SetGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DivergenceGridFunctionCoefficient *arg1 = (mfem::DivergenceGridFunctionCoefficient *) 0 ;
   mfem::GridFunction *arg2 = (mfem::GridFunction *) 0 ;
@@ -10408,15 +10195,19 @@ SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_SetGridFunction(PyO
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DivergenceGridFunctionCoefficient_SetGridFunction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:DivergenceGridFunctionCoefficient_SetGridFunction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DivergenceGridFunctionCoefficient_SetGridFunction" "', argument " "1"" of type '" "mfem::DivergenceGridFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DivergenceGridFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DivergenceGridFunctionCoefficient_SetGridFunction" "', argument " "2"" of type '" "mfem::GridFunction *""'"); 
   }
@@ -10488,7 +10279,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DivergenceGridFunctionCoefficient *arg1 = (mfem::DivergenceGridFunctionCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -10499,16 +10290,21 @@ SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_Eval(PyObject *SWIG
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "DivergenceGridFunctionCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DivergenceGridFunctionCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::DivergenceGridFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DivergenceGridFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -10516,7 +10312,7 @@ SWIGINTERN PyObject *_wrap_DivergenceGridFunctionCoefficient_Eval(PyObject *SWIG
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DivergenceGridFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -11000,7 +10796,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDeltaCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDeltaCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
   mfem::DeltaCoefficient *arg2 = 0 ;
@@ -11008,15 +10804,19 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDeltaCoefficient(PyObject *
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"_d",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorDeltaCoefficient_SetDeltaCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorDeltaCoefficient_SetDeltaCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_SetDeltaCoefficient" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DeltaCoefficient,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DeltaCoefficient,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorDeltaCoefficient_SetDeltaCoefficient" "', argument " "2"" of type '" "mfem::DeltaCoefficient const &""'"); 
   }
@@ -11091,7 +10891,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetScale(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetScale(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
   double arg2 ;
@@ -11099,15 +10899,19 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetScale(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"s",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorDeltaCoefficient_SetScale", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorDeltaCoefficient_SetScale", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_SetScale" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "VectorDeltaCoefficient_SetScale" "', argument " "2"" of type '" "double""'");
   } 
@@ -11138,7 +10942,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDirection(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDirection(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -11146,15 +10950,19 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDirection(PyObject *SWIGUNU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"_d",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorDeltaCoefficient_SetDirection", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorDeltaCoefficient_SetDirection", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_SetDirection" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorDeltaCoefficient_SetDirection" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -11188,7 +10996,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -11196,15 +11004,19 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_SetDeltaCenter(PyObject *SWIGU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"center",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorDeltaCoefficient_SetDeltaCenter", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorDeltaCoefficient_SetDeltaCenter", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_SetDeltaCenter" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorDeltaCoefficient_SetDeltaCenter" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -11238,7 +11050,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_GetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_GetDeltaCenter(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -11246,15 +11058,19 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_GetDeltaCenter(PyObject *SWIGU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"center",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorDeltaCoefficient_GetDeltaCenter", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:VectorDeltaCoefficient_GetDeltaCenter", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_GetDeltaCenter" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorDeltaCoefficient_GetDeltaCenter" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -11288,7 +11104,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_EvalDelta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_EvalDelta(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorDeltaCoefficient *arg1 = (mfem::VectorDeltaCoefficient *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -11302,15 +11118,21 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_EvalDelta(PyObject *SWIGUNUSED
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"V",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorDeltaCoefficient_EvalDelta", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:VectorDeltaCoefficient_EvalDelta", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorDeltaCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorDeltaCoefficient_EvalDelta" "', argument " "1"" of type '" "mfem::VectorDeltaCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorDeltaCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorDeltaCoefficient_EvalDelta" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -11318,7 +11140,7 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_EvalDelta(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorDeltaCoefficient_EvalDelta" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorDeltaCoefficient_EvalDelta" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -11326,7 +11148,7 @@ SWIGINTERN PyObject *_wrap_VectorDeltaCoefficient_EvalDelta(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorDeltaCoefficient_EvalDelta" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorDeltaCoefficient_EvalDelta" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -11712,7 +11534,7 @@ SWIGINTERN PyObject *VectorDeltaCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(se
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorRestrictedCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_VectorRestrictedCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorCoefficient *arg1 = 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -11720,11 +11542,15 @@ SWIGINTERN PyObject *_wrap_new_VectorRestrictedCoefficient(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"vc",  (char *)"attr",  NULL 
+  };
   mfem::VectorRestrictedCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_VectorRestrictedCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_VectorRestrictedCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorRestrictedCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -11732,7 +11558,7 @@ SWIGINTERN PyObject *_wrap_new_VectorRestrictedCoefficient(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorRestrictedCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorRestrictedCoefficient" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -12023,7 +11849,7 @@ SWIGINTERN PyObject *VectorRestrictedCoefficient_swiginit(PyObject *SWIGUNUSEDPA
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_MatrixCoefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixCoefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = (mfem::MatrixCoefficient *) 0 ;
   double arg2 ;
@@ -12031,15 +11857,19 @@ SWIGINTERN PyObject *_wrap_MatrixCoefficient_SetTime(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"t",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixCoefficient_SetTime", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MatrixCoefficient_SetTime", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixCoefficient_SetTime" "', argument " "1"" of type '" "mfem::MatrixCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MatrixCoefficient_SetTime" "', argument " "2"" of type '" "double""'");
   } 
@@ -12234,7 +12064,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = (mfem::MatrixCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -12248,15 +12078,21 @@ SWIGINTERN PyObject *_wrap_MatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self)
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"K",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MatrixCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatrixCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -12264,7 +12100,7 @@ SWIGINTERN PyObject *_wrap_MatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -12272,7 +12108,7 @@ SWIGINTERN PyObject *_wrap_MatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -12353,17 +12189,19 @@ SWIGINTERN PyObject *MatrixCoefficient_swigregister(PyObject *SWIGUNUSEDPARM(sel
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_new_MatrixConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_MatrixConstantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"m",  NULL 
+  };
   mfem::MatrixConstantCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_MatrixConstantCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__DenseMatrix,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixConstantCoefficient" "', argument " "1"" of type '" "mfem::DenseMatrix const &""'"); 
   }
@@ -12658,12 +12496,12 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_0(PyObject *SWIGU
   PyObject *resultobj = 0;
   int arg1 ;
   void (*arg2)(mfem::Vector const &,mfem::DenseMatrix &) = (void (*)(mfem::Vector const &,mfem::DenseMatrix &)) 0 ;
-  mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
+  mfem::Coefficient *arg3 = (mfem::Coefficient *) NULL ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   mfem::MatrixFunctionCoefficient *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -12676,11 +12514,13 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_0(PyObject *SWIGU
       SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_MatrixFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,mfem::DenseMatrix &)""'"); 
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_MatrixFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[2]) {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_MatrixFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   {
     try {
       result = (mfem::MatrixFunctionCoefficient *)new mfem::MatrixFunctionCoefficient(arg1,arg2,arg3);
@@ -12708,51 +12548,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  void (*arg2)(mfem::Vector const &,mfem::DenseMatrix &) = (void (*)(mfem::Vector const &,mfem::DenseMatrix &)) 0 ;
-  mfem::MatrixFunctionCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    int res = SWIG_ConvertFunctionPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_MatrixFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,mfem::DenseMatrix &)""'"); 
-    }
-  }
-  {
-    try {
-      result = (mfem::MatrixFunctionCoefficient *)new mfem::MatrixFunctionCoefficient(arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixFunctionCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::DenseMatrix *arg1 = 0 ;
   mfem::Coefficient *arg2 = 0 ;
@@ -12805,16 +12600,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
   void (*arg2)(mfem::Vector const &,double,mfem::DenseMatrix &) = (void (*)(mfem::Vector const &,double,mfem::DenseMatrix &)) 0 ;
-  mfem::Coefficient *arg3 = (mfem::Coefficient *) 0 ;
+  mfem::Coefficient *arg3 = (mfem::Coefficient *) NULL ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   mfem::MatrixFunctionCoefficient *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   {
     if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -12827,59 +12622,16 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_3(PyObject *SWIGU
       SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_MatrixFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,double,mfem::DenseMatrix &)""'"); 
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_MatrixFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[2]) {
+    res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "new_MatrixFunctionCoefficient" "', argument " "3"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
   {
     try {
       result = (mfem::MatrixFunctionCoefficient *)new mfem::MatrixFunctionCoefficient(arg1,arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixFunctionCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  void (*arg2)(mfem::Vector const &,double,mfem::DenseMatrix &) = (void (*)(mfem::Vector const &,double,mfem::DenseMatrix &)) 0 ;
-  mfem::MatrixFunctionCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    int res = SWIG_ConvertFunctionPtr(swig_obj[1], (void**)(&arg2), SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__DenseMatrix__void);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "new_MatrixFunctionCoefficient" "', argument " "2"" of type '" "void (*)(mfem::Vector const &,double,mfem::DenseMatrix &)""'"); 
-    }
-  }
-  {
-    try {
-      result = (mfem::MatrixFunctionCoefficient *)new mfem::MatrixFunctionCoefficient(arg1,arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -12920,73 +12672,11 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_MatrixFunctionCoefficient__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      void *ptr = 0;
-      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void);
-      _v = SWIG_CheckState(res);
-      if (_v) {
         return _wrap_new_MatrixFunctionCoefficient__SWIG_1(self, argc, argv);
       }
     }
   }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      void *ptr = 0;
-      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__DenseMatrix__void);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_MatrixFunctionCoefficient__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      void *ptr = 0;
-      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__DenseMatrix__void);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_new_MatrixFunctionCoefficient__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
@@ -13001,6 +12691,9 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
       int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__DenseMatrix__void);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_MatrixFunctionCoefficient__SWIG_0(self, argc, argv);
+        }
         void *vptr = 0;
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
         _v = SWIG_CheckState(res);
@@ -13010,20 +12703,45 @@ SWIGINTERN PyObject *_wrap_new_MatrixFunctionCoefficient(PyObject *self, PyObjec
       }
     }
   }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      void *ptr = 0;
+      int res = SWIG_ConvertFunctionPtr(argv[1], &ptr, SWIGTYPE_p_f_r_q_const__mfem__Vector_double_r_mfem__DenseMatrix__void);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_MatrixFunctionCoefficient__SWIG_2(self, argc, argv);
+        }
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_new_MatrixFunctionCoefficient__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_MatrixFunctionCoefficient'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::MatrixFunctionCoefficient::MatrixFunctionCoefficient(int,void (*)(mfem::Vector const &,mfem::DenseMatrix &),mfem::Coefficient *)\n"
-    "    mfem::MatrixFunctionCoefficient::MatrixFunctionCoefficient(int,void (*)(mfem::Vector const &,mfem::DenseMatrix &))\n"
     "    mfem::MatrixFunctionCoefficient::MatrixFunctionCoefficient(mfem::DenseMatrix const &,mfem::Coefficient &)\n"
-    "    mfem::MatrixFunctionCoefficient::MatrixFunctionCoefficient(int,void (*)(mfem::Vector const &,double,mfem::DenseMatrix &),mfem::Coefficient *)\n"
-    "    mfem::MatrixFunctionCoefficient::MatrixFunctionCoefficient(int,void (*)(mfem::Vector const &,double,mfem::DenseMatrix &))\n");
+    "    mfem::MatrixFunctionCoefficient::MatrixFunctionCoefficient(int,void (*)(mfem::Vector const &,double,mfem::DenseMatrix &),mfem::Coefficient *)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixFunctionCoefficient *arg1 = (mfem::MatrixFunctionCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -13037,15 +12755,21 @@ SWIGINTERN PyObject *_wrap_MatrixFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPA
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"K",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixFunctionCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixFunctionCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MatrixFunctionCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixFunctionCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixFunctionCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatrixFunctionCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixFunctionCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -13053,7 +12777,7 @@ SWIGINTERN PyObject *_wrap_MatrixFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixFunctionCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -13061,7 +12785,7 @@ SWIGINTERN PyObject *_wrap_MatrixFunctionCoefficient_Eval(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixFunctionCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixFunctionCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -13146,19 +12870,21 @@ SWIGINTERN PyObject *MatrixFunctionCoefficient_swiginit(PyObject *SWIGUNUSEDPARM
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_MatrixArrayCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_MatrixArrayCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"dim",  NULL 
+  };
   mfem::MatrixArrayCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_MatrixArrayCoefficient", kwnames, &obj0)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -13186,33 +12912,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_GetCoeff(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixArrayCoefficient *arg1 = (mfem::MatrixArrayCoefficient *) 0 ;
   int arg2 ;
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  NULL 
+  };
   mfem::Coefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixArrayCoefficient_GetCoeff", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MatrixArrayCoefficient_GetCoeff", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixArrayCoefficient_GetCoeff" "', argument " "1"" of type '" "mfem::MatrixArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -13240,48 +12971,58 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixArrayCoefficient *arg1 = (mfem::MatrixArrayCoefficient *) 0 ;
   int arg2 ;
   int arg3 ;
   mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  bool arg5 ;
+  bool arg5 = (bool) true ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   bool val5 ;
   int ecode5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"j",  (char *)"c",  (char *)"own",  NULL 
+  };
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|O:MatrixArrayCoefficient_Set", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::MatrixArrayCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixArrayCoefficient_Set" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
   }
   arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  ecode5 = SWIG_AsVal_bool(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MatrixArrayCoefficient_Set" "', argument " "5"" of type '" "bool""'");
-  } 
-  arg5 = static_cast< bool >(val5);
+  if (obj4) {
+    ecode5 = SWIG_AsVal_bool(obj4, &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "MatrixArrayCoefficient_Set" "', argument " "5"" of type '" "bool""'");
+    } 
+    arg5 = static_cast< bool >(val5);
+  }
   {
     try {
       (arg1)->Set(arg2,arg3,arg4,arg5);
@@ -13305,158 +13046,6 @@ SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set__SWIG_0(PyObject *SWIGUNUS
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MatrixArrayCoefficient *arg1 = (mfem::MatrixArrayCoefficient *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixArrayCoefficient_Set" "', argument " "1"" of type '" "mfem::MatrixArrayCoefficient *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MatrixArrayCoefficient * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixArrayCoefficient_Set" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  {
-    try {
-      (arg1)->Set(arg2,arg3,arg4);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_MatrixArrayCoefficient_Set(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "MatrixArrayCoefficient_Set", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_MatrixArrayCoefficient_Set__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixArrayCoefficient, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            {
-              int res = SWIG_AsVal_bool(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-            if (_v) {
-              return _wrap_MatrixArrayCoefficient_Set__SWIG_0(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'MatrixArrayCoefficient_Set'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::MatrixArrayCoefficient::Set(int,int,mfem::Coefficient *,bool)\n"
-    "    mfem::MatrixArrayCoefficient::Set(int,int,mfem::Coefficient *)\n");
-  return 0;
 }
 
 
@@ -13736,7 +13325,7 @@ SWIGINTERN PyObject *MatrixArrayCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(se
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_MatrixRestrictedCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_MatrixRestrictedCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = 0 ;
   mfem::Array< int > *arg2 = 0 ;
@@ -13744,11 +13333,15 @@ SWIGINTERN PyObject *_wrap_new_MatrixRestrictedCoefficient(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"mc",  (char *)"attr",  NULL 
+  };
   mfem::MatrixRestrictedCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_MatrixRestrictedCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_MatrixRestrictedCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixRestrictedCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -13756,7 +13349,7 @@ SWIGINTERN PyObject *_wrap_new_MatrixRestrictedCoefficient(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixRestrictedCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatrixRestrictedCoefficient" "', argument " "2"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -13790,7 +13383,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixRestrictedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixRestrictedCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixRestrictedCoefficient *arg1 = (mfem::MatrixRestrictedCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -13804,15 +13397,21 @@ SWIGINTERN PyObject *_wrap_MatrixRestrictedCoefficient_Eval(PyObject *SWIGUNUSED
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"K",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixRestrictedCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixRestrictedCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MatrixRestrictedCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixRestrictedCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixRestrictedCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatrixRestrictedCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixRestrictedCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixRestrictedCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -13820,7 +13419,7 @@ SWIGINTERN PyObject *_wrap_MatrixRestrictedCoefficient_Eval(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixRestrictedCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixRestrictedCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -13828,7 +13427,7 @@ SWIGINTERN PyObject *_wrap_MatrixRestrictedCoefficient_Eval(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixRestrictedCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixRestrictedCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -13913,12 +13512,12 @@ SWIGINTERN PyObject *MatrixRestrictedCoefficient_swiginit(PyObject *SWIGUNUSEDPA
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_SumCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   mfem::Coefficient *arg2 = 0 ;
-  double arg3 ;
-  double arg4 ;
+  double arg3 = (double) 1.0 ;
+  double arg4 = (double) 1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -13927,10 +13526,17 @@ SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   int ecode3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  (char *)"_alpha",  (char *)"_beta",  NULL 
+  };
   mfem::SumCoefficient *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:new_SumCoefficient", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -13938,7 +13544,7 @@ SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -13946,16 +13552,20 @@ SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SumCoefficient" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SumCoefficient" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SumCoefficient" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_SumCoefficient" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       result = (mfem::SumCoefficient *)new mfem::SumCoefficient(*arg1,*arg2,arg3,arg4);
@@ -13982,200 +13592,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Coefficient *arg1 = 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  double arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  mfem::SumCoefficient *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_SumCoefficient" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    try {
-      result = (mfem::SumCoefficient *)new mfem::SumCoefficient(*arg1,*arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SumCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_SumCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Coefficient *arg1 = 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::SumCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_SumCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  {
-    try {
-      result = (mfem::SumCoefficient *)new mfem::SumCoefficient(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__SumCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_SumCoefficient(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_SumCoefficient", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_SumCoefficient__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_SumCoefficient__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_SumCoefficient__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_SumCoefficient'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::SumCoefficient::SumCoefficient(mfem::Coefficient &,mfem::Coefficient &,double,double)\n"
-    "    mfem::SumCoefficient::SumCoefficient(mfem::Coefficient &,mfem::Coefficient &,double)\n"
-    "    mfem::SumCoefficient::SumCoefficient(mfem::Coefficient &,mfem::Coefficient &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_SumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::SumCoefficient *arg1 = (mfem::SumCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -14186,16 +13603,21 @@ SWIGINTERN PyObject *_wrap_SumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), P
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "SumCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SumCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:SumCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SumCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SumCoefficient_Eval" "', argument " "1"" of type '" "mfem::SumCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SumCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SumCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -14203,7 +13625,7 @@ SWIGINTERN PyObject *_wrap_SumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SumCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "SumCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -14288,7 +13710,7 @@ SWIGINTERN PyObject *SumCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   mfem::Coefficient *arg2 = 0 ;
@@ -14296,11 +13718,15 @@ SWIGINTERN PyObject *_wrap_new_ProductCoefficient(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::ProductCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_ProductCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_ProductCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -14308,7 +13734,7 @@ SWIGINTERN PyObject *_wrap_new_ProductCoefficient(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ProductCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -14342,7 +13768,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ProductCoefficient *arg1 = (mfem::ProductCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -14353,16 +13779,21 @@ SWIGINTERN PyObject *_wrap_ProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ProductCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ProductCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ProductCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ProductCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::ProductCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ProductCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -14370,7 +13801,7 @@ SWIGINTERN PyObject *_wrap_ProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -14455,7 +13886,7 @@ SWIGINTERN PyObject *ProductCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self),
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_PowerCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_PowerCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   double arg2 ;
@@ -14463,11 +13894,15 @@ SWIGINTERN PyObject *_wrap_new_PowerCoefficient(PyObject *SWIGUNUSEDPARM(self), 
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"_p",  NULL 
+  };
   mfem::PowerCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_PowerCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_PowerCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_PowerCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -14475,7 +13910,7 @@ SWIGINTERN PyObject *_wrap_new_PowerCoefficient(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_PowerCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_PowerCoefficient" "', argument " "2"" of type '" "double""'");
   } 
@@ -14506,7 +13941,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PowerCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PowerCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PowerCoefficient *arg1 = (mfem::PowerCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -14517,16 +13952,21 @@ SWIGINTERN PyObject *_wrap_PowerCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self),
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "PowerCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PowerCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:PowerCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PowerCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PowerCoefficient_Eval" "', argument " "1"" of type '" "mfem::PowerCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PowerCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PowerCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -14534,7 +13974,7 @@ SWIGINTERN PyObject *_wrap_PowerCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PowerCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PowerCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -14619,7 +14059,7 @@ SWIGINTERN PyObject *PowerCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self), P
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_InnerProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_InnerProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorCoefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -14627,11 +14067,15 @@ SWIGINTERN PyObject *_wrap_new_InnerProductCoefficient(PyObject *SWIGUNUSEDPARM(
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::InnerProductCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_InnerProductCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_InnerProductCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_InnerProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -14639,7 +14083,7 @@ SWIGINTERN PyObject *_wrap_new_InnerProductCoefficient(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_InnerProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_InnerProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -14673,7 +14117,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InnerProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InnerProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InnerProductCoefficient *arg1 = (mfem::InnerProductCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -14684,16 +14128,21 @@ SWIGINTERN PyObject *_wrap_InnerProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "InnerProductCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InnerProductCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:InnerProductCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InnerProductCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InnerProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::InnerProductCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InnerProductCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InnerProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -14701,7 +14150,7 @@ SWIGINTERN PyObject *_wrap_InnerProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InnerProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InnerProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -14786,7 +14235,7 @@ SWIGINTERN PyObject *InnerProductCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(s
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorRotProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_VectorRotProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorCoefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -14794,11 +14243,15 @@ SWIGINTERN PyObject *_wrap_new_VectorRotProductCoefficient(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::VectorRotProductCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_VectorRotProductCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_VectorRotProductCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorRotProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -14806,7 +14259,7 @@ SWIGINTERN PyObject *_wrap_new_VectorRotProductCoefficient(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorRotProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorRotProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -14840,7 +14293,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorRotProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorRotProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorRotProductCoefficient *arg1 = (mfem::VectorRotProductCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -14851,16 +14304,21 @@ SWIGINTERN PyObject *_wrap_VectorRotProductCoefficient_Eval(PyObject *SWIGUNUSED
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorRotProductCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorRotProductCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:VectorRotProductCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorRotProductCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorRotProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::VectorRotProductCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorRotProductCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorRotProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -14868,7 +14326,7 @@ SWIGINTERN PyObject *_wrap_VectorRotProductCoefficient_Eval(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorRotProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorRotProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -14953,17 +14411,19 @@ SWIGINTERN PyObject *VectorRotProductCoefficient_swiginit(PyObject *SWIGUNUSEDPA
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_DeterminantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_DeterminantCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  NULL 
+  };
   mfem::DeterminantCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_DeterminantCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DeterminantCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -14997,7 +14457,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_DeterminantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DeterminantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DeterminantCoefficient *arg1 = (mfem::DeterminantCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -15008,16 +14468,21 @@ SWIGINTERN PyObject *_wrap_DeterminantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "DeterminantCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DeterminantCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DeterminantCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DeterminantCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DeterminantCoefficient_Eval" "', argument " "1"" of type '" "mfem::DeterminantCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DeterminantCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DeterminantCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -15025,7 +14490,7 @@ SWIGINTERN PyObject *_wrap_DeterminantCoefficient_Eval(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DeterminantCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DeterminantCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -15110,12 +14575,12 @@ SWIGINTERN PyObject *DeterminantCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(se
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorCoefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
-  double arg3 ;
-  double arg4 ;
+  double arg3 = (double) 1.0 ;
+  double arg4 = (double) 1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -15124,10 +14589,17 @@ SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_0(PyObject *SWIGUNUSED
   int ecode3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  (char *)"_alpha",  (char *)"_beta",  NULL 
+  };
   mfem::VectorSumCoefficient *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:new_VectorSumCoefficient", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -15135,7 +14607,7 @@ SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -15143,16 +14615,20 @@ SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_VectorSumCoefficient" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_VectorSumCoefficient" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_VectorSumCoefficient" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_VectorSumCoefficient" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       result = (mfem::VectorSumCoefficient *)new mfem::VectorSumCoefficient(*arg1,*arg2,arg3,arg4);
@@ -15176,199 +14652,6 @@ SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_0(PyObject *SWIGUNUSED
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::VectorCoefficient *arg1 = 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  double arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  mfem::VectorSumCoefficient *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_VectorSumCoefficient" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    try {
-      result = (mfem::VectorSumCoefficient *)new mfem::VectorSumCoefficient(*arg1,*arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorSumCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::VectorCoefficient *arg1 = 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::VectorSumCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorSumCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    try {
-      result = (mfem::VectorSumCoefficient *)new mfem::VectorSumCoefficient(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorSumCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorSumCoefficient(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_VectorSumCoefficient", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_VectorSumCoefficient__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_VectorSumCoefficient__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_VectorSumCoefficient__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_VectorSumCoefficient'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::VectorSumCoefficient::VectorSumCoefficient(mfem::VectorCoefficient &,mfem::VectorCoefficient &,double,double)\n"
-    "    mfem::VectorSumCoefficient::VectorSumCoefficient(mfem::VectorCoefficient &,mfem::VectorCoefficient &,double)\n"
-    "    mfem::VectorSumCoefficient::VectorSumCoefficient(mfem::VectorCoefficient &,mfem::VectorCoefficient &)\n");
-  return 0;
 }
 
 
@@ -15629,7 +14912,7 @@ SWIGINTERN PyObject *VectorSumCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ScalarVectorProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ScalarVectorProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -15637,11 +14920,15 @@ SWIGINTERN PyObject *_wrap_new_ScalarVectorProductCoefficient(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::ScalarVectorProductCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_ScalarVectorProductCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_ScalarVectorProductCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ScalarVectorProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -15649,7 +14936,7 @@ SWIGINTERN PyObject *_wrap_new_ScalarVectorProductCoefficient(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ScalarVectorProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ScalarVectorProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -15940,7 +15227,7 @@ SWIGINTERN PyObject *ScalarVectorProductCoefficient_swiginit(PyObject *SWIGUNUSE
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorCrossProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_VectorCrossProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorCoefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -15948,11 +15235,15 @@ SWIGINTERN PyObject *_wrap_new_VectorCrossProductCoefficient(PyObject *SWIGUNUSE
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::VectorCrossProductCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_VectorCrossProductCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_VectorCrossProductCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_VectorCrossProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -15960,7 +15251,7 @@ SWIGINTERN PyObject *_wrap_new_VectorCrossProductCoefficient(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_VectorCrossProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_VectorCrossProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -16251,7 +15542,7 @@ SWIGINTERN PyObject *VectorCrossProductCoefficient_swiginit(PyObject *SWIGUNUSED
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_MatVecCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_MatVecCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -16259,11 +15550,15 @@ SWIGINTERN PyObject *_wrap_new_MatVecCoefficient(PyObject *SWIGUNUSEDPARM(self),
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::MatVecCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_MatVecCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_MatVecCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatVecCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -16271,7 +15566,7 @@ SWIGINTERN PyObject *_wrap_new_MatVecCoefficient(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatVecCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatVecCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -16562,19 +15857,21 @@ SWIGINTERN PyObject *MatVecCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_IdentityMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_IdentityMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"d",  NULL 
+  };
   mfem::IdentityMatrixCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_IdentityMatrixCoefficient", kwnames, &obj0)) SWIG_fail;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    arg1 = PyArray_PyIntAsInt(obj0);
   }
   {
     try {
@@ -16602,7 +15899,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_IdentityMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IdentityMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::IdentityMatrixCoefficient *arg1 = (mfem::IdentityMatrixCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -16616,15 +15913,21 @@ SWIGINTERN PyObject *_wrap_IdentityMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPA
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"M",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "IdentityMatrixCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IdentityMatrixCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:IdentityMatrixCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IdentityMatrixCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "1"" of type '" "mfem::IdentityMatrixCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IdentityMatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -16632,7 +15935,7 @@ SWIGINTERN PyObject *_wrap_IdentityMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -16640,7 +15943,7 @@ SWIGINTERN PyObject *_wrap_IdentityMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "IdentityMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -16725,12 +16028,12 @@ SWIGINTERN PyObject *IdentityMatrixCoefficient_swiginit(PyObject *SWIGUNUSEDPARM
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = 0 ;
   mfem::MatrixCoefficient *arg2 = 0 ;
-  double arg3 ;
-  double arg4 ;
+  double arg3 = (double) 1.0 ;
+  double arg4 = (double) 1.0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -16739,10 +16042,17 @@ SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_0(PyObject *SWIGUNUSED
   int ecode3 = 0 ;
   double val4 ;
   int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  (char *)"_alpha",  (char *)"_beta",  NULL 
+  };
   mfem::MatrixSumCoefficient *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:new_MatrixSumCoefficient", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -16750,7 +16060,7 @@ SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -16758,16 +16068,20 @@ SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MatrixSumCoefficient" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_MatrixSumCoefficient" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_double(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MatrixSumCoefficient" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (obj3) {
+    ecode4 = SWIG_AsVal_double(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "new_MatrixSumCoefficient" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
   {
     try {
       result = (mfem::MatrixSumCoefficient *)new mfem::MatrixSumCoefficient(*arg1,*arg2,arg3,arg4);
@@ -16794,200 +16108,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MatrixCoefficient *arg1 = 0 ;
-  mfem::MatrixCoefficient *arg2 = 0 ;
-  double arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  mfem::MatrixSumCoefficient *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_MatrixSumCoefficient" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    try {
-      result = (mfem::MatrixSumCoefficient *)new mfem::MatrixSumCoefficient(*arg1,*arg2,arg3);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixSumCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::MatrixCoefficient *arg1 = 0 ;
-  mfem::MatrixCoefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::MatrixSumCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_MatrixSumCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::MatrixCoefficient * >(argp2);
-  {
-    try {
-      result = (mfem::MatrixSumCoefficient *)new mfem::MatrixSumCoefficient(*arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MatrixSumCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_MatrixSumCoefficient(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_MatrixSumCoefficient", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_MatrixSumCoefficient__SWIG_2(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_MatrixSumCoefficient__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__MatrixCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            return _wrap_new_MatrixSumCoefficient__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_MatrixSumCoefficient'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::MatrixSumCoefficient::MatrixSumCoefficient(mfem::MatrixCoefficient &,mfem::MatrixCoefficient &,double,double)\n"
-    "    mfem::MatrixSumCoefficient::MatrixSumCoefficient(mfem::MatrixCoefficient &,mfem::MatrixCoefficient &,double)\n"
-    "    mfem::MatrixSumCoefficient::MatrixSumCoefficient(mfem::MatrixCoefficient &,mfem::MatrixCoefficient &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_MatrixSumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixSumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixSumCoefficient *arg1 = (mfem::MatrixSumCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -17001,15 +16122,21 @@ SWIGINTERN PyObject *_wrap_MatrixSumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(se
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"M",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixSumCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixSumCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MatrixSumCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixSumCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixSumCoefficient_Eval" "', argument " "1"" of type '" "mfem::MatrixSumCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixSumCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -17017,7 +16144,7 @@ SWIGINTERN PyObject *_wrap_MatrixSumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixSumCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -17025,7 +16152,7 @@ SWIGINTERN PyObject *_wrap_MatrixSumCoefficient_Eval(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixSumCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixSumCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -17110,7 +16237,7 @@ SWIGINTERN PyObject *MatrixSumCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_ScalarMatrixProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ScalarMatrixProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   mfem::MatrixCoefficient *arg2 = 0 ;
@@ -17118,11 +16245,15 @@ SWIGINTERN PyObject *_wrap_new_ScalarMatrixProductCoefficient(PyObject *SWIGUNUS
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::ScalarMatrixProductCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_ScalarMatrixProductCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_ScalarMatrixProductCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ScalarMatrixProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -17130,7 +16261,7 @@ SWIGINTERN PyObject *_wrap_new_ScalarMatrixProductCoefficient(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_ScalarMatrixProductCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ScalarMatrixProductCoefficient" "', argument " "2"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -17164,7 +16295,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ScalarMatrixProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ScalarMatrixProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ScalarMatrixProductCoefficient *arg1 = (mfem::ScalarMatrixProductCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -17178,15 +16309,21 @@ SWIGINTERN PyObject *_wrap_ScalarMatrixProductCoefficient_Eval(PyObject *SWIGUNU
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"M",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "ScalarMatrixProductCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ScalarMatrixProductCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::ScalarMatrixProductCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ScalarMatrixProductCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -17194,7 +16331,7 @@ SWIGINTERN PyObject *_wrap_ScalarMatrixProductCoefficient_Eval(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -17202,7 +16339,7 @@ SWIGINTERN PyObject *_wrap_ScalarMatrixProductCoefficient_Eval(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ScalarMatrixProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -17287,17 +16424,19 @@ SWIGINTERN PyObject *ScalarMatrixProductCoefficient_swiginit(PyObject *SWIGUNUSE
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_TransposeMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_TransposeMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  NULL 
+  };
   mfem::TransposeMatrixCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_TransposeMatrixCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_TransposeMatrixCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -17331,7 +16470,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_TransposeMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_TransposeMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::TransposeMatrixCoefficient *arg1 = (mfem::TransposeMatrixCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -17345,15 +16484,21 @@ SWIGINTERN PyObject *_wrap_TransposeMatrixCoefficient_Eval(PyObject *SWIGUNUSEDP
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"M",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "TransposeMatrixCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__TransposeMatrixCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:TransposeMatrixCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__TransposeMatrixCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "1"" of type '" "mfem::TransposeMatrixCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::TransposeMatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -17361,7 +16506,7 @@ SWIGINTERN PyObject *_wrap_TransposeMatrixCoefficient_Eval(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -17369,7 +16514,7 @@ SWIGINTERN PyObject *_wrap_TransposeMatrixCoefficient_Eval(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "TransposeMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -17454,17 +16599,19 @@ SWIGINTERN PyObject *TransposeMatrixCoefficient_swiginit(PyObject *SWIGUNUSEDPAR
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_InverseMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_InverseMatrixCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixCoefficient *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  NULL 
+  };
   mfem::InverseMatrixCoefficient *result = 0 ;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_InverseMatrixCoefficient", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__MatrixCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_InverseMatrixCoefficient" "', argument " "1"" of type '" "mfem::MatrixCoefficient &""'"); 
   }
@@ -17498,7 +16645,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_InverseMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_InverseMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::InverseMatrixCoefficient *arg1 = (mfem::InverseMatrixCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -17512,15 +16659,21 @@ SWIGINTERN PyObject *_wrap_InverseMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPAR
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"M",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "InverseMatrixCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__InverseMatrixCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:InverseMatrixCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__InverseMatrixCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "1"" of type '" "mfem::InverseMatrixCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::InverseMatrixCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -17528,7 +16681,7 @@ SWIGINTERN PyObject *_wrap_InverseMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseMatrixCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -17536,7 +16689,7 @@ SWIGINTERN PyObject *_wrap_InverseMatrixCoefficient_Eval(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "InverseMatrixCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "InverseMatrixCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -17621,7 +16774,7 @@ SWIGINTERN PyObject *InverseMatrixCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_OuterProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_OuterProductCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorCoefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -17629,11 +16782,15 @@ SWIGINTERN PyObject *_wrap_new_OuterProductCoefficient(PyObject *SWIGUNUSEDPARM(
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"B",  NULL 
+  };
   mfem::OuterProductCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_OuterProductCoefficient", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_OuterProductCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OuterProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -17641,7 +16798,7 @@ SWIGINTERN PyObject *_wrap_new_OuterProductCoefficient(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OuterProductCoefficient" "', argument " "1"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_OuterProductCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -17675,7 +16832,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_OuterProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_OuterProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::OuterProductCoefficient *arg1 = (mfem::OuterProductCoefficient *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -17689,15 +16846,21 @@ SWIGINTERN PyObject *_wrap_OuterProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"M",  (char *)"T",  (char *)"ip",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "OuterProductCoefficient_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OuterProductCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:OuterProductCoefficient_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OuterProductCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OuterProductCoefficient_Eval" "', argument " "1"" of type '" "mfem::OuterProductCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::OuterProductCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OuterProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -17705,7 +16868,7 @@ SWIGINTERN PyObject *_wrap_OuterProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProductCoefficient_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "OuterProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -17713,7 +16876,7 @@ SWIGINTERN PyObject *_wrap_OuterProductCoefficient_Eval(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OuterProductCoefficient_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "OuterProductCoefficient_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -18034,17 +17197,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_fake_func(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_fake_func(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"x",  NULL 
+  };
   double result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:fake_func", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "fake_func" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
   }
@@ -18078,7 +17243,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_fake_func_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_fake_func_vec(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -18086,10 +17251,14 @@ SWIGINTERN PyObject *_wrap_fake_func_vec(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"x",  (char *)"Ht",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "fake_func_vec", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:fake_func_vec", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "fake_func_vec" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
   }
@@ -18097,7 +17266,7 @@ SWIGINTERN PyObject *_wrap_fake_func_vec(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "fake_func_vec" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Vector * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "fake_func_vec" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -18131,7 +17300,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_fake_func_mat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_fake_func_mat(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Vector *arg1 = 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -18139,10 +17308,14 @@ SWIGINTERN PyObject *_wrap_fake_func_mat(PyObject *SWIGUNUSEDPARM(self), PyObjec
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"x",  (char *)"Kt",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "fake_func_mat", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:fake_func_mat", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "fake_func_mat" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
   }
@@ -18150,7 +17323,7 @@ SWIGINTERN PyObject *_wrap_fake_func_mat(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "fake_func_mat" "', argument " "1"" of type '" "mfem::Vector const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Vector * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "fake_func_mat" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -18184,20 +17357,24 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_PyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_PyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  (char *)"tdep",  NULL 
+  };
   mfem::PyCoefficientBase *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_PyCoefficientBase", 2, 2, swig_obj)) SWIG_fail;
-  arg1 = swig_obj[0];
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_PyCoefficientBase", kwnames, &obj0, &obj1)) SWIG_fail;
+  arg1 = obj0;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -18232,7 +17409,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyCoefficientBase *arg1 = (mfem::PyCoefficientBase *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -18243,18 +17420,23 @@ SWIGINTERN PyObject *_wrap_PyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self)
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "PyCoefficientBase_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:PyCoefficientBase_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyCoefficientBase_Eval" "', argument " "1"" of type '" "mfem::PyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyCoefficientBase_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -18262,7 +17444,7 @@ SWIGINTERN PyObject *_wrap_PyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PyCoefficientBase_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "PyCoefficientBase_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -18271,7 +17453,7 @@ SWIGINTERN PyObject *_wrap_PyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self)
   }
   arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -18306,7 +17488,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyCoefficientBase *arg1 = (mfem::PyCoefficientBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -18314,18 +17496,22 @@ SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(se
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "PyCoefficientBase__EvalPy", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:PyCoefficientBase__EvalPy", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyCoefficientBase__EvalPy" "', argument " "1"" of type '" "mfem::PyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyCoefficientBase__EvalPy" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -18334,7 +17520,7 @@ SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(se
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -18369,7 +17555,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyCoefficientBase *arg1 = (mfem::PyCoefficientBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -18380,18 +17566,23 @@ SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(s
   int res2 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  (char *)"arg1",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "PyCoefficientBase__EvalPyT", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:PyCoefficientBase__EvalPyT", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PyCoefficientBase__EvalPyT" "', argument " "1"" of type '" "mfem::PyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::PyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PyCoefficientBase__EvalPyT" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -18399,13 +17590,13 @@ SWIGINTERN PyObject *_wrap_PyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "PyCoefficientBase__EvalPyT" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "PyCoefficientBase__EvalPyT" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -18480,16 +17671,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_PyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_PyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::PyCoefficientBase *arg1 = (mfem::PyCoefficientBase *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_PyCoefficientBase", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__PyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_PyCoefficientBase" "', argument " "1"" of type '" "mfem::PyCoefficientBase *""'"); 
   }
@@ -18517,35 +17710,44 @@ SWIGINTERN PyObject *PyCoefficientBase_swiginit(PyObject *SWIGUNUSEDPARM(self), 
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
   int arg3 ;
-  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
+  mfem::Coefficient *arg4 = (mfem::Coefficient *) NULL ;
   void *argp4 = 0 ;
   int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  (char *)"dim",  (char *)"tdep",  (char *)"q",  NULL 
+  };
   mfem::VectorPyCoefficientBase *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  arg1 = swig_obj[0];
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:new_VectorPyCoefficientBase", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  arg1 = obj0;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_VectorPyCoefficientBase" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
+  if (obj3) {
+    res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "new_VectorPyCoefficientBase" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
   }
-  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
   {
     try {
       if ( arg1 != Py_None ) {
@@ -18575,136 +17777,6 @@ SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_0(PyObject *SWIGUNU
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  PyObject *arg1 = (PyObject *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::VectorPyCoefficientBase *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  arg1 = swig_obj[0];
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  {
-    try {
-      if ( arg1 != Py_None ) {
-        /* subclassed */
-        result = (mfem::VectorPyCoefficientBase *)new SwigDirector_VectorPyCoefficientBase(arg1,arg2,arg3); 
-      } else {
-        result = (mfem::VectorPyCoefficientBase *)new mfem::VectorPyCoefficientBase(arg2,arg3); 
-      }
-      
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__VectorPyCoefficientBase, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_VectorPyCoefficientBase(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_VectorPyCoefficientBase", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_new_VectorPyCoefficientBase__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    _v = (argv[0] != 0);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_new_VectorPyCoefficientBase__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_VectorPyCoefficientBase'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::VectorPyCoefficientBase::VectorPyCoefficientBase(int,int,mfem::Coefficient *)\n"
-    "    mfem::VectorPyCoefficientBase::VectorPyCoefficientBase(PyObject *,int,int)\n");
-  return 0;
 }
 
 
@@ -18938,7 +18010,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorPyCoefficientBase *arg1 = (mfem::VectorPyCoefficientBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -18949,17 +18021,22 @@ SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDP
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  (char *)"arg1",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorPyCoefficientBase__EvalPy", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorPyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:VectorPyCoefficientBase__EvalPy", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorPyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorPyCoefficientBase__EvalPy" "', argument " "1"" of type '" "mfem::VectorPyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorPyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorPyCoefficientBase__EvalPy" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -18967,7 +18044,7 @@ SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorPyCoefficientBase__EvalPy" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "VectorPyCoefficientBase__EvalPy" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -18976,7 +18053,7 @@ SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDP
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -19011,7 +18088,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorPyCoefficientBase *arg1 = (mfem::VectorPyCoefficientBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -19025,17 +18102,23 @@ SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSED
   int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  (char *)"arg1",  (char *)"arg2",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "VectorPyCoefficientBase__EvalPyT", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorPyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:VectorPyCoefficientBase__EvalPyT", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorPyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "VectorPyCoefficientBase__EvalPyT" "', argument " "1"" of type '" "mfem::VectorPyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::VectorPyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "VectorPyCoefficientBase__EvalPyT" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -19043,12 +18126,12 @@ SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "VectorPyCoefficientBase__EvalPyT" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "VectorPyCoefficientBase__EvalPyT" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "VectorPyCoefficientBase__EvalPyT" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -19057,7 +18140,7 @@ SWIGINTERN PyObject *_wrap_VectorPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSED
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -19132,16 +18215,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_VectorPyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_VectorPyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::VectorPyCoefficientBase *arg1 = (mfem::VectorPyCoefficientBase *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__VectorPyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_VectorPyCoefficientBase", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__VectorPyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_VectorPyCoefficientBase" "', argument " "1"" of type '" "mfem::VectorPyCoefficientBase *""'"); 
   }
@@ -19169,27 +18254,32 @@ SWIGINTERN PyObject *VectorPyCoefficientBase_swiginit(PyObject *SWIGUNUSEDPARM(s
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   PyObject *arg1 = (PyObject *) 0 ;
   int arg2 ;
   int arg3 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  (char *)"dim",  (char *)"tdep",  NULL 
+  };
   mfem::MatrixPyCoefficientBase *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_MatrixPyCoefficientBase", 3, 3, swig_obj)) SWIG_fail;
-  arg1 = swig_obj[0];
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:new_MatrixPyCoefficientBase", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  arg1 = obj0;
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -19223,7 +18313,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixPyCoefficientBase *arg1 = (mfem::MatrixPyCoefficientBase *) 0 ;
   mfem::DenseMatrix *arg2 = 0 ;
@@ -19237,17 +18327,23 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"K",  (char *)"T",  (char *)"ip",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixPyCoefficientBase_Eval", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MatrixPyCoefficientBase_Eval", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixPyCoefficientBase_Eval" "', argument " "1"" of type '" "mfem::MatrixPyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixPyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixPyCoefficientBase_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -19255,7 +18351,7 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixPyCoefficientBase_Eval" "', argument " "2"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg2 = reinterpret_cast< mfem::DenseMatrix * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixPyCoefficientBase_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -19263,7 +18359,7 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixPyCoefficientBase_Eval" "', argument " "3"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg3 = reinterpret_cast< mfem::ElementTransformation * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixPyCoefficientBase_Eval" "', argument " "4"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -19272,7 +18368,7 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase_Eval(PyObject *SWIGUNUSEDPARM
   }
   arg4 = reinterpret_cast< mfem::IntegrationPoint * >(argp4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -19307,7 +18403,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixPyCoefficientBase *arg1 = (mfem::MatrixPyCoefficientBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -19318,17 +18414,22 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDP
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  (char *)"arg1",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixPyCoefficientBase__EvalPy", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MatrixPyCoefficientBase__EvalPy", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixPyCoefficientBase__EvalPy" "', argument " "1"" of type '" "mfem::MatrixPyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixPyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixPyCoefficientBase__EvalPy" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -19336,7 +18437,7 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixPyCoefficientBase__EvalPy" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MatrixPyCoefficientBase__EvalPy" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -19345,7 +18446,7 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPy(PyObject *SWIGUNUSEDP
   }
   arg3 = reinterpret_cast< mfem::DenseMatrix * >(argp3);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -19380,7 +18481,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixPyCoefficientBase *arg1 = (mfem::MatrixPyCoefficientBase *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -19394,17 +18495,23 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSED
   int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"arg0",  (char *)"arg1",  (char *)"arg2",  NULL 
+  };
   Swig::Director *director = 0;
   bool upcall = false;
   
-  if (!SWIG_Python_UnpackTuple(args, "MatrixPyCoefficientBase__EvalPyT", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:MatrixPyCoefficientBase__EvalPyT", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MatrixPyCoefficientBase__EvalPyT" "', argument " "1"" of type '" "mfem::MatrixPyCoefficientBase *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MatrixPyCoefficientBase * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MatrixPyCoefficientBase__EvalPyT" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -19412,12 +18519,12 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MatrixPyCoefficientBase__EvalPyT" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+  ecode3 = SWIG_AsVal_double(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MatrixPyCoefficientBase__EvalPyT" "', argument " "3"" of type '" "double""'");
   } 
   arg3 = static_cast< double >(val3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "MatrixPyCoefficientBase__EvalPyT" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -19426,7 +18533,7 @@ SWIGINTERN PyObject *_wrap_MatrixPyCoefficientBase__EvalPyT(PyObject *SWIGUNUSED
   }
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
   director = SWIG_DIRECTOR_CAST(arg1);
-  upcall = (director && (director->swig_get_self()==swig_obj[0]));
+  upcall = (director && (director->swig_get_self()==obj0));
   try {
     {
       try {
@@ -19501,16 +18608,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_disown_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_disown_MatrixPyCoefficientBase(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MatrixPyCoefficientBase *arg1 = (mfem::MatrixPyCoefficientBase *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"_self",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:disown_MatrixPyCoefficientBase", kwnames, &obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MatrixPyCoefficientBase, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "disown_MatrixPyCoefficientBase" "', argument " "1"" of type '" "mfem::MatrixPyCoefficientBase *""'"); 
   }
@@ -19540,7 +18649,8 @@ SWIGINTERN PyObject *MatrixPyCoefficientBase_swiginit(PyObject *SWIGUNUSEDPARM(s
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { "Coefficient_SetTime", _wrap_Coefficient_SetTime, METH_VARARGS, "Coefficient_SetTime(Coefficient self, double t)"},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Coefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_Coefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "Coefficient_SetTime(Coefficient self, double t)"},
 	 { "Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_O, "Coefficient_GetTime(Coefficient self) -> double"},
 	 { "Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, "\n"
 		"Coefficient_Eval(Coefficient self, ElementTransformation T, IntegrationPoint ip) -> double\n"
@@ -19550,8 +18660,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "Coefficient_swigregister", Coefficient_swigregister, METH_O, NULL},
 	 { "ConstantCoefficient_constant_set", _wrap_ConstantCoefficient_constant_set, METH_VARARGS, "ConstantCoefficient_constant_set(ConstantCoefficient self, double constant)"},
 	 { "ConstantCoefficient_constant_get", _wrap_ConstantCoefficient_constant_get, METH_O, "ConstantCoefficient_constant_get(ConstantCoefficient self) -> double"},
-	 { "new_ConstantCoefficient", _wrap_new_ConstantCoefficient, METH_VARARGS, "ConstantCoefficient(double c=1.0)"},
-	 { "ConstantCoefficient_Eval", _wrap_ConstantCoefficient_Eval, METH_VARARGS, "ConstantCoefficient_Eval(ConstantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_ConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ConstantCoefficient(double c=1.0) -> ConstantCoefficient"},
+	 { "ConstantCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ConstantCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "ConstantCoefficient_Eval(ConstantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_ConstantCoefficient", _wrap_delete_ConstantCoefficient, METH_O, "delete_ConstantCoefficient(ConstantCoefficient self)"},
 	 { "ConstantCoefficient_swigregister", ConstantCoefficient_swigregister, METH_O, NULL},
 	 { "ConstantCoefficient_swiginit", ConstantCoefficient_swiginit, METH_VARARGS, NULL},
@@ -19559,10 +18669,10 @@ static PyMethodDef SwigMethods[] = {
 		"PWConstCoefficient(int NumOfSubD=0)\n"
 		"new_PWConstCoefficient(Vector c) -> PWConstCoefficient\n"
 		""},
-	 { "PWConstCoefficient_UpdateConstants", _wrap_PWConstCoefficient_UpdateConstants, METH_VARARGS, "PWConstCoefficient_UpdateConstants(PWConstCoefficient self, Vector c)"},
-	 { "PWConstCoefficient___call__", _wrap_PWConstCoefficient___call__, METH_VARARGS, "PWConstCoefficient___call__(PWConstCoefficient self, int i) -> double &"},
+	 { "PWConstCoefficient_UpdateConstants", (PyCFunction)(void(*)(void))_wrap_PWConstCoefficient_UpdateConstants, METH_VARARGS|METH_KEYWORDS, "PWConstCoefficient_UpdateConstants(PWConstCoefficient self, Vector c)"},
+	 { "PWConstCoefficient___call__", (PyCFunction)(void(*)(void))_wrap_PWConstCoefficient___call__, METH_VARARGS|METH_KEYWORDS, "PWConstCoefficient___call__(PWConstCoefficient self, int i) -> double &"},
 	 { "PWConstCoefficient_GetNConst", _wrap_PWConstCoefficient_GetNConst, METH_O, "PWConstCoefficient_GetNConst(PWConstCoefficient self) -> int"},
-	 { "PWConstCoefficient_Eval", _wrap_PWConstCoefficient_Eval, METH_VARARGS, "PWConstCoefficient_Eval(PWConstCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "PWConstCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_PWConstCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "PWConstCoefficient_Eval(PWConstCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_PWConstCoefficient", _wrap_delete_PWConstCoefficient, METH_O, "delete_PWConstCoefficient(PWConstCoefficient self)"},
 	 { "PWConstCoefficient_swigregister", PWConstCoefficient_swigregister, METH_O, NULL},
 	 { "PWConstCoefficient_swiginit", PWConstCoefficient_swiginit, METH_VARARGS, NULL},
@@ -19572,17 +18682,17 @@ static PyMethodDef SwigMethods[] = {
 		"FunctionCoefficient(double (*)(mfem::Vector &) f)\n"
 		"new_FunctionCoefficient(double (*)(mfem::Vector &,double) tdf) -> FunctionCoefficient\n"
 		""},
-	 { "FunctionCoefficient_Eval", _wrap_FunctionCoefficient_Eval, METH_VARARGS, "FunctionCoefficient_Eval(FunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "FunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_FunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "FunctionCoefficient_Eval(FunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_FunctionCoefficient", _wrap_delete_FunctionCoefficient, METH_O, "delete_FunctionCoefficient(FunctionCoefficient self)"},
 	 { "FunctionCoefficient_swigregister", FunctionCoefficient_swigregister, METH_O, NULL},
 	 { "FunctionCoefficient_swiginit", FunctionCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_GridFunctionCoefficient", _wrap_new_GridFunctionCoefficient, METH_VARARGS, "\n"
 		"GridFunctionCoefficient()\n"
-		"GridFunctionCoefficient(mfem::GridFunction * gf, int comp=1)\n"
+		"new_GridFunctionCoefficient(mfem::GridFunction * gf, int comp=1) -> GridFunctionCoefficient\n"
 		""},
-	 { "GridFunctionCoefficient_SetGridFunction", _wrap_GridFunctionCoefficient_SetGridFunction, METH_VARARGS, "GridFunctionCoefficient_SetGridFunction(GridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "GridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_GridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "GridFunctionCoefficient_SetGridFunction(GridFunctionCoefficient self, mfem::GridFunction * gf)"},
 	 { "GridFunctionCoefficient_GetGridFunction", _wrap_GridFunctionCoefficient_GetGridFunction, METH_O, "GridFunctionCoefficient_GetGridFunction(GridFunctionCoefficient self) -> mfem::GridFunction *"},
-	 { "GridFunctionCoefficient_Eval", _wrap_GridFunctionCoefficient_Eval, METH_VARARGS, "GridFunctionCoefficient_Eval(GridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "GridFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_GridFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "GridFunctionCoefficient_Eval(GridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_GridFunctionCoefficient", _wrap_delete_GridFunctionCoefficient, METH_O, "delete_GridFunctionCoefficient(GridFunctionCoefficient self)"},
 	 { "GridFunctionCoefficient_swigregister", GridFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "GridFunctionCoefficient_swiginit", GridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
@@ -19590,7 +18700,7 @@ static PyMethodDef SwigMethods[] = {
 		"TransformedCoefficient(Coefficient q, double (*)(double) F)\n"
 		"new_TransformedCoefficient(Coefficient q1, Coefficient q2, double (*)(double,double) F) -> TransformedCoefficient\n"
 		""},
-	 { "TransformedCoefficient_Eval", _wrap_TransformedCoefficient_Eval, METH_VARARGS, "TransformedCoefficient_Eval(TransformedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "TransformedCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_TransformedCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "TransformedCoefficient_Eval(TransformedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_TransformedCoefficient", _wrap_delete_TransformedCoefficient, METH_O, "delete_TransformedCoefficient(TransformedCoefficient self)"},
 	 { "TransformedCoefficient_swigregister", TransformedCoefficient_swigregister, METH_O, NULL},
 	 { "TransformedCoefficient_swiginit", TransformedCoefficient_swiginit, METH_VARARGS, NULL},
@@ -19600,27 +18710,27 @@ static PyMethodDef SwigMethods[] = {
 		"DeltaCoefficient(double x, double y, double s)\n"
 		"new_DeltaCoefficient(double x, double y, double z, double s) -> DeltaCoefficient\n"
 		""},
-	 { "DeltaCoefficient_SetDeltaCenter", _wrap_DeltaCoefficient_SetDeltaCenter, METH_VARARGS, "DeltaCoefficient_SetDeltaCenter(DeltaCoefficient self, Vector center)"},
-	 { "DeltaCoefficient_SetScale", _wrap_DeltaCoefficient_SetScale, METH_VARARGS, "DeltaCoefficient_SetScale(DeltaCoefficient self, double _s)"},
-	 { "DeltaCoefficient_SetFunction", _wrap_DeltaCoefficient_SetFunction, METH_VARARGS, "DeltaCoefficient_SetFunction(DeltaCoefficient self, double (*)(double) f)"},
-	 { "DeltaCoefficient_SetTol", _wrap_DeltaCoefficient_SetTol, METH_VARARGS, "DeltaCoefficient_SetTol(DeltaCoefficient self, double _tol)"},
-	 { "DeltaCoefficient_SetWeight", _wrap_DeltaCoefficient_SetWeight, METH_VARARGS, "DeltaCoefficient_SetWeight(DeltaCoefficient self, Coefficient w)"},
+	 { "DeltaCoefficient_SetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_SetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { "DeltaCoefficient_SetScale", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetScale, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_SetScale(DeltaCoefficient self, double _s)"},
+	 { "DeltaCoefficient_SetFunction", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetFunction, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_SetFunction(DeltaCoefficient self, double (*)(double) f)"},
+	 { "DeltaCoefficient_SetTol", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetTol, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_SetTol(DeltaCoefficient self, double _tol)"},
+	 { "DeltaCoefficient_SetWeight", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetWeight, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_SetWeight(DeltaCoefficient self, Coefficient w)"},
 	 { "DeltaCoefficient_Center", _wrap_DeltaCoefficient_Center, METH_O, "DeltaCoefficient_Center(DeltaCoefficient self) -> double const *"},
 	 { "DeltaCoefficient_Scale", _wrap_DeltaCoefficient_Scale, METH_O, "DeltaCoefficient_Scale(DeltaCoefficient self) -> double"},
 	 { "DeltaCoefficient_Tol", _wrap_DeltaCoefficient_Tol, METH_O, "DeltaCoefficient_Tol(DeltaCoefficient self) -> double"},
 	 { "DeltaCoefficient_Weight", _wrap_DeltaCoefficient_Weight, METH_O, "DeltaCoefficient_Weight(DeltaCoefficient self) -> Coefficient"},
-	 { "DeltaCoefficient_GetDeltaCenter", _wrap_DeltaCoefficient_GetDeltaCenter, METH_VARARGS, "DeltaCoefficient_GetDeltaCenter(DeltaCoefficient self, Vector center)"},
-	 { "DeltaCoefficient_EvalDelta", _wrap_DeltaCoefficient_EvalDelta, METH_VARARGS, "DeltaCoefficient_EvalDelta(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
-	 { "DeltaCoefficient_Eval", _wrap_DeltaCoefficient_Eval, METH_VARARGS, "DeltaCoefficient_Eval(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "DeltaCoefficient_GetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_GetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_GetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { "DeltaCoefficient_EvalDelta", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_EvalDelta, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_EvalDelta(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "DeltaCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "DeltaCoefficient_Eval(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_DeltaCoefficient", _wrap_delete_DeltaCoefficient, METH_O, "delete_DeltaCoefficient(DeltaCoefficient self)"},
 	 { "DeltaCoefficient_swigregister", DeltaCoefficient_swigregister, METH_O, NULL},
 	 { "DeltaCoefficient_swiginit", DeltaCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_RestrictedCoefficient", _wrap_new_RestrictedCoefficient, METH_VARARGS, "new_RestrictedCoefficient(Coefficient _c, intArray attr) -> RestrictedCoefficient"},
-	 { "RestrictedCoefficient_Eval", _wrap_RestrictedCoefficient_Eval, METH_VARARGS, "RestrictedCoefficient_Eval(RestrictedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_RestrictedCoefficient", (PyCFunction)(void(*)(void))_wrap_new_RestrictedCoefficient, METH_VARARGS|METH_KEYWORDS, "new_RestrictedCoefficient(Coefficient _c, intArray attr) -> RestrictedCoefficient"},
+	 { "RestrictedCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_RestrictedCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "RestrictedCoefficient_Eval(RestrictedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_RestrictedCoefficient", _wrap_delete_RestrictedCoefficient, METH_O, "delete_RestrictedCoefficient(RestrictedCoefficient self)"},
 	 { "RestrictedCoefficient_swigregister", RestrictedCoefficient_swigregister, METH_O, NULL},
 	 { "RestrictedCoefficient_swiginit", RestrictedCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "VectorCoefficient_SetTime", _wrap_VectorCoefficient_SetTime, METH_VARARGS, "VectorCoefficient_SetTime(VectorCoefficient self, double t)"},
+	 { "VectorCoefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_VectorCoefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "VectorCoefficient_SetTime(VectorCoefficient self, double t)"},
 	 { "VectorCoefficient_GetTime", _wrap_VectorCoefficient_GetTime, METH_O, "VectorCoefficient_GetTime(VectorCoefficient self) -> double"},
 	 { "VectorCoefficient_GetVDim", _wrap_VectorCoefficient_GetVDim, METH_O, "VectorCoefficient_GetVDim(VectorCoefficient self) -> int"},
 	 { "VectorCoefficient_Eval", _wrap_VectorCoefficient_Eval, METH_VARARGS, "\n"
@@ -19629,18 +18739,19 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "delete_VectorCoefficient", _wrap_delete_VectorCoefficient, METH_O, "delete_VectorCoefficient(VectorCoefficient self)"},
 	 { "VectorCoefficient_swigregister", VectorCoefficient_swigregister, METH_O, NULL},
-	 { "new_VectorConstantCoefficient", _wrap_new_VectorConstantCoefficient, METH_O, "new_VectorConstantCoefficient(Vector v) -> VectorConstantCoefficient"},
+	 { "new_VectorConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorConstantCoefficient(Vector v) -> VectorConstantCoefficient"},
 	 { "VectorConstantCoefficient_Eval", _wrap_VectorConstantCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorConstantCoefficient_Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		"VectorConstantCoefficient_Eval(VectorConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
 		"VectorConstantCoefficient_Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		""},
+	 { "VectorConstantCoefficient_GetVec", _wrap_VectorConstantCoefficient_GetVec, METH_O, "VectorConstantCoefficient_GetVec(VectorConstantCoefficient self) -> Vector"},
 	 { "delete_VectorConstantCoefficient", _wrap_delete_VectorConstantCoefficient, METH_O, "delete_VectorConstantCoefficient(VectorConstantCoefficient self)"},
 	 { "VectorConstantCoefficient_swigregister", VectorConstantCoefficient_swigregister, METH_O, NULL},
 	 { "VectorConstantCoefficient_swiginit", VectorConstantCoefficient_swiginit, METH_VARARGS, NULL},
 	 { "new_VectorFunctionCoefficient", _wrap_new_VectorFunctionCoefficient, METH_VARARGS, "\n"
 		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::Vector &) F, Coefficient q=None)\n"
-		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::Vector &) TDF, Coefficient q=None)\n"
+		"new_VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::Vector &) TDF, Coefficient q=None) -> VectorFunctionCoefficient\n"
 		""},
 	 { "VectorFunctionCoefficient_Eval", _wrap_VectorFunctionCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorFunctionCoefficient_Eval(VectorFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -19650,10 +18761,10 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_VectorFunctionCoefficient", _wrap_delete_VectorFunctionCoefficient, METH_O, "delete_VectorFunctionCoefficient(VectorFunctionCoefficient self)"},
 	 { "VectorFunctionCoefficient_swigregister", VectorFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "VectorFunctionCoefficient_swiginit", VectorFunctionCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_VectorArrayCoefficient", _wrap_new_VectorArrayCoefficient, METH_O, "new_VectorArrayCoefficient(int dim) -> VectorArrayCoefficient"},
-	 { "VectorArrayCoefficient_GetCoeff", _wrap_VectorArrayCoefficient_GetCoeff, METH_VARARGS, "VectorArrayCoefficient_GetCoeff(VectorArrayCoefficient self, int i) -> Coefficient"},
+	 { "new_VectorArrayCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorArrayCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorArrayCoefficient(int dim) -> VectorArrayCoefficient"},
+	 { "VectorArrayCoefficient_GetCoeff", (PyCFunction)(void(*)(void))_wrap_VectorArrayCoefficient_GetCoeff, METH_VARARGS|METH_KEYWORDS, "VectorArrayCoefficient_GetCoeff(VectorArrayCoefficient self, int i) -> Coefficient"},
 	 { "VectorArrayCoefficient_GetCoeffs", _wrap_VectorArrayCoefficient_GetCoeffs, METH_O, "VectorArrayCoefficient_GetCoeffs(VectorArrayCoefficient self) -> mfem::Coefficient **"},
-	 { "VectorArrayCoefficient_Set", _wrap_VectorArrayCoefficient_Set, METH_VARARGS, "VectorArrayCoefficient_Set(VectorArrayCoefficient self, int i, Coefficient c, bool own=True)"},
+	 { "VectorArrayCoefficient_Set", (PyCFunction)(void(*)(void))_wrap_VectorArrayCoefficient_Set, METH_VARARGS|METH_KEYWORDS, "VectorArrayCoefficient_Set(VectorArrayCoefficient self, int i, Coefficient c, bool own=True)"},
 	 { "VectorArrayCoefficient_Eval", _wrap_VectorArrayCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorArrayCoefficient_Eval(VectorArrayCoefficient self, int i, ElementTransformation T, IntegrationPoint ip) -> double\n"
 		"VectorArrayCoefficient_Eval(VectorArrayCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -19667,7 +18778,7 @@ static PyMethodDef SwigMethods[] = {
 		"VectorGridFunctionCoefficient()\n"
 		"new_VectorGridFunctionCoefficient(mfem::GridFunction * gf) -> VectorGridFunctionCoefficient\n"
 		""},
-	 { "VectorGridFunctionCoefficient_SetGridFunction", _wrap_VectorGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "VectorGridFunctionCoefficient_SetGridFunction(VectorGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "VectorGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_VectorGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "VectorGridFunctionCoefficient_SetGridFunction(VectorGridFunctionCoefficient self, mfem::GridFunction * gf)"},
 	 { "VectorGridFunctionCoefficient_GetGridFunction", _wrap_VectorGridFunctionCoefficient_GetGridFunction, METH_O, "VectorGridFunctionCoefficient_GetGridFunction(VectorGridFunctionCoefficient self) -> mfem::GridFunction *"},
 	 { "VectorGridFunctionCoefficient_Eval", _wrap_VectorGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorGridFunctionCoefficient_Eval(VectorGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -19676,8 +18787,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_VectorGridFunctionCoefficient", _wrap_delete_VectorGridFunctionCoefficient, METH_O, "delete_VectorGridFunctionCoefficient(VectorGridFunctionCoefficient self)"},
 	 { "VectorGridFunctionCoefficient_swigregister", VectorGridFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "VectorGridFunctionCoefficient_swiginit", VectorGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_GradientGridFunctionCoefficient", _wrap_new_GradientGridFunctionCoefficient, METH_O, "new_GradientGridFunctionCoefficient(mfem::GridFunction * gf) -> GradientGridFunctionCoefficient"},
-	 { "GradientGridFunctionCoefficient_SetGridFunction", _wrap_GradientGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "GradientGridFunctionCoefficient_SetGridFunction(GradientGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "new_GradientGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_GradientGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_GradientGridFunctionCoefficient(mfem::GridFunction * gf) -> GradientGridFunctionCoefficient"},
+	 { "GradientGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_GradientGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "GradientGridFunctionCoefficient_SetGridFunction(GradientGridFunctionCoefficient self, mfem::GridFunction * gf)"},
 	 { "GradientGridFunctionCoefficient_GetGridFunction", _wrap_GradientGridFunctionCoefficient_GetGridFunction, METH_O, "GradientGridFunctionCoefficient_GetGridFunction(GradientGridFunctionCoefficient self) -> mfem::GridFunction *"},
 	 { "GradientGridFunctionCoefficient_Eval", _wrap_GradientGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
 		"GradientGridFunctionCoefficient_Eval(GradientGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -19686,7 +18797,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_GradientGridFunctionCoefficient", _wrap_delete_GradientGridFunctionCoefficient, METH_O, "delete_GradientGridFunctionCoefficient(GradientGridFunctionCoefficient self)"},
 	 { "GradientGridFunctionCoefficient_swigregister", GradientGridFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "GradientGridFunctionCoefficient_swiginit", GradientGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "CurlGridFunctionCoefficient_SetGridFunction", _wrap_CurlGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "CurlGridFunctionCoefficient_SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "CurlGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_CurlGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "CurlGridFunctionCoefficient_SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction * gf)"},
 	 { "CurlGridFunctionCoefficient_GetGridFunction", _wrap_CurlGridFunctionCoefficient_GetGridFunction, METH_O, "CurlGridFunctionCoefficient_GetGridFunction(CurlGridFunctionCoefficient self) -> mfem::GridFunction *"},
 	 { "CurlGridFunctionCoefficient_Eval", _wrap_CurlGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
 		"CurlGridFunctionCoefficient_Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
@@ -19695,10 +18806,10 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "delete_CurlGridFunctionCoefficient", _wrap_delete_CurlGridFunctionCoefficient, METH_O, "delete_CurlGridFunctionCoefficient(CurlGridFunctionCoefficient self)"},
 	 { "CurlGridFunctionCoefficient_swigregister", CurlGridFunctionCoefficient_swigregister, METH_O, NULL},
-	 { "new_DivergenceGridFunctionCoefficient", _wrap_new_DivergenceGridFunctionCoefficient, METH_O, "new_DivergenceGridFunctionCoefficient(mfem::GridFunction * gf) -> DivergenceGridFunctionCoefficient"},
-	 { "DivergenceGridFunctionCoefficient_SetGridFunction", _wrap_DivergenceGridFunctionCoefficient_SetGridFunction, METH_VARARGS, "DivergenceGridFunctionCoefficient_SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "new_DivergenceGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_DivergenceGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_DivergenceGridFunctionCoefficient(mfem::GridFunction * gf) -> DivergenceGridFunctionCoefficient"},
+	 { "DivergenceGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_DivergenceGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "DivergenceGridFunctionCoefficient_SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction * gf)"},
 	 { "DivergenceGridFunctionCoefficient_GetGridFunction", _wrap_DivergenceGridFunctionCoefficient_GetGridFunction, METH_O, "DivergenceGridFunctionCoefficient_GetGridFunction(DivergenceGridFunctionCoefficient self) -> mfem::GridFunction *"},
-	 { "DivergenceGridFunctionCoefficient_Eval", _wrap_DivergenceGridFunctionCoefficient_Eval, METH_VARARGS, "DivergenceGridFunctionCoefficient_Eval(DivergenceGridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "DivergenceGridFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_DivergenceGridFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "DivergenceGridFunctionCoefficient_Eval(DivergenceGridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_DivergenceGridFunctionCoefficient", _wrap_delete_DivergenceGridFunctionCoefficient, METH_O, "delete_DivergenceGridFunctionCoefficient(DivergenceGridFunctionCoefficient self)"},
 	 { "DivergenceGridFunctionCoefficient_swigregister", DivergenceGridFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "DivergenceGridFunctionCoefficient_swiginit", DivergenceGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
@@ -19709,13 +18820,13 @@ static PyMethodDef SwigMethods[] = {
 		"VectorDeltaCoefficient(Vector _dir, double x, double y, double s)\n"
 		"new_VectorDeltaCoefficient(Vector _dir, double x, double y, double z, double s) -> VectorDeltaCoefficient\n"
 		""},
-	 { "VectorDeltaCoefficient_SetDeltaCoefficient", _wrap_VectorDeltaCoefficient_SetDeltaCoefficient, METH_VARARGS, "VectorDeltaCoefficient_SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient _d)"},
+	 { "VectorDeltaCoefficient_SetDeltaCoefficient", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetDeltaCoefficient, METH_VARARGS|METH_KEYWORDS, "VectorDeltaCoefficient_SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient _d)"},
 	 { "VectorDeltaCoefficient_GetDeltaCoefficient", _wrap_VectorDeltaCoefficient_GetDeltaCoefficient, METH_O, "VectorDeltaCoefficient_GetDeltaCoefficient(VectorDeltaCoefficient self) -> DeltaCoefficient"},
-	 { "VectorDeltaCoefficient_SetScale", _wrap_VectorDeltaCoefficient_SetScale, METH_VARARGS, "VectorDeltaCoefficient_SetScale(VectorDeltaCoefficient self, double s)"},
-	 { "VectorDeltaCoefficient_SetDirection", _wrap_VectorDeltaCoefficient_SetDirection, METH_VARARGS, "VectorDeltaCoefficient_SetDirection(VectorDeltaCoefficient self, Vector _d)"},
-	 { "VectorDeltaCoefficient_SetDeltaCenter", _wrap_VectorDeltaCoefficient_SetDeltaCenter, METH_VARARGS, "VectorDeltaCoefficient_SetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
-	 { "VectorDeltaCoefficient_GetDeltaCenter", _wrap_VectorDeltaCoefficient_GetDeltaCenter, METH_VARARGS, "VectorDeltaCoefficient_GetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
-	 { "VectorDeltaCoefficient_EvalDelta", _wrap_VectorDeltaCoefficient_EvalDelta, METH_VARARGS, "VectorDeltaCoefficient_EvalDelta(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)"},
+	 { "VectorDeltaCoefficient_SetScale", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetScale, METH_VARARGS|METH_KEYWORDS, "VectorDeltaCoefficient_SetScale(VectorDeltaCoefficient self, double s)"},
+	 { "VectorDeltaCoefficient_SetDirection", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetDirection, METH_VARARGS|METH_KEYWORDS, "VectorDeltaCoefficient_SetDirection(VectorDeltaCoefficient self, Vector _d)"},
+	 { "VectorDeltaCoefficient_SetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "VectorDeltaCoefficient_SetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
+	 { "VectorDeltaCoefficient_GetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_GetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "VectorDeltaCoefficient_GetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
+	 { "VectorDeltaCoefficient_EvalDelta", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_EvalDelta, METH_VARARGS|METH_KEYWORDS, "VectorDeltaCoefficient_EvalDelta(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)"},
 	 { "VectorDeltaCoefficient_Eval", _wrap_VectorDeltaCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorDeltaCoefficient_Eval(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		"VectorDeltaCoefficient_Eval(VectorDeltaCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
@@ -19724,7 +18835,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_VectorDeltaCoefficient", _wrap_delete_VectorDeltaCoefficient, METH_O, "delete_VectorDeltaCoefficient(VectorDeltaCoefficient self)"},
 	 { "VectorDeltaCoefficient_swigregister", VectorDeltaCoefficient_swigregister, METH_O, NULL},
 	 { "VectorDeltaCoefficient_swiginit", VectorDeltaCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_VectorRestrictedCoefficient", _wrap_new_VectorRestrictedCoefficient, METH_VARARGS, "new_VectorRestrictedCoefficient(VectorCoefficient vc, intArray attr) -> VectorRestrictedCoefficient"},
+	 { "new_VectorRestrictedCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorRestrictedCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorRestrictedCoefficient(VectorCoefficient vc, intArray attr) -> VectorRestrictedCoefficient"},
 	 { "VectorRestrictedCoefficient_Eval", _wrap_VectorRestrictedCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorRestrictedCoefficient_Eval(VectorRestrictedCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		"VectorRestrictedCoefficient_Eval(VectorRestrictedCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
@@ -19732,15 +18843,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_VectorRestrictedCoefficient", _wrap_delete_VectorRestrictedCoefficient, METH_O, "delete_VectorRestrictedCoefficient(VectorRestrictedCoefficient self)"},
 	 { "VectorRestrictedCoefficient_swigregister", VectorRestrictedCoefficient_swigregister, METH_O, NULL},
 	 { "VectorRestrictedCoefficient_swiginit", VectorRestrictedCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "MatrixCoefficient_SetTime", _wrap_MatrixCoefficient_SetTime, METH_VARARGS, "MatrixCoefficient_SetTime(MatrixCoefficient self, double t)"},
+	 { "MatrixCoefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_MatrixCoefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "MatrixCoefficient_SetTime(MatrixCoefficient self, double t)"},
 	 { "MatrixCoefficient_GetTime", _wrap_MatrixCoefficient_GetTime, METH_O, "MatrixCoefficient_GetTime(MatrixCoefficient self) -> double"},
 	 { "MatrixCoefficient_GetHeight", _wrap_MatrixCoefficient_GetHeight, METH_O, "MatrixCoefficient_GetHeight(MatrixCoefficient self) -> int"},
 	 { "MatrixCoefficient_GetWidth", _wrap_MatrixCoefficient_GetWidth, METH_O, "MatrixCoefficient_GetWidth(MatrixCoefficient self) -> int"},
 	 { "MatrixCoefficient_GetVDim", _wrap_MatrixCoefficient_GetVDim, METH_O, "MatrixCoefficient_GetVDim(MatrixCoefficient self) -> int"},
-	 { "MatrixCoefficient_Eval", _wrap_MatrixCoefficient_Eval, METH_VARARGS, "MatrixCoefficient_Eval(MatrixCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "MatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "MatrixCoefficient_Eval(MatrixCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_MatrixCoefficient", _wrap_delete_MatrixCoefficient, METH_O, "delete_MatrixCoefficient(MatrixCoefficient self)"},
 	 { "MatrixCoefficient_swigregister", MatrixCoefficient_swigregister, METH_O, NULL},
-	 { "new_MatrixConstantCoefficient", _wrap_new_MatrixConstantCoefficient, METH_O, "new_MatrixConstantCoefficient(DenseMatrix m) -> MatrixConstantCoefficient"},
+	 { "new_MatrixConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixConstantCoefficient(DenseMatrix m) -> MatrixConstantCoefficient"},
 	 { "MatrixConstantCoefficient_Eval", _wrap_MatrixConstantCoefficient_Eval, METH_VARARGS, "\n"
 		"MatrixConstantCoefficient_Eval(MatrixConstantCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
 		"MatrixConstantCoefficient_Eval(MatrixConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)\n"
@@ -19751,15 +18862,15 @@ static PyMethodDef SwigMethods[] = {
 	 { "new_MatrixFunctionCoefficient", _wrap_new_MatrixFunctionCoefficient, METH_VARARGS, "\n"
 		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::DenseMatrix &) F, Coefficient q=None)\n"
 		"MatrixFunctionCoefficient(DenseMatrix m, Coefficient q)\n"
-		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::DenseMatrix &) TDF, Coefficient q=None)\n"
+		"new_MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::DenseMatrix &) TDF, Coefficient q=None) -> MatrixFunctionCoefficient\n"
 		""},
-	 { "MatrixFunctionCoefficient_Eval", _wrap_MatrixFunctionCoefficient_Eval, METH_VARARGS, "MatrixFunctionCoefficient_Eval(MatrixFunctionCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "MatrixFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "MatrixFunctionCoefficient_Eval(MatrixFunctionCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_MatrixFunctionCoefficient", _wrap_delete_MatrixFunctionCoefficient, METH_O, "delete_MatrixFunctionCoefficient(MatrixFunctionCoefficient self)"},
 	 { "MatrixFunctionCoefficient_swigregister", MatrixFunctionCoefficient_swigregister, METH_O, NULL},
 	 { "MatrixFunctionCoefficient_swiginit", MatrixFunctionCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_MatrixArrayCoefficient", _wrap_new_MatrixArrayCoefficient, METH_O, "new_MatrixArrayCoefficient(int dim) -> MatrixArrayCoefficient"},
-	 { "MatrixArrayCoefficient_GetCoeff", _wrap_MatrixArrayCoefficient_GetCoeff, METH_VARARGS, "MatrixArrayCoefficient_GetCoeff(MatrixArrayCoefficient self, int i, int j) -> Coefficient"},
-	 { "MatrixArrayCoefficient_Set", _wrap_MatrixArrayCoefficient_Set, METH_VARARGS, "MatrixArrayCoefficient_Set(MatrixArrayCoefficient self, int i, int j, Coefficient c, bool own=True)"},
+	 { "new_MatrixArrayCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixArrayCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixArrayCoefficient(int dim) -> MatrixArrayCoefficient"},
+	 { "MatrixArrayCoefficient_GetCoeff", (PyCFunction)(void(*)(void))_wrap_MatrixArrayCoefficient_GetCoeff, METH_VARARGS|METH_KEYWORDS, "MatrixArrayCoefficient_GetCoeff(MatrixArrayCoefficient self, int i, int j) -> Coefficient"},
+	 { "MatrixArrayCoefficient_Set", (PyCFunction)(void(*)(void))_wrap_MatrixArrayCoefficient_Set, METH_VARARGS|METH_KEYWORDS, "MatrixArrayCoefficient_Set(MatrixArrayCoefficient self, int i, int j, Coefficient c, bool own=True)"},
 	 { "MatrixArrayCoefficient_Eval", _wrap_MatrixArrayCoefficient_Eval, METH_VARARGS, "\n"
 		"MatrixArrayCoefficient_Eval(MatrixArrayCoefficient self, int i, int j, ElementTransformation T, IntegrationPoint ip) -> double\n"
 		"MatrixArrayCoefficient_Eval(MatrixArrayCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
@@ -19767,42 +18878,42 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_MatrixArrayCoefficient", _wrap_delete_MatrixArrayCoefficient, METH_O, "delete_MatrixArrayCoefficient(MatrixArrayCoefficient self)"},
 	 { "MatrixArrayCoefficient_swigregister", MatrixArrayCoefficient_swigregister, METH_O, NULL},
 	 { "MatrixArrayCoefficient_swiginit", MatrixArrayCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_MatrixRestrictedCoefficient", _wrap_new_MatrixRestrictedCoefficient, METH_VARARGS, "new_MatrixRestrictedCoefficient(MatrixCoefficient mc, intArray attr) -> MatrixRestrictedCoefficient"},
-	 { "MatrixRestrictedCoefficient_Eval", _wrap_MatrixRestrictedCoefficient_Eval, METH_VARARGS, "MatrixRestrictedCoefficient_Eval(MatrixRestrictedCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "new_MatrixRestrictedCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixRestrictedCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixRestrictedCoefficient(MatrixCoefficient mc, intArray attr) -> MatrixRestrictedCoefficient"},
+	 { "MatrixRestrictedCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixRestrictedCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "MatrixRestrictedCoefficient_Eval(MatrixRestrictedCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_MatrixRestrictedCoefficient", _wrap_delete_MatrixRestrictedCoefficient, METH_O, "delete_MatrixRestrictedCoefficient(MatrixRestrictedCoefficient self)"},
 	 { "MatrixRestrictedCoefficient_swigregister", MatrixRestrictedCoefficient_swigregister, METH_O, NULL},
 	 { "MatrixRestrictedCoefficient_swiginit", MatrixRestrictedCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_SumCoefficient", _wrap_new_SumCoefficient, METH_VARARGS, "SumCoefficient(Coefficient A, Coefficient B, double _alpha=1.0, double _beta=1.0)"},
-	 { "SumCoefficient_Eval", _wrap_SumCoefficient_Eval, METH_VARARGS, "SumCoefficient_Eval(SumCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_SumCoefficient", (PyCFunction)(void(*)(void))_wrap_new_SumCoefficient, METH_VARARGS|METH_KEYWORDS, "new_SumCoefficient(Coefficient A, Coefficient B, double _alpha=1.0, double _beta=1.0) -> SumCoefficient"},
+	 { "SumCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_SumCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "SumCoefficient_Eval(SumCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_SumCoefficient", _wrap_delete_SumCoefficient, METH_O, "delete_SumCoefficient(SumCoefficient self)"},
 	 { "SumCoefficient_swigregister", SumCoefficient_swigregister, METH_O, NULL},
 	 { "SumCoefficient_swiginit", SumCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_ProductCoefficient", _wrap_new_ProductCoefficient, METH_VARARGS, "new_ProductCoefficient(Coefficient A, Coefficient B) -> ProductCoefficient"},
-	 { "ProductCoefficient_Eval", _wrap_ProductCoefficient_Eval, METH_VARARGS, "ProductCoefficient_Eval(ProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_ProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ProductCoefficient(Coefficient A, Coefficient B) -> ProductCoefficient"},
+	 { "ProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "ProductCoefficient_Eval(ProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_ProductCoefficient", _wrap_delete_ProductCoefficient, METH_O, "delete_ProductCoefficient(ProductCoefficient self)"},
 	 { "ProductCoefficient_swigregister", ProductCoefficient_swigregister, METH_O, NULL},
 	 { "ProductCoefficient_swiginit", ProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_PowerCoefficient", _wrap_new_PowerCoefficient, METH_VARARGS, "new_PowerCoefficient(Coefficient A, double _p) -> PowerCoefficient"},
-	 { "PowerCoefficient_Eval", _wrap_PowerCoefficient_Eval, METH_VARARGS, "PowerCoefficient_Eval(PowerCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_PowerCoefficient", (PyCFunction)(void(*)(void))_wrap_new_PowerCoefficient, METH_VARARGS|METH_KEYWORDS, "new_PowerCoefficient(Coefficient A, double _p) -> PowerCoefficient"},
+	 { "PowerCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_PowerCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "PowerCoefficient_Eval(PowerCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_PowerCoefficient", _wrap_delete_PowerCoefficient, METH_O, "delete_PowerCoefficient(PowerCoefficient self)"},
 	 { "PowerCoefficient_swigregister", PowerCoefficient_swigregister, METH_O, NULL},
 	 { "PowerCoefficient_swiginit", PowerCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_InnerProductCoefficient", _wrap_new_InnerProductCoefficient, METH_VARARGS, "new_InnerProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> InnerProductCoefficient"},
-	 { "InnerProductCoefficient_Eval", _wrap_InnerProductCoefficient_Eval, METH_VARARGS, "InnerProductCoefficient_Eval(InnerProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_InnerProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_InnerProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_InnerProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> InnerProductCoefficient"},
+	 { "InnerProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_InnerProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "InnerProductCoefficient_Eval(InnerProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_InnerProductCoefficient", _wrap_delete_InnerProductCoefficient, METH_O, "delete_InnerProductCoefficient(InnerProductCoefficient self)"},
 	 { "InnerProductCoefficient_swigregister", InnerProductCoefficient_swigregister, METH_O, NULL},
 	 { "InnerProductCoefficient_swiginit", InnerProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_VectorRotProductCoefficient", _wrap_new_VectorRotProductCoefficient, METH_VARARGS, "new_VectorRotProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorRotProductCoefficient"},
-	 { "VectorRotProductCoefficient_Eval", _wrap_VectorRotProductCoefficient_Eval, METH_VARARGS, "VectorRotProductCoefficient_Eval(VectorRotProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_VectorRotProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorRotProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorRotProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorRotProductCoefficient"},
+	 { "VectorRotProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_VectorRotProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "VectorRotProductCoefficient_Eval(VectorRotProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_VectorRotProductCoefficient", _wrap_delete_VectorRotProductCoefficient, METH_O, "delete_VectorRotProductCoefficient(VectorRotProductCoefficient self)"},
 	 { "VectorRotProductCoefficient_swigregister", VectorRotProductCoefficient_swigregister, METH_O, NULL},
 	 { "VectorRotProductCoefficient_swiginit", VectorRotProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_DeterminantCoefficient", _wrap_new_DeterminantCoefficient, METH_O, "new_DeterminantCoefficient(MatrixCoefficient A) -> DeterminantCoefficient"},
-	 { "DeterminantCoefficient_Eval", _wrap_DeterminantCoefficient_Eval, METH_VARARGS, "DeterminantCoefficient_Eval(DeterminantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "new_DeterminantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_DeterminantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_DeterminantCoefficient(MatrixCoefficient A) -> DeterminantCoefficient"},
+	 { "DeterminantCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_DeterminantCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "DeterminantCoefficient_Eval(DeterminantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_DeterminantCoefficient", _wrap_delete_DeterminantCoefficient, METH_O, "delete_DeterminantCoefficient(DeterminantCoefficient self)"},
 	 { "DeterminantCoefficient_swigregister", DeterminantCoefficient_swigregister, METH_O, NULL},
 	 { "DeterminantCoefficient_swiginit", DeterminantCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_VectorSumCoefficient", _wrap_new_VectorSumCoefficient, METH_VARARGS, "VectorSumCoefficient(VectorCoefficient A, VectorCoefficient B, double _alpha=1.0, double _beta=1.0)"},
+	 { "new_VectorSumCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorSumCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorSumCoefficient(VectorCoefficient A, VectorCoefficient B, double _alpha=1.0, double _beta=1.0) -> VectorSumCoefficient"},
 	 { "VectorSumCoefficient_Eval", _wrap_VectorSumCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorSumCoefficient_Eval(VectorSumCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		"VectorSumCoefficient_Eval(VectorSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
@@ -19810,7 +18921,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_VectorSumCoefficient", _wrap_delete_VectorSumCoefficient, METH_O, "delete_VectorSumCoefficient(VectorSumCoefficient self)"},
 	 { "VectorSumCoefficient_swigregister", VectorSumCoefficient_swigregister, METH_O, NULL},
 	 { "VectorSumCoefficient_swiginit", VectorSumCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_ScalarVectorProductCoefficient", _wrap_new_ScalarVectorProductCoefficient, METH_VARARGS, "new_ScalarVectorProductCoefficient(Coefficient A, VectorCoefficient B) -> ScalarVectorProductCoefficient"},
+	 { "new_ScalarVectorProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ScalarVectorProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ScalarVectorProductCoefficient(Coefficient A, VectorCoefficient B) -> ScalarVectorProductCoefficient"},
 	 { "ScalarVectorProductCoefficient_Eval", _wrap_ScalarVectorProductCoefficient_Eval, METH_VARARGS, "\n"
 		"ScalarVectorProductCoefficient_Eval(ScalarVectorProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		"ScalarVectorProductCoefficient_Eval(ScalarVectorProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
@@ -19818,7 +18929,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_ScalarVectorProductCoefficient", _wrap_delete_ScalarVectorProductCoefficient, METH_O, "delete_ScalarVectorProductCoefficient(ScalarVectorProductCoefficient self)"},
 	 { "ScalarVectorProductCoefficient_swigregister", ScalarVectorProductCoefficient_swigregister, METH_O, NULL},
 	 { "ScalarVectorProductCoefficient_swiginit", ScalarVectorProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_VectorCrossProductCoefficient", _wrap_new_VectorCrossProductCoefficient, METH_VARARGS, "new_VectorCrossProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorCrossProductCoefficient"},
+	 { "new_VectorCrossProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorCrossProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorCrossProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorCrossProductCoefficient"},
 	 { "VectorCrossProductCoefficient_Eval", _wrap_VectorCrossProductCoefficient_Eval, METH_VARARGS, "\n"
 		"VectorCrossProductCoefficient_Eval(VectorCrossProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		"VectorCrossProductCoefficient_Eval(VectorCrossProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
@@ -19826,7 +18937,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_VectorCrossProductCoefficient", _wrap_delete_VectorCrossProductCoefficient, METH_O, "delete_VectorCrossProductCoefficient(VectorCrossProductCoefficient self)"},
 	 { "VectorCrossProductCoefficient_swigregister", VectorCrossProductCoefficient_swigregister, METH_O, NULL},
 	 { "VectorCrossProductCoefficient_swiginit", VectorCrossProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_MatVecCoefficient", _wrap_new_MatVecCoefficient, METH_VARARGS, "new_MatVecCoefficient(MatrixCoefficient A, VectorCoefficient B) -> MatVecCoefficient"},
+	 { "new_MatVecCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatVecCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatVecCoefficient(MatrixCoefficient A, VectorCoefficient B) -> MatVecCoefficient"},
 	 { "MatVecCoefficient_Eval", _wrap_MatVecCoefficient_Eval, METH_VARARGS, "\n"
 		"MatVecCoefficient_Eval(MatVecCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		"MatVecCoefficient_Eval(MatVecCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
@@ -19834,33 +18945,33 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_MatVecCoefficient", _wrap_delete_MatVecCoefficient, METH_O, "delete_MatVecCoefficient(MatVecCoefficient self)"},
 	 { "MatVecCoefficient_swigregister", MatVecCoefficient_swigregister, METH_O, NULL},
 	 { "MatVecCoefficient_swiginit", MatVecCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_IdentityMatrixCoefficient", _wrap_new_IdentityMatrixCoefficient, METH_O, "new_IdentityMatrixCoefficient(int d) -> IdentityMatrixCoefficient"},
-	 { "IdentityMatrixCoefficient_Eval", _wrap_IdentityMatrixCoefficient_Eval, METH_VARARGS, "IdentityMatrixCoefficient_Eval(IdentityMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "new_IdentityMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_new_IdentityMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "new_IdentityMatrixCoefficient(int d) -> IdentityMatrixCoefficient"},
+	 { "IdentityMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_IdentityMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "IdentityMatrixCoefficient_Eval(IdentityMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_IdentityMatrixCoefficient", _wrap_delete_IdentityMatrixCoefficient, METH_O, "delete_IdentityMatrixCoefficient(IdentityMatrixCoefficient self)"},
 	 { "IdentityMatrixCoefficient_swigregister", IdentityMatrixCoefficient_swigregister, METH_O, NULL},
 	 { "IdentityMatrixCoefficient_swiginit", IdentityMatrixCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_MatrixSumCoefficient", _wrap_new_MatrixSumCoefficient, METH_VARARGS, "MatrixSumCoefficient(MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0, double _beta=1.0)"},
-	 { "MatrixSumCoefficient_Eval", _wrap_MatrixSumCoefficient_Eval, METH_VARARGS, "MatrixSumCoefficient_Eval(MatrixSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "new_MatrixSumCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixSumCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixSumCoefficient(MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0, double _beta=1.0) -> MatrixSumCoefficient"},
+	 { "MatrixSumCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixSumCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "MatrixSumCoefficient_Eval(MatrixSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_MatrixSumCoefficient", _wrap_delete_MatrixSumCoefficient, METH_O, "delete_MatrixSumCoefficient(MatrixSumCoefficient self)"},
 	 { "MatrixSumCoefficient_swigregister", MatrixSumCoefficient_swigregister, METH_O, NULL},
 	 { "MatrixSumCoefficient_swiginit", MatrixSumCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_ScalarMatrixProductCoefficient", _wrap_new_ScalarMatrixProductCoefficient, METH_VARARGS, "new_ScalarMatrixProductCoefficient(Coefficient A, MatrixCoefficient B) -> ScalarMatrixProductCoefficient"},
-	 { "ScalarMatrixProductCoefficient_Eval", _wrap_ScalarMatrixProductCoefficient_Eval, METH_VARARGS, "ScalarMatrixProductCoefficient_Eval(ScalarMatrixProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "new_ScalarMatrixProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ScalarMatrixProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ScalarMatrixProductCoefficient(Coefficient A, MatrixCoefficient B) -> ScalarMatrixProductCoefficient"},
+	 { "ScalarMatrixProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ScalarMatrixProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "ScalarMatrixProductCoefficient_Eval(ScalarMatrixProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_ScalarMatrixProductCoefficient", _wrap_delete_ScalarMatrixProductCoefficient, METH_O, "delete_ScalarMatrixProductCoefficient(ScalarMatrixProductCoefficient self)"},
 	 { "ScalarMatrixProductCoefficient_swigregister", ScalarMatrixProductCoefficient_swigregister, METH_O, NULL},
 	 { "ScalarMatrixProductCoefficient_swiginit", ScalarMatrixProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_TransposeMatrixCoefficient", _wrap_new_TransposeMatrixCoefficient, METH_O, "new_TransposeMatrixCoefficient(MatrixCoefficient A) -> TransposeMatrixCoefficient"},
-	 { "TransposeMatrixCoefficient_Eval", _wrap_TransposeMatrixCoefficient_Eval, METH_VARARGS, "TransposeMatrixCoefficient_Eval(TransposeMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "new_TransposeMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_new_TransposeMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "new_TransposeMatrixCoefficient(MatrixCoefficient A) -> TransposeMatrixCoefficient"},
+	 { "TransposeMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_TransposeMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "TransposeMatrixCoefficient_Eval(TransposeMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_TransposeMatrixCoefficient", _wrap_delete_TransposeMatrixCoefficient, METH_O, "delete_TransposeMatrixCoefficient(TransposeMatrixCoefficient self)"},
 	 { "TransposeMatrixCoefficient_swigregister", TransposeMatrixCoefficient_swigregister, METH_O, NULL},
 	 { "TransposeMatrixCoefficient_swiginit", TransposeMatrixCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_InverseMatrixCoefficient", _wrap_new_InverseMatrixCoefficient, METH_O, "new_InverseMatrixCoefficient(MatrixCoefficient A) -> InverseMatrixCoefficient"},
-	 { "InverseMatrixCoefficient_Eval", _wrap_InverseMatrixCoefficient_Eval, METH_VARARGS, "InverseMatrixCoefficient_Eval(InverseMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "new_InverseMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_new_InverseMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "new_InverseMatrixCoefficient(MatrixCoefficient A) -> InverseMatrixCoefficient"},
+	 { "InverseMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_InverseMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "InverseMatrixCoefficient_Eval(InverseMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_InverseMatrixCoefficient", _wrap_delete_InverseMatrixCoefficient, METH_O, "delete_InverseMatrixCoefficient(InverseMatrixCoefficient self)"},
 	 { "InverseMatrixCoefficient_swigregister", InverseMatrixCoefficient_swigregister, METH_O, NULL},
 	 { "InverseMatrixCoefficient_swiginit", InverseMatrixCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_OuterProductCoefficient", _wrap_new_OuterProductCoefficient, METH_VARARGS, "new_OuterProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> OuterProductCoefficient"},
-	 { "OuterProductCoefficient_Eval", _wrap_OuterProductCoefficient_Eval, METH_VARARGS, "OuterProductCoefficient_Eval(OuterProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "new_OuterProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_OuterProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_OuterProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> OuterProductCoefficient"},
+	 { "OuterProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_OuterProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "OuterProductCoefficient_Eval(OuterProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
 	 { "delete_OuterProductCoefficient", _wrap_delete_OuterProductCoefficient, METH_O, "delete_OuterProductCoefficient(OuterProductCoefficient self)"},
 	 { "OuterProductCoefficient_swigregister", OuterProductCoefficient_swigregister, METH_O, NULL},
 	 { "OuterProductCoefficient_swiginit", OuterProductCoefficient_swiginit, METH_VARARGS, NULL},
@@ -19868,40 +18979,401 @@ static PyMethodDef SwigMethods[] = {
 		"ComputeLpNorm(double p, Coefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
 		"ComputeLpNorm(double p, VectorCoefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
 		""},
-	 { "fake_func", _wrap_fake_func, METH_O, "fake_func(Vector x) -> double"},
-	 { "fake_func_vec", _wrap_fake_func_vec, METH_VARARGS, "fake_func_vec(Vector x, Vector Ht)"},
-	 { "fake_func_mat", _wrap_fake_func_mat, METH_VARARGS, "fake_func_mat(Vector x, DenseMatrix Kt)"},
-	 { "new_PyCoefficientBase", _wrap_new_PyCoefficientBase, METH_VARARGS, "new_PyCoefficientBase(PyObject * _self, int tdep) -> PyCoefficientBase"},
-	 { "PyCoefficientBase_Eval", _wrap_PyCoefficientBase_Eval, METH_VARARGS, "PyCoefficientBase_Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"},
-	 { "PyCoefficientBase__EvalPy", _wrap_PyCoefficientBase__EvalPy, METH_VARARGS, "PyCoefficientBase__EvalPy(PyCoefficientBase self, Vector arg0) -> double"},
-	 { "PyCoefficientBase__EvalPyT", _wrap_PyCoefficientBase__EvalPyT, METH_VARARGS, "PyCoefficientBase__EvalPyT(PyCoefficientBase self, Vector arg0, double arg1) -> double"},
+	 { "fake_func", (PyCFunction)(void(*)(void))_wrap_fake_func, METH_VARARGS|METH_KEYWORDS, "fake_func(Vector x) -> double"},
+	 { "fake_func_vec", (PyCFunction)(void(*)(void))_wrap_fake_func_vec, METH_VARARGS|METH_KEYWORDS, "fake_func_vec(Vector x, Vector Ht)"},
+	 { "fake_func_mat", (PyCFunction)(void(*)(void))_wrap_fake_func_mat, METH_VARARGS|METH_KEYWORDS, "fake_func_mat(Vector x, DenseMatrix Kt)"},
+	 { "new_PyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_PyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_PyCoefficientBase(PyObject * _self, int tdep) -> PyCoefficientBase"},
+	 { "PyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "PyCoefficientBase_Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "PyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "PyCoefficientBase__EvalPy(PyCoefficientBase self, Vector arg0) -> double"},
+	 { "PyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "PyCoefficientBase__EvalPyT(PyCoefficientBase self, Vector arg0, double arg1) -> double"},
 	 { "delete_PyCoefficientBase", _wrap_delete_PyCoefficientBase, METH_O, "delete_PyCoefficientBase(PyCoefficientBase self)"},
-	 { "disown_PyCoefficientBase", _wrap_disown_PyCoefficientBase, METH_O, NULL},
+	 { "disown_PyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_disown_PyCoefficientBase, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "PyCoefficientBase_swigregister", PyCoefficientBase_swigregister, METH_O, NULL},
 	 { "PyCoefficientBase_swiginit", PyCoefficientBase_swiginit, METH_VARARGS, NULL},
-	 { "new_VectorPyCoefficientBase", _wrap_new_VectorPyCoefficientBase, METH_VARARGS, "VectorPyCoefficientBase(int dim, int tdep, Coefficient q=None)"},
+	 { "new_VectorPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_VectorPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_VectorPyCoefficientBase(PyObject * _self, int dim, int tdep, Coefficient q=None) -> VectorPyCoefficientBase"},
 	 { "VectorPyCoefficientBase_Eval", _wrap_VectorPyCoefficientBase_Eval, METH_VARARGS, "\n"
 		"VectorPyCoefficientBase_Eval(VectorPyCoefficientBase self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
 		"VectorPyCoefficientBase_Eval(VectorPyCoefficientBase self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
 		""},
-	 { "VectorPyCoefficientBase__EvalPy", _wrap_VectorPyCoefficientBase__EvalPy, METH_VARARGS, "VectorPyCoefficientBase__EvalPy(VectorPyCoefficientBase self, Vector arg0, Vector arg1)"},
-	 { "VectorPyCoefficientBase__EvalPyT", _wrap_VectorPyCoefficientBase__EvalPyT, METH_VARARGS, "VectorPyCoefficientBase__EvalPyT(VectorPyCoefficientBase self, Vector arg0, double arg1, Vector arg2)"},
+	 { "VectorPyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_VectorPyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "VectorPyCoefficientBase__EvalPy(VectorPyCoefficientBase self, Vector arg0, Vector arg1)"},
+	 { "VectorPyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_VectorPyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "VectorPyCoefficientBase__EvalPyT(VectorPyCoefficientBase self, Vector arg0, double arg1, Vector arg2)"},
 	 { "delete_VectorPyCoefficientBase", _wrap_delete_VectorPyCoefficientBase, METH_O, "delete_VectorPyCoefficientBase(VectorPyCoefficientBase self)"},
-	 { "disown_VectorPyCoefficientBase", _wrap_disown_VectorPyCoefficientBase, METH_O, NULL},
+	 { "disown_VectorPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_disown_VectorPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "VectorPyCoefficientBase_swigregister", VectorPyCoefficientBase_swigregister, METH_O, NULL},
 	 { "VectorPyCoefficientBase_swiginit", VectorPyCoefficientBase_swiginit, METH_VARARGS, NULL},
-	 { "new_MatrixPyCoefficientBase", _wrap_new_MatrixPyCoefficientBase, METH_VARARGS, "new_MatrixPyCoefficientBase(PyObject * _self, int dim, int tdep) -> MatrixPyCoefficientBase"},
-	 { "MatrixPyCoefficientBase_Eval", _wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS, "MatrixPyCoefficientBase_Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
-	 { "MatrixPyCoefficientBase__EvalPy", _wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS, "MatrixPyCoefficientBase__EvalPy(MatrixPyCoefficientBase self, Vector arg0, DenseMatrix arg1)"},
-	 { "MatrixPyCoefficientBase__EvalPyT", _wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS, "MatrixPyCoefficientBase__EvalPyT(MatrixPyCoefficientBase self, Vector arg0, double arg1, DenseMatrix arg2)"},
+	 { "new_MatrixPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_MatrixPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_MatrixPyCoefficientBase(PyObject * _self, int dim, int tdep) -> MatrixPyCoefficientBase"},
+	 { "MatrixPyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "MatrixPyCoefficientBase_Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "MatrixPyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "MatrixPyCoefficientBase__EvalPy(MatrixPyCoefficientBase self, Vector arg0, DenseMatrix arg1)"},
+	 { "MatrixPyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "MatrixPyCoefficientBase__EvalPyT(MatrixPyCoefficientBase self, Vector arg0, double arg1, DenseMatrix arg2)"},
 	 { "delete_MatrixPyCoefficientBase", _wrap_delete_MatrixPyCoefficientBase, METH_O, "delete_MatrixPyCoefficientBase(MatrixPyCoefficientBase self)"},
-	 { "disown_MatrixPyCoefficientBase", _wrap_disown_MatrixPyCoefficientBase, METH_O, NULL},
+	 { "disown_MatrixPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_disown_MatrixPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "MatrixPyCoefficientBase_swigregister", MatrixPyCoefficientBase_swigregister, METH_O, NULL},
 	 { "MatrixPyCoefficientBase_swiginit", MatrixPyCoefficientBase_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "Coefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_Coefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(Coefficient self, double t)"},
+	 { "Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_O, "GetTime(Coefficient self) -> double"},
+	 { "Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, "\n"
+		"Eval(Coefficient self, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Eval(Coefficient self, ElementTransformation T, IntegrationPoint ip, double t) -> double\n"
+		""},
+	 { "delete_Coefficient", _wrap_delete_Coefficient, METH_O, "delete_Coefficient(Coefficient self)"},
+	 { "Coefficient_swigregister", Coefficient_swigregister, METH_O, NULL},
+	 { "ConstantCoefficient_constant_set", _wrap_ConstantCoefficient_constant_set, METH_VARARGS, "ConstantCoefficient_constant_set(ConstantCoefficient self, double constant)"},
+	 { "ConstantCoefficient_constant_get", _wrap_ConstantCoefficient_constant_get, METH_O, "ConstantCoefficient_constant_get(ConstantCoefficient self) -> double"},
+	 { "new_ConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ConstantCoefficient(double c=1.0) -> ConstantCoefficient"},
+	 { "ConstantCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ConstantCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(ConstantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_ConstantCoefficient", _wrap_delete_ConstantCoefficient, METH_O, "delete_ConstantCoefficient(ConstantCoefficient self)"},
+	 { "ConstantCoefficient_swigregister", ConstantCoefficient_swigregister, METH_O, NULL},
+	 { "ConstantCoefficient_swiginit", ConstantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_PWConstCoefficient", _wrap_new_PWConstCoefficient, METH_VARARGS, "\n"
+		"PWConstCoefficient(int NumOfSubD=0)\n"
+		"new_PWConstCoefficient(Vector c) -> PWConstCoefficient\n"
+		""},
+	 { "PWConstCoefficient_UpdateConstants", (PyCFunction)(void(*)(void))_wrap_PWConstCoefficient_UpdateConstants, METH_VARARGS|METH_KEYWORDS, "UpdateConstants(PWConstCoefficient self, Vector c)"},
+	 { "PWConstCoefficient___call__", (PyCFunction)(void(*)(void))_wrap_PWConstCoefficient___call__, METH_VARARGS|METH_KEYWORDS, "__call__(PWConstCoefficient self, int i) -> double &"},
+	 { "PWConstCoefficient_GetNConst", _wrap_PWConstCoefficient_GetNConst, METH_O, "GetNConst(PWConstCoefficient self) -> int"},
+	 { "PWConstCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_PWConstCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(PWConstCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_PWConstCoefficient", _wrap_delete_PWConstCoefficient, METH_O, "delete_PWConstCoefficient(PWConstCoefficient self)"},
+	 { "PWConstCoefficient_swigregister", PWConstCoefficient_swigregister, METH_O, NULL},
+	 { "PWConstCoefficient_swiginit", PWConstCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_FunctionCoefficient", _wrap_new_FunctionCoefficient, METH_VARARGS, "\n"
+		"FunctionCoefficient(double (*)(mfem::Vector const &) f)\n"
+		"FunctionCoefficient(double (*)(mfem::Vector const &,double) tdf)\n"
+		"FunctionCoefficient(double (*)(mfem::Vector &) f)\n"
+		"new_FunctionCoefficient(double (*)(mfem::Vector &,double) tdf) -> FunctionCoefficient\n"
+		""},
+	 { "FunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_FunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(FunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_FunctionCoefficient", _wrap_delete_FunctionCoefficient, METH_O, "delete_FunctionCoefficient(FunctionCoefficient self)"},
+	 { "FunctionCoefficient_swigregister", FunctionCoefficient_swigregister, METH_O, NULL},
+	 { "FunctionCoefficient_swiginit", FunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_GridFunctionCoefficient", _wrap_new_GridFunctionCoefficient, METH_VARARGS, "\n"
+		"GridFunctionCoefficient()\n"
+		"new_GridFunctionCoefficient(mfem::GridFunction * gf, int comp=1) -> GridFunctionCoefficient\n"
+		""},
+	 { "GridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_GridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "SetGridFunction(GridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "GridFunctionCoefficient_GetGridFunction", _wrap_GridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(GridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "GridFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_GridFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(GridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_GridFunctionCoefficient", _wrap_delete_GridFunctionCoefficient, METH_O, "delete_GridFunctionCoefficient(GridFunctionCoefficient self)"},
+	 { "GridFunctionCoefficient_swigregister", GridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "GridFunctionCoefficient_swiginit", GridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_TransformedCoefficient", _wrap_new_TransformedCoefficient, METH_VARARGS, "\n"
+		"TransformedCoefficient(Coefficient q, double (*)(double) F)\n"
+		"new_TransformedCoefficient(Coefficient q1, Coefficient q2, double (*)(double,double) F) -> TransformedCoefficient\n"
+		""},
+	 { "TransformedCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_TransformedCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(TransformedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_TransformedCoefficient", _wrap_delete_TransformedCoefficient, METH_O, "delete_TransformedCoefficient(TransformedCoefficient self)"},
+	 { "TransformedCoefficient_swigregister", TransformedCoefficient_swigregister, METH_O, NULL},
+	 { "TransformedCoefficient_swiginit", TransformedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_DeltaCoefficient", _wrap_new_DeltaCoefficient, METH_VARARGS, "\n"
+		"DeltaCoefficient()\n"
+		"DeltaCoefficient(double x, double s)\n"
+		"DeltaCoefficient(double x, double y, double s)\n"
+		"new_DeltaCoefficient(double x, double y, double z, double s) -> DeltaCoefficient\n"
+		""},
+	 { "DeltaCoefficient_SetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "SetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { "DeltaCoefficient_SetScale", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetScale, METH_VARARGS|METH_KEYWORDS, "SetScale(DeltaCoefficient self, double _s)"},
+	 { "DeltaCoefficient_SetFunction", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetFunction, METH_VARARGS|METH_KEYWORDS, "SetFunction(DeltaCoefficient self, double (*)(double) f)"},
+	 { "DeltaCoefficient_SetTol", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetTol, METH_VARARGS|METH_KEYWORDS, "SetTol(DeltaCoefficient self, double _tol)"},
+	 { "DeltaCoefficient_SetWeight", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_SetWeight, METH_VARARGS|METH_KEYWORDS, "SetWeight(DeltaCoefficient self, Coefficient w)"},
+	 { "DeltaCoefficient_Center", _wrap_DeltaCoefficient_Center, METH_O, "Center(DeltaCoefficient self) -> double const *"},
+	 { "DeltaCoefficient_Scale", _wrap_DeltaCoefficient_Scale, METH_O, "Scale(DeltaCoefficient self) -> double"},
+	 { "DeltaCoefficient_Tol", _wrap_DeltaCoefficient_Tol, METH_O, "Tol(DeltaCoefficient self) -> double"},
+	 { "DeltaCoefficient_Weight", _wrap_DeltaCoefficient_Weight, METH_O, "Weight(DeltaCoefficient self) -> Coefficient"},
+	 { "DeltaCoefficient_GetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_GetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "GetDeltaCenter(DeltaCoefficient self, Vector center)"},
+	 { "DeltaCoefficient_EvalDelta", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_EvalDelta, METH_VARARGS|METH_KEYWORDS, "EvalDelta(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "DeltaCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_DeltaCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(DeltaCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_DeltaCoefficient", _wrap_delete_DeltaCoefficient, METH_O, "delete_DeltaCoefficient(DeltaCoefficient self)"},
+	 { "DeltaCoefficient_swigregister", DeltaCoefficient_swigregister, METH_O, NULL},
+	 { "DeltaCoefficient_swiginit", DeltaCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_RestrictedCoefficient", (PyCFunction)(void(*)(void))_wrap_new_RestrictedCoefficient, METH_VARARGS|METH_KEYWORDS, "new_RestrictedCoefficient(Coefficient _c, intArray attr) -> RestrictedCoefficient"},
+	 { "RestrictedCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_RestrictedCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(RestrictedCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_RestrictedCoefficient", _wrap_delete_RestrictedCoefficient, METH_O, "delete_RestrictedCoefficient(RestrictedCoefficient self)"},
+	 { "RestrictedCoefficient_swigregister", RestrictedCoefficient_swigregister, METH_O, NULL},
+	 { "RestrictedCoefficient_swiginit", RestrictedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "VectorCoefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_VectorCoefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(VectorCoefficient self, double t)"},
+	 { "VectorCoefficient_GetTime", _wrap_VectorCoefficient_GetTime, METH_O, "GetTime(VectorCoefficient self) -> double"},
+	 { "VectorCoefficient_GetVDim", _wrap_VectorCoefficient_GetVDim, METH_O, "GetVDim(VectorCoefficient self) -> int"},
+	 { "VectorCoefficient_Eval", _wrap_VectorCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorCoefficient", _wrap_delete_VectorCoefficient, METH_O, "delete_VectorCoefficient(VectorCoefficient self)"},
+	 { "VectorCoefficient_swigregister", VectorCoefficient_swigregister, METH_O, NULL},
+	 { "new_VectorConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorConstantCoefficient(Vector v) -> VectorConstantCoefficient"},
+	 { "VectorConstantCoefficient_Eval", _wrap_VectorConstantCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorConstantCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "VectorConstantCoefficient_GetVec", _wrap_VectorConstantCoefficient_GetVec, METH_O, "GetVec(VectorConstantCoefficient self) -> Vector"},
+	 { "delete_VectorConstantCoefficient", _wrap_delete_VectorConstantCoefficient, METH_O, "delete_VectorConstantCoefficient(VectorConstantCoefficient self)"},
+	 { "VectorConstantCoefficient_swigregister", VectorConstantCoefficient_swigregister, METH_O, NULL},
+	 { "VectorConstantCoefficient_swiginit", VectorConstantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorFunctionCoefficient", _wrap_new_VectorFunctionCoefficient, METH_VARARGS, "\n"
+		"VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::Vector &) F, Coefficient q=None)\n"
+		"new_VectorFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::Vector &) TDF, Coefficient q=None) -> VectorFunctionCoefficient\n"
+		""},
+	 { "VectorFunctionCoefficient_Eval", _wrap_VectorFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_VectorFunctionCoefficient", _wrap_delete_VectorFunctionCoefficient, METH_O, "delete_VectorFunctionCoefficient(VectorFunctionCoefficient self)"},
+	 { "VectorFunctionCoefficient_swigregister", VectorFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "VectorFunctionCoefficient_swiginit", VectorFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorArrayCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorArrayCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorArrayCoefficient(int dim) -> VectorArrayCoefficient"},
+	 { "VectorArrayCoefficient_GetCoeff", (PyCFunction)(void(*)(void))_wrap_VectorArrayCoefficient_GetCoeff, METH_VARARGS|METH_KEYWORDS, "GetCoeff(VectorArrayCoefficient self, int i) -> Coefficient"},
+	 { "VectorArrayCoefficient_GetCoeffs", _wrap_VectorArrayCoefficient_GetCoeffs, METH_O, "GetCoeffs(VectorArrayCoefficient self) -> mfem::Coefficient **"},
+	 { "VectorArrayCoefficient_Set", (PyCFunction)(void(*)(void))_wrap_VectorArrayCoefficient_Set, METH_VARARGS|METH_KEYWORDS, "Set(VectorArrayCoefficient self, int i, Coefficient c, bool own=True)"},
+	 { "VectorArrayCoefficient_Eval", _wrap_VectorArrayCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorArrayCoefficient self, int i, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Eval(VectorArrayCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorArrayCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorArrayCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_VectorArrayCoefficient", _wrap_delete_VectorArrayCoefficient, METH_O, "delete_VectorArrayCoefficient(VectorArrayCoefficient self)"},
+	 { "VectorArrayCoefficient_swigregister", VectorArrayCoefficient_swigregister, METH_O, NULL},
+	 { "VectorArrayCoefficient_swiginit", VectorArrayCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorGridFunctionCoefficient", _wrap_new_VectorGridFunctionCoefficient, METH_VARARGS, "\n"
+		"VectorGridFunctionCoefficient()\n"
+		"new_VectorGridFunctionCoefficient(mfem::GridFunction * gf) -> VectorGridFunctionCoefficient\n"
+		""},
+	 { "VectorGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_VectorGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "SetGridFunction(VectorGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "VectorGridFunctionCoefficient_GetGridFunction", _wrap_VectorGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(VectorGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "VectorGridFunctionCoefficient_Eval", _wrap_VectorGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorGridFunctionCoefficient", _wrap_delete_VectorGridFunctionCoefficient, METH_O, "delete_VectorGridFunctionCoefficient(VectorGridFunctionCoefficient self)"},
+	 { "VectorGridFunctionCoefficient_swigregister", VectorGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "VectorGridFunctionCoefficient_swiginit", VectorGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_GradientGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_GradientGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_GradientGridFunctionCoefficient(mfem::GridFunction * gf) -> GradientGridFunctionCoefficient"},
+	 { "GradientGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_GradientGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "SetGridFunction(GradientGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "GradientGridFunctionCoefficient_GetGridFunction", _wrap_GradientGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(GradientGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "GradientGridFunctionCoefficient_Eval", _wrap_GradientGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(GradientGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(GradientGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_GradientGridFunctionCoefficient", _wrap_delete_GradientGridFunctionCoefficient, METH_O, "delete_GradientGridFunctionCoefficient(GradientGridFunctionCoefficient self)"},
+	 { "GradientGridFunctionCoefficient_swigregister", GradientGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "GradientGridFunctionCoefficient_swiginit", GradientGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "CurlGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_CurlGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "SetGridFunction(CurlGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "CurlGridFunctionCoefficient_GetGridFunction", _wrap_CurlGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(CurlGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "CurlGridFunctionCoefficient_Eval", _wrap_CurlGridFunctionCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(CurlGridFunctionCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(CurlGridFunctionCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_CurlGridFunctionCoefficient", _wrap_delete_CurlGridFunctionCoefficient, METH_O, "delete_CurlGridFunctionCoefficient(CurlGridFunctionCoefficient self)"},
+	 { "CurlGridFunctionCoefficient_swigregister", CurlGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "new_DivergenceGridFunctionCoefficient", (PyCFunction)(void(*)(void))_wrap_new_DivergenceGridFunctionCoefficient, METH_VARARGS|METH_KEYWORDS, "new_DivergenceGridFunctionCoefficient(mfem::GridFunction * gf) -> DivergenceGridFunctionCoefficient"},
+	 { "DivergenceGridFunctionCoefficient_SetGridFunction", (PyCFunction)(void(*)(void))_wrap_DivergenceGridFunctionCoefficient_SetGridFunction, METH_VARARGS|METH_KEYWORDS, "SetGridFunction(DivergenceGridFunctionCoefficient self, mfem::GridFunction * gf)"},
+	 { "DivergenceGridFunctionCoefficient_GetGridFunction", _wrap_DivergenceGridFunctionCoefficient_GetGridFunction, METH_O, "GetGridFunction(DivergenceGridFunctionCoefficient self) -> mfem::GridFunction *"},
+	 { "DivergenceGridFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_DivergenceGridFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(DivergenceGridFunctionCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_DivergenceGridFunctionCoefficient", _wrap_delete_DivergenceGridFunctionCoefficient, METH_O, "delete_DivergenceGridFunctionCoefficient(DivergenceGridFunctionCoefficient self)"},
+	 { "DivergenceGridFunctionCoefficient_swigregister", DivergenceGridFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "DivergenceGridFunctionCoefficient_swiginit", DivergenceGridFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorDeltaCoefficient", _wrap_new_VectorDeltaCoefficient, METH_VARARGS, "\n"
+		"VectorDeltaCoefficient(int _vdim)\n"
+		"VectorDeltaCoefficient(Vector _dir)\n"
+		"VectorDeltaCoefficient(Vector _dir, double x, double s)\n"
+		"VectorDeltaCoefficient(Vector _dir, double x, double y, double s)\n"
+		"new_VectorDeltaCoefficient(Vector _dir, double x, double y, double z, double s) -> VectorDeltaCoefficient\n"
+		""},
+	 { "VectorDeltaCoefficient_SetDeltaCoefficient", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetDeltaCoefficient, METH_VARARGS|METH_KEYWORDS, "SetDeltaCoefficient(VectorDeltaCoefficient self, DeltaCoefficient _d)"},
+	 { "VectorDeltaCoefficient_GetDeltaCoefficient", _wrap_VectorDeltaCoefficient_GetDeltaCoefficient, METH_O, "GetDeltaCoefficient(VectorDeltaCoefficient self) -> DeltaCoefficient"},
+	 { "VectorDeltaCoefficient_SetScale", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetScale, METH_VARARGS|METH_KEYWORDS, "SetScale(VectorDeltaCoefficient self, double s)"},
+	 { "VectorDeltaCoefficient_SetDirection", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetDirection, METH_VARARGS|METH_KEYWORDS, "SetDirection(VectorDeltaCoefficient self, Vector _d)"},
+	 { "VectorDeltaCoefficient_SetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_SetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "SetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
+	 { "VectorDeltaCoefficient_GetDeltaCenter", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_GetDeltaCenter, METH_VARARGS|METH_KEYWORDS, "GetDeltaCenter(VectorDeltaCoefficient self, Vector center)"},
+	 { "VectorDeltaCoefficient_EvalDelta", (PyCFunction)(void(*)(void))_wrap_VectorDeltaCoefficient_EvalDelta, METH_VARARGS|METH_KEYWORDS, "EvalDelta(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)"},
+	 { "VectorDeltaCoefficient_Eval", _wrap_VectorDeltaCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorDeltaCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorDeltaCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_VectorDeltaCoefficient", _wrap_delete_VectorDeltaCoefficient, METH_O, "delete_VectorDeltaCoefficient(VectorDeltaCoefficient self)"},
+	 { "VectorDeltaCoefficient_swigregister", VectorDeltaCoefficient_swigregister, METH_O, NULL},
+	 { "VectorDeltaCoefficient_swiginit", VectorDeltaCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorRestrictedCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorRestrictedCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorRestrictedCoefficient(VectorCoefficient vc, intArray attr) -> VectorRestrictedCoefficient"},
+	 { "VectorRestrictedCoefficient_Eval", _wrap_VectorRestrictedCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorRestrictedCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorRestrictedCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorRestrictedCoefficient", _wrap_delete_VectorRestrictedCoefficient, METH_O, "delete_VectorRestrictedCoefficient(VectorRestrictedCoefficient self)"},
+	 { "VectorRestrictedCoefficient_swigregister", VectorRestrictedCoefficient_swigregister, METH_O, NULL},
+	 { "VectorRestrictedCoefficient_swiginit", VectorRestrictedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "MatrixCoefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_MatrixCoefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(MatrixCoefficient self, double t)"},
+	 { "MatrixCoefficient_GetTime", _wrap_MatrixCoefficient_GetTime, METH_O, "GetTime(MatrixCoefficient self) -> double"},
+	 { "MatrixCoefficient_GetHeight", _wrap_MatrixCoefficient_GetHeight, METH_O, "GetHeight(MatrixCoefficient self) -> int"},
+	 { "MatrixCoefficient_GetWidth", _wrap_MatrixCoefficient_GetWidth, METH_O, "GetWidth(MatrixCoefficient self) -> int"},
+	 { "MatrixCoefficient_GetVDim", _wrap_MatrixCoefficient_GetVDim, METH_O, "GetVDim(MatrixCoefficient self) -> int"},
+	 { "MatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(MatrixCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixCoefficient", _wrap_delete_MatrixCoefficient, METH_O, "delete_MatrixCoefficient(MatrixCoefficient self)"},
+	 { "MatrixCoefficient_swigregister", MatrixCoefficient_swigregister, METH_O, NULL},
+	 { "new_MatrixConstantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixConstantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixConstantCoefficient(DenseMatrix m) -> MatrixConstantCoefficient"},
+	 { "MatrixConstantCoefficient_Eval", _wrap_MatrixConstantCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(MatrixConstantCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(MatrixConstantCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_MatrixConstantCoefficient", _wrap_delete_MatrixConstantCoefficient, METH_O, "delete_MatrixConstantCoefficient(MatrixConstantCoefficient self)"},
+	 { "MatrixConstantCoefficient_swigregister", MatrixConstantCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixConstantCoefficient_swiginit", MatrixConstantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixFunctionCoefficient", _wrap_new_MatrixFunctionCoefficient, METH_VARARGS, "\n"
+		"MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,mfem::DenseMatrix &) F, Coefficient q=None)\n"
+		"MatrixFunctionCoefficient(DenseMatrix m, Coefficient q)\n"
+		"new_MatrixFunctionCoefficient(int dim, void (*)(mfem::Vector const &,double,mfem::DenseMatrix &) TDF, Coefficient q=None) -> MatrixFunctionCoefficient\n"
+		""},
+	 { "MatrixFunctionCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixFunctionCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(MatrixFunctionCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixFunctionCoefficient", _wrap_delete_MatrixFunctionCoefficient, METH_O, "delete_MatrixFunctionCoefficient(MatrixFunctionCoefficient self)"},
+	 { "MatrixFunctionCoefficient_swigregister", MatrixFunctionCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixFunctionCoefficient_swiginit", MatrixFunctionCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixArrayCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixArrayCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixArrayCoefficient(int dim) -> MatrixArrayCoefficient"},
+	 { "MatrixArrayCoefficient_GetCoeff", (PyCFunction)(void(*)(void))_wrap_MatrixArrayCoefficient_GetCoeff, METH_VARARGS|METH_KEYWORDS, "GetCoeff(MatrixArrayCoefficient self, int i, int j) -> Coefficient"},
+	 { "MatrixArrayCoefficient_Set", (PyCFunction)(void(*)(void))_wrap_MatrixArrayCoefficient_Set, METH_VARARGS|METH_KEYWORDS, "Set(MatrixArrayCoefficient self, int i, int j, Coefficient c, bool own=True)"},
+	 { "MatrixArrayCoefficient_Eval", _wrap_MatrixArrayCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(MatrixArrayCoefficient self, int i, int j, ElementTransformation T, IntegrationPoint ip) -> double\n"
+		"Eval(MatrixArrayCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "delete_MatrixArrayCoefficient", _wrap_delete_MatrixArrayCoefficient, METH_O, "delete_MatrixArrayCoefficient(MatrixArrayCoefficient self)"},
+	 { "MatrixArrayCoefficient_swigregister", MatrixArrayCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixArrayCoefficient_swiginit", MatrixArrayCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixRestrictedCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixRestrictedCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixRestrictedCoefficient(MatrixCoefficient mc, intArray attr) -> MatrixRestrictedCoefficient"},
+	 { "MatrixRestrictedCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixRestrictedCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(MatrixRestrictedCoefficient self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixRestrictedCoefficient", _wrap_delete_MatrixRestrictedCoefficient, METH_O, "delete_MatrixRestrictedCoefficient(MatrixRestrictedCoefficient self)"},
+	 { "MatrixRestrictedCoefficient_swigregister", MatrixRestrictedCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixRestrictedCoefficient_swiginit", MatrixRestrictedCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_SumCoefficient", (PyCFunction)(void(*)(void))_wrap_new_SumCoefficient, METH_VARARGS|METH_KEYWORDS, "new_SumCoefficient(Coefficient A, Coefficient B, double _alpha=1.0, double _beta=1.0) -> SumCoefficient"},
+	 { "SumCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_SumCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(SumCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_SumCoefficient", _wrap_delete_SumCoefficient, METH_O, "delete_SumCoefficient(SumCoefficient self)"},
+	 { "SumCoefficient_swigregister", SumCoefficient_swigregister, METH_O, NULL},
+	 { "SumCoefficient_swiginit", SumCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_ProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ProductCoefficient(Coefficient A, Coefficient B) -> ProductCoefficient"},
+	 { "ProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(ProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_ProductCoefficient", _wrap_delete_ProductCoefficient, METH_O, "delete_ProductCoefficient(ProductCoefficient self)"},
+	 { "ProductCoefficient_swigregister", ProductCoefficient_swigregister, METH_O, NULL},
+	 { "ProductCoefficient_swiginit", ProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_PowerCoefficient", (PyCFunction)(void(*)(void))_wrap_new_PowerCoefficient, METH_VARARGS|METH_KEYWORDS, "new_PowerCoefficient(Coefficient A, double _p) -> PowerCoefficient"},
+	 { "PowerCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_PowerCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(PowerCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_PowerCoefficient", _wrap_delete_PowerCoefficient, METH_O, "delete_PowerCoefficient(PowerCoefficient self)"},
+	 { "PowerCoefficient_swigregister", PowerCoefficient_swigregister, METH_O, NULL},
+	 { "PowerCoefficient_swiginit", PowerCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_InnerProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_InnerProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_InnerProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> InnerProductCoefficient"},
+	 { "InnerProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_InnerProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(InnerProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_InnerProductCoefficient", _wrap_delete_InnerProductCoefficient, METH_O, "delete_InnerProductCoefficient(InnerProductCoefficient self)"},
+	 { "InnerProductCoefficient_swigregister", InnerProductCoefficient_swigregister, METH_O, NULL},
+	 { "InnerProductCoefficient_swiginit", InnerProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorRotProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorRotProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorRotProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorRotProductCoefficient"},
+	 { "VectorRotProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_VectorRotProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(VectorRotProductCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_VectorRotProductCoefficient", _wrap_delete_VectorRotProductCoefficient, METH_O, "delete_VectorRotProductCoefficient(VectorRotProductCoefficient self)"},
+	 { "VectorRotProductCoefficient_swigregister", VectorRotProductCoefficient_swigregister, METH_O, NULL},
+	 { "VectorRotProductCoefficient_swiginit", VectorRotProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_DeterminantCoefficient", (PyCFunction)(void(*)(void))_wrap_new_DeterminantCoefficient, METH_VARARGS|METH_KEYWORDS, "new_DeterminantCoefficient(MatrixCoefficient A) -> DeterminantCoefficient"},
+	 { "DeterminantCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_DeterminantCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(DeterminantCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_DeterminantCoefficient", _wrap_delete_DeterminantCoefficient, METH_O, "delete_DeterminantCoefficient(DeterminantCoefficient self)"},
+	 { "DeterminantCoefficient_swigregister", DeterminantCoefficient_swigregister, METH_O, NULL},
+	 { "DeterminantCoefficient_swiginit", DeterminantCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorSumCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorSumCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorSumCoefficient(VectorCoefficient A, VectorCoefficient B, double _alpha=1.0, double _beta=1.0) -> VectorSumCoefficient"},
+	 { "VectorSumCoefficient_Eval", _wrap_VectorSumCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorSumCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorSumCoefficient", _wrap_delete_VectorSumCoefficient, METH_O, "delete_VectorSumCoefficient(VectorSumCoefficient self)"},
+	 { "VectorSumCoefficient_swigregister", VectorSumCoefficient_swigregister, METH_O, NULL},
+	 { "VectorSumCoefficient_swiginit", VectorSumCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_ScalarVectorProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ScalarVectorProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ScalarVectorProductCoefficient(Coefficient A, VectorCoefficient B) -> ScalarVectorProductCoefficient"},
+	 { "ScalarVectorProductCoefficient_Eval", _wrap_ScalarVectorProductCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(ScalarVectorProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(ScalarVectorProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_ScalarVectorProductCoefficient", _wrap_delete_ScalarVectorProductCoefficient, METH_O, "delete_ScalarVectorProductCoefficient(ScalarVectorProductCoefficient self)"},
+	 { "ScalarVectorProductCoefficient_swigregister", ScalarVectorProductCoefficient_swigregister, METH_O, NULL},
+	 { "ScalarVectorProductCoefficient_swiginit", ScalarVectorProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorCrossProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_VectorCrossProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_VectorCrossProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> VectorCrossProductCoefficient"},
+	 { "VectorCrossProductCoefficient_Eval", _wrap_VectorCrossProductCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(VectorCrossProductCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(VectorCrossProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_VectorCrossProductCoefficient", _wrap_delete_VectorCrossProductCoefficient, METH_O, "delete_VectorCrossProductCoefficient(VectorCrossProductCoefficient self)"},
+	 { "VectorCrossProductCoefficient_swigregister", VectorCrossProductCoefficient_swigregister, METH_O, NULL},
+	 { "VectorCrossProductCoefficient_swiginit", VectorCrossProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatVecCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatVecCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatVecCoefficient(MatrixCoefficient A, VectorCoefficient B) -> MatVecCoefficient"},
+	 { "MatVecCoefficient_Eval", _wrap_MatVecCoefficient_Eval, METH_VARARGS, "\n"
+		"Eval(MatVecCoefficient self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		"Eval(MatVecCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		""},
+	 { "delete_MatVecCoefficient", _wrap_delete_MatVecCoefficient, METH_O, "delete_MatVecCoefficient(MatVecCoefficient self)"},
+	 { "MatVecCoefficient_swigregister", MatVecCoefficient_swigregister, METH_O, NULL},
+	 { "MatVecCoefficient_swiginit", MatVecCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_IdentityMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_new_IdentityMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "new_IdentityMatrixCoefficient(int d) -> IdentityMatrixCoefficient"},
+	 { "IdentityMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_IdentityMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(IdentityMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_IdentityMatrixCoefficient", _wrap_delete_IdentityMatrixCoefficient, METH_O, "delete_IdentityMatrixCoefficient(IdentityMatrixCoefficient self)"},
+	 { "IdentityMatrixCoefficient_swigregister", IdentityMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "IdentityMatrixCoefficient_swiginit", IdentityMatrixCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixSumCoefficient", (PyCFunction)(void(*)(void))_wrap_new_MatrixSumCoefficient, METH_VARARGS|METH_KEYWORDS, "new_MatrixSumCoefficient(MatrixCoefficient A, MatrixCoefficient B, double _alpha=1.0, double _beta=1.0) -> MatrixSumCoefficient"},
+	 { "MatrixSumCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixSumCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(MatrixSumCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_MatrixSumCoefficient", _wrap_delete_MatrixSumCoefficient, METH_O, "delete_MatrixSumCoefficient(MatrixSumCoefficient self)"},
+	 { "MatrixSumCoefficient_swigregister", MatrixSumCoefficient_swigregister, METH_O, NULL},
+	 { "MatrixSumCoefficient_swiginit", MatrixSumCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_ScalarMatrixProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ScalarMatrixProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ScalarMatrixProductCoefficient(Coefficient A, MatrixCoefficient B) -> ScalarMatrixProductCoefficient"},
+	 { "ScalarMatrixProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ScalarMatrixProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(ScalarMatrixProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_ScalarMatrixProductCoefficient", _wrap_delete_ScalarMatrixProductCoefficient, METH_O, "delete_ScalarMatrixProductCoefficient(ScalarMatrixProductCoefficient self)"},
+	 { "ScalarMatrixProductCoefficient_swigregister", ScalarMatrixProductCoefficient_swigregister, METH_O, NULL},
+	 { "ScalarMatrixProductCoefficient_swiginit", ScalarMatrixProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_TransposeMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_new_TransposeMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "new_TransposeMatrixCoefficient(MatrixCoefficient A) -> TransposeMatrixCoefficient"},
+	 { "TransposeMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_TransposeMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(TransposeMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_TransposeMatrixCoefficient", _wrap_delete_TransposeMatrixCoefficient, METH_O, "delete_TransposeMatrixCoefficient(TransposeMatrixCoefficient self)"},
+	 { "TransposeMatrixCoefficient_swigregister", TransposeMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "TransposeMatrixCoefficient_swiginit", TransposeMatrixCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_InverseMatrixCoefficient", (PyCFunction)(void(*)(void))_wrap_new_InverseMatrixCoefficient, METH_VARARGS|METH_KEYWORDS, "new_InverseMatrixCoefficient(MatrixCoefficient A) -> InverseMatrixCoefficient"},
+	 { "InverseMatrixCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_InverseMatrixCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(InverseMatrixCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_InverseMatrixCoefficient", _wrap_delete_InverseMatrixCoefficient, METH_O, "delete_InverseMatrixCoefficient(InverseMatrixCoefficient self)"},
+	 { "InverseMatrixCoefficient_swigregister", InverseMatrixCoefficient_swigregister, METH_O, NULL},
+	 { "InverseMatrixCoefficient_swiginit", InverseMatrixCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "new_OuterProductCoefficient", (PyCFunction)(void(*)(void))_wrap_new_OuterProductCoefficient, METH_VARARGS|METH_KEYWORDS, "new_OuterProductCoefficient(VectorCoefficient A, VectorCoefficient B) -> OuterProductCoefficient"},
+	 { "OuterProductCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_OuterProductCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(OuterProductCoefficient self, DenseMatrix M, ElementTransformation T, IntegrationPoint ip)"},
+	 { "delete_OuterProductCoefficient", _wrap_delete_OuterProductCoefficient, METH_O, "delete_OuterProductCoefficient(OuterProductCoefficient self)"},
+	 { "OuterProductCoefficient_swigregister", OuterProductCoefficient_swigregister, METH_O, NULL},
+	 { "OuterProductCoefficient_swiginit", OuterProductCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "ComputeLpNorm", _wrap_ComputeLpNorm, METH_VARARGS, "\n"
+		"ComputeLpNorm(double p, Coefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		"ComputeLpNorm(double p, VectorCoefficient coeff, mfem::Mesh & mesh, mfem::IntegrationRule const *[] irs) -> double\n"
+		""},
+	 { "fake_func", (PyCFunction)(void(*)(void))_wrap_fake_func, METH_VARARGS|METH_KEYWORDS, "fake_func(Vector x) -> double"},
+	 { "fake_func_vec", (PyCFunction)(void(*)(void))_wrap_fake_func_vec, METH_VARARGS|METH_KEYWORDS, "fake_func_vec(Vector x, Vector Ht)"},
+	 { "fake_func_mat", (PyCFunction)(void(*)(void))_wrap_fake_func_mat, METH_VARARGS|METH_KEYWORDS, "fake_func_mat(Vector x, DenseMatrix Kt)"},
+	 { "new_PyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_PyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_PyCoefficientBase(PyObject * _self, int tdep) -> PyCoefficientBase"},
+	 { "PyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(PyCoefficientBase self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "PyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "_EvalPy(PyCoefficientBase self, Vector arg0) -> double"},
+	 { "PyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_PyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "_EvalPyT(PyCoefficientBase self, Vector arg0, double arg1) -> double"},
+	 { "delete_PyCoefficientBase", _wrap_delete_PyCoefficientBase, METH_O, "delete_PyCoefficientBase(PyCoefficientBase self)"},
+	 { "disown_PyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_disown_PyCoefficientBase, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "PyCoefficientBase_swigregister", PyCoefficientBase_swigregister, METH_O, NULL},
+	 { "PyCoefficientBase_swiginit", PyCoefficientBase_swiginit, METH_VARARGS, NULL},
+	 { "new_VectorPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_VectorPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_VectorPyCoefficientBase(PyObject * _self, int dim, int tdep, Coefficient q=None) -> VectorPyCoefficientBase"},
+	 { "VectorPyCoefficientBase_Eval", _wrap_VectorPyCoefficientBase_Eval, METH_VARARGS, "\n"
+		"Eval(VectorPyCoefficientBase self, DenseMatrix M, ElementTransformation T, IntegrationRule ir)\n"
+		"Eval(VectorPyCoefficientBase self, Vector V, ElementTransformation T, IntegrationPoint ip)\n"
+		""},
+	 { "VectorPyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_VectorPyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "_EvalPy(VectorPyCoefficientBase self, Vector arg0, Vector arg1)"},
+	 { "VectorPyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_VectorPyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "_EvalPyT(VectorPyCoefficientBase self, Vector arg0, double arg1, Vector arg2)"},
+	 { "delete_VectorPyCoefficientBase", _wrap_delete_VectorPyCoefficientBase, METH_O, "delete_VectorPyCoefficientBase(VectorPyCoefficientBase self)"},
+	 { "disown_VectorPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_disown_VectorPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "VectorPyCoefficientBase_swigregister", VectorPyCoefficientBase_swigregister, METH_O, NULL},
+	 { "VectorPyCoefficientBase_swiginit", VectorPyCoefficientBase_swiginit, METH_VARARGS, NULL},
+	 { "new_MatrixPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_new_MatrixPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, "new_MatrixPyCoefficientBase(PyObject * _self, int dim, int tdep) -> MatrixPyCoefficientBase"},
+	 { "MatrixPyCoefficientBase_Eval", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(MatrixPyCoefficientBase self, DenseMatrix K, ElementTransformation T, IntegrationPoint ip)"},
+	 { "MatrixPyCoefficientBase__EvalPy", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPy, METH_VARARGS|METH_KEYWORDS, "_EvalPy(MatrixPyCoefficientBase self, Vector arg0, DenseMatrix arg1)"},
+	 { "MatrixPyCoefficientBase__EvalPyT", (PyCFunction)(void(*)(void))_wrap_MatrixPyCoefficientBase__EvalPyT, METH_VARARGS|METH_KEYWORDS, "_EvalPyT(MatrixPyCoefficientBase self, Vector arg0, double arg1, DenseMatrix arg2)"},
+	 { "delete_MatrixPyCoefficientBase", _wrap_delete_MatrixPyCoefficientBase, METH_O, "delete_MatrixPyCoefficientBase(MatrixPyCoefficientBase self)"},
+	 { "disown_MatrixPyCoefficientBase", (PyCFunction)(void(*)(void))_wrap_disown_MatrixPyCoefficientBase, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MatrixPyCoefficientBase_swigregister", MatrixPyCoefficientBase_swigregister, METH_O, NULL},
+	 { "MatrixPyCoefficientBase_swiginit", MatrixPyCoefficientBase_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

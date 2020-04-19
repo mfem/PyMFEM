@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _geom.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _geom.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -107,15 +110,18 @@ class Geometry(object):
     def GetVertices(self, GeomType):
         r"""GetVertices(Geometry self, int GeomType) -> IntegrationRule"""
         return _geom.Geometry_GetVertices(self, GeomType)
+    GetVertices = _swig_new_instance_method(_geom.Geometry_GetVertices)
 
     def GetCenter(self, GeomType):
         r"""GetCenter(Geometry self, int GeomType) -> IntegrationPoint"""
         return _geom.Geometry_GetCenter(self, GeomType)
+    GetCenter = _swig_new_instance_method(_geom.Geometry_GetCenter)
 
     @staticmethod
     def GetRandomPoint(GeomType, ip):
         r"""GetRandomPoint(int GeomType, IntegrationPoint ip)"""
         return _geom.Geometry_GetRandomPoint(GeomType, ip)
+    GetRandomPoint = _swig_new_static_method(_geom.Geometry_GetRandomPoint)
 
     @staticmethod
     def CheckPoint(*args):
@@ -124,6 +130,7 @@ class Geometry(object):
         CheckPoint(int GeomType, IntegrationPoint ip, double eps) -> bool
         """
         return _geom.Geometry_CheckPoint(*args)
+    CheckPoint = _swig_new_static_method(_geom.Geometry_CheckPoint)
 
     @staticmethod
     def ProjectPoint(*args):
@@ -132,26 +139,32 @@ class Geometry(object):
         ProjectPoint(int GeomType, IntegrationPoint ip) -> bool
         """
         return _geom.Geometry_ProjectPoint(*args)
+    ProjectPoint = _swig_new_static_method(_geom.Geometry_ProjectPoint)
 
     def GetGeomToPerfGeomJac(self, GeomType):
         r"""GetGeomToPerfGeomJac(Geometry self, int GeomType) -> DenseMatrix"""
         return _geom.Geometry_GetGeomToPerfGeomJac(self, GeomType)
+    GetGeomToPerfGeomJac = _swig_new_instance_method(_geom.Geometry_GetGeomToPerfGeomJac)
 
     def GetPerfGeomToGeomJac(self, GeomType):
         r"""GetPerfGeomToGeomJac(Geometry self, int GeomType) -> DenseMatrix"""
         return _geom.Geometry_GetPerfGeomToGeomJac(self, GeomType)
+    GetPerfGeomToGeomJac = _swig_new_instance_method(_geom.Geometry_GetPerfGeomToGeomJac)
 
     def GetPerfPointMat(self, GeomType, pm):
         r"""GetPerfPointMat(Geometry self, int GeomType, DenseMatrix pm)"""
         return _geom.Geometry_GetPerfPointMat(self, GeomType, pm)
+    GetPerfPointMat = _swig_new_instance_method(_geom.Geometry_GetPerfPointMat)
 
     def JacToPerfJac(self, GeomType, J, PJ):
         r"""JacToPerfJac(Geometry self, int GeomType, DenseMatrix J, DenseMatrix PJ)"""
         return _geom.Geometry_JacToPerfJac(self, GeomType, J, PJ)
+    JacToPerfJac = _swig_new_instance_method(_geom.Geometry_JacToPerfJac)
 
     def NumBdr(self, GeomType):
         r"""NumBdr(Geometry self, int GeomType) -> int"""
         return _geom.Geometry_NumBdr(self, GeomType)
+    NumBdr = _swig_new_instance_method(_geom.Geometry_NumBdr)
 
 # Register Geometry in _geom:
 _geom.Geometry_swigregister(Geometry)
@@ -167,6 +180,7 @@ Geometry.NumFaces = _geom.cvar.Geometry_NumFaces
 def Geometry_GetRandomPoint(GeomType, ip):
     r"""Geometry_GetRandomPoint(int GeomType, IntegrationPoint ip)"""
     return _geom.Geometry_GetRandomPoint(GeomType, ip)
+Geometry_GetRandomPoint = _geom.Geometry_GetRandomPoint
 
 def Geometry_CheckPoint(*args):
     r"""
@@ -174,6 +188,7 @@ def Geometry_CheckPoint(*args):
     Geometry_CheckPoint(int GeomType, IntegrationPoint ip, double eps) -> bool
     """
     return _geom.Geometry_CheckPoint(*args)
+Geometry_CheckPoint = _geom.Geometry_CheckPoint
 
 def Geometry_ProjectPoint(*args):
     r"""
@@ -181,6 +196,7 @@ def Geometry_ProjectPoint(*args):
     Geometry_ProjectPoint(int GeomType, IntegrationPoint ip) -> bool
     """
     return _geom.Geometry_ProjectPoint(*args)
+Geometry_ProjectPoint = _geom.Geometry_ProjectPoint
 
 class RefinedGeometry(object):
     r"""Proxy of C++ mfem::RefinedGeometry class."""
@@ -216,18 +232,22 @@ class GeometryRefiner(object):
     def SetType(self, t):
         r"""SetType(GeometryRefiner self, int const t)"""
         return _geom.GeometryRefiner_SetType(self, t)
+    SetType = _swig_new_instance_method(_geom.GeometryRefiner_SetType)
 
     def GetType(self):
         r"""GetType(GeometryRefiner self) -> int"""
         return _geom.GeometryRefiner_GetType(self)
+    GetType = _swig_new_instance_method(_geom.GeometryRefiner_GetType)
 
     def Refine(self, Geom, Times, ETimes=1):
         r"""Refine(GeometryRefiner self, mfem::Geometry::Type Geom, int Times, int ETimes=1) -> RefinedGeometry"""
         return _geom.GeometryRefiner_Refine(self, Geom, Times, ETimes)
+    Refine = _swig_new_instance_method(_geom.GeometryRefiner_Refine)
 
     def RefineInterior(self, Geom, Times):
         r"""RefineInterior(GeometryRefiner self, mfem::Geometry::Type Geom, int Times) -> IntegrationRule"""
         return _geom.GeometryRefiner_RefineInterior(self, Geom, Times)
+    RefineInterior = _swig_new_instance_method(_geom.GeometryRefiner_RefineInterior)
     __swig_destroy__ = _geom.delete_GeometryRefiner
 
 # Register GeometryRefiner in _geom:

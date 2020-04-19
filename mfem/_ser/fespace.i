@@ -17,6 +17,7 @@
 #include "fem/eltrans.hpp"
 #include "fem/coefficient.hpp"
 #include "fem/intrules.hpp"  
+#include "fem/restriction.hpp"
 #include "pyoperator.hpp"       
 %}
 
@@ -38,6 +39,7 @@ import_array();
 %import "eltrans.i"
 %import "lininteg.i"
 %import "handle.i"
+%import "restriction.i"
 %import "../common/exception.i"
 
 %import "../common/io_stream_typemap.i"

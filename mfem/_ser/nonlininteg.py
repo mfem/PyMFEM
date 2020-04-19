@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _nonlininteg.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _nonlininteg.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -87,7 +90,9 @@ import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.vertex
+import mfem._ser.vtk
 import mfem._ser.handle
+import mfem._ser.restriction
 class NonlinearFormIntegrator(object):
     r"""Proxy of C++ mfem::NonlinearFormIntegrator class."""
 
@@ -105,30 +110,50 @@ class NonlinearFormIntegrator(object):
     def SetIntRule(self, ir):
         r"""SetIntRule(NonlinearFormIntegrator self, IntegrationRule ir)"""
         return _nonlininteg.NonlinearFormIntegrator_SetIntRule(self, ir)
+    SetIntRule = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetIntRule)
 
     def SetIntegrationRule(self, irule):
         r"""SetIntegrationRule(NonlinearFormIntegrator self, IntegrationRule irule)"""
         return _nonlininteg.NonlinearFormIntegrator_SetIntegrationRule(self, irule)
+    SetIntegrationRule = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_SetIntegrationRule)
 
     def AssembleElementVector(self, el, Tr, elfun, elvect):
         r"""AssembleElementVector(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, Vector elvect)"""
         return _nonlininteg.NonlinearFormIntegrator_AssembleElementVector(self, el, Tr, elfun, elvect)
+    AssembleElementVector = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssembleElementVector)
 
     def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
         r"""AssembleFaceVector(NonlinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, Vector elvect)"""
         return _nonlininteg.NonlinearFormIntegrator_AssembleFaceVector(self, el1, el2, Tr, elfun, elvect)
+    AssembleFaceVector = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssembleFaceVector)
 
     def AssembleElementGrad(self, el, Tr, elfun, elmat):
         r"""AssembleElementGrad(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun, DenseMatrix elmat)"""
         return _nonlininteg.NonlinearFormIntegrator_AssembleElementGrad(self, el, Tr, elfun, elmat)
+    AssembleElementGrad = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssembleElementGrad)
 
     def AssembleFaceGrad(self, el1, el2, Tr, elfun, elmat):
         r"""AssembleFaceGrad(NonlinearFormIntegrator self, FiniteElement el1, FiniteElement el2, FaceElementTransformations Tr, Vector elfun, DenseMatrix elmat)"""
         return _nonlininteg.NonlinearFormIntegrator_AssembleFaceGrad(self, el1, el2, Tr, elfun, elmat)
+    AssembleFaceGrad = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssembleFaceGrad)
 
     def GetElementEnergy(self, el, Tr, elfun):
         r"""GetElementEnergy(NonlinearFormIntegrator self, FiniteElement el, ElementTransformation Tr, Vector elfun) -> double"""
         return _nonlininteg.NonlinearFormIntegrator_GetElementEnergy(self, el, Tr, elfun)
+    GetElementEnergy = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_GetElementEnergy)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(NonlinearFormIntegrator self, FiniteElementSpace fes)
+        AssemblePA(NonlinearFormIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
+        """
+        return _nonlininteg.NonlinearFormIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AssemblePA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(NonlinearFormIntegrator self, Vector x, Vector y)"""
+        return _nonlininteg.NonlinearFormIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_nonlininteg.NonlinearFormIntegrator_AddMultPA)
     __swig_destroy__ = _nonlininteg.delete_NonlinearFormIntegrator
     def __disown__(self):
         self.this.disown()
@@ -147,22 +172,27 @@ class BlockNonlinearFormIntegrator(object):
     def GetElementEnergy(self, el, Tr, elfun):
         r"""GetElementEnergy(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun) -> double"""
         return _nonlininteg.BlockNonlinearFormIntegrator_GetElementEnergy(self, el, Tr, elfun)
+    GetElementEnergy = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_GetElementEnergy)
 
     def AssembleElementVector(self, el, Tr, elfun, elvec):
         r"""AssembleElementVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
+    AssembleElementVector = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleElementVector)
 
     def AssembleFaceVector(self, el1, el2, Tr, elfun, elvect):
         r"""AssembleFaceVector(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvect)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceVector(self, el1, el2, Tr, elfun, elvect)
+    AssembleFaceVector = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceVector)
 
     def AssembleElementGrad(self, el, Tr, elfun, elmats):
         r"""AssembleElementGrad(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleElementGrad(self, el, Tr, elfun, elmats)
+    AssembleElementGrad = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleElementGrad)
 
     def AssembleFaceGrad(self, el1, el2, Tr, elfun, elmats):
         r"""AssembleFaceGrad(BlockNonlinearFormIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el1, mfem::Array< mfem::FiniteElement const * > const & el2, FaceElementTransformations Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"""
         return _nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceGrad(self, el1, el2, Tr, elfun, elmats)
+    AssembleFaceGrad = _swig_new_instance_method(_nonlininteg.BlockNonlinearFormIntegrator_AssembleFaceGrad)
     __swig_destroy__ = _nonlininteg.delete_BlockNonlinearFormIntegrator
 
     def __init__(self):
@@ -185,18 +215,22 @@ class HyperelasticModel(object):
     def SetTransformation(self, _Ttr):
         r"""SetTransformation(HyperelasticModel self, ElementTransformation _Ttr)"""
         return _nonlininteg.HyperelasticModel_SetTransformation(self, _Ttr)
+    SetTransformation = _swig_new_instance_method(_nonlininteg.HyperelasticModel_SetTransformation)
 
     def EvalW(self, Jpt):
         r"""EvalW(HyperelasticModel self, DenseMatrix Jpt) -> double"""
         return _nonlininteg.HyperelasticModel_EvalW(self, Jpt)
+    EvalW = _swig_new_instance_method(_nonlininteg.HyperelasticModel_EvalW)
 
     def EvalP(self, Jpt, P):
         r"""EvalP(HyperelasticModel self, DenseMatrix Jpt, DenseMatrix P)"""
         return _nonlininteg.HyperelasticModel_EvalP(self, Jpt, P)
+    EvalP = _swig_new_instance_method(_nonlininteg.HyperelasticModel_EvalP)
 
     def AssembleH(self, Jpt, DS, weight, A):
         r"""AssembleH(HyperelasticModel self, DenseMatrix Jpt, DenseMatrix DS, double const weight, DenseMatrix A)"""
         return _nonlininteg.HyperelasticModel_AssembleH(self, Jpt, DS, weight, A)
+    AssembleH = _swig_new_instance_method(_nonlininteg.HyperelasticModel_AssembleH)
 
 # Register HyperelasticModel in _nonlininteg:
 _nonlininteg.HyperelasticModel_swigregister(HyperelasticModel)
@@ -210,14 +244,17 @@ class InverseHarmonicModel(HyperelasticModel):
     def EvalW(self, J):
         r"""EvalW(InverseHarmonicModel self, DenseMatrix J) -> double"""
         return _nonlininteg.InverseHarmonicModel_EvalW(self, J)
+    EvalW = _swig_new_instance_method(_nonlininteg.InverseHarmonicModel_EvalW)
 
     def EvalP(self, J, P):
         r"""EvalP(InverseHarmonicModel self, DenseMatrix J, DenseMatrix P)"""
         return _nonlininteg.InverseHarmonicModel_EvalP(self, J, P)
+    EvalP = _swig_new_instance_method(_nonlininteg.InverseHarmonicModel_EvalP)
 
     def AssembleH(self, J, DS, weight, A):
         r"""AssembleH(InverseHarmonicModel self, DenseMatrix J, DenseMatrix DS, double const weight, DenseMatrix A)"""
         return _nonlininteg.InverseHarmonicModel_AssembleH(self, J, DS, weight, A)
+    AssembleH = _swig_new_instance_method(_nonlininteg.InverseHarmonicModel_AssembleH)
 
     def __init__(self):
         r"""__init__(InverseHarmonicModel self) -> InverseHarmonicModel"""
@@ -243,14 +280,17 @@ class NeoHookeanModel(HyperelasticModel):
     def EvalW(self, J):
         r"""EvalW(NeoHookeanModel self, DenseMatrix J) -> double"""
         return _nonlininteg.NeoHookeanModel_EvalW(self, J)
+    EvalW = _swig_new_instance_method(_nonlininteg.NeoHookeanModel_EvalW)
 
     def EvalP(self, J, P):
         r"""EvalP(NeoHookeanModel self, DenseMatrix J, DenseMatrix P)"""
         return _nonlininteg.NeoHookeanModel_EvalP(self, J, P)
+    EvalP = _swig_new_instance_method(_nonlininteg.NeoHookeanModel_EvalP)
 
     def AssembleH(self, J, DS, weight, A):
         r"""AssembleH(NeoHookeanModel self, DenseMatrix J, DenseMatrix DS, double const weight, DenseMatrix A)"""
         return _nonlininteg.NeoHookeanModel_AssembleH(self, J, DS, weight, A)
+    AssembleH = _swig_new_instance_method(_nonlininteg.NeoHookeanModel_AssembleH)
     __swig_destroy__ = _nonlininteg.delete_NeoHookeanModel
 
 # Register NeoHookeanModel in _nonlininteg:
@@ -269,14 +309,17 @@ class HyperelasticNLFIntegrator(NonlinearFormIntegrator):
     def GetElementEnergy(self, el, Ttr, elfun):
         r"""GetElementEnergy(HyperelasticNLFIntegrator self, FiniteElement el, ElementTransformation Ttr, Vector elfun) -> double"""
         return _nonlininteg.HyperelasticNLFIntegrator_GetElementEnergy(self, el, Ttr, elfun)
+    GetElementEnergy = _swig_new_instance_method(_nonlininteg.HyperelasticNLFIntegrator_GetElementEnergy)
 
     def AssembleElementVector(self, el, Ttr, elfun, elvect):
         r"""AssembleElementVector(HyperelasticNLFIntegrator self, FiniteElement el, ElementTransformation Ttr, Vector elfun, Vector elvect)"""
         return _nonlininteg.HyperelasticNLFIntegrator_AssembleElementVector(self, el, Ttr, elfun, elvect)
+    AssembleElementVector = _swig_new_instance_method(_nonlininteg.HyperelasticNLFIntegrator_AssembleElementVector)
 
     def AssembleElementGrad(self, el, Ttr, elfun, elmat):
         r"""AssembleElementGrad(HyperelasticNLFIntegrator self, FiniteElement el, ElementTransformation Ttr, Vector elfun, DenseMatrix elmat)"""
         return _nonlininteg.HyperelasticNLFIntegrator_AssembleElementGrad(self, el, Ttr, elfun, elmat)
+    AssembleElementGrad = _swig_new_instance_method(_nonlininteg.HyperelasticNLFIntegrator_AssembleElementGrad)
     __swig_destroy__ = _nonlininteg.delete_HyperelasticNLFIntegrator
 
 # Register HyperelasticNLFIntegrator in _nonlininteg:
@@ -295,18 +338,73 @@ class IncompressibleNeoHookeanIntegrator(BlockNonlinearFormIntegrator):
     def GetElementEnergy(self, el, Tr, elfun):
         r"""GetElementEnergy(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun) -> double"""
         return _nonlininteg.IncompressibleNeoHookeanIntegrator_GetElementEnergy(self, el, Tr, elfun)
+    GetElementEnergy = _swig_new_instance_method(_nonlininteg.IncompressibleNeoHookeanIntegrator_GetElementEnergy)
 
     def AssembleElementVector(self, el, Tr, elfun, elvec):
         r"""AssembleElementVector(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array< mfem::Vector * > const & elvec)"""
         return _nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementVector(self, el, Tr, elfun, elvec)
+    AssembleElementVector = _swig_new_instance_method(_nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementVector)
 
     def AssembleElementGrad(self, el, Tr, elfun, elmats):
         r"""AssembleElementGrad(IncompressibleNeoHookeanIntegrator self, mfem::Array< mfem::FiniteElement const * > const & el, ElementTransformation Tr, mfem::Array< mfem::Vector const * > const & elfun, mfem::Array2D< mfem::DenseMatrix * > const & elmats)"""
         return _nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementGrad(self, el, Tr, elfun, elmats)
+    AssembleElementGrad = _swig_new_instance_method(_nonlininteg.IncompressibleNeoHookeanIntegrator_AssembleElementGrad)
     __swig_destroy__ = _nonlininteg.delete_IncompressibleNeoHookeanIntegrator
 
 # Register IncompressibleNeoHookeanIntegrator in _nonlininteg:
 _nonlininteg.IncompressibleNeoHookeanIntegrator_swigregister(IncompressibleNeoHookeanIntegrator)
+
+class VectorConvectionNLFIntegrator(NonlinearFormIntegrator):
+    r"""Proxy of C++ mfem::VectorConvectionNLFIntegrator class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        r"""
+        __init__(VectorConvectionNLFIntegrator self, Coefficient q) -> VectorConvectionNLFIntegrator
+        __init__(VectorConvectionNLFIntegrator self) -> VectorConvectionNLFIntegrator
+        """
+        _nonlininteg.VectorConvectionNLFIntegrator_swiginit(self, _nonlininteg.new_VectorConvectionNLFIntegrator(*args))
+
+    @staticmethod
+    def GetRule(fe, T):
+        r"""GetRule(FiniteElement fe, ElementTransformation T) -> IntegrationRule"""
+        return _nonlininteg.VectorConvectionNLFIntegrator_GetRule(fe, T)
+    GetRule = _swig_new_static_method(_nonlininteg.VectorConvectionNLFIntegrator_GetRule)
+
+    def AssembleElementVector(self, el, trans, elfun, elvect):
+        r"""AssembleElementVector(VectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, Vector elvect)"""
+        return _nonlininteg.VectorConvectionNLFIntegrator_AssembleElementVector(self, el, trans, elfun, elvect)
+    AssembleElementVector = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AssembleElementVector)
+
+    def AssembleElementGrad(self, el, trans, elfun, elmat):
+        r"""AssembleElementGrad(VectorConvectionNLFIntegrator self, FiniteElement el, ElementTransformation trans, Vector elfun, DenseMatrix elmat)"""
+        return _nonlininteg.VectorConvectionNLFIntegrator_AssembleElementGrad(self, el, trans, elfun, elmat)
+    AssembleElementGrad = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AssembleElementGrad)
+
+    def AssemblePA(self, *args):
+        r"""
+        AssemblePA(VectorConvectionNLFIntegrator self, FiniteElementSpace fes)
+        AssemblePA(VectorConvectionNLFIntegrator self, FiniteElementSpace trial_fes, FiniteElementSpace test_fes)
+        AssemblePA(VectorConvectionNLFIntegrator self, FiniteElementSpace fes)
+        """
+        return _nonlininteg.VectorConvectionNLFIntegrator_AssemblePA(self, *args)
+    AssemblePA = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AssemblePA)
+
+    def AddMultPA(self, x, y):
+        r"""AddMultPA(VectorConvectionNLFIntegrator self, Vector x, Vector y)"""
+        return _nonlininteg.VectorConvectionNLFIntegrator_AddMultPA(self, x, y)
+    AddMultPA = _swig_new_instance_method(_nonlininteg.VectorConvectionNLFIntegrator_AddMultPA)
+    __swig_destroy__ = _nonlininteg.delete_VectorConvectionNLFIntegrator
+
+# Register VectorConvectionNLFIntegrator in _nonlininteg:
+_nonlininteg.VectorConvectionNLFIntegrator_swigregister(VectorConvectionNLFIntegrator)
+
+def VectorConvectionNLFIntegrator_GetRule(fe, T):
+    r"""VectorConvectionNLFIntegrator_GetRule(FiniteElement fe, ElementTransformation T) -> IntegrationRule"""
+    return _nonlininteg.VectorConvectionNLFIntegrator_GetRule(fe, T)
+VectorConvectionNLFIntegrator_GetRule = _nonlininteg.VectorConvectionNLFIntegrator_GetRule
 
 
 

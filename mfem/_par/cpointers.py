@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _cpointers.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _cpointers.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -71,22 +74,27 @@ class intp(object):
 
     def assign(self, value):
         return _cpointers.intp_assign(self, value)
+    assign = _swig_new_instance_method(_cpointers.intp_assign)
 
     def value(self):
         return _cpointers.intp_value(self)
+    value = _swig_new_instance_method(_cpointers.intp_value)
 
     def cast(self):
         return _cpointers.intp_cast(self)
+    cast = _swig_new_instance_method(_cpointers.intp_cast)
 
     @staticmethod
     def frompointer(t):
         return _cpointers.intp_frompointer(t)
+    frompointer = _swig_new_static_method(_cpointers.intp_frompointer)
 
 # Register intp in _cpointers:
 _cpointers.intp_swigregister(intp)
 
 def intp_frompointer(t):
     return _cpointers.intp_frompointer(t)
+intp_frompointer = _cpointers.intp_frompointer
 
 class doublep(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -98,22 +106,27 @@ class doublep(object):
 
     def assign(self, value):
         return _cpointers.doublep_assign(self, value)
+    assign = _swig_new_instance_method(_cpointers.doublep_assign)
 
     def value(self):
         return _cpointers.doublep_value(self)
+    value = _swig_new_instance_method(_cpointers.doublep_value)
 
     def cast(self):
         return _cpointers.doublep_cast(self)
+    cast = _swig_new_instance_method(_cpointers.doublep_cast)
 
     @staticmethod
     def frompointer(t):
         return _cpointers.doublep_frompointer(t)
+    frompointer = _swig_new_static_method(_cpointers.doublep_frompointer)
 
 # Register doublep in _cpointers:
 _cpointers.doublep_swigregister(doublep)
 
 def doublep_frompointer(t):
     return _cpointers.doublep_frompointer(t)
+doublep_frompointer = _cpointers.doublep_frompointer
 
 
 

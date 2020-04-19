@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _matrix.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _matrix.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -82,20 +85,28 @@ class Matrix(mfem._par.operators.Operator):
     DIAG_KEEP = _matrix.Matrix_DIAG_KEEP
     
 
+    def IsSquare(self):
+        r"""IsSquare(Matrix self) -> bool"""
+        return _matrix.Matrix_IsSquare(self)
+    IsSquare = _swig_new_instance_method(_matrix.Matrix_IsSquare)
+
     def Elem(self, *args):
         r"""
         Elem(Matrix self, int i, int j) -> double
         Elem(Matrix self, int i, int j) -> double const &
         """
         return _matrix.Matrix_Elem(self, *args)
+    Elem = _swig_new_instance_method(_matrix.Matrix_Elem)
 
     def Inverse(self):
         r"""Inverse(Matrix self) -> MatrixInverse"""
         return _matrix.Matrix_Inverse(self)
+    Inverse = _swig_new_instance_method(_matrix.Matrix_Inverse)
 
     def Finalize(self, arg2):
         r"""Finalize(Matrix self, int arg2)"""
         return _matrix.Matrix_Finalize(self, arg2)
+    Finalize = _swig_new_instance_method(_matrix.Matrix_Finalize)
     __swig_destroy__ = _matrix.delete_Matrix
 
     def Print(self, *args):
@@ -104,6 +115,7 @@ class Matrix(mfem._par.operators.Operator):
         Print(Matrix self, char const * file, int precision=8)
         """
         return _matrix.Matrix_Print(self, *args)
+    Print = _swig_new_instance_method(_matrix.Matrix_Print)
 
 # Register Matrix in _matrix:
 _matrix.Matrix_swigregister(Matrix)
@@ -133,30 +145,37 @@ class AbstractSparseMatrix(Matrix):
     def NumNonZeroElems(self):
         r"""NumNonZeroElems(AbstractSparseMatrix self) -> int"""
         return _matrix.AbstractSparseMatrix_NumNonZeroElems(self)
+    NumNonZeroElems = _swig_new_instance_method(_matrix.AbstractSparseMatrix_NumNonZeroElems)
 
     def GetRow(self, row, cols, srow):
         r"""GetRow(AbstractSparseMatrix self, int const row, intArray cols, Vector srow) -> int"""
         return _matrix.AbstractSparseMatrix_GetRow(self, row, cols, srow)
+    GetRow = _swig_new_instance_method(_matrix.AbstractSparseMatrix_GetRow)
 
     def EliminateZeroRows(self, threshold=1e-12):
         r"""EliminateZeroRows(AbstractSparseMatrix self, double const threshold=1e-12)"""
         return _matrix.AbstractSparseMatrix_EliminateZeroRows(self, threshold)
+    EliminateZeroRows = _swig_new_instance_method(_matrix.AbstractSparseMatrix_EliminateZeroRows)
 
     def Mult(self, x, y):
         r"""Mult(AbstractSparseMatrix self, Vector x, Vector y)"""
         return _matrix.AbstractSparseMatrix_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_matrix.AbstractSparseMatrix_Mult)
 
     def AddMult(self, x, y, val=1.):
         r"""AddMult(AbstractSparseMatrix self, Vector x, Vector y, double const val=1.)"""
         return _matrix.AbstractSparseMatrix_AddMult(self, x, y, val)
+    AddMult = _swig_new_instance_method(_matrix.AbstractSparseMatrix_AddMult)
 
     def MultTranspose(self, x, y):
         r"""MultTranspose(AbstractSparseMatrix self, Vector x, Vector y)"""
         return _matrix.AbstractSparseMatrix_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_matrix.AbstractSparseMatrix_MultTranspose)
 
     def AddMultTranspose(self, x, y, val=1.):
         r"""AddMultTranspose(AbstractSparseMatrix self, Vector x, Vector y, double const val=1.)"""
         return _matrix.AbstractSparseMatrix_AddMultTranspose(self, x, y, val)
+    AddMultTranspose = _swig_new_instance_method(_matrix.AbstractSparseMatrix_AddMultTranspose)
     __swig_destroy__ = _matrix.delete_AbstractSparseMatrix
 
 # Register AbstractSparseMatrix in _matrix:

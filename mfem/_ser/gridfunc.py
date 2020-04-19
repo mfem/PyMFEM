@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _gridfunc.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _gridfunc.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -73,22 +76,27 @@ class intp(object):
 
     def assign(self, value):
         return _gridfunc.intp_assign(self, value)
+    assign = _swig_new_instance_method(_gridfunc.intp_assign)
 
     def value(self):
         return _gridfunc.intp_value(self)
+    value = _swig_new_instance_method(_gridfunc.intp_value)
 
     def cast(self):
         return _gridfunc.intp_cast(self)
+    cast = _swig_new_instance_method(_gridfunc.intp_cast)
 
     @staticmethod
     def frompointer(t):
         return _gridfunc.intp_frompointer(t)
+    frompointer = _swig_new_static_method(_gridfunc.intp_frompointer)
 
 # Register intp in _gridfunc:
 _gridfunc.intp_swigregister(intp)
 
 def intp_frompointer(t):
     return _gridfunc.intp_frompointer(t)
+intp_frompointer = _gridfunc.intp_frompointer
 
 class doublep(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -100,22 +108,27 @@ class doublep(object):
 
     def assign(self, value):
         return _gridfunc.doublep_assign(self, value)
+    assign = _swig_new_instance_method(_gridfunc.doublep_assign)
 
     def value(self):
         return _gridfunc.doublep_value(self)
+    value = _swig_new_instance_method(_gridfunc.doublep_value)
 
     def cast(self):
         return _gridfunc.doublep_cast(self)
+    cast = _swig_new_instance_method(_gridfunc.doublep_cast)
 
     @staticmethod
     def frompointer(t):
         return _gridfunc.doublep_frompointer(t)
+    frompointer = _swig_new_static_method(_gridfunc.doublep_frompointer)
 
 # Register doublep in _gridfunc:
 _gridfunc.doublep_swigregister(doublep)
 
 def doublep_frompointer(t):
     return _gridfunc.doublep_frompointer(t)
+doublep_frompointer = _gridfunc.doublep_frompointer
 
 import mfem._ser.array
 import mfem._ser.mem_manager
@@ -135,10 +148,12 @@ import mfem._ser.element
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.vertex
+import mfem._ser.vtk
 import mfem._ser.fespace
 import mfem._ser.fe_coll
 import mfem._ser.lininteg
 import mfem._ser.handle
+import mfem._ser.restriction
 import mfem._ser.bilininteg
 import mfem._ser.linearform
 class GridFunction(mfem._ser.vector.Vector):
@@ -150,14 +165,17 @@ class GridFunction(mfem._ser.vector.Vector):
     def MakeOwner(self, _fec):
         r"""MakeOwner(GridFunction self, FiniteElementCollection _fec)"""
         return _gridfunc.GridFunction_MakeOwner(self, _fec)
+    MakeOwner = _swig_new_instance_method(_gridfunc.GridFunction_MakeOwner)
 
     def OwnFEC(self):
         r"""OwnFEC(GridFunction self) -> FiniteElementCollection"""
         return _gridfunc.GridFunction_OwnFEC(self)
+    OwnFEC = _swig_new_instance_method(_gridfunc.GridFunction_OwnFEC)
 
     def VectorDim(self):
         r"""VectorDim(GridFunction self) -> int"""
         return _gridfunc.GridFunction_VectorDim(self)
+    VectorDim = _swig_new_instance_method(_gridfunc.GridFunction_VectorDim)
 
     def GetTrueVector(self, *args):
         r"""
@@ -165,30 +183,37 @@ class GridFunction(mfem._ser.vector.Vector):
         GetTrueVector(GridFunction self) -> Vector
         """
         return _gridfunc.GridFunction_GetTrueVector(self, *args)
+    GetTrueVector = _swig_new_instance_method(_gridfunc.GridFunction_GetTrueVector)
 
     def GetTrueDofs(self, tv):
         r"""GetTrueDofs(GridFunction self, Vector tv)"""
         return _gridfunc.GridFunction_GetTrueDofs(self, tv)
+    GetTrueDofs = _swig_new_instance_method(_gridfunc.GridFunction_GetTrueDofs)
 
     def SetTrueVector(self):
         r"""SetTrueVector(GridFunction self)"""
         return _gridfunc.GridFunction_SetTrueVector(self)
+    SetTrueVector = _swig_new_instance_method(_gridfunc.GridFunction_SetTrueVector)
 
     def SetFromTrueDofs(self, tv):
         r"""SetFromTrueDofs(GridFunction self, Vector tv)"""
         return _gridfunc.GridFunction_SetFromTrueDofs(self, tv)
+    SetFromTrueDofs = _swig_new_instance_method(_gridfunc.GridFunction_SetFromTrueDofs)
 
     def SetFromTrueVector(self):
         r"""SetFromTrueVector(GridFunction self)"""
         return _gridfunc.GridFunction_SetFromTrueVector(self)
+    SetFromTrueVector = _swig_new_instance_method(_gridfunc.GridFunction_SetFromTrueVector)
 
     def GetValue(self, i, ip, vdim=1):
         r"""GetValue(GridFunction self, int i, IntegrationPoint ip, int vdim=1) -> double"""
         return _gridfunc.GridFunction_GetValue(self, i, ip, vdim)
+    GetValue = _swig_new_instance_method(_gridfunc.GridFunction_GetValue)
 
     def GetVectorValue(self, i, ip, val):
         r"""GetVectorValue(GridFunction self, int i, IntegrationPoint ip, Vector val)"""
         return _gridfunc.GridFunction_GetVectorValue(self, i, ip, val)
+    GetVectorValue = _swig_new_instance_method(_gridfunc.GridFunction_GetVectorValue)
 
     def GetValues(self, *args):
         r"""
@@ -196,10 +221,28 @@ class GridFunction(mfem._ser.vector.Vector):
         GetValues(GridFunction self, int i, IntegrationRule ir, Vector vals, DenseMatrix tr, int vdim=1)
         """
         return _gridfunc.GridFunction_GetValues(self, *args)
+    GetValues = _swig_new_instance_method(_gridfunc.GridFunction_GetValues)
+
+    def GetLaplacians(self, *args):
+        r"""
+        GetLaplacians(GridFunction self, int i, IntegrationRule ir, Vector laps, int vdim=1)
+        GetLaplacians(GridFunction self, int i, IntegrationRule ir, Vector laps, DenseMatrix tr, int vdim=1)
+        """
+        return _gridfunc.GridFunction_GetLaplacians(self, *args)
+    GetLaplacians = _swig_new_instance_method(_gridfunc.GridFunction_GetLaplacians)
+
+    def GetHessians(self, *args):
+        r"""
+        GetHessians(GridFunction self, int i, IntegrationRule ir, DenseMatrix hess, int vdim=1)
+        GetHessians(GridFunction self, int i, IntegrationRule ir, DenseMatrix hess, DenseMatrix tr, int vdim=1)
+        """
+        return _gridfunc.GridFunction_GetHessians(self, *args)
+    GetHessians = _swig_new_instance_method(_gridfunc.GridFunction_GetHessians)
 
     def GetFaceValues(self, i, side, ir, vals, tr, vdim=1):
         r"""GetFaceValues(GridFunction self, int i, int side, IntegrationRule ir, Vector vals, DenseMatrix tr, int vdim=1) -> int"""
         return _gridfunc.GridFunction_GetFaceValues(self, i, side, ir, vals, tr, vdim)
+    GetFaceValues = _swig_new_instance_method(_gridfunc.GridFunction_GetFaceValues)
 
     def GetVectorValues(self, *args):
         r"""
@@ -207,26 +250,32 @@ class GridFunction(mfem._ser.vector.Vector):
         GetVectorValues(GridFunction self, int i, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr)
         """
         return _gridfunc.GridFunction_GetVectorValues(self, *args)
+    GetVectorValues = _swig_new_instance_method(_gridfunc.GridFunction_GetVectorValues)
 
     def GetFaceVectorValues(self, i, side, ir, vals, tr):
         r"""GetFaceVectorValues(GridFunction self, int i, int side, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr) -> int"""
         return _gridfunc.GridFunction_GetFaceVectorValues(self, i, side, ir, vals, tr)
+    GetFaceVectorValues = _swig_new_instance_method(_gridfunc.GridFunction_GetFaceVectorValues)
 
     def GetValuesFrom(self, orig_func):
         r"""GetValuesFrom(GridFunction self, GridFunction orig_func)"""
         return _gridfunc.GridFunction_GetValuesFrom(self, orig_func)
+    GetValuesFrom = _swig_new_instance_method(_gridfunc.GridFunction_GetValuesFrom)
 
     def GetBdrValuesFrom(self, orig_func):
         r"""GetBdrValuesFrom(GridFunction self, GridFunction orig_func)"""
         return _gridfunc.GridFunction_GetBdrValuesFrom(self, orig_func)
+    GetBdrValuesFrom = _swig_new_instance_method(_gridfunc.GridFunction_GetBdrValuesFrom)
 
     def GetVectorFieldValues(self, i, ir, vals, tr, comp=0):
         r"""GetVectorFieldValues(GridFunction self, int i, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr, int comp=0)"""
         return _gridfunc.GridFunction_GetVectorFieldValues(self, i, ir, vals, tr, comp)
+    GetVectorFieldValues = _swig_new_instance_method(_gridfunc.GridFunction_GetVectorFieldValues)
 
     def ReorderByNodes(self):
         r"""ReorderByNodes(GridFunction self)"""
         return _gridfunc.GridFunction_ReorderByNodes(self)
+    ReorderByNodes = _swig_new_instance_method(_gridfunc.GridFunction_ReorderByNodes)
 
     def GetNodalValues(self, *args):
         '''
@@ -247,26 +296,32 @@ class GridFunction(mfem._ser.vector.Vector):
     def GetVectorFieldNodalValues(self, val, comp):
         r"""GetVectorFieldNodalValues(GridFunction self, Vector val, int comp)"""
         return _gridfunc.GridFunction_GetVectorFieldNodalValues(self, val, comp)
+    GetVectorFieldNodalValues = _swig_new_instance_method(_gridfunc.GridFunction_GetVectorFieldNodalValues)
 
     def ProjectVectorFieldOn(self, vec_field, comp=0):
         r"""ProjectVectorFieldOn(GridFunction self, GridFunction vec_field, int comp=0)"""
         return _gridfunc.GridFunction_ProjectVectorFieldOn(self, vec_field, comp)
+    ProjectVectorFieldOn = _swig_new_instance_method(_gridfunc.GridFunction_ProjectVectorFieldOn)
 
     def GetDerivative(self, comp, der_comp, der):
         r"""GetDerivative(GridFunction self, int comp, int der_comp, GridFunction der)"""
         return _gridfunc.GridFunction_GetDerivative(self, comp, der_comp, der)
+    GetDerivative = _swig_new_instance_method(_gridfunc.GridFunction_GetDerivative)
 
     def GetDivergence(self, tr):
         r"""GetDivergence(GridFunction self, ElementTransformation tr) -> double"""
         return _gridfunc.GridFunction_GetDivergence(self, tr)
+    GetDivergence = _swig_new_instance_method(_gridfunc.GridFunction_GetDivergence)
 
     def GetCurl(self, tr, curl):
         r"""GetCurl(GridFunction self, ElementTransformation tr, Vector curl)"""
         return _gridfunc.GridFunction_GetCurl(self, tr, curl)
+    GetCurl = _swig_new_instance_method(_gridfunc.GridFunction_GetCurl)
 
     def GetGradient(self, tr, grad):
         r"""GetGradient(GridFunction self, ElementTransformation tr, Vector grad)"""
         return _gridfunc.GridFunction_GetGradient(self, tr, grad)
+    GetGradient = _swig_new_instance_method(_gridfunc.GridFunction_GetGradient)
 
     def GetGradients(self, *args):
         r"""
@@ -274,14 +329,17 @@ class GridFunction(mfem._ser.vector.Vector):
         GetGradients(GridFunction self, int const elem, IntegrationRule ir, DenseMatrix grad)
         """
         return _gridfunc.GridFunction_GetGradients(self, *args)
+    GetGradients = _swig_new_instance_method(_gridfunc.GridFunction_GetGradients)
 
     def GetVectorGradient(self, tr, grad):
         r"""GetVectorGradient(GridFunction self, ElementTransformation tr, DenseMatrix grad)"""
         return _gridfunc.GridFunction_GetVectorGradient(self, tr, grad)
+    GetVectorGradient = _swig_new_instance_method(_gridfunc.GridFunction_GetVectorGradient)
 
     def GetElementAverages(self, avgs):
         r"""GetElementAverages(GridFunction self, GridFunction avgs)"""
         return _gridfunc.GridFunction_GetElementAverages(self, avgs)
+    GetElementAverages = _swig_new_instance_method(_gridfunc.GridFunction_GetElementAverages)
 
     def ImposeBounds(self, *args):
         r"""
@@ -289,10 +347,12 @@ class GridFunction(mfem._ser.vector.Vector):
         ImposeBounds(GridFunction self, int i, Vector weights, double _min=0.0, double _max=mfem::infinity())
         """
         return _gridfunc.GridFunction_ImposeBounds(self, *args)
+    ImposeBounds = _swig_new_instance_method(_gridfunc.GridFunction_ImposeBounds)
 
     def ProjectGridFunction(self, src):
         r"""ProjectGridFunction(GridFunction self, GridFunction src)"""
         return _gridfunc.GridFunction_ProjectGridFunction(self, src)
+    ProjectGridFunction = _swig_new_instance_method(_gridfunc.GridFunction_ProjectGridFunction)
 
     def ProjectCoefficient(self, *args):
         r"""
@@ -303,6 +363,7 @@ class GridFunction(mfem._ser.vector.Vector):
         ProjectCoefficient(GridFunction self, mfem::Coefficient *[] coeff)
         """
         return _gridfunc.GridFunction_ProjectCoefficient(self, *args)
+    ProjectCoefficient = _swig_new_instance_method(_gridfunc.GridFunction_ProjectCoefficient)
     ARITHMETIC = _gridfunc.GridFunction_ARITHMETIC
     
     HARMONIC = _gridfunc.GridFunction_HARMONIC
@@ -315,6 +376,7 @@ class GridFunction(mfem._ser.vector.Vector):
         ProjectDiscCoefficient(GridFunction self, VectorCoefficient coeff, mfem::GridFunction::AvgType type)
         """
         return _gridfunc.GridFunction_ProjectDiscCoefficient(self, *args)
+    ProjectDiscCoefficient = _swig_new_instance_method(_gridfunc.GridFunction_ProjectDiscCoefficient)
 
     def ProjectBdrCoefficient(self, *args):
         r"""
@@ -323,14 +385,17 @@ class GridFunction(mfem._ser.vector.Vector):
         ProjectBdrCoefficient(GridFunction self, mfem::Coefficient *[] coeff, intArray attr)
         """
         return _gridfunc.GridFunction_ProjectBdrCoefficient(self, *args)
+    ProjectBdrCoefficient = _swig_new_instance_method(_gridfunc.GridFunction_ProjectBdrCoefficient)
 
     def ProjectBdrCoefficientNormal(self, vcoeff, bdr_attr):
         r"""ProjectBdrCoefficientNormal(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"""
         return _gridfunc.GridFunction_ProjectBdrCoefficientNormal(self, vcoeff, bdr_attr)
+    ProjectBdrCoefficientNormal = _swig_new_instance_method(_gridfunc.GridFunction_ProjectBdrCoefficientNormal)
 
     def ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr):
         r"""ProjectBdrCoefficientTangent(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"""
         return _gridfunc.GridFunction_ProjectBdrCoefficientTangent(self, vcoeff, bdr_attr)
+    ProjectBdrCoefficientTangent = _swig_new_instance_method(_gridfunc.GridFunction_ProjectBdrCoefficientTangent)
 
     def ComputeL2Error(self, *args):
         r"""
@@ -339,10 +404,12 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double
         """
         return _gridfunc.GridFunction_ComputeL2Error(self, *args)
+    ComputeL2Error = _swig_new_instance_method(_gridfunc.GridFunction_ComputeL2Error)
 
     def ComputeH1Error(self, exsol, exgrad, ell_coef, Nu, norm_type):
         r"""ComputeH1Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, Coefficient ell_coef, double Nu, int norm_type) -> double"""
         return _gridfunc.GridFunction_ComputeH1Error(self, exsol, exgrad, ell_coef, Nu, norm_type)
+    ComputeH1Error = _swig_new_instance_method(_gridfunc.GridFunction_ComputeH1Error)
 
     def ComputeMaxError(self, *args):
         r"""
@@ -351,10 +418,12 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeMaxError(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _gridfunc.GridFunction_ComputeMaxError(self, *args)
+    ComputeMaxError = _swig_new_instance_method(_gridfunc.GridFunction_ComputeMaxError)
 
     def ComputeW11Error(self, exsol, exgrad, norm_type, elems=None, irs=0):
         r"""ComputeW11Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, int norm_type, intArray elems=None, mfem::IntegrationRule const *[] irs=0) -> double"""
         return _gridfunc.GridFunction_ComputeW11Error(self, exsol, exgrad, norm_type, elems, irs)
+    ComputeW11Error = _swig_new_instance_method(_gridfunc.GridFunction_ComputeW11Error)
 
     def ComputeL1Error(self, *args):
         r"""
@@ -362,6 +431,7 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeL1Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _gridfunc.GridFunction_ComputeL1Error(self, *args)
+    ComputeL1Error = _swig_new_instance_method(_gridfunc.GridFunction_ComputeL1Error)
 
     def ComputeLpError(self, *args):
         r"""
@@ -369,6 +439,7 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeLpError(GridFunction self, double const p, VectorCoefficient exsol, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0) -> double
         """
         return _gridfunc.GridFunction_ComputeLpError(self, *args)
+    ComputeLpError = _swig_new_instance_method(_gridfunc.GridFunction_ComputeLpError)
 
     def ComputeElementLpErrors(self, *args):
         r"""
@@ -376,6 +447,7 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeElementLpErrors(GridFunction self, double const p, VectorCoefficient exsol, GridFunction error, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0)
         """
         return _gridfunc.GridFunction_ComputeElementLpErrors(self, *args)
+    ComputeElementLpErrors = _swig_new_instance_method(_gridfunc.GridFunction_ComputeElementLpErrors)
 
     def ComputeElementL1Errors(self, *args):
         r"""
@@ -383,6 +455,7 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeElementL1Errors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
         """
         return _gridfunc.GridFunction_ComputeElementL1Errors(self, *args)
+    ComputeElementL1Errors = _swig_new_instance_method(_gridfunc.GridFunction_ComputeElementL1Errors)
 
     def ComputeElementL2Errors(self, *args):
         r"""
@@ -390,6 +463,7 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeElementL2Errors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
         """
         return _gridfunc.GridFunction_ComputeElementL2Errors(self, *args)
+    ComputeElementL2Errors = _swig_new_instance_method(_gridfunc.GridFunction_ComputeElementL2Errors)
 
     def ComputeElementMaxErrors(self, *args):
         r"""
@@ -397,10 +471,12 @@ class GridFunction(mfem._ser.vector.Vector):
         ComputeElementMaxErrors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)
         """
         return _gridfunc.GridFunction_ComputeElementMaxErrors(self, *args)
+    ComputeElementMaxErrors = _swig_new_instance_method(_gridfunc.GridFunction_ComputeElementMaxErrors)
 
-    def ComputeFlux(self, blfi, flux, wcoef=1, subdomain=-1):
-        r"""ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, int wcoef=1, int subdomain=-1)"""
+    def ComputeFlux(self, blfi, flux, wcoef=True, subdomain=-1):
+        r"""ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, bool wcoef=True, int subdomain=-1)"""
         return _gridfunc.GridFunction_ComputeFlux(self, blfi, flux, wcoef, subdomain)
+    ComputeFlux = _swig_new_instance_method(_gridfunc.GridFunction_ComputeFlux)
 
     def Assign(self, *args):
         r"""
@@ -409,10 +485,12 @@ class GridFunction(mfem._ser.vector.Vector):
         Assign(GridFunction self, Vector v) -> GridFunction
         """
         return _gridfunc.GridFunction_Assign(self, *args)
+    Assign = _swig_new_instance_method(_gridfunc.GridFunction_Assign)
 
     def Update(self):
         r"""Update(GridFunction self)"""
         return _gridfunc.GridFunction_Update(self)
+    Update = _swig_new_instance_method(_gridfunc.GridFunction_Update)
 
     def FESpace(self, *args):
         r"""
@@ -420,17 +498,22 @@ class GridFunction(mfem._ser.vector.Vector):
         FESpace(GridFunction self) -> FiniteElementSpace
         """
         return _gridfunc.GridFunction_FESpace(self, *args)
+    FESpace = _swig_new_instance_method(_gridfunc.GridFunction_FESpace)
 
     def SetSpace(self, f):
         r"""SetSpace(GridFunction self, FiniteElementSpace f)"""
         return _gridfunc.GridFunction_SetSpace(self, f)
+    SetSpace = _swig_new_instance_method(_gridfunc.GridFunction_SetSpace)
 
     def MakeRef(self, *args):
         r"""
+        MakeRef(GridFunction self, Vector base, int offset, int size)
+        MakeRef(GridFunction self, Vector base, int offset)
         MakeRef(GridFunction self, FiniteElementSpace f, double * v)
         MakeRef(GridFunction self, FiniteElementSpace f, Vector v, int v_offset)
         """
         return _gridfunc.GridFunction_MakeRef(self, *args)
+    MakeRef = _swig_new_instance_method(_gridfunc.GridFunction_MakeRef)
 
     def MakeTRef(self, *args):
         r"""
@@ -438,14 +521,17 @@ class GridFunction(mfem._ser.vector.Vector):
         MakeTRef(GridFunction self, FiniteElementSpace f, Vector tv, int tv_offset)
         """
         return _gridfunc.GridFunction_MakeTRef(self, *args)
+    MakeTRef = _swig_new_instance_method(_gridfunc.GridFunction_MakeTRef)
 
     def SaveVTK(self, out, field_name, ref):
         r"""SaveVTK(GridFunction self, std::ostream & out, std::string const & field_name, int ref)"""
         return _gridfunc.GridFunction_SaveVTK(self, out, field_name, ref)
+    SaveVTK = _swig_new_instance_method(_gridfunc.GridFunction_SaveVTK)
 
     def SaveSTL(self, out, TimesToRefine=1):
         r"""SaveSTL(GridFunction self, std::ostream & out, int TimesToRefine=1)"""
         return _gridfunc.GridFunction_SaveSTL(self, out, TimesToRefine)
+    SaveSTL = _swig_new_instance_method(_gridfunc.GridFunction_SaveSTL)
     __swig_destroy__ = _gridfunc.delete_GridFunction
 
     def __init__(self, *args):
@@ -464,10 +550,12 @@ class GridFunction(mfem._ser.vector.Vector):
     def SaveToFile(self, gf_file, precision):
         r"""SaveToFile(GridFunction self, char const * gf_file, int const precision)"""
         return _gridfunc.GridFunction_SaveToFile(self, gf_file, precision)
+    SaveToFile = _swig_new_instance_method(_gridfunc.GridFunction_SaveToFile)
 
     def iadd(self, c):
         r"""iadd(GridFunction self, GridFunction c) -> GridFunction"""
         return _gridfunc.GridFunction_iadd(self, c)
+    iadd = _swig_new_instance_method(_gridfunc.GridFunction_iadd)
 
     def isub(self, *args):
         r"""
@@ -475,14 +563,17 @@ class GridFunction(mfem._ser.vector.Vector):
         isub(GridFunction self, double c) -> GridFunction
         """
         return _gridfunc.GridFunction_isub(self, *args)
+    isub = _swig_new_instance_method(_gridfunc.GridFunction_isub)
 
     def imul(self, c):
         r"""imul(GridFunction self, double c) -> GridFunction"""
         return _gridfunc.GridFunction_imul(self, c)
+    imul = _swig_new_instance_method(_gridfunc.GridFunction_imul)
 
     def idiv(self, c):
         r"""idiv(GridFunction self, double c) -> GridFunction"""
         return _gridfunc.GridFunction_idiv(self, c)
+    idiv = _swig_new_instance_method(_gridfunc.GridFunction_idiv)
 
     def Save(self, *args):
         r"""
@@ -490,6 +581,7 @@ class GridFunction(mfem._ser.vector.Vector):
         Save(GridFunction self, char const * file, int precision=8)
         """
         return _gridfunc.GridFunction_Save(self, *args)
+    Save = _swig_new_instance_method(_gridfunc.GridFunction_Save)
 
 # Register GridFunction in _gridfunc:
 _gridfunc.GridFunction_swigregister(GridFunction)
@@ -514,6 +606,7 @@ class QuadratureFunction(mfem._ser.vector.Vector):
     def GetSpace(self):
         r"""GetSpace(QuadratureFunction self) -> QuadratureSpace"""
         return _gridfunc.QuadratureFunction_GetSpace(self)
+    GetSpace = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetSpace)
 
     def SetSpace(self, *args):
         r"""
@@ -521,26 +614,32 @@ class QuadratureFunction(mfem._ser.vector.Vector):
         SetSpace(QuadratureFunction self, QuadratureSpace qspace_, double * qf_data, int vdim_=-1)
         """
         return _gridfunc.QuadratureFunction_SetSpace(self, *args)
+    SetSpace = _swig_new_instance_method(_gridfunc.QuadratureFunction_SetSpace)
 
     def GetVDim(self):
         r"""GetVDim(QuadratureFunction self) -> int"""
         return _gridfunc.QuadratureFunction_GetVDim(self)
+    GetVDim = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetVDim)
 
     def SetVDim(self, vdim_):
         r"""SetVDim(QuadratureFunction self, int vdim_)"""
         return _gridfunc.QuadratureFunction_SetVDim(self, vdim_)
+    SetVDim = _swig_new_instance_method(_gridfunc.QuadratureFunction_SetVDim)
 
     def OwnsSpace(self):
         r"""OwnsSpace(QuadratureFunction self) -> bool"""
         return _gridfunc.QuadratureFunction_OwnsSpace(self)
+    OwnsSpace = _swig_new_instance_method(_gridfunc.QuadratureFunction_OwnsSpace)
 
     def SetOwnsSpace(self, own):
         r"""SetOwnsSpace(QuadratureFunction self, bool own)"""
         return _gridfunc.QuadratureFunction_SetOwnsSpace(self, own)
+    SetOwnsSpace = _swig_new_instance_method(_gridfunc.QuadratureFunction_SetOwnsSpace)
 
     def GetElementIntRule(self, idx):
         r"""GetElementIntRule(QuadratureFunction self, int idx) -> IntegrationRule"""
         return _gridfunc.QuadratureFunction_GetElementIntRule(self, idx)
+    GetElementIntRule = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetElementIntRule)
 
     def GetElementValues(self, *args):
         r"""
@@ -550,6 +649,7 @@ class QuadratureFunction(mfem._ser.vector.Vector):
         GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)
         """
         return _gridfunc.QuadratureFunction_GetElementValues(self, *args)
+    GetElementValues = _swig_new_instance_method(_gridfunc.QuadratureFunction_GetElementValues)
 
     def Save(self, *args):
         r"""
@@ -557,6 +657,7 @@ class QuadratureFunction(mfem._ser.vector.Vector):
         Save(QuadratureFunction self, char const * file, int precision=8)
         """
         return _gridfunc.QuadratureFunction_Save(self, *args)
+    Save = _swig_new_instance_method(_gridfunc.QuadratureFunction_Save)
 
 # Register QuadratureFunction in _gridfunc:
 _gridfunc.QuadratureFunction_swigregister(QuadratureFunction)
@@ -569,14 +670,17 @@ def __lshift__(*args):
     __lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &
     """
     return _gridfunc.__lshift__(*args)
+__lshift__ = _gridfunc.__lshift__
 
-def ZZErrorEstimator(blfi, u, flux, error_estimates, aniso_flags=None, with_subdomains=1):
-    r"""ZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, GridFunction flux, Vector error_estimates, intArray aniso_flags=None, int with_subdomains=1) -> double"""
-    return _gridfunc.ZZErrorEstimator(blfi, u, flux, error_estimates, aniso_flags, with_subdomains)
+def ZZErrorEstimator(blfi, u, flux, error_estimates, aniso_flags=None, with_subdomains=1, with_coeff=False):
+    r"""ZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, GridFunction flux, Vector error_estimates, intArray aniso_flags=None, int with_subdomains=1, bool with_coeff=False) -> double"""
+    return _gridfunc.ZZErrorEstimator(blfi, u, flux, error_estimates, aniso_flags, with_subdomains, with_coeff)
+ZZErrorEstimator = _gridfunc.ZZErrorEstimator
 
 def ComputeElementLpDistance(p, i, gf1, gf2):
     r"""ComputeElementLpDistance(double p, int i, GridFunction gf1, GridFunction gf2) -> double"""
     return _gridfunc.ComputeElementLpDistance(p, i, gf1, gf2)
+ComputeElementLpDistance = _gridfunc.ComputeElementLpDistance
 class ExtrudeCoefficient(mfem._ser.coefficient.Coefficient):
     r"""Proxy of C++ mfem::ExtrudeCoefficient class."""
 
@@ -590,6 +694,7 @@ class ExtrudeCoefficient(mfem._ser.coefficient.Coefficient):
     def Eval(self, T, ip):
         r"""Eval(ExtrudeCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"""
         return _gridfunc.ExtrudeCoefficient_Eval(self, T, ip)
+    Eval = _swig_new_instance_method(_gridfunc.ExtrudeCoefficient_Eval)
     __swig_destroy__ = _gridfunc.delete_ExtrudeCoefficient
 
 # Register ExtrudeCoefficient in _gridfunc:
@@ -599,6 +704,7 @@ _gridfunc.ExtrudeCoefficient_swigregister(ExtrudeCoefficient)
 def Extrude1DGridFunction(mesh, mesh2d, sol, ny):
     r"""Extrude1DGridFunction(Mesh mesh, Mesh mesh2d, GridFunction sol, int const ny) -> GridFunction"""
     return _gridfunc.Extrude1DGridFunction(mesh, mesh2d, sol, ny)
+Extrude1DGridFunction = _gridfunc.Extrude1DGridFunction
 
 def __iadd__(self, v):
     ret = _gridfunc.GridFunction_iadd(self, v)

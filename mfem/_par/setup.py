@@ -26,7 +26,7 @@ from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["io_stream",
+modules= ["io_stream", "vtk", 
           "globals", "mem_manager", "device", "hash", "stable3d",
           "cpointers",
           "error", "array", "common_functions",
@@ -46,7 +46,7 @@ modules= ["io_stream",
           "pmesh", "pncmesh", "communication",
           "pfespace", "pgridfunc",
           "plinearform", "pbilinearform", "pnonlinearform",
-          "hypre", ]
+          "hypre", "restriction", "prestriction"]
 
 if add_pumi != '':
     modules.append("pumi")

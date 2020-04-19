@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _blockmatrix.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _blockmatrix.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -110,10 +113,12 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
     def NumRowBlocks(self):
         r"""NumRowBlocks(BlockMatrix self) -> int"""
         return _blockmatrix.BlockMatrix_NumRowBlocks(self)
+    NumRowBlocks = _swig_new_instance_method(_blockmatrix.BlockMatrix_NumRowBlocks)
 
     def NumColBlocks(self):
         r"""NumColBlocks(BlockMatrix self) -> int"""
         return _blockmatrix.BlockMatrix_NumColBlocks(self)
+    NumColBlocks = _swig_new_instance_method(_blockmatrix.BlockMatrix_NumColBlocks)
 
     def GetBlock(self, *args):
         r"""
@@ -121,10 +126,12 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         GetBlock(BlockMatrix self, int i, int j) -> SparseMatrix
         """
         return _blockmatrix.BlockMatrix_GetBlock(self, *args)
+    GetBlock = _swig_new_instance_method(_blockmatrix.BlockMatrix_GetBlock)
 
     def IsZeroBlock(self, i, j):
         r"""IsZeroBlock(BlockMatrix self, int i, int j) -> int"""
         return _blockmatrix.BlockMatrix_IsZeroBlock(self, i, j)
+    IsZeroBlock = _swig_new_instance_method(_blockmatrix.BlockMatrix_IsZeroBlock)
 
     def RowOffsets(self, *args):
         r"""
@@ -132,6 +139,7 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         RowOffsets(BlockMatrix self) -> intArray
         """
         return _blockmatrix.BlockMatrix_RowOffsets(self, *args)
+    RowOffsets = _swig_new_instance_method(_blockmatrix.BlockMatrix_RowOffsets)
 
     def ColOffsets(self, *args):
         r"""
@@ -139,10 +147,12 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         ColOffsets(BlockMatrix self) -> intArray
         """
         return _blockmatrix.BlockMatrix_ColOffsets(self, *args)
+    ColOffsets = _swig_new_instance_method(_blockmatrix.BlockMatrix_ColOffsets)
 
     def RowSize(self, i):
         r"""RowSize(BlockMatrix self, int const i) -> int"""
         return _blockmatrix.BlockMatrix_RowSize(self, i)
+    RowSize = _swig_new_instance_method(_blockmatrix.BlockMatrix_RowSize)
 
     def EliminateRowCol(self, *args):
         r"""
@@ -150,6 +160,7 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         EliminateRowCol(BlockMatrix self, intArray ess_bc_dofs, Vector sol, Vector rhs)
         """
         return _blockmatrix.BlockMatrix_EliminateRowCol(self, *args)
+    EliminateRowCol = _swig_new_instance_method(_blockmatrix.BlockMatrix_EliminateRowCol)
 
     def Finalize(self, *args):
         r"""
@@ -157,10 +168,12 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         Finalize(BlockMatrix self, int skip_zeros, bool fix_empty_rows)
         """
         return _blockmatrix.BlockMatrix_Finalize(self, *args)
+    Finalize = _swig_new_instance_method(_blockmatrix.BlockMatrix_Finalize)
 
     def CreateMonolithic(self):
         r"""CreateMonolithic(BlockMatrix self) -> SparseMatrix"""
         return _blockmatrix.BlockMatrix_CreateMonolithic(self)
+    CreateMonolithic = _swig_new_instance_method(_blockmatrix.BlockMatrix_CreateMonolithic)
 
     def Elem(self, *args):
         r"""
@@ -168,38 +181,47 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         Elem(BlockMatrix self, int i, int j) -> double const &
         """
         return _blockmatrix.BlockMatrix_Elem(self, *args)
+    Elem = _swig_new_instance_method(_blockmatrix.BlockMatrix_Elem)
 
     def Inverse(self):
         r"""Inverse(BlockMatrix self) -> MatrixInverse"""
         return _blockmatrix.BlockMatrix_Inverse(self)
+    Inverse = _swig_new_instance_method(_blockmatrix.BlockMatrix_Inverse)
 
     def NumNonZeroElems(self):
         r"""NumNonZeroElems(BlockMatrix self) -> int"""
         return _blockmatrix.BlockMatrix_NumNonZeroElems(self)
+    NumNonZeroElems = _swig_new_instance_method(_blockmatrix.BlockMatrix_NumNonZeroElems)
 
     def GetRow(self, row, cols, srow):
         r"""GetRow(BlockMatrix self, int const row, intArray cols, Vector srow) -> int"""
         return _blockmatrix.BlockMatrix_GetRow(self, row, cols, srow)
+    GetRow = _swig_new_instance_method(_blockmatrix.BlockMatrix_GetRow)
 
     def EliminateZeroRows(self, threshold=1e-12):
         r"""EliminateZeroRows(BlockMatrix self, double const threshold=1e-12)"""
         return _blockmatrix.BlockMatrix_EliminateZeroRows(self, threshold)
+    EliminateZeroRows = _swig_new_instance_method(_blockmatrix.BlockMatrix_EliminateZeroRows)
 
     def Mult(self, x, y):
         r"""Mult(BlockMatrix self, Vector x, Vector y)"""
         return _blockmatrix.BlockMatrix_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_blockmatrix.BlockMatrix_Mult)
 
     def AddMult(self, x, y, val=1.):
         r"""AddMult(BlockMatrix self, Vector x, Vector y, double const val=1.)"""
         return _blockmatrix.BlockMatrix_AddMult(self, x, y, val)
+    AddMult = _swig_new_instance_method(_blockmatrix.BlockMatrix_AddMult)
 
     def MultTranspose(self, x, y):
         r"""MultTranspose(BlockMatrix self, Vector x, Vector y)"""
         return _blockmatrix.BlockMatrix_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_blockmatrix.BlockMatrix_MultTranspose)
 
     def AddMultTranspose(self, x, y, val=1.):
         r"""AddMultTranspose(BlockMatrix self, Vector x, Vector y, double const val=1.)"""
         return _blockmatrix.BlockMatrix_AddMultTranspose(self, x, y, val)
+    AddMultTranspose = _swig_new_instance_method(_blockmatrix.BlockMatrix_AddMultTranspose)
     __swig_destroy__ = _blockmatrix.delete_BlockMatrix
     owns_blocks = property(_blockmatrix.BlockMatrix_owns_blocks_get, _blockmatrix.BlockMatrix_owns_blocks_set, doc=r"""owns_blocks : int""")
 
@@ -209,6 +231,7 @@ class BlockMatrix(mfem._par.matrix.AbstractSparseMatrix):
         PrintMatlab(BlockMatrix self, char const * file, int precision=8)
         """
         return _blockmatrix.BlockMatrix_PrintMatlab(self, *args)
+    PrintMatlab = _swig_new_instance_method(_blockmatrix.BlockMatrix_PrintMatlab)
 
 # Register BlockMatrix in _blockmatrix:
 _blockmatrix.BlockMatrix_swigregister(BlockMatrix)

@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _fe.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _fe.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -91,6 +94,8 @@ class BasisType(object):
     
     OpenHalfUniform = _fe.BasisType_OpenHalfUniform
     
+    Serendipity = _fe.BasisType_Serendipity
+    
     NumBasisTypes = _fe.BasisType_NumBasisTypes
     
 
@@ -98,36 +103,43 @@ class BasisType(object):
     def Check(b_type):
         r"""Check(int b_type) -> int"""
         return _fe.BasisType_Check(b_type)
+    Check = _swig_new_static_method(_fe.BasisType_Check)
 
     @staticmethod
     def CheckNodal(b_type):
         r"""CheckNodal(int b_type) -> int"""
         return _fe.BasisType_CheckNodal(b_type)
+    CheckNodal = _swig_new_static_method(_fe.BasisType_CheckNodal)
 
     @staticmethod
     def GetQuadrature1D(b_type):
         r"""GetQuadrature1D(int b_type) -> int"""
         return _fe.BasisType_GetQuadrature1D(b_type)
+    GetQuadrature1D = _swig_new_static_method(_fe.BasisType_GetQuadrature1D)
 
     @staticmethod
     def GetNodalBasis(qpt_type):
         r"""GetNodalBasis(int qpt_type) -> int"""
         return _fe.BasisType_GetNodalBasis(qpt_type)
+    GetNodalBasis = _swig_new_static_method(_fe.BasisType_GetNodalBasis)
 
     @staticmethod
     def Name(b_type):
         r"""Name(int b_type) -> char const *"""
         return _fe.BasisType_Name(b_type)
+    Name = _swig_new_static_method(_fe.BasisType_Name)
 
     @staticmethod
     def GetChar(b_type):
         r"""GetChar(int b_type) -> char"""
         return _fe.BasisType_GetChar(b_type)
+    GetChar = _swig_new_static_method(_fe.BasisType_GetChar)
 
     @staticmethod
     def GetType(b_ident):
         r"""GetType(char b_ident) -> int"""
         return _fe.BasisType_GetType(b_ident)
+    GetType = _swig_new_static_method(_fe.BasisType_GetType)
 
     def __init__(self):
         r"""__init__(BasisType self) -> BasisType"""
@@ -140,30 +152,37 @@ _fe.BasisType_swigregister(BasisType)
 def BasisType_Check(b_type):
     r"""BasisType_Check(int b_type) -> int"""
     return _fe.BasisType_Check(b_type)
+BasisType_Check = _fe.BasisType_Check
 
 def BasisType_CheckNodal(b_type):
     r"""BasisType_CheckNodal(int b_type) -> int"""
     return _fe.BasisType_CheckNodal(b_type)
+BasisType_CheckNodal = _fe.BasisType_CheckNodal
 
 def BasisType_GetQuadrature1D(b_type):
     r"""BasisType_GetQuadrature1D(int b_type) -> int"""
     return _fe.BasisType_GetQuadrature1D(b_type)
+BasisType_GetQuadrature1D = _fe.BasisType_GetQuadrature1D
 
 def BasisType_GetNodalBasis(qpt_type):
     r"""BasisType_GetNodalBasis(int qpt_type) -> int"""
     return _fe.BasisType_GetNodalBasis(qpt_type)
+BasisType_GetNodalBasis = _fe.BasisType_GetNodalBasis
 
 def BasisType_Name(b_type):
     r"""BasisType_Name(int b_type) -> char const *"""
     return _fe.BasisType_Name(b_type)
+BasisType_Name = _fe.BasisType_Name
 
 def BasisType_GetChar(b_type):
     r"""BasisType_GetChar(int b_type) -> char"""
     return _fe.BasisType_GetChar(b_type)
+BasisType_GetChar = _fe.BasisType_GetChar
 
 def BasisType_GetType(b_ident):
     r"""BasisType_GetType(char b_ident) -> int"""
     return _fe.BasisType_GetType(b_ident)
+BasisType_GetType = _fe.BasisType_GetType
 
 class DofToQuad(object):
     r"""Proxy of C++ mfem::DofToQuad class."""
@@ -243,70 +262,87 @@ class FiniteElement(object):
     def GetDim(self):
         r"""GetDim(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetDim(self)
+    GetDim = _swig_new_instance_method(_fe.FiniteElement_GetDim)
 
     def GetGeomType(self):
         r"""GetGeomType(FiniteElement self) -> mfem::Geometry::Type"""
         return _fe.FiniteElement_GetGeomType(self)
+    GetGeomType = _swig_new_instance_method(_fe.FiniteElement_GetGeomType)
 
     def GetDof(self):
         r"""GetDof(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetDof(self)
+    GetDof = _swig_new_instance_method(_fe.FiniteElement_GetDof)
 
     def GetOrder(self):
         r"""GetOrder(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetOrder(self)
+    GetOrder = _swig_new_instance_method(_fe.FiniteElement_GetOrder)
 
     def HasAnisotropicOrders(self):
         r"""HasAnisotropicOrders(FiniteElement self) -> bool"""
         return _fe.FiniteElement_HasAnisotropicOrders(self)
+    HasAnisotropicOrders = _swig_new_instance_method(_fe.FiniteElement_HasAnisotropicOrders)
 
     def GetAnisotropicOrders(self):
         r"""GetAnisotropicOrders(FiniteElement self) -> int const *"""
         return _fe.FiniteElement_GetAnisotropicOrders(self)
+    GetAnisotropicOrders = _swig_new_instance_method(_fe.FiniteElement_GetAnisotropicOrders)
 
     def Space(self):
         r"""Space(FiniteElement self) -> int"""
         return _fe.FiniteElement_Space(self)
+    Space = _swig_new_instance_method(_fe.FiniteElement_Space)
 
     def GetRangeType(self):
         r"""GetRangeType(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetRangeType(self)
+    GetRangeType = _swig_new_instance_method(_fe.FiniteElement_GetRangeType)
 
     def GetDerivRangeType(self):
         r"""GetDerivRangeType(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetDerivRangeType(self)
+    GetDerivRangeType = _swig_new_instance_method(_fe.FiniteElement_GetDerivRangeType)
 
     def GetMapType(self):
         r"""GetMapType(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetMapType(self)
+    GetMapType = _swig_new_instance_method(_fe.FiniteElement_GetMapType)
 
     def GetDerivType(self):
         r"""GetDerivType(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetDerivType(self)
+    GetDerivType = _swig_new_instance_method(_fe.FiniteElement_GetDerivType)
 
     def GetDerivMapType(self):
         r"""GetDerivMapType(FiniteElement self) -> int"""
         return _fe.FiniteElement_GetDerivMapType(self)
+    GetDerivMapType = _swig_new_instance_method(_fe.FiniteElement_GetDerivMapType)
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(FiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.FiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.FiniteElement_CalcShape)
 
     def CalcPhysShape(self, Trans, shape):
         r"""CalcPhysShape(FiniteElement self, mfem::ElementTransformation & Trans, Vector shape)"""
         return _fe.FiniteElement_CalcPhysShape(self, Trans, shape)
+    CalcPhysShape = _swig_new_instance_method(_fe.FiniteElement_CalcPhysShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(FiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.FiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.FiniteElement_CalcDShape)
 
     def CalcPhysDShape(self, Trans, dshape):
         r"""CalcPhysDShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix dshape)"""
         return _fe.FiniteElement_CalcPhysDShape(self, Trans, dshape)
+    CalcPhysDShape = _swig_new_instance_method(_fe.FiniteElement_CalcPhysDShape)
 
     def GetNodes(self):
         r"""GetNodes(FiniteElement self) -> IntegrationRule"""
         return _fe.FiniteElement_GetNodes(self)
+    GetNodes = _swig_new_instance_method(_fe.FiniteElement_GetNodes)
 
     def CalcVShape(self, *args):
         r"""
@@ -314,54 +350,82 @@ class FiniteElement(object):
         CalcVShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.FiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.FiniteElement_CalcVShape)
 
     def CalcPhysVShape(self, Trans, shape):
         r"""CalcPhysVShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)"""
         return _fe.FiniteElement_CalcPhysVShape(self, Trans, shape)
+    CalcPhysVShape = _swig_new_instance_method(_fe.FiniteElement_CalcPhysVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(FiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.FiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.FiniteElement_CalcDivShape)
 
     def CalcPhysDivShape(self, Trans, divshape):
         r"""CalcPhysDivShape(FiniteElement self, mfem::ElementTransformation & Trans, Vector divshape)"""
         return _fe.FiniteElement_CalcPhysDivShape(self, Trans, divshape)
+    CalcPhysDivShape = _swig_new_instance_method(_fe.FiniteElement_CalcPhysDivShape)
 
     def CalcCurlShape(self, ip, curl_shape):
         r"""CalcCurlShape(FiniteElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
         return _fe.FiniteElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe.FiniteElement_CalcCurlShape)
 
     def CalcPhysCurlShape(self, Trans, curl_shape):
         r"""CalcPhysCurlShape(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix curl_shape)"""
         return _fe.FiniteElement_CalcPhysCurlShape(self, Trans, curl_shape)
+    CalcPhysCurlShape = _swig_new_instance_method(_fe.FiniteElement_CalcPhysCurlShape)
 
     def GetFaceDofs(self, face, dofs, ndofs):
         r"""GetFaceDofs(FiniteElement self, int face, int ** dofs, int * ndofs)"""
         return _fe.FiniteElement_GetFaceDofs(self, face, dofs, ndofs)
+    GetFaceDofs = _swig_new_instance_method(_fe.FiniteElement_GetFaceDofs)
 
-    def CalcHessian(self, ip, h):
-        r"""CalcHessian(FiniteElement self, IntegrationPoint ip, DenseMatrix h)"""
-        return _fe.FiniteElement_CalcHessian(self, ip, h)
+    def CalcHessian(self, ip, Hessian):
+        r"""CalcHessian(FiniteElement self, IntegrationPoint ip, DenseMatrix Hessian)"""
+        return _fe.FiniteElement_CalcHessian(self, ip, Hessian)
+    CalcHessian = _swig_new_instance_method(_fe.FiniteElement_CalcHessian)
+
+    def CalcPhysHessian(self, Trans, Hessian):
+        r"""CalcPhysHessian(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix Hessian)"""
+        return _fe.FiniteElement_CalcPhysHessian(self, Trans, Hessian)
+    CalcPhysHessian = _swig_new_instance_method(_fe.FiniteElement_CalcPhysHessian)
+
+    def CalcPhysLaplacian(self, Trans, Laplacian):
+        r"""CalcPhysLaplacian(FiniteElement self, mfem::ElementTransformation & Trans, Vector Laplacian)"""
+        return _fe.FiniteElement_CalcPhysLaplacian(self, Trans, Laplacian)
+    CalcPhysLaplacian = _swig_new_instance_method(_fe.FiniteElement_CalcPhysLaplacian)
+
+    def CalcPhysLinLaplacian(self, Trans, Laplacian):
+        r"""CalcPhysLinLaplacian(FiniteElement self, mfem::ElementTransformation & Trans, Vector Laplacian)"""
+        return _fe.FiniteElement_CalcPhysLinLaplacian(self, Trans, Laplacian)
+    CalcPhysLinLaplacian = _swig_new_instance_method(_fe.FiniteElement_CalcPhysLinLaplacian)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.FiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.FiniteElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(FiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.FiniteElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.FiniteElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.FiniteElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.FiniteElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(FiniteElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.FiniteElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.FiniteElement_ProjectMatrixCoefficient)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(FiniteElement self, int vertex, Vector dofs)"""
         return _fe.FiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.FiniteElement_ProjectDelta)
 
     def Project(self, *args):
         r"""
@@ -370,48 +434,58 @@ class FiniteElement(object):
         Project(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.FiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.FiniteElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.FiniteElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.FiniteElement_ProjectGrad)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.FiniteElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.FiniteElement_ProjectCurl)
 
     def ProjectDiv(self, fe, Trans, div):
         r"""ProjectDiv(FiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"""
         return _fe.FiniteElement_ProjectDiv(self, fe, Trans, div)
+    ProjectDiv = _swig_new_instance_method(_fe.FiniteElement_ProjectDiv)
 
     def GetDofToQuad(self, ir, mode):
         r"""GetDofToQuad(FiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
         return _fe.FiniteElement_GetDofToQuad(self, ir, mode)
+    GetDofToQuad = _swig_new_instance_method(_fe.FiniteElement_GetDofToQuad)
     __swig_destroy__ = _fe.delete_FiniteElement
 
     @staticmethod
     def IsClosedType(b_type):
         r"""IsClosedType(int b_type) -> bool"""
         return _fe.FiniteElement_IsClosedType(b_type)
+    IsClosedType = _swig_new_static_method(_fe.FiniteElement_IsClosedType)
 
     @staticmethod
     def IsOpenType(b_type):
         r"""IsOpenType(int b_type) -> bool"""
         return _fe.FiniteElement_IsOpenType(b_type)
+    IsOpenType = _swig_new_static_method(_fe.FiniteElement_IsOpenType)
 
     @staticmethod
     def VerifyClosed(b_type):
         r"""VerifyClosed(int b_type) -> int"""
         return _fe.FiniteElement_VerifyClosed(b_type)
+    VerifyClosed = _swig_new_static_method(_fe.FiniteElement_VerifyClosed)
 
     @staticmethod
     def VerifyOpen(b_type):
         r"""VerifyOpen(int b_type) -> int"""
         return _fe.FiniteElement_VerifyOpen(b_type)
+    VerifyOpen = _swig_new_static_method(_fe.FiniteElement_VerifyOpen)
 
     @staticmethod
     def VerifyNodal(b_type):
         r"""VerifyNodal(int b_type) -> int"""
         return _fe.FiniteElement_VerifyNodal(b_type)
+    VerifyNodal = _swig_new_static_method(_fe.FiniteElement_VerifyNodal)
 
 # Register FiniteElement in _fe:
 _fe.FiniteElement_swigregister(FiniteElement)
@@ -419,22 +493,27 @@ _fe.FiniteElement_swigregister(FiniteElement)
 def FiniteElement_IsClosedType(b_type):
     r"""FiniteElement_IsClosedType(int b_type) -> bool"""
     return _fe.FiniteElement_IsClosedType(b_type)
+FiniteElement_IsClosedType = _fe.FiniteElement_IsClosedType
 
 def FiniteElement_IsOpenType(b_type):
     r"""FiniteElement_IsOpenType(int b_type) -> bool"""
     return _fe.FiniteElement_IsOpenType(b_type)
+FiniteElement_IsOpenType = _fe.FiniteElement_IsOpenType
 
 def FiniteElement_VerifyClosed(b_type):
     r"""FiniteElement_VerifyClosed(int b_type) -> int"""
     return _fe.FiniteElement_VerifyClosed(b_type)
+FiniteElement_VerifyClosed = _fe.FiniteElement_VerifyClosed
 
 def FiniteElement_VerifyOpen(b_type):
     r"""FiniteElement_VerifyOpen(int b_type) -> int"""
     return _fe.FiniteElement_VerifyOpen(b_type)
+FiniteElement_VerifyOpen = _fe.FiniteElement_VerifyOpen
 
 def FiniteElement_VerifyNodal(b_type):
     r"""FiniteElement_VerifyNodal(int b_type) -> int"""
     return _fe.FiniteElement_VerifyNodal(b_type)
+FiniteElement_VerifyNodal = _fe.FiniteElement_VerifyNodal
 
 class ScalarFiniteElement(FiniteElement):
     r"""Proxy of C++ mfem::ScalarFiniteElement class."""
@@ -448,18 +527,22 @@ class ScalarFiniteElement(FiniteElement):
     def SetMapType(self, M):
         r"""SetMapType(ScalarFiniteElement self, int M)"""
         return _fe.ScalarFiniteElement_SetMapType(self, M)
+    SetMapType = _swig_new_instance_method(_fe.ScalarFiniteElement_SetMapType)
 
     def NodalLocalInterpolation(self, Trans, I, fine_fe):
         r"""NodalLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"""
         return _fe.ScalarFiniteElement_NodalLocalInterpolation(self, Trans, I, fine_fe)
+    NodalLocalInterpolation = _swig_new_instance_method(_fe.ScalarFiniteElement_NodalLocalInterpolation)
 
     def ScalarLocalInterpolation(self, Trans, I, fine_fe):
         r"""ScalarLocalInterpolation(ScalarFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I, ScalarFiniteElement fine_fe)"""
         return _fe.ScalarFiniteElement_ScalarLocalInterpolation(self, Trans, I, fine_fe)
+    ScalarLocalInterpolation = _swig_new_instance_method(_fe.ScalarFiniteElement_ScalarLocalInterpolation)
 
     def GetDofToQuad(self, ir, mode):
         r"""GetDofToQuad(ScalarFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
         return _fe.ScalarFiniteElement_GetDofToQuad(self, ir, mode)
+    GetDofToQuad = _swig_new_instance_method(_fe.ScalarFiniteElement_GetDofToQuad)
     __swig_destroy__ = _fe.delete_ScalarFiniteElement
 
 # Register ScalarFiniteElement in _fe:
@@ -477,18 +560,22 @@ class NodalFiniteElement(ScalarFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(NodalFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.NodalFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.NodalFiniteElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(NodalFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.NodalFiniteElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.NodalFiniteElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.NodalFiniteElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.NodalFiniteElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(NodalFiniteElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.NodalFiniteElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.NodalFiniteElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -497,14 +584,17 @@ class NodalFiniteElement(ScalarFiniteElement):
         Project(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.NodalFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.NodalFiniteElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.NodalFiniteElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.NodalFiniteElement_ProjectGrad)
 
     def ProjectDiv(self, fe, Trans, div):
         r"""ProjectDiv(NodalFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix div)"""
         return _fe.NodalFiniteElement_ProjectDiv(self, fe, Trans, div)
+    ProjectDiv = _swig_new_instance_method(_fe.NodalFiniteElement_ProjectDiv)
     __swig_destroy__ = _fe.delete_NodalFiniteElement
 
 # Register NodalFiniteElement in _fe:
@@ -522,10 +612,12 @@ class PositiveFiniteElement(ScalarFiniteElement):
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(PositiveFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.PositiveFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.PositiveFiniteElement_GetLocalInterpolation)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.PositiveFiniteElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.PositiveFiniteElement_GetTransferMatrix)
 
     def Project(self, *args):
         r"""
@@ -537,6 +629,7 @@ class PositiveFiniteElement(ScalarFiniteElement):
         Project(PositiveFiniteElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.PositiveFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.PositiveFiniteElement_Project)
     __swig_destroy__ = _fe.delete_PositiveFiniteElement
 
 # Register PositiveFiniteElement in _fe:
@@ -548,9 +641,9 @@ class VectorFiniteElement(FiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(VectorFiniteElement self, int D, mfem::Geometry::Type G, int Do, int O, int M, int F=Pk) -> VectorFiniteElement"""
-        _fe.VectorFiniteElement_swiginit(self, _fe.new_VectorFiniteElement(*args))
+        _fe.VectorFiniteElement_swiginit(self, _fe.new_VectorFiniteElement(*args, **kwargs))
     __swig_destroy__ = _fe.delete_VectorFiniteElement
 
 # Register VectorFiniteElement in _fe:
@@ -569,10 +662,12 @@ class PointFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(PointFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.PointFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.PointFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(PointFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.PointFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.PointFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_PointFiniteElement
 
 # Register PointFiniteElement in _fe:
@@ -591,10 +686,12 @@ class Linear1DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Linear1DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Linear1DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Linear1DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Linear1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Linear1DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Linear1DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_Linear1DFiniteElement
 
 # Register Linear1DFiniteElement in _fe:
@@ -613,14 +710,17 @@ class Linear2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Linear2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Linear2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Linear2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Linear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Linear2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Linear2DFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(Linear2DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.Linear2DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.Linear2DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_Linear2DFiniteElement
 
 # Register Linear2DFiniteElement in _fe:
@@ -639,18 +739,22 @@ class BiLinear2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(BiLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.BiLinear2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.BiLinear2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(BiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.BiLinear2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.BiLinear2DFiniteElement_CalcDShape)
 
     def CalcHessian(self, ip, h):
         r"""CalcHessian(BiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"""
         return _fe.BiLinear2DFiniteElement_CalcHessian(self, ip, h)
+    CalcHessian = _swig_new_instance_method(_fe.BiLinear2DFiniteElement_CalcHessian)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(BiLinear2DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.BiLinear2DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.BiLinear2DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_BiLinear2DFiniteElement
 
 # Register BiLinear2DFiniteElement in _fe:
@@ -669,14 +773,17 @@ class GaussLinear2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(GaussLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.GaussLinear2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.GaussLinear2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(GaussLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.GaussLinear2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.GaussLinear2DFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(GaussLinear2DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.GaussLinear2DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.GaussLinear2DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_GaussLinear2DFiniteElement
 
 # Register GaussLinear2DFiniteElement in _fe:
@@ -695,14 +802,17 @@ class GaussBiLinear2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(GaussBiLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.GaussBiLinear2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.GaussBiLinear2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(GaussBiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.GaussBiLinear2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.GaussBiLinear2DFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(GaussBiLinear2DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.GaussBiLinear2DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.GaussBiLinear2DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_GaussBiLinear2DFiniteElement
 
 # Register GaussBiLinear2DFiniteElement in _fe:
@@ -721,14 +831,17 @@ class P1OnQuadFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P1OnQuadFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P1OnQuadFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P1OnQuadFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P1OnQuadFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P1OnQuadFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P1OnQuadFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(P1OnQuadFiniteElement self, int vertex, Vector dofs)"""
         return _fe.P1OnQuadFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.P1OnQuadFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_P1OnQuadFiniteElement
 
 # Register P1OnQuadFiniteElement in _fe:
@@ -747,10 +860,12 @@ class Quad1DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Quad1DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Quad1DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Quad1DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Quad1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Quad1DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Quad1DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_Quad1DFiniteElement
 
 # Register Quad1DFiniteElement in _fe:
@@ -769,10 +884,12 @@ class QuadPos1DFiniteElement(PositiveFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(QuadPos1DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.QuadPos1DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.QuadPos1DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(QuadPos1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.QuadPos1DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.QuadPos1DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_QuadPos1DFiniteElement
 
 # Register QuadPos1DFiniteElement in _fe:
@@ -791,18 +908,22 @@ class Quad2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Quad2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Quad2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Quad2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Quad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Quad2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Quad2DFiniteElement_CalcDShape)
 
     def CalcHessian(self, ip, h):
         r"""CalcHessian(Quad2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"""
         return _fe.Quad2DFiniteElement_CalcHessian(self, ip, h)
+    CalcHessian = _swig_new_instance_method(_fe.Quad2DFiniteElement_CalcHessian)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(Quad2DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.Quad2DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.Quad2DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_Quad2DFiniteElement
 
 # Register Quad2DFiniteElement in _fe:
@@ -821,10 +942,12 @@ class GaussQuad2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(GaussQuad2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.GaussQuad2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.GaussQuad2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(GaussQuad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.GaussQuad2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.GaussQuad2DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_GaussQuad2DFiniteElement
 
 # Register GaussQuad2DFiniteElement in _fe:
@@ -843,14 +966,17 @@ class BiQuad2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(BiQuad2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.BiQuad2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.BiQuad2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(BiQuad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.BiQuad2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.BiQuad2DFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(BiQuad2DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.BiQuad2DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.BiQuad2DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_BiQuad2DFiniteElement
 
 # Register BiQuad2DFiniteElement in _fe:
@@ -869,14 +995,17 @@ class BiQuadPos2DFiniteElement(PositiveFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(BiQuadPos2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.BiQuadPos2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.BiQuadPos2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(BiQuadPos2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.BiQuadPos2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.BiQuadPos2DFiniteElement_CalcDShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(BiQuadPos2DFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.BiQuadPos2DFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.BiQuadPos2DFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -887,10 +1016,12 @@ class BiQuadPos2DFiniteElement(PositiveFiniteElement):
         Project(BiQuadPos2DFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.BiQuadPos2DFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.BiQuadPos2DFiniteElement_Project)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(BiQuadPos2DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.BiQuadPos2DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.BiQuadPos2DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_BiQuadPos2DFiniteElement
 
 # Register BiQuadPos2DFiniteElement in _fe:
@@ -909,10 +1040,12 @@ class GaussBiQuad2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(GaussBiQuad2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.GaussBiQuad2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.GaussBiQuad2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(GaussBiQuad2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.GaussBiQuad2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.GaussBiQuad2DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_GaussBiQuad2DFiniteElement
 
 # Register GaussBiQuad2DFiniteElement in _fe:
@@ -931,14 +1064,17 @@ class BiCubic2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(BiCubic2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.BiCubic2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.BiCubic2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(BiCubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.BiCubic2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.BiCubic2DFiniteElement_CalcDShape)
 
     def CalcHessian(self, ip, h):
         r"""CalcHessian(BiCubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"""
         return _fe.BiCubic2DFiniteElement_CalcHessian(self, ip, h)
+    CalcHessian = _swig_new_instance_method(_fe.BiCubic2DFiniteElement_CalcHessian)
     __swig_destroy__ = _fe.delete_BiCubic2DFiniteElement
 
 # Register BiCubic2DFiniteElement in _fe:
@@ -957,10 +1093,12 @@ class Cubic1DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Cubic1DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Cubic1DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Cubic1DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Cubic1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Cubic1DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Cubic1DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_Cubic1DFiniteElement
 
 # Register Cubic1DFiniteElement in _fe:
@@ -979,14 +1117,17 @@ class Cubic2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Cubic2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Cubic2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Cubic2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Cubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Cubic2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Cubic2DFiniteElement_CalcDShape)
 
     def CalcHessian(self, ip, h):
         r"""CalcHessian(Cubic2DFiniteElement self, IntegrationPoint ip, DenseMatrix h)"""
         return _fe.Cubic2DFiniteElement_CalcHessian(self, ip, h)
+    CalcHessian = _swig_new_instance_method(_fe.Cubic2DFiniteElement_CalcHessian)
     __swig_destroy__ = _fe.delete_Cubic2DFiniteElement
 
 # Register Cubic2DFiniteElement in _fe:
@@ -1005,10 +1146,12 @@ class Cubic3DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Cubic3DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Cubic3DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Cubic3DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Cubic3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Cubic3DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Cubic3DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_Cubic3DFiniteElement
 
 # Register Cubic3DFiniteElement in _fe:
@@ -1027,14 +1170,17 @@ class P0TriangleFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P0TriangleFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P0TriangleFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P0TriangleFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P0TriangleFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P0TriangleFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P0TriangleFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(P0TriangleFiniteElement self, int vertex, Vector dofs)"""
         return _fe.P0TriangleFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.P0TriangleFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_P0TriangleFiniteElement
 
 # Register P0TriangleFiniteElement in _fe:
@@ -1053,14 +1199,17 @@ class P0QuadFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P0QuadFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P0QuadFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P0QuadFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P0QuadFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P0QuadFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P0QuadFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(P0QuadFiniteElement self, int vertex, Vector dofs)"""
         return _fe.P0QuadFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.P0QuadFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_P0QuadFiniteElement
 
 # Register P0QuadFiniteElement in _fe:
@@ -1079,18 +1228,22 @@ class Linear3DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Linear3DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Linear3DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Linear3DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Linear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Linear3DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Linear3DFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(Linear3DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.Linear3DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.Linear3DFiniteElement_ProjectDelta)
 
     def GetFaceDofs(self, face, dofs, ndofs):
         r"""GetFaceDofs(Linear3DFiniteElement self, int face, int ** dofs, int * ndofs)"""
         return _fe.Linear3DFiniteElement_GetFaceDofs(self, face, dofs, ndofs)
+    GetFaceDofs = _swig_new_instance_method(_fe.Linear3DFiniteElement_GetFaceDofs)
     __swig_destroy__ = _fe.delete_Linear3DFiniteElement
 
 # Register Linear3DFiniteElement in _fe:
@@ -1109,10 +1262,12 @@ class Quadratic3DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Quadratic3DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Quadratic3DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Quadratic3DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Quadratic3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Quadratic3DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Quadratic3DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_Quadratic3DFiniteElement
 
 # Register Quadratic3DFiniteElement in _fe:
@@ -1131,14 +1286,17 @@ class TriLinear3DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(TriLinear3DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.TriLinear3DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.TriLinear3DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(TriLinear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.TriLinear3DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.TriLinear3DFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(TriLinear3DFiniteElement self, int vertex, Vector dofs)"""
         return _fe.TriLinear3DFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.TriLinear3DFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_TriLinear3DFiniteElement
 
 # Register TriLinear3DFiniteElement in _fe:
@@ -1157,14 +1315,17 @@ class CrouzeixRaviartFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(CrouzeixRaviartFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.CrouzeixRaviartFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.CrouzeixRaviartFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(CrouzeixRaviartFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.CrouzeixRaviartFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.CrouzeixRaviartFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(CrouzeixRaviartFiniteElement self, int vertex, Vector dofs)"""
         return _fe.CrouzeixRaviartFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.CrouzeixRaviartFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_CrouzeixRaviartFiniteElement
 
 # Register CrouzeixRaviartFiniteElement in _fe:
@@ -1183,10 +1344,12 @@ class CrouzeixRaviartQuadFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(CrouzeixRaviartQuadFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.CrouzeixRaviartQuadFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.CrouzeixRaviartQuadFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(CrouzeixRaviartQuadFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.CrouzeixRaviartQuadFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.CrouzeixRaviartQuadFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_CrouzeixRaviartQuadFiniteElement
 
 # Register CrouzeixRaviartQuadFiniteElement in _fe:
@@ -1205,10 +1368,12 @@ class P0SegmentFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P0SegmentFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P0SegmentFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P0SegmentFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P0SegmentFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P0SegmentFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P0SegmentFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_P0SegmentFiniteElement
 
 # Register P0SegmentFiniteElement in _fe:
@@ -1230,14 +1395,17 @@ class RT0TriangleFiniteElement(VectorFiniteElement):
         CalcVShape(RT0TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT0TriangleFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT0TriangleFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT0TriangleFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT0TriangleFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT0TriangleFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT0TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT0TriangleFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT0TriangleFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1247,6 +1415,7 @@ class RT0TriangleFiniteElement(VectorFiniteElement):
         Project(RT0TriangleFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT0TriangleFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT0TriangleFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT0TriangleFiniteElement
 
 # Register RT0TriangleFiniteElement in _fe:
@@ -1268,14 +1437,17 @@ class RT0QuadFiniteElement(VectorFiniteElement):
         CalcVShape(RT0QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT0QuadFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT0QuadFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT0QuadFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT0QuadFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT0QuadFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT0QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT0QuadFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT0QuadFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1285,6 +1457,7 @@ class RT0QuadFiniteElement(VectorFiniteElement):
         Project(RT0QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT0QuadFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT0QuadFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT0QuadFiniteElement
 
 # Register RT0QuadFiniteElement in _fe:
@@ -1306,14 +1479,17 @@ class RT1TriangleFiniteElement(VectorFiniteElement):
         CalcVShape(RT1TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT1TriangleFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT1TriangleFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT1TriangleFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT1TriangleFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT1TriangleFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT1TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT1TriangleFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT1TriangleFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1323,6 +1499,7 @@ class RT1TriangleFiniteElement(VectorFiniteElement):
         Project(RT1TriangleFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT1TriangleFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT1TriangleFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT1TriangleFiniteElement
 
 # Register RT1TriangleFiniteElement in _fe:
@@ -1344,14 +1521,17 @@ class RT1QuadFiniteElement(VectorFiniteElement):
         CalcVShape(RT1QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT1QuadFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT1QuadFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT1QuadFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT1QuadFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT1QuadFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT1QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT1QuadFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT1QuadFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1361,6 +1541,7 @@ class RT1QuadFiniteElement(VectorFiniteElement):
         Project(RT1QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT1QuadFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT1QuadFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT1QuadFiniteElement
 
 # Register RT1QuadFiniteElement in _fe:
@@ -1382,10 +1563,12 @@ class RT2TriangleFiniteElement(VectorFiniteElement):
         CalcVShape(RT2TriangleFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT2TriangleFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT2TriangleFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT2TriangleFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT2TriangleFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT2TriangleFiniteElement_CalcDivShape)
     __swig_destroy__ = _fe.delete_RT2TriangleFiniteElement
 
 # Register RT2TriangleFiniteElement in _fe:
@@ -1407,14 +1590,17 @@ class RT2QuadFiniteElement(VectorFiniteElement):
         CalcVShape(RT2QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT2QuadFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT2QuadFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT2QuadFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT2QuadFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT2QuadFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT2QuadFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT2QuadFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT2QuadFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1424,6 +1610,7 @@ class RT2QuadFiniteElement(VectorFiniteElement):
         Project(RT2QuadFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT2QuadFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT2QuadFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT2QuadFiniteElement
 
 # Register RT2QuadFiniteElement in _fe:
@@ -1442,10 +1629,12 @@ class P1SegmentFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P1SegmentFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P1SegmentFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P1SegmentFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P1SegmentFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P1SegmentFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P1SegmentFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_P1SegmentFiniteElement
 
 # Register P1SegmentFiniteElement in _fe:
@@ -1464,10 +1653,12 @@ class P2SegmentFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P2SegmentFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P2SegmentFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P2SegmentFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P2SegmentFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P2SegmentFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P2SegmentFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_P2SegmentFiniteElement
 
 # Register P2SegmentFiniteElement in _fe:
@@ -1486,10 +1677,12 @@ class Lagrange1DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(Lagrange1DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.Lagrange1DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.Lagrange1DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(Lagrange1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.Lagrange1DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.Lagrange1DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_Lagrange1DFiniteElement
 
 # Register Lagrange1DFiniteElement in _fe:
@@ -1508,10 +1701,12 @@ class P1TetNonConfFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P1TetNonConfFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P1TetNonConfFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P1TetNonConfFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P1TetNonConfFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P1TetNonConfFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P1TetNonConfFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_P1TetNonConfFiniteElement
 
 # Register P1TetNonConfFiniteElement in _fe:
@@ -1530,14 +1725,17 @@ class P0TetFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P0TetFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P0TetFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P0TetFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P0TetFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P0TetFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P0TetFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(P0TetFiniteElement self, int vertex, Vector dofs)"""
         return _fe.P0TetFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.P0TetFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_P0TetFiniteElement
 
 # Register P0TetFiniteElement in _fe:
@@ -1556,14 +1754,17 @@ class P0HexFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(P0HexFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.P0HexFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.P0HexFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(P0HexFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.P0HexFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.P0HexFiniteElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(P0HexFiniteElement self, int vertex, Vector dofs)"""
         return _fe.P0HexFiniteElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.P0HexFiniteElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_P0HexFiniteElement
 
 # Register P0HexFiniteElement in _fe:
@@ -1582,10 +1783,12 @@ class LagrangeHexFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(LagrangeHexFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.LagrangeHexFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.LagrangeHexFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(LagrangeHexFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.LagrangeHexFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.LagrangeHexFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_LagrangeHexFiniteElement
 
 # Register LagrangeHexFiniteElement in _fe:
@@ -1604,10 +1807,12 @@ class RefinedLinear1DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(RefinedLinear1DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.RefinedLinear1DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.RefinedLinear1DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(RefinedLinear1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.RefinedLinear1DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.RefinedLinear1DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_RefinedLinear1DFiniteElement
 
 # Register RefinedLinear1DFiniteElement in _fe:
@@ -1626,10 +1831,12 @@ class RefinedLinear2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(RefinedLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.RefinedLinear2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.RefinedLinear2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(RefinedLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.RefinedLinear2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.RefinedLinear2DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_RefinedLinear2DFiniteElement
 
 # Register RefinedLinear2DFiniteElement in _fe:
@@ -1648,10 +1855,12 @@ class RefinedLinear3DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(RefinedLinear3DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.RefinedLinear3DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.RefinedLinear3DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(RefinedLinear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.RefinedLinear3DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.RefinedLinear3DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_RefinedLinear3DFiniteElement
 
 # Register RefinedLinear3DFiniteElement in _fe:
@@ -1670,10 +1879,12 @@ class RefinedBiLinear2DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(RefinedBiLinear2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.RefinedBiLinear2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.RefinedBiLinear2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(RefinedBiLinear2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.RefinedBiLinear2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.RefinedBiLinear2DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_RefinedBiLinear2DFiniteElement
 
 # Register RefinedBiLinear2DFiniteElement in _fe:
@@ -1692,10 +1903,12 @@ class RefinedTriLinear3DFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(RefinedTriLinear3DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.RefinedTriLinear3DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.RefinedTriLinear3DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(RefinedTriLinear3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.RefinedTriLinear3DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.RefinedTriLinear3DFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_RefinedTriLinear3DFiniteElement
 
 # Register RefinedTriLinear3DFiniteElement in _fe:
@@ -1717,14 +1930,17 @@ class Nedelec1HexFiniteElement(VectorFiniteElement):
         CalcVShape(Nedelec1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.Nedelec1HexFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.Nedelec1HexFiniteElement_CalcVShape)
 
     def CalcCurlShape(self, ip, curl_shape):
         r"""CalcCurlShape(Nedelec1HexFiniteElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
         return _fe.Nedelec1HexFiniteElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe.Nedelec1HexFiniteElement_CalcCurlShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(Nedelec1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.Nedelec1HexFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.Nedelec1HexFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1734,6 +1950,7 @@ class Nedelec1HexFiniteElement(VectorFiniteElement):
         Project(Nedelec1HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.Nedelec1HexFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.Nedelec1HexFiniteElement_Project)
     __swig_destroy__ = _fe.delete_Nedelec1HexFiniteElement
 
 # Register Nedelec1HexFiniteElement in _fe:
@@ -1755,14 +1972,17 @@ class Nedelec1TetFiniteElement(VectorFiniteElement):
         CalcVShape(Nedelec1TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.Nedelec1TetFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.Nedelec1TetFiniteElement_CalcVShape)
 
     def CalcCurlShape(self, ip, curl_shape):
         r"""CalcCurlShape(Nedelec1TetFiniteElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
         return _fe.Nedelec1TetFiniteElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe.Nedelec1TetFiniteElement_CalcCurlShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(Nedelec1TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.Nedelec1TetFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.Nedelec1TetFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1772,6 +1992,7 @@ class Nedelec1TetFiniteElement(VectorFiniteElement):
         Project(Nedelec1TetFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.Nedelec1TetFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.Nedelec1TetFiniteElement_Project)
     __swig_destroy__ = _fe.delete_Nedelec1TetFiniteElement
 
 # Register Nedelec1TetFiniteElement in _fe:
@@ -1793,14 +2014,17 @@ class RT0HexFiniteElement(VectorFiniteElement):
         CalcVShape(RT0HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT0HexFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT0HexFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT0HexFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT0HexFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT0HexFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT0HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT0HexFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT0HexFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1810,6 +2034,7 @@ class RT0HexFiniteElement(VectorFiniteElement):
         Project(RT0HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT0HexFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT0HexFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT0HexFiniteElement
 
 # Register RT0HexFiniteElement in _fe:
@@ -1831,14 +2056,17 @@ class RT1HexFiniteElement(VectorFiniteElement):
         CalcVShape(RT1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT1HexFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT1HexFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT1HexFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT1HexFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT1HexFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT1HexFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT1HexFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT1HexFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1848,6 +2076,7 @@ class RT1HexFiniteElement(VectorFiniteElement):
         Project(RT1HexFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT1HexFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT1HexFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT1HexFiniteElement
 
 # Register RT1HexFiniteElement in _fe:
@@ -1869,14 +2098,17 @@ class RT0TetFiniteElement(VectorFiniteElement):
         CalcVShape(RT0TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT0TetFiniteElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT0TetFiniteElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT0TetFiniteElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT0TetFiniteElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT0TetFiniteElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT0TetFiniteElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT0TetFiniteElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT0TetFiniteElement_GetLocalInterpolation)
 
     def Project(self, *args):
         r"""
@@ -1886,6 +2118,7 @@ class RT0TetFiniteElement(VectorFiniteElement):
         Project(RT0TetFiniteElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
         """
         return _fe.RT0TetFiniteElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT0TetFiniteElement_Project)
     __swig_destroy__ = _fe.delete_RT0TetFiniteElement
 
 # Register RT0TetFiniteElement in _fe:
@@ -1904,10 +2137,12 @@ class RotTriLinearHexFiniteElement(NodalFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(RotTriLinearHexFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.RotTriLinearHexFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.RotTriLinearHexFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(RotTriLinearHexFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.RotTriLinearHexFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.RotTriLinearHexFiniteElement_CalcDShape)
     __swig_destroy__ = _fe.delete_RotTriLinearHexFiniteElement
 
 # Register RotTriLinearHexFiniteElement in _fe:
@@ -1935,22 +2170,27 @@ class Poly_1D(object):
     def Binom(p):
         r"""Binom(int const p) -> int const *"""
         return _fe.Poly_1D_Binom(p)
+    Binom = _swig_new_static_method(_fe.Poly_1D_Binom)
 
     def GetPoints(self, p, btype):
         r"""GetPoints(Poly_1D self, int const p, int const btype) -> double const *"""
         return _fe.Poly_1D_GetPoints(self, p, btype)
+    GetPoints = _swig_new_instance_method(_fe.Poly_1D_GetPoints)
 
-    def OpenPoints(self, *args):
-        r"""OpenPoints(Poly_1D self, int const p, int const btype=GaussLegendre) -> double const"""
-        return _fe.Poly_1D_OpenPoints(self, *args)
+    def OpenPoints(self, *args, **kwargs):
+        r"""OpenPoints(Poly_1D self, int const p, int const btype=GaussLegendre) -> double const *"""
+        return _fe.Poly_1D_OpenPoints(self, *args, **kwargs)
+    OpenPoints = _swig_new_instance_method(_fe.Poly_1D_OpenPoints)
 
-    def ClosedPoints(self, *args):
-        r"""ClosedPoints(Poly_1D self, int const p, int const btype=GaussLobatto) -> double const"""
-        return _fe.Poly_1D_ClosedPoints(self, *args)
+    def ClosedPoints(self, *args, **kwargs):
+        r"""ClosedPoints(Poly_1D self, int const p, int const btype=GaussLobatto) -> double const *"""
+        return _fe.Poly_1D_ClosedPoints(self, *args, **kwargs)
+    ClosedPoints = _swig_new_instance_method(_fe.Poly_1D_ClosedPoints)
 
     def GetBasis(self, p, btype):
         r"""GetBasis(Poly_1D self, int const p, int const btype) -> mfem::Poly_1D::Basis &"""
         return _fe.Poly_1D_GetBasis(self, p, btype)
+    GetBasis = _swig_new_instance_method(_fe.Poly_1D_GetBasis)
 
     @staticmethod
     def CalcBasis(*args):
@@ -1960,16 +2200,19 @@ class Poly_1D(object):
         CalcBasis(int const p, double const x, double * u, double * d, double * dd)
         """
         return _fe.Poly_1D_CalcBasis(*args)
+    CalcBasis = _swig_new_static_method(_fe.Poly_1D_CalcBasis)
 
     @staticmethod
     def CalcDelta(p, x):
         r"""CalcDelta(int const p, double const x) -> double"""
         return _fe.Poly_1D_CalcDelta(p, x)
+    CalcDelta = _swig_new_static_method(_fe.Poly_1D_CalcDelta)
 
     @staticmethod
     def ChebyshevPoints(p, x):
         r"""ChebyshevPoints(int const p, double * x)"""
         return _fe.Poly_1D_ChebyshevPoints(p, x)
+    ChebyshevPoints = _swig_new_static_method(_fe.Poly_1D_ChebyshevPoints)
 
     @staticmethod
     def CalcBinomTerms(*args):
@@ -1978,11 +2221,13 @@ class Poly_1D(object):
         CalcBinomTerms(int const p, double const x, double const y, double * u, double * d)
         """
         return _fe.Poly_1D_CalcBinomTerms(*args)
+    CalcBinomTerms = _swig_new_static_method(_fe.Poly_1D_CalcBinomTerms)
 
     @staticmethod
     def CalcDBinomTerms(p, x, y, d):
         r"""CalcDBinomTerms(int const p, double const x, double const y, double * d)"""
         return _fe.Poly_1D_CalcDBinomTerms(p, x, y, d)
+    CalcDBinomTerms = _swig_new_static_method(_fe.Poly_1D_CalcDBinomTerms)
 
     @staticmethod
     def CalcBernstein(*args):
@@ -1991,6 +2236,16 @@ class Poly_1D(object):
         CalcBernstein(int const p, double const x, double * u, double * d)
         """
         return _fe.Poly_1D_CalcBernstein(*args)
+    CalcBernstein = _swig_new_static_method(_fe.Poly_1D_CalcBernstein)
+
+    @staticmethod
+    def CalcLegendre(*args):
+        r"""
+        CalcLegendre(int const p, double const x, double * u)
+        CalcLegendre(int const p, double const x, double * u, double * d)
+        """
+        return _fe.Poly_1D_CalcLegendre(*args)
+    CalcLegendre = _swig_new_static_method(_fe.Poly_1D_CalcLegendre)
     __swig_destroy__ = _fe.delete_Poly_1D
 
 # Register Poly_1D in _fe:
@@ -1999,6 +2254,7 @@ _fe.Poly_1D_swigregister(Poly_1D)
 def Poly_1D_Binom(p):
     r"""Poly_1D_Binom(int const p) -> int const *"""
     return _fe.Poly_1D_Binom(p)
+Poly_1D_Binom = _fe.Poly_1D_Binom
 
 def Poly_1D_CalcBasis(*args):
     r"""
@@ -2007,14 +2263,17 @@ def Poly_1D_CalcBasis(*args):
     Poly_1D_CalcBasis(int const p, double const x, double * u, double * d, double * dd)
     """
     return _fe.Poly_1D_CalcBasis(*args)
+Poly_1D_CalcBasis = _fe.Poly_1D_CalcBasis
 
 def Poly_1D_CalcDelta(p, x):
     r"""Poly_1D_CalcDelta(int const p, double const x) -> double"""
     return _fe.Poly_1D_CalcDelta(p, x)
+Poly_1D_CalcDelta = _fe.Poly_1D_CalcDelta
 
 def Poly_1D_ChebyshevPoints(p, x):
     r"""Poly_1D_ChebyshevPoints(int const p, double * x)"""
     return _fe.Poly_1D_ChebyshevPoints(p, x)
+Poly_1D_ChebyshevPoints = _fe.Poly_1D_ChebyshevPoints
 
 def Poly_1D_CalcBinomTerms(*args):
     r"""
@@ -2022,10 +2281,12 @@ def Poly_1D_CalcBinomTerms(*args):
     Poly_1D_CalcBinomTerms(int const p, double const x, double const y, double * u, double * d)
     """
     return _fe.Poly_1D_CalcBinomTerms(*args)
+Poly_1D_CalcBinomTerms = _fe.Poly_1D_CalcBinomTerms
 
 def Poly_1D_CalcDBinomTerms(p, x, y, d):
     r"""Poly_1D_CalcDBinomTerms(int const p, double const x, double const y, double * d)"""
     return _fe.Poly_1D_CalcDBinomTerms(p, x, y, d)
+Poly_1D_CalcDBinomTerms = _fe.Poly_1D_CalcDBinomTerms
 
 def Poly_1D_CalcBernstein(*args):
     r"""
@@ -2033,6 +2294,15 @@ def Poly_1D_CalcBernstein(*args):
     Poly_1D_CalcBernstein(int const p, double const x, double * u, double * d)
     """
     return _fe.Poly_1D_CalcBernstein(*args)
+Poly_1D_CalcBernstein = _fe.Poly_1D_CalcBernstein
+
+def Poly_1D_CalcLegendre(*args):
+    r"""
+    Poly_1D_CalcLegendre(int const p, double const x, double * u)
+    Poly_1D_CalcLegendre(int const p, double const x, double * u, double * d)
+    """
+    return _fe.Poly_1D_CalcLegendre(*args)
+Poly_1D_CalcLegendre = _fe.Poly_1D_CalcLegendre
 
 class TensorBasisElement(object):
     r"""Proxy of C++ mfem::TensorBasisElement class."""
@@ -2043,6 +2313,8 @@ class TensorBasisElement(object):
     
     H1_DOF_MAP = _fe.TensorBasisElement_H1_DOF_MAP
     
+    Sr_DOF_MAP = _fe.TensorBasisElement_Sr_DOF_MAP
+    
 
     def __init__(self, dims, p, btype, dmtype):
         r"""__init__(TensorBasisElement self, int const dims, int const p, int const btype, mfem::TensorBasisElement::DofMapType const dmtype) -> TensorBasisElement"""
@@ -2051,24 +2323,29 @@ class TensorBasisElement(object):
     def GetBasisType(self):
         r"""GetBasisType(TensorBasisElement self) -> int"""
         return _fe.TensorBasisElement_GetBasisType(self)
+    GetBasisType = _swig_new_instance_method(_fe.TensorBasisElement_GetBasisType)
 
     def GetBasis1D(self):
         r"""GetBasis1D(TensorBasisElement self) -> mfem::Poly_1D::Basis const &"""
         return _fe.TensorBasisElement_GetBasis1D(self)
+    GetBasis1D = _swig_new_instance_method(_fe.TensorBasisElement_GetBasis1D)
 
     def GetDofMap(self):
         r"""GetDofMap(TensorBasisElement self) -> intArray"""
         return _fe.TensorBasisElement_GetDofMap(self)
+    GetDofMap = _swig_new_instance_method(_fe.TensorBasisElement_GetDofMap)
 
     @staticmethod
     def GetTensorProductGeometry(dim):
         r"""GetTensorProductGeometry(int dim) -> mfem::Geometry::Type"""
         return _fe.TensorBasisElement_GetTensorProductGeometry(dim)
+    GetTensorProductGeometry = _swig_new_static_method(_fe.TensorBasisElement_GetTensorProductGeometry)
 
     @staticmethod
     def Pow(base, dim):
         r"""Pow(int base, int dim) -> int"""
         return _fe.TensorBasisElement_Pow(base, dim)
+    Pow = _swig_new_static_method(_fe.TensorBasisElement_Pow)
     __swig_destroy__ = _fe.delete_TensorBasisElement
 
 # Register TensorBasisElement in _fe:
@@ -2077,10 +2354,12 @@ _fe.TensorBasisElement_swigregister(TensorBasisElement)
 def TensorBasisElement_GetTensorProductGeometry(dim):
     r"""TensorBasisElement_GetTensorProductGeometry(int dim) -> mfem::Geometry::Type"""
     return _fe.TensorBasisElement_GetTensorProductGeometry(dim)
+TensorBasisElement_GetTensorProductGeometry = _fe.TensorBasisElement_GetTensorProductGeometry
 
 def TensorBasisElement_Pow(base, dim):
     r"""TensorBasisElement_Pow(int base, int dim) -> int"""
     return _fe.TensorBasisElement_Pow(base, dim)
+TensorBasisElement_Pow = _fe.TensorBasisElement_Pow
 
 class NodalTensorFiniteElement(NodalFiniteElement, TensorBasisElement):
     r"""Proxy of C++ mfem::NodalTensorFiniteElement class."""
@@ -2094,6 +2373,7 @@ class NodalTensorFiniteElement(NodalFiniteElement, TensorBasisElement):
     def GetDofToQuad(self, ir, mode):
         r"""GetDofToQuad(NodalTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
         return _fe.NodalTensorFiniteElement_GetDofToQuad(self, ir, mode)
+    GetDofToQuad = _swig_new_instance_method(_fe.NodalTensorFiniteElement_GetDofToQuad)
     __swig_destroy__ = _fe.delete_NodalTensorFiniteElement
 
 # Register NodalTensorFiniteElement in _fe:
@@ -2111,10 +2391,40 @@ class PositiveTensorFiniteElement(PositiveFiniteElement, TensorBasisElement):
     def GetDofToQuad(self, ir, mode):
         r"""GetDofToQuad(PositiveTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
         return _fe.PositiveTensorFiniteElement_GetDofToQuad(self, ir, mode)
+    GetDofToQuad = _swig_new_instance_method(_fe.PositiveTensorFiniteElement_GetDofToQuad)
     __swig_destroy__ = _fe.delete_PositiveTensorFiniteElement
 
 # Register PositiveTensorFiniteElement in _fe:
 _fe.PositiveTensorFiniteElement_swigregister(PositiveTensorFiniteElement)
+
+class VectorTensorFiniteElement(VectorFiniteElement, TensorBasisElement):
+    r"""Proxy of C++ mfem::VectorTensorFiniteElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, dims, d, p, cbtype, obtype, M, dmtype):
+        r"""__init__(VectorTensorFiniteElement self, int const dims, int const d, int const p, int const cbtype, int const obtype, int const M, mfem::TensorBasisElement::DofMapType const dmtype) -> VectorTensorFiniteElement"""
+        _fe.VectorTensorFiniteElement_swiginit(self, _fe.new_VectorTensorFiniteElement(dims, d, p, cbtype, obtype, M, dmtype))
+
+    def GetDofToQuad(self, ir, mode):
+        r"""GetDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
+        return _fe.VectorTensorFiniteElement_GetDofToQuad(self, ir, mode)
+    GetDofToQuad = _swig_new_instance_method(_fe.VectorTensorFiniteElement_GetDofToQuad)
+
+    def GetDofToQuadOpen(self, ir, mode):
+        r"""GetDofToQuadOpen(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode) -> DofToQuad"""
+        return _fe.VectorTensorFiniteElement_GetDofToQuadOpen(self, ir, mode)
+    GetDofToQuadOpen = _swig_new_instance_method(_fe.VectorTensorFiniteElement_GetDofToQuadOpen)
+
+    def GetTensorDofToQuad(self, ir, mode, closed):
+        r"""GetTensorDofToQuad(VectorTensorFiniteElement self, IntegrationRule ir, mfem::DofToQuad::Mode mode, bool const closed) -> DofToQuad"""
+        return _fe.VectorTensorFiniteElement_GetTensorDofToQuad(self, ir, mode, closed)
+    GetTensorDofToQuad = _swig_new_instance_method(_fe.VectorTensorFiniteElement_GetTensorDofToQuad)
+    __swig_destroy__ = _fe.delete_VectorTensorFiniteElement
+
+# Register VectorTensorFiniteElement in _fe:
+_fe.VectorTensorFiniteElement_swigregister(VectorTensorFiniteElement)
 
 class H1_SegmentElement(NodalTensorFiniteElement):
     r"""Proxy of C++ mfem::H1_SegmentElement class."""
@@ -2122,21 +2432,24 @@ class H1_SegmentElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_SegmentElement self, int const p, int const btype=GaussLobatto) -> H1_SegmentElement"""
-        _fe.H1_SegmentElement_swiginit(self, _fe.new_H1_SegmentElement(*args))
+        _fe.H1_SegmentElement_swiginit(self, _fe.new_H1_SegmentElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_SegmentElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1_SegmentElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1_SegmentElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_SegmentElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1_SegmentElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(H1_SegmentElement self, int vertex, Vector dofs)"""
         return _fe.H1_SegmentElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.H1_SegmentElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_H1_SegmentElement
 
 # Register H1_SegmentElement in _fe:
@@ -2148,21 +2461,24 @@ class H1_QuadrilateralElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_QuadrilateralElement self, int const p, int const btype=GaussLobatto) -> H1_QuadrilateralElement"""
-        _fe.H1_QuadrilateralElement_swiginit(self, _fe.new_H1_QuadrilateralElement(*args))
+        _fe.H1_QuadrilateralElement_swiginit(self, _fe.new_H1_QuadrilateralElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1_QuadrilateralElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1_QuadrilateralElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_QuadrilateralElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1_QuadrilateralElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(H1_QuadrilateralElement self, int vertex, Vector dofs)"""
         return _fe.H1_QuadrilateralElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.H1_QuadrilateralElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_H1_QuadrilateralElement
 
 # Register H1_QuadrilateralElement in _fe:
@@ -2174,21 +2490,24 @@ class H1_HexahedronElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_HexahedronElement self, int const p, int const btype=GaussLobatto) -> H1_HexahedronElement"""
-        _fe.H1_HexahedronElement_swiginit(self, _fe.new_H1_HexahedronElement(*args))
+        _fe.H1_HexahedronElement_swiginit(self, _fe.new_H1_HexahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_HexahedronElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1_HexahedronElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1_HexahedronElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_HexahedronElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1_HexahedronElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(H1_HexahedronElement self, int vertex, Vector dofs)"""
         return _fe.H1_HexahedronElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.H1_HexahedronElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_H1_HexahedronElement
 
 # Register H1_HexahedronElement in _fe:
@@ -2207,14 +2526,17 @@ class H1Pos_SegmentElement(PositiveTensorFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1Pos_SegmentElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1Pos_SegmentElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1Pos_SegmentElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1Pos_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1Pos_SegmentElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1Pos_SegmentElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(H1Pos_SegmentElement self, int vertex, Vector dofs)"""
         return _fe.H1Pos_SegmentElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.H1Pos_SegmentElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_H1Pos_SegmentElement
 
 # Register H1Pos_SegmentElement in _fe:
@@ -2233,18 +2555,59 @@ class H1Pos_QuadrilateralElement(PositiveTensorFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1Pos_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1Pos_QuadrilateralElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1Pos_QuadrilateralElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1Pos_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1Pos_QuadrilateralElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1Pos_QuadrilateralElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(H1Pos_QuadrilateralElement self, int vertex, Vector dofs)"""
         return _fe.H1Pos_QuadrilateralElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.H1Pos_QuadrilateralElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_H1Pos_QuadrilateralElement
 
 # Register H1Pos_QuadrilateralElement in _fe:
 _fe.H1Pos_QuadrilateralElement_swigregister(H1Pos_QuadrilateralElement)
+
+class H1Ser_QuadrilateralElement(ScalarFiniteElement):
+    r"""Proxy of C++ mfem::H1Ser_QuadrilateralElement class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, p):
+        r"""__init__(H1Ser_QuadrilateralElement self, int const p) -> H1Ser_QuadrilateralElement"""
+        _fe.H1Ser_QuadrilateralElement_swiginit(self, _fe.new_H1Ser_QuadrilateralElement(p))
+
+    def CalcShape(self, ip, shape):
+        r"""CalcShape(H1Ser_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"""
+        return _fe.H1Ser_QuadrilateralElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1Ser_QuadrilateralElement_CalcShape)
+
+    def CalcDShape(self, ip, dshape):
+        r"""CalcDShape(H1Ser_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"""
+        return _fe.H1Ser_QuadrilateralElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1Ser_QuadrilateralElement_CalcDShape)
+
+    def GetLocalInterpolation(self, Trans, I):
+        r"""GetLocalInterpolation(H1Ser_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
+        return _fe.H1Ser_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.H1Ser_QuadrilateralElement_GetLocalInterpolation)
+
+    def Project(self, *args):
+        r"""
+        Project(H1Ser_QuadrilateralElement self, mfem::Coefficient & coeff, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(H1Ser_QuadrilateralElement self, mfem::VectorCoefficient & vc, mfem::ElementTransformation & Trans, Vector dofs)
+        Project(H1Ser_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
+        """
+        return _fe.H1Ser_QuadrilateralElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.H1Ser_QuadrilateralElement_Project)
+    __swig_destroy__ = _fe.delete_H1Ser_QuadrilateralElement
+
+# Register H1Ser_QuadrilateralElement in _fe:
+_fe.H1Ser_QuadrilateralElement_swigregister(H1Ser_QuadrilateralElement)
 
 class H1Pos_HexahedronElement(PositiveTensorFiniteElement):
     r"""Proxy of C++ mfem::H1Pos_HexahedronElement class."""
@@ -2259,14 +2622,17 @@ class H1Pos_HexahedronElement(PositiveTensorFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1Pos_HexahedronElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1Pos_HexahedronElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1Pos_HexahedronElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1Pos_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1Pos_HexahedronElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1Pos_HexahedronElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(H1Pos_HexahedronElement self, int vertex, Vector dofs)"""
         return _fe.H1Pos_HexahedronElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.H1Pos_HexahedronElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_H1Pos_HexahedronElement
 
 # Register H1Pos_HexahedronElement in _fe:
@@ -2278,21 +2644,24 @@ class H1_TriangleElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_TriangleElement self, int const p, int const btype=GaussLobatto) -> H1_TriangleElement"""
-        _fe.H1_TriangleElement_swiginit(self, _fe.new_H1_TriangleElement(*args))
+        _fe.H1_TriangleElement_swiginit(self, _fe.new_H1_TriangleElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_TriangleElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1_TriangleElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1_TriangleElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_TriangleElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1_TriangleElement_CalcDShape)
 
     def CalcHessian(self, ip, ddshape):
         r"""CalcHessian(H1_TriangleElement self, IntegrationPoint ip, DenseMatrix ddshape)"""
         return _fe.H1_TriangleElement_CalcHessian(self, ip, ddshape)
+    CalcHessian = _swig_new_instance_method(_fe.H1_TriangleElement_CalcHessian)
     __swig_destroy__ = _fe.delete_H1_TriangleElement
 
 # Register H1_TriangleElement in _fe:
@@ -2304,21 +2673,24 @@ class H1_TetrahedronElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_TetrahedronElement self, int const p, int const btype=GaussLobatto) -> H1_TetrahedronElement"""
-        _fe.H1_TetrahedronElement_swiginit(self, _fe.new_H1_TetrahedronElement(*args))
+        _fe.H1_TetrahedronElement_swiginit(self, _fe.new_H1_TetrahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_TetrahedronElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1_TetrahedronElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1_TetrahedronElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_TetrahedronElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1_TetrahedronElement_CalcDShape)
 
     def CalcHessian(self, ip, ddshape):
         r"""CalcHessian(H1_TetrahedronElement self, IntegrationPoint ip, DenseMatrix ddshape)"""
         return _fe.H1_TetrahedronElement_CalcHessian(self, ip, ddshape)
+    CalcHessian = _swig_new_instance_method(_fe.H1_TetrahedronElement_CalcHessian)
     __swig_destroy__ = _fe.delete_H1_TetrahedronElement
 
 # Register H1_TetrahedronElement in _fe:
@@ -2340,6 +2712,7 @@ class H1Pos_TriangleElement(PositiveFiniteElement):
         CalcShape(H1Pos_TriangleElement self, IntegrationPoint ip, Vector shape)
         """
         return _fe.H1Pos_TriangleElement_CalcShape(self, *args)
+    CalcShape = _swig_new_instance_method(_fe.H1Pos_TriangleElement_CalcShape)
 
     def CalcDShape(self, *args):
         r"""
@@ -2347,6 +2720,7 @@ class H1Pos_TriangleElement(PositiveFiniteElement):
         CalcDShape(H1Pos_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)
         """
         return _fe.H1Pos_TriangleElement_CalcDShape(self, *args)
+    CalcDShape = _swig_new_instance_method(_fe.H1Pos_TriangleElement_CalcDShape)
     __swig_destroy__ = _fe.delete_H1Pos_TriangleElement
 
 # Register H1Pos_TriangleElement in _fe:
@@ -2368,6 +2742,7 @@ class H1Pos_TetrahedronElement(PositiveFiniteElement):
         CalcShape(H1Pos_TetrahedronElement self, IntegrationPoint ip, Vector shape)
         """
         return _fe.H1Pos_TetrahedronElement_CalcShape(self, *args)
+    CalcShape = _swig_new_instance_method(_fe.H1Pos_TetrahedronElement_CalcShape)
 
     def CalcDShape(self, *args):
         r"""
@@ -2375,6 +2750,7 @@ class H1Pos_TetrahedronElement(PositiveFiniteElement):
         CalcDShape(H1Pos_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)
         """
         return _fe.H1Pos_TetrahedronElement_CalcDShape(self, *args)
+    CalcDShape = _swig_new_instance_method(_fe.H1Pos_TetrahedronElement_CalcDShape)
     __swig_destroy__ = _fe.delete_H1Pos_TetrahedronElement
 
 # Register H1Pos_TetrahedronElement in _fe:
@@ -2386,17 +2762,19 @@ class H1_WedgeElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(H1_WedgeElement self, int const p, int const btype=GaussLobatto) -> H1_WedgeElement"""
-        _fe.H1_WedgeElement_swiginit(self, _fe.new_H1_WedgeElement(*args))
+        _fe.H1_WedgeElement_swiginit(self, _fe.new_H1_WedgeElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1_WedgeElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1_WedgeElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1_WedgeElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1_WedgeElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1_WedgeElement_CalcDShape)
     __swig_destroy__ = _fe.delete_H1_WedgeElement
 
 # Register H1_WedgeElement in _fe:
@@ -2457,10 +2835,12 @@ class H1Pos_WedgeElement(PositiveFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(H1Pos_WedgeElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.H1Pos_WedgeElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.H1Pos_WedgeElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(H1Pos_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.H1Pos_WedgeElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.H1Pos_WedgeElement_CalcDShape)
     __swig_destroy__ = _fe.delete_H1Pos_WedgeElement
 
 # Register H1Pos_WedgeElement in _fe:
@@ -2472,21 +2852,24 @@ class L2_SegmentElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_SegmentElement self, int const p, int const btype=GaussLegendre) -> L2_SegmentElement"""
-        _fe.L2_SegmentElement_swiginit(self, _fe.new_L2_SegmentElement(*args))
+        _fe.L2_SegmentElement_swiginit(self, _fe.new_L2_SegmentElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_SegmentElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2_SegmentElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2_SegmentElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2_SegmentElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2_SegmentElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2_SegmentElement self, int vertex, Vector dofs)"""
         return _fe.L2_SegmentElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2_SegmentElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2_SegmentElement
 
 # Register L2_SegmentElement in _fe:
@@ -2505,14 +2888,17 @@ class L2Pos_SegmentElement(PositiveTensorFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2Pos_SegmentElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2Pos_SegmentElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2Pos_SegmentElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2Pos_SegmentElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2Pos_SegmentElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2Pos_SegmentElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2Pos_SegmentElement self, int vertex, Vector dofs)"""
         return _fe.L2Pos_SegmentElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2Pos_SegmentElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2Pos_SegmentElement
 
 # Register L2Pos_SegmentElement in _fe:
@@ -2524,25 +2910,29 @@ class L2_QuadrilateralElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_QuadrilateralElement self, int const p, int const btype=GaussLegendre) -> L2_QuadrilateralElement"""
-        _fe.L2_QuadrilateralElement_swiginit(self, _fe.new_L2_QuadrilateralElement(*args))
+        _fe.L2_QuadrilateralElement_swiginit(self, _fe.new_L2_QuadrilateralElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2_QuadrilateralElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2_QuadrilateralElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2_QuadrilateralElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2_QuadrilateralElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2_QuadrilateralElement self, int vertex, Vector dofs)"""
         return _fe.L2_QuadrilateralElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2_QuadrilateralElement_ProjectDelta)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(L2_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.L2_QuadrilateralElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.L2_QuadrilateralElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_L2_QuadrilateralElement
 
 # Register L2_QuadrilateralElement in _fe:
@@ -2561,14 +2951,17 @@ class L2Pos_QuadrilateralElement(PositiveTensorFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2Pos_QuadrilateralElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2Pos_QuadrilateralElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2Pos_QuadrilateralElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2Pos_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2Pos_QuadrilateralElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2Pos_QuadrilateralElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2Pos_QuadrilateralElement self, int vertex, Vector dofs)"""
         return _fe.L2Pos_QuadrilateralElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2Pos_QuadrilateralElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2Pos_QuadrilateralElement
 
 # Register L2Pos_QuadrilateralElement in _fe:
@@ -2580,21 +2973,24 @@ class L2_HexahedronElement(NodalTensorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_HexahedronElement self, int const p, int const btype=GaussLegendre) -> L2_HexahedronElement"""
-        _fe.L2_HexahedronElement_swiginit(self, _fe.new_L2_HexahedronElement(*args))
+        _fe.L2_HexahedronElement_swiginit(self, _fe.new_L2_HexahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_HexahedronElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2_HexahedronElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2_HexahedronElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2_HexahedronElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2_HexahedronElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2_HexahedronElement self, int vertex, Vector dofs)"""
         return _fe.L2_HexahedronElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2_HexahedronElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2_HexahedronElement
 
 # Register L2_HexahedronElement in _fe:
@@ -2613,14 +3009,17 @@ class L2Pos_HexahedronElement(PositiveTensorFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2Pos_HexahedronElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2Pos_HexahedronElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2Pos_HexahedronElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2Pos_HexahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2Pos_HexahedronElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2Pos_HexahedronElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2Pos_HexahedronElement self, int vertex, Vector dofs)"""
         return _fe.L2Pos_HexahedronElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2Pos_HexahedronElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2Pos_HexahedronElement
 
 # Register L2Pos_HexahedronElement in _fe:
@@ -2632,25 +3031,29 @@ class L2_TriangleElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_TriangleElement self, int const p, int const btype=GaussLegendre) -> L2_TriangleElement"""
-        _fe.L2_TriangleElement_swiginit(self, _fe.new_L2_TriangleElement(*args))
+        _fe.L2_TriangleElement_swiginit(self, _fe.new_L2_TriangleElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_TriangleElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2_TriangleElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2_TriangleElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2_TriangleElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2_TriangleElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2_TriangleElement self, int vertex, Vector dofs)"""
         return _fe.L2_TriangleElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2_TriangleElement_ProjectDelta)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(L2_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.L2_TriangleElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.L2_TriangleElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_L2_TriangleElement
 
 # Register L2_TriangleElement in _fe:
@@ -2669,14 +3072,17 @@ class L2Pos_TriangleElement(PositiveFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2Pos_TriangleElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2Pos_TriangleElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2Pos_TriangleElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2Pos_TriangleElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2Pos_TriangleElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2Pos_TriangleElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2Pos_TriangleElement self, int vertex, Vector dofs)"""
         return _fe.L2Pos_TriangleElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2Pos_TriangleElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2Pos_TriangleElement
 
 # Register L2Pos_TriangleElement in _fe:
@@ -2688,21 +3094,24 @@ class L2_TetrahedronElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_TetrahedronElement self, int const p, int const btype=GaussLegendre) -> L2_TetrahedronElement"""
-        _fe.L2_TetrahedronElement_swiginit(self, _fe.new_L2_TetrahedronElement(*args))
+        _fe.L2_TetrahedronElement_swiginit(self, _fe.new_L2_TetrahedronElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_TetrahedronElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2_TetrahedronElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2_TetrahedronElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2_TetrahedronElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2_TetrahedronElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2_TetrahedronElement self, int vertex, Vector dofs)"""
         return _fe.L2_TetrahedronElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2_TetrahedronElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2_TetrahedronElement
 
 # Register L2_TetrahedronElement in _fe:
@@ -2721,14 +3130,17 @@ class L2Pos_TetrahedronElement(PositiveFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2Pos_TetrahedronElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2Pos_TetrahedronElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2Pos_TetrahedronElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2Pos_TetrahedronElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2Pos_TetrahedronElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2Pos_TetrahedronElement_CalcDShape)
 
     def ProjectDelta(self, vertex, dofs):
         r"""ProjectDelta(L2Pos_TetrahedronElement self, int vertex, Vector dofs)"""
         return _fe.L2Pos_TetrahedronElement_ProjectDelta(self, vertex, dofs)
+    ProjectDelta = _swig_new_instance_method(_fe.L2Pos_TetrahedronElement_ProjectDelta)
     __swig_destroy__ = _fe.delete_L2Pos_TetrahedronElement
 
 # Register L2Pos_TetrahedronElement in _fe:
@@ -2740,17 +3152,19 @@ class L2_WedgeElement(NodalFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(L2_WedgeElement self, int const p, int const btype=GaussLegendre) -> L2_WedgeElement"""
-        _fe.L2_WedgeElement_swiginit(self, _fe.new_L2_WedgeElement(*args))
+        _fe.L2_WedgeElement_swiginit(self, _fe.new_L2_WedgeElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2_WedgeElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2_WedgeElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2_WedgeElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2_WedgeElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2_WedgeElement_CalcDShape)
     __swig_destroy__ = _fe.delete_L2_WedgeElement
 
 # Register L2_WedgeElement in _fe:
@@ -2783,10 +3197,12 @@ class L2Pos_WedgeElement(PositiveFiniteElement):
     def CalcShape(self, ip, shape):
         r"""CalcShape(L2Pos_WedgeElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.L2Pos_WedgeElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.L2Pos_WedgeElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(L2Pos_WedgeElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.L2Pos_WedgeElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.L2Pos_WedgeElement_CalcDShape)
     __swig_destroy__ = _fe.delete_L2Pos_WedgeElement
 
 # Register L2Pos_WedgeElement in _fe:
@@ -2798,9 +3214,9 @@ class RT_QuadrilateralElement(VectorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(RT_QuadrilateralElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> RT_QuadrilateralElement"""
-        _fe.RT_QuadrilateralElement_swiginit(self, _fe.new_RT_QuadrilateralElement(*args))
+        _fe.RT_QuadrilateralElement_swiginit(self, _fe.new_RT_QuadrilateralElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -2808,26 +3224,32 @@ class RT_QuadrilateralElement(VectorFiniteElement):
         CalcVShape(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT_QuadrilateralElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT_QuadrilateralElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT_QuadrilateralElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT_QuadrilateralElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT_QuadrilateralElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT_QuadrilateralElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(RT_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.RT_QuadrilateralElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.RT_QuadrilateralElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_QuadrilateralElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.RT_QuadrilateralElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(RT_QuadrilateralElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.RT_QuadrilateralElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.RT_QuadrilateralElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -2838,14 +3260,17 @@ class RT_QuadrilateralElement(VectorFiniteElement):
         Project(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.RT_QuadrilateralElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT_QuadrilateralElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.RT_QuadrilateralElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.RT_QuadrilateralElement_ProjectGrad)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(RT_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.RT_QuadrilateralElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.RT_QuadrilateralElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_RT_QuadrilateralElement
 
 # Register RT_QuadrilateralElement in _fe:
@@ -2857,9 +3282,9 @@ class RT_HexahedronElement(VectorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(RT_HexahedronElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> RT_HexahedronElement"""
-        _fe.RT_HexahedronElement_swiginit(self, _fe.new_RT_HexahedronElement(*args))
+        _fe.RT_HexahedronElement_swiginit(self, _fe.new_RT_HexahedronElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -2867,26 +3292,32 @@ class RT_HexahedronElement(VectorFiniteElement):
         CalcVShape(RT_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT_HexahedronElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT_HexahedronElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT_HexahedronElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT_HexahedronElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT_HexahedronElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_HexahedronElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT_HexahedronElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(RT_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.RT_HexahedronElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.RT_HexahedronElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_HexahedronElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.RT_HexahedronElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(RT_HexahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.RT_HexahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.RT_HexahedronElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -2897,10 +3328,12 @@ class RT_HexahedronElement(VectorFiniteElement):
         Project(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.RT_HexahedronElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT_HexahedronElement_Project)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(RT_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.RT_HexahedronElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.RT_HexahedronElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_RT_HexahedronElement
 
 # Register RT_HexahedronElement in _fe:
@@ -2922,26 +3355,32 @@ class RT_TriangleElement(VectorFiniteElement):
         CalcVShape(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT_TriangleElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT_TriangleElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT_TriangleElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT_TriangleElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT_TriangleElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_TriangleElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT_TriangleElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(RT_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.RT_TriangleElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.RT_TriangleElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_TriangleElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.RT_TriangleElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(RT_TriangleElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.RT_TriangleElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.RT_TriangleElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -2952,14 +3391,17 @@ class RT_TriangleElement(VectorFiniteElement):
         Project(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.RT_TriangleElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT_TriangleElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.RT_TriangleElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.RT_TriangleElement_ProjectGrad)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(RT_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.RT_TriangleElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.RT_TriangleElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_RT_TriangleElement
 
 # Register RT_TriangleElement in _fe:
@@ -2981,26 +3423,32 @@ class RT_TetrahedronElement(VectorFiniteElement):
         CalcVShape(RT_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.RT_TetrahedronElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.RT_TetrahedronElement_CalcVShape)
 
     def CalcDivShape(self, ip, divshape):
         r"""CalcDivShape(RT_TetrahedronElement self, IntegrationPoint ip, Vector divshape)"""
         return _fe.RT_TetrahedronElement_CalcDivShape(self, ip, divshape)
+    CalcDivShape = _swig_new_instance_method(_fe.RT_TetrahedronElement_CalcDivShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(RT_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.RT_TetrahedronElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(RT_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.RT_TetrahedronElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.RT_TetrahedronElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.RT_TetrahedronElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.RT_TetrahedronElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(RT_TetrahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.RT_TetrahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.RT_TetrahedronElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -3011,24 +3459,26 @@ class RT_TetrahedronElement(VectorFiniteElement):
         Project(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.RT_TetrahedronElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.RT_TetrahedronElement_Project)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(RT_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.RT_TetrahedronElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.RT_TetrahedronElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_RT_TetrahedronElement
 
 # Register RT_TetrahedronElement in _fe:
 _fe.RT_TetrahedronElement_swigregister(RT_TetrahedronElement)
 
-class ND_HexahedronElement(VectorFiniteElement):
+class ND_HexahedronElement(VectorTensorFiniteElement):
     r"""Proxy of C++ mfem::ND_HexahedronElement class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_HexahedronElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_HexahedronElement"""
-        _fe.ND_HexahedronElement_swiginit(self, _fe.new_ND_HexahedronElement(*args))
+        _fe.ND_HexahedronElement_swiginit(self, _fe.new_ND_HexahedronElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -3036,26 +3486,32 @@ class ND_HexahedronElement(VectorFiniteElement):
         CalcVShape(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.ND_HexahedronElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.ND_HexahedronElement_CalcVShape)
 
     def CalcCurlShape(self, ip, curl_shape):
         r"""CalcCurlShape(ND_HexahedronElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
         return _fe.ND_HexahedronElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe.ND_HexahedronElement_CalcCurlShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_HexahedronElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.ND_HexahedronElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(ND_HexahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.ND_HexahedronElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.ND_HexahedronElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_HexahedronElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.ND_HexahedronElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(ND_HexahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.ND_HexahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.ND_HexahedronElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -3066,28 +3522,31 @@ class ND_HexahedronElement(VectorFiniteElement):
         Project(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.ND_HexahedronElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.ND_HexahedronElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.ND_HexahedronElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.ND_HexahedronElement_ProjectGrad)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(ND_HexahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.ND_HexahedronElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.ND_HexahedronElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_ND_HexahedronElement
 
 # Register ND_HexahedronElement in _fe:
 _fe.ND_HexahedronElement_swigregister(ND_HexahedronElement)
 
-class ND_QuadrilateralElement(VectorFiniteElement):
+class ND_QuadrilateralElement(VectorTensorFiniteElement):
     r"""Proxy of C++ mfem::ND_QuadrilateralElement class."""
 
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_QuadrilateralElement self, int const p, int const cb_type=GaussLobatto, int const ob_type=GaussLegendre) -> ND_QuadrilateralElement"""
-        _fe.ND_QuadrilateralElement_swiginit(self, _fe.new_ND_QuadrilateralElement(*args))
+        _fe.ND_QuadrilateralElement_swiginit(self, _fe.new_ND_QuadrilateralElement(*args, **kwargs))
 
     def CalcVShape(self, *args):
         r"""
@@ -3095,26 +3554,32 @@ class ND_QuadrilateralElement(VectorFiniteElement):
         CalcVShape(ND_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.ND_QuadrilateralElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.ND_QuadrilateralElement_CalcVShape)
 
     def CalcCurlShape(self, ip, curl_shape):
         r"""CalcCurlShape(ND_QuadrilateralElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
         return _fe.ND_QuadrilateralElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe.ND_QuadrilateralElement_CalcCurlShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(ND_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_QuadrilateralElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.ND_QuadrilateralElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(ND_QuadrilateralElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.ND_QuadrilateralElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.ND_QuadrilateralElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_QuadrilateralElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.ND_QuadrilateralElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(ND_QuadrilateralElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.ND_QuadrilateralElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.ND_QuadrilateralElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -3125,10 +3590,12 @@ class ND_QuadrilateralElement(VectorFiniteElement):
         Project(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.ND_QuadrilateralElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.ND_QuadrilateralElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(ND_QuadrilateralElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.ND_QuadrilateralElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.ND_QuadrilateralElement_ProjectGrad)
     __swig_destroy__ = _fe.delete_ND_QuadrilateralElement
 
 # Register ND_QuadrilateralElement in _fe:
@@ -3150,26 +3617,32 @@ class ND_TetrahedronElement(VectorFiniteElement):
         CalcVShape(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.ND_TetrahedronElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.ND_TetrahedronElement_CalcVShape)
 
     def CalcCurlShape(self, ip, curl_shape):
         r"""CalcCurlShape(ND_TetrahedronElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
         return _fe.ND_TetrahedronElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe.ND_TetrahedronElement_CalcCurlShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_TetrahedronElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.ND_TetrahedronElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(ND_TetrahedronElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.ND_TetrahedronElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.ND_TetrahedronElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_TetrahedronElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.ND_TetrahedronElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(ND_TetrahedronElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.ND_TetrahedronElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.ND_TetrahedronElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -3180,14 +3653,17 @@ class ND_TetrahedronElement(VectorFiniteElement):
         Project(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.ND_TetrahedronElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.ND_TetrahedronElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.ND_TetrahedronElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.ND_TetrahedronElement_ProjectGrad)
 
     def ProjectCurl(self, fe, Trans, curl):
         r"""ProjectCurl(ND_TetrahedronElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix curl)"""
         return _fe.ND_TetrahedronElement_ProjectCurl(self, fe, Trans, curl)
+    ProjectCurl = _swig_new_instance_method(_fe.ND_TetrahedronElement_ProjectCurl)
     __swig_destroy__ = _fe.delete_ND_TetrahedronElement
 
 # Register ND_TetrahedronElement in _fe:
@@ -3209,26 +3685,32 @@ class ND_TriangleElement(VectorFiniteElement):
         CalcVShape(ND_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.ND_TriangleElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.ND_TriangleElement_CalcVShape)
 
     def CalcCurlShape(self, ip, curl_shape):
         r"""CalcCurlShape(ND_TriangleElement self, IntegrationPoint ip, DenseMatrix curl_shape)"""
         return _fe.ND_TriangleElement_CalcCurlShape(self, ip, curl_shape)
+    CalcCurlShape = _swig_new_instance_method(_fe.ND_TriangleElement_CalcCurlShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(ND_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_TriangleElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.ND_TriangleElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(ND_TriangleElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.ND_TriangleElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.ND_TriangleElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_TriangleElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.ND_TriangleElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(ND_TriangleElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.ND_TriangleElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.ND_TriangleElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -3239,10 +3721,12 @@ class ND_TriangleElement(VectorFiniteElement):
         Project(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.ND_TriangleElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.ND_TriangleElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(ND_TriangleElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.ND_TriangleElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.ND_TriangleElement_ProjectGrad)
     __swig_destroy__ = _fe.delete_ND_TriangleElement
 
 # Register ND_TriangleElement in _fe:
@@ -3254,13 +3738,14 @@ class ND_SegmentElement(VectorFiniteElement):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(ND_SegmentElement self, int const p, int const ob_type=GaussLegendre) -> ND_SegmentElement"""
-        _fe.ND_SegmentElement_swiginit(self, _fe.new_ND_SegmentElement(*args))
+        _fe.ND_SegmentElement_swiginit(self, _fe.new_ND_SegmentElement(*args, **kwargs))
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(ND_SegmentElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.ND_SegmentElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.ND_SegmentElement_CalcShape)
 
     def CalcVShape(self, *args):
         r"""
@@ -3268,22 +3753,27 @@ class ND_SegmentElement(VectorFiniteElement):
         CalcVShape(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix shape)
         """
         return _fe.ND_SegmentElement_CalcVShape(self, *args)
+    CalcVShape = _swig_new_instance_method(_fe.ND_SegmentElement_CalcVShape)
 
     def GetLocalInterpolation(self, Trans, I):
         r"""GetLocalInterpolation(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_SegmentElement_GetLocalInterpolation(self, Trans, I)
+    GetLocalInterpolation = _swig_new_instance_method(_fe.ND_SegmentElement_GetLocalInterpolation)
 
     def GetLocalRestriction(self, Trans, R):
         r"""GetLocalRestriction(ND_SegmentElement self, mfem::ElementTransformation & Trans, DenseMatrix R)"""
         return _fe.ND_SegmentElement_GetLocalRestriction(self, Trans, R)
+    GetLocalRestriction = _swig_new_instance_method(_fe.ND_SegmentElement_GetLocalRestriction)
 
     def GetTransferMatrix(self, fe, Trans, I):
         r"""GetTransferMatrix(ND_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)"""
         return _fe.ND_SegmentElement_GetTransferMatrix(self, fe, Trans, I)
+    GetTransferMatrix = _swig_new_instance_method(_fe.ND_SegmentElement_GetTransferMatrix)
 
     def ProjectMatrixCoefficient(self, mc, T, dofs):
         r"""ProjectMatrixCoefficient(ND_SegmentElement self, mfem::MatrixCoefficient & mc, mfem::ElementTransformation & T, Vector dofs)"""
         return _fe.ND_SegmentElement_ProjectMatrixCoefficient(self, mc, T, dofs)
+    ProjectMatrixCoefficient = _swig_new_instance_method(_fe.ND_SegmentElement_ProjectMatrixCoefficient)
 
     def Project(self, *args):
         r"""
@@ -3294,10 +3784,12 @@ class ND_SegmentElement(VectorFiniteElement):
         Project(ND_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix I)
         """
         return _fe.ND_SegmentElement_Project(self, *args)
+    Project = _swig_new_instance_method(_fe.ND_SegmentElement_Project)
 
     def ProjectGrad(self, fe, Trans, grad):
         r"""ProjectGrad(ND_SegmentElement self, FiniteElement fe, mfem::ElementTransformation & Trans, DenseMatrix grad)"""
         return _fe.ND_SegmentElement_ProjectGrad(self, fe, Trans, grad)
+    ProjectGrad = _swig_new_instance_method(_fe.ND_SegmentElement_ProjectGrad)
     __swig_destroy__ = _fe.delete_ND_SegmentElement
 
 # Register ND_SegmentElement in _fe:
@@ -3315,38 +3807,47 @@ class NURBSFiniteElement(ScalarFiniteElement):
     def Reset(self):
         r"""Reset(NURBSFiniteElement self)"""
         return _fe.NURBSFiniteElement_Reset(self)
+    Reset = _swig_new_instance_method(_fe.NURBSFiniteElement_Reset)
 
     def SetIJK(self, IJK):
         r"""SetIJK(NURBSFiniteElement self, int const * IJK)"""
         return _fe.NURBSFiniteElement_SetIJK(self, IJK)
+    SetIJK = _swig_new_instance_method(_fe.NURBSFiniteElement_SetIJK)
 
     def GetPatch(self):
         r"""GetPatch(NURBSFiniteElement self) -> int"""
         return _fe.NURBSFiniteElement_GetPatch(self)
+    GetPatch = _swig_new_instance_method(_fe.NURBSFiniteElement_GetPatch)
 
     def SetPatch(self, p):
         r"""SetPatch(NURBSFiniteElement self, int p)"""
         return _fe.NURBSFiniteElement_SetPatch(self, p)
+    SetPatch = _swig_new_instance_method(_fe.NURBSFiniteElement_SetPatch)
 
     def GetElement(self):
         r"""GetElement(NURBSFiniteElement self) -> int"""
         return _fe.NURBSFiniteElement_GetElement(self)
+    GetElement = _swig_new_instance_method(_fe.NURBSFiniteElement_GetElement)
 
     def SetElement(self, e):
         r"""SetElement(NURBSFiniteElement self, int e)"""
         return _fe.NURBSFiniteElement_SetElement(self, e)
+    SetElement = _swig_new_instance_method(_fe.NURBSFiniteElement_SetElement)
 
     def KnotVectors(self):
         r"""KnotVectors(NURBSFiniteElement self) -> mfem::Array< mfem::KnotVector const * > &"""
         return _fe.NURBSFiniteElement_KnotVectors(self)
+    KnotVectors = _swig_new_instance_method(_fe.NURBSFiniteElement_KnotVectors)
 
     def Weights(self):
         r"""Weights(NURBSFiniteElement self) -> Vector"""
         return _fe.NURBSFiniteElement_Weights(self)
+    Weights = _swig_new_instance_method(_fe.NURBSFiniteElement_Weights)
 
     def SetOrder(self):
         r"""SetOrder(NURBSFiniteElement self)"""
         return _fe.NURBSFiniteElement_SetOrder(self)
+    SetOrder = _swig_new_instance_method(_fe.NURBSFiniteElement_SetOrder)
     __swig_destroy__ = _fe.delete_NURBSFiniteElement
 
 # Register NURBSFiniteElement in _fe:
@@ -3365,14 +3866,22 @@ class NURBS1DFiniteElement(NURBSFiniteElement):
     def SetOrder(self):
         r"""SetOrder(NURBS1DFiniteElement self)"""
         return _fe.NURBS1DFiniteElement_SetOrder(self)
+    SetOrder = _swig_new_instance_method(_fe.NURBS1DFiniteElement_SetOrder)
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(NURBS1DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.NURBS1DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.NURBS1DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(NURBS1DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.NURBS1DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.NURBS1DFiniteElement_CalcDShape)
+
+    def CalcHessian(self, ip, hessian):
+        r"""CalcHessian(NURBS1DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"""
+        return _fe.NURBS1DFiniteElement_CalcHessian(self, ip, hessian)
+    CalcHessian = _swig_new_instance_method(_fe.NURBS1DFiniteElement_CalcHessian)
     __swig_destroy__ = _fe.delete_NURBS1DFiniteElement
 
 # Register NURBS1DFiniteElement in _fe:
@@ -3394,14 +3903,22 @@ class NURBS2DFiniteElement(NURBSFiniteElement):
     def SetOrder(self):
         r"""SetOrder(NURBS2DFiniteElement self)"""
         return _fe.NURBS2DFiniteElement_SetOrder(self)
+    SetOrder = _swig_new_instance_method(_fe.NURBS2DFiniteElement_SetOrder)
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(NURBS2DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.NURBS2DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.NURBS2DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(NURBS2DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.NURBS2DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.NURBS2DFiniteElement_CalcDShape)
+
+    def CalcHessian(self, ip, hessian):
+        r"""CalcHessian(NURBS2DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"""
+        return _fe.NURBS2DFiniteElement_CalcHessian(self, ip, hessian)
+    CalcHessian = _swig_new_instance_method(_fe.NURBS2DFiniteElement_CalcHessian)
     __swig_destroy__ = _fe.delete_NURBS2DFiniteElement
 
 # Register NURBS2DFiniteElement in _fe:
@@ -3423,14 +3940,22 @@ class NURBS3DFiniteElement(NURBSFiniteElement):
     def SetOrder(self):
         r"""SetOrder(NURBS3DFiniteElement self)"""
         return _fe.NURBS3DFiniteElement_SetOrder(self)
+    SetOrder = _swig_new_instance_method(_fe.NURBS3DFiniteElement_SetOrder)
 
     def CalcShape(self, ip, shape):
         r"""CalcShape(NURBS3DFiniteElement self, IntegrationPoint ip, Vector shape)"""
         return _fe.NURBS3DFiniteElement_CalcShape(self, ip, shape)
+    CalcShape = _swig_new_instance_method(_fe.NURBS3DFiniteElement_CalcShape)
 
     def CalcDShape(self, ip, dshape):
         r"""CalcDShape(NURBS3DFiniteElement self, IntegrationPoint ip, DenseMatrix dshape)"""
         return _fe.NURBS3DFiniteElement_CalcDShape(self, ip, dshape)
+    CalcDShape = _swig_new_instance_method(_fe.NURBS3DFiniteElement_CalcDShape)
+
+    def CalcHessian(self, ip, hessian):
+        r"""CalcHessian(NURBS3DFiniteElement self, IntegrationPoint ip, DenseMatrix hessian)"""
+        return _fe.NURBS3DFiniteElement_CalcHessian(self, ip, hessian)
+    CalcHessian = _swig_new_instance_method(_fe.NURBS3DFiniteElement_CalcHessian)
     __swig_destroy__ = _fe.delete_NURBS3DFiniteElement
 
 # Register NURBS3DFiniteElement in _fe:

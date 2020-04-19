@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _blockvector.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _blockvector.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -87,14 +90,17 @@ class BlockVector(mfem._par.vector.Vector):
         GetBlock(BlockVector self, int i) -> Vector
         """
         return _blockvector.BlockVector_GetBlock(self, *args)
+    GetBlock = _swig_new_instance_method(_blockvector.BlockVector_GetBlock)
 
     def GetBlockView(self, i, blockView):
         r"""GetBlockView(BlockVector self, int i, Vector blockView)"""
         return _blockvector.BlockVector_GetBlockView(self, i, blockView)
+    GetBlockView = _swig_new_instance_method(_blockvector.BlockVector_GetBlockView)
 
     def BlockSize(self, i):
         r"""BlockSize(BlockVector self, int i) -> int"""
         return _blockvector.BlockVector_BlockSize(self, i)
+    BlockSize = _swig_new_instance_method(_blockvector.BlockVector_BlockSize)
 
     def Update(self, *args):
         r"""
@@ -103,6 +109,7 @@ class BlockVector(mfem._par.vector.Vector):
         Update(BlockVector self, intArray bOffsets, mfem::MemoryType mt)
         """
         return _blockvector.BlockVector_Update(self, *args)
+    Update = _swig_new_instance_method(_blockvector.BlockVector_Update)
 
 # Register BlockVector in _blockvector:
 _blockvector.BlockVector_swigregister(BlockVector)

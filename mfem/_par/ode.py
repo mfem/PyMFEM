@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _ode.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _ode.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -79,14 +82,17 @@ class ODESolver(object):
     def Init(self, f):
         r"""Init(ODESolver self, TimeDependentOperator f)"""
         return _ode.ODESolver_Init(self, f)
+    Init = _swig_new_instance_method(_ode.ODESolver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(ODESolver self, Vector x, double & t, double & dt)"""
         return _ode.ODESolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.ODESolver_Step)
 
     def Run(self, x, t, dt, tf):
         r"""Run(ODESolver self, Vector x, double & t, double & dt, double tf)"""
         return _ode.ODESolver_Run(self, x, t, dt, tf)
+    Run = _swig_new_instance_method(_ode.ODESolver_Run)
     __swig_destroy__ = _ode.delete_ODESolver
 
 # Register ODESolver in _ode:
@@ -101,10 +107,12 @@ class ForwardEulerSolver(ODESolver):
     def Init(self, _f):
         r"""Init(ForwardEulerSolver self, TimeDependentOperator _f)"""
         return _ode.ForwardEulerSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.ForwardEulerSolver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(ForwardEulerSolver self, Vector x, double & t, double & dt)"""
         return _ode.ForwardEulerSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.ForwardEulerSolver_Step)
 
     def __init__(self):
         r"""__init__(ForwardEulerSolver self) -> ForwardEulerSolver"""
@@ -120,17 +128,19 @@ class RK2Solver(ODESolver):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(RK2Solver self, double const _a=2./3.) -> RK2Solver"""
-        _ode.RK2Solver_swiginit(self, _ode.new_RK2Solver(*args))
+        _ode.RK2Solver_swiginit(self, _ode.new_RK2Solver(*args, **kwargs))
 
     def Init(self, _f):
         r"""Init(RK2Solver self, TimeDependentOperator _f)"""
         return _ode.RK2Solver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.RK2Solver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(RK2Solver self, Vector x, double & t, double & dt)"""
         return _ode.RK2Solver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.RK2Solver_Step)
     __swig_destroy__ = _ode.delete_RK2Solver
 
 # Register RK2Solver in _ode:
@@ -145,10 +155,12 @@ class RK3SSPSolver(ODESolver):
     def Init(self, _f):
         r"""Init(RK3SSPSolver self, TimeDependentOperator _f)"""
         return _ode.RK3SSPSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.RK3SSPSolver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(RK3SSPSolver self, Vector x, double & t, double & dt)"""
         return _ode.RK3SSPSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.RK3SSPSolver_Step)
 
     def __init__(self):
         r"""__init__(RK3SSPSolver self) -> RK3SSPSolver"""
@@ -167,10 +179,12 @@ class RK4Solver(ODESolver):
     def Init(self, _f):
         r"""Init(RK4Solver self, TimeDependentOperator _f)"""
         return _ode.RK4Solver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.RK4Solver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(RK4Solver self, Vector x, double & t, double & dt)"""
         return _ode.RK4Solver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.RK4Solver_Step)
 
     def __init__(self):
         r"""__init__(RK4Solver self) -> RK4Solver"""
@@ -193,10 +207,12 @@ class ExplicitRKSolver(ODESolver):
     def Init(self, _f):
         r"""Init(ExplicitRKSolver self, TimeDependentOperator _f)"""
         return _ode.ExplicitRKSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.ExplicitRKSolver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(ExplicitRKSolver self, Vector x, double & t, double & dt)"""
         return _ode.ExplicitRKSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.ExplicitRKSolver_Step)
     __swig_destroy__ = _ode.delete_ExplicitRKSolver
 
 # Register ExplicitRKSolver in _ode:
@@ -230,6 +246,194 @@ class RK8Solver(ExplicitRKSolver):
 # Register RK8Solver in _ode:
 _ode.RK8Solver_swigregister(RK8Solver)
 
+class AdamsBashforthSolver(ODESolver):
+    r"""Proxy of C++ mfem::AdamsBashforthSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, _s, _a):
+        r"""__init__(AdamsBashforthSolver self, int _s, double const * _a) -> AdamsBashforthSolver"""
+        _ode.AdamsBashforthSolver_swiginit(self, _ode.new_AdamsBashforthSolver(_s, _a))
+
+    def Init(self, _f):
+        r"""Init(AdamsBashforthSolver self, TimeDependentOperator _f)"""
+        return _ode.AdamsBashforthSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.AdamsBashforthSolver_Init)
+
+    def Step(self, x, t, dt):
+        r"""Step(AdamsBashforthSolver self, Vector x, double & t, double & dt)"""
+        return _ode.AdamsBashforthSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.AdamsBashforthSolver_Step)
+    __swig_destroy__ = _ode.delete_AdamsBashforthSolver
+
+# Register AdamsBashforthSolver in _ode:
+_ode.AdamsBashforthSolver_swigregister(AdamsBashforthSolver)
+
+class AB1Solver(AdamsBashforthSolver):
+    r"""Proxy of C++ mfem::AB1Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AB1Solver self) -> AB1Solver"""
+        _ode.AB1Solver_swiginit(self, _ode.new_AB1Solver())
+    __swig_destroy__ = _ode.delete_AB1Solver
+
+# Register AB1Solver in _ode:
+_ode.AB1Solver_swigregister(AB1Solver)
+
+class AB2Solver(AdamsBashforthSolver):
+    r"""Proxy of C++ mfem::AB2Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AB2Solver self) -> AB2Solver"""
+        _ode.AB2Solver_swiginit(self, _ode.new_AB2Solver())
+    __swig_destroy__ = _ode.delete_AB2Solver
+
+# Register AB2Solver in _ode:
+_ode.AB2Solver_swigregister(AB2Solver)
+
+class AB3Solver(AdamsBashforthSolver):
+    r"""Proxy of C++ mfem::AB3Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AB3Solver self) -> AB3Solver"""
+        _ode.AB3Solver_swiginit(self, _ode.new_AB3Solver())
+    __swig_destroy__ = _ode.delete_AB3Solver
+
+# Register AB3Solver in _ode:
+_ode.AB3Solver_swigregister(AB3Solver)
+
+class AB4Solver(AdamsBashforthSolver):
+    r"""Proxy of C++ mfem::AB4Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AB4Solver self) -> AB4Solver"""
+        _ode.AB4Solver_swiginit(self, _ode.new_AB4Solver())
+    __swig_destroy__ = _ode.delete_AB4Solver
+
+# Register AB4Solver in _ode:
+_ode.AB4Solver_swigregister(AB4Solver)
+
+class AB5Solver(AdamsBashforthSolver):
+    r"""Proxy of C++ mfem::AB5Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AB5Solver self) -> AB5Solver"""
+        _ode.AB5Solver_swiginit(self, _ode.new_AB5Solver())
+    __swig_destroy__ = _ode.delete_AB5Solver
+
+# Register AB5Solver in _ode:
+_ode.AB5Solver_swigregister(AB5Solver)
+
+class AdamsMoultonSolver(ODESolver):
+    r"""Proxy of C++ mfem::AdamsMoultonSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, _s, _a):
+        r"""__init__(AdamsMoultonSolver self, int _s, double const * _a) -> AdamsMoultonSolver"""
+        _ode.AdamsMoultonSolver_swiginit(self, _ode.new_AdamsMoultonSolver(_s, _a))
+
+    def Init(self, _f):
+        r"""Init(AdamsMoultonSolver self, TimeDependentOperator _f)"""
+        return _ode.AdamsMoultonSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.AdamsMoultonSolver_Init)
+
+    def Step(self, x, t, dt):
+        r"""Step(AdamsMoultonSolver self, Vector x, double & t, double & dt)"""
+        return _ode.AdamsMoultonSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.AdamsMoultonSolver_Step)
+    __swig_destroy__ = _ode.delete_AdamsMoultonSolver
+
+# Register AdamsMoultonSolver in _ode:
+_ode.AdamsMoultonSolver_swigregister(AdamsMoultonSolver)
+
+class AM0Solver(AdamsMoultonSolver):
+    r"""Proxy of C++ mfem::AM0Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AM0Solver self) -> AM0Solver"""
+        _ode.AM0Solver_swiginit(self, _ode.new_AM0Solver())
+    __swig_destroy__ = _ode.delete_AM0Solver
+
+# Register AM0Solver in _ode:
+_ode.AM0Solver_swigregister(AM0Solver)
+
+class AM1Solver(AdamsMoultonSolver):
+    r"""Proxy of C++ mfem::AM1Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AM1Solver self) -> AM1Solver"""
+        _ode.AM1Solver_swiginit(self, _ode.new_AM1Solver())
+    __swig_destroy__ = _ode.delete_AM1Solver
+
+# Register AM1Solver in _ode:
+_ode.AM1Solver_swigregister(AM1Solver)
+
+class AM2Solver(AdamsMoultonSolver):
+    r"""Proxy of C++ mfem::AM2Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AM2Solver self) -> AM2Solver"""
+        _ode.AM2Solver_swiginit(self, _ode.new_AM2Solver())
+    __swig_destroy__ = _ode.delete_AM2Solver
+
+# Register AM2Solver in _ode:
+_ode.AM2Solver_swigregister(AM2Solver)
+
+class AM3Solver(AdamsMoultonSolver):
+    r"""Proxy of C++ mfem::AM3Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AM3Solver self) -> AM3Solver"""
+        _ode.AM3Solver_swiginit(self, _ode.new_AM3Solver())
+    __swig_destroy__ = _ode.delete_AM3Solver
+
+# Register AM3Solver in _ode:
+_ode.AM3Solver_swigregister(AM3Solver)
+
+class AM4Solver(AdamsMoultonSolver):
+    r"""Proxy of C++ mfem::AM4Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AM4Solver self) -> AM4Solver"""
+        _ode.AM4Solver_swiginit(self, _ode.new_AM4Solver())
+    __swig_destroy__ = _ode.delete_AM4Solver
+
+# Register AM4Solver in _ode:
+_ode.AM4Solver_swigregister(AM4Solver)
+
 class BackwardEulerSolver(ODESolver):
     r"""Proxy of C++ mfem::BackwardEulerSolver class."""
 
@@ -239,10 +443,12 @@ class BackwardEulerSolver(ODESolver):
     def Init(self, _f):
         r"""Init(BackwardEulerSolver self, TimeDependentOperator _f)"""
         return _ode.BackwardEulerSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.BackwardEulerSolver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(BackwardEulerSolver self, Vector x, double & t, double & dt)"""
         return _ode.BackwardEulerSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.BackwardEulerSolver_Step)
 
     def __init__(self):
         r"""__init__(BackwardEulerSolver self) -> BackwardEulerSolver"""
@@ -261,10 +467,12 @@ class ImplicitMidpointSolver(ODESolver):
     def Init(self, _f):
         r"""Init(ImplicitMidpointSolver self, TimeDependentOperator _f)"""
         return _ode.ImplicitMidpointSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.ImplicitMidpointSolver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(ImplicitMidpointSolver self, Vector x, double & t, double & dt)"""
         return _ode.ImplicitMidpointSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.ImplicitMidpointSolver_Step)
 
     def __init__(self):
         r"""__init__(ImplicitMidpointSolver self) -> ImplicitMidpointSolver"""
@@ -287,10 +495,12 @@ class SDIRK23Solver(ODESolver):
     def Init(self, _f):
         r"""Init(SDIRK23Solver self, TimeDependentOperator _f)"""
         return _ode.SDIRK23Solver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.SDIRK23Solver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(SDIRK23Solver self, Vector x, double & t, double & dt)"""
         return _ode.SDIRK23Solver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.SDIRK23Solver_Step)
     __swig_destroy__ = _ode.delete_SDIRK23Solver
 
 # Register SDIRK23Solver in _ode:
@@ -305,10 +515,12 @@ class SDIRK34Solver(ODESolver):
     def Init(self, _f):
         r"""Init(SDIRK34Solver self, TimeDependentOperator _f)"""
         return _ode.SDIRK34Solver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.SDIRK34Solver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(SDIRK34Solver self, Vector x, double & t, double & dt)"""
         return _ode.SDIRK34Solver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.SDIRK34Solver_Step)
 
     def __init__(self):
         r"""__init__(SDIRK34Solver self) -> SDIRK34Solver"""
@@ -327,10 +539,12 @@ class SDIRK33Solver(ODESolver):
     def Init(self, _f):
         r"""Init(SDIRK33Solver self, TimeDependentOperator _f)"""
         return _ode.SDIRK33Solver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.SDIRK33Solver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(SDIRK33Solver self, Vector x, double & t, double & dt)"""
         return _ode.SDIRK33Solver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.SDIRK33Solver_Step)
 
     def __init__(self):
         r"""__init__(SDIRK33Solver self) -> SDIRK33Solver"""
@@ -353,10 +567,12 @@ class GeneralizedAlphaSolver(ODESolver):
     def Init(self, _f):
         r"""Init(GeneralizedAlphaSolver self, TimeDependentOperator _f)"""
         return _ode.GeneralizedAlphaSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.GeneralizedAlphaSolver_Init)
 
     def Step(self, x, t, dt):
         r"""Step(GeneralizedAlphaSolver self, Vector x, double & t, double & dt)"""
         return _ode.GeneralizedAlphaSolver_Step(self, x, t, dt)
+    Step = _swig_new_instance_method(_ode.GeneralizedAlphaSolver_Step)
     __swig_destroy__ = _ode.delete_GeneralizedAlphaSolver
 
 # Register GeneralizedAlphaSolver in _ode:
@@ -374,14 +590,17 @@ class SIASolver(object):
     def Init(self, P, F):
         r"""Init(SIASolver self, Operator P, TimeDependentOperator F)"""
         return _ode.SIASolver_Init(self, P, F)
+    Init = _swig_new_instance_method(_ode.SIASolver_Init)
 
     def Step(self, q, p, t, dt):
         r"""Step(SIASolver self, Vector q, Vector p, double & t, double & dt)"""
         return _ode.SIASolver_Step(self, q, p, t, dt)
+    Step = _swig_new_instance_method(_ode.SIASolver_Step)
 
     def Run(self, q, p, t, dt, tf):
         r"""Run(SIASolver self, Vector q, Vector p, double & t, double & dt, double tf)"""
         return _ode.SIASolver_Run(self, q, p, t, dt, tf)
+    Run = _swig_new_instance_method(_ode.SIASolver_Run)
     __swig_destroy__ = _ode.delete_SIASolver
 
 # Register SIASolver in _ode:
@@ -400,6 +619,7 @@ class SIA1Solver(SIASolver):
     def Step(self, q, p, t, dt):
         r"""Step(SIA1Solver self, Vector q, Vector p, double & t, double & dt)"""
         return _ode.SIA1Solver_Step(self, q, p, t, dt)
+    Step = _swig_new_instance_method(_ode.SIA1Solver_Step)
     __swig_destroy__ = _ode.delete_SIA1Solver
 
 # Register SIA1Solver in _ode:
@@ -418,6 +638,7 @@ class SIA2Solver(SIASolver):
     def Step(self, q, p, t, dt):
         r"""Step(SIA2Solver self, Vector q, Vector p, double & t, double & dt)"""
         return _ode.SIA2Solver_Step(self, q, p, t, dt)
+    Step = _swig_new_instance_method(_ode.SIA2Solver_Step)
     __swig_destroy__ = _ode.delete_SIA2Solver
 
 # Register SIA2Solver in _ode:
@@ -436,10 +657,181 @@ class SIAVSolver(SIASolver):
     def Step(self, q, p, t, dt):
         r"""Step(SIAVSolver self, Vector q, Vector p, double & t, double & dt)"""
         return _ode.SIAVSolver_Step(self, q, p, t, dt)
+    Step = _swig_new_instance_method(_ode.SIAVSolver_Step)
     __swig_destroy__ = _ode.delete_SIAVSolver
 
 # Register SIAVSolver in _ode:
 _ode.SIAVSolver_swigregister(SIAVSolver)
+
+class SecondOrderODESolver(object):
+    r"""Proxy of C++ mfem::SecondOrderODESolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+
+    def __init__(self, *args, **kwargs):
+        raise AttributeError("No constructor defined - class is abstract")
+    __repr__ = _swig_repr
+
+    def Init(self, f):
+        r"""Init(SecondOrderODESolver self, SecondOrderTimeDependentOperator f)"""
+        return _ode.SecondOrderODESolver_Init(self, f)
+    Init = _swig_new_instance_method(_ode.SecondOrderODESolver_Init)
+
+    def Step(self, x, dxdt, t, dt):
+        r"""Step(SecondOrderODESolver self, Vector x, Vector dxdt, double & t, double & dt)"""
+        return _ode.SecondOrderODESolver_Step(self, x, dxdt, t, dt)
+    Step = _swig_new_instance_method(_ode.SecondOrderODESolver_Step)
+
+    def Run(self, x, dxdt, t, dt, tf):
+        r"""Run(SecondOrderODESolver self, Vector x, Vector dxdt, double & t, double & dt, double tf)"""
+        return _ode.SecondOrderODESolver_Run(self, x, dxdt, t, dt, tf)
+    Run = _swig_new_instance_method(_ode.SecondOrderODESolver_Run)
+    __swig_destroy__ = _ode.delete_SecondOrderODESolver
+
+# Register SecondOrderODESolver in _ode:
+_ode.SecondOrderODESolver_swigregister(SecondOrderODESolver)
+
+class NewmarkSolver(SecondOrderODESolver):
+    r"""Proxy of C++ mfem::NewmarkSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, beta_=0.25, gamma_=0.5):
+        r"""__init__(NewmarkSolver self, double beta_=0.25, double gamma_=0.5) -> NewmarkSolver"""
+        _ode.NewmarkSolver_swiginit(self, _ode.new_NewmarkSolver(beta_, gamma_))
+
+    def PrintProperties(self, *args, **kwargs):
+        r"""PrintProperties(NewmarkSolver self, std::ostream & out=mfem::out)"""
+        return _ode.NewmarkSolver_PrintProperties(self, *args, **kwargs)
+    PrintProperties = _swig_new_instance_method(_ode.NewmarkSolver_PrintProperties)
+
+    def Init(self, _f):
+        r"""Init(NewmarkSolver self, SecondOrderTimeDependentOperator _f)"""
+        return _ode.NewmarkSolver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.NewmarkSolver_Init)
+
+    def Step(self, x, dxdt, t, dt):
+        r"""Step(NewmarkSolver self, Vector x, Vector dxdt, double & t, double & dt)"""
+        return _ode.NewmarkSolver_Step(self, x, dxdt, t, dt)
+    Step = _swig_new_instance_method(_ode.NewmarkSolver_Step)
+    __swig_destroy__ = _ode.delete_NewmarkSolver
+
+# Register NewmarkSolver in _ode:
+_ode.NewmarkSolver_swigregister(NewmarkSolver)
+
+class LinearAccelerationSolver(NewmarkSolver):
+    r"""Proxy of C++ mfem::LinearAccelerationSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(LinearAccelerationSolver self) -> LinearAccelerationSolver"""
+        _ode.LinearAccelerationSolver_swiginit(self, _ode.new_LinearAccelerationSolver())
+    __swig_destroy__ = _ode.delete_LinearAccelerationSolver
+
+# Register LinearAccelerationSolver in _ode:
+_ode.LinearAccelerationSolver_swigregister(LinearAccelerationSolver)
+
+class CentralDifferenceSolver(NewmarkSolver):
+    r"""Proxy of C++ mfem::CentralDifferenceSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(CentralDifferenceSolver self) -> CentralDifferenceSolver"""
+        _ode.CentralDifferenceSolver_swiginit(self, _ode.new_CentralDifferenceSolver())
+    __swig_destroy__ = _ode.delete_CentralDifferenceSolver
+
+# Register CentralDifferenceSolver in _ode:
+_ode.CentralDifferenceSolver_swigregister(CentralDifferenceSolver)
+
+class FoxGoodwinSolver(NewmarkSolver):
+    r"""Proxy of C++ mfem::FoxGoodwinSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(FoxGoodwinSolver self) -> FoxGoodwinSolver"""
+        _ode.FoxGoodwinSolver_swiginit(self, _ode.new_FoxGoodwinSolver())
+    __swig_destroy__ = _ode.delete_FoxGoodwinSolver
+
+# Register FoxGoodwinSolver in _ode:
+_ode.FoxGoodwinSolver_swigregister(FoxGoodwinSolver)
+
+class GeneralizedAlpha2Solver(SecondOrderODESolver):
+    r"""Proxy of C++ mfem::GeneralizedAlpha2Solver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, rho_inf=1.0):
+        r"""__init__(GeneralizedAlpha2Solver self, double rho_inf=1.0) -> GeneralizedAlpha2Solver"""
+        _ode.GeneralizedAlpha2Solver_swiginit(self, _ode.new_GeneralizedAlpha2Solver(rho_inf))
+
+    def PrintProperties(self, *args, **kwargs):
+        r"""PrintProperties(GeneralizedAlpha2Solver self, std::ostream & out=mfem::out)"""
+        return _ode.GeneralizedAlpha2Solver_PrintProperties(self, *args, **kwargs)
+    PrintProperties = _swig_new_instance_method(_ode.GeneralizedAlpha2Solver_PrintProperties)
+
+    def Init(self, _f):
+        r"""Init(GeneralizedAlpha2Solver self, SecondOrderTimeDependentOperator _f)"""
+        return _ode.GeneralizedAlpha2Solver_Init(self, _f)
+    Init = _swig_new_instance_method(_ode.GeneralizedAlpha2Solver_Init)
+
+    def Step(self, x, dxdt, t, dt):
+        r"""Step(GeneralizedAlpha2Solver self, Vector x, Vector dxdt, double & t, double & dt)"""
+        return _ode.GeneralizedAlpha2Solver_Step(self, x, dxdt, t, dt)
+    Step = _swig_new_instance_method(_ode.GeneralizedAlpha2Solver_Step)
+    __swig_destroy__ = _ode.delete_GeneralizedAlpha2Solver
+
+# Register GeneralizedAlpha2Solver in _ode:
+_ode.GeneralizedAlpha2Solver_swigregister(GeneralizedAlpha2Solver)
+
+class AverageAccelerationSolver(GeneralizedAlpha2Solver):
+    r"""Proxy of C++ mfem::AverageAccelerationSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        r"""__init__(AverageAccelerationSolver self) -> AverageAccelerationSolver"""
+        _ode.AverageAccelerationSolver_swiginit(self, _ode.new_AverageAccelerationSolver())
+    __swig_destroy__ = _ode.delete_AverageAccelerationSolver
+
+# Register AverageAccelerationSolver in _ode:
+_ode.AverageAccelerationSolver_swigregister(AverageAccelerationSolver)
+
+class HHTAlphaSolver(GeneralizedAlpha2Solver):
+    r"""Proxy of C++ mfem::HHTAlphaSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, alpha=1.0):
+        r"""__init__(HHTAlphaSolver self, double alpha=1.0) -> HHTAlphaSolver"""
+        _ode.HHTAlphaSolver_swiginit(self, _ode.new_HHTAlphaSolver(alpha))
+    __swig_destroy__ = _ode.delete_HHTAlphaSolver
+
+# Register HHTAlphaSolver in _ode:
+_ode.HHTAlphaSolver_swigregister(HHTAlphaSolver)
+
+class WBZAlphaSolver(GeneralizedAlpha2Solver):
+    r"""Proxy of C++ mfem::WBZAlphaSolver class."""
+
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self, rho_inf=1.0):
+        r"""__init__(WBZAlphaSolver self, double rho_inf=1.0) -> WBZAlphaSolver"""
+        _ode.WBZAlphaSolver_swiginit(self, _ode.new_WBZAlphaSolver(rho_inf))
+    __swig_destroy__ = _ode.delete_WBZAlphaSolver
+
+# Register WBZAlphaSolver in _ode:
+_ode.WBZAlphaSolver_swigregister(WBZAlphaSolver)
 
 
 

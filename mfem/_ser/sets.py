@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _sets.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _sets.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -81,22 +84,27 @@ class IntegerSet(object):
     def Size(self):
         r"""Size(IntegerSet self) -> int"""
         return _sets.IntegerSet_Size(self)
+    Size = _swig_new_instance_method(_sets.IntegerSet_Size)
 
     def PickElement(self):
         r"""PickElement(IntegerSet self) -> int"""
         return _sets.IntegerSet_PickElement(self)
+    PickElement = _swig_new_instance_method(_sets.IntegerSet_PickElement)
 
     def PickRandomElement(self):
         r"""PickRandomElement(IntegerSet self) -> int"""
         return _sets.IntegerSet_PickRandomElement(self)
+    PickRandomElement = _swig_new_instance_method(_sets.IntegerSet_PickRandomElement)
 
     def __eq__(self, s):
         r"""__eq__(IntegerSet self, IntegerSet s) -> int"""
         return _sets.IntegerSet___eq__(self, s)
+    __eq__ = _swig_new_instance_method(_sets.IntegerSet___eq__)
 
     def Recreate(self, n, p):
         r"""Recreate(IntegerSet self, int const n, int const * p)"""
         return _sets.IntegerSet_Recreate(self, n, p)
+    Recreate = _swig_new_instance_method(_sets.IntegerSet_Recreate)
     __swig_destroy__ = _sets.delete_IntegerSet
 
 # Register IntegerSet in _sets:
@@ -111,26 +119,32 @@ class ListOfIntegerSets(object):
     def Size(self):
         r"""Size(ListOfIntegerSets self) -> int"""
         return _sets.ListOfIntegerSets_Size(self)
+    Size = _swig_new_instance_method(_sets.ListOfIntegerSets_Size)
 
     def PickElementInSet(self, i):
         r"""PickElementInSet(ListOfIntegerSets self, int i) -> int"""
         return _sets.ListOfIntegerSets_PickElementInSet(self, i)
+    PickElementInSet = _swig_new_instance_method(_sets.ListOfIntegerSets_PickElementInSet)
 
     def PickRandomElementInSet(self, i):
         r"""PickRandomElementInSet(ListOfIntegerSets self, int i) -> int"""
         return _sets.ListOfIntegerSets_PickRandomElementInSet(self, i)
+    PickRandomElementInSet = _swig_new_instance_method(_sets.ListOfIntegerSets_PickRandomElementInSet)
 
     def Insert(self, s):
         r"""Insert(ListOfIntegerSets self, IntegerSet s) -> int"""
         return _sets.ListOfIntegerSets_Insert(self, s)
+    Insert = _swig_new_instance_method(_sets.ListOfIntegerSets_Insert)
 
     def Lookup(self, s):
         r"""Lookup(ListOfIntegerSets self, IntegerSet s) -> int"""
         return _sets.ListOfIntegerSets_Lookup(self, s)
+    Lookup = _swig_new_instance_method(_sets.ListOfIntegerSets_Lookup)
 
     def AsTable(self, t):
         r"""AsTable(ListOfIntegerSets self, Table t)"""
         return _sets.ListOfIntegerSets_AsTable(self, t)
+    AsTable = _swig_new_instance_method(_sets.ListOfIntegerSets_AsTable)
     __swig_destroy__ = _sets.delete_ListOfIntegerSets
 
     def __init__(self):

@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _communication.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _communication.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -106,14 +109,17 @@ class MPI_Session(object):
     def WorldRank(self):
         r"""WorldRank(MPI_Session self) -> int"""
         return _communication.MPI_Session_WorldRank(self)
+    WorldRank = _swig_new_instance_method(_communication.MPI_Session_WorldRank)
 
     def WorldSize(self):
         r"""WorldSize(MPI_Session self) -> int"""
         return _communication.MPI_Session_WorldSize(self)
+    WorldSize = _swig_new_instance_method(_communication.MPI_Session_WorldSize)
 
     def Root(self):
         r"""Root(MPI_Session self) -> bool"""
         return _communication.MPI_Session_Root(self)
+    Root = _swig_new_instance_method(_communication.MPI_Session_Root)
 
 # Register MPI_Session in _communication:
 _communication.MPI_Session_swigregister(MPI_Session)
@@ -135,66 +141,82 @@ class GroupTopology(object):
     def SetComm(self, comm):
         r"""SetComm(GroupTopology self, MPI_Comm comm)"""
         return _communication.GroupTopology_SetComm(self, comm)
+    SetComm = _swig_new_instance_method(_communication.GroupTopology_SetComm)
 
     def GetComm(self):
         r"""GetComm(GroupTopology self) -> MPI_Comm"""
         return _communication.GroupTopology_GetComm(self)
+    GetComm = _swig_new_instance_method(_communication.GroupTopology_GetComm)
 
     def MyRank(self):
         r"""MyRank(GroupTopology self) -> int"""
         return _communication.GroupTopology_MyRank(self)
+    MyRank = _swig_new_instance_method(_communication.GroupTopology_MyRank)
 
     def NRanks(self):
         r"""NRanks(GroupTopology self) -> int"""
         return _communication.GroupTopology_NRanks(self)
+    NRanks = _swig_new_instance_method(_communication.GroupTopology_NRanks)
 
     def Create(self, groups, mpitag):
         r"""Create(GroupTopology self, ListOfIntegerSets groups, int mpitag)"""
         return _communication.GroupTopology_Create(self, groups, mpitag)
+    Create = _swig_new_instance_method(_communication.GroupTopology_Create)
 
     def NGroups(self):
         r"""NGroups(GroupTopology self) -> int"""
         return _communication.GroupTopology_NGroups(self)
+    NGroups = _swig_new_instance_method(_communication.GroupTopology_NGroups)
 
     def GetNumNeighbors(self):
         r"""GetNumNeighbors(GroupTopology self) -> int"""
         return _communication.GroupTopology_GetNumNeighbors(self)
+    GetNumNeighbors = _swig_new_instance_method(_communication.GroupTopology_GetNumNeighbors)
 
     def GetNeighborRank(self, i):
         r"""GetNeighborRank(GroupTopology self, int i) -> int"""
         return _communication.GroupTopology_GetNeighborRank(self, i)
+    GetNeighborRank = _swig_new_instance_method(_communication.GroupTopology_GetNeighborRank)
 
     def IAmMaster(self, g):
         r"""IAmMaster(GroupTopology self, int g) -> bool"""
         return _communication.GroupTopology_IAmMaster(self, g)
+    IAmMaster = _swig_new_instance_method(_communication.GroupTopology_IAmMaster)
 
     def GetGroupMaster(self, g):
         r"""GetGroupMaster(GroupTopology self, int g) -> int"""
         return _communication.GroupTopology_GetGroupMaster(self, g)
+    GetGroupMaster = _swig_new_instance_method(_communication.GroupTopology_GetGroupMaster)
 
     def GetGroupMasterRank(self, g):
         r"""GetGroupMasterRank(GroupTopology self, int g) -> int"""
         return _communication.GroupTopology_GetGroupMasterRank(self, g)
+    GetGroupMasterRank = _swig_new_instance_method(_communication.GroupTopology_GetGroupMasterRank)
 
     def GetGroupMasterGroup(self, g):
         r"""GetGroupMasterGroup(GroupTopology self, int g) -> int"""
         return _communication.GroupTopology_GetGroupMasterGroup(self, g)
+    GetGroupMasterGroup = _swig_new_instance_method(_communication.GroupTopology_GetGroupMasterGroup)
 
     def GetGroupSize(self, g):
         r"""GetGroupSize(GroupTopology self, int g) -> int"""
         return _communication.GroupTopology_GetGroupSize(self, g)
+    GetGroupSize = _swig_new_instance_method(_communication.GroupTopology_GetGroupSize)
 
     def GetGroup(self, g):
         r"""GetGroup(GroupTopology self, int g) -> int const *"""
         return _communication.GroupTopology_GetGroup(self, g)
+    GetGroup = _swig_new_instance_method(_communication.GroupTopology_GetGroup)
 
     def Load(self, _in):
         r"""Load(GroupTopology self, std::istream & _in)"""
         return _communication.GroupTopology_Load(self, _in)
+    Load = _swig_new_instance_method(_communication.GroupTopology_Load)
 
     def Copy(self, copy):
         r"""Copy(GroupTopology self, GroupTopology copy)"""
         return _communication.GroupTopology_Copy(self, copy)
+    Copy = _swig_new_instance_method(_communication.GroupTopology_Copy)
     __swig_destroy__ = _communication.delete_GroupTopology
 
     def Save(self, *args):
@@ -203,6 +225,7 @@ class GroupTopology(object):
         Save(GroupTopology self, char const * file, int precision=8)
         """
         return _communication.GroupTopology_Save(self, *args)
+    Save = _swig_new_instance_method(_communication.GroupTopology_Save)
 
 # Register GroupTopology in _communication:
 _communication.GroupTopology_swigregister(GroupTopology)
@@ -217,13 +240,14 @@ class GroupCommunicator(object):
     byNeighbor = _communication.GroupCommunicator_byNeighbor
     
 
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         r"""__init__(GroupCommunicator self, GroupTopology gt, mfem::GroupCommunicator::Mode m=byNeighbor) -> GroupCommunicator"""
-        _communication.GroupCommunicator_swiginit(self, _communication.new_GroupCommunicator(*args))
+        _communication.GroupCommunicator_swiginit(self, _communication.new_GroupCommunicator(*args, **kwargs))
 
     def Create(self, ldof_group):
         r"""Create(GroupCommunicator self, intArray ldof_group)"""
         return _communication.GroupCommunicator_Create(self, ldof_group)
+    Create = _swig_new_instance_method(_communication.GroupCommunicator_Create)
 
     def GroupLDofTable(self, *args):
         r"""
@@ -231,14 +255,17 @@ class GroupCommunicator(object):
         GroupLDofTable(GroupCommunicator self) -> Table
         """
         return _communication.GroupCommunicator_GroupLDofTable(self, *args)
+    GroupLDofTable = _swig_new_instance_method(_communication.GroupCommunicator_GroupLDofTable)
 
     def Finalize(self):
         r"""Finalize(GroupCommunicator self)"""
         return _communication.GroupCommunicator_Finalize(self)
+    Finalize = _swig_new_instance_method(_communication.GroupCommunicator_Finalize)
 
     def SetLTDofTable(self, ldof_ltdof):
         r"""SetLTDofTable(GroupCommunicator self, intArray ldof_ltdof)"""
         return _communication.GroupCommunicator_SetLTDofTable(self, ldof_ltdof)
+    SetLTDofTable = _swig_new_instance_method(_communication.GroupCommunicator_SetLTDofTable)
 
     def GetGroupTopology(self, *args):
         r"""
@@ -246,6 +273,17 @@ class GroupCommunicator(object):
         GetGroupTopology(GroupCommunicator self) -> GroupTopology
         """
         return _communication.GroupCommunicator_GetGroupTopology(self, *args)
+    GetGroupTopology = _swig_new_instance_method(_communication.GroupCommunicator_GetGroupTopology)
+
+    def GetNeighborLTDofTable(self, nbr_ltdof):
+        r"""GetNeighborLTDofTable(GroupCommunicator self, Table nbr_ltdof)"""
+        return _communication.GroupCommunicator_GetNeighborLTDofTable(self, nbr_ltdof)
+    GetNeighborLTDofTable = _swig_new_instance_method(_communication.GroupCommunicator_GetNeighborLTDofTable)
+
+    def GetNeighborLDofTable(self, nbr_ldof):
+        r"""GetNeighborLDofTable(GroupCommunicator self, Table nbr_ldof)"""
+        return _communication.GroupCommunicator_GetNeighborLDofTable(self, nbr_ldof)
+    GetNeighborLDofTable = _swig_new_instance_method(_communication.GroupCommunicator_GetNeighborLDofTable)
     __swig_destroy__ = _communication.delete_GroupCommunicator
 
     def PrintInfo(self, *args):
@@ -254,6 +292,7 @@ class GroupCommunicator(object):
         PrintInfo(GroupCommunicator self, char const * file, int precision=8)
         """
         return _communication.GroupCommunicator_PrintInfo(self, *args)
+    PrintInfo = _swig_new_instance_method(_communication.GroupCommunicator_PrintInfo)
 
 # Register GroupCommunicator in _communication:
 _communication.GroupCommunicator_swigregister(GroupCommunicator)
@@ -262,5 +301,6 @@ _communication.GroupCommunicator_swigregister(GroupCommunicator)
 def ReorderRanksZCurve(comm):
     r"""ReorderRanksZCurve(MPI_Comm comm) -> MPI_Comm"""
     return _communication.ReorderRanksZCurve(comm)
+ReorderRanksZCurve = _communication.ReorderRanksZCurve
 
 

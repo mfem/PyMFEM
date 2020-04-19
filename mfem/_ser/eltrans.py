@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _eltrans.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _eltrans.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -87,10 +90,12 @@ class ElementTransformation(object):
     def SetIntPoint(self, ip):
         r"""SetIntPoint(ElementTransformation self, IntegrationPoint ip)"""
         return _eltrans.ElementTransformation_SetIntPoint(self, ip)
+    SetIntPoint = _swig_new_instance_method(_eltrans.ElementTransformation_SetIntPoint)
 
     def GetIntPoint(self):
         r"""GetIntPoint(ElementTransformation self) -> IntegrationPoint"""
         return _eltrans.ElementTransformation_GetIntPoint(self)
+    GetIntPoint = _swig_new_instance_method(_eltrans.ElementTransformation_GetIntPoint)
 
     def Transform(self, *args):
         from .vector import Vector
@@ -108,50 +113,67 @@ class ElementTransformation(object):
     def Jacobian(self):
         r"""Jacobian(ElementTransformation self) -> DenseMatrix"""
         return _eltrans.ElementTransformation_Jacobian(self)
+    Jacobian = _swig_new_instance_method(_eltrans.ElementTransformation_Jacobian)
+
+    def Hessian(self):
+        r"""Hessian(ElementTransformation self) -> DenseMatrix"""
+        return _eltrans.ElementTransformation_Hessian(self)
+    Hessian = _swig_new_instance_method(_eltrans.ElementTransformation_Hessian)
 
     def Weight(self):
         r"""Weight(ElementTransformation self) -> double"""
         return _eltrans.ElementTransformation_Weight(self)
+    Weight = _swig_new_instance_method(_eltrans.ElementTransformation_Weight)
 
     def AdjugateJacobian(self):
         r"""AdjugateJacobian(ElementTransformation self) -> DenseMatrix"""
         return _eltrans.ElementTransformation_AdjugateJacobian(self)
+    AdjugateJacobian = _swig_new_instance_method(_eltrans.ElementTransformation_AdjugateJacobian)
 
     def InverseJacobian(self):
         r"""InverseJacobian(ElementTransformation self) -> DenseMatrix"""
         return _eltrans.ElementTransformation_InverseJacobian(self)
+    InverseJacobian = _swig_new_instance_method(_eltrans.ElementTransformation_InverseJacobian)
 
     def Order(self):
         r"""Order(ElementTransformation self) -> int"""
         return _eltrans.ElementTransformation_Order(self)
+    Order = _swig_new_instance_method(_eltrans.ElementTransformation_Order)
 
     def OrderJ(self):
         r"""OrderJ(ElementTransformation self) -> int"""
         return _eltrans.ElementTransformation_OrderJ(self)
+    OrderJ = _swig_new_instance_method(_eltrans.ElementTransformation_OrderJ)
 
     def OrderW(self):
         r"""OrderW(ElementTransformation self) -> int"""
         return _eltrans.ElementTransformation_OrderW(self)
+    OrderW = _swig_new_instance_method(_eltrans.ElementTransformation_OrderW)
 
     def OrderGrad(self, fe):
         r"""OrderGrad(ElementTransformation self, FiniteElement fe) -> int"""
         return _eltrans.ElementTransformation_OrderGrad(self, fe)
+    OrderGrad = _swig_new_instance_method(_eltrans.ElementTransformation_OrderGrad)
 
     def GetGeometryType(self):
         r"""GetGeometryType(ElementTransformation self) -> mfem::Geometry::Type"""
         return _eltrans.ElementTransformation_GetGeometryType(self)
+    GetGeometryType = _swig_new_instance_method(_eltrans.ElementTransformation_GetGeometryType)
 
     def GetDimension(self):
         r"""GetDimension(ElementTransformation self) -> int"""
         return _eltrans.ElementTransformation_GetDimension(self)
+    GetDimension = _swig_new_instance_method(_eltrans.ElementTransformation_GetDimension)
 
     def GetSpaceDim(self):
         r"""GetSpaceDim(ElementTransformation self) -> int"""
         return _eltrans.ElementTransformation_GetSpaceDim(self)
+    GetSpaceDim = _swig_new_instance_method(_eltrans.ElementTransformation_GetSpaceDim)
 
     def TransformBack(self, pt, ip):
         r"""TransformBack(ElementTransformation self, Vector pt, IntegrationPoint ip) -> int"""
         return _eltrans.ElementTransformation_TransformBack(self, pt, ip)
+    TransformBack = _swig_new_instance_method(_eltrans.ElementTransformation_TransformBack)
     __swig_destroy__ = _eltrans.delete_ElementTransformation
 
 # Register ElementTransformation in _eltrans:
@@ -191,58 +213,72 @@ class InverseElementTransformation(object):
     def SetTransformation(self, Trans):
         r"""SetTransformation(InverseElementTransformation self, ElementTransformation Trans)"""
         return _eltrans.InverseElementTransformation_SetTransformation(self, Trans)
+    SetTransformation = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetTransformation)
 
     def SetInitialGuessType(self, itype):
         r"""SetInitialGuessType(InverseElementTransformation self, mfem::InverseElementTransformation::InitGuessType itype)"""
         return _eltrans.InverseElementTransformation_SetInitialGuessType(self, itype)
+    SetInitialGuessType = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetInitialGuessType)
 
     def SetInitialGuess(self, init_ip):
         r"""SetInitialGuess(InverseElementTransformation self, IntegrationPoint init_ip)"""
         return _eltrans.InverseElementTransformation_SetInitialGuess(self, init_ip)
+    SetInitialGuess = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetInitialGuess)
 
     def SetInitGuessPointsType(self, q_type):
         r"""SetInitGuessPointsType(InverseElementTransformation self, int q_type)"""
         return _eltrans.InverseElementTransformation_SetInitGuessPointsType(self, q_type)
+    SetInitGuessPointsType = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetInitGuessPointsType)
 
     def SetInitGuessRelOrder(self, order):
         r"""SetInitGuessRelOrder(InverseElementTransformation self, int order)"""
         return _eltrans.InverseElementTransformation_SetInitGuessRelOrder(self, order)
+    SetInitGuessRelOrder = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetInitGuessRelOrder)
 
     def SetSolverType(self, stype):
         r"""SetSolverType(InverseElementTransformation self, mfem::InverseElementTransformation::SolverType stype)"""
         return _eltrans.InverseElementTransformation_SetSolverType(self, stype)
+    SetSolverType = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetSolverType)
 
     def SetMaxIter(self, max_it):
         r"""SetMaxIter(InverseElementTransformation self, int max_it)"""
         return _eltrans.InverseElementTransformation_SetMaxIter(self, max_it)
+    SetMaxIter = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetMaxIter)
 
     def SetReferenceTol(self, ref_sp_tol):
         r"""SetReferenceTol(InverseElementTransformation self, double ref_sp_tol)"""
         return _eltrans.InverseElementTransformation_SetReferenceTol(self, ref_sp_tol)
+    SetReferenceTol = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetReferenceTol)
 
     def SetPhysicalRelTol(self, phys_rel_tol):
         r"""SetPhysicalRelTol(InverseElementTransformation self, double phys_rel_tol)"""
         return _eltrans.InverseElementTransformation_SetPhysicalRelTol(self, phys_rel_tol)
+    SetPhysicalRelTol = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetPhysicalRelTol)
 
     def SetElementTol(self, el_tol):
         r"""SetElementTol(InverseElementTransformation self, double el_tol)"""
         return _eltrans.InverseElementTransformation_SetElementTol(self, el_tol)
+    SetElementTol = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetElementTol)
 
     def SetPrintLevel(self, pr_level):
         r"""SetPrintLevel(InverseElementTransformation self, int pr_level)"""
         return _eltrans.InverseElementTransformation_SetPrintLevel(self, pr_level)
+    SetPrintLevel = _swig_new_instance_method(_eltrans.InverseElementTransformation_SetPrintLevel)
 
     def FindClosestPhysPoint(self, pt, ir):
         r"""FindClosestPhysPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"""
         return _eltrans.InverseElementTransformation_FindClosestPhysPoint(self, pt, ir)
+    FindClosestPhysPoint = _swig_new_instance_method(_eltrans.InverseElementTransformation_FindClosestPhysPoint)
 
     def FindClosestRefPoint(self, pt, ir):
         r"""FindClosestRefPoint(InverseElementTransformation self, Vector pt, IntegrationRule ir) -> int"""
         return _eltrans.InverseElementTransformation_FindClosestRefPoint(self, pt, ir)
+    FindClosestRefPoint = _swig_new_instance_method(_eltrans.InverseElementTransformation_FindClosestRefPoint)
 
     def Transform(self, pt, ip):
         r"""Transform(InverseElementTransformation self, Vector pt, IntegrationPoint ip) -> int"""
         return _eltrans.InverseElementTransformation_Transform(self, pt, ip)
+    Transform = _swig_new_instance_method(_eltrans.InverseElementTransformation_Transform)
 
 # Register InverseElementTransformation in _eltrans:
 _eltrans.InverseElementTransformation_swigregister(InverseElementTransformation)
@@ -256,22 +292,27 @@ class IsoparametricTransformation(ElementTransformation):
     def SetFE(self, FE):
         r"""SetFE(IsoparametricTransformation self, FiniteElement FE)"""
         return _eltrans.IsoparametricTransformation_SetFE(self, FE)
+    SetFE = _swig_new_instance_method(_eltrans.IsoparametricTransformation_SetFE)
 
     def GetFE(self):
         r"""GetFE(IsoparametricTransformation self) -> FiniteElement"""
         return _eltrans.IsoparametricTransformation_GetFE(self)
+    GetFE = _swig_new_instance_method(_eltrans.IsoparametricTransformation_GetFE)
 
     def GetPointMat(self):
         r"""GetPointMat(IsoparametricTransformation self) -> DenseMatrix"""
         return _eltrans.IsoparametricTransformation_GetPointMat(self)
+    GetPointMat = _swig_new_instance_method(_eltrans.IsoparametricTransformation_GetPointMat)
 
     def FinalizeTransformation(self):
         r"""FinalizeTransformation(IsoparametricTransformation self)"""
         return _eltrans.IsoparametricTransformation_FinalizeTransformation(self)
+    FinalizeTransformation = _swig_new_instance_method(_eltrans.IsoparametricTransformation_FinalizeTransformation)
 
     def SetIdentityTransformation(self, GeomType):
         r"""SetIdentityTransformation(IsoparametricTransformation self, mfem::Geometry::Type GeomType)"""
         return _eltrans.IsoparametricTransformation_SetIdentityTransformation(self, GeomType)
+    SetIdentityTransformation = _swig_new_instance_method(_eltrans.IsoparametricTransformation_SetIdentityTransformation)
 
     def Transform(self, *args):
         from .vector import Vector
@@ -289,22 +330,27 @@ class IsoparametricTransformation(ElementTransformation):
     def Order(self):
         r"""Order(IsoparametricTransformation self) -> int"""
         return _eltrans.IsoparametricTransformation_Order(self)
+    Order = _swig_new_instance_method(_eltrans.IsoparametricTransformation_Order)
 
     def OrderJ(self):
         r"""OrderJ(IsoparametricTransformation self) -> int"""
         return _eltrans.IsoparametricTransformation_OrderJ(self)
+    OrderJ = _swig_new_instance_method(_eltrans.IsoparametricTransformation_OrderJ)
 
     def OrderW(self):
         r"""OrderW(IsoparametricTransformation self) -> int"""
         return _eltrans.IsoparametricTransformation_OrderW(self)
+    OrderW = _swig_new_instance_method(_eltrans.IsoparametricTransformation_OrderW)
 
     def OrderGrad(self, fe):
         r"""OrderGrad(IsoparametricTransformation self, FiniteElement fe) -> int"""
         return _eltrans.IsoparametricTransformation_OrderGrad(self, fe)
+    OrderGrad = _swig_new_instance_method(_eltrans.IsoparametricTransformation_OrderGrad)
 
     def TransformBack(self, v, ip):
         r"""TransformBack(IsoparametricTransformation self, Vector v, IntegrationPoint ip) -> int"""
         return _eltrans.IsoparametricTransformation_TransformBack(self, v, ip)
+    TransformBack = _swig_new_instance_method(_eltrans.IsoparametricTransformation_TransformBack)
     __swig_destroy__ = _eltrans.delete_IsoparametricTransformation
 
     def __init__(self):
@@ -327,6 +373,7 @@ class IntegrationPointTransformation(object):
         Transform(IntegrationPointTransformation self, IntegrationRule arg2, IntegrationRule arg3)
         """
         return _eltrans.IntegrationPointTransformation_Transform(self, *args)
+    Transform = _swig_new_instance_method(_eltrans.IntegrationPointTransformation_Transform)
 
     def __init__(self):
         r"""__init__(IntegrationPointTransformation self) -> IntegrationPointTransformation"""

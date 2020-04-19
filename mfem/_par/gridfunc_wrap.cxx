@@ -3067,199 +3067,202 @@ namespace Swig {
 
 #define SWIGTYPE_p_MPI_Comm swig_types[0]
 #define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_double swig_types[3]
-#define SWIGTYPE_p_hex_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
-#define SWIGTYPE_p_mfem__BilinearFormIntegrator swig_types[8]
-#define SWIGTYPE_p_mfem__BoundaryMassIntegrator swig_types[9]
-#define SWIGTYPE_p_mfem__Coefficient swig_types[10]
-#define SWIGTYPE_p_mfem__Const2DFECollection swig_types[11]
-#define SWIGTYPE_p_mfem__Const3DFECollection swig_types[12]
-#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[13]
-#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[14]
-#define SWIGTYPE_p_mfem__CrouzeixRaviartFECollection swig_types[15]
-#define SWIGTYPE_p_mfem__CubicDiscont2DFECollection swig_types[16]
-#define SWIGTYPE_p_mfem__CubicFECollection swig_types[17]
-#define SWIGTYPE_p_mfem__CurlCurlIntegrator swig_types[18]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[19]
-#define SWIGTYPE_p_mfem__CurlInterpolator swig_types[20]
-#define SWIGTYPE_p_mfem__DGDiffusionIntegrator swig_types[21]
-#define SWIGTYPE_p_mfem__DGElasticityIntegrator swig_types[22]
-#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[23]
-#define SWIGTYPE_p_mfem__DG_Interface_FECollection swig_types[24]
-#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[25]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[26]
-#define SWIGTYPE_p_mfem__DerivativeIntegrator swig_types[27]
-#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[28]
-#define SWIGTYPE_p_mfem__DiffusionIntegrator swig_types[29]
-#define SWIGTYPE_p_mfem__DiscreteInterpolator swig_types[30]
-#define SWIGTYPE_p_mfem__DivDivIntegrator swig_types[31]
-#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[32]
-#define SWIGTYPE_p_mfem__DivergenceInterpolator swig_types[33]
-#define SWIGTYPE_p_mfem__ElasticityIntegrator swig_types[34]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[35]
-#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[36]
-#define SWIGTYPE_p_mfem__FiniteElementCollection swig_types[37]
-#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[38]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[39]
-#define SWIGTYPE_p_mfem__GaussLinearDiscont2DFECollection swig_types[40]
-#define SWIGTYPE_p_mfem__GaussQuadraticDiscont2DFECollection swig_types[41]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[42]
-#define SWIGTYPE_p_mfem__GradientInterpolator swig_types[43]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[44]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[45]
-#define SWIGTYPE_p_mfem__GroupConvectionIntegrator swig_types[46]
-#define SWIGTYPE_p_mfem__H1Pos_FECollection swig_types[47]
-#define SWIGTYPE_p_mfem__H1_FECollection swig_types[48]
-#define SWIGTYPE_p_mfem__H1_Trace_FECollection swig_types[49]
-#define SWIGTYPE_p_mfem__HypreParVector swig_types[50]
-#define SWIGTYPE_p_mfem__IdentityInterpolator swig_types[51]
-#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[52]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[53]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[54]
-#define SWIGTYPE_p_mfem__InverseIntegrator swig_types[55]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[56]
-#define SWIGTYPE_p_mfem__L2_FECollection swig_types[57]
-#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[58]
-#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[59]
-#define SWIGTYPE_p_mfem__LinearFECollection swig_types[60]
-#define SWIGTYPE_p_mfem__LinearForm swig_types[61]
-#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[62]
-#define SWIGTYPE_p_mfem__Local_FECollection swig_types[63]
-#define SWIGTYPE_p_mfem__LumpedIntegrator swig_types[64]
-#define SWIGTYPE_p_mfem__MassIntegrator swig_types[65]
-#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__Mesh swig_types[67]
-#define SWIGTYPE_p_mfem__MixedCrossCurlCurlIntegrator swig_types[68]
-#define SWIGTYPE_p_mfem__MixedCrossCurlGradIntegrator swig_types[69]
-#define SWIGTYPE_p_mfem__MixedCrossCurlIntegrator swig_types[70]
-#define SWIGTYPE_p_mfem__MixedCrossGradCurlIntegrator swig_types[71]
-#define SWIGTYPE_p_mfem__MixedCrossGradGradIntegrator swig_types[72]
-#define SWIGTYPE_p_mfem__MixedCrossGradIntegrator swig_types[73]
-#define SWIGTYPE_p_mfem__MixedCrossProductIntegrator swig_types[74]
-#define SWIGTYPE_p_mfem__MixedCurlCurlIntegrator swig_types[75]
-#define SWIGTYPE_p_mfem__MixedDirectionalDerivativeIntegrator swig_types[76]
-#define SWIGTYPE_p_mfem__MixedDivGradIntegrator swig_types[77]
-#define SWIGTYPE_p_mfem__MixedDotProductIntegrator swig_types[78]
-#define SWIGTYPE_p_mfem__MixedGradDivIntegrator swig_types[79]
-#define SWIGTYPE_p_mfem__MixedGradGradIntegrator swig_types[80]
-#define SWIGTYPE_p_mfem__MixedScalarCrossCurlIntegrator swig_types[81]
-#define SWIGTYPE_p_mfem__MixedScalarCrossGradIntegrator swig_types[82]
-#define SWIGTYPE_p_mfem__MixedScalarCrossProductIntegrator swig_types[83]
-#define SWIGTYPE_p_mfem__MixedScalarCurlIntegrator swig_types[84]
-#define SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator swig_types[85]
-#define SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator swig_types[86]
-#define SWIGTYPE_p_mfem__MixedScalarIntegrator swig_types[87]
-#define SWIGTYPE_p_mfem__MixedScalarMassIntegrator swig_types[88]
-#define SWIGTYPE_p_mfem__MixedScalarVectorIntegrator swig_types[89]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCrossProductIntegrator swig_types[90]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCurlCrossIntegrator swig_types[91]
-#define SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator swig_types[92]
-#define SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator swig_types[93]
-#define SWIGTYPE_p_mfem__MixedScalarWeakDivergenceIntegrator swig_types[94]
-#define SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator swig_types[95]
-#define SWIGTYPE_p_mfem__MixedVectorCurlIntegrator swig_types[96]
-#define SWIGTYPE_p_mfem__MixedVectorDivergenceIntegrator swig_types[97]
-#define SWIGTYPE_p_mfem__MixedVectorGradientIntegrator swig_types[98]
-#define SWIGTYPE_p_mfem__MixedVectorIntegrator swig_types[99]
-#define SWIGTYPE_p_mfem__MixedVectorMassIntegrator swig_types[100]
-#define SWIGTYPE_p_mfem__MixedVectorProductIntegrator swig_types[101]
-#define SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator swig_types[102]
-#define SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator swig_types[103]
-#define SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator swig_types[104]
-#define SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator swig_types[105]
-#define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[106]
-#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[107]
-#define SWIGTYPE_p_mfem__ND_FECollection swig_types[108]
-#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[109]
-#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[110]
-#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[111]
-#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[112]
-#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[113]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[114]
-#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[115]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[116]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[117]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[118]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[119]
-#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[120]
-#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[121]
-#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[122]
-#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[123]
-#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[124]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[125]
-#define SWIGTYPE_p_mfem__QuadratureSpace swig_types[126]
-#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[127]
-#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[128]
-#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[129]
-#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[130]
-#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[131]
-#define SWIGTYPE_p_mfem__RT_FECollection swig_types[132]
-#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[133]
-#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[134]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[135]
-#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[136]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[137]
-#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[138]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[139]
-#define SWIGTYPE_p_mfem__SumIntegrator swig_types[140]
-#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[141]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[142]
-#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[143]
-#define SWIGTYPE_p_mfem__Vector swig_types[144]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[145]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[146]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[147]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[148]
-#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[149]
-#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[150]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[151]
-#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[152]
-#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[153]
-#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[154]
-#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[155]
-#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[156]
-#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[157]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[158]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[159]
-#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[160]
-#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[161]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[162]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[163]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[164]
-#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[165]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[166]
-#define SWIGTYPE_p_p_mfem__Coefficient swig_types[167]
-#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[168]
-#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[169]
-#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[170]
-#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[171]
-#define SWIGTYPE_p_p_mfem__ExtrudeCoefficient swig_types[172]
-#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[173]
-#define SWIGTYPE_p_p_mfem__GridFunction swig_types[174]
-#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[175]
-#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[176]
-#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[177]
-#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[178]
-#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[179]
-#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[180]
-#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[181]
-#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[182]
-#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[183]
-#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[184]
-#define SWIGTYPE_p_pri_t swig_types[185]
-#define SWIGTYPE_p_quad_t swig_types[186]
-#define SWIGTYPE_p_seg_t swig_types[187]
-#define SWIGTYPE_p_std__istream swig_types[188]
-#define SWIGTYPE_p_std__ostream swig_types[189]
-#define SWIGTYPE_p_std__string swig_types[190]
-#define SWIGTYPE_p_tet_t swig_types[191]
-#define SWIGTYPE_p_tri_t swig_types[192]
-static swig_type_info *swig_types[194];
-static swig_module_info swig_module = {swig_types, 193, 0, 0, 0, 0};
+#define SWIGTYPE_p_RefCoord swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_double swig_types[4]
+#define SWIGTYPE_p_hex_t swig_types[5]
+#define SWIGTYPE_p_int swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[7]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
+#define SWIGTYPE_p_mfem__BilinearFormIntegrator swig_types[9]
+#define SWIGTYPE_p_mfem__BoundaryMassIntegrator swig_types[10]
+#define SWIGTYPE_p_mfem__Coefficient swig_types[11]
+#define SWIGTYPE_p_mfem__Const2DFECollection swig_types[12]
+#define SWIGTYPE_p_mfem__Const3DFECollection swig_types[13]
+#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[14]
+#define SWIGTYPE_p_mfem__ConvectionIntegrator swig_types[15]
+#define SWIGTYPE_p_mfem__CrouzeixRaviartFECollection swig_types[16]
+#define SWIGTYPE_p_mfem__CubicDiscont2DFECollection swig_types[17]
+#define SWIGTYPE_p_mfem__CubicFECollection swig_types[18]
+#define SWIGTYPE_p_mfem__CurlCurlIntegrator swig_types[19]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[20]
+#define SWIGTYPE_p_mfem__CurlInterpolator swig_types[21]
+#define SWIGTYPE_p_mfem__DGDiffusionIntegrator swig_types[22]
+#define SWIGTYPE_p_mfem__DGElasticityIntegrator swig_types[23]
+#define SWIGTYPE_p_mfem__DGTraceIntegrator swig_types[24]
+#define SWIGTYPE_p_mfem__DG_Interface_FECollection swig_types[25]
+#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[26]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[27]
+#define SWIGTYPE_p_mfem__DerivativeIntegrator swig_types[28]
+#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[29]
+#define SWIGTYPE_p_mfem__DiffusionIntegrator swig_types[30]
+#define SWIGTYPE_p_mfem__DiscreteInterpolator swig_types[31]
+#define SWIGTYPE_p_mfem__DivDivIntegrator swig_types[32]
+#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__DivergenceInterpolator swig_types[34]
+#define SWIGTYPE_p_mfem__ElasticityIntegrator swig_types[35]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[36]
+#define SWIGTYPE_p_mfem__ExtrudeCoefficient swig_types[37]
+#define SWIGTYPE_p_mfem__FiniteElementCollection swig_types[38]
+#define SWIGTYPE_p_mfem__FiniteElementSpace swig_types[39]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[40]
+#define SWIGTYPE_p_mfem__GaussLinearDiscont2DFECollection swig_types[41]
+#define SWIGTYPE_p_mfem__GaussQuadraticDiscont2DFECollection swig_types[42]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[43]
+#define SWIGTYPE_p_mfem__GradientIntegrator swig_types[44]
+#define SWIGTYPE_p_mfem__GradientInterpolator swig_types[45]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[46]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__GroupConvectionIntegrator swig_types[48]
+#define SWIGTYPE_p_mfem__H1Pos_FECollection swig_types[49]
+#define SWIGTYPE_p_mfem__H1Ser_FECollection swig_types[50]
+#define SWIGTYPE_p_mfem__H1_FECollection swig_types[51]
+#define SWIGTYPE_p_mfem__H1_Trace_FECollection swig_types[52]
+#define SWIGTYPE_p_mfem__HypreParVector swig_types[53]
+#define SWIGTYPE_p_mfem__IdentityInterpolator swig_types[54]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[56]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[57]
+#define SWIGTYPE_p_mfem__InverseIntegrator swig_types[58]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[59]
+#define SWIGTYPE_p_mfem__L2_FECollection swig_types[60]
+#define SWIGTYPE_p_mfem__LinearDiscont2DFECollection swig_types[61]
+#define SWIGTYPE_p_mfem__LinearDiscont3DFECollection swig_types[62]
+#define SWIGTYPE_p_mfem__LinearFECollection swig_types[63]
+#define SWIGTYPE_p_mfem__LinearForm swig_types[64]
+#define SWIGTYPE_p_mfem__LinearNonConf3DFECollection swig_types[65]
+#define SWIGTYPE_p_mfem__Local_FECollection swig_types[66]
+#define SWIGTYPE_p_mfem__LumpedIntegrator swig_types[67]
+#define SWIGTYPE_p_mfem__MassIntegrator swig_types[68]
+#define SWIGTYPE_p_mfem__MatVecCoefficient swig_types[69]
+#define SWIGTYPE_p_mfem__Mesh swig_types[70]
+#define SWIGTYPE_p_mfem__MixedCrossCurlCurlIntegrator swig_types[71]
+#define SWIGTYPE_p_mfem__MixedCrossCurlGradIntegrator swig_types[72]
+#define SWIGTYPE_p_mfem__MixedCrossCurlIntegrator swig_types[73]
+#define SWIGTYPE_p_mfem__MixedCrossGradCurlIntegrator swig_types[74]
+#define SWIGTYPE_p_mfem__MixedCrossGradGradIntegrator swig_types[75]
+#define SWIGTYPE_p_mfem__MixedCrossGradIntegrator swig_types[76]
+#define SWIGTYPE_p_mfem__MixedCrossProductIntegrator swig_types[77]
+#define SWIGTYPE_p_mfem__MixedCurlCurlIntegrator swig_types[78]
+#define SWIGTYPE_p_mfem__MixedDirectionalDerivativeIntegrator swig_types[79]
+#define SWIGTYPE_p_mfem__MixedDivGradIntegrator swig_types[80]
+#define SWIGTYPE_p_mfem__MixedDotProductIntegrator swig_types[81]
+#define SWIGTYPE_p_mfem__MixedGradDivIntegrator swig_types[82]
+#define SWIGTYPE_p_mfem__MixedGradGradIntegrator swig_types[83]
+#define SWIGTYPE_p_mfem__MixedScalarCrossCurlIntegrator swig_types[84]
+#define SWIGTYPE_p_mfem__MixedScalarCrossGradIntegrator swig_types[85]
+#define SWIGTYPE_p_mfem__MixedScalarCrossProductIntegrator swig_types[86]
+#define SWIGTYPE_p_mfem__MixedScalarCurlIntegrator swig_types[87]
+#define SWIGTYPE_p_mfem__MixedScalarDerivativeIntegrator swig_types[88]
+#define SWIGTYPE_p_mfem__MixedScalarDivergenceIntegrator swig_types[89]
+#define SWIGTYPE_p_mfem__MixedScalarIntegrator swig_types[90]
+#define SWIGTYPE_p_mfem__MixedScalarMassIntegrator swig_types[91]
+#define SWIGTYPE_p_mfem__MixedScalarVectorIntegrator swig_types[92]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCrossProductIntegrator swig_types[93]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCurlCrossIntegrator swig_types[94]
+#define SWIGTYPE_p_mfem__MixedScalarWeakCurlIntegrator swig_types[95]
+#define SWIGTYPE_p_mfem__MixedScalarWeakDerivativeIntegrator swig_types[96]
+#define SWIGTYPE_p_mfem__MixedScalarWeakDivergenceIntegrator swig_types[97]
+#define SWIGTYPE_p_mfem__MixedScalarWeakGradientIntegrator swig_types[98]
+#define SWIGTYPE_p_mfem__MixedVectorCurlIntegrator swig_types[99]
+#define SWIGTYPE_p_mfem__MixedVectorDivergenceIntegrator swig_types[100]
+#define SWIGTYPE_p_mfem__MixedVectorGradientIntegrator swig_types[101]
+#define SWIGTYPE_p_mfem__MixedVectorIntegrator swig_types[102]
+#define SWIGTYPE_p_mfem__MixedVectorMassIntegrator swig_types[103]
+#define SWIGTYPE_p_mfem__MixedVectorProductIntegrator swig_types[104]
+#define SWIGTYPE_p_mfem__MixedVectorWeakCurlIntegrator swig_types[105]
+#define SWIGTYPE_p_mfem__MixedVectorWeakDivergenceIntegrator swig_types[106]
+#define SWIGTYPE_p_mfem__MixedWeakCurlCrossIntegrator swig_types[107]
+#define SWIGTYPE_p_mfem__MixedWeakDivCrossIntegrator swig_types[108]
+#define SWIGTYPE_p_mfem__MixedWeakGradDotIntegrator swig_types[109]
+#define SWIGTYPE_p_mfem__ND1_3DFECollection swig_types[110]
+#define SWIGTYPE_p_mfem__ND_FECollection swig_types[111]
+#define SWIGTYPE_p_mfem__ND_Trace_FECollection swig_types[112]
+#define SWIGTYPE_p_mfem__NURBSFECollection swig_types[113]
+#define SWIGTYPE_p_mfem__NodeExtrudeCoefficient swig_types[114]
+#define SWIGTYPE_p_mfem__NormalInterpolator swig_types[115]
+#define SWIGTYPE_p_mfem__NormalTraceJumpIntegrator swig_types[116]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[117]
+#define SWIGTYPE_p_mfem__P1OnQuadFECollection swig_types[118]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[119]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[120]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[121]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[122]
+#define SWIGTYPE_p_mfem__QuadraticDiscont2DFECollection swig_types[123]
+#define SWIGTYPE_p_mfem__QuadraticDiscont3DFECollection swig_types[124]
+#define SWIGTYPE_p_mfem__QuadraticFECollection swig_types[125]
+#define SWIGTYPE_p_mfem__QuadraticPosDiscont2DFECollection swig_types[126]
+#define SWIGTYPE_p_mfem__QuadraticPosFECollection swig_types[127]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[128]
+#define SWIGTYPE_p_mfem__QuadratureSpace swig_types[129]
+#define SWIGTYPE_p_mfem__RT0_2DFECollection swig_types[130]
+#define SWIGTYPE_p_mfem__RT0_3DFECollection swig_types[131]
+#define SWIGTYPE_p_mfem__RT1_2DFECollection swig_types[132]
+#define SWIGTYPE_p_mfem__RT1_3DFECollection swig_types[133]
+#define SWIGTYPE_p_mfem__RT2_2DFECollection swig_types[134]
+#define SWIGTYPE_p_mfem__RT_FECollection swig_types[135]
+#define SWIGTYPE_p_mfem__RT_Trace_FECollection swig_types[136]
+#define SWIGTYPE_p_mfem__RefinedLinearFECollection swig_types[137]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[138]
+#define SWIGTYPE_p_mfem__ScalarProductInterpolator swig_types[139]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[140]
+#define SWIGTYPE_p_mfem__ScalarVectorProductInterpolator swig_types[141]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[142]
+#define SWIGTYPE_p_mfem__SumIntegrator swig_types[143]
+#define SWIGTYPE_p_mfem__TraceJumpIntegrator swig_types[144]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[145]
+#define SWIGTYPE_p_mfem__TransposeIntegrator swig_types[146]
+#define SWIGTYPE_p_mfem__Vector swig_types[147]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[148]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[149]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[150]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[151]
+#define SWIGTYPE_p_mfem__VectorCrossProductInterpolator swig_types[152]
+#define SWIGTYPE_p_mfem__VectorCurlCurlIntegrator swig_types[153]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[154]
+#define SWIGTYPE_p_mfem__VectorDiffusionIntegrator swig_types[155]
+#define SWIGTYPE_p_mfem__VectorDivergenceIntegrator swig_types[156]
+#define SWIGTYPE_p_mfem__VectorFECurlIntegrator swig_types[157]
+#define SWIGTYPE_p_mfem__VectorFEDivergenceIntegrator swig_types[158]
+#define SWIGTYPE_p_mfem__VectorFEMassIntegrator swig_types[159]
+#define SWIGTYPE_p_mfem__VectorFEWeakDivergenceIntegrator swig_types[160]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[161]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[162]
+#define SWIGTYPE_p_mfem__VectorInnerProductInterpolator swig_types[163]
+#define SWIGTYPE_p_mfem__VectorMassIntegrator swig_types[164]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[165]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[166]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[167]
+#define SWIGTYPE_p_mfem__VectorScalarProductInterpolator swig_types[168]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[169]
+#define SWIGTYPE_p_p_mfem__Coefficient swig_types[170]
+#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[171]
+#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[172]
+#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[173]
+#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[174]
+#define SWIGTYPE_p_p_mfem__ExtrudeCoefficient swig_types[175]
+#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[176]
+#define SWIGTYPE_p_p_mfem__GridFunction swig_types[177]
+#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[178]
+#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[179]
+#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[180]
+#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[181]
+#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[182]
+#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[183]
+#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[184]
+#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[185]
+#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[186]
+#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[187]
+#define SWIGTYPE_p_pri_t swig_types[188]
+#define SWIGTYPE_p_quad_t swig_types[189]
+#define SWIGTYPE_p_seg_t swig_types[190]
+#define SWIGTYPE_p_std__istream swig_types[191]
+#define SWIGTYPE_p_std__ostream swig_types[192]
+#define SWIGTYPE_p_std__string swig_types[193]
+#define SWIGTYPE_p_tet_t swig_types[194]
+#define SWIGTYPE_p_tri_t swig_types[195]
+static swig_type_info *swig_types[197];
+static swig_module_info swig_module = {swig_types, 196, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3538,6 +3541,20 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
+
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
 {
@@ -3717,20 +3734,6 @@ SWIGINTERNINLINE PyObject*
   SWIG_From_bool  (bool value)
 {
   return PyBool_FromLong(value ? 1 : 0);
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_bool (PyObject *obj, bool *val)
-{
-  int r;
-  if (!PyBool_Check(obj))
-    return SWIG_ERROR;
-  r = PyObject_IsTrue(obj);
-  if (r == -1)
-    return SWIG_ERROR;
-  if (val) *val = r ? true : false;
-  return SWIG_OK;
 }
 
 SWIGINTERN void mfem_QuadratureFunction_Save__SWIG_1(mfem::QuadratureFunction *self,char const *file,int precision=8){
@@ -3991,7 +3994,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_MakeOwner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_MakeOwner(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::FiniteElementCollection *arg2 = (mfem::FiniteElementCollection *) 0 ;
@@ -3999,15 +4002,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeOwner(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"_fec",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_MakeOwner", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_MakeOwner", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_MakeOwner" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElementCollection, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_MakeOwner" "', argument " "2"" of type '" "mfem::FiniteElementCollection *""'"); 
   }
@@ -4179,7 +4186,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetTrueDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetTrueDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4187,15 +4194,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetTrueDofs(PyObject *SWIGUNUSEDPARM(sel
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tv",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetTrueDofs", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_GetTrueDofs", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetTrueDofs" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetTrueDofs" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -4247,7 +4258,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_SetFromTrueDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_SetFromTrueDofs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4255,15 +4266,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_SetFromTrueDofs(PyObject *SWIGUNUSEDPARM
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tv",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_SetFromTrueDofs", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_SetFromTrueDofs", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_SetFromTrueDofs" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_SetFromTrueDofs" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4320,13 +4335,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_0(PyObject *SWIGUNU
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
   mfem::Array< double > *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetNodalValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -4346,11 +4361,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetNodalValues" "', argument " "3"" of type '" "mfem::Array< double > &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< double > * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -4367,76 +4384,38 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  mfem::Array< double > *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetNodalValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_double_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetNodalValues" "', argument " "3"" of type '" "mfem::Array< double > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetNodalValues" "', argument " "3"" of type '" "mfem::Array< double > &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Array< double > * >(argp3);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->GetNodalValues(arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetValue__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
   mfem::IntegrationPoint *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"ip",  (char *)"vdim",  NULL 
+  };
   double result;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|O:GridFunction_GetValue", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetValue" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetValue" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -4444,11 +4423,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValue__SWIG_0(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValue" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (obj3) {
+    {
+      if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(obj3);
+    }
   }
   {
     try {
@@ -4465,127 +4446,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetValue__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  mfem::IntegrationPoint *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  double result;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetValue" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetValue" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValue" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->GetValue(arg2,(mfem::IntegrationPoint const &)*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetValue(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[5] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_GetValue", 0, 4, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_GridFunction_GetValue__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            return _wrap_GridFunction_GetValue__SWIG_0(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_GetValue'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::GetValue(int,mfem::IntegrationPoint const &,int) const\n"
-    "    mfem::GridFunction::GetValue(int,mfem::IntegrationPoint const &) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
@@ -4597,21 +4458,27 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValue(PyObject *SWIGUNUSEDPARM(
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"ip",  (char *)"val",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetVectorValue", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:GridFunction_GetVectorValue", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetVectorValue" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetVectorValue" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -4619,7 +4486,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorValue(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorValue" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::IntegrationPoint * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetVectorValue" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
@@ -4648,7 +4515,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_0(PyObject *SWIGUNUSEDPA
   int arg2 ;
   mfem::IntegrationRule *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
-  int arg5 ;
+  int arg5 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -4656,7 +4523,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_0(PyObject *SWIGUNUSEDPA
   void *argp4 = 0 ;
   int res4 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -4684,11 +4551,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_0(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValues" "', argument " "4"" of type '" "mfem::Vector &""'"); 
   }
   arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+  if (swig_obj[4]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    }
   }
   {
     try {
@@ -4711,64 +4580,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_1(PyObject *SWIGUNUSEDPA
   int arg2 ;
   mfem::IntegrationRule *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetValues" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValues" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->GetValues(arg2,(mfem::IntegrationRule const &)*arg3,*arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
   mfem::DenseMatrix *arg5 = 0 ;
-  int arg6 ;
+  int arg6 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -4778,7 +4591,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_2(PyObject *SWIGUNUSEDPA
   void *argp5 = 0 ;
   int res5 = 0 ;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 5) || (nobjs > 6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -4814,82 +4627,17 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_2(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+  if (swig_obj[5]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    }
   }
   {
     try {
       ((mfem::GridFunction const *)arg1)->GetValues(arg2,(mfem::IntegrationRule const &)*arg3,*arg4,*arg5,arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetValues__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  mfem::DenseMatrix *arg5 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetValues" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValues" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->GetValues(arg2,(mfem::IntegrationRule const &)*arg3,*arg4,*arg5); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4910,7 +4658,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_GetValues", 0, 6, argv))) SWIG_fail;
   --argc;
-  if (argc == 4) {
+  if ((argc >= 4) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -4932,67 +4680,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_GridFunction_GetValues__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              return _wrap_GridFunction_GetValues__SWIG_3(self, argc, argv);
+            if (argc <= 4) {
+              return _wrap_GridFunction_GetValues__SWIG_0(self, argc, argv);
             }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
             {
               if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
                 PyErr_Clear();
@@ -5009,7 +4699,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
       }
     }
   }
-  if (argc == 6) {
+  if ((argc >= 5) && (argc <= 6)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -5035,6 +4725,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
             int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
             _v = SWIG_CheckState(res);
             if (_v) {
+              if (argc <= 5) {
+                return _wrap_GridFunction_GetValues__SWIG_1(self, argc, argv);
+              }
               {
                 if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
                   PyErr_Clear();
@@ -5044,7 +4737,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValues(PyObject *self, PyObject *args
                 }
               }
               if (_v) {
-                return _wrap_GridFunction_GetValues__SWIG_2(self, argc, argv);
+                return _wrap_GridFunction_GetValues__SWIG_1(self, argc, argv);
               }
             }
           }
@@ -5057,36 +4750,29 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_GetValues'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::GetValues(int,mfem::IntegrationRule const &,mfem::Vector &,int) const\n"
-    "    mfem::GridFunction::GetValues(int,mfem::IntegrationRule const &,mfem::Vector &) const\n"
-    "    mfem::GridFunction::GetValues(int,mfem::IntegrationRule const &,mfem::Vector &,mfem::DenseMatrix &,int) const\n"
-    "    mfem::GridFunction::GetValues(int,mfem::IntegrationRule const &,mfem::Vector &,mfem::DenseMatrix &) const\n");
+    "    mfem::GridFunction::GetValues(int,mfem::IntegrationRule const &,mfem::Vector &,mfem::DenseMatrix &,int) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetLaplacians__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
-  int arg3 ;
-  mfem::IntegrationRule *arg4 = 0 ;
-  mfem::Vector *arg5 = 0 ;
-  mfem::DenseMatrix *arg6 = 0 ;
-  int arg7 ;
+  mfem::IntegrationRule *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  int arg5 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  void *argp6 = 0 ;
-  int res6 = 0 ;
-  int result;
   
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetFaceValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetLaplacians" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
@@ -5095,13 +4781,520 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUS
     };  
     arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetLaplacians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetLaplacians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetLaplacians" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetLaplacians" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  if (swig_obj[4]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    }
+  }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    try {
+      ((mfem::GridFunction const *)arg1)->GetLaplacians(arg2,(mfem::IntegrationRule const &)*arg3,*arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_GetLaplacians__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  int arg2 ;
+  mfem::IntegrationRule *arg3 = 0 ;
+  mfem::Vector *arg4 = 0 ;
+  mfem::DenseMatrix *arg5 = 0 ;
+  int arg6 = (int) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetLaplacians" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetLaplacians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetLaplacians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetLaplacians" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetLaplacians" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetLaplacians" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetLaplacians" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
+  if (swig_obj[5]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    }
+  }
+  {
+    try {
+      ((mfem::GridFunction const *)arg1)->GetLaplacians(arg2,(mfem::IntegrationRule const &)*arg3,*arg4,*arg5,arg6); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_GetLaplacians(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[7] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_GetLaplacians", 0, 6, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 4) && (argc <= 5)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_GridFunction_GetLaplacians__SWIG_0(self, argc, argv);
+            }
+            {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
+                _v = 0;
+              } else {
+                _v = 1;    
+              }
+            }
+            if (_v) {
+              return _wrap_GridFunction_GetLaplacians__SWIG_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 5) && (argc <= 6)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              if (argc <= 5) {
+                return _wrap_GridFunction_GetLaplacians__SWIG_1(self, argc, argv);
+              }
+              {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
+                  _v = 0;
+                } else {
+                  _v = 1;    
+                }
+              }
+              if (_v) {
+                return _wrap_GridFunction_GetLaplacians__SWIG_1(self, argc, argv);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_GetLaplacians'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GridFunction::GetLaplacians(int,mfem::IntegrationRule const &,mfem::Vector &,int) const\n"
+    "    mfem::GridFunction::GetLaplacians(int,mfem::IntegrationRule const &,mfem::Vector &,mfem::DenseMatrix &,int) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_GetHessians__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  int arg2 ;
+  mfem::IntegrationRule *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  int arg5 = (int) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetHessians" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetHessians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetHessians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetHessians" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetHessians" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  if (swig_obj[4]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+    }
+  }
+  {
+    try {
+      ((mfem::GridFunction const *)arg1)->GetHessians(arg2,(mfem::IntegrationRule const &)*arg3,*arg4,arg5); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_GetHessians__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  int arg2 ;
+  mfem::IntegrationRule *arg3 = 0 ;
+  mfem::DenseMatrix *arg4 = 0 ;
+  mfem::DenseMatrix *arg5 = 0 ;
+  int arg6 = (int) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  
+  if ((nobjs < 5) || (nobjs > 6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetHessians" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetHessians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetHessians" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
+  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetHessians" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetHessians" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
+  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetHessians" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  if (!argp5) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetHessians" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
+  }
+  arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
+  if (swig_obj[5]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    }
+  }
+  {
+    try {
+      ((mfem::GridFunction const *)arg1)->GetHessians(arg2,(mfem::IntegrationRule const &)*arg3,*arg4,*arg5,arg6); 
+    }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_GetHessians(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[7] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_GetHessians", 0, 6, argv))) SWIG_fail;
+  --argc;
+  if ((argc >= 4) && (argc <= 5)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            if (argc <= 4) {
+              return _wrap_GridFunction_GetHessians__SWIG_0(self, argc, argv);
+            }
+            {
+              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
+                PyErr_Clear();
+                _v = 0;
+              } else {
+                _v = 1;    
+              }
+            }
+            if (_v) {
+              return _wrap_GridFunction_GetHessians__SWIG_0(self, argc, argv);
+            }
+          }
+        }
+      }
+    }
+  }
+  if ((argc >= 5) && (argc <= 6)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          void *vptr = 0;
+          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              if (argc <= 5) {
+                return _wrap_GridFunction_GetHessians__SWIG_1(self, argc, argv);
+              }
+              {
+                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
+                  PyErr_Clear();
+                  _v = 0;
+                } else {
+                  _v = 1;    
+                }
+              }
+              if (_v) {
+                return _wrap_GridFunction_GetHessians__SWIG_1(self, argc, argv);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_GetHessians'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::GridFunction::GetHessians(int,mfem::IntegrationRule const &,mfem::DenseMatrix &,int) const\n"
+    "    mfem::GridFunction::GetHessians(int,mfem::IntegrationRule const &,mfem::DenseMatrix &,mfem::DenseMatrix &,int) const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::IntegrationRule *arg4 = 0 ;
+  mfem::Vector *arg5 = 0 ;
+  mfem::DenseMatrix *arg6 = 0 ;
+  int arg7 = (int) 1 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"side",  (char *)"ir",  (char *)"vals",  (char *)"tr",  (char *)"vdim",  NULL 
+  };
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO|O:GridFunction_GetFaceValues", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetFaceValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetFaceValues" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
   }
@@ -5109,7 +5302,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceValues" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
   }
   arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetFaceValues" "', argument " "5"" of type '" "mfem::Vector &""'"); 
   }
@@ -5117,7 +5310,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceValues" "', argument " "5"" of type '" "mfem::Vector &""'"); 
   }
   arg5 = reinterpret_cast< mfem::Vector * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res6)) {
     SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GridFunction_GetFaceValues" "', argument " "6"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -5125,11 +5318,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceValues" "', argument " "6"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[6]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg7 = PyArray_PyIntAsInt(swig_obj[6]);
+  if (obj6) {
+    {
+      if ((PyArray_PyIntAsInt(obj6) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg7 = PyArray_PyIntAsInt(obj6);
+    }
   }
   {
     try {
@@ -5143,195 +5338,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_0(PyObject *SWIGUNUS
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  mfem::IntegrationRule *arg4 = 0 ;
-  mfem::Vector *arg5 = 0 ;
-  mfem::DenseMatrix *arg6 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  void *argp6 = 0 ;
-  int res6 = 0 ;
-  int result;
-  
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetFaceValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
-  }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetFaceValues" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceValues" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetFaceValues" "', argument " "5"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceValues" "', argument " "5"" of type '" "mfem::Vector &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Vector * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GridFunction_GetFaceValues" "', argument " "6"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp6) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceValues" "', argument " "6"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg6 = reinterpret_cast< mfem::DenseMatrix * >(argp6);
-  {
-    try {
-      result = (int)((mfem::GridFunction const *)arg1)->GetFaceValues(arg2,arg3,(mfem::IntegrationRule const &)*arg4,*arg5,*arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetFaceValues(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[8] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_GetFaceValues", 0, 7, argv))) SWIG_fail;
-  --argc;
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                return _wrap_GridFunction_GetFaceValues__SWIG_1(self, argc, argv);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 7) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          int res = SWIG_ConvertPtr(argv[3], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                {
-                  if ((PyArray_PyIntAsInt(argv[6]) == -1) && PyErr_Occurred()) {
-                    PyErr_Clear();
-                    _v = 0;
-                  } else {
-                    _v = 1;    
-                  }
-                }
-                if (_v) {
-                  return _wrap_GridFunction_GetFaceValues__SWIG_0(self, argc, argv);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_GetFaceValues'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::GetFaceValues(int,int,mfem::IntegrationRule const &,mfem::Vector &,mfem::DenseMatrix &,int) const\n"
-    "    mfem::GridFunction::GetFaceValues(int,int,mfem::IntegrationRule const &,mfem::Vector &,mfem::DenseMatrix &) const\n");
-  return 0;
 }
 
 
@@ -5536,7 +5542,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetFaceVectorValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetFaceVectorValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
@@ -5552,28 +5558,36 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceVectorValues(PyObject *SWIGUNUSED
   int res5 = 0 ;
   void *argp6 = 0 ;
   int res6 = 0 ;
-  PyObject *swig_obj[6] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"side",  (char *)"ir",  (char *)"vals",  (char *)"tr",  NULL 
+  };
   int result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetFaceVectorValues", 6, 6, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:GridFunction_GetFaceVectorValues", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetFaceVectorValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetFaceVectorValues" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
   }
@@ -5581,7 +5595,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceVectorValues(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceVectorValues" "', argument " "4"" of type '" "mfem::IntegrationRule const &""'"); 
   }
   arg4 = reinterpret_cast< mfem::IntegrationRule * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetFaceVectorValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -5589,7 +5603,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetFaceVectorValues(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetFaceVectorValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res6 = SWIG_ConvertPtr(obj5, &argp6, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res6)) {
     SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GridFunction_GetFaceVectorValues" "', argument " "6"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -5612,7 +5626,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetValuesFrom(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetValuesFrom(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -5620,15 +5634,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetValuesFrom(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"orig_func",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetValuesFrom", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_GetValuesFrom", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetValuesFrom" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetValuesFrom" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
   }
@@ -5651,7 +5669,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetBdrValuesFrom(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetBdrValuesFrom(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -5659,15 +5677,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetBdrValuesFrom(PyObject *SWIGUNUSEDPAR
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"orig_func",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetBdrValuesFrom", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_GetBdrValuesFrom", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetBdrValuesFrom" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetBdrValuesFrom" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
   }
@@ -5690,14 +5712,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
   mfem::IntegrationRule *arg3 = 0 ;
   mfem::DenseMatrix *arg4 = 0 ;
   mfem::DenseMatrix *arg5 = 0 ;
-  int arg6 ;
+  int arg6 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -5706,20 +5728,29 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *S
   int res4 = 0 ;
   void *argp5 = 0 ;
   int res5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"ir",  (char *)"vals",  (char *)"tr",  (char *)"comp",  NULL 
+  };
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOO|O:GridFunction_GetVectorFieldValues", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
   }
@@ -5727,7 +5758,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorFieldValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -5735,7 +5766,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorFieldValues" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res5)) {
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -5743,11 +5774,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorFieldValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
   }
   arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+  if (obj5) {
+    {
+      if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(obj5);
+    }
   }
   {
     try {
@@ -5761,167 +5794,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_0(PyObject *S
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  mfem::IntegrationRule *arg3 = 0 ;
-  mfem::DenseMatrix *arg4 = 0 ;
-  mfem::DenseMatrix *arg5 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationRule,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorFieldValues" "', argument " "3"" of type '" "mfem::IntegrationRule const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::IntegrationRule * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorFieldValues" "', argument " "4"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::DenseMatrix * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5, SWIGTYPE_p_mfem__DenseMatrix,  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_GetVectorFieldValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  if (!argp5) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorFieldValues" "', argument " "5"" of type '" "mfem::DenseMatrix &""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::DenseMatrix * >(argp5);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->GetVectorFieldValues(arg2,(mfem::IntegrationRule const &)*arg3,*arg4,*arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldValues(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[7] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_GetVectorFieldValues", 0, 6, argv))) SWIG_fail;
-  --argc;
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              return _wrap_GridFunction_GetVectorFieldValues__SWIG_1(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationRule, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__DenseMatrix, SWIG_POINTER_NO_NULL);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              {
-                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
-                  PyErr_Clear();
-                  _v = 0;
-                } else {
-                  _v = 1;    
-                }
-              }
-              if (_v) {
-                return _wrap_GridFunction_GetVectorFieldValues__SWIG_0(self, argc, argv);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_GetVectorFieldValues'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::GetVectorFieldValues(int,mfem::IntegrationRule const &,mfem::DenseMatrix &,mfem::DenseMatrix &,int) const\n"
-    "    mfem::GridFunction::GetVectorFieldValues(int,mfem::IntegrationRule const &,mfem::DenseMatrix &,mfem::DenseMatrix &) const\n");
-  return 0;
 }
 
 
@@ -5954,17 +5826,17 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Vector *arg2 = 0 ;
-  int arg3 ;
+  int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetNodalValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -5978,53 +5850,17 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_2(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetNodalValues" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
       ((mfem::GridFunction const *)arg1)->GetNodalValues(*arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Vector *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetNodalValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetNodalValues" "', argument " "2"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetNodalValues" "', argument " "2"" of type '" "mfem::Vector &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->GetNodalValues(*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -6045,7 +5881,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_GetNodalValues", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -6055,20 +5891,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GridFunction_GetNodalValues__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_GetNodalValues__SWIG_1(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -6078,36 +5903,12 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
           }
         }
         if (_v) {
-          return _wrap_GridFunction_GetNodalValues__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           return _wrap_GridFunction_GetNodalValues__SWIG_1(self, argc, argv);
         }
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -6126,6 +5927,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetNodalValues(PyObject *self, PyObject 
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_double_t, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_GetNodalValues__SWIG_0(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -6146,14 +5950,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_GetNodalValues'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::GetNodalValues(int,mfem::Array< double > &,int) const\n"
-    "    mfem::GridFunction::GetNodalValues(int,mfem::Array< double > &) const\n"
-    "    mfem::GridFunction::GetNodalValues(mfem::Vector &,int) const\n"
-    "    mfem::GridFunction::GetNodalValues(mfem::Vector &) const\n");
+    "    mfem::GridFunction::GetNodalValues(mfem::Vector &,int) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldNodalValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldNodalValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -6162,15 +5964,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldNodalValues(PyObject *SWIG
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"val",  (char *)"comp",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetVectorFieldNodalValues", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunction_GetVectorFieldNodalValues", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetVectorFieldNodalValues" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetVectorFieldNodalValues" "', argument " "2"" of type '" "mfem::Vector &""'"); 
   }
@@ -6179,10 +5986,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorFieldNodalValues(PyObject *SWIG
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -6199,23 +6006,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
-  int arg3 ;
+  int arg3 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vec_field",  (char *)"comp",  NULL 
+  };
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:GridFunction_ProjectVectorFieldOn", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectVectorFieldOn" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ProjectVectorFieldOn" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
   }
@@ -6223,11 +6036,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn__SWIG_0(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectVectorFieldOn" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
   }
   arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
   }
   {
     try {
@@ -6244,101 +6059,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::GridFunction *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectVectorFieldOn" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ProjectVectorFieldOn" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectVectorFieldOn" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  {
-    try {
-      (arg1)->ProjectVectorFieldOn(*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectVectorFieldOn(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ProjectVectorFieldOn", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_ProjectVectorFieldOn__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_ProjectVectorFieldOn__SWIG_0(self, argc, argv);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ProjectVectorFieldOn'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::ProjectVectorFieldOn(mfem::GridFunction &,int)\n"
-    "    mfem::GridFunction::ProjectVectorFieldOn(mfem::GridFunction &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_GetDerivative(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetDerivative(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
@@ -6348,27 +6069,33 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetDerivative(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"comp",  (char *)"der_comp",  (char *)"der",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetDerivative", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:GridFunction_GetDerivative", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetDerivative" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_GetDerivative" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
   }
@@ -6391,7 +6118,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetDivergence(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetDivergence(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -6399,16 +6126,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetDivergence(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tr",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetDivergence", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_GetDivergence", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetDivergence" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetDivergence" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -6431,7 +6162,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetCurl(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetCurl(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -6442,15 +6173,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetCurl(PyObject *SWIGUNUSEDPARM(self), 
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tr",  (char *)"curl",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetCurl", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunction_GetCurl", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetCurl" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetCurl" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -6458,7 +6194,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetCurl(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetCurl" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetCurl" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -6481,7 +6217,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -6492,15 +6228,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetGradient(PyObject *SWIGUNUSEDPARM(sel
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tr",  (char *)"grad",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetGradient", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunction_GetGradient", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetGradient" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetGradient" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -6508,7 +6249,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetGradient(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetGradient" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetGradient" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -6716,7 +6457,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetVectorGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetVectorGradient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -6727,15 +6468,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorGradient(PyObject *SWIGUNUSEDPA
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"tr",  (char *)"grad",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetVectorGradient", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunction_GetVectorGradient", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetVectorGradient" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetVectorGradient" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -6743,7 +6489,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetVectorGradient(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_GetVectorGradient" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__DenseMatrix,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_GetVectorGradient" "', argument " "3"" of type '" "mfem::DenseMatrix &""'"); 
   }
@@ -6766,7 +6512,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_GetElementAverages(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_GetElementAverages(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -6774,15 +6520,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_GetElementAverages(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"avgs",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_GetElementAverages", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_GetElementAverages", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_GetElementAverages" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_GetElementAverages" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
   }
@@ -6877,8 +6627,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_1(PyObject *SWIGUNUSE
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   int arg2 ;
   mfem::Vector *arg3 = 0 ;
-  double arg4 ;
-  double arg5 ;
+  double arg4 = (double) 0.0 ;
+  double arg5 = (double) mfem::infinity() ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp3 = 0 ;
@@ -6888,7 +6638,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_1(PyObject *SWIGUNUSE
   double val5 ;
   int ecode5 = 0 ;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ImposeBounds" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
@@ -6908,117 +6658,23 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_1(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ImposeBounds" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GridFunction_ImposeBounds" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GridFunction_ImposeBounds" "', argument " "5"" of type '" "double""'");
-  } 
-  arg5 = static_cast< double >(val5);
+  if (swig_obj[3]) {
+    ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GridFunction_ImposeBounds" "', argument " "4"" of type '" "double""'");
+    } 
+    arg4 = static_cast< double >(val4);
+  }
+  if (swig_obj[4]) {
+    ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+    if (!SWIG_IsOK(ecode5)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GridFunction_ImposeBounds" "', argument " "5"" of type '" "double""'");
+    } 
+    arg5 = static_cast< double >(val5);
+  }
   {
     try {
       (arg1)->ImposeBounds(arg2,(mfem::Vector const &)*arg3,arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  mfem::Vector *arg3 = 0 ;
-  double arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  double val4 ;
-  int ecode4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ImposeBounds" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ImposeBounds" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ImposeBounds" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  ecode4 = SWIG_AsVal_double(swig_obj[3], &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GridFunction_ImposeBounds" "', argument " "4"" of type '" "double""'");
-  } 
-  arg4 = static_cast< double >(val4);
-  {
-    try {
-      (arg1)->ImposeBounds(arg2,(mfem::Vector const &)*arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  int arg2 ;
-  mfem::Vector *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ImposeBounds" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ImposeBounds" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ImposeBounds" "', argument " "3"" of type '" "mfem::Vector const &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Vector * >(argp3);
-  {
-    try {
-      (arg1)->ImposeBounds(arg2,(mfem::Vector const &)*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -7039,7 +6695,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ImposeBounds", 0, 5, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -7057,35 +6713,24 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_ImposeBounds__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ImposeBounds__SWIG_1(self, argc, argv);
+          }
           {
             int res = SWIG_AsVal_double(argv[3], NULL);
             _v = SWIG_CheckState(res);
           }
           if (_v) {
-            return _wrap_GridFunction_ImposeBounds__SWIG_2(self, argc, argv);
+            if (argc <= 4) {
+              return _wrap_GridFunction_ImposeBounds__SWIG_1(self, argc, argv);
+            }
+            {
+              int res = SWIG_AsVal_double(argv[4], NULL);
+              _v = SWIG_CheckState(res);
+            }
+            if (_v) {
+              return _wrap_GridFunction_ImposeBounds__SWIG_1(self, argc, argv);
+            }
           }
         }
       }
@@ -7122,54 +6767,17 @@ SWIGINTERN PyObject *_wrap_GridFunction_ImposeBounds(PyObject *self, PyObject *a
       }
     }
   }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL | 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            int res = SWIG_AsVal_double(argv[3], NULL);
-            _v = SWIG_CheckState(res);
-          }
-          if (_v) {
-            {
-              int res = SWIG_AsVal_double(argv[4], NULL);
-              _v = SWIG_CheckState(res);
-            }
-            if (_v) {
-              return _wrap_GridFunction_ImposeBounds__SWIG_1(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ImposeBounds'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ImposeBounds(int,mfem::Vector const &,mfem::Vector const &,mfem::Vector const &)\n"
-    "    mfem::GridFunction::ImposeBounds(int,mfem::Vector const &,double,double)\n"
-    "    mfem::GridFunction::ImposeBounds(int,mfem::Vector const &,double)\n"
-    "    mfem::GridFunction::ImposeBounds(int,mfem::Vector const &)\n");
+    "    mfem::GridFunction::ImposeBounds(int,mfem::Vector const &,double,double)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_ProjectGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -7177,15 +6785,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectGridFunction(PyObject *SWIGUNUSED
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"src",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_ProjectGridFunction", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_ProjectGridFunction", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectGridFunction" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ProjectGridFunction" "', argument " "2"" of type '" "mfem::GridFunction const &""'"); 
   }
@@ -7251,7 +6863,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_1(PyObject *SWI
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
   mfem::Array< int > *arg3 = 0 ;
-  int arg4 ;
+  int arg4 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -7259,7 +6871,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_1(PyObject *SWI
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
@@ -7281,11 +6893,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_1(PyObject *SWI
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectCoefficient" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
@@ -7303,55 +6917,6 @@ fail:
 
 
 SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  mfem::Array< int > *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectCoefficient" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ProjectCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ProjectCoefficient" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectCoefficient" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Array< int > * >(argp3);
-  {
-    try {
-      (arg1)->ProjectCoefficient(*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -7389,7 +6954,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -7438,7 +7003,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient **arg2 ;
@@ -7505,7 +7070,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient(PyObject *self, PyObj
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GridFunction_ProjectCoefficient__SWIG_3(self, argc, argv);
+        return _wrap_GridFunction_ProjectCoefficient__SWIG_2(self, argc, argv);
       }
     }
   }
@@ -7519,7 +7084,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient(PyObject *self, PyObj
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__Coefficient, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GridFunction_ProjectCoefficient__SWIG_5(self, argc, argv);
+        return _wrap_GridFunction_ProjectCoefficient__SWIG_4(self, argc, argv);
       }
     }
   }
@@ -7537,12 +7102,12 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient(PyObject *self, PyObj
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_ProjectCoefficient__SWIG_4(self, argc, argv);
+          return _wrap_GridFunction_ProjectCoefficient__SWIG_3(self, argc, argv);
         }
       }
     }
   }
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -7556,25 +7121,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectCoefficient(PyObject *self, PyObj
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_ProjectCoefficient__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ProjectCoefficient__SWIG_1(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -7596,7 +7145,6 @@ fail:
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ProjectCoefficient(mfem::Coefficient &)\n"
     "    mfem::GridFunction::ProjectCoefficient(mfem::Coefficient &,mfem::Array< int > &,int)\n"
-    "    mfem::GridFunction::ProjectCoefficient(mfem::Coefficient &,mfem::Array< int > &)\n"
     "    mfem::GridFunction::ProjectCoefficient(mfem::VectorCoefficient &)\n"
     "    mfem::GridFunction::ProjectCoefficient(mfem::VectorCoefficient &,mfem::Array< int > &)\n"
     "    mfem::GridFunction::ProjectCoefficient(mfem::Coefficient *[])\n");
@@ -8027,7 +7575,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientNormal(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientNormal(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -8038,15 +7586,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientNormal(PyObject *SW
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vcoeff",  (char *)"bdr_attr",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_ProjectBdrCoefficientNormal", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunction_ProjectBdrCoefficientNormal", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectBdrCoefficientNormal" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ProjectBdrCoefficientNormal" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -8054,7 +7607,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientNormal(PyObject *SW
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectBdrCoefficientNormal" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ProjectBdrCoefficientNormal" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -8077,7 +7630,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientTangent(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientTangent(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -8088,15 +7641,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientTangent(PyObject *S
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vcoeff",  (char *)"bdr_attr",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_ProjectBdrCoefficientTangent", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunction_ProjectBdrCoefficientTangent", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ProjectBdrCoefficientTangent" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ProjectBdrCoefficientTangent" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -8104,7 +7662,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ProjectBdrCoefficientTangent(PyObject *S
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ProjectBdrCoefficientTangent" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__ArrayT_int_t,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ProjectBdrCoefficientTangent" "', argument " "3"" of type '" "mfem::Array< int > &""'"); 
   }
@@ -8131,14 +7689,14 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_0(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -8152,23 +7710,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -8189,54 +7749,15 @@ fail:
 SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient **arg2 ;
-  mfem::IntegrationRule **arg3 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -8247,23 +7768,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_2(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient *[]""'"); 
   } 
   arg2 = reinterpret_cast< mfem::Coefficient ** >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -8281,48 +7804,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient **arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::Coefficient *[]""'"); 
-  } 
-  arg2 = reinterpret_cast< mfem::Coefficient ** >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 ;
-  mfem::Array< int > *arg4 = (mfem::Array< int > *) 0 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
+  mfem::Array< int > *arg4 = (mfem::Array< int > *) NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -8331,7 +7818,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_4(PyObject *SWIGUNU
   int res4 = 0 ;
   double result;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -8345,131 +7832,37 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_4(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeL2Error" "', argument " "4"" of type '" "mfem::Array< int > *""'"); 
+  if (swig_obj[3]) {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeL2Error" "', argument " "4"" of type '" "mfem::Array< int > *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
   }
-  arg4 = reinterpret_cast< mfem::Array< int > * >(argp4);
   {
     try {
       result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2,(mfem::IntegrationRule const *(*))arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
-        }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
-      }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
-    }
-  }
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2,(mfem::IntegrationRule const *(*))arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL2Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL2Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL2Error(*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8490,7 +7883,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeL2Error", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -8500,48 +7893,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__Coefficient, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_ComputeL2Error__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_ComputeL2Error__SWIG_6(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL2Error__SWIG_0(self, argc, argv);
+        }
         {
           _v = PyList_Check(argv[2]) ? 1 : 0;
         }
@@ -8551,26 +7905,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error(PyObject *self, PyObject 
       }
     }
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          _v = PyList_Check(argv[2]) ? 1 : 0;
-        }
-        if (_v) {
-          return _wrap_GridFunction_ComputeL2Error__SWIG_5(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -8580,16 +7915,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__Coefficient, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
+        }
         {
           _v = PyList_Check(argv[2]) ? 1 : 0;
         }
         if (_v) {
-          return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
+          return _wrap_GridFunction_ComputeL2Error__SWIG_1(self, argc, argv);
         }
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 2) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -8599,15 +7937,21 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL2Error(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
+        }
         {
           _v = PyList_Check(argv[2]) ? 1 : 0;
         }
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
+          }
           void *vptr = 0;
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_GridFunction_ComputeL2Error__SWIG_4(self, argc, argv);
+            return _wrap_GridFunction_ComputeL2Error__SWIG_2(self, argc, argv);
           }
         }
       }
@@ -8618,17 +7962,13 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeL2Error'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient &) const\n"
     "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient *[],mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::Coefficient *[]) const\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::VectorCoefficient &,mfem::IntegrationRule const *[],mfem::Array< int > *) const\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::VectorCoefficient &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeL2Error(mfem::VectorCoefficient &) const\n");
+    "    mfem::GridFunction::ComputeL2Error(mfem::VectorCoefficient &,mfem::IntegrationRule const *[],mfem::Array< int > *) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeH1Error(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeH1Error(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = (mfem::Coefficient *) 0 ;
@@ -8646,40 +7986,48 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeH1Error(PyObject *SWIGUNUSEDPARM(
   int res4 = 0 ;
   double val5 ;
   int ecode5 = 0 ;
-  PyObject *swig_obj[6] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"exsol",  (char *)"exgrad",  (char *)"ell_coef",  (char *)"Nu",  (char *)"norm_type",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_ComputeH1Error", 6, 6, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOOOO:GridFunction_ComputeH1Error", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeH1Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeH1Error" "', argument " "2"" of type '" "mfem::Coefficient *""'"); 
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeH1Error" "', argument " "3"" of type '" "mfem::VectorCoefficient *""'"); 
   }
   arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeH1Error" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
   }
   arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  ecode5 = SWIG_AsVal_double(swig_obj[4], &val5);
+  ecode5 = SWIG_AsVal_double(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "GridFunction_ComputeH1Error" "', argument " "5"" of type '" "double""'");
   } 
   arg5 = static_cast< double >(val5);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
+    arg6 = PyArray_PyIntAsInt(obj5);
   }
   {
     try {
@@ -8700,14 +8048,14 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_0(PyObject *SWIGUN
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeMaxError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -8721,23 +8069,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_0(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -8758,54 +8108,15 @@ fail:
 SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeMaxError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeMaxError(*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient **arg2 ;
-  mfem::IntegrationRule **arg3 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeMaxError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -8816,23 +8127,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_2(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::Coefficient *[]""'"); 
   } 
   arg2 = reinterpret_cast< mfem::Coefficient ** >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -8850,54 +8163,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient **arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeMaxError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::Coefficient *[]""'"); 
-  } 
-  arg2 = reinterpret_cast< mfem::Coefficient ** >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeMaxError(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeMaxError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -8911,67 +8188,30 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_4(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       result = (double)((mfem::GridFunction const *)arg1)->ComputeMaxError(*arg2,(mfem::IntegrationRule const *(*))arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeMaxError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeMaxError" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeMaxError(*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -8992,7 +8232,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError(PyObject *self, PyObject
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeMaxError", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -9002,48 +8242,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError(PyObject *self, PyObject
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GridFunction_ComputeMaxError__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__Coefficient, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_ComputeMaxError__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_ComputeMaxError__SWIG_5(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeMaxError__SWIG_0(self, argc, argv);
+        }
         {
           _v = PyList_Check(argv[2]) ? 1 : 0;
         }
@@ -9053,26 +8254,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError(PyObject *self, PyObject
       }
     }
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          _v = PyList_Check(argv[2]) ? 1 : 0;
-        }
-        if (_v) {
-          return _wrap_GridFunction_ComputeMaxError__SWIG_4(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -9082,6 +8264,31 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeMaxError(PyObject *self, PyObject
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_p_mfem__Coefficient, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeMaxError__SWIG_1(self, argc, argv);
+        }
+        {
+          _v = PyList_Check(argv[2]) ? 1 : 0;
+        }
+        if (_v) {
+          return _wrap_GridFunction_ComputeMaxError__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeMaxError__SWIG_2(self, argc, argv);
+        }
         {
           _v = PyList_Check(argv[2]) ? 1 : 0;
         }
@@ -9096,11 +8303,8 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeMaxError'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeMaxError(mfem::Coefficient &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeMaxError(mfem::Coefficient &) const\n"
     "    mfem::GridFunction::ComputeMaxError(mfem::Coefficient *[],mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeMaxError(mfem::Coefficient *[]) const\n"
-    "    mfem::GridFunction::ComputeMaxError(mfem::VectorCoefficient &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeMaxError(mfem::VectorCoefficient &) const\n");
+    "    mfem::GridFunction::ComputeMaxError(mfem::VectorCoefficient &,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
 
@@ -9109,14 +8313,14 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error__SWIG_0(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL1Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -9130,23 +8334,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL1Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -9164,53 +8370,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL1Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL1Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL1Error" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL1Error(*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = (mfem::Coefficient *) 0 ;
   mfem::VectorCoefficient *arg3 = (mfem::VectorCoefficient *) 0 ;
   int arg4 ;
-  mfem::Array< int > *arg5 = (mfem::Array< int > *) 0 ;
-  mfem::IntegrationRule **arg6 ;
+  mfem::Array< int > *arg5 = (mfem::Array< int > *) NULL ;
+  mfem::IntegrationRule **arg6 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -9219,52 +8386,65 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error__SWIG_0(PyObject *SWIGUN
   int res3 = 0 ;
   void *argp5 = 0 ;
   int res5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"exsol",  (char *)"exgrad",  (char *)"norm_type",  (char *)"elems",  (char *)"irs",  NULL 
+  };
   double result;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|OO:GridFunction_ComputeW11Error", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeW11Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeW11Error" "', argument " "2"" of type '" "mfem::Coefficient *""'"); 
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeW11Error" "', argument " "3"" of type '" "mfem::VectorCoefficient *""'"); 
   }
   arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeW11Error" "', argument " "5"" of type '" "mfem::Array< int > *""'"); 
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeW11Error" "', argument " "5"" of type '" "mfem::Array< int > *""'"); 
+    }
+    arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
   }
-  arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    if (PyList_Check(swig_obj[5])) {
-      int size = PyList_Size(swig_obj[5]);
-      int i = 0;
-      arg6 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[5],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (obj5) {
+    {
+      if (PyList_Check(obj5)) {
+        int size = PyList_Size(obj5);
+        int i = 0;
+        arg6 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(obj5,i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg6[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg6[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -9282,249 +8462,18 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = (mfem::Coefficient *) 0 ;
-  mfem::VectorCoefficient *arg3 = (mfem::VectorCoefficient *) 0 ;
-  int arg4 ;
-  mfem::Array< int > *arg5 = (mfem::Array< int > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  double result;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeW11Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeW11Error" "', argument " "2"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeW11Error" "', argument " "3"" of type '" "mfem::VectorCoefficient *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-  }
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeW11Error" "', argument " "5"" of type '" "mfem::Array< int > *""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeW11Error(arg2,arg3,arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = (mfem::Coefficient *) 0 ;
-  mfem::VectorCoefficient *arg3 = (mfem::VectorCoefficient *) 0 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  double result;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeW11Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeW11Error" "', argument " "2"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeW11Error" "', argument " "3"" of type '" "mfem::VectorCoefficient *""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-  }
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeW11Error(arg2,arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeW11Error(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[7] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeW11Error", 0, 6, argv))) SWIG_fail;
-  --argc;
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            return _wrap_GridFunction_ComputeW11Error__SWIG_2(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              return _wrap_GridFunction_ComputeW11Error__SWIG_1(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              {
-                _v = PyList_Check(argv[5]) ? 1 : 0;
-              }
-              if (_v) {
-                return _wrap_GridFunction_ComputeW11Error__SWIG_0(self, argc, argv);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeW11Error'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::ComputeW11Error(mfem::Coefficient *,mfem::VectorCoefficient *,int,mfem::Array< int > *,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeW11Error(mfem::Coefficient *,mfem::VectorCoefficient *,int,mfem::Array< int > *) const\n"
-    "    mfem::GridFunction::ComputeW11Error(mfem::Coefficient *,mfem::VectorCoefficient *,int) const\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::IntegrationRule **arg3 ;
+  mfem::IntegrationRule **arg3 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   double result;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL1Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -9538,67 +8487,30 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error__SWIG_2(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL1Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    if (PyList_Check(swig_obj[2])) {
-      int size = PyList_Size(swig_obj[2]);
-      int i = 0;
-      arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[2],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[2]) {
+    {
+      if (PyList_Check(swig_obj[2])) {
+        int size = PyList_Size(swig_obj[2]);
+        int i = 0;
+        arg3 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[2],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg3[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       result = (double)((mfem::GridFunction const *)arg1)->ComputeL1Error(*arg2,(mfem::IntegrationRule const *(*))arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  double result;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeL1Error" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeL1Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeL1Error" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeL1Error(*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -9619,7 +8531,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeL1Error", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -9629,53 +8541,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GridFunction_ComputeL1Error__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_GridFunction_ComputeL1Error__SWIG_3(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          _v = PyList_Check(argv[2]) ? 1 : 0;
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL1Error__SWIG_0(self, argc, argv);
         }
-        if (_v) {
-          return _wrap_GridFunction_ComputeL1Error__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
         {
           _v = PyList_Check(argv[2]) ? 1 : 0;
         }
@@ -9685,14 +8553,34 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeL1Error(PyObject *self, PyObject 
       }
     }
   }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_GridFunction_ComputeL1Error__SWIG_1(self, argc, argv);
+        }
+        {
+          _v = PyList_Check(argv[2]) ? 1 : 0;
+        }
+        if (_v) {
+          return _wrap_GridFunction_ComputeL1Error__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeL1Error'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeL1Error(mfem::Coefficient &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeL1Error(mfem::Coefficient &) const\n"
-    "    mfem::GridFunction::ComputeL1Error(mfem::VectorCoefficient &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeL1Error(mfem::VectorCoefficient &) const\n");
+    "    mfem::GridFunction::ComputeL1Error(mfem::VectorCoefficient &,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
 
@@ -9702,8 +8590,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_0(PyObject *SWIGUNU
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   double arg2 ;
   mfem::Coefficient *arg3 = 0 ;
-  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  mfem::IntegrationRule **arg5 ;
+  mfem::Coefficient *arg4 = (mfem::Coefficient *) NULL ;
+  mfem::IntegrationRule **arg5 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
@@ -9714,7 +8602,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_0(PyObject *SWIGUNU
   int res4 = 0 ;
   double result;
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 5)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -9733,135 +8621,37 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
   }
   arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeLpError" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[3]) {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeLpError" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
   }
-  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  {
-    if (PyList_Check(swig_obj[4])) {
-      int size = PyList_Size(swig_obj[4]);
-      int i = 0;
-      arg5 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[4],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[4]) {
+    {
+      if (PyList_Check(swig_obj[4])) {
+        int size = PyList_Size(swig_obj[4]);
+        int i = 0;
+        arg5 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[4],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg5[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg5[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3,arg4,(mfem::IntegrationRule const *(*))arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::Coefficient *arg3 = 0 ;
-  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  double result;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeLpError" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeLpError" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::Coefficient *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  double result;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeLpError" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -9880,8 +8670,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_0(PyObject 
   double arg2 ;
   mfem::Coefficient *arg3 = 0 ;
   mfem::GridFunction *arg4 = 0 ;
-  mfem::Coefficient *arg5 = (mfem::Coefficient *) 0 ;
-  mfem::IntegrationRule **arg6 ;
+  mfem::Coefficient *arg5 = (mfem::Coefficient *) NULL ;
+  mfem::IntegrationRule **arg6 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
@@ -9893,7 +8683,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_0(PyObject 
   void *argp5 = 0 ;
   int res5 = 0 ;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -9920,28 +8710,32 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_0(PyObject 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
   }
   arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "5"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[4]) {
+    res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "5"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg5 = reinterpret_cast< mfem::Coefficient * >(argp5);
   }
-  arg5 = reinterpret_cast< mfem::Coefficient * >(argp5);
-  {
-    if (PyList_Check(swig_obj[5])) {
-      int size = PyList_Size(swig_obj[5]);
-      int i = 0;
-      arg6 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[5],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[5]) {
+    {
+      if (PyList_Check(swig_obj[5])) {
+        int size = PyList_Size(swig_obj[5]);
+        int i = 0;
+        arg6 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[5],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg6[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg6[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -9959,134 +8753,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::Coefficient *arg3 = 0 ;
-  mfem::GridFunction *arg4 = 0 ;
-  mfem::Coefficient *arg5 = (mfem::Coefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "5"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Coefficient * >(argp5);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementLpErrors(arg2,*arg3,*arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::Coefficient *arg3 = 0 ;
-  mfem::GridFunction *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::Coefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementLpErrors(arg2,*arg3,*arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
-  mfem::IntegrationRule **arg4 ;
+  mfem::IntegrationRule **arg4 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -10094,7 +8766,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_0(PyObject 
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -10116,23 +8788,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_0(PyObject 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if (PyList_Check(swig_obj[3])) {
-      int size = PyList_Size(swig_obj[3]);
-      int i = 0;
-      arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[3],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[3]) {
+    {
+      if (PyList_Check(swig_obj[3])) {
+        int size = PyList_Size(swig_obj[3]);
+        int i = 0;
+        arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[3],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -10150,61 +8824,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementL1Errors(*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
-  mfem::IntegrationRule **arg4 ;
+  mfem::IntegrationRule **arg4 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -10212,7 +8837,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_0(PyObject 
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -10234,23 +8859,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_0(PyObject 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if (PyList_Check(swig_obj[3])) {
-      int size = PyList_Size(swig_obj[3]);
-      int i = 0;
-      arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[3],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[3]) {
+    {
+      if (PyList_Check(swig_obj[3])) {
+        int size = PyList_Size(swig_obj[3]);
+        int i = 0;
+        arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[3],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -10268,61 +8895,12 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementL2Errors(*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
-  mfem::IntegrationRule **arg4 ;
+  mfem::IntegrationRule **arg4 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -10330,7 +8908,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_0(PyObject
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -10352,23 +8930,25 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_0(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if (PyList_Check(swig_obj[3])) {
-      int size = PyList_Size(swig_obj[3]);
-      int i = 0;
-      arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[3],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[3]) {
+    {
+      if (PyList_Check(swig_obj[3])) {
+        int size = PyList_Size(swig_obj[3]);
+        int i = 0;
+        arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[3],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
@@ -10386,63 +8966,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::Coefficient *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementMaxErrors(*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   double arg2 ;
   mfem::VectorCoefficient *arg3 = 0 ;
-  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  mfem::VectorCoefficient *arg5 = (mfem::VectorCoefficient *) 0 ;
-  mfem::IntegrationRule **arg6 ;
+  mfem::Coefficient *arg4 = (mfem::Coefficient *) NULL ;
+  mfem::VectorCoefficient *arg5 = (mfem::VectorCoefficient *) NULL ;
+  mfem::IntegrationRule **arg6 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
@@ -10455,7 +8986,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_3(PyObject *SWIGUNU
   int res5 = 0 ;
   double result;
   
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 6)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -10474,203 +9005,44 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_3(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
   }
   arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeLpError" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[3]) {
+    res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeLpError" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
   }
-  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeLpError" "', argument " "5"" of type '" "mfem::VectorCoefficient *""'"); 
+  if (swig_obj[4]) {
+    res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeLpError" "', argument " "5"" of type '" "mfem::VectorCoefficient *""'"); 
+    }
+    arg5 = reinterpret_cast< mfem::VectorCoefficient * >(argp5);
   }
-  arg5 = reinterpret_cast< mfem::VectorCoefficient * >(argp5);
-  {
-    if (PyList_Check(swig_obj[5])) {
-      int size = PyList_Size(swig_obj[5]);
-      int i = 0;
-      arg6 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[5],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[5]) {
+    {
+      if (PyList_Check(swig_obj[5])) {
+        int size = PyList_Size(swig_obj[5]);
+        int i = 0;
+        arg6 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[5],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg6[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg6[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3,arg4,arg5,(mfem::IntegrationRule const *(*))arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::VectorCoefficient *arg3 = 0 ;
-  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  mfem::VectorCoefficient *arg5 = (mfem::VectorCoefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  double result;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeLpError" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeLpError" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeLpError" "', argument " "5"" of type '" "mfem::VectorCoefficient *""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::VectorCoefficient * >(argp5);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3,arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::VectorCoefficient *arg3 = 0 ;
-  mfem::Coefficient *arg4 = (mfem::Coefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  double result;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeLpError" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeLpError" "', argument " "4"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Coefficient * >(argp4);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::VectorCoefficient *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  double result;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeLpError" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeLpError" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeLpError" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  {
-    try {
-      result = (double)((mfem::GridFunction const *)arg1)->ComputeLpError(arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -10691,7 +9063,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeLpError", 0, 6, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 5)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -10706,100 +9078,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_ComputeLpError__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_GridFunction_ComputeLpError__SWIG_6(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_GridFunction_ComputeLpError__SWIG_5(self, argc, argv);
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeLpError__SWIG_0(self, argc, argv);
           }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           void *vptr = 0;
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_GridFunction_ComputeLpError__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
+            if (argc <= 4) {
+              return _wrap_GridFunction_ComputeLpError__SWIG_0(self, argc, argv);
+            }
             {
               _v = PyList_Check(argv[4]) ? 1 : 0;
             }
@@ -10811,7 +9099,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
       }
     }
   }
-  if (argc == 5) {
+  if ((argc >= 3) && (argc <= 6)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -10826,49 +9114,28 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeLpError(PyObject *self, PyObject 
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              return _wrap_GridFunction_ComputeLpError__SWIG_4(self, argc, argv);
-            }
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeLpError__SWIG_1(self, argc, argv);
           }
-        }
-      }
-    }
-  }
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           void *vptr = 0;
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
           _v = SWIG_CheckState(res);
           if (_v) {
+            if (argc <= 4) {
+              return _wrap_GridFunction_ComputeLpError__SWIG_1(self, argc, argv);
+            }
             void *vptr = 0;
             int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
             _v = SWIG_CheckState(res);
             if (_v) {
+              if (argc <= 5) {
+                return _wrap_GridFunction_ComputeLpError__SWIG_1(self, argc, argv);
+              }
               {
                 _v = PyList_Check(argv[5]) ? 1 : 0;
               }
               if (_v) {
-                return _wrap_GridFunction_ComputeLpError__SWIG_3(self, argc, argv);
+                return _wrap_GridFunction_ComputeLpError__SWIG_1(self, argc, argv);
               }
             }
           }
@@ -10881,25 +9148,20 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeLpError'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeLpError(double const,mfem::Coefficient &,mfem::Coefficient *,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeLpError(double const,mfem::Coefficient &,mfem::Coefficient *) const\n"
-    "    mfem::GridFunction::ComputeLpError(double const,mfem::Coefficient &) const\n"
-    "    mfem::GridFunction::ComputeLpError(double const,mfem::VectorCoefficient &,mfem::Coefficient *,mfem::VectorCoefficient *,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeLpError(double const,mfem::VectorCoefficient &,mfem::Coefficient *,mfem::VectorCoefficient *) const\n"
-    "    mfem::GridFunction::ComputeLpError(double const,mfem::VectorCoefficient &,mfem::Coefficient *) const\n"
-    "    mfem::GridFunction::ComputeLpError(double const,mfem::VectorCoefficient &) const\n");
+    "    mfem::GridFunction::ComputeLpError(double const,mfem::VectorCoefficient &,mfem::Coefficient *,mfem::VectorCoefficient *,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   double arg2 ;
   mfem::VectorCoefficient *arg3 = 0 ;
   mfem::GridFunction *arg4 = 0 ;
-  mfem::Coefficient *arg5 = (mfem::Coefficient *) 0 ;
-  mfem::VectorCoefficient *arg6 = (mfem::VectorCoefficient *) 0 ;
-  mfem::IntegrationRule **arg7 ;
+  mfem::Coefficient *arg5 = (mfem::Coefficient *) NULL ;
+  mfem::VectorCoefficient *arg6 = (mfem::VectorCoefficient *) NULL ;
+  mfem::IntegrationRule **arg7 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val2 ;
@@ -10913,7 +9175,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_3(PyObject 
   void *argp6 = 0 ;
   int res6 = 0 ;
   
-  if ((nobjs < 7) || (nobjs > 7)) SWIG_fail;
+  if ((nobjs < 4) || (nobjs > 7)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -10940,233 +9202,44 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_3(PyObject 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
   }
   arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "5"" of type '" "mfem::Coefficient *""'"); 
+  if (swig_obj[4]) {
+    res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "5"" of type '" "mfem::Coefficient *""'"); 
+    }
+    arg5 = reinterpret_cast< mfem::Coefficient * >(argp5);
   }
-  arg5 = reinterpret_cast< mfem::Coefficient * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "6"" of type '" "mfem::VectorCoefficient *""'"); 
+  if (swig_obj[5]) {
+    res6 = SWIG_ConvertPtr(swig_obj[5], &argp6,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
+    if (!SWIG_IsOK(res6)) {
+      SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "6"" of type '" "mfem::VectorCoefficient *""'"); 
+    }
+    arg6 = reinterpret_cast< mfem::VectorCoefficient * >(argp6);
   }
-  arg6 = reinterpret_cast< mfem::VectorCoefficient * >(argp6);
-  {
-    if (PyList_Check(swig_obj[6])) {
-      int size = PyList_Size(swig_obj[6]);
-      int i = 0;
-      arg7 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[6],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[6]) {
+    {
+      if (PyList_Check(swig_obj[6])) {
+        int size = PyList_Size(swig_obj[6]);
+        int i = 0;
+        arg7 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[6],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg7[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg7[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       ((mfem::GridFunction const *)arg1)->ComputeElementLpErrors(arg2,*arg3,*arg4,arg5,arg6,(mfem::IntegrationRule const *(*))arg7); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::VectorCoefficient *arg3 = 0 ;
-  mfem::GridFunction *arg4 = 0 ;
-  mfem::Coefficient *arg5 = (mfem::Coefficient *) 0 ;
-  mfem::VectorCoefficient *arg6 = (mfem::VectorCoefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  void *argp6 = 0 ;
-  int res6 = 0 ;
-  
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "5"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Coefficient * >(argp5);
-  res6 = SWIG_ConvertPtr(swig_obj[5], &argp6,SWIGTYPE_p_mfem__VectorCoefficient, 0 |  0 );
-  if (!SWIG_IsOK(res6)) {
-    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "6"" of type '" "mfem::VectorCoefficient *""'"); 
-  }
-  arg6 = reinterpret_cast< mfem::VectorCoefficient * >(argp6);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementLpErrors(arg2,*arg3,*arg4,arg5,arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::VectorCoefficient *arg3 = 0 ;
-  mfem::GridFunction *arg4 = 0 ;
-  mfem::Coefficient *arg5 = (mfem::Coefficient *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__Coefficient, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "5"" of type '" "mfem::Coefficient *""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Coefficient * >(argp5);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementLpErrors(arg2,*arg3,*arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  double arg2 ;
-  mfem::VectorCoefficient *arg3 = 0 ;
-  mfem::GridFunction *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "3"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::VectorCoefficient * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementLpErrors" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::GridFunction * >(argp4);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementLpErrors(arg2,*arg3,*arg4); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11187,7 +9260,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors(PyObject *self, P
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeElementLpErrors", 0, 7, argv))) SWIG_fail;
   --argc;
-  if (argc == 4) {
+  if ((argc >= 4) && (argc <= 6)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -11206,120 +9279,16 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors(PyObject *self, P
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
-            return _wrap_GridFunction_ComputeElementLpErrors__SWIG_2(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_GridFunction_ComputeElementLpErrors__SWIG_6(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              return _wrap_GridFunction_ComputeElementLpErrors__SWIG_5(self, argc, argv);
+            if (argc <= 4) {
+              return _wrap_GridFunction_ComputeElementLpErrors__SWIG_0(self, argc, argv);
             }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
             void *vptr = 0;
             int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
             _v = SWIG_CheckState(res);
             if (_v) {
-              return _wrap_GridFunction_ComputeElementLpErrors__SWIG_1(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
+              if (argc <= 5) {
+                return _wrap_GridFunction_ComputeElementLpErrors__SWIG_0(self, argc, argv);
+              }
               {
                 _v = PyList_Check(argv[5]) ? 1 : 0;
               }
@@ -11332,7 +9301,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors(PyObject *self, P
       }
     }
   }
-  if (argc == 6) {
+  if ((argc >= 4) && (argc <= 7)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -11351,54 +9320,28 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementLpErrors(PyObject *self, P
           int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
           _v = SWIG_CheckState(res);
           if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              void *vptr = 0;
-              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
-              _v = SWIG_CheckState(res);
-              if (_v) {
-                return _wrap_GridFunction_ComputeElementLpErrors__SWIG_4(self, argc, argv);
-              }
+            if (argc <= 4) {
+              return _wrap_GridFunction_ComputeElementLpErrors__SWIG_1(self, argc, argv);
             }
-          }
-        }
-      }
-    }
-  }
-  if (argc == 7) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
             void *vptr = 0;
             int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__Coefficient, 0);
             _v = SWIG_CheckState(res);
             if (_v) {
+              if (argc <= 5) {
+                return _wrap_GridFunction_ComputeElementLpErrors__SWIG_1(self, argc, argv);
+              }
               void *vptr = 0;
               int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, 0);
               _v = SWIG_CheckState(res);
               if (_v) {
+                if (argc <= 6) {
+                  return _wrap_GridFunction_ComputeElementLpErrors__SWIG_1(self, argc, argv);
+                }
                 {
                   _v = PyList_Check(argv[6]) ? 1 : 0;
                 }
                 if (_v) {
-                  return _wrap_GridFunction_ComputeElementLpErrors__SWIG_3(self, argc, argv);
+                  return _wrap_GridFunction_ComputeElementLpErrors__SWIG_1(self, argc, argv);
                 }
               }
             }
@@ -11412,22 +9355,17 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeElementLpErrors'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::Coefficient &,mfem::GridFunction &,mfem::Coefficient *,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::Coefficient &,mfem::GridFunction &,mfem::Coefficient *) const\n"
-    "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::Coefficient &,mfem::GridFunction &) const\n"
-    "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::VectorCoefficient &,mfem::GridFunction &,mfem::Coefficient *,mfem::VectorCoefficient *,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::VectorCoefficient &,mfem::GridFunction &,mfem::Coefficient *,mfem::VectorCoefficient *) const\n"
-    "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::VectorCoefficient &,mfem::GridFunction &,mfem::Coefficient *) const\n"
-    "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::VectorCoefficient &,mfem::GridFunction &) const\n");
+    "    mfem::GridFunction::ComputeElementLpErrors(double const,mfem::VectorCoefficient &,mfem::GridFunction &,mfem::Coefficient *,mfem::VectorCoefficient *,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
-  mfem::IntegrationRule **arg4 ;
+  mfem::IntegrationRule **arg4 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -11435,7 +9373,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_2(PyObject 
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -11457,77 +9395,30 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_2(PyObject 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if (PyList_Check(swig_obj[3])) {
-      int size = PyList_Size(swig_obj[3]);
-      int i = 0;
-      arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[3],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[3]) {
+    {
+      if (PyList_Check(swig_obj[3])) {
+        int size = PyList_Size(swig_obj[3]);
+        int i = 0;
+        arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[3],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       ((mfem::GridFunction const *)arg1)->ComputeElementL1Errors(*arg2,*arg3,(mfem::IntegrationRule const *(*))arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL1Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementL1Errors(*arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11548,7 +9439,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors(PyObject *self, P
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeElementL1Errors", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -11562,68 +9453,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors(PyObject *self, P
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_ComputeElementL1Errors__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_GridFunction_ComputeElementL1Errors__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            _v = PyList_Check(argv[3]) ? 1 : 0;
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeElementL1Errors__SWIG_0(self, argc, argv);
           }
-          if (_v) {
-            return _wrap_GridFunction_ComputeElementL1Errors__SWIG_2(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           {
             _v = PyList_Check(argv[3]) ? 1 : 0;
           }
@@ -11634,24 +9466,49 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL1Errors(PyObject *self, P
       }
     }
   }
+  if ((argc >= 3) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeElementL1Errors__SWIG_1(self, argc, argv);
+          }
+          {
+            _v = PyList_Check(argv[3]) ? 1 : 0;
+          }
+          if (_v) {
+            return _wrap_GridFunction_ComputeElementL1Errors__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeElementL1Errors'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeElementL1Errors(mfem::Coefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementL1Errors(mfem::Coefficient &,mfem::GridFunction &) const\n"
-    "    mfem::GridFunction::ComputeElementL1Errors(mfem::VectorCoefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementL1Errors(mfem::VectorCoefficient &,mfem::GridFunction &) const\n");
+    "    mfem::GridFunction::ComputeElementL1Errors(mfem::VectorCoefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
-  mfem::IntegrationRule **arg4 ;
+  mfem::IntegrationRule **arg4 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -11659,7 +9516,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_2(PyObject 
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -11681,77 +9538,30 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_2(PyObject 
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if (PyList_Check(swig_obj[3])) {
-      int size = PyList_Size(swig_obj[3]);
-      int i = 0;
-      arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[3],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[3]) {
+    {
+      if (PyList_Check(swig_obj[3])) {
+        int size = PyList_Size(swig_obj[3]);
+        int i = 0;
+        arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[3],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       ((mfem::GridFunction const *)arg1)->ComputeElementL2Errors(*arg2,*arg3,(mfem::IntegrationRule const *(*))arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementL2Errors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementL2Errors(*arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11772,7 +9582,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors(PyObject *self, P
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeElementL2Errors", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -11786,68 +9596,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors(PyObject *self, P
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_ComputeElementL2Errors__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_GridFunction_ComputeElementL2Errors__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            _v = PyList_Check(argv[3]) ? 1 : 0;
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeElementL2Errors__SWIG_0(self, argc, argv);
           }
-          if (_v) {
-            return _wrap_GridFunction_ComputeElementL2Errors__SWIG_2(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           {
             _v = PyList_Check(argv[3]) ? 1 : 0;
           }
@@ -11858,24 +9609,49 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementL2Errors(PyObject *self, P
       }
     }
   }
+  if ((argc >= 3) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeElementL2Errors__SWIG_1(self, argc, argv);
+          }
+          {
+            _v = PyList_Check(argv[3]) ? 1 : 0;
+          }
+          if (_v) {
+            return _wrap_GridFunction_ComputeElementL2Errors__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeElementL2Errors'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeElementL2Errors(mfem::Coefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementL2Errors(mfem::Coefficient &,mfem::GridFunction &) const\n"
-    "    mfem::GridFunction::ComputeElementL2Errors(mfem::VectorCoefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementL2Errors(mfem::VectorCoefficient &,mfem::GridFunction &) const\n");
+    "    mfem::GridFunction::ComputeElementL2Errors(mfem::VectorCoefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
-  mfem::IntegrationRule **arg4 ;
+  mfem::IntegrationRule **arg4 = (mfem::IntegrationRule **) (mfem::IntegrationRule **)NULL ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -11883,7 +9659,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_2(PyObject
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
@@ -11905,77 +9681,30 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_2(PyObject
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if (PyList_Check(swig_obj[3])) {
-      int size = PyList_Size(swig_obj[3]);
-      int i = 0;
-      arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
-      for (i = 0; i < size; i++) {
-        PyObject *o = PyList_GetItem(swig_obj[3],i);
-        void *temp;       
-        if (SWIG_ConvertPtr(o, &temp,
-            SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
-          return NULL;
+  if (swig_obj[3]) {
+    {
+      if (PyList_Check(swig_obj[3])) {
+        int size = PyList_Size(swig_obj[3]);
+        int i = 0;
+        arg4 = (mfem::IntegrationRule **) malloc((size)*sizeof(mfem::IntegrationRule *));
+        for (i = 0; i < size; i++) {
+          PyObject *o = PyList_GetItem(swig_obj[3],i);
+          void *temp;       
+          if (SWIG_ConvertPtr(o, &temp,
+              SWIGTYPE_p_mfem__IntegrationRule,SWIG_POINTER_EXCEPTION) == -1){
+            return NULL;
+          }
+          arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
         }
-        arg4[i] = reinterpret_cast<mfem::IntegrationRule *>(temp);       
+      } else {
+        PyErr_SetString(PyExc_TypeError,"not a list");
+        return NULL;
       }
-    } else {
-      PyErr_SetString(PyExc_TypeError,"not a list");
-      return NULL;
     }
   }
   {
     try {
       ((mfem::GridFunction const *)arg1)->ComputeElementMaxErrors(*arg2,*arg3,(mfem::IntegrationRule const *(*))arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeElementMaxErrors" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    try {
-      ((mfem::GridFunction const *)arg1)->ComputeElementMaxErrors(*arg2,*arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11996,7 +9725,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors(PyObject *self, 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeElementMaxErrors", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 3) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -12010,68 +9739,9 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors(PyObject *self, 
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_ComputeElementMaxErrors__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_GridFunction_ComputeElementMaxErrors__SWIG_3(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            _v = PyList_Check(argv[3]) ? 1 : 0;
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeElementMaxErrors__SWIG_0(self, argc, argv);
           }
-          if (_v) {
-            return _wrap_GridFunction_ComputeElementMaxErrors__SWIG_2(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
           {
             _v = PyList_Check(argv[3]) ? 1 : 0;
           }
@@ -12082,39 +9752,74 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeElementMaxErrors(PyObject *self, 
       }
     }
   }
+  if ((argc >= 3) && (argc <= 4)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        void *vptr = 0;
+        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          if (argc <= 3) {
+            return _wrap_GridFunction_ComputeElementMaxErrors__SWIG_1(self, argc, argv);
+          }
+          {
+            _v = PyList_Check(argv[3]) ? 1 : 0;
+          }
+          if (_v) {
+            return _wrap_GridFunction_ComputeElementMaxErrors__SWIG_1(self, argc, argv);
+          }
+        }
+      }
+    }
+  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeElementMaxErrors'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::ComputeElementMaxErrors(mfem::Coefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementMaxErrors(mfem::Coefficient &,mfem::GridFunction &) const\n"
-    "    mfem::GridFunction::ComputeElementMaxErrors(mfem::VectorCoefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n"
-    "    mfem::GridFunction::ComputeElementMaxErrors(mfem::VectorCoefficient &,mfem::GridFunction &) const\n");
+    "    mfem::GridFunction::ComputeElementMaxErrors(mfem::VectorCoefficient &,mfem::GridFunction &,mfem::IntegrationRule const *[]) const\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::BilinearFormIntegrator *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
-  int arg4 ;
-  int arg5 ;
+  bool arg4 = (bool) true ;
+  int arg5 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
+  bool val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"blfi",  (char *)"flux",  (char *)"wcoef",  (char *)"subdomain",  NULL 
+  };
   
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO|OO:GridFunction_ComputeFlux", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeFlux" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeFlux" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator &""'"); 
   }
@@ -12122,7 +9827,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeFlux" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator &""'"); 
   }
   arg2 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeFlux" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
@@ -12130,17 +9835,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeFlux" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (obj3) {
+    ecode4 = SWIG_AsVal_bool(obj3, &val4);
+    if (!SWIG_IsOK(ecode4)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "GridFunction_ComputeFlux" "', argument " "4"" of type '" "bool""'");
+    } 
+    arg4 = static_cast< bool >(val4);
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[4]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg5 = PyArray_PyIntAsInt(swig_obj[4]);
+  if (obj4) {
+    {
+      if ((PyArray_PyIntAsInt(obj4) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg5 = PyArray_PyIntAsInt(obj4);
+    }
   }
   {
     try {
@@ -12154,217 +9862,6 @@ SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_0(PyObject *SWIGUNUSED
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::BilinearFormIntegrator *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  int arg4 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeFlux" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeFlux" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeFlux" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeFlux" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeFlux" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
-  }
-  {
-    try {
-      (arg1)->ComputeFlux(*arg2,*arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  mfem::BilinearFormIntegrator *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_ComputeFlux" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_ComputeFlux" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeFlux" "', argument " "2"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_ComputeFlux" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_ComputeFlux" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  {
-    try {
-      (arg1)->ComputeFlux(*arg2,*arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_ComputeFlux(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[6] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_ComputeFlux", 0, 5, argv))) SWIG_fail;
-  --argc;
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_GridFunction_ComputeFlux__SWIG_2(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            return _wrap_GridFunction_ComputeFlux__SWIG_1(self, argc, argv);
-          }
-        }
-      }
-    }
-  }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          {
-            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
-              PyErr_Clear();
-              _v = 0;
-            } else {
-              _v = 1;    
-            }
-          }
-          if (_v) {
-            {
-              if ((PyArray_PyIntAsInt(argv[4]) == -1) && PyErr_Occurred()) {
-                PyErr_Clear();
-                _v = 0;
-              } else {
-                _v = 1;    
-              }
-            }
-            if (_v) {
-              return _wrap_GridFunction_ComputeFlux__SWIG_0(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_ComputeFlux'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::ComputeFlux(mfem::BilinearFormIntegrator &,mfem::GridFunction &,int,int)\n"
-    "    mfem::GridFunction::ComputeFlux(mfem::BilinearFormIntegrator &,mfem::GridFunction &,int)\n"
-    "    mfem::GridFunction::ComputeFlux(mfem::BilinearFormIntegrator &,mfem::GridFunction &)\n");
-  return 0;
 }
 
 
@@ -12624,7 +10121,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_SetSpace(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_SetSpace(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
@@ -12632,15 +10129,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_SetSpace(PyObject *SWIGUNUSEDPARM(self),
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"f",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_SetSpace", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_SetSpace", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_SetSpace" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__FiniteElementSpace, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_SetSpace" "', argument " "2"" of type '" "mfem::FiniteElementSpace *""'"); 
   }
@@ -12660,7 +10161,120 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_MakeRef__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_MakeRef__SWIG_0_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  int arg3 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_MakeRef" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  }
+  {
+    try {
+      (arg1)->MakeRef(*arg2,arg3,arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_MakeRef__SWIG_0_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
+  mfem::Vector *arg2 = 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_MakeRef" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_MakeRef" "', argument " "2"" of type '" "mfem::Vector &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Vector * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      (arg1)->MakeRef(*arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GridFunction_MakeRef__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
@@ -12703,7 +10317,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_MakeRef__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_MakeRef__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::FiniteElementSpace *arg2 = (mfem::FiniteElementSpace *) 0 ;
@@ -12771,6 +10385,30 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeRef(PyObject *self, PyObject *args) 
     _v = SWIG_CheckState(res);
     if (_v) {
       void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_GridFunction_MakeRef__SWIG_0_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__FiniteElementSpace, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
@@ -12778,7 +10416,41 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeRef(PyObject *self, PyObject *args) 
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_double, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
-          return _wrap_GridFunction_MakeRef__SWIG_0(self, argc, argv);
+          return _wrap_GridFunction_MakeRef__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          {
+            if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
+              PyErr_Clear();
+              _v = 0;
+            } else {
+              _v = 1;    
+            }
+          }
+          if (_v) {
+            return _wrap_GridFunction_MakeRef__SWIG_0_0(self, argc, argv);
+          }
         }
       }
     }
@@ -12806,7 +10478,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeRef(PyObject *self, PyObject *args) 
             }
           }
           if (_v) {
-            return _wrap_GridFunction_MakeRef__SWIG_1(self, argc, argv);
+            return _wrap_GridFunction_MakeRef__SWIG_2(self, argc, argv);
           }
         }
       }
@@ -12816,6 +10488,8 @@ SWIGINTERN PyObject *_wrap_GridFunction_MakeRef(PyObject *self, PyObject *args) 
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_MakeRef'.\n"
     "  Possible C/C++ prototypes are:\n"
+    "    MakeRef(mfem::Vector &,int,int)\n"
+    "    MakeRef(mfem::Vector &,int)\n"
     "    mfem::GridFunction::MakeRef(mfem::FiniteElementSpace *,double *)\n"
     "    mfem::GridFunction::MakeRef(mfem::FiniteElementSpace *,mfem::Vector &,int)\n");
   return 0;
@@ -13039,7 +10713,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   std::ostream *arg2 = 0 ;
@@ -13051,16 +10725,22 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   std::ofstream out2 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"out",  (char *)"field_name",  (char *)"ref",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_SaveVTK", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:GridFunction_SaveVTK", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_SaveVTK" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
       SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
       return NULL;
     }  
@@ -13074,7 +10754,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
       arg2 = &out2;
     }
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_std__string,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__string,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_SaveVTK" "', argument " "3"" of type '" "std::string const &""'"); 
   }
@@ -13083,10 +10763,10 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   }
   arg3 = reinterpret_cast< std::string * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -13113,24 +10793,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   std::ostream *arg2 = 0 ;
-  int arg3 ;
+  int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
   std::ofstream out2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"out",  (char *)"TimesToRefine",  NULL 
+  };
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:GridFunction_SaveSTL", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_SaveSTL" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
   {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
+    if (SWIG_ConvertPtr(obj1, (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
       SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
       return NULL;
     }  
@@ -13144,11 +10830,13 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_0(PyObject *SWIGUNUSEDPARM
       arg2 = &out2;
     }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (obj2) {
+    {
+      if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(obj2);
+    }
   }
   {
     try {
@@ -13172,129 +10860,6 @@ fail:
     }
   }
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  std::ostream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyMFEM::wFILE *temp2 = 0 ;
-  std::ofstream out2 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_SaveSTL" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  {
-    if (SWIG_ConvertPtr(swig_obj[1], (void **) &temp2, SWIGTYPE_p_PyMFEM__wFILE, 0 | 0) == -1) {
-      SWIG_exception(SWIG_ValueError,"io_stream object is expected.");      
-      return NULL;
-    }  
-    
-    if (temp2->isSTDOUT() == 1) {
-      arg2 = &std::cout;
-    }
-    else {
-      out2.open(temp2->getFilename());
-      out2.precision(temp2->getPrecision());
-      arg2 = &out2;
-    }
-  }
-  {
-    try {
-      (arg1)->SaveSTL(*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
-    }
-  }
-  return resultobj;
-fail:
-  {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
-    }
-  }
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_SaveSTL", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        return _wrap_GridFunction_SaveSTL__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        void *ptr;
-        if (SWIG_ConvertPtr(argv[1], (void **) &ptr, SWIGTYPE_p_PyMFEM__wFILE, 0 |0) == -1) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
-      }
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_SaveSTL__SWIG_0(self, argc, argv);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_SaveSTL'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::GridFunction::SaveSTL(std::ostream &,int)\n"
-    "    mfem::GridFunction::SaveSTL(std::ostream &)\n");
-  return 0;
 }
 
 
@@ -13544,7 +11109,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_SaveToFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_SaveToFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -13554,24 +11119,29 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveToFile(PyObject *SWIGUNUSEDPARM(self
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"gf_file",  (char *)"precision",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_SaveToFile", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GridFunction_SaveToFile", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_SaveToFile" "', argument " "1"" of type '" "mfem::GridFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_SaveToFile" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -13590,7 +11160,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_iadd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_iadd(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   mfem::GridFunction *arg2 = 0 ;
@@ -13598,16 +11168,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_iadd(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"c",  NULL 
+  };
   mfem::GridFunction *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_iadd", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_iadd", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_iadd" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_iadd" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
   }
@@ -13752,7 +11326,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_imul(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_imul(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   double arg2 ;
@@ -13760,16 +11334,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_imul(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"c",  NULL 
+  };
   mfem::GridFunction *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_imul", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_imul", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_imul" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_imul" "', argument " "2"" of type '" "double""'");
   } 
@@ -13789,7 +11367,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GridFunction_idiv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GridFunction_idiv(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   double arg2 ;
@@ -13797,16 +11375,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_idiv(PyObject *SWIGUNUSEDPARM(self), PyO
   int res1 = 0 ;
   double val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"c",  NULL 
+  };
   mfem::GridFunction *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "GridFunction_idiv", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:GridFunction_idiv", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_idiv" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "GridFunction_idiv" "', argument " "2"" of type '" "double""'");
   } 
@@ -13830,14 +11412,14 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_Save" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
@@ -13848,53 +11430,17 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_1(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_Save" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
       mfem_GridFunction_Save__SWIG_1(arg1,(char const *)arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::GridFunction *arg1 = (mfem::GridFunction *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GridFunction_Save" "', argument " "1"" of type '" "mfem::GridFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::GridFunction * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GridFunction_Save" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  {
-    try {
-      mfem_GridFunction_Save__SWIG_1(arg1,(char const *)arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -13917,7 +11463,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "GridFunction_Save", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
@@ -13926,7 +11472,20 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_GridFunction_Save__SWIG_2(self, argc, argv);
+        if (argc <= 2) {
+          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
+        }
       }
     }
   }
@@ -13950,36 +11509,12 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__GridFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_GridFunction_Save__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'GridFunction_Save'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GridFunction::Save(std::ostream &) const\n"
-    "    mfem::GridFunction::Save(char const *,int)\n"
-    "    mfem::GridFunction::Save(char const *)\n");
+    "    mfem::GridFunction::Save(char const *,int)\n");
   return 0;
 }
 
@@ -14110,22 +11645,24 @@ fail:
 SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::QuadratureSpace *arg1 = (mfem::QuadratureSpace *) 0 ;
-  int arg2 ;
+  int arg2 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   mfem::QuadratureFunction *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_QuadratureFunction" "', argument " "1"" of type '" "mfem::QuadratureSpace *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureSpace * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
   {
     try {
@@ -14145,43 +11682,15 @@ fail:
 SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::QuadratureSpace *arg1 = (mfem::QuadratureSpace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::QuadratureFunction *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_QuadratureFunction" "', argument " "1"" of type '" "mfem::QuadratureSpace *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureSpace * >(argp1);
-  {
-    try {
-      result = (mfem::QuadratureFunction *)new mfem::QuadratureFunction(arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadratureFunction, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::QuadratureSpace *arg1 = (mfem::QuadratureSpace *) 0 ;
   double *arg2 = (double *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   mfem::QuadratureFunction *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_QuadratureFunction" "', argument " "1"" of type '" "mfem::QuadratureSpace *""'"); 
@@ -14192,11 +11701,13 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_QuadratureFunction" "', argument " "2"" of type '" "double *""'"); 
   }
   arg2 = reinterpret_cast< double * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
@@ -14213,43 +11724,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::QuadratureSpace *arg1 = (mfem::QuadratureSpace *) 0 ;
-  double *arg2 = (double *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::QuadratureFunction *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_QuadratureFunction" "', argument " "1"" of type '" "mfem::QuadratureSpace *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureSpace * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_QuadratureFunction" "', argument " "2"" of type '" "double *""'"); 
-  }
-  arg2 = reinterpret_cast< double * >(argp2);
-  {
-    try {
-      result = (mfem::QuadratureFunction *)new mfem::QuadratureFunction(arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__QuadratureFunction, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_QuadratureFunction__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   std::istream *arg2 = 0 ;
@@ -14307,35 +11782,15 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction(PyObject *self, PyObject *args
       return _wrap_new_QuadratureFunction__SWIG_1(self, argc, argv);
     }
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_QuadratureFunction__SWIG_3(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_QuadratureFunction__SWIG_5(self, argc, argv);
+      if (argc <= 1) {
+        return _wrap_new_QuadratureFunction__SWIG_2(self, argc, argv);
       }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -14349,6 +11804,33 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction(PyObject *self, PyObject *args
       }
     }
   }
+  if ((argc >= 2) && (argc <= 3)) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_QuadratureFunction__SWIG_3(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_new_QuadratureFunction__SWIG_3(self, argc, argv);
+        }
+      }
+    }
+  }
   if (argc == 2) {
     int _v;
     void *vptr = 0;
@@ -14359,31 +11841,7 @@ SWIGINTERN PyObject *_wrap_new_QuadratureFunction(PyObject *self, PyObject *args
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__istream, SWIG_POINTER_NO_NULL);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_new_QuadratureFunction__SWIG_6(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_double, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_new_QuadratureFunction__SWIG_4(self, argc, argv);
-        }
+        return _wrap_new_QuadratureFunction__SWIG_4(self, argc, argv);
       }
     }
   }
@@ -14394,9 +11852,7 @@ fail:
     "    mfem::QuadratureFunction::QuadratureFunction()\n"
     "    mfem::QuadratureFunction::QuadratureFunction(mfem::QuadratureFunction const &)\n"
     "    mfem::QuadratureFunction::QuadratureFunction(mfem::QuadratureSpace *,int)\n"
-    "    mfem::QuadratureFunction::QuadratureFunction(mfem::QuadratureSpace *)\n"
     "    mfem::QuadratureFunction::QuadratureFunction(mfem::QuadratureSpace *,double *,int)\n"
-    "    mfem::QuadratureFunction::QuadratureFunction(mfem::QuadratureSpace *,double *)\n"
     "    mfem::QuadratureFunction::QuadratureFunction(mfem::Mesh *,std::istream &)\n");
   return 0;
 }
@@ -14465,13 +11921,13 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_0(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   mfem::QuadratureSpace *arg2 = (mfem::QuadratureSpace *) 0 ;
-  int arg3 ;
+  int arg3 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SetSpace" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
@@ -14482,11 +11938,13 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_0(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_SetSpace" "', argument " "2"" of type '" "mfem::QuadratureSpace *""'"); 
   }
   arg2 = reinterpret_cast< mfem::QuadratureSpace * >(argp2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
@@ -14507,43 +11965,8 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_1(PyObject *SWIGUNU
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   mfem::QuadratureSpace *arg2 = (mfem::QuadratureSpace *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SetSpace" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_SetSpace" "', argument " "2"" of type '" "mfem::QuadratureSpace *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::QuadratureSpace * >(argp2);
-  {
-    try {
-      (arg1)->SetSpace(arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
-  mfem::QuadratureSpace *arg2 = (mfem::QuadratureSpace *) 0 ;
   double *arg3 = (double *) 0 ;
-  int arg4 ;
+  int arg4 = (int) -1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -14551,7 +11974,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_2(PyObject *SWIGUNU
   void *argp3 = 0 ;
   int res3 = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 3) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SetSpace" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
@@ -14567,58 +11990,17 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_2(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunction_SetSpace" "', argument " "3"" of type '" "double *""'"); 
   }
   arg3 = reinterpret_cast< double * >(argp3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
       (arg1)->SetSpace(arg2,arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
-  mfem::QuadratureSpace *arg2 = (mfem::QuadratureSpace *) 0 ;
-  double *arg3 = (double *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SetSpace" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__QuadratureSpace, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_SetSpace" "', argument " "2"" of type '" "mfem::QuadratureSpace *""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::QuadratureSpace * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_double, 0 |  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunction_SetSpace" "', argument " "3"" of type '" "double *""'"); 
-  }
-  arg3 = reinterpret_cast< double * >(argp3);
-  {
-    try {
-      (arg1)->SetSpace(arg2,arg3); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -14639,7 +12021,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "QuadratureFunction_SetSpace", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
@@ -14649,39 +12031,9 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
       int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_QuadratureFunction_SetSpace__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_double, 0);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          return _wrap_QuadratureFunction_SetSpace__SWIG_3(self, argc, argv);
+        if (argc <= 2) {
+          return _wrap_QuadratureFunction_SetSpace__SWIG_0(self, argc, argv);
         }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__QuadratureSpace, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -14696,7 +12048,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 3) && (argc <= 4)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
@@ -14710,6 +12062,9 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
         int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_double, 0);
         _v = SWIG_CheckState(res);
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_QuadratureFunction_SetSpace__SWIG_1(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -14719,7 +12074,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetSpace(PyObject *self, PyObject 
             }
           }
           if (_v) {
-            return _wrap_QuadratureFunction_SetSpace__SWIG_2(self, argc, argv);
+            return _wrap_QuadratureFunction_SetSpace__SWIG_1(self, argc, argv);
           }
         }
       }
@@ -14730,9 +12085,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'QuadratureFunction_SetSpace'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::QuadratureFunction::SetSpace(mfem::QuadratureSpace *,int)\n"
-    "    mfem::QuadratureFunction::SetSpace(mfem::QuadratureSpace *)\n"
-    "    mfem::QuadratureFunction::SetSpace(mfem::QuadratureSpace *,double *,int)\n"
-    "    mfem::QuadratureFunction::SetSpace(mfem::QuadratureSpace *,double *)\n");
+    "    mfem::QuadratureFunction::SetSpace(mfem::QuadratureSpace *,double *,int)\n");
   return 0;
 }
 
@@ -14767,25 +12120,29 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_QuadratureFunction_SetVDim(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_QuadratureFunction_SetVDim(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"vdim_",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "QuadratureFunction_SetVDim", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunction_SetVDim", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SetVDim" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -14832,7 +12189,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_QuadratureFunction_SetOwnsSpace(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_QuadratureFunction_SetOwnsSpace(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   bool arg2 ;
@@ -14840,15 +12197,19 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_SetOwnsSpace(PyObject *SWIGUNUSEDP
   int res1 = 0 ;
   bool val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"own",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "QuadratureFunction_SetOwnsSpace", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunction_SetOwnsSpace", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_SetOwnsSpace" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
-  ecode2 = SWIG_AsVal_bool(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_bool(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "QuadratureFunction_SetOwnsSpace" "', argument " "2"" of type '" "bool""'");
   } 
@@ -14868,26 +12229,30 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementIntRule(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_QuadratureFunction_GetElementIntRule(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"idx",  NULL 
+  };
   mfem::IntegrationRule *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "QuadratureFunction_GetElementIntRule", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:QuadratureFunction_GetElementIntRule", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_GetElementIntRule" "', argument " "1"" of type '" "mfem::QuadratureFunction const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
   {
     try {
@@ -15259,14 +12624,14 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_1(PyObject *SWIGUNUSEDP
   PyObject *resultobj = 0;
   mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
   char *arg2 = (char *) 0 ;
-  int arg3 ;
+  int arg3 = (int) 8 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 2) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_Save" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
@@ -15277,53 +12642,17 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_1(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_Save" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
       mfem_QuadratureFunction_Save__SWIG_1(arg1,(char const *)arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::QuadratureFunction *arg1 = (mfem::QuadratureFunction *) 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__QuadratureFunction, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunction_Save" "', argument " "1"" of type '" "mfem::QuadratureFunction *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::QuadratureFunction * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(swig_obj[1], &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "QuadratureFunction_Save" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  {
-    try {
-      mfem_QuadratureFunction_Save__SWIG_1(arg1,(char const *)arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -15346,7 +12675,7 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *self, PyObject *arg
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "QuadratureFunction_Save", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 2) {
+  if ((argc >= 2) && (argc <= 3)) {
     int _v;
     void *vptr = 0;
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
@@ -15355,7 +12684,20 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *self, PyObject *arg
       int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
-        return _wrap_QuadratureFunction_Save__SWIG_2(self, argc, argv);
+        if (argc <= 2) {
+          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
+        }
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
+        }
       }
     }
   }
@@ -15379,36 +12721,12 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save(PyObject *self, PyObject *arg
       }
     }
   }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__QuadratureFunction, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
-            PyErr_Clear();
-            _v = 0;
-          } else {
-            _v = 1;    
-          }
-        }
-        if (_v) {
-          return _wrap_QuadratureFunction_Save__SWIG_1(self, argc, argv);
-        }
-      }
-    }
-  }
   
 fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'QuadratureFunction_Save'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::QuadratureFunction::Save(std::ostream &) const\n"
-    "    mfem::QuadratureFunction::Save(char const *,int)\n"
-    "    mfem::QuadratureFunction::Save(char const *)\n");
+    "    mfem::QuadratureFunction::Save(char const *,int)\n");
   return 0;
 }
 
@@ -15538,14 +12856,15 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ZZErrorEstimator__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_ZZErrorEstimator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::BilinearFormIntegrator *arg1 = 0 ;
   mfem::GridFunction *arg2 = 0 ;
   mfem::GridFunction *arg3 = 0 ;
   mfem::Vector *arg4 = 0 ;
-  mfem::Array< int > *arg5 = (mfem::Array< int > *) 0 ;
-  int arg6 ;
+  mfem::Array< int > *arg5 = (mfem::Array< int > *) NULL ;
+  int arg6 = (int) 1 ;
+  bool arg7 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -15556,315 +12875,91 @@ SWIGINTERN PyObject *_wrap_ZZErrorEstimator__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
   int res4 = 0 ;
   void *argp5 = 0 ;
   int res5 = 0 ;
-  double result;
-  
-  if ((nobjs < 6) || (nobjs > 6)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ZZErrorEstimator" "', argument " "5"" of type '" "mfem::Array< int > *""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[5]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg6 = PyArray_PyIntAsInt(swig_obj[5]);
-  }
-  {
-    try {
-      result = (double)mfem::ZZErrorEstimator(*arg1,*arg2,*arg3,*arg4,arg5,arg6); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ZZErrorEstimator__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearFormIntegrator *arg1 = 0 ;
-  mfem::GridFunction *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  mfem::Array< int > *arg5 = (mfem::Array< int > *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  void *argp5 = 0 ;
-  int res5 = 0 ;
-  double result;
-  
-  if ((nobjs < 5) || (nobjs > 5)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  res5 = SWIG_ConvertPtr(swig_obj[4], &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
-  if (!SWIG_IsOK(res5)) {
-    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ZZErrorEstimator" "', argument " "5"" of type '" "mfem::Array< int > *""'"); 
-  }
-  arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
-  {
-    try {
-      result = (double)mfem::ZZErrorEstimator(*arg1,*arg2,*arg3,*arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ZZErrorEstimator__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::BilinearFormIntegrator *arg1 = 0 ;
-  mfem::GridFunction *arg2 = 0 ;
-  mfem::GridFunction *arg3 = 0 ;
-  mfem::Vector *arg4 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  double result;
-  
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
-  }
-  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__Vector,  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  if (!argp4) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
-  }
-  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
-  {
-    try {
-      result = (double)mfem::ZZErrorEstimator(*arg1,*arg2,*arg3,*arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_From_double(static_cast< double >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ZZErrorEstimator(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[7] = {
-    0
+  bool val7 ;
+  int ecode7 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  PyObject * obj6 = 0 ;
+  char * kwnames[] = {
+    (char *)"blfi",  (char *)"u",  (char *)"flux",  (char *)"error_estimates",  (char *)"aniso_flags",  (char *)"with_subdomains",  (char *)"with_coeff",  NULL 
   };
+  double result;
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "ZZErrorEstimator", 0, 6, argv))) SWIG_fail;
-  --argc;
-  if (argc == 4) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            return _wrap_ZZErrorEstimator__SWIG_2(self, argc, argv);
-          }
-        }
-      }
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO|OOO:ZZErrorEstimator", kwnames, &obj0, &obj1, &obj2, &obj3, &obj4, &obj5, &obj6)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__BilinearFormIntegrator,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "1"" of type '" "mfem::BilinearFormIntegrator &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::BilinearFormIntegrator * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "2"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::GridFunction * >(argp2);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__Vector,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ZZErrorEstimator" "', argument " "4"" of type '" "mfem::Vector &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Vector * >(argp4);
+  if (obj4) {
+    res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_mfem__ArrayT_int_t, 0 |  0 );
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "ZZErrorEstimator" "', argument " "5"" of type '" "mfem::Array< int > *""'"); 
+    }
+    arg5 = reinterpret_cast< mfem::Array< int > * >(argp5);
+  }
+  if (obj5) {
+    {
+      if ((PyArray_PyIntAsInt(obj5) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg6 = PyArray_PyIntAsInt(obj5);
     }
   }
-  if (argc == 5) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              return _wrap_ZZErrorEstimator__SWIG_1(self, argc, argv);
-            }
-          }
-        }
-      }
-    }
+  if (obj6) {
+    ecode7 = SWIG_AsVal_bool(obj6, &val7);
+    if (!SWIG_IsOK(ecode7)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode7), "in method '" "ZZErrorEstimator" "', argument " "7"" of type '" "bool""'");
+    } 
+    arg7 = static_cast< bool >(val7);
   }
-  if (argc == 6) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__BilinearFormIntegrator, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        void *vptr = 0;
-        int res = SWIG_ConvertPtr(argv[2], &vptr, SWIGTYPE_p_mfem__GridFunction, SWIG_POINTER_NO_NULL);
-        _v = SWIG_CheckState(res);
-        if (_v) {
-          void *vptr = 0;
-          int res = SWIG_ConvertPtr(argv[3], &vptr, SWIGTYPE_p_mfem__Vector, SWIG_POINTER_NO_NULL);
-          _v = SWIG_CheckState(res);
-          if (_v) {
-            void *vptr = 0;
-            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_mfem__ArrayT_int_t, 0);
-            _v = SWIG_CheckState(res);
-            if (_v) {
-              {
-                if ((PyArray_PyIntAsInt(argv[5]) == -1) && PyErr_Occurred()) {
-                  PyErr_Clear();
-                  _v = 0;
-                } else {
-                  _v = 1;    
-                }
-              }
-              if (_v) {
-                return _wrap_ZZErrorEstimator__SWIG_0(self, argc, argv);
-              }
-            }
-          }
-        }
-      }
+  {
+    try {
+      result = (double)mfem::ZZErrorEstimator(*arg1,*arg2,*arg3,*arg4,arg5,arg6,arg7); 
     }
+    catch (Swig::DirectorException &e) {
+      SWIG_fail; 
+    }    
   }
-  
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
 fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'ZZErrorEstimator'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::ZZErrorEstimator(mfem::BilinearFormIntegrator &,mfem::GridFunction &,mfem::GridFunction &,mfem::Vector &,mfem::Array< int > *,int)\n"
-    "    mfem::ZZErrorEstimator(mfem::BilinearFormIntegrator &,mfem::GridFunction &,mfem::GridFunction &,mfem::Vector &,mfem::Array< int > *)\n"
-    "    mfem::ZZErrorEstimator(mfem::BilinearFormIntegrator &,mfem::GridFunction &,mfem::GridFunction &,mfem::Vector &)\n");
-  return 0;
+  return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_ComputeElementLpDistance(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ComputeElementLpDistance(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   double arg1 ;
   int arg2 ;
@@ -15876,22 +12971,28 @@ SWIGINTERN PyObject *_wrap_ComputeElementLpDistance(PyObject *SWIGUNUSEDPARM(sel
   int res3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"p",  (char *)"i",  (char *)"gf1",  (char *)"gf2",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ComputeElementLpDistance", 4, 4, swig_obj)) SWIG_fail;
-  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:ComputeElementLpDistance", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "ComputeElementLpDistance" "', argument " "1"" of type '" "double""'");
   } 
   arg1 = static_cast< double >(val1);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    arg2 = PyArray_PyIntAsInt(obj1);
   }
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ComputeElementLpDistance" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
@@ -15899,7 +13000,7 @@ SWIGINTERN PyObject *_wrap_ComputeElementLpDistance(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ComputeElementLpDistance" "', argument " "3"" of type '" "mfem::GridFunction &""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
-  res4 = SWIG_ConvertPtr(swig_obj[3], &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__GridFunction,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "ComputeElementLpDistance" "', argument " "4"" of type '" "mfem::GridFunction &""'"); 
   }
@@ -15922,7 +13023,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_ExtrudeCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_ExtrudeCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   mfem::Coefficient *arg2 = 0 ;
@@ -15931,16 +13032,21 @@ SWIGINTERN PyObject *_wrap_new_ExtrudeCoefficient(PyObject *SWIGUNUSEDPARM(self)
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"m",  (char *)"s",  (char *)"_n",  NULL 
+  };
   mfem::ExtrudeCoefficient *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "new_ExtrudeCoefficient", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:new_ExtrudeCoefficient", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_ExtrudeCoefficient" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_ExtrudeCoefficient" "', argument " "2"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -15949,10 +13055,10 @@ SWIGINTERN PyObject *_wrap_new_ExtrudeCoefficient(PyObject *SWIGUNUSEDPARM(self)
   }
   arg2 = reinterpret_cast< mfem::Coefficient * >(argp2);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    arg3 = PyArray_PyIntAsInt(obj2);
   }
   {
     try {
@@ -15969,7 +13075,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_ExtrudeCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_ExtrudeCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::ExtrudeCoefficient *arg1 = (mfem::ExtrudeCoefficient *) 0 ;
   mfem::ElementTransformation *arg2 = 0 ;
@@ -15980,16 +13086,21 @@ SWIGINTERN PyObject *_wrap_ExtrudeCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"T",  (char *)"ip",  NULL 
+  };
   double result;
   
-  if (!SWIG_Python_UnpackTuple(args, "ExtrudeCoefficient_Eval", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ExtrudeCoefficient, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:ExtrudeCoefficient_Eval", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ExtrudeCoefficient, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ExtrudeCoefficient_Eval" "', argument " "1"" of type '" "mfem::ExtrudeCoefficient *""'"); 
   }
   arg1 = reinterpret_cast< mfem::ExtrudeCoefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ElementTransformation,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ExtrudeCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
@@ -15997,7 +13108,7 @@ SWIGINTERN PyObject *_wrap_ExtrudeCoefficient_Eval(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "ExtrudeCoefficient_Eval" "', argument " "2"" of type '" "mfem::ElementTransformation &""'"); 
   }
   arg2 = reinterpret_cast< mfem::ElementTransformation * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ExtrudeCoefficient_Eval" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
   }
@@ -16060,7 +13171,7 @@ SWIGINTERN PyObject *ExtrudeCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(self),
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_Extrude1DGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Extrude1DGridFunction(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
   mfem::Mesh *arg2 = (mfem::Mesh *) 0 ;
@@ -16072,30 +13183,36 @@ SWIGINTERN PyObject *_wrap_Extrude1DGridFunction(PyObject *SWIGUNUSEDPARM(self),
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[4] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"mesh",  (char *)"mesh2d",  (char *)"sol",  (char *)"ny",  NULL 
+  };
   mfem::GridFunction *result = 0 ;
   
-  if (!SWIG_Python_UnpackTuple(args, "Extrude1DGridFunction", 4, 4, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:Extrude1DGridFunction", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Extrude1DGridFunction" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_mfem__Mesh, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Extrude1DGridFunction" "', argument " "2"" of type '" "mfem::Mesh *""'"); 
   }
   arg2 = reinterpret_cast< mfem::Mesh * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__GridFunction, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Extrude1DGridFunction" "', argument " "3"" of type '" "mfem::GridFunction *""'"); 
   }
   arg3 = reinterpret_cast< mfem::GridFunction * >(argp3);
   {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
     };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    arg4 = PyArray_PyIntAsInt(obj3);
   }
   {
     try {
@@ -16114,54 +13231,63 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { "GridFunction_MakeOwner", _wrap_GridFunction_MakeOwner, METH_VARARGS, "GridFunction_MakeOwner(GridFunction self, FiniteElementCollection _fec)"},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "GridFunction_MakeOwner", (PyCFunction)(void(*)(void))_wrap_GridFunction_MakeOwner, METH_VARARGS|METH_KEYWORDS, "GridFunction_MakeOwner(GridFunction self, FiniteElementCollection _fec)"},
 	 { "GridFunction_OwnFEC", _wrap_GridFunction_OwnFEC, METH_O, "GridFunction_OwnFEC(GridFunction self) -> FiniteElementCollection"},
 	 { "GridFunction_VectorDim", _wrap_GridFunction_VectorDim, METH_O, "GridFunction_VectorDim(GridFunction self) -> int"},
 	 { "GridFunction_GetTrueVector", _wrap_GridFunction_GetTrueVector, METH_VARARGS, "\n"
 		"GridFunction_GetTrueVector(GridFunction self) -> Vector\n"
 		"GridFunction_GetTrueVector(GridFunction self) -> Vector\n"
 		""},
-	 { "GridFunction_GetTrueDofs", _wrap_GridFunction_GetTrueDofs, METH_VARARGS, "GridFunction_GetTrueDofs(GridFunction self, Vector tv)"},
+	 { "GridFunction_GetTrueDofs", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetTrueDofs, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetTrueDofs(GridFunction self, Vector tv)"},
 	 { "GridFunction_SetTrueVector", _wrap_GridFunction_SetTrueVector, METH_O, "GridFunction_SetTrueVector(GridFunction self)"},
-	 { "GridFunction_SetFromTrueDofs", _wrap_GridFunction_SetFromTrueDofs, METH_VARARGS, "GridFunction_SetFromTrueDofs(GridFunction self, Vector tv)"},
+	 { "GridFunction_SetFromTrueDofs", (PyCFunction)(void(*)(void))_wrap_GridFunction_SetFromTrueDofs, METH_VARARGS|METH_KEYWORDS, "GridFunction_SetFromTrueDofs(GridFunction self, Vector tv)"},
 	 { "GridFunction_SetFromTrueVector", _wrap_GridFunction_SetFromTrueVector, METH_O, "GridFunction_SetFromTrueVector(GridFunction self)"},
-	 { "GridFunction_GetValue", _wrap_GridFunction_GetValue, METH_VARARGS, "GridFunction_GetValue(GridFunction self, int i, IntegrationPoint ip, int vdim=1) -> double"},
-	 { "GridFunction_GetVectorValue", _wrap_GridFunction_GetVectorValue, METH_VARARGS, "GridFunction_GetVectorValue(GridFunction self, int i, IntegrationPoint ip, Vector val)"},
+	 { "GridFunction_GetValue", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetValue, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetValue(GridFunction self, int i, IntegrationPoint ip, int vdim=1) -> double"},
+	 { "GridFunction_GetVectorValue", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorValue, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetVectorValue(GridFunction self, int i, IntegrationPoint ip, Vector val)"},
 	 { "GridFunction_GetValues", _wrap_GridFunction_GetValues, METH_VARARGS, "\n"
 		"GridFunction_GetValues(GridFunction self, int i, IntegrationRule ir, Vector vals, int vdim=1)\n"
 		"GridFunction_GetValues(GridFunction self, int i, IntegrationRule ir, Vector vals, DenseMatrix tr, int vdim=1)\n"
 		""},
-	 { "GridFunction_GetFaceValues", _wrap_GridFunction_GetFaceValues, METH_VARARGS, "GridFunction_GetFaceValues(GridFunction self, int i, int side, IntegrationRule ir, Vector vals, DenseMatrix tr, int vdim=1) -> int"},
+	 { "GridFunction_GetLaplacians", _wrap_GridFunction_GetLaplacians, METH_VARARGS, "\n"
+		"GridFunction_GetLaplacians(GridFunction self, int i, IntegrationRule ir, Vector laps, int vdim=1)\n"
+		"GridFunction_GetLaplacians(GridFunction self, int i, IntegrationRule ir, Vector laps, DenseMatrix tr, int vdim=1)\n"
+		""},
+	 { "GridFunction_GetHessians", _wrap_GridFunction_GetHessians, METH_VARARGS, "\n"
+		"GridFunction_GetHessians(GridFunction self, int i, IntegrationRule ir, DenseMatrix hess, int vdim=1)\n"
+		"GridFunction_GetHessians(GridFunction self, int i, IntegrationRule ir, DenseMatrix hess, DenseMatrix tr, int vdim=1)\n"
+		""},
+	 { "GridFunction_GetFaceValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetFaceValues, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetFaceValues(GridFunction self, int i, int side, IntegrationRule ir, Vector vals, DenseMatrix tr, int vdim=1) -> int"},
 	 { "GridFunction_GetVectorValues", _wrap_GridFunction_GetVectorValues, METH_VARARGS, "\n"
 		"GridFunction_GetVectorValues(GridFunction self, ElementTransformation T, IntegrationRule ir, DenseMatrix vals)\n"
 		"GridFunction_GetVectorValues(GridFunction self, int i, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr)\n"
 		""},
-	 { "GridFunction_GetFaceVectorValues", _wrap_GridFunction_GetFaceVectorValues, METH_VARARGS, "GridFunction_GetFaceVectorValues(GridFunction self, int i, int side, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr) -> int"},
-	 { "GridFunction_GetValuesFrom", _wrap_GridFunction_GetValuesFrom, METH_VARARGS, "GridFunction_GetValuesFrom(GridFunction self, GridFunction orig_func)"},
-	 { "GridFunction_GetBdrValuesFrom", _wrap_GridFunction_GetBdrValuesFrom, METH_VARARGS, "GridFunction_GetBdrValuesFrom(GridFunction self, GridFunction orig_func)"},
-	 { "GridFunction_GetVectorFieldValues", _wrap_GridFunction_GetVectorFieldValues, METH_VARARGS, "GridFunction_GetVectorFieldValues(GridFunction self, int i, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr, int comp=0)"},
+	 { "GridFunction_GetFaceVectorValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetFaceVectorValues, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetFaceVectorValues(GridFunction self, int i, int side, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr) -> int"},
+	 { "GridFunction_GetValuesFrom", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetValuesFrom, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetValuesFrom(GridFunction self, GridFunction orig_func)"},
+	 { "GridFunction_GetBdrValuesFrom", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetBdrValuesFrom, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetBdrValuesFrom(GridFunction self, GridFunction orig_func)"},
+	 { "GridFunction_GetVectorFieldValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorFieldValues, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetVectorFieldValues(GridFunction self, int i, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr, int comp=0)"},
 	 { "GridFunction_ReorderByNodes", _wrap_GridFunction_ReorderByNodes, METH_O, "GridFunction_ReorderByNodes(GridFunction self)"},
 	 { "GridFunction_GetNodalValues", _wrap_GridFunction_GetNodalValues, METH_VARARGS, "\n"
 		"GridFunction_GetNodalValues(GridFunction self, int i, doubleArray nval, int vdim=1)\n"
 		"GridFunction_GetNodalValues(GridFunction self, Vector nval, int vdim=1)\n"
 		""},
-	 { "GridFunction_GetVectorFieldNodalValues", _wrap_GridFunction_GetVectorFieldNodalValues, METH_VARARGS, "GridFunction_GetVectorFieldNodalValues(GridFunction self, Vector val, int comp)"},
-	 { "GridFunction_ProjectVectorFieldOn", _wrap_GridFunction_ProjectVectorFieldOn, METH_VARARGS, "GridFunction_ProjectVectorFieldOn(GridFunction self, GridFunction vec_field, int comp=0)"},
-	 { "GridFunction_GetDerivative", _wrap_GridFunction_GetDerivative, METH_VARARGS, "GridFunction_GetDerivative(GridFunction self, int comp, int der_comp, GridFunction der)"},
-	 { "GridFunction_GetDivergence", _wrap_GridFunction_GetDivergence, METH_VARARGS, "GridFunction_GetDivergence(GridFunction self, ElementTransformation tr) -> double"},
-	 { "GridFunction_GetCurl", _wrap_GridFunction_GetCurl, METH_VARARGS, "GridFunction_GetCurl(GridFunction self, ElementTransformation tr, Vector curl)"},
-	 { "GridFunction_GetGradient", _wrap_GridFunction_GetGradient, METH_VARARGS, "GridFunction_GetGradient(GridFunction self, ElementTransformation tr, Vector grad)"},
+	 { "GridFunction_GetVectorFieldNodalValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorFieldNodalValues, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetVectorFieldNodalValues(GridFunction self, Vector val, int comp)"},
+	 { "GridFunction_ProjectVectorFieldOn", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectVectorFieldOn, METH_VARARGS|METH_KEYWORDS, "GridFunction_ProjectVectorFieldOn(GridFunction self, GridFunction vec_field, int comp=0)"},
+	 { "GridFunction_GetDerivative", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetDerivative, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetDerivative(GridFunction self, int comp, int der_comp, GridFunction der)"},
+	 { "GridFunction_GetDivergence", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetDivergence, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetDivergence(GridFunction self, ElementTransformation tr) -> double"},
+	 { "GridFunction_GetCurl", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetCurl, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetCurl(GridFunction self, ElementTransformation tr, Vector curl)"},
+	 { "GridFunction_GetGradient", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetGradient, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetGradient(GridFunction self, ElementTransformation tr, Vector grad)"},
 	 { "GridFunction_GetGradients", _wrap_GridFunction_GetGradients, METH_VARARGS, "\n"
 		"GridFunction_GetGradients(GridFunction self, ElementTransformation tr, IntegrationRule ir, DenseMatrix grad)\n"
 		"GridFunction_GetGradients(GridFunction self, int const elem, IntegrationRule ir, DenseMatrix grad)\n"
 		""},
-	 { "GridFunction_GetVectorGradient", _wrap_GridFunction_GetVectorGradient, METH_VARARGS, "GridFunction_GetVectorGradient(GridFunction self, ElementTransformation tr, DenseMatrix grad)"},
-	 { "GridFunction_GetElementAverages", _wrap_GridFunction_GetElementAverages, METH_VARARGS, "GridFunction_GetElementAverages(GridFunction self, GridFunction avgs)"},
+	 { "GridFunction_GetVectorGradient", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorGradient, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetVectorGradient(GridFunction self, ElementTransformation tr, DenseMatrix grad)"},
+	 { "GridFunction_GetElementAverages", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetElementAverages, METH_VARARGS|METH_KEYWORDS, "GridFunction_GetElementAverages(GridFunction self, GridFunction avgs)"},
 	 { "GridFunction_ImposeBounds", _wrap_GridFunction_ImposeBounds, METH_VARARGS, "\n"
 		"GridFunction_ImposeBounds(GridFunction self, int i, Vector weights, Vector _lo, Vector _hi)\n"
 		"GridFunction_ImposeBounds(GridFunction self, int i, Vector weights, double _min=0.0, double _max=mfem::infinity())\n"
 		""},
-	 { "GridFunction_ProjectGridFunction", _wrap_GridFunction_ProjectGridFunction, METH_VARARGS, "GridFunction_ProjectGridFunction(GridFunction self, GridFunction src)"},
+	 { "GridFunction_ProjectGridFunction", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectGridFunction, METH_VARARGS|METH_KEYWORDS, "GridFunction_ProjectGridFunction(GridFunction self, GridFunction src)"},
 	 { "GridFunction_ProjectCoefficient", _wrap_GridFunction_ProjectCoefficient, METH_VARARGS, "\n"
 		"GridFunction_ProjectCoefficient(GridFunction self, Coefficient coeff)\n"
 		"GridFunction_ProjectCoefficient(GridFunction self, Coefficient coeff, intArray dofs, int vd=0)\n"
@@ -16179,20 +13305,20 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_ProjectBdrCoefficient(GridFunction self, VectorCoefficient vcoeff, intArray attr)\n"
 		"GridFunction_ProjectBdrCoefficient(GridFunction self, mfem::Coefficient *[] coeff, intArray attr)\n"
 		""},
-	 { "GridFunction_ProjectBdrCoefficientNormal", _wrap_GridFunction_ProjectBdrCoefficientNormal, METH_VARARGS, "GridFunction_ProjectBdrCoefficientNormal(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
-	 { "GridFunction_ProjectBdrCoefficientTangent", _wrap_GridFunction_ProjectBdrCoefficientTangent, METH_VARARGS, "GridFunction_ProjectBdrCoefficientTangent(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
+	 { "GridFunction_ProjectBdrCoefficientNormal", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientNormal, METH_VARARGS|METH_KEYWORDS, "GridFunction_ProjectBdrCoefficientNormal(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
+	 { "GridFunction_ProjectBdrCoefficientTangent", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientTangent, METH_VARARGS|METH_KEYWORDS, "GridFunction_ProjectBdrCoefficientTangent(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
 	 { "GridFunction_ComputeL2Error", _wrap_GridFunction_ComputeL2Error, METH_VARARGS, "\n"
 		"GridFunction_ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		"GridFunction_ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		"GridFunction_ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
 		""},
-	 { "GridFunction_ComputeH1Error", _wrap_GridFunction_ComputeH1Error, METH_VARARGS, "GridFunction_ComputeH1Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, Coefficient ell_coef, double Nu, int norm_type) -> double"},
+	 { "GridFunction_ComputeH1Error", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeH1Error, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeH1Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, Coefficient ell_coef, double Nu, int norm_type) -> double"},
 	 { "GridFunction_ComputeMaxError", _wrap_GridFunction_ComputeMaxError, METH_VARARGS, "\n"
 		"GridFunction_ComputeMaxError(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		"GridFunction_ComputeMaxError(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		"GridFunction_ComputeMaxError(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		""},
-	 { "GridFunction_ComputeW11Error", _wrap_GridFunction_ComputeW11Error, METH_VARARGS, "GridFunction_ComputeW11Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, int norm_type, intArray elems=None, mfem::IntegrationRule const *[] irs=0) -> double"},
+	 { "GridFunction_ComputeW11Error", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeW11Error, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeW11Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, int norm_type, intArray elems=None, mfem::IntegrationRule const *[] irs=0) -> double"},
 	 { "GridFunction_ComputeL1Error", _wrap_GridFunction_ComputeL1Error, METH_VARARGS, "\n"
 		"GridFunction_ComputeL1Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
 		"GridFunction_ComputeL1Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
@@ -16217,7 +13343,7 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_ComputeElementMaxErrors(GridFunction self, Coefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
 		"GridFunction_ComputeElementMaxErrors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
 		""},
-	 { "GridFunction_ComputeFlux", _wrap_GridFunction_ComputeFlux, METH_VARARGS, "GridFunction_ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, int wcoef=1, int subdomain=-1)"},
+	 { "GridFunction_ComputeFlux", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeFlux, METH_VARARGS|METH_KEYWORDS, "GridFunction_ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, bool wcoef=True, int subdomain=-1)"},
 	 { "GridFunction_Assign", _wrap_GridFunction_Assign, METH_VARARGS, "\n"
 		"GridFunction_Assign(GridFunction self, GridFunction rhs) -> GridFunction\n"
 		"GridFunction_Assign(GridFunction self, double value) -> GridFunction\n"
@@ -16228,8 +13354,10 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_FESpace(GridFunction self) -> FiniteElementSpace\n"
 		"GridFunction_FESpace(GridFunction self) -> FiniteElementSpace\n"
 		""},
-	 { "GridFunction_SetSpace", _wrap_GridFunction_SetSpace, METH_VARARGS, "GridFunction_SetSpace(GridFunction self, FiniteElementSpace f)"},
+	 { "GridFunction_SetSpace", (PyCFunction)(void(*)(void))_wrap_GridFunction_SetSpace, METH_VARARGS|METH_KEYWORDS, "GridFunction_SetSpace(GridFunction self, FiniteElementSpace f)"},
 	 { "GridFunction_MakeRef", _wrap_GridFunction_MakeRef, METH_VARARGS, "\n"
+		"GridFunction_MakeRef(GridFunction self, Vector base, int offset, int size)\n"
+		"GridFunction_MakeRef(GridFunction self, Vector base, int offset)\n"
 		"GridFunction_MakeRef(GridFunction self, FiniteElementSpace f, double * v)\n"
 		"GridFunction_MakeRef(GridFunction self, FiniteElementSpace f, Vector v, int v_offset)\n"
 		""},
@@ -16237,8 +13365,8 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction_MakeTRef(GridFunction self, FiniteElementSpace f, double * tv)\n"
 		"GridFunction_MakeTRef(GridFunction self, FiniteElementSpace f, Vector tv, int tv_offset)\n"
 		""},
-	 { "GridFunction_SaveVTK", _wrap_GridFunction_SaveVTK, METH_VARARGS, "GridFunction_SaveVTK(GridFunction self, std::ostream & out, std::string const & field_name, int ref)"},
-	 { "GridFunction_SaveSTL", _wrap_GridFunction_SaveSTL, METH_VARARGS, "GridFunction_SaveSTL(GridFunction self, std::ostream & out, int TimesToRefine=1)"},
+	 { "GridFunction_SaveVTK", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveVTK, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveVTK(GridFunction self, std::ostream & out, std::string const & field_name, int ref)"},
+	 { "GridFunction_SaveSTL", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveSTL, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveSTL(GridFunction self, std::ostream & out, int TimesToRefine=1)"},
 	 { "delete_GridFunction", _wrap_delete_GridFunction, METH_O, "delete_GridFunction(GridFunction self)"},
 	 { "new_GridFunction", _wrap_new_GridFunction, METH_VARARGS, "\n"
 		"GridFunction()\n"
@@ -16250,14 +13378,14 @@ static PyMethodDef SwigMethods[] = {
 		"GridFunction(Mesh m, char const * grid_file)\n"
 		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
 		""},
-	 { "GridFunction_SaveToFile", _wrap_GridFunction_SaveToFile, METH_VARARGS, "GridFunction_SaveToFile(GridFunction self, char const * gf_file, int const precision)"},
-	 { "GridFunction_iadd", _wrap_GridFunction_iadd, METH_VARARGS, "GridFunction_iadd(GridFunction self, GridFunction c) -> GridFunction"},
+	 { "GridFunction_SaveToFile", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveToFile, METH_VARARGS|METH_KEYWORDS, "GridFunction_SaveToFile(GridFunction self, char const * gf_file, int const precision)"},
+	 { "GridFunction_iadd", (PyCFunction)(void(*)(void))_wrap_GridFunction_iadd, METH_VARARGS|METH_KEYWORDS, "GridFunction_iadd(GridFunction self, GridFunction c) -> GridFunction"},
 	 { "GridFunction_isub", _wrap_GridFunction_isub, METH_VARARGS, "\n"
 		"GridFunction_isub(GridFunction self, GridFunction c) -> GridFunction\n"
 		"GridFunction_isub(GridFunction self, double c) -> GridFunction\n"
 		""},
-	 { "GridFunction_imul", _wrap_GridFunction_imul, METH_VARARGS, "GridFunction_imul(GridFunction self, double c) -> GridFunction"},
-	 { "GridFunction_idiv", _wrap_GridFunction_idiv, METH_VARARGS, "GridFunction_idiv(GridFunction self, double c) -> GridFunction"},
+	 { "GridFunction_imul", (PyCFunction)(void(*)(void))_wrap_GridFunction_imul, METH_VARARGS|METH_KEYWORDS, "GridFunction_imul(GridFunction self, double c) -> GridFunction"},
+	 { "GridFunction_idiv", (PyCFunction)(void(*)(void))_wrap_GridFunction_idiv, METH_VARARGS|METH_KEYWORDS, "GridFunction_idiv(GridFunction self, double c) -> GridFunction"},
 	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
 		"GridFunction_Save(GridFunction self, std::ostream & out)\n"
 		"GridFunction_Save(GridFunction self, char const * file, int precision=8)\n"
@@ -16278,10 +13406,10 @@ static PyMethodDef SwigMethods[] = {
 		"QuadratureFunction_SetSpace(QuadratureFunction self, QuadratureSpace qspace_, double * qf_data, int vdim_=-1)\n"
 		""},
 	 { "QuadratureFunction_GetVDim", _wrap_QuadratureFunction_GetVDim, METH_O, "QuadratureFunction_GetVDim(QuadratureFunction self) -> int"},
-	 { "QuadratureFunction_SetVDim", _wrap_QuadratureFunction_SetVDim, METH_VARARGS, "QuadratureFunction_SetVDim(QuadratureFunction self, int vdim_)"},
+	 { "QuadratureFunction_SetVDim", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SetVDim, METH_VARARGS|METH_KEYWORDS, "QuadratureFunction_SetVDim(QuadratureFunction self, int vdim_)"},
 	 { "QuadratureFunction_OwnsSpace", _wrap_QuadratureFunction_OwnsSpace, METH_O, "QuadratureFunction_OwnsSpace(QuadratureFunction self) -> bool"},
-	 { "QuadratureFunction_SetOwnsSpace", _wrap_QuadratureFunction_SetOwnsSpace, METH_VARARGS, "QuadratureFunction_SetOwnsSpace(QuadratureFunction self, bool own)"},
-	 { "QuadratureFunction_GetElementIntRule", _wrap_QuadratureFunction_GetElementIntRule, METH_VARARGS, "QuadratureFunction_GetElementIntRule(QuadratureFunction self, int idx) -> IntegrationRule"},
+	 { "QuadratureFunction_SetOwnsSpace", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SetOwnsSpace, METH_VARARGS|METH_KEYWORDS, "QuadratureFunction_SetOwnsSpace(QuadratureFunction self, bool own)"},
+	 { "QuadratureFunction_GetElementIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_GetElementIntRule, METH_VARARGS|METH_KEYWORDS, "QuadratureFunction_GetElementIntRule(QuadratureFunction self, int idx) -> IntegrationRule"},
 	 { "QuadratureFunction_GetElementValues", _wrap_QuadratureFunction_GetElementValues, METH_VARARGS, "\n"
 		"QuadratureFunction_GetElementValues(QuadratureFunction self, int idx, Vector values)\n"
 		"QuadratureFunction_GetElementValues(QuadratureFunction self, int idx, Vector values)\n"
@@ -16299,18 +13427,223 @@ static PyMethodDef SwigMethods[] = {
 		"__lshift__(std::ostream & out, GridFunction sol) -> std::ostream\n"
 		"__lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &\n"
 		""},
-	 { "ZZErrorEstimator", _wrap_ZZErrorEstimator, METH_VARARGS, "ZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, GridFunction flux, Vector error_estimates, intArray aniso_flags=None, int with_subdomains=1) -> double"},
-	 { "ComputeElementLpDistance", _wrap_ComputeElementLpDistance, METH_VARARGS, "ComputeElementLpDistance(double p, int i, GridFunction gf1, GridFunction gf2) -> double"},
-	 { "new_ExtrudeCoefficient", _wrap_new_ExtrudeCoefficient, METH_VARARGS, "new_ExtrudeCoefficient(Mesh m, Coefficient s, int _n) -> ExtrudeCoefficient"},
-	 { "ExtrudeCoefficient_Eval", _wrap_ExtrudeCoefficient_Eval, METH_VARARGS, "ExtrudeCoefficient_Eval(ExtrudeCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "ZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, GridFunction flux, Vector error_estimates, intArray aniso_flags=None, int with_subdomains=1, bool with_coeff=False) -> double"},
+	 { "ComputeElementLpDistance", (PyCFunction)(void(*)(void))_wrap_ComputeElementLpDistance, METH_VARARGS|METH_KEYWORDS, "ComputeElementLpDistance(double p, int i, GridFunction gf1, GridFunction gf2) -> double"},
+	 { "new_ExtrudeCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ExtrudeCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ExtrudeCoefficient(Mesh m, Coefficient s, int _n) -> ExtrudeCoefficient"},
+	 { "ExtrudeCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ExtrudeCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "ExtrudeCoefficient_Eval(ExtrudeCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
 	 { "delete_ExtrudeCoefficient", _wrap_delete_ExtrudeCoefficient, METH_O, "delete_ExtrudeCoefficient(ExtrudeCoefficient self)"},
 	 { "ExtrudeCoefficient_swigregister", ExtrudeCoefficient_swigregister, METH_O, NULL},
 	 { "ExtrudeCoefficient_swiginit", ExtrudeCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "Extrude1DGridFunction", _wrap_Extrude1DGridFunction, METH_VARARGS, "Extrude1DGridFunction(Mesh mesh, Mesh mesh2d, GridFunction sol, int const ny) -> GridFunction"},
+	 { "Extrude1DGridFunction", (PyCFunction)(void(*)(void))_wrap_Extrude1DGridFunction, METH_VARARGS|METH_KEYWORDS, "Extrude1DGridFunction(Mesh mesh, Mesh mesh2d, GridFunction sol, int const ny) -> GridFunction"},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "GridFunction_MakeOwner", (PyCFunction)(void(*)(void))_wrap_GridFunction_MakeOwner, METH_VARARGS|METH_KEYWORDS, "MakeOwner(GridFunction self, FiniteElementCollection _fec)"},
+	 { "GridFunction_OwnFEC", _wrap_GridFunction_OwnFEC, METH_O, "OwnFEC(GridFunction self) -> FiniteElementCollection"},
+	 { "GridFunction_VectorDim", _wrap_GridFunction_VectorDim, METH_O, "VectorDim(GridFunction self) -> int"},
+	 { "GridFunction_GetTrueVector", _wrap_GridFunction_GetTrueVector, METH_VARARGS, "\n"
+		"GetTrueVector(GridFunction self) -> Vector\n"
+		"GetTrueVector(GridFunction self) -> Vector\n"
+		""},
+	 { "GridFunction_GetTrueDofs", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetTrueDofs, METH_VARARGS|METH_KEYWORDS, "GetTrueDofs(GridFunction self, Vector tv)"},
+	 { "GridFunction_SetTrueVector", _wrap_GridFunction_SetTrueVector, METH_O, "SetTrueVector(GridFunction self)"},
+	 { "GridFunction_SetFromTrueDofs", (PyCFunction)(void(*)(void))_wrap_GridFunction_SetFromTrueDofs, METH_VARARGS|METH_KEYWORDS, "SetFromTrueDofs(GridFunction self, Vector tv)"},
+	 { "GridFunction_SetFromTrueVector", _wrap_GridFunction_SetFromTrueVector, METH_O, "SetFromTrueVector(GridFunction self)"},
+	 { "GridFunction_GetValue", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetValue, METH_VARARGS|METH_KEYWORDS, "GetValue(GridFunction self, int i, IntegrationPoint ip, int vdim=1) -> double"},
+	 { "GridFunction_GetVectorValue", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorValue, METH_VARARGS|METH_KEYWORDS, "GetVectorValue(GridFunction self, int i, IntegrationPoint ip, Vector val)"},
+	 { "GridFunction_GetValues", _wrap_GridFunction_GetValues, METH_VARARGS, "\n"
+		"GetValues(GridFunction self, int i, IntegrationRule ir, Vector vals, int vdim=1)\n"
+		"GetValues(GridFunction self, int i, IntegrationRule ir, Vector vals, DenseMatrix tr, int vdim=1)\n"
+		""},
+	 { "GridFunction_GetLaplacians", _wrap_GridFunction_GetLaplacians, METH_VARARGS, "\n"
+		"GetLaplacians(GridFunction self, int i, IntegrationRule ir, Vector laps, int vdim=1)\n"
+		"GetLaplacians(GridFunction self, int i, IntegrationRule ir, Vector laps, DenseMatrix tr, int vdim=1)\n"
+		""},
+	 { "GridFunction_GetHessians", _wrap_GridFunction_GetHessians, METH_VARARGS, "\n"
+		"GetHessians(GridFunction self, int i, IntegrationRule ir, DenseMatrix hess, int vdim=1)\n"
+		"GetHessians(GridFunction self, int i, IntegrationRule ir, DenseMatrix hess, DenseMatrix tr, int vdim=1)\n"
+		""},
+	 { "GridFunction_GetFaceValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetFaceValues, METH_VARARGS|METH_KEYWORDS, "GetFaceValues(GridFunction self, int i, int side, IntegrationRule ir, Vector vals, DenseMatrix tr, int vdim=1) -> int"},
+	 { "GridFunction_GetVectorValues", _wrap_GridFunction_GetVectorValues, METH_VARARGS, "\n"
+		"GetVectorValues(GridFunction self, ElementTransformation T, IntegrationRule ir, DenseMatrix vals)\n"
+		"GetVectorValues(GridFunction self, int i, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr)\n"
+		""},
+	 { "GridFunction_GetFaceVectorValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetFaceVectorValues, METH_VARARGS|METH_KEYWORDS, "GetFaceVectorValues(GridFunction self, int i, int side, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr) -> int"},
+	 { "GridFunction_GetValuesFrom", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetValuesFrom, METH_VARARGS|METH_KEYWORDS, "GetValuesFrom(GridFunction self, GridFunction orig_func)"},
+	 { "GridFunction_GetBdrValuesFrom", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetBdrValuesFrom, METH_VARARGS|METH_KEYWORDS, "GetBdrValuesFrom(GridFunction self, GridFunction orig_func)"},
+	 { "GridFunction_GetVectorFieldValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorFieldValues, METH_VARARGS|METH_KEYWORDS, "GetVectorFieldValues(GridFunction self, int i, IntegrationRule ir, DenseMatrix vals, DenseMatrix tr, int comp=0)"},
+	 { "GridFunction_ReorderByNodes", _wrap_GridFunction_ReorderByNodes, METH_O, "ReorderByNodes(GridFunction self)"},
+	 { "GridFunction_GetNodalValues", _wrap_GridFunction_GetNodalValues, METH_VARARGS, "\n"
+		"GetNodalValues(GridFunction self, int i, doubleArray nval, int vdim=1)\n"
+		"GetNodalValues(GridFunction self, Vector nval, int vdim=1)\n"
+		""},
+	 { "GridFunction_GetVectorFieldNodalValues", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorFieldNodalValues, METH_VARARGS|METH_KEYWORDS, "GetVectorFieldNodalValues(GridFunction self, Vector val, int comp)"},
+	 { "GridFunction_ProjectVectorFieldOn", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectVectorFieldOn, METH_VARARGS|METH_KEYWORDS, "ProjectVectorFieldOn(GridFunction self, GridFunction vec_field, int comp=0)"},
+	 { "GridFunction_GetDerivative", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetDerivative, METH_VARARGS|METH_KEYWORDS, "GetDerivative(GridFunction self, int comp, int der_comp, GridFunction der)"},
+	 { "GridFunction_GetDivergence", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetDivergence, METH_VARARGS|METH_KEYWORDS, "GetDivergence(GridFunction self, ElementTransformation tr) -> double"},
+	 { "GridFunction_GetCurl", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetCurl, METH_VARARGS|METH_KEYWORDS, "GetCurl(GridFunction self, ElementTransformation tr, Vector curl)"},
+	 { "GridFunction_GetGradient", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetGradient, METH_VARARGS|METH_KEYWORDS, "GetGradient(GridFunction self, ElementTransformation tr, Vector grad)"},
+	 { "GridFunction_GetGradients", _wrap_GridFunction_GetGradients, METH_VARARGS, "\n"
+		"GetGradients(GridFunction self, ElementTransformation tr, IntegrationRule ir, DenseMatrix grad)\n"
+		"GetGradients(GridFunction self, int const elem, IntegrationRule ir, DenseMatrix grad)\n"
+		""},
+	 { "GridFunction_GetVectorGradient", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetVectorGradient, METH_VARARGS|METH_KEYWORDS, "GetVectorGradient(GridFunction self, ElementTransformation tr, DenseMatrix grad)"},
+	 { "GridFunction_GetElementAverages", (PyCFunction)(void(*)(void))_wrap_GridFunction_GetElementAverages, METH_VARARGS|METH_KEYWORDS, "GetElementAverages(GridFunction self, GridFunction avgs)"},
+	 { "GridFunction_ImposeBounds", _wrap_GridFunction_ImposeBounds, METH_VARARGS, "\n"
+		"ImposeBounds(GridFunction self, int i, Vector weights, Vector _lo, Vector _hi)\n"
+		"ImposeBounds(GridFunction self, int i, Vector weights, double _min=0.0, double _max=mfem::infinity())\n"
+		""},
+	 { "GridFunction_ProjectGridFunction", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectGridFunction, METH_VARARGS|METH_KEYWORDS, "ProjectGridFunction(GridFunction self, GridFunction src)"},
+	 { "GridFunction_ProjectCoefficient", _wrap_GridFunction_ProjectCoefficient, METH_VARARGS, "\n"
+		"ProjectCoefficient(GridFunction self, Coefficient coeff)\n"
+		"ProjectCoefficient(GridFunction self, Coefficient coeff, intArray dofs, int vd=0)\n"
+		"ProjectCoefficient(GridFunction self, VectorCoefficient vcoeff)\n"
+		"ProjectCoefficient(GridFunction self, VectorCoefficient vcoeff, intArray dofs)\n"
+		"ProjectCoefficient(GridFunction self, mfem::Coefficient *[] coeff)\n"
+		""},
+	 { "GridFunction_ProjectDiscCoefficient", _wrap_GridFunction_ProjectDiscCoefficient, METH_VARARGS, "\n"
+		"ProjectDiscCoefficient(GridFunction self, VectorCoefficient coeff)\n"
+		"ProjectDiscCoefficient(GridFunction self, Coefficient coeff, mfem::GridFunction::AvgType type)\n"
+		"ProjectDiscCoefficient(GridFunction self, VectorCoefficient coeff, mfem::GridFunction::AvgType type)\n"
+		""},
+	 { "GridFunction_ProjectBdrCoefficient", _wrap_GridFunction_ProjectBdrCoefficient, METH_VARARGS, "\n"
+		"ProjectBdrCoefficient(GridFunction self, Coefficient coeff, intArray attr)\n"
+		"ProjectBdrCoefficient(GridFunction self, VectorCoefficient vcoeff, intArray attr)\n"
+		"ProjectBdrCoefficient(GridFunction self, mfem::Coefficient *[] coeff, intArray attr)\n"
+		""},
+	 { "GridFunction_ProjectBdrCoefficientNormal", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientNormal, METH_VARARGS|METH_KEYWORDS, "ProjectBdrCoefficientNormal(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
+	 { "GridFunction_ProjectBdrCoefficientTangent", (PyCFunction)(void(*)(void))_wrap_GridFunction_ProjectBdrCoefficientTangent, METH_VARARGS|METH_KEYWORDS, "ProjectBdrCoefficientTangent(GridFunction self, VectorCoefficient vcoeff, intArray bdr_attr)"},
+	 { "GridFunction_ComputeL2Error", _wrap_GridFunction_ComputeL2Error, METH_VARARGS, "\n"
+		"ComputeL2Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeL2Error(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeL2Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0, intArray elems=None) -> double\n"
+		""},
+	 { "GridFunction_ComputeH1Error", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeH1Error, METH_VARARGS|METH_KEYWORDS, "ComputeH1Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, Coefficient ell_coef, double Nu, int norm_type) -> double"},
+	 { "GridFunction_ComputeMaxError", _wrap_GridFunction_ComputeMaxError, METH_VARARGS, "\n"
+		"ComputeMaxError(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeMaxError(GridFunction self, mfem::Coefficient *[] exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeMaxError(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		""},
+	 { "GridFunction_ComputeW11Error", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeW11Error, METH_VARARGS|METH_KEYWORDS, "ComputeW11Error(GridFunction self, Coefficient exsol, VectorCoefficient exgrad, int norm_type, intArray elems=None, mfem::IntegrationRule const *[] irs=0) -> double"},
+	 { "GridFunction_ComputeL1Error", _wrap_GridFunction_ComputeL1Error, METH_VARARGS, "\n"
+		"ComputeL1Error(GridFunction self, Coefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeL1Error(GridFunction self, VectorCoefficient exsol, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		""},
+	 { "GridFunction_ComputeLpError", _wrap_GridFunction_ComputeLpError, METH_VARARGS, "\n"
+		"ComputeLpError(GridFunction self, double const p, Coefficient exsol, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		"ComputeLpError(GridFunction self, double const p, VectorCoefficient exsol, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0) -> double\n"
+		""},
+	 { "GridFunction_ComputeElementLpErrors", _wrap_GridFunction_ComputeElementLpErrors, METH_VARARGS, "\n"
+		"ComputeElementLpErrors(GridFunction self, double const p, Coefficient exsol, GridFunction error, Coefficient weight=None, mfem::IntegrationRule const *[] irs=0)\n"
+		"ComputeElementLpErrors(GridFunction self, double const p, VectorCoefficient exsol, GridFunction error, Coefficient weight=None, VectorCoefficient v_weight=None, mfem::IntegrationRule const *[] irs=0)\n"
+		""},
+	 { "GridFunction_ComputeElementL1Errors", _wrap_GridFunction_ComputeElementL1Errors, METH_VARARGS, "\n"
+		"ComputeElementL1Errors(GridFunction self, Coefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
+		"ComputeElementL1Errors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
+		""},
+	 { "GridFunction_ComputeElementL2Errors", _wrap_GridFunction_ComputeElementL2Errors, METH_VARARGS, "\n"
+		"ComputeElementL2Errors(GridFunction self, Coefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
+		"ComputeElementL2Errors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
+		""},
+	 { "GridFunction_ComputeElementMaxErrors", _wrap_GridFunction_ComputeElementMaxErrors, METH_VARARGS, "\n"
+		"ComputeElementMaxErrors(GridFunction self, Coefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
+		"ComputeElementMaxErrors(GridFunction self, VectorCoefficient exsol, GridFunction error, mfem::IntegrationRule const *[] irs=0)\n"
+		""},
+	 { "GridFunction_ComputeFlux", (PyCFunction)(void(*)(void))_wrap_GridFunction_ComputeFlux, METH_VARARGS|METH_KEYWORDS, "ComputeFlux(GridFunction self, BilinearFormIntegrator blfi, GridFunction flux, bool wcoef=True, int subdomain=-1)"},
+	 { "GridFunction_Assign", _wrap_GridFunction_Assign, METH_VARARGS, "\n"
+		"Assign(GridFunction self, GridFunction rhs) -> GridFunction\n"
+		"Assign(GridFunction self, double value) -> GridFunction\n"
+		"Assign(GridFunction self, Vector v) -> GridFunction\n"
+		""},
+	 { "GridFunction_Update", _wrap_GridFunction_Update, METH_O, "Update(GridFunction self)"},
+	 { "GridFunction_FESpace", _wrap_GridFunction_FESpace, METH_VARARGS, "\n"
+		"FESpace(GridFunction self) -> FiniteElementSpace\n"
+		"FESpace(GridFunction self) -> FiniteElementSpace\n"
+		""},
+	 { "GridFunction_SetSpace", (PyCFunction)(void(*)(void))_wrap_GridFunction_SetSpace, METH_VARARGS|METH_KEYWORDS, "SetSpace(GridFunction self, FiniteElementSpace f)"},
+	 { "GridFunction_MakeRef", _wrap_GridFunction_MakeRef, METH_VARARGS, "\n"
+		"MakeRef(GridFunction self, Vector base, int offset, int size)\n"
+		"MakeRef(GridFunction self, Vector base, int offset)\n"
+		"MakeRef(GridFunction self, FiniteElementSpace f, double * v)\n"
+		"MakeRef(GridFunction self, FiniteElementSpace f, Vector v, int v_offset)\n"
+		""},
+	 { "GridFunction_MakeTRef", _wrap_GridFunction_MakeTRef, METH_VARARGS, "\n"
+		"MakeTRef(GridFunction self, FiniteElementSpace f, double * tv)\n"
+		"MakeTRef(GridFunction self, FiniteElementSpace f, Vector tv, int tv_offset)\n"
+		""},
+	 { "GridFunction_SaveVTK", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveVTK, METH_VARARGS|METH_KEYWORDS, "SaveVTK(GridFunction self, std::ostream & out, std::string const & field_name, int ref)"},
+	 { "GridFunction_SaveSTL", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveSTL, METH_VARARGS|METH_KEYWORDS, "SaveSTL(GridFunction self, std::ostream & out, int TimesToRefine=1)"},
+	 { "delete_GridFunction", _wrap_delete_GridFunction, METH_O, "delete_GridFunction(GridFunction self)"},
+	 { "new_GridFunction", _wrap_new_GridFunction, METH_VARARGS, "\n"
+		"GridFunction()\n"
+		"GridFunction(GridFunction orig)\n"
+		"GridFunction(FiniteElementSpace f)\n"
+		"GridFunction(FiniteElementSpace f, double * data)\n"
+		"GridFunction(Mesh m, std::istream & input)\n"
+		"GridFunction(Mesh m, mfem::GridFunction *[] gf_array, int num_pieces)\n"
+		"GridFunction(Mesh m, char const * grid_file)\n"
+		"new_GridFunction(FiniteElementSpace fes, Vector v, int offset) -> GridFunction\n"
+		""},
+	 { "GridFunction_SaveToFile", (PyCFunction)(void(*)(void))_wrap_GridFunction_SaveToFile, METH_VARARGS|METH_KEYWORDS, "SaveToFile(GridFunction self, char const * gf_file, int const precision)"},
+	 { "GridFunction_iadd", (PyCFunction)(void(*)(void))_wrap_GridFunction_iadd, METH_VARARGS|METH_KEYWORDS, "iadd(GridFunction self, GridFunction c) -> GridFunction"},
+	 { "GridFunction_isub", _wrap_GridFunction_isub, METH_VARARGS, "\n"
+		"isub(GridFunction self, GridFunction c) -> GridFunction\n"
+		"isub(GridFunction self, double c) -> GridFunction\n"
+		""},
+	 { "GridFunction_imul", (PyCFunction)(void(*)(void))_wrap_GridFunction_imul, METH_VARARGS|METH_KEYWORDS, "imul(GridFunction self, double c) -> GridFunction"},
+	 { "GridFunction_idiv", (PyCFunction)(void(*)(void))_wrap_GridFunction_idiv, METH_VARARGS|METH_KEYWORDS, "idiv(GridFunction self, double c) -> GridFunction"},
+	 { "GridFunction_Save", _wrap_GridFunction_Save, METH_VARARGS, "\n"
+		"Save(GridFunction self, std::ostream & out)\n"
+		"Save(GridFunction self, char const * file, int precision=8)\n"
+		""},
+	 { "GridFunction_swigregister", GridFunction_swigregister, METH_O, NULL},
+	 { "GridFunction_swiginit", GridFunction_swiginit, METH_VARARGS, NULL},
+	 { "new_QuadratureFunction", _wrap_new_QuadratureFunction, METH_VARARGS, "\n"
+		"QuadratureFunction()\n"
+		"QuadratureFunction(QuadratureFunction orig)\n"
+		"QuadratureFunction(QuadratureSpace qspace_, int vdim_=1)\n"
+		"QuadratureFunction(QuadratureSpace qspace_, double * qf_data, int vdim_=1)\n"
+		"new_QuadratureFunction(Mesh mesh, std::istream & _in) -> QuadratureFunction\n"
+		""},
+	 { "delete_QuadratureFunction", _wrap_delete_QuadratureFunction, METH_O, "delete_QuadratureFunction(QuadratureFunction self)"},
+	 { "QuadratureFunction_GetSpace", _wrap_QuadratureFunction_GetSpace, METH_O, "GetSpace(QuadratureFunction self) -> QuadratureSpace"},
+	 { "QuadratureFunction_SetSpace", _wrap_QuadratureFunction_SetSpace, METH_VARARGS, "\n"
+		"SetSpace(QuadratureFunction self, QuadratureSpace qspace_, int vdim_=-1)\n"
+		"SetSpace(QuadratureFunction self, QuadratureSpace qspace_, double * qf_data, int vdim_=-1)\n"
+		""},
+	 { "QuadratureFunction_GetVDim", _wrap_QuadratureFunction_GetVDim, METH_O, "GetVDim(QuadratureFunction self) -> int"},
+	 { "QuadratureFunction_SetVDim", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SetVDim, METH_VARARGS|METH_KEYWORDS, "SetVDim(QuadratureFunction self, int vdim_)"},
+	 { "QuadratureFunction_OwnsSpace", _wrap_QuadratureFunction_OwnsSpace, METH_O, "OwnsSpace(QuadratureFunction self) -> bool"},
+	 { "QuadratureFunction_SetOwnsSpace", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_SetOwnsSpace, METH_VARARGS|METH_KEYWORDS, "SetOwnsSpace(QuadratureFunction self, bool own)"},
+	 { "QuadratureFunction_GetElementIntRule", (PyCFunction)(void(*)(void))_wrap_QuadratureFunction_GetElementIntRule, METH_VARARGS|METH_KEYWORDS, "GetElementIntRule(QuadratureFunction self, int idx) -> IntegrationRule"},
+	 { "QuadratureFunction_GetElementValues", _wrap_QuadratureFunction_GetElementValues, METH_VARARGS, "\n"
+		"GetElementValues(QuadratureFunction self, int idx, Vector values)\n"
+		"GetElementValues(QuadratureFunction self, int idx, Vector values)\n"
+		"GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
+		"GetElementValues(QuadratureFunction self, int idx, DenseMatrix values)\n"
+		""},
+	 { "QuadratureFunction_Save", _wrap_QuadratureFunction_Save, METH_VARARGS, "\n"
+		"Save(QuadratureFunction self, std::ostream & out)\n"
+		"Save(QuadratureFunction self, char const * file, int precision=8)\n"
+		""},
+	 { "QuadratureFunction_swigregister", QuadratureFunction_swigregister, METH_O, NULL},
+	 { "QuadratureFunction_swiginit", QuadratureFunction_swiginit, METH_VARARGS, NULL},
+	 { "__lshift__", _wrap___lshift__, METH_VARARGS, "\n"
+		"__lshift__(std::ostream & out, Mesh mesh) -> std::ostream\n"
+		"__lshift__(std::ostream & out, GridFunction sol) -> std::ostream\n"
+		"__lshift__(std::ostream & out, QuadratureFunction qf) -> std::ostream &\n"
+		""},
+	 { "ZZErrorEstimator", (PyCFunction)(void(*)(void))_wrap_ZZErrorEstimator, METH_VARARGS|METH_KEYWORDS, "ZZErrorEstimator(BilinearFormIntegrator blfi, GridFunction u, GridFunction flux, Vector error_estimates, intArray aniso_flags=None, int with_subdomains=1, bool with_coeff=False) -> double"},
+	 { "ComputeElementLpDistance", (PyCFunction)(void(*)(void))_wrap_ComputeElementLpDistance, METH_VARARGS|METH_KEYWORDS, "ComputeElementLpDistance(double p, int i, GridFunction gf1, GridFunction gf2) -> double"},
+	 { "new_ExtrudeCoefficient", (PyCFunction)(void(*)(void))_wrap_new_ExtrudeCoefficient, METH_VARARGS|METH_KEYWORDS, "new_ExtrudeCoefficient(Mesh m, Coefficient s, int _n) -> ExtrudeCoefficient"},
+	 { "ExtrudeCoefficient_Eval", (PyCFunction)(void(*)(void))_wrap_ExtrudeCoefficient_Eval, METH_VARARGS|METH_KEYWORDS, "Eval(ExtrudeCoefficient self, ElementTransformation T, IntegrationPoint ip) -> double"},
+	 { "delete_ExtrudeCoefficient", _wrap_delete_ExtrudeCoefficient, METH_O, "delete_ExtrudeCoefficient(ExtrudeCoefficient self)"},
+	 { "ExtrudeCoefficient_swigregister", ExtrudeCoefficient_swigregister, METH_O, NULL},
+	 { "ExtrudeCoefficient_swiginit", ExtrudeCoefficient_swiginit, METH_VARARGS, NULL},
+	 { "Extrude1DGridFunction", (PyCFunction)(void(*)(void))_wrap_Extrude1DGridFunction, METH_VARARGS|METH_KEYWORDS, "Extrude1DGridFunction(Mesh mesh, Mesh mesh2d, GridFunction sol, int const ny) -> GridFunction"},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -16382,6 +13715,9 @@ static void *_p_mfem__MassIntegratorTo_p_mfem__BilinearFormIntegrator(void *x, i
 }
 static void *_p_mfem__DiffusionIntegratorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::BilinearFormIntegrator *)  ((mfem::DiffusionIntegrator *) x));
+}
+static void *_p_mfem__GradientIntegratorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::BilinearFormIntegrator *)  ((mfem::GradientIntegrator *) x));
 }
 static void *_p_mfem__MixedVectorWeakDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::BilinearFormIntegrator *) (mfem::MixedVectorIntegrator *) ((mfem::MixedVectorWeakDivergenceIntegrator *) x));
@@ -16512,9 +13848,6 @@ static void *_p_mfem__MixedScalarCrossGradIntegratorTo_p_mfem__BilinearFormInteg
 static void *_p_mfem__MixedScalarCrossProductIntegratorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::BilinearFormIntegrator *) (mfem::MixedScalarVectorIntegrator *) ((mfem::MixedScalarCrossProductIntegrator *) x));
 }
-static void *_p_mfem__VectorScalarProductInterpolatorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::BilinearFormIntegrator *) (mfem::DiscreteInterpolator *) ((mfem::VectorScalarProductInterpolator *) x));
-}
 static void *_p_mfem__ScalarVectorProductInterpolatorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::BilinearFormIntegrator *) (mfem::DiscreteInterpolator *) ((mfem::ScalarVectorProductInterpolator *) x));
 }
@@ -16538,6 +13871,9 @@ static void *_p_mfem__GradientInterpolatorTo_p_mfem__BilinearFormIntegrator(void
 }
 static void *_p_mfem__DiscreteInterpolatorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::BilinearFormIntegrator *)  ((mfem::DiscreteInterpolator *) x));
+}
+static void *_p_mfem__VectorScalarProductInterpolatorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::BilinearFormIntegrator *) (mfem::DiscreteInterpolator *) ((mfem::VectorScalarProductInterpolator *) x));
 }
 static void *_p_mfem__VectorCrossProductInterpolatorTo_p_mfem__BilinearFormIntegrator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::BilinearFormIntegrator *) (mfem::DiscreteInterpolator *) ((mfem::VectorCrossProductInterpolator *) x));
@@ -16683,9 +14019,6 @@ static void *_p_p_mfem__ConstantCoefficientTo_p_p_mfem__Coefficient(void *x, int
 static void *_p_p_mfem__ExtrudeCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient **)  ((mfem::ExtrudeCoefficient **) x));
 }
-static void *_p_mfem__RT1_3DFECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElementCollection *)  ((mfem::RT1_3DFECollection *) x));
-}
 static void *_p_mfem__RT0_3DFECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElementCollection *)  ((mfem::RT0_3DFECollection *) x));
 }
@@ -16743,11 +14076,17 @@ static void *_p_mfem__LinearNonConf3DFECollectionTo_p_mfem__FiniteElementCollect
 static void *_p_mfem__CrouzeixRaviartFECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElementCollection *)  ((mfem::CrouzeixRaviartFECollection *) x));
 }
+static void *_p_mfem__CubicFECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElementCollection *)  ((mfem::CubicFECollection *) x));
+}
 static void *_p_mfem__H1_FECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElementCollection *)  ((mfem::H1_FECollection *) x));
 }
 static void *_p_mfem__H1Pos_FECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElementCollection *) (mfem::H1_FECollection *) ((mfem::H1Pos_FECollection *) x));
+}
+static void *_p_mfem__H1Ser_FECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElementCollection *) (mfem::H1_FECollection *) ((mfem::H1Ser_FECollection *) x));
 }
 static void *_p_mfem__H1_Trace_FECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElementCollection *) (mfem::H1_FECollection *) ((mfem::H1_Trace_FECollection *) x));
@@ -16782,8 +14121,8 @@ static void *_p_mfem__QuadraticFECollectionTo_p_mfem__FiniteElementCollection(vo
 static void *_p_mfem__QuadraticPosFECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElementCollection *)  ((mfem::QuadraticPosFECollection *) x));
 }
-static void *_p_mfem__CubicFECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FiniteElementCollection *)  ((mfem::CubicFECollection *) x));
+static void *_p_mfem__RT1_3DFECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FiniteElementCollection *)  ((mfem::RT1_3DFECollection *) x));
 }
 static void *_p_mfem__Local_FECollectionTo_p_mfem__FiniteElementCollection(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::FiniteElementCollection *)  ((mfem::Local_FECollection *) x));
@@ -16805,6 +14144,7 @@ static void *_p_mfem__LinearFormTo_p_mfem__Vector(void *x, int *SWIGUNUSEDPARM(n
 }
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RefCoord = {"_p_RefCoord", "RefCoord *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
@@ -16812,7 +14152,6 @@ static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (voi
 static swig_type_info _swigt__p_mfem__ArrayT_double_t = {"_p_mfem__ArrayT_double_t", "mfem::Array< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__BilinearFormIntegrator = {"_p_mfem__BilinearFormIntegrator", "mfem::BilinearFormIntegrator *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__MixedVectorDivergenceIntegrator = {"_p_mfem__MixedVectorDivergenceIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedScalarWeakGradientIntegrator = {"_p_mfem__MixedScalarWeakGradientIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedScalarWeakCrossProductIntegrator = {"_p_mfem__MixedScalarWeakCrossProductIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedDirectionalDerivativeIntegrator = {"_p_mfem__MixedDirectionalDerivativeIntegrator", 0, 0, 0, 0, 0};
@@ -16823,6 +14162,7 @@ static swig_type_info _swigt__p_mfem__MixedVectorGradientIntegrator = {"_p_mfem_
 static swig_type_info _swigt__p_mfem__MixedVectorCurlIntegrator = {"_p_mfem__MixedVectorCurlIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedVectorWeakCurlIntegrator = {"_p_mfem__MixedVectorWeakCurlIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedVectorWeakDivergenceIntegrator = {"_p_mfem__MixedVectorWeakDivergenceIntegrator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__GradientIntegrator = {"_p_mfem__GradientIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DiffusionIntegrator = {"_p_mfem__DiffusionIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MassIntegrator = {"_p_mfem__MassIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__BoundaryMassIntegrator = {"_p_mfem__BoundaryMassIntegrator", 0, 0, 0, 0, 0};
@@ -16844,6 +14184,7 @@ static swig_type_info _swigt__p_mfem__VectorDivergenceIntegrator = {"_p_mfem__Ve
 static swig_type_info _swigt__p_mfem__VectorFEMassIntegrator = {"_p_mfem__VectorFEMassIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorCurlCurlIntegrator = {"_p_mfem__VectorCurlCurlIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__CurlCurlIntegrator = {"_p_mfem__CurlCurlIntegrator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DerivativeIntegrator = {"_p_mfem__DerivativeIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedGradGradIntegrator = {"_p_mfem__MixedGradGradIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedCrossGradGradIntegrator = {"_p_mfem__MixedCrossGradGradIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedCurlCurlIntegrator = {"_p_mfem__MixedCurlCurlIntegrator", 0, 0, 0, 0, 0};
@@ -16876,8 +14217,7 @@ static swig_type_info _swigt__p_mfem__MixedVectorProductIntegrator = {"_p_mfem__
 static swig_type_info _swigt__p_mfem__MixedScalarDerivativeIntegrator = {"_p_mfem__MixedScalarDerivativeIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedScalarWeakDerivativeIntegrator = {"_p_mfem__MixedScalarWeakDerivativeIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__MixedScalarDivergenceIntegrator = {"_p_mfem__MixedScalarDivergenceIntegrator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DerivativeIntegrator = {"_p_mfem__DerivativeIntegrator", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__VectorScalarProductInterpolator = {"_p_mfem__VectorScalarProductInterpolator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__MixedVectorDivergenceIntegrator = {"_p_mfem__MixedVectorDivergenceIntegrator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ScalarVectorProductInterpolator = {"_p_mfem__ScalarVectorProductInterpolator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ScalarProductInterpolator = {"_p_mfem__ScalarProductInterpolator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NormalInterpolator = {"_p_mfem__NormalInterpolator", 0, 0, 0, 0, 0};
@@ -16886,6 +14226,7 @@ static swig_type_info _swigt__p_mfem__CurlInterpolator = {"_p_mfem__CurlInterpol
 static swig_type_info _swigt__p_mfem__IdentityInterpolator = {"_p_mfem__IdentityInterpolator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__GradientInterpolator = {"_p_mfem__GradientInterpolator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__DiscreteInterpolator = {"_p_mfem__DiscreteInterpolator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__VectorScalarProductInterpolator = {"_p_mfem__VectorScalarProductInterpolator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorCrossProductInterpolator = {"_p_mfem__VectorCrossProductInterpolator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__VectorInnerProductInterpolator = {"_p_mfem__VectorInnerProductInterpolator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Coefficient = {"_p_mfem__Coefficient", "mfem::Coefficient *", 0, 0, (void*)0, 0};
@@ -16909,6 +14250,7 @@ static swig_type_info _swigt__p_mfem__ElementTransformation = {"_p_mfem__Element
 static swig_type_info _swigt__p_mfem__IsoparametricTransformation = {"_p_mfem__IsoparametricTransformation", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ExtrudeCoefficient = {"_p_mfem__ExtrudeCoefficient", "mfem::ExtrudeCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementCollection = {"_p_mfem__FiniteElementCollection", "mfem::FiniteElementCollection *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__LinearDiscont2DFECollection = {"_p_mfem__LinearDiscont2DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__GaussLinearDiscont2DFECollection = {"_p_mfem__GaussLinearDiscont2DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__P1OnQuadFECollection = {"_p_mfem__P1OnQuadFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__QuadraticDiscont2DFECollection = {"_p_mfem__QuadraticDiscont2DFECollection", 0, 0, 0, 0, 0};
@@ -16921,15 +14263,13 @@ static swig_type_info _swigt__p_mfem__QuadraticDiscont3DFECollection = {"_p_mfem
 static swig_type_info _swigt__p_mfem__RefinedLinearFECollection = {"_p_mfem__RefinedLinearFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ND1_3DFECollection = {"_p_mfem__ND1_3DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT0_3DFECollection = {"_p_mfem__RT0_3DFECollection", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__RT1_3DFECollection = {"_p_mfem__RT1_3DFECollection", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__LinearDiscont2DFECollection = {"_p_mfem__LinearDiscont2DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Const2DFECollection = {"_p_mfem__Const2DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT2_2DFECollection = {"_p_mfem__RT2_2DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT1_2DFECollection = {"_p_mfem__RT1_2DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT0_2DFECollection = {"_p_mfem__RT0_2DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearNonConf3DFECollection = {"_p_mfem__LinearNonConf3DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__CrouzeixRaviartFECollection = {"_p_mfem__CrouzeixRaviartFECollection", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__QuadraticPosFECollection = {"_p_mfem__QuadraticPosFECollection", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__CubicFECollection = {"_p_mfem__CubicFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__QuadraticFECollection = {"_p_mfem__QuadraticFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__LinearFECollection = {"_p_mfem__LinearFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__NURBSFECollection = {"_p_mfem__NURBSFECollection", 0, 0, 0, 0, 0};
@@ -16939,9 +14279,11 @@ static swig_type_info _swigt__p_mfem__DG_Interface_FECollection = {"_p_mfem__DG_
 static swig_type_info _swigt__p_mfem__RT_Trace_FECollection = {"_p_mfem__RT_Trace_FECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RT_FECollection = {"_p_mfem__RT_FECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_Trace_FECollection = {"_p_mfem__H1_Trace_FECollection", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__H1Ser_FECollection = {"_p_mfem__H1Ser_FECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1Pos_FECollection = {"_p_mfem__H1Pos_FECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__H1_FECollection = {"_p_mfem__H1_FECollection", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__CubicFECollection = {"_p_mfem__CubicFECollection", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__QuadraticPosFECollection = {"_p_mfem__QuadraticPosFECollection", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RT1_3DFECollection = {"_p_mfem__RT1_3DFECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Local_FECollection = {"_p_mfem__Local_FECollection", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__FiniteElementSpace = {"_p_mfem__FiniteElementSpace", "mfem::FiniteElementSpace *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "mfem::GridFunction *", 0, 0, (void*)0, 0};
@@ -17000,6 +14342,7 @@ static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
+  &_swigt__p_RefCoord,
   &_swigt__p_char,
   &_swigt__p_double,
   &_swigt__p_hex_t,
@@ -17041,11 +14384,13 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__GaussLinearDiscont2DFECollection,
   &_swigt__p_mfem__GaussQuadraticDiscont2DFECollection,
   &_swigt__p_mfem__GradientGridFunctionCoefficient,
+  &_swigt__p_mfem__GradientIntegrator,
   &_swigt__p_mfem__GradientInterpolator,
   &_swigt__p_mfem__GridFunction,
   &_swigt__p_mfem__GridFunctionCoefficient,
   &_swigt__p_mfem__GroupConvectionIntegrator,
   &_swigt__p_mfem__H1Pos_FECollection,
+  &_swigt__p_mfem__H1Ser_FECollection,
   &_swigt__p_mfem__H1_FECollection,
   &_swigt__p_mfem__H1_Trace_FECollection,
   &_swigt__p_mfem__HypreParVector,
@@ -17195,13 +14540,13 @@ static swig_type_info *swig_type_initial[] = {
 
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RefCoord[] = {  {&_swigt__p_RefCoord, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_double_t[] = {  {&_swigt__p_mfem__ArrayT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__MixedVectorDivergenceIntegrator[] = {{&_swigt__p_mfem__MixedVectorDivergenceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedScalarWeakGradientIntegrator[] = {{&_swigt__p_mfem__MixedScalarWeakGradientIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedScalarWeakCrossProductIntegrator[] = {{&_swigt__p_mfem__MixedScalarWeakCrossProductIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedDirectionalDerivativeIntegrator[] = {{&_swigt__p_mfem__MixedDirectionalDerivativeIntegrator, 0, 0, 0},{0, 0, 0, 0}};
@@ -17212,6 +14557,7 @@ static swig_cast_info _swigc__p_mfem__MixedVectorGradientIntegrator[] = {{&_swig
 static swig_cast_info _swigc__p_mfem__MixedVectorCurlIntegrator[] = {{&_swigt__p_mfem__MixedVectorCurlIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedVectorWeakCurlIntegrator[] = {{&_swigt__p_mfem__MixedVectorWeakCurlIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedVectorWeakDivergenceIntegrator[] = {{&_swigt__p_mfem__MixedVectorWeakDivergenceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__GradientIntegrator[] = {{&_swigt__p_mfem__GradientIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DiffusionIntegrator[] = {{&_swigt__p_mfem__DiffusionIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MassIntegrator[] = {{&_swigt__p_mfem__MassIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__BoundaryMassIntegrator[] = {{&_swigt__p_mfem__BoundaryMassIntegrator, 0, 0, 0},{0, 0, 0, 0}};
@@ -17233,6 +14579,7 @@ static swig_cast_info _swigc__p_mfem__VectorDivergenceIntegrator[] = {{&_swigt__
 static swig_cast_info _swigc__p_mfem__VectorFEMassIntegrator[] = {{&_swigt__p_mfem__VectorFEMassIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorCurlCurlIntegrator[] = {{&_swigt__p_mfem__VectorCurlCurlIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CurlCurlIntegrator[] = {{&_swigt__p_mfem__CurlCurlIntegrator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DerivativeIntegrator[] = {{&_swigt__p_mfem__DerivativeIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedGradGradIntegrator[] = {{&_swigt__p_mfem__MixedGradGradIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedCrossGradGradIntegrator[] = {{&_swigt__p_mfem__MixedCrossGradGradIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedCurlCurlIntegrator[] = {{&_swigt__p_mfem__MixedCurlCurlIntegrator, 0, 0, 0},{0, 0, 0, 0}};
@@ -17265,8 +14612,7 @@ static swig_cast_info _swigc__p_mfem__MixedVectorProductIntegrator[] = {{&_swigt
 static swig_cast_info _swigc__p_mfem__MixedScalarDerivativeIntegrator[] = {{&_swigt__p_mfem__MixedScalarDerivativeIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedScalarWeakDerivativeIntegrator[] = {{&_swigt__p_mfem__MixedScalarWeakDerivativeIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MixedScalarDivergenceIntegrator[] = {{&_swigt__p_mfem__MixedScalarDivergenceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DerivativeIntegrator[] = {{&_swigt__p_mfem__DerivativeIntegrator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__VectorScalarProductInterpolator[] = {{&_swigt__p_mfem__VectorScalarProductInterpolator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MixedVectorDivergenceIntegrator[] = {{&_swigt__p_mfem__MixedVectorDivergenceIntegrator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ScalarVectorProductInterpolator[] = {{&_swigt__p_mfem__ScalarVectorProductInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ScalarProductInterpolator[] = {{&_swigt__p_mfem__ScalarProductInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NormalInterpolator[] = {{&_swigt__p_mfem__NormalInterpolator, 0, 0, 0},{0, 0, 0, 0}};
@@ -17275,9 +14621,10 @@ static swig_cast_info _swigc__p_mfem__CurlInterpolator[] = {{&_swigt__p_mfem__Cu
 static swig_cast_info _swigc__p_mfem__IdentityInterpolator[] = {{&_swigt__p_mfem__IdentityInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GradientInterpolator[] = {{&_swigt__p_mfem__GradientInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DiscreteInterpolator[] = {{&_swigt__p_mfem__DiscreteInterpolator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__VectorScalarProductInterpolator[] = {{&_swigt__p_mfem__VectorScalarProductInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorCrossProductInterpolator[] = {{&_swigt__p_mfem__VectorCrossProductInterpolator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorInnerProductInterpolator[] = {{&_swigt__p_mfem__VectorInnerProductInterpolator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__BilinearFormIntegrator[] = {  {&_swigt__p_mfem__MixedVectorDivergenceIntegrator, _p_mfem__MixedVectorDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakGradientIntegrator, _p_mfem__MixedScalarWeakGradientIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakCrossProductIntegrator, _p_mfem__MixedScalarWeakCrossProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedDirectionalDerivativeIntegrator, _p_mfem__MixedDirectionalDerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedGradDivIntegrator, _p_mfem__MixedGradDivIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedDivGradIntegrator, _p_mfem__MixedDivGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakDivergenceIntegrator, _p_mfem__MixedScalarWeakDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorGradientIntegrator, _p_mfem__MixedVectorGradientIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorCurlIntegrator, _p_mfem__MixedVectorCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorWeakCurlIntegrator, _p_mfem__MixedVectorWeakCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorWeakDivergenceIntegrator, _p_mfem__MixedVectorWeakDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DiffusionIntegrator, _p_mfem__DiffusionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MassIntegrator, _p_mfem__MassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryMassIntegrator, _p_mfem__BoundaryMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ConvectionIntegrator, _p_mfem__ConvectionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__GroupConvectionIntegrator, _p_mfem__GroupConvectionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorMassIntegrator, _p_mfem__VectorMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEDivergenceIntegrator, _p_mfem__VectorFEDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEWeakDivergenceIntegrator, _p_mfem__VectorFEWeakDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFECurlIntegrator, _p_mfem__VectorFECurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__NormalTraceJumpIntegrator, _p_mfem__NormalTraceJumpIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__TraceJumpIntegrator, _p_mfem__TraceJumpIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGElasticityIntegrator, _p_mfem__DGElasticityIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGDiffusionIntegrator, _p_mfem__DGDiffusionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGTraceIntegrator, _p_mfem__DGTraceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ElasticityIntegrator, _p_mfem__ElasticityIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorDiffusionIntegrator, _p_mfem__VectorDiffusionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DivDivIntegrator, _p_mfem__DivDivIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorDivergenceIntegrator, _p_mfem__VectorDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEMassIntegrator, _p_mfem__VectorFEMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorCurlCurlIntegrator, _p_mfem__VectorCurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__CurlCurlIntegrator, _p_mfem__CurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedGradGradIntegrator, _p_mfem__MixedGradGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossGradGradIntegrator, _p_mfem__MixedCrossGradGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCurlCurlIntegrator, _p_mfem__MixedCurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossCurlCurlIntegrator, _p_mfem__MixedCrossCurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossCurlGradIntegrator, _p_mfem__MixedCrossCurlGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossGradCurlIntegrator, _p_mfem__MixedCrossGradCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedWeakCurlCrossIntegrator, _p_mfem__MixedWeakCurlCrossIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakCurlCrossIntegrator, _p_mfem__MixedScalarWeakCurlCrossIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossGradIntegrator, _p_mfem__MixedCrossGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossCurlIntegrator, _p_mfem__MixedCrossCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCrossCurlIntegrator, _p_mfem__MixedScalarCrossCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCrossGradIntegrator, _p_mfem__MixedScalarCrossGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCrossProductIntegrator, _p_mfem__MixedScalarCrossProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BilinearFormIntegrator, 0, 0, 0},  {&_swigt__p_mfem__MixedWeakDivCrossIntegrator, _p_mfem__MixedWeakDivCrossIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedWeakGradDotIntegrator, _p_mfem__MixedWeakGradDotIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedDotProductIntegrator, _p_mfem__MixedDotProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossProductIntegrator, _p_mfem__MixedCrossProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorMassIntegrator, _p_mfem__MixedVectorMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakCurlIntegrator, _p_mfem__MixedScalarWeakCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCurlIntegrator, _p_mfem__MixedScalarCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__TransposeIntegrator, _p_mfem__TransposeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__LumpedIntegrator, _p_mfem__LumpedIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__InverseIntegrator, _p_mfem__InverseIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__SumIntegrator, _p_mfem__SumIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarIntegrator, _p_mfem__MixedScalarIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorIntegrator, _p_mfem__MixedVectorIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarVectorIntegrator, _p_mfem__MixedScalarVectorIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarMassIntegrator, _p_mfem__MixedScalarMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorProductIntegrator, _p_mfem__MixedVectorProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarDerivativeIntegrator, _p_mfem__MixedScalarDerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakDerivativeIntegrator, _p_mfem__MixedScalarWeakDerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarDivergenceIntegrator, _p_mfem__MixedScalarDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DerivativeIntegrator, _p_mfem__DerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorScalarProductInterpolator, _p_mfem__VectorScalarProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductInterpolator, _p_mfem__ScalarVectorProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ScalarProductInterpolator, _p_mfem__ScalarProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__NormalInterpolator, _p_mfem__NormalInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DivergenceInterpolator, _p_mfem__DivergenceInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__CurlInterpolator, _p_mfem__CurlInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__IdentityInterpolator, _p_mfem__IdentityInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__GradientInterpolator, _p_mfem__GradientInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DiscreteInterpolator, _p_mfem__DiscreteInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorCrossProductInterpolator, _p_mfem__VectorCrossProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorInnerProductInterpolator, _p_mfem__VectorInnerProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__BilinearFormIntegrator[] = {  {&_swigt__p_mfem__MixedScalarWeakGradientIntegrator, _p_mfem__MixedScalarWeakGradientIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakCrossProductIntegrator, _p_mfem__MixedScalarWeakCrossProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedDirectionalDerivativeIntegrator, _p_mfem__MixedDirectionalDerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedGradDivIntegrator, _p_mfem__MixedGradDivIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedDivGradIntegrator, _p_mfem__MixedDivGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakDivergenceIntegrator, _p_mfem__MixedScalarWeakDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorGradientIntegrator, _p_mfem__MixedVectorGradientIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorCurlIntegrator, _p_mfem__MixedVectorCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorWeakCurlIntegrator, _p_mfem__MixedVectorWeakCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorWeakDivergenceIntegrator, _p_mfem__MixedVectorWeakDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__GradientIntegrator, _p_mfem__GradientIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DiffusionIntegrator, _p_mfem__DiffusionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MassIntegrator, _p_mfem__MassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BoundaryMassIntegrator, _p_mfem__BoundaryMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ConvectionIntegrator, _p_mfem__ConvectionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__GroupConvectionIntegrator, _p_mfem__GroupConvectionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorMassIntegrator, _p_mfem__VectorMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEDivergenceIntegrator, _p_mfem__VectorFEDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEWeakDivergenceIntegrator, _p_mfem__VectorFEWeakDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFECurlIntegrator, _p_mfem__VectorFECurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__NormalTraceJumpIntegrator, _p_mfem__NormalTraceJumpIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__TraceJumpIntegrator, _p_mfem__TraceJumpIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGElasticityIntegrator, _p_mfem__DGElasticityIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGDiffusionIntegrator, _p_mfem__DGDiffusionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DGTraceIntegrator, _p_mfem__DGTraceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ElasticityIntegrator, _p_mfem__ElasticityIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorDiffusionIntegrator, _p_mfem__VectorDiffusionIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DivDivIntegrator, _p_mfem__DivDivIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorDivergenceIntegrator, _p_mfem__VectorDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorFEMassIntegrator, _p_mfem__VectorFEMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorCurlCurlIntegrator, _p_mfem__VectorCurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__CurlCurlIntegrator, _p_mfem__CurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DerivativeIntegrator, _p_mfem__DerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedGradGradIntegrator, _p_mfem__MixedGradGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossGradGradIntegrator, _p_mfem__MixedCrossGradGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCurlCurlIntegrator, _p_mfem__MixedCurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossCurlCurlIntegrator, _p_mfem__MixedCrossCurlCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossCurlGradIntegrator, _p_mfem__MixedCrossCurlGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossGradCurlIntegrator, _p_mfem__MixedCrossGradCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedWeakCurlCrossIntegrator, _p_mfem__MixedWeakCurlCrossIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakCurlCrossIntegrator, _p_mfem__MixedScalarWeakCurlCrossIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossGradIntegrator, _p_mfem__MixedCrossGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossCurlIntegrator, _p_mfem__MixedCrossCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCrossCurlIntegrator, _p_mfem__MixedScalarCrossCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCrossGradIntegrator, _p_mfem__MixedScalarCrossGradIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCrossProductIntegrator, _p_mfem__MixedScalarCrossProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__BilinearFormIntegrator, 0, 0, 0},  {&_swigt__p_mfem__MixedWeakDivCrossIntegrator, _p_mfem__MixedWeakDivCrossIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedWeakGradDotIntegrator, _p_mfem__MixedWeakGradDotIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedDotProductIntegrator, _p_mfem__MixedDotProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedCrossProductIntegrator, _p_mfem__MixedCrossProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorMassIntegrator, _p_mfem__MixedVectorMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakCurlIntegrator, _p_mfem__MixedScalarWeakCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarCurlIntegrator, _p_mfem__MixedScalarCurlIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__TransposeIntegrator, _p_mfem__TransposeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__LumpedIntegrator, _p_mfem__LumpedIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__InverseIntegrator, _p_mfem__InverseIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__SumIntegrator, _p_mfem__SumIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarIntegrator, _p_mfem__MixedScalarIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorIntegrator, _p_mfem__MixedVectorIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarVectorIntegrator, _p_mfem__MixedScalarVectorIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarMassIntegrator, _p_mfem__MixedScalarMassIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorProductIntegrator, _p_mfem__MixedVectorProductIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarDerivativeIntegrator, _p_mfem__MixedScalarDerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarWeakDerivativeIntegrator, _p_mfem__MixedScalarWeakDerivativeIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedScalarDivergenceIntegrator, _p_mfem__MixedScalarDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__MixedVectorDivergenceIntegrator, _p_mfem__MixedVectorDivergenceIntegratorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ScalarVectorProductInterpolator, _p_mfem__ScalarVectorProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__ScalarProductInterpolator, _p_mfem__ScalarProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__NormalInterpolator, _p_mfem__NormalInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DivergenceInterpolator, _p_mfem__DivergenceInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__CurlInterpolator, _p_mfem__CurlInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__IdentityInterpolator, _p_mfem__IdentityInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__GradientInterpolator, _p_mfem__GradientInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__DiscreteInterpolator, _p_mfem__DiscreteInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorScalarProductInterpolator, _p_mfem__VectorScalarProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorCrossProductInterpolator, _p_mfem__VectorCrossProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},  {&_swigt__p_mfem__VectorInnerProductInterpolator, _p_mfem__VectorInnerProductInterpolatorTo_p_mfem__BilinearFormIntegrator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyCoefficientBase[] = {{&_swigt__p_mfem__PyCoefficientBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DeterminantCoefficient[] = {{&_swigt__p_mfem__DeterminantCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__VectorRotProductCoefficient[] = {{&_swigt__p_mfem__VectorRotProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
@@ -17298,6 +14645,7 @@ static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__Dense
 static swig_cast_info _swigc__p_mfem__IsoparametricTransformation[] = {{&_swigt__p_mfem__IsoparametricTransformation, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ElementTransformation[] = {  {&_swigt__p_mfem__ElementTransformation, 0, 0, 0},  {&_swigt__p_mfem__IsoparametricTransformation, _p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ExtrudeCoefficient[] = {  {&_swigt__p_mfem__ExtrudeCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__LinearDiscont2DFECollection[] = {{&_swigt__p_mfem__LinearDiscont2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GaussLinearDiscont2DFECollection[] = {{&_swigt__p_mfem__GaussLinearDiscont2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__P1OnQuadFECollection[] = {{&_swigt__p_mfem__P1OnQuadFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadraticDiscont2DFECollection[] = {{&_swigt__p_mfem__QuadraticDiscont2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
@@ -17310,15 +14658,13 @@ static swig_cast_info _swigc__p_mfem__QuadraticDiscont3DFECollection[] = {{&_swi
 static swig_cast_info _swigc__p_mfem__RefinedLinearFECollection[] = {{&_swigt__p_mfem__RefinedLinearFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ND1_3DFECollection[] = {{&_swigt__p_mfem__ND1_3DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT0_3DFECollection[] = {{&_swigt__p_mfem__RT0_3DFECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__RT1_3DFECollection[] = {{&_swigt__p_mfem__RT1_3DFECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__LinearDiscont2DFECollection[] = {{&_swigt__p_mfem__LinearDiscont2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Const2DFECollection[] = {{&_swigt__p_mfem__Const2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT2_2DFECollection[] = {{&_swigt__p_mfem__RT2_2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT1_2DFECollection[] = {{&_swigt__p_mfem__RT1_2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT0_2DFECollection[] = {{&_swigt__p_mfem__RT0_2DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearNonConf3DFECollection[] = {{&_swigt__p_mfem__LinearNonConf3DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CrouzeixRaviartFECollection[] = {{&_swigt__p_mfem__CrouzeixRaviartFECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__QuadraticPosFECollection[] = {{&_swigt__p_mfem__QuadraticPosFECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__CubicFECollection[] = {{&_swigt__p_mfem__CubicFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__QuadraticFECollection[] = {{&_swigt__p_mfem__QuadraticFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__LinearFECollection[] = {{&_swigt__p_mfem__LinearFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NURBSFECollection[] = {{&_swigt__p_mfem__NURBSFECollection, 0, 0, 0},{0, 0, 0, 0}};
@@ -17328,11 +14674,13 @@ static swig_cast_info _swigc__p_mfem__DG_Interface_FECollection[] = {{&_swigt__p
 static swig_cast_info _swigc__p_mfem__RT_Trace_FECollection[] = {{&_swigt__p_mfem__RT_Trace_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RT_FECollection[] = {{&_swigt__p_mfem__RT_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_Trace_FECollection[] = {{&_swigt__p_mfem__H1_Trace_FECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__H1Ser_FECollection[] = {{&_swigt__p_mfem__H1Ser_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1Pos_FECollection[] = {{&_swigt__p_mfem__H1Pos_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__H1_FECollection[] = {{&_swigt__p_mfem__H1_FECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__CubicFECollection[] = {{&_swigt__p_mfem__CubicFECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__QuadraticPosFECollection[] = {{&_swigt__p_mfem__QuadraticPosFECollection, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RT1_3DFECollection[] = {{&_swigt__p_mfem__RT1_3DFECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Local_FECollection[] = {{&_swigt__p_mfem__Local_FECollection, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__FiniteElementCollection[] = {  {&_swigt__p_mfem__GaussLinearDiscont2DFECollection, _p_mfem__GaussLinearDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__P1OnQuadFECollection, _p_mfem__P1OnQuadFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticDiscont2DFECollection, _p_mfem__QuadraticDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticPosDiscont2DFECollection, _p_mfem__QuadraticPosDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__GaussQuadraticDiscont2DFECollection, _p_mfem__GaussQuadraticDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__CubicDiscont2DFECollection, _p_mfem__CubicDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__Const3DFECollection, _p_mfem__Const3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__LinearDiscont3DFECollection, _p_mfem__LinearDiscont3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticDiscont3DFECollection, _p_mfem__QuadraticDiscont3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RefinedLinearFECollection, _p_mfem__RefinedLinearFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__ND1_3DFECollection, _p_mfem__ND1_3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT0_3DFECollection, _p_mfem__RT0_3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT1_3DFECollection, _p_mfem__RT1_3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__LinearDiscont2DFECollection, _p_mfem__LinearDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__Const2DFECollection, _p_mfem__Const2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT2_2DFECollection, _p_mfem__RT2_2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT1_2DFECollection, _p_mfem__RT1_2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT0_2DFECollection, _p_mfem__RT0_2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__LinearNonConf3DFECollection, _p_mfem__LinearNonConf3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFECollection, _p_mfem__CrouzeixRaviartFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__FiniteElementCollection, 0, 0, 0},  {&_swigt__p_mfem__QuadraticPosFECollection, _p_mfem__QuadraticPosFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticFECollection, _p_mfem__QuadraticFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__LinearFECollection, _p_mfem__LinearFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__NURBSFECollection, _p_mfem__NURBSFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__ND_Trace_FECollection, _p_mfem__ND_Trace_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__ND_FECollection, _p_mfem__ND_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__DG_Interface_FECollection, _p_mfem__DG_Interface_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT_Trace_FECollection, _p_mfem__RT_Trace_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT_FECollection, _p_mfem__RT_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__L2_FECollection, _p_mfem__L2_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__H1_Trace_FECollection, _p_mfem__H1_Trace_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__H1Pos_FECollection, _p_mfem__H1Pos_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__H1_FECollection, _p_mfem__H1_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__CubicFECollection, _p_mfem__CubicFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__Local_FECollection, _p_mfem__Local_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__FiniteElementCollection[] = {  {&_swigt__p_mfem__LinearDiscont2DFECollection, _p_mfem__LinearDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__GaussLinearDiscont2DFECollection, _p_mfem__GaussLinearDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__P1OnQuadFECollection, _p_mfem__P1OnQuadFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticDiscont2DFECollection, _p_mfem__QuadraticDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticPosDiscont2DFECollection, _p_mfem__QuadraticPosDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__GaussQuadraticDiscont2DFECollection, _p_mfem__GaussQuadraticDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__CubicDiscont2DFECollection, _p_mfem__CubicDiscont2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__Const3DFECollection, _p_mfem__Const3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__LinearDiscont3DFECollection, _p_mfem__LinearDiscont3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticDiscont3DFECollection, _p_mfem__QuadraticDiscont3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RefinedLinearFECollection, _p_mfem__RefinedLinearFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__ND1_3DFECollection, _p_mfem__ND1_3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT0_3DFECollection, _p_mfem__RT0_3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__Const2DFECollection, _p_mfem__Const2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT2_2DFECollection, _p_mfem__RT2_2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT1_2DFECollection, _p_mfem__RT1_2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT0_2DFECollection, _p_mfem__RT0_2DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__LinearNonConf3DFECollection, _p_mfem__LinearNonConf3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__CrouzeixRaviartFECollection, _p_mfem__CrouzeixRaviartFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__CubicFECollection, _p_mfem__CubicFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__FiniteElementCollection, 0, 0, 0},  {&_swigt__p_mfem__QuadraticFECollection, _p_mfem__QuadraticFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__LinearFECollection, _p_mfem__LinearFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__NURBSFECollection, _p_mfem__NURBSFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__ND_Trace_FECollection, _p_mfem__ND_Trace_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__ND_FECollection, _p_mfem__ND_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__DG_Interface_FECollection, _p_mfem__DG_Interface_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT_Trace_FECollection, _p_mfem__RT_Trace_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT_FECollection, _p_mfem__RT_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__L2_FECollection, _p_mfem__L2_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__H1_Trace_FECollection, _p_mfem__H1_Trace_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__H1Ser_FECollection, _p_mfem__H1Ser_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__H1Pos_FECollection, _p_mfem__H1Pos_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__H1_FECollection, _p_mfem__H1_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__QuadraticPosFECollection, _p_mfem__QuadraticPosFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__RT1_3DFECollection, _p_mfem__RT1_3DFECollectionTo_p_mfem__FiniteElementCollection, 0, 0},  {&_swigt__p_mfem__Local_FECollection, _p_mfem__Local_FECollectionTo_p_mfem__FiniteElementCollection, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__FiniteElementSpace[] = {  {&_swigt__p_mfem__FiniteElementSpace, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__GridFunction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IntegrationPoint[] = {  {&_swigt__p_mfem__IntegrationPoint, 0, 0, 0},{0, 0, 0, 0}};
@@ -17390,6 +14738,7 @@ static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
+  _swigc__p_RefCoord,
   _swigc__p_char,
   _swigc__p_double,
   _swigc__p_hex_t,
@@ -17431,11 +14780,13 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__GaussLinearDiscont2DFECollection,
   _swigc__p_mfem__GaussQuadraticDiscont2DFECollection,
   _swigc__p_mfem__GradientGridFunctionCoefficient,
+  _swigc__p_mfem__GradientIntegrator,
   _swigc__p_mfem__GradientInterpolator,
   _swigc__p_mfem__GridFunction,
   _swigc__p_mfem__GridFunctionCoefficient,
   _swigc__p_mfem__GroupConvectionIntegrator,
   _swigc__p_mfem__H1Pos_FECollection,
+  _swigc__p_mfem__H1Ser_FECollection,
   _swigc__p_mfem__H1_FECollection,
   _swigc__p_mfem__H1_Trace_FECollection,
   _swigc__p_mfem__HypreParVector,

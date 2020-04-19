@@ -3081,15 +3081,18 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__PyOperatorBase swig_types[13]
 #define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[14]
 #define SWIGTYPE_p_mfem__RAPOperator swig_types[15]
-#define SWIGTYPE_p_mfem__Solver swig_types[16]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[17]
-#define SWIGTYPE_p_mfem__SparseSmoother swig_types[18]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[19]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[20]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[21]
-#define SWIGTYPE_p_mfem__Vector swig_types[22]
-static swig_type_info *swig_types[24];
-static swig_module_info swig_module = {swig_types, 23, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[16]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[17]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[18]
+#define SWIGTYPE_p_mfem__Solver swig_types[19]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[20]
+#define SWIGTYPE_p_mfem__SparseSmoother swig_types[21]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[22]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[23]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[24]
+#define SWIGTYPE_p_mfem__Vector swig_types[25]
+static swig_type_info *swig_types[27];
+static swig_module_info swig_module = {swig_types, 26, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3254,7 +3257,7 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_SparseSmoother_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_SparseSmoother_SetOperator(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::SparseSmoother *arg1 = (mfem::SparseSmoother *) 0 ;
   mfem::Operator *arg2 = 0 ;
@@ -3262,15 +3265,19 @@ SWIGINTERN PyObject *_wrap_SparseSmoother_SetOperator(PyObject *SWIGUNUSEDPARM(s
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"a",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "SparseSmoother_SetOperator", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__SparseSmoother, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:SparseSmoother_SetOperator", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__SparseSmoother, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SparseSmoother_SetOperator" "', argument " "1"" of type '" "mfem::SparseSmoother *""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseSmoother * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Operator,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "SparseSmoother_SetOperator" "', argument " "2"" of type '" "mfem::Operator const &""'"); 
   }
@@ -3341,22 +3348,26 @@ SWIGINTERN PyObject *SparseSmoother_swigregister(PyObject *SWIGUNUSEDPARM(self),
 
 SWIGINTERN PyObject *_wrap_new_GSSmoother__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
+  int arg1 = (int) 0 ;
+  int arg2 = (int) 1 ;
   mfem::GSSmoother *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  if ((nobjs < 0) || (nobjs > 2)) SWIG_fail;
+  if (swig_obj[0]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
   {
     try {
@@ -3380,71 +3391,14 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_GSSmoother__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int arg1 ;
-  mfem::GSSmoother *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    try {
-      result = (mfem::GSSmoother *)new mfem::GSSmoother(arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GSSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GSSmoother__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  mfem::GSSmoother *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (mfem::GSSmoother *)new mfem::GSSmoother(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GSSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GSSmoother__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
-  int arg2 ;
-  int arg3 ;
+  int arg2 = (int) 0 ;
+  int arg3 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   mfem::GSSmoother *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GSSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
@@ -3453,100 +3407,25 @@ SWIGINTERN PyObject *_wrap_new_GSSmoother__SWIG_3(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GSSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
       result = (mfem::GSSmoother *)new mfem::GSSmoother((mfem::SparseMatrix const &)*arg1,arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GSSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GSSmoother__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::GSSmoother *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GSSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GSSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::GSSmoother *)new mfem::GSSmoother((mfem::SparseMatrix const &)*arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__GSSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_GSSmoother__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::GSSmoother *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_GSSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_GSSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    try {
-      result = (mfem::GSSmoother *)new mfem::GSSmoother((mfem::SparseMatrix const &)*arg1); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -3572,19 +3451,11 @@ SWIGINTERN PyObject *_wrap_new_GSSmoother(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_GSSmoother", 0, 3, argv))) SWIG_fail;
   --argc;
-  if (argc == 0) {
-    return _wrap_new_GSSmoother__SWIG_2(self, argc, argv);
-  }
-  if (argc == 1) {
+  if ((argc >= 0) && (argc <= 2)) {
     int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_GSSmoother__SWIG_5(self, argc, argv);
+    if (argc <= 0) {
+      return _wrap_new_GSSmoother__SWIG_0(self, argc, argv);
     }
-  }
-  if (argc == 1) {
-    int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         PyErr_Clear();
@@ -3594,38 +3465,9 @@ SWIGINTERN PyObject *_wrap_new_GSSmoother(PyObject *self, PyObject *args) {
       }
     }
     if (_v) {
-      return _wrap_new_GSSmoother__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+      if (argc <= 1) {
+        return _wrap_new_GSSmoother__SWIG_0(self, argc, argv);
       }
-      if (_v) {
-        return _wrap_new_GSSmoother__SWIG_4(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -3639,11 +3481,14 @@ SWIGINTERN PyObject *_wrap_new_GSSmoother(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 3) {
+  if ((argc >= 1) && (argc <= 3)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_GSSmoother__SWIG_1(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -3653,6 +3498,9 @@ SWIGINTERN PyObject *_wrap_new_GSSmoother(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_GSSmoother__SWIG_1(self, argc, argv);
+        }
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -3662,7 +3510,7 @@ SWIGINTERN PyObject *_wrap_new_GSSmoother(PyObject *self, PyObject *args) {
           }
         }
         if (_v) {
-          return _wrap_new_GSSmoother__SWIG_3(self, argc, argv);
+          return _wrap_new_GSSmoother__SWIG_1(self, argc, argv);
         }
       }
     }
@@ -3672,16 +3520,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_GSSmoother'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::GSSmoother::GSSmoother(int,int)\n"
-    "    mfem::GSSmoother::GSSmoother(int)\n"
-    "    mfem::GSSmoother::GSSmoother()\n"
-    "    mfem::GSSmoother::GSSmoother(mfem::SparseMatrix const &,int,int)\n"
-    "    mfem::GSSmoother::GSSmoother(mfem::SparseMatrix const &,int)\n"
-    "    mfem::GSSmoother::GSSmoother(mfem::SparseMatrix const &)\n");
+    "    mfem::GSSmoother::GSSmoother(mfem::SparseMatrix const &,int,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_GSSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_GSSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::GSSmoother *arg1 = (mfem::GSSmoother *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -3692,15 +3536,20 @@ SWIGINTERN PyObject *_wrap_GSSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObj
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "GSSmoother_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__GSSmoother, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:GSSmoother_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__GSSmoother, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "GSSmoother_Mult" "', argument " "1"" of type '" "mfem::GSSmoother const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::GSSmoother * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "GSSmoother_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -3708,7 +3557,7 @@ SWIGINTERN PyObject *_wrap_GSSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GSSmoother_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GSSmoother_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -3783,30 +3632,36 @@ SWIGINTERN PyObject *GSSmoother_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObjec
 
 SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int arg1 ;
-  double arg2 ;
-  int arg3 ;
+  int arg1 = (int) 0 ;
+  double arg2 = (double) 1. ;
+  int arg3 = (int) 1 ;
   double val2 ;
   int ecode2 = 0 ;
   mfem::DSmoother *result = 0 ;
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  if ((nobjs < 0) || (nobjs > 3)) SWIG_fail;
+  if (swig_obj[0]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+    }
   }
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DSmoother" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DSmoother" "', argument " "2"" of type '" "double""'");
+    } 
+    arg2 = static_cast< double >(val2);
+  }
+  if (swig_obj[2]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+    }
   }
   {
     try {
@@ -3830,114 +3685,17 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
-  int arg1 ;
-  double arg2 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  mfem::DSmoother *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  ecode2 = SWIG_AsVal_double(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_DSmoother" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  {
-    try {
-      result = (mfem::DSmoother *)new mfem::DSmoother(arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  mfem::DSmoother *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
-  }
-  {
-    try {
-      result = (mfem::DSmoother *)new mfem::DSmoother(arg1); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
-  PyObject *resultobj = 0;
-  mfem::DSmoother *result = 0 ;
-  
-  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
-  {
-    try {
-      result = (mfem::DSmoother *)new mfem::DSmoother(); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
   mfem::SparseMatrix *arg1 = 0 ;
-  int arg2 ;
-  double arg3 ;
-  int arg4 ;
+  int arg2 = (int) 0 ;
+  double arg3 = (double) 1. ;
+  int arg4 = (int) 1 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   double val3 ;
   int ecode3 = 0 ;
   mfem::DSmoother *result = 0 ;
   
-  if ((nobjs < 4) || (nobjs > 4)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 4)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
@@ -3946,156 +3704,32 @@ SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_4(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
   }
   arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  if (swig_obj[1]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+    }
   }
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_DSmoother" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+  if (swig_obj[2]) {
+    ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_DSmoother" "', argument " "3"" of type '" "double""'");
+    } 
+    arg3 = static_cast< double >(val3);
+  }
+  if (swig_obj[3]) {
+    {
+      if ((PyArray_PyIntAsInt(swig_obj[3]) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg4 = PyArray_PyIntAsInt(swig_obj[3]);
+    }
   }
   {
     try {
       result = (mfem::DSmoother *)new mfem::DSmoother((mfem::SparseMatrix const &)*arg1,arg2,arg3,arg4); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_5(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = 0 ;
-  int arg2 ;
-  double arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  mfem::DSmoother *result = 0 ;
-  
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  ecode3 = SWIG_AsVal_double(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "new_DSmoother" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  {
-    try {
-      result = (mfem::DSmoother *)new mfem::DSmoother((mfem::SparseMatrix const &)*arg1,arg2,arg3); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_6(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::DSmoother *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
-      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
-    };  
-    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
-  }
-  {
-    try {
-      result = (mfem::DSmoother *)new mfem::DSmoother((mfem::SparseMatrix const &)*arg1,arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__DSmoother, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_DSmoother__SWIG_7(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::SparseMatrix *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::DSmoother *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__SparseMatrix,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_DSmoother" "', argument " "1"" of type '" "mfem::SparseMatrix const &""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::SparseMatrix * >(argp1);
-  {
-    try {
-      result = (mfem::DSmoother *)new mfem::DSmoother((mfem::SparseMatrix const &)*arg1); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -4121,19 +3755,11 @@ SWIGINTERN PyObject *_wrap_new_DSmoother(PyObject *self, PyObject *args) {
   
   if (!(argc = SWIG_Python_UnpackTuple(args, "new_DSmoother", 0, 4, argv))) SWIG_fail;
   --argc;
-  if (argc == 0) {
-    return _wrap_new_DSmoother__SWIG_3(self, argc, argv);
-  }
-  if (argc == 1) {
+  if ((argc >= 0) && (argc <= 3)) {
     int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_new_DSmoother__SWIG_7(self, argc, argv);
+    if (argc <= 0) {
+      return _wrap_new_DSmoother__SWIG_0(self, argc, argv);
     }
-  }
-  if (argc == 1) {
-    int _v;
     {
       if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
         PyErr_Clear();
@@ -4143,87 +3769,17 @@ SWIGINTERN PyObject *_wrap_new_DSmoother(PyObject *self, PyObject *args) {
       }
     }
     if (_v) {
-      return _wrap_new_DSmoother__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
-        }
+      if (argc <= 1) {
+        return _wrap_new_DSmoother__SWIG_0(self, argc, argv);
       }
-      if (_v) {
-        return _wrap_new_DSmoother__SWIG_6(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
       {
         int res = SWIG_AsVal_double(argv[1], NULL);
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_new_DSmoother__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      {
-        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
-          PyErr_Clear();
-          _v = 0;
-        } else {
-          _v = 1;    
+        if (argc <= 2) {
+          return _wrap_new_DSmoother__SWIG_0(self, argc, argv);
         }
-      }
-      if (_v) {
-        {
-          int res = SWIG_AsVal_double(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_new_DSmoother__SWIG_5(self, argc, argv);
-        }
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    {
-      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
-        PyErr_Clear();
-        _v = 0;
-      } else {
-        _v = 1;    
-      }
-    }
-    if (_v) {
-      {
-        int res = SWIG_AsVal_double(argv[1], NULL);
-        _v = SWIG_CheckState(res);
-      }
-      if (_v) {
         {
           if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
             PyErr_Clear();
@@ -4238,11 +3794,14 @@ SWIGINTERN PyObject *_wrap_new_DSmoother(PyObject *self, PyObject *args) {
       }
     }
   }
-  if (argc == 4) {
+  if ((argc >= 1) && (argc <= 4)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__SparseMatrix, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_DSmoother__SWIG_1(self, argc, argv);
+      }
       {
         if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
           PyErr_Clear();
@@ -4252,11 +3811,17 @@ SWIGINTERN PyObject *_wrap_new_DSmoother(PyObject *self, PyObject *args) {
         }
       }
       if (_v) {
+        if (argc <= 2) {
+          return _wrap_new_DSmoother__SWIG_1(self, argc, argv);
+        }
         {
           int res = SWIG_AsVal_double(argv[2], NULL);
           _v = SWIG_CheckState(res);
         }
         if (_v) {
+          if (argc <= 3) {
+            return _wrap_new_DSmoother__SWIG_1(self, argc, argv);
+          }
           {
             if ((PyArray_PyIntAsInt(argv[3]) == -1) && PyErr_Occurred()) {
               PyErr_Clear();
@@ -4266,7 +3831,7 @@ SWIGINTERN PyObject *_wrap_new_DSmoother(PyObject *self, PyObject *args) {
             }
           }
           if (_v) {
-            return _wrap_new_DSmoother__SWIG_4(self, argc, argv);
+            return _wrap_new_DSmoother__SWIG_1(self, argc, argv);
           }
         }
       }
@@ -4277,18 +3842,12 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_DSmoother'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::DSmoother::DSmoother(int,double,int)\n"
-    "    mfem::DSmoother::DSmoother(int,double)\n"
-    "    mfem::DSmoother::DSmoother(int)\n"
-    "    mfem::DSmoother::DSmoother()\n"
-    "    mfem::DSmoother::DSmoother(mfem::SparseMatrix const &,int,double,int)\n"
-    "    mfem::DSmoother::DSmoother(mfem::SparseMatrix const &,int,double)\n"
-    "    mfem::DSmoother::DSmoother(mfem::SparseMatrix const &,int)\n"
-    "    mfem::DSmoother::DSmoother(mfem::SparseMatrix const &)\n");
+    "    mfem::DSmoother::DSmoother(mfem::SparseMatrix const &,int,double,int)\n");
   return 0;
 }
 
 
-SWIGINTERN PyObject *_wrap_DSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_DSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::DSmoother *arg1 = (mfem::DSmoother *) 0 ;
   mfem::Vector *arg2 = 0 ;
@@ -4299,15 +3858,20 @@ SWIGINTERN PyObject *_wrap_DSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObje
   int res2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  PyObject *swig_obj[3] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"x",  (char *)"y",  NULL 
+  };
   
-  if (!SWIG_Python_UnpackTuple(args, "DSmoother_Mult", 3, 3, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__DSmoother, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:DSmoother_Mult", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__DSmoother, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DSmoother_Mult" "', argument " "1"" of type '" "mfem::DSmoother const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::DSmoother * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Vector,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "DSmoother_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
@@ -4315,7 +3879,7 @@ SWIGINTERN PyObject *_wrap_DSmoother_Mult(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "DSmoother_Mult" "', argument " "2"" of type '" "mfem::Vector const &""'"); 
   }
   arg2 = reinterpret_cast< mfem::Vector * >(argp2);
-  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Vector,  0 );
+  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Vector,  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "DSmoother_Mult" "', argument " "3"" of type '" "mfem::Vector &""'"); 
   }
@@ -4390,22 +3954,23 @@ SWIGINTERN PyObject *DSmoother_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { "SparseSmoother_SetOperator", _wrap_SparseSmoother_SetOperator, METH_VARARGS, "SparseSmoother_SetOperator(SparseSmoother self, Operator a)"},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "SparseSmoother_SetOperator", (PyCFunction)(void(*)(void))_wrap_SparseSmoother_SetOperator, METH_VARARGS|METH_KEYWORDS, "SparseSmoother_SetOperator(SparseSmoother self, Operator a)"},
 	 { "delete_SparseSmoother", _wrap_delete_SparseSmoother, METH_O, "delete_SparseSmoother(SparseSmoother self)"},
 	 { "SparseSmoother_swigregister", SparseSmoother_swigregister, METH_O, NULL},
 	 { "new_GSSmoother", _wrap_new_GSSmoother, METH_VARARGS, "\n"
 		"GSSmoother(int t=0, int it=1)\n"
-		"GSSmoother(SparseMatrix a, int t=0, int it=1)\n"
+		"new_GSSmoother(SparseMatrix a, int t=0, int it=1) -> GSSmoother\n"
 		""},
-	 { "GSSmoother_Mult", _wrap_GSSmoother_Mult, METH_VARARGS, "GSSmoother_Mult(GSSmoother self, Vector x, Vector y)"},
+	 { "GSSmoother_Mult", (PyCFunction)(void(*)(void))_wrap_GSSmoother_Mult, METH_VARARGS|METH_KEYWORDS, "GSSmoother_Mult(GSSmoother self, Vector x, Vector y)"},
 	 { "delete_GSSmoother", _wrap_delete_GSSmoother, METH_O, "delete_GSSmoother(GSSmoother self)"},
 	 { "GSSmoother_swigregister", GSSmoother_swigregister, METH_O, NULL},
 	 { "GSSmoother_swiginit", GSSmoother_swiginit, METH_VARARGS, NULL},
 	 { "new_DSmoother", _wrap_new_DSmoother, METH_VARARGS, "\n"
 		"DSmoother(int t=0, double s=1., int it=1)\n"
-		"DSmoother(SparseMatrix a, int t=0, double s=1., int it=1)\n"
+		"new_DSmoother(SparseMatrix a, int t=0, double s=1., int it=1) -> DSmoother\n"
 		""},
-	 { "DSmoother_Mult", _wrap_DSmoother_Mult, METH_VARARGS, "DSmoother_Mult(DSmoother self, Vector x, Vector y)"},
+	 { "DSmoother_Mult", (PyCFunction)(void(*)(void))_wrap_DSmoother_Mult, METH_VARARGS|METH_KEYWORDS, "DSmoother_Mult(DSmoother self, Vector x, Vector y)"},
 	 { "delete_DSmoother", _wrap_delete_DSmoother, METH_O, "delete_DSmoother(DSmoother self)"},
 	 { "DSmoother_swigregister", DSmoother_swigregister, METH_O, NULL},
 	 { "DSmoother_swiginit", DSmoother_swiginit, METH_VARARGS, NULL},
@@ -4413,6 +3978,27 @@ static PyMethodDef SwigMethods[] = {
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "SparseSmoother_SetOperator", (PyCFunction)(void(*)(void))_wrap_SparseSmoother_SetOperator, METH_VARARGS|METH_KEYWORDS, "SetOperator(SparseSmoother self, Operator a)"},
+	 { "delete_SparseSmoother", _wrap_delete_SparseSmoother, METH_O, "delete_SparseSmoother(SparseSmoother self)"},
+	 { "SparseSmoother_swigregister", SparseSmoother_swigregister, METH_O, NULL},
+	 { "new_GSSmoother", _wrap_new_GSSmoother, METH_VARARGS, "\n"
+		"GSSmoother(int t=0, int it=1)\n"
+		"new_GSSmoother(SparseMatrix a, int t=0, int it=1) -> GSSmoother\n"
+		""},
+	 { "GSSmoother_Mult", (PyCFunction)(void(*)(void))_wrap_GSSmoother_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(GSSmoother self, Vector x, Vector y)"},
+	 { "delete_GSSmoother", _wrap_delete_GSSmoother, METH_O, "delete_GSSmoother(GSSmoother self)"},
+	 { "GSSmoother_swigregister", GSSmoother_swigregister, METH_O, NULL},
+	 { "GSSmoother_swiginit", GSSmoother_swiginit, METH_VARARGS, NULL},
+	 { "new_DSmoother", _wrap_new_DSmoother, METH_VARARGS, "\n"
+		"DSmoother(int t=0, double s=1., int it=1)\n"
+		"new_DSmoother(SparseMatrix a, int t=0, double s=1., int it=1) -> DSmoother\n"
+		""},
+	 { "DSmoother_Mult", (PyCFunction)(void(*)(void))_wrap_DSmoother_Mult, METH_VARARGS|METH_KEYWORDS, "Mult(DSmoother self, Vector x, Vector y)"},
+	 { "delete_DSmoother", _wrap_delete_DSmoother, METH_O, "delete_DSmoother(DSmoother self)"},
+	 { "DSmoother_swigregister", DSmoother_swigregister, METH_O, NULL},
+	 { "DSmoother_swiginit", DSmoother_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -4455,17 +4041,20 @@ static void *_p_mfem__DenseMatrixInverseTo_p_mfem__Operator(void *x, int *SWIGUN
 static void *_p_mfem__SolverTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Solver *) x));
 }
-static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
-}
 static void *_p_mfem__AbstractSparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::AbstractSparseMatrix *) x));
+}
+static void *_p_mfem__DenseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::Matrix *) ((mfem::DenseMatrix *) x));
 }
 static void *_p_mfem__SparseMatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *) (mfem::Matrix *)(mfem::AbstractSparseMatrix *) ((mfem::SparseMatrix *) x));
 }
 static void *_p_mfem__MatrixTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::Matrix *) x));
+}
+static void *_p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::RectangularConstrainedOperator *) x));
 }
 static void *_p_mfem__ConstrainedOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::ConstrainedOperator *) x));
@@ -4482,8 +4071,14 @@ static void *_p_mfem__ProductOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSE
 static void *_p_mfem__TransposeOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TransposeOperator *) x));
 }
+static void *_p_mfem__ScaledOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *)  ((mfem::ScaledOperator *) x));
+}
 static void *_p_mfem__IdentityOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::IdentityOperator *) x));
+}
+static void *_p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::Operator *) (mfem::TimeDependentOperator *) ((mfem::SecondOrderTimeDependentOperator *) x));
 }
 static void *_p_mfem__TimeDependentOperatorTo_p_mfem__Operator(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Operator *)  ((mfem::TimeDependentOperator *) x));
@@ -4518,15 +4113,18 @@ static swig_type_info _swigt__p_mfem__DenseMatrixInverse = {"_p_mfem__DenseMatri
 static swig_type_info _swigt__p_mfem__Operator = {"_p_mfem__Operator", "mfem::Operator *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PyTimeDependentOperatorBase = {"_p_mfem__PyTimeDependentOperatorBase", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__PyOperatorBase = {"_p_mfem__PyOperatorBase", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__AbstractSparseMatrix = {"_p_mfem__AbstractSparseMatrix", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Matrix = {"_p_mfem__Matrix", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__RAPOperator = {"_p_mfem__RAPOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TripleProductOperator = {"_p_mfem__TripleProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__ConstrainedOperator = {"_p_mfem__ConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__RectangularConstrainedOperator = {"_p_mfem__RectangularConstrainedOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ProductOperator = {"_p_mfem__ProductOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TransposeOperator = {"_p_mfem__TransposeOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__ScaledOperator = {"_p_mfem__ScaledOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__IdentityOperator = {"_p_mfem__IdentityOperator", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_mfem__SecondOrderTimeDependentOperator = {"_p_mfem__SecondOrderTimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__TimeDependentOperator = {"_p_mfem__TimeDependentOperator", 0, 0, 0, 0, 0};
 static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__SparseMatrix = {"_p_mfem__SparseMatrix", "mfem::SparseMatrix *", 0, 0, (void*)0, 0};
@@ -4550,6 +4148,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__PyOperatorBase,
   &_swigt__p_mfem__PyTimeDependentOperatorBase,
   &_swigt__p_mfem__RAPOperator,
+  &_swigt__p_mfem__RectangularConstrainedOperator,
+  &_swigt__p_mfem__ScaledOperator,
+  &_swigt__p_mfem__SecondOrderTimeDependentOperator,
   &_swigt__p_mfem__Solver,
   &_swigt__p_mfem__SparseMatrix,
   &_swigt__p_mfem__SparseSmoother,
@@ -4567,17 +4168,20 @@ static swig_cast_info _swigc__p_mfem__DenseMatrixInverse[] = {{&_swigt__p_mfem__
 static swig_cast_info _swigc__p_mfem__MatrixInverse[] = {  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__MatrixInverse, 0, 0},  {&_swigt__p_mfem__MatrixInverse, 0, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__MatrixInverse, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyTimeDependentOperatorBase[] = {{&_swigt__p_mfem__PyTimeDependentOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PyOperatorBase[] = {{&_swigt__p_mfem__PyOperatorBase, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__AbstractSparseMatrix[] = {{&_swigt__p_mfem__AbstractSparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {{&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Matrix[] = {{&_swigt__p_mfem__Matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__RAPOperator[] = {{&_swigt__p_mfem__RAPOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TripleProductOperator[] = {{&_swigt__p_mfem__TripleProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ConstrainedOperator[] = {{&_swigt__p_mfem__ConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__RectangularConstrainedOperator[] = {{&_swigt__p_mfem__RectangularConstrainedOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ProductOperator[] = {{&_swigt__p_mfem__ProductOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TransposeOperator[] = {{&_swigt__p_mfem__TransposeOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ScaledOperator[] = {{&_swigt__p_mfem__ScaledOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__IdentityOperator[] = {{&_swigt__p_mfem__IdentityOperator, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__SecondOrderTimeDependentOperator[] = {{&_swigt__p_mfem__SecondOrderTimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__TimeDependentOperator[] = {{&_swigt__p_mfem__TimeDependentOperator, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__Operator[] = {  {&_swigt__p_mfem__PyTimeDependentOperatorBase, _p_mfem__PyTimeDependentOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__PyOperatorBase, _p_mfem__PyOperatorBaseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Solver, _p_mfem__SolverTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__AbstractSparseMatrix, _p_mfem__AbstractSparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__DenseMatrix, _p_mfem__DenseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseMatrix, _p_mfem__SparseMatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Matrix, _p_mfem__MatrixTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RAPOperator, _p_mfem__RAPOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__Operator, 0, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TripleProductOperator, _p_mfem__TripleProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ConstrainedOperator, _p_mfem__ConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__RectangularConstrainedOperator, _p_mfem__RectangularConstrainedOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ProductOperator, _p_mfem__ProductOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TransposeOperator, _p_mfem__TransposeOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__ScaledOperator, _p_mfem__ScaledOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__IdentityOperator, _p_mfem__IdentityOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__SecondOrderTimeDependentOperator, _p_mfem__SecondOrderTimeDependentOperatorTo_p_mfem__Operator, 0, 0},  {&_swigt__p_mfem__TimeDependentOperator, _p_mfem__TimeDependentOperatorTo_p_mfem__Operator, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__SparseSmoother, _p_mfem__SparseSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__Solver, 0, 0, 0},  {&_swigt__p_mfem__MatrixInverse, _p_mfem__MatrixInverseTo_p_mfem__Solver, 0, 0},  {&_swigt__p_mfem__DenseMatrixInverse, _p_mfem__DenseMatrixInverseTo_p_mfem__Solver, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseMatrix[] = {  {&_swigt__p_mfem__SparseMatrix, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__SparseSmoother[] = {  {&_swigt__p_mfem__SparseSmoother, 0, 0, 0},  {&_swigt__p_mfem__GSSmoother, _p_mfem__GSSmootherTo_p_mfem__SparseSmoother, 0, 0},  {&_swigt__p_mfem__DSmoother, _p_mfem__DSmootherTo_p_mfem__SparseSmoother, 0, 0},{0, 0, 0, 0}};
@@ -4600,6 +4204,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__PyOperatorBase,
   _swigc__p_mfem__PyTimeDependentOperatorBase,
   _swigc__p_mfem__RAPOperator,
+  _swigc__p_mfem__RectangularConstrainedOperator,
+  _swigc__p_mfem__ScaledOperator,
+  _swigc__p_mfem__SecondOrderTimeDependentOperator,
   _swigc__p_mfem__Solver,
   _swigc__p_mfem__SparseMatrix,
   _swigc__p_mfem__SparseSmoother,

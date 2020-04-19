@@ -2662,8 +2662,10 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
 #define SWIGTYPE_p_char swig_types[0]
 #define SWIGTYPE_p_mfem__MemoryManager swig_types[1]
-static swig_type_info *swig_types[3];
-static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
+#define SWIGTYPE_p_p_char swig_types[2]
+#define SWIGTYPE_p_std__ostream swig_types[3]
+static swig_type_info *swig_types[5];
+static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3003,17 +3005,116 @@ SWIG_AsVal_unsigned_SS_int (PyObject * obj, unsigned int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_IsHostMemory(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN int Swig_var_MemoryTypeSize_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable MemoryTypeSize is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MemoryTypeSize_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_int(static_cast< int >(mfem::MemoryTypeSize));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_HostMemoryType_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable HostMemoryType is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_HostMemoryType_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_int(static_cast< int >(mfem::HostMemoryType));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_HostMemoryTypeSize_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable HostMemoryTypeSize is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_HostMemoryTypeSize_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_int(static_cast< int >(mfem::HostMemoryTypeSize));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_DeviceMemoryType_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable DeviceMemoryType is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_DeviceMemoryType_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_int(static_cast< int >(mfem::DeviceMemoryType));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_DeviceMemoryTypeSize_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable DeviceMemoryTypeSize is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_DeviceMemoryTypeSize_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_From_int(static_cast< int >(mfem::DeviceMemoryTypeSize));
+  return pyobj;
+}
+
+
+SWIGINTERN int Swig_var_MemoryTypeName_set(PyObject *_val) {
+  {
+    char const * *inp = 0;
+    int res = SWIG_ConvertPtr(_val, SWIG_as_voidptrptr(&inp), SWIGTYPE_p_p_char,  0 );
+    if (!SWIG_IsOK(res)) {
+      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""mfem::MemoryTypeName""' of type '""char const *[mfem::MemoryTypeSize]""'");
+    } else if (inp) {
+      size_t ii = 0;
+      for (; ii < (size_t)mfem::MemoryTypeSize; ++ii) *(char const * *)&mfem::MemoryTypeName[ii] = *((char const * *)inp + ii);
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""mfem::MemoryTypeName""' of type '""char const *[mfem::MemoryTypeSize]""'");
+    }
+  }
+  return 0;
+fail:
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_MemoryTypeName_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(mfem::MemoryTypeName), SWIGTYPE_p_p_char,  0 );
+  return pyobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_IsHostMemory(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MemoryType arg1 ;
   int val1 ;
   int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"mt",  NULL 
+  };
   bool result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:IsHostMemory", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "IsHostMemory" "', argument " "1"" of type '" "mfem::MemoryType""'");
   } 
@@ -3041,17 +3142,59 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_GetMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_IsDeviceMemory(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"mt",  NULL 
+  };
+  bool result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:IsDeviceMemory", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "IsDeviceMemory" "', argument " "1"" of type '" "mfem::MemoryType""'");
+  } 
+  arg1 = static_cast< mfem::MemoryType >(val1);
+  {
+    try {
+      result = (bool)mfem::IsDeviceMemory(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_GetMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MemoryClass arg1 ;
   int val1 ;
   int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"mc",  NULL 
+  };
   mfem::MemoryType result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:GetMemoryType", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "GetMemoryType" "', argument " "1"" of type '" "mfem::MemoryClass""'");
   } 
@@ -3079,7 +3222,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap___mul__(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap___mul__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MemoryClass arg1 ;
   mfem::MemoryClass arg2 ;
@@ -3087,16 +3230,20 @@ SWIGINTERN PyObject *_wrap___mul__(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   int ecode1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"mc1",  (char *)"mc2",  NULL 
+  };
   mfem::MemoryClass result;
   
-  if (!SWIG_Python_UnpackTuple(args, "__mul__", 2, 2, swig_obj)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:__mul__", kwnames, &obj0, &obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "__mul__" "', argument " "1"" of type '" "mfem::MemoryClass""'");
   } 
   arg1 = static_cast< mfem::MemoryClass >(val1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "__mul__" "', argument " "2"" of type '" "mfem::MemoryClass""'");
   } 
@@ -3191,6 +3338,100 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_MemoryManager_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryManager_Init" "', argument " "1"" of type '" "mfem::MemoryManager *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MemoryManager * >(argp1);
+  {
+    try {
+      (arg1)->Init();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryManager_Configure(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
+  mfem::MemoryType arg2 ;
+  mfem::MemoryType arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"h_mt",  (char *)"d_mt",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:MemoryManager_Configure", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryManager_Configure" "', argument " "1"" of type '" "mfem::MemoryManager *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MemoryManager * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MemoryManager_Configure" "', argument " "2"" of type '" "mfem::MemoryType""'");
+  } 
+  arg2 = static_cast< mfem::MemoryType >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "MemoryManager_Configure" "', argument " "3"" of type '" "mfem::MemoryType""'");
+  } 
+  arg3 = static_cast< mfem::MemoryType >(val3);
+  {
+    try {
+      (arg1)->Configure(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_MemoryManager_Destroy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
@@ -3228,14 +3469,33 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MemoryManager_Exists(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MemoryManager_IsKnown(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
+  mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
+  void *arg2 = (void *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"h_ptr",  NULL 
+  };
   bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "MemoryManager_Exists", 0, 0, 0)) SWIG_fail;
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MemoryManager_IsKnown", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryManager_IsKnown" "', argument " "1"" of type '" "mfem::MemoryManager *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MemoryManager * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MemoryManager_IsKnown" "', argument " "2"" of type '" "void const *""'"); 
+  }
   {
     try {
-      result = (bool)mfem::MemoryManager::Exists();
+      result = (bool)(arg1)->IsKnown((void const *)arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3256,22 +3516,73 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MemoryManager_RegisterCheck(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MemoryManager_IsAlias(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
   void *arg2 = (void *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int res2 ;
-  PyObject *swig_obj[2] ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"h_ptr",  NULL 
+  };
+  bool result;
   
-  if (!SWIG_Python_UnpackTuple(args, "MemoryManager_RegisterCheck", 2, 2, swig_obj)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MemoryManager_IsAlias", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryManager_IsAlias" "', argument " "1"" of type '" "mfem::MemoryManager *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MemoryManager * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MemoryManager_IsAlias" "', argument " "2"" of type '" "void const *""'"); 
+  }
+  {
+    try {
+      result = (bool)(arg1)->IsAlias((void const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryManager_RegisterCheck(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
+  void *arg2 = (void *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"h_ptr",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MemoryManager_RegisterCheck", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryManager_RegisterCheck" "', argument " "1"" of type '" "mfem::MemoryManager *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MemoryManager * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1],SWIG_as_voidptrptr(&arg2), 0, 0);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MemoryManager_RegisterCheck" "', argument " "2"" of type '" "void *""'"); 
   }
@@ -3298,23 +3609,41 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MemoryManager_PrintPtrs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MemoryManager_PrintPtrs(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
+  std::ostream &arg2_defvalue = mfem::out ;
+  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  PyObject *swig_obj[1] ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"out",  NULL 
+  };
+  int result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:MemoryManager_PrintPtrs", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryManager_PrintPtrs" "', argument " "1"" of type '" "mfem::MemoryManager *""'"); 
   }
   arg1 = reinterpret_cast< mfem::MemoryManager * >(argp1);
+  if (obj1) {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MemoryManager_PrintPtrs" "', argument " "2"" of type '" "std::ostream &""'"); 
+    }
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MemoryManager_PrintPtrs" "', argument " "2"" of type '" "std::ostream &""'"); 
+    }
+    arg2 = reinterpret_cast< std::ostream * >(argp2);
+  }
   {
     try {
-      (arg1)->PrintPtrs();
+      result = (int)(arg1)->PrintPtrs(*arg2);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3328,7 +3657,118 @@ SWIGINTERN PyObject *_wrap_MemoryManager_PrintPtrs(PyObject *SWIGUNUSEDPARM(self
       SWIG_exception(SWIG_RuntimeError, "unknown exception");
     }	 
   }
-  resultobj = SWIG_Py_Void();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryManager_PrintAliases(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::MemoryManager *arg1 = (mfem::MemoryManager *) 0 ;
+  std::ostream &arg2_defvalue = mfem::out ;
+  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"out",  NULL 
+  };
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:MemoryManager_PrintAliases", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MemoryManager, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MemoryManager_PrintAliases" "', argument " "1"" of type '" "mfem::MemoryManager *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::MemoryManager * >(argp1);
+  if (obj1) {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MemoryManager_PrintAliases" "', argument " "2"" of type '" "std::ostream &""'"); 
+    }
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MemoryManager_PrintAliases" "', argument " "2"" of type '" "std::ostream &""'"); 
+    }
+    arg2 = reinterpret_cast< std::ostream * >(argp2);
+  }
+  {
+    try {
+      result = (int)(arg1)->PrintAliases(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryManager_GetHostMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "MemoryManager_GetHostMemoryType", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::MemoryType)mfem::MemoryManager::GetHostMemoryType();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_MemoryManager_GetDeviceMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "MemoryManager_GetDeviceMemoryType", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::MemoryType)mfem::MemoryManager::GetDeviceMemoryType();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -3346,16 +3786,18 @@ SWIGINTERN PyObject *MemoryManager_swiginit(PyObject *SWIGUNUSEDPARM(self), PyOb
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_MemoryPrintFlags(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_MemoryPrintFlags(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   unsigned int arg1 ;
   unsigned int val1 ;
   int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"flags",  NULL 
+  };
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_unsigned_SS_int(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:MemoryPrintFlags", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "MemoryPrintFlags" "', argument " "1"" of type '" "unsigned int""'");
   } 
@@ -3415,22 +3857,51 @@ SWIGINTERN PyObject *Swig_var_mm_get(void) {
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { "IsHostMemory", _wrap_IsHostMemory, METH_O, NULL},
-	 { "GetMemoryType", _wrap_GetMemoryType, METH_O, NULL},
-	 { "__mul__", _wrap___mul__, METH_VARARGS, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "IsHostMemory", (PyCFunction)(void(*)(void))_wrap_IsHostMemory, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "IsDeviceMemory", (PyCFunction)(void(*)(void))_wrap_IsDeviceMemory, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "GetMemoryType", (PyCFunction)(void(*)(void))_wrap_GetMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "__mul__", (PyCFunction)(void(*)(void))_wrap___mul__, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "new_MemoryManager", _wrap_new_MemoryManager, METH_NOARGS, NULL},
 	 { "delete_MemoryManager", _wrap_delete_MemoryManager, METH_O, NULL},
+	 { "MemoryManager_Init", _wrap_MemoryManager_Init, METH_O, NULL},
+	 { "MemoryManager_Configure", (PyCFunction)(void(*)(void))_wrap_MemoryManager_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "MemoryManager_Destroy", _wrap_MemoryManager_Destroy, METH_O, NULL},
-	 { "MemoryManager_Exists", _wrap_MemoryManager_Exists, METH_NOARGS, NULL},
-	 { "MemoryManager_RegisterCheck", _wrap_MemoryManager_RegisterCheck, METH_VARARGS, NULL},
-	 { "MemoryManager_PrintPtrs", _wrap_MemoryManager_PrintPtrs, METH_O, NULL},
+	 { "MemoryManager_IsKnown", (PyCFunction)(void(*)(void))_wrap_MemoryManager_IsKnown, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_IsAlias", (PyCFunction)(void(*)(void))_wrap_MemoryManager_IsAlias, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_RegisterCheck", (PyCFunction)(void(*)(void))_wrap_MemoryManager_RegisterCheck, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_PrintPtrs", (PyCFunction)(void(*)(void))_wrap_MemoryManager_PrintPtrs, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_PrintAliases", (PyCFunction)(void(*)(void))_wrap_MemoryManager_PrintAliases, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_GetHostMemoryType", _wrap_MemoryManager_GetHostMemoryType, METH_NOARGS, NULL},
+	 { "MemoryManager_GetDeviceMemoryType", _wrap_MemoryManager_GetDeviceMemoryType, METH_NOARGS, NULL},
 	 { "MemoryManager_swigregister", MemoryManager_swigregister, METH_O, NULL},
 	 { "MemoryManager_swiginit", MemoryManager_swiginit, METH_VARARGS, NULL},
-	 { "MemoryPrintFlags", _wrap_MemoryPrintFlags, METH_O, NULL},
+	 { "MemoryPrintFlags", (PyCFunction)(void(*)(void))_wrap_MemoryPrintFlags, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "IsHostMemory", (PyCFunction)(void(*)(void))_wrap_IsHostMemory, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "IsDeviceMemory", (PyCFunction)(void(*)(void))_wrap_IsDeviceMemory, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "GetMemoryType", (PyCFunction)(void(*)(void))_wrap_GetMemoryType, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "__mul__", (PyCFunction)(void(*)(void))_wrap___mul__, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "new_MemoryManager", _wrap_new_MemoryManager, METH_NOARGS, NULL},
+	 { "delete_MemoryManager", _wrap_delete_MemoryManager, METH_O, NULL},
+	 { "MemoryManager_Init", _wrap_MemoryManager_Init, METH_O, NULL},
+	 { "MemoryManager_Configure", (PyCFunction)(void(*)(void))_wrap_MemoryManager_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_Destroy", _wrap_MemoryManager_Destroy, METH_O, NULL},
+	 { "MemoryManager_IsKnown", (PyCFunction)(void(*)(void))_wrap_MemoryManager_IsKnown, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_IsAlias", (PyCFunction)(void(*)(void))_wrap_MemoryManager_IsAlias, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_RegisterCheck", (PyCFunction)(void(*)(void))_wrap_MemoryManager_RegisterCheck, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_PrintPtrs", (PyCFunction)(void(*)(void))_wrap_MemoryManager_PrintPtrs, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_PrintAliases", (PyCFunction)(void(*)(void))_wrap_MemoryManager_PrintAliases, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "MemoryManager_GetHostMemoryType", _wrap_MemoryManager_GetHostMemoryType, METH_NOARGS, NULL},
+	 { "MemoryManager_GetDeviceMemoryType", _wrap_MemoryManager_GetDeviceMemoryType, METH_NOARGS, NULL},
+	 { "MemoryManager_swigregister", MemoryManager_swigregister, METH_O, NULL},
+	 { "MemoryManager_swiginit", MemoryManager_swiginit, METH_VARARGS, NULL},
+	 { "MemoryPrintFlags", (PyCFunction)(void(*)(void))_wrap_MemoryPrintFlags, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -3439,18 +3910,26 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MemoryManager = {"_p_mfem__MemoryManager", "mfem::MemoryManager *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_char,
   &_swigt__p_mfem__MemoryManager,
+  &_swigt__p_p_char,
+  &_swigt__p_std__ostream,
 };
 
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MemoryManager[] = {  {&_swigt__p_mfem__MemoryManager, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_char,
   _swigc__p_mfem__MemoryManager,
+  _swigc__p_p_char,
+  _swigc__p_std__ostream,
 };
 
 
@@ -4186,13 +4665,13 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MemoryType_HOST",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST)));
   SWIG_Python_SetConstant(d, "MemoryType_HOST_32",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_32)));
   SWIG_Python_SetConstant(d, "MemoryType_HOST_64",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_64)));
-  SWIG_Python_SetConstant(d, "MemoryType_CUDA",SWIG_From_int(static_cast< int >(mfem::MemoryType::CUDA)));
-  SWIG_Python_SetConstant(d, "MemoryType_CUDA_UVM",SWIG_From_int(static_cast< int >(mfem::MemoryType::CUDA_UVM)));
-  SWIG_Python_SetConstant(d, "MemoryClass_HOST",SWIG_From_int(static_cast< int >(mfem::MemoryClass::HOST)));
-  SWIG_Python_SetConstant(d, "MemoryClass_HOST_32",SWIG_From_int(static_cast< int >(mfem::MemoryClass::HOST_32)));
-  SWIG_Python_SetConstant(d, "MemoryClass_HOST_64",SWIG_From_int(static_cast< int >(mfem::MemoryClass::HOST_64)));
-  SWIG_Python_SetConstant(d, "MemoryClass_CUDA",SWIG_From_int(static_cast< int >(mfem::MemoryClass::CUDA)));
-  SWIG_Python_SetConstant(d, "MemoryClass_CUDA_UVM",SWIG_From_int(static_cast< int >(mfem::MemoryClass::CUDA_UVM)));
+  SWIG_Python_SetConstant(d, "MemoryType_HOST_DEBUG",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_DEBUG)));
+  SWIG_Python_SetConstant(d, "MemoryType_HOST_UMPIRE",SWIG_From_int(static_cast< int >(mfem::MemoryType::HOST_UMPIRE)));
+  SWIG_Python_SetConstant(d, "MemoryType_MANAGED",SWIG_From_int(static_cast< int >(mfem::MemoryType::MANAGED)));
+  SWIG_Python_SetConstant(d, "MemoryType_DEVICE",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEVICE)));
+  SWIG_Python_SetConstant(d, "MemoryType_DEVICE_DEBUG",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEVICE_DEBUG)));
+  SWIG_Python_SetConstant(d, "MemoryType_DEVICE_UMPIRE",SWIG_From_int(static_cast< int >(mfem::MemoryType::DEVICE_UMPIRE)));
+  SWIG_Python_SetConstant(d, "MemoryType_SIZE",SWIG_From_int(static_cast< int >(mfem::MemoryType::SIZE)));
   globals = SWIG_globals();
   if (!globals) {
     PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");
@@ -4204,6 +4683,17 @@ SWIG_init(void) {
   }
   PyDict_SetItemString(md, "cvar", globals);
   Py_DECREF(globals);
+  SWIG_addvarlink(globals, "MemoryTypeSize", Swig_var_MemoryTypeSize_get, Swig_var_MemoryTypeSize_set);
+  SWIG_addvarlink(globals, "HostMemoryType", Swig_var_HostMemoryType_get, Swig_var_HostMemoryType_set);
+  SWIG_addvarlink(globals, "HostMemoryTypeSize", Swig_var_HostMemoryTypeSize_get, Swig_var_HostMemoryTypeSize_set);
+  SWIG_addvarlink(globals, "DeviceMemoryType", Swig_var_DeviceMemoryType_get, Swig_var_DeviceMemoryType_set);
+  SWIG_addvarlink(globals, "DeviceMemoryTypeSize", Swig_var_DeviceMemoryTypeSize_get, Swig_var_DeviceMemoryTypeSize_set);
+  SWIG_addvarlink(globals, "MemoryTypeName", Swig_var_MemoryTypeName_get, Swig_var_MemoryTypeName_set);
+  SWIG_Python_SetConstant(d, "MemoryClass_HOST",SWIG_From_int(static_cast< int >(mfem::MemoryClass::HOST)));
+  SWIG_Python_SetConstant(d, "MemoryClass_HOST_32",SWIG_From_int(static_cast< int >(mfem::MemoryClass::HOST_32)));
+  SWIG_Python_SetConstant(d, "MemoryClass_HOST_64",SWIG_From_int(static_cast< int >(mfem::MemoryClass::HOST_64)));
+  SWIG_Python_SetConstant(d, "MemoryClass_DEVICE",SWIG_From_int(static_cast< int >(mfem::MemoryClass::DEVICE)));
+  SWIG_Python_SetConstant(d, "MemoryClass_MANAGED",SWIG_From_int(static_cast< int >(mfem::MemoryClass::MANAGED)));
   SWIG_addvarlink(globals, "mm", Swig_var_mm_get, Swig_var_mm_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;

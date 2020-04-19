@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _segment.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _segment.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -91,10 +94,12 @@ class Segment(mfem._ser.element.Element):
     def SetVertices(self, ind):
         r"""SetVertices(Segment self, int const * ind)"""
         return _segment.Segment_SetVertices(self, ind)
+    SetVertices = _swig_new_instance_method(_segment.Segment_SetVertices)
 
     def GetType(self):
         r"""GetType(Segment self) -> mfem::Element::Type"""
         return _segment.Segment_GetType(self)
+    GetType = _swig_new_instance_method(_segment.Segment_GetType)
 
     def GetVertices(self, *args):
         r"""
@@ -102,30 +107,45 @@ class Segment(mfem._ser.element.Element):
         GetVertices(Segment self) -> int *
         """
         return _segment.Segment_GetVertices(self, *args)
+    GetVertices = _swig_new_instance_method(_segment.Segment_GetVertices)
 
     def GetNVertices(self):
         r"""GetNVertices(Segment self) -> int"""
         return _segment.Segment_GetNVertices(self)
+    GetNVertices = _swig_new_instance_method(_segment.Segment_GetNVertices)
 
     def GetNEdges(self):
         r"""GetNEdges(Segment self) -> int"""
         return _segment.Segment_GetNEdges(self)
+    GetNEdges = _swig_new_instance_method(_segment.Segment_GetNEdges)
 
     def GetEdgeVertices(self, ei):
         r"""GetEdgeVertices(Segment self, int ei) -> int const *"""
         return _segment.Segment_GetEdgeVertices(self, ei)
+    GetEdgeVertices = _swig_new_instance_method(_segment.Segment_GetEdgeVertices)
 
-    def GetNFaces(self, nFaceVertices):
-        r"""GetNFaces(Segment self, int & nFaceVertices) -> int"""
-        return _segment.Segment_GetNFaces(self, nFaceVertices)
+    def GetNFaces(self, *args):
+        r"""
+        GetNFaces(Segment self, int & nFaceVertices) -> int
+        GetNFaces(Segment self) -> int
+        """
+        return _segment.Segment_GetNFaces(self, *args)
+    GetNFaces = _swig_new_instance_method(_segment.Segment_GetNFaces)
+
+    def GetNFaceVertices(self, arg2):
+        r"""GetNFaceVertices(Segment self, int arg2) -> int"""
+        return _segment.Segment_GetNFaceVertices(self, arg2)
+    GetNFaceVertices = _swig_new_instance_method(_segment.Segment_GetNFaceVertices)
 
     def GetFaceVertices(self, fi):
         r"""GetFaceVertices(Segment self, int fi) -> int const *"""
         return _segment.Segment_GetFaceVertices(self, fi)
+    GetFaceVertices = _swig_new_instance_method(_segment.Segment_GetFaceVertices)
 
     def Duplicate(self, m):
         r"""Duplicate(Segment self, mfem::Mesh * m) -> Element"""
         return _segment.Segment_Duplicate(self, m)
+    Duplicate = _swig_new_instance_method(_segment.Segment_Duplicate)
     __swig_destroy__ = _segment.delete_Segment
 
 # Register Segment in _segment:

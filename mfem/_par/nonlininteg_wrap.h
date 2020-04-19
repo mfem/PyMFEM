@@ -24,6 +24,9 @@ public:
     virtual void AssembleElementGrad(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat);
     virtual void AssembleFaceGrad(mfem::FiniteElement const &el1, mfem::FiniteElement const &el2, mfem::FaceElementTransformations &Tr, mfem::Vector const &elfun, mfem::DenseMatrix &elmat);
     virtual double GetElementEnergy(mfem::FiniteElement const &el, mfem::ElementTransformation &Tr, mfem::Vector const &elfun);
+    virtual void AssemblePA(mfem::FiniteElementSpace const &fes);
+    virtual void AssemblePA(mfem::FiniteElementSpace const &trial_fes, mfem::FiniteElementSpace const &test_fes);
+    virtual void AddMultPA(mfem::Vector const &x, mfem::Vector &y) const;
     virtual ~SwigDirector_NonlinearFormIntegrator();
 
 /* Internal director utilities */
@@ -55,7 +58,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[5];
+    mutable swig::SwigVar_PyObject vtable[8];
 #endif
 
 };

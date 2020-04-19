@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _blockoperator.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _blockoperator.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -71,10 +74,12 @@ import mfem._ser.operators
 def Opr2BlockOpr(op):
     r"""Opr2BlockOpr(Operator op) -> BlockOperator"""
     return _blockoperator.Opr2BlockOpr(op)
+Opr2BlockOpr = _blockoperator.Opr2BlockOpr
 
 def Opr2SparseMat(op):
     r"""Opr2SparseMat(Operator op) -> mfem::SparseMatrix *"""
     return _blockoperator.Opr2SparseMat(op)
+Opr2SparseMat = _blockoperator.Opr2SparseMat
 class BlockOperator(mfem._ser.operators.Operator):
     r"""Proxy of C++ mfem::BlockOperator class."""
 
@@ -127,42 +132,52 @@ class BlockOperator(mfem._ser.operators.Operator):
     def NumRowBlocks(self):
         r"""NumRowBlocks(BlockOperator self) -> int"""
         return _blockoperator.BlockOperator_NumRowBlocks(self)
+    NumRowBlocks = _swig_new_instance_method(_blockoperator.BlockOperator_NumRowBlocks)
 
     def NumColBlocks(self):
         r"""NumColBlocks(BlockOperator self) -> int"""
         return _blockoperator.BlockOperator_NumColBlocks(self)
+    NumColBlocks = _swig_new_instance_method(_blockoperator.BlockOperator_NumColBlocks)
 
     def IsZeroBlock(self, i, j):
         r"""IsZeroBlock(BlockOperator self, int i, int j) -> int"""
         return _blockoperator.BlockOperator_IsZeroBlock(self, i, j)
+    IsZeroBlock = _swig_new_instance_method(_blockoperator.BlockOperator_IsZeroBlock)
 
     def GetBlock(self, i, j):
         r"""GetBlock(BlockOperator self, int i, int j) -> Operator"""
         return _blockoperator.BlockOperator_GetBlock(self, i, j)
+    GetBlock = _swig_new_instance_method(_blockoperator.BlockOperator_GetBlock)
 
     def GetBlockCoef(self, i, j):
         r"""GetBlockCoef(BlockOperator self, int i, int j) -> double"""
         return _blockoperator.BlockOperator_GetBlockCoef(self, i, j)
+    GetBlockCoef = _swig_new_instance_method(_blockoperator.BlockOperator_GetBlockCoef)
 
     def SetBlockCoef(self, i, j, c):
         r"""SetBlockCoef(BlockOperator self, int i, int j, double c)"""
         return _blockoperator.BlockOperator_SetBlockCoef(self, i, j, c)
+    SetBlockCoef = _swig_new_instance_method(_blockoperator.BlockOperator_SetBlockCoef)
 
     def RowOffsets(self):
         r"""RowOffsets(BlockOperator self) -> intArray"""
         return _blockoperator.BlockOperator_RowOffsets(self)
+    RowOffsets = _swig_new_instance_method(_blockoperator.BlockOperator_RowOffsets)
 
     def ColOffsets(self):
         r"""ColOffsets(BlockOperator self) -> intArray"""
         return _blockoperator.BlockOperator_ColOffsets(self)
+    ColOffsets = _swig_new_instance_method(_blockoperator.BlockOperator_ColOffsets)
 
     def Mult(self, x, y):
         r"""Mult(BlockOperator self, Vector x, Vector y)"""
         return _blockoperator.BlockOperator_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_blockoperator.BlockOperator_Mult)
 
     def MultTranspose(self, x, y):
         r"""MultTranspose(BlockOperator self, Vector x, Vector y)"""
         return _blockoperator.BlockOperator_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_blockoperator.BlockOperator_MultTranspose)
     __swig_destroy__ = _blockoperator.delete_BlockOperator
     owns_blocks = property(_blockoperator.BlockOperator_owns_blocks_get, _blockoperator.BlockOperator_owns_blocks_set, doc=r"""owns_blocks : int""")
 
@@ -199,26 +214,32 @@ class BlockDiagonalPreconditioner(mfem._ser.operators.Solver):
     def SetOperator(self, op):
         r"""SetOperator(BlockDiagonalPreconditioner self, Operator op)"""
         return _blockoperator.BlockDiagonalPreconditioner_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_blockoperator.BlockDiagonalPreconditioner_SetOperator)
 
     def NumBlocks(self):
         r"""NumBlocks(BlockDiagonalPreconditioner self) -> int"""
         return _blockoperator.BlockDiagonalPreconditioner_NumBlocks(self)
+    NumBlocks = _swig_new_instance_method(_blockoperator.BlockDiagonalPreconditioner_NumBlocks)
 
     def GetDiagonalBlock(self, iblock):
         r"""GetDiagonalBlock(BlockDiagonalPreconditioner self, int iblock) -> Operator"""
         return _blockoperator.BlockDiagonalPreconditioner_GetDiagonalBlock(self, iblock)
+    GetDiagonalBlock = _swig_new_instance_method(_blockoperator.BlockDiagonalPreconditioner_GetDiagonalBlock)
 
     def Offsets(self):
         r"""Offsets(BlockDiagonalPreconditioner self) -> intArray"""
         return _blockoperator.BlockDiagonalPreconditioner_Offsets(self)
+    Offsets = _swig_new_instance_method(_blockoperator.BlockDiagonalPreconditioner_Offsets)
 
     def Mult(self, x, y):
         r"""Mult(BlockDiagonalPreconditioner self, Vector x, Vector y)"""
         return _blockoperator.BlockDiagonalPreconditioner_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_blockoperator.BlockDiagonalPreconditioner_Mult)
 
     def MultTranspose(self, x, y):
         r"""MultTranspose(BlockDiagonalPreconditioner self, Vector x, Vector y)"""
         return _blockoperator.BlockDiagonalPreconditioner_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_blockoperator.BlockDiagonalPreconditioner_MultTranspose)
     __swig_destroy__ = _blockoperator.delete_BlockDiagonalPreconditioner
     owns_blocks = property(_blockoperator.BlockDiagonalPreconditioner_owns_blocks_get, _blockoperator.BlockDiagonalPreconditioner_owns_blocks_set, doc=r"""owns_blocks : int""")
 
@@ -273,26 +294,32 @@ class BlockLowerTriangularPreconditioner(mfem._ser.operators.Solver):
     def SetOperator(self, op):
         r"""SetOperator(BlockLowerTriangularPreconditioner self, Operator op)"""
         return _blockoperator.BlockLowerTriangularPreconditioner_SetOperator(self, op)
+    SetOperator = _swig_new_instance_method(_blockoperator.BlockLowerTriangularPreconditioner_SetOperator)
 
     def NumBlocks(self):
         r"""NumBlocks(BlockLowerTriangularPreconditioner self) -> int"""
         return _blockoperator.BlockLowerTriangularPreconditioner_NumBlocks(self)
+    NumBlocks = _swig_new_instance_method(_blockoperator.BlockLowerTriangularPreconditioner_NumBlocks)
 
     def GetBlock(self, iblock, jblock):
         r"""GetBlock(BlockLowerTriangularPreconditioner self, int iblock, int jblock) -> Operator"""
         return _blockoperator.BlockLowerTriangularPreconditioner_GetBlock(self, iblock, jblock)
+    GetBlock = _swig_new_instance_method(_blockoperator.BlockLowerTriangularPreconditioner_GetBlock)
 
     def Offsets(self):
         r"""Offsets(BlockLowerTriangularPreconditioner self) -> intArray"""
         return _blockoperator.BlockLowerTriangularPreconditioner_Offsets(self)
+    Offsets = _swig_new_instance_method(_blockoperator.BlockLowerTriangularPreconditioner_Offsets)
 
     def Mult(self, x, y):
         r"""Mult(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"""
         return _blockoperator.BlockLowerTriangularPreconditioner_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_blockoperator.BlockLowerTriangularPreconditioner_Mult)
 
     def MultTranspose(self, x, y):
         r"""MultTranspose(BlockLowerTriangularPreconditioner self, Vector x, Vector y)"""
         return _blockoperator.BlockLowerTriangularPreconditioner_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_blockoperator.BlockLowerTriangularPreconditioner_MultTranspose)
     __swig_destroy__ = _blockoperator.delete_BlockLowerTriangularPreconditioner
     owns_blocks = property(_blockoperator.BlockLowerTriangularPreconditioner_owns_blocks_get, _blockoperator.BlockLowerTriangularPreconditioner_owns_blocks_set, doc=r"""owns_blocks : int""")
 

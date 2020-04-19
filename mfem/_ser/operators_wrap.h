@@ -26,6 +26,8 @@ public:
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_Operator();
 
@@ -58,7 +60,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[7];
+    mutable swig::SwigVar_PyObject vtable[9];
 #endif
 
 };
@@ -75,15 +77,23 @@ public:
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_TimeDependentOperator();
     virtual double GetTime() const;
     virtual void SetTime(double const _t);
+    virtual void SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode);
     virtual void ExplicitMult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void ImplicitMult(mfem::Vector const &x, mfem::Vector const &k, mfem::Vector &y) const;
     virtual void ImplicitSolve(double const dt, mfem::Vector const &x, mfem::Vector &k);
     virtual mfem::Operator &GetImplicitGradient(mfem::Vector const &x, mfem::Vector const &k, double shift) const;
     virtual mfem::Operator &GetExplicitGradient(mfem::Vector const &x) const;
+    virtual int SUNImplicitSetup(mfem::Vector const &x, mfem::Vector const &fx, int jok, int *jcur, double gamma);
+    virtual int SUNImplicitSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassSetup();
+    virtual int SUNMassSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassMult(mfem::Vector const &x, mfem::Vector &v);
 
 /* Internal director utilities */
 public:
@@ -114,7 +124,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[14];
+    mutable swig::SwigVar_PyObject vtable[22];
 #endif
 
 };
@@ -131,6 +141,8 @@ public:
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_Solver();
     virtual void SetOperator(mfem::Operator const &op);
@@ -164,7 +176,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[8];
+    mutable swig::SwigVar_PyObject vtable[10];
 #endif
 
 };
@@ -181,6 +193,8 @@ public:
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_PyOperatorBase();
     virtual mfem::Vector &_EvalMult(mfem::Vector const &arg0) const;
@@ -214,7 +228,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[8];
+    mutable swig::SwigVar_PyObject vtable[10];
 #endif
 
 };
@@ -231,15 +245,23 @@ public:
     virtual mfem::Operator &GetGradient(mfem::Vector const &x) const;
     virtual mfem::Operator const *GetProlongation() const;
     virtual mfem::Operator const *GetRestriction() const;
+    virtual mfem::Operator const *GetOutputProlongation() const;
+    virtual mfem::Operator const *GetOutputRestriction() const;
     virtual void RecoverFEMSolution(mfem::Vector const &X, mfem::Vector const &b, mfem::Vector &x);
     virtual ~SwigDirector_PyTimeDependentOperatorBase();
     virtual double GetTime() const;
     virtual void SetTime(double const _t);
+    virtual void SetEvalMode(mfem::TimeDependentOperator::EvalMode const new_eval_mode);
     virtual void ExplicitMult(mfem::Vector const &x, mfem::Vector &y) const;
     virtual void ImplicitMult(mfem::Vector const &x, mfem::Vector const &k, mfem::Vector &y) const;
     virtual void ImplicitSolve(double const dt, mfem::Vector const &x, mfem::Vector &k);
     virtual mfem::Operator &GetImplicitGradient(mfem::Vector const &x, mfem::Vector const &k, double shift) const;
     virtual mfem::Operator &GetExplicitGradient(mfem::Vector const &x) const;
+    virtual int SUNImplicitSetup(mfem::Vector const &x, mfem::Vector const &fx, int jok, int *jcur, double gamma);
+    virtual int SUNImplicitSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassSetup();
+    virtual int SUNMassSolve(mfem::Vector const &b, mfem::Vector &x, double tol);
+    virtual int SUNMassMult(mfem::Vector const &x, mfem::Vector &v);
     virtual mfem::Vector &_EvalMult(mfem::Vector const &arg0) const;
 
 /* Internal director utilities */
@@ -271,7 +293,7 @@ private:
       return method;
     }
 private:
-    mutable swig::SwigVar_PyObject vtable[15];
+    mutable swig::SwigVar_PyObject vtable[23];
 #endif
 
 };

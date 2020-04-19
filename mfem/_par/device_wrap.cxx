@@ -2987,6 +2987,20 @@ SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val)
   return SWIG_TypeError;
 }
 
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  int r;
+  if (!PyBool_Check(obj))
+    return SWIG_ERROR;
+  r = PyObject_IsTrue(obj);
+  if (r == -1)
+    return SWIG_ERROR;
+  if (val) *val = r ? true : false;
+  return SWIG_OK;
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -3097,14 +3111,14 @@ fail:
 SWIGINTERN PyObject *_wrap_new_Device__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   std::string *arg1 = 0 ;
-  int arg2 ;
+  int arg2 = (int) (int)0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
   int ecode2 = 0 ;
   mfem::Device *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  if ((nobjs < 1) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0  | 0);
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Device" "', argument " "1"" of type '" "std::string const &""'"); 
@@ -3113,53 +3127,16 @@ SWIGINTERN PyObject *_wrap_new_Device__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Device" "', argument " "1"" of type '" "std::string const &""'"); 
   }
   arg1 = reinterpret_cast< std::string * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Device" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  if (swig_obj[1]) {
+    ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_Device" "', argument " "2"" of type '" "int""'");
+    } 
+    arg2 = static_cast< int >(val2);
+  }
   {
     try {
       result = (mfem::Device *)new mfem::Device((std::string const &)*arg1,arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Device, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_Device__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  mfem::Device *result = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_Device" "', argument " "1"" of type '" "std::string const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_Device" "', argument " "1"" of type '" "std::string const &""'"); 
-  }
-  arg1 = reinterpret_cast< std::string * >(argp1);
-  {
-    try {
-      result = (mfem::Device *)new mfem::Device((std::string const &)*arg1);
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3191,19 +3168,14 @@ SWIGINTERN PyObject *_wrap_new_Device(PyObject *self, PyObject *args) {
   if (argc == 0) {
     return _wrap_new_Device__SWIG_0(self, argc, argv);
   }
-  if (argc == 1) {
+  if ((argc >= 1) && (argc <= 2)) {
     int _v;
     int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_new_Device__SWIG_2(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
+      if (argc <= 1) {
+        return _wrap_new_Device__SWIG_1(self, argc, argv);
+      }
       {
         int res = SWIG_AsVal_int(argv[1], NULL);
         _v = SWIG_CheckState(res);
@@ -3218,8 +3190,7 @@ fail:
   SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_Device'.\n"
     "  Possible C/C++ prototypes are:\n"
     "    mfem::Device::Device()\n"
-    "    mfem::Device::Device(std::string const &,int const)\n"
-    "    mfem::Device::Device(std::string const &)\n");
+    "    mfem::Device::Device(std::string const &,int const)\n");
   return 0;
 }
 
@@ -3261,25 +3232,31 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Device_Configure__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Device_Configure(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Device *arg1 = (mfem::Device *) 0 ;
   std::string *arg2 = 0 ;
-  int arg3 ;
+  int arg3 = (int) (int)0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"device",  (char *)"dev",  NULL 
+  };
   
-  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Device, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|O:Device_Configure", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Device, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Device_Configure" "', argument " "1"" of type '" "mfem::Device *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Device * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Device_Configure" "', argument " "2"" of type '" "std::string const &""'"); 
   }
@@ -3287,11 +3264,13 @@ SWIGINTERN PyObject *_wrap_Device_Configure__SWIG_0(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Device_Configure" "', argument " "2"" of type '" "std::string const &""'"); 
   }
   arg2 = reinterpret_cast< std::string * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Device_Configure" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  if (obj2) {
+    ecode3 = SWIG_AsVal_int(obj2, &val3);
+    if (!SWIG_IsOK(ecode3)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Device_Configure" "', argument " "3"" of type '" "int""'");
+    } 
+    arg3 = static_cast< int >(val3);
+  }
   {
     try {
       (arg1)->Configure((std::string const &)*arg2,arg3);
@@ -3315,125 +3294,37 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Device_Configure__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_Device_Print(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Device *arg1 = (mfem::Device *) 0 ;
-  std::string *arg2 = 0 ;
+  std::ostream &arg2_defvalue = mfem::out ;
+  std::ostream *arg2 = (std::ostream *) &arg2_defvalue ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Device, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Device_Configure" "', argument " "1"" of type '" "mfem::Device *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Device * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Device_Configure" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Device_Configure" "', argument " "2"" of type '" "std::string const &""'"); 
-  }
-  arg2 = reinterpret_cast< std::string * >(argp2);
-  {
-    try {
-      (arg1)->Configure((std::string const &)*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Device_Configure(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[4] = {
-    0
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"out",  NULL 
   };
   
-  if (!(argc = SWIG_Python_UnpackTuple(args, "Device_Configure", 0, 3, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Device, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_Device_Configure__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 3) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Device, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
-        }
-        if (_v) {
-          return _wrap_Device_Configure__SWIG_0(self, argc, argv);
-        }
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Device_Configure'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Device::Configure(std::string const &,int const)\n"
-    "    mfem::Device::Configure(std::string const &)\n");
-  return 0;
-}
-
-
-SWIGINTERN PyObject *_wrap_Device_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Device *arg1 = (mfem::Device *) 0 ;
-  std::ostream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Device, 0 |  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:Device_Print", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__Device, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Device_Print" "', argument " "1"" of type '" "mfem::Device *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Device * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Device_Print" "', argument " "2"" of type '" "std::ostream &""'"); 
+  if (obj1) {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Device_Print" "', argument " "2"" of type '" "std::ostream &""'"); 
+    }
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Device_Print" "', argument " "2"" of type '" "std::ostream &""'"); 
+    }
+    arg2 = reinterpret_cast< std::ostream * >(argp2);
   }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Device_Print" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
   {
     try {
       (arg1)->Print(*arg2);
@@ -3454,82 +3345,6 @@ SWIGINTERN PyObject *_wrap_Device_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Device_Print__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  mfem::Device *arg1 = (mfem::Device *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  
-  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Device, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Device_Print" "', argument " "1"" of type '" "mfem::Device *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::Device * >(argp1);
-  {
-    try {
-      (arg1)->Print();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_Device_Print(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "Device_Print", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 1) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Device, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      return _wrap_Device_Print__SWIG_1(self, argc, argv);
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Device, 0);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_std__ostream, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_Device_Print__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'Device_Print'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::Device::Print(std::ostream &)\n"
-    "    mfem::Device::Print()\n");
-  return 0;
 }
 
 
@@ -3645,17 +3460,19 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Device_Allows(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_Device_Allows(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   unsigned long arg1 ;
   unsigned long val1 ;
   int ecode1 = 0 ;
-  PyObject *swig_obj[1] ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"b_mask",  NULL 
+  };
   bool result;
   
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  ecode1 = SWIG_AsVal_unsigned_SS_long(swig_obj[0], &val1);
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:Device_Allows", kwnames, &obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
     SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Device_Allows" "', argument " "1"" of type '" "unsigned long""'");
   } 
@@ -3683,6 +3500,90 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Device_GetHostMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Device_GetHostMemoryType", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::MemoryType)mfem::Device::GetHostMemoryType();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Device_GetHostMemoryClass(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MemoryClass result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Device_GetHostMemoryClass", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::MemoryClass)mfem::Device::GetHostMemoryClass();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Device_GetDeviceMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Device_GetDeviceMemoryType", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::MemoryType)mfem::Device::GetDeviceMemoryType();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_Device_GetMemoryType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::MemoryType result;
@@ -3691,6 +3592,34 @@ SWIGINTERN PyObject *_wrap_Device_GetMemoryType(PyObject *SWIGUNUSEDPARM(self), 
   {
     try {
       result = (mfem::MemoryType)mfem::Device::GetMemoryType();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Device_GetDeviceMemoryClass(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::MemoryClass result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Device_GetDeviceMemoryClass", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::MemoryClass)mfem::Device::GetDeviceMemoryClass();
     }
 #ifdef  MFEM_USE_EXCEPTIONS
     catch (mfem::ErrorException &_e) {
@@ -3739,6 +3668,75 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Device_SetGPUAwareMPI(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  bool arg1 = (bool) (bool)true ;
+  bool val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char * kwnames[] = {
+    (char *)"force",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|O:Device_SetGPUAwareMPI", kwnames, &obj0)) SWIG_fail;
+  if (obj0) {
+    ecode1 = SWIG_AsVal_bool(obj0, &val1);
+    if (!SWIG_IsOK(ecode1)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Device_SetGPUAwareMPI" "', argument " "1"" of type '" "bool""'");
+    } 
+    arg1 = static_cast< bool >(val1);
+  }
+  {
+    try {
+      mfem::Device::SetGPUAwareMPI(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Device_GetGPUAwareMPI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Device_GetGPUAwareMPI", 0, 0, 0)) SWIG_fail;
+  {
+    try {
+      result = (bool)mfem::Device::GetGPUAwareMPI();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *Device_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -3752,27 +3750,59 @@ SWIGINTERN PyObject *Device_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *a
 
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
 	 { "new_Backend", _wrap_new_Backend, METH_NOARGS, NULL},
 	 { "delete_Backend", _wrap_delete_Backend, METH_O, NULL},
 	 { "Backend_swigregister", Backend_swigregister, METH_O, NULL},
 	 { "Backend_swiginit", Backend_swiginit, METH_VARARGS, NULL},
 	 { "new_Device", _wrap_new_Device, METH_VARARGS, NULL},
 	 { "delete_Device", _wrap_delete_Device, METH_O, NULL},
-	 { "Device_Configure", _wrap_Device_Configure, METH_VARARGS, NULL},
-	 { "Device_Print", _wrap_Device_Print, METH_VARARGS, NULL},
+	 { "Device_Configure", (PyCFunction)(void(*)(void))_wrap_Device_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_Print", (PyCFunction)(void(*)(void))_wrap_Device_Print, METH_VARARGS|METH_KEYWORDS, NULL},
 	 { "Device_IsConfigured", _wrap_Device_IsConfigured, METH_NOARGS, NULL},
 	 { "Device_IsAvailable", _wrap_Device_IsAvailable, METH_NOARGS, NULL},
 	 { "Device_IsEnabled", _wrap_Device_IsEnabled, METH_NOARGS, NULL},
 	 { "Device_IsDisabled", _wrap_Device_IsDisabled, METH_NOARGS, NULL},
-	 { "Device_Allows", _wrap_Device_Allows, METH_O, NULL},
+	 { "Device_Allows", (PyCFunction)(void(*)(void))_wrap_Device_Allows, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_GetHostMemoryType", _wrap_Device_GetHostMemoryType, METH_NOARGS, NULL},
+	 { "Device_GetHostMemoryClass", _wrap_Device_GetHostMemoryClass, METH_NOARGS, NULL},
+	 { "Device_GetDeviceMemoryType", _wrap_Device_GetDeviceMemoryType, METH_NOARGS, NULL},
 	 { "Device_GetMemoryType", _wrap_Device_GetMemoryType, METH_NOARGS, NULL},
+	 { "Device_GetDeviceMemoryClass", _wrap_Device_GetDeviceMemoryClass, METH_NOARGS, NULL},
 	 { "Device_GetMemoryClass", _wrap_Device_GetMemoryClass, METH_NOARGS, NULL},
+	 { "Device_SetGPUAwareMPI", (PyCFunction)(void(*)(void))_wrap_Device_SetGPUAwareMPI, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_GetGPUAwareMPI", _wrap_Device_GetGPUAwareMPI, METH_NOARGS, NULL},
 	 { "Device_swigregister", Device_swigregister, METH_O, NULL},
 	 { "Device_swiginit", Device_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 static PyMethodDef SwigMethods_proxydocs[] = {
+	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
+	 { "new_Backend", _wrap_new_Backend, METH_NOARGS, NULL},
+	 { "delete_Backend", _wrap_delete_Backend, METH_O, NULL},
+	 { "Backend_swigregister", Backend_swigregister, METH_O, NULL},
+	 { "Backend_swiginit", Backend_swiginit, METH_VARARGS, NULL},
+	 { "new_Device", _wrap_new_Device, METH_VARARGS, NULL},
+	 { "delete_Device", _wrap_delete_Device, METH_O, NULL},
+	 { "Device_Configure", (PyCFunction)(void(*)(void))_wrap_Device_Configure, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_Print", (PyCFunction)(void(*)(void))_wrap_Device_Print, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_IsConfigured", _wrap_Device_IsConfigured, METH_NOARGS, NULL},
+	 { "Device_IsAvailable", _wrap_Device_IsAvailable, METH_NOARGS, NULL},
+	 { "Device_IsEnabled", _wrap_Device_IsEnabled, METH_NOARGS, NULL},
+	 { "Device_IsDisabled", _wrap_Device_IsDisabled, METH_NOARGS, NULL},
+	 { "Device_Allows", (PyCFunction)(void(*)(void))_wrap_Device_Allows, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_GetHostMemoryType", _wrap_Device_GetHostMemoryType, METH_NOARGS, NULL},
+	 { "Device_GetHostMemoryClass", _wrap_Device_GetHostMemoryClass, METH_NOARGS, NULL},
+	 { "Device_GetDeviceMemoryType", _wrap_Device_GetDeviceMemoryType, METH_NOARGS, NULL},
+	 { "Device_GetMemoryType", _wrap_Device_GetMemoryType, METH_NOARGS, NULL},
+	 { "Device_GetDeviceMemoryClass", _wrap_Device_GetDeviceMemoryClass, METH_NOARGS, NULL},
+	 { "Device_GetMemoryClass", _wrap_Device_GetMemoryClass, METH_NOARGS, NULL},
+	 { "Device_SetGPUAwareMPI", (PyCFunction)(void(*)(void))_wrap_Device_SetGPUAwareMPI, METH_VARARGS|METH_KEYWORDS, NULL},
+	 { "Device_GetGPUAwareMPI", _wrap_Device_GetGPUAwareMPI, METH_NOARGS, NULL},
+	 { "Device_swigregister", Device_swigregister, METH_O, NULL},
+	 { "Device_swiginit", Device_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -4540,16 +4570,22 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "Backend_CPU",SWIG_From_int(static_cast< int >(mfem::Backend::CPU)));
   SWIG_Python_SetConstant(d, "Backend_OMP",SWIG_From_int(static_cast< int >(mfem::Backend::OMP)));
   SWIG_Python_SetConstant(d, "Backend_CUDA",SWIG_From_int(static_cast< int >(mfem::Backend::CUDA)));
+  SWIG_Python_SetConstant(d, "Backend_HIP",SWIG_From_int(static_cast< int >(mfem::Backend::HIP)));
   SWIG_Python_SetConstant(d, "Backend_RAJA_CPU",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_CPU)));
   SWIG_Python_SetConstant(d, "Backend_RAJA_OMP",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_OMP)));
   SWIG_Python_SetConstant(d, "Backend_RAJA_CUDA",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_CUDA)));
   SWIG_Python_SetConstant(d, "Backend_OCCA_CPU",SWIG_From_int(static_cast< int >(mfem::Backend::OCCA_CPU)));
   SWIG_Python_SetConstant(d, "Backend_OCCA_OMP",SWIG_From_int(static_cast< int >(mfem::Backend::OCCA_OMP)));
   SWIG_Python_SetConstant(d, "Backend_OCCA_CUDA",SWIG_From_int(static_cast< int >(mfem::Backend::OCCA_CUDA)));
+  SWIG_Python_SetConstant(d, "Backend_CEED_CPU",SWIG_From_int(static_cast< int >(mfem::Backend::CEED_CPU)));
+  SWIG_Python_SetConstant(d, "Backend_CEED_CUDA",SWIG_From_int(static_cast< int >(mfem::Backend::CEED_CUDA)));
+  SWIG_Python_SetConstant(d, "Backend_DEBUG",SWIG_From_int(static_cast< int >(mfem::Backend::DEBUG)));
   SWIG_Python_SetConstant(d, "Backend_NUM_BACKENDS",SWIG_From_int(static_cast< int >(mfem::Backend::NUM_BACKENDS)));
   SWIG_Python_SetConstant(d, "Backend_CPU_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::CPU_MASK)));
   SWIG_Python_SetConstant(d, "Backend_CUDA_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::CUDA_MASK)));
+  SWIG_Python_SetConstant(d, "Backend_HIP_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::HIP_MASK)));
   SWIG_Python_SetConstant(d, "Backend_OMP_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::OMP_MASK)));
+  SWIG_Python_SetConstant(d, "Backend_CEED_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::CEED_MASK)));
   SWIG_Python_SetConstant(d, "Backend_DEVICE_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::DEVICE_MASK)));
   SWIG_Python_SetConstant(d, "Backend_RAJA_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::RAJA_MASK)));
   SWIG_Python_SetConstant(d, "Backend_OCCA_MASK",SWIG_From_int(static_cast< int >(mfem::Backend::OCCA_MASK)));

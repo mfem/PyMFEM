@@ -19,6 +19,9 @@ try:
 except ImportError:
     import __builtin__
 
+_swig_new_instance_method = _handle.SWIG_PyInstanceMethod_New
+_swig_new_static_method = _handle.SWIG_PyStaticMethod_New
+
 def _swig_repr(self):
     try:
         strthis = "proxy of " + self.this.__repr__()
@@ -106,66 +109,82 @@ class OperatorHandle(object):
     def Ptr(self):
         r"""Ptr(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_Ptr(self)
+    Ptr = _swig_new_instance_method(_handle.OperatorHandle_Ptr)
 
     def __deref__(self):
         r"""__deref__(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle___deref__(self)
+    __deref__ = _swig_new_instance_method(_handle.OperatorHandle___deref__)
 
     def __ref__(self):
         r"""__ref__(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle___ref__(self)
+    __ref__ = _swig_new_instance_method(_handle.OperatorHandle___ref__)
 
     def Type(self):
         r"""Type(OperatorHandle self) -> mfem::Operator::Type"""
         return _handle.OperatorHandle_Type(self)
+    Type = _swig_new_instance_method(_handle.OperatorHandle_Type)
 
     def OwnsOperator(self):
         r"""OwnsOperator(OperatorHandle self) -> bool"""
         return _handle.OperatorHandle_OwnsOperator(self)
+    OwnsOperator = _swig_new_instance_method(_handle.OperatorHandle_OwnsOperator)
 
     def SetOperatorOwner(self, own=True):
         r"""SetOperatorOwner(OperatorHandle self, bool own=True)"""
         return _handle.OperatorHandle_SetOperatorOwner(self, own)
+    SetOperatorOwner = _swig_new_instance_method(_handle.OperatorHandle_SetOperatorOwner)
 
     def Clear(self):
         r"""Clear(OperatorHandle self)"""
         return _handle.OperatorHandle_Clear(self)
+    Clear = _swig_new_instance_method(_handle.OperatorHandle_Clear)
 
     def SetType(self, tid):
         r"""SetType(OperatorHandle self, mfem::Operator::Type tid)"""
         return _handle.OperatorHandle_SetType(self, tid)
+    SetType = _swig_new_instance_method(_handle.OperatorHandle_SetType)
 
     def MakePtAP(self, A, P):
         r"""MakePtAP(OperatorHandle self, OperatorHandle A, OperatorHandle P)"""
         return _handle.OperatorHandle_MakePtAP(self, A, P)
+    MakePtAP = _swig_new_instance_method(_handle.OperatorHandle_MakePtAP)
 
     def MakeRAP(self, Rt, A, P):
         r"""MakeRAP(OperatorHandle self, OperatorHandle Rt, OperatorHandle A, OperatorHandle P)"""
         return _handle.OperatorHandle_MakeRAP(self, Rt, A, P)
+    MakeRAP = _swig_new_instance_method(_handle.OperatorHandle_MakeRAP)
 
     def EliminateRowsCols(self, A, ess_dof_list):
         r"""EliminateRowsCols(OperatorHandle self, OperatorHandle A, intArray ess_dof_list)"""
         return _handle.OperatorHandle_EliminateRowsCols(self, A, ess_dof_list)
+    EliminateRowsCols = _swig_new_instance_method(_handle.OperatorHandle_EliminateRowsCols)
 
     def EliminateBC(self, A_e, ess_dof_list, X, B):
         r"""EliminateBC(OperatorHandle self, OperatorHandle A_e, intArray ess_dof_list, Vector X, Vector B)"""
         return _handle.OperatorHandle_EliminateBC(self, A_e, ess_dof_list, X, B)
+    EliminateBC = _swig_new_instance_method(_handle.OperatorHandle_EliminateBC)
 
     def As(self):
         r"""As(OperatorHandle self) -> mfem::SparseMatrix *"""
         return _handle.OperatorHandle_As(self)
+    As = _swig_new_instance_method(_handle.OperatorHandle_As)
 
     def Is(self):
         r"""Is(OperatorHandle self) -> mfem::SparseMatrix *"""
         return _handle.OperatorHandle_Is(self)
+    Is = _swig_new_instance_method(_handle.OperatorHandle_Is)
 
     def Get(self, A):
         r"""Get(OperatorHandle self, mfem::SparseMatrix *& A)"""
         return _handle.OperatorHandle_Get(self, A)
+    Get = _swig_new_instance_method(_handle.OperatorHandle_Get)
 
     def Reset(self, A, own_A=True):
         r"""Reset(OperatorHandle self, mfem::SparseMatrix * A, bool own_A=True)"""
         return _handle.OperatorHandle_Reset(self, A, own_A)
+    Reset = _swig_new_instance_method(_handle.OperatorHandle_Reset)
 
     def ConvertFrom(self, *args):
         r"""
@@ -173,62 +192,112 @@ class OperatorHandle(object):
         ConvertFrom(OperatorHandle self, mfem::SparseMatrix * A)
         """
         return _handle.OperatorHandle_ConvertFrom(self, *args)
+    ConvertFrom = _swig_new_instance_method(_handle.OperatorHandle_ConvertFrom)
+
+    def InitTVectors(self, Po, Ri, Pi, x, b, X, B):
+        r"""InitTVectors(OperatorHandle self, Operator Po, Operator Ri, Operator Pi, Vector x, Vector b, Vector X, Vector B)"""
+        return _handle.OperatorHandle_InitTVectors(self, Po, Ri, Pi, x, b, X, B)
+    InitTVectors = _swig_new_instance_method(_handle.OperatorHandle_InitTVectors)
 
     def Height(self):
         r"""Height(OperatorHandle self) -> int"""
         return _handle.OperatorHandle_Height(self)
+    Height = _swig_new_instance_method(_handle.OperatorHandle_Height)
 
     def NumRows(self):
         r"""NumRows(OperatorHandle self) -> int"""
         return _handle.OperatorHandle_NumRows(self)
+    NumRows = _swig_new_instance_method(_handle.OperatorHandle_NumRows)
 
     def Width(self):
         r"""Width(OperatorHandle self) -> int"""
         return _handle.OperatorHandle_Width(self)
+    Width = _swig_new_instance_method(_handle.OperatorHandle_Width)
 
     def NumCols(self):
         r"""NumCols(OperatorHandle self) -> int"""
         return _handle.OperatorHandle_NumCols(self)
+    NumCols = _swig_new_instance_method(_handle.OperatorHandle_NumCols)
 
     def GetMemoryClass(self):
         r"""GetMemoryClass(OperatorHandle self) -> mfem::MemoryClass"""
         return _handle.OperatorHandle_GetMemoryClass(self)
+    GetMemoryClass = _swig_new_instance_method(_handle.OperatorHandle_GetMemoryClass)
 
     def Mult(self, x, y):
         r"""Mult(OperatorHandle self, Vector x, Vector y)"""
         return _handle.OperatorHandle_Mult(self, x, y)
+    Mult = _swig_new_instance_method(_handle.OperatorHandle_Mult)
 
     def MultTranspose(self, x, y):
         r"""MultTranspose(OperatorHandle self, Vector x, Vector y)"""
         return _handle.OperatorHandle_MultTranspose(self, x, y)
+    MultTranspose = _swig_new_instance_method(_handle.OperatorHandle_MultTranspose)
 
     def GetGradient(self, x):
         r"""GetGradient(OperatorHandle self, Vector x) -> Operator"""
         return _handle.OperatorHandle_GetGradient(self, x)
+    GetGradient = _swig_new_instance_method(_handle.OperatorHandle_GetGradient)
 
     def GetProlongation(self):
         r"""GetProlongation(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetProlongation(self)
+    GetProlongation = _swig_new_instance_method(_handle.OperatorHandle_GetProlongation)
 
     def GetRestriction(self):
         r"""GetRestriction(OperatorHandle self) -> Operator"""
         return _handle.OperatorHandle_GetRestriction(self)
+    GetRestriction = _swig_new_instance_method(_handle.OperatorHandle_GetRestriction)
+
+    def GetOutputProlongation(self):
+        r"""GetOutputProlongation(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetOutputProlongation(self)
+    GetOutputProlongation = _swig_new_instance_method(_handle.OperatorHandle_GetOutputProlongation)
+
+    def GetOutputRestriction(self):
+        r"""GetOutputRestriction(OperatorHandle self) -> Operator"""
+        return _handle.OperatorHandle_GetOutputRestriction(self)
+    GetOutputRestriction = _swig_new_instance_method(_handle.OperatorHandle_GetOutputRestriction)
 
     def FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior=0):
         r"""FormLinearSystem(OperatorHandle self, intArray ess_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B, int copy_interior=0)"""
         return _handle.OperatorHandle_FormLinearSystem(self, ess_tdof_list, x, b, A, X, B, copy_interior)
+    FormLinearSystem = _swig_new_instance_method(_handle.OperatorHandle_FormLinearSystem)
+
+    def FormRectangularLinearSystem(self, trial_tdof_list, test_tdof_list, x, b, A, X, B):
+        r"""FormRectangularLinearSystem(OperatorHandle self, intArray trial_tdof_list, intArray test_tdof_list, Vector x, Vector b, mfem::Operator *& A, Vector X, Vector B)"""
+        return _handle.OperatorHandle_FormRectangularLinearSystem(self, trial_tdof_list, test_tdof_list, x, b, A, X, B)
+    FormRectangularLinearSystem = _swig_new_instance_method(_handle.OperatorHandle_FormRectangularLinearSystem)
 
     def RecoverFEMSolution(self, X, b, x):
         r"""RecoverFEMSolution(OperatorHandle self, Vector X, Vector b, Vector x)"""
         return _handle.OperatorHandle_RecoverFEMSolution(self, X, b, x)
+    RecoverFEMSolution = _swig_new_instance_method(_handle.OperatorHandle_RecoverFEMSolution)
+
+    def FormSystemOperator(self, ess_tdof_list, A):
+        r"""FormSystemOperator(OperatorHandle self, intArray ess_tdof_list, mfem::Operator *& A)"""
+        return _handle.OperatorHandle_FormSystemOperator(self, ess_tdof_list, A)
+    FormSystemOperator = _swig_new_instance_method(_handle.OperatorHandle_FormSystemOperator)
+
+    def FormRectangularSystemOperator(self, trial_tdof_list, test_tdof_list, A):
+        r"""FormRectangularSystemOperator(OperatorHandle self, intArray trial_tdof_list, intArray test_tdof_list, mfem::Operator *& A)"""
+        return _handle.OperatorHandle_FormRectangularSystemOperator(self, trial_tdof_list, test_tdof_list, A)
+    FormRectangularSystemOperator = _swig_new_instance_method(_handle.OperatorHandle_FormRectangularSystemOperator)
+
+    def FormDiscreteOperator(self, A):
+        r"""FormDiscreteOperator(OperatorHandle self, mfem::Operator *& A)"""
+        return _handle.OperatorHandle_FormDiscreteOperator(self, A)
+    FormDiscreteOperator = _swig_new_instance_method(_handle.OperatorHandle_FormDiscreteOperator)
 
     def PrintMatlab(self, out, n=0, m=0):
         r"""PrintMatlab(OperatorHandle self, std::ostream & out, int n=0, int m=0)"""
         return _handle.OperatorHandle_PrintMatlab(self, out, n, m)
+    PrintMatlab = _swig_new_instance_method(_handle.OperatorHandle_PrintMatlab)
 
     def GetType(self):
         r"""GetType(OperatorHandle self) -> mfem::Operator::Type"""
         return _handle.OperatorHandle_GetType(self)
+    GetType = _swig_new_instance_method(_handle.OperatorHandle_GetType)
 
 # Register OperatorHandle in _handle:
 _handle.OperatorHandle_swigregister(OperatorHandle)
