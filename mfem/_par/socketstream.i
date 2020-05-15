@@ -1,8 +1,9 @@
 %module(package="mfem._par") socketstream
+%feature("autodoc", "1");
 
 %{
 #include <iostream>
-#include "iostream_typemap.hpp"      
+#include "io_stream.hpp"      
 #include "mesh/mesh_headers.hpp"
 #include "fem/gridfunc.hpp"  
 #include "general/socketstream.hpp"
@@ -19,8 +20,6 @@ import_array();
 %import "mesh.i"
 %import "gridfunc.i"
 %import "../common/exception.i"
-//%import "ostream_typemap.i"
-
 
 %include "general/socketstream.hpp"
 

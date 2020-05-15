@@ -30,24 +30,39 @@ import_array();
 
 %include "fem/pbilinearform.hpp"
 
-// instatitate template methods (step 1: Macro definition)
-%define FORM_LINEAR_SYSTEM_WRAP(T)
-%template(FormLinearSystem) mfem::ParBilinearForm::FormLinearSystem<T >;
-%enddef
-%define FORM_SYSTEM_MATRIX_WRAP(T)
-%template(FormSystemMatrix) mfem::ParBilinearForm::FormSystemMatrix<T >;
+// This template is defined in baseclass.
+// We need to add it to make template macro works.
+%extend mfem::ParBilinearForm {
+   template <typename OpType>
+     void FormLinearSystem(const mfem::Array<int> &ess_tdof_list,
+			   mfem::Vector &x, mfem::Vector &b,
+                           OpType &A, mfem::Vector &X, mfem::Vector &B,
+                           int copy_interior = 0){
+     return self->mfem::BilinearForm::FormLinearSystem(ess_tdof_list, x, b, A, X, B, copy_interior);
+   }
+   template <typename OpType>
+     void FormSystemMatrix(const mfem::Array<int> &ess_tdof_list,
+			   OpType &A){
+     return self->mfem::BilinearForm::FormSystemMatrix(ess_tdof_list, A);
+   }
+};  
+
+// instatitate template methods
+
+%ignore FORM_SYSTEM_MATRIX_WRAP;
+
+%define P_FORM_SYSTEM_MATRIX_WRAP(OsType)
+%template(FormLinearSystem) mfem::ParBilinearForm::FormLinearSystem<OsType>;
+%template(FormSystemMatrix) mfem::ParBilinearForm::FormSystemMatrix<OsType>;
 %enddef
 
-// instatitate template methods (step 2: Instantiation)
-FORM_LINEAR_SYSTEM_WRAP(mfem::HypreParMatrix)
-FORM_SYSTEM_MATRIX_WRAP(mfem::HypreParMatrix)
-     
+P_FORM_SYSTEM_MATRIX_WRAP(mfem::SparseMatrix)
+  
+#ifdef MFEM_USE_MPI
+  P_FORM_SYSTEM_MATRIX_WRAP(mfem::HypreParMatrix)
+#endif
+  
 #ifdef MFEM_USE_PETSC
-FORM_LINEAR_SYSTEM_WRAP(mfem::PetscParMatrix)
-FORM_SYSTEM_MATRIX_WRAP(mfem::PetscParMatrix)
-#endif          
- /*
-(note above is the same as this)
-%template(FormLinearSystem) mfem::ParBilinearForm::FormLinearSystem<mfem::HypreParMatrix>;
-%template(FormSystemMatrix) mfem::ParBilinearForm::FormSystemMatrix<mfem::HypreParMatrix>;
- */
+  P_FORM_SYSTEM_MATRIX_WRAP(mfem::PetscParMatrix)
+#endif  
+

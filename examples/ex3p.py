@@ -158,5 +158,5 @@ err = x.ComputeL2Error(E)
 if verbose: # note that err should be evaulated on all nodes
     print("|| E_h - E ||_{L^2} = " + str(err))
 
-mesh.PrintToFile('refined.mesh', 8)
-x.SaveToFile('sol.gf', 8)
+mesh.Print('refined.mesh', 8)
+x.Save('sol.gf', 8)

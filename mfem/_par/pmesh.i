@@ -1,5 +1,7 @@
-
 %module(package="mfem._par") pmesh
+
+%feature("autodoc", "1");
+
 %{
 #include <iostream>
 #include <sstream>
@@ -8,9 +10,10 @@
 #include <cmath>
 #include <cstring>  
 #include <mpi.h>
-#include "iostream_typemap.hpp"     
+#include "io_stream.hpp"     
 #include "config/config.hpp"
 #include "mesh/pmesh.hpp"
+#include "mesh/pumi.hpp"
 #include "fem/linearform.hpp"
 #include "general/communication.hpp"  
 #include "numpy/arrayobject.h"
@@ -33,8 +36,11 @@ import_array();
 %import "mesh.i"
 %import "pncmesh.i"
 %import "communication.i"
-%import "ostream_typemap.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
+
 
 %immutable face_nbr_elements;
 %immutable face_nbr_vertices;
@@ -82,6 +88,17 @@ ParMesh(MPI_Comm comm, const char *mesh_file){
     mesh = new mfem::ParMesh(comm, imesh);
     return mesh;
     }
+ParMesh(MPI_Comm comm, apf::Mesh2* pumi_mesh){
+    mfem::ParMesh *mesh;
+    if (!pumi_mesh)
+    {
+    std::cerr << "\nPointer to pumi_mesh is not set\n" << std::endl;
+    return NULL;
+    }
+    mesh = new mfem::ParPumiMesh(comm, pumi_mesh);
+    return mesh;
+    }
+
 void ParPrintToFile(const char *mesh_file, const int precision) const
     {
     std::ofstream mesh_ofs(mesh_file);	
@@ -91,3 +108,20 @@ void ParPrintToFile(const char *mesh_file, const int precision) const
 };   
 }
 
+/*
+  virtual void Print(std::ostream &out = mfem::out) const;
+  virtual void PrintXG(std::ostream &out = mfem::out) const;
+  void PrintAsOne(std::ostream &out = mfem::out);
+  void PrintAsOneXG(std::ostream &out = mfem::out);
+  virtual void PrintInfo(std::ostream &out = mfem::out);
+  void ParPrint(std::ostream &out) const;
+*/
+
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(ParMesh, Print)
+OSTREAM_ADD_DEFAULT_FILE(ParMesh, PrintXG)
+OSTREAM_ADD_DEFAULT_FILE(ParMesh, PrintAsOne)
+OSTREAM_ADD_DEFAULT_FILE(ParMesh, PrintAsOneXG)
+OSTREAM_ADD_DEFAULT_FILE(ParMesh, PrintInfo)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(ParMesh, ParPrint)
+#endif

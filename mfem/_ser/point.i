@@ -1,4 +1,7 @@
 %module(package="mfem._ser") point
+
+%feature("autodoc", "1");
+
 %{
 #include  "mfem.hpp"
 #include "mesh/point.hpp"

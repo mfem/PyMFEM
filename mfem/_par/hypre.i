@@ -1,5 +1,8 @@
 %module(package="mfem._par") hypre
+%feature("autodoc", "1");
 %{
+#include <fstream>
+#include <iostream>  
 #include <mpi.h>
 #include <Python.h>
 #include "fem/gridfunc.hpp"
@@ -9,7 +12,7 @@
 #include "linalg/hypre.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "iostream_typemap.hpp"    
+#include "io_stream.hpp"    
 %}
 
 %include "../common/mfem_config.i"
@@ -24,14 +27,13 @@ import_array();
 %}
 
 %include "exception.i"
- //%include "../common/cpointers.i"
- //%import "cpointers.i"
 %import "../common/ignore_common_functions.i"
 %import "vector.i"
 %import "sparsemat.i"
- //%import "fespace.i"
- //%import "pfespace.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %ignore DiscreteCurl;
 %ignore DiscreteGrad;
@@ -566,7 +568,9 @@ PyObject* GetCooDataArray(const HYPRE_Int           base_i = 0,
      Py_XDECREF(o);     
      return Py_None;
 }
-
-
 }  
 
+/*
+  void PrintCommPkg(std::ostream &out = mfem::out) const;
+*/
+OSTREAM_ADD_DEFAULT_FILE(HypreParMatrix, PrintCommPkg)

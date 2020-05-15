@@ -1,4 +1,5 @@
 %module(package="mfem._ser") fespace
+%feature("autodoc", "1");
 %{
 #include <iostream>
 #include <sstream>
@@ -8,8 +9,7 @@
 #include <cstring>
 #include <ctime>
 
-#include "iostream_typemap.hpp"            
-  
+#include "io_stream.hpp"            
 #include "numpy/arrayobject.h"
 #include "fem/fem.hpp"
 #include "fem/fe_coll.hpp"
@@ -17,6 +17,7 @@
 #include "fem/eltrans.hpp"
 #include "fem/coefficient.hpp"
 #include "fem/intrules.hpp"  
+#include "fem/restriction.hpp"
 #include "pyoperator.hpp"       
 %}
 
@@ -38,8 +39,11 @@ import_array();
 %import "eltrans.i"
 %import "lininteg.i"
 %import "handle.i"
-%import "ostream_typemap.i"
+%import "restriction.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 %typemap(typecheck) (int ndofs = -1) {
@@ -171,3 +175,9 @@ def GetEdgeInteriorDofs(self, i):
  //%template(FiniteElementSpaceArray) Array<FiniteElementSpace>;
  //}
 
+/*
+fem/fespace.hpp:   void Save(std::ostream &out) const;
+fem/fespace.hpp:   void Save(std::ostream &out) const;
+*/
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(FiniteElementSpace, Save)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(QuadratureSpace, Save)

@@ -17,6 +17,7 @@ import_array();
 %import "densemat.i"
 %import "fe.i"
 %import "intrules.i"
+%import "geom.i"
 %import "../common/exception.i"
 
 %feature("shadow") mfem::ElementTransformation::Transform %{

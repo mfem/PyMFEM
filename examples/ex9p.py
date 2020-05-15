@@ -175,8 +175,8 @@ U = u.GetTrueDofs()
 smyid = '{:0>6d}'.format(myid)
 mesh_name  =  "ex9-mesh."+smyid
 sol_name   =  "ex9-init."+smyid
-pmesh.PrintToFile(mesh_name, 8)
-u.SaveToFile(sol_name, 8)
+pmesh.Print(mesh_name, 8)
+u.Save(sol_name, 8)
 
 class FE_Evolution(mfem.PyTimeDependentOperator):
     def __init__(self, M, K, b):
@@ -222,4 +222,4 @@ while True:
 
 u.Assign(U)       
 sol_name   =  "ex9-final."+smyid       
-u.SaveToFile(sol_name, 8)
+u.Save(sol_name, 8)

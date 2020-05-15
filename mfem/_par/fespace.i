@@ -1,11 +1,8 @@
 %module(package="mfem._par") fespace
+
+%feature("autodoc", "1");
+
 %{
-#include "fem/fem.hpp"
-#include "fem/fe_coll.hpp"
-#include "fem/fespace.hpp"
-#include "fem/eltrans.hpp"
-#include "fem/coefficient.hpp"
-#include "fem/intrules.hpp"  
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -13,7 +10,14 @@
 #include <cmath>
 #include <cstring>
 #include <ctime>
-#include "iostream_typemap.hpp"      
+#include "fem/fem.hpp"
+#include "fem/fe_coll.hpp"
+#include "fem/fespace.hpp"
+#include "fem/eltrans.hpp"
+#include "fem/coefficient.hpp"
+#include "fem/intrules.hpp"  
+#include "fem/restriction.hpp"
+#include "io_stream.hpp"      
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"           
 %}
@@ -23,8 +27,6 @@ import_array();
 %}
 
 %include "exception.i"
- //%include "../common/cpointers.i"
- //%import "cpointers.i"
 %import "array.i"
 %import "vector.i"
 %import "coefficient.i"
@@ -38,9 +40,12 @@ import_array();
 %import "eltrans.i"
 %import "lininteg.i"
 %import "handle.i"
-%import "ostream_typemap.i"
+%import "restriction.i"
 %include "../common/typemap_macros.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 // default number is -1, which conflict with error code of PyArray_PyIntAsInt...
 INT_DEFAULT_NEGATIVE_ONE(int ndofs = -1)
@@ -163,3 +168,9 @@ def GetEdgeInteriorDofs(self, i):
 %}  
 %include "fem/fespace.hpp"
 
+/*
+fem/fespace.hpp:   void Save(std::ostream &out) const;
+fem/fespace.hpp:   void Save(std::ostream &out) const;
+*/
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(FiniteElementSpace, Save)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(QuadratureSpace, Save)

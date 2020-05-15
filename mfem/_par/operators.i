@@ -1,19 +1,29 @@
 %module (package="mfem._par", directors="1") operators
 
+%feature("autodoc", "1");
+
 %{
-#include "linalg/operator.hpp"
-#include "iostream_typemap.hpp"    
+#include <fstream>
+#include <iostream>
+  
+#include "io_stream.hpp"        
+#include "numpy/arrayobject.h"
 #include "pyoperator.hpp"
-#include "numpy/arrayobject.h"    
+#include "linalg/operator.hpp"  
 %}
 
 %init %{
 import_array();
 %}
 
+%include "exception.i"
+%import "mem_manager.i"
 %import "vector.i"
 %import "array.i"
-%import "ostream_typemap.i"
+%import "../common/exception_director.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %exception {
     try { $action }
@@ -78,3 +88,9 @@ class PyTimeDependentOperator(PyTimeDependentOperatorBase):
 			 
 %}
 
+/*
+  void PrintMatlab(std::ostream & out, int n = 0, int m = 0) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(Operator, PrintMatlab)
+#endif

@@ -17,7 +17,7 @@ WHOLE_ARCHIVE = --whole_archive
 NO_WHOLE_ARCHIVE = --no-whole-archive
 
 SWIG=$(shell which swig)
-SWIGFLAG = -Wall -c++ -python
+SWIGFLAG = -Wall -c++ -python -fastproxy -olddefs -keyword
 
 #
 # MFEM path:
@@ -48,17 +48,12 @@ METIS5INC ?= /usr/local/include
 METIS5LIB ?= /usr/local/lib
 
 #MPI
-MPICHINC  ?= /usr/local/include/mpich-mp
-MPICHLIB  ?= /usr/local/lib/mpich-mp
-MPI4PYINC = $(shell $(PYTHON) -c "import mpi4py;print mpi4py.get_include()")
+#MPICHINC  ?= /usr/local/include/mpich-mp
+#MPICHLIB  ?= /usr/local/lib/mpich-mp
+MPI4PYINC = $(shell $(PYTHON) -c "import mpi4py;print(mpi4py.get_include())")
 
 #numpy
-NUMPYINC = $(shell $(PYTHON) -c "import numpy;print numpy.get_include()")
-
-#Boost
-BOOSTINC ?= /usr/local/include
-BOOSTLIB ?= /usr/local/lib
-LIBBOOSTIOSTREAMS ?= boost_iostreams
+#NUMPYINC = $(shell $(PYTHON) -c "import numpy;print(numpy.get_include())")
 
 NOCOMPACTUNWIND = 
 include ./Makefile.local
@@ -67,7 +62,7 @@ MFEMINCFLAG  = -I$(MFEMINCDIR)
 MFEMSERINCFLAG  = -I$(MFEMSERINCDIR)
 HYPREINCFLAG = -I$(HYPREINC)
 HYPRELNKFLAG = -L$(HYPRELIB) -lHYPRE
-MPIINCFLAG  = -I$(MPIINC)
+#MPIINCFLAG  = -I$(MPIINC)
 MPI4PYINCFLAG  = -I$(MPI4PYINC)
 
 ADD_STRUMPACK ?= $(ENABLE_STRUMPACK)
@@ -77,7 +72,7 @@ ADD_PUMI ?= $(ENABLE_PUMI)
 # export everything so that it is avaialbe in setup.py
 export
 
-SUBDIRS = mfem/par mfem/ser
+SUBDIRS = mfem/_par mfem/_ser
 
 .PHONEY:clean par ser  subdirs subdirs_cxx parcxx sercxx pyinstall
 
@@ -117,4 +112,5 @@ clean:
 		fi; \
 	done
 	rm -f setup_local.py
+	rm -rf build
 

@@ -9,6 +9,9 @@
 import_array();
 %}
 
-%import array.i
-%import table.i
+%include "exception.i"
+%include "../common/exception.i"
+
+%import "array.i"
+%import "table.i"
 %include "general/sets.hpp"

@@ -28,6 +28,8 @@ def run_test():
     mm.Assign(np.vstack([x, y, z]))
     mm.Print()
     mfem.Vector(mm.GetData(), 15).Print()
+
+    mm.Print("densmat.dat")
     
 if __name__=='__main__':
     run_test()

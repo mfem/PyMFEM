@@ -10,7 +10,10 @@ import_array();
 %}
 %include "exception.i"
  //%import "cpointers.i"
+
 %import "array.i"
+%import "mem_manager.i"
+
 %import "fespace.i"
 %import "fe_coll.i"
 %import "intrules.i"
@@ -98,3 +101,20 @@ namespace mfem {
 } //end of namespace
 
 %include "fem/bilinearform.hpp"
+
+// instatitate template methods 
+%define FORM_SYSTEM_MATRIX_WRAP(OsType)
+%template(FormLinearSystem) mfem::BilinearForm::FormLinearSystem<OsType>;
+%template(FormSystemMatrix) mfem::BilinearForm::FormSystemMatrix<OsType>;
+%enddef
+
+FORM_SYSTEM_MATRIX_WRAP(mfem::SparseMatrix)
+  
+#ifdef MFEM_USE_MPI
+  FORM_SYSTEM_MATRIX_WRAP(mfem::HypreParMatrix)
+#endif
+  
+#ifdef MFEM_USE_PETSC
+  FORM_SYSTEM_MATRIX_WRAP(mfem::PetscParMatrix)
+#endif  
+

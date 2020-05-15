@@ -247,8 +247,8 @@ x0.Distribute(x.GetBlock(x0_var))
 smyid = '{:0>6d}'.format(myid)
 mesh_name  =  "mesh."+smyid
 sol_name  =   "sol."+smyid    
-pmesh.PrintToFile(mesh_name, 8)
-x0.SaveToFile(sol_name, 8)
+pmesh.Print(mesh_name, 8)
+x0.Save(sol_name, 8)
 
 # 14. Send the solution by socket to a GLVis server.
 if visualization:

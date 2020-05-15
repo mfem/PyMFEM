@@ -4,11 +4,7 @@
 import os
 import sys
 
-if sys.version_info < (3, 0):
-    def execute(text, l = {}, g = {}):
-        exec text in l, g
-else:
-    def execute(text, l = {}, g = {}):
+def execute(text, l = {}, g = {}):
         exec(text, l, g)
 
 fid = open('setup_local.py', 'w')

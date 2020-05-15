@@ -15,6 +15,7 @@ import_array();
 %import "densemat.i"
 %import "geom.i"
 %import "table.i"
+%import "hash.i"
 %import "../common/exception.i"
 
 %include "mesh/element.hpp"

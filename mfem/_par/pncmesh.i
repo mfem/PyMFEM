@@ -1,8 +1,10 @@
 %module(package="mfem._par") pncmesh
 
+%feature("autodoc", "1");
+
 %{
 #include <mpi.h>
-#include "iostream_typemap.hpp"       
+#include "io_stream.hpp"       
 #include "config/config.hpp"
 #include "mesh/mesh_headers.hpp"
 #include "mpi4py/mpi4py.h"
@@ -25,9 +27,19 @@ import_array();
 %import "mesh.i"
  //%import "ncmesh.i"
 %import "communication.i"
-%import "ostream_typemap.i"
+
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %pointer_class(int, intp);
 
 %include "mesh/pncmesh.hpp"
+
+/*
+  void Dump(std::ostream &os) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(ElementSet, Dump)
+#endif

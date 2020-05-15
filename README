@@ -1,10 +1,12 @@
 '''''
 PyMFEM
-built on mfem 3.4 (commit 0715efbaf95990a4e76380ac69337096b1cd347d)
+built on mfem 4.1 (commit SHA=60b2b7d4238fb72d018ee6f9f7a54bbfc7817e96)
 '''''
 
-PyMFEM is a python2.7 wrapper for MFEM, ligith-weight FEM (finite element
+PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
+PyMFEM is tested with python = 3.6, 3.7
+
 This wrapper is meant for a rapid-prototyping of FEM program, and
 is built using SWIG 3.0.12
 With PyMFEM, a user can create c++ MFEM objects and call their
@@ -100,6 +102,13 @@ to find more detail of the MFEM libirary.
        Therefore, if one overwrite Eval method, SWIG reroute the
        call to the Python side.
 
+       V/M ConstantCoefficeint supports natrual python object as input
+          MatrixConstantCoefficient([[1,2], [2,3]])
+          VecotrConstantCoefficient([1,2,3])
+
+          Note: thie argument is first tested if it can be converted using
+	        np.array(x,  dtype=float)
+
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
        return numpy array of Vector()
@@ -118,6 +127,9 @@ to find more detail of the MFEM libirary.
       so that follwoing can be wrappeds
 	  GridFucntion(fes, vec.GetData() + sc)
       the same is used for ParGridFunction
+
+      GridFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)
+      QuadratureFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)      
 	     
   4-4) mfem::Mesh
          Wrapper of following methods are customized to
@@ -174,6 +186,23 @@ to find more detail of the MFEM libirary.
 	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 	    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
 
+         Following method filename
+	    virtual void PrintXG(std::ostream &out = mfem::out) const;
+            virtual void Print(std::ostream &out = mfem::out) const { Printer(out); }
+            void PrintVTK(std::ostream &out);	    
+         Following method accept empty argument (=std:cout) and filename
+            virtual void PrintInfo(std::ostream &out = mfem::out)
+
+
+         FindPoints receive only one argument (points to look for) and returns
+	 count, element_id, integration_points. Note points are row order. For example,
+
+         >>> count, elem_ids, int_pts = mesh.FindPoint([1,2,3], [3,4,5], [4,5,6], [7,8,9]],
+ 	                                               warn=True, int_trans=None)
+         will look for 4 points.
+
+
+
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.
@@ -184,8 +213,22 @@ to find more detail of the MFEM libirary.
 
          GetIArray, GetJArray, and GetDataArray. These methos gives numpy
 	 array of CSR matrix data. It borrows data from SparseMatrix.
-	 Therefore, be careful not to access after the matrix is freeed.	 
-	 
+	 Therefore, be careful not to access after the matrix is freeed.
+
+         Following method accept empty argument (=std:cout) and filename
+           void Print(std::ostream &out = mfem::out, int width_ = 4) const;
+           void PrintMatlab(std::ostream &out = mfem::out) const;
+           void PrintMM(std::ostream &out = mfem::out) const;
+           void PrintCSR(std::ostream &out) const;
+           void PrintCSR2(std::ostream &out) const;
+           void PrintInfo(std::ostream &out) const;
+
+        Constructor accept numpy array
+           indptr = np.array([0, 2, 3, 6], dtype=np.int32)
+           indices = np.array([0, 2, 2, 0, 1, 2], dtype=np.int32)
+           data = np.array([1, 2, 3, 4, 5, 6], dtype=float)
+           mat = mfem.SparseMatrix([indptr, indices, data, 3,3])
+
   4-6) densemat
          Add functions are accessed as add_dense.
 	 
@@ -299,13 +342,14 @@ to find more detail of the MFEM libirary.
 	   
    4-12) std::ostream&
 
-         methods which takes std::ostream& are wrapped so that one can
-	 pass python file object. Note that you may want to flush
-	 sys.stdout first.
+         methods which takes std::ostream& are wrapped so that it acccept
+	 either empty argument (stdout) or filename.
+	 Not all methos are wrapped yet. Look for OSTREAM_ADD_DEFAULT_FILE
+	 (or OSTREAM_ADD_DEFAULT_STDOUT_FILE) macros in the SWIG interface
+	 file to find which method is wrapped.
 
          (example)
-	    sys.stdout.flush()
-	    sparsmat.PrintInfo(sys.stdout)
+	    sparsmat.PrintInfo()
        
    4-13) mfem::table
            GetRowList returns a version of GetRow which returns Python

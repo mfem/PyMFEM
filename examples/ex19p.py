@@ -36,7 +36,7 @@ myid      = MPI.COMM_WORLD.rank
 
 parser = ArgParser(description='Ex19p')
 parser.add_argument('-m', '--mesh',
-                    default = 'beam-hex.mesh', 
+                    default = 'beam-tet.mesh', 
                     action = 'store', type = str,
                     help='Mesh file to use.')
 parser.add_argument('-rs', '--refine-serial',
@@ -174,9 +174,9 @@ def ex19_main(args):
     nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
     
     smyid = '.'+'{:0>6d}'.format(myid)
-    pmesh.PrintToFile('deformed.mesh'+smyid, 8)
-    p_gf.SaveToFile('pressure.sol'+smyid, 8)
-    x_def.SaveToFile("deformation.sol"+smyid,  8)
+    pmesh.Print('deformed.mesh'+smyid, 8)
+    p_gf.Save('pressure.sol'+smyid, 8)
+    x_def.Save("deformation.sol"+smyid,  8)
 
 '''
  Custom block preconditioner for the Jacobian of the incompressible nonlinear

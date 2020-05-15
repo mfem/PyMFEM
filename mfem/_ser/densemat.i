@@ -7,25 +7,30 @@
 
 %feature("autodoc", "1");
 %{
-#include "iostream_typemap.hpp"          
+#include <fstream>
+#include <iostream>      
 #include "linalg/sparsemat.hpp"
 #include "numpy/arrayobject.h"
-#include "pyoperator.hpp"     
-  %}
+#include "pyoperator.hpp"
+#include "io_stream.hpp"     
+%}
 // initialization required to return numpy array from SWIG
 %init %{
 import_array();
 %}
 
 %include "exception.i"
-%import "general/array.hpp"
+%import "mem_manager.i"
+
 %import "array.i"
 %import "vector.i"
 %import "operators.i"
 %import "matrix.i"
-%import "ostream_typemap.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %ignore mfem::DenseMatrix::operator=;
 %ignore mfem::DenseTensor::operator=;
@@ -41,7 +46,7 @@ if len(args) == 1 and isinstance(args[0], ndarray):
         elif args[0].shape[1] != _densemat.DenseMatrix_Size(self):
             raise ValueError('Length does not match')
         else:
-  	    args = (ascontiguousarray(args[0]),)
+            args = (ascontiguousarray(args[0]),)
 %}
 %pythonappend mfem::DenseMatrix::Assign %{
     return self
@@ -176,3 +181,14 @@ def __getitem__(self, *args):
      return obj;
   }
 };
+
+/*
+  virtual void Print(std::ostream &out = mfem::out, int width_ = 4) const;
+  virtual void PrintMatlab(std::ostream &out = mfem::out) const;
+  virtual void PrintT(std::ostream &out = mfem::out, int width_ = 4) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(DenseMatrix, Print)
+OSTREAM_ADD_DEFAULT_FILE(DenseMatrix, PrintT)
+OSTREAM_ADD_DEFAULT_FILE(DenseMatrix, PrintMatlab)				
+#endif

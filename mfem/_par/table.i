@@ -1,9 +1,13 @@
 %module(package="mfem._par") table
+
+%feature("autodoc", "1");
+
 %{
-#include "iostream_typemap.hpp"    
-#include "general/table.hpp"
+#include <fstream>  
 #include <iostream>
-#include "numpy/arrayobject.h"    
+#include "numpy/arrayobject.h"      
+#include "io_stream.hpp"
+#include "general/table.hpp"
 %}
 
 // initialization required to return numpy array from SWIG
@@ -11,10 +15,16 @@
 import_array();
 %}
 
-%import array.i
-%import ostream_typemap.i
+%include "exception.i"
+%import "array.i"
 %import "../common/ignore_common_functions.i"
 %import "../common/numpy_int_typemap.i"
+%import "../common/exception.i"
+
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
+
+%import "mem_manager.i"
 
 %include "general/table.hpp"
 
@@ -31,3 +41,13 @@ PyObject* GetRowList(int i) const{
      return o;
   }
 };
+/*
+  void Print(std::ostream & out = mfem::out, int width = 4) const;
+  void PrintMatlab(std::ostream & out) const;
+  void Save(std::ostream &out) const;
+*/
+#ifndef SWIGIMPORTED
+OSTREAM_ADD_DEFAULT_FILE(Table, Print)
+OSTREAM_ADD_DEFAULT_FILE(Table, PrintMatlab)
+OSTREAM_ADD_DEFAULT_STDOUT_FILE(Table, Save)
+#endif

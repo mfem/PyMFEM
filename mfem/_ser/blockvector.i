@@ -12,5 +12,8 @@ import_array();
 %import "array.i"
 %import "vector.i"
 %import "../common/exception.i"
+
+%import "mem_manager.i"
+
 %include "linalg/blockvector.hpp"
 

@@ -1,17 +1,17 @@
 %module(package="mfem._par", directors="0")  gridfunc
 %{
+  #include <fstream>  
   #include <iostream>
   #include <sstream>
-  #include <fstream>
   #include <limits>
   #include <cmath>
   #include <cstring>
   #include <ctime>
-  #include "iostream_typemap.hpp"    
   #include "fem/linearform.hpp"
   #include "fem/gridfunc.hpp"
   #include "pycoefficient.hpp"
-  #include "numpy/arrayobject.h"      
+  #include "numpy/arrayobject.h"
+  #include "io_stream.hpp"        
 %}
 
 %init %{
@@ -34,7 +34,8 @@ import_array();
 %import "lininteg.i"
 %import "eltrans.i"
 
-%import "ostream_typemap.i"
+%import "../common/io_stream_typemap.i"
+OSTREAM_TYPEMAP(std::ostream&)
 
 %rename(Assign) mfem::GridFunction::operator=;
 
@@ -100,6 +101,7 @@ GridFunction(mfem::FiniteElementSpace *fes, const mfem::Vector &v, int offset){
  
 void SaveToFile(const char *gf_file, const int precision) const
    {
+        std::cerr << "\nWarning Deprecated : Use Save(filename) insteead of SaveToFile \n";  
 	std::ofstream mesh_ofs(gf_file);	
         mesh_ofs.precision(precision);
         self->Save(mesh_ofs);	
@@ -156,5 +158,14 @@ GridFunction.__isub__  = __isub__
 GridFunction.__imul__  = __imul__      
 %} 
 
+/*
+fem/gridfunc.hpp:   virtual void Save(std::ostream &out) const;
+fem/gridfunc.hpp:   void Save(std::ostream &out) const;
 
+fem/gridfunc.hpp:   void SaveSTLTri(std::ostream &out, double p1[], double p2[], double p3[]);
+fem/gridfunc.hpp:   void SaveVTK(std::ostream &out, const std::string &field_name, int ref);
+fem/gridfunc.hpp:   void SaveSTL(std::ostream &out, int TimesToRefine = 1);
+*/
 
+OSTREAM_ADD_DEFAULT_FILE(GridFunction, Save)
+OSTREAM_ADD_DEFAULT_FILE(QuadratureFunction, Save)

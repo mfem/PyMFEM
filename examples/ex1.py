@@ -103,21 +103,24 @@ def run(order = 1, static_cond = False,
    if static_cond: a.EnableStaticCondensation()
    a.Assemble();
 
-   A = mfem.SparseMatrix()
+   A = mfem.OperatorPtr()
    B = mfem.Vector()
    X = mfem.Vector()
+   
    a.FormLinearSystem(ess_tdof_list, x, b, A, X, B);
-   print("Size of linear system: " + str(A.Size()))
+   print("Size of linear system: " + str(A.Height()))
+   
+   # 10. Solve
+   AA = mfem.OperatorHandle2SparseMatrix(A)
+   M = mfem.GSSmoother(AA)
+   mfem.PCG(AA, M, B, X, 1, 200, 1e-12, 0.0);
 
-   # 10. Solve 
-   M = mfem.GSSmoother(A)
-   mfem.PCG(A, M, B, X, 1, 200, 1e-12, 0.0);
    # 11. Recover the solution as a finite element grid function.
    a.RecoverFEMSolution(X, b, x)
    # 12. Save the refined mesh and the solution. This output can be viewed later
    #     using GLVis: "glvis -m refined.mesh -g sol.gf".
-   mesh.PrintToFile('refined.mesh', 8)
-   x.SaveToFile('sol.gf', 8)
+   mesh.Print('refined.mesh', 8)
+   x.Save('sol.gf', 8)
 
    #13. Send the solution by socket to a GLVis server.
    if (visualization):

@@ -4,6 +4,8 @@
 #include  "config/config.hpp"
 #include "fem/linearform.hpp"  
 #include "fem/pfespace.hpp"
+#include "fem/restriction.hpp"
+#include "fem/prestriction.hpp"
 #include "numpy/arrayobject.h"
 #include "pyoperator.hpp"  
 %}
@@ -40,6 +42,7 @@ import_array();
 %import "fespace.i"
 %import "pmesh.i"
 %import "hypre.i"
+%import "restriction.i"
 %import "../common/exception.i"
 
 %pointer_class(int, intp);
