@@ -10698,15 +10698,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -10778,15 +10782,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -10848,15 +10856,19 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveSTL(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -11574,15 +11586,19 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
-    if (temp1->isSTDOUT() != 1) {
-      out1.close();
+    if (temp1) {
+      if (temp1->isSTDOUT() != 1) {
+        out1.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp1->isSTDOUT() != 1) {
-      out1.close();
+    if (temp1) {
+      if (temp1->isSTDOUT() != 1) {
+        out1.close();
+      }
     }
   }
   PyErr_Clear();
@@ -12605,15 +12621,19 @@ SWIGINTERN PyObject *_wrap_QuadratureFunction_Save__SWIG_0(PyObject *SWIGUNUSEDP
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -12786,15 +12806,19 @@ SWIGINTERN PyObject *_wrap___lshift____SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_std__ostream, 0 |  0 );
   {
-    if (temp1->isSTDOUT() != 1) {
-      out1.close();
+    if (temp1) {
+      if (temp1->isSTDOUT() != 1) {
+        out1.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp1->isSTDOUT() != 1) {
-      out1.close();
+    if (temp1) {
+      if (temp1->isSTDOUT() != 1) {
+        out1.close();
+      }
     }
   }
   PyErr_Clear();

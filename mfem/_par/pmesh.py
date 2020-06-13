@@ -301,8 +301,8 @@ class ParMesh(mfem._par.mesh.Mesh):
         return _pmesh.ParMesh_GetCharacteristics(self, h_min, h_max, kappa_min, kappa_max)
     GetCharacteristics = _swig_new_instance_method(_pmesh.ParMesh_GetCharacteristics)
 
-    def FindPoints(self, pp):
-        r"""count, element_id, integration_points = FindPoints(points)"""
+    def FindPoints(self, pp, warn=True, inv_trans=None):            
+        r"""count, element_id, integration_points = FindPoints(points, warn=True, int_trans=None)"""
         import numpy as np
         import mfem.par as mfem
 
@@ -311,7 +311,7 @@ class ParMesh(mfem._par.mesh.Mesh):
         M.Assign(pp)
         elem_ids = mfem.intArray()
         int_points = mfem.IntegrationPointArray()
-        count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points)
+        count = _mesh.Mesh_FindPoints(self, M, elem_ids, int_points, warn, inv_trans)      
         elem_ids = elem_ids.ToList()
         return count, elem_ids, int_points
 

@@ -2778,6 +2778,7 @@ namespace swig {
 
 
 #include "fem/intrules.hpp"
+#include "numpy/arrayobject.h"
 
 
 #include <limits.h>
@@ -3044,16 +3045,15 @@ fail:
 SWIGINTERN PyObject *_wrap_new_IntegrationPointArray__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   mfem::Array< mfem::IntegrationPoint > *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_IntegrationPointArray" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
   {
     try {
       result = (mfem::Array< mfem::IntegrationPoint > *)new mfem::Array< mfem::IntegrationPoint >(arg1);
@@ -3083,8 +3083,6 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray__SWIG_3(PyObject *SWIGUNUSE
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   mfem::Array< mfem::IntegrationPoint > *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -3093,11 +3091,12 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray__SWIG_3(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_IntegrationPointArray" "', argument " "1"" of type '" "mfem::IntegrationPoint *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationPoint * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_IntegrationPointArray" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
   {
     try {
       result = (mfem::Array< mfem::IntegrationPoint > *)new mfem::Array< mfem::IntegrationPoint >(arg1,arg2);
@@ -3186,17 +3185,21 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray(PyObject *self, PyObject *a
       _v = SWIG_CheckState(res);
     }
     if (_v) {
-      return _wrap_new_IntegrationPointArray__SWIG_2(self, argc, argv);
+      return _wrap_new_IntegrationPointArray__SWIG_1(self, argc, argv);
     }
   }
   if (argc == 1) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
     }
     if (_v) {
-      return _wrap_new_IntegrationPointArray__SWIG_1(self, argc, argv);
+      return _wrap_new_IntegrationPointArray__SWIG_2(self, argc, argv);
     }
   }
   if (argc == 2) {
@@ -3206,8 +3209,12 @@ SWIGINTERN PyObject *_wrap_new_IntegrationPointArray(PyObject *self, PyObject *a
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
       }
       if (_v) {
         return _wrap_new_IntegrationPointArray__SWIG_3(self, argc, argv);
@@ -3722,8 +3729,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize__SWIG_0(PyObject *SWIGU
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0 |  0 );
@@ -3731,11 +3736,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize__SWIG_0(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray_SetSize" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPointArray_SetSize" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
   {
     try {
       (arg1)->SetSize(arg2);
@@ -3766,8 +3772,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize__SWIG_1(PyObject *SWIGU
   mfem::IntegrationPoint *arg3 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   
@@ -3777,11 +3781,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize__SWIG_1(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray_SetSize" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPointArray_SetSize" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
   res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "IntegrationPointArray_SetSize" "', argument " "3"" of type '" "mfem::IntegrationPoint const &""'"); 
@@ -3820,8 +3825,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize__SWIG_2(PyObject *SWIGU
   mfem::MemoryType arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   
@@ -3831,11 +3834,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize__SWIG_2(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray_SetSize" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPointArray_SetSize" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
   ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationPointArray_SetSize" "', argument " "3"" of type '" "mfem::MemoryType""'");
@@ -3879,8 +3883,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize(PyObject *self, PyObjec
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
       }
       if (_v) {
         return _wrap_IntegrationPointArray_SetSize__SWIG_0(self, argc, argv);
@@ -3894,8 +3902,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize(PyObject *self, PyObjec
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
       }
       if (_v) {
         int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__IntegrationPoint, SWIG_POINTER_NO_NULL | 0);
@@ -3913,8 +3925,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_SetSize(PyObject *self, PyObjec
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
       }
       if (_v) {
         {
@@ -3982,8 +3998,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_Reserve(PyObject *SWIGUNUSEDPAR
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -3996,11 +4010,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_Reserve(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray_Reserve" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPointArray_Reserve" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   {
     try {
       (arg1)->Reserve(arg2);
@@ -4080,8 +4095,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_Append__SWIG_1(PyObject *SWIGUN
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   int result;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
@@ -4095,11 +4108,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_Append__SWIG_1(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IntegrationPointArray_Append" "', argument " "2"" of type '" "mfem::IntegrationPoint const *""'"); 
   }
   arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationPointArray_Append" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
   {
     try {
       result = (int)(arg1)->Append((mfem::IntegrationPoint const *)arg2,arg3);
@@ -4215,8 +4229,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_Append(PyObject *self, PyObject
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
         }
         if (_v) {
           return _wrap_IntegrationPointArray_Append__SWIG_1(self, argc, argv);
@@ -4529,8 +4547,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_MakeRef__SWIG_0(PyObject *SWIGU
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0 |  0 );
@@ -4543,11 +4559,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_MakeRef__SWIG_0(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IntegrationPointArray_MakeRef" "', argument " "2"" of type '" "mfem::IntegrationPoint *""'"); 
   }
   arg2 = reinterpret_cast< mfem::IntegrationPoint * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationPointArray_MakeRef" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
   {
     try {
       (arg1)->MakeRef(arg2,arg3);
@@ -4649,8 +4666,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_MakeRef(PyObject *self, PyObjec
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
         }
         if (_v) {
           return _wrap_IntegrationPointArray_MakeRef__SWIG_0(self, argc, argv);
@@ -4676,10 +4697,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_GetSubArray(PyObject *SWIGUNUSE
   mfem::Array< mfem::IntegrationPoint > *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -4696,16 +4713,18 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray_GetSubArray(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray_GetSubArray" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPointArray_GetSubArray" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationPointArray_GetSubArray" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "IntegrationPointArray_GetSubArray" "', argument " "4"" of type '" "mfem::Array< mfem::IntegrationPoint > &""'"); 
@@ -5308,8 +5327,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray___setitem__(PyObject *SWIGUNUSE
   mfem::IntegrationPoint arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -5325,11 +5342,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray___setitem__(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray___setitem__" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPointArray___setitem__" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   {
     res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__IntegrationPoint,  0  | 0);
     if (!SWIG_IsOK(res3)) {
@@ -5372,8 +5390,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray___getitem__(PyObject *SWIGUNUSE
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -5387,11 +5403,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPointArray___getitem__(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPointArray___getitem__" "', argument " "1"" of type '" "mfem::Array< mfem::IntegrationPoint > const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Array< mfem::IntegrationPoint > * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPointArray___getitem__" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   {
     try {
       result = (mfem::IntegrationPoint *) &mfem_Array_Sl_mfem_IntegrationPoint_Sg____getitem__((mfem::Array< mfem::IntegrationPoint > const *)arg1,arg2);
@@ -5768,8 +5785,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_index_set(PyObject *SWIGUNUSEDPARM(s
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject *swig_obj[2] ;
   
   if (!SWIG_Python_UnpackTuple(args, "IntegrationPoint_index_set", 2, 2, swig_obj)) SWIG_fail;
@@ -5778,11 +5793,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_index_set(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPoint_index_set" "', argument " "1"" of type '" "mfem::IntegrationPoint *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationPoint * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPoint_index_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
   if (arg1) (arg1)->index = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -5820,8 +5836,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_Init(PyObject *SWIGUNUSEDPARM(self),
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -5834,11 +5848,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_Init(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationPoint_Init" "', argument " "1"" of type '" "mfem::IntegrationPoint *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationPoint * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationPoint_Init" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   {
     try {
       (arg1)->Init(arg2);
@@ -5871,8 +5886,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_Set__SWIG_0(PyObject *SWIGUNUSEDPARM
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   
   if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__IntegrationPoint, 0 |  0 );
@@ -5885,11 +5898,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_Set__SWIG_0(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IntegrationPoint_Set" "', argument " "2"" of type '" "double const *""'"); 
   }
   arg2 = reinterpret_cast< double * >(argp2);
-  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationPoint_Set" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
   {
     try {
       (arg1)->Set((double const *)arg2,arg3);
@@ -5922,8 +5936,6 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_Get(PyObject *SWIGUNUSEDPARM(self), 
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -5942,11 +5954,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_Get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IntegrationPoint_Get" "', argument " "2"" of type '" "double *""'"); 
   }
   arg2 = reinterpret_cast< double * >(argp2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationPoint_Get" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
   {
     try {
       ((mfem::IntegrationPoint const *)arg1)->Get(arg2,arg3);
@@ -6056,8 +6069,12 @@ SWIGINTERN PyObject *_wrap_IntegrationPoint_Set(PyObject *self, PyObject *args) 
       _v = SWIG_CheckState(res);
       if (_v) {
         {
-          int res = SWIG_AsVal_int(argv[2], NULL);
-          _v = SWIG_CheckState(res);
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
         }
         if (_v) {
           return _wrap_IntegrationPoint_Set__SWIG_0(self, argc, argv);
@@ -6879,16 +6896,15 @@ fail:
 SWIGINTERN PyObject *_wrap_new_IntegrationRule__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   mfem::IntegrationRule *result = 0 ;
   
   if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_IntegrationRule" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
   {
     try {
       result = (mfem::IntegrationRule *)new mfem::IntegrationRule(arg1);
@@ -7037,8 +7053,12 @@ SWIGINTERN PyObject *_wrap_new_IntegrationRule(PyObject *self, PyObject *args) {
   if (argc == 1) {
     int _v;
     {
-      int res = SWIG_AsVal_int(argv[0], NULL);
-      _v = SWIG_CheckState(res);
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
     }
     if (_v) {
       return _wrap_new_IntegrationRule__SWIG_1(self, argc, argv);
@@ -7133,8 +7153,6 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_SetOrder(PyObject *SWIGUNUSEDPARM(sel
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -7147,11 +7165,12 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_SetOrder(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRule_SetOrder" "', argument " "1"" of type '" "mfem::IntegrationRule *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationRule * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationRule_SetOrder" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   {
     try {
       (arg1)->SetOrder(arg2);
@@ -7219,8 +7238,6 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_IntPoint__SWIG_0(PyObject *SWIGUNUSED
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   mfem::IntegrationPoint *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -7229,11 +7246,12 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_IntPoint__SWIG_0(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRule_IntPoint" "', argument " "1"" of type '" "mfem::IntegrationRule *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationRule * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationRule_IntPoint" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
   {
     try {
       result = (mfem::IntegrationPoint *) &(arg1)->IntPoint(arg2);
@@ -7263,8 +7281,6 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_IntPoint__SWIG_1(PyObject *SWIGUNUSED
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   mfem::IntegrationPoint *result = 0 ;
   
   if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
@@ -7273,11 +7289,12 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_IntPoint__SWIG_1(PyObject *SWIGUNUSED
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRule_IntPoint" "', argument " "1"" of type '" "mfem::IntegrationRule const *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationRule * >(argp1);
-  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationRule_IntPoint" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
   {
     try {
       result = (mfem::IntegrationPoint *) &((mfem::IntegrationRule const *)arg1)->IntPoint(arg2);
@@ -7316,8 +7333,12 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_IntPoint(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
       }
       if (_v) {
         return _wrap_IntegrationRule_IntPoint__SWIG_0(self, argc, argv);
@@ -7331,8 +7352,12 @@ SWIGINTERN PyObject *_wrap_IntegrationRule_IntPoint(PyObject *self, PyObject *ar
     _v = SWIG_CheckState(res);
     if (_v) {
       {
-        int res = SWIG_AsVal_int(argv[1], NULL);
-        _v = SWIG_CheckState(res);
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
       }
       if (_v) {
         return _wrap_IntegrationRule_IntPoint__SWIG_1(self, argc, argv);
@@ -7442,8 +7467,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GaussLegendre(PyObject *SWIGUNU
   mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7459,11 +7482,12 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GaussLegendre(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_GaussLegendre" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "QuadratureFunctions1D_GaussLegendre" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_GaussLegendre" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
@@ -7499,8 +7523,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GaussLobatto(PyObject *SWIGUNUS
   mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7516,11 +7538,12 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GaussLobatto(PyObject *SWIGUNUS
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_GaussLobatto" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "QuadratureFunctions1D_GaussLobatto" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_GaussLobatto" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
@@ -7556,8 +7579,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_OpenUniform(PyObject *SWIGUNUSE
   mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7573,11 +7594,12 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_OpenUniform(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_OpenUniform" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "QuadratureFunctions1D_OpenUniform" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_OpenUniform" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
@@ -7613,8 +7635,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_ClosedUniform(PyObject *SWIGUNU
   mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7630,11 +7650,12 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_ClosedUniform(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_ClosedUniform" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "QuadratureFunctions1D_ClosedUniform" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_ClosedUniform" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
@@ -7670,8 +7691,6 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_OpenHalfUniform(PyObject *SWIGU
   mfem::IntegrationRule *arg3 = (mfem::IntegrationRule *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -7687,11 +7706,12 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_OpenHalfUniform(PyObject *SWIGU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_OpenHalfUniform" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "QuadratureFunctions1D_OpenHalfUniform" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_mfem__IntegrationRule, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_OpenHalfUniform" "', argument " "3"" of type '" "mfem::IntegrationRule *""'"); 
@@ -7728,12 +7748,8 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GivePolyPoints(PyObject *SWIGUN
   int arg4 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
-  int val4 ;
-  int ecode4 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -7748,21 +7764,23 @@ SWIGINTERN PyObject *_wrap_QuadratureFunctions1D_GivePolyPoints(PyObject *SWIGUN
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "QuadratureFunctions1D_GivePolyPoints" "', argument " "1"" of type '" "mfem::QuadratureFunctions1D *""'"); 
   }
   arg1 = reinterpret_cast< mfem::QuadratureFunctions1D * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "QuadratureFunctions1D_GivePolyPoints" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   res3 = SWIG_ConvertPtr(obj2, &argp3,SWIGTYPE_p_double, 0 |  0 );
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "QuadratureFunctions1D_GivePolyPoints" "', argument " "3"" of type '" "double *""'"); 
   }
   arg3 = reinterpret_cast< double * >(argp3);
-  ecode4 = SWIG_AsVal_int(obj3, &val4);
-  if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "QuadratureFunctions1D_GivePolyPoints" "', argument " "4"" of type '" "int""'");
-  } 
-  arg4 = static_cast< int >(val4);
+  {
+    if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg4 = PyArray_PyIntAsInt(obj3);
+  }
   {
     try {
       (arg1)->GivePolyPoints(arg2,arg3,arg4);
@@ -7865,8 +7883,6 @@ SWIGINTERN PyObject *QuadratureFunctions1D_swiginit(PyObject *SWIGUNUSEDPARM(sel
 SWIGINTERN PyObject *_wrap_Quadrature1D_CheckClosed(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   char * kwnames[] = {
     (char *)"type",  NULL 
@@ -7874,11 +7890,12 @@ SWIGINTERN PyObject *_wrap_Quadrature1D_CheckClosed(PyObject *SWIGUNUSEDPARM(sel
   int result;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:Quadrature1D_CheckClosed", kwnames, &obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Quadrature1D_CheckClosed" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
   {
     try {
       result = (int)mfem::Quadrature1D::CheckClosed(arg1);
@@ -7905,8 +7922,6 @@ fail:
 SWIGINTERN PyObject *_wrap_Quadrature1D_CheckOpen(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   int arg1 ;
-  int val1 ;
-  int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
   char * kwnames[] = {
     (char *)"type",  NULL 
@@ -7914,11 +7929,12 @@ SWIGINTERN PyObject *_wrap_Quadrature1D_CheckOpen(PyObject *SWIGUNUSEDPARM(self)
   int result;
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:Quadrature1D_CheckOpen", kwnames, &obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "Quadrature1D_CheckOpen" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
+  {
+    if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(obj0);
+  }
   {
     try {
       result = (int)mfem::Quadrature1D::CheckOpen(arg1);
@@ -8022,10 +8038,6 @@ SWIGINTERN PyObject *_wrap_new_IntegrationRules(PyObject *SWIGUNUSEDPARM(self), 
   PyObject *resultobj = 0;
   int arg1 = (int) 0 ;
   int arg2 = (int) mfem::Quadrature1D::GaussLegendre ;
-  int val1 ;
-  int ecode1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -8035,18 +8047,20 @@ SWIGINTERN PyObject *_wrap_new_IntegrationRules(PyObject *SWIGUNUSEDPARM(self), 
   
   if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|OO:new_IntegrationRules", kwnames, &obj0, &obj1)) SWIG_fail;
   if (obj0) {
-    ecode1 = SWIG_AsVal_int(obj0, &val1);
-    if (!SWIG_IsOK(ecode1)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_IntegrationRules" "', argument " "1"" of type '" "int""'");
-    } 
-    arg1 = static_cast< int >(val1);
+    {
+      if ((PyArray_PyIntAsInt(obj0) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg1 = PyArray_PyIntAsInt(obj0);
+    }
   }
   if (obj1) {
-    ecode2 = SWIG_AsVal_int(obj1, &val2);
-    if (!SWIG_IsOK(ecode2)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "new_IntegrationRules" "', argument " "2"" of type '" "int""'");
-    } 
-    arg2 = static_cast< int >(val2);
+    {
+      if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+        SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+      };  
+      arg2 = PyArray_PyIntAsInt(obj1);
+    }
   }
   {
     try {
@@ -8078,10 +8092,6 @@ SWIGINTERN PyObject *_wrap_IntegrationRules_Get(PyObject *SWIGUNUSEDPARM(self), 
   int arg3 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -8096,16 +8106,18 @@ SWIGINTERN PyObject *_wrap_IntegrationRules_Get(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRules_Get" "', argument " "1"" of type '" "mfem::IntegrationRules *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationRules * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationRules_Get" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationRules_Get" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
   {
     try {
       result = (mfem::IntegrationRule *) &(arg1)->Get(arg2,arg3);
@@ -8137,10 +8149,6 @@ SWIGINTERN PyObject *_wrap_IntegrationRules_Set(PyObject *SWIGUNUSEDPARM(self), 
   mfem::IntegrationRule *arg4 = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -8157,16 +8165,18 @@ SWIGINTERN PyObject *_wrap_IntegrationRules_Set(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRules_Set" "', argument " "1"" of type '" "mfem::IntegrationRules *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationRules * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationRules_Set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "IntegrationRules_Set" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
   res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__IntegrationRule,  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "IntegrationRules_Set" "', argument " "4"" of type '" "mfem::IntegrationRule &""'"); 
@@ -8204,8 +8214,6 @@ SWIGINTERN PyObject *_wrap_IntegrationRules_SetOwnRules(PyObject *SWIGUNUSEDPARM
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   char * kwnames[] = {
@@ -8218,11 +8226,12 @@ SWIGINTERN PyObject *_wrap_IntegrationRules_SetOwnRules(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegrationRules_SetOwnRules" "', argument " "1"" of type '" "mfem::IntegrationRules *""'"); 
   }
   arg1 = reinterpret_cast< mfem::IntegrationRules * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegrationRules_SetOwnRules" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
   {
     try {
       (arg1)->SetOwnRules(arg2);
@@ -9418,6 +9427,9 @@ SWIG_init(void) {
 #endif
   
   SWIG_InstallConstants(d,swig_const_table);
+  
+  
+  import_array();
   
   SWIG_Python_SetConstant(d, "Quadrature1D_Invalid",SWIG_From_int(static_cast< int >(mfem::Quadrature1D::Invalid)));
   SWIG_Python_SetConstant(d, "Quadrature1D_GaussLegendre",SWIG_From_int(static_cast< int >(mfem::Quadrature1D::GaussLegendre)));
