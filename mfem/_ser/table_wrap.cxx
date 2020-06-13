@@ -5318,15 +5318,19 @@ SWIGINTERN PyObject *_wrap_Table_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), P
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -5381,15 +5385,19 @@ SWIGINTERN PyObject *_wrap_Table_PrintMatlab__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -5444,15 +5452,19 @@ SWIGINTERN PyObject *_wrap_Table_Save__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;

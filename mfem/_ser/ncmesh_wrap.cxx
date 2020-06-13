@@ -6769,15 +6769,19 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintVertexParents__SWIG_0(PyObject *SWIGUNUSE
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -6835,15 +6839,19 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintCoarseElements__SWIG_0(PyObject *SWIGUNUS
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -7188,15 +7196,19 @@ SWIGINTERN PyObject *_wrap_NCMesh_PrintStats__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;

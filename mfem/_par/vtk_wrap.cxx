@@ -3522,15 +3522,19 @@ SWIGINTERN PyObject *_wrap_WriteVTKEncodedCompressed(PyObject *SWIGUNUSEDPARM(se
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp1->isSTDOUT() != 1) {
-      out1.close();
+    if (temp1) {
+      if (temp1->isSTDOUT() != 1) {
+        out1.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp1->isSTDOUT() != 1) {
-      out1.close();
+    if (temp1) {
+      if (temp1->isSTDOUT() != 1) {
+        out1.close();
+      }
     }
   }
   return NULL;

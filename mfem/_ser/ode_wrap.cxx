@@ -8587,15 +8587,19 @@ SWIGINTERN PyObject *_wrap_NewmarkSolver_PrintProperties(PyObject *SWIGUNUSEDPAR
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -9143,15 +9147,19 @@ SWIGINTERN PyObject *_wrap_GeneralizedAlpha2Solver_PrintProperties(PyObject *SWI
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
