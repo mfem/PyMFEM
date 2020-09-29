@@ -1,6 +1,6 @@
 '''''
 PyMFEM
-built on mfem 4.1 (commit SHA=60b2b7d4238fb72d018ee6f9f7a54bbfc7817e96)
+built on mfem 4.1 (commit SHA=8dbbcfc25629ac7612fe31afd5b511752ff0e69b)
 '''''
 
 PyMFEM is a python wrapper for MFEM, lightweight FEM (finite element
