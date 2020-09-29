@@ -3,21 +3,21 @@ PyMFEM
 built on mfem 4.1 (commit SHA=60b2b7d4238fb72d018ee6f9f7a54bbfc7817e96)
 '''''
 
-PyMFEM is a python wrapper for MFEM, ligith-weight FEM (finite element
+PyMFEM is a python wrapper for MFEM, lightweight FEM (finite element
 method) library developed by LLNL (http://mfem.org).
 PyMFEM is tested with python = 3.6, 3.7
 
-This wrapper is meant for a rapid-prototyping of FEM program, and
+This wrapper is meant for a rapid-prototyping of FEM programs, and
 is built using SWIG 3.0.12
-With PyMFEM, a user can create c++ MFEM objects and call their
-method from python. We strongly recommend to visit the MFEM web site
-to find more detail of the MFEM libirary.
+With PyMFEM, a user can create C++ MFEM objects and call their
+method from python. We strongly recommend visiting the MFEM web site
+to find more details of the MFEM library.
 
 -- Module structure --
   <root>/mfem/ser : wrapper for serial MFEM
              /par : wrapper for parallel MFEM
 	     /common : helper modules 
-             /Makefile_tempates: example template
+             /Makefile_templates: example template
 	     /examples : example scripts
 
 -- INSTALLATION --
@@ -26,19 +26,19 @@ to find more detail of the MFEM libirary.
 
 -- Features --
  Following features are realized in PyMFEM using SWIG interface
- in order to use MFEM more conveientely from python. 
- Some of them may be e integrated to MFEM itself in future.
+ in order to use MFEM more conveniently from python. 
+ Some of them may be integrated to MFEM itself in future.
  
   4-1) mfem::Vector
-     Constructor using python list/numpy array:
+     Constructor using python list or NumPy array:
      
         v = mfem.Vector([1,2,3.])
         v = mfem.Vector(np.array([1,2,3,4.])
 
         Note that when list is passed. Contents of list is copied and data is
-	owned by mfem::Vector. When numpy arra is passed. Data is not copied.
-	mfem::Vector holds the passed numpy array as _link_to_data attribute,
-	so that python does not garbage collect the numpy array untill mfem::Vector
+	owned by mfem::Vector. When a NumPy array is passed, data is not copied.
+	mfem::Vector holds the passed NumPy array as _link_to_data attribute,
+	so that python does not garbage collect the NumPy array until mfem::Vector
 	is deleted.
 
         Constructor also get SWIG object to <double *>. However, memory
@@ -46,16 +46,16 @@ to find more detail of the MFEM libirary.
 	
      Array element access:
          reading element: print v[0]
-	 element assinment v[0] = 3
+	 element assignment v[0] = 3
 
          negative index is also possible; v[-1] is equivalent to v[size-1]
 	 
-     Assign method: operator= is replaced by Assine method 
+     Assign method: operator= is replaced by Assign method 
         v.Assign(1.) (equivalent to v=1 in c++)
         v.Assign(<some mfem::Vector>) (copy data from mfem vector)
         v.Assign(np.array([1., 2., 3.])  (copy data from np.array)
 	
-     Data Access as Numpy:  v.GetDataArray()
+     Data Access as NumPy:  v.GetDataArray()
 
      In c++, a new partial view to existing vector is acquired as
 	Vector v(vec.GetData() + sc, sc);
@@ -64,20 +64,20 @@ to find more detail of the MFEM libirary.
      or use slice
         vec[offset:offset+size]  # more python-ish...
 
-     Note that this slice returns mere new nmemory view, sharing the same vector
-     object. However, be carefull that, when slice requires non contigeous momory
+     Note that this slice returns mere new memory view, sharing the same vector
+     object. However, be careful that, when slice requires non-contiguous memory
      view, PyMFEM returns a new vector object NOT sharing the memory.
      If one wants to get the access to a memory view with non-trivial striding,
-     use GetDataArray discussed below to get a numpy array pointing the
-     moemory allocated for Vector, and use slice of the newly created numpy object.
+     use GetDataArray discussed below to get a NumPy array pointing the
+     memory allocated for Vector, and use slice of the newly created NumPy object.
      
-     Vector::GetDataArray returns numpy object viewing the data stored in C++ Vector
-     object. Note that the returned numpy array does not own the data.
+     Vector::GetDataArray returns NumPy object viewing the data stored in C++ Vector
+     object. Note that the returned NumPy array does not own the data.
 
   4-2) mfem::Coefficient
        PyCoefficient is derived from FunctionCoefficient
        PyCoefficientT is time-dependent version
-       VectorPyCoefficient  is derveid from VectorFunctionCoefficient
+       VectorPyCoefficient  is derived from VectorFunctionCoefficient
        VectorPyCoefficientT is time-dependent version
 
        When using these class, inherit one of them and define
@@ -102,16 +102,16 @@ to find more detail of the MFEM libirary.
        Therefore, if one overwrite Eval method, SWIG reroute the
        call to the Python side.
 
-       V/M ConstantCoefficeint supports natrual python object as input
+       V/M ConstantCoefficeint supports natural python object as input
           MatrixConstantCoefficient([[1,2], [2,3]])
-          VecotrConstantCoefficient([1,2,3])
+          VectorConstantCoefficient([1,2,3])
 
-          Note: thie argument is first tested if it can be converted using
+          Note: the argument is first tested if it can be converted using
 	        np.array(x,  dtype=float)
 
   4-3) mfem::GridFunction
        GetNodalValues(i) will perform GetNodalValue(Vector(), i) and
-       return numpy array of Vector()
+       return NumPy array of Vector()
   
        = operator is renamed as Assign method.
          (python)
@@ -124,8 +124,8 @@ to find more detail of the MFEM libirary.
       GridFunction(FiniteElementSpace *f, double *data) is extended to
       support offsets
           v = mfem.GridFunction(fec, <pointer to double>, offset)
-      so that follwoing can be wrappeds
-	  GridFucntion(fes, vec.GetData() + sc)
+      so that following can be wrapped
+	  GridFunction(fes, vec.GetData() + sc)
       the same is used for ParGridFunction
 
       GridFunction::Save(std::ostream &out) is wrapped as Save(filename, precision=8)
@@ -152,7 +152,7 @@ to find more detail of the MFEM libirary.
             GetFaceTransformation(i)
             GetEdgeTransformation(i)
 	    
-	 pointer passing in following methos are returned
+	 pointer passing in following methods are returned
 	 as tuple
             elem1, elem2 = mesh.GetFaceElements(i)
 	    
@@ -168,21 +168,21 @@ to find more detail of the MFEM libirary.
               double sx = 1.0, double sy = 1.0)
 	      
 	    (note) an issue is Element::Type (c++ enum) is treated as int in
-	    python, and therefore, the wrapper can not disingish it from the
+	    python, and therefore, the wrapper can not distinguish it from the
 	    following constructor.
               Mesh(int _Dim, int NVert, int NElem, int NBdrElem = 0,
     	           int _spaceDim= -1)
          
          GetVertexArray can be used to obtain Vertex point data
-	 as numpy object
+	 as NumPy object
 
          GetBdrElementFace(i) returns tuple
          GetBdrArray(int idx) returns array of boundary element whose BdrAttribute is idx
          GetBdrAttributeArray() returns array of boundary attribute
-         GetAttributeArray() returns array of aqttribute
+         GetAttributeArray() returns array of attribute
          GetDomainArray(int idx) returns array of element whose Attribute is idx
 	 
-         SwapNodes returns nodes and onws_nodes as follows.
+         SwapNodes returns nodes and owns_nodes as follows.
 	    nodes, owns_nodes = mesh.SwapNodes(nodes, owns_nodes)
 	    nodes, owns_nodes = pmesh.SwapNodes(nodes, owns_nodes)
 
@@ -207,13 +207,13 @@ to find more detail of the MFEM libirary.
          RAP has two different implementations. One accept three references.
 	 The other accept a pointer as a third argument, instead.
 	 These two are not distinguishable from python. So, RAP_P and
-	 RAP_R are added. P indicates the third argment is pointer.
+	 RAP_R are added. P indicates that the third argument is a pointer.
 	 
          Add functions are accessed as add_sparse.
 
-         GetIArray, GetJArray, and GetDataArray. These methos gives numpy
+         GetIArray, GetJArray, and GetDataArray. These methods give NumPy
 	 array of CSR matrix data. It borrows data from SparseMatrix.
-	 Therefore, be careful not to access after the matrix is freeed.
+	 Therefore, be careful not to access after the matrix is freed.
 
          Following method accept empty argument (=std:cout) and filename
            void Print(std::ostream &out = mfem::out, int width_ = 4) const;
@@ -223,7 +223,7 @@ to find more detail of the MFEM libirary.
            void PrintCSR2(std::ostream &out) const;
            void PrintInfo(std::ostream &out) const;
 
-        Constructor accept numpy array
+        Constructor accept NumPy array
            indptr = np.array([0, 2, 3, 6], dtype=np.int32)
            indices = np.array([0, 2, 2, 0, 1, 2], dtype=np.int32)
            data = np.array([1, 2, 3, 4, 5, 6], dtype=float)
@@ -234,7 +234,7 @@ to find more detail of the MFEM libirary.
 	 
 	 elements are accessed similar to a regular python array
 	 Assign method replaces = operator
-         GetDataArray returns a memory view to the internal data as numpy array.
+         GetDataArray returns a memory view to the internal data as NumPy array.
 	 
          (example)
               x = DenseMatrix(3, 3)	 
@@ -246,7 +246,7 @@ to find more detail of the MFEM libirary.
               x[i,j] = xxx
 	      print x[i,j]
 
-              # Assigning (copy) from numpy array
+              # Assigning (copy) from NumPy array
 	      m = DenseMatrix(3,3)
 	      m.Assign(np.arange(9.).reshape(3,3))
 	      
@@ -256,11 +256,11 @@ to find more detail of the MFEM libirary.
 	      print x[1,2,3]
 	      x[1,2,3]=3
 
-              # NOTE the index order is different in the numpy array returned
+              # NOTE the index order is different in the NumPy array returned
 	      # by DenseTensor::GetDataArray
               x[1 2,3] = x.GetDataArray()[3,1,2]
 	      
-	 Note that internally MFEM densmatrix is column major, while numpy
+	 Note that internally MFEM DenseMatrix is column major, while NumPy
 	 is row major. Therefore,
             v = Vector([1,2,3,4,5,6,7,8,9])
 	    m = DenseMatrix(v.GetData(), 3, 3)
@@ -278,9 +278,9 @@ to find more detail of the MFEM libirary.
 
 	  
   4-7) estimators
-        ZienkiewiczZhuEstimator and L2ZienkiewZhuEstimator
+        ZienkiewiczZhuEstimator and L2ZienkiewiczZhuEstimator
 	have two versions of constructor. flux_fes
-	can be eithor passed as pointer or reference. In python class, you
+	can be either passed as pointer or reference. In python class, you
 	need to pass 5th argument if you want to pass flux_fes as
 	reference. By default,  own_flux_fes is  False, so a user
 	can skip passing this keyword when passing by reference
@@ -307,10 +307,10 @@ to find more detail of the MFEM libirary.
 	   t, dt = ode_solver.Step(u, t, dt)
 
   4-10) hypre
-        Following methods are added trhough SWIG interface
-        HypreParVector::GetPartitioningArray  returns Partitioning as numpy array
-        HypreParMatrix::GetColPartArray  returns ColPart as numpy array
-        HypreParMatrix::GetRowPartArray  returns RowPart as numpy array	
+        Following methods are added through SWIG interface
+        HypreParVector::GetPartitioningArray  returns Partitioning as NumPy array
+        HypreParMatrix::GetColPartArray  returns ColPart as NumPy array
+        HypreParMatrix::GetRowPartArray  returns RowPart as NumPy array	
         HypreParMatrix::GetCooDataArray  returns data to construct local coo matrix
 
         mfem.common.chypre
@@ -318,9 +318,9 @@ to find more detail of the MFEM libirary.
 	supports...
 	    1) create HypreParCSR and HypreParVector from scipy.sparse.csr_matrix
 	    and numpy.ndarray, respectively
-	    2) convert HypreMatrix/Vector to numpy array or scipy.sparse matrix
+	    2) convert HypreMatrix/Vector to NumPy array or scipy.sparse matrix
 	    3) handle complex number using a pair of Hypre object (real and imag)
-        Class methods of these classes are named in a similar way to numpy array.
+        Class methods of these classes are named in a similar way to NumPy array.
 
    4-11) socketstream
 
@@ -334,7 +334,7 @@ to find more detail of the MFEM libirary.
            sock.send_solution(pmesh, x)
 	 
          socketstream object support << operator partially, but not works
-	 perfectly. This was done by adding __lshift__ and other methos to
+	 perfectly. This was done by adding __lshift__ and other methods to
 	 socketstream class in .i file. We don't want to wrap the whole
 	 iostream. Instead, we are adding methods used in examples such as
 	 precision. Also, note that sock << flush in c++ should be rephrased
@@ -342,9 +342,9 @@ to find more detail of the MFEM libirary.
 	   
    4-12) std::ostream&
 
-         methods which takes std::ostream& are wrapped so that it acccept
+         methods which takes std::ostream& are wrapped so that it accept
 	 either empty argument (stdout) or filename.
-	 Not all methos are wrapped yet. Look for OSTREAM_ADD_DEFAULT_FILE
+	 Not all methods are wrapped yet. Look for OSTREAM_ADD_DEFAULT_FILE
 	 (or OSTREAM_ADD_DEFAULT_STDOUT_FILE) macros in the SWIG interface
 	 file to find which method is wrapped.
 
@@ -398,7 +398,7 @@ to find more detail of the MFEM libirary.
 
          Returned ComplexOperator hold the passed real and imag operators
 	 so that Python does not garbage collect them.
-	 If thisown of real/imag operatros are 1, a user has an option to
+	 If thisown of real/imag operators are 1, a user has an option to
 	 set ownReal, ownImag.
 
     4-17) strumpack
@@ -427,8 +427,8 @@ to find more detail of the MFEM libirary.
 	     
 -- Known issues --
 
-  PyMFEM is an on-going effort. Not all MFEM functioality is propary
-  wrapped yet. Presnetly all serial/parallel examples avaiable in
+  PyMFEM is an on-going effort. Not all MFEM functionality is properly
+  wrapped yet. Presently all serial/parallel examples available in
   the top-level mfem/example directory are rewritten in python.
   This would be sufficient for certain projects, but for other projects,
   you may find various features are missing. Please inform us if you
@@ -447,6 +447,6 @@ to find more detail of the MFEM libirary.
 
   4) Visualization through visit is not included
 
-  5) SuperLU and Petsc are not supported.
+  5) SuperLU and PETSc are not supported.
   
 *This work is supported by US DoE contract DE-FC02-99ER54512
