@@ -25,8 +25,10 @@
   }
 }
 %typemap(freearg) std::ostream& {
-  if (temp$argnum->isSTDOUT() != 1) {
-    out$argnum.close();
+  if (temp$argnum) {
+     if (temp$argnum->isSTDOUT() != 1) {
+         out$argnum.close();
+     }
   }
 }
 %enddef

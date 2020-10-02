@@ -7487,15 +7487,19 @@ SWIGINTERN PyObject *_wrap_Vector_Print__SWIG_0(PyObject *SWIGUNUSEDPARM(self), 
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
@@ -7550,15 +7554,19 @@ SWIGINTERN PyObject *_wrap_Vector_Print_HYPRE__SWIG_0(PyObject *SWIGUNUSEDPARM(s
   }
   resultobj = SWIG_Py_Void();
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return resultobj;
 fail:
   {
-    if (temp2->isSTDOUT() != 1) {
-      out2.close();
+    if (temp2) {
+      if (temp2->isSTDOUT() != 1) {
+        out2.close();
+      }
     }
   }
   return NULL;
