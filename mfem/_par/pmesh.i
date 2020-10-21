@@ -95,7 +95,7 @@ ParMesh(MPI_Comm comm, apf::Mesh2* pumi_mesh){
     std::cerr << "\nPointer to pumi_mesh is not set\n" << std::endl;
     return NULL;
     }
-    mesh = new mfem::ParPumiMesh(comm, pumi_mesh);
+    mesh = new mfem::ParPumiMesh(comm, pumi_mesh, 0, true);
     return mesh;
     }
 
