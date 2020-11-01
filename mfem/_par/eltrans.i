@@ -11,6 +11,9 @@
 import_array();
 %}
 
+%include "exception.i"
+%include "globals.i"
+
 %import "array.i"
 %import "vector.i"
 %import "densemat.i"

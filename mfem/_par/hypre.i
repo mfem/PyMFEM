@@ -28,6 +28,8 @@ import_array();
 
 %include "exception.i"
 %import "../common/ignore_common_functions.i"
+%include "globals.i"
+
 %import "vector.i"
 %import "sparsemat.i"
 %import "../common/exception.i"

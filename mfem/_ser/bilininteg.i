@@ -23,6 +23,8 @@ import_array();
 }
 */
 %include "exception.i"
+%include "globals.i"
+
 %import "array.i"
 %import "coefficient.i"
 %import "matrix.i"

@@ -12,5 +12,5 @@ import_array();
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
+%include "../../headers/mem_manager.hpp"
 
-%include "general/mem_manager.hpp"

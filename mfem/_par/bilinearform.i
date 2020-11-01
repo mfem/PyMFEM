@@ -10,6 +10,7 @@ import_array();
 %}
 %include "exception.i"
  //%import "cpointers.i"
+%include "globals.i"
 
 %import "array.i"
 %import "mem_manager.i"

@@ -19,6 +19,7 @@ import_array();
 
 %include "exception.i"
 %include "../common/exception.i"
+%include "globals.i"
 
 %import "array.i"
 
