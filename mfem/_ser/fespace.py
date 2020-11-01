@@ -79,6 +79,7 @@ import mfem._ser.eltrans
 import mfem._ser.fe
 import mfem._ser.geom
 import mfem._ser.mesh
+import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
 import mfem._ser.bilininteg

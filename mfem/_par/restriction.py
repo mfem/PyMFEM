@@ -78,6 +78,7 @@ import mfem._par.intrules
 import mfem._par.table
 import mfem._par.hash
 import mfem._par.mesh
+import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.vertex

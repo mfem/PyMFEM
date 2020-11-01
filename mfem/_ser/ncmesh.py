@@ -152,6 +152,7 @@ import mfem._ser.vector
 import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.operators
+import mfem._ser.sort_pairs
 import mfem._ser.gridfunc
 import mfem._ser.coefficient
 import mfem._ser.intrules

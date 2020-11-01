@@ -19,4 +19,5 @@ import_array();
 %import "sparsemat.i"
 %import "../common/exception_director.i"
 
+%ignore mfem::IterativeSolverMonitor::SetIterativeSolver;
 %include "linalg/solvers.hpp"

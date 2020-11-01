@@ -111,6 +111,7 @@ import mfem._ser.fe
 import mfem._ser.geom
 import mfem._ser.gridfunc
 import mfem._ser.mesh
+import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.element
 import mfem._ser.table
@@ -1655,11 +1656,6 @@ class MassIntegrator(BilinearFormIntegrator):
         r"""GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"""
         return _bilininteg.MassIntegrator_GetRule(trial_fe, test_fe, Trans)
     GetRule = _swig_new_static_method(_bilininteg.MassIntegrator_GetRule)
-
-    def SetupPA(self, fes):
-        r"""SetupPA(MassIntegrator self, FiniteElementSpace fes)"""
-        return _bilininteg.MassIntegrator_SetupPA(self, fes)
-    SetupPA = _swig_new_instance_method(_bilininteg.MassIntegrator_SetupPA)
 
 # Register MassIntegrator in _bilininteg:
 _bilininteg.MassIntegrator_swigregister(MassIntegrator)

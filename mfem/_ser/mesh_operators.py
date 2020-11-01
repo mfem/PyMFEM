@@ -72,6 +72,7 @@ import mfem._ser.vector
 import mfem._ser.mesh
 import mfem._ser.matrix
 import mfem._ser.operators
+import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
 import mfem._ser.coefficient

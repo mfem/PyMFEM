@@ -3097,55 +3097,54 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_IterativeSolver swig_types[0]
-#define SWIGTYPE_p_MPI_Comm swig_types[1]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[2]
-#define SWIGTYPE_p_char swig_types[3]
-#define SWIGTYPE_p_double swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[6]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
-#define SWIGTYPE_p_mfem__BiCGSTABSolver swig_types[8]
-#define SWIGTYPE_p_mfem__BilinearForm swig_types[9]
-#define SWIGTYPE_p_mfem__BlockILU swig_types[10]
-#define SWIGTYPE_p_mfem__CGSolver swig_types[11]
-#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[12]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[13]
-#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[14]
-#define SWIGTYPE_p_mfem__FGMRESSolver swig_types[15]
-#define SWIGTYPE_p_mfem__GMRESSolver swig_types[16]
-#define SWIGTYPE_p_mfem__IdentityOperator swig_types[17]
-#define SWIGTYPE_p_mfem__IterativeSolver swig_types[18]
-#define SWIGTYPE_p_mfem__IterativeSolverMonitor swig_types[19]
-#define SWIGTYPE_p_mfem__LBFGSSolver swig_types[20]
-#define SWIGTYPE_p_mfem__MINRESSolver swig_types[21]
-#define SWIGTYPE_p_mfem__Matrix swig_types[22]
-#define SWIGTYPE_p_mfem__MatrixInverse swig_types[23]
-#define SWIGTYPE_p_mfem__NewtonSolver swig_types[24]
-#define SWIGTYPE_p_mfem__Operator swig_types[25]
-#define SWIGTYPE_p_mfem__OperatorChebyshevSmoother swig_types[26]
-#define SWIGTYPE_p_mfem__OperatorJacobiSmoother swig_types[27]
-#define SWIGTYPE_p_mfem__OptimizationProblem swig_types[28]
-#define SWIGTYPE_p_mfem__OptimizationSolver swig_types[29]
-#define SWIGTYPE_p_mfem__ProductOperator swig_types[30]
-#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[31]
-#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[32]
-#define SWIGTYPE_p_mfem__RAPOperator swig_types[33]
-#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[34]
-#define SWIGTYPE_p_mfem__ResidualBCMonitor swig_types[35]
-#define SWIGTYPE_p_mfem__SLBQPOptimizer swig_types[36]
-#define SWIGTYPE_p_mfem__SLISolver swig_types[37]
-#define SWIGTYPE_p_mfem__ScaledOperator swig_types[38]
-#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[39]
-#define SWIGTYPE_p_mfem__Solver swig_types[40]
-#define SWIGTYPE_p_mfem__SparseMatrix swig_types[41]
-#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[42]
-#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[43]
-#define SWIGTYPE_p_mfem__TransposeOperator swig_types[44]
-#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[45]
-#define SWIGTYPE_p_mfem__Vector swig_types[46]
-static swig_type_info *swig_types[48];
-static swig_module_info swig_module = {swig_types, 47, 0, 0, 0, 0};
+#define SWIGTYPE_p_MPI_Comm swig_types[0]
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_double swig_types[3]
+#define SWIGTYPE_p_int swig_types[4]
+#define SWIGTYPE_p_mfem__AbstractSparseMatrix swig_types[5]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[6]
+#define SWIGTYPE_p_mfem__BiCGSTABSolver swig_types[7]
+#define SWIGTYPE_p_mfem__BilinearForm swig_types[8]
+#define SWIGTYPE_p_mfem__BlockILU swig_types[9]
+#define SWIGTYPE_p_mfem__CGSolver swig_types[10]
+#define SWIGTYPE_p_mfem__ConstrainedOperator swig_types[11]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[12]
+#define SWIGTYPE_p_mfem__DenseMatrixInverse swig_types[13]
+#define SWIGTYPE_p_mfem__FGMRESSolver swig_types[14]
+#define SWIGTYPE_p_mfem__GMRESSolver swig_types[15]
+#define SWIGTYPE_p_mfem__IdentityOperator swig_types[16]
+#define SWIGTYPE_p_mfem__IterativeSolver swig_types[17]
+#define SWIGTYPE_p_mfem__IterativeSolverMonitor swig_types[18]
+#define SWIGTYPE_p_mfem__LBFGSSolver swig_types[19]
+#define SWIGTYPE_p_mfem__MINRESSolver swig_types[20]
+#define SWIGTYPE_p_mfem__Matrix swig_types[21]
+#define SWIGTYPE_p_mfem__MatrixInverse swig_types[22]
+#define SWIGTYPE_p_mfem__NewtonSolver swig_types[23]
+#define SWIGTYPE_p_mfem__Operator swig_types[24]
+#define SWIGTYPE_p_mfem__OperatorChebyshevSmoother swig_types[25]
+#define SWIGTYPE_p_mfem__OperatorJacobiSmoother swig_types[26]
+#define SWIGTYPE_p_mfem__OptimizationProblem swig_types[27]
+#define SWIGTYPE_p_mfem__OptimizationSolver swig_types[28]
+#define SWIGTYPE_p_mfem__ProductOperator swig_types[29]
+#define SWIGTYPE_p_mfem__PyOperatorBase swig_types[30]
+#define SWIGTYPE_p_mfem__PyTimeDependentOperatorBase swig_types[31]
+#define SWIGTYPE_p_mfem__RAPOperator swig_types[32]
+#define SWIGTYPE_p_mfem__RectangularConstrainedOperator swig_types[33]
+#define SWIGTYPE_p_mfem__ResidualBCMonitor swig_types[34]
+#define SWIGTYPE_p_mfem__SLBQPOptimizer swig_types[35]
+#define SWIGTYPE_p_mfem__SLISolver swig_types[36]
+#define SWIGTYPE_p_mfem__ScaledOperator swig_types[37]
+#define SWIGTYPE_p_mfem__SecondOrderTimeDependentOperator swig_types[38]
+#define SWIGTYPE_p_mfem__Solver swig_types[39]
+#define SWIGTYPE_p_mfem__SparseMatrix swig_types[40]
+#define SWIGTYPE_p_mfem__TimeDependentAdjointOperator swig_types[41]
+#define SWIGTYPE_p_mfem__TimeDependentOperator swig_types[42]
+#define SWIGTYPE_p_mfem__TransposeOperator swig_types[43]
+#define SWIGTYPE_p_mfem__TripleProductOperator swig_types[44]
+#define SWIGTYPE_p_mfem__Vector swig_types[45]
+static swig_type_info *swig_types[47];
+static swig_module_info swig_module = {swig_types, 46, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3706,54 +3705,6 @@ SWIGINTERN PyObject *_wrap_IterativeSolverMonitor_MonitorSolution(PyObject *SWIG
   {
     try {
       (arg1)->MonitorSolution(arg2,arg3,(mfem::Vector const &)*arg4,arg5); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_IterativeSolverMonitor_SetIterativeSolver(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::IterativeSolverMonitor *arg1 = (mfem::IterativeSolverMonitor *) 0 ;
-  IterativeSolver *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"solver",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:IterativeSolverMonitor_SetIterativeSolver", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__IterativeSolverMonitor, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IterativeSolverMonitor_SetIterativeSolver" "', argument " "1"" of type '" "mfem::IterativeSolverMonitor *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::IterativeSolverMonitor * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_IterativeSolver,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IterativeSolverMonitor_SetIterativeSolver" "', argument " "2"" of type '" "IterativeSolver const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "IterativeSolverMonitor_SetIterativeSolver" "', argument " "2"" of type '" "IterativeSolver const &""'"); 
-  }
-  arg2 = reinterpret_cast< IterativeSolver * >(argp2);
-  {
-    try {
-      (arg1)->SetIterativeSolver((IterativeSolver const &)*arg2); 
     }
     catch (Swig::DirectorException &e) {
       SWIG_fail; 
@@ -11118,7 +11069,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_IterativeSolverMonitor", _wrap_delete_IterativeSolverMonitor, METH_O, "delete_IterativeSolverMonitor(IterativeSolverMonitor self)"},
 	 { "IterativeSolverMonitor_MonitorResidual", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorResidual, METH_VARARGS|METH_KEYWORDS, "IterativeSolverMonitor_MonitorResidual(IterativeSolverMonitor self, int it, double norm, Vector r, bool final)"},
 	 { "IterativeSolverMonitor_MonitorSolution", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorSolution, METH_VARARGS|METH_KEYWORDS, "IterativeSolverMonitor_MonitorSolution(IterativeSolverMonitor self, int it, double norm, Vector x, bool final)"},
-	 { "IterativeSolverMonitor_SetIterativeSolver", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_SetIterativeSolver, METH_VARARGS|METH_KEYWORDS, "IterativeSolverMonitor_SetIterativeSolver(IterativeSolverMonitor self, IterativeSolver const & solver)"},
 	 { "IterativeSolverMonitor_swigregister", IterativeSolverMonitor_swigregister, METH_O, NULL},
 	 { "IterativeSolverMonitor_swiginit", IterativeSolverMonitor_swiginit, METH_VARARGS, NULL},
 	 { "IterativeSolver_SetRelTol", (PyCFunction)(void(*)(void))_wrap_IterativeSolver_SetRelTol, METH_VARARGS|METH_KEYWORDS, "IterativeSolver_SetRelTol(IterativeSolver self, double rtol)"},
@@ -11313,7 +11263,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_IterativeSolverMonitor", _wrap_delete_IterativeSolverMonitor, METH_O, "delete_IterativeSolverMonitor(IterativeSolverMonitor self)"},
 	 { "IterativeSolverMonitor_MonitorResidual", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorResidual, METH_VARARGS|METH_KEYWORDS, "MonitorResidual(IterativeSolverMonitor self, int it, double norm, Vector r, bool final)"},
 	 { "IterativeSolverMonitor_MonitorSolution", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_MonitorSolution, METH_VARARGS|METH_KEYWORDS, "MonitorSolution(IterativeSolverMonitor self, int it, double norm, Vector x, bool final)"},
-	 { "IterativeSolverMonitor_SetIterativeSolver", (PyCFunction)(void(*)(void))_wrap_IterativeSolverMonitor_SetIterativeSolver, METH_VARARGS|METH_KEYWORDS, "SetIterativeSolver(IterativeSolverMonitor self, IterativeSolver const & solver)"},
 	 { "IterativeSolverMonitor_swigregister", IterativeSolverMonitor_swigregister, METH_O, NULL},
 	 { "IterativeSolverMonitor_swiginit", IterativeSolverMonitor_swiginit, METH_VARARGS, NULL},
 	 { "IterativeSolver_SetRelTol", (PyCFunction)(void(*)(void))_wrap_IterativeSolver_SetRelTol, METH_VARARGS|METH_KEYWORDS, "SetRelTol(IterativeSolver self, double rtol)"},
@@ -11693,7 +11642,6 @@ static void *_p_mfem__SLBQPOptimizerTo_p_mfem__IterativeSolver(void *x, int *SWI
 static void *_p_mfem__ResidualBCMonitorTo_p_mfem__IterativeSolverMonitor(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::IterativeSolverMonitor *)  ((mfem::ResidualBCMonitor *) x));
 }
-static swig_type_info _swigt__p_IterativeSolver = {"_p_IterativeSolver", "IterativeSolver *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -11742,7 +11690,6 @@ static swig_type_info _swigt__p_mfem__Solver = {"_p_mfem__Solver", "mfem::Solver
 static swig_type_info _swigt__p_mfem__Vector = {"_p_mfem__Vector", "mfem::Vector *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_IterativeSolver,
   &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
@@ -11791,7 +11738,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Vector,
 };
 
-static swig_cast_info _swigc__p_IterativeSolver[] = {  {&_swigt__p_IterativeSolver, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -11840,7 +11786,6 @@ static swig_cast_info _swigc__p_mfem__Solver[] = {  {&_swigt__p_mfem__MINRESSolv
 static swig_cast_info _swigc__p_mfem__Vector[] = {  {&_swigt__p_mfem__Vector, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_IterativeSolver,
   _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,

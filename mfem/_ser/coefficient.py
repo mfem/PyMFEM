@@ -1782,12 +1782,9 @@ class CrossCrossCoefficient(MatrixCoefficient):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
     __repr__ = _swig_repr
 
-    def __init__(self, *args):
-        r"""
-        __init__(CrossCrossCoefficient self, double A, VectorCoefficient K) -> CrossCrossCoefficient
-        __init__(CrossCrossCoefficient self, Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient
-        """
-        _coefficient.CrossCrossCoefficient_swiginit(self, _coefficient.new_CrossCrossCoefficient(*args))
+    def __init__(self, A, K):
+        r"""__init__(CrossCrossCoefficient self, Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient"""
+        _coefficient.CrossCrossCoefficient_swiginit(self, _coefficient.new_CrossCrossCoefficient(A, K))
 
     def SetAConst(self, A):
         r"""SetAConst(CrossCrossCoefficient self, double A)"""

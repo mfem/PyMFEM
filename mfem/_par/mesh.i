@@ -29,6 +29,7 @@ import_array();
 %include "exception.i"
 %import "matrix.i"
 %import "array.i"
+%import "sort_pairs.i"
 %import "ncmesh.i"
 %import "vector.i"
 %import "vtk.i"

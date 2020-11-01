@@ -3105,15 +3105,15 @@ namespace Swig {
 #define SWIGTYPE_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void swig_types[5]
 #define SWIGTYPE_p_hex_t swig_types[6]
 #define SWIGTYPE_p_int swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_TripleT_int_int_int_t_t swig_types[8]
-#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[9]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[10]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t swig_types[11]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t swig_types[12]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[13]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[14]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[15]
-#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[16]
+#define SWIGTYPE_p_mfem__ArrayT_double_t swig_types[8]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[9]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t swig_types[10]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__GeometricFactors_p_t swig_types[11]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Geometry__Type_t swig_types[12]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__IntegrationPoint_t swig_types[13]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__KnotVector_p_t swig_types[14]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t swig_types[15]
+#define SWIGTYPE_p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t swig_types[16]
 #define SWIGTYPE_p_mfem__ArrayT_mfem__Vector_p_t swig_types[17]
 #define SWIGTYPE_p_mfem__BiCubic2DFiniteElement swig_types[18]
 #define SWIGTYPE_p_mfem__BiCubic3DFiniteElement swig_types[19]
@@ -4176,7 +4176,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Mesh_tmp_vertex_parents_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   mfem::Mesh *arg1 = (mfem::Mesh *) 0 ;
-  mfem::Array< Triple< int,int,int > > *arg2 = (mfem::Array< Triple< int,int,int > > *) 0 ;
+  mfem::Array< mfem::Triple< int,int,int > > *arg2 = (mfem::Array< mfem::Triple< int,int,int > > *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -4189,11 +4189,11 @@ SWIGINTERN PyObject *_wrap_Mesh_tmp_vertex_parents_set(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_tmp_vertex_parents_set" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ArrayT_TripleT_int_int_int_t_t, 0 |  0 );
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_tmp_vertex_parents_set" "', argument " "2"" of type '" "mfem::Array< Triple< int,int,int > > *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_tmp_vertex_parents_set" "', argument " "2"" of type '" "mfem::Array< mfem::Triple< int,int,int > > *""'"); 
   }
-  arg2 = reinterpret_cast< mfem::Array< Triple< int,int,int > > * >(argp2);
+  arg2 = reinterpret_cast< mfem::Array< mfem::Triple< int,int,int > > * >(argp2);
   if (arg1) (arg1)->tmp_vertex_parents = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -4208,7 +4208,7 @@ SWIGINTERN PyObject *_wrap_Mesh_tmp_vertex_parents_get(PyObject *SWIGUNUSEDPARM(
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
-  mfem::Array< Triple< int,int,int > > *result = 0 ;
+  mfem::Array< mfem::Triple< int,int,int > > *result = 0 ;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -4217,8 +4217,8 @@ SWIGINTERN PyObject *_wrap_Mesh_tmp_vertex_parents_get(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Mesh_tmp_vertex_parents_get" "', argument " "1"" of type '" "mfem::Mesh *""'"); 
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
-  result = (mfem::Array< Triple< int,int,int > > *)& ((arg1)->tmp_vertex_parents);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_TripleT_int_int_int_t_t, 0 |  0 );
+  result = (mfem::Array< mfem::Triple< int,int,int > > *)& ((arg1)->tmp_vertex_parents);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -19674,8 +19674,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_geom_factors_get", _wrap_Mesh_geom_factors_get, METH_O, "Mesh_geom_factors_get(Mesh self) -> mfem::Array< mfem::GeometricFactors * > *"},
 	 { "Mesh_face_geom_factors_set", _wrap_Mesh_face_geom_factors_set, METH_VARARGS, "Mesh_face_geom_factors_set(Mesh self, mfem::Array< mfem::FaceGeometricFactors * > * face_geom_factors)"},
 	 { "Mesh_face_geom_factors_get", _wrap_Mesh_face_geom_factors_get, METH_O, "Mesh_face_geom_factors_get(Mesh self) -> mfem::Array< mfem::FaceGeometricFactors * > *"},
-	 { "Mesh_tmp_vertex_parents_set", _wrap_Mesh_tmp_vertex_parents_set, METH_VARARGS, "Mesh_tmp_vertex_parents_set(Mesh self, mfem::Array< Triple< int,int,int > > * tmp_vertex_parents)"},
-	 { "Mesh_tmp_vertex_parents_get", _wrap_Mesh_tmp_vertex_parents_get, METH_O, "Mesh_tmp_vertex_parents_get(Mesh self) -> mfem::Array< Triple< int,int,int > > *"},
+	 { "Mesh_tmp_vertex_parents_set", _wrap_Mesh_tmp_vertex_parents_set, METH_VARARGS, "Mesh_tmp_vertex_parents_set(Mesh self, mfem::Array< mfem::Triple< int,int,int > > * tmp_vertex_parents)"},
+	 { "Mesh_tmp_vertex_parents_get", _wrap_Mesh_tmp_vertex_parents_get, METH_O, "Mesh_tmp_vertex_parents_get(Mesh self) -> mfem::Array< mfem::Triple< int,int,int > > *"},
 	 { "Mesh_remove_unused_vertices_get", _wrap_Mesh_remove_unused_vertices_get, METH_VARARGS, NULL},
 	 { "Mesh_remove_unused_vertices_set", _wrap_Mesh_remove_unused_vertices_set, METH_O, NULL},
 	 { "Mesh_NewElement", (PyCFunction)(void(*)(void))_wrap_Mesh_NewElement, METH_VARARGS|METH_KEYWORDS, "Mesh_NewElement(Mesh self, int geom) -> Element"},
@@ -20029,8 +20029,8 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_geom_factors_get", _wrap_Mesh_geom_factors_get, METH_O, "Mesh_geom_factors_get(Mesh self) -> mfem::Array< mfem::GeometricFactors * > *"},
 	 { "Mesh_face_geom_factors_set", _wrap_Mesh_face_geom_factors_set, METH_VARARGS, "Mesh_face_geom_factors_set(Mesh self, mfem::Array< mfem::FaceGeometricFactors * > * face_geom_factors)"},
 	 { "Mesh_face_geom_factors_get", _wrap_Mesh_face_geom_factors_get, METH_O, "Mesh_face_geom_factors_get(Mesh self) -> mfem::Array< mfem::FaceGeometricFactors * > *"},
-	 { "Mesh_tmp_vertex_parents_set", _wrap_Mesh_tmp_vertex_parents_set, METH_VARARGS, "Mesh_tmp_vertex_parents_set(Mesh self, mfem::Array< Triple< int,int,int > > * tmp_vertex_parents)"},
-	 { "Mesh_tmp_vertex_parents_get", _wrap_Mesh_tmp_vertex_parents_get, METH_O, "Mesh_tmp_vertex_parents_get(Mesh self) -> mfem::Array< Triple< int,int,int > > *"},
+	 { "Mesh_tmp_vertex_parents_set", _wrap_Mesh_tmp_vertex_parents_set, METH_VARARGS, "Mesh_tmp_vertex_parents_set(Mesh self, mfem::Array< mfem::Triple< int,int,int > > * tmp_vertex_parents)"},
+	 { "Mesh_tmp_vertex_parents_get", _wrap_Mesh_tmp_vertex_parents_get, METH_O, "Mesh_tmp_vertex_parents_get(Mesh self) -> mfem::Array< mfem::Triple< int,int,int > > *"},
 	 { "Mesh_remove_unused_vertices_get", _wrap_Mesh_remove_unused_vertices_get, METH_VARARGS, NULL},
 	 { "Mesh_remove_unused_vertices_set", _wrap_Mesh_remove_unused_vertices_set, METH_O, NULL},
 	 { "Mesh_NewElement", (PyCFunction)(void(*)(void))_wrap_Mesh_NewElement, METH_VARARGS|METH_KEYWORDS, "NewElement(Mesh self, int geom) -> Element"},
@@ -20757,7 +20757,6 @@ static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)
 static swig_type_info _swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void = {"_p_f_r_q_const__mfem__Vector_r_mfem__Vector__void", "void (*)(mfem::Vector const &,mfem::Vector &)", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hex_t = {"_p_hex_t", "hex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|HYPRE_Int *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__ArrayT_TripleT_int_int_int_t_t = {"_p_mfem__ArrayT_TripleT_int_int_int_t_t", "mfem::Array< Triple< int,int,int > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_double_t = {"_p_mfem__ArrayT_double_t", "mfem::Array< double > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_int_t = {"_p_mfem__ArrayT_int_t", "mfem::Array< int > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t = {"_p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t", "mfem::Array< mfem::FaceGeometricFactors * > *", 0, 0, (void*)0, 0};
@@ -20766,6 +20765,7 @@ static swig_type_info _swigt__p_mfem__ArrayT_mfem__Geometry__Type_t = {"_p_mfem_
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t = {"_p_mfem__ArrayT_mfem__IntegrationPoint_t", "mfem::Array< mfem::IntegrationPoint > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__KnotVector_p_t = {"_p_mfem__ArrayT_mfem__KnotVector_p_t", "mfem::Array< mfem::KnotVector * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Refinement_t = {"_p_mfem__ArrayT_mfem__Refinement_t", "mfem::Array< mfem::Refinement > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t = {"_p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t", "mfem::Array< mfem::Triple< int,int,int > > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ArrayT_mfem__Vector_p_t = {"_p_mfem__ArrayT_mfem__Vector_p_t", "mfem::Array< mfem::Vector * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__CoarseFineTransformations = {"_p_mfem__CoarseFineTransformations", "mfem::CoarseFineTransformations *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__DenseMatrix = {"_p_mfem__DenseMatrix", "mfem::DenseMatrix *", 0, 0, (void*)0, 0};
@@ -20932,7 +20932,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void,
   &_swigt__p_hex_t,
   &_swigt__p_int,
-  &_swigt__p_mfem__ArrayT_TripleT_int_int_int_t_t,
   &_swigt__p_mfem__ArrayT_double_t,
   &_swigt__p_mfem__ArrayT_int_t,
   &_swigt__p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t,
@@ -20941,6 +20940,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t,
   &_swigt__p_mfem__ArrayT_mfem__KnotVector_p_t,
   &_swigt__p_mfem__ArrayT_mfem__Refinement_t,
+  &_swigt__p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t,
   &_swigt__p_mfem__ArrayT_mfem__Vector_p_t,
   &_swigt__p_mfem__BiCubic2DFiniteElement,
   &_swigt__p_mfem__BiCubic3DFiniteElement,
@@ -21107,7 +21107,6 @@ static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0
 static swig_cast_info _swigc__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void[] = {  {&_swigt__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hex_t[] = {  {&_swigt__p_hex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__ArrayT_TripleT_int_int_int_t_t[] = {  {&_swigt__p_mfem__ArrayT_TripleT_int_int_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_double_t[] = {  {&_swigt__p_mfem__ArrayT_double_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_int_t[] = {  {&_swigt__p_mfem__ArrayT_int_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -21116,6 +21115,7 @@ static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Geometry__Type_t[] = {  {&_sw
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__IntegrationPoint_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__IntegrationPoint_t, 0, 0, 0},  {&_swigt__p_mfem__IntegrationRule, _p_mfem__IntegrationRuleTo_p_mfem__ArrayT_mfem__IntegrationPoint_t, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__KnotVector_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__KnotVector_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Refinement_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Refinement_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ArrayT_mfem__Vector_p_t[] = {  {&_swigt__p_mfem__ArrayT_mfem__Vector_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__CoarseFineTransformations[] = {  {&_swigt__p_mfem__CoarseFineTransformations, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__DenseMatrix[] = {  {&_swigt__p_mfem__DenseMatrix, 0, 0, 0},{0, 0, 0, 0}};
@@ -21282,7 +21282,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_f_r_q_const__mfem__Vector_r_mfem__Vector__void,
   _swigc__p_hex_t,
   _swigc__p_int,
-  _swigc__p_mfem__ArrayT_TripleT_int_int_int_t_t,
   _swigc__p_mfem__ArrayT_double_t,
   _swigc__p_mfem__ArrayT_int_t,
   _swigc__p_mfem__ArrayT_mfem__FaceGeometricFactors_p_t,
@@ -21291,6 +21290,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__ArrayT_mfem__IntegrationPoint_t,
   _swigc__p_mfem__ArrayT_mfem__KnotVector_p_t,
   _swigc__p_mfem__ArrayT_mfem__Refinement_t,
+  _swigc__p_mfem__ArrayT_mfem__TripleT_int_int_int_t_t,
   _swigc__p_mfem__ArrayT_mfem__Vector_p_t,
   _swigc__p_mfem__BiCubic2DFiniteElement,
   _swigc__p_mfem__BiCubic3DFiniteElement,

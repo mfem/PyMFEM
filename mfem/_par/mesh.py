@@ -71,6 +71,7 @@ import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.operators
+import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.element
@@ -116,7 +117,7 @@ class Mesh(object):
     ncmesh = property(_mesh.Mesh_ncmesh_get, _mesh.Mesh_ncmesh_set, doc=r"""ncmesh : p.mfem::NCMesh""")
     geom_factors = property(_mesh.Mesh_geom_factors_get, _mesh.Mesh_geom_factors_set, doc=r"""geom_factors : mfem::Array<(p.mfem::GeometricFactors)>""")
     face_geom_factors = property(_mesh.Mesh_face_geom_factors_get, _mesh.Mesh_face_geom_factors_set, doc=r"""face_geom_factors : mfem::Array<(p.mfem::FaceGeometricFactors)>""")
-    tmp_vertex_parents = property(_mesh.Mesh_tmp_vertex_parents_get, _mesh.Mesh_tmp_vertex_parents_set, doc=r"""tmp_vertex_parents : mfem::Array<(Triple<(int,int,int)>)>""")
+    tmp_vertex_parents = property(_mesh.Mesh_tmp_vertex_parents_get, _mesh.Mesh_tmp_vertex_parents_set, doc=r"""tmp_vertex_parents : mfem::Array<(mfem::Triple<(int,int,int)>)>""")
     remove_unused_vertices = property(_mesh.Mesh_remove_unused_vertices_get, _mesh.Mesh_remove_unused_vertices_set, doc=r"""remove_unused_vertices : bool""")
 
     def NewElement(self, geom):

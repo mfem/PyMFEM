@@ -94,11 +94,6 @@ class IterativeSolverMonitor(object):
         return _solvers.IterativeSolverMonitor_MonitorSolution(self, it, norm, x, final)
     MonitorSolution = _swig_new_instance_method(_solvers.IterativeSolverMonitor_MonitorSolution)
 
-    def SetIterativeSolver(self, solver):
-        r"""SetIterativeSolver(IterativeSolverMonitor self, IterativeSolver const & solver)"""
-        return _solvers.IterativeSolverMonitor_SetIterativeSolver(self, solver)
-    SetIterativeSolver = _swig_new_instance_method(_solvers.IterativeSolverMonitor_SetIterativeSolver)
-
 # Register IterativeSolverMonitor in _solvers:
 _solvers.IterativeSolverMonitor_swigregister(IterativeSolverMonitor)
 

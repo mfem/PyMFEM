@@ -78,6 +78,7 @@ import mfem._ser.intrules
 import mfem._ser.table
 import mfem._ser.hash
 import mfem._ser.mesh
+import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
 import mfem._ser.coefficient

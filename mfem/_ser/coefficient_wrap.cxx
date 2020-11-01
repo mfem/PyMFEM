@@ -23372,57 +23372,7 @@ SWIGINTERN PyObject *OuterProductCoefficient_swiginit(PyObject *SWIGUNUSEDPARM(s
   return SWIG_Python_InitShadowInstance(args);
 }
 
-SWIGINTERN PyObject *_wrap_new_CrossCrossCoefficient__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
-  PyObject *resultobj = 0;
-  double arg1 ;
-  mfem::VectorCoefficient *arg2 = 0 ;
-  double val1 ;
-  int ecode1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  mfem::CrossCrossCoefficient *result = 0 ;
-  
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  ecode1 = SWIG_AsVal_double(swig_obj[0], &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_CrossCrossCoefficient" "', argument " "1"" of type '" "double""'");
-  } 
-  arg1 = static_cast< double >(val1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_CrossCrossCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CrossCrossCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::VectorCoefficient * >(argp2);
-  {
-    try {
-      result = (mfem::CrossCrossCoefficient *)new mfem::CrossCrossCoefficient(arg1,*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (Swig::DirectorException &e){
-      SWIG_fail;
-    }    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__CrossCrossCoefficient, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_CrossCrossCoefficient__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+SWIGINTERN PyObject *_wrap_new_CrossCrossCoefficient(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = 0 ;
   mfem::VectorCoefficient *arg2 = 0 ;
@@ -23430,10 +23380,15 @@ SWIGINTERN PyObject *_wrap_new_CrossCrossCoefficient__SWIG_1(PyObject *SWIGUNUSE
   int res1 = 0 ;
   void *argp2 = 0 ;
   int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"A",  (char *)"K",  NULL 
+  };
   mfem::CrossCrossCoefficient *result = 0 ;
   
-  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:new_CrossCrossCoefficient", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_mfem__Coefficient,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CrossCrossCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
@@ -23441,7 +23396,7 @@ SWIGINTERN PyObject *_wrap_new_CrossCrossCoefficient__SWIG_1(PyObject *SWIGUNUSE
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CrossCrossCoefficient" "', argument " "1"" of type '" "mfem::Coefficient &""'"); 
   }
   arg1 = reinterpret_cast< mfem::Coefficient * >(argp1);
-  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__VectorCoefficient,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "new_CrossCrossCoefficient" "', argument " "2"" of type '" "mfem::VectorCoefficient &""'"); 
   }
@@ -23472,53 +23427,6 @@ SWIGINTERN PyObject *_wrap_new_CrossCrossCoefficient__SWIG_1(PyObject *SWIGUNUSE
   return resultobj;
 fail:
   return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_CrossCrossCoefficient(PyObject *self, PyObject *args) {
-  Py_ssize_t argc;
-  PyObject *argv[3] = {
-    0
-  };
-  
-  if (!(argc = SWIG_Python_UnpackTuple(args, "new_CrossCrossCoefficient", 0, 2, argv))) SWIG_fail;
-  --argc;
-  if (argc == 2) {
-    int _v;
-    void *vptr = 0;
-    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Coefficient, SWIG_POINTER_NO_NULL);
-    _v = SWIG_CheckState(res);
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_CrossCrossCoefficient__SWIG_1(self, argc, argv);
-      }
-    }
-  }
-  if (argc == 2) {
-    int _v;
-    {
-      int res = SWIG_AsVal_double(argv[0], NULL);
-      _v = SWIG_CheckState(res);
-    }
-    if (_v) {
-      void *vptr = 0;
-      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__VectorCoefficient, SWIG_POINTER_NO_NULL);
-      _v = SWIG_CheckState(res);
-      if (_v) {
-        return _wrap_new_CrossCrossCoefficient__SWIG_0(self, argc, argv);
-      }
-    }
-  }
-  
-fail:
-  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_CrossCrossCoefficient'.\n"
-    "  Possible C/C++ prototypes are:\n"
-    "    mfem::CrossCrossCoefficient::CrossCrossCoefficient(double,mfem::VectorCoefficient &)\n"
-    "    mfem::CrossCrossCoefficient::CrossCrossCoefficient(mfem::Coefficient &,mfem::VectorCoefficient &)\n");
-  return 0;
 }
 
 
@@ -26737,10 +26645,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_OuterProductCoefficient", _wrap_delete_OuterProductCoefficient, METH_O, "delete_OuterProductCoefficient(OuterProductCoefficient self)"},
 	 { "OuterProductCoefficient_swigregister", OuterProductCoefficient_swigregister, METH_O, NULL},
 	 { "OuterProductCoefficient_swiginit", OuterProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_CrossCrossCoefficient", _wrap_new_CrossCrossCoefficient, METH_VARARGS, "\n"
-		"CrossCrossCoefficient(double A, VectorCoefficient K)\n"
-		"new_CrossCrossCoefficient(Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient\n"
-		""},
+	 { "new_CrossCrossCoefficient", (PyCFunction)(void(*)(void))_wrap_new_CrossCrossCoefficient, METH_VARARGS|METH_KEYWORDS, "new_CrossCrossCoefficient(Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient"},
 	 { "CrossCrossCoefficient_SetAConst", (PyCFunction)(void(*)(void))_wrap_CrossCrossCoefficient_SetAConst, METH_VARARGS|METH_KEYWORDS, "CrossCrossCoefficient_SetAConst(CrossCrossCoefficient self, double A)"},
 	 { "CrossCrossCoefficient_GetAConst", _wrap_CrossCrossCoefficient_GetAConst, METH_O, "CrossCrossCoefficient_GetAConst(CrossCrossCoefficient self) -> double"},
 	 { "CrossCrossCoefficient_SetACoef", (PyCFunction)(void(*)(void))_wrap_CrossCrossCoefficient_SetACoef, METH_VARARGS|METH_KEYWORDS, "CrossCrossCoefficient_SetACoef(CrossCrossCoefficient self, Coefficient A)"},
@@ -27269,10 +27174,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "delete_OuterProductCoefficient", _wrap_delete_OuterProductCoefficient, METH_O, "delete_OuterProductCoefficient(OuterProductCoefficient self)"},
 	 { "OuterProductCoefficient_swigregister", OuterProductCoefficient_swigregister, METH_O, NULL},
 	 { "OuterProductCoefficient_swiginit", OuterProductCoefficient_swiginit, METH_VARARGS, NULL},
-	 { "new_CrossCrossCoefficient", _wrap_new_CrossCrossCoefficient, METH_VARARGS, "\n"
-		"CrossCrossCoefficient(double A, VectorCoefficient K)\n"
-		"new_CrossCrossCoefficient(Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient\n"
-		""},
+	 { "new_CrossCrossCoefficient", (PyCFunction)(void(*)(void))_wrap_new_CrossCrossCoefficient, METH_VARARGS|METH_KEYWORDS, "new_CrossCrossCoefficient(Coefficient A, VectorCoefficient K) -> CrossCrossCoefficient"},
 	 { "CrossCrossCoefficient_SetAConst", (PyCFunction)(void(*)(void))_wrap_CrossCrossCoefficient_SetAConst, METH_VARARGS|METH_KEYWORDS, "SetAConst(CrossCrossCoefficient self, double A)"},
 	 { "CrossCrossCoefficient_GetAConst", _wrap_CrossCrossCoefficient_GetAConst, METH_O, "GetAConst(CrossCrossCoefficient self) -> double"},
 	 { "CrossCrossCoefficient_SetACoef", (PyCFunction)(void(*)(void))_wrap_CrossCrossCoefficient_SetACoef, METH_VARARGS|METH_KEYWORDS, "SetACoef(CrossCrossCoefficient self, Coefficient A)"},

@@ -3347,7 +3347,8 @@ namespace swig {
 
 #include "config/config.hpp"  
 #include "numpy/arrayobject.h"
-#include "fem/estimators.hpp"
+#include "fem/estimators.hpp"  
+#include "pycoefficient.hpp"  
 
 
 SWIGINTERNINLINE PyObject*

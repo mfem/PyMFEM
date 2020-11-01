@@ -135,6 +135,7 @@ import mfem._ser.vector
 import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.operators
+import mfem._ser.sort_pairs
 import mfem._ser.ncmesh
 import mfem._ser.gridfunc
 import mfem._ser.coefficient
@@ -179,7 +180,7 @@ class Mesh(object):
     ncmesh = property(_mesh.Mesh_ncmesh_get, _mesh.Mesh_ncmesh_set, doc=r"""ncmesh : p.mfem::NCMesh""")
     geom_factors = property(_mesh.Mesh_geom_factors_get, _mesh.Mesh_geom_factors_set, doc=r"""geom_factors : mfem::Array<(p.mfem::GeometricFactors)>""")
     face_geom_factors = property(_mesh.Mesh_face_geom_factors_get, _mesh.Mesh_face_geom_factors_set, doc=r"""face_geom_factors : mfem::Array<(p.mfem::FaceGeometricFactors)>""")
-    tmp_vertex_parents = property(_mesh.Mesh_tmp_vertex_parents_get, _mesh.Mesh_tmp_vertex_parents_set, doc=r"""tmp_vertex_parents : mfem::Array<(Triple<(int,int,int)>)>""")
+    tmp_vertex_parents = property(_mesh.Mesh_tmp_vertex_parents_get, _mesh.Mesh_tmp_vertex_parents_set, doc=r"""tmp_vertex_parents : mfem::Array<(mfem::Triple<(int,int,int)>)>""")
     remove_unused_vertices = property(_mesh.Mesh_remove_unused_vertices_get, _mesh.Mesh_remove_unused_vertices_set, doc=r"""remove_unused_vertices : bool""")
 
     def NewElement(self, geom):

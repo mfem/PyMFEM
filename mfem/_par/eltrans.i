@@ -4,7 +4,8 @@
 #include "general/array.hpp"
 #include "fem/intrules.hpp"
 #include "fem/eltrans.hpp"
-#include "numpy/arrayobject.h"      
+#include "numpy/arrayobject.h"
+#include "io_stream.hpp"  
 %}
 
 %init %{

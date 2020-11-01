@@ -26,7 +26,7 @@ from distutils.core import setup, Extension
 from distutils.core import *
 from distutils      import sysconfig
 
-modules= ["io_stream", "vtk", 
+modules= ["io_stream", "vtk", "sort_pairs",
           "globals", "mem_manager", "device", "hash", "stable3d",
           "cpointers",
           "error", "array", "common_functions",

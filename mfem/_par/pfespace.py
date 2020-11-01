@@ -92,6 +92,7 @@ import mfem._par.eltrans
 import mfem._par.fe
 import mfem._par.geom
 import mfem._par.mesh
+import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.element

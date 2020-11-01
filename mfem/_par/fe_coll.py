@@ -72,6 +72,7 @@ import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.operators
+import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.element

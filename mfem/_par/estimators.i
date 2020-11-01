@@ -2,7 +2,8 @@
 %{
 #include "config/config.hpp"  
 #include "numpy/arrayobject.h"
-#include "fem/estimators.hpp"
+#include "fem/estimators.hpp"  
+#include "pycoefficient.hpp"  
 %}
 
 %include "../common/mfem_config.i"
