@@ -12,6 +12,8 @@ import_array();
 %include "../common/typemap_macros.i"
 %include "../common/exception.i"
 
+%include "std_string.i"
+
 %immutable out;
 %immutable err;
 

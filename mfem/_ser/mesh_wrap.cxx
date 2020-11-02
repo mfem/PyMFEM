@@ -3267,11 +3267,10 @@ namespace Swig {
 #define SWIGTYPE_p_seg_t swig_types[167]
 #define SWIGTYPE_p_std__istream swig_types[168]
 #define SWIGTYPE_p_std__ostream swig_types[169]
-#define SWIGTYPE_p_std__string swig_types[170]
-#define SWIGTYPE_p_tet_t swig_types[171]
-#define SWIGTYPE_p_tri_t swig_types[172]
-static swig_type_info *swig_types[174];
-static swig_module_info swig_module = {swig_types, 173, 0, 0, 0, 0};
+#define SWIGTYPE_p_tet_t swig_types[170]
+#define SWIGTYPE_p_tri_t swig_types[171]
+static swig_type_info *swig_types[173];
+static swig_module_info swig_module = {swig_types, 172, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3596,6 +3595,9 @@ SWIGINTERN doublep *doublep_frompointer(double *t){
     return (doublep *) t;
   }
 
+#include <string>
+
+
 SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
 {
@@ -3743,6 +3745,37 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 
 
   #define SWIG_From_long   PyInt_FromLong 
+
+
+SWIGINTERN int
+SWIG_AsPtr_std_string (PyObject * obj, std::string **val) 
+{
+  char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;
+  if (SWIG_IsOK((SWIG_AsCharPtrAndSize(obj, &buf, &size, &alloc)))) {
+    if (buf) {
+      if (val) *val = new std::string(buf, size - 1);
+      if (alloc == SWIG_NEWOBJ) delete[] buf;
+      return SWIG_NEWOBJ;
+    } else {
+      if (val) *val = 0;
+      return SWIG_OLDOBJ;
+    }
+  } else {
+    static int init = 0;
+    static swig_type_info* descriptor = 0;
+    if (!init) {
+      descriptor = SWIG_TypeQuery("std::string" " *");
+      init = 1;
+    }
+    if (descriptor) {
+      std::string *vptr;
+      int res = SWIG_ConvertPtr(obj, (void**)&vptr, descriptor, 0);
+      if (SWIG_IsOK(res) && val) *val = vptr;
+      return res;
+    }
+  }
+  return SWIG_ERROR;
+}
 
 SWIGINTERN mfem::Mesh *new_mfem_Mesh__SWIG_12(int nx,int ny,int nz,char const *type,int generate_edges=0,double sx=1.0,double sy=1.0,double sz=1.0){
      mfem::Mesh *mesh;     
@@ -17272,8 +17305,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   bool arg6 = (bool) false ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   bool val4 ;
@@ -17288,17 +17319,13 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU__SWIG_1(PyObject *SWIGUNUSEDPARM(self),
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_std__string,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintVTU" "', argument " "2"" of type '" "std::string""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_PrintVTU" "', argument " "2"" of type '" "std::string""'");
-    } else {
-      std::string * temp = reinterpret_cast< std::string * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Mesh_PrintVTU" "', argument " "2"" of type '" "std::string""'"); 
     }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   if (swig_obj[2]) {
     ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
@@ -17369,7 +17396,7 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintVTU(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Mesh, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_std__string, SWIG_POINTER_NO_NULL | 0);
+      int res = SWIG_AsPtr_std_string(argv[1], (std::string**)(0));
       _v = SWIG_CheckState(res);
       if (_v) {
         if (argc <= 2) {
@@ -17508,8 +17535,6 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintBdrVTU(PyObject *SWIGUNUSEDPARM(self), PyOb
   int arg5 = (int) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
   int val3 ;
   int ecode3 = 0 ;
   bool val4 ;
@@ -17530,17 +17555,13 @@ SWIGINTERN PyObject *_wrap_Mesh_PrintBdrVTU(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< mfem::Mesh * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__string,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Mesh_PrintBdrVTU" "', argument " "2"" of type '" "std::string""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Mesh_PrintBdrVTU" "', argument " "2"" of type '" "std::string""'");
-    } else {
-      std::string * temp = reinterpret_cast< std::string * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(obj1, &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "Mesh_PrintBdrVTU" "', argument " "2"" of type '" "std::string""'"); 
     }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
   }
   if (obj2) {
     ecode3 = SWIG_AsVal_int(obj2, &val3);
@@ -22721,7 +22742,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_GetBdrElementBaseGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS|METH_KEYWORDS, "Mesh_GetBdrElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"},
 	 { "Mesh_HasGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_HasGeometry, METH_VARARGS|METH_KEYWORDS, "Mesh_HasGeometry(Mesh self, mfem::Geometry::Type geom) -> bool"},
 	 { "Mesh_GetNumGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNumGeometries, METH_VARARGS|METH_KEYWORDS, "Mesh_GetNumGeometries(Mesh self, int dim) -> int"},
-	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "Mesh_GetGeometries(Mesh self, int dim, geometrytypeArray el_geoms)"},
+	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "Mesh_GetGeometries(Mesh self, int dim, GeometryTypeArray el_geoms)"},
 	 { "Mesh_GetElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementVertices, METH_VARARGS|METH_KEYWORDS, "Mesh_GetElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetBdrElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementVertices, METH_VARARGS|METH_KEYWORDS, "Mesh_GetBdrElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetElementEdges", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementEdges, METH_VARARGS|METH_KEYWORDS, "Mesh_GetElementEdges(Mesh self, int i, intArray edges, intArray cor)"},
@@ -22804,7 +22825,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_SetCurvature", (PyCFunction)(void(*)(void))_wrap_Mesh_SetCurvature, METH_VARARGS|METH_KEYWORDS, "Mesh_SetCurvature(Mesh self, int order, bool discont=False, int space_dim=-1, int ordering=1)"},
 	 { "Mesh_UniformRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_UniformRefinement, METH_VARARGS|METH_KEYWORDS, "Mesh_UniformRefinement(Mesh self, int ref_algo=0)"},
 	 { "Mesh_GeneralRefinement", _wrap_Mesh_GeneralRefinement, METH_VARARGS, "\n"
-		"Mesh_GeneralRefinement(Mesh self, refinementArray refinements, int nonconforming=-1, int nc_limit=0)\n"
+		"Mesh_GeneralRefinement(Mesh self, RefinementArray refinements, int nonconforming=-1, int nc_limit=0)\n"
 		"Mesh_GeneralRefinement(Mesh self, intArray el_to_refine, int nonconforming=-1, int nc_limit=0)\n"
 		""},
 	 { "Mesh_RandomRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_RandomRefinement, METH_VARARGS|METH_KEYWORDS, "Mesh_RandomRefinement(Mesh self, double prob, bool aniso=False, int nonconforming=-1, int nc_limit=0)"},
@@ -23092,7 +23113,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_GetBdrElementBaseGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS|METH_KEYWORDS, "GetBdrElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"},
 	 { "Mesh_HasGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_HasGeometry, METH_VARARGS|METH_KEYWORDS, "HasGeometry(Mesh self, mfem::Geometry::Type geom) -> bool"},
 	 { "Mesh_GetNumGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNumGeometries, METH_VARARGS|METH_KEYWORDS, "GetNumGeometries(Mesh self, int dim) -> int"},
-	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "GetGeometries(Mesh self, int dim, geometrytypeArray el_geoms)"},
+	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "GetGeometries(Mesh self, int dim, GeometryTypeArray el_geoms)"},
 	 { "Mesh_GetElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementVertices, METH_VARARGS|METH_KEYWORDS, "GetElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetBdrElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementVertices, METH_VARARGS|METH_KEYWORDS, "GetBdrElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetElementEdges", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementEdges, METH_VARARGS|METH_KEYWORDS, "GetElementEdges(Mesh self, int i, intArray edges, intArray cor)"},
@@ -23175,7 +23196,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_SetCurvature", (PyCFunction)(void(*)(void))_wrap_Mesh_SetCurvature, METH_VARARGS|METH_KEYWORDS, "SetCurvature(Mesh self, int order, bool discont=False, int space_dim=-1, int ordering=1)"},
 	 { "Mesh_UniformRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_UniformRefinement, METH_VARARGS|METH_KEYWORDS, "UniformRefinement(Mesh self, int ref_algo=0)"},
 	 { "Mesh_GeneralRefinement", _wrap_Mesh_GeneralRefinement, METH_VARARGS, "\n"
-		"GeneralRefinement(Mesh self, refinementArray refinements, int nonconforming=-1, int nc_limit=0)\n"
+		"GeneralRefinement(Mesh self, RefinementArray refinements, int nonconforming=-1, int nc_limit=0)\n"
 		"GeneralRefinement(Mesh self, intArray el_to_refine, int nonconforming=-1, int nc_limit=0)\n"
 		""},
 	 { "Mesh_RandomRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_RandomRefinement, METH_VARARGS|METH_KEYWORDS, "RandomRefinement(Mesh self, double prob, bool aniso=False, int nonconforming=-1, int nc_limit=0)"},
@@ -23879,7 +23900,6 @@ static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OutStream = {"_p_mfem__OutStream", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
@@ -24054,7 +24074,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_seg_t,
   &_swigt__p_std__istream,
   &_swigt__p_std__ostream,
-  &_swigt__p_std__string,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
 };
@@ -24229,7 +24248,6 @@ static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OutStream[] = {{&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},  {&_swigt__p_mfem__OutStream, _p_mfem__OutStreamTo_p_std__ostream, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -24404,7 +24422,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_seg_t,
   _swigc__p_std__istream,
   _swigc__p_std__ostream,
-  _swigc__p_std__string,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
 };

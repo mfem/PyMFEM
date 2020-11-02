@@ -3299,11 +3299,10 @@ namespace Swig {
 #define SWIGTYPE_p_seg_t swig_types[199]
 #define SWIGTYPE_p_std__istream swig_types[200]
 #define SWIGTYPE_p_std__ostream swig_types[201]
-#define SWIGTYPE_p_std__string swig_types[202]
-#define SWIGTYPE_p_tet_t swig_types[203]
-#define SWIGTYPE_p_tri_t swig_types[204]
-static swig_type_info *swig_types[206];
-static swig_module_info swig_module = {swig_types, 205, 0, 0, 0, 0};
+#define SWIGTYPE_p_tet_t swig_types[202]
+#define SWIGTYPE_p_tri_t swig_types[203]
+static swig_type_info *swig_types[205];
+static swig_module_info swig_module = {swig_types, 204, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3419,6 +3418,9 @@ namespace swig {
   #include "pycoefficient.hpp"
   #include "numpy/arrayobject.h"
   #include "io_stream.hpp"        
+
+
+#include <string>
 
 
 SWIGINTERNINLINE PyObject*
@@ -3715,6 +3717,37 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
     }
   }
   return SWIG_TypeError;
+}
+
+
+SWIGINTERN int
+SWIG_AsPtr_std_string (PyObject * obj, std::string **val) 
+{
+  char* buf = 0 ; size_t size = 0; int alloc = SWIG_OLDOBJ;
+  if (SWIG_IsOK((SWIG_AsCharPtrAndSize(obj, &buf, &size, &alloc)))) {
+    if (buf) {
+      if (val) *val = new std::string(buf, size - 1);
+      if (alloc == SWIG_NEWOBJ) delete[] buf;
+      return SWIG_NEWOBJ;
+    } else {
+      if (val) *val = 0;
+      return SWIG_OLDOBJ;
+    }
+  } else {
+    static int init = 0;
+    static swig_type_info* descriptor = 0;
+    if (!init) {
+      descriptor = SWIG_TypeQuery("std::string" " *");
+      init = 1;
+    }
+    if (descriptor) {
+      std::string *vptr;
+      int res = SWIG_ConvertPtr(obj, (void**)&vptr, descriptor, 0);
+      if (SWIG_IsOK(res) && val) *val = vptr;
+      return res;
+    }
+  }
+  return SWIG_ERROR;
 }
 
 
@@ -11798,8 +11831,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
   int res1 = 0 ;
   PyMFEM::wFILE *temp2 = 0 ;
   std::ofstream out2 ;
-  void *argp3 = 0 ;
-  int res3 = 0 ;
+  int res3 = SWIG_OLDOBJ ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -11829,14 +11861,17 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
       arg2 = &out2;
     }
   }
-  res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_SaveVTK" "', argument " "3"" of type '" "std::string const &""'"); 
+  {
+    std::string *ptr = (std::string *)0;
+    res3 = SWIG_AsPtr_std_string(obj2, &ptr);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "GridFunction_SaveVTK" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    if (!ptr) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_SaveVTK" "', argument " "3"" of type '" "std::string const &""'"); 
+    }
+    arg3 = ptr;
   }
-  if (!argp3) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "GridFunction_SaveVTK" "', argument " "3"" of type '" "std::string const &""'"); 
-  }
-  arg3 = reinterpret_cast< std::string * >(argp3);
   {
     if ((PyArray_PyIntAsInt(obj3) == -1) && PyErr_Occurred()) {
       SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
@@ -11859,6 +11894,7 @@ SWIGINTERN PyObject *_wrap_GridFunction_SaveVTK(PyObject *SWIGUNUSEDPARM(self), 
       }
     }
   }
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
   {
@@ -11868,6 +11904,7 @@ fail:
       }
     }
   }
+  if (SWIG_IsNewObj(res3)) delete arg3;
   return NULL;
 }
 
@@ -15677,7 +15714,6 @@ static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_std__istream = {"_p_std__istream", "std::istream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OutStream = {"_p_mfem__OutStream", 0, 0, 0, 0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tet_t = {"_p_tet_t", "tet_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_tri_t = {"_p_tri_t", "tri_t *", 0, 0, (void*)0, 0};
 
@@ -15884,7 +15920,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_seg_t,
   &_swigt__p_std__istream,
   &_swigt__p_std__ostream,
-  &_swigt__p_std__string,
   &_swigt__p_tet_t,
   &_swigt__p_tri_t,
 };
@@ -16091,7 +16126,6 @@ static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_std__istream[] = {  {&_swigt__p_std__istream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OutStream[] = {{&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},  {&_swigt__p_mfem__OutStream, _p_mfem__OutStreamTo_p_std__ostream, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tet_t[] = {  {&_swigt__p_tet_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_tri_t[] = {  {&_swigt__p_tri_t, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -16298,7 +16332,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_seg_t,
   _swigc__p_std__istream,
   _swigc__p_std__ostream,
-  _swigc__p_std__string,
   _swigc__p_tet_t,
   _swigc__p_tri_t,
 };

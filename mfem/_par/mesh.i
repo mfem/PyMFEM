@@ -27,6 +27,9 @@ import_array();
 //%include "../common/cpointers.i"
 //%import "cpointers.i"
 %include "exception.i"
+
+%include "std_string.i"
+
 %import "matrix.i"
 %import "array.i"
 %import "sort_pairs.i"
@@ -268,6 +271,15 @@ def GetEdgeTransformation(self, i):
     Tr = IsoparametricTransformation()
     _mesh.Mesh_GetEdgeTransformation(self, i, Tr)
     return Tr
+%}
+%feature("shadow") mfem::Mesh::GetFaceInfos %{
+def GetFaceInfos(self, i):
+    from mfem.ser import intp
+    Elem1 = intp()
+    Elem2 = intp()  
+  
+    _mesh.Mesh_GetFaceInfos(self, i, Elem1, Elem2)
+    return Elem1.value(), Elem2.value()
 %}
 %feature("shadow") mfem::Mesh::FindPoints %{
 def FindPoints(self, pp, warn=True, inv_trans=None):            
