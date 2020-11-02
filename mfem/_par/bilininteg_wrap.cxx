@@ -19051,49 +19051,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_MassIntegrator_SetupPA(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::MassIntegrator *arg1 = (mfem::MassIntegrator *) 0 ;
-  mfem::FiniteElementSpace *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"fes",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:MassIntegrator_SetupPA", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__MassIntegrator, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MassIntegrator_SetupPA" "', argument " "1"" of type '" "mfem::MassIntegrator *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::MassIntegrator * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__FiniteElementSpace,  0  | 0);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "MassIntegrator_SetupPA" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MassIntegrator_SetupPA" "', argument " "2"" of type '" "mfem::FiniteElementSpace const &""'"); 
-  }
-  arg2 = reinterpret_cast< mfem::FiniteElementSpace * >(argp2);
-  {
-    try {
-      (arg1)->SetupPA((mfem::FiniteElementSpace const &)*arg2); 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *MassIntegrator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
@@ -30165,7 +30122,6 @@ static PyMethodDef SwigMethods[] = {
 	 { "MassIntegrator_AddMultMF", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_AddMultMF, METH_VARARGS|METH_KEYWORDS, "MassIntegrator_AddMultMF(MassIntegrator self, Vector arg2, Vector arg3)"},
 	 { "MassIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "MassIntegrator_AddMultPA(MassIntegrator self, Vector arg2, Vector arg3)"},
 	 { "MassIntegrator_GetRule", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_GetRule, METH_VARARGS|METH_KEYWORDS, "MassIntegrator_GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"},
-	 { "MassIntegrator_SetupPA", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_SetupPA, METH_VARARGS|METH_KEYWORDS, "MassIntegrator_SetupPA(MassIntegrator self, FiniteElementSpace fes)"},
 	 { "MassIntegrator_swigregister", MassIntegrator_swigregister, METH_O, NULL},
 	 { "MassIntegrator_swiginit", MassIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "new_BoundaryMassIntegrator", (PyCFunction)(void(*)(void))_wrap_new_BoundaryMassIntegrator, METH_VARARGS|METH_KEYWORDS, "new_BoundaryMassIntegrator(Coefficient q) -> BoundaryMassIntegrator"},
@@ -30901,7 +30857,6 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "MassIntegrator_AddMultMF", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_AddMultMF, METH_VARARGS|METH_KEYWORDS, "AddMultMF(MassIntegrator self, Vector arg2, Vector arg3)"},
 	 { "MassIntegrator_AddMultPA", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_AddMultPA, METH_VARARGS|METH_KEYWORDS, "AddMultPA(MassIntegrator self, Vector arg2, Vector arg3)"},
 	 { "MassIntegrator_GetRule", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_GetRule, METH_VARARGS|METH_KEYWORDS, "GetRule(FiniteElement trial_fe, FiniteElement test_fe, ElementTransformation Trans) -> IntegrationRule"},
-	 { "MassIntegrator_SetupPA", (PyCFunction)(void(*)(void))_wrap_MassIntegrator_SetupPA, METH_VARARGS|METH_KEYWORDS, "SetupPA(MassIntegrator self, FiniteElementSpace fes)"},
 	 { "MassIntegrator_swigregister", MassIntegrator_swigregister, METH_O, NULL},
 	 { "MassIntegrator_swiginit", MassIntegrator_swiginit, METH_VARARGS, NULL},
 	 { "new_BoundaryMassIntegrator", (PyCFunction)(void(*)(void))_wrap_new_BoundaryMassIntegrator, METH_VARARGS|METH_KEYWORDS, "new_BoundaryMassIntegrator(Coefficient q) -> BoundaryMassIntegrator"},

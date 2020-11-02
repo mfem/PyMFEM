@@ -35,5 +35,7 @@ import_array();
 
 %feature("director") mfem::BilinearFormIntegrator;
 
+%ignore  mfem::MassIntegrator::SetupPA;
+
 %include "../common/bilininteg_ext.i"
 %include "fem/bilininteg.hpp"

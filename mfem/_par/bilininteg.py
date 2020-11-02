@@ -1658,11 +1658,6 @@ class MassIntegrator(BilinearFormIntegrator):
         return _bilininteg.MassIntegrator_GetRule(trial_fe, test_fe, Trans)
     GetRule = _swig_new_static_method(_bilininteg.MassIntegrator_GetRule)
 
-    def SetupPA(self, fes):
-        r"""SetupPA(MassIntegrator self, FiniteElementSpace fes)"""
-        return _bilininteg.MassIntegrator_SetupPA(self, fes)
-    SetupPA = _swig_new_instance_method(_bilininteg.MassIntegrator_SetupPA)
-
 # Register MassIntegrator in _bilininteg:
 _bilininteg.MassIntegrator_swigregister(MassIntegrator)
 
