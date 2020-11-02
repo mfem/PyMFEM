@@ -3117,23 +3117,25 @@ namespace Swig {
 #define SWIGTYPE_p_mfem__IntegrationRule swig_types[17]
 #define SWIGTYPE_p_mfem__L2_FECollection swig_types[18]
 #define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[19]
-#define SWIGTYPE_p_mfem__Mesh swig_types[20]
-#define SWIGTYPE_p_mfem__NCMesh swig_types[21]
-#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[22]
-#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[23]
-#define SWIGTYPE_p_mfem__OperatorHandle swig_types[24]
-#define SWIGTYPE_p_mfem__Refinement swig_types[25]
-#define SWIGTYPE_p_mfem__STable swig_types[26]
-#define SWIGTYPE_p_mfem__Table swig_types[27]
-#define SWIGTYPE_p_pri_t swig_types[28]
-#define SWIGTYPE_p_quad_t swig_types[29]
-#define SWIGTYPE_p_seg_t swig_types[30]
-#define SWIGTYPE_p_std__istream swig_types[31]
-#define SWIGTYPE_p_tet_t swig_types[32]
-#define SWIGTYPE_p_tri_t swig_types[33]
-#define SWIGTYPE_p_void swig_types[34]
-static swig_type_info *swig_types[36];
-static swig_module_info swig_module = {swig_types, 35, 0, 0, 0, 0};
+#define SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t swig_types[20]
+#define SWIGTYPE_p_mfem__Mesh swig_types[21]
+#define SWIGTYPE_p_mfem__NCMesh swig_types[22]
+#define SWIGTYPE_p_mfem__NCMesh__MeshId swig_types[23]
+#define SWIGTYPE_p_mfem__NCMesh__NCList swig_types[24]
+#define SWIGTYPE_p_mfem__OperatorHandle swig_types[25]
+#define SWIGTYPE_p_mfem__Refinement swig_types[26]
+#define SWIGTYPE_p_mfem__STable swig_types[27]
+#define SWIGTYPE_p_mfem__Table swig_types[28]
+#define SWIGTYPE_p_p_mfem__Refinement swig_types[29]
+#define SWIGTYPE_p_pri_t swig_types[30]
+#define SWIGTYPE_p_quad_t swig_types[31]
+#define SWIGTYPE_p_seg_t swig_types[32]
+#define SWIGTYPE_p_std__istream swig_types[33]
+#define SWIGTYPE_p_tet_t swig_types[34]
+#define SWIGTYPE_p_tri_t swig_types[35]
+#define SWIGTYPE_p_void swig_types[36]
+static swig_type_info *swig_types[38];
+static swig_module_info swig_module = {swig_types, 37, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3710,6 +3712,16 @@ SWIGINTERN void mfem_NCMesh_PrintStats__SWIG_1(mfem::NCMesh *self,char const *fi
   self -> PrintStats(ofile);
   ofile.close();
   }
+SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg____setitem__(mfem::Array< mfem::Refinement > *self,int i,mfem::Refinement const v){
+    (* self)[i] = v;
+    }
+SWIGINTERN mfem::Refinement const &mfem_Array_Sl_mfem_Refinement_Sg____getitem__(mfem::Array< mfem::Refinement > const *self,int const i){
+    return (* self)[i];
+  }
+SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg__Assign__SWIG_1(mfem::Array< mfem::Refinement > *self,mfem::Refinement const &a){
+     *self = a;
+  }
+SWIGINTERN void mfem_Array_Sl_mfem_Refinement_Sg__FakeToList(mfem::Array< mfem::Refinement > *self){}
 
 
 /* ---------------------------------------------------
@@ -7726,6 +7738,2746 @@ SWIGINTERN PyObject *NCMesh_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **SWIGUNUSEDPARM(swig_obj)) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 0) || (nobjs > 0)) SWIG_fail;
+  {
+    try {
+      result = (mfem::Array< mfem::Refinement > *)new mfem::Array< mfem::Refinement >();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::MemoryType arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  mfem::Array< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_RefinementArray" "', argument " "1"" of type '" "mfem::MemoryType""'");
+  } 
+  arg1 = static_cast< mfem::MemoryType >(val1);
+  {
+    try {
+      result = (mfem::Array< mfem::Refinement > *)new mfem::Array< mfem::Refinement >(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  mfem::Array< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[0]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg1 = PyArray_PyIntAsInt(swig_obj[0]);
+  }
+  {
+    try {
+      result = (mfem::Array< mfem::Refinement > *)new mfem::Array< mfem::Refinement >(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_3(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Refinement *arg1 = (mfem::Refinement *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Array< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RefinementArray" "', argument " "1"" of type '" "mfem::Refinement *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Refinement * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    try {
+      result = (mfem::Array< mfem::Refinement > *)new mfem::Array< mfem::Refinement >(arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_RefinementArray__SWIG_4(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Array< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t,  0  | 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_RefinementArray" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_RefinementArray" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const &""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Array< mfem::Refinement > *)new mfem::Array< mfem::Refinement >((mfem::Array< mfem::Refinement > const &)*arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_RefinementArray(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "new_RefinementArray", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 0) {
+    return _wrap_new_RefinementArray__SWIG_0(self, argc, argv);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NO_NULL | 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_4(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      int res = SWIG_AsVal_int(argv[0], NULL);
+      _v = SWIG_CheckState(res);
+    }
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_1(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      if ((PyArray_PyIntAsInt(argv[0]) == -1) && PyErr_Occurred()) {
+        PyErr_Clear();
+        _v = 0;
+      } else {
+        _v = 1;    
+      }
+    }
+    if (_v) {
+      return _wrap_new_RefinementArray__SWIG_2(self, argc, argv);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_new_RefinementArray__SWIG_3(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'new_RefinementArray'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::Array()\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::MemoryType)\n"
+    "    mfem::Array< mfem::Refinement >::Array(int)\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::Refinement *,int)\n"
+    "    mfem::Array< mfem::Refinement >::Array(mfem::Array< mfem::Refinement > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_RefinementArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_RefinementArray" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      delete arg1;
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_GetData__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_GetData" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)(arg1)->GetData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_GetData__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_GetData" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)((mfem::Array< mfem::Refinement > const *)arg1)->GetData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_GetData(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_GetData", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_GetData__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_GetData__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_GetData'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::GetData()\n"
+    "    mfem::Array< mfem::Refinement >::GetData() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_GetMemory__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Memory< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_GetMemory" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< mfem::Refinement > *) &(arg1)->GetMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_GetMemory__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Memory< mfem::Refinement > *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_GetMemory" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Memory< mfem::Refinement > *) &((mfem::Array< mfem::Refinement > const *)arg1)->GetMemory();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__MemoryT_mfem__Refinement_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_GetMemory(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_GetMemory", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_GetMemory__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_GetMemory__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_GetMemory'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::GetMemory()\n"
+    "    mfem::Array< mfem::Refinement >::GetMemory() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_UseDevice(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_UseDevice" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (bool)((mfem::Array< mfem::Refinement > const *)arg1)->UseDevice();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_OwnsData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  bool result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_OwnsData" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (bool)((mfem::Array< mfem::Refinement > const *)arg1)->OwnsData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_StealData(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Refinement **arg2 = (mfem::Refinement **) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"p",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RefinementArray_StealData", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_StealData" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_mfem__Refinement, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_StealData" "', argument " "2"" of type '" "mfem::Refinement **""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Refinement ** >(argp2);
+  {
+    try {
+      (arg1)->StealData(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_LoseData(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_LoseData" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      (arg1)->LoseData();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_MakeDataOwner(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_MakeDataOwner" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      ((mfem::Array< mfem::Refinement > const *)arg1)->MakeDataOwner();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Size" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (int)((mfem::Array< mfem::Refinement > const *)arg1)->Size();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_SetSize__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_SetSize" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  {
+    try {
+      (arg1)->SetSize(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_SetSize__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  int arg2 ;
+  mfem::Refinement *arg3 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_SetSize" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3, SWIGTYPE_p_mfem__Refinement,  0  | 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RefinementArray_SetSize" "', argument " "3"" of type '" "mfem::Refinement const &""'"); 
+  }
+  if (!argp3) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_SetSize" "', argument " "3"" of type '" "mfem::Refinement const &""'"); 
+  }
+  arg3 = reinterpret_cast< mfem::Refinement * >(argp3);
+  {
+    try {
+      (arg1)->SetSize(arg2,(mfem::Refinement const &)*arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_SetSize__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  int arg2 ;
+  mfem::MemoryType arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_SetSize" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[1]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(swig_obj[1]);
+  }
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "RefinementArray_SetSize" "', argument " "3"" of type '" "mfem::MemoryType""'");
+  } 
+  arg3 = static_cast< mfem::MemoryType >(val3);
+  {
+    try {
+      (arg1)->SetSize(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_SetSize(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_SetSize", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        return _wrap_RefinementArray_SetSize__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        int res = SWIG_ConvertPtr(argv[2], 0, SWIGTYPE_p_mfem__Refinement, SWIG_POINTER_NO_NULL | 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_RefinementArray_SetSize__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        if ((PyArray_PyIntAsInt(argv[1]) == -1) && PyErr_Occurred()) {
+          PyErr_Clear();
+          _v = 0;
+        } else {
+          _v = 1;    
+        }
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_RefinementArray_SetSize__SWIG_2(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_SetSize'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::SetSize(int)\n"
+    "    mfem::Array< mfem::Refinement >::SetSize(int,mfem::Refinement const &)\n"
+    "    mfem::Array< mfem::Refinement >::SetSize(int,mfem::MemoryType)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Capacity(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Capacity" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (int)((mfem::Array< mfem::Refinement > const *)arg1)->Capacity();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Reserve(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"capacity",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RefinementArray_Reserve", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Reserve" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      (arg1)->Reserve(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Append__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Refinement *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Append" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Refinement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_Append" "', argument " "2"" of type '" "mfem::Refinement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_Append" "', argument " "2"" of type '" "mfem::Refinement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Refinement * >(argp2);
+  {
+    try {
+      result = (int)(arg1)->Append((mfem::Refinement const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Append__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Refinement *arg2 = (mfem::Refinement *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int result;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Append" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_Append" "', argument " "2"" of type '" "mfem::Refinement const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Refinement * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      result = (int)(arg1)->Append((mfem::Refinement const *)arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Append__SWIG_2(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Array< mfem::Refinement > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int result;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Append" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_Append" "', argument " "2"" of type '" "mfem::Array< mfem::Refinement > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_Append" "', argument " "2"" of type '" "mfem::Array< mfem::Refinement > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp2);
+  {
+    try {
+      result = (int)(arg1)->Append((mfem::Array< mfem::Refinement > const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Append(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_Append", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Refinement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_RefinementArray_Append__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_RefinementArray_Append__SWIG_2(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_RefinementArray_Append__SWIG_1(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_Append'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::Append(mfem::Refinement const &)\n"
+    "    mfem::Array< mfem::Refinement >::Append(mfem::Refinement const *,int)\n"
+    "    mfem::Array< mfem::Refinement >::Append(mfem::Array< mfem::Refinement > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Prepend(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Refinement *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"el",  NULL 
+  };
+  int result;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RefinementArray_Prepend", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Prepend" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__Refinement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_Prepend" "', argument " "2"" of type '" "mfem::Refinement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_Prepend" "', argument " "2"" of type '" "mfem::Refinement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Refinement * >(argp2);
+  {
+    try {
+      result = (int)(arg1)->Prepend((mfem::Refinement const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Last__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Last" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *) &(arg1)->Last();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Last__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Last" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *) &((mfem::Array< mfem::Refinement > const *)arg1)->Last();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Last(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_Last", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_Last__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_Last__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_Last'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::Last()\n"
+    "    mfem::Array< mfem::Refinement >::Last() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_DeleteLast(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_DeleteLast" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      (arg1)->DeleteLast();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_DeleteAll(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_DeleteAll" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      (arg1)->DeleteAll();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Copy(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Array< mfem::Refinement > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"copy",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RefinementArray_Copy", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Copy" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_Copy" "', argument " "2"" of type '" "mfem::Array< mfem::Refinement > &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_Copy" "', argument " "2"" of type '" "mfem::Array< mfem::Refinement > &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp2);
+  {
+    try {
+      ((mfem::Array< mfem::Refinement > const *)arg1)->Copy(*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_MakeRef__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Refinement *arg2 = (mfem::Refinement *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 3) || (nobjs > 3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_MakeRef" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_MakeRef" "', argument " "2"" of type '" "mfem::Refinement *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Refinement * >(argp2);
+  {
+    if ((PyArray_PyIntAsInt(swig_obj[2]) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(swig_obj[2]);
+  }
+  {
+    try {
+      (arg1)->MakeRef(arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_MakeRef__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Array< mfem::Refinement > *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_MakeRef" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_MakeRef" "', argument " "2"" of type '" "mfem::Array< mfem::Refinement > const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_MakeRef" "', argument " "2"" of type '" "mfem::Array< mfem::Refinement > const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp2);
+  {
+    try {
+      (arg1)->MakeRef((mfem::Array< mfem::Refinement > const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_MakeRef(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[4] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_MakeRef", 0, 3, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_RefinementArray_MakeRef__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          if ((PyArray_PyIntAsInt(argv[2]) == -1) && PyErr_Occurred()) {
+            PyErr_Clear();
+            _v = 0;
+          } else {
+            _v = 1;    
+          }
+        }
+        if (_v) {
+          return _wrap_RefinementArray_MakeRef__SWIG_0(self, argc, argv);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_MakeRef'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::MakeRef(mfem::Refinement *,int)\n"
+    "    mfem::Array< mfem::Refinement >::MakeRef(mfem::Array< mfem::Refinement > const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_GetSubArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  mfem::Array< mfem::Refinement > *arg4 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp4 = 0 ;
+  int res4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"offset",  (char *)"sa_size",  (char *)"sa",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOOO:RefinementArray_GetSubArray", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_GetSubArray" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    if ((PyArray_PyIntAsInt(obj2) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg3 = PyArray_PyIntAsInt(obj2);
+  }
+  res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t,  0 );
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "RefinementArray_GetSubArray" "', argument " "4"" of type '" "mfem::Array< mfem::Refinement > &""'"); 
+  }
+  if (!argp4) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_GetSubArray" "', argument " "4"" of type '" "mfem::Array< mfem::Refinement > &""'"); 
+  }
+  arg4 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp4);
+  {
+    try {
+      ((mfem::Array< mfem::Refinement > const *)arg1)->GetSubArray(arg2,arg3,*arg4);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Assign__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Refinement *arg2 = (mfem::Refinement *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Assign" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_Assign" "', argument " "2"" of type '" "mfem::Refinement const *""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Refinement * >(argp2);
+  {
+    try {
+      (arg1)->Assign((mfem::Refinement const *)arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_begin__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_begin" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)(arg1)->begin();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_end__SWIG_0(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_end" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)(arg1)->end();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_begin__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_begin" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)((mfem::Array< mfem::Refinement > const *)arg1)->begin();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_begin(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_begin", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_begin__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_begin__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_begin'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::begin()\n"
+    "    mfem::Array< mfem::Refinement >::begin() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_end__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  mfem::Refinement *result = 0 ;
+  
+  if ((nobjs < 1) || (nobjs > 1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_end" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)((mfem::Array< mfem::Refinement > const *)arg1)->end();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_end(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_end", 0, 1, argv))) SWIG_fail;
+  --argc;
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_end__SWIG_0(self, argc, argv);
+    }
+  }
+  if (argc == 1) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_RefinementArray_end__SWIG_1(self, argc, argv);
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_end'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::end()\n"
+    "    mfem::Array< mfem::Refinement >::end() const\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_MemoryUsage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  long result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_MemoryUsage" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (long)((mfem::Array< mfem::Refinement > const *)arg1)->MemoryUsage();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_From_long(static_cast< long >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Read(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  mfem::Refinement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:RefinementArray_Read", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Read" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RefinementArray_Read" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (mfem::Refinement *)((mfem::Array< mfem::Refinement > const *)arg1)->Read(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_HostRead(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Refinement *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_HostRead" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)((mfem::Array< mfem::Refinement > const *)arg1)->HostRead();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Write(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  mfem::Refinement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:RefinementArray_Write", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Write" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RefinementArray_Write" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (mfem::Refinement *)(arg1)->Write(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_HostWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Refinement *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_HostWrite" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)(arg1)->HostWrite();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_ReadWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  bool arg2 = (bool) true ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  bool val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"on_dev",  NULL 
+  };
+  mfem::Refinement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O|O:RefinementArray_ReadWrite", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_ReadWrite" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  if (obj1) {
+    ecode2 = SWIG_AsVal_bool(obj1, &val2);
+    if (!SWIG_IsOK(ecode2)) {
+      SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "RefinementArray_ReadWrite" "', argument " "2"" of type '" "bool""'");
+    } 
+    arg2 = static_cast< bool >(val2);
+  }
+  {
+    try {
+      result = (mfem::Refinement *)(arg1)->ReadWrite(arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_HostReadWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  mfem::Refinement *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_HostReadWrite" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      result = (mfem::Refinement *)(arg1)->HostReadWrite();
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray___setitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  int arg2 ;
+  mfem::Refinement arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  (char *)"v",  NULL 
+  };
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OOO:RefinementArray___setitem__", kwnames, &obj0, &obj1, &obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray___setitem__" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_mfem__Refinement,  0  | 0);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "RefinementArray___setitem__" "', argument " "3"" of type '" "mfem::Refinement const""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray___setitem__" "', argument " "3"" of type '" "mfem::Refinement const""'");
+    } else {
+      mfem::Refinement * temp = reinterpret_cast< mfem::Refinement * >(argp3);
+      arg3 = *temp;
+      if (SWIG_IsNewObj(res3)) delete temp;
+    }
+  }
+  {
+    try {
+      mfem_Array_Sl_mfem_Refinement_Sg____setitem__(arg1,arg2,arg3);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray___getitem__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char * kwnames[] = {
+    (char *)"self",  (char *)"i",  NULL 
+  };
+  mfem::Refinement *result = 0 ;
+  
+  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:RefinementArray___getitem__", kwnames, &obj0, &obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray___getitem__" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > const *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    if ((PyArray_PyIntAsInt(obj1) == -1) && PyErr_Occurred()) {
+      SWIG_exception_fail(SWIG_TypeError, "Input must be integer");
+    };  
+    arg2 = PyArray_PyIntAsInt(obj1);
+  }
+  {
+    try {
+      result = (mfem::Refinement *) &mfem_Array_Sl_mfem_Refinement_Sg____getitem__((mfem::Array< mfem::Refinement > const *)arg1,arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__Refinement, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Assign__SWIG_1(PyObject *SWIGUNUSEDPARM(self), Py_ssize_t nobjs, PyObject **swig_obj) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  mfem::Refinement *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  
+  if ((nobjs < 2) || (nobjs > 2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_Assign" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2, SWIGTYPE_p_mfem__Refinement,  0  | 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "RefinementArray_Assign" "', argument " "2"" of type '" "mfem::Refinement const &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "RefinementArray_Assign" "', argument " "2"" of type '" "mfem::Refinement const &""'"); 
+  }
+  arg2 = reinterpret_cast< mfem::Refinement * >(argp2);
+  {
+    try {
+      mfem_Array_Sl_mfem_Refinement_Sg__Assign__SWIG_1(arg1,(mfem::Refinement const &)*arg2);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_Assign(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[3] = {
+    0
+  };
+  
+  if (!(argc = SWIG_Python_UnpackTuple(args, "RefinementArray_Assign", 0, 2, argv))) SWIG_fail;
+  --argc;
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_mfem__Refinement, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_RefinementArray_Assign__SWIG_0(self, argc, argv);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_mfem__Refinement, SWIG_POINTER_NO_NULL | 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_RefinementArray_Assign__SWIG_1(self, argc, argv);
+      }
+    }
+  }
+  
+fail:
+  SWIG_Python_RaiseOrModifyTypeError("Wrong number or type of arguments for overloaded function 'RefinementArray_Assign'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    mfem::Array< mfem::Refinement >::Assign(mfem::Refinement const *)\n"
+    "    mfem::Array< mfem::Refinement >::Assign(mfem::Refinement const &)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_RefinementArray_FakeToList(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  mfem::Array< mfem::Refinement > *arg1 = (mfem::Array< mfem::Refinement > *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "RefinementArray_FakeToList" "', argument " "1"" of type '" "mfem::Array< mfem::Refinement > *""'"); 
+  }
+  arg1 = reinterpret_cast< mfem::Array< mfem::Refinement > * >(argp1);
+  {
+    try {
+      mfem_Array_Sl_mfem_Refinement_Sg__FakeToList(arg1);
+    }
+#ifdef  MFEM_USE_EXCEPTIONS
+    catch (mfem::ErrorException &_e) {
+      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
+      s = s + s2;    
+      SWIG_exception(SWIG_RuntimeError, s.c_str());
+    }
+#endif
+    
+    catch (Swig::DirectorException &e){
+      SWIG_fail;
+    }    
+    catch (...) {
+      SWIG_exception(SWIG_RuntimeError, "unknown exception");
+    }	 
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *RefinementArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__ArrayT_mfem__Refinement_t, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *RefinementArray_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
@@ -7770,7 +10522,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, "CoarseFineTransformations_point_matrices_set(CoarseFineTransformations self, DenseTensor point_matrices)"},
 	 { "CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_O, "CoarseFineTransformations_point_matrices_get(CoarseFineTransformations self) -> DenseTensor"},
 	 { "CoarseFineTransformations_embeddings_get", _wrap_CoarseFineTransformations_embeddings_get, METH_O, "CoarseFineTransformations_embeddings_get(CoarseFineTransformations self) -> mfem::Array< mfem::Embedding > *"},
-	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "CoarseFineTransformations_GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, mfem::Array< mfem::Geometry::Type > & ref_type_to_geom)"},
+	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "CoarseFineTransformations_GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom)"},
 	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "CoarseFineTransformations_Clear(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "CoarseFineTransformations_IsInitialized(CoarseFineTransformations self) -> bool"},
 	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "CoarseFineTransformations_MemoryUsage(CoarseFineTransformations self) -> long"},
@@ -7788,7 +10540,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "NCMesh_GetNVertices", _wrap_NCMesh_GetNVertices, METH_O, "NCMesh_GetNVertices(NCMesh self) -> int"},
 	 { "NCMesh_GetNEdges", _wrap_NCMesh_GetNEdges, METH_O, "NCMesh_GetNEdges(NCMesh self) -> int"},
 	 { "NCMesh_GetNFaces", _wrap_NCMesh_GetNFaces, METH_O, "NCMesh_GetNFaces(NCMesh self) -> int"},
-	 { "NCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_NCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "NCMesh_Refine(NCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "NCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_NCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "NCMesh_Refine(NCMesh self, RefinementArray refinements)"},
 	 { "NCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_NCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "NCMesh_LimitNCLevel(NCMesh self, int max_nc_level)"},
 	 { "NCMesh_GetDerefinementTable", _wrap_NCMesh_GetDerefinementTable, METH_O, "NCMesh_GetDerefinementTable(NCMesh self) -> Table"},
 	 { "NCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_NCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "NCMesh_CheckDerefinementNCLevel(NCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
@@ -7836,6 +10588,77 @@ static PyMethodDef SwigMethods[] = {
 		""},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
+	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
+		"RefinementArray()\n"
+		"RefinementArray(mfem::MemoryType mt)\n"
+		"RefinementArray(int asize)\n"
+		"RefinementArray(Refinement _data, int asize)\n"
+		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
+		""},
+	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
+	 { "RefinementArray_GetData", _wrap_RefinementArray_GetData, METH_VARARGS, "\n"
+		"RefinementArray_GetData(RefinementArray self) -> Refinement\n"
+		"RefinementArray_GetData(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_GetMemory", _wrap_RefinementArray_GetMemory, METH_VARARGS, "\n"
+		"RefinementArray_GetMemory(RefinementArray self) -> mfem::Memory< mfem::Refinement >\n"
+		"RefinementArray_GetMemory(RefinementArray self) -> mfem::Memory< mfem::Refinement > const &\n"
+		""},
+	 { "RefinementArray_UseDevice", _wrap_RefinementArray_UseDevice, METH_O, "RefinementArray_UseDevice(RefinementArray self) -> bool"},
+	 { "RefinementArray_OwnsData", _wrap_RefinementArray_OwnsData, METH_O, "RefinementArray_OwnsData(RefinementArray self) -> bool"},
+	 { "RefinementArray_StealData", (PyCFunction)(void(*)(void))_wrap_RefinementArray_StealData, METH_VARARGS|METH_KEYWORDS, "RefinementArray_StealData(RefinementArray self, mfem::Refinement ** p)"},
+	 { "RefinementArray_LoseData", _wrap_RefinementArray_LoseData, METH_O, "RefinementArray_LoseData(RefinementArray self)"},
+	 { "RefinementArray_MakeDataOwner", _wrap_RefinementArray_MakeDataOwner, METH_O, "RefinementArray_MakeDataOwner(RefinementArray self)"},
+	 { "RefinementArray_Size", _wrap_RefinementArray_Size, METH_O, "RefinementArray_Size(RefinementArray self) -> int"},
+	 { "RefinementArray_SetSize", _wrap_RefinementArray_SetSize, METH_VARARGS, "\n"
+		"RefinementArray_SetSize(RefinementArray self, int nsize)\n"
+		"RefinementArray_SetSize(RefinementArray self, int nsize, Refinement initval)\n"
+		"RefinementArray_SetSize(RefinementArray self, int nsize, mfem::MemoryType mt)\n"
+		""},
+	 { "RefinementArray_Capacity", _wrap_RefinementArray_Capacity, METH_O, "RefinementArray_Capacity(RefinementArray self) -> int"},
+	 { "RefinementArray_Reserve", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Reserve, METH_VARARGS|METH_KEYWORDS, "RefinementArray_Reserve(RefinementArray self, int capacity)"},
+	 { "RefinementArray_Append", _wrap_RefinementArray_Append, METH_VARARGS, "\n"
+		"RefinementArray_Append(RefinementArray self, Refinement el) -> int\n"
+		"RefinementArray_Append(RefinementArray self, Refinement els, int nels) -> int\n"
+		"RefinementArray_Append(RefinementArray self, RefinementArray els) -> int\n"
+		""},
+	 { "RefinementArray_Prepend", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Prepend, METH_VARARGS|METH_KEYWORDS, "RefinementArray_Prepend(RefinementArray self, Refinement el) -> int"},
+	 { "RefinementArray_Last", _wrap_RefinementArray_Last, METH_VARARGS, "\n"
+		"RefinementArray_Last(RefinementArray self) -> Refinement\n"
+		"RefinementArray_Last(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_DeleteLast", _wrap_RefinementArray_DeleteLast, METH_O, "RefinementArray_DeleteLast(RefinementArray self)"},
+	 { "RefinementArray_DeleteAll", _wrap_RefinementArray_DeleteAll, METH_O, "RefinementArray_DeleteAll(RefinementArray self)"},
+	 { "RefinementArray_Copy", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Copy, METH_VARARGS|METH_KEYWORDS, "RefinementArray_Copy(RefinementArray self, RefinementArray copy)"},
+	 { "RefinementArray_MakeRef", _wrap_RefinementArray_MakeRef, METH_VARARGS, "\n"
+		"RefinementArray_MakeRef(RefinementArray self, Refinement arg2, int arg3)\n"
+		"RefinementArray_MakeRef(RefinementArray self, RefinementArray master)\n"
+		""},
+	 { "RefinementArray_GetSubArray", (PyCFunction)(void(*)(void))_wrap_RefinementArray_GetSubArray, METH_VARARGS|METH_KEYWORDS, "RefinementArray_GetSubArray(RefinementArray self, int offset, int sa_size, RefinementArray sa)"},
+	 { "RefinementArray_begin", _wrap_RefinementArray_begin, METH_VARARGS, "\n"
+		"RefinementArray_begin(RefinementArray self) -> Refinement\n"
+		"RefinementArray_begin(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_end", _wrap_RefinementArray_end, METH_VARARGS, "\n"
+		"RefinementArray_end(RefinementArray self) -> Refinement\n"
+		"RefinementArray_end(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_MemoryUsage", _wrap_RefinementArray_MemoryUsage, METH_O, "RefinementArray_MemoryUsage(RefinementArray self) -> long"},
+	 { "RefinementArray_Read", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Read, METH_VARARGS|METH_KEYWORDS, "RefinementArray_Read(RefinementArray self, bool on_dev=True) -> Refinement"},
+	 { "RefinementArray_HostRead", _wrap_RefinementArray_HostRead, METH_O, "RefinementArray_HostRead(RefinementArray self) -> Refinement"},
+	 { "RefinementArray_Write", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Write, METH_VARARGS|METH_KEYWORDS, "RefinementArray_Write(RefinementArray self, bool on_dev=True) -> Refinement"},
+	 { "RefinementArray_HostWrite", _wrap_RefinementArray_HostWrite, METH_O, "RefinementArray_HostWrite(RefinementArray self) -> Refinement"},
+	 { "RefinementArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_RefinementArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "RefinementArray_ReadWrite(RefinementArray self, bool on_dev=True) -> Refinement"},
+	 { "RefinementArray_HostReadWrite", _wrap_RefinementArray_HostReadWrite, METH_O, "RefinementArray_HostReadWrite(RefinementArray self) -> Refinement"},
+	 { "RefinementArray___setitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___setitem__, METH_VARARGS|METH_KEYWORDS, "RefinementArray___setitem__(RefinementArray self, int i, Refinement v)"},
+	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "RefinementArray___getitem__(RefinementArray self, int const i) -> Refinement"},
+	 { "RefinementArray_Assign", _wrap_RefinementArray_Assign, METH_VARARGS, "\n"
+		"RefinementArray_Assign(RefinementArray self, Refinement arg2)\n"
+		"RefinementArray_Assign(RefinementArray self, Refinement a)\n"
+		""},
+	 { "RefinementArray_FakeToList", _wrap_RefinementArray_FakeToList, METH_O, "RefinementArray_FakeToList(RefinementArray self)"},
+	 { "RefinementArray_swigregister", RefinementArray_swigregister, METH_O, NULL},
+	 { "RefinementArray_swiginit", RefinementArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -7883,7 +10706,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "CoarseFineTransformations_point_matrices_set", _wrap_CoarseFineTransformations_point_matrices_set, METH_VARARGS, "CoarseFineTransformations_point_matrices_set(CoarseFineTransformations self, DenseTensor point_matrices)"},
 	 { "CoarseFineTransformations_point_matrices_get", _wrap_CoarseFineTransformations_point_matrices_get, METH_O, "CoarseFineTransformations_point_matrices_get(CoarseFineTransformations self) -> DenseTensor"},
 	 { "CoarseFineTransformations_embeddings_get", _wrap_CoarseFineTransformations_embeddings_get, METH_O, "CoarseFineTransformations_embeddings_get(CoarseFineTransformations self) -> mfem::Array< mfem::Embedding > *"},
-	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, mfem::Array< mfem::Geometry::Type > & ref_type_to_geom)"},
+	 { "CoarseFineTransformations_GetCoarseToFineMap", (PyCFunction)(void(*)(void))_wrap_CoarseFineTransformations_GetCoarseToFineMap, METH_VARARGS|METH_KEYWORDS, "GetCoarseToFineMap(CoarseFineTransformations self, Mesh fine_mesh, Table coarse_to_fine, intArray coarse_to_ref_type, Table ref_type_to_matrix, GeometryTypeArray ref_type_to_geom)"},
 	 { "CoarseFineTransformations_Clear", _wrap_CoarseFineTransformations_Clear, METH_O, "Clear(CoarseFineTransformations self)"},
 	 { "CoarseFineTransformations_IsInitialized", _wrap_CoarseFineTransformations_IsInitialized, METH_O, "IsInitialized(CoarseFineTransformations self) -> bool"},
 	 { "CoarseFineTransformations_MemoryUsage", _wrap_CoarseFineTransformations_MemoryUsage, METH_O, "MemoryUsage(CoarseFineTransformations self) -> long"},
@@ -7901,7 +10724,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "NCMesh_GetNVertices", _wrap_NCMesh_GetNVertices, METH_O, "GetNVertices(NCMesh self) -> int"},
 	 { "NCMesh_GetNEdges", _wrap_NCMesh_GetNEdges, METH_O, "GetNEdges(NCMesh self) -> int"},
 	 { "NCMesh_GetNFaces", _wrap_NCMesh_GetNFaces, METH_O, "GetNFaces(NCMesh self) -> int"},
-	 { "NCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_NCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "Refine(NCMesh self, mfem::Array< mfem::Refinement > const & refinements)"},
+	 { "NCMesh_Refine", (PyCFunction)(void(*)(void))_wrap_NCMesh_Refine, METH_VARARGS|METH_KEYWORDS, "Refine(NCMesh self, RefinementArray refinements)"},
 	 { "NCMesh_LimitNCLevel", (PyCFunction)(void(*)(void))_wrap_NCMesh_LimitNCLevel, METH_VARARGS|METH_KEYWORDS, "LimitNCLevel(NCMesh self, int max_nc_level)"},
 	 { "NCMesh_GetDerefinementTable", _wrap_NCMesh_GetDerefinementTable, METH_O, "GetDerefinementTable(NCMesh self) -> Table"},
 	 { "NCMesh_CheckDerefinementNCLevel", (PyCFunction)(void(*)(void))_wrap_NCMesh_CheckDerefinementNCLevel, METH_VARARGS|METH_KEYWORDS, "CheckDerefinementNCLevel(NCMesh self, Table deref_table, intArray level_ok, int max_nc_level)"},
@@ -7949,6 +10772,77 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 		""},
 	 { "NCMesh_swigregister", NCMesh_swigregister, METH_O, NULL},
 	 { "NCMesh_swiginit", NCMesh_swiginit, METH_VARARGS, NULL},
+	 { "new_RefinementArray", _wrap_new_RefinementArray, METH_VARARGS, "\n"
+		"RefinementArray()\n"
+		"RefinementArray(mfem::MemoryType mt)\n"
+		"RefinementArray(int asize)\n"
+		"RefinementArray(Refinement _data, int asize)\n"
+		"new_RefinementArray(RefinementArray src) -> RefinementArray\n"
+		""},
+	 { "delete_RefinementArray", _wrap_delete_RefinementArray, METH_O, "delete_RefinementArray(RefinementArray self)"},
+	 { "RefinementArray_GetData", _wrap_RefinementArray_GetData, METH_VARARGS, "\n"
+		"GetData(RefinementArray self) -> Refinement\n"
+		"GetData(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_GetMemory", _wrap_RefinementArray_GetMemory, METH_VARARGS, "\n"
+		"GetMemory(RefinementArray self) -> mfem::Memory< mfem::Refinement >\n"
+		"GetMemory(RefinementArray self) -> mfem::Memory< mfem::Refinement > const &\n"
+		""},
+	 { "RefinementArray_UseDevice", _wrap_RefinementArray_UseDevice, METH_O, "UseDevice(RefinementArray self) -> bool"},
+	 { "RefinementArray_OwnsData", _wrap_RefinementArray_OwnsData, METH_O, "OwnsData(RefinementArray self) -> bool"},
+	 { "RefinementArray_StealData", (PyCFunction)(void(*)(void))_wrap_RefinementArray_StealData, METH_VARARGS|METH_KEYWORDS, "StealData(RefinementArray self, mfem::Refinement ** p)"},
+	 { "RefinementArray_LoseData", _wrap_RefinementArray_LoseData, METH_O, "LoseData(RefinementArray self)"},
+	 { "RefinementArray_MakeDataOwner", _wrap_RefinementArray_MakeDataOwner, METH_O, "MakeDataOwner(RefinementArray self)"},
+	 { "RefinementArray_Size", _wrap_RefinementArray_Size, METH_O, "Size(RefinementArray self) -> int"},
+	 { "RefinementArray_SetSize", _wrap_RefinementArray_SetSize, METH_VARARGS, "\n"
+		"SetSize(RefinementArray self, int nsize)\n"
+		"SetSize(RefinementArray self, int nsize, Refinement initval)\n"
+		"SetSize(RefinementArray self, int nsize, mfem::MemoryType mt)\n"
+		""},
+	 { "RefinementArray_Capacity", _wrap_RefinementArray_Capacity, METH_O, "Capacity(RefinementArray self) -> int"},
+	 { "RefinementArray_Reserve", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Reserve, METH_VARARGS|METH_KEYWORDS, "Reserve(RefinementArray self, int capacity)"},
+	 { "RefinementArray_Append", _wrap_RefinementArray_Append, METH_VARARGS, "\n"
+		"Append(RefinementArray self, Refinement el) -> int\n"
+		"Append(RefinementArray self, Refinement els, int nels) -> int\n"
+		"Append(RefinementArray self, RefinementArray els) -> int\n"
+		""},
+	 { "RefinementArray_Prepend", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Prepend, METH_VARARGS|METH_KEYWORDS, "Prepend(RefinementArray self, Refinement el) -> int"},
+	 { "RefinementArray_Last", _wrap_RefinementArray_Last, METH_VARARGS, "\n"
+		"Last(RefinementArray self) -> Refinement\n"
+		"Last(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_DeleteLast", _wrap_RefinementArray_DeleteLast, METH_O, "DeleteLast(RefinementArray self)"},
+	 { "RefinementArray_DeleteAll", _wrap_RefinementArray_DeleteAll, METH_O, "DeleteAll(RefinementArray self)"},
+	 { "RefinementArray_Copy", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Copy, METH_VARARGS|METH_KEYWORDS, "Copy(RefinementArray self, RefinementArray copy)"},
+	 { "RefinementArray_MakeRef", _wrap_RefinementArray_MakeRef, METH_VARARGS, "\n"
+		"MakeRef(RefinementArray self, Refinement arg2, int arg3)\n"
+		"MakeRef(RefinementArray self, RefinementArray master)\n"
+		""},
+	 { "RefinementArray_GetSubArray", (PyCFunction)(void(*)(void))_wrap_RefinementArray_GetSubArray, METH_VARARGS|METH_KEYWORDS, "GetSubArray(RefinementArray self, int offset, int sa_size, RefinementArray sa)"},
+	 { "RefinementArray_begin", _wrap_RefinementArray_begin, METH_VARARGS, "\n"
+		"begin(RefinementArray self) -> Refinement\n"
+		"begin(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_end", _wrap_RefinementArray_end, METH_VARARGS, "\n"
+		"end(RefinementArray self) -> Refinement\n"
+		"end(RefinementArray self) -> Refinement\n"
+		""},
+	 { "RefinementArray_MemoryUsage", _wrap_RefinementArray_MemoryUsage, METH_O, "MemoryUsage(RefinementArray self) -> long"},
+	 { "RefinementArray_Read", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Read, METH_VARARGS|METH_KEYWORDS, "Read(RefinementArray self, bool on_dev=True) -> Refinement"},
+	 { "RefinementArray_HostRead", _wrap_RefinementArray_HostRead, METH_O, "HostRead(RefinementArray self) -> Refinement"},
+	 { "RefinementArray_Write", (PyCFunction)(void(*)(void))_wrap_RefinementArray_Write, METH_VARARGS|METH_KEYWORDS, "Write(RefinementArray self, bool on_dev=True) -> Refinement"},
+	 { "RefinementArray_HostWrite", _wrap_RefinementArray_HostWrite, METH_O, "HostWrite(RefinementArray self) -> Refinement"},
+	 { "RefinementArray_ReadWrite", (PyCFunction)(void(*)(void))_wrap_RefinementArray_ReadWrite, METH_VARARGS|METH_KEYWORDS, "ReadWrite(RefinementArray self, bool on_dev=True) -> Refinement"},
+	 { "RefinementArray_HostReadWrite", _wrap_RefinementArray_HostReadWrite, METH_O, "HostReadWrite(RefinementArray self) -> Refinement"},
+	 { "RefinementArray___setitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___setitem__, METH_VARARGS|METH_KEYWORDS, "__setitem__(RefinementArray self, int i, Refinement v)"},
+	 { "RefinementArray___getitem__", (PyCFunction)(void(*)(void))_wrap_RefinementArray___getitem__, METH_VARARGS|METH_KEYWORDS, "__getitem__(RefinementArray self, int const i) -> Refinement"},
+	 { "RefinementArray_Assign", _wrap_RefinementArray_Assign, METH_VARARGS, "\n"
+		"Assign(RefinementArray self, Refinement arg2)\n"
+		"Assign(RefinementArray self, Refinement a)\n"
+		""},
+	 { "RefinementArray_FakeToList", _wrap_RefinementArray_FakeToList, METH_O, "FakeToList(RefinementArray self)"},
+	 { "RefinementArray_swigregister", RefinementArray_swigregister, METH_O, NULL},
+	 { "RefinementArray_swiginit", RefinementArray_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -7984,6 +10878,7 @@ static swig_type_info _swigt__p_mfem__GridFunction = {"_p_mfem__GridFunction", "
 static swig_type_info _swigt__p_mfem__IntegrationRule = {"_p_mfem__IntegrationRule", "mfem::IntegrationRule *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__L2_FECollection = {"_p_mfem__L2_FECollection", "mfem::L2_FECollection *|mfem::DG_FECollection *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_mfem__MemoryT_mfem__Refinement_t = {"_p_mfem__MemoryT_mfem__Refinement_t", "mfem::Memory< mfem::Refinement > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NCMesh = {"_p_mfem__NCMesh", "mfem::NCMesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NCMesh__MeshId = {"_p_mfem__NCMesh__MeshId", "mfem::NCMesh::MeshId *", 0, 0, (void*)0, 0};
@@ -7992,6 +10887,7 @@ static swig_type_info _swigt__p_mfem__OperatorHandle = {"_p_mfem__OperatorHandle
 static swig_type_info _swigt__p_mfem__Refinement = {"_p_mfem__Refinement", "mfem::Refinement *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Table = {"_p_mfem__Table", "mfem::Table *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__STable = {"_p_mfem__STable", 0, 0, 0, 0, 0};
+static swig_type_info _swigt__p_p_mfem__Refinement = {"_p_p_mfem__Refinement", "mfem::Refinement **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pri_t = {"_p_pri_t", "pri_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_quad_t = {"_p_quad_t", "quad_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_seg_t = {"_p_seg_t", "seg_t *", 0, 0, (void*)0, 0};
@@ -8021,6 +10917,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__IntegrationRule,
   &_swigt__p_mfem__L2_FECollection,
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
+  &_swigt__p_mfem__MemoryT_mfem__Refinement_t,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__NCMesh,
   &_swigt__p_mfem__NCMesh__MeshId,
@@ -8029,6 +10926,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__Refinement,
   &_swigt__p_mfem__STable,
   &_swigt__p_mfem__Table,
+  &_swigt__p_p_mfem__Refinement,
   &_swigt__p_pri_t,
   &_swigt__p_quad_t,
   &_swigt__p_seg_t,
@@ -8058,6 +10956,7 @@ static swig_cast_info _swigc__p_mfem__GridFunction[] = {  {&_swigt__p_mfem__Grid
 static swig_cast_info _swigc__p_mfem__IntegrationRule[] = {  {&_swigt__p_mfem__IntegrationRule, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__L2_FECollection[] = {  {&_swigt__p_mfem__L2_FECollection, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_mfem__MemoryT_mfem__Refinement_t[] = {  {&_swigt__p_mfem__MemoryT_mfem__Refinement_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NCMesh[] = {  {&_swigt__p_mfem__NCMesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NCMesh__MeshId[] = {  {&_swigt__p_mfem__NCMesh__MeshId, 0, 0, 0},{0, 0, 0, 0}};
@@ -8066,6 +10965,7 @@ static swig_cast_info _swigc__p_mfem__OperatorHandle[] = {  {&_swigt__p_mfem__Op
 static swig_cast_info _swigc__p_mfem__Refinement[] = {  {&_swigt__p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__STable[] = {{&_swigt__p_mfem__STable, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Table[] = {  {&_swigt__p_mfem__STable, _p_mfem__STableTo_p_mfem__Table, 0, 0},  {&_swigt__p_mfem__Table, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_mfem__Refinement[] = {  {&_swigt__p_p_mfem__Refinement, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pri_t[] = {  {&_swigt__p_pri_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_quad_t[] = {  {&_swigt__p_quad_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_seg_t[] = {  {&_swigt__p_seg_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -8095,6 +10995,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__IntegrationRule,
   _swigc__p_mfem__L2_FECollection,
   _swigc__p_mfem__MatrixVectorProductCoefficient,
+  _swigc__p_mfem__MemoryT_mfem__Refinement_t,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__NCMesh,
   _swigc__p_mfem__NCMesh__MeshId,
@@ -8103,6 +11004,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__Refinement,
   _swigc__p_mfem__STable,
   _swigc__p_mfem__Table,
+  _swigc__p_p_mfem__Refinement,
   _swigc__p_pri_t,
   _swigc__p_quad_t,
   _swigc__p_seg_t,

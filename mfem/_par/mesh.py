@@ -476,7 +476,7 @@ class Mesh(object):
     GetNumGeometries = _swig_new_instance_method(_mesh.Mesh_GetNumGeometries)
 
     def GetGeometries(self, dim, el_geoms):
-        r"""GetGeometries(Mesh self, int dim, mfem::Array< mfem::Geometry::Type > & el_geoms)"""
+        r"""GetGeometries(Mesh self, int dim, geometrytypeArray el_geoms)"""
         return _mesh.Mesh_GetGeometries(self, dim, el_geoms)
     GetGeometries = _swig_new_instance_method(_mesh.Mesh_GetGeometries)
 

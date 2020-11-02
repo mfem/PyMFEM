@@ -539,7 +539,7 @@ class Mesh(object):
     GetNumGeometries = _swig_new_instance_method(_mesh.Mesh_GetNumGeometries)
 
     def GetGeometries(self, dim, el_geoms):
-        r"""GetGeometries(Mesh self, int dim, mfem::Array< mfem::Geometry::Type > & el_geoms)"""
+        r"""GetGeometries(Mesh self, int dim, geometrytypeArray el_geoms)"""
         return _mesh.Mesh_GetGeometries(self, dim, el_geoms)
     GetGeometries = _swig_new_instance_method(_mesh.Mesh_GetGeometries)
 
@@ -914,7 +914,7 @@ class Mesh(object):
 
     def GeneralRefinement(self, *args):
         r"""
-        GeneralRefinement(Mesh self, mfem::Array< mfem::Refinement > const & refinements, int nonconforming=-1, int nc_limit=0)
+        GeneralRefinement(Mesh self, refinementArray refinements, int nonconforming=-1, int nc_limit=0)
         GeneralRefinement(Mesh self, intArray el_to_refine, int nonconforming=-1, int nc_limit=0)
         """
         return _mesh.Mesh_GeneralRefinement(self, *args)

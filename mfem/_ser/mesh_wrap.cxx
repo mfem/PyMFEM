@@ -22721,7 +22721,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_GetBdrElementBaseGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS|METH_KEYWORDS, "Mesh_GetBdrElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"},
 	 { "Mesh_HasGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_HasGeometry, METH_VARARGS|METH_KEYWORDS, "Mesh_HasGeometry(Mesh self, mfem::Geometry::Type geom) -> bool"},
 	 { "Mesh_GetNumGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNumGeometries, METH_VARARGS|METH_KEYWORDS, "Mesh_GetNumGeometries(Mesh self, int dim) -> int"},
-	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "Mesh_GetGeometries(Mesh self, int dim, mfem::Array< mfem::Geometry::Type > & el_geoms)"},
+	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "Mesh_GetGeometries(Mesh self, int dim, geometrytypeArray el_geoms)"},
 	 { "Mesh_GetElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementVertices, METH_VARARGS|METH_KEYWORDS, "Mesh_GetElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetBdrElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementVertices, METH_VARARGS|METH_KEYWORDS, "Mesh_GetBdrElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetElementEdges", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementEdges, METH_VARARGS|METH_KEYWORDS, "Mesh_GetElementEdges(Mesh self, int i, intArray edges, intArray cor)"},
@@ -22804,7 +22804,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "Mesh_SetCurvature", (PyCFunction)(void(*)(void))_wrap_Mesh_SetCurvature, METH_VARARGS|METH_KEYWORDS, "Mesh_SetCurvature(Mesh self, int order, bool discont=False, int space_dim=-1, int ordering=1)"},
 	 { "Mesh_UniformRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_UniformRefinement, METH_VARARGS|METH_KEYWORDS, "Mesh_UniformRefinement(Mesh self, int ref_algo=0)"},
 	 { "Mesh_GeneralRefinement", _wrap_Mesh_GeneralRefinement, METH_VARARGS, "\n"
-		"Mesh_GeneralRefinement(Mesh self, mfem::Array< mfem::Refinement > const & refinements, int nonconforming=-1, int nc_limit=0)\n"
+		"Mesh_GeneralRefinement(Mesh self, refinementArray refinements, int nonconforming=-1, int nc_limit=0)\n"
 		"Mesh_GeneralRefinement(Mesh self, intArray el_to_refine, int nonconforming=-1, int nc_limit=0)\n"
 		""},
 	 { "Mesh_RandomRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_RandomRefinement, METH_VARARGS|METH_KEYWORDS, "Mesh_RandomRefinement(Mesh self, double prob, bool aniso=False, int nonconforming=-1, int nc_limit=0)"},
@@ -23092,7 +23092,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_GetBdrElementBaseGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementBaseGeometry, METH_VARARGS|METH_KEYWORDS, "GetBdrElementBaseGeometry(Mesh self, int i) -> mfem::Geometry::Type"},
 	 { "Mesh_HasGeometry", (PyCFunction)(void(*)(void))_wrap_Mesh_HasGeometry, METH_VARARGS|METH_KEYWORDS, "HasGeometry(Mesh self, mfem::Geometry::Type geom) -> bool"},
 	 { "Mesh_GetNumGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetNumGeometries, METH_VARARGS|METH_KEYWORDS, "GetNumGeometries(Mesh self, int dim) -> int"},
-	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "GetGeometries(Mesh self, int dim, mfem::Array< mfem::Geometry::Type > & el_geoms)"},
+	 { "Mesh_GetGeometries", (PyCFunction)(void(*)(void))_wrap_Mesh_GetGeometries, METH_VARARGS|METH_KEYWORDS, "GetGeometries(Mesh self, int dim, geometrytypeArray el_geoms)"},
 	 { "Mesh_GetElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementVertices, METH_VARARGS|METH_KEYWORDS, "GetElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetBdrElementVertices", (PyCFunction)(void(*)(void))_wrap_Mesh_GetBdrElementVertices, METH_VARARGS|METH_KEYWORDS, "GetBdrElementVertices(Mesh self, int i, intArray v)"},
 	 { "Mesh_GetElementEdges", (PyCFunction)(void(*)(void))_wrap_Mesh_GetElementEdges, METH_VARARGS|METH_KEYWORDS, "GetElementEdges(Mesh self, int i, intArray edges, intArray cor)"},
@@ -23175,7 +23175,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "Mesh_SetCurvature", (PyCFunction)(void(*)(void))_wrap_Mesh_SetCurvature, METH_VARARGS|METH_KEYWORDS, "SetCurvature(Mesh self, int order, bool discont=False, int space_dim=-1, int ordering=1)"},
 	 { "Mesh_UniformRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_UniformRefinement, METH_VARARGS|METH_KEYWORDS, "UniformRefinement(Mesh self, int ref_algo=0)"},
 	 { "Mesh_GeneralRefinement", _wrap_Mesh_GeneralRefinement, METH_VARARGS, "\n"
-		"GeneralRefinement(Mesh self, mfem::Array< mfem::Refinement > const & refinements, int nonconforming=-1, int nc_limit=0)\n"
+		"GeneralRefinement(Mesh self, refinementArray refinements, int nonconforming=-1, int nc_limit=0)\n"
 		"GeneralRefinement(Mesh self, intArray el_to_refine, int nonconforming=-1, int nc_limit=0)\n"
 		""},
 	 { "Mesh_RandomRefinement", (PyCFunction)(void(*)(void))_wrap_Mesh_RandomRefinement, METH_VARARGS|METH_KEYWORDS, "RandomRefinement(Mesh self, double prob, bool aniso=False, int nonconforming=-1, int nc_limit=0)"},
