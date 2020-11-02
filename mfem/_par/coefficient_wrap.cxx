@@ -3097,102 +3097,98 @@ namespace Swig {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_MPI_Comm swig_types[0]
-#define SWIGTYPE_p_PyMFEM__wFILE swig_types[1]
-#define SWIGTYPE_p_char swig_types[2]
-#define SWIGTYPE_p_double swig_types[3]
-#define SWIGTYPE_p_f_double__double swig_types[4]
-#define SWIGTYPE_p_f_double_double__double swig_types[5]
-#define SWIGTYPE_p_f_r_mfem__Vector__double swig_types[6]
-#define SWIGTYPE_p_f_r_mfem__Vector_double__double swig_types[7]
-#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[8]
-#define SWIGTYPE_p_mfem__Coefficient swig_types[9]
-#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[10]
-#define SWIGTYPE_p_mfem__CrossCrossCoefficient swig_types[11]
-#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[12]
-#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[13]
-#define SWIGTYPE_p_mfem__DenseMatrix swig_types[14]
-#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[15]
-#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[16]
-#define SWIGTYPE_p_mfem__ElementTransformation swig_types[17]
-#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[18]
-#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[19]
-#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[20]
-#define SWIGTYPE_p_mfem__GridFunction swig_types[21]
-#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[22]
-#define SWIGTYPE_p_mfem__IdentityMatrixCoefficient swig_types[23]
-#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[24]
-#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[25]
-#define SWIGTYPE_p_mfem__IntegrationRule swig_types[26]
-#define SWIGTYPE_p_mfem__InverseMatrixCoefficient swig_types[27]
-#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[28]
-#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[29]
-#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[30]
-#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[31]
-#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[32]
-#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[33]
-#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[34]
-#define SWIGTYPE_p_mfem__MatrixSumCoefficient swig_types[35]
-#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[36]
-#define SWIGTYPE_p_mfem__Mesh swig_types[37]
-#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[38]
-#define SWIGTYPE_p_mfem__OutStream swig_types[39]
-#define SWIGTYPE_p_mfem__OuterProductCoefficient swig_types[40]
-#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[41]
-#define SWIGTYPE_p_mfem__ParMesh swig_types[42]
-#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[43]
-#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[44]
-#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[45]
-#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[46]
-#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[47]
-#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[48]
-#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[49]
-#define SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient swig_types[50]
-#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[51]
-#define SWIGTYPE_p_mfem__SumCoefficient swig_types[52]
-#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[53]
-#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[54]
-#define SWIGTYPE_p_mfem__Vector swig_types[55]
-#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[56]
-#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[57]
-#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[58]
-#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[59]
-#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[60]
-#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[61]
-#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[62]
-#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[63]
-#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[64]
-#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[65]
-#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[66]
-#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[67]
-#define SWIGTYPE_p_p_mfem__Coefficient swig_types[68]
-#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[69]
-#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[70]
-#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[71]
-#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[72]
-#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[73]
-#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[74]
-#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[75]
-#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[76]
-#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[77]
-#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[78]
-#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[79]
-#define SWIGTYPE_p_p_mfem__QuadratureFunctionCoefficient swig_types[80]
-#define SWIGTYPE_p_p_mfem__RatioCoefficient swig_types[81]
-#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[82]
-#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[83]
-#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[84]
-#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[85]
-#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_RF_t swig_types[86]
-#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_R_doubleF_t swig_types[87]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__DenseMatrix_RF_t swig_types[88]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t swig_types[89]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t swig_types[90]
-#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t swig_types[91]
-#define SWIGTYPE_p_std__ostream swig_types[92]
-#define SWIGTYPE_p_std__string swig_types[93]
-static swig_type_info *swig_types[95];
-static swig_module_info swig_module = {swig_types, 94, 0, 0, 0, 0};
+#define SWIGTYPE_p_PyMFEM__wFILE swig_types[0]
+#define SWIGTYPE_p_char swig_types[1]
+#define SWIGTYPE_p_double swig_types[2]
+#define SWIGTYPE_p_f_double__double swig_types[3]
+#define SWIGTYPE_p_f_double_double__double swig_types[4]
+#define SWIGTYPE_p_f_r_mfem__Vector__double swig_types[5]
+#define SWIGTYPE_p_f_r_mfem__Vector_double__double swig_types[6]
+#define SWIGTYPE_p_mfem__ArrayT_int_t swig_types[7]
+#define SWIGTYPE_p_mfem__Coefficient swig_types[8]
+#define SWIGTYPE_p_mfem__ConstantCoefficient swig_types[9]
+#define SWIGTYPE_p_mfem__CrossCrossCoefficient swig_types[10]
+#define SWIGTYPE_p_mfem__CurlGridFunctionCoefficient swig_types[11]
+#define SWIGTYPE_p_mfem__DeltaCoefficient swig_types[12]
+#define SWIGTYPE_p_mfem__DenseMatrix swig_types[13]
+#define SWIGTYPE_p_mfem__DeterminantCoefficient swig_types[14]
+#define SWIGTYPE_p_mfem__DivergenceGridFunctionCoefficient swig_types[15]
+#define SWIGTYPE_p_mfem__ElementTransformation swig_types[16]
+#define SWIGTYPE_p_mfem__FaceElementTransformations swig_types[17]
+#define SWIGTYPE_p_mfem__FunctionCoefficient swig_types[18]
+#define SWIGTYPE_p_mfem__GradientGridFunctionCoefficient swig_types[19]
+#define SWIGTYPE_p_mfem__GridFunction swig_types[20]
+#define SWIGTYPE_p_mfem__GridFunctionCoefficient swig_types[21]
+#define SWIGTYPE_p_mfem__IdentityMatrixCoefficient swig_types[22]
+#define SWIGTYPE_p_mfem__InnerProductCoefficient swig_types[23]
+#define SWIGTYPE_p_mfem__IntegrationPoint swig_types[24]
+#define SWIGTYPE_p_mfem__IntegrationRule swig_types[25]
+#define SWIGTYPE_p_mfem__InverseMatrixCoefficient swig_types[26]
+#define SWIGTYPE_p_mfem__IsoparametricTransformation swig_types[27]
+#define SWIGTYPE_p_mfem__MatrixArrayCoefficient swig_types[28]
+#define SWIGTYPE_p_mfem__MatrixCoefficient swig_types[29]
+#define SWIGTYPE_p_mfem__MatrixConstantCoefficient swig_types[30]
+#define SWIGTYPE_p_mfem__MatrixFunctionCoefficient swig_types[31]
+#define SWIGTYPE_p_mfem__MatrixPyCoefficientBase swig_types[32]
+#define SWIGTYPE_p_mfem__MatrixRestrictedCoefficient swig_types[33]
+#define SWIGTYPE_p_mfem__MatrixSumCoefficient swig_types[34]
+#define SWIGTYPE_p_mfem__MatrixVectorProductCoefficient swig_types[35]
+#define SWIGTYPE_p_mfem__Mesh swig_types[36]
+#define SWIGTYPE_p_mfem__NormalizedVectorCoefficient swig_types[37]
+#define SWIGTYPE_p_mfem__OuterProductCoefficient swig_types[38]
+#define SWIGTYPE_p_mfem__PWConstCoefficient swig_types[39]
+#define SWIGTYPE_p_mfem__ParMesh swig_types[40]
+#define SWIGTYPE_p_mfem__PowerCoefficient swig_types[41]
+#define SWIGTYPE_p_mfem__ProductCoefficient swig_types[42]
+#define SWIGTYPE_p_mfem__PyCoefficientBase swig_types[43]
+#define SWIGTYPE_p_mfem__QuadratureFunction swig_types[44]
+#define SWIGTYPE_p_mfem__QuadratureFunctionCoefficient swig_types[45]
+#define SWIGTYPE_p_mfem__RatioCoefficient swig_types[46]
+#define SWIGTYPE_p_mfem__RestrictedCoefficient swig_types[47]
+#define SWIGTYPE_p_mfem__ScalarMatrixProductCoefficient swig_types[48]
+#define SWIGTYPE_p_mfem__ScalarVectorProductCoefficient swig_types[49]
+#define SWIGTYPE_p_mfem__SumCoefficient swig_types[50]
+#define SWIGTYPE_p_mfem__TransformedCoefficient swig_types[51]
+#define SWIGTYPE_p_mfem__TransposeMatrixCoefficient swig_types[52]
+#define SWIGTYPE_p_mfem__Vector swig_types[53]
+#define SWIGTYPE_p_mfem__VectorArrayCoefficient swig_types[54]
+#define SWIGTYPE_p_mfem__VectorCoefficient swig_types[55]
+#define SWIGTYPE_p_mfem__VectorConstantCoefficient swig_types[56]
+#define SWIGTYPE_p_mfem__VectorCrossProductCoefficient swig_types[57]
+#define SWIGTYPE_p_mfem__VectorDeltaCoefficient swig_types[58]
+#define SWIGTYPE_p_mfem__VectorFunctionCoefficient swig_types[59]
+#define SWIGTYPE_p_mfem__VectorGridFunctionCoefficient swig_types[60]
+#define SWIGTYPE_p_mfem__VectorPyCoefficientBase swig_types[61]
+#define SWIGTYPE_p_mfem__VectorQuadratureFunctionCoefficient swig_types[62]
+#define SWIGTYPE_p_mfem__VectorRestrictedCoefficient swig_types[63]
+#define SWIGTYPE_p_mfem__VectorRotProductCoefficient swig_types[64]
+#define SWIGTYPE_p_mfem__VectorSumCoefficient swig_types[65]
+#define SWIGTYPE_p_p_mfem__Coefficient swig_types[66]
+#define SWIGTYPE_p_p_mfem__ConstantCoefficient swig_types[67]
+#define SWIGTYPE_p_p_mfem__DeltaCoefficient swig_types[68]
+#define SWIGTYPE_p_p_mfem__DeterminantCoefficient swig_types[69]
+#define SWIGTYPE_p_p_mfem__DivergenceGridFunctionCoefficient swig_types[70]
+#define SWIGTYPE_p_p_mfem__FunctionCoefficient swig_types[71]
+#define SWIGTYPE_p_p_mfem__GridFunctionCoefficient swig_types[72]
+#define SWIGTYPE_p_p_mfem__InnerProductCoefficient swig_types[73]
+#define SWIGTYPE_p_p_mfem__PWConstCoefficient swig_types[74]
+#define SWIGTYPE_p_p_mfem__PowerCoefficient swig_types[75]
+#define SWIGTYPE_p_p_mfem__ProductCoefficient swig_types[76]
+#define SWIGTYPE_p_p_mfem__PyCoefficientBase swig_types[77]
+#define SWIGTYPE_p_p_mfem__QuadratureFunctionCoefficient swig_types[78]
+#define SWIGTYPE_p_p_mfem__RatioCoefficient swig_types[79]
+#define SWIGTYPE_p_p_mfem__RestrictedCoefficient swig_types[80]
+#define SWIGTYPE_p_p_mfem__SumCoefficient swig_types[81]
+#define SWIGTYPE_p_p_mfem__TransformedCoefficient swig_types[82]
+#define SWIGTYPE_p_p_mfem__VectorRotProductCoefficient swig_types[83]
+#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_RF_t swig_types[84]
+#define SWIGTYPE_p_std__functionT_double_fmfem__Vector_const_R_doubleF_t swig_types[85]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__DenseMatrix_RF_t swig_types[86]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t swig_types[87]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t swig_types[88]
+#define SWIGTYPE_p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t swig_types[89]
+static swig_type_info *swig_types[91];
+static swig_module_info swig_module = {swig_types, 90, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3368,28 +3364,6 @@ SWIG_FromCharPtr(const char *cptr)
 }
 
 
-#include  "mfem.hpp"
-#include "general/globals.hpp"
-#include "numpy/arrayobject.h"    
-
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_bool  (bool value)
-{
-  return PyBool_FromLong(value ? 1 : 0);
-}
-
-
-#include <limits.h>
-#if !defined(SWIG_NO_LLONG_MAX)
-# if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
-#   define LLONG_MAX __LONG_LONG_MAX__
-#   define LLONG_MIN (-LLONG_MAX - 1LL)
-#   define ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)
-# endif
-#endif
-
-
 SWIGINTERN int
 SWIG_AsVal_double (PyObject *obj, double *val)
 {
@@ -3434,6 +3408,9 @@ SWIG_AsVal_double (PyObject *obj, double *val)
 #endif
   return res;
 }
+
+
+  #define SWIG_From_double   PyFloat_FromDouble 
 
 
 #include <float.h>
@@ -3516,25 +3493,6 @@ SWIG_AsVal_long (PyObject *obj, long* val)
 
 
 SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
-{
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
-}
-
-
-  #define SWIG_From_double   PyFloat_FromDouble 
-
-
-SWIGINTERN int
 SWIG_AsVal_bool (PyObject *obj, bool *val)
 {
   int r;
@@ -3545,6 +3503,13 @@ SWIG_AsVal_bool (PyObject *obj, bool *val)
     return SWIG_ERROR;
   if (val) *val = r ? true : false;
   return SWIG_OK;
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
 }
 
 
@@ -4029,442 +3994,6 @@ void SwigDirector_MatrixPyCoefficientBase::_EvalPyT(mfem::Vector &arg0, double a
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_new_OutStream(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  std::ostream *arg1 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char * kwnames[] = {
-    (char *)"out",  NULL 
-  };
-  mfem::OutStream *result = 0 ;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:new_OutStream", kwnames, &obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_OutStream" "', argument " "1"" of type '" "std::ostream &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_OutStream" "', argument " "1"" of type '" "std::ostream &""'"); 
-  }
-  arg1 = reinterpret_cast< std::ostream * >(argp1);
-  {
-    try {
-      result = (mfem::OutStream *)new mfem::OutStream(*arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_mfem__OutStream, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_OutStream_SetStream(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  mfem::OutStream *arg1 = (mfem::OutStream *) 0 ;
-  std::ostream *arg2 = 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  char * kwnames[] = {
-    (char *)"self",  (char *)"out",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO:OutStream_SetStream", kwnames, &obj0, &obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_mfem__OutStream, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OutStream_SetStream" "', argument " "1"" of type '" "mfem::OutStream *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::OutStream * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_std__ostream,  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "OutStream_SetStream" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  if (!argp2) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "OutStream_SetStream" "', argument " "2"" of type '" "std::ostream &""'"); 
-  }
-  arg2 = reinterpret_cast< std::ostream * >(argp2);
-  {
-    try {
-      (arg1)->SetStream(*arg2);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_OutStream_Enable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::OutStream *arg1 = (mfem::OutStream *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OutStream, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OutStream_Enable" "', argument " "1"" of type '" "mfem::OutStream *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::OutStream * >(argp1);
-  {
-    try {
-      (arg1)->Enable();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_OutStream_Disable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::OutStream *arg1 = (mfem::OutStream *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OutStream, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OutStream_Disable" "', argument " "1"" of type '" "mfem::OutStream *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::OutStream * >(argp1);
-  {
-    try {
-      (arg1)->Disable();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_OutStream_IsEnabled(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::OutStream *arg1 = (mfem::OutStream *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  bool result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OutStream, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "OutStream_IsEnabled" "', argument " "1"" of type '" "mfem::OutStream const *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::OutStream * >(argp1);
-  {
-    try {
-      result = (bool)((mfem::OutStream const *)arg1)->IsEnabled();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_From_bool(static_cast< bool >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_OutStream(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  mfem::OutStream *arg1 = (mfem::OutStream *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_mfem__OutStream, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_OutStream" "', argument " "1"" of type '" "mfem::OutStream *""'"); 
-  }
-  arg1 = reinterpret_cast< mfem::OutStream * >(argp1);
-  {
-    try {
-      delete arg1; 
-    }
-    catch (Swig::DirectorException &e) {
-      SWIG_fail; 
-    }    
-    //catch (...){
-    //  SWIG_fail;
-    //}
-    //    catch (Swig::DirectorMethodException &e) { SWIG_fail; }
-    //    catch (std::exception &e) { SWIG_fail; }    
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *OutStream_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_mfem__OutStream, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *OutStream_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  return SWIG_Python_InitShadowInstance(args);
-}
-
-SWIGINTERN int Swig_var_out_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable out is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_out_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&mfem::out), SWIGTYPE_p_mfem__OutStream,  0 );
-  return pyobj;
-}
-
-
-SWIGINTERN int Swig_var_err_set(PyObject *) {
-  SWIG_Error(SWIG_AttributeError,"Variable err is read-only.");
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_err_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&mfem::err), SWIGTYPE_p_mfem__OutStream,  0 );
-  return pyobj;
-}
-
-
-SWIGINTERN PyObject *_wrap_MakeParFilename(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  std::string *arg1 = 0 ;
-  int arg2 ;
-  std::string arg3 = (std::string) (std::string)"" ;
-  int arg4 = (int) (int)6 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
-  int val4 ;
-  int ecode4 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  char * kwnames[] = {
-    (char *)"prefix",  (char *)"myid",  (char *)"suffix",  (char *)"width",  NULL 
-  };
-  std::string result;
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "OO|OO:MakeParFilename", kwnames, &obj0, &obj1, &obj2, &obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__string,  0  | 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "MakeParFilename" "', argument " "1"" of type '" "std::string const &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MakeParFilename" "', argument " "1"" of type '" "std::string const &""'"); 
-  }
-  arg1 = reinterpret_cast< std::string * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "MakeParFilename" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (obj2) {
-    {
-      res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_std__string,  0  | 0);
-      if (!SWIG_IsOK(res3)) {
-        SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "MakeParFilename" "', argument " "3"" of type '" "std::string const""'"); 
-      }  
-      if (!argp3) {
-        SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "MakeParFilename" "', argument " "3"" of type '" "std::string const""'");
-      } else {
-        std::string * temp = reinterpret_cast< std::string * >(argp3);
-        arg3 = *temp;
-        if (SWIG_IsNewObj(res3)) delete temp;
-      }
-    }
-  }
-  if (obj3) {
-    ecode4 = SWIG_AsVal_int(obj3, &val4);
-    if (!SWIG_IsOK(ecode4)) {
-      SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "MakeParFilename" "', argument " "4"" of type '" "int""'");
-    } 
-    arg4 = static_cast< int >(val4);
-  }
-  {
-    try {
-      result = mfem::MakeParFilename((std::string const &)*arg1,arg2,arg3,arg4);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj((new std::string(static_cast< const std::string& >(result))), SWIGTYPE_p_std__string, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_GetGlobalMPI_Comm(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  MPI_Comm result;
-  
-  if (!SWIG_Python_UnpackTuple(args, "GetGlobalMPI_Comm", 0, 0, 0)) SWIG_fail;
-  {
-    try {
-      result = mfem::GetGlobalMPI_Comm();
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_NewPointerObj((new MPI_Comm(static_cast< const MPI_Comm& >(result))), SWIGTYPE_p_MPI_Comm, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_SetGlobalMPI_Comm(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
-  PyObject *resultobj = 0;
-  MPI_Comm arg1 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  char * kwnames[] = {
-    (char *)"comm",  NULL 
-  };
-  
-  if (!PyArg_ParseTupleAndKeywords(args, kwargs, "O:SetGlobalMPI_Comm", kwnames, &obj0)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_MPI_Comm,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "SetGlobalMPI_Comm" "', argument " "1"" of type '" "MPI_Comm""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "SetGlobalMPI_Comm" "', argument " "1"" of type '" "MPI_Comm""'");
-    } else {
-      MPI_Comm * temp = reinterpret_cast< MPI_Comm * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
-  }
-  {
-    try {
-      mfem::SetGlobalMPI_Comm(arg1);
-    }
-#ifdef  MFEM_USE_EXCEPTIONS
-    catch (mfem::ErrorException &_e) {
-      std::string s("PyMFEM error (mfem::ErrorException): "), s2(_e.what());
-      s = s + s2;    
-      SWIG_exception(SWIG_RuntimeError, s.c_str());
-    }
-#endif
-    
-    catch (...) {
-      SWIG_exception(SWIG_RuntimeError, "unknown exception");
-    }	 
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Coefficient_SetTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *kwargs) {
   PyObject *resultobj = 0;
   mfem::Coefficient *arg1 = (mfem::Coefficient *) 0 ;
@@ -24420,17 +23949,6 @@ SWIGINTERN PyObject *MatrixPyCoefficientBase_swiginit(PyObject *SWIGUNUSEDPARM(s
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_OutStream", (PyCFunction)(void(*)(void))_wrap_new_OutStream, METH_VARARGS|METH_KEYWORDS, "new_OutStream(std::ostream & out) -> OutStream"},
-	 { "OutStream_SetStream", (PyCFunction)(void(*)(void))_wrap_OutStream_SetStream, METH_VARARGS|METH_KEYWORDS, "OutStream_SetStream(OutStream self, std::ostream & out)"},
-	 { "OutStream_Enable", _wrap_OutStream_Enable, METH_O, "OutStream_Enable(OutStream self)"},
-	 { "OutStream_Disable", _wrap_OutStream_Disable, METH_O, "OutStream_Disable(OutStream self)"},
-	 { "OutStream_IsEnabled", _wrap_OutStream_IsEnabled, METH_O, "OutStream_IsEnabled(OutStream self) -> bool"},
-	 { "delete_OutStream", _wrap_delete_OutStream, METH_O, "delete_OutStream(OutStream self)"},
-	 { "OutStream_swigregister", OutStream_swigregister, METH_O, NULL},
-	 { "OutStream_swiginit", OutStream_swiginit, METH_VARARGS, NULL},
-	 { "MakeParFilename", (PyCFunction)(void(*)(void))_wrap_MakeParFilename, METH_VARARGS|METH_KEYWORDS, "MakeParFilename(std::string const & prefix, int const myid, std::string const suffix=\"\", int const width=6) -> std::string"},
-	 { "GetGlobalMPI_Comm", _wrap_GetGlobalMPI_Comm, METH_NOARGS, "GetGlobalMPI_Comm() -> MPI_Comm"},
-	 { "SetGlobalMPI_Comm", (PyCFunction)(void(*)(void))_wrap_SetGlobalMPI_Comm, METH_VARARGS|METH_KEYWORDS, "SetGlobalMPI_Comm(MPI_Comm comm)"},
 	 { "Coefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_Coefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "Coefficient_SetTime(Coefficient self, double t)"},
 	 { "Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_O, "Coefficient_GetTime(Coefficient self) -> double"},
 	 { "Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, "\n"
@@ -24955,17 +24473,6 @@ static PyMethodDef SwigMethods[] = {
 static PyMethodDef SwigMethods_proxydocs[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "SWIG_PyStaticMethod_New", SWIG_PyStaticMethod_New, METH_O, NULL},
-	 { "new_OutStream", (PyCFunction)(void(*)(void))_wrap_new_OutStream, METH_VARARGS|METH_KEYWORDS, "new_OutStream(std::ostream & out) -> OutStream"},
-	 { "OutStream_SetStream", (PyCFunction)(void(*)(void))_wrap_OutStream_SetStream, METH_VARARGS|METH_KEYWORDS, "SetStream(OutStream self, std::ostream & out)"},
-	 { "OutStream_Enable", _wrap_OutStream_Enable, METH_O, "Enable(OutStream self)"},
-	 { "OutStream_Disable", _wrap_OutStream_Disable, METH_O, "Disable(OutStream self)"},
-	 { "OutStream_IsEnabled", _wrap_OutStream_IsEnabled, METH_O, "IsEnabled(OutStream self) -> bool"},
-	 { "delete_OutStream", _wrap_delete_OutStream, METH_O, "delete_OutStream(OutStream self)"},
-	 { "OutStream_swigregister", OutStream_swigregister, METH_O, NULL},
-	 { "OutStream_swiginit", OutStream_swiginit, METH_VARARGS, NULL},
-	 { "MakeParFilename", (PyCFunction)(void(*)(void))_wrap_MakeParFilename, METH_VARARGS|METH_KEYWORDS, "MakeParFilename(std::string const & prefix, int const myid, std::string const suffix=\"\", int const width=6) -> std::string"},
-	 { "GetGlobalMPI_Comm", _wrap_GetGlobalMPI_Comm, METH_NOARGS, "GetGlobalMPI_Comm() -> MPI_Comm"},
-	 { "SetGlobalMPI_Comm", (PyCFunction)(void(*)(void))_wrap_SetGlobalMPI_Comm, METH_VARARGS|METH_KEYWORDS, "SetGlobalMPI_Comm(MPI_Comm comm)"},
 	 { "Coefficient_SetTime", (PyCFunction)(void(*)(void))_wrap_Coefficient_SetTime, METH_VARARGS|METH_KEYWORDS, "SetTime(Coefficient self, double t)"},
 	 { "Coefficient_GetTime", _wrap_Coefficient_GetTime, METH_O, "GetTime(Coefficient self) -> double"},
 	 { "Coefficient_Eval", _wrap_Coefficient_Eval, METH_VARARGS, "\n"
@@ -25622,6 +25129,15 @@ static void *_p_p_mfem__DeterminantCoefficientTo_p_p_mfem__Coefficient(void *x, 
 static void *_p_p_mfem__QuadratureFunctionCoefficientTo_p_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient **)  ((mfem::QuadratureFunctionCoefficient **) x));
 }
+static void *_p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::MatrixFunctionCoefficient *)  ((mfem::MatrixPyCoefficientBase *) x));
+}
+static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::VectorFunctionCoefficient *)  ((mfem::VectorPyCoefficientBase *) x));
+}
+static void *_p_mfem__PyCoefficientBaseTo_p_mfem__FunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((mfem::FunctionCoefficient *)  ((mfem::PyCoefficientBase *) x));
+}
 static void *_p_mfem__PyCoefficientBaseTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient *) (mfem::FunctionCoefficient *) ((mfem::PyCoefficientBase *) x));
 }
@@ -25673,25 +25189,12 @@ static void *_p_mfem__DeterminantCoefficientTo_p_mfem__Coefficient(void *x, int 
 static void *_p_mfem__QuadratureFunctionCoefficientTo_p_mfem__Coefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::Coefficient *)  ((mfem::QuadratureFunctionCoefficient *) x));
 }
-static void *_p_mfem__MatrixPyCoefficientBaseTo_p_mfem__MatrixFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::MatrixFunctionCoefficient *)  ((mfem::MatrixPyCoefficientBase *) x));
-}
-static void *_p_mfem__VectorPyCoefficientBaseTo_p_mfem__VectorFunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::VectorFunctionCoefficient *)  ((mfem::VectorPyCoefficientBase *) x));
-}
-static void *_p_mfem__PyCoefficientBaseTo_p_mfem__FunctionCoefficient(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((mfem::FunctionCoefficient *)  ((mfem::PyCoefficientBase *) x));
-}
 static void *_p_mfem__IsoparametricTransformationTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ElementTransformation *)  ((mfem::IsoparametricTransformation *) x));
 }
 static void *_p_mfem__FaceElementTransformationsTo_p_mfem__ElementTransformation(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((mfem::ElementTransformation *) (mfem::IsoparametricTransformation *) ((mfem::FaceElementTransformations *) x));
 }
-static void *_p_mfem__OutStreamTo_p_std__ostream(void *x, int *SWIGUNUSEDPARM(newmemory)) {
-    return (void *)((std::ostream *)  ((mfem::OutStream *) x));
-}
-static swig_type_info _swigt__p_MPI_Comm = {"_p_MPI_Comm", "MPI_Comm *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PyMFEM__wFILE = {"_p_PyMFEM__wFILE", "PyMFEM::wFILE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
@@ -25730,7 +25233,6 @@ static swig_type_info _swigt__p_mfem__MatrixSumCoefficient = {"_p_mfem__MatrixSu
 static swig_type_info _swigt__p_mfem__MatrixVectorProductCoefficient = {"_p_mfem__MatrixVectorProductCoefficient", "mfem::MatrixVectorProductCoefficient *|mfem::MatVecCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__Mesh = {"_p_mfem__Mesh", "mfem::Mesh *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__NormalizedVectorCoefficient = {"_p_mfem__NormalizedVectorCoefficient", "mfem::NormalizedVectorCoefficient *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_mfem__OutStream = {"_p_mfem__OutStream", "mfem::OutStream *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__OuterProductCoefficient = {"_p_mfem__OuterProductCoefficient", "mfem::OuterProductCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__PWConstCoefficient = {"_p_mfem__PWConstCoefficient", "mfem::PWConstCoefficient *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_mfem__ParMesh = {"_p_mfem__ParMesh", "mfem::ParMesh *", 0, 0, (void*)0, 0};
@@ -25783,11 +25285,8 @@ static swig_type_info _swigt__p_std__functionT_void_fmfem__Vector_const_R_double
 static swig_type_info _swigt__p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t = {"_p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t", "std::function< void (mfem::Vector const &,double,mfem::Vector &) > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t = {"_p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t", "std::function< void (mfem::Vector const &,mfem::DenseMatrix &) > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t = {"_p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t", "std::function< void (mfem::Vector const &,mfem::Vector &) > *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__ostream = {"_p_std__ostream", "std::ostream *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_MPI_Comm,
   &_swigt__p_PyMFEM__wFILE,
   &_swigt__p_char,
   &_swigt__p_double,
@@ -25826,7 +25325,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_mfem__MatrixVectorProductCoefficient,
   &_swigt__p_mfem__Mesh,
   &_swigt__p_mfem__NormalizedVectorCoefficient,
-  &_swigt__p_mfem__OutStream,
   &_swigt__p_mfem__OuterProductCoefficient,
   &_swigt__p_mfem__PWConstCoefficient,
   &_swigt__p_mfem__ParMesh,
@@ -25879,11 +25377,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t,
   &_swigt__p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t,
   &_swigt__p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t,
-  &_swigt__p_std__ostream,
-  &_swigt__p_std__string,
 };
 
-static swig_cast_info _swigc__p_MPI_Comm[] = {  {&_swigt__p_MPI_Comm, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PyMFEM__wFILE[] = {  {&_swigt__p_PyMFEM__wFILE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
@@ -25922,7 +25417,6 @@ static swig_cast_info _swigc__p_mfem__MatrixSumCoefficient[] = {  {&_swigt__p_mf
 static swig_cast_info _swigc__p_mfem__MatrixVectorProductCoefficient[] = {  {&_swigt__p_mfem__MatrixVectorProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__Mesh[] = {  {&_swigt__p_mfem__Mesh, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__NormalizedVectorCoefficient[] = {  {&_swigt__p_mfem__NormalizedVectorCoefficient, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_mfem__OutStream[] = {  {&_swigt__p_mfem__OutStream, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__OuterProductCoefficient[] = {  {&_swigt__p_mfem__OuterProductCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__PWConstCoefficient[] = {  {&_swigt__p_mfem__PWConstCoefficient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_mfem__ParMesh[] = {  {&_swigt__p_mfem__ParMesh, 0, 0, 0},{0, 0, 0, 0}};
@@ -25975,11 +25469,8 @@ static swig_cast_info _swigc__p_std__functionT_void_fmfem__Vector_const_R_double
 static swig_cast_info _swigc__p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t[] = {  {&_swigt__p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t[] = {  {&_swigt__p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t[] = {  {&_swigt__p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__ostream[] = {  {&_swigt__p_std__ostream, 0, 0, 0},  {&_swigt__p_mfem__OutStream, _p_mfem__OutStreamTo_p_std__ostream, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_MPI_Comm,
   _swigc__p_PyMFEM__wFILE,
   _swigc__p_char,
   _swigc__p_double,
@@ -26018,7 +25509,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_mfem__MatrixVectorProductCoefficient,
   _swigc__p_mfem__Mesh,
   _swigc__p_mfem__NormalizedVectorCoefficient,
-  _swigc__p_mfem__OutStream,
   _swigc__p_mfem__OuterProductCoefficient,
   _swigc__p_mfem__PWConstCoefficient,
   _swigc__p_mfem__ParMesh,
@@ -26071,8 +25561,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_std__functionT_void_fmfem__Vector_const_R_double_mfem__Vector_RF_t,
   _swigc__p_std__functionT_void_fmfem__Vector_const_R_mfem__DenseMatrix_RF_t,
   _swigc__p_std__functionT_void_fmfem__Vector_const_R_mfem__Vector_RF_t,
-  _swigc__p_std__ostream,
-  _swigc__p_std__string,
 };
 
 
@@ -26823,22 +26311,6 @@ SWIG_init(void) {
   
   import_array();
   
-  
-  import_array();
-  
-  globals = SWIG_globals();
-  if (!globals) {
-    PyErr_SetString(PyExc_TypeError, "Failure to create SWIG globals.");
-#if PY_VERSION_HEX >= 0x03000000
-    return NULL;
-#else
-    return;
-#endif
-  }
-  PyDict_SetItemString(md, "cvar", globals);
-  Py_DECREF(globals);
-  SWIG_addvarlink(globals, "out", Swig_var_out_get, Swig_var_out_set);
-  SWIG_addvarlink(globals, "err", Swig_var_err_get, Swig_var_err_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

@@ -66,45 +66,7 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-class OutStream(object):
-    r"""Proxy of C++ mfem::OutStream class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, out):
-        r"""__init__(OutStream self, std::ostream & out) -> OutStream"""
-        _coefficient.OutStream_swiginit(self, _coefficient.new_OutStream(out))
-
-    def SetStream(self, out):
-        r"""SetStream(OutStream self, std::ostream & out)"""
-        return _coefficient.OutStream_SetStream(self, out)
-    SetStream = _swig_new_instance_method(_coefficient.OutStream_SetStream)
-
-    def Enable(self):
-        r"""Enable(OutStream self)"""
-        return _coefficient.OutStream_Enable(self)
-    Enable = _swig_new_instance_method(_coefficient.OutStream_Enable)
-
-    def Disable(self):
-        r"""Disable(OutStream self)"""
-        return _coefficient.OutStream_Disable(self)
-    Disable = _swig_new_instance_method(_coefficient.OutStream_Disable)
-
-    def IsEnabled(self):
-        r"""IsEnabled(OutStream self) -> bool"""
-        return _coefficient.OutStream_IsEnabled(self)
-    IsEnabled = _swig_new_instance_method(_coefficient.OutStream_IsEnabled)
-    __swig_destroy__ = _coefficient.delete_OutStream
-
-# Register OutStream in _coefficient:
-_coefficient.OutStream_swigregister(OutStream)
-
-
-def MakeParFilename(*args, **kwargs):
-    r"""MakeParFilename(std::string const & prefix, int const myid, std::string const suffix="", int const width=6) -> std::string"""
-    return _coefficient.MakeParFilename(*args, **kwargs)
-MakeParFilename = _coefficient.MakeParFilename
+import mfem._ser.globals
 import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.matrix
@@ -146,9 +108,6 @@ class Coefficient(object):
 
 # Register Coefficient in _coefficient:
 _coefficient.Coefficient_swigregister(Coefficient)
-cvar = _coefficient.cvar
-out = cvar.out
-err = cvar.err
 
 class ConstantCoefficient(Coefficient):
     r"""Proxy of C++ mfem::ConstantCoefficient class."""

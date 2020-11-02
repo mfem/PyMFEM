@@ -77,44 +77,7 @@ MFEM_INSTALL_DIR = _common_functions.MFEM_INSTALL_DIR
 MFEM_GIT_STRING = _common_functions.MFEM_GIT_STRING
 MFEM_TIMER_TYPE = _common_functions.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _common_functions.MFEM_HYPRE_VERSION
-class OutStream(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, out):
-        _common_functions.OutStream_swiginit(self, _common_functions.new_OutStream(out))
-
-    def SetStream(self, out):
-        return _common_functions.OutStream_SetStream(self, out)
-    SetStream = _swig_new_instance_method(_common_functions.OutStream_SetStream)
-
-    def Enable(self):
-        return _common_functions.OutStream_Enable(self)
-    Enable = _swig_new_instance_method(_common_functions.OutStream_Enable)
-
-    def Disable(self):
-        return _common_functions.OutStream_Disable(self)
-    Disable = _swig_new_instance_method(_common_functions.OutStream_Disable)
-
-    def IsEnabled(self):
-        return _common_functions.OutStream_IsEnabled(self)
-    IsEnabled = _swig_new_instance_method(_common_functions.OutStream_IsEnabled)
-
-# Register OutStream in _common_functions:
-_common_functions.OutStream_swigregister(OutStream)
-
-
-def MakeParFilename(*args, **kwargs):
-    return _common_functions.MakeParFilename(*args, **kwargs)
-MakeParFilename = _common_functions.MakeParFilename
-
-def GetGlobalMPI_Comm():
-    return _common_functions.GetGlobalMPI_Comm()
-GetGlobalMPI_Comm = _common_functions.GetGlobalMPI_Comm
-
-def SetGlobalMPI_Comm(comm):
-    return _common_functions.SetGlobalMPI_Comm(comm)
-SetGlobalMPI_Comm = _common_functions.SetGlobalMPI_Comm
+import mfem._par.globals
 import mfem._par.array
 import mfem._par.mem_manager
 
@@ -182,7 +145,4 @@ def RAP(*args):
     return _common_functions.RAP(*args)
 RAP = _common_functions.RAP
 
-cvar = _common_functions.cvar
-out = cvar.out
-err = cvar.err
 

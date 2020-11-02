@@ -67,6 +67,7 @@ class _SwigNonDynamicMeta(type):
 import weakref
 
 import mfem._par.coefficient
+import mfem._par.globals
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.matrix

@@ -38,8 +38,8 @@ import_array();
 %}
 
 %include "exception.i"
-%include "globals.i"
 
+%import "globals.i"
 %import "array.i"
 %import "matrix.i"
 %import "intrules.i"

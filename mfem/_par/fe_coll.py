@@ -76,6 +76,7 @@ import mfem._par.sort_pairs
 import mfem._par.ncmesh
 import mfem._par.vtk
 import mfem._par.element
+import mfem._par.globals
 import mfem._par.densemat
 import mfem._par.geom
 import mfem._par.intrules

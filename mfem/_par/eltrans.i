@@ -1,6 +1,7 @@
 %module (package="mfem._par") eltrans
 
 %{
+#include "mfem.hpp"    
 #include "general/array.hpp"
 #include "fem/intrules.hpp"
 #include "fem/eltrans.hpp"
@@ -13,8 +14,8 @@ import_array();
 %}
 
 %include "exception.i"
-%include "globals.i"
 
+%import "globals.i"
 %import "array.i"
 %import "vector.i"
 %import "densemat.i"

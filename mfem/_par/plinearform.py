@@ -80,6 +80,7 @@ MFEM_TIMER_TYPE = _plinearform.MFEM_TIMER_TYPE
 MFEM_HYPRE_VERSION = _plinearform.MFEM_HYPRE_VERSION
 import mfem._par.linearform
 import mfem._par.coefficient
+import mfem._par.globals
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.matrix

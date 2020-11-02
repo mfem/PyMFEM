@@ -14,8 +14,8 @@ import_array();
 //%include "../common/cpointers.i"
 //%import "cpointers.i"
 %include "exception.i"
-%include "globals.i"
 
+%import "globals.i"
 %import "array.i"
 %import "coefficient.i"
 %import "matrix.i"

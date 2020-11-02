@@ -11,8 +11,8 @@ import_array();
 %}
 
 %include "exception.i"
-%include "globals.i"
 
+%import "globals.i"
 %import "array.i"
 %import "densemat.i"
 %import "geom.i"

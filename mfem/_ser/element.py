@@ -66,37 +66,7 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-class OutStream(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, out):
-        _element.OutStream_swiginit(self, _element.new_OutStream(out))
-
-    def SetStream(self, out):
-        return _element.OutStream_SetStream(self, out)
-    SetStream = _swig_new_instance_method(_element.OutStream_SetStream)
-
-    def Enable(self):
-        return _element.OutStream_Enable(self)
-    Enable = _swig_new_instance_method(_element.OutStream_Enable)
-
-    def Disable(self):
-        return _element.OutStream_Disable(self)
-    Disable = _swig_new_instance_method(_element.OutStream_Disable)
-
-    def IsEnabled(self):
-        return _element.OutStream_IsEnabled(self)
-    IsEnabled = _swig_new_instance_method(_element.OutStream_IsEnabled)
-    __swig_destroy__ = _element.delete_OutStream
-
-# Register OutStream in _element:
-_element.OutStream_swigregister(OutStream)
-
-
-def MakeParFilename(*args, **kwargs):
-    return _element.MakeParFilename(*args, **kwargs)
-MakeParFilename = _element.MakeParFilename
+import mfem._ser.globals
 import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.densemat
@@ -235,9 +205,6 @@ class Element(object):
 
 # Register Element in _element:
 _element.Element_swigregister(Element)
-cvar = _element.cvar
-out = cvar.out
-err = cvar.err
 
 
 

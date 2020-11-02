@@ -130,37 +130,7 @@ def doublep_frompointer(t):
     return _bilinearform.doublep_frompointer(t)
 doublep_frompointer = _bilinearform.doublep_frompointer
 
-class OutStream(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, out):
-        _bilinearform.OutStream_swiginit(self, _bilinearform.new_OutStream(out))
-
-    def SetStream(self, out):
-        return _bilinearform.OutStream_SetStream(self, out)
-    SetStream = _swig_new_instance_method(_bilinearform.OutStream_SetStream)
-
-    def Enable(self):
-        return _bilinearform.OutStream_Enable(self)
-    Enable = _swig_new_instance_method(_bilinearform.OutStream_Enable)
-
-    def Disable(self):
-        return _bilinearform.OutStream_Disable(self)
-    Disable = _swig_new_instance_method(_bilinearform.OutStream_Disable)
-
-    def IsEnabled(self):
-        return _bilinearform.OutStream_IsEnabled(self)
-    IsEnabled = _swig_new_instance_method(_bilinearform.OutStream_IsEnabled)
-    __swig_destroy__ = _bilinearform.delete_OutStream
-
-# Register OutStream in _bilinearform:
-_bilinearform.OutStream_swigregister(OutStream)
-
-
-def MakeParFilename(*args, **kwargs):
-    return _bilinearform.MakeParFilename(*args, **kwargs)
-MakeParFilename = _bilinearform.MakeParFilename
+import mfem._ser.globals
 import mfem._ser.mem_manager
 import mfem._ser.array
 import mfem._ser.fespace
@@ -616,9 +586,6 @@ class BilinearForm(mfem._ser.matrix.Matrix):
 
 # Register BilinearForm in _bilinearform:
 _bilinearform.BilinearForm_swigregister(BilinearForm)
-cvar = _bilinearform.cvar
-out = cvar.out
-err = cvar.err
 
 class MixedBilinearForm(mfem._ser.matrix.Matrix):
     r"""Proxy of C++ mfem::MixedBilinearForm class."""

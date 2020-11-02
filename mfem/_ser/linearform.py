@@ -131,6 +131,7 @@ def doublep_frompointer(t):
 doublep_frompointer = _linearform.doublep_frompointer
 
 import mfem._ser.coefficient
+import mfem._ser.globals
 import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.matrix

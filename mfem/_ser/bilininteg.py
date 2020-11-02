@@ -66,37 +66,7 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-class OutStream(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, out):
-        _bilininteg.OutStream_swiginit(self, _bilininteg.new_OutStream(out))
-
-    def SetStream(self, out):
-        return _bilininteg.OutStream_SetStream(self, out)
-    SetStream = _swig_new_instance_method(_bilininteg.OutStream_SetStream)
-
-    def Enable(self):
-        return _bilininteg.OutStream_Enable(self)
-    Enable = _swig_new_instance_method(_bilininteg.OutStream_Enable)
-
-    def Disable(self):
-        return _bilininteg.OutStream_Disable(self)
-    Disable = _swig_new_instance_method(_bilininteg.OutStream_Disable)
-
-    def IsEnabled(self):
-        return _bilininteg.OutStream_IsEnabled(self)
-    IsEnabled = _swig_new_instance_method(_bilininteg.OutStream_IsEnabled)
-    __swig_destroy__ = _bilininteg.delete_OutStream
-
-# Register OutStream in _bilininteg:
-_bilininteg.OutStream_swigregister(OutStream)
-
-
-def MakeParFilename(*args, **kwargs):
-    return _bilininteg.MakeParFilename(*args, **kwargs)
-MakeParFilename = _bilininteg.MakeParFilename
+import mfem._ser.globals
 import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.coefficient
@@ -268,8 +238,6 @@ class BilinearFormIntegrator(object):
 # Register BilinearFormIntegrator in _bilininteg:
 _bilininteg.BilinearFormIntegrator_swigregister(BilinearFormIntegrator)
 cvar = _bilininteg.cvar
-out = cvar.out
-err = cvar.err
 HCURL_MAX_D1D = cvar.HCURL_MAX_D1D
 HCURL_MAX_Q1D = cvar.HCURL_MAX_Q1D
 HDIV_MAX_D1D = cvar.HDIV_MAX_D1D

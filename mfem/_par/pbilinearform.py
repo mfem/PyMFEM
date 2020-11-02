@@ -84,6 +84,7 @@ import mfem._par.mem_manager
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.hypre
+import mfem._par.globals
 import mfem._par.sparsemat
 import mfem._par.matrix
 import mfem._par.densemat

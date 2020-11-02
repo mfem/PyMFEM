@@ -77,6 +77,7 @@ import mfem._par.operators
 import mfem._par.matrix
 import mfem._par.sparsemat
 import mfem._par.eltrans
+import mfem._par.globals
 import mfem._par.coefficient
 class LinearFormIntegrator(object):
     r"""Proxy of C++ mfem::LinearFormIntegrator class."""

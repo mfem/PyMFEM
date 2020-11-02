@@ -66,37 +66,7 @@ class _SwigNonDynamicMeta(type):
 
 import weakref
 
-class OutStream(object):
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, out):
-        _eltrans.OutStream_swiginit(self, _eltrans.new_OutStream(out))
-
-    def SetStream(self, out):
-        return _eltrans.OutStream_SetStream(self, out)
-    SetStream = _swig_new_instance_method(_eltrans.OutStream_SetStream)
-
-    def Enable(self):
-        return _eltrans.OutStream_Enable(self)
-    Enable = _swig_new_instance_method(_eltrans.OutStream_Enable)
-
-    def Disable(self):
-        return _eltrans.OutStream_Disable(self)
-    Disable = _swig_new_instance_method(_eltrans.OutStream_Disable)
-
-    def IsEnabled(self):
-        return _eltrans.OutStream_IsEnabled(self)
-    IsEnabled = _swig_new_instance_method(_eltrans.OutStream_IsEnabled)
-    __swig_destroy__ = _eltrans.delete_OutStream
-
-# Register OutStream in _eltrans:
-_eltrans.OutStream_swigregister(OutStream)
-
-
-def MakeParFilename(*args, **kwargs):
-    return _eltrans.MakeParFilename(*args, **kwargs)
-MakeParFilename = _eltrans.MakeParFilename
+import mfem._par.globals
 import mfem._par.array
 import mfem._par.mem_manager
 import mfem._par.vector
@@ -225,9 +195,6 @@ class ElementTransformation(object):
 
 # Register ElementTransformation in _eltrans:
 _eltrans.ElementTransformation_swigregister(ElementTransformation)
-cvar = _eltrans.cvar
-out = cvar.out
-err = cvar.err
 
 class InverseElementTransformation(object):
     r"""Proxy of C++ mfem::InverseElementTransformation class."""

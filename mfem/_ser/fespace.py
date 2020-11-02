@@ -70,6 +70,7 @@ import mfem._ser.array
 import mfem._ser.mem_manager
 import mfem._ser.vector
 import mfem._ser.coefficient
+import mfem._ser.globals
 import mfem._ser.matrix
 import mfem._ser.operators
 import mfem._ser.intrules

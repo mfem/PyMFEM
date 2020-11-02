@@ -72,6 +72,7 @@ import mfem._ser.vector
 import mfem._ser.array
 import mfem._ser.fespace
 import mfem._ser.coefficient
+import mfem._ser.globals
 import mfem._ser.matrix
 import mfem._ser.intrules
 import mfem._ser.sparsemat

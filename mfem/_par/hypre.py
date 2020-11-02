@@ -90,55 +90,7 @@ MFEM_TIMER_TYPE = _hypre.MFEM_TIMER_TYPE
 
 MFEM_HYPRE_VERSION = _hypre.MFEM_HYPRE_VERSION
 
-class OutStream(object):
-    r"""Proxy of C++ mfem::OutStream class."""
-
-    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
-    __repr__ = _swig_repr
-
-    def __init__(self, out):
-        r"""__init__(OutStream self, std::ostream & out) -> OutStream"""
-        _hypre.OutStream_swiginit(self, _hypre.new_OutStream(out))
-
-    def SetStream(self, out):
-        r"""SetStream(OutStream self, std::ostream & out)"""
-        return _hypre.OutStream_SetStream(self, out)
-    SetStream = _swig_new_instance_method(_hypre.OutStream_SetStream)
-
-    def Enable(self):
-        r"""Enable(OutStream self)"""
-        return _hypre.OutStream_Enable(self)
-    Enable = _swig_new_instance_method(_hypre.OutStream_Enable)
-
-    def Disable(self):
-        r"""Disable(OutStream self)"""
-        return _hypre.OutStream_Disable(self)
-    Disable = _swig_new_instance_method(_hypre.OutStream_Disable)
-
-    def IsEnabled(self):
-        r"""IsEnabled(OutStream self) -> bool"""
-        return _hypre.OutStream_IsEnabled(self)
-    IsEnabled = _swig_new_instance_method(_hypre.OutStream_IsEnabled)
-    __swig_destroy__ = _hypre.delete_OutStream
-
-# Register OutStream in _hypre:
-_hypre.OutStream_swigregister(OutStream)
-
-
-def MakeParFilename(*args, **kwargs):
-    r"""MakeParFilename(std::string const & prefix, int const myid, std::string const suffix="", int const width=6) -> std::string"""
-    return _hypre.MakeParFilename(*args, **kwargs)
-MakeParFilename = _hypre.MakeParFilename
-
-def GetGlobalMPI_Comm():
-    r"""GetGlobalMPI_Comm() -> MPI_Comm"""
-    return _hypre.GetGlobalMPI_Comm()
-GetGlobalMPI_Comm = _hypre.GetGlobalMPI_Comm
-
-def SetGlobalMPI_Comm(comm):
-    r"""SetGlobalMPI_Comm(MPI_Comm comm)"""
-    return _hypre.SetGlobalMPI_Comm(comm)
-SetGlobalMPI_Comm = _hypre.SetGlobalMPI_Comm
+import mfem._par.globals
 import mfem._par.vector
 import mfem._par.array
 import mfem._par.mem_manager
@@ -245,9 +197,6 @@ class HypreParVector(mfem._par.vector.Vector):
 
 # Register HypreParVector in _hypre:
 _hypre.HypreParVector_swigregister(HypreParVector)
-cvar = _hypre.cvar
-out = cvar.out
-err = cvar.err
 
 
 def ParNormlp(vec, p, comm):
