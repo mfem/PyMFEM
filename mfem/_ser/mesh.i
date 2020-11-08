@@ -502,8 +502,47 @@ namespace mfem{
      }
      return array;
    }
-  };
-}
+  double GetScaledJacobian(int i, int sd=2)
+  {
+    // compute scaled Jacobian
+    //   i : element index
+    //   sd: subdivision 
+    //   https://github.com/mfem/mfem/pull/1835/files
+    // 
+    double attr = mfem::infinity();
+    mfem::DenseMatrix J(self->Dimension());
+    
+    mfem::Geometry::Type geom = self->GetElementBaseGeometry(i);
+    mfem::ElementTransformation *T = self->GetElementTransformation(i);
+
+    mfem::RefinedGeometry *RefG = mfem::GlobGeometryRefiner.Refine(geom, sd, 1);
+    mfem::IntegrationRule &ir = RefG->RefPts;
+
+    // For each element, find the minimal scaled Jacobian in a
+    // lattice of points with the given subdivision factor.
+
+    for (int j = 0; j < ir.GetNPoints(); j++)
+      {
+	T->SetIntPoint(&ir.IntPoint(j));
+	mfem::Geometries.JacToPerfJac(geom, T->Jacobian(), J);
+
+        // Jacobian determinant
+        double sJ = J.Det();
+
+        for (int k = 0; k < J.Width(); k++)
+	  {
+	    mfem::Vector col;
+	    J.GetColumnReference(k, col);
+            // Scale by column norms
+	    sJ /= col.Norml2();
+	  }
+
+	attr = fmin(sJ, attr);
+      }
+    return attr;
+  }
+  };  // end of extend
+}     // end of namespace
 
 /*
 virtual void PrintXG(std::ostream &out = mfem::out) const;

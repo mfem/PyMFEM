@@ -202,7 +202,7 @@ to find more details of the MFEM library.
  	                                               warn=True, int_trans=None)
          will look for 4 points.
 
-
+         GetScaledJacobian(i, sd) returns minimum Jacobinan computed on in each element.
 
   4-5) sparsemat
          RAP has two different implementations. One accept three references.
