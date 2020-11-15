@@ -708,8 +708,7 @@ class Clean(_clean):
         self.all_externals = False
 
     def run(self):
-        global prefix, dry_run, verbose
-        prefix = self.prefix
+        global dry_run, verbose
         dry_run = self.dry_run
         verbose = bool(self.verbose)
         
