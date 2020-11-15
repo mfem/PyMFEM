@@ -562,7 +562,8 @@ class Install(_install):
 
         prefix = self.prefix
         dry_run = self.dry_run
-
+        verbose = bool(self.verbose)
+        
         swig_only = bool(self.swig)
         ext_only = bool(self.ext_only)
         build_wrapper = (not swig_only and not ext_only)
@@ -572,7 +573,7 @@ class Install(_install):
         metis_64 = bool(self.with_metis64)
         enable_pumi = bool(self.with_pumi)
         enable_strumpack = bool(self.with_strumpack)
-        verbose = bool(self.verbose)
+
 
         if build_parallel:
             try:
@@ -665,10 +666,7 @@ class BuildPy(_build_py):
     '''
     Called when python setup.py build_py
     '''
-    user_options = _build_py.user_options + [
-                   ('custom-option=', None, 'Path to something')
-                   ]
-
+    user_options = _build_py.user_options
     def initialize_options(self):
         _build_py.initialize_options(self)
         self.custom_option = None
@@ -710,6 +708,11 @@ class Clean(_clean):
         self.all_externals = False
 
     def run(self):
+        global prefix, dry_run, verbose
+        prefix = self.prefix
+        dry_run = self.dry_run
+        verbose = bool(self.verbose)
+        
         os.chdir(extdir)
 
         make_command = find_command('make')
