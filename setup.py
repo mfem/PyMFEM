@@ -43,7 +43,7 @@ from codecs import open
 ### constants
 repos = {"mfem": "https://github.com/mfem/mfem/archive/v4.2.tar.gz",
          "metis": "http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/metis-5.1.0.tar.gz",
-         "hypre": "https://github.com/hypre-space/hypre/archive/v2.18.2.tar.gz",}
+         "hypre": "https://github.com/hypre-space/hypre/archive/v2.20.0.tar.gz",}
 
 rootdir = os.path.abspath(os.path.dirname(__file__))
 extdir = os.path.join(rootdir, 'external')
@@ -152,7 +152,8 @@ def make_call(command, target=''):
     except subprocess.CalledProcessError:
         if target == '':
             target = " ".join(command)
-        assert False, "Failed when calling command: " + target
+        print("Failed when calling command: " + target)
+        raise
 
 def chdir(path):
     '''
@@ -200,9 +201,6 @@ def download(xxx):
     url = repos[xxx]
     print("Downloading :", url)
     
-    if dry_run:
-        return
-        
     ftpstream = request.urlopen(url)
     targz = tarfile.open(fileobj=ftpstream, mode="r|gz")
     targz.extractall(path=extdir)
@@ -223,7 +221,7 @@ def cmake_make_hypre():
     build hypre
     '''
     cmbuild = 'cmbuild'
-    path = os.path.join(extdir, 'hypre', cmbuild)
+    path = os.path.join(extdir, 'hypre', 'src', cmbuild)
     if os.path.exists(path):
         print("working directory already exists!")
     else:
@@ -232,11 +230,11 @@ def cmake_make_hypre():
     pwd = chdir(path)
 
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE':'1',
+                  'DBUILD_SHARED_LIBS': '1',
                   'DHYPRE_INSTALL_PREFIX': os.path.join(prefix, 'mfem'),
-                  'DHYPRE_SHARED': '1',
+                  'DHYPRE_ENABLE_SHARED': '1',
                   'DCMAKE_INSTALL_PREFIX':os.path.join(prefix, 'mfem'),
                   'DCMAKE_INSTALL_NAME_DIR':os.path.join(prefix, 'mfem', 'lib'),
-                  'DCMAKE_CXX_COMPILER': mpicxx_command,
                   'DCMAKE_C_COMPILER': mpicc_command} 
 
     cmake('..', **cmake_opts)
@@ -244,7 +242,7 @@ def cmake_make_hypre():
     make('hypre')
     make_install('hypre')
 
-    chdir(pwd)
+    os.chdir(pwd)
 
 def make_metis(use_int64=False, use_real64=False):
     '''
@@ -292,7 +290,7 @@ def make_metis(use_int64=False, use_real64=False):
                    os.path.join(prefix, 'lib', 'libmetis.dylib'),
                    os.path.join(prefix, 'lib', 'libmetis.dylib'),]
         make_call(command)
-    chdir(pwd)
+    os.chdir(pwd)
 
 def cmake_make_mfem(serial=True):
     '''
@@ -305,6 +303,8 @@ def cmake_make_mfem(serial=True):
     else:
         os.makedirs(path)
 
+    print("prefix here", prefix)
+    
     cmake_opts = {'DCMAKE_VERBOSE_MAKEFILE':'1',
                   'DBUILD_SHARED_LIBS': '1',
                   'DMFEM_ENABLE_EXAMPLES': '1',
@@ -322,13 +322,16 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_INSTALL_PREFIX'] = os.path.join(prefix, 'mfem', 'par')
         cmake_opts['DMFEM_USE_MPI'] = '1'
         cmake_opts['DMFEM_USE_METIS_5'] = '1'
-        cmake_opts['DHYPRE_DIR'] = os.path.join(hypre_prefix, 'lib')
-        cmake_opts['DHYPRE_INCLUDE'] = os.path.join(hypre_prefix, 'include')
-        cmake_opts['DMETIS_DIR'] = os.path.join(metis_prefix, 'lib')
-        cmake_opts['DMETIS_INCLUDE'] = os.path.join(metis_prefix, 'include')
-        cmake_opts['DCMAKE_CXX_STANDARD_LIBRARIES'] = "-lHYPRE -lmetis"
-        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = "-L" + metis_prefix + " -L" + hypre_prefix
-        cmake_opts['DCMAKE_EXT_LINKER_FLAGS'] = "-L"+metis_prefix + " -L"+hypre_prefix
+        cmake_opts['DHYPRE_DIR'] = os.path.join(hypre_prefix)
+        #cmake_opts['DHYPRE_INCLUDE'] = os.path.join(hypre_prefix, 'include')
+        cmake_opts['DMETIS_DIR'] = os.path.join(metis_prefix)
+        #cmake_opts['DMETIS_INCLUDE'] = os.path.join(metis_prefix, 'include')
+        #cmake_opts['DCMAKE_CXX_STANDARD_LIBRARIES'] = "-lHYPRE -lmetis"
+
+        lflags = "-L" + os.path.join(metis_prefix, 'lib')
+        lflags = lflags + " -L" + os.path.join(hypre_prefix, 'lib')
+        cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = lflags
+        #cmake_opts['DCMAKE_EXT_LINKER_FLAGS'] = lflags
 
         if enable_pumi:
             cmake_opts['DMFEM_USE_PUMI'] = '1'
@@ -341,7 +344,7 @@ def cmake_make_mfem(serial=True):
     make('mfem_'+txt)
     make_install('mfem_'+txt)
     
-    chdir(pwd)
+    os.chdir(pwd)
 
 def write_setup_local():
     '''
@@ -509,7 +512,7 @@ class Install(_install):
     called when pyton setup.py install
     '''
     user_options = _install.user_options + [
-        ('parallel', None, 'Installed both serial and parallel version'),
+        ('with-parallel', None, 'Installed both serial and parallel version'),
         ('mfem-prefix=', None, 'Specify locaiton of mfem' +
          'libmfem.so must exits under <mfem-prefix>/lib'),
         ('hypre-prefix=', None, 'Specify locaiton of hypre' +
@@ -518,6 +521,7 @@ class Install(_install):
          'libmetis.so must exits under <metis-prefix>/lib'),
         ('swig', None, 'Run Swig'),
         ('ext-only', None, 'Build metis, hypre, mfem(C++) only'),
+        ('skip-ext', None, 'Skip building metis, hypre, mfem(C++) only'),        
 
         ('CC', None, 'c compiler'),
         ('CXX', None, 'c++ compiler'),
@@ -535,7 +539,7 @@ class Install(_install):
 
         self.swig = False
         self.ext_only = False
-        self.parallel = False
+        self.with_parallel = False
         self.mfem_prefix = ''
         self.metis_prefix = ''
         self.hypre_prefix = ''
@@ -560,7 +564,7 @@ class Install(_install):
         global enable_pumi, pumi_prefix
         global enable_strumpack, strumpack_prefix
 
-        prefix = self.prefix
+        prefix = os.path.expanduser(self.prefix)
         dry_run = self.dry_run
         verbose = bool(self.verbose)
         
@@ -568,8 +572,8 @@ class Install(_install):
         ext_only = bool(self.ext_only)
         build_wrapper = (not swig_only and not ext_only)
 
-        mfem_prefix = self.mfem_prefix
-        build_parallel = bool(self.parallel)     # controlls PyMFEM parallel
+        mfem_prefix = os.path.expanduser(self.mfem_prefix)
+        build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
         metis_64 = bool(self.with_metis64)
         enable_pumi = bool(self.with_pumi)
         enable_strumpack = bool(self.with_strumpack)
@@ -585,36 +589,36 @@ class Install(_install):
             path = os.path.join(mfem_prefix, 'lib', 'libmfem'+dylibext)
             assert os.path.exists(path), "libmfem.so is not found in the specified <path>/lib"
             build_mfem = False
-            hypre_prefix = self.mfem_prefix
-            metis_prefix = self.mfem_prefix
+            hypre_prefix = mfem_prefix
+            metis_prefix = mfem_prefix
         else:
             build_mfem = True
             build_hypre = build_parallel
             build_metis = build_parallel
-            hypre_prefix = self.prefix
-            metis_prefix = self.prefix
+            hypre_prefix = os.path.join(prefix, 'mfem')
+            metis_prefix = os.path.join(prefix, 'mfem')
 
         if self.hypre_prefix != '':
-            path = os.path.join(self.hypre_prefix, 'lib', 'libHYPRE'+dylibext)
+            hypre_prefix = os.path.expanduser(self.hypre_prefix)            
+            path = os.path.join(hypre_prefix, 'lib', 'libHYPRE'+dylibext)
             assert os.path.exists(path), "libHYPRE.so is not found in the specified <path>/lib"
             build_hypre = False
-            hypre_prefix = self.hypre_prefix
 
         if self.metis_prefix != '':
-            path = os.path.join(self.metis_prefix, 'lib', 'libmetis'+dylibext)
+            metis_prefix = os.path.expanduser(self.metis_prefix)
+            path = os.path.join(metis_prefix, 'lib', 'libmetis'+dylibext)
             assert os.path.exists(path), "libmetis.so is not found in the specified <path>/lib"
             build_metis = False
-            metis_prefix = self.metis_prefix
 
         if self.pumi_prefix != '':
-            pumi_prefix = self.pumi_prefix
+            pumi_prefix = os.path.expanduser(self.pumi_prefix)
         else:
-            pumi_prefix = self.mfem_prefix
+            pumi_prefix = mfem_prefix
 
         if self.strumpack_prefix != '':
-            strumpack_prefix = self.strumpack_prefix
+            strumpack_prefix = os.path.expanduser(self.strumpack_prefix)
         else:
-            strumpack_prefix = self.mfem_prefix
+            strumpack_prefix = mfem_prefix
 
         if self.CC != '':
             cc_command = self.CC
@@ -645,6 +649,7 @@ class Install(_install):
             generate_wrapper()
 
         else:
+            
             if build_metis:
                 download('metis')
                 make_metis(use_int64=metis_64)
