@@ -4,7 +4,16 @@
   
 
   python setup.py build  # build mfem and PyMFEM in serial
-  python setup.py build --parallel # build metis/hypre/mfem and PyMFEM in parallel
+  python setup.py build --with-parallel # build metis/hypre/mfem and PyMFEM in parallel
+
+  # my favorite steps
+  ### (1) building external (metis/hypre/mfem) 
+  python3 setup.py install --prefix=~/sandbox --verbose --ext-only --with-parallel
+
+
+  ### (4) clean up all externals
+  python3 setup.py clean --all-externals
+
 
   # choosing compiler
   python setup.py build --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
@@ -539,6 +548,7 @@ class Install(_install):
 
         self.swig = False
         self.ext_only = False
+        self.skip_ext = False
         self.with_parallel = False
         self.mfem_prefix = ''
         self.metis_prefix = ''
@@ -554,7 +564,12 @@ class Install(_install):
         self.CC = ''
         self.CXX = ''
         self.MPICC = ''
-        self.MPICXX = ''        
+        self.MPICXX = ''
+        
+    def finalize_options(self):
+        if (self.ext_only != False and
+            self.skip_ext != False):
+            assert False, "skip-ext and ext-only can not use together"
 
     def run(self):
         global prefix, dry_run, verbose
@@ -629,7 +644,6 @@ class Install(_install):
         if self.MPICXX != '':
             mpicxx_command = self.MPICXX
 
-            
         print("----configuration----")
         print(" prefix", prefix)
         print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
@@ -650,13 +664,13 @@ class Install(_install):
 
         else:
             
-            if build_metis:
+            if build_metis and not skip_ext:
                 download('metis')
                 make_metis(use_int64=metis_64)
-            if build_hypre:
+            if build_hypre not skip_ext:
                 download('hypre')
                 cmake_make_hypre()         
-            if build_mfem:
+            if build_mfem not skip_ext:
                 download('mfem')
                 build_serial = True
 
@@ -689,7 +703,7 @@ class BuildPy(_build_py):
             make_mfem_wrapper(serial=False)
         
         _build_py.run(self)
-    
+
 class Clean(_clean):
     '''
     Called when python setup.py clean
