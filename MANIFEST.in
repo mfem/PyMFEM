@@ -1,0 +1,10 @@
+include mfem/*/*.i
+include mfem/*/*.cxx
+include mfem/*/*.h
+include headers/*
+include examples/*.py
+include examples/*/*.py
+include examples/*/*/*.py
+include docs/*.txt
+include externals/README.txt
+exclude mfem/*/*.so
