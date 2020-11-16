@@ -6,14 +6,18 @@
   python setup.py build  # build mfem and PyMFEM in serial
   python setup.py build --with-parallel # build metis/hypre/mfem and PyMFEM in parallel
 
-  # my favorite steps
+  # my favorite recipe ((1) + (2) will build mfem serial and parallel)
   ### (1) building external (metis/hypre/mfem) 
   python3 setup.py install --prefix=~/sandbox --verbose --ext-only --with-parallel
 
+  ### (2) building PyMFEM (after (1))
+  python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel
+
+  ### (3) run swig
+  python3 setup.py install --prefix=~/sandbox --verbose --skip-ext --with-parallel --swig
 
   ### (4) clean up all externals
   python3 setup.py clean --all-externals
-
 
   # choosing compiler
   python setup.py build --parallel --CC=xxx, --CXX=xxx, --MPICC=xxx, --MPICXX=xxx
@@ -24,8 +28,8 @@
   (note we will install every externals under <prefix>/mfem/)
      <prefix> /mfem/par  : mfem parallel
      <prefix> /mfem/ser  : mfem serial 
-     <prefix> /mfem/lib  : mfem serial 
-     <prefix> /mfem/lib  : mfem serial 
+     <prefix> /mfem/lib     : .so for other depnendenies
+     <prefix> /mfem/include : .h, .hpp for other depnendenies
 """
 import sys
 import os
@@ -149,8 +153,9 @@ def make_call(command, target=''):
     '''
     call command
     '''
-    if dry_run:
+    if dry_run or verbose:
         print("calling ... " + " ".join(command))
+    if dry_run:        
         return
     kwargs = {}
     if not verbose:
@@ -342,6 +347,9 @@ def cmake_make_mfem(serial=True):
         cmake_opts['DCMAKE_SHARED_LINKER_FLAGS'] = lflags
         #cmake_opts['DCMAKE_EXT_LINKER_FLAGS'] = lflags
 
+        if enable_strumpack:
+            cmake_opts['DMFEM_USE_STRUMPACK'] = '1'
+            cmake_opts['STRUMPACK_DIR'] = strumpack_prefix            
         if enable_pumi:
             cmake_opts['DMFEM_USE_PUMI'] = '1'
             cmake_opts['DPUMI_DIR'] = pumi_prefix
@@ -378,10 +386,10 @@ def write_setup_local():
               'nocompactunwind': '',
               'swigflag': '-Wall -c++ -python -fastproxy -olddefs -keyword',
 
-              'hypreinc': os.path.join('hypre_prefix', 'include'),
-              'hyprelib': os.path.join('hypre_prefix', 'lib'),
-              'metisinc': os.path.join('metis_prefix', 'include'),
-              'metislib': os.path.join('metis_prefix', 'lib'),
+              'hypreinc': os.path.join(hypre_prefix, 'include'),
+              'hyprelib': os.path.join(hypre_prefix, 'lib'),
+              'metisinc': os.path.join(metis_prefix, 'include'),
+              'metis5lib': os.path.join(metis_prefix, 'lib'),
               'numpync': numpy.get_include(),
               'mfembuilddir': os.path.join(mfempar, 'include'),
               'mfemincdir': os.path.join(mfempar, 'include', 'mfem'),
@@ -391,6 +399,7 @@ def write_setup_local():
               'mfemserlnkdir': os.path.join(mfemser, 'lib'),
               'add_pumi': '',
               'add_strumpack': '',
+              'cxx11flag': cxx11_flag,
               }
 
 
@@ -415,12 +424,11 @@ def write_setup_local():
     
     fid = open('setup_local.py', 'w')
     fid.write("#  setup_local.py \n")
-    fid.write("#  generated from write_setup_local.py\n")
+    fid.write("#  generated from setup.py\n")
     fid.write("#  do not edit this directly\n")
-    fid.write("#  instead use Make setup_local.py\n")
 
     for key, value in params.items():
-        text = key.lower() + ' = "' + value
+        text = key.lower() + ' = "' + value + '"'
         fid.write(text+"\n")
     fid.close()
     
@@ -481,6 +489,10 @@ def generate_wrapper():
         parflag.append('-I'+os.path.join(strumpack_prefix, 'include'))
 
     for file in ifiles():
+        if file == 'pumi.i' and not enable_pumi:
+            continue
+        if file == 'strumpack.i' and not enable_strumpack:
+            continue
         if not check_new(file):
             continue
         command = [swig_command] + swigflag + parflag + [file]
@@ -508,13 +520,14 @@ def make_mfem_wrapper(serial=True):
     write_setup_local()
 
     if serial:
-        os.chdir(os.path.join('rootdir', 'mfem', '_ser'))
+        pwd = chdir(os.path.join(rootdir, 'mfem', '_ser'))
     else:
-        os.chdir(os.path.join('rootdir', 'mfem', '_ser'))
+        pwd = chdir(os.path.join(rootdir, 'mfem', '_par'))
 
     python = sys.executable
     command = [python, 'setup.py', 'build_ext', '--inplace']
     make_call(command)
+    os.chdir(pwd)
 
 class Install(_install):
     '''
@@ -565,14 +578,14 @@ class Install(_install):
         self.CXX = ''
         self.MPICC = ''
         self.MPICXX = ''
-        
-    def finalize_options(self):
-        if (self.ext_only != False and
-            self.skip_ext != False):
-            assert False, "skip-ext and ext-only can not use together"
 
+    def finalize_options(self):
+        if (bool(self.ext_only) and bool(self.skip_ext)):
+            assert False, "skip-ext and ext-only can not use together"
+        _install.finalize_options(self)
+        
     def run(self):
-        global prefix, dry_run, verbose
+        global prefix, dry_run, verbose, run_swig
         global build_mfem, build_parallel, build_serial
         global mfem_prefix, metis_prefix, hypre_prefix
         global cc_command, cxx_command, mpicc_command, mpicxx_command
@@ -581,11 +594,13 @@ class Install(_install):
 
         prefix = os.path.expanduser(self.prefix)
         dry_run = self.dry_run
+        skip_ext = bool(self.skip_ext)
         verbose = bool(self.verbose)
         
         swig_only = bool(self.swig)
         ext_only = bool(self.ext_only)
         build_wrapper = (not swig_only and not ext_only)
+        run_swig = False    
 
         mfem_prefix = os.path.expanduser(self.mfem_prefix)
         build_parallel = bool(self.with_parallel)     # controlls PyMFEM parallel
@@ -644,6 +659,9 @@ class Install(_install):
         if self.MPICXX != '':
             mpicxx_command = self.MPICXX
 
+        # we call swig whenever extra libraries are specified
+        run_swig = (not build_mfem or enable_pumi or enable_strumpack)
+
         print("----configuration----")
         print(" prefix", prefix)
         print(" when needed, the dependency (mfem/hypre/metis) will be installed under " +
@@ -651,26 +669,26 @@ class Install(_install):
         print(" build mfem : " + ("Yes" if build_mfem else "No"))        
         print(" build metis : " + ("Yes" if build_metis else "No"))
         print(" build hypre : " + ("Yes" if build_hypre else "No"))
+        print(" call swig wrapper" + ("Yes" if run_swig else "No"))
         print(" build serial wrapper: Yes")
         print(" build parallel wrapper : " + ("Yes" if build_parallel else "No"))
         print(" c compiler : " + cc_command)
         print(" c++ compiler : " + cxx_command)
         print(" mpi-c compiler : " + mpicc_command)
-        print(" mpi-c++ compiler : " + mpicxx_command)        
+        print(" mpi-c++ compiler : " + mpicxx_command)
         print("")
 
         if swig_only:
             generate_wrapper()
 
         else:
-            
             if build_metis and not skip_ext:
                 download('metis')
                 make_metis(use_int64=metis_64)
-            if build_hypre not skip_ext:
+            if build_hypre and not skip_ext:
                 download('hypre')
-                cmake_make_hypre()         
-            if build_mfem not skip_ext:
+                cmake_make_hypre()
+            if build_mfem and not skip_ext:
                 download('mfem')
                 build_serial = True
 
@@ -689,19 +707,20 @@ class BuildPy(_build_py):
     def initialize_options(self):
         _build_py.initialize_options(self)
         self.custom_option = None
-        
+
     def finalize_options(self):
         _build_py.finalize_options(self)
-        
+
     def run(self):
         if not build_mfem:
             clean_wrapper()
+        if run_swig:
             generate_wrapper()
 
         make_mfem_wrapper(serial=True)
         if build_parallel:
             make_mfem_wrapper(serial=False)
-        
+
         _build_py.run(self)
 
 class Clean(_clean):
@@ -766,7 +785,7 @@ class Clean(_clean):
 datafiles = [os.path.join('data', f) for f in os.listdir('data')]
 def run_setup():
     setup_args = metadata.copy()
-    
+
     setup(
         cmdclass = {'build_py': BuildPy,
                     'install': Install,

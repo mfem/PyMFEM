@@ -38,7 +38,9 @@ from mfem.common.arg_parser import ArgParser
 from mfem import path
 import mfem.ser as mfem
 
-def_meshfile =expanduser(join(path, 'data', 'star.mesh'))
+import os
+def_meshfile =expanduser(join(os.path.dirname(__file__), '..', 'data', 'star.mesh'))
+
 def run(order = 1, static_cond = False,
         meshfile = def_meshfile, visualization = False):
    
@@ -150,7 +152,8 @@ if __name__ == "__main__":
 
    order = args.order
    static_cond = args.static_condensation
-   meshfile =expanduser(join(path, 'data', args.mesh))
+
+   meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))
    visualization = args.visualization
 
    run(order = order, static_cond = static_cond,

@@ -40,7 +40,7 @@ OSTREAM_TYPEMAP(std::ostream&)
 %ignore DiscreteCurl;
 %ignore DiscreteGrad;
 
-%import "hypre_int.i"
+%import "../common/hypre_int.i"
 
 %inline %{
 int sizeof_HYPRE_Int(){

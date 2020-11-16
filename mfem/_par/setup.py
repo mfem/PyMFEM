@@ -56,20 +56,13 @@ sources = {name: [name + "_wrap.cxx"] for name in modules}
 
 proxy_names = {name: '_'+name for name in modules}
 
-
-#extra_text = [x for x in
-#              ['-Wl', whole_archive, metisliba, mfemlnkdir+'/libmfem.a',
-#               no_whole_archive] if x != '']
-
-
 import numpy
 numpyinc = numpy.get_include()
 import mpi4py
 mpi4pyinc = mpi4py.get_include()
-print(mpi4pyinc, numpyinc)
 
 libraries    = ['mfem', 'HYPRE', 'metis']
-include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc, hypreinc,]
+include_dirs = [mfembuilddir, mfemincdir, numpyinc, mpi4pyinc, hypreinc, metisinc]
 #                mpichinc, hypreinc,]
 library_dirs = [mfemlnkdir, hyprelib, metis5lib,]
 
@@ -82,8 +75,10 @@ if add_strumpack:
     extra_compile_args.append('-std=c++11')
     sources["strumpack"] = ["strumpack_wrap.cxx"]
     proxy_names["strumpack"] = "_strumpack"
-    if strumpack_include != "":
-        include_dirs.append(strumpack_include)
+    if strumpackinc != "":
+        include_dirs.append(strumpackinc)
+    if strumpacklib != "":
+        library_dirs.append(strumpacklib)
 
 import six
 if six.PY3:

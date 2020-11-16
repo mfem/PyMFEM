@@ -4,6 +4,7 @@
    See c++ version in the MFEM library for more detail 
 '''
 import sys
+import os
 from os.path import expanduser, join
 import numpy as np
 
@@ -13,7 +14,7 @@ from mfem.common.arg_parser import ArgParser
 from mfem import path
 import mfem.par as mfem
 
-def_meshfile =expanduser(join(path, 'data', 'star.mesh'))
+def_meshfile = expanduser(join(path, 'data', 'star.mesh'))
 
 num_proc = MPI.COMM_WORLD.size
 myid     = MPI.COMM_WORLD.rank
@@ -141,7 +142,7 @@ if __name__ == "__main__":
 
    order = args.order
    static_cond = args.static_condensation
-   meshfile =expanduser(join(path, 'data', args.mesh))
+   meshfile = expanduser(join(os.path.dirname(__file__), '..', 'data', args.mesh))   
    visualization = args.visualization
    use_strumpack = args.strumpack
    run(order = order, static_cond = static_cond,

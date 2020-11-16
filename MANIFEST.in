@@ -1,5 +1,0 @@
-Makefile
-external/make_hypre.sh
-external/make_metis.sh
-external/make_mfemp.sh
-external/make_mfems.sh
