@@ -1,7 +1,6 @@
 #  PyMFEM (MFEM Python wrapper)
 
-This package (PyMFEM) is Python wrapper for MFEM, which is a high performance finite
-element metod library.(http://mfem.org/).
+This package (PyMFEM) is Python wrapper for the MFEM high performance parallel finite element metod library.(http://mfem.org/).
 
 Installer downloads a couple of external libraries and build them.
 By default, "pip install mfem" downloads and builds the serial version of MFEM and PyMFEM.

@@ -1,4 +1,9 @@
 	<<<  Change Log. >>>
+2020 11.05
+        * migration to pip install
+	* mesh.GetVertexArray() is added to return the all vertices
+	* mesh.Mesh(int, int, "element name") was fixed
+
 2018 09.27
 	* strumpack support is added
 	* ParFiniteElementSpace:: GetSharedEdgeDofs, ParFiniteElementSpace::GetSharedFaceDofs are wrapped to return list
