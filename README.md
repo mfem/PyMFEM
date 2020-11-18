@@ -26,7 +26,7 @@ $ python setup.py install --help
 
 ## Usage
 Here is an example to solve div(grad(f)) = 1 in squre and to plot the result
-with matplotlib
+with matplotlib (modifed from ex1.cpp)
 ```
 import mfem.ser as mfem
 
@@ -87,7 +87,7 @@ tpc = ax1.tripcolor(triang, sol, shading='gouraud')
 fig1.colorbar(tpc)
 plt.show()
 ```
-![](https://github.com/mfem/PyMFEM/blob/pip_install_dev/docs/example_image.png)
+![](https://raw.githubusercontent.com/mfem/PyMFEM/pip_install_dev/docs/example_image.png)
 
 
 ## License
